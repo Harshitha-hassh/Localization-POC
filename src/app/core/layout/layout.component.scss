@@ -1,0 +1,37 @@
+@import "../../../assets/sass/abstracts/variables";
+.ag {
+  &__container {
+    width: 100%;
+    height: 100%;
+    &.disable_click {
+      z-index: -1;
+      pointer-events: none;
+    }
+  }
+  &__header {
+    height: 60px;
+  }
+
+  &__innercontainer {
+    height: calc(100% - 60px);
+  }
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(74, 72, 72);
+  display: none;
+  &.show {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+  }
+}

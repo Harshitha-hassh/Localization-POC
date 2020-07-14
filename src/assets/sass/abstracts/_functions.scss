@@ -1,0 +1,31 @@
+/*
+****
+    CSS Vendor Prefixes
+    @param $declarations - List of properties with value
+****
+*/
+
+//Prefixes to print
+
+$prefixes:(
+  webkit,
+  moz,
+  ms,
+  o
+);
+
+@mixin prefix ($declarations)
+{
+    @debug $declarations;
+    @each $property, $value in $declarations {
+      
+      @each $prefix in $prefixes {
+         
+        #{'-' + $prefix + '-' + $property}: $value;
+       
+      }
+  
+      // Output standard non-prefixed declaration
+      #{$property}: $value;
+    }
+}

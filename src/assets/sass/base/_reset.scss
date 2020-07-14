@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  overflow-x: hidden;
+}
+body {
+  margin: 0;
+  font-family: $ag_lato-regular;
+  font-size: $ag_base-font-size;
+  box-sizing: border-box;
+  line-height: unset !important; // to overwrite bootstrap for retail.
+  font-weight: unset !important; // to overwrite bootstrap for retail.
+}
+html,
+body {
+  height: $ag_base-height;
+}
+h1,
+h3 {
+  font-size: 1.25rem !important; // to overwrite bootstrap imported for retail.
+}
+button {
+  outline: none;
+  cursor: pointer;
+}
+// Custom Scroll Bar Styles
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: $ag_grey-darker;
+  border-radius: 5px;
+}
+label {
+  margin-bottom: 0;
+}

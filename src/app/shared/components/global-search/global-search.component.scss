@@ -1,0 +1,122 @@
+@import "../../../../assets/sass/abstracts/variables";
+
+$white-bg:#fff;
+$SelectionBgColor:rgb(244, 244, 245);;
+$color-base:rgb(244, 244, 245);
+$img-height-width: 32px;
+$font-size:16px;
+$font-family:$ag_lato-bold;
+$global-search-header:$ag_primary-header-bc;
+
+.global-search{
+  height:100%;
+  width:100%;     
+.globalSearchWrapper{ 
+    position: relative;
+    overflow: hidden;
+    background:$white-bg;   
+    display: flex;
+    height:100%;    
+    flex-wrap: wrap;    
+    font-family: $font-family;
+    font-size: $font-size; 
+    border-bottom: 1px solid $ag_border-color; 
+    
+
+
+    .globalSearch-input{     
+      align-items: center;
+      justify-content: center;
+      border:none;
+      width: 100%; 
+      outline:none;     
+      height:100%;
+      .global-searchField{
+        width:100%;    
+        .mat-form-field-underline{
+          display: none;
+        }
+        .mat-form-field-infix{
+          width:100% !important; 
+          padding-bottom:19px;
+          .mat-input-element{
+            width:80%;
+            padding-left: 10px;
+          }    
+        }    
+      }
+    }
+  .globalSearch-button{
+    align-items: center;
+    justify-content: center;
+    width:20%;
+    border: none;
+    background:  $white-bg;
+    color:$ag_base-color;
+    position: relative;
+    text-align: right;
+    padding-right: 10px;      
+    span{
+      cursor: pointer;
+    } 
+  }  
+}
+}
+
+.global-search-optGroup{
+  .mat-optgroup-label{
+    line-height: 24px;
+    height: 24px;
+    background: $global-search-header;
+    padding: 0 16px;
+    margin-bottom: 0px;
+    color: $color-base;
+  }
+  
+  .mat-option{
+    padding-left: 16px !important;
+    border-bottom: 1px solid $white-bg;
+    &:first-child{
+     border-top: 1px solid $white-bg;
+    }
+    &:hover{
+        &:not(.mat-option-disabled){
+           background: $menu-search-hover-theme;
+        }
+    }
+  }
+  }
+
+.rendering-option{    
+    color: $color-base;
+    width:100%;
+    .global-search-base{
+    direction: row;
+    align-items: stretch;
+    flex-direction: row;
+    align-content: center
+  }
+  .global-search-base-span{
+      &:last-child{
+        &::after{
+            content: "";
+        }
+      }
+      &::after{
+          content: "|";
+          padding: 0 10px;
+
+      }
+  }
+
+  .global-search-base-img{
+    height: $img-height-width;
+    width: $img-height-width;
+    padding: 3px;
+    border: 1px solid $SelectionBgColor;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 12px;
+  }  
+}
+

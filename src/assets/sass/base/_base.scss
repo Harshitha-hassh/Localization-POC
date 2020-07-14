@@ -1,0 +1,89 @@
+@import "../abstracts/variables";
+//set base height of application
+html,
+body {
+  height: $ag_base-height;
+}
+body {
+  margin: 0;
+  font-family: $ag_lato-regular;
+  font-size: $ag_base-font-size;
+  word-spacing: 0.1rem;
+}
+
+//create the font size and font family for Ag application
+//even font will 1 to 24
+//every font has regular medium bold
+//Inspect the browser type .ag_ show the all looped fonts shown
+
+@for $i from 1 through 24 {
+  @each $name in $ag_lato-regular $ag_lato-bold $ag_lato-medium {
+    .ag_#{$name}-#{$i} {
+      @if ($name == $ag_lato-regular) {
+        font-family: $ag_lato-regular;
+      } @else if($name == $ag_lato-bold) {
+        font-family: $ag_lato-bold;
+      } @else if($name == $ag_lato-medium) {
+        font-family: $ag_lato-medium;
+      }
+      font-size: #{$i}px !important;
+    }
+  }
+}
+
+.height-100 {
+  height: 100%;
+}
+
+html,
+body {
+  height: $body-base-height;
+}
+body {
+  margin: 0;
+  font-family: $golf-lato-regular;
+  font-size: $body-base-font-size;
+}
+
+//create the font size and font family for golf application
+//even font will 1 to 24
+//every font has regular medium bold
+//Inspect the browser type .golf show the all looped fonts shown
+
+@for $i from 1 through 24 {
+  @each $name in $golf-lato-regular $golf-lato-bold $golf-lato-medium {
+    .golf-#{$name}-#{$i} {
+      @if ($name == $golf-lato-regular) {
+        font-family: $golf-lato-regular;
+      } @else if($name == $golf-lato-bold) {
+        font-family: $golf-lato-bold;
+      } @else if($name == $golf-lato-medium) {
+        font-family: $golf-lato-medium;
+      }
+      font-size: #{$i}px !important;
+    }
+  }
+}
+
+.golf__text--overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.height-100 {
+  height: 100%;
+}
+
+.dialog-container__actions {
+    border-top: 1px solid $border-grey;
+    height: $dialog-footer-height;   
+    padding: 0 1.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    button {
+      text-transform: uppercase;
+    }
+  }
+

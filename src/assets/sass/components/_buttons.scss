@@ -1,0 +1,480 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+
+
+.ag_button {
+  height: 40px !important;
+  line-height: 1 !important;
+  @extend .ag_mr--2;
+  @extend .ag_mb--2;
+  padding: 0 16px;
+  font-family: $ag_lato-medium;
+}
+
+.ag_button--primary{
+  @extend .ag_button;
+  background-color: $ag_button-primary-bc !important;
+  color: $ag_button-primary-fc !important;
+  border: 2px solid $ag_button-primary-bc !important;
+  @include set-browser-prefix('border-radius', 5px);
+  &[disabled] {
+    @extend .ag_button--disabled;
+  }
+}
+
+// Secondary Button with Blue font and border
+
+.ag_button--secondary{
+  @extend .ag_button;
+  background-color: $ag_button-secondary-bc !important;
+  border: 2px solid $ag_button-secondary1-fc !important;
+  color: $ag_button-secondary1-fc !important;
+  font-weight: 600 !important;
+  @include set-browser-prefix('border-radius', 5px);
+  &[disabled] {
+    @extend .ag_button--disabled;
+  }
+}
+
+// Secondary Button with Grey font and border
+.ag_button--secondary2{
+  @extend .ag_button;
+  background-color: $ag_button-secondary-bc !important;
+  border: 2px solid $ag_button-secondary2-fc !important;
+  @include set-browser-prefix('border-radius', 5px);
+  &[disabled] {
+    @extend .ag_button--disabled;
+  }
+}
+
+.ag_button--tertiary{
+  @extend .ag_button;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+  color: $ag_button-tertiary-fc !important;
+  &[disabled]{
+    @extend .ag_button--disabled;
+    &::before{
+      color: $ag_disabled-color !important;
+    }
+  }
+}
+
+.ag_button--singleselect{
+  @extend .ag_button;
+  @extend .ag_LatoRegular-12;
+  background-color: $ag_black-light !important;
+  border: 1px solid $ag_black-light !important;
+  &[disabled] {
+    @extend .ag_button--disabled;
+  }
+}
+
+.ag_button--disabled{
+  @extend .ag_button;
+  background-color: $ag_grey-lighter !important;
+  color: $ag_disabled-color !important;
+  cursor: default !important;
+  pointer-events: none !important;
+  opacity: 0.5;
+  border:none !important;
+  &::before{
+    color: $ag_disabled-color !important;
+  }
+}
+
+.ag_button--tertiary--disabled{
+
+}
+
+.ag_button__icon--disabled{
+  @extend .ag_button--disabled;
+  background-color: unset !important;
+}
+
+
+
+
+//From Golf
+//golf button base
+.golfbutton{
+  text-transform: uppercase; //text capitilaze
+}
+
+
+
+
+//create glof secondary buuton border colour change
+//golf secondary button base from the angular material button
+//secondary button angular directive "mat-stroked-button" color="primary"
+// @each loop create the new class base for values
+$golfsecondary--button: (secondarygreen, $golf-secondary-button-border-green), (secondaryred, $golf-secondary-button-border-red);
+
+@each $golfsecondaryname, $golfsecondarycolor  in $golfsecondary--button {
+  .golf--#{$golfsecondaryname} {
+    border-color: #{$golfsecondarycolor} !important;
+  }
+}
+
+
+.button {
+  height: 40px !important;
+  line-height: 40px !important;
+  margin-right: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+.button--primary{
+  @extend .button;
+  background-color: $theme-base-color !important;
+  color: $golf-base-white-bg !important;
+  border: 1px solid $theme-base-color !important;
+  &[disabled] {
+    cursor: default !important;
+    pointer-events: none !important;
+    opacity: 0.5;
+  }
+}
+
+.button--secondary{
+  @extend .button;
+  background-color: $golf-base-white-bg !important;
+  border: 1px solid $theme-base-color !important;
+  &[disabled] {
+    cursor: default !important;
+    pointer-events: none !important;
+    opacity: 0.5;
+  }
+}
+
+.button--tertiary{
+  @extend .button;
+  background-color: transparent !important;
+  border: 1px solid transparent !important;
+}
+
+.button--singleselect{
+  @extend .button;
+  @extend .golf-LatoRegular-12;
+  background-color: $button_background !important;
+  border: 1px solid $button_background !important;
+  &[disabled] {
+    cursor: default !important;
+    pointer-events: none !important;
+    opacity: 0.5;
+  }
+}
+
+.button--disabled{
+  @extend .button;
+  background-color: $button_background !important;
+  color: $disabled-color !important;
+  // border: 1px solid $button_background !important;
+  cursor: default !important;
+  pointer-events: none !important;
+  opacity: 0.5;
+  &::before{
+    color: $disabled-color !important;
+  }
+}
+
+.button--tertiary--disabled{
+  @extend .button;
+  color: $disabled-color !important;
+  cursor: default !important;
+  pointer-events: none !important;
+  opacity: 0.5;
+  &::before{
+    color: $disabled-color !important;
+  }
+}
+
+.button__icon--disabled{
+  @extend .button--disabled;
+  background-color: unset !important;
+}
+
+
+///SPA related theme
+
+
+.border-color {
+  border: 1px solid $theme-base-color !important;
+}
+.text-color {
+  color: $theme-base-color !important;
+}
+.body-bgcolor {
+  background-color: $theme-base-color !important;
+}
+.body-color {
+  background-color: $theme-base-color !important;
+}
+
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+    background-color: $theme-base-color !important;
+
+    span {
+      color: #fff;
+    }
+  }
+a,
+.link {
+  //color: $label;
+  text-decoration: none;
+  transition: color 200ms;
+  cursor: pointer;
+}
+    $base-sec-height: $primary-btn-height;
+    $base-lnheight: $spa-small-btn-height !default;
+    $base-sec-font: $font-size14 !default;
+    $base-sec-color: $pureblack !default;
+
+
+@mixin base-secondary-btn($ht: $base-sec-height, $lh: $base-lnheight, $bfs: $base-sec-font, $cr: $base-sec-color){
+    height: $ht !important;
+    line-height: $lh !important;
+    font-size: $bfs !important;
+    color: $cr !important;
+}
+
+.spa-button-base{
+    height: $primary-btn-height !important;
+    //text-transform: uppercase !important;
+    text-align: center !important;
+    line-height: $primary-btn-height !important;
+    color: $ContainerBgColor !important;
+    border-radius: $primary-btn-border-radius !important;
+    font-size: $font-size14 !important;
+    // font-family: $lato-web-web !important;
+    cursor: pointer;
+}
+
+.spa-base-circle{
+    min-width: $spa-circle-width;
+    min-height: $spa-circle-height;
+    border-radius: 50%;
+    text-align: center;
+    font-size: $font-size28;
+    display: inline-block;
+    color: $ContainerBgColor;
+
+    cursor: pointer;
+    border: none;
+}
+
+
+
+.spa-primary-btn-default{
+    @extend .spa-button-base;
+    @extend .body-color;
+    @extend .body-bordercolor;
+    &:hover{
+        @extend .circle-hover;
+    }
+    &:active{
+        @extend .color-onpressed;
+    }
+
+}
+
+.primary-btn-disbaled{
+    @extend .spa-button-base;
+    background: $grayLight !important;
+    color: $tabTextGray !important;
+    pointer-events: none;
+    cursor: not-allowed !important;
+    &:hover{
+        background: $formBackGroundGray !important;
+    }
+
+}
+
+.secondary-btn-disabled{
+    @extend .spa-button-base;
+    color: $color-button-secondary-disabled !important;
+    border: 1px solid !important;
+    pointer-events: none;
+    cursor: not-allowed !important;
+    &:hover{
+        background: $formBackGroundGray !important;
+
+    }
+
+}
+
+
+.spa-primary-btn-cancel{
+    @extend .spa-button-base;
+    background: none !important;
+    color: $color-header !important;
+    &:hover{
+        background: none !important;
+    }
+    &:active{
+        background: none !important;
+    }
+
+}
+
+
+.secondary-btn-default{
+    @extend .spa-button-base;
+    @extend .body-bordercolor;
+    @include  base-secondary-btn();
+    &:hover{
+        background: $color-secondary-button-hover;
+      }
+      &:active{
+        @extend .color-secondary-pressed;
+      }
+}
+
+.spa-plus-circle-default{
+    @extend .spa-base-circle;
+    @extend .body-color;
+    &:hover{
+        @extend .circle-hover;
+    }
+    &:active{
+        @extend .color-onpressed;
+    }
+}
+
+.spa-plus-circle-disbled{
+    @extend .spa-base-circle;
+    @extend .circle-disbled;
+}
+
+.spa-btn-smallhg-primary{
+    @extend .spa-button-base;
+    @extend .body-bordercolor;
+    @extend .body-color;
+    height: $spa-small-btn-height;
+    line-height: $spa-small-btn-height !important;
+    font-size: $font-size14 !important;
+  &:hover{
+      @extend .circle-hover;
+  }
+  &:active{
+    @extend .color-onpressed;
+  }
+}
+
+
+.spa-btn-smallhg-secondary{
+    @extend .spa-button-base;
+    @extend .body-bordercolor;
+    @include  base-secondary-btn($ht: $spa-small-btn-height, $lh: $spa-small-btn-height, $bfs: $font-size12 );
+    &:hover{
+        @extend .circle-hover;
+    }
+    &:active{
+        @extend .color-onpressed;
+    }
+  }
+
+  .secondary-btn-disabled{
+    @extend .spa-button-base;
+    color: $color-button-secondary-disabled !important;
+    border: 1px solid !important;
+    pointer-events: none;
+    cursor: not-allowed !important;
+    &:hover{
+    background: $formBackGroundGray !important;
+    }
+   }
+
+.spa-tertiary-btn-default{
+    // @extend .spa-button-base;
+    @include base-secondary-btn();
+    &:hover{
+        background: $color-tertiary-btn-hover;
+    }
+    &:active{
+        background: $color-tertiary-btn-press;
+    }
+}
+.spa-tertiary-btn-disabled{
+    @include base-secondary-btn();
+    color: $grayLight !important;
+    pointer-events: none;
+    cursor: not-allowed !important;
+}
+
+  .spa-insidetb-btn{
+    @extend .spa-button-base;
+    height: $spa-inside-tb-btn !important;
+    line-height: $spa-inside-tb-btn !important;
+    @extend .body-bordercolor;
+    color: $pureblack !important;
+    font-size: $font-size11 !important;
+    &:hover{
+        @extend .circle-hover;
+    }
+    &:active{
+        @extend .color-onpressed;
+    }
+  }
+
+  .spa-btn-filter-secondary{
+    @extend .spa-button-base;
+    @extend .body-bordercolor;
+    @include  base-secondary-btn($ht: $spa-small-btn-height, $lh: $spa-small-btn-height, $bfs: $font-size11 );
+    &:hover{
+        background: $color-btn-hover;
+      }
+      &:active{
+        @extend .color-onpressed;
+      }
+  }
+
+
+  .spa-btn-filter-primary{
+    @extend .spa-button-base;
+    @extend .body-color;
+    @extend .body-bordercolor;
+    @include  base-secondary-btn($ht: $spa-small-btn-height, $lh: $spa-small-btn-height, $bfs: $font-size11, $cr: $ContainerBgColor  );
+    &:hover{
+        @extend .circle-hover;
+    }
+    &:active{
+        @extend .color-onpressed;
+    }
+  }
+
+
+
+
+  .spa-btn-lg-primary{
+    @extend .spa-button-base;
+    @extend .body-color;
+    @extend .body-bordercolor;
+    @include  base-secondary-btn($ht: $spa-lg-btn-height, $lh: $spa-lg-btn-height, $bfs: $font-size12, $cr: $ContainerBgColor);
+    &:hover{
+        @extend .circle-hover;
+    }
+    &:active{
+        @extend .color-onpressed;
+    }
+  }
+
+
+  .spa-btn-lg-secondary{
+    @extend .spa-button-base;
+    @extend .body-bordercolor;
+    @include  base-secondary-btn($ht: $spa-lg-btn-height, $lh: $spa-lg-btn-height, $bfs: $font-size12 );
+    &:hover{
+        background: $color-btn-hover;
+      }
+      &:active{
+        @extend .color-onpressed;
+      }
+  }
+
+  @mixin btn-width($wd:$spa-savebtn-width){
+      width: $wd;
+  }
+  @mixin btn-min-width($wd:$spa-savebtn-min-width){
+    min-width: $wd !important;
+}

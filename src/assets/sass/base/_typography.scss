@@ -1,0 +1,101 @@
+/* Webfont: Lato-Regular */
+@font-face {
+    font-family: $ag_lato-regular;
+    src: url('assets/fonts/Lato/fonts/Lato-Regular.eot');
+    /* IE9 Compat Modes */
+    src: url('assets/fonts/Lato/fonts/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+      /* IE6-IE8 */
+      url('assets/fonts/Lato/fonts/Lato-Regular.woff2') format('woff2'),
+      /* Modern Browsers */
+      url('assets/fonts/Lato/fonts/Lato-Regular.woff') format('woff'),
+      /* Modern Browsers */
+      url('assets/fonts/Lato/fonts/Lato-Regular.ttf') format('truetype'),
+      url('assets/fonts/Lato/fonts/Lato-Regular.svg') format('svg');
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: $ag_lato-medium;
+    src: url('assets/fonts/Lato/fonts/Lato-Medium.eot');
+    /* IE9 Compat Modes */
+    src: url('assets/fonts/Lato/fonts/Lato-Medium.eot?#iefix') format('embedded-opentype'),
+      /* IE6-IE8 */
+      url('assets/fonts/Lato/fonts/Lato-Medium.woff2') format('woff2'),
+      /* Modern Browsers */
+      url('assets/fonts/Lato/fonts/Lato-Medium.woff') format('woff'),
+      /* Modern Browsers */
+      url('assets/fonts/Lato/fonts/Lato-Medium.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: $ag_lato-bold;
+    src: url('assets/fonts/Lato/fonts/Lato-Bold.eot');
+    /* IE9 Compat Modes */
+    src: url('assets/fonts/Lato/fonts/Lato-Bold.eot?#iefix') format('embedded-opentype'),
+      /* IE6-IE8 */
+      url('assets/fonts/Lato/fonts/Lato-Bold.woff2') format('woff2'),
+      /* Modern Browsers */
+      url('assets/fonts/Lato/fonts/Lato-Bold.woff') format('woff'),
+      /* Modern Browsers */
+      url('assets/fonts/Lato/fonts/Lato-Bold.svg') format("svg"),
+      /* Legacy iOS */
+      url('assets/fonts/Lato/fonts/Lato-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+  }
+
+
+
+
+  //From Golf
+  @font-face {
+    font-family: $golf-lato-regular;
+    src: url('assets/fonts/Lato/fonts/Lato-Regular.eot');
+    /* IE9 Compat Modes */
+    src: url('assets/fonts/Lato/fonts/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+      /* IE6-IE8 */
+      url('assets/fonts/Lato/fonts/Lato-Regular.woff2') format('woff2'),
+      /* Modern Browsers */
+      url('assets/fonts/Lato/fonts/Lato-Regular.woff') format('woff'),
+      /* Modern Browsers */
+      url('assets/fonts/Lato/fonts/Lato-Regular.ttf') format('truetype'),
+      url('assets/fonts/Lato/fonts/Lato-Regular.svg') format('svg');
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: $golf-lato-medium;
+    src: url('assets/fonts/Lato/fonts/Lato-Medium.eot');
+    /* IE9 Compat Modes */
+    src: url('assets/fonts/Lato/fonts/Lato-Medium.eot?#iefix') format('embedded-opentype'),
+      /* IE6-IE8 */
+      url('assets/fonts/Lato/fonts/Lato-Medium.woff2') format('woff2'),
+      /* Modern Browsers */
+      url('assets/fonts/Lato/fonts/Lato-Medium.woff') format('woff'),
+      /* Modern Browsers */
+      url('assets/fonts/Lato/fonts/Lato-Medium.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: $golf-lato-bold;
+    src: url('assets/fonts/Lato/fonts/Lato-Bold.eot');
+    /* IE9 Compat Modes */
+    src: url('assets/fonts/Lato/fonts/Lato-Bold.eot?#iefix') format('embedded-opentype'),
+      /* IE6-IE8 */
+      url('assets/fonts/Lato/fonts/Lato-Bold.woff2') format('woff2'),
+      /* Modern Browsers */
+      url('assets/fonts/Lato/fonts/Lato-Bold.woff') format('woff'),
+      /* Modern Browsers */
+      url('assets/fonts/Lato/fonts/Lato-Bold.svg') format("svg"),
+      /* Legacy iOS */
+      url('assets/fonts/Lato/fonts/Lato-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+  }
+

@@ -1,0 +1,24 @@
+{
+  "RetailApiHosts": {
+    "SalesCateringService": "https://snc-gateway-dev.rguest.com/SalesAndCateringGateway",
+    "TenantManagement": "https://v1-tenantmanagement-dev.rguest.com/api",
+    "RetailManagement": "https://retail-gateway-dev.rguest.com/visualone/retailgateway",
+    "SNCGateway": "https://snc-gateway-dev.rguest.com/SalesAndCateringGateway",
+    "Report": "https://snc-gateway-dev.rguest.com/SalesAndCateringGateway",
+    "PayAgent": "http://localhost:8020",
+    "MsDeeplink": "https://outlook.office365.com/mail/deeplink/compose/",
+    "V1IGPosting": "https://10.17.129.173/V1IGPostingWebService/V1IGInterface.asmx?wsdl"
+  },
+  "MsalConfiguration": {
+    "AppId": "5b16cff2-50b9-4e4b-966a-fc532419af0d",
+    "RedirectUri": "https://snc-ui-dev.rguest.com/",
+    "Scopes": [
+      "User.Read",
+      "Calendars.ReadWrite",
+      "Contacts.ReadWrite",
+      "Mail.ReadWrite",
+      "Mail.Send",
+      "Tasks.ReadWrite"
+    ]
+  }
+}

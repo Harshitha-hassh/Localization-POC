@@ -1,0 +1,527 @@
+@import "../abstracts/color";
+
+/****************************************ont variables**********************************************************/
+$ag_lato-regular: "LatoRegular";
+$ag_lato-medium: "LatoWebMedium";
+$ag_lato-bold: "LatoWebBold";
+
+/*********************************Media query breakpoint values************************************************/
+$medium-min-width: 480px;
+$medium-max-width: 768px;
+$small-max-width: 480px;
+$large-min-width: 1024px;
+$large-max-width: 1350px;
+
+/*********************************Reset Declarations***********************************************************/
+$ag_base-height: 100%;
+$ag_base-font-size: 14px;
+
+/****************************************Font-Size*************************************************************/
+
+$font-size2: 2px;
+$font-size4: 4px;
+$font-size6: 6px;
+$font-size8: 8px;
+$font-size10: 10px;
+$font-size11: 11px;
+$font-size12: 12px;
+$font-size14: 14px;
+$font-size16: 16px;
+$font-size18: 18px;
+$font-size20: 20px;
+$font-size22: 22px;
+$font-size24: 24px;
+$font-size26: 26px;
+$font-size28: 28px;
+$font-size28: 30px;
+$font-size40: 40px;
+
+
+/*** Agilysys base color variables ***/
+
+$ag_base-color: $navy-blue-darkest;
+$ag_base-text-black: $black;
+$ag_base-text-white: $white;
+
+$ag_border-color: $grey-light;
+$ag_button-bg: $grey-lighter;
+
+//alert-popup colors
+$ag_warning-color: $orange;
+$ag_error-color: $red;
+$ag_success-color: $green;
+
+// Primary header Level1 Header
+$ag_primary-header-bc: $black;
+$ag_primary-header-fc: $grey-light;
+
+// Secondary header Level2 Header
+$ag_secondary-header-bc: $white;
+$ag_secondary-header-fc: $grey-darker;
+
+// Disabled Color
+$ag_disabled-color: $grey-darker;
+
+//Button Color
+$ag_button-primary-bc: $navy-blue-darkest;
+$ag_button-primary-fc: $white;
+
+$ag_button-secondary-bc: $white;
+$ag_button-secondary1-fc: $navy-blue-darker;
+$ag_button-secondary2-fc: $grey-dark;
+
+$ag_button-tertiary-fc: $grey-darkest;
+
+//Border color
+
+$ag_border-lighter:$grey-lighter;
+
+// Color Values
+$ag_navy-blue-darkest:$navy-blue-darkest;
+$ag_navy-blue-darker:$navy-blue-darker;
+$ag_navy-blue: $navy-blue;
+$ag_navy-blue-lighter: $navy-blue-lighter;
+$ag_navy-blue-lightest:$navy-blue-lightest;
+
+$ag_white: $white;
+$ag_black: $black;
+$ag_black-light: $black-light;
+$ag_black-lighter: $black-lighter;
+$ag_black-lightest: $black-lightest;
+
+//Grey
+$ag_grey-darkest: $grey-darkest;
+$ag_grey-darker: $grey-darker;
+$ag_grey-dark: $grey-dark;
+$ag_grey-medium1: $grey-medium1;
+$ag_grey-medium2: $grey-medium2;
+$ag_grey-light: $grey-light;
+$ag_grey-lighter: $grey-lighter;
+$ag_grey-lightest: $grey-lightest;
+
+//Green
+$ag_green-darkest: $green-darkest;
+$ag_green: $green;
+$ag_green-lightest: $green-lightest;
+
+//Orange
+$ag_orange: $orange;
+$ag_orange-lighter: $orange-lighter;
+$ag_orange-lightest: $orange-lightest;
+
+//Red
+$ag_red-dark: $red-dark;
+$ag_red: $red;
+$ag_red-lightest: $red-lightest;
+
+//Blue
+$ag_blue: $blue;
+$ag_blue-lightest: $blue-lightest;
+
+//Yellow
+$ag_yellow: $yellow;
+
+$ag_tentative-color: $violet;
+
+/**************table-values**************/
+$five-px: 5px;
+$ten-px: 10px;
+$fifteen-px: 15px;
+$twenty-px: 20px;
+
+/** Checkbox variables ***/
+$checkbox-ripple-color: $black-light;
+$checkbox-size: 16px;
+$checkbox-animation-ripple: 600ms;
+$checkbox-animation-check: 0.2s;
+$checkbox-color: $black;
+$disabledCheckboxBorder: $grey-darker;
+
+/************** common variables **********************/
+$default-container-width: 460px;
+$default-container-padding: 1.25rem;
+$mat-toggle-button-height: 40px;
+$radio-size: 16px;
+$default-side-panel-width-sm: 200px;
+$default-side-panel-width-lg: 250px;
+$default-icon-size: 16px;
+$default-control-padding: $fifteen-px;
+$tertiary-header-height: 65px;
+$header-height: 75px;
+$dialog-header-height: 4rem;
+$dialog-footer-height: 4rem;
+$toggle-height: 50px;
+
+// checkbox
+
+$check-box-outer: $darkGrey;
+
+
+
+
+
+
+
+//From Golf
+$body-base-height: 100%;
+$body-base-font-size: 14px;
+
+/*** golf base color variables ***/
+$golf-base-color: $theme-green;
+$golf-base-text-color: $black;
+$golf-base-white-bg: $white;
+
+$golf-border-color: $gray-lighter;
+$golf-button-bg: $gray-lighter;
+
+// Primary header
+$golf-primary-header-bg: $black;
+$golf-primary-header-fg: $white;
+
+$golf-sub-menu-fg: $text-color-dark;
+
+$golf-secondary-header-bg: $gray-light;
+
+$golf-card-bg: $theme-green-lightest;
+$golf-card-holes-bg: $gray-light;
+
+/*************************************************************color variables**************************************************************/
+$golf-grey-text-color: $darkGrey;
+$golf-secondary-button-border-green: $theme-green;
+$golf-secondary-button-border-red: $red;
+$user-config-accordian-header: $Zircon;
+$box-shadow-black2: $black-opacity-level2;
+$box-shadow-black1: $black-opacity-level1;
+$box-shadow-black3: $black-opacity-level3;
+$border-grey: $gray-light;
+$golf-selected-menu-bg-color: $theme-green-lighter;
+$lesson-slot-bg-color: $theme-green-lighter;
+$golf-header-menu-bg-color: $Zircon;
+$table-border-color: $nobel;
+$category-background: $lightGrey;
+$block-bg-color: $lightGrey;
+$header-color: $lightGrey;
+$dialog-tab-header-color: $lightGrey2;
+$dialog-tab-header-label: $white;
+
+$category-background: $lightGrey;
+$check-box-outer: $darkGrey;
+$toggle-uncheck-color: $ag_grey;
+
+$setting-search-header-bg: $formBackGroundGray;
+$search-placeholder-color: $placeholderGrey;
+$search-border-color: $gray-light;
+$search-section-bg: $gray-lighter;
+
+$disabled-color: $gray-darker;
+$button_background: $single_select_background;
+$arrow-color: $suvaGrey;
+$grid-inactive: $snow;
+$schedule-bg: $snow;
+$border_color: $white;
+$white-bg: $white;
+$arrow-disabled: $black-opacity-level25;
+$border-color: $black-light;
+
+$actions-overlay: $black-light;
+$actions-border: $gray-light;
+$actions-disabled-color: $gray-light;
+$actions-bg: $gray-lighter;
+$golf-dark-text-color: $gray-dark;
+$golf-tee-sheet-header: $gray-light;
+$golf-spilt-action-border: $gray-light;
+$golf-spilt-button-border: $white;
+$table-light-bg: $gray-lightest;
+/****************************************************************************Golf font variables******************************************************/
+$golf-lato-regular: "LatoRegular";
+$golf-lato-medium: "LatoWebMedium";
+$golf-lato-bold: "LatoWebBold";
+
+/*********************************Media query breakpoint values************************************************/
+$medium-min-width: 480px;
+$medium-max-width: 768px;
+$small-max-width: 480px;
+$large-min-width: 1024px;
+$large-max-width: 1350px;
+
+/**************table-values**************/
+$five-px: 5px;
+$ten-px: 10px;
+$fifteen-px: 15px;
+$twenty-px: 20px;
+
+/************** common variables **********************/
+$default-container-width: 460px;
+$default-container-padding: 1.25rem;
+$default-footer-height: 67px;
+$default-side-panel-width-sm: 200px;
+$default-side-panel-width-lg: 250px;
+$default-icon-size: 16px;
+$default-control-padding: 15px;
+$tertiary-header-height: 65px;
+$tertiary-header-modified-height: 49px;
+$header-height: 65px;
+$dialog-header-height: 4rem;
+$dialog-footer-height: 4rem;
+$color-code-width: 15px;
+$color-code-height: 15px;
+$toggle-height: 50px;
+/** Checkbox variables ***/
+$checkbox-ripple-color: $black-light;
+$checkbox-size: 16px;
+$checkbox-animation-ripple: 600ms;
+$checkbox-animation-check: 0.2s;
+$checkbox-color: $black;
+$disabledCheckboxBorder: $gray-darker;
+$default-footer-height: 67px;
+$mat-toggle-button-height: 40px;
+$icon-button-size: 40px;
+$player-detail-height: 40px;
+$radio-size: 16px;
+// -----card grey----
+
+
+$golf-card-color: $gray-lighter;
+$golf-player-index: $blue-bayoux;
+$caption-color: $black-dark;
+$players-border-color: $black-very-lightest;
+$players-border-color: $black-lightest;
+//alert-popup colors
+$golf-warning-color: $orange;
+$golf-error-color: $red;
+$golf-intervalBlock-table-border: $gray;
+$golf-dark-bg-color: $black-lightest;
+
+//report
+$color-reports-bg: $reports-bgColor;
+$color-button-split:$button-split-color;
+$color-container-bg: $PureWhite;
+$color-border-gold:$green;
+
+
+//Guest History Table
+$history-table-gray: $gray-dim;
+$history-table-hover: $theme-green-lightest;
+$data-round-border: $gray;
+$itnerary-table-th-border: $gray-dark;
+$client-email-color: $gray;
+
+//spa variables
+
+
+$BodyBgColour: $lightwhite;
+$ContainerBgColor: $PureWhite;
+$label: $DarkOrange;
+$SelectionBgColor:$black;
+$SelectionColor:$accent;
+$color-header:$black;
+$color-container-bg: $PureWhite;
+$color-header-bg: $lightsemiBlack;
+$color-header-text: $PureWhite;
+$color-bg-row-header: $lightsemigrey;
+$color-text: $wetapsat;
+$color-colum-bg: $lightwhite;
+$color-logo: $PureWhite;
+$color-border-gold:$gold;
+$color-border-blue:$blue;
+$color-border-red:$DarkOrange;
+$color-row-border:$lightraygrey;
+$color-base: $pureblack; //Base Color of application
+$color-address: $lightgrey;
+$color-steeper-bg:$stepper-color;
+$color-subheader: $semigrey; //Using Setting Header
+$color-Setting-boder: $semilightgreyWhite; //Using Setting Page border
+$color-setting-button: $HexaGrey;
+$color-button-color: $PureWhite; //Using Setting button color
+$color-inner-Header: $HexaLightWhite; //Using Setting Inner Header
+$color-online: $StrongGreen;
+$color-offline: $StrongRed;
+$color-active: $Green;
+$color-inactive: $Red;
+$color-table-black: $TableBlack; //Using Setting table
+$color-header-bg-gold:$Darkgold;
+$color-secondary-button-hover: $lightgoldcircle;
+$color-secondary-button-pressed: $secondaryButtonPressed;
+
+$setup-header-day-bg: $lightSilverGrey; //Next four colors are Used in for Lunch-setup
+$setup-hover-bg: $darkSilver;
+$setup-header-bg: $brightGrey;
+$color-table-header-bg: $lightSeaBlue;
+$color-missing-service: $StrongRed;
+$color-up-arrow: $darkGreen;
+$color-down-arrow: $darkRed;
+$color-yield1-bg: $mintCream;
+$color-yield2-bg: $paleYellow;
+$color-yield1: $seaBlue;
+$color-yield2: $lightOrange;
+$color-yield3: $lightGreen;
+$color-filter-header-bg: $whiteSmoke;
+$color-theme-app:$color-theme;
+$color-form-field:$formFieldGray;
+$color-form-bgColor:$formBackGroundGray;
+$color-tabText-gray: $tabTextGray;
+$color-white-opacity:$whiteOpacity;
+$color-light-gray:$grayLight;
+$color-appointment:$appointmentColor;
+$color-scheduled:$scheduled;
+$color-checkedout:$checkedout;
+$color-checkedout-bg:$checkedOut-bg;
+$color-upcoming:$upcoming-bg;
+$color-clients:$clients;
+$color-therapist:$therapist;
+$color-tab-content-background: $tabBackGroundGray;
+$color-darkGray:$darkGray;
+$color-gold: $gold;
+$color-noShow:$noShow;
+$color-border-gray:$borderGray;
+$color-border-grey-fullopacity:$border-grey-fullopacity;
+$color-border-lightgray:$borderlightGray;
+$color-border-gray-opacity5:$border-grey-opacity5;
+$color-radio-gray:$grayRadio;
+$color-input-holder:$formFieldGray;
+$color-row-gray:$recentRowGray;
+$color-near-checkout:$nearlyCheckOut;
+$color-border-gray:$appoinment-actions-gray;
+$color-menu-gray:$appointment-actions-menu;
+$color-shop-border:$shop-border-bottom;
+$color-white-transparent:$white-transparent;
+$color-border-shop:$border-shop;
+$color-left-arrow:$left-arrow-gray;
+$color-text-color:$textblack;
+$color-steeper-bg:$stepper-color;
+$color-button-split:$button-split-color;
+$color-more-legend:$more-legend;
+$color-success-green:$success-green;
+$color-addons-border: $gold;
+$color-grey-border: $linkWater;
+$color-grid-border: $inputPlaceholderGray;
+$color-slots:$lightSeaGreen;
+$color-female:$neonPink;
+$color-male:$ceruleanBlue;
+$color-disabled: $HexaWhite;
+$color-li-selected:$floralWhite;
+$disabled-row: $aliceBlue;
+$disabled-button: $grey;
+$disabled-select-underline: $lavender;
+$color-staff-border:$suvaGrey;
+$color-label:$tuna;
+$color-logo-gold:$logo-gold;
+$color-blac-opac8:$black-opacity8;
+$color-btn-hover: $lightyellow;
+$color-tertiary-btn-hover: $tertiarygold;
+$color-tertiary-btn-press: $tertiarygolddark;
+$color-reports-border: $black-opacity;
+$table-header-bg: $formBackGroundGray;
+$color-blue-color:$warning-blue;
+$card-selection-bg-color: $Beige;
+$color-tick-green: $tick-color;
+$color-cross-color:$cross-color;
+$color-therapist-border: $lightGray;
+$label-secondary-color: $formFieldGray;
+$color-border-primary: $tabTextGray;
+$color-border-secondary: $color-light-grey;
+$color-button-secondary-disabled: $secondaryButtonGrey;
+$color-searchbox-bg:$searchbox-bg;
+$color-client-bg: $snow;
+$color-therapist-border: $lightGray;
+$form-field-color: $lightblack;
+$color-th-bg: $thbg;
+$color-save-button: $PureWhite;
+$mat-tab-labels: $PureWhite;
+$reportBG: $formBackGroundGray;
+$color-reports-bg:$reports-bgColor;
+$color-reports-background: $PureWhite;
+$color-grey-resolution:$screen-grey;
+$color-resolution-grey: $resolution-grey;
+$color-resolution-black: $resolution-black;
+$spa-wizard-total-amount-bg: $light-white;
+$toggleBg-color:$toggleBG;
+$color-shop-bg: $shop-background;
+$border-color: $dullgrey;
+$split-button-border-color: $formBackGroundGray;
+
+$global-search-header:  $grey-global;
+$global-search-white: $white-global;
+$global-search-lightyellow: $light-yellow;
+$global-search-overlay: $light-grey-global;
+
+$icon-color:$gold;
+
+$package-selected-color: $papayawhip;
+/*****Button - Width & Height -******/
+$primary-btn-width: 118px;
+$primary-btn-height: 40px;
+$primary-btn-border-radius: 3px;
+$spa-circle-width:28px;
+$spa-circle-height:28px;
+$spa-small-btn-height:30px;
+$spa-inside-tb-btn: 20px;
+$spa-lg-btn-height: 34px;
+$spa-savebtn-width: 120px;
+$spa-savebtn-min-width: 88px;
+
+
+
+
+/*****Font-Size******/
+
+$font-size2: 2px;
+$font-size4: 4px;
+$font-size6: 6px;
+$font-size8: 8px;
+$font-size10: 10px;
+$font-size12: 12px;
+$font-size14: 14px;
+$font-size16: 16px;
+$font-size18: 18px;
+$font-size20: 20px;
+$font-size22: 22px;
+$font-size28: 28px;
+$font-size40: 40px;
+$font-size11: 11px;
+
+
+
+
+//****************Font family*****************//
+
+
+$lato-web-web: "LatoWeb";
+$lato-web-medium: "LatoWebMedium";
+$lato-web-bold: "LatoWebBold";
+
+
+
+//********Form - Field Configuration***************//
+$font-size-mat-form-field-input: $font-size14;
+
+$label-color: $custom-label-color;
+$value-color: $custom-value-color;
+$golf-dark-bg-color: $black-lightest;
+
+
+/** Dashboard */
+
+$line_tool_tip_bg:$Turquoise;
+$line_tooltip_container_border:$Porcelain;
+$line_tooltip_header_bg:$ClearDay;
+$line_tooltip_content_label:$Zorba;
+$weather-text: $Heather;
+
+/* Graphical VIEW*/
+$graphicalDrakRow: $mildGreenDarkRow;
+$graphicalLightRow: $mildGreenLightRow;
+
+$order-summary-light-bg: $theme-blue-lighttest;
+$order-summary-dark-bg: $theme-blue-light;
+$theme-base-color: $ag_base-color;
+$selected-menu-bg-color: $theme-blue-selection;
+/*Commission Setup Gratutity toggle*/
+$color-li-selected: $theme-green-lightest;
+$color-border-gold: $theme-green;
+
+$mat-input-disabled-color: $black-opacity38; 
+
+$error-color: $ag_error-color; 
+
+$menu-search-hover-theme:$theme-blue-lighttest;

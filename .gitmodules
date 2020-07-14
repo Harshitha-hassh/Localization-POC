@@ -1,0 +1,6 @@
+[submodule "src/app/common"]
+	path = src/app/common
+	url = http://v1tfs:8080/tfs/Microservices/Common/_git/CommonUI
+[submodule "src/app/retail"]
+	path = src/app/retail
+	url = http://v1tfs:8080/tfs/Microservices/Common/_git/RetailUI

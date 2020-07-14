@@ -1,0 +1,218 @@
+<ng-container [ngSwitch]="levelMenu">
+    <!-- header -->
+    <div class="wrapper-container"
+        [ngClass]="{'innerContainer': levelMenu == menuType.lowerLevel,'d-block': levelMenu == !menuType.lowerLevel}">
+        <div
+            [ngClass]="{'menuLowerlevel-container': levelMenu == menuType.lowerLevel,'menu-container' : levelMenu == menuType.primary,'menuSecondary-container':levelMenu ==menuType.secondary}">
+            <div *ngSwitchCase="menuType.primary">
+                <div class="header-background" (window:resize)="bindHeaderData()">
+                    <div class="logo-section">
+                        <a class="logo-anchor" routerLink="/home">
+                            <img src="../../assets/images/logo.png" class="ag-image" alt="Sales and Catering" />
+                        </a>
+                    </div>
+                    <div class="menu-section">
+                        <ng-container *ngIf="searchOpen">
+                            <!-- <app-global-search class="global-search" (OnOptionSelected)="OptionSelected($event)"
+                                (onSearch)="onSearch($event)"></app-global-search> -->
+                        </ng-container>
+                        <ng-container *ngIf="menusearchOpen">
+                            <!-- <app-menu-search class="menu-search" (OnMenuOptionSelected)="MenuOptionSelected($event)"
+                            (onMenuSearch)="onMenuSearch($event)"></app-menu-search> -->
+                        </ng-container>
+                        <ng-container *ngIf="!searchOpen">
+                            <ng-container *ngTemplateOutlet="horizontalMenu;context: { a:menuItems,b:moreListItem}">
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                    <div class="profile-section">
+                        <button class="searchClass buttonStyle cursor" [matTooltip]="captions.search" (click)="openGlobalSearch($event,searchOpen)">
+                            <i class="icon-search-class">
+                                <span class="icon-Circle"></span>
+                                <span class="icon-Searchbar" *ngIf="!searchOpen"></span>
+                                <span class="icon-Cancel" *ngIf="searchOpen"></span>
+                            </i>
+                        </button>
+
+                        <button class="menuClass buttonStyle cursor" [matTooltip]="captions.menuSearch" (click)="openMenuSearch()">
+                            <i class="icon-search-class"  >
+                            <span class="icon-Circle"></span>
+                            <span class="icon-filter" *ngIf="!menusearchOpen"></span>
+                            <span class="icon-Cancel" *ngIf="menusearchOpen"></span> 
+                            </i>
+                        </button>
+
+                        <!-- <app-ms-graph-auth></app-ms-graph-auth> -->
+                        <!--  <button class="notifyClass buttonStyle cursor">
+                            <i class="icon-notify icon-notification"></i>
+                        </button> -->
+                        <!-- <div class="user-details ag_float--right">
+                            <div class="d-flex cursor" [popover]="logOutPopOver" popoverPlacement="bottom"
+                                (click)="userPop(logOutPopOver)">
+                                <div class="ag_text--uppercase initial-box ">{{userText}}</div>
+                                <div class="detail-section">
+                                    <label class="d-block user-name ag_text--uppercase text-ellipsis cursor"
+                                        [matTooltip]="userName">{{firstName}} {{lastName}}</label>
+                                    <label
+                                        class="d-block user-role white-opacity-color ag_text--uppercase cursor text-ellipsis"
+                                        [matTooltip]="userRole">{{userRole}}</label>
+                                </div>
+                                <div class="arrow-icon cursor">
+                                    <i class="material-icons">expand_more</i>
+                                    <popover-content #logOutPopOver placement="bottom" class="user-popover"
+                                        [animation]="true" [closeOnClickOutside]="true" id="logOutPopOverID"
+                                        (click)="logOutPopOver.hide();logout();">
+                                        <div class="custom-popover-profile">
+                                            <a class="logout-style">{{captions.lbl_logout}}</a>
+                                        </div>
+                                    </popover-content>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="menuType.tertiary">
+                <div class="snc-subnav-wrapper underline-hide">
+                    <div class="ag_w--50">
+                        <mat-form-field class="ag_form-control--sm">
+                            <mat-select (selectionChange)="navigateTo($event)" [(value)]="selectedItem"
+                                [compareWith]="compareSelect" [disableOptionCentering]="true">
+                                <mat-option *ngFor="let item of menuList.menu" [value]="item">
+                                    <span *ngIf="item.visibility">{{ item.text }}</span>
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="menuType.secondary">
+                <div class="header">
+                    <nav mat-tab-nav-bar class="ag_text--uppercase">
+                        <p *ngFor="let link of menuList.menu" class="ag-mb-0">
+                            <a mat-tab-link *ngIf="link.visibility" [routerLink]="link.routePath" routerLinkActive
+                                #rla="routerLinkActive" class="tab-view-list" [active]="rla.isActive"
+                                [state]="{ onModuleChange: true, ShowPopup: !link.linkedElement?.length}">
+                                {{link.text}}
+                            </a></p>
+                    </nav>
+                </div>
+            </div>
+            <div *ngSwitchCase="menuType.lowerLevel">
+                <ng-container *ngTemplateOutlet="verticalMenu;context: {$implicit:menuList.menu }">
+                </ng-container>
+            </div>
+        </div>
+        <div
+            [ngClass]="{'router-container': levelMenu == menuType.lowerLevel,'other-container':levelMenu == menuType.primary,'secondary-router-container':levelMenu == menuType.secondary,'tertiary-container':levelMenu==menuType.tertiary}">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</ng-container>
+
+
+<!-- horizontalMenu -->
+<ng-template #horizontalMenu let-menu="a" let-more="b">
+    <div class="nav-section float-left">
+        <ng-container>
+            <nav class="navItem">
+                <ul class="nav" #navBar id="navBar">
+                    <ng-container *ngFor="let menus of menu">
+                        <li class="text" [id]="menus.elementID" *ngIf="menus.visibility">
+                            <ng-container *ngTemplateOutlet="directMenu;context: { $implicit: menus }">
+                            </ng-container>
+                        </li>
+                    </ng-container>
+
+                    <li *ngIf="more && more.length>0">
+                        <a class="cursor" [popover]="headerPopover" popoverPlacement="bottom">
+                            <i class="icon-filled-more"></i>
+                            {{moreTextName}}
+                        </a>
+                        <popover-content #headerPopover placement="bottom" class="header-popover" [animation]="true"
+                            [closeOnClickOutside]="true" id="HeaderPopover">
+                            <div class="custom-popover" id="popover-class">
+                                <ul>
+                                    <li class="ag_text--uppercase" *ngFor="let menu of more">
+                                        <a *ngIf="menu.visibility" routerLinkActive="active-link"
+                                            routerLink="{{menu.routePath}}" [matTooltip]="menu.text"
+                                            href="javascript:void(0)" (click)="headerPopover.hide()">
+                                            <span class="icon-wrapper w25px"> <i class="{{menu.imgPath}}"> </i> </span>
+                                            {{menu.text}}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </popover-content>
+                    </li>
+                </ul>
+            </nav>
+        </ng-container>
+    </div>
+</ng-template>
+
+<!-- directMenu -->
+<ng-template #directMenu let-menuShowingArr let-stateObj="stateObj">
+    <ng-container>
+        <a class="ag_text-overflow--hidden" href="javascript:void(0)" *ngIf="menuShowingArr.visibility"
+            routerLinkActive="active-link" [routerLink]="menuShowingArr.routePath"
+            [ngClass]="{'menuHide' : menuShowingArr.disable}" [state]="stateObj">
+            <i *ngIf="menuShowingArr.imgPath" class="{{menuShowingArr.imgPath}}"></i>
+            <div *ngIf="levelMenu == menuType.lowerLevel" routerLinkActive="arrow-section border-left-color">
+            </div>
+            <span class="ag_text--uppercase ag_pl--3" [matTooltip]="menuShowingArr.text">{{menuShowingArr.text}}</span>
+        </a>
+    </ng-container>
+</ng-template>
+
+<!-- subMenu -->
+<ng-template #subMenu let-menu>
+    <i class="{{menu.imgPath}}"></i>
+    <a *ngIf="menu.visibility" [ngClass]="{'menuHide' : menu.disable}" [matMenuTriggerFor]="basic">{{menu.text}}</a>
+    <mat-menu #basic="matMenu">
+        <div *ngFor="let m of menu.linkedElement">
+
+            <button *ngIf="m.linkedElement && m.visibility" mat-menu-item [matMenuTriggerFor]="subMenu"
+                [ngClass]="{'menuHide' : !m.disable}"> <i class="{{m.imgPath}}"></i>{{m.text}}</button>
+            <button *ngIf="!m.linkedElement && m.visibility" mat-menu-item [ngClass]="{'menuHide' : !m.disable}"><i
+                    class="{{m.imgPath}}"></i>{{m.text}}</button>
+            <mat-menu #subMenu="matMenu">
+                <div *ngFor="let ms of m.linkedElement">
+                    <button *ngIf="ms.linkedElement && ms.visibility" mat-menu-item [matMenuTriggerFor]="nestedMenu"
+                        [ngClass]="{'menuHide' : !ms.disable}"><i class="{{ms.imgPath}}"></i>{{ms.text}}</button>
+                    <button *ngIf="!ms.linkedElement && ms.visibility" mat-menu-item
+                        [ngClass]="{'menuHide' : !ms.disable}"><i class="{{ms.imgPath}}"></i>{{ms.text}}</button>
+                    <mat-menu #nestedMenu="matMenu">
+                        <div *ngFor="let mse of ms.linkedElement">
+                            <button *ngIf="mse.visibility" mat-menu-item [ngClass]="{'menuHide' : !mse.disable}"><i
+                                    class="{{mse.imgPath}}"></i>{{mse.text}}</button>
+                        </div>
+                    </mat-menu>
+                </div>
+            </mat-menu>
+        </div>
+    </mat-menu>
+</ng-template>
+
+<!-- verticalMenu -->
+
+<ng-template #verticalMenu let-verticalList>
+    <div class="vertical-header">
+        <aside class="nav-section">
+            <ng-container>
+                <nav class="navItem">
+                    <ul class="nav" #navBar id="navBar">
+                        <ng-container *ngFor="let menu of verticalList">
+                            <li class="text" *ngIf="menu.visibility">
+                                <ng-container
+                                    *ngTemplateOutlet="menu.linkedElement?.length>0 ? subMenu: directMenu;context: { $implicit: menu, stateObj: {ShowPopup: true} }">
+                                </ng-container>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </nav>
+            </ng-container>
+        </aside>
+    </div>
+</ng-template>

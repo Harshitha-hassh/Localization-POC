@@ -1,0 +1,22 @@
+<section class="global-search">
+<section class="globalSearchWrapper">
+  <section class="globalSearch-input">
+    <!-- <form [formGroup]="globalSearchForm">
+      <mat-form-field floatLabel="never" class="global-searchField">
+        <input autofocus #searchText type="text" matInput formControlName="searchGroup" required [matAutocomplete]="autoGroup" (input)="filterGroup(searchText.value)">     
+        <mat-autocomplete #autoGroup="matAutocomplete" [displayWith]="valueMapper">          
+          <mat-option *ngIf="(searchGroupOptions | async)?.length == 0 && searchText.value.length >= 3">
+              NoMatchesFound
+          </mat-option>
+          <mat-optgroup class="global-search-optGroup" *ngFor="let group of searchGroupOptions | async"
+            [label]="group.title">                        
+            <mat-option *ngFor="let data of group.dataCollection" [value]="data.id" (click)="linkClicked(group.title,data,$event)">
+             {{data.value}}
+            </mat-option>
+          </mat-optgroup>
+
+        </mat-autocomplete>
+      </mat-form-field>
+    </form> -->
+  </section>
+</section>

@@ -1,0 +1,89 @@
+<section class="login">
+    <div class="login__formgroup">
+        <div class="login__page">
+            <div class="login__img">
+                <img src="../../../assets/images/login-logo.png" class="login__logo-img">
+            </div>
+            <div class="login__area">
+                <div class="login__details">
+                    <label class="login__label-style">{{captions.login}}</label>
+                    <div class="login__message">{{ captions.welcomeToSaleAndCatering}}</div>
+                    <div class="login__form-details">
+                        <div class="login_form">
+                            <form [formGroup]="loginForms" autocomplete="off">
+                                <div *ngIf="!loginSuccess" class="overall_login_wrapper">
+                                    <div>
+                                        <i class="icon-user ag_pr--2 "></i>
+                                        <mat-form-field class="ag_w--50">
+
+                                            <input matInput type="text" [placeholder]="captions.lbl_userId"
+                                                class="ag_text--uppercase"
+                                                inputtype="capitalise,notallowspace,nospecailchar"
+                                                formControlName="userId" (keydown.enter)="handleclick($event)">
+                                            <mat-error *ngIf="loginForms.get('userId').hasError('required')">
+                                                {{errorMessage.userId}}
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="hide-view">
+                                        <i class="icon-password ag_pr--2 "></i>
+                                        <mat-form-field class="ag_w--50">
+
+                                            <input matInput [type]="hidePassword ? 'text' : 'password'"
+                                                [placeholder]="captions.password" formControlName="password"
+                                                (keydown.enter)="handleclick($event)" autocomplete="new-password">
+                                            <i matSuffix class="IC18"
+                                                [ngClass]="hidePassword ? 'icon-password-show' : 'icon-password-hide '"
+                                                 (click)="hidePassword=!hidePassword"  ></i>
+                                            <mat-error *ngIf="loginForms.get('password').hasError('required')">
+                                                {{errorMessage.password}}
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <mat-checkbox formControlName="rememberme">{{captions.rememberMe}}
+                                        </mat-checkbox>
+                                        <span *ngIf="loginError" class="errorText">&nbsp;&nbsp;{{errResponse}}</span>
+                                    </div>
+                                </div>
+                                <div *ngIf="loginSuccess" class="overall_login_wrapper">
+                                    <i class="icon-location-login ag_pr--2"></i>
+                                    <mat-form-field class="ag_w--50">
+                                        <mat-select formControlName="location" (click)="loadProperties()"
+                                            [placeholder]="captions.lbl_location">
+                                            <mat-option *ngFor="let location of multipleProperties" [value]="location">
+                                                {{location.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error>
+                                            {{captions.MissingLocation}}
+                                        </mat-error>
+
+                                    </mat-form-field>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="margintop--10"><button color="primary" mat-flat-button class="login__btn"
+                            (click)="handleclick($event)">{{loginSuccess?captions.enter:captions.login}}</button>
+                    </div>
+
+                   
+                </div>
+                <div class="resolutionDiv">
+                    <span class="resolutionText">
+                        <sup>{{captions.lbl_asterik}}</sup>{{captions.lbl_resolutionText}}
+                    </span>
+                </div>
+
+
+            </div>
+           
+        </div>
+
+        
+
+    </div>
+
+</section>

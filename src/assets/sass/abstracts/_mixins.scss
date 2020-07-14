@@ -1,0 +1,403 @@
+@import './variables';
+
+@import './_color';
+/*
+  ****
+  @Define the Media Queries for Tablet, Desktop
+  @Params Pass the Paramenter
+  ****
+*/
+
+$ag_media-queries:(
+    "small":  ( breakpoint:'(max-width: #{$small-max-width})'),
+    "medium": ( breakpoint:'(min-width: #{$medium-min-width}) and (max-width: #{$medium-max-width})'),
+    "large":  ( breakpoint:'(min-width: #{$large-min-width}) and (max-width: #{$large-max-width})')
+);
+
+@mixin ag_media-query ($size) {
+    @each $item, $value in $ag_media-queries {
+            @if $item == $size {
+                @if map-get($value, breakpoint) != null {
+                        @media only screen and #{map-get($value, breakpoint)}{
+                            @content;
+                }
+            }
+        }
+    }
+}
+
+@mixin sticky-header($top, $bgColor, $zindex) {
+    position: sticky;
+    top: $top;
+    background-color:$bgColor;
+    z-index: $zindex;
+}
+
+@mixin set-browser-prefix($property, $val) {
+  -webkit-#{$property}: $val;
+  -moz-#{$property}: $val;
+  -ms-#{$property}: $val;
+  -o-#{$property}: $val;
+  #{$property}: $val;
+}
+// Call the above method like this ---> .box { @include set-browser-prefix('transform', rotate(30deg)); }
+
+@mixin media-query($min-width: null, $max-width: null)
+{   
+    @if ($min-width and $max-width) {
+        @media screen and (max-width: $max-width) and (min-width: $min-width) {
+            @content;
+        }
+    }
+    @else if($max-width) {
+        @media screen and (max-width: $max-width){
+            @content;
+        }
+    }
+    @else if($min-width) {
+        @media screen and (min-width: $min-width){
+            @content;
+        }
+    }
+}
+
+
+
+
+//From Golf
+$golf-media-queries:(
+
+    "small":  ( breakpoint:'(max-width: #{$small-max-width})'),
+    "medium": ( breakpoint:'(min-width: #{$medium-min-width}) and (max-width: #{$medium-max-width})'),
+    "large":  ( breakpoint:'(min-width: #{$large-min-width}) and (max-width: #{$large-max-width})')
+);
+
+@mixin golf-media-query ($size) {
+    @each $item, $value in $golf-media-queries {
+            @if $item == $size {
+                @if map-get($value, breakpoint) != null {
+                        @media only screen and #{map-get($value, breakpoint)}{
+                            @content;
+                }
+            }
+        }
+    }
+}
+
+
+
+@mixin sticky-header($top, $bgColor, $zindex)
+{
+    position: sticky;
+    top: $top;
+    background-color:$bgColor;
+    z-index: $zindex;
+}
+
+@mixin media-query($min-width: null, $max-width: null)
+{   @debug $min-width;
+    @if ($min-width and $max-width) {
+        @media screen and (max-width: $max-width) and (min-width: $min-width) {
+            @content;
+        }
+    }
+    @else if($max-width) {
+        @media screen and (max-width: $max-width){
+            @content;
+        }
+    }
+    @else if($min-width) {
+        @media screen and (min-width: $min-width){
+            @content;
+        }
+    }
+
+
+    }
+
+
+
+     //SPA MIXIN
+
+// Color themes
+$themes: (
+  goldtheme: $gold,
+  bluetheme: $blue
+  );
+
+
+
+
+
+
+  // Helper theme mixin
+  // @param $name: name of the theme (HTML class)
+  // @param $color: color of the theme
+  @mixin theme($name, $color, $colortext, $colorbackground, $colorborder, $header-background,$menu-background) {
+    .#{$name} {
+      .border-color {
+        border-color: $colorborder !important;
+      }
+      .border-left-color{
+        border-left-color: $color !important;
+      }
+      .circle-hover{
+        background-color: $lightyellow !important;  /*******NOTE: Change one theme Color base*******/
+      }
+      .circle-disbled{
+        background-color: $lightgrey !important;  /*******NOTE: Change one theme Color base*******/
+      }
+      .color-onpressed{
+        background-color: $darkyellowonpress !important;
+      }
+      .color-secondary-pressed{
+        background-color: $color-secondary-button-pressed;
+      }
+
+      .switch2, .switch3 {
+        .slider::before {
+          background-color: $colorbackground !important;
+        }
+      }
+
+      .selectedBtn {
+        background-color: $colorbackground !important;
+      }
+
+      .body-bgcolor {
+        background-color: $colorbackground !important;
+      }
+      .switch-toggle{
+      .switch.checked{
+        // background-color: $colorbackground !important;
+      }
+    }
+   .loader-wrapper{
+    .loader-content{
+    .spinner{
+      circle{
+          stroke: $color;
+      }
+  }
+    }
+   }
+
+      .body-color {
+        background: $colorbackground !important;
+      }
+
+
+
+
+      .timepicker__header{
+        background: $colorbackground !important;
+      }
+      .clock-face__number{
+        span{
+          &.active{
+            background: $colorbackground !important;
+          }
+        }
+      }
+      .timepicker-button{
+        color:$colorbackground !important;
+      }
+      .clock-face__clock-hand{
+        background: $colorbackground !important;
+        &::before{
+          border: 4px solid $colorbackground !important;
+        }
+        &::after{
+          background-color: $colorbackground !important;
+        }
+      }
+
+      .body-bordercolor {
+        border: 1px solid $colorbackground !important;
+      }
+
+      .header-background {
+        background-color: $header-background !important;
+      }
+
+      // .mat-tab-header {
+      //   background-color: $menu-background !important;
+      // }
+
+      button.hover_css.mat-button:hover {
+        background-color: $colorbackground !important;
+      }
+
+      // .mat-tab-group.mat-primary .mat-ink-bar {
+      //   background-color: $colorbackground !important;
+      // }
+      .text-color {
+        color: $colortext !important;
+      }
+
+      .active-link {
+        color: $color !important;
+      }
+
+      .header-bar {
+        nav {
+          li {
+            a {
+              &:before {
+                background: $color !important;
+              }
+            }
+          }
+        }
+      }
+
+      .color-numbers {
+        color: $color !important;
+      }
+      .mat-step-label-active {
+        color: #818892 !important;
+
+        &.mat-step-label-selected {
+          color: #000000 !important;
+        }
+      }
+
+      // .mat-step-header {
+      //   [ng-reflect-ng-switch="edit"].mat-step-icon {
+      //     background: #818892;
+      //   }
+      // }
+
+      // .mat-step-header {
+      //   [ng-reflect-ng-switch="number"].mat-step-icon {
+      //     background-color: $colorbackground !important;
+      //   }
+      // }
+
+      .ngx-pagination {
+        .current {
+          background-color: $colorbackground !important;
+        }
+      }
+
+      // .mat-form-field-ripple {
+      //   background-color: $colorbackground !important;
+      // }
+
+      // .mat-form-field-invalid {
+      //   .mat-form-field-ripple {
+      //     background-color: #f44336 !important;
+      //   }
+      // }
+
+      // .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+      //   background-color: $colorbackground !important;
+
+      //   span {
+      //     color: #fff;
+      //   }
+      // }
+
+      // .ngx-pagination .current, .ngx-pagination a, .ngx-pagination button {
+      //   padding: 10px 15px;
+      // }
+
+      // .mat-select-arrow,  {
+      //   color: $colorbackground !important;
+      // }
+
+      // .mat-mini-fab.mat-accent, .mat-radio-inner-circle, .mat-slide-toggle-thumb, .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+      //   background-color: $colorbackground !important;
+      // }
+      // .mat-radio-button.mat-accent .mat-radio-inner-circle{
+      //     background-color:$colorbackground !important;
+      // }
+
+      // .mat-button-toggle-checked {
+      //   background: $colorbackground;
+      //   color:#fff;
+      // }
+
+      // .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+      //   background-color: $colorbackground !important;
+      // }
+
+      // .mat-calendar-body-selected {
+      //   background-color: $colorbackground !important;
+      //   color:#fff;
+      // }
+      // .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate{
+      //   background: $colorbackground !important;
+      // }
+      // .mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
+      //   color: $colorbackground !important;
+      // }
+    }
+  }
+    // Including themes
+    // By looping through the $themes map
+    @each $key, $value in $themes {
+      $color-text: null;
+      $color-background: null;
+      $color-border: null;
+      $header-background: null;
+      $menu-background: null;
+      $color-theme: null;
+      @if $key == "goldtheme" {
+        $color-background: $gold;
+        $color-text: $gold;
+        $color-border: $gold;
+        $header-background: $Darkgold;
+        $menu-background: $goldMenuColor;
+        $color-theme:$gold;
+      }
+      @else if $key == "bluetheme" {
+        $color-background: $blue;
+        $color-text: $blue;
+        $color-border: $blue;
+        $header-background: $lightsemiBlack;
+        $menu-background: $blueMenuColor;
+        $color-theme: $blue;
+
+      }
+      @include theme($key, $value, $color-text, $color-background, $color-border, $header-background,$menu-background);
+    }
+
+
+  /*
+    ****
+    @Define the Media Quires for Tablet, Desktop, Mobile
+    @Params Pass the Paramenter
+    ****
+  */
+
+    $spa-media-queries: (
+      tablet: ( breakpoint: '(min-width: 480px) and (max-width: 768px)'),
+      mobile: ( breakpoint: '(max-width: 480px)'),
+      midLevel: ( breakpoint: '(min-width: 1024px) and (max-width: 1200px)'),
+      retailLevel: (breakpoint: '(min-width: 1024px) and (max-width: 1220px)')
+    );
+
+
+
+    @mixin spa-media-query ($size) {
+
+      @each $item, $value in $spa-media-queries {
+
+        @if $item == $size {
+
+          @if map-get($value, breakpoint) != null {
+
+            @media only screen and #{map-get($value, breakpoint)} {
+
+              @content;
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
