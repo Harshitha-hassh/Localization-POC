@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { CustomDateAdapter, MY_DATE_FORMATS } from '../core/localization/custom.dateAdapter';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -24,7 +24,8 @@ import { TenantManagementCommunication } from './communication/services/tenantma
     MaterialModule,
     RouterModule,
     FormsModule,
-    PopoverModule
+    PopoverModule,
+    ReactiveFormsModule
   ],
   providers: [
     TenantManagementCommunication,
@@ -44,7 +45,8 @@ import { TenantManagementCommunication } from './communication/services/tenantma
     MaterialModule,
     PopoverModule,
     MenuComponent,
-    GlobalSearchComponent
+    GlobalSearchComponent,
+    ReactiveFormsModule
   ],
   entryComponents: [
   ]

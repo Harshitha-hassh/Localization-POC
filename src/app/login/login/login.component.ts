@@ -65,7 +65,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     // private PropertySettingService: PropertySettingDataService,
     // private propertyInfo: PropertyInformation,
     // private sncService: SalesCateringCommunication,
-    // private _compiler: Compiler
+    // private _compiler: Compiler,
+    private router: Router
   ) {
     this.initializeForm();
     this.captions = this.localize.captions;
@@ -163,6 +164,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     // } else {
     //   this.loginForms.markAllAsTouched();
     // }
+    this.router.navigate(['/home']);
   }
 
   // private async successCallBack(loginDetails: any) {

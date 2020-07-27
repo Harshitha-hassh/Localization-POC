@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { LoginComponent } from '../login/login/login.component';
+import { AppCustomPreloader } from './custom-preloader-strategy';
 
 const routes: Routes = [
   {
@@ -14,23 +15,31 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  // {
-  //   path: '',
-  //   component: LayoutComponent,
-  //   canActivate:[AuthGuardService],
-  //   children: [
-  //     {
-  //       path: 'home',
-  //       loadChildren: '../home/home.module#HomeModule'
-  //     },
-     
-  //   ]
-  // },
+  {
+    path: '',
+    component: LayoutComponent,
+    // canActivate:[AuthGuardService],
+    children: [
+      {
+        path: 'home',
+        loadChildren: () => import('../home/home.module').then(m => m.HomeModule)
+      },
+      {
+        path: 'shop',
+        loadChildren: () => import('../retail/shop/shop.module').then(m => m.ShopModule)
+      },
+      {
+        path: 'setting',
+        loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule),
+      },
+    ]
+  },
   {path:'**', redirectTo:'/home'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: AppCustomPreloader })],
+  exports: [RouterModule],
+  providers: [AppCustomPreloader]
 })
 export class CoreRoutingModule { }

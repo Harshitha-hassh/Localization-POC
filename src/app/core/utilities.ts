@@ -6,13 +6,14 @@ import { Localization } from '../core/localization/Localization';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Calendar, ContactType, AlertType, ButtonType, AlertAction } from '../shared/shared-models';
-// import { AlertPopupComponent } from '../ag-common/components/alert-popup/alert-popup.component';
+//import { AlertPopupComponent } from '../ag-common/components/alert-popup/alert-popup.component';
 // import { SorTypeEnum } from '../shared/components/cdkvirtual/cdkvirtual.model';
 import { USER_SESSION, USER_INFO } from './app-constants';
-// import { CardSwipePopupComponent } from '../shared/components/card-swipe-popup/card-swipe-popup.component';
 // import { AuthenticationParameters, Configuration } from 'msal';
 // import { MsalAngularConfiguration } from '@azure/msal-angular';
 import * as moment from 'moment';
+import { CardSwipePopupComponent } from '../retail/shared/card-swipe-popup/card-swipe-popup.component';
+import { CommonAlertPopupComponent } from '../common/shared/shared/common-alert-popup/common-alert-popup.component';
 
 export enum RedirectToModules {
     retail,
@@ -987,19 +988,19 @@ export class Utilities extends Localization implements OnDestroy {
         callback?: (result: AlertAction, extraParams?: any[]) => void, extraParams?: any[], headerText?: string,
          additionalInfo?: {message: string, class: string}) {
 
-        // const dialogRef = this.dialog.open(AlertPopupComponent, {
-        //     height: 'auto',
-        //     width: '300px',
-        //     data: { type: type, message: message, buttontype: btnType, header: headerText, additionalInfo },
-        //     panelClass: 'small-popup',
-        //     disableClose: true,
-        // });
-        // this.subscription = dialogRef.afterClosed().subscribe(res => {
-        //     if (callback) {
-        //         callback(res, extraParams);
-        //     }
-        // });
-        // return dialogRef;
+        const dialogRef = this.dialog.open(CommonAlertPopupComponent, {
+            height: 'auto',
+            width: '300px',
+            data: { type: type, message: message, buttontype: btnType, header: headerText, additionalInfo },
+            panelClass: 'small-popup',
+            disableClose: true,
+        });
+        this.subscription = dialogRef.afterClosed().subscribe(res => {
+            if (callback) {
+                callback(res, extraParams);
+            }
+        });
+        return dialogRef;
     }
 
     /**
