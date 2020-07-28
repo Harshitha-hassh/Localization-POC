@@ -11,7 +11,7 @@ export class SettingsComponent implements OnInit {
   menuList: any;
   menuType = menuTypes;
   constructor(private routeDataService: RouteLoaderService) {
-    const value = this.routeDataService.GetChildMenu('/setting');
+    const value = this.routeDataService.GetChildMenu('/settings');
     this.menuList = {
       menu: value.linkedElement,
       menuType : menuTypes.secondary

@@ -16,6 +16,7 @@ export interface localizationJSON {
     header: any;
     reports: any;
     settings: any;
+    shop: any;
 }
 
 export interface Calendar {
