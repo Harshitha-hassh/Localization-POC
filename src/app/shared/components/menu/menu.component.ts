@@ -4,7 +4,7 @@ import { cloneDeep } from 'lodash';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Localization } from 'src/app/core/localization/Localization';
-// import { ManageSessionService } from 'src/app/login/manage-session.service';
+import { ManageSessionService } from 'src/app/login/manage-session.service';
 // import { SortOrderPipe } from 'src/app/pipes/sort-order.pipe';
 import { menuTypes } from '../../enums/menu.constant';
 
@@ -56,7 +56,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(public router: Router
     , private _localization: Localization
-    // , private _sessionService: ManageSessionService
+    , private _sessionService: ManageSessionService
     , private activeRoute: ActivatedRoute) {
     // this.sortPipe = new SortOrderPipe();
   }
@@ -181,7 +181,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async logout() {
-    // await this._sessionService.logout();
+    await this._sessionService.logout();
   }
 
   onSearch(e: any) {

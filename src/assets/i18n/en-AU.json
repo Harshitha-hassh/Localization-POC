@@ -1114,6 +1114,7 @@
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _au",
   "lbl_NoDataFound": "No Data Found_au",
   "lbl_userId": "User ID_au",
+  "lbl_logout": "Log Out_au",
   "retailsetup": {
     "level": "Level_au",
     "class": "Class_au",
