@@ -56,7 +56,8 @@ const routes: Routes = [{
     // },
     {
       path: 'retailsetup',
-      loadChildren: () => import('../retail/retail.module').then(m => m.RetailModule)
+      loadChildren: () => import('../retail/retail.module').then(m => m.RetailModule),
+      data: {preload: true}
     }
     // {
     //   path: 'inventorysetup',
