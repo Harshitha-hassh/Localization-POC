@@ -320,15 +320,23 @@ export class Localization {
     return this.GetsessionStorageValue("userSettings", name);
   }
   public GetsessionStorageValue(key: string, name: string) {
-    var nameEQ = name + "=";
-    var propertyInfo = sessionStorage.getItem(key)
-    if (propertyInfo != null) {
-      var ca = propertyInfo.split(";");
+    return this.getStorageValue(sessionStorage, key, name);
+  }
 
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i].trim();
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  public GetLocalStorageValue(key: string, name: string) {
+    return this.getStorageValue(localStorage, key, name);
+  }
+
+  private getStorageValue(storage, key: string, name: string) {
+    const nameEQ = name + '=';
+    const propertyInfo = storage.getItem(key);
+    if (propertyInfo != null) {
+      const ca = propertyInfo.split(';');
+
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        while (c.charAt(0) == ' ') { c = c.substring(1, c.length); }
+        if (c.indexOf(nameEQ) == 0) { return c.substring(nameEQ.length, c.length); }
       }
     }
     return null;

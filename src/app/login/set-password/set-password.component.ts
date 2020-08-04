@@ -42,7 +42,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   tenantId = '1';
   doneDisabled: boolean;
   constructor(
-    private formBuilder: FormBuilder, private loginService: LoginCommunicationService,    
+    private formBuilder: FormBuilder, private loginService: LoginCommunicationService,
     public dialogRef: MatDialogRef<SetPasswordComponent>,
     private localization: Localization,
     private route: ActivatedRoute,
@@ -51,28 +51,28 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
-    this.captions = this.localization.captions; 
-    this.doneDisabled = true;   
-    this.formGenerator();    
-    this.tenantId = this.route.snapshot.queryParamMap.get('TenantId') != null ? this.route.snapshot.queryParamMap.get('TenantId') : '1';
+    this.captions = this.localization.captions;
+    this.doneDisabled = true;
+    this.formGenerator();
+    this.tenantId = this.data.tenantId;
 
     if (this.data.setPassword) {
       this.setPasswordForms.get('oldpassword').clearValidators();
     }
     let serviceParams = {
       route: RetailApiRoute.PasswordSetting,
-      uriParams: {TenantId: this.tenantId },
+      uriParams: { TenantId: this.tenantId },
       header: '',
       body: '',
       showError: true,
       baseResponse: true
     };
 
-    let resp: any = await this.loginService.makeGetCall(serviceParams);   
-    this.confirmJson = resp;    
+    let resp: any = await this.loginService.makeGetCall(serviceParams);
+    this.confirmJson = resp;
     this.validationMessage(this.confirmJson.result);
-    this.OnFormValueChanges();    
-    
+    this.OnFormValueChanges();
+
   }
 
 
@@ -124,38 +124,35 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       this.PasswordValidCheck();
       if (this.IsLengthValid) {
         this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls['newpassword'].value, this)
-        .then(() =>
-        {
-          this.doneDisabled = true;
-          if(!this.IsLastPassword)
-          {
+          .then(() => {
+            this.doneDisabled = true;
+            if (!this.IsLastPassword) {
               this.IsConfirmed = (this.setPasswordForms.controls['confirmpassword'].value == res && res != '') ? true : false;
               this.doneButtonChangeState();
-        }
-        }
-        );
+            }
+          }
+          );
       } else {
         this.IsLastPassword = true;
       }
 
     });
 
-      this.setPasswordForms.get('confirmpassword').valueChanges.subscribe(res => {
-      this.doneDisabled=true;
+    this.setPasswordForms.get('confirmpassword').valueChanges.subscribe(res => {
+      this.doneDisabled = true;
       this.PasswordValidCheck();
-      this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls['newpassword'].value, this).then(()=>{
-        if(!this.IsLastPassword)
-        {
-            this.doneDisabled = true;
-            this.IsConfirmed = (this.setPasswordForms.controls['newpassword'].value == res && res != '') ? true : false;
-            this.doneButtonChangeState();
-      }
+      this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls['newpassword'].value, this).then(() => {
+        if (!this.IsLastPassword) {
+          this.doneDisabled = true;
+          this.IsConfirmed = (this.setPasswordForms.controls['newpassword'].value == res && res != '') ? true : false;
+          this.doneButtonChangeState();
+        }
       });
 
     });
     if (!this.data.setPassword) {
-        this.setPasswordForms.get('oldpassword').valueChanges.subscribe(async(res) => {
-        this.doneDisabled =true;
+      this.setPasswordForms.get('oldpassword').valueChanges.subscribe(async (res) => {
+        this.doneDisabled = true;
         this.PasswordValidCheck();
         if (this.setPasswordForms.controls['oldpassword'].value && this.setPasswordForms.controls['oldpassword'].value.length > 0) {
           await this.VerifyPassword(this.data.userName, this.setPasswordForms.controls['oldpassword'].value);
@@ -163,17 +160,17 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
         }
 
       });
-      } else {
+    } else {
       this.IsOldPassword = true;
-      }
+    }
 
   }
 
   doneButtonChangeState() {
     this.doneDisabled = true;
-    if (this.IsPasswordValid && this.IsLengthValid && this.IsHavingAllTypes && !this.IsLastPassword && this.IsSameAsUserName && this.IsOldPassword ) {
+    if (this.IsPasswordValid && this.IsLengthValid && this.IsHavingAllTypes && !this.IsLastPassword && this.IsSameAsUserName && this.IsOldPassword) {
       this.doneDisabled = !this.IsConfirmed;
-    }    
+    }
   }
 
   formatingTypeValidation(e: any, d: any, f: any) {
@@ -219,7 +216,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   async CheckPasswordExists(userName, password, confirmpassword: any) {
     let serviceParams = {
       route: RetailRoutes.CheckPassword,
-      uriParams: { UserId: userName, NewPassword: encodeURIComponent(password), TenantId: this.tenantId  },
+      uriParams: { UserId: userName, NewPassword: encodeURIComponent(password), TenantId: this.tenantId },
       header: '',
       body: '',
       showError: true,
@@ -247,7 +244,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   async VerifyPassword(userName, password) {
     let serviceParams = {
       route: RetailRoutes.VerifyPassword,
-      uriParams: { UserId: userName, NewPassword: encodeURIComponent(password), TenantId: this.tenantId  },
+      uriParams: { UserId: userName, NewPassword: encodeURIComponent(password), TenantId: this.tenantId },
       header: '',
       body: '',
       showError: true,

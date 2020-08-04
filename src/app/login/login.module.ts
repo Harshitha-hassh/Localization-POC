@@ -7,7 +7,7 @@ import { SetPasswordComponent } from './set-password/set-password.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { PlatformModule } from '@angular/cdk/platform';
-import { PropertySettingDataService } from '../shared/data-services/authentication/propertysetting.data.service';
+// import { PropertySettingDataService } from '../shared/data-services/authentication/propertysetting.data.service';
 import { LoaderInterceptor } from '../core/services/loader.interceptor.service';
 
 @NgModule({
@@ -27,8 +27,8 @@ import { LoaderInterceptor } from '../core/services/loader.interceptor.service';
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
       multi: true,
-    },
-    PropertySettingDataService
+    }
+    // PropertySettingDataService
   ],
   exports:[LoginComponent],
   entryComponents: [SetPasswordComponent]

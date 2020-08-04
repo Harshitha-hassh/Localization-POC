@@ -27,6 +27,7 @@ export enum RetailRoutes {
   VerifyPassword = 'User/VerifyPassword/{UserId}/{NewPassword}/{TenantId}',
   PasswordSetting = 'Property/GetPasswordSettings/{TenantId}',
   UserToken = 'Property/UpdatePayload',
+  EnvironmentConfig = 'Login/api/Configuration',
   // Property
   GetProperty = 'property/getPropertyInfoByPropertyId/{id}',
   UpdateProperty = 'property/UpdatePropertyInfo',
