@@ -729,7 +729,26 @@ export class RouteLoaderService {
           "menuPosition": "Primary",
           "menuAlignment": "Horizontal",
           "externalLink": false,
-          "linkedElement": []
+          "linkedElement": [
+            {
+              "elementID": 8,
+              "tenantID": 0,
+              "propertyID": 0,
+              "productID": 0,
+              "textID": 2,
+              "text": "RETAIL",
+              "routePath": "/reports/retail",
+              "imgPath": "/reports/retail",
+              "order": 1,
+              "visibility": true,
+              "disable": false,
+              "parentID": 7,
+              "menuPosition": "secondary",
+              "menuAlignment": "Horizontal",
+              "externalLink": false,
+              "linkedElement": []
+            }
+          ]
         },
       ]
     };
