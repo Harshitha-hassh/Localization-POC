@@ -32,6 +32,10 @@ const routes: Routes = [
         path: 'settings',
         loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule),
       },
+      {
+        path: 'reports',
+        loadChildren: () => import('../reports/reports.module').then(m => m.ReportsModule),
+      }
     ]
   },
   {path:'**', redirectTo:'/home'}

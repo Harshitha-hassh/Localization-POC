@@ -2014,5 +2014,35 @@
     "InvalidCustomValues": "Invalid Custom Value",
     "IntakeForm": "Intake Form",
     "IntakeFormDescription": "Allow Intake Forms to be attached in the Appointment Emails"
-  }
+  },
+  "retailInventory": {
+		"InventorySearch": "Search by Item #, Description",
+		"FreezeInventory": "Freeze Inventory",
+		"SyncInventory": "Sync Inventory",
+		"Active": "Active",
+		"Frozen": "Frozen",
+		"ReleaseInventory": "Release Inventory",
+		"ManualInventory": "Manual Inventory",
+		"ScanInventory": "Scan Inventory",
+		"FullInventory": "Update Full Inventory",
+		"PartialInventory": "Update Partial Inventory",
+		"Item": "Item #",
+		"Description": "Description",
+		"QuantityOnHand": "Quantity On Hand",
+		"FrozenQunatity": "Frozen Quantity",
+		"ScannedQuantity": "Scanned/Adjusted Qty",
+		"Category": "Category",
+		"Subcategory1": "Sub Category 1",
+		"Subcategory2": "Sub Category 2",
+		"Subcategory3": "Sub Category 3",
+		"Subcategory4": "Sub Category 4",
+		"Subcategory5": "Sub Category 5",
+		"category": "Category",
+		"subCategoryOne": "Sub Category 1",
+		"subCategoryTwo": "Sub Category 2",
+		"subCategoryThree": "Sub Category 3",
+		"subCategoryFour": "Sub Category 4",
+		"subCategoryFive": "Sub Category 5",
+		"CopyMessage": "Copy from Frozen Inventory"
+	}
 }

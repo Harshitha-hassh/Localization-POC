@@ -11,6 +11,7 @@ import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
 import { RetailAppService} from './retail-app-service';
 import { AppService } from './common/app-service';
+import { ReportsComponent } from './reports/reports.component';
 
 let AppServiceFactory = () => {
   return new RetailAppService();
@@ -19,7 +20,8 @@ let AppServiceFactory = () => {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReportsComponent
   ],
   imports: [
     BrowserModule,

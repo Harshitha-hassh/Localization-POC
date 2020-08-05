@@ -202,7 +202,7 @@ export class HttpCallService {
             // .set('PropertyDTTM', this.utilities.ConvertDateToISODateTime(this.utilities.getCurrentDate()))
             .set('PropertyDTTM', this.localization.ConvertDateToISODateTime(this.PropertyInfo.CurrentDTTM)) //Changes added to fetch from properties set
             .set('PropertyId', propertyId ? propertyId : '1')          //this.getPropertyInfo('PropertyId')
-            .set('SubPropertyId', isNumber(subPropertyId) ? subPropertyId : '0')    //this.getPropertyInfo('SubPropertyId')
+            .set('SubPropertyId', this.getPropertyInfo('SubPropertyId'))    //this.getPropertyInfo('SubPropertyId')
             .set('PlatformTenantId', this.getPropertyInfo('PlatformTenantId') || '831')
             .set('Authorization', 'Bearer ' + sessionStorage.getItem(JWT_TOKEN))
             /*  .set('UserToken', this.getUserToken()); */
