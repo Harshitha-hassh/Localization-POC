@@ -16,10 +16,10 @@ import { map, catchError } from 'rxjs/operators';
  * Communication layer for Snc management micro service
  * HttpCalls can be overriden here
 **/
-export class SalesCateringCommunication extends HttpCallService {
+export class RetailManagementCommunication extends HttpCallService {
 
     constructor(httpclient: HttpClient, localization: Localization, utilities: Utilities, PropertyInfo: PropertyInformation) {
-        super(RetailApiHost.SalesCateringService, httpclient, localization, utilities, PropertyInfo);
+        super(RetailApiHost.RetailManagement, httpclient, localization, utilities, PropertyInfo);
     }
 
     public getObservable<T>(params: ServiceParams, handleErr: boolean = true): Observable<T> {

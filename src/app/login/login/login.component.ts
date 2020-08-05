@@ -8,7 +8,7 @@ import { RetailRoutes } from 'src/app/core/extensions/retail-route';
 import { Localization } from 'src/app/core/localization/Localization';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { Utilities } from 'src/app/core/utilities';
-// import { PropertySettingDataService } from 'src/app/shared/data-services/authentication/propertysetting.data.service';
+import { PropertySettingDataService } from 'src/app/shared/data-services/authentication/propertysetting.data.service';
 import { ManageSessionService } from '../manage-session.service';
 import { SetPasswordComponent } from '../set-password/set-password.component';
 import { JWT_TOKEN, USER_INFO, USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, USER_SETTINGS } from 'src/app/core/app-constants';
@@ -16,6 +16,7 @@ import { LoginCommunicationService } from '../login-communication.service';
 import * as moment from 'moment';
 import { ButtonValue } from 'src/app/shared/shared-models';
 import { Product } from 'src/app/common/shared/shared/globalsContant';
+// import { RetailManagementCommunication } from 'src/app/shared/communication/services/retailmanagement.service';
 
 @Component({
   selector: 'app-login',
@@ -66,9 +67,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private sessionService: ManageSessionService,
     private loginService: LoginCommunicationService,
-    // private PropertySettingService: PropertySettingDataService,
+    private PropertySettingService: PropertySettingDataService,
     private propertyInfo: PropertyInformation,
-    // private sncService: SalesCateringCommunication,
+    // private userConfigService: RetailManagementCommunication,
     private _compiler: Compiler,
     private router: Router
   ) {
@@ -412,26 +413,26 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   async SetPropertyConfiguration() {
-    // const propertityConfig = await this.PropertySettingService.getAllPropertySetting(this.propertyInfo.PropertyId);
-    // this.propertyInfo.SetPropertySetting(propertityConfig);
+    const propertityConfig = await this.PropertySettingService.getAllPropertySetting(this.propertyInfo.PropertyId);
+    this.propertyInfo.SetPropertySetting(propertityConfig);
   }
 
   async SetPaymentConfiguration(propertyId: number) {
-    // const propertyPaymentConfig = await this.PropertySettingService.GetPaymentConfigurationByProperty(propertyId);
-    // this.propertyInfo.SetPaymentConfiguration(propertyPaymentConfig);
+    const propertyPaymentConfig = await this.PropertySettingService.GetPaymentConfigurationByProperty(propertyId);
+    this.propertyInfo.SetPaymentConfiguration(propertyPaymentConfig);
   }
 
   async setUserSettings(properties) {
     /*To get the daysout value*/
     // const serviceParams = {
-    //   route: RetailApiRoute.GetSncUserConfig,
+    //   route: RetailApiRoute.GetUserConfig,
     //   uriParams: { id: this.userInfo.userId },
     //   header: '',
     //   body: '',
     //   showError: true,
     //   baseResponse: true
     // };
-    // const userConfig: any = await this.sncService.getPromise(serviceParams);
+    // const userConfig: any = await this.userConfigService.getPromise(serviceParams);
     // const userSettings = `daysOut=${
     //   userConfig && userConfig.userSncConfiguration
     //     ? userConfig.userSncConfiguration.daysOut

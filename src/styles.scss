@@ -212,7 +212,7 @@ body{
   }
 }
 @for $i from 0 through 8 {
-  .ag_mb--#{$i} {
+  .ag_mb--#{$i}, .ag-mb-#{$i} {
     margin-bottom: #{$i * 0.25}rem !important;
   }
 }
@@ -817,4 +817,43 @@ p.ag_state--headers {
 .required--color {
   color: $ag_red;
   font-size: $font-size20;
+}
+
+
+// UI-SWITCH Common CSS
+ui-switch {
+  cursor: pointer;
+  .switch.checked.checked small {
+    right: 6px;
+  }
+
+  small {
+    width: 12px !important;
+    height: 12px !important;
+    top: 3.6px !important;
+  }
+
+  .switch.checked {
+    background: $theme-base-color;
+  }
+
+  .switch-pane {
+    span {
+      font-size: 12px !important;
+      // font-family: $golf-lato-bold;
+    }
+  }
+
+  .switch {
+    background: $toggle-uncheck-color;
+    color: $white !important;
+    border: none !important;
+    margin-bottom: 20px;
+  }
+  .switch.switch-medium{
+    height:20px;
+  }
+  .switch.switch-medium > .switch-pane > span{
+    line-height: 20px;
+  }
 }

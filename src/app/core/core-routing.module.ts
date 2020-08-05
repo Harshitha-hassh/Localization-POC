@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    // canActivate:[AuthGuardService],
+    canActivate:[AuthGuardService],
     children: [
       {
         path: 'home',

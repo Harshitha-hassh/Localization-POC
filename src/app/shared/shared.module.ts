@@ -12,6 +12,10 @@ import { MenuComponent } from './components/menu/menu.component';
 import { GlobalSearchComponent } from './components/global-search/global-search.component';
 import { PopoverModule } from 'ngx-popover';
 import { TenantManagementCommunication } from './communication/services/tenantmanagement.service';
+import { AuthenticationCommunication } from './communication/services/authentication.service';
+import { RetailManagementCommunication } from './communication/services/retailmanagement.service';
+import { TemplatesModule } from '../common/templates/templates.module';
+import { RetailSharedModule } from '../retail/shared/retail-shared.module';
 
 
 @NgModule({
@@ -25,10 +29,14 @@ import { TenantManagementCommunication } from './communication/services/tenantma
     RouterModule,
     FormsModule,
     PopoverModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TemplatesModule,
+    RetailSharedModule
   ],
   providers: [
     TenantManagementCommunication,
+    AuthenticationCommunication,
+    RetailManagementCommunication,
     {
       provide: DateAdapter,
       useClass: CustomDateAdapter,

@@ -25,8 +25,8 @@
                             </ng-container>
                         </ng-container>
                     </div>
-                    <div class="profile-section">
-                        <button class="searchClass buttonStyle cursor" [matTooltip]="captions.search" (click)="openGlobalSearch($event,searchOpen)">
+                    <div class="profile-section ag_display--flex">
+                        <button class="searchClass buttonStyle cursor ag_ml--auto" [matTooltip]="captions.search" (click)="openGlobalSearch($event,searchOpen)">
                             <i class="icon-search-class">
                                 <span class="icon-Circle"></span>
                                 <span class="icon-Searchbar" *ngIf="!searchOpen"></span>
@@ -46,7 +46,7 @@
                         <!--  <button class="notifyClass buttonStyle cursor">
                             <i class="icon-notify icon-notification"></i>
                         </button> -->
-                        <div class="user-details ag_float--right">
+                        <div class="user-details">
                             <div class="d-flex cursor" [popover]="logOutPopOver" popoverPlacement="bottom"
                                 (click)="userPop(logOutPopOver)">
                                 <div class="ag_text--uppercase initial-box ">{{userText}}</div>
