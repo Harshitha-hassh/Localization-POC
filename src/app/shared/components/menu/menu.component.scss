@@ -570,7 +570,7 @@ svg-icon {
   padding-left: 1.5rem;
   background: #f4f4f6;
   .mat-form-field-underline {
-    display: none;
+    display: none !important;
   }
 }
 

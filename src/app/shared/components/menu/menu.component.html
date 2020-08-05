@@ -75,7 +75,7 @@
             <div *ngSwitchCase="menuType.tertiary">
                 <div class="snc-subnav-wrapper underline-hide">
                     <div class="ag_w--50">
-                        <mat-form-field class="ag_form-control--sm">
+                        <mat-form-field class="ag_form-control--xs">
                             <mat-select (selectionChange)="navigateTo($event)" [(value)]="selectedItem"
                                 [compareWith]="compareSelect" [disableOptionCentering]="true">
                                 <mat-option *ngFor="let item of menuList.menu" [value]="item">

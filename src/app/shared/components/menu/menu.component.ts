@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { cloneDeep } from 'lodash';
 import { ReplaySubject } from 'rxjs';
@@ -11,7 +11,8 @@ import { menuTypes } from '../../enums/menu.constant';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
