@@ -17,7 +17,8 @@ export interface localizationJSON {
     reports: any;
     settings: any;
     shop: any;
-    bookAppointment;
+    bookAppointment:any;
+    breakpoint: any;
 }
 
 export interface Calendar {
