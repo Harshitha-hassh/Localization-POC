@@ -25,6 +25,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-guest1:before {
+  content: "\ed15";
+}
+
 .icon-function-menu:before {
   content: "\ed0b";
 }

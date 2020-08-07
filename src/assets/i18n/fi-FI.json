@@ -1096,7 +1096,7 @@
   "missingUserID": "Missing User ID_fi",
   "missingPassword": "Missing Password_fi",
   "login": "Login_fi",
-  "welcomeToSaleAndCatering": "Welcome to rGuest Retail Please login to your account_fi",
+  "welcomeToRetail": "Please Login to your account_fi",
   "enter": "Enter_fi",
   "done": "Done_fi",
   "cancel": "Cancel_fi",
@@ -2183,5 +2183,8 @@
     "ServiceGroups": "Service Group(s)_fi",
     "Services": "Service(s)_fi",
     "ProjectedRevenueSummary": "Projected Revenue Summary_fi"
-  }
+  },
+  "lbl_resolutionText": "*The Application is best viewed in 1920×1080 resolution._fi",
+  "lbl_copyRight": "Copyright_fi",
+  "lbl_copyrightText": "by Agilysys NV, LLC. All right reserved_fi"
 }

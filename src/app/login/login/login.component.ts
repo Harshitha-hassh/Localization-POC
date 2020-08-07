@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   userIdDir = 'capitalise,notallowspace,nospecailchar';
   tenantId: number;
   tenantIdFromParam: string;
+  currYear: string = '2020';
 
   constructor(
     private dialog: MatDialog,

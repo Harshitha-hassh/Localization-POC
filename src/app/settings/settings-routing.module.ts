@@ -21,6 +21,10 @@ const routes: Routes = [{
     {
       path: 'inventorysetup',
       loadChildren: () => import('../retail/Inventory/inventory.module').then(m => m.InventoryModule)
+    },
+    {
+      path: 'systemsetup',
+      loadChildren: () => import('./system-setup/system-setup.module').then(m => m.SystemSetupModule)
     }
     // {
     //   path: 'utilities',
@@ -32,10 +36,7 @@ const routes: Routes = [{
     //   loadChildren: () => import('../settings/user-setup/user-setup.module').then(m => m.UserSetupModule),
     //   data: { redirectTo: 'systemsetup', hasChild: true }
     // },
-    // {
-    //   path: 'systemsetup',
-    //   loadChildren: () => import('../settings/system-setup/system-setup.module').then(m => m.SystemSetupModule)
-    // },
+    
   ]
 }];
 

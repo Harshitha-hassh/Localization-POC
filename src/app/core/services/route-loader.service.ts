@@ -528,6 +528,43 @@ export class RouteLoaderService {
               "menuAlignment": "Horizontal",
               "externalLink": false,
               "linkedElement": []
+            },
+            {
+              "elementID": 8,
+              "tenantID": 0,
+              "propertyID": 0,
+              "productID": 0,
+              "textID": 2,
+              "text": "SYSTEM SETUP",
+              "routePath": "/settings/systemsetup",
+              "imgPath": "/settings/systemsetup",
+              "order": 1,
+              "visibility": true,
+              "disable": false,
+              "parentID": 7,
+              "menuPosition": "secondary",
+              "menuAlignment": "Horizontal",
+              "externalLink": false,
+              "linkedElement": [
+                {
+                  "elementID": 8,
+                  "tenantID": 0,
+                  "propertyID": 0,
+                  "productID": 0,
+                  "textID": 2,
+                  "text": "Property Information",
+                  "routePath": "/settings/systemsetup/propertyinfo",
+                  "imgPath": "",
+                  "order": 1,
+                  "visibility": true,
+                  "disable": false,
+                  "parentID": 7,
+                  "menuPosition": "Ternary",
+                  "menuAlignment": "Vertical",
+                  "externalLink": false,
+                  "linkedElement": []
+                },
+              ]
             }
           ]
         },

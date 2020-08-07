@@ -1096,7 +1096,7 @@
   "missingUserID": "Missing User ID_uk",
   "missingPassword": "Missing Password_uk",
   "login": "Login_uk",
-  "welcomeToSaleAndCatering": "Welcome to rGuest Retail Please login to your account_uk",
+  "welcomeToRetail": "Please Login to your account_uk",
   "enter": "Enter_uk",
   "done": "Done_uk",
   "cancel": "Cancel_uk",
@@ -2183,5 +2183,8 @@
     "ServiceGroups": "Service Group(s)_uk",
     "Services": "Service(s)_uk",
     "ProjectedRevenueSummary": "Projected Revenue Summary_uk"
-  }
+  },
+  "lbl_resolutionText": "*The Application is best viewed in 1920×1080 resolution._uk",
+  "lbl_copyRight": "Copyright_uk",
+  "lbl_copyrightText": "by Agilysys NV, LLC. All right reserved_uk"
 }

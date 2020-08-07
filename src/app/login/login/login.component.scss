@@ -1,6 +1,6 @@
-@import '../../../assets/sass/abstracts/variables';
+@import "../../../assets/sass/abstracts/variables";
 
-.app-login{
+.app-login {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -8,27 +8,24 @@
     align-items: center;
 }
 
-.login
-{
-    $self:&;
+.login {
+    $self: &;
     height: 100%;
-    width:100%;
-    #{ $self }__btn{
+    width: 100%;
+    #{ $self }__btn {
         width: 303px;
         text-transform: uppercase;
     }
 
-    #{ $self }__btn:focus{
+    #{ $self }__btn:focus {
         outline: none;
     }
 
-    #{ $self }__formgroup
-    {
+    #{ $self }__formgroup {
         height: 100%;
-        width:100%;
+        width: 100%;
 
-        #{ $self }__page
-        {
+        #{ $self }__page {
             width: 850px;
             height: 500px;
             margin: auto;
@@ -37,86 +34,87 @@
             transform: translateY(-50%);
             border-radius: 3px;
             box-shadow: 0 0 30px #848383;
-           
-            #{ $self }__img
-            {
+
+            #{ $self }__img {
                 height: 100%;
                 width: 100%;
-                #{ $self }__logo-img{
+                #{ $self }__logo-img {
                     width: 100%;
                     height: 100%;
                 }
 
-                #{ $self }__agilysys-logo{
+                #{ $self }__agilysys-logo {
                     position: absolute;
                     right: 50px;
                     top: 15px;
                 }
-                #{ $self }__golf-logo{
+                #{ $self }__golf-logo {
                     position: absolute;
                     right: 18px;
                     top: 210px;
                 }
             }
-            
-            #{ $self }__area
-            {
+
+            #{ $self }__area {
                 position: absolute;
                 top: 0px;
                 height: 100%;
-                width:66%;
+                width: 66%;
                 clip-path: polygon(0 0, 63% 0, 100% 65%, 70% 100%, 0 100%);
                 background: $white;
 
-                #{ $self }__details
-                {
+                #{ $self }__details {
                     position: relative;
-                    top:13%;
-                    left: 15%;
-                    #{ $self }__label-style
-                    {
-                        color:$ag_base-color;
-                        font-size: 1.875rem;
-                        font-weight: bold;
+                    top: 9%;
+                    left: 7%;
+                    #{ $self }__label-style {
+                        color: $ag_base-color;
+                        font-size: 35px;
+                        font-weight: 700;
+                        line-height: 1.5;
+                        text-align: left;
                     }
-                    #{ $self }__message
-                    {
+                    #{ $self }__message {
+                        font-size: 14px;
                         width: 250px;
-                        margin-top: 0.5rem;
-                        color:$ag_black-lighter;
+                        color: #818892;
                     }
-                    #{ $self }__form-details
-                    {
-                        padding:20px 0px;
+                    #{ $self }__form-details {
+                        padding: 1.25em 0px 0px 0px;
                     }
                 }
             }
         }
     }
 
-    .margintop--10{
-        margin-top:10px;
+    .margintop--10 {
+        margin-top: 10px;
     }
 
     .hide-view i.icon-password-hide {
         position: relative;
         right: 0;
     }
-    
-    .errorText{
+
+    .errorText {
         position: relative;
         color: red;
     }
-    .resolutionDiv{
-        font-size: 12px;
+    .resolutionDiv {
         position: absolute;
-        bottom: 25px;
-        left: 75px;
-        color:$ag_black-lighter;
-        .resolutionText{
-           text-align: center;
-           
+        bottom: 10px;
+        left: 45px;
+        color: $grey-dark;
+        .login__footer-agilLogo {
+            display: block;
+            height: 34px;
+            margin-bottom: 8px;
+            width: 151px;
+        }
+        .resolutionText {
+            text-align: center;
+            font-size: 12px;
+            color: #818892;
         }
     }
-    
 }

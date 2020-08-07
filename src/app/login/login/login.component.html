@@ -7,7 +7,7 @@
             <div class="login__area">
                 <div class="login__details">
                     <label class="login__label-style">{{captions.login}}</label>
-                    <div class="login__message">{{ captions.welcomeToSaleAndCatering}}</div>
+                    <div class="login__message">{{ captions.welcomeToRetail}}</div>
                     <div class="login__form-details">
                         <div class="login_form">
                             <form [formGroup]="loginForms" autocomplete="off">
@@ -41,7 +41,7 @@
                                     </div>
                                     
                                     <div *ngIf="showCustomerID">
-                                        <i class="icon-user ag_pr--2"></i>
+                                        <i class="icon-guest1 ag_pr--2"></i>
                                         <mat-form-field class="w-50">
                                             <input matInput inputtype="nonnegative" type="number"
                                                 [placeholder]="captions.customerId" class="text-uppercase"
@@ -81,12 +81,14 @@
                     <div class="margintop--10"><button color="primary" mat-flat-button class="login__btn"
                             (click)="getbuttonEmitvalue($event)">{{loginSuccess?captions.enter:captions.login}}</button>
                     </div>
-
-                   
                 </div>
                 <div class="resolutionDiv">
+                    <img src="../../../assets/images/Agilsys_Logo.png" class="login__footer-agilLogo">
+                    <div class="resolutionText">{{captions.lbl_copyRight}} &#169;
+                        {{currYear}} {{captions.lbl_copyrightText}}
+                    </div>
                     <span class="resolutionText">
-                        <sup>{{captions.lbl_asterik}}</sup>{{captions.lbl_resolutionText}}
+                        {{captions.lbl_resolutionText}}
                     </span>
                 </div>
 
