@@ -38,9 +38,17 @@
             #{ $self }__img {
                 height: 100%;
                 width: 100%;
+                position: relative;
                 #{ $self }__logo-img {
                     width: 100%;
                     height: 100%;
+                }
+                #{ $self }__product-logo {
+                    height: 20%;
+                    position: absolute;
+                    z-index: 1;
+                    right: 20px;
+                    top: 50px;                
                 }
 
                 #{ $self }__agilysys-logo {
