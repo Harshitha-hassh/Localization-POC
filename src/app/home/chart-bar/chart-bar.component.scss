@@ -1,0 +1,24 @@
+@import  '../../../assets/sass/abstracts/variables';
+
+.bar_tooltip_container {
+  height: 60px;
+  width: 130px;
+  border: 1px solid $line_tooltip_container_border;
+  .bar_tooltip_header {
+    background: $line_tooltip_header_bg;
+    text-align: center;
+    font-size: 13px;
+    padding: 0.4rem;
+    font-family: $golf-lato-bold;
+  }
+
+  .bar_tooltip_content {
+    font-size: 11px;
+    color: $line_tooltip_content_label;
+    padding: 7px;
+  }
+}
+
+.apexcharts-xcrosshairs {
+  display: none;
+}

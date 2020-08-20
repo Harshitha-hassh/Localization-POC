@@ -5,6 +5,30 @@ export interface OutletOption {
     defaultOutletId : number;
 }
 
+export interface DonutCount {
+    active: number;
+    inActive: number;
+    total : number;
+}
+
+export interface TransactionSaleDetail {
+    noOfTrasaction: number;
+    totalAmount: number;
+    dateOfTransaction: Date;
+    id: number;
+    name:string;
+}
+
+export interface ItemData {
+    id: number;
+    amount: number;
+    name:string;
+}
+export interface UIItemData {
+    id: number;
+    amount: string;
+    name:string;
+}
 
 // export interface CourseCount {
 //     activeCourses: number;
@@ -71,25 +95,11 @@ export interface OutletOption {
 //     percentage: number;
 // }
 
-// export interface ItemData {
-//     id: number;
-//     amount: number;
-//     name:string;
-// }
-// export interface UIItemData {
-//     id: number;
-//     amount: string;
-//     name:string;
-// }
+
+
 // export interface CategoryData {
 //     id: number;
 //     amount: number;
-//     name:string;
-// }
-
-// export interface UICategoryData {
-//     id: number;
-//     amount: string;
 //     name:string;
 // }
 
@@ -154,17 +164,21 @@ export interface OutletOption {
 //     description: string;
 // }
 
-// export interface UIRevenue{
-//     value : number;
-//     transactions:number;
-//     name:string;
-// }
+export interface UIRevenue{
+    value : number;
+    transactions:number;
+    name:string;
+}
 
-// export interface UIWeekArray{
-//     id:number;
-//     name:string;
-// }
-
-
+export interface UIWeekArray{
+    id:number;
+    name:string;
+}
 
 
+
+export interface UICategoryData {
+    id: number;
+    amount: string;
+    name:string;
+}

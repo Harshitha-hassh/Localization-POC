@@ -106,7 +106,10 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
         &.button--singleselect{
             background: $golf-base-white-bg !important;
         }
-
+        &.button--primary{
+          background-color: $manage-color !important;
+          border: 1px solid $manage-color !important;
+        } 
         &.button--primary,
         &.button--singleselect,
         &.button.disabled,
@@ -114,6 +117,8 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
             line-height: 30px !important;
             height: 30px !important;
         }
+
+        
 
     }
 
@@ -379,112 +384,12 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
                                 &.noRightPadding{
                                   padding-right: 0px;
                                 }
-                                // &:nth-child(odd){                             
-                                //   padding-right: 1rem;
-                                // }
-                                // &:nth-child(even){                                
-                                //   padding-right: 0px;
-                                // }
-                                // &.oddClass{
-                                //   padding-right: 1rem !important;
-                                // }
-                                // &.evenClass{
-                                //   padding-right: 0px !important;
-                                // }
-                                // &.full_width{
-                                //   padding-right: 0px !important;
-                                // }
-
-                                // &.section_2:nth-child(even){                             
-                                //   padding-right: 1rem;
-                                // }
-                                // &.section_2:nth-child(odd){                                
-                                //   padding-right: 0px;
-                                // }
-                                // &.section_2.oddClass{
-                                //   padding-right: 1rem !important;
-                                // }
-                                // &.section_2.evenClass{
-                                //   padding-right: 0px !important;
-                                // }
-
-
                           
                             } 
                             &.widgetInnerComponent{
                               padding-right: 0px !important ;
                             }
                             
-                            // &.animateOutWidget{
-                            //     /* for chrome and safari*/
-                            //     -webkit-animation-duration: 1s;
-                            //     -webkit-animation-name: slideout;
-
-                            //     /* Standard syntax*/
-                            //     animation-duration: 1s;
-                            //     animation-name: slideout;
-                            // }
-                            // &.animateInWidget{
-                            //     /* for chrome and safari*/
-                            //     -webkit-animation-duration: 1s;
-                            //     -webkit-animation-name: slidein;
-
-                            //     /* Standard syntax*/
-                            //     animation-duration: 1s;
-                            //     animation-name: slidein;
-                            // }
-                            // @-webkit-keyframes slideout {
-                            //     from {
-                            //         margin-right: 100%;
-                            //         width: 30%;
-                            //     }
-
-                            //     to {
-                            //         margin-right: 0%;
-                            //         width: 30%;
-                            //     }
-                            // }
-
-                            // @keyframes slideout {
-                            //     from {
-                            //         margin-right: 100%;
-                            //         width: 0%;
-                            //     }
-
-                            //     to {
-                            //         margin-right: 0%;
-                            //         width: 30%;
-                            //     }
-                            // }
-
-
-
-                            // @-webkit-keyframes slidein {
-                            //     from {
-                            //         margin-right: 0%;
-                            //         width: 30%;
-                            //     }
-
-                            //     to {
-                            //         margin-right: 100%;
-                            //         width: 0%;
-                            //     }
-                            // }
-
-                            // @keyframes slidein {
-                            //     from {
-                            //         margin-right: 0%;
-                            //         width: 30%;
-                            //     }
-
-                            //     to {
-                            //         margin-right: 100%;
-                            //         width: 0%;
-                            //     }
-                            // }
-
-
-
                             .widget_looping_wrapper{
                                 width:100%;
                                 height:100%;
@@ -512,25 +417,7 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
 
                                 }
                             }             
-                            // .widget_dropDown{  
-                            //     display: flex;                                             
-                            //     font-size: $dropDown-size;  
-                            //     margin-left:auto;                                                                   
-                            //     &.mat-form-field{
-                            //        width:auto !important;
-                            //       //  text-align: left;
-                            //        .mat-form-field-infix{
-                            //            min-width:50px;
-                            //            border:0px;
-                            //           //  padding-right: 1rem;
-                            //            @extend .textOverflow;
-                            //        }
-                            //        .mat-form-field-wrapper{
-                            //            padding-bottom: 0px !important;
-                            //        }
-                            //     }
-                            // }
-
+                            
                             .widget_header{
                                 height: $widget-header-height;
                                 display: flex;
@@ -746,12 +633,12 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
     margin: 0px; 
     font-family: $group-title-font-family;
     font-size: 35px;
-    padding-top: 10px;
+    padding: 10px 0px;
   }
   .DB-inner-Block-desc{    
     font-size: 15px;
     margin: 0px;
-    color:$toggle-uncheck-color;
+    color:$ag_secondary-header-fc;
   }  
 }
 .SalesRevenue_wrapper{

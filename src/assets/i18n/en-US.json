@@ -2191,6 +2191,13 @@
   "dashBoard": {
     "dashBoardTitle": "Dashboard",
     "Outlets" :"Outlets",
+    "activeOutlets":"Active Outlets",
+    "inactiveOutlets":"Inactive Outlets",
+
+    "vendors":"Vendors",
+    "activeVendors":"Active Vendors",
+    "inactiveVendors":"Inactive Vendors",
+    
     "Week1": "Week 1",
 		"Week2": "Week 2",
 		"Week3": "Week 3",
@@ -2214,7 +2221,7 @@
     "total_Sales_Revenue":"Total Sales Revenue",
     "number_of_Transaction":"Number of Transaction",
     "average_Transaction":"Average Transaction",
-    "test":".....need text"
+    "unitPerCustomer":"Unit per customer"
 
 
 	}

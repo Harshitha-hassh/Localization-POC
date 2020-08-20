@@ -159,53 +159,36 @@
 
 
   <ng-template #Sales_Revenue>
-    Sales_Revenue
-    <ng-container *ngIf="(Sales_Revenue_data && Sales_Revenue_data.length > 0);else noData">
-
-      <!-- <div class="SalesRevenue_wrapper">        
-        <div class="SalesRevenue_content" *ngFor="let data of Sales_Revenue_data">
-          <p class="title">{{data.name}}</p>
-          <div class="SalesRevenue_line">
-            <p class="desc" [matTooltip]="captions.Sales">{{captions.Sales}}</p>
-            <p class="value" [ngClass]="'sales'">{{data.noOfTransaction}}</p>
-          </div>
-          <div class="SalesRevenue_line">
-            <p class="desc" [matTooltip]="captions.Revenue">{{captions.Revenue}}</p>
-            <p class="value" [ngClass]="'revenue'">{{data.amount}}</p>
-          </div>
-        </div>
-      </div> -->
+    <ng-container *ngIf="(Sales_SalesRevenue_data && Sales_SalesRevenue_data.length > 0);else noData">
+      <app-chart-bar class="barChart"></app-chart-bar>
     </ng-container>
   </ng-template>
 
 
   <ng-template #Out_of_StockItems>
-    Out_of_StockItems
+    Out_of_StockItems_data
     <ng-container *ngIf="(Out_of_StockItems_data && Out_of_StockItems_data.length > 0);else noData">
-
+     
     </ng-container>
   </ng-template>
 
   <ng-template #Revenue_By_Outlet>
-    Revenue_By_Outlet
     <ng-container *ngIf="(Revenue_By_Outlet_data && Revenue_By_Outlet_data.length > 0);else noData">
-
+      <app-chart-bar class="barChart"></app-chart-bar>
     </ng-container>
   </ng-template>
   <ng-template #Sales_Top5Items>
-    Sales_Top5Items
     <ng-container *ngIf="Sales_Top5Items_data;else noData">
-      <!-- <app-dashboard-table class="h-100" [isEnableHeader]="Sales_Top5Items_data.headerEnable"
-        [headerOption]="Sales_Top5Items_data.headerData" [bodyContentdata]="Sales_Top5Items_data.data"
-        [footerClassName]="Sales_Top5Items_data.footerClassName"></app-dashboard-table> -->
+      <app-dashboard-table class="h-100" [isEnableHeader]="Sales_Top5Items_data.headerEnable"
+      [headerOption]="Sales_Top5Items_data.headerData" [bodyContentdata]="Sales_Top5Items_data.data"
+      [footerClassName]="Sales_Top5Items_data.footerClassName"></app-dashboard-table>
     </ng-container>
   </ng-template>
   <ng-template #Sales_Top5Categories>
-    Sales_Top5Categories
     <ng-container *ngIf="Sales_Top5Categories_data;else noData">
-      <!-- <app-dashboard-table class="h-100" [isEnableHeader]="Sales_Top5Categories_data.headerEnable"
-        [headerOption]="Sales_Top5Categories_data.headerData" [bodyContentdata]="Sales_Top5Categories_data.data"
-        [footerClassName]="Sales_Top5Categories_data.footerClassName"></app-dashboard-table> -->
+      <app-dashboard-table class="h-100" [isEnableHeader]="Sales_Top5Categories_data.headerEnable"
+      [headerOption]="Sales_Top5Categories_data.headerData" [bodyContentdata]="Sales_Top5Categories_data.data"
+      [footerClassName]="Sales_Top5Categories_data.footerClassName"></app-dashboard-table>
     </ng-container>
   </ng-template>
 
@@ -222,141 +205,67 @@
     </ng-container>
   </ng-template>
   <ng-template #Returned_Items>
-    Returned_Items
     <ng-container *ngIf="(Returned_Items_data && Returned_Items_data.length > 0);else noData">
-
+      <app-chart-bar class="barChart"></app-chart-bar>
     </ng-container>
   </ng-template>
   
 
 
-  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <ng-template #CourseDetails_Utilization>
-    <!-- <div class="line_wrapper">
-    <form [formGroup]="lineForm">
-      <div class="line-Chart-input-Wrapper">
-        <div class="line-option">
-          <mat-form-field class="golf-form-control--lg">
-            <mat-select formControlName="course" [placeholder]="captions.course"
-              (selectionChange)="lineCourseChange($event)">
-              <mat-option *ngFor="let lineChartOption of lineChartOptions" [value]="lineChartOption.id">
-                {{lineChartOption.description}} </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <app-golf-date-picker [inputs]="lineDateInputs" (datePickerChange)="dateChanged($event)"></app-golf-date-picker>
-        <app-golf-time-picker [inputs]="line_startTimeInputs" (timeChangeEvent)="timeChange($event, 'startTime')">
-        </app-golf-time-picker>
-        <app-golf-time-picker [inputs]="line_endTimeInputs" (timeChangeEvent)="timeChange($event, 'endtime')">
-        </app-golf-time-picker>
-        <app-button [buttontype]="buttonValueprimary" (valueChange)='lineChartUpdate($event)'></app-button>
-      </div>
-      <ng-container *ngIf="lineChart_content"> 
-        <div class="chart-line-wrapper">
-          <app-chart-line class="chart-donut" [captionsLabel]="lineCaptions" [updateLineChartData]="updateLineChartData"
-          [categories]="lineChart_Categories" [content]="lineChart_content" [customStyles]="lineChart_customStyles"></app-chart-line>
-        </div>
-      </ng-container>
-    </form>
-  </div> -->
-  </ng-template>
-  <ng-template #CourseDetails_TeeTimes>
-    <ng-container *ngIf="skeletonData;else noData">
-      <!-- <app-tee-grid class="h-100" [teeSheetID]="teeSheetID" [showFullyAvailableSlots]="true" [customTableData]="customTableData"
-        [teeData]="skeletonData | async" (moreEvent)="onmoreEvent($event)" [gridDisable]="isGridDisable"></app-tee-grid> -->
+  <ng-template #DB_OultetsChart>  
+    <ng-container *ngIf="DB_OultetsChart_data;else noData">
+      <app-chart-donut class="chart-donut" [inputData]="DB_OultetsChart_data.data"></app-chart-donut>
     </ng-container>
   </ng-template>
-  <ng-template #CourseDetails_Upcoming_Tournaments>
-    <ng-container *ngIf="CourseDetails_Upcoming_Tournaments_data;else noData">
-      <!-- <app-dashboard-table class="h-100" [isEnableHeader]="CourseDetails_Upcoming_Tournaments_data.headerEnable"
-        [headerOption]="CourseDetails_Upcoming_Tournaments_data.headerData"
-        [bodyContentdata]="CourseDetails_Upcoming_Tournaments_data.data"
-        (rowEmitter)="CourseDetails_Upcoming_Tournaments_rowEmitter($event)">
-      </app-dashboard-table> -->
-    </ng-container>
-  </ng-template>
-  <ng-template #CourseDetails_Waitllist>
-    <ng-container *ngIf="CourseDetails_Waitllist_data;else noData">
-      <!-- <app-dashboard-table class="h-100" [isEnableHeader]="CourseDetails_Waitllist_data.headerEnable"
-        [headerOption]="CourseDetails_Waitllist_data.headerData" [bodyContentdata]="CourseDetails_Waitllist_data.data">
-      </app-dashboard-table> -->
-    </ng-container>
-  </ng-template>
-  <ng-template #CourseDetails_Lessons>
-    <ng-container *ngIf="CourseDetails_Lessons_data;else noData">
-      <!-- <app-dashboard-table class="h-100" [isEnableHeader]="CourseDetails_Lessons_data.headerEnable"
-        [headerOption]="CourseDetails_Lessons_data.headerData" [bodyContentdata]="CourseDetails_Lessons_data.data"></app-dashboard-table> -->
-    </ng-container>
-  </ng-template>
-  <ng-template #Sales_SalesRevenue>    
-    <ng-container *ngIf="(Sales_SalesRevenue_data && Sales_SalesRevenue_data.length > 0);else noData">          
-      <!-- <app-chart-bar class="barChart"></app-chart-bar> -->
-    </ng-container>
-  </ng-template>
- 
-  <ng-template #DB_CourseStatus>  
-    <ng-container *ngIf="DB_CourseStatus_data;else noData">
-      
-      <!-- <app-chart-donut class="chart-donut" [inputData]="DB_CourseStatus_data.data"></app-chart-donut> -->
-    </ng-container>
-  </ng-template>
-  <ng-template #DB_Available_TeeTimes>
-    <ng-container *ngIf="DB_Available_TeeTimes_data;else noData">
+
+  <ng-template #DB_TotalSalesRevenue>
+    <ng-container *ngIf="DB_TotalSalesRevenue_data;else noData">
       <div class="DB-inner-Block-wrapper">
-        <!-- <i class="DB-inner-Block-icon" [ngClass]="DB_Available_TeeTimes_data.icon"></i> -->
-        <p class="DB-inner-Block-Count">{{DB_Available_TeeTimes_data.count}}</p>
-        <p class="DB-inner-Block-desc" [matTooltip]="DB_Available_TeeTimes_data.description">
-          {{DB_Available_TeeTimes_data.description}}</p>
+        <!-- <i class="DB-inner-Block-icon" [ngClass]="DB_TotalSalesRevenue_data.icon"></i> -->
+        <p class="DB-inner-Block-Count">{{DB_TotalSalesRevenue_data.count}}</p>
+        <p class="DB-inner-Block-desc" [matTooltip]="DB_TotalSalesRevenue_data.description">
+          {{DB_TotalSalesRevenue_data.description}}</p>
       </div>
     </ng-container>
   </ng-template>
-  <ng-template #DB_Cancelled_TeeTimes>
-    <ng-container *ngIf="DB_Cancelled_TeeTimes_data;else noData">
+
+  <ng-template #DB_NumberOfTransaction>
+    <ng-container *ngIf="DB_NumberOfTransaction_data;else noData">
       <div class="DB-inner-Block-wrapper">
-        <!-- <i class="DB-inner-Block-icon" [ngClass]="DB_Cancelled_TeeTimes_data.icon"></i> -->
-        <p class="DB-inner-Block-Count">{{DB_Cancelled_TeeTimes_data.count}}</p>
-        <p class="DB-inner-Block-desc" [matTooltip]="DB_Cancelled_TeeTimes_data.description">
-          {{DB_Cancelled_TeeTimes_data.description}}</p>
+        <!-- <i class="DB-inner-Block-icon" [ngClass]="DB_NumberOfTransaction_data.icon"></i> -->
+        <p class="DB-inner-Block-Count">{{DB_NumberOfTransaction_data.count}}</p>
+        <p class="DB-inner-Block-desc" [matTooltip]="DB_NumberOfTransaction_data.description">
+          {{DB_NumberOfTransaction_data.description}}</p>
       </div>
     </ng-container>
   </ng-template>
-  <ng-template #DB_New_Players>
-    <ng-container *ngIf="DB_New_Players_data;else noData">
+
+  <ng-template #DB_AverageTransaction>
+    <ng-container *ngIf="DB_AverageTransaction_data;else noData">
       <div class="DB-inner-Block-wrapper">
-        <!-- <i class="DB-inner-Block-icon" [ngClass]="DB_New_Players_data.icon"></i> -->
-        <p class="DB-inner-Block-Count">{{DB_New_Players_data.count}}</p>
-        <p class="DB-inner-Block-desc" [matTooltip]="DB_New_Players_data.description">
-          {{DB_New_Players_data.description}}</p>
+        <!-- <i class="DB-inner-Block-icon" [ngClass]="DB_AverageTransaction_data.icon"></i> -->
+        <p class="DB-inner-Block-Count">{{DB_AverageTransaction_data.count}}</p>
+        <p class="DB-inner-Block-desc" [matTooltip]="DB_AverageTransaction_data.description">
+          {{DB_AverageTransaction_data.description}}</p>
       </div>
     </ng-container>
   </ng-template>
-  <ng-template #DB_Repeat_Players>
-    <ng-container *ngIf="DB_Repeat_Players_data;else noData">
+
+  <ng-template #DB_AvgUnitPerCustomer>
+    <ng-container *ngIf="DB_AvgUnitPerCustomer_data;else noData">
       <div class="DB-inner-Block-wrapper">
-        <!-- <i class="DB-inner-Block-icon" [ngClass]="DB_Repeat_Players_data.icon"></i> -->
-        <p class="DB-inner-Block-Count">{{DB_Repeat_Players_data.count}}</p>
-        <p class="DB-inner-Block-desc" [matTooltip]="DB_Repeat_Players_data.description">
-          {{DB_Repeat_Players_data.description}}</p>
+        <!-- <i class="DB-inner-Block-icon" [ngClass]="DB_AvgUnitPerCustomer_data.icon"></i> -->
+        <p class="DB-inner-Block-Count">{{DB_AvgUnitPerCustomer_data.count}}</p>
+        <p class="DB-inner-Block-desc" [matTooltip]="DB_AvgUnitPerCustomer_data.description">
+          {{DB_AvgUnitPerCustomer_data.description}}</p>
       </div>
     </ng-container>
   </ng-template>
-  <ng-template #DB_Weather>
-    <ng-container *ngIf="DB_Weather_data;else noWeatherData">
-      <!-- <app-dashboard-weather class="h-100" [inputs]="DB_Weather_data" (prevWeek)="prevWeek()" (nextWeek)="nextWeek()" (weatherMetric)="changeMetric($event)"></app-dashboard-weather> -->
+
+  <ng-template #DB_VendorsChart>
+    <ng-container *ngIf="DB_VendorsChart_data;else noData">
+      <app-chart-donut class="chart-donut" [inputData]="DB_VendorsChart_data.data"></app-chart-donut>
     </ng-container>
   </ng-template>
 
@@ -364,17 +273,7 @@
  
 
   <ng-template #noData>
-      <!-- <app-no-data-found [isSearch]='false'></app-no-data-found> -->
-  </ng-template>
-  <ng-template #noWeatherData>
-      <!-- <div class='icon-container no-schedule'>
-          <div class="icon-img">
-             <div class="icon-text">
-                <span>{{ weatherErrorResult }}</span>
-              </div>
-          </div>
-        </div> -->
-     
+      <app-no-data-found [isSearch]='false'></app-no-data-found>
   </ng-template>
 
 </div>

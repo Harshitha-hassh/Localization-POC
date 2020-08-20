@@ -1,0 +1,48 @@
+@import  '../../../assets/sass/abstracts/variables';
+
+.line-chart-container {  
+  height: 100%;
+  width: 100%;  
+  .chart-line-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 0 1rem ;    
+    #linechart {
+      height: 100%;
+      width: 100%;
+    } 
+    .tool_tip {
+      height: 20px;
+      width: 40px;
+      background: $line_tool_tip_bg;
+      position: relative;
+      border: 2px solid $golf-base-text-color;
+    }
+    
+    .tooltip_container {
+      height: 70px;
+      width: 80px;
+      border: 1px solid $line_tooltip_container_border;
+    }
+    
+    .tooltip_header {
+      background: $line_tooltip_header_bg;      
+      text-align: center;
+      font-size: 13px;
+      padding: 0.4rem;
+      font-weight: bold;
+    }
+    
+    .tooltip_content_booked,
+    .tooltip_content_available {
+      font-size: 11px;
+      color: $line_tooltip_content_label;
+      padding: 5px;
+    }   
+  }
+}
+
+
+
+
+

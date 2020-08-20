@@ -446,7 +446,7 @@ export class DashboardWidgetsReportService {
               heightUnit: 'px'
             },
             template: {
-              name: 'DB_CourseStatus',
+              name: 'DB_OultetsChart',
               // templateData: {
               //   data: {                                    
               //     series:[7,11],
@@ -476,7 +476,7 @@ export class DashboardWidgetsReportService {
                   customClass: "dbBlock_2_1",
                 },
                 template: {
-                  name: 'DB_Available_TeeTimes'
+                  name: 'DB_TotalSalesRevenue'
                 }
               },
               {
@@ -489,12 +489,12 @@ export class DashboardWidgetsReportService {
                   customClass: "dbBlock_2_2",
                 },
                 template: {
-                  name: 'DB_Cancelled_TeeTimes',
+                  name: 'DB_NumberOfTransaction',
                   // templateData: {
                   //   data:{
                   //     icon:'icon-player',
                   //     count:this.CancelledTeeTimesCount,
-                  //     description:this.captions.DB_Cancelled_TeeTimes
+                  //     description:this.captions.DB_NumberOfTransaction
                   //   } 
                   // }
                 }
@@ -509,12 +509,12 @@ export class DashboardWidgetsReportService {
                   customClass: "dbBlock_2_3",
                 },
                 template: {
-                  name: 'DB_New_Players',
+                  name: 'DB_AverageTransaction',
                   // templateData: {
                   //   data:{
                   //     icon:'icon-player',
                   //     count:this.NewPlayers,
-                  //     description:this.captions.DB_New_Players 
+                  //     description:this.captions.DB_AverageTransaction 
                   //   }
                   // }
                 }
@@ -529,12 +529,12 @@ export class DashboardWidgetsReportService {
                   customClass: "dbBlock_2_4",
                 },
                 template: {
-                  name: 'DB_Repeat_Players',
+                  name: 'DB_AvgUnitPerCustomer',
                   // templateData: {
                   //   data: {
                   //     icon:'icon-player',
                   //     count:this.RepeatPlayers,
-                  //     description:this.captions.DB_Repeat_Players
+                  //     description:this.captions.DB_AvgUnitPerCustomer
                   //   } 
                   // }
                 }
@@ -560,10 +560,10 @@ export class DashboardWidgetsReportService {
               heightUnit: 'px'
             },
             template: {
-              name: 'DB_Weather',
+              name: 'DB_VendorsChart',
               // templateData: {
               //   data: [
-              //     { id: 1, value: "DB_Weather" }
+              //     { id: 1, value: "DB_VendorsChart" }
               //   ]
               // }
             }
