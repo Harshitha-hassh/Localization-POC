@@ -65,7 +65,7 @@ export class DashboardWidgetsReportService {
             customClass:'section_1 ',
             config: {
               useConfig: true,
-              width: '60',
+              width: 60,
               widthUnit: '%',
               height: '455',
               heightUnit: 'px'
@@ -104,7 +104,7 @@ export class DashboardWidgetsReportService {
             customClass:'section_1',
             config: {
               useConfig: true,
-              width: '40',
+              width: 40,
               widthUnit: '%',
               height: '455',
               heightUnit: 'px'
@@ -140,7 +140,7 @@ export class DashboardWidgetsReportService {
             customClass:'section_1 full_width',
             config: {
               useConfig: true,
-              width: '100',
+              width: 100,
               widthUnit: '%',
               height: '455',
               heightUnit: 'px'
@@ -186,7 +186,7 @@ export class DashboardWidgetsReportService {
             customClass:'section_1 ',
             config: {
               useConfig: true,
-              width: '50',
+              width: 50,
               widthUnit: '%',
               height: '455',
               heightUnit: 'px'
@@ -225,7 +225,7 @@ export class DashboardWidgetsReportService {
             customClass:'section_1 ',
             config: {
               useConfig: true,
-              width: '50',
+              width: 50,
               widthUnit: '%',
               height: '455',
               heightUnit: 'px'
@@ -264,7 +264,7 @@ export class DashboardWidgetsReportService {
             customClass:'section_1 ',
             config: {
               useConfig: true,
-              width: '50',
+              width: 50,
               widthUnit: '%',
               height: '455',
               heightUnit: 'px'
@@ -306,7 +306,7 @@ export class DashboardWidgetsReportService {
             customClass:'section_1 ',
             config: {
               useConfig: true,
-              width: '50',
+              width: 50,
               widthUnit: '%',
               height: '455',
               heightUnit: 'px'
@@ -348,7 +348,7 @@ export class DashboardWidgetsReportService {
             customClass:'section_1 full_width',
             config: {
               useConfig: true,
-              width: '100',
+              width: 100,
               widthUnit: '%',
               height: '455',
               heightUnit: 'px'
@@ -440,7 +440,7 @@ export class DashboardWidgetsReportService {
             hasInnerComponent: false,
             config: {
               useConfig: true,
-              width: '32',
+              width: 32,
               widthUnit: '%',
               height: '350',
               heightUnit: 'px'
@@ -469,7 +469,7 @@ export class DashboardWidgetsReportService {
               {
                 config: {
                   useConfig: true,
-                  width: '48',
+                  width: 48,
                   widthUnit: '%',
                   height: '46',
                   heightUnit: '%',
@@ -482,7 +482,7 @@ export class DashboardWidgetsReportService {
               {
                 config: {
                   useConfig: true,
-                  width: '48',
+                  width: 48,
                   widthUnit: '%',
                   height: '46',
                   heightUnit: '%',
@@ -502,7 +502,7 @@ export class DashboardWidgetsReportService {
               {
                 config: {
                   useConfig: true,
-                  width: '48',
+                  width: 48,
                   widthUnit: '%',
                   height: '47',
                   heightUnit: '%',
@@ -522,7 +522,7 @@ export class DashboardWidgetsReportService {
               {
                 config: {
                   useConfig: true,
-                  width: '48',
+                  width: 48,
                   widthUnit: '%',
                   height: '47',
                   heightUnit: '%',
@@ -542,7 +542,7 @@ export class DashboardWidgetsReportService {
             ],
             config: {
               useConfig: true,
-              width: '33',
+              width: 33,
               widthUnit: '%',
               height: '350',
               heightUnit: 'px'
@@ -554,7 +554,7 @@ export class DashboardWidgetsReportService {
             hasInnerComponent: false,
             config: {
               useConfig: true,
-              width: '33',
+              width: 33,
               widthUnit: '%',
               height: '350',
               heightUnit: 'px'

@@ -1,10 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, ChangeDetectorRef, Output, Input, EventEmitter, ComponentRef, ElementRef } from '@angular/core';
 import { DashboardWidgetsReportService } from './dashboard-widgets-report.service';
 import { DashBoardBusiness } from './dashboard-business';
-// import { Utilities } from 'src/app/shared/utilities/utilities';
 import { Localization } from 'src/app/core/localization/Localization';
-// import { DashBoardService } from 'src/app/shared/data-services/golfschedule/dashboard.data.service';
-// import { CourseDataService } from 'src/app/shared/data-services/golfmanagement/course.data.service';
 import { OutletOption } from './dashboard.modal';
 import { SubPropertyDataService } from 'src/app/retail/retail-code-setup/retail-outlets/subproperty-data.service';
 import * as moment from 'moment';
@@ -37,10 +34,10 @@ import { SortOrderPipe } from 'src/app/common/shared/shared/pipes/sort-order.pip
   templateUrl: './dashboard-widgets-report.component.html',
   styleUrls: ['./dashboard-widgets-report.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DashboardWidgetsReportService, DashBoardBusiness,SubPropertyDataService]
-    //  DashBoardService, CourseDataService, , 
-    //  AllocationBlockDataService, TeeSheetDashboard, DefaultUserConfigDataService,
-    //   TeeTimeConfigDataService, ChartBarComponent, GolfUserConfigDataService, PropertyDataService, RateTypeDataService]
+  providers: [DashboardWidgetsReportService, DashBoardBusiness, SubPropertyDataService]
+  //  DashBoardService, CourseDataService, , 
+  //  AllocationBlockDataService, TeeSheetDashboard, DefaultUserConfigDataService,
+  //   TeeTimeConfigDataService, ChartBarComponent, GolfUserConfigDataService, PropertyDataService, RateTypeDataService]
 
 })
 export class DashboardWidgetsReportComponent implements OnInit {
@@ -95,7 +92,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
   @ViewChild('Open_Tickets', { static: false }) Open_Tickets;
   @ViewChild('Returned_Items', { static: false }) Returned_Items;
 
-  
+
 
 
 
@@ -109,8 +106,8 @@ export class DashboardWidgetsReportComponent implements OnInit {
   @ViewChild('CourseDetails_Waitllist', { static: false }) CourseDetails_Waitllist;
   @ViewChild('CourseDetails_Lessons', { static: false }) CourseDetails_Lessons;
   @ViewChild('Sales_SalesRevenue', { static: false }) Sales_SalesRevenue;
-  
- 
+
+
   @ViewChild('DB_CourseStatus', { static: false }) DB_CourseStatus;
   @ViewChild('DB_Available_TeeTimes', { static: false }) DB_Available_TeeTimes;
   @ViewChild('DB_Cancelled_TeeTimes', { static: false }) DB_Cancelled_TeeTimes;
@@ -151,11 +148,11 @@ export class DashboardWidgetsReportComponent implements OnInit {
   // weatherErrorResult: any;
   sortOrderPipe: SortOrderPipe;
   constructor(private cdr: ChangeDetectorRef,
-     public _DashboardWidgetsReportService: DashboardWidgetsReportService, 
+    public _DashboardWidgetsReportService: DashboardWidgetsReportService,
     //  private _userAccessBusiness: UserAccessBusiness,
-      private _dashBoardBusiness: DashBoardBusiness,
+    private _dashBoardBusiness: DashBoardBusiness,
     // private _utilities: Utilities, 
-    private _localization: Localization, private _router: Router, private _fb: FormBuilder, 
+    private _localization: Localization, private _router: Router, private _fb: FormBuilder,
     private dialog: MatDialog,
     //  private _ChartBarComponent: ChartBarComponent,
     private _propertyInformation: PropertyInformation) {
@@ -247,7 +244,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
   }
 
   dashBoardCheckboxChange(widgetsData_Index, loopManage_Index, event, from) {
-    console.log(' widgetsData_Index ', widgetsData_Index, ' loopManage_Index ', loopManage_Index, 'dashBoardCheckboxChange event ', event);
+    // console.log(' widgetsData_Index ', widgetsData_Index, ' loopManage_Index ', loopManage_Index, 'dashBoardCheckboxChange event ', event);
     this.widgetsData[widgetsData_Index].widget[loopManage_Index].show = (from == 'event') ? event.target.checked : event;
     let arr = [];
     this.widgetsData[widgetsData_Index].widget.forEach((element, index) => {
@@ -255,109 +252,149 @@ export class DashboardWidgetsReportComponent implements OnInit {
         arr.push({ 'classname': element.template.name, 'index': index, 'initialWidth': element.config.width, 'parentClass': element.parentClass });
       }
     });
+
+    let isPreviousFullWidth = true;
+    let position = 1;
+
     arr.forEach((element, index, array) => {
       // as per PMS dashboard changed the code
       //single data and last data with odd index
-      
       let tag = (document.getElementsByClassName(element.classname)[0]) as HTMLElement;
       if ((array.length == 1) || (index == array.length - 1 && array.length % 2 != 0)) {
-        console.log('----index ', index );
-        tag.style.width = '100%';
-      } else{
-        console.log('---', index,'---------' );
-       let checkPreviousWidgetWidth =  (index-1 < 0 ) ? 0 : array[index-1].initialWidth;
-       let checkNextWidgetWidth = (index+1  >= array.length ) ? 0 : array[index+1].initialWidth;
+        if(array.length > 1 && index == array.length - 1){
+          if(isPreviousFullWidth && position == 1){
+            tag.style.width = '100%';
+            element.initialWidth = 100;
+            isPreviousFullWidth = true;
+            position = 1;
+          }else{
+            tag.style.width = (100 - array[index - 1].initialWidth) + '%';
+            element.initialWidth = (100 - array[index - 1].initialWidth);
+            isPreviousFullWidth = true;
+            position = 1; 
+          }
+        }else{
+          tag.style.width = '100%';
+            element.initialWidth = 100;
+            isPreviousFullWidth = true;
+            position = 1;
+        }
+      } else {
+        console.log('---', index, '---------','isPreviousFullWidth',isPreviousFullWidth,' position ');
+        let checkPreviousWidgetWidth = (index - 1 < 0) ? 100 : array[index - 1].initialWidth;
+        let checkNextWidgetWidth = (index + 1 >= array.length) ? 0 : array[index + 1].initialWidth;
 
-       let currentElementWidth = element.initialWidth;
+        
 
-      //  console.log('checkPreviousWidgetWidth ',checkPreviousWidgetWidth);
-      //  console.log('checkNextWidgetWidth ',checkNextWidgetWidth);
-      //  console.log('currentElementWidth ',currentElementWidth);
-       
-       const addWithPreviousLine = Number(checkPreviousWidgetWidth) + Number(currentElementWidth);
-       const addWithNextLine = Number(checkNextWidgetWidth) + Number(currentElementWidth);
+        if ((array.length == 1) || (index == array.length - 1 && array.length % 2 != 0)) {
 
-       const checkPreviousSpace = addWithPreviousLine <= 100 ;
-       const checkNextSpace = addWithNextLine <= 100 ;
+          if (position == 1) {
+            tag.style.width = '100%';
+            element.initialWidth = element.initialWidth;
+          } else if (position == 2 && checkPreviousWidgetWidth < 60) {
+            tag.style.width = (100 - checkPreviousWidgetWidth) + '%';
+            element.initialWidth = (100 - checkPreviousWidgetWidth);
+          }
+          isPreviousFullWidth = true;
+          position = 1;
 
-       console.log('checkPreviousSpace ',checkPreviousSpace,' : ',addWithPreviousLine);
-       console.log('checkNextSpace ',checkNextSpace,' :',addWithNextLine);
+        } else {
+          // set initial Width of first widget From Service
+          if (index == 0) {
+            element.initialWidth = this.widgetsData[widgetsData_Index].widget[element.index].config.width;
+          }
+          let currentElementWidth = element.initialWidth;
+          // } else {
+            if (checkPreviousWidgetWidth === 100) {
 
-    
+              if ((currentElementWidth == 60 && checkNextWidgetWidth == 40) ||
+                  (currentElementWidth == 40 && checkNextWidgetWidth == 60) ||
+                  (currentElementWidth == 50 && checkNextWidgetWidth == 50) ||
+                  (currentElementWidth == 40) 
+                  ) {
+                  tag.style.width = element.initialWidth + '%';
+                  element.initialWidth = element.initialWidth;
+                  isPreviousFullWidth = false;
+                  position++;
+              } else {
+                tag.style.width = '100%';
+                element.initialWidth = 100;
+                isPreviousFullWidth = true;
+                position == 1;
+              }
+            } else {
+              if (isPreviousFullWidth && position == 1 && checkNextWidgetWidth > 60) {
+                tag.style.width = '100%';
+                element.initialWidth = 100;
+                isPreviousFullWidth = true;
+                position == 1;
+              } else if (isPreviousFullWidth && position == 1 && checkNextWidgetWidth <= 60) {
+                
+                if(checkNextWidgetWidth == 0){
+                  tag.style.width = '100%';
+                  element.initialWidth = 100;
+                  isPreviousFullWidth = true;
+                  position == 1;
+                }else if (currentElementWidth < 60) {
+                  tag.style.width = element.initialWidth + '%';
+                  element.initialWidth = element.initialWidth;
+                  isPreviousFullWidth = false;
+                  position++;
+                } else {
+                  tag.style.width = '100%';
+                  element.initialWidth = 100;
+                  isPreviousFullWidth = true;
+                  position == 1;
+                }
+              } else if (!isPreviousFullWidth && position == 1 && checkNextWidgetWidth > 60) {
+                
+                tag.style.width = '100%';
+                element.initialWidth = 100;
+                isPreviousFullWidth = true;
+                position == 1;
+              } else if (!isPreviousFullWidth && position == 1 && checkNextWidgetWidth <= 60) {
+               
+                if (currentElementWidth < 60) {
+                  tag.style.width = element.initialWidth + '%';
+                  element.initialWidth = element.initialWidth;
+                  isPreviousFullWidth = false;
+                  position++;
+                 
+                } else {
+                  tag.style.width = '100%';
+                  element.initialWidth = 100;
+                  isPreviousFullWidth = true;
+                  position == 1;
+                }
+              } else if (position == 2 && checkPreviousWidgetWidth < 60) {
+                tag.style.width = (100 - checkPreviousWidgetWidth) + '%';
+                element.initialWidth = (100 - checkPreviousWidgetWidth);
+                isPreviousFullWidth = true;
+                position = 1;           
+              }else{
+                tag.style.width = element.initialWidth + '%';
+                element.initialWidth = element.initialWidth;
+                isPreviousFullWidth = true;
+                position = 1;  
+              }
+            }
+          // }
 
-       
-      if(checkPreviousSpace && checkNextSpace){
-        console.log(checkPreviousSpace ,' 1 && ',checkNextSpace, element.initialWidth+ '%');
-        tag.style.width = element.initialWidth+ '%';
-      }else if(checkPreviousSpace && !checkNextSpace){
-        console.log(checkPreviousSpace ,' 2 && ',!checkNextSpace);
-
-        tag.style.width = element.initialWidth+ '%';
-      }else if(!checkPreviousSpace && checkNextSpace){
-        console.log(!checkPreviousSpace ,' 3 && ',checkNextSpace);
-        // tag.style.width ='100%';
-      }else if(!checkPreviousSpace && !checkNextSpace){
-        console.log(!checkPreviousSpace ,' 4 && ',!checkNextSpace ,'100%');
-        tag.style.width ='100%';
+        }
       }
-
-          
-
-
-
-     
-
-      
-      
-
-      //  if(
-      //    (100 - checkPreviousWidgetWidth) == element.initialWidth &&
-      //     (100 - element.initialWidth) == checkNextWidgetWidth 
-      //   ){
-          // console.log(
-          //   (100 - checkPreviousWidgetWidth),' == ',element.initialWidth,
-          //   (100 - element.initialWidth),' == ',checkNextWidgetWidth,
-          //   (100 - checkPreviousWidgetWidth) == element.initialWidth &&
-          //   (100 - element.initialWidth) == checkNextWidgetWidth 
-          // );
-      //     tag.style.width = element.initialWidth+ '%'; // : '60%';
-      //  }else if(
-      //   (100 - checkPreviousWidgetWidth) < element.initialWidth && 
-      //   (100 - element.initialWidth) > checkNextWidgetWidth 
-      //  ){
-      //   console.log(
-      //     (100 - checkPreviousWidgetWidth),' < ',element.initialWidth,
-      //     (100 - element.initialWidth),' > ',checkNextWidgetWidth,
-      //     (100 - checkPreviousWidgetWidth) < element.initialWidth &&
-      //     (100 - element.initialWidth) > checkNextWidgetWidth 
-      //   );
-      //   tag.style.width = element.initialWidth+'%'; 
-      // }else if(
-      //   (100 - checkPreviousWidgetWidth) > element.initialWidth && 
-      //   (100 - element.initialWidth) < checkNextWidgetWidth 
-      //  ){
-      //   console.log(
-      //     (100 - checkPreviousWidgetWidth),' > ',element.initialWidth,
-      //     (100 - element.initialWidth),' < ',checkNextWidgetWidth,
-      //     (100 - checkPreviousWidgetWidth) > element.initialWidth && 
-      //   (100 - element.initialWidth) < checkNextWidgetWidth 
-      //   );
-      //   tag.style.width = '100%'; 
-      // }
-     }
     });
   }
 
   manage(widgetsData_Index) {
-    console.log("manage ",widgetsData_Index);
+    // console.log("manage ",widgetsData_Index);
     this.manageArr[widgetsData_Index].show = !this.manageArr[widgetsData_Index].show;
-    console.log('widgetsData_Index ', widgetsData_Index);
+    // console.log('widgetsData_Index ', widgetsData_Index);
   }
 
   widgetHeaderDropDownChange(widgetsData_Index, loopWidget_Index, e) {
     this.teeTimeCourseId = e.value;
     // this.getData(this.teeTimeCourseId, this.propertyDate);
-    console.log('widgetHeaderDropDownChange ', e, ' widgetsData_Index ', widgetsData_Index, ' widgetsData_Index ', loopWidget_Index);
+    // console.log('widgetHeaderDropDownChange ', e, ' widgetsData_Index ', widgetsData_Index, ' widgetsData_Index ', loopWidget_Index);
   }
 
   headerDropDownChange(controlName, e) {
@@ -367,7 +404,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
       console.log(controlName, ' ', e);
     }
   }
- 
+
   dashBoardDropDownFrmControl(e) {
     console.log('dashBoardDropDownFrmControl ', e);
   }
@@ -380,28 +417,28 @@ export class DashboardWidgetsReportComponent implements OnInit {
     this.dashBoardWidget = this._DashboardWidgetsReportService.getDashBoardWidget();
 
     let sortedWidgets = this._DashboardWidgetsReportService.getWidget();
-    sortedWidgets.forEach(x=>{
-      if(x.widget.length > 0){
+    sortedWidgets.forEach(x => {
+      if (x.widget.length > 0) {
         let arr = x.widget.slice(0, x.widget.length);
         this.sortOrderPipe.transform(arr, 'order', 'aesc');
         x.widget = arr;
       }
     });
-    this.widgetsData = sortedWidgets; 
+    this.widgetsData = sortedWidgets;
     this.widgetsData.forEach(widgetsDataLoop => {
       const dummyArr = [];
       widgetsDataLoop.widget.forEach(widgetLoop => {
         // if (widgetLoop.allow) {
-          dummyArr.push({ templateName: widgetLoop.title.title, checked: widgetLoop.show });
+        dummyArr.push({ templateName: widgetLoop.title.title, checked: widgetLoop.show });
         // } else {
         //   return;
         // }
-        
+
       });
       this.manageArr.push({ data: dummyArr, show: false });
     });
 
-    
+
 
     // let setAlignment = setTimeout(() => {
     //   let alignCourse = (this.widgetsData[0].widget.length > 0) ? this.dashBoardCheckboxChange(0, 0, this.widgetsData[0].widget[0].show, 'ts') : '';
@@ -416,13 +453,13 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
 
 
- loopWidgetDropDownFrmControl($event,loopWidget,loopWidget_Index){
-    console.log($event,' loopWidget - ',loopWidget,' loopWidget_Index -',loopWidget_Index);
- } 
-  loopWidgetIsAnySelected($event,loopWidget,loopWidget_Index){
-    console.log($event,' loopWidget - ',loopWidget,' loopWidget_Index -',loopWidget_Index);
+  loopWidgetDropDownFrmControl($event, loopWidget, loopWidget_Index) {
+    console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
   }
- // DashboardheaderDropDownChange(widgetsData_Index, e, options) {
+  loopWidgetIsAnySelected($event, loopWidget, loopWidget_Index) {
+    console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
+  }
+  // DashboardheaderDropDownChange(widgetsData_Index, e, options) {
   //   console.log('DashboardheaderDropDownChange', e, ' widgetsData_Index ', widgetsData_Index, ' options ', options);
 
   // }
@@ -600,7 +637,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
   //   }
   // }
 
- 
+
 
   // async getDataSelectionChange(widget: number, loop: number, dataFormat: number, description, templateName) {
   //   if (dataFormat == this.numericZero && loop == this.numericOne) {
@@ -685,10 +722,10 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
 
   widgetIsAnySelected(controlName, e) {
-      console.log('controlName ',controlName, ' e',e);
+    console.log('controlName ', controlName, ' e', e);
   };
 
-  
+
   // lineChartUpdate() {
   //   console.log("lineChartUpdate ", this.lineForm.value);
   //   this.getCourseUtilization();
@@ -816,81 +853,81 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
 
 
-//   async generateWeekTemp(weekDays, propertyData, daysArr,weatherinUnits) {
-// let weekDaysliterals = this._utilities.getShortDaysOfWeek();
+  //   async generateWeekTemp(weekDays, propertyData, daysArr,weatherinUnits) {
+  // let weekDaysliterals = this._utilities.getShortDaysOfWeek();
 
-//     let countryCode = await this._DashboardWidgetsReportService.getCountryName(propertyData.country), units = weatherinUnits;  // Standard :Kelvin		Metric :Celsius		Imperial: Fahrenheit
-//     if (countryCode.status == 'e') {
-//       this.weatherErrorResult = countryCode.message;
-//     } else if (countryCode.status == 's') {
-//       let loc = { city: propertyData.city, country: countryCode.message };
-//       this._dashBoardBusiness.searchWeather(loc, units).then((result) => {
+  //     let countryCode = await this._DashboardWidgetsReportService.getCountryName(propertyData.country), units = weatherinUnits;  // Standard :Kelvin		Metric :Celsius		Imperial: Fahrenheit
+  //     if (countryCode.status == 'e') {
+  //       this.weatherErrorResult = countryCode.message;
+  //     } else if (countryCode.status == 's') {
+  //       let loc = { city: propertyData.city, country: countryCode.message };
+  //       this._dashBoardBusiness.searchWeather(loc, units).then((result) => {
 
-//         if(result!='e'){
-//         // let dataObj = weekDays.map((x, index) => { 
-//         //   let weatherData = result.daily.find(data => { 
-//         //     return x.date.getDate() == new Date(data.dt*1000).getDate();
-//         //    }); 
-//         //   return {
-//         //     temp: weatherData ? Math.round(weatherData.temp.day) : 0, //Implemented on request from NANCY
-//         //     component: weatherData ? 'i'+weatherData.weather[0].icon : '',
-//         //     day: x.day,
-//         //     weatherText:weatherData ? weatherData.weather[0].description:'',
-//         //     date:this._utilities.LocalizeDate(x.date)
-//         //   }; 
-//         // });
+  //         if(result!='e'){
+  //         // let dataObj = weekDays.map((x, index) => { 
+  //         //   let weatherData = result.daily.find(data => { 
+  //         //     return x.date.getDate() == new Date(data.dt*1000).getDate();
+  //         //    }); 
+  //         //   return {
+  //         //     temp: weatherData ? Math.round(weatherData.temp.day) : 0, //Implemented on request from NANCY
+  //         //     component: weatherData ? 'i'+weatherData.weather[0].icon : '',
+  //         //     day: x.day,
+  //         //     weatherText:weatherData ? weatherData.weather[0].description:'',
+  //         //     date:this._utilities.LocalizeDate(x.date)
+  //         //   }; 
+  //         // });
 
-//         let dataObj = result.daily.map((x, index) => { 
-//             var moment = require('moment-timezone');
-//             console.log("Asdsadsad", moment.utc(result.daily[index].dt).toDate(), "index", index, moment(1489199400000).tz('America/New_York'));
-//             if (index == 0) {
-//               let weatherData = result.current;
-//               let day = moment(weatherData.dt * 1000).tz(result.timezone).format('d');
-//               let date = moment(weatherData.dt * 1000).tz(result.timezone).format('DD MMM YYYY');
-//               return {
-//                 temp: weatherData ? Math.round(weatherData.temp) : 0, //Implemented on request from NANCY
-//                 component: weatherData ? 'i' + weatherData.weather[0].icon : '',
-//                 day: weekDaysliterals[day],
-//                 weatherText: weatherData ? weatherData.weather[0].description : '',
-//                 date: date
-//               };
-//             } else {
-//               let weatherData = result.daily[index ];
-//               let day = moment(weatherData.dt * 1000).tz(result.timezone).format('d');
-//               let date = moment(weatherData.dt * 1000).tz(result.timezone).format('DD MMM YYYY');
-//               return {
-//                 temp: weatherData ? Math.round(weatherData.temp.day) : 0, //Implemented on request from NANCY
-//                 component: weatherData ? 'i' + weatherData.weather[0].icon : '',
-//                 day: weekDaysliterals[day],
-//                 weatherText: weatherData ? weatherData.weather[0].description : '',
-//                 date: date
-//               };
-//             }
-//         });
-//         // this.defaultSelectedWeather = this.finddataSelec(dataObj);
-//         this.DB_Weather_data = {
-//           currentLocation: propertyData.city,
-//           currentWeather: dataObj[this.defaultSelectedWeather].weatherText,
-//           currentTemp: dataObj[this.defaultSelectedWeather].temp,
-//           currentDate:dataObj[this.defaultSelectedWeather].date,
-//           daysShort: daysArr,
-//           selected: this.defaultSelectedWeather,
-//           tempObj: dataObj
-//         };
-//         console.log("this.DB_Weather_data",this.DB_Weather_data)
-//       }else{
-//         this.weatherErrorResult = this.captions.cityNotFound;
-//       }
-        
-//         }).catch((res)=>{
-//           if(res.error.cod == '404' || res.error.cod == 404) {
-//           this.weatherErrorResult = this.captions.cityNotFound;
-//           }else  if(res.error.cod == '401' || res.error.cod == 401) {
-//             this.weatherErrorResult = this.captions.invalidApiKey;
-//           }
-//         });
-//       }
-//   }
+  //         let dataObj = result.daily.map((x, index) => { 
+  //             var moment = require('moment-timezone');
+  //             console.log("Asdsadsad", moment.utc(result.daily[index].dt).toDate(), "index", index, moment(1489199400000).tz('America/New_York'));
+  //             if (index == 0) {
+  //               let weatherData = result.current;
+  //               let day = moment(weatherData.dt * 1000).tz(result.timezone).format('d');
+  //               let date = moment(weatherData.dt * 1000).tz(result.timezone).format('DD MMM YYYY');
+  //               return {
+  //                 temp: weatherData ? Math.round(weatherData.temp) : 0, //Implemented on request from NANCY
+  //                 component: weatherData ? 'i' + weatherData.weather[0].icon : '',
+  //                 day: weekDaysliterals[day],
+  //                 weatherText: weatherData ? weatherData.weather[0].description : '',
+  //                 date: date
+  //               };
+  //             } else {
+  //               let weatherData = result.daily[index ];
+  //               let day = moment(weatherData.dt * 1000).tz(result.timezone).format('d');
+  //               let date = moment(weatherData.dt * 1000).tz(result.timezone).format('DD MMM YYYY');
+  //               return {
+  //                 temp: weatherData ? Math.round(weatherData.temp.day) : 0, //Implemented on request from NANCY
+  //                 component: weatherData ? 'i' + weatherData.weather[0].icon : '',
+  //                 day: weekDaysliterals[day],
+  //                 weatherText: weatherData ? weatherData.weather[0].description : '',
+  //                 date: date
+  //               };
+  //             }
+  //         });
+  //         // this.defaultSelectedWeather = this.finddataSelec(dataObj);
+  //         this.DB_Weather_data = {
+  //           currentLocation: propertyData.city,
+  //           currentWeather: dataObj[this.defaultSelectedWeather].weatherText,
+  //           currentTemp: dataObj[this.defaultSelectedWeather].temp,
+  //           currentDate:dataObj[this.defaultSelectedWeather].date,
+  //           daysShort: daysArr,
+  //           selected: this.defaultSelectedWeather,
+  //           tempObj: dataObj
+  //         };
+  //         console.log("this.DB_Weather_data",this.DB_Weather_data)
+  //       }else{
+  //         this.weatherErrorResult = this.captions.cityNotFound;
+  //       }
+
+  //         }).catch((res)=>{
+  //           if(res.error.cod == '404' || res.error.cod == 404) {
+  //           this.weatherErrorResult = this.captions.cityNotFound;
+  //           }else  if(res.error.cod == '401' || res.error.cod == 401) {
+  //             this.weatherErrorResult = this.captions.invalidApiKey;
+  //           }
+  //         });
+  //       }
+  //   }
   // finddataSelec(arr){
   //   let val=0;
   //   let valuenotselected = true;
