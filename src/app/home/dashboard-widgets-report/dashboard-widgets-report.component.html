@@ -160,7 +160,7 @@
 
   <ng-template #Sales_Revenue>
     <ng-container *ngIf="(Sales_SalesRevenue_data && Sales_SalesRevenue_data.length > 0);else noData">
-      <app-chart-bar class="barChart"></app-chart-bar>
+        <app-chart-bar class="barChart" [inputData]="Sales_SalesRevenue_data_input"></app-chart-bar>
     </ng-container>
   </ng-template>
 

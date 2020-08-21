@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, Input } from '@angular/core';
 import ApexCharts from 'apexcharts';
 
 
@@ -10,32 +10,60 @@ import ApexCharts from 'apexcharts';
 })
 export class ChartBarComponent implements OnInit {
   chart:any;
+  input :any;
+  chartData:any;
+  id:string;
+  @Input('inputData')
+  set inputval(val) {
+    if(val){
+      this.id = val.id;
+      this.input = val;
+      if(this.chart){
+        this.chartData = val.chartData;
+        let series = [];
+        this.chartData.forEach(e => {
+          series.push(e.value);
+        })
+        ApexCharts.exec(this.id, "updateOptions", {
+          xaxis: {
+            categories: val.x_categories
+          },
+          series: [
+            {          
+              data: series //actual data
+            },
+          ]
+        });
+      }
+    }
+  }
+
+  options:any;
+  @ViewChild('barChart', { static: false }) barChart;
   constructor() { }
 
   ngOnInit() {
-
+    
   }
-  callBarChart(chartData, x_categories,chartHeight,captions,customStyles) {
-    let chartAlreadyExist = document.getElementById("#barChart");
-    if (chartAlreadyExist) {
-      chartAlreadyExist.style.display = 'none';
-      let createDiv = document.createElement('div');
-      createDiv.setAttribute("id", "barChart");
+  ngAfterViewInit() {
+    if(this.input && this.barChart){
+      this.drawChart(this.input.chartData, 
+        this.input.x_categories,
+        this.input.chartHeight,
+        this.input.captions,
+        this.input.customStyles);
     }
-    let chartTimer = setTimeout(() => {
-      this.drawChart(chartData, x_categories,chartHeight,captions,customStyles)
-      clearTimeout(chartTimer);
-    }, 1);
   }
-
+  
   drawChart(chartData, x_categories,chartHeight,captions,customStyles) {
+    this.chartData = chartData;
     let series = [];
-    chartData.forEach(e => {
+    this.chartData.forEach(e => {
       series.push(e.value);
     })
-    var options = {
+    this.options = {
       chart: {
-        id: 'bar_chart',
+        id: this.id, //'bar_chart',
         height: chartHeight,
         type: "bar",
         stacked: true,
@@ -148,7 +176,7 @@ export class ChartBarComponent implements OnInit {
             "</div>" +
             '<div class="bar_tooltip_content">' +
             captions.NoOfTransactions+' : '+
-            chartData[dataPointIndex].transactions +
+            this.chartData[dataPointIndex].transactions +
             "</div>" +
             "</div>"
           );
@@ -159,9 +187,9 @@ export class ChartBarComponent implements OnInit {
         opacity: 1
       },
     };
-    this.chart = new ApexCharts(document.querySelector("#barChart"), options);
+
+    this.chart = new ApexCharts( this.barChart.nativeElement.childNodes[0], this.options);
     this.chart.render();
-    this.chart.resetSeries();
   }
 
   ngOnDestroy(){

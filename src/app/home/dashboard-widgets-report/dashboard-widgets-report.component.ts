@@ -95,6 +95,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
   Purchase_Order_data:any;
   Open_Tickets_data:any;
   Out_of_StockItems_data:any;
+  Sales_SalesRevenue_data_input :any;
 
   sortOrderPipe: SortOrderPipe;
   constructor(private cdr: ChangeDetectorRef,
@@ -147,8 +148,14 @@ export class DashboardWidgetsReportComponent implements OnInit {
   getDatasFromService(){
        
     this.dashBoardform = this._fb.group({  //change form names
-      dashBoardHeadOutlet: '',
-      SalesHeadOutlet: ''
+      
+      dashBoardHeadOutlet :'',
+      SalesHeadOutlet:'',
+      SalesRevenueOutlet :'',
+      SalesPurchaseOrderOutlet:'',
+      SalesOpenTicketOutlet:'',
+      SalesReturnedItemOutlet:''
+
     });
 
     this.getOutletsCount();
@@ -158,7 +165,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
     this.getAvgUnitPerCustomer();
     this.getVendorsCount();
 
-    this.getTransactionSaleDetail();
+    this.getTransactionSaleDetail(1);
     // this.getRevenueByOultetDetail();
     // this.getReturned_ItemsDetail();
 
@@ -179,7 +186,8 @@ export class DashboardWidgetsReportComponent implements OnInit {
         data.selected = true;
       }
     });
-    // this.getDataSelectionChange(widgetsData_Index, loopWidget_Index, loopWidget_multiSelectData_Index, buttonData.description, templateName);
+    this.getTransactionSaleDetail(loopWidget_multiSelectData_Index);
+    // this.getTransactionSaleDetail(widgetsData_Index, loopWidget_Index, loopWidget_multiSelectData_Index, buttonData.description, templateName);
   }
 
   async widgetView(widgetsData_Index, templateName, path) {
@@ -330,8 +338,16 @@ export class DashboardWidgetsReportComponent implements OnInit {
   }
 
 
-  async getTransactionSaleDetail() {
+  async getTransactionSaleDetail(type) {
+    if(type == 1){
+      this.Sales_SalesRevenue_data = await this._dashBoardBusiness.getTransactionSaleDetail_new(this.startDate, this.dataFormat, this.outletIds);
+    
+    }else{
+
+   
     this.Sales_SalesRevenue_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds);
+    
+    }
     if (this.Sales_SalesRevenue_data.length > 0) {
       let templateHeight = (this.widgetsData[0].widget[0].config.height - 90); //(60 - template title, 30 - chart needs)
       let barData, x_categories, columnWidth;
@@ -339,7 +355,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
       x_categories = this.Sales_SalesRevenue_data.map(x => x.name);
       columnWidth = x_categories.length < 5 ? '20%' : '30%';
       let barChart_customStyles = {
-        fillColor: '#1a634c',
+        fillColor: '#2e67b7',
         backgroundBarColors: ['#a8ada8'],
         backgroundBarOpacity: 0.3,
         columnWidth: columnWidth,
@@ -348,11 +364,20 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
       let barChartCaptions = {
         x_label: this.rowDescription,
-        y_label: this.captions.revenue_dollar,
+        y_label: this.captions.number_of_Transaction,
         NoOfTransactions: this.captions.NoOfTransactions,
         currencySymbol: this.captions.currencySymbol,
       }
-      this._ChartBarComponent.callBarChart(barData, x_categories, templateHeight, barChartCaptions, barChart_customStyles);
+      this.Sales_SalesRevenue_data_input ={
+        id:'bar_chart1',
+        chartData : barData,
+        x_categories: x_categories,
+        chartHeight: templateHeight, 
+        captions: barChartCaptions, 
+        customStyles: barChart_customStyles
+      } 
+      //   this._ChartBarComponent.callBarChart(barData, x_categories, templateHeight, barChartCaptions, barChart_customStyles);
+     
     }
   }
 
@@ -379,7 +404,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
         NoOfTransactions: this.captions.NoOfTransactions,
         currencySymbol: this.captions.currencySymbol,
       }
-      this._ChartBarComponent.callBarChart(barData, x_categories, templateHeight, barChartCaptions, barChart_customStyles);
+      // this._ChartBarComponent.callBarChart(barData, x_categories, templateHeight, barChartCaptions, barChart_customStyles);
     }
   }
   
@@ -406,7 +431,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
         NoOfTransactions: this.captions.NoOfTransactions, // change captions
         currencySymbol: this.captions.currencySymbol, // change captions
       }
-      this._ChartBarComponent.callBarChart(barData, x_categories, templateHeight, barChartCaptions, barChart_customStyles);
+      // this._ChartBarComponent.callBarChart(barData, x_categories, templateHeight, barChartCaptions, barChart_customStyles);
     }
   }
 

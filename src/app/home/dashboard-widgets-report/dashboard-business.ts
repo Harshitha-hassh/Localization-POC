@@ -48,16 +48,67 @@ export class DashBoardBusiness {
                     total : 83};
         return data;
     }
+    
 
+// remove dummy data
+    public async getTransactionSaleDetail_new<T>(startDate: Date, dataFormat: number, outletIds: number[]): Promise<DashBoardInterface.UIRevenue[]> {
+        // var transaction = await this._dashBoardService.getTransactionSaleDetail(startDate, dataFormat, outletIds);
+        var transaction = [
+        {noOfTrasaction: 10,totalAmount: 10, dateOfTransaction: new Date(),id: 1,name:'name 1'},
+        {noOfTrasaction: 30,totalAmount: 30, dateOfTransaction: new Date(),id: 2,name:'name 2'},
+        {noOfTrasaction:50,totalAmount: 50, dateOfTransaction: new Date(),id: 3,name:'name 3'}
+        ]
+        var monthsArray = this._localization.monthsArray;
+        var daysArray = this._localization.daysNormalArray;
+        var weeksArray: DashBoardInterface.UIWeekArray[] = this.getWeekArray();
+        if (dataFormat == this.dayFormat) {
+            transaction.forEach((trans) => {
+                daysArray.forEach((day) => {
+                    if (trans.id == day.id) {
+                        trans.id = day.id,
+                            trans.name = day.short,
+                            trans.noOfTrasaction = trans.noOfTrasaction,
+                            trans.totalAmount = trans.totalAmount
+                    }
+                })
+            })
+        }
+        else if (dataFormat == this.weekFormat) {
+            transaction.forEach((trans) => {
+                weeksArray.forEach((week) => {
+                    if (trans.id == week.id) {
+                        trans.id = week.id,
+                            trans.name = week.name,
+                            trans.noOfTrasaction = trans.noOfTrasaction,
+                            trans.totalAmount = trans.totalAmount
+                    }
+                })
+            })
+        }
+        else if (dataFormat == this.monthFormat) {
+            transaction.forEach((trans) => {
+                monthsArray.forEach((month) => {
+                    if (trans.id == month.id) {
+                        trans.id = month.id,
+                            trans.name = month.short,
+                            trans.noOfTrasaction = trans.noOfTrasaction,
+                            trans.totalAmount = trans.totalAmount
+                    }
+                })
+            })
+        }
+
+        return transaction.map(x => { return { value: x.totalAmount, transactions: x.noOfTrasaction, name: x.name } });
+    }
 
     public async getTransactionSaleDetail<T>(startDate: Date, dataFormat: number, outletIds: number[]): Promise<DashBoardInterface.UIRevenue[]> {
         // var transaction = await this._dashBoardService.getTransactionSaleDetail(startDate, dataFormat, outletIds);
         var transaction = [
-        {noOfTrasaction: 4,totalAmount: 10, dateOfTransaction: new Date(),id: 1,name:'name 1'},
-        {noOfTrasaction: 45,totalAmount: 30, dateOfTransaction: new Date(),id: 2,name:'name 2'},
-        {noOfTrasaction: 2,totalAmount: 50, dateOfTransaction: new Date(),id: 3,name:'name 3'},
-        {noOfTrasaction: 23,totalAmount: 50, dateOfTransaction: new Date(),id: 4,name:'name 4'},
-        {noOfTrasaction: 12,totalAmount: 50, dateOfTransaction: new Date(),id: 5,name:'name 5'},
+        {noOfTrasaction: 10,totalAmount: 10, dateOfTransaction: new Date(),id: 1,name:'name 1'},
+        {noOfTrasaction: 30,totalAmount: 30, dateOfTransaction: new Date(),id: 2,name:'name 2'},
+        {noOfTrasaction:50,totalAmount: 50, dateOfTransaction: new Date(),id: 3,name:'name 3'},
+        {noOfTrasaction: 50,totalAmount: 50, dateOfTransaction: new Date(),id: 4,name:'name 4'},
+        {noOfTrasaction: 50,totalAmount: 50, dateOfTransaction: new Date(),id: 5,name:'name 5'},
         {noOfTrasaction: 50,totalAmount: 50, dateOfTransaction: new Date(),id: 6,name:'name 6'}
         ]
         var monthsArray = this._localization.monthsArray;
