@@ -1,0 +1,44 @@
+<section class="dashboard-table">
+  <ng-container *ngIf="(bodyContentdata && bodyContentdata.length>0)">
+
+ 
+  
+  <div class="table-section" [ngClass]="{'section-without-footer':!footerClassName}">
+    <table>
+      <thead #header *ngIf="isEnableHeader">
+        <tr>
+          <th *ngFor="let headerdata of  headerOption" [ngClass]="headerdata.alignment"
+            [matTooltip]="headerdata.description">
+            {{headerdata.description}}
+          </th>
+        </tr>
+      </thead>
+      <tbody #container class="TBodydataList">
+        <tr *ngFor="let _bodyContentData of  bodyContentdata;let i=index">
+          <td *ngFor="let headerdata of  headerOption" [ngClass]="headerdata.alignment">
+            <span *ngIf="!headerdata.templatecontainer" [matTooltip]="_bodyContentData[ headerdata.key]"
+              [ngClass]="headerdata.customClass">{{_bodyContentData[headerdata.key]}}</span>
+            <i class='icon-right-arrow i_arrow' *ngIf="headerdata.showArrow"
+              (click)='arrowClick([_bodyContentData,i])'>&nbsp;</i>
+          </td>
+        </tr>
+      </tbody>
+    </table>   
+  </div>
+  <div class="footer-section" [ngClass]="footerClassName" *ngIf="footerClassName">
+    <div class="mountain-wrapper">
+      <div class="mountain"></div>
+      <div class="mountain-two"></div>
+      <div class="mountain-three"></div>
+      <div class="mountain-four"></div>
+      <div class="mountain-five"></div>
+      <div class="mountain-six"></div>
+      <div class="mountain-seven"></div>
+    </div>    
+    <div class="mountain-base"></div>
+  </div>
+</ng-container>
+  <div *ngIf="(bodyContentdata && bodyContentdata.length<=0)" class="norecords-alignment">
+      <app-no-data-found [isSearch]='false'></app-no-data-found>
+    </div>
+</section>

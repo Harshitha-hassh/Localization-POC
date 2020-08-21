@@ -1,0 +1,273 @@
+<div class="dashBoard-wrapper" [formGroup]="dashBoardform">
+  <!-- Dashboard Widgets -->
+  <div class="dashBoard-widgets-report-wrapper" *ngFor="let widgetData of dashBoardWidget;let widgetsData_Index=index">
+    <!-- grouping widgets -->
+    <div class="widget_group_wrapper">
+      <!-- group header -->
+      <div class="widget_group_header">
+        <div class="widget_group_title">
+          <i [ngClass]="widgetData.widgetWrapper.icon.show ? widgetData.widgetWrapper.icon.path : ''"></i>
+          <div class="title">{{widgetData.widgetWrapper.title}}</div>
+        </div>
+        <app-multi-select *ngIf="widgetData.widgetWrapper.dropDown.show" [customClass]="'widget_group_header_dropDown'"
+          [dropDownFilterData]="widgetData.widgetWrapper.dropDown.dropDownOptions"
+          [dropDownControlname]="widgetData.widgetWrapper.dropDown.dropDownControlname"
+          [dropDownName]="widgetData.widgetWrapper.dropDown.placeholder"
+          (dropDownFrmControl)="dashBoardDropDownFrmControl($event)" (IsAnySelected)="dashBoardIsAnySelected($event)"
+          [defaultData]="widgetData.widgetWrapper.dropDown.defaultData"
+          [floatLabel]="widgetData.widgetWrapper.dropDown.floatLabel"></app-multi-select>
+      </div>
+      <!-- looping Dashboard widgets container -->
+      <div class="widget_group_wrapper">
+        <div class="widget_group_container_wrapper widget_DashboardGroup_container_wrapper">
+          <div class="widget_group_container widget_DashboardGroup_container">
+            <div class="widget_wrapper DashBoardWidget_wrapper"
+              *ngFor="let loopWidget of widgetData.widget;let loopWidget_Index =index"
+              [ngClass]="[loopWidget.show?'show':'',loopWidget.customClass ? loopWidget.customClass : '']"
+              [style.width]="loopWidget.config.useConfig ? loopWidget.config.width+loopWidget.config.widthUnit:''"
+              [style.height]="loopWidget.config.useConfig ? loopWidget.config.height+loopWidget.config.heightUnit:''">
+              <div [ngClass]="loopWidget.hasInnerComponent? 'widget_inner_looping_wrapper' :'widget_looping_wrapper'">
+                <div class="widget_container" *ngIf="!loopWidget.hasInnerComponent">
+                  <ng-container [ngTemplateOutlet]="this[loopWidget.template.name]"></ng-container>
+                </div>
+
+                <div class="widget_container widget_inner_container" *ngIf="loopWidget.hasInnerComponent">
+                  <div class="widget_innergroup_wrapper">
+                    <div class="widget_innergroup_container_wrapper">
+                      <div class="widget_innergroup_container">
+                        <div class="innerComponent_widget_wrapper"
+                          *ngFor="let innerComponentWidget of loopWidget.innerComponent;let innerComponentWidget_Index =index"
+                          [style.width]="innerComponentWidget.config.useConfig ? innerComponentWidget.config.width+innerComponentWidget.config.widthUnit:''"
+                          [style.height]="innerComponentWidget.config.useConfig ? innerComponentWidget.config.height+innerComponentWidget.config.heightUnit:''"
+                          [ngClass]="[innerComponentWidget.config.customClass ? innerComponentWidget.config.customClass : '']">
+                          <div class="widget_innergroup_looping_wrapper">
+                            <div class="innerComponent_widget_wrapper">
+                              <ng-container [ngTemplateOutlet]="this[innerComponentWidget.template.name]">
+                              </ng-container>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Manage widgets -->
+  <div class="dashBoard-widgets-report-wrapper" *ngFor="let widgetData of widgetsData;let widgetsData_Index=index">
+    <!-- grouping widgets -->
+    <div class="widget_group_wrapper">
+      <!-- group header -->
+      <div class="widget_group_header">
+        <div class="widget_group_title">
+          <i [ngClass]="widgetData.widgetWrapper.icon.show ? widgetData.widgetWrapper.icon.path : ''"></i>
+          <div class="title">{{widgetData.widgetWrapper.title}}</div>
+        </div>
+        <app-multi-select *ngIf="widgetData.widgetWrapper.dropDown.show" [customClass]="'widget_group_header_dropDown'"
+          [dropDownFilterData]="widgetData.widgetWrapper.dropDown.dropDownOptions"
+          [dropDownControlname]="widgetData.widgetWrapper.dropDown.dropDownControlname"
+          [dropDownName]="widgetData.widgetWrapper.dropDown.placeholder"
+          (dropDownFrmControl)="headerDropDownChange(widgetData.widgetWrapper.dropDown.dropDownControlname,$event)"
+          (IsAnySelected)="widgetIsAnySelected(widgetData.widgetWrapper.dropDown.dropDownControlname,$event)"
+          [defaultData]="widgetData.widgetWrapper.dropDown.defaultData"
+          [floatLabel]="widgetData.widgetWrapper.dropDown.floatLabel"></app-multi-select>
+        <div class="widget_group_manage" *ngIf="widgetData.widgetWrapper.manage.show"
+          (click)="manage(widgetsData_Index)">
+          <i [ngClass]="widgetData.widgetWrapper.icon.show ? widgetData.widgetWrapper.icon.path : ''"></i>
+          <div class="title">{{widgetData.widgetWrapper.manage.title}}</div>
+        </div>
+      </div>
+      <!-- looping widgets container -->
+      <div class="widget_group_wrapper">
+        <div class="widget_group_container_wrapper">
+          <div class="widget_group_container">
+            <div class="widget_wrapper" *ngFor="let loopWidget of widgetData.widget;let loopWidget_Index =index"
+              [ngClass]="[loopWidget.show?'show':'',loopWidget.customClass?loopWidget.customClass:'',loopWidget.template.name? loopWidget.template.name:'']"
+              [style.width]="loopWidget.config.useConfig ? loopWidget.config.width+loopWidget.config.widthUnit:''"
+              [style.minWidth]="loopWidget.config.minWidth ? loopWidget.config.minWidth+loopWidget.config.minWidthUnit:''"
+              [style.height]="loopWidget.config.useConfig ? loopWidget.config.height+loopWidget.config.heightUnit:''">
+              <div class="widget_looping_wrapper">
+                <div class="widget_header" *ngIf="loopWidget.title.show">
+                  <div class="widget_header_title">
+                    <i class="widget_header_title_icon"
+                      [ngClass]="[loopWidget.title.icon.show ? loopWidget.title.icon.path : '',loopWidget.title.icon.show ?'show':'']"></i>
+                    <div class="title">{{loopWidget.title.title}}</div>
+                  </div>
+                  <app-multi-select *ngIf="loopWidget.title.dropDown.show"
+                    [floatLabel]="loopWidget.title.dropDown.floatLabel"
+                    [dropDownName]="loopWidget.title.dropDown.placeholder" [customClass]="'widget_dropDown'"
+                    [defaultData]="loopWidget.title.dropDown.defaultData"
+                    [dropDownFilterData]="loopWidget.title.dropDown.dropDownOptions"
+                    [dropDownControlname]="loopWidget.title.dropDown.dropDownControlname"
+                    (dropDownFrmControl)="loopWidgetDropDownFrmControl($event,loopWidget,loopWidget_Index)"
+                    (IsAnySelected)="loopWidgetIsAnySelected($event,loopWidget,loopWidget_Index)"></app-multi-select>
+                  <div class="widget_header_inputs">
+                    <div class="multi-select" *ngIf="loopWidget.title.multiSelect.show">
+                      <button mat-button
+                        *ngFor="let button of loopWidget.title.multiSelect.multiSelectData;let loopWidget_multiSelectData_Index =index"
+                        class="multiSelectButton"
+                        [ngClass]="[ button.selected ? 'button--primary' : 'button--singleselect']"
+                        (click)="buttonSelectionChange(widgetsData_Index,loopWidget_Index,loopWidget_multiSelectData_Index,button,loopWidget.template.name)">
+                        {{button.name}}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="widget_container others_widget_container">
+                  <ng-container [ngTemplateOutlet]="this[loopWidget.template.name]"></ng-container>
+                </div>
+                <div class="widget_footer" *ngIf="loopWidget.footer.show">
+                  <button class="widget_footer__button"
+                    (click)="widgetView(widgetsData_Index,loopWidget.template.name,loopWidget.footer.routingPath)">
+                    {{loopWidget.footer.title}}
+                    <i class="widget_footer_button_icon"
+                      [ngClass]="loopWidget.footer.showArrow ? 'icon-uparrow' : ''"></i>
+                  </button>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="manage_wrapper" [ngClass]="manageArr[widgetsData_Index].show ? 'show':'hide'">
+          <label class="manage-list-title">{{widgetData.widgetWrapper.manage.innerTitle}}</label>
+          <div class="manage-list"
+            *ngFor="let loopManage of manageArr[widgetsData_Index].data;let loopManage_Index =index">
+            <p class="manage-list-text">{{loopManage.templateName}}</p>
+            <div class="dashBoardCheckbox">
+              <label class="dashBoardCheckboxContainer">
+                <input type="checkbox" class="dashBoardCheckboxInput" [checked]="loopManage.checked"
+                  (change)="dashBoardCheckboxChange(widgetsData_Index,loopManage_Index,$event,'event')">
+                <span class="checkbox-material"><span class="check"></span></span>
+              </label>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <ng-template #Sales_Revenue>
+    <ng-container *ngIf="(Sales_SalesRevenue_data && Sales_SalesRevenue_data.length > 0);else noData">
+      <app-chart-bar class="barChart" [inputData]="Sales_SalesRevenue_data_input"></app-chart-bar>
+    </ng-container>
+  </ng-template>
+
+
+  <ng-template #Out_of_StockItems>
+    <ng-container *ngIf="Out_of_StockItems_data;else noData">
+      <app-dashboard-table class="h-100" [isEnableHeader]="Out_of_StockItems_data.headerEnable"
+        [headerOption]="Out_of_StockItems_data.headerData" [bodyContentdata]="Out_of_StockItems_data.data">
+      </app-dashboard-table>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #Revenue_By_Outlet>
+    <ng-container *ngIf="(Revenue_By_Outlet_data && Revenue_By_Outlet_data.length > 0);else noData">
+      <app-chart-bar class="barChart" [inputData]="Revenue_By_Outlet_data_input"></app-chart-bar>
+    </ng-container>
+  </ng-template>
+  <ng-template #Sales_Top5Items>
+    <ng-container *ngIf="Sales_Top5Items_data;else noData">
+      <app-dashboard-table class="h-100" [isEnableHeader]="Sales_Top5Items_data.headerEnable"
+        [headerOption]="Sales_Top5Items_data.headerData" [bodyContentdata]="Sales_Top5Items_data.data"
+        [footerClassName]="Sales_Top5Items_data.footerClassName"></app-dashboard-table>
+    </ng-container>
+  </ng-template>
+  <ng-template #Sales_Top5Categories>
+    <ng-container *ngIf="Sales_Top5Categories_data;else noData">
+      <app-dashboard-table class="h-100" [isEnableHeader]="Sales_Top5Categories_data.headerEnable"
+        [headerOption]="Sales_Top5Categories_data.headerData" [bodyContentdata]="Sales_Top5Categories_data.data"
+        [footerClassName]="Sales_Top5Categories_data.footerClassName"></app-dashboard-table>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #Purchase_Order>
+
+    <ng-container *ngIf="Purchase_Order_data;else noData">
+      <app-dashboard-table class="h-100" [isEnableHeader]="Purchase_Order_data.headerEnable"
+        [headerOption]="Purchase_Order_data.headerData" [bodyContentdata]="Purchase_Order_data.data">
+      </app-dashboard-table>
+    </ng-container>
+  </ng-template>
+  <ng-template #Open_Tickets>
+
+    <ng-container *ngIf="Open_Tickets_data;else noData">
+      <app-dashboard-table class="h-100" [isEnableHeader]="Open_Tickets_data.headerEnable"
+        [headerOption]="Open_Tickets_data.headerData" [bodyContentdata]="Open_Tickets_data.data">
+      </app-dashboard-table>
+    </ng-container>
+  </ng-template>
+  <ng-template #Returned_Items>
+    <ng-container *ngIf="(Returned_Items_data && Returned_Items_data.length > 0);else noData">
+      <app-chart-bar class="barChart" [inputData]="Returned_Items_data_input"></app-chart-bar>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #DB_OultetsChart>
+    <ng-container *ngIf="DB_OultetsChart_data;else noData">
+      <app-chart-donut class="chart-donut" [inputData]="DB_OultetsChart_data.data"></app-chart-donut>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #DB_TotalSalesRevenue>
+    <ng-container *ngIf="DB_TotalSalesRevenue_data;else noData">
+      <div class="DB-inner-Block-wrapper">
+        <p class="DB-inner-Block-Count">{{DB_TotalSalesRevenue_data.count}}</p>
+        <p class="DB-inner-Block-desc" [matTooltip]="DB_TotalSalesRevenue_data.description">
+          {{DB_TotalSalesRevenue_data.description}}</p>
+      </div>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #DB_NumberOfTransaction>
+    <ng-container *ngIf="DB_NumberOfTransaction_data;else noData">
+      <div class="DB-inner-Block-wrapper">
+        <p class="DB-inner-Block-Count">{{DB_NumberOfTransaction_data.count}}</p>
+        <p class="DB-inner-Block-desc" [matTooltip]="DB_NumberOfTransaction_data.description">
+          {{DB_NumberOfTransaction_data.description}}</p>
+      </div>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #DB_AverageTransaction>
+    <ng-container *ngIf="DB_AverageTransaction_data;else noData">
+      <div class="DB-inner-Block-wrapper">
+        <p class="DB-inner-Block-Count">{{DB_AverageTransaction_data.count}}</p>
+        <p class="DB-inner-Block-desc" [matTooltip]="DB_AverageTransaction_data.description">
+          {{DB_AverageTransaction_data.description}}</p>
+      </div>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #DB_AvgUnitPerCustomer>
+    <ng-container *ngIf="DB_AvgUnitPerCustomer_data;else noData">
+      <div class="DB-inner-Block-wrapper">
+        <p class="DB-inner-Block-Count">{{DB_AvgUnitPerCustomer_data.count}}</p>
+        <p class="DB-inner-Block-desc" [matTooltip]="DB_AvgUnitPerCustomer_data.description">
+          {{DB_AvgUnitPerCustomer_data.description}}</p>
+      </div>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #DB_VendorsChart>
+    <ng-container *ngIf="DB_VendorsChart_data;else noData">
+      <app-chart-donut class="chart-donut" [inputData]="DB_VendorsChart_data.data"></app-chart-donut>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #noData>
+    <app-no-data-found [isSearch]='false'></app-no-data-found>
+  </ng-template>
+
+</div>

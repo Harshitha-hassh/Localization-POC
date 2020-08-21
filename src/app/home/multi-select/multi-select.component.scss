@@ -1,0 +1,29 @@
+.multiple-select-dropdown{
+    .reports-multiselect.mat-checkbox {
+    .mat-checkbox-inner-container {
+      height: 20px;
+      width: 20px;
+    }
+    .mat-checkbox-layout{
+      width: 100%;
+      display: block;
+      margin-bottom: 0;
+      .mat-checkbox-inner-container{
+        .mat-checkbox-frame{
+          border-color: rgba(0,0,0,.54) !important;
+          border-width: 2px !important;
+          border-radius: 2px !important;
+        }
+      }
+    }
+  }
+
+  .multiselect.mat-option.mat-active{
+    background: none;
+  }
+  .additional-selection-Count {
+    opacity: 0.75;
+    font-size: 0.75em;
+    }
+}
+

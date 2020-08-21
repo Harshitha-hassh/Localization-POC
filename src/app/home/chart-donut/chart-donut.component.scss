@@ -1,0 +1,79 @@
+@import  '../../../assets/sass/abstracts/variables';
+
+
+
+
+.chart-container{
+    height: 100%;
+    width:100%;  
+  .chart-title{
+    padding: 1rem;  
+    color: #000000;
+    font-size: 26px;    
+    font-family: $golf-lato-bold;    
+    height: 60px;   
+    width: 100%; 
+  }
+  .chart-inner-wrapper{
+    display: flex;
+    height: calc(100% - 60px);
+    width:100%;
+    justify-content: space-between;
+    .chart-inner-container{
+      width:60%;
+      padding: 0.5rem;
+      height:100%;
+      display: flex;
+      align-items: center;     
+      justify-content: center;     
+    }
+    .text-container{        
+      align-self: center;
+      width:40%;
+      text-align: left;  
+      padding: 0.5rem; 
+      .text{
+        padding: 4px 0px 0px 0px;
+        font-size: 13px;
+        color: $golf-intervalBlock-table-border;
+      }  
+      .first-value-container {
+        padding-bottom: 1rem;
+        .value1{
+          font-size: 50px;
+          color:#f5b507;
+          font-family: $golf-lato-bold;
+          cursor: pointer;
+        }         
+      }
+      .second-value-container{          
+        .value2{
+          cursor: pointer;
+            font-size: 50px;
+            color:#7d7b77;
+            font-family: $golf-lato-bold;
+          }
+        }
+
+
+     
+    }
+  }
+}
+
+
+.bar-chart-container{
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 1100px){
+  .chart-inner-container{
+    width: 100%;
+    min-width: 215px;
+  }
+  
+  .text-container{
+    width:35%;
+  }
+
+}
