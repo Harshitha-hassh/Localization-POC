@@ -72,13 +72,6 @@ export class DashboardWidgetsReportComponent implements OnInit {
   @ViewChild('Open_Tickets', { static: false }) Open_Tickets;
   @ViewChild('Returned_Items', { static: false }) Returned_Items;
 
-  // @ViewChild('CourseDetails_Utilization', { static: false }) CourseDetails_Utilization;
-  // @ViewChild('CourseDetails_TeeTimes', { static: false }) CourseDetails_TeeTimes;
-  // @ViewChild('CourseDetails_Upcoming_Tournaments', { static: false }) CourseDetails_Upcoming_Tournaments;
-  // @ViewChild('CourseDetails_Waitllist', { static: false }) CourseDetails_Waitllist;
-  // @ViewChild('CourseDetails_Lessons', { static: false }) CourseDetails_Lessons;
-  // @ViewChild('Sales_SalesRevenue', { static: false }) Sales_SalesRevenue;
-
 
   @ViewChild('DB_OultetsChart', { static: false }) DB_OultetsChart;
   @ViewChild('DB_TotalSalesRevenue', { static: false }) DB_TotalSalesRevenue;
@@ -163,8 +156,8 @@ export class DashboardWidgetsReportComponent implements OnInit {
     this.getVendorsCount();
 
     this.getTransactionSaleDetail();
-    this.getRevenueByOultetDetail();
-    this.getReturned_ItemsDetail();
+    // this.getRevenueByOultetDetail();
+    // this.getReturned_ItemsDetail();
 
     this.getTop5ItemSaleDetail('day_0');
     this.getCategorySaleDetail('day_1');
@@ -258,6 +251,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
     let outletsCount: DonutCount = await this._dashBoardBusiness.getOutletsCount();
     this.DB_OultetsChart_data = {
       data: {
+        id:'chart1',
         series: [outletsCount.inActive, outletsCount.active],
         captions: {
           courses: this.captions.Outlets,
@@ -278,6 +272,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
     let vendorsCount: DonutCount = await this._dashBoardBusiness.getVendorsCount();
     this.DB_VendorsChart_data = {
       data: {
+        id:'chart2',
         series: [vendorsCount.inActive, vendorsCount.active],
         captions: {
           courses: this.captions.vendors,
@@ -400,9 +395,9 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
       let barChartCaptions = {
         x_label: this.rowDescription,
-        y_label: this.captions.revenue_dollar,
-        NoOfTransactions: this.captions.NoOfTransactions,
-        currencySymbol: this.captions.currencySymbol,
+        y_label: this.captions.revenue_dollar, // change captions
+        NoOfTransactions: this.captions.NoOfTransactions, // change captions
+        currencySymbol: this.captions.currencySymbol, // change captions
       }
       this._ChartBarComponent.callBarChart(barData, x_categories, templateHeight, barChartCaptions, barChart_customStyles);
     }

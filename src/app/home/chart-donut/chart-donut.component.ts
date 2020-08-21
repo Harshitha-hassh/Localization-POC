@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import ApexCharts from 'apexcharts';
 
 @Component({
@@ -9,8 +9,10 @@ import ApexCharts from 'apexcharts';
 })
 export class ChartDonutComponent implements OnInit {
   chart:any;
+  options:any;
   @Input() inputData;
-  constructor() { }
+  @ViewChild('donut_chart', { static: false }) donut_chart;
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit() { 
     // console.log("inputData ",this.inputData);
@@ -18,7 +20,7 @@ export class ChartDonutComponent implements OnInit {
   }
     
   drawChart() {
-    var options = {
+    this.options = {
       chart: {
         type: 'donut',
         height: this.inputData.Chartheight,
@@ -78,10 +80,14 @@ export class ChartDonutComponent implements OnInit {
         }
       }
     }
-    this.chart = new ApexCharts(document.querySelector("#chart"),options);
-    this.chart.render();
-    // this.chart.resetSeries();
+  }
 
+  ngAfterViewInit() {
+    if (this.donut_chart) {
+      this.chart = new ApexCharts(this.donut_chart.nativeElement,this.options);
+      this.chart.render();
+      this.chart.resetSeries();
+    }
   }
   ngOnDestroy(){
     if(this.chart)

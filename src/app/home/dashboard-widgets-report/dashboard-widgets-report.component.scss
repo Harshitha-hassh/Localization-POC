@@ -15,7 +15,7 @@ $widget_group_container_wrapper_min_height:100px;
 $widget-title-size: 16px;
 $widget-title-color:$golf-dark-text-color;
 
-$manage-color:$golf-base-color;
+$manage-color:$ag_base-color;
 $manage-size:24px;
 
 $widget-box-shadow:$box-shadow-black2;
@@ -175,7 +175,7 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
             display: inline-block;
             width: $dashboard-checkbox-size;
             height: $dashboard-checkbox-size;
-            border: 1px solid $golf-base-color;
+            border: 1px solid $ag_base-color;
             border-radius: 2px;
             overflow: hidden;
             z-index: 1;
@@ -198,7 +198,7 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
         }
         .dashBoardCheckboxInput:checked + .checkbox-material .check {
           border: none;
-          color: $golf-base-color;
+          color: $ag_base-color;
           &:before {
             margin-top: -6.5px;
             margin-left: 5.45px;
