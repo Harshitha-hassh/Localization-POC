@@ -96,6 +96,8 @@ export class DashboardWidgetsReportComponent implements OnInit {
   Open_Tickets_data:any;
   Out_of_StockItems_data:any;
   Sales_SalesRevenue_data_input :any;
+  Revenue_By_Outlet_data_input:any;
+  Returned_Items_data_input:any;
 
   sortOrderPipe: SortOrderPipe;
   constructor(private cdr: ChangeDetectorRef,
@@ -166,8 +168,8 @@ export class DashboardWidgetsReportComponent implements OnInit {
     this.getVendorsCount();
 
     this.getTransactionSaleDetail(1);
-    // this.getRevenueByOultetDetail();
-    // this.getReturned_ItemsDetail();
+    this.getRevenueByOultetDetail(1);
+    this.getReturned_ItemsDetail(1);
 
     this.getTop5ItemSaleDetail('day_0');
     this.getCategorySaleDetail('day_1');
@@ -186,7 +188,16 @@ export class DashboardWidgetsReportComponent implements OnInit {
         data.selected = true;
       }
     });
-    this.getTransactionSaleDetail(loopWidget_multiSelectData_Index);
+    if(templateName == 'Sales_Revenue'){
+      this.getTransactionSaleDetail(loopWidget_multiSelectData_Index);
+    }else  if(templateName == 'Revenue_By_Outlet'){
+      this.getRevenueByOultetDetail(loopWidget_multiSelectData_Index);
+    }else  if(templateName == 'Returned_Items'){
+      this.getReturned_ItemsDetail(loopWidget_multiSelectData_Index);
+    }
+   
+   
+    
     // this.getTransactionSaleDetail(widgetsData_Index, loopWidget_Index, loopWidget_multiSelectData_Index, buttonData.description, templateName);
   }
 
@@ -341,12 +352,8 @@ export class DashboardWidgetsReportComponent implements OnInit {
   async getTransactionSaleDetail(type) {
     if(type == 1){
       this.Sales_SalesRevenue_data = await this._dashBoardBusiness.getTransactionSaleDetail_new(this.startDate, this.dataFormat, this.outletIds);
-    
     }else{
-
-   
-    this.Sales_SalesRevenue_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds);
-    
+      this.Sales_SalesRevenue_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds); 
     }
     if (this.Sales_SalesRevenue_data.length > 0) {
       let templateHeight = (this.widgetsData[0].widget[0].config.height - 90); //(60 - template title, 30 - chart needs)
@@ -382,8 +389,13 @@ export class DashboardWidgetsReportComponent implements OnInit {
   }
 
 
-  async getRevenueByOultetDetail() {
-    this.Revenue_By_Outlet_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds);
+  async getRevenueByOultetDetail(type) {
+    if(type == 1){
+      this.Revenue_By_Outlet_data = await this._dashBoardBusiness.getTransactionSaleDetail_new(this.startDate, this.dataFormat, this.outletIds);
+    }else{
+    this.Revenue_By_Outlet_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds); 
+    }
+    // this.Revenue_By_Outlet_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds);
     if (this.Revenue_By_Outlet_data.length > 0) {
       let templateHeight = (this.widgetsData[0].widget[0].config.height - 90); //(60 - template title, 30 - chart needs)
       let barData, x_categories, columnWidth;
@@ -391,7 +403,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
       x_categories = this.Revenue_By_Outlet_data.map(x => x.name);
       columnWidth = x_categories.length < 5 ? '20%' : '30%';
       let barChart_customStyles = {
-        fillColor: '#1a634c',
+        fillColor: '#2e67b7',
         backgroundBarColors: ['#a8ada8'],
         backgroundBarOpacity: 0.3,
         columnWidth: columnWidth,
@@ -404,13 +416,28 @@ export class DashboardWidgetsReportComponent implements OnInit {
         NoOfTransactions: this.captions.NoOfTransactions,
         currencySymbol: this.captions.currencySymbol,
       }
+
+
+      this.Revenue_By_Outlet_data_input ={
+        id:'bar_chart2',
+        chartData : barData,
+        x_categories: x_categories,
+        chartHeight: templateHeight, 
+        captions: barChartCaptions, 
+        customStyles: barChart_customStyles
+      } 
       // this._ChartBarComponent.callBarChart(barData, x_categories, templateHeight, barChartCaptions, barChart_customStyles);
     }
   }
   
 
-  async getReturned_ItemsDetail() {
-    this.Returned_Items_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds);
+  async getReturned_ItemsDetail(type) {
+    if(type == 1){
+      this.Returned_Items_data = await this._dashBoardBusiness.getTransactionSaleDetail_new(this.startDate, this.dataFormat, this.outletIds);
+    }else{
+    this.Returned_Items_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds); 
+    }
+    // this.Returned_Items_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds);
     if (this.Returned_Items_data.length > 0) {
       let templateHeight = (this.widgetsData[0].widget[0].config.height - 90); //(60 - template title, 30 - chart needs)
       let barData, x_categories, columnWidth;
@@ -418,7 +445,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
       x_categories = this.Returned_Items_data.map(x => x.name);
       columnWidth = x_categories.length < 5 ? '20%' : '30%';
       let barChart_customStyles = {
-        fillColor: '#1a634c',
+        fillColor: '#2e67b7',
         backgroundBarColors: ['#a8ada8'],
         backgroundBarOpacity: 0.3,
         columnWidth: columnWidth,
@@ -431,8 +458,17 @@ export class DashboardWidgetsReportComponent implements OnInit {
         NoOfTransactions: this.captions.NoOfTransactions, // change captions
         currencySymbol: this.captions.currencySymbol, // change captions
       }
-      // this._ChartBarComponent.callBarChart(barData, x_categories, templateHeight, barChartCaptions, barChart_customStyles);
-    }
+
+
+      this.Returned_Items_data_input ={
+        id:'bar_chart3',
+        chartData : barData,
+        x_categories: x_categories,
+        chartHeight: templateHeight, 
+        captions: barChartCaptions, 
+        customStyles: barChart_customStyles
+      } 
+  }
   }
 
 
