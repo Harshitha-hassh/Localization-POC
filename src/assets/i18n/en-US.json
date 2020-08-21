@@ -2225,54 +2225,22 @@
     "revenue_dollar": "Revenue ($)",
 		"NoOfTransactions": "# of Transactions",
     "currencySymbol": "$",
-    
-
-   
+    "orderNumber":"Order Number",
+    "status":"Status",
+    "ticketNumber":"Ticket Number",
+    "transactionAmount" :"Transaction Amount",
+    "action": "Action",
+    "item":"Item",
+    "items":"Items",
+    "outofStockOn":"Out of Stock On",
+    "returnItems":" Return Items",  
+    "noOfItems": "Number of Items",
 		"courseDetails": "Course Details",
 		"upComingTournaments": "Upcoming Tournaments",
-	
-		"RepeatPlayers": "Repeat Players",
-		"NewPlayers": "New Players",
-		"CancelledTeeTimes": "Cancelled Tee Times",
-		"AvailableTeeTimes": "Available Tee Times",
-		"Shop": "Shop",
-	
-		"Revenue": "Revenue",
-		"Golf": "Golf",
-		"Weather": "Weather",
-		"course": "Course",
-		"courses": "Courses",
-		"courseStatus": "Course Status",
-		"activeCourses": "Active Course(s)",
-		"inactiveCourses": "Inactive Course(s)",
-		"go": "Go",
-		"booking": "Booking",
 		"date": "Date",
 		"booked": "Booked",
 		"avail": "Avail",
-		"startTime": "Start Time",
-		"endTime": "End Time",
-		"allCourses": "All Courses",
-	
-		"Waitlist": "Wait List",
-		"Utilization": "Utilization",
-		"lessons": "Lessons",
-	
 		"AllOutlets": "All Outlets",
-		"TeeTimes": "Tee Times",
-		
-		"eventName": "Event Name",
-		"phoneNumber": "Phone Number",
-		"player": "Player",
-		"players": "Players",
-		
-		"CourseUserAccess": "You don't have access for this course",
-		"Today": "Today",
-		"instructor": "Instructor",
-		"time": "Time",
-		"cityNotFound": "City Not Found",
-		"countryNotFound": "Country Not Found",
-		"invalidApiKey": "Invalid API key"
-
+		"TeeTimes": "Tee Times"
 	}
 }

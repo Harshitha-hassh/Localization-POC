@@ -22,3 +22,36 @@
 .apexcharts-xcrosshairs {
   display: none;
 }
+
+
+.tool_tip {
+  height: 20px;
+  width: 40px;
+  background: $line_tool_tip_bg;
+  position: relative;
+  border: 2px solid $golf-base-text-color;
+}
+
+.tooltip_container {
+  height: 70px;
+  width: 100px;
+  border: 1px solid $line_tooltip_container_border;
+}
+
+.tooltip_header {
+  background: $line_tooltip_header_bg;      
+  text-align: center;
+  font-size: 13px;
+  padding: 0.4rem;
+  font-weight: bold;
+}
+
+.tooltip_content_booked,
+.tooltip_content_available {
+  font-size: 11px;
+  color: $line_tooltip_content_label;
+  padding: 5px;
+}   
+.item_barchart_div{
+  padding: 0.4rem;
+}

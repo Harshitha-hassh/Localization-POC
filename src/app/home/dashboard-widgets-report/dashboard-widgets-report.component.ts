@@ -1,19 +1,14 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ChangeDetectorRef, Output, Input, EventEmitter, ComponentRef, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { DashboardWidgetsReportService } from './dashboard-widgets-report.service';
 import { DashBoardBusiness } from './dashboard-business';
-import { Localization } from 'src/app/core/localization/Localization';
-import { OutletOption, DonutCount } from './dashboard.modal';
+import {  DonutCount } from './dashboard.modal';
 import { SubPropertyDataService } from 'src/app/retail/retail-code-setup/retail-outlets/subproperty-data.service';
-import * as moment from 'moment';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { MatDialog } from '@angular/material';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { SortOrderPipe } from 'src/app/common/shared/shared/pipes/sort-order.pipe';
 import { Utilities } from 'src/app/core/utilities';
 import { ChartBarComponent } from '../chart-bar/chart-bar.component';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-dashboard-widgets-report',
   templateUrl: './dashboard-widgets-report.component.html',
@@ -38,30 +33,20 @@ export class DashboardWidgetsReportComponent implements OnInit {
   endTime: number = 1440;
   teeTimeCourseId: number;
   outletIds: number[];
-
-  //skeletonData: TeeSheetSkeletonData[];
-  courseUtilizationData: any[];
-  courseDate: Date;
-  // componentDetails: ComponentDetails;
   userId: any;
-  DefaultCourseId: any;
   itemStartDate: Date;
   itemEndDate: Date;
   outletStartDate: Date;
   outletEndDate: Date;
   categoryStartDate: Date;
   categoryEndDate: Date;
+
   numericZero: number = 0;
   numericOne: number = 1;
   numericTwo: number = 2;
   numericThree: number = 3;
   dataFormat: number = 1;
   rowDescription: string;
-  // userConfiguration: Promise<UserConfiguration>;
-  isGridDisable: boolean = false;
-  
-  
-  lineDrew: boolean = false;
 
   @ViewChild('Sales_Revenue', { static: false }) Sales_Revenue;
   @ViewChild('Out_of_StockItems', { static: false }) Out_of_StockItems;
@@ -98,19 +83,14 @@ export class DashboardWidgetsReportComponent implements OnInit {
   Sales_SalesRevenue_data_input :any;
   Revenue_By_Outlet_data_input:any;
   Returned_Items_data_input:any;
-
   sortOrderPipe: SortOrderPipe;
+
   constructor(private cdr: ChangeDetectorRef,
     public _DashboardWidgetsReportService: DashboardWidgetsReportService,
     private _dashBoardBusiness: DashBoardBusiness,
-    private _localization: Localization,
-    private _router: Router,
     private _fb: FormBuilder,
-    private dialog: MatDialog,
     private _utilities :Utilities,
-    private _ChartBarComponent: ChartBarComponent,
     private _propertyInformation: PropertyInformation) {
-    // this.isSafari = _utilities.findUserAgent();
     this.sortOrderPipe = new SortOrderPipe();
   }
 
@@ -119,7 +99,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
     this.propertyDateTime = this._propertyInformation.CurrentDate;
    
     this.propertyDate = this._utilities.resetTime(this.propertyDateTime);
-    this.courseDate = this.propertyDate;
+   
     this.startDate = this.propertyDate;
     this.endDate = this.propertyDate;
     this.itemStartDate = this.startDate;
@@ -149,15 +129,13 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
   getDatasFromService(){
        
-    this.dashBoardform = this._fb.group({  //change form names
-      
+    this.dashBoardform = this._fb.group({  
       dashBoardHeadOutlet :'',
       SalesHeadOutlet:'',
       SalesRevenueOutlet :'',
       SalesPurchaseOrderOutlet:'',
       SalesOpenTicketOutlet:'',
       SalesReturnedItemOutlet:''
-
     });
 
     this.getOutletsCount();
@@ -167,9 +145,9 @@ export class DashboardWidgetsReportComponent implements OnInit {
     this.getAvgUnitPerCustomer();
     this.getVendorsCount();
 
-    this.getTransactionSaleDetail(1);
-    this.getRevenueByOultetDetail(1);
-    this.getReturned_ItemsDetail(1);
+    this.getTransactionSaleDetail();
+    this.getRevenueByOutletDetail();
+    this.getReturned_ItemsDetail();
 
     this.getTop5ItemSaleDetail('day_0');
     this.getCategorySaleDetail('day_1');
@@ -188,28 +166,12 @@ export class DashboardWidgetsReportComponent implements OnInit {
         data.selected = true;
       }
     });
-    if(templateName == 'Sales_Revenue'){
-      this.getTransactionSaleDetail(loopWidget_multiSelectData_Index);
-    }else  if(templateName == 'Revenue_By_Outlet'){
-      this.getRevenueByOultetDetail(loopWidget_multiSelectData_Index);
-    }else  if(templateName == 'Returned_Items'){
-      this.getReturned_ItemsDetail(loopWidget_multiSelectData_Index);
-    }
-   
-   
     
-    // this.getTransactionSaleDetail(widgetsData_Index, loopWidget_Index, loopWidget_multiSelectData_Index, buttonData.description, templateName);
-  }
+    this.getDataSelectionChange(widgetsData_Index, loopWidget_Index, loopWidget_multiSelectData_Index, buttonData.description, templateName);
+ }
 
   async widgetView(widgetsData_Index, templateName, path) {
     console.log('widgetsData_Index ', widgetsData_Index, '  widgetView ', templateName);
-    // let result = await this._userAccessBusiness.getUserAccess(UserAccessBreakPoints.TeeSheet, true);
-    // if (templateName == "CourseDetails_TeeTimes") {
-    //   // if(result.isAllow || result.isViewOnly)
-    //   this._router.navigateByUrl(`/tee-time/teesheet/teeSheet?course=${this.teeTimeCourseId}`);
-    // } else {
-    //   this._router.navigate([path]);
-    // }
   }
 
   manage(widgetsData_Index) {
@@ -232,8 +194,22 @@ export class DashboardWidgetsReportComponent implements OnInit {
     console.log('dashBoardDropDownFrmControl ', e);
   }
   dashBoardIsAnySelected(e) {
-
     console.log('dashBoardIsAnySelected ', e);
+  }
+
+  widgetIsAnySelected(controlName, e) {
+    console.log('controlName ', controlName, ' e', e);
+
+    this.widgetsData[0].widget[6].title.dropDown.dropDownControlname == "SalesOpenTicketOutlet";
+    this.widgetsData[0].widget[6].title.dropDown.dropDownOptions = e;
+
+  };
+  loopWidgetDropDownFrmControl($event, loopWidget, loopWidget_Index) {
+    console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
+  }
+  loopWidgetIsAnySelected($event, loopWidget, loopWidget_Index) {
+    
+    console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
   }
 
   dashboardData() {
@@ -258,19 +234,112 @@ export class DashboardWidgetsReportComponent implements OnInit {
       });
       this.manageArr.push({ data: dummyArr, show: false });
     });
+    setTimeout(() => {
+      this.callDynamicWidthAlign(0); //PMS -sales widget only-1
+    }, 1);
+   
   }
 
-  
-  loopWidgetDropDownFrmControl($event, loopWidget, loopWidget_Index) {
-    console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
-  }
-  loopWidgetIsAnySelected($event, loopWidget, loopWidget_Index) {
-    console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
-  }
 
-  widgetIsAnySelected(controlName, e) {
-    console.log('controlName ', controlName, ' e', e);
-  };
+  async getDataSelectionChange(widget: number, loop: number, dataFormat: number, description, templateName) {
+    if (dataFormat == this.numericZero && loop == this.numericOne) {
+      this.outletStartDate = this.propertyDate;
+      this.outletEndDate = this.propertyDate;
+    }
+    else if (dataFormat == this.numericOne && loop == this.numericOne) {
+      this.outletStartDate = moment(this.propertyDate).startOf('week').toDate();
+      this.outletEndDate = moment(this.propertyDate).endOf('week').toDate();
+    }
+    else if (dataFormat == this.numericTwo && loop == this.numericOne) {
+      this.outletStartDate = moment(this.propertyDate).startOf('month').toDate();
+      this.outletEndDate = moment(this.propertyDate).endOf('month').toDate();
+    }
+    else if (dataFormat == this.numericZero && loop == this.numericTwo) {
+      this.itemStartDate = this.propertyDate;
+      this.itemEndDate = this.propertyDate;
+    }
+    else if (dataFormat == this.numericOne && loop == this.numericTwo) {
+      this.itemStartDate = moment(this.propertyDate).startOf('week').toDate();
+      this.itemEndDate = moment(this.propertyDate).endOf('week').toDate();
+    }
+    else if (dataFormat == this.numericTwo && loop == this.numericTwo) {
+      this.itemStartDate = moment(this.propertyDate).startOf('month').toDate();
+      this.itemEndDate = moment(this.propertyDate).endOf('month').toDate();
+    }
+    else if (dataFormat == this.numericZero && loop == this.numericThree) {
+      this.categoryStartDate = this.propertyDate;
+      this.categoryEndDate = this.propertyDate;
+    }
+    else if (dataFormat == this.numericOne && loop == this.numericThree) {
+      this.categoryStartDate = moment(this.propertyDate).startOf('week').toDate();
+      this.categoryEndDate = moment(this.propertyDate).endOf('week').toDate();
+    }
+    else if (dataFormat == this.numericTwo && loop == this.numericThree) {
+      this.categoryStartDate = moment(this.propertyDate).startOf('month').toDate();
+      this.categoryEndDate = moment(this.propertyDate).endOf('month').toDate();
+    }
+
+    switch (templateName) {
+      case 'Sales_Revenue':
+        this.dataFormat = dataFormat + 1;
+        if (this.dataFormat == 1) {
+          this.rowDescription = this.captions.DAY;
+        } else if (this.dataFormat == 2) {
+          this.rowDescription = this.captions.WEEK;
+        } else if (this.dataFormat == 3) {
+          this.rowDescription = this.captions.MONTH;
+        }
+        await this.getTransactionSaleDetail();
+        break;
+      case 'Revenue_By_Outlet': 
+        this.dataFormat = dataFormat + 1;
+        if (this.dataFormat == 1) {
+          this.rowDescription = this.captions.DAY;
+        } else if (this.dataFormat == 2) {
+          this.rowDescription = this.captions.WEEK;
+        } else if (this.dataFormat == 3) {
+          this.rowDescription = this.captions.MONTH;
+        }
+        await this.getRevenueByOutletDetail();
+        break;
+        case 'Returned_Items': 
+        this.dataFormat = dataFormat + 1;
+        if (this.dataFormat == 1) {
+          this.rowDescription = this.captions.DAY;
+        } else if (this.dataFormat == 2) {
+          this.rowDescription = this.captions.WEEK;
+        } else if (this.dataFormat == 3) {
+          this.rowDescription = this.captions.MONTH;
+        }
+        await this.getReturned_ItemsDetail();
+        break;
+    case 'Sales_Top5Items':
+        let mountaintype_0: String = '';
+        if (dataFormat == this.numericZero) {
+          mountaintype_0 = 'day_0';
+        } else if (dataFormat == this.numericOne) {
+          mountaintype_0 = 'week_0';
+        } else if (dataFormat == this.numericTwo) {
+          mountaintype_0 = 'month_0';
+        }
+        await this.getTop5ItemSaleDetail(mountaintype_0);
+        break;
+      case 'Sales_Top5Categories':
+        let mountaintype_1: String = '';
+        if (dataFormat == this.numericZero) {
+          mountaintype_1 = 'day_1';
+        } else if (dataFormat == this.numericOne) {
+          mountaintype_1 = 'week_1';
+        } else if (dataFormat == this.numericTwo) {
+          mountaintype_1 = 'month_1';
+        }
+        await this.getCategorySaleDetail(mountaintype_1);
+        break;
+
+      default:
+        break;
+    }
+  }
 
 
   async getOutletsCount() {
@@ -319,7 +388,6 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
   getTotalSalesRevenue(){
     this.DB_TotalSalesRevenue_data = {
-      // icon: 'icon-dashboard-tick',
       count: '$2.03M',
       description: this.captions.total_Sales_Revenue
     };
@@ -327,7 +395,6 @@ export class DashboardWidgetsReportComponent implements OnInit {
  
   getNumberOfTransaction(){
     this.DB_NumberOfTransaction_data = {
-      // icon: 'icon-dashboard-cross',
       count: '4.3M',
       description: this.captions.number_of_Transaction
     };
@@ -335,26 +402,22 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
   getAverageTransaction(){
     this.DB_AverageTransaction_data = {
-      // icon: 'icon-new-user',
       count: '$62.36',
       description: this.captions.average_Transaction
     };
   }
   getAvgUnitPerCustomer(){
     this.DB_AvgUnitPerCustomer_data = {
-      // icon: 'icon-swap1',
       count: '5.08',
       description: this.captions.unitPerCustomer
     };
   }
 
 
-  async getTransactionSaleDetail(type) {
-    if(type == 1){
-      this.Sales_SalesRevenue_data = await this._dashBoardBusiness.getTransactionSaleDetail_new(this.startDate, this.dataFormat, this.outletIds);
-    }else{
-      this.Sales_SalesRevenue_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds); 
-    }
+  async getTransactionSaleDetail() {
+   
+    this.Sales_SalesRevenue_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.dataFormat); 
+   
     if (this.Sales_SalesRevenue_data.length > 0) {
       let templateHeight = (this.widgetsData[0].widget[0].config.height - 90); //(60 - template title, 30 - chart needs)
       let barData, x_categories, columnWidth;
@@ -372,8 +435,8 @@ export class DashboardWidgetsReportComponent implements OnInit {
       let barChartCaptions = {
         x_label: this.rowDescription,
         y_label: this.captions.number_of_Transaction,
-        NoOfTransactions: this.captions.NoOfTransactions,
-        currencySymbol: this.captions.currencySymbol,
+        booked: this.captions.booked,
+        avail: this.captions.avail
       }
       this.Sales_SalesRevenue_data_input ={
         id:'bar_chart1',
@@ -383,20 +446,15 @@ export class DashboardWidgetsReportComponent implements OnInit {
         captions: barChartCaptions, 
         customStyles: barChart_customStyles
       } 
-      //   this._ChartBarComponent.callBarChart(barData, x_categories, templateHeight, barChartCaptions, barChart_customStyles);
-     
     }
   }
 
 
-  async getRevenueByOultetDetail(type) {
-    if(type == 1){
-      this.Revenue_By_Outlet_data = await this._dashBoardBusiness.getTransactionSaleDetail_new(this.startDate, this.dataFormat, this.outletIds);
-    }else{
-    this.Revenue_By_Outlet_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds); 
-    }
-    // this.Revenue_By_Outlet_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds);
-    if (this.Revenue_By_Outlet_data.length > 0) {
+  async getRevenueByOutletDetail() {
+    this.Revenue_By_Outlet_data = await this._dashBoardBusiness.getRevenueByOutletDetail(this.dataFormat); 
+
+     if (this.Revenue_By_Outlet_data.length > 0) {
+
       let templateHeight = (this.widgetsData[0].widget[0].config.height - 90); //(60 - template title, 30 - chart needs)
       let barData, x_categories, columnWidth;
       barData = this.Revenue_By_Outlet_data;
@@ -412,9 +470,9 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
       let barChartCaptions = {
         x_label: this.rowDescription,
-        y_label: this.captions.revenue_dollar,
-        NoOfTransactions: this.captions.NoOfTransactions,
+        y_label: this.captions.number_of_Transaction,
         currencySymbol: this.captions.currencySymbol,
+        items:this.captions.items
       }
 
 
@@ -426,19 +484,13 @@ export class DashboardWidgetsReportComponent implements OnInit {
         captions: barChartCaptions, 
         customStyles: barChart_customStyles
       } 
-      // this._ChartBarComponent.callBarChart(barData, x_categories, templateHeight, barChartCaptions, barChart_customStyles);
     }
   }
   
 
-  async getReturned_ItemsDetail(type) {
-    if(type == 1){
-      this.Returned_Items_data = await this._dashBoardBusiness.getTransactionSaleDetail_new(this.startDate, this.dataFormat, this.outletIds);
-    }else{
-    this.Returned_Items_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds); 
-    }
-    // this.Returned_Items_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.startDate, this.dataFormat, this.outletIds);
-    if (this.Returned_Items_data.length > 0) {
+  async getReturned_ItemsDetail() {
+    this.Returned_Items_data = await this._dashBoardBusiness.getReturned_ItemsDetail(this.dataFormat); 
+     if (this.Returned_Items_data.length > 0) {
       let templateHeight = (this.widgetsData[0].widget[0].config.height - 90); //(60 - template title, 30 - chart needs)
       let barData, x_categories, columnWidth;
       barData = this.Returned_Items_data;
@@ -454,11 +506,11 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
       let barChartCaptions = {
         x_label: this.rowDescription,
-        y_label: this.captions.revenue_dollar, // change captions
-        NoOfTransactions: this.captions.NoOfTransactions, // change captions
-        currencySymbol: this.captions.currencySymbol, // change captions
+        y_label: this.captions.noOfItems, 
+        items: this.captions.items, 
+        currencySymbol: this.captions.currencySymbol, 
+        returnItems :this.captions.returnItems
       }
-
 
       this.Returned_Items_data_input ={
         id:'bar_chart3',
@@ -475,7 +527,6 @@ export class DashboardWidgetsReportComponent implements OnInit {
   async getTop5ItemSaleDetail(mountaintype) {
     console.log('mountaintype ', mountaintype);
     this.Sales_Top5Items_data = {
-      // data: [{ id: 1, value: "getSales_Top5Items" }],
       data: await this._dashBoardBusiness.getItemSaleDetail(this.itemStartDate, this.itemEndDate, this.outletIds),
       headerData: [
         { key: 'name', description: 'Number', alignment: 'textLeft', },
@@ -491,9 +542,6 @@ export class DashboardWidgetsReportComponent implements OnInit {
   async getCategorySaleDetail(mountaintype_1) {
     console.log('mountaintype ', mountaintype_1);
     this.Sales_Top5Categories_data = {
-      // data: [
-      //   { id: 1, value: "Sales_SalesRevenue" }
-      // ],
       data: await this._dashBoardBusiness.getCategorySaleDetail(this.categoryStartDate, this.categoryEndDate, this.outletIds),
       headerData: [
         { key: 'name', description: 'Number', alignment: 'textLeft', },
@@ -544,9 +592,16 @@ export class DashboardWidgetsReportComponent implements OnInit {
   }
 
 
+
+  //  code to change width dynamically 
+
   dashBoardCheckboxChange(widgetsData_Index, loopManage_Index, event, from) {
     // console.log(' widgetsData_Index ', widgetsData_Index, ' loopManage_Index ', loopManage_Index, 'dashBoardCheckboxChange event ', event);
     this.widgetsData[widgetsData_Index].widget[loopManage_Index].show = (from == 'event') ? event.target.checked : event;
+    this.callDynamicWidthAlign(widgetsData_Index);
+  }
+
+  callDynamicWidthAlign(widgetsData_Index){
     let arr = [];
     this.widgetsData[widgetsData_Index].widget.forEach((element, index) => {
       if (element.show) {
@@ -602,7 +657,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
             if ((currentElementWidth == 60 && checkNextWidgetWidth == 40) ||
               (currentElementWidth == 40 && checkNextWidgetWidth == 60) ||
               (currentElementWidth == 50 && checkNextWidgetWidth == 50) ||
-              (currentElementWidth == 40)
+              (currentElementWidth == 40 ) 
             ) {
               tag.style.width = element.initialWidth + '%';
               element.initialWidth = element.initialWidth;

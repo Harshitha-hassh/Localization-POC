@@ -11,7 +11,7 @@ import ApexCharts from 'apexcharts';
 export class ChartBarComponent implements OnInit {
   chart:any;
   input :any;
-  chartData:any;
+  // chartData:any;
   id:string;
   @Input('inputData')
   set inputval(val) {
@@ -19,20 +19,64 @@ export class ChartBarComponent implements OnInit {
       this.id = val.id;
       this.input = val;
       if(this.chart){
-        this.chartData = val.chartData;
+        let chartData = val.chartData;
         let series = [];
-        this.chartData.forEach(e => {
+        chartData.forEach(e => {
           series.push(e.value);
         })
         ApexCharts.exec(this.id, "updateOptions", {
           xaxis: {
-            categories: val.x_categories
+            categories: val.x_categories,
+            title: {
+              text: val.captions.x_label
+            },
           },
           series: [
             {          
               data: series //actual data
             },
-          ]
+          ],
+          tooltip: {
+            enabled: true,
+            followCursor: true,
+            onDatasetHover: {
+              highlightDataSeries: true
+            },
+            custom: function ({ series, seriesIndex, dataPointIndex }) {
+              if(val.id == 'bar_chart1'){
+                return (
+                  '<div class="tooltip_container">' +
+                  '<div class="tooltip_header">' +
+                  "<span>" +
+                  series[seriesIndex][dataPointIndex] +
+                  "%" +
+                  "</span>" +
+                  "</div>" +
+                  '<div *ngFor="let item of booked;let i=index">' +
+                  '<div class="tooltip_content_booked">' + val.captions.booked + " : " + chartData[dataPointIndex].booked +
+                  "</div>" +
+                  '<div class="tooltip_content_available">' + val.captions.avail + " : " + chartData[dataPointIndex].avail +
+                  "</div>" +
+                  "</div>" +
+                  "</div>"
+                );
+              }else if(val.id == 'bar_chart2'){
+                return (
+                  '<div class="item_barchart_div">' +
+                  val.captions.items+' : '+
+                  chartData[dataPointIndex].items +
+                  '</div>'
+                );
+              }else if(val.id == 'bar_chart3'){
+                return (
+                  '<div class="item_barchart_div">' +
+                  val.captions.returnItems+' : '+
+                  chartData[dataPointIndex].items +
+                  '</div>'
+                );
+              }
+            }
+          },
         });
       }
     }
@@ -51,19 +95,18 @@ export class ChartBarComponent implements OnInit {
         this.input.x_categories,
         this.input.chartHeight,
         this.input.captions,
-        this.input.customStyles);
+        this.input.customStyles,this.input.id);
     }
   }
   
-  drawChart(chartData, x_categories,chartHeight,captions,customStyles) {
-    this.chartData = chartData;
+  drawChart(chartData, x_categories,chartHeight,captions,customStyles,id) {
     let series = [];
-    this.chartData.forEach(e => {
+    chartData.forEach(e => {
       series.push(e.value);
     })
     this.options = {
       chart: {
-        id: this.id, //'bar_chart',
+        id: id,
         height: chartHeight,
         type: "bar",
         stacked: true,
@@ -167,20 +210,39 @@ export class ChartBarComponent implements OnInit {
           highlightDataSeries: true
         },
         custom: function ({ series, seriesIndex, dataPointIndex }) {
-          return (
-            '<div class="bar_tooltip_container">' +
-            '<div class="bar_tooltip_header">' +
-            "<span>" +
-            captions.currencySymbol + series[seriesIndex][dataPointIndex] +
-            "</span>" +
-            "</div>" +
-            '<div class="bar_tooltip_content">' +
-            captions.NoOfTransactions+' : '+
-            this.chartData[dataPointIndex].transactions +
-            "</div>" +
-            "</div>"
-          );
-        }
+              if(id == 'bar_chart1'){
+                return (
+                  '<div class="tooltip_container">' +
+                  '<div class="tooltip_header">' +
+                  "<span>" +
+                  series[seriesIndex][dataPointIndex] +
+                  "%" +
+                  "</span>" +
+                  "</div>" +
+                  '<div *ngFor="let item of booked;let i=index">' +
+                  '<div class="tooltip_content_booked">' + captions.booked + " : " + chartData[dataPointIndex].booked +
+                  "</div>" +
+                  '<div class="tooltip_content_available">' + captions.avail + " : " + chartData[dataPointIndex].avail +
+                  "</div>" +
+                  "</div>" +
+                  "</div>"
+                );
+              }else if(id == 'bar_chart2'){
+                return (
+                  '<div class="item_barchart_div">' +
+                  captions.items+' : '+
+                  chartData[dataPointIndex].items +
+                  '</div>'
+                );
+              }else if(id == 'bar_chart3'){
+                return (
+                  '<div class="item_barchart_div">' +
+                  captions.returnItems+' : '+
+                  chartData[dataPointIndex].items +
+                  '</div>'
+                );
+              }
+            }
       },
       fill: {
         colors: customStyles.fillColor,
