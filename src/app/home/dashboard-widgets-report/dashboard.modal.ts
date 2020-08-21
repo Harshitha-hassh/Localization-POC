@@ -182,3 +182,23 @@ export interface UICategoryData {
     amount: string;
     name:string;
 }
+
+
+export interface UIPurchaseDetails {
+    id: number;
+    orderNumber: string;
+    status:string;
+}
+
+export interface UIOpenTickets {
+    id: number;
+    ticketNumber :string;
+    transactionAmount: string;
+    action:string;
+}
+
+export interface UIOutOfStock {
+    id: number;
+    item :string;
+    outofStockOn: string;  
+}

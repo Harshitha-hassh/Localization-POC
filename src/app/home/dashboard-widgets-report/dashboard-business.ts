@@ -130,7 +130,40 @@ export class DashBoardBusiness {
     }
 
 
+    public async getPurchaseOrderData(): Promise<DashBoardInterface.UIPurchaseDetails[]> {
+       let data = await [
+           {id: 1,orderNumber: "#354351"   ,status:'Pending'},
+           {id: 2,orderNumber: "#254463"   ,status:'Approved'},
+           {id: 3,orderNumber: "#334345"   ,status:'Yet to Approve'},
+           {id: 4,orderNumber: "#424343"   ,status:'Pending'},
+           {id: 5,orderNumber: "#784765"   ,status:'Approved'}
+       ]
+        return data;
+    }
 
+
+    public async getOpenTicketsData(): Promise<DashBoardInterface.UIOpenTickets[]> {
+        let data = await [
+            {id: 1,ticketNumber:'OP123465',transactionAmount: "$354,351"   ,action:'Settle'},
+            {id: 2,ticketNumber:'OP123465',transactionAmount: "$254,463"   ,action:'Settle'},
+            {id: 3,ticketNumber:'OP123465',transactionAmount: "$334,345"   ,action:'Settle'},
+            {id: 4,ticketNumber:'OP123465',transactionAmount: "$424,343"   ,action:'Settle'},
+            {id: 5,ticketNumber:'OP123465',transactionAmount: "$784,765"   ,action:'Settle'},
+        ]
+         return data;
+     }
+
+     public async getOutofStockOnData(): Promise<DashBoardInterface.UIOutOfStock[]> {
+        let data = await [
+            {id: 1,item: "Item 3535",outofStockOn: '10/11/2020'},
+            {id: 2,item: "Item 235"   ,outofStockOn: '11/11/2020'},
+            {id: 3,item: "Item 3535"  ,outofStockOn: '12/11/2020'},
+            {id: 4,item: "Item 535"   ,outofStockOn: '13/11/2020'},
+            {id: 5,item: "Item 535"   ,outofStockOn: '10/11/2020'},
+        ]
+         return data;
+     }
+     
 
     getWeekArray() {
         let weekKeys: string[] = [

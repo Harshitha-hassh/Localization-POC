@@ -92,6 +92,9 @@ export class DashboardWidgetsReportComponent implements OnInit {
   Returned_Items_data:any;
   Sales_Top5Items_data:any;
   Sales_Top5Categories_data:any;
+  Purchase_Order_data:any;
+  Open_Tickets_data:any;
+  Out_of_StockItems_data:any;
 
   sortOrderPipe: SortOrderPipe;
   constructor(private cdr: ChangeDetectorRef,
@@ -161,6 +164,10 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
     this.getTop5ItemSaleDetail('day_0');
     this.getCategorySaleDetail('day_1');
+
+    this.getPurchaseOrderData();
+    this.getOpenTicketsData();
+    this.getOutofStockOnData();
   }
 
 
@@ -439,6 +446,41 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
 
 
+
+  async getPurchaseOrderData() {
+    this.Purchase_Order_data = {
+      data: await this._dashBoardBusiness.getPurchaseOrderData(),
+      headerData: [
+        { key: 'orderNumber', description: this.captions.orderNumber, alignment: 'textLeft font-bold w-25' },
+        { key: 'status', description: this.captions.status, alignment: 'textRight font-bold w-25' }
+      ],
+      headerEnable: true
+    };
+  }
+
+
+  async getOpenTicketsData() {
+    this.Open_Tickets_data = {
+      data: await this._dashBoardBusiness.getOpenTicketsData(),
+      headerData: [
+        { key: 'ticketNumber', description: this.captions.ticketNumber, alignment: 'textLeft font-bold w-25' },
+        { key: 'transactionAmount', description: this.captions.transactionAmount, alignment: 'textRight font-bold w-25' },
+        { key: 'action', description: this.captions.action, alignment: 'textRight font-bold w-25' }
+      ],
+      headerEnable: true
+    };
+  }
+
+  async getOutofStockOnData() {
+    this.Out_of_StockItems_data = {
+      data: await this._dashBoardBusiness.getOutofStockOnData(),
+      headerData: [
+        { key: 'item', description: this.captions.item, alignment: 'textLeft font-bold w-25' },
+        { key: 'outofStockOn', description: this.captions.outofStockOn, alignment: 'textRight font-bold w-25' }
+      ],
+      headerEnable: true
+    };
+  }
 
 
   dashBoardCheckboxChange(widgetsData_Index, loopManage_Index, event, from) {
