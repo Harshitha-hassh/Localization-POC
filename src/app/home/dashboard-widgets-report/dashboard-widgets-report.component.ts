@@ -9,12 +9,15 @@ import { SortOrderPipe } from 'src/app/common/shared/shared/pipes/sort-order.pip
 import { Utilities } from 'src/app/core/utilities';
 import { ChartBarComponent } from '../chart-bar/chart-bar.component';
 import * as moment from 'moment';
+import { DashBoardService } from 'src/app/shared/data-services/authentication/retailmanagement/dashboard.data.service';
+import { Localization } from 'src/app/core/localization/Localization';
+
 @Component({
   selector: 'app-dashboard-widgets-report',
   templateUrl: './dashboard-widgets-report.component.html',
   styleUrls: ['./dashboard-widgets-report.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DashboardWidgetsReportService, DashBoardBusiness, SubPropertyDataService,ChartBarComponent]
+  providers: [DashboardWidgetsReportService, DashBoardBusiness, DashBoardService, SubPropertyDataService,ChartBarComponent]
 })
 export class DashboardWidgetsReportComponent implements OnInit {
   captions: any;
@@ -33,6 +36,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
   endTime: number = 1440;
   teeTimeCourseId: number;
   outletIds: number[];
+  outletId: number;
   userId: any;
   itemStartDate: Date;
   itemEndDate: Date;
@@ -90,7 +94,8 @@ export class DashboardWidgetsReportComponent implements OnInit {
     private _dashBoardBusiness: DashBoardBusiness,
     private _fb: FormBuilder,
     private _utilities :Utilities,
-    private _propertyInformation: PropertyInformation) {
+    private _propertyInformation: PropertyInformation,
+    private _localization: Localization) {
     this.sortOrderPipe = new SortOrderPipe();
   }
 
@@ -123,11 +128,35 @@ export class DashboardWidgetsReportComponent implements OnInit {
     
   }
 
-  async BindData() {
+  async BindData() {    
+    this._DashboardWidgetsReportService.OutletsData = await this._dashBoardBusiness.getOutlets();
+    this.outletIds = this._DashboardWidgetsReportService.OutletsData.map(x => x.id);   
+    this.outletId=this.outletIds[0];
+    if (this.outletId > this.numericZero) {
+      this.getOutletsCount();
+      this.getTotalSalesRevenue();
+      this.getNumberOfTransaction();
+      this.getAverageTransaction();
+      this.getAvgUnitPerCustomer();
+      this.getVendorsCount();
+  
+      this.getTransactionSaleDetail();
+      this.getRevenueByOutletDetail();
+      this.getReturned_ItemsDetail();
+  
+      this.getTop5ItemSaleDetail('day_0');
+      this.getCategorySaleDetail('day_1');
+  
+      this.getPurchaseOrderData();
+      this.getOpenTicketsData();
+      this.getOutofStockOnData();
+  
+      this.getTransactionCount();
+    }
     this.dashboardData();
   }
 
-  getDatasFromService(){
+  async getDatasFromService(){
        
     this.dashBoardform = this._fb.group({  
       dashBoardHeadOutlet :'',
@@ -137,24 +166,8 @@ export class DashboardWidgetsReportComponent implements OnInit {
       SalesOpenTicketOutlet:'',
       SalesReturnedItemOutlet:''
     });
-
-    this.getOutletsCount();
-    this.getTotalSalesRevenue();
-    this.getNumberOfTransaction();
-    this.getAverageTransaction();
-    this.getAvgUnitPerCustomer();
-    this.getVendorsCount();
-
-    this.getTransactionSaleDetail();
-    this.getRevenueByOutletDetail();
-    this.getReturned_ItemsDetail();
-
-    this.getTop5ItemSaleDetail('day_0');
-    this.getCategorySaleDetail('day_1');
-
-    this.getPurchaseOrderData();
-    this.getOpenTicketsData();
-    this.getOutofStockOnData();
+    
+    
   }
 
 
@@ -212,7 +225,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
     console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
   }
 
-  dashboardData() {
+  dashboardData() {    
     this.dashBoardWidget = this._DashboardWidgetsReportService.getDashBoardWidget();
     let sortedWidgets = this._DashboardWidgetsReportService.getWidget();
     sortedWidgets.forEach(x => {
@@ -384,11 +397,16 @@ export class DashboardWidgetsReportComponent implements OnInit {
     };
   }
 
-
+  async getTransactionCount(){
+    let transationDetail = await this._dashBoardBusiness.getTransactionCount(this.outletIds);
+    this.DB_NumberOfTransaction_data.count = transationDetail.transactionCount;
+    this.DB_TotalSalesRevenue_data.count = `${this._localization.currencySymbol}`+ transationDetail.transactionRevenue;
+    this.DB_AverageTransaction_data.count = `${this._localization.currencySymbol}`+ transationDetail.averageRevenue;
+  }
 
   getTotalSalesRevenue(){
     this.DB_TotalSalesRevenue_data = {
-      count: '$2.03M',
+      count: '0',
       description: this.captions.total_Sales_Revenue
     };
   }
@@ -582,7 +600,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
   async getOutofStockOnData() {
     this.Out_of_StockItems_data = {
-      data: await this._dashBoardBusiness.getOutofStockOnData(),
+      data: await this._dashBoardBusiness.getOutofStockOnData(this.outletIds),
       headerData: [
         { key: 'item', description: this.captions.item, alignment: 'textLeft font-bold w-25' },
         { key: 'outofStockOn', description: this.captions.outofStockOn, alignment: 'textRight font-bold w-25' }

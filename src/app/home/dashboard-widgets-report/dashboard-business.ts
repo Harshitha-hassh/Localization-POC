@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Localization } from 'src/app/core/localization/Localization';
 import * as DashBoardInterface from './dashboard.modal';
+import { DashBoardService } from 'src/app/shared/data-services/authentication/retailmanagement/dashboard.data.service';
+import { SubPropertyDataService } from 'src/app/retail/retail-code-setup/retail-outlets/subproperty-data.service';
+import { Outlet } from 'src/app/retail/retail.modals';
 
 @Injectable()
 export class DashBoardBusiness {
@@ -8,12 +11,25 @@ export class DashBoardBusiness {
     public readonly dayFormat: number = 1;
     public readonly weekFormat: number = 2;
     public readonly monthFormat: number = 3;
-    constructor(
-        private _localization:Localization
+    constructor(private _dashBoardService: DashBoardService
+        , private _localization:Localization
+        , private _subPropertyDataService: SubPropertyDataService
         ) {
             this.Captions = this._localization.captions['dashBoard']; 
     }
 
+    async getOutlets(): Promise<DashBoardInterface.OutletOption[]> {
+        const outlets = await this._subPropertyDataService.getOutletsByPropertyAndProduct();
+        const result: DashBoardInterface.OutletOption[] = outlets?outlets.map(o => {
+            return {
+                id: o.id,
+                name: o.outletName,
+                description: o.outletName,
+                defaultOutletId: o.id
+            }
+        }):[];
+        return result;
+    }
 
     async getOutletsCount(): Promise<DashBoardInterface.DonutCount> {
         const data= { active: 23,
@@ -27,6 +43,10 @@ export class DashBoardBusiness {
                     inActive: 50,
                     total : 83};
         return data;
+    }
+
+    public async getTransactionCount(outletIds: number[]): Promise<DashBoardInterface.TransactionDetails> {
+        return this._dashBoardService.getTransactionCount(outletIds);
     }
     
 
@@ -240,15 +260,24 @@ export class DashBoardBusiness {
          return data;
      }
 
-     public async getOutofStockOnData(): Promise<DashBoardInterface.UIOutOfStock[]> {
-        let data = await [
-            {id: 1,item: "Item 3535",outofStockOn: '10/11/2020'},
-            {id: 2,item: "Item 235"   ,outofStockOn: '11/11/2020'},
-            {id: 3,item: "Item 3535"  ,outofStockOn: '12/11/2020'},
-            {id: 4,item: "Item 535"   ,outofStockOn: '13/11/2020'},
-            {id: 5,item: "Item 535"   ,outofStockOn: '10/11/2020'},
-        ]
-         return data;
+     public async getOutofStockOnData(outletIds: number[]): Promise<DashBoardInterface.UIOutOfStock[]> {
+        const outOfStockItems= await this._dashBoardService.getOutOfStockItems(outletIds);
+        const result: DashBoardInterface.UIOutOfStock[] = outOfStockItems?outOfStockItems.map(o => {
+            return {
+                id: o.id,
+                item: o.item,
+                outofStockOn: this._localization.LocalizeShortDate(o.outofStockOn)
+            }
+        }):[];
+        return result;
+        // let data = await [
+        //     {id: 1,item: "Item 3535",outofStockOn: '10/11/2020'},
+        //     {id: 2,item: "Item 235"   ,outofStockOn: '11/11/2020'},
+        //     {id: 3,item: "Item 3535"  ,outofStockOn: '12/11/2020'},
+        //     {id: 4,item: "Item 535"   ,outofStockOn: '13/11/2020'},
+        //     {id: 5,item: "Item 535"   ,outofStockOn: '10/11/2020'},
+        // ]
+        //  return data;
      }
      
 

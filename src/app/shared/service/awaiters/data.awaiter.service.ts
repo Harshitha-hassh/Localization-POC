@@ -20,7 +20,7 @@ export class DataAwaiterService {
 
     private setAwaiters(): void {
         debugger;
-        RetailDataAwaiters.GetChildMenu = this.getChildMenu.bind(this);
+       // RetailDataAwaiters.GetChildMenu = this.getChildMenu.bind(this);
     }
 
     getChildMenu(url, menutype?){
