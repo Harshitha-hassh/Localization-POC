@@ -89,3 +89,35 @@ export interface TransactionDetails {
     transactionRevenue: number;
     averageRevenue: number;
 }
+
+export interface TransactionSaleDetail {
+    noOfTrasaction: number;
+    totalAmount: number;
+    dateOfTransaction: Date;
+    id: number;
+    name:string;
+}
+
+export interface ItemData {
+    id: number;
+    amount: number;
+    name:string;
+}
+
+export interface UIItemData {
+    id: number;
+    amount: string;
+    name:string;
+}
+
+export interface CategoryData {
+    id: number;
+    amount: number;
+    name:string;
+}
+
+export interface UICategoryData {
+    id: number;
+    amount: string;
+    name:string;
+}
