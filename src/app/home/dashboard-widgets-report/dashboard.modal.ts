@@ -1,0 +1,91 @@
+export interface OutletOption {
+    id: number;
+    name: string;
+    description: string;
+    defaultOutletId : number;
+}
+
+export interface DonutCount {
+    active: number;
+    inActive: number;
+    total : number;
+}
+
+export interface UITransactionSaleDetail {
+    value: number;
+    id: number;
+    name:string;
+    booked:number,
+    avail:number;
+}
+
+export interface UIRevenueByOutlet {
+    value: number;
+    id: number;
+    name:string;
+    items:number;
+}
+export interface UIReturned_Items {
+    value: number;
+    id: number;
+    name:string;
+    items:number;
+}
+
+
+export interface ItemData {
+    id: number;
+    amount: number;
+    name:string;
+}
+export interface UIItemData {
+    id: number;
+    amount: string;
+    name:string;
+}
+
+export interface UIRevenue{
+    value : number;
+    transactions:number;
+    name:string;
+}
+
+export interface UIWeekArray{
+    id:number;
+    name:string;
+}
+
+export interface UICategoryData {
+    id: number;
+    amount: string;
+    name:string;
+}
+
+export interface UIPurchaseDetails {
+    id: number;
+    orderNumber: string;
+    status:string;
+}
+
+export interface UIOpenTickets {
+    id: number;
+    ticketNumber :string;
+    transactionAmount: string;
+    action:string;
+}
+export interface UIOutOfStock {
+    id: number;
+    item :string;
+    outofStockOn: string;  
+}
+
+export interface OutOfStock {
+    id: number;
+    item :string;
+    outofStockOn: Date;  
+}
+export interface TransactionDetails {
+    transactionCount: number;
+    transactionRevenue: number;
+    averageRevenue: number;
+}

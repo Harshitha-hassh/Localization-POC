@@ -6,7 +6,8 @@ export enum RetailApiHosts {
   Report,
   PayAgent,
   MsDeeplink,
-  V1IGPosting
+  V1IGPosting,
+  RetailPOS
 }
 
 export class MsalConfiguration {
@@ -37,4 +38,9 @@ export enum RetailRoutes {
   GetPaymentConfigurationByProperty = 'Payment/GetPaymentConfigurationByProperty/{propertyId}',
    // SNC users
    GetSncUserConfig = 'UserConfiguration?userId={id}',
+   //Dashboard
+   GetOutletCount = 'DashBoard/getOutletCount',
+   GetVendorCount = 'DashBoard/getVendorCount',
+   GetTransactionCount = 'Transaction/GetTransactionCount',
+   GetOutOfStockItems = 'retailitems/GetInventoryRetailItems',
 }

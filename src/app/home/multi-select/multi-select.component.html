@@ -1,0 +1,30 @@
+<section [formGroup]="dropDownFrmGrp" class="multiple-select-dropdown">
+  <mat-form-field [ngClass]="customClass" *ngIf=" dropDownFilterData != null " [floatLabel]="floatLabel">
+    <mat-select [placeholder]="dropDownName" name="dropDownName" [formControlName]="dropDownControlname" multiple>
+      <mat-select-trigger>
+        <span *ngIf="dropDownFrmGrp.controls[dropDownControlname].value.length !== dropDownFilterData.length">
+          {{this.dropDownFrmGrp.controls[this.dropDownControlname].value ? this.dropDownFrmGrp.controls[this.dropDownControlname].value[0]?.description : ''}}
+          <span *ngIf="this.dropDownFrmGrp.controls[this.dropDownControlname].value?.length > 1"
+            class="additional-selection-Count">
+            (+{{this.dropDownFrmGrp.controls[this.dropDownControlname].value.length - 1}} {{more}})
+          </span>
+        </span>
+        <span *ngIf="dropDownFrmGrp.controls[dropDownControlname].value.length == dropDownFilterData.length">
+          {{defaultData.description}}
+        </span>
+      </mat-select-trigger>
+      <mat-checkbox class="mat-option reports-multiselect" (click)="$event.stopPropagation();" [disableRipple]="true"
+        (change)="filterDropDownSelected($event, defaultData, dropDownFilterData, dropDownControlname)"
+        [checked]="dropDownFrmGrp.controls[dropDownControlname].value.length  == dropDownFilterData.length">
+        <span
+          [ngClass]="{'text-color':dropDownFrmGrp.controls[dropDownControlname].value.length  == dropDownFilterData.length}">{{defaultData.description}}</span>
+      </mat-checkbox>
+      <ng-container *ngFor="let data of dropDownFilterData ">
+        <mat-option class="multiselect"
+          (click)="filterDropDownSelected($event, data, dropDownFilterData, dropDownControlname)" [value]="data">
+          {{data.description}}
+        </mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+</section>

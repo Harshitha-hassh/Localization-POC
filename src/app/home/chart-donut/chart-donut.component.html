@@ -1,0 +1,18 @@
+<div class="chart-container">
+    <div class="chart-title">{{inputData.captions.courseStatus}}</div>
+    <div class="chart-inner-wrapper">
+        <div class="chart-inner-container">
+            <div #donut_chart class="donut_Chart"></div>
+        </div>
+        <div class="text-container">
+            <div class="first-value-container">
+                <div class="value1">{{inputData.series[1]}}</div>
+                <div class="text" [matTooltip]="inputData.captions.activeCourses">{{inputData.captions.activeCourses}}</div>
+            </div>
+            <div class="second-value-container">
+                <div class="value2">{{inputData.series[0]}}</div>
+                <div class="text" [matTooltip]="inputData.captions.inactiveCourses"> {{inputData.captions.inactiveCourses}}</div>
+            </div>
+        </div>
+    </div>
+</div>
