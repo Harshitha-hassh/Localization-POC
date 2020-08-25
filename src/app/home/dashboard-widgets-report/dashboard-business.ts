@@ -19,16 +19,22 @@ export class DashBoardBusiness {
     }
 
     async getOutlets(): Promise<DashBoardInterface.OutletOption[]> {
-        const outlets = await this._subPropertyDataService.getOutletsByPropertyAndProduct();
-        const result: DashBoardInterface.OutletOption[] = outlets?outlets.map(o => {
-            return {
-                id: o.id,
-                name: o.outletName,
-                description: o.outletName,
-                defaultOutletId: o.id
-            }
-        }):[];
-        return result;
+      //  const outlets = await this._subPropertyDataService.getOutletsByPropertyAndProduct();
+        // const result: DashBoardInterface.OutletOption[] = outlets?outlets.map(o => {
+        //     return {
+        //         id: o.id,
+        //         name: o.outletName,
+        //         description: o.outletName,
+        //         defaultOutletId: o.id
+        //     }
+        // }):[];
+        const data= [{
+             id: 1,
+            name: "TESt",
+            description: "TESt",
+            defaultOutletId : 1}];
+
+        return data;
     }
 
     async getOutletsCount(): Promise<DashBoardInterface.DonutCount> {
@@ -50,7 +56,8 @@ export class DashBoardBusiness {
     }
     
 
-    public async getTransactionSaleDetail<T>(dataFormat: number): Promise<DashBoardInterface.UITransactionSaleDetail[]> {
+    public async getTransactionSaleDetail<T>(dataFormat: number,startDate: Date, outletIds: number[]): Promise<DashBoardInterface.UITransactionSaleDetail[]> {
+      //  var transaction = await this._dashBoardService.getTransactionSaleDetail(startDate, dataFormat, outletIds);
         var transaction = [
         {transactions: 10,value: 10, booked: 10,avail: 4,dateOfTransaction: new Date(),id: 1,name:'name 1'},
         {transactions: 30,value: 30, booked: 10,avail: 4,dateOfTransaction: new Date(),id: 2,name:'name 2'},
@@ -105,7 +112,7 @@ export class DashBoardBusiness {
             name: x.name } });
     }
 
-    public async getRevenueByOutletDetail<T>(dataFormat: number): Promise<DashBoardInterface.UIRevenueByOutlet[]> {
+    public async getRevenueByOutletDetail<T>(dataFormat: number,startDate: Date, outletIds: number[]): Promise<DashBoardInterface.UIRevenueByOutlet[]> {
         var transaction = [
         {items: 10,value: 10,id: 1,name:'name 1'},
         {items: 30,value: 30,id: 2,name:'name 2'},
@@ -113,6 +120,7 @@ export class DashBoardBusiness {
         {items: 50,value: 50,id: 4,name:'name 4'},
         {items: 50,value: 50,id: 5,name:'name 5'}
         ]
+        // var transaction = await this._dashBoardService.getTransactionSaleDetail(startDate, dataFormat, outletIds);
         var monthsArray = this._localization.monthsArray;
         var daysArray = this._localization.daysNormalArray;
         var weeksArray: DashBoardInterface.UIWeekArray[] = this.getWeekArray();
@@ -222,6 +230,7 @@ export class DashBoardBusiness {
             {id: 4,amount: 4344,name:'name 4'},
             {id: 5,amount: 5344,name:'name 5'}
         ];
+      //  var itemData = await this._dashBoardService.getItemSaleDetail(startDate, endDate, outletIds);
         return itemData.map(x => { return { id: x.id, name: x.name, amount: this._localization.localizeCurrency(x.amount) } })
     }
 
@@ -233,6 +242,7 @@ export class DashBoardBusiness {
             {id: 4,amount: 4344,name:'name 4'},
             {id: 5,amount: 5344,name:'name 5'}
         ];
+         //var categoryData = await this._dashBoardService.getCategorySaleDetail(startDate, endDate, outletIds);
         return categoryData.map(x => { return { id: x.id, name: x.name, amount: this._localization.localizeCurrency(x.amount) } })
     }
 

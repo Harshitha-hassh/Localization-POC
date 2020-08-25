@@ -75,7 +75,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
   DB_AverageTransaction_data: any;
   DB_AvgUnitPerCustomer_data: any;
   DB_VendorsChart_data :any; 
-
+  Outlet_Sales :any; 
   Sales_SalesRevenue_data: any;
   Revenue_By_Outlet_data: any;
   Returned_Items_data:any;
@@ -130,6 +130,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
   async BindData() {    
     this._DashboardWidgetsReportService.OutletsData = await this._dashBoardBusiness.getOutlets();
+    this.Outlet_Sales = this._DashboardWidgetsReportService.OutletsData.map(x => x.id);
     this.outletIds = this._DashboardWidgetsReportService.OutletsData.map(x => x.id);   
     this.outletId=this.outletIds[0];
     if (this.outletId > this.numericZero) {
@@ -434,7 +435,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
   async getTransactionSaleDetail() {
    
-    this.Sales_SalesRevenue_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.dataFormat); 
+    this.Sales_SalesRevenue_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.dataFormat,this.startDate, this.Outlet_Sales); 
    
     if (this.Sales_SalesRevenue_data.length > 0) {
       let templateHeight = (this.widgetsData[0].widget[0].config.height - 90); //(60 - template title, 30 - chart needs)
@@ -469,7 +470,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
 
   async getRevenueByOutletDetail() {
-    this.Revenue_By_Outlet_data = await this._dashBoardBusiness.getRevenueByOutletDetail(this.dataFormat); 
+    this.Revenue_By_Outlet_data = await this._dashBoardBusiness.getRevenueByOutletDetail(this.dataFormat,this.startDate, this.outletIds); 
 
      if (this.Revenue_By_Outlet_data.length > 0) {
 
