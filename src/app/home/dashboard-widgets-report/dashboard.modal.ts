@@ -78,3 +78,14 @@ export interface UIOutOfStock {
     item :string;
     outofStockOn: string;  
 }
+
+export interface OutOfStock {
+    id: number;
+    item :string;
+    outofStockOn: Date;  
+}
+export interface TransactionDetails {
+    transactionCount: number;
+    transactionRevenue: number;
+    averageRevenue: number;
+}

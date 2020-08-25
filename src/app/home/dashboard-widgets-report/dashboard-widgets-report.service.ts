@@ -17,7 +17,7 @@ export class DashboardWidgetsReportService {
   // UpComingTournaments : UITournamentDetails[];
   // Outlets:OutletOption[];
   // ItemsData: ItemData[];
-  OutletsData:OutletOption[];
+  OutletsData: OutletOption[];
   // CategoriesData: CategoryData[];
   // WaitlistData : UIWaitlistDetail[];
   captions : any;
@@ -25,11 +25,12 @@ export class DashboardWidgetsReportService {
 
   constructor(private _localization: Localization) {
     this.captions = this._localization.captions['dashBoard'];
-    this.OutletsData=[
-      {id: 1 ,name: 'outlet 1' ,description: 'outlet 1' ,defaultOutletId : 1 },
-      {id: 2 ,name: 'outlet 2' ,description: 'outlet 2' ,defaultOutletId : 2 },
-      {id: 3 ,name: 'outlet 3' ,description: 'outlet 3' ,defaultOutletId : 3 }
-    ];
+    // this.OutletsData=[
+    //   {id: 1 ,name: 'outlet 1' ,description: 'outlet 1' ,defaultOutletId : 1 },
+    //   {id: 2 ,name: 'outlet 2' ,description: 'outlet 2' ,defaultOutletId : 2 },
+    //   {id: 3 ,name: 'outlet 3' ,description: 'outlet 3' ,defaultOutletId : 3 }
+    // ];
+    this.OutletsData=this.OutletsData;
    }
 
   getWidget() {

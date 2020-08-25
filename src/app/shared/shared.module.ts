@@ -14,6 +14,7 @@ import { PopoverModule } from 'ngx-popover';
 import { TenantManagementCommunication } from './communication/services/tenantmanagement.service';
 import { AuthenticationCommunication } from './communication/services/authentication.service';
 import { RetailManagementCommunication } from './communication/services/retailmanagement.service';
+import { RetailPosCommunication } from './communication/services/retailpos.service';
 import { TemplatesModule } from '../common/templates/templates.module';
 import { RetailSharedModule } from '../retail/shared/retail-shared.module';
 
@@ -37,6 +38,7 @@ import { RetailSharedModule } from '../retail/shared/retail-shared.module';
     TenantManagementCommunication,
     AuthenticationCommunication,
     RetailManagementCommunication,
+    RetailPosCommunication,
     {
       provide: DateAdapter,
       useClass: CustomDateAdapter,
