@@ -19,6 +19,7 @@ export interface localizationJSON {
     shop: any;
     bookAppointment:any;
     breakpoint: any;
+    utilities: any;
 }
 
 export interface Calendar {
@@ -114,3 +115,13 @@ export interface ButtonValue {
     disabledproperty?: boolean;
     customclass?: string;
 }
+
+export interface BaseResponse<T> {
+    result: T;
+    errorCode: number;
+    errorDescription: string;
+    successStatus: boolean;
+    propertyId: number;
+    outletId: number;
+  }
+  
