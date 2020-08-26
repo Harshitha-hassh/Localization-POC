@@ -87,7 +87,13 @@ export class DashboardWidgetsReportService {
                 ]
               },
               dropDown: {
-                show: false
+                show: true,
+                placeholder: 'Outlets',
+                floatLabel: 'never',
+                dropDownControlname:'Sales_Revenue',
+                dropDownName: this.captions.allOutlets,            
+                defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+                dropDownOptions: this.OutletsData,
               }
             },
             template: {
@@ -120,7 +126,13 @@ export class DashboardWidgetsReportService {
                 show: false
               },
               dropDown: {
-                show: false
+                show: true,
+                placeholder: 'Outlets',
+                floatLabel: 'never',
+                dropDownControlname:'Out_of_StockItems',
+                dropDownName: this.captions.allOutlets,            
+                defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+                dropDownOptions: this.OutletsData,
               }
             },
             template: {
@@ -138,7 +150,7 @@ export class DashboardWidgetsReportService {
             show: true,
             allow:true,
             parentClass:'sales',
-            customClass:'section_1 full_width',
+            customClass:'section_1',
             config: {
               useConfig: true,
               width: 100,
@@ -165,7 +177,7 @@ export class DashboardWidgetsReportService {
                 show: true,
                 placeholder: 'Outlets',
                 floatLabel: 'never',
-                dropDownControlname:'SalesRevenueOutlet',
+                dropDownControlname:'Revenue_By_Outlet',
                 dropDownName: this.captions.allOutlets,            
                 defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
                 dropDownOptions: this.OutletsData,
@@ -208,7 +220,13 @@ export class DashboardWidgetsReportService {
                 ]
               },
               dropDown: {
-                show: false
+                show: true,
+                placeholder: 'Outlets',
+                floatLabel: 'never',
+                dropDownControlname:'Sales_Top5Items',
+                dropDownName: this.captions.allOutlets,            
+                defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+                dropDownOptions: this.OutletsData,
               }
             },
             template: {
@@ -247,7 +265,13 @@ export class DashboardWidgetsReportService {
                 ]
               },
               dropDown: {
-                show: false
+                show: true,
+                placeholder: 'Outlets',
+                floatLabel: 'never',
+                dropDownControlname:'Sales_Top5Categories',
+                dropDownName: this.captions.allOutlets,            
+                defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+                dropDownOptions: this.OutletsData,
               }
             },
             template: {
@@ -257,48 +281,48 @@ export class DashboardWidgetsReportService {
               show: false             
             }
           },
-          {
-            order:6,
-            show: true,
-            allow:true,
-            parentClass:'sales',
-            customClass:'section_1 ',
-            config: {
-              useConfig: true,
-              width: 50,
-              widthUnit: '%',
-              height: '455',
-              heightUnit: 'px'
-            },
-            title: {
-              show: true,
-              icon: {
-                show: false
-              },
-              title: this.captions.PurchaseOrder,
-              multiSelect: {
-                show: false
-              },
-              dropDown: {
-                show: true,
-                placeholder: 'Outlets',
-                floatLabel: 'never',
-                dropDownControlname:'SalesPurchaseOrderOutlet',
-                dropDownName: this.captions.allOutlets,            
-                defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
-                dropDownOptions: this.OutletsData,
-              },
-            },
-            template: {
-              name: 'Purchase_Order'
-            },
-            footer: {
-              show: true,
-              title: this.captions.ViewCompleteList,
-              showArrow: true,
-              routingPath:''
-            }
-          },
+          // {
+          //   order:6,
+          //   show: true,
+          //   allow:true,
+          //   parentClass:'sales',
+          //   customClass:'section_1 ',
+          //   config: {
+          //     useConfig: true,
+          //     width: 50,
+          //     widthUnit: '%',
+          //     height: '455',
+          //     heightUnit: 'px'
+          //   },
+          //   title: {
+          //     show: true,
+          //     icon: {
+          //       show: false
+          //     },
+          //     title: this.captions.PurchaseOrder,
+          //     multiSelect: {
+          //       show: false
+          //     },
+          //     dropDown: {
+          //       show: true,
+          //       placeholder: 'Outlets',
+          //       floatLabel: 'never',
+          //       dropDownControlname:'Purchase_Order',
+          //       dropDownName: this.captions.allOutlets,            
+          //       defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+          //       dropDownOptions: this.OutletsData,
+          //     },
+          //   },
+          //   template: {
+          //     name: 'Purchase_Order'
+          //   },
+          //   footer: {
+          //     show: true,
+          //     title: this.captions.ViewCompleteList,
+          //     showArrow: true,
+          //     routingPath:''
+          //   }
+          // },
           {
             order:7,
             show: true,
@@ -307,7 +331,7 @@ export class DashboardWidgetsReportService {
             customClass:'section_1 ',
             config: {
               useConfig: true,
-              width: 50,
+              width: 40,
               widthUnit: '%',
               height: '455',
               heightUnit: 'px'
@@ -325,7 +349,7 @@ export class DashboardWidgetsReportService {
                 show: true,
                 placeholder: 'Outlets',
                 floatLabel: 'never',
-                dropDownControlname:'SalesOpenTicketOutlet',
+                dropDownControlname:'Open_Tickets',
                 dropDownName: this.captions.allOutlets,            
                 defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
                 dropDownOptions: this.OutletsData,
@@ -346,10 +370,10 @@ export class DashboardWidgetsReportService {
             show: true,
             allow:true,
             parentClass:'sales',
-            customClass:'section_1 full_width',
+            customClass:'section_1',
             config: {
               useConfig: true,
-              width: 100,
+              width: 60,
               widthUnit: '%',
               height: '455',
               heightUnit: 'px'
@@ -372,11 +396,11 @@ export class DashboardWidgetsReportService {
                 show: true,
                 placeholder: 'Outlets',
                 floatLabel: 'never',
-                dropDownControlname:'SalesReturnedItemOutlet',
+                dropDownControlname:'Returned_Items',
                 dropDownName: this.captions.allOutlets,            
                 defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
                 dropDownOptions: this.OutletsData,
-              },
+              }
             },
             template: {
               name: 'Returned_Items'
@@ -470,7 +494,7 @@ export class DashboardWidgetsReportService {
               {
                 config: {
                   useConfig: true,
-                  width: 48,
+                  width: 100,
                   widthUnit: '%',
                   height: '46',
                   heightUnit: '%',
@@ -478,26 +502,6 @@ export class DashboardWidgetsReportService {
                 },
                 template: {
                   name: 'DB_TotalSalesRevenue'
-                }
-              },
-              {
-                config: {
-                  useConfig: true,
-                  width: 48,
-                  widthUnit: '%',
-                  height: '46',
-                  heightUnit: '%',
-                  customClass: "dbBlock_2_2",
-                },
-                template: {
-                  name: 'DB_NumberOfTransaction',
-                  // templateData: {
-                  //   data:{
-                  //     icon:'icon-player',
-                  //     count:this.CancelledTeeTimesCount,
-                  //     description:this.captions.DB_NumberOfTransaction
-                  //   } 
-                  // }
                 }
               },
               {
@@ -527,10 +531,30 @@ export class DashboardWidgetsReportService {
                   widthUnit: '%',
                   height: '47',
                   heightUnit: '%',
-                  customClass: "dbBlock_2_4",
+                  customClass: "dbBlock_2_2",
                 },
                 template: {
-                  name: 'DB_AvgUnitPerCustomer',
+                  name: 'DB_NumberOfTransaction',
+                  // templateData: {
+                  //   data:{
+                  //     icon:'icon-player',
+                  //     count:this.CancelledTeeTimesCount,
+                  //     description:this.captions.DB_NumberOfTransaction
+                  //   } 
+                  // }
+                }
+              } 
+              // ,{
+              //   config: {
+              //     useConfig: true,
+              //     width: 48,
+              //     widthUnit: '%',
+              //     height: '47',
+              //     heightUnit: '%',
+              //     customClass: "dbBlock_2_4",
+              //   },
+              //   template: {
+              //     name: 'DB_AvgUnitPerCustomer',
                   // templateData: {
                   //   data: {
                   //     icon:'icon-player',
@@ -538,8 +562,8 @@ export class DashboardWidgetsReportService {
                   //     description:this.captions.DB_AvgUnitPerCustomer
                   //   } 
                   // }
-                }
-              }
+                // }
+              // }
             ],
             config: {
               useConfig: true,
