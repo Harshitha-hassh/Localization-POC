@@ -692,6 +692,42 @@ export class RouteLoaderService {
                   "externalLink": false,
                   "linkedElement": []
                 },
+                {
+                  "elementID": 8,
+                  "tenantID": 0,
+                  "propertyID": 0,
+                  "productID": 0,
+                  "textID": 2,
+                  "text": "Miscellaneous",
+                  "routePath": "/settings/systemsetup/miscellaneous",
+                  "imgPath": "",
+                  "order": 1,
+                  "visibility": true,
+                  "disable": false,
+                  "parentID": 7,
+                  "menuPosition": "Ternary",
+                  "menuAlignment": "Vertical",
+                  "externalLink": false,
+                  "linkedElement": []
+                },
+                {
+                  "elementID": 8,
+                  "tenantID": 0,
+                  "propertyID": 0,
+                  "productID": 0,
+                  "textID": 2,
+                  "text": "Notifications",
+                  "routePath": "/settings/systemsetup/notifications",
+                  "imgPath": "",
+                  "order": 1,
+                  "visibility": true,
+                  "disable": false,
+                  "parentID": 7,
+                  "menuPosition": "Ternary",
+                  "menuAlignment": "Vertical",
+                  "externalLink": false,
+                  "linkedElement": []
+                }
               ]
             }
           ]
