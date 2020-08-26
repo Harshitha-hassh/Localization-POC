@@ -787,6 +787,43 @@ export class RouteLoaderService {
             }
           ]
         },
+        {
+          "elementID": 7,
+          "tenantID": 0,
+          "propertyID": 0,
+          "productID": 0,
+          "textID": 2,
+          "text": "AUDIT",
+          "routePath": "/audit",
+          "imgPath": "/audit",
+          "order": 2,
+          "visibility": true,
+          "disable": false,
+          "parentID": 0,
+          "menuPosition": "Primary",
+          "menuAlignment": "Horizontal",
+          "externalLink": false,
+          "linkedElement": [
+            {
+              "elementID": 8,
+              "tenantID": 0,
+              "propertyID": 0,
+              "productID": 0,
+              "textID": 2,
+              "text": "DAY END",
+              "routePath": "/audit/dayend",
+              "imgPath": "/audit/dayend",
+              "order": 1,
+              "visibility": true,
+              "disable": false,
+              "parentID": 7,
+              "menuPosition": "secondary",
+              "menuAlignment": "Horizontal",
+              "externalLink": false,
+              "linkedElement": []
+            }
+          ]
+        },
       ]
     };
     const menuList = this.currentSettings.result;
