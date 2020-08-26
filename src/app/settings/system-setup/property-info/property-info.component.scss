@@ -1,0 +1,98 @@
+@import '../../../../assets/sass/abstracts/variables';
+.prop-info {
+  height: 100%;
+  .prop-details {
+    height: calc(100% - 80px);
+    .prop-section{
+    padding: 30px;
+  //  padding-right: 10px;
+    .name {
+      width: 440px;
+      display: block;
+      // padding-top: 10px;
+    }
+    .address-details {
+      .address-group {
+        display: block;
+        // padding-top: 10px;
+        .address {
+          width: 440px;
+        }
+      }
+      .postal-details, .country-details {
+        // padding-top: 10px;
+      }
+    }
+    .postalCode, .state, .city, .country {
+      width: 210px;
+    }
+    .postalCode, .city {
+      margin-right: 17px;
+    }
+    .phone-info {
+      // padding-top: 10px;
+      .phone {
+        width: 110px;
+        margin-right: 10px;
+      }
+      .ph-no {
+        width: 320px;
+      }
+    }
+    .lang, .tenantId, .propCode {
+      width: 200px;
+      display: block;
+      // padding-top: 10px;
+    }
+    hr {
+      border-top: dashed 2px;
+      color: $color-grey-border;
+    }
+    .buttonCust1 {
+      width: 30px;
+      height: 30px;
+      box-shadow: none;
+      span{
+        position: relative;
+        bottom: 5px;
+        font-size: 28px;
+      }
+    }
+    .mandatoryDetails {
+      padding-top: 20px;
+      .infoDetails {
+        .personal-info, .contact-info, .payment-info {
+          width: 275px;
+          height: 100%;
+          background-color: $color-menu-gray;
+          margin-right: 15px;
+          margin-top: 15px;
+          padding: 20px;
+          padding-right: 10px;
+          label {
+            margin-bottom: 10px;
+          }
+          .toogle-switch-big-class {
+            margin-top: 10px;
+            .switch {
+              bottom: 6px;
+            }
+            .detailName {
+              width: 78%;
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+  .prop-actions {
+    height: 80px;
+    border-top: 1px solid $color-grey-border;
+    padding: 24px;
+    .save {
+      margin-right: 10px;
+    }
+  }
+}

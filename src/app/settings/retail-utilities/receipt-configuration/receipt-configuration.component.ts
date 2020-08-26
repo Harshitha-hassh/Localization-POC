@@ -9,10 +9,6 @@ import { RetailBreakPoint, Host, ButtonType } from 'src/app/common/shared/shared
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.service';
 import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
-// import { HttpMethod, HttpServiceCall } from '../../../shared/service/http-call.service';
-// import { BaseResponse } from '../../../shared/business/shared.modals';
-// import { Utilities } from '../../../shared/utilities/utilities';
-// import { BreakPointAccess } from '../../../shared/service/breakpoint.service';
 
 @Component({
   selector: 'app-receipt-configuration',
