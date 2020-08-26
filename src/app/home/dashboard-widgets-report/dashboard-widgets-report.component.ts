@@ -5,12 +5,12 @@ import {  DonutCount } from './dashboard.modal';
 import { SubPropertyDataService } from 'src/app/retail/retail-code-setup/retail-outlets/subproperty-data.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
-import { SortOrderPipe } from 'src/app/common/shared/shared/pipes/sort-order.pipe';
 import { Utilities } from 'src/app/core/utilities';
 import { ChartBarComponent } from '../chart-bar/chart-bar.component';
 import * as moment from 'moment';
 import { DashBoardService } from 'src/app/shared/data-services/authentication/retailmanagement/dashboard.data.service';
 import { Localization } from 'src/app/core/localization/Localization';
+import { sortPipe } from 'src/app/common/shared/shared/pipes/sort-pipe.pipe';
 
 @Component({
   selector: 'app-dashboard-widgets-report',
@@ -87,7 +87,6 @@ export class DashboardWidgetsReportComponent implements OnInit {
   Sales_SalesRevenue_data_input :any;
   Revenue_By_Outlet_data_input:any;
   Returned_Items_data_input:any;
-  sortOrderPipe: SortOrderPipe;
 
   constructor(private cdr: ChangeDetectorRef,
     public _DashboardWidgetsReportService: DashboardWidgetsReportService,
@@ -95,8 +94,9 @@ export class DashboardWidgetsReportComponent implements OnInit {
     private _fb: FormBuilder,
     private _utilities :Utilities,
     private _propertyInformation: PropertyInformation,
-    private _localization: Localization) {
-    this.sortOrderPipe = new SortOrderPipe();
+    private _localization: Localization,
+    private sortPipe: sortPipe) {
+    
   }
 
   ngOnInit() {
@@ -213,10 +213,6 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
   widgetIsAnySelected(controlName, e) {
     console.log('controlName ', controlName, ' e', e);
-
-    this.widgetsData[0].widget[6].title.dropDown.dropDownControlname == "SalesOpenTicketOutlet";
-    this.widgetsData[0].widget[6].title.dropDown.dropDownOptions = e;
-
   };
   loopWidgetDropDownFrmControl($event, loopWidget, loopWidget_Index) {
     console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
@@ -232,7 +228,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
     sortedWidgets.forEach(x => {
       if (x.widget.length > 0) {
         let arr = x.widget.slice(0, x.widget.length);
-        this.sortOrderPipe.transform(arr, 'order', 'aesc');
+        this.sortPipe.sorting(arr, 'asc', 'order');
         x.widget = arr;
       }
     });
