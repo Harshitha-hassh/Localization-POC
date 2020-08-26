@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 //import { GolfScheduleCommunication } from '../../communication/services/golfschedule.service';
-import { TransactionDetails, OutOfStock, DonutCount, ItemData, TransactionSaleDetail, CategoryData } from 'src/app/home/dashboard-widgets-report/dashboard.modal';
+import { TransactionDetails, OutOfStock, DonutCount, ItemData, TransactionSaleDetail, CategoryData,ReturnedItems,OpenTickets } from 'src/app/home/dashboard-widgets-report/dashboard.modal';
 import { Localization } from 'src/app/core/localization/Localization';
 import { RetailPosCommunication } from '../../../communication/services/retailpos.service';
 import { RetailManagementCommunication } from '../../../communication/services/retailmanagement.service';
@@ -67,6 +67,20 @@ export class DashBoardService {
         const _startDate: string = this.localization.ConvertDateToISODateTime(startDate);
         let result: Promise<TransactionSaleDetail[]> = this._httpPos.putPromise<TransactionSaleDetail[]>(
             { route: RetailApiRoute.GetTransactionSaleDetail, uriParams: { startDate: _startDate, dataFormat: dataFormat} , body: outletIds  });
+        return result;
+    }
+
+    public getOpenTickets<T>(propertyDate: Date, outletIds: number[]): Promise<OpenTickets[]> {
+        const _propertyDate: string = this.localization.ConvertDateToISODateTime(propertyDate);
+        let result: Promise<OpenTickets[]> = this._httpPos.putPromise<OpenTickets[]>(
+            { route: RetailApiRoute.GetOpenTickets, uriParams: { processDate: _propertyDate} , body: outletIds });
+        return result;
+    }
+
+     public  getReturnedItems<T>(startDate: Date, dataFormat: number , outletIds: number[]): Promise<ReturnedItems[]> {
+        const _startDate: string = this.localization.ConvertDateToISODateTime(startDate);
+        let result: Promise<ReturnedItems[]> = this._httpPos.putPromise<ReturnedItems[]>(
+            { route: RetailApiRoute.GetReturnedItems, uriParams: { startDate: _startDate, dataFormat: dataFormat} , body: outletIds  });
         return result;
     }
     
