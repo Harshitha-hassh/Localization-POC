@@ -5,6 +5,7 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { SettingsComponent } from './settings.component';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material-module';
+import { SettingsService } from './settings.service';
 
 
 @NgModule({
@@ -15,6 +16,6 @@ import { MaterialModule } from '../material-module';
     SharedModule,
     MaterialModule
   ],
-  providers: []
+  providers: [SettingsService]
 })
 export class SettingsModule { }

@@ -75,7 +75,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
   DB_AverageTransaction_data: any;
   DB_AvgUnitPerCustomer_data: any;
   DB_VendorsChart_data :any; 
-
+  Outlet_Sales :any; 
   Sales_SalesRevenue_data: any;
   Revenue_By_Outlet_data: any;
   Returned_Items_data:any;
@@ -130,6 +130,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
   async BindData() {    
     this._DashboardWidgetsReportService.OutletsData = await this._dashBoardBusiness.getOutlets();
+    this.Outlet_Sales = this._DashboardWidgetsReportService.OutletsData.map(x => x.id);
     this.outletIds = this._DashboardWidgetsReportService.OutletsData.map(x => x.id);   
     this.outletId=this.outletIds[0];
     if (this.outletId > this.numericZero) {
@@ -400,8 +401,10 @@ export class DashboardWidgetsReportComponent implements OnInit {
   async getTransactionCount(){
     let transationDetail = await this._dashBoardBusiness.getTransactionCount(this.outletIds);
     this.DB_NumberOfTransaction_data.count = transationDetail.transactionCount;
-    this.DB_TotalSalesRevenue_data.count = `${this._localization.currencySymbol}`+ transationDetail.transactionRevenue;
-    this.DB_AverageTransaction_data.count = `${this._localization.currencySymbol}`+ transationDetail.averageRevenue;
+    this.DB_TotalSalesRevenue_data.count = `${this._localization.currencySymbol}`
+                                            + this._localization.DisplayMillion(transationDetail.transactionRevenue,this.numericTwo);
+    this.DB_AverageTransaction_data.count = `${this._localization.currencySymbol}`
+                                            + this._localization.DisplayMillion(transationDetail.averageRevenue,this.numericTwo);
   }
 
   getTotalSalesRevenue(){
@@ -434,7 +437,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
   async getTransactionSaleDetail() {
    
-    this.Sales_SalesRevenue_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.dataFormat); 
+    this.Sales_SalesRevenue_data = await this._dashBoardBusiness.getTransactionSaleDetail(this.dataFormat,this.startDate, this.Outlet_Sales); 
    
     if (this.Sales_SalesRevenue_data.length > 0) {
       let templateHeight = (this.widgetsData[0].widget[0].config.height - 90); //(60 - template title, 30 - chart needs)
@@ -469,7 +472,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
 
   async getRevenueByOutletDetail() {
-    this.Revenue_By_Outlet_data = await this._dashBoardBusiness.getRevenueByOutletDetail(this.dataFormat); 
+    this.Revenue_By_Outlet_data = await this._dashBoardBusiness.getRevenueByOutletDetail(this.dataFormat,this.startDate, this.outletIds); 
 
      if (this.Revenue_By_Outlet_data.length > 0) {
 
@@ -507,7 +510,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
   
 
   async getReturned_ItemsDetail() {
-    this.Returned_Items_data = await this._dashBoardBusiness.getReturned_ItemsDetail(this.dataFormat); 
+    this.Returned_Items_data = await this._dashBoardBusiness.getReturned_ItemsDetail(this.propertyDate, this.dataFormat,this.outletIds); 
      if (this.Returned_Items_data.length > 0) {
       let templateHeight = (this.widgetsData[0].widget[0].config.height - 90); //(60 - template title, 30 - chart needs)
       let barData, x_categories, columnWidth;
@@ -588,7 +591,7 @@ export class DashboardWidgetsReportComponent implements OnInit {
 
   async getOpenTicketsData() {
     this.Open_Tickets_data = {
-      data: await this._dashBoardBusiness.getOpenTicketsData(),
+      data: await this._dashBoardBusiness.getOpenTicketsData(this.propertyDate,this.outletIds),
       headerData: [
         { key: 'ticketNumber', description: this.captions.ticketNumber, alignment: 'textLeft font-bold w-25' },
         { key: 'transactionAmount', description: this.captions.transactionAmount, alignment: 'textRight font-bold w-25' },

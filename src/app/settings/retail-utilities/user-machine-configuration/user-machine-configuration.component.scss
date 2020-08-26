@@ -1,0 +1,81 @@
+@import '../../../../assets/sass/abstracts/variables';
+@import '../../../../assets/sass/abstracts//mixins';
+.user-machine-config{
+    .form-controls{
+    padding:30px;
+    height: calc(100% - 64px);
+    .toggle-label{
+        display: block;
+    }
+    .mtop{
+        margin-top:1.25rem;
+    }
+    .toggleButton{
+        .mat-raised-button{
+            min-width: 150px;
+            height: 40px;
+            background-color: $azure;
+            border:1px solid $very-light-grey;
+            color:$shady-grey;
+            z-index: 9;
+            &:first-child{
+                border-radius: 5px 0 0 5px;
+            }
+            &:last-child{
+                position: relative;
+                left: -5px;
+                border-radius: 0 5px 5px 0;
+            }
+            &.selected{
+                @extend .body-bgcolor;
+               color:$PureWhite;
+                @extend .body-bordercolor;
+                &:first-child{
+                    border-radius: 5px !important;
+                    z-index: 10;
+                }
+                &:last-child{
+                    z-index: 10;
+                    border-radius: 5px !important;
+                }
+
+            }
+
+        }
+
+
+    }
+
+    .config-values{
+        mat-form-field{
+            display: block;
+            max-width: 250px;
+            // margin-top: 10px;
+            .mat-form-field-subscript-wrapper{
+                min-height: unset;
+            }
+
+        }
+        .label{
+            margin-top:20px;
+            font-weight: 700;
+            margin-bottom: 0px;
+        }
+    }
+    }
+    .user-machine-config-foot{
+        height: 64px;
+        border-top: 1px solid $color-grey-border;
+        padding: 12px 0px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        padding-left: 30px;
+        border-top: 1px solid #CCD3D7;
+        .save {
+        margin-right: 10px;
+        }
+    }
+
+
+}
