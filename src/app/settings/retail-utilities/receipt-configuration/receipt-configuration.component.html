@@ -1,0 +1,78 @@
+<section class="receiptConfig h-100">
+        <div class="mainData w-100">
+          <form [formGroup]="FormGrp" class="h-100">
+              <ng-scrollbar [autoHide]="true">
+                  <div class="leftSection float-left ">
+                      <div class="pt-4">
+                        <!-- Outlet Box -->
+                        <mat-form-field class="">
+                            <mat-select placeholder="{{textCaptions.Outlet}}" (selectionChange)="changeSelection($event)" formControlName="outlet" [(ngModel)]="utilityId"  class="LW14">
+                                <mat-option *ngFor="let data of Outlet" [value]="data.id" >
+                                    {{data.outletName}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="FormGrp.controls['outlet'].hasError('required') && FormGrp.controls['outlet'].touched && !FormGrp.controls['outlet'].valid">
+                                {{textCaptions.SelectOutlet}}
+                            </mat-error>
+                        </mat-form-field>
+                        <!-- Number of Reciepts -->
+                        <mat-form-field class=" ml-4 receipts">
+                            <input matInput placeholder="{{textCaptions.NoOfReceipts}}"  maxLength = "2" (click)="viewChange($event)" inputtype="nodecimal,nonnegative" class="text-capitalize" formControlName="noOfReceipts" />
+                            <mat-error *ngIf="FormGrp.controls['noOfReceipts'].hasError('required') && FormGrp.controls['noOfReceipts'].touched && !FormGrp.controls['noOfReceipts'].valid">
+                              {{textCaptions.MissingNumber}}
+                            </mat-error>
+                        </mat-form-field>
+                      </div>
+                      <!-- Print Info -->
+                      <div class="printData">
+                        <div class="header w-100 text-capital d-table"><h5 class="d-table-cell align-middle pl-4 LWB14">{{textCaptions.PrintData}}</h5></div>
+                        <div class="toggleSection w-100 pt-2 pb-2">
+                          <div class="h-100" *ngFor="let data of FormGrp.get('printReceipt')['controls']; let i =index;" formArrayName="printReceipt">
+                            <div *ngFor="let value of printInfo;let j=index;" [formGroupName]="i">
+                                <div  class="rightToggle float-left" [ngClass]="j%2 == 0 ? 'borderClass' : '' ">
+                                        <label class="pt-2 pl-4 LW12" >{{value.Name}}</label>
+                                        <i *ngIf="value.id==2" class="pl-2 icon-information cursor" [popover]="infoPopOver" [popoverOnHover]="true" popoverPlacement="bottom"></i>
+                                        <app-toggle-switch  class="d-table-cell pl-4" (changeToggleEvent)="toggleChange($event,value.controlName)" formControlName="{{value.controlName}}"
+                                        [ngClass]="value.enableToggle ? 'button_valid' : 'button_invalid'" ></app-toggle-switch>
+                                    </div>
+
+                            </div>
+                            <popover-content popoverPlacement="bottom" #infoPopOver placement="auto bottom" [animation]="true" [closeOnClickOutside]="true" id="infoPopOverID">
+                                {{textCaptions.HoverMessage}}
+                              </popover-content>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Radio Group -->
+                      <div class="mt-4">
+                        <label class="float-left LW12">{{textCaptions.Display}} </label>
+                        <mat-radio-group [disabled] = "IsViewOnly"  class="radio-class  float-left level-selector mt-2 mr-2 mb-2 clear-both" (change)="viewChange($event)" formControlName="displayServiceCharge">
+                          <mat-radio-button class="mr-3 value-color" *ngFor="let value of ServiceCharge" [value]="value.id" >{{value.value}}</mat-radio-button>
+                        </mat-radio-group>
+                      </div>
+                    </div>
+                    <div class="rightSection h-100 float-right">
+                      <!-- Comments -->
+                      <div class="pt-3 pl-3">
+                        <mat-form-field (click)="viewChange($event)" class="textWidth mt-2 ">
+                            <textarea matInput placeholder="{{textCaptions.GratuityLine}}" formControlName="gratuityLine" [maxlength]="250"></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field (click)="viewChange($event)" class="textWidth mt-2 ">
+                            <textarea matInput placeholder="{{textCaptions.ReceiptNote}}" formControlName="receiptNote" [maxlength]="250"></textarea>
+                        </mat-form-field>
+                      </div>
+                    </div>
+              </ng-scrollbar>
+        </form>
+        </div>
+
+        <div class="bottomSection w-100">
+                <!-- <button class="ml-3" [ngClass]="{'spa-primary-default-save' : (FormGrp.valid)}" mat-button [disabled]="(!FormGrp.valid) || (isSaveDisabled)" (click)="saveReceipt(FormGrp.value)">{{textCaptions.save}}{{FormGrp.valid}}{{isSaveDisabled}}</button> -->
+            <button class="ml-30px" [ngClass]="{'spa-primary-default-save' : (FormGrp.valid && !isSaveDisabled && !IsViewOnly), 'spa-primary-disabled' : ( !FormGrp.valid || isSaveDisabled || IsViewOnly)}" mat-button (click)="saveReceipt(FormGrp.value)">{{textCaptions.save}}</button>
+            <!-- <button class="ml-3" [ngClass]="(FormGrp.valid) ? 'spa-primary-default-save' : 'spa-primary-disabled'"mat-button [disabled]="(!FormGrp.valid) || (isSaveDisabled)" (click)="saveReceipt(FormGrp.value)">{{textCaptions.save}}</button> -->
+            <button class="spa-button-cancel" mat-button (click)="cancelClick()">{{textCaptions.cancel}}</button>
+        </div>
+
+        </section>
+

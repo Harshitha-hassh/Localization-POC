@@ -17,6 +17,7 @@ import { RetailManagementCommunication } from './communication/services/retailma
 import { RetailPosCommunication } from './communication/services/retailpos.service';
 import { TemplatesModule } from '../common/templates/templates.module';
 import { RetailSharedModule } from '../retail/shared/retail-shared.module';
+import { CommonSharedModule } from '../common/shared/shared/shared.module';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { RetailSharedModule } from '../retail/shared/retail-shared.module';
     PopoverModule,
     ReactiveFormsModule,
     TemplatesModule,
-    RetailSharedModule
+    RetailSharedModule,
+    CommonSharedModule
   ],
   providers: [
     TenantManagementCommunication,
@@ -56,7 +58,8 @@ import { RetailSharedModule } from '../retail/shared/retail-shared.module';
     PopoverModule,
     MenuComponent,
     GlobalSearchComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonSharedModule
   ],
   entryComponents: [
   ]

@@ -25,12 +25,11 @@ const routes: Routes = [{
     {
       path: 'systemsetup',
       loadChildren: () => import('./system-setup/system-setup.module').then(m => m.SystemSetupModule)
-    }
-    // {
-    //   path: 'utilities',
-    //   loadChildren: () => import('../settings/utilities/utilities.module').then(m => m.UtilitiesModule),
-    //   data: { redirectTo: 'usersetup', hasChild: true }
-    // },
+    },
+    {
+      path: 'utilities',
+      loadChildren: () => import('../settings/retail-utilities/retail-utilities.module').then(m => m.UtilitiesModule)
+    },
     // {
     //   path: 'usersetup',
     //   loadChildren: () => import('../settings/user-setup/user-setup.module').then(m => m.UserSetupModule),

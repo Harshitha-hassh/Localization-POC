@@ -1,0 +1,71 @@
+<section class='user-machine-config  h-100'>
+    <div class='form-controls pr-0'>
+
+        <ng-scrollbar [autoHide]="true">
+            <form autocomplete="off" [formGroup]="userSessionConfigForm">
+                <div class='config-values'>
+                    <mat-form-field class="mtop">
+                        <mat-select placeholder="{{captions.defaultOutlet}}" formControlName="defaultOutletId" (selectionChange)="outletChange($event)">
+                            <mat-option *ngFor="let outlet of outlets" [value]="outlet.id">{{outlet.description}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="mtop" *ngIf= "PropertyInfo.UseRetailInterface">
+                        <mat-select placeholder="{{localization.captions.settings.DefaultTerminal}}" formControlName="defaultTerminalId">
+                            <mat-option *ngFor="let terminal of outletTerminals" [value]="terminal.terminalId">{{terminal.terminalName}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+<!-- Commented until ready for use with Golf
+                    <mat-form-field>
+                        <mat-select placeholder="{{captions.defaultCourse}}" formControlName="defaultCourseId">
+                            <mat-option *ngFor="let course of courses" [value]="course.id">{{course.description}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+-->
+                <ng-container *ngIf="!useRetailInterface">
+                    <label class='LW14 label'>{{captions.rguestPayDevices}}</label>
+                    <mat-form-field>
+                        <mat-select placeholder="{{captions.paymentDevice}}" formControlName="defaultPaymentDevice" (selectionChange)="deviceChanged($event)">
+                            <mat-option *ngFor="let device of paymentDevices" [value]="device.id">{{device.description}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field *ngIf="showPaymentDevice">
+                        <mat-select placeholder="{{captions.deviceName}}" formControlName="defaultDeviceName" [disabled]="!enablePaymentDeviceSelect">
+                            <mat-option *ngFor="let name of deviceNames" [value]="name.id">{{name.description}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div class="yes-col toggle-section" *ngIf="showPaymentDevice">
+                        <label class="LW12 label-color d-block mt-2">{{captions.Idtechsred}}</label>
+                        <app-toggle-switch formControlName="isIdtechSred"></app-toggle-switch>
+                    </div>
+                    <!-- <label class='LW14 label'>{{captions.PrinterSelection}}</label><br>
+                    <label class='LW14 label'>{{captions.SmallStickers}}</label>
+                        <mat-form-field>
+                            <mat-select placeholder="{{captions.PrinterName}}" formControlName="smallStickersPrinter" [disabled]="!enablePrinterSelect">
+                                <mat-option *ngFor="let printer of printers" [value]="printer.id">{{printer.description}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    <label class='LW14 label'>{{captions.HangingTickets}}</label>
+                    <mat-form-field>
+                        <mat-select placeholder="{{captions.PrinterName}}" formControlName="hangingTicketsPrinter" [disabled]="!enablePrinterSelect">
+                            <mat-option *ngFor="let printer of printers" [value]="printer.id">{{printer.description}}</mat-option>
+                        </mat-select>
+                    </mat-form-field> -->
+                </ng-container>
+                </div>
+
+            </form>
+<!--             <br>Dirty: {{userSessionConfigForm.dirty}}
+            <br>Touched: {{userSessionConfigForm.touched}}
+            <br>Valid: {{userSessionConfigForm.valid}}
+            <br>Value: {{userSessionConfigForm.value | json}} -->
+        </ng-scrollbar>
+
+    </div>
+    <div class='user-machine-config-foot'>
+        <div>
+            <button class="text_capitalize LW14 save" mat-button (click)="save()" [ngClass]="enableSave ? 'spa-primary-default-save whitecolor': 'spa-primary-disabled'" [disabled]='!enableSave'>{{captions.save}}</button>
+            <a class="text_capitalize LW14 spa-button-cancel" (click)="cancel()">{{captions.cancel}}</a>
+        </div>
+    </div>
+
+</section>

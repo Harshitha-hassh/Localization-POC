@@ -669,6 +669,20 @@ export class Localization {
         */
   }
 
+    /**
+   * Display number in Million or Thousand format.
+   * @param number value.
+   */
+  DisplayMillion(value: number,args: number): string {
+    //Localization pending
+    var exp, suffixes = ['K', 'M', 'B', 'T', 'Q'];
+    if (value < 1000) {
+      return value.toString();
+    }
+    exp = Math.floor(Math.log(value) / Math.log(1000));
+    return (value / Math.pow(1000, exp)).toFixed(args) + suffixes[exp - 1];   
+  }
+
   /**
    * Converts a javascript date to localized short date string.
    * @param Date javascript date.
