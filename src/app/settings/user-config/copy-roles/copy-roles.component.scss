@@ -1,0 +1,22 @@
+@import '../../../../assets/sass/helpers/_variables';
+.copy-roles-section{
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+    .form-section{
+        height: 100%;;
+    }
+    .content-section{
+        height: calc(100% - 64px);
+    .copy-from,.copy-to{
+        float: left;
+    }
+}
+
+.dialog-section{
+    height: 4rem;
+    width: 100%;
+    display: inline-block;
+    border-top: 1px solid $color-shop-border;   
+  }
+}

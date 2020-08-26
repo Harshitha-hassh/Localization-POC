@@ -1,0 +1,7 @@
+<button class="userClass buttonStyle cursor" (click)="signInSignOut()" [matTooltip]="loggedInAsToolTip"
+    #tooltip="matTooltip">
+    <i class="icon-user-class">
+        <span class="icon-Circle"> </span>
+        <span [ngClass]="authenticated ? 'icon-active-user' : 'icon-user'"></span>
+    </i>
+</button>

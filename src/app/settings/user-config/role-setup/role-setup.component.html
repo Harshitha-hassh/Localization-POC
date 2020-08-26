@@ -1,0 +1,6 @@
+<section class="retailRoleSetup h-100"> 
+    <div class="roleGrid h-100">
+        <app-table [isRoleSetUpReadOnly] = "IsReadOnly" [options]="tableoptions" (doneEvtEmitter)="Done($event)" (afterEditClose)="afterEditPopupClose($event)" (dragDropEvt)="dragDrop($event)" (deleteEvt)="DeleteRecords($event)" (addClick)="addOutlet($event,type)" (editEvt)="EditRecords($event)" (toggleEvtEmitter)="sliderChange($event)" (inactiveToggleEvtEmitter)="inactiveSliderChange($event)"></app-table>
+    </div>        
+</section>
+

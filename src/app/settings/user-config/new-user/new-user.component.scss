@@ -1,0 +1,14 @@
+@import '../../../../assets/sass/helpers/_variables';
+.user-setup{
+.content-area{
+    height: calc(100% - 64px);
+    border-bottom: 1px solid $color-shop-border;
+}
+.actions {
+    height: 64px;
+
+    .actionButton {
+    //  padding: 0 50px;
+    }
+  }
+}

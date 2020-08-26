@@ -1,0 +1,21 @@
+<!-- <div class="user-config list-container">
+	<div class="select-container-bg">
+		<div class="select-container">
+			<mat-form-field class="select-width">
+				<mat-select id="selectSetup" #selectSetup [(ngModel)]="configId">
+					<mat-option [disabled]="!usrCnf.IsAuthorized" (click)="accessCheckAndAlert(usrCnf)" *ngFor="let usrCnf of config"
+					 [value]="usrCnf.id" [attr.callDesc]="usrCnf.callDesc">
+						{{ usrCnf.viewValue }}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+</div>
+<div class="rolesetupdiv">
+	<app-role-setup *ngIf="configId == 'roleSetup'"></app-role-setup>
+	<app-user-role *ngIf="configId == 'userRole'"></app-user-role>
+	<app-user-setup *ngIf="configId == 'userSetup'"></app-user-setup>
+</div> -->
+
+<app-menu [menu]="menuList"></app-menu>

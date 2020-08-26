@@ -1,0 +1,28 @@
+.d-flex {
+    display: flex;
+    justify-content: center;
+}
+.about-wrapper {
+    padding: 2rem;
+    width: 100%;
+    .pop-contents {
+        margin-top: 0.75rem;
+
+        .customHeaderTxt {
+            font-weight: bold;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .pop-message {
+            text-align: center;
+        }
+    }
+
+    .actions {
+        @extend .d-flex;
+        margin-top: 40px;
+        padding: 0;
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,47 @@
+<div *ngFor="let item of inputData;let i=index" class="accord-section">
+  <form [formGroup]="userRoleGroup">
+    <div class="header-section">
+      <span class="header-name">{{item.headerData.titleData}}</span>
+      <span class="header-count">{{item.headerData.titledesc}}</span>
+    </div>
+    <mat-accordion id="ExapanedPanel" class="expansion-panel-section" *ngFor="let userDetails of userRoleGroup.get('userDetails')['controls'];let m = index;"
+      formArrayName="userDetails">
+      <!--Second Loop-->
+      <mat-expansion-panel *ngFor="let itemDetails of item.headerData.details;let k=index" [formGroupName]="m" id="formGroup-{{m}}">
+        <mat-expansion-panel-header *ngIf="m == k">
+          <mat-panel-title>
+            {{this.localization.captions.breakpoint[itemDetails.description]}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{selectedCount[k]}}/{{itemDetails.userClaims.length}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="accordian-section" *ngIf="m == k" id="sed_{{k}}">
+          <ng-scrollbar id="scroll_{{k}}" [trackX]="false" [autoHide]="false">
+            <div class="first-column data-section" id="accordian_{{k}}" *ngFor="let userClaimsDetails of userDetails.get('userClaims').controls;let j= index;"
+              [ngClass]="{'second-column_style': j%2 == 0 && userClaims.length > 1}" formArrayName="userClaims">
+              <div class=" LW14 data-section-row" [formGroupName]="j">
+                <span class="msg-text breakpoint-name">
+                  <div class="setWidth" title="{{this.localization.captions.breakpoint[userClaimsDetails.get('breakPointNumber').value]}}">{{this.localization.captions.breakpoint[userClaimsDetails.get('breakPointNumber').value]}}</div>
+                </span>
+                <div class="accordian-toogle float-right  accordian-toggle-section">
+                  <div [ngClass]="{'button_invalid': IsReadOnly}" class="appt-toggle-section pt-1 allow-toggle">
+                    <span class="LW12 mb-2  toggle-text">{{this.localization.captions.setting.Allow}}</span>
+                    <app-toggle-switch formControlName="allow" (changeToggleEvent)="showAllAppointments(userClaimsDetails,i,k,j,'allow',$event)"></app-toggle-switch>
+                  </div>
+                  <div [ngClass]="{'button_invalid': !(userClaimsDetails.get('viewOnlyAllowed').value && !IsReadOnly)}"
+                    class="appt-toggle-section pt-1 view-toggle">
+                    <span class="LW12 mb-2 toggle-text">{{this.localization.captions.setting.View}}</span>
+                    <div class="accordian-toogle d-inline-block">
+                      <app-toggle-switch formControlName="view" (changeToggleEvent)="showAllAppointments(userClaimsDetails,i,k, j,'view',$event)"></app-toggle-switch>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-scrollbar>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </form>
+</div>

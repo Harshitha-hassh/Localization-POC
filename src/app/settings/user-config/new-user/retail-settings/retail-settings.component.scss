@@ -1,0 +1,68 @@
+@import '../../../../../assets/sass/helpers/_variables';
+
+.retail-settings {
+  .retail-setting-form {
+    .settings-div {
+
+      .retail-settings-left {
+        width: 400px;
+        height: 100%;
+        border-right: 1px solid $color-shop-border;
+
+        .w250 {
+          width: 250px;
+        }
+
+        .logoff {
+          .logofflabel {
+            position: relative;
+            top: 14px;
+          }
+          .mat-form-field-infix{         
+            padding-top: 0;
+            .mat-form-field-label-wrapper{
+              top: -18px;
+            }
+          }
+        }
+
+        .autologoff {
+          position: relative;
+          top: -2px;
+          width: 100px;
+          .autologoff-label{
+            width: 100px;
+          }
+
+          .switch {
+            //margin-top: 9px !important;
+          }
+        }
+        .allow-commission{
+            width: 100px;
+        }
+        .commission {
+          // position: relative;
+          // top: 22px;
+          // padding-left: 28px;
+          // .mat-form-field-infix{
+          //   border-top: none;
+          //   padding-top: 0;
+          //   .mat-form-field-label-wrapper{
+          //     top: -18px;
+          //   }
+          // }
+        }
+      }
+
+      .retail-settings-right {
+        width: calc(100% - 405px);
+        height: 100%;
+
+        .icon-font-size {
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+}
