@@ -1,0 +1,176 @@
+<div class="ClientCustomDataTable" id="table_{{SelectedSettingId}}">
+  <div class="page-header" *ngIf="options ? options[0].Searchable : false">
+    <div class="p10 d-flex align-items-center">
+      <input matInput autocomplete="off" style="width:90%;" [(ngModel)]="searchText" type="text" placeholder="{{captions.common.SearchBy}} {{PlaceHoldertext}}"
+        value="" (keypress)="currentPage=1" class="searchbox">
+      <i [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" (click)="searchText='';"></i>
+    </div>
+  </div>
+  <div class="fixed-table-container" id="fixed-table-container" [ngClass]="{'noSort': bodyArray.length < 1}">
+    <!--  hidden-head <div class="header-background"> </div> -->
+    <!-- <div class="fixed-table-container-inner"> -->
+    <div class="w-100 position-absolute grid-table" id="SPACustomTable">
+      <ng-scrollbar [trackX]="true" [autoHide]="true">
+
+
+        <!-- <ng-scrollbar> -->
+        <table cellspacing="0" class="retailtable">
+          <thead>
+            <tr id="SPAHeaderRow">
+              <th *ngIf="EditMoreOption && SelectRow" class="pr-3 table-checkbox">
+                <div class="th-inner">
+                  <mat-checkbox [disabled]="(bodyArray | clientfilterpipe: searchText : hdrkeyArray).length <= 0"
+                    (change)="RowSelect($event,bodyArray,'All')" (click)="$event.stopPropagation()" [(ngModel)]="IsCheckAll"></mat-checkbox>
+                </div>
+              </th>
+              <th *ngFor="let hdrCnt of hdrArray;let hi=index" id="header{{hi}}" [ngClass]="[hdrCnt.alignType=='right' ? 'text-right' : hdrCnt.alignType=='center' ? 'text-center':'',hdrCnt.sortable != undefined ? (hdrCnt.sortable ? '': 'pointerevents-none') : '']"
+                [class.cursordefault]="hdrCnt.sortable != undefined ? (hdrCnt.sortable ? false: true) : false"
+                [class.cursor]="hdrCnt.sortable != undefined ? (hdrCnt.sortable ? true: false) : true" (click)="sortingFunc(hdrCnt.jsonkey,hi,'Frmtable', hdrCnt.sortcolumn, hdrCnt.sortcolumndatatype)">
+                <div class="th-inner" [class.font-weight-bold]="selectedDefaultHeader == hdrCnt.jsonkey && (bodyArray | filterPipe: searchText : hdrkeyArray).length > 0 && hdrCnt.sortable != undefined ? hdrCnt.sortable : (selectedDefaultHeader == hdrCnt.jsonkey && bodyArray.length > 0)">
+                  {{hdrCnt.title}}
+                  <span class="pl-1" *ngIf="hdrCnt.jsonkey != ''">
+                    <i id="sortArrow{{hi}}" *ngIf="(hdrCnt.jsonkey != '' && hdrCnt.sortable != undefined ? hdrCnt.sortable : true) && ((bodyArray | clientfilterpipe: searchText : hdrkeyArray).length != 0)"
+                      [ngStyle]="{'opacity':selectedDefaultHeader == hdrCnt.jsonkey ? '1' : '0.3' }"
+                      [ngClass]="selectedDefaultHeader == hdrCnt.jsonkey && orderType == 'asc' ? 'icon-filled_up_arrow position-absolute deg0 IC6': selectedDefaultHeader == hdrCnt.jsonkey && orderType =='desc' ?
+                        'icon-filled_up_arrow deg180 position-absolute IC6': 'icon-sortArrow sort-icon'"
+                      >
+                    </i>
+                  </span>
+                </div>
+              </th>
+              <th style="width: 25px;cursor: default;" *ngIf="SelectedSettingId != GridType.retail"></th>
+              <th *ngIf="EnableActions" style="cursor: default;" [ngClass]="enableStickyColumn ? 'stickycolumn':''">
+                <div class="th-inner  ">{{captions.setting.Actions}}</div>
+              </th>
+              <!-- <th *ngIf="(EditMoreOption || SelectRow) && (SelectedSettingId != GridType.retail) && (bodyArray | clientfilterpipe: searchText : hdrkeyArray).length != 0" class="pr-3"
+                  style="cursor: default;">
+                  <div class="th-inner">
+                     <div *ngIf="SelectedSettingId == GridType.password"> {{captions.setting.Actions}}</div>
+                  </div>
+                </th> -->
+            </tr>
+          </thead>
+          <tbody class=" h-100" flex>
+            <tr draggable [dragEnabled]="blnDraggable" [dropEnabled]="blnDraggable" [dragData]="bodyCnt" [dragHandle]="'.draggable'" droppable (OnDragOver)="onDragOver($event,bodyCnt,bodyArray)"
+              (click)="highlightrow($event, bodyCnt)" (onDrop)="onItemDrop($event,bodyCnt,bodyArray)" [ngClass]="((NewerData[0] === bodyCnt) || (SelectedData === bodyCnt)) ? 'highlight' : ''"
+              id="{{bodyCnt.id}}" class="cursor" *ngFor="let bodyCnt of (bodyArray | clientsortpipe : orderType : selectedDefaultHeader : overriddenSortColumn : sortColumnDataType);let bi=index">
+
+
+              <td *ngIf="EditMoreOption && SelectRow && GridType.quickSale != SelectedSettingId" class="pr-3 table-checkbox">
+                <mat-checkbox (change)="RowSelect($event,bodyCnt,'Single')" (click)="$event.stopPropagation()" [checked]="SelectedData.indexOf(bodyCnt)!=-1"
+                  [disabled]="bodyCnt.checkbox"></mat-checkbox>
+              </td>
+              <td *ngFor="let hdrCnt of hdrArray;let hi=index" [ngClass]="[hdrCnt.alignType=='right' ? 'text-right pr26' : 'hello',hdrCnt.alignType=='center' ? 'text-center' : '']">
+
+                <span [matTooltipDisabled]="bodyCnt[hdrCnt.jsonkey] ? hdrCnt.jsonkey == 'inactive' || hdrCnt.jsonkey == 'active'|| (hdrCnt.type && hdrCnt.type == 'toggle') || hdrCnt.jsonkey == 'client' || bodyCnt[hdrCnt.jsonkey].length < 40 : true"
+                  matTooltip="{{bodyCnt[hdrCnt.jsonkey]}}" matTooltipClass="tooltipClass" class="textellipsis content d-inline-block" id="content">
+                  <div class="toogle-switch-big d-inline-flex ml-2" *ngIf="hdrCnt.jsonkey == 'inactive' || hdrCnt.jsonkey == 'active'">
+                    <label class="switch">
+                      <input class="switch-input" type="checkbox" [name]="toggleDisplayText" (change)="sliderChange(bodyCnt[hdrCnt.jsonkey],bodyCnt)"
+                        [ngModel]="bodyCnt[hdrCnt.jsonkey]" />
+                      <span class="switch-label " [attr.data-on]="localization.captions.common.Yes" [attr.data-off]="localization.captions.common.No"></span>
+                      <span class="switch-handle"></span>
+                    </label>
+                  </div>
+                  <span *ngIf="hdrCnt.jsonkey == 'services'">
+                    <span *ngFor="let service of bodyCnt[hdrCnt.jsonkey]; let isLast=index">
+                      <span *ngIf="service.selectService == true">{{service.serviceName}}{{isLast ==
+                        bodyCnt[hdrCnt.jsonkey].length -1 ? '' : ', '}}</span>
+                    </span>
+                  </span>
+                  <span *ngIf="SelectedSettingId == 21 && (hdrCnt.jsonkey == 'startDate' || hdrCnt.jsonkey == 'endDate')">
+                    <span>
+                      {{bodyCnt[hdrCnt.jsonkey] | date: 'dd/MM/yyyy'}}
+                    </span>
+                  </span>
+                  <span *ngIf="hdrCnt.jsonkey == 'dateOfBirth' || hdrCnt.jsonkey == 'lastVisitedDate'" >
+                    {{ bodyCnt[hdrCnt.jsonkey] != '' ? utils.LocalizeDate(bodyCnt[hdrCnt.jsonkey]) : ''}}
+                  </span>
+                  <span *ngIf="!CheckInnerBool(bodyCnt[hdrCnt.jsonkey])">
+                    <span *ngIf="hdrCnt.datatype && hdrCnt.datatype == 'decimal' && !IfBoolean(bodyCnt[hdrCnt.jsonkey])">
+                      {{LoadDecimalValue(bodyCnt[hdrCnt.jsonkey])}}
+                    </span>
+                    <span *ngIf="hdrCnt.datatype && hdrCnt.datatype == 'money' && !IfBoolean(bodyCnt[hdrCnt.jsonkey])">
+                      {{localization.localizeCurrency(bodyCnt[hdrCnt.jsonkey], false)}}
+                    </span>
+                    <span *ngIf="hdrCnt.datatype && hdrCnt.datatype == 'percentage' && !IfBoolean(bodyCnt[hdrCnt.jsonkey])">
+                      {{bodyCnt[hdrCnt.jsonkey]}}%
+                    </span>
+                    <div *ngIf="hdrCnt.displayType && hdrCnt.displayType == 'icon'" class="d-inline-block w30 ">
+                      <ng-container *ngIf="SelectedSettingId == GridType.password">
+                        <span *ngIf="bodyCnt[hdrCnt.jsonkey]"> <i class="icon-done icon-font-table"></i><span>Set</span></span>
+                        <span *ngIf="!bodyCnt[hdrCnt.jsonkey]"><i style="padding-right: 3px;" class="icon-close icon-font-table"></i><span>Not
+                            Set</span></span>
+                      </ng-container>
+                      <i *ngIf="bodyCnt[hdrCnt.jsonkey] == captions.setting.Revenue" class="icon-Revenue"></i>
+                      <i *ngIf="bodyCnt[hdrCnt.jsonkey] == captions.setting.Items" class="icon-Item"></i>
+                    </div>
+                    <!--  <span *ngIf="hdrCnt.jsonkey == 'services'">
+
+                    </span> -->
+                    <span *ngIf="hdrCnt.jsonkey == 'phoneNumber'" matTooltip="{{bodyCnt[hdrCnt.hover]}}" matTooltipClass="tooltipClass" class="textellipsis content d-inline-block">
+                      {{bodyCnt[hdrCnt.jsonkey]}}
+                    </span>
+
+                    <span *ngIf="!hdrCnt.datatype && !IfBoolean(bodyCnt[hdrCnt.jsonkey]) && hdrCnt.jsonkey != 'printQty' && !hdrCnt.type && hdrCnt.jsonkey != 'appointmentId' && hdrCnt.jsonkey != 'phoneNumber' && hdrCnt.jsonkey != 'dateOfBirth'  && hdrCnt.jsonkey != 'lastVisitedDate'">
+                      {{this.SetColumnValue(bodyCnt,hdrCnt.jsonkey)}}
+                      <label class="label-green-round" *ngIf="hdrCnt.jsonkey == 'name' && bodyCnt.isActive == true"></label>
+                    </span>
+                    <span *ngIf="hdrCnt.type == 'clickable'" class="anchor-like">
+                      {{bodyCnt[hdrCnt.jsonkey]}}
+                    </span>
+
+                    <span *ngIf="hdrCnt.datatype && hdrCnt.datatype == 'icon'" [ngClass]="(bodyCnt[hdrCnt.jsonkey] | lowercase) == 'male' ? 'icon-male-staff' : (bodyCnt[hdrCnt.jsonkey] | lowercase) == 'female' ? 'icon-female-staff' :''"
+                      class="LW20">
+
+                    </span>
+                  </span>
+
+                  <span *ngIf="CheckInnerBool(bodyCnt[hdrCnt.jsonkey])" class="textellipsis">
+                    <span *ngIf="hdrCnt.datatype && hdrCnt.datatype == 'client'" class="d-flex">
+                      <span class="w40 align-self-center imgstyle mr10">
+                        <app-img-thumbnail [imageContent]="bodyCnt[hdrCnt.jsonkey].image" [thumbnail]="true" imageType="client"></app-img-thumbnail>
+                      </span>
+
+                      <div class="client-name-email lh20 d-block textellipsis"><div class="pb-1 textellipsis" [isEllipsis]="bodyCnt[hdrCnt.jsonkey].name">{{bodyCnt[hdrCnt.jsonkey].name}}</div>
+                        <div class="op07 textellipsis" [isEllipsis]="bodyCnt[hdrCnt.jsonkey].email">{{bodyCnt[hdrCnt.jsonkey].email}}</div></div>
+                    </span>
+
+                  </span>
+                </span>
+              </td>
+              <td style="width: 25px" *ngIf="SelectedSettingId != GridType.retail"></td>
+              <td *ngIf="EnableActions" class="noellipsis" [ngClass]="enableStickyColumn ? 'stickycolumn':''">
+                  <button mat-button class="player-worth cursor"
+                  [ngClass]="!bodyCnt.patronId ? 'button_invalid' : ''" matTooltip="{{captions.bookAppointment.PlayerWorth}}">
+                  <ng-container *ngIf="bodyCnt.patronId">
+                    <span class="icon-Player-worth_enabled" (click)="playerWorthDetails($event, bodyCnt.patronId)" ><span class="path1"></span><span
+                        class="path2"></span></span>
+                  </ng-container>
+                  <ng-container *ngIf="!bodyCnt.patronId">
+                    <span class="icon-Player-worth_disabled"><span class="path1"></span><span
+                        class="path2"></span></span>
+                  </ng-container>
+                </button>
+                <i class="icon-Edit cursor" *ngIf="editable" matTooltip={{this.captions.shop.Edit}} (click)="editRow($event,bodyCnt,'edit',options[0].ServiceId)"></i>
+                <i *ngIf="!disableDelete" class="icon-Delete cursor" matTooltip="Delete" (click)="DeleteRecords(bodyCnt)"></i>
+                <i class="icon-DragAndDrop movecursor draggable" *ngIf="blnDraggable" matTooltip="Drag"></i>
+              </td>
+
+            </tr>
+            <tr *ngIf="bodyArray.length == 0 && searchText.length > 2 ">
+              <td [colSpan]="SelectRow ? hdrArray.length+2 : hdrArray.length+1" class="text-center">
+                {{captions.common.NoRecordFound}} </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- </ng-scrollbar> -->
+      </ng-scrollbar>
+    </div>
+    <!-- </div> -->
+  </div>
+  <div class="float-right pt-2 " *ngIf="EnablePagination">
+    <pagination-controls (pageChange)="currentPage = $event" maxSize="10" directionLinks="true" autoHide="true"
+      previousLabel="Previous" nextLabel="Next"></pagination-controls>
+  </div>
+</div>
