@@ -1,0 +1,202 @@
+@import '../../../../assets/sass/abstracts/variables';
+
+.all-clients {
+  overflow: hidden;
+
+  .tablewidth {
+    width: calc(100% - 605px);
+    transition: 1s;
+  }
+
+  .page-header {
+    height: 74px;
+    background: #F4F5F6;
+    padding: 0px 30px 0px 33px; // padding right has been changed from 30px to 12px to make search box parellel to the table
+
+    .pt23 {
+      padding-top: 23px;
+    }
+
+    .btn-lnht {
+      line-height: 30px !important;
+      height: 30px !important;
+    }
+
+    .addappt{
+        background: #fff;
+    }
+
+    .align-toggle {
+      position: relative;
+      top: -4px;
+    }
+
+    .icon-filter_filled {
+      // font-size: 30px;
+    //   position: relative;
+    //   top: 8px;
+    //   line-height: 12PX;
+    }
+
+    .filterbutton{
+        padding: 0;
+        min-width: 0 !important;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+    }
+
+    .clientappointmentactions {
+      .mr5 {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .clientactions {
+    height: calc(100% - 74px);
+    transition: 1s;
+    position: relative;
+
+    .show-user {
+
+      position: absolute;
+      right: -600px;
+      top: 0;
+      height: 100%;
+      transition: 1s;
+      background-color: #F4F5F6;;
+      .show-user-inner{
+        border-top: 1px solid $color-light-gray;
+        border-left: 1px solid $color-light-gray;
+        margin-left:10px;
+        background-color: $color-save-button;
+      }
+
+      &.view-user {
+        right: 0px;
+        transition: 1s;
+      }
+    }
+
+    background: #F4F5F6;
+  }
+
+  .w100 {
+    width: 100%;
+    transition: 1s;
+  }
+
+  .w600 {
+    width: 600px;
+  }
+
+  .w0 {
+    width: 0;
+  }
+
+
+}
+
+.popover-style {
+  padding: 0px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.filter-popover {
+  padding: 0px;
+
+  .popover {
+    padding: 0px;
+
+    .popover-content {
+      padding: 0px;
+      width: 170px;
+      overflow-y: auto;
+      border-radius: 6px;
+      .filter-popover-header {
+        border-bottom: 1px solid;
+        display: table;
+        height: 45px;
+        width: 100%;
+        .table-class{
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+        }
+        i::before{
+          cursor: pointer;
+        }
+      }
+
+      .filter-popover-body {
+        .popover-content-body {
+          .mat-expansion-panel{
+            // &:not(:last-child) {
+            border-bottom: 1px solid $color-form-bgColor;
+
+          .mat-expansion-panel-header {
+            padding: 0px 19px;
+            height: 50px !important;
+            &.mat-expanded{
+
+            }
+            .count-view {
+              background-color: $color-tabText-gray;
+              border-radius: 50%;
+              width: 18px;
+              height: 18px;
+              margin-left: 8px;
+              margin-top: 2px;
+              text-align: center;
+              font-size: 14px;
+              color: $mat-tab-labels;
+              display: table-cell;
+            }
+          }
+
+          .mat-expansion-panel-content {
+            .mat-expansion-panel-body {
+              padding: 5px 10px;
+
+              .pop-body {
+                vertical-align: top;
+                color: $color-form-field;
+
+                span {
+                  vertical-align: top;
+
+                }
+              }
+
+            }
+          }
+        }
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (min-width: 1300px) {
+  .all-clients {
+    .tablewidth {
+      width: calc(100% - 805px);
+    }
+    .clientactions{
+      .show-user {
+        right: -800px;
+      }
+      .single-view-container {
+        width: 800px;
+      }
+    }
+  }
+
+}
+
+

@@ -1,0 +1,13 @@
+<section id="client" class="client-view">
+  <mat-tab-group class="h-100 " #tabGroup (selectedTabChange)="handleSelectedTabChange($event)" [selectedIndex]="this._cs.selectedIndex">
+    <mat-tab label={{this.captions.ALLCLIENTS}}>
+      <app-all-clients *ngIf="this._cs.selectedIndex === 0"></app-all-clients>
+    </mat-tab>
+    <mat-tab label={{this.captions.RECENTS}}>
+      <app-recents *ngIf="this._cs.selectedIndex === 1"></app-recents>
+    </mat-tab>
+    <mat-tab label={{this.captions.VIP}}>
+      <app-vip *ngIf="this._cs.selectedIndex === 2"></app-vip>
+    </mat-tab>
+  </mat-tab-group>
+</section>

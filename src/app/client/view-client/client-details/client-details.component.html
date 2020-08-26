@@ -1,0 +1,59 @@
+<div class="all-clients h-100">
+    <div class="page-header d-flex flex-wrap" id="pageHeader">
+      <mat-form-field class="spa-searchbox searchpt pt23" floatLabel="never" id="searchInput">
+        <input #tableInput matInput autocomplete="off" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
+          type="text" placeholder="{{this.captions.SearchbyNamePhoneorEmail}}" value="" (ngModelChange)="clientSearch(searchText);viewCheckedFlag=false">
+        <i [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor" (click)="searchdata(searchText='')"></i>
+      </mat-form-field>
+
+      <div class="pt23 ml-auto clientappointmentactions">
+          <button mat-button class="filterbutton cursor mr5">
+              <i class="icon-filter_filled IC20 text-color mr5" [popover]="filterpopover" [popoverCloseOnClickOutside]="true"
+                 [popoverCloseOnMouseOutside]="false" (click)="showFilterPopOver=true;setFilterPopover($event)"></i>
+
+          </button>
+          <popover-content #filterpopover placement="auto bottom" class="filter-popover position-absolute" [closeOnClickOutside]="true"
+                           [closeOnMouseOutside]="false" [style.top]="top + 'px'" [style.left]="left + 'px'">
+              <div *ngIf="showFilterPopOver">
+                  <div class="filter-popover-header  LW16 text-color">
+                      <span class="table-class">{{this.captions.ResetAll}}</span>
+                      <i class="icon-recurring table-class pl-4" (click)="refreshData()"></i>
+                  </div>
+                  <div class="filter-popover-body">
+                      <div class='popover-content-body'>
+                          <mat-accordion *ngFor="let FilterInner of innerfilterArray">
+                              <mat-expansion-panel>
+                                  <mat-expansion-panel-header>
+                                      <mat-panel-title class="LW16 text-capitalize">
+                                          <span>{{FilterInner.name}}</span>
+                                          <span class="count-view">{{FilterInner.selected}}</span>
+                                      </mat-panel-title>
+                                  </mat-expansion-panel-header>
+                                  <div class="pop-body pb-1 LW14" *ngFor="let data of FilterInner.values">
+                                      <mat-checkbox class="base-check-box pr-1 mt-1" labelPosition="before" [(ngModel)]="data.checked"
+                                                    (change)="selectFilter(FilterInner,data,'checkBox')"></mat-checkbox>
+                                      <span (click)="selectFilter(FilterInner,data,'name')">{{data.value}}</span>
+                                  </div>
+                              </mat-expansion-panel>
+                          </mat-accordion>
+                      </div>
+                  </div>
+              </div>
+          </popover-content>
+          <button mat-button class="btn-lnht" [ngClass]="isAddAppointment ? 'secondary-default-btn' : 'secondary-disabled'" [disabled]="!isAddAppointment" (click)="openActionDialog()">{{captions.ADDAPPOINTMENT}}</button>
+          <button mat-button class="body-bgcolor body-bordercolor whitecolor btn-lnht ml-2" [ngClass]="!isAddAppointment ? 'button_valid' : 'button_invalid'" [disabled]="isAddAppointment" (click)="addNewClient($event)">{{captions.ADDCLIENT}}</button>
+      </div>
+    </div>
+    <div class="d-flex clientactions">
+      <div class="w-100">
+        <app-client-table [options]="tableoptions" (editEvt)="EditRecords($event)"
+          (clientSelected)="clientSelected($event)"  (RowSelectEmitter)="RowSelected($event)" [enableStickyColumn] ="enableStickyColumn"></app-client-table>
+      </div>
+      <div class="show-user" [ngClass]="{'view-user':singleUserView}">
+        <div class="h-100 show-user-inner">
+        <app-single-user-view *ngIf="singleUserView" (editclient)="EditRecords($event)" [Appointments]="Appointments"
+          [userData]="userData" [showUser]="singleUserView" (sliderclose)="sliderclose($event)" [@enterAnimation]></app-single-user-view>
+        </div>
+      </div>
+    </div>
+  </div>

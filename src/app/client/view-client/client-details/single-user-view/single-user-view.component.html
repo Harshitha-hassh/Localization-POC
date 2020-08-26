@@ -1,0 +1,66 @@
+<div class="single-view-container" [ngClass]="showUser? '':'show'">
+
+  <div class="user-info d-flex align-items-center">
+    <app-img-thumbnail class="resolution-img float-left" [imageContent]="userData.client.image" [thumbnail]="false" imageType="client"></app-img-thumbnail>
+    <!-- <img src="assets/images/resolutionImage.png" alt="Resolution Logo" class="resolution-img"/> -->
+    <!-- <app-img-thumbnail class="profile-pic" ></app-img-thumbnail> -->
+    <div class="user-data">
+      <div class="LW18">{{userData.client.name}}
+        <button mat-button (click)="playerWorthDetails()" class="player-worth cursor"
+        [ngClass]="!this.userData.patronId  ? 'button_invalid' : ''" matTooltip="{{captions.bookAppointment.PlayerWorth}}">
+        <ng-container *ngIf="this.userData.patronId ">
+          <span class="icon-Player-worth_enabled"><span class="path1"></span><span
+              class="path2"></span></span>
+        </ng-container>
+        <ng-container *ngIf="!this.userData.patronId ">
+          <span class="icon-Player-worth_disabled"><span class="path1"></span><span
+              class="path2"></span></span>
+        </ng-container>
+      </button>
+        <i [matTooltip]="captions.bookAppointment.EditClient" class="icon-Edit edit-icon pl-2 cursor"
+          (click)="EditRecords($event,userData,'edit',ServiceId)"></i>
+        </div>
+      <div *ngIf= "userData.age != '' && userData.gender != '' " class="LW14 age-details">{{userData.age}} , {{userData.gender}}</div>
+      <div *ngIf= "userData.age == '' && userData.gender != '' " class="LW14 age-details">{{userData.gender}}</div>
+      <div *ngIf= "userData.age != '' && userData.gender == '' " class="LW14 age-details">{{userData.age}}</div>
+    </div>
+    <i class="icon-close close-icon cursor-pointer ml-auto align-self-baseline" [matTooltip]="captions.common.Close" (click)="sliderClose($event)"></i>
+    <!-- <button mat-button class="edit-client-btn LW14 body-bordercolor ml-auto">{{captions.bookAppointment.EditClient}}
+
+  </button> -->
+  </div>
+
+  <table class="user-details LW14 w-100">
+    <tbody>
+      <tr>
+        <td *ngIf= "userData.patronId != ''" ><i class="icon-patron"></i></td>
+        <td *ngIf= "userData.patronId != ''" > <div class="textellipsis" [isEllipsis]="userData.patronId"> {{userData.patronId}}</div></td>
+        <td *ngIf= "userData.client.emails != ''" ><i class="icon-mail"></i></td>
+        <td *ngIf= "userData.client.emails != ''"> <div class="textellipsis" [isEllipsis]="userData.client.emails"> {{userData.client.emails}}</div></td>
+        <td *ngIf= "userData.phoneNumbers != ''" ><i class="icon-Phone"></i></td>
+        <td *ngIf= "userData.phoneNumbers != ''"> <div class="textellipsis" [isEllipsis]="userData.phoneNumbers"> {{userData.phoneNumbers}}</div></td>
+        <td *ngIf= "userData.address != ''"><i class="icon-Location"></i></td>
+        <td *ngIf= "userData.address != ''"> <div class="textellipsis" [isEllipsis]="userData.address"> {{userData.address}}</div></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="recent-appointments" *ngIf = "Appointments.length > 0">
+    <div class="LW16 recent-name">{{captions.bookAppointment.RecentAppointments}}</div>
+    <div class="client-recent">
+    <ng-scrollbar [autoHide]="true">
+      <div *ngFor="let item of Appointments;trackBy: trackByFn" class="client-appointment-details">
+        <span class="appointment-name LW14" title="{{item.appointmentDetails}}" matTooltip="{{item.appointment}}"
+          [matTooltipDisabled]="(item.serviceName.length + item.therapistNames.length) < 62">{{item.serviceName}} by
+          {{item.therapistNames}} on {{item.date}}</span>
+        <span class="appointment-status">
+          <button mat-flat-button class="status-btn textellipsis" [isEllipsis]="item.status"
+            [ngClass]="[item.status == captions.bookAppointment.NoShow ? nsBDRclr : '', item.status == captions.bookAppointment.Cancelled ? closeBDRclr : '', item.status == captions.bookAppointment.CheckedIn ? checkinBDRclr : '',item.status == captions.bookAppointment.CheckedOut ? checkoutBDRclr : '',item.status == captions.bookAppointment.Scheduled ? sBDRclr : '']">{{item.status}}</button>
+        </span>
+      </div>
+    </ng-scrollbar>
+    </div>
+  </div>
+
+</div>

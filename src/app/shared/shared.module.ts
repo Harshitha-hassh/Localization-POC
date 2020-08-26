@@ -18,12 +18,14 @@ import { RetailPosCommunication } from './communication/services/retailpos.servi
 import { TemplatesModule } from '../common/templates/templates.module';
 import { RetailSharedModule } from '../retail/shared/retail-shared.module';
 import { CommonSharedModule } from '../common/shared/shared/shared.module';
+import { ImgThumbnailComponent } from './components/img-thumbnail/img-thumbnail.component';
 
 
 @NgModule({
   declarations: [
     MenuComponent,
-    GlobalSearchComponent
+    GlobalSearchComponent,
+    ImgThumbnailComponent
   ],
   imports: [
     CommonModule,
@@ -59,7 +61,8 @@ import { CommonSharedModule } from '../common/shared/shared/shared.module';
     MenuComponent,
     GlobalSearchComponent,
     ReactiveFormsModule,
-    CommonSharedModule
+    CommonSharedModule,
+    ImgThumbnailComponent
   ],
   entryComponents: [
   ]
