@@ -2583,5 +2583,46 @@
         "IntakeForm": "Intake Form"
       }
 		}
-  }
+  },
+"dayEnd": {
+		"DAYEND": "DAY END",
+		"ScheduledWithDeposit": "Scheduled Appointments with Deposit",
+		"CheckInAppointments": "Checked In Appointments",
+		"CheckOutWithoutTransaction": "Checked Out Appointments without Transactions",
+		"OpenTransactions": "Open Transactions",
+		"Name": "Name",
+		"Service": "Service",
+		"Package": "Package",
+		"Staff": "Staff",
+		"AppointmentTime": "Appointment Time",
+		"Location": "Location",
+		"Status": "Status",
+		"AppointmentID": "Appointment ID",
+		"TicketNumber": "Ticket #",
+		"Date": "Date",
+		"ClerkID": "Clerk ID",
+		"Outlet": "Outlet",
+		"Amount": "Amount",
+		"ClientName": "Client Name",
+		"MemberName": "Member Name",
+		"AppointmentNumber": "Appointment #",
+		"CheckInCheckOut": "Check In / Check Out",
+		"Move": "Move",
+		"CheckOut": "Check Out",
+		"UndoCheckIn": "Undo Check In",
+		"UndoCheckOut": "Undo Check Out",
+		"Settle": "Settle",
+		"Open": "Reopen",
+		"Cancel": "Cancel",
+		"CurrentSystemDate": "Current System Date",
+		"NewSystemDate": "New System Date",
+		"DayEndCompleted": "Day End Process for the day is complete. No actions required",
+		"SystemMovedTo": "System date moved to",
+		"CONTINUE": "CONTINUE",
+		"Success": "Success",
+		"ErrorInDayEnd": "Error during day end process",
+		"PROCESS": "PROCESS",
+		"NoData": "NoData",
+		"CancelOpenTransaction": "Would you like to Cancel the Ticket?"
+	}
 }

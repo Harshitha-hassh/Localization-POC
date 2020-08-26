@@ -1,0 +1,69 @@
+<section id="day-end" class="day-end h-100" *ngIf = "hasAccess">
+  <!-- <ng-scrollbar [trackX]="true" [autoHide]="true"> -->
+    <div class="horizontal-stepper-class p-3 h-100">
+      <div *ngFor="let coll of GridData; let i = index" class="pb-2 Dayend-Sectable dayEnd-{{i}}" >
+        <!-- header Section -->
+        <div class="d-table" [ngClass]="{'hdrSection':coll.dataCount!=0}">
+          <span class="d-table-cell V-Mid ">
+            <i class="icon-success-icon blckClr mr-2 IC18"
+              [ngClass]="(coll.tableOptions.TablebodyData.length == 0 && coll.isLoaded) ? '' : 'closedTextclr'"></i>
+          </span>
+          <span class=" d-table-cell hdrlblwdth V-Mid LWB16">{{coll.displayName}}</span>
+
+        </div>
+        <!-- Table Section -->
+        <div class="w-100 tableSec" *ngIf="coll.tableOptions.TablebodyData.length > 0 || (coll.dataCount==0 && (!canProcess || !successFlag))">
+          <!-- <ng-scrollbar [trackX]="true" [trackY]="true" [autoHide]="true"> -->
+          <table  class="w-100 DE_Table">
+            <thead *ngIf="coll.tableOptions.TablebodyData.length > 0">
+              <tr>
+                <th *ngFor="let hdr of coll.tableOptions.TableHdrData;let i=index" class="LW14"  [ngClass]="[hdr.alignType=='right' ? 'text-right' : hdr.alignType=='center' ? 'text-center':'']">{{ hdr.title }}</th>
+                <th class="fw100 LW14"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cell of coll.tableOptions.TablebodyData;let j=index;trackBy: trackByFn" >
+                <td *ngFor="let hdr of coll.tableOptions.TableHdrData;let i=index" class="LW14" [ngClass]="[hdr.alignType=='right' ? 'text-right' : hdr.alignType=='center' ? 'text-center':'']">
+                 <span *ngIf="hdr.jsonkey == 'Status'" class="legendIcon {{getStatusColor(cell.StatusCode)}} mr-1">
+                 </span>
+                 <span title="{{ cell[hdr.jsonkey] }}">{{ cell[hdr.jsonkey] }}</span>
+                </td>
+                <td class="fw100 LW14"  >
+                  <div class="rotate90 center"><i class="icon-More cursor blckClr " [matMenuTriggerFor]="menuOpt"></i></div>
+                  <mat-menu #menuOpt="matMenu">
+                    <button mat-menu-item class="custmenuBtn" *ngFor="let opt of coll.options;let k=index" (click)="ActionClick(opt,cell)">
+                      <span class="LW14" >{{opt.label}}</span>
+                    </button>
+                  </mat-menu>
+                </td>
+              </tr>
+            </tbody>
+            <!-- Remove commented tfoot and also related SCSS -->
+          </table>
+          <!-- </ng-scrollbar> -->
+        </div>
+      </div>
+      <!-- Final Section -->
+      <div class="processSec">
+        <div class="d-inline-block rghtBrder pr-4">
+          <div class="dteFnt pb-2">{{localization.LocalizeDate(currSysDate)}}</div>
+          <div class="subdteFnt LW16">{{this.captions.CurrentSystemDate}}</div>
+        </div>
+        <div class="d-inline-block pl-4">
+          <div class="dteFnt pb-2" [ngClass]="{'bold':canProcess || successFlag}">{{localization.LocalizeDate(newSysDate)}}</div>
+          <div class="subdteFnt LW16">{{this.captions.NewSystemDate}}</div>
+        </div>
+      </div>
+      <div class="pt-4 mb-3">
+        <button type="button" mat-button class="body-bgcolor whitecolor text_capitalize LW14 gold-btn w165" [ngClass]="{'btn-disabled': !CanProcessDayEnd() || isProcessClicked}" (click)="PerformDayend()">{{this.captions.PROCESS}}</button>
+      </div>
+      <!-- Success Message -->
+      <div class="notificationBG d-table  mb-4" *ngIf="successFlag">
+        <span class="d-table-cell V-Mid">
+          <i class="icon-warning-info-icon icon-padding whitecolor"></i>
+        </span>
+        <span class="d-table-cell V-Mid pl-2">{{this.captions.DayEndCompleted}}</span>
+      </div>
+    </div>
+  <!-- </ng-scrollbar> -->
+</section>
