@@ -121,3 +121,14 @@ export interface UICategoryData {
     amount: string;
     name:string;
 }
+export interface ReturnedItems {
+    quantity: number;
+    id: number;
+    returnedItems:number;
+    name: string;
+}
+export interface OpenTickets {
+    outletId: number;
+    transactionNumber :string;
+    amount: string;    
+}
