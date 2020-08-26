@@ -1,14 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { AppointmentPopupComponent } from '../../../shared/appointment-popup/appointment-popup.component';
+// import { AppointmentPopupComponent } from '../../../shared/appointment-popup/appointment-popup.component';
 import { MatDialog } from '@angular/material';
-import { AppointmentpopupService } from '../../../shared/service/appointmentpopup.service';
+// import { AppointmentpopupService } from '../../../shared/service/appointmentpopup.service';
 import { Localization } from '../../../core/localization/Localization';
-import { clientInfoDisplay, ClientLabel } from '../../../shared/business/new-booking.model';
 import * as _ from 'lodash';
-import { BaseResponse, KeyValuePair, ImageData } from '../../../shared/business/shared.modals';
+import { BaseResponse, KeyValuePair, ImageData, clientInfoDisplay, ClientLabel } from '../../../shared/shared-models';
 import { ClientService } from '../../../shared/service/client-service.service';
-import { AppModuleService } from '../../../app.service';
 import { PropertyInformation } from '../../../core/services/property-information.service';
 import { ActivatedRoute } from '@angular/router';
 import * as GlobalConst from 'src/app/common/shared/shared/globalsContant';
@@ -20,6 +18,7 @@ import { FormatText } from 'src/app/common/shared/shared/pipes/formatText-pipe.p
 import { ImageProcessorService } from 'src/app/common/shared/shared/service/image-processor-service';
 import { SPAManagementBreakPoint, ImgRefType, Host, GenderPreference } from 'src/app/common/shared/shared/globalsContant';
 import { SPAScheduleBreakPoint } from 'src/app/retail/shared/globalsContant';
+import { AppModuleService } from 'src/app/common/shared/shared/service/app.service';
 
 @Component({
     selector: 'app-client-details',
@@ -54,7 +53,8 @@ export class ClientDetailsComponent implements OnInit {
         { 'title': this.captions.Address, 'jsonkey': 'address', 'alignType': 'left', 'searchable': false, 'sortable': false },
         { 'title': this.captions.PhoneNumber, 'jsonkey': 'phoneNumber', 'alignType': 'left', 'searchable': true, 'sortable': false, 'hover': 'phoneNumbers' },
         { 'title': this.captions.LastVisitedDate, 'jsonkey': 'lastVisitedDate', 'alignType': 'left', 'searchable': false, 'sortable': true },
-        { 'title': this.captions.LastAppointmentService, 'jsonkey': 'lastVisitedService', 'alignType': 'left', 'searchable': false, 'sortable': true }],
+        // { 'title': this.captions.LastAppointmentService, 'jsonkey': 'lastVisitedService', 'alignType': 'left', 'searchable': false, 'sortable': true }
+    ],
         TablebodyData: this.TablebodyData,
         ServiceId: 99,
         sortable: true,
@@ -109,7 +109,8 @@ export class ClientDetailsComponent implements OnInit {
     requestUid = '';
     timer = null;
     constructor(private dialog: MatDialog,
-        private appointmentservice: AppointmentpopupService, private localization: Localization, public http: HttpServiceCall, private utils: Utilities,
+        // private appointmentservice: AppointmentpopupService,
+         private localization: Localization, public http: HttpServiceCall, private utils: Utilities,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
         , private breakPoint: BreakPointAccess, private imageprocessorservice: ImageProcessorService) {
         route.params.subscribe(val => {
@@ -158,10 +159,10 @@ export class ClientDetailsComponent implements OnInit {
     addNewClient = (event) => {
         if(this.breakPoint.CheckForAccess([SPAManagementBreakPoint.AddNewClientProfile]))
         {
-            this.appointmentservice.add_client = true;
-            this.appointmentservice.IsAddClientFromSPA = true;
-            this.appointmentservice.ImgTempHolder = {};
-            this.appointmentservice.popupTitle = this.captions.NewClient;
+            // this.appointmentservice.add_client = true;
+            // this.appointmentservice.IsAddClientFromSPA = true;
+            // this.appointmentservice.ImgTempHolder = {};
+            // this.appointmentservice.popupTitle = this.captions.NewClient;
             this.openAddActionDialog();
         }
     }
@@ -173,8 +174,8 @@ export class ClientDetailsComponent implements OnInit {
     openActionDialog() {
     if(this.breakPoint.CheckForAccess([SPAScheduleBreakPoint.BookAppointment]))
     {
-        this.appointmentservice.fromClientModule = true;
-        this.appointmentservice.labelRecords = [];
+        // this.appointmentservice.fromClientModule = true;
+        // this.appointmentservice.labelRecords = [];
         this.guestArray = [];
         for (let i = 0; i < this.selectedClient.length; i++) {
             this.arrayCount = i;
@@ -196,7 +197,7 @@ export class ClientDetailsComponent implements OnInit {
                 FirstName: element.client.firstName.trim(),
                 LastName: element.client.lastName.trim()
             };
-            this.appointmentservice.labelRecords.push(clientData);
+            // this.appointmentservice.labelRecords.push(clientData);
         });
         let clientIds: any[] = this.selectedClient.map(x => x.client.id);
         this.getClientsInfo(clientIds);
@@ -204,64 +205,64 @@ export class ClientDetailsComponent implements OnInit {
     }
 
     openAddActionDialog() {
-        this.appointmentservice.addFromClientModule = true;
-        this.appointmentservice.clientWidowActionType = this.captions.New;
-        const dialogRef = this.dialog.open(AppointmentPopupComponent, {
-            width: '95%',
-            height: '85%',
-            disableClose: true,
-            hasBackdrop: true,
-            data: { data: '', closebool: true },
-            panelClass: 'small-popup'
-        });
-        dialogRef.afterClosed().subscribe(result => {
-            if (this.clientService.selectedIndex == 1) {
-                this.RecentClientInformation(this.searchText);
-            } else {
-                this.searchdata(this.searchText);
-            }
-        })
+        // this.appointmentservice.addFromClientModule = true;
+        // this.appointmentservice.clientWidowActionType = this.captions.New;
+        // const dialogRef = this.dialog.open(AppointmentPopupComponent, {
+        //     width: '95%',
+        //     height: '85%',
+        //     disableClose: true,
+        //     hasBackdrop: true,
+        //     data: { data: '', closebool: true },
+        //     panelClass: 'small-popup'
+        // });
+        // dialogRef.afterClosed().subscribe(result => {
+        //     if (this.clientService.selectedIndex == 1) {
+        //         this.RecentClientInformation(this.searchText);
+        //     } else {
+        //         this.searchdata(this.searchText);
+        //     }
+        // })
     }
 
 
     openClientEditActionDialog() {
-        this.appointmentservice.addFromClientModule = true;
-        this.dialog.open(AppointmentPopupComponent, {
-            width: '95%',
-            height: '85%',
-            disableClose: true,
-            hasBackdrop: true,
-            data: { data: '', closebool: true },
-            panelClass: 'small-popup'
-        });
+        // this.appointmentservice.addFromClientModule = true;
+        // this.dialog.open(AppointmentPopupComponent, {
+        //     width: '95%',
+        //     height: '85%',
+        //     disableClose: true,
+        //     hasBackdrop: true,
+        //     data: { data: '', closebool: true },
+        //     panelClass: 'small-popup'
+        // });
     }
 
     openEditDialog(id: any, clientDetail) {
         //this.appointmentservice.add_client = true;
-        this.appointmentservice.isEditAppointment = false;
-        this.appointmentservice.editselectedClient = true;
-        this.appointmentservice.popupTitle = this.captions.EditClient;
-        this.appointmentservice.clientWidowActionType = "EDIT";
-        const dialogRef = this.dialog.open(AppointmentPopupComponent, {
-            width: '95%',
-            height: '85%',
-            disableClose: true,
-            hasBackdrop: true,
-            data: { data: '', action: 'Edit', closebool: true, clientInfo: clientDetail },
-            panelClass: 'small-popup'
-        });
-        dialogRef.afterClosed().subscribe(result => {
-          this.isAddAppointment = false;
-          this.appointmentservice.recordsArray = [];
-          this.appointmentservice.multiClientInfo = [];
-          this.appointmentservice.clientImageChange([]);
-          this.singleUserView = false;
-            if (this.clientService.selectedIndex == 1) {
-                this.RecentClientInformation(this.searchText);
-            } else {
-                this.searchdata(this.searchText);
-            }
-        })
+        // this.appointmentservice.isEditAppointment = false;
+        // this.appointmentservice.editselectedClient = true;
+        // this.appointmentservice.popupTitle = this.captions.EditClient;
+        // this.appointmentservice.clientWidowActionType = "EDIT";
+        // const dialogRef = this.dialog.open(AppointmentPopupComponent, {
+        //     width: '95%',
+        //     height: '85%',
+        //     disableClose: true,
+        //     hasBackdrop: true,
+        //     data: { data: '', action: 'Edit', closebool: true, clientInfo: clientDetail },
+        //     panelClass: 'small-popup'
+        // });
+        // dialogRef.afterClosed().subscribe(result => {
+        //   this.isAddAppointment = false;
+        //   this.appointmentservice.recordsArray = [];
+        //   this.appointmentservice.multiClientInfo = [];
+        //   this.appointmentservice.clientImageChange([]);
+        //   this.singleUserView = false;
+        //     if (this.clientService.selectedIndex == 1) {
+        //         this.RecentClientInformation(this.searchText);
+        //     } else {
+        //         this.searchdata(this.searchText);
+        //     }
+        // })
     }
 
     getClientsInfo(id: any) {
@@ -349,26 +350,26 @@ export class ClientDetailsComponent implements OnInit {
         // To Do: Edit Client Info mapping.
        if(this.breakPoint.CheckForAccess([SPAManagementBreakPoint.EditClientProfile]))
        {
-            this.appointmentservice.add_client = true;
-            this.appointmentservice.IsAddClientFromSPA = true;
-            this.appointmentservice.popupTitle = this.captions.EditClient;
-            this.appointmentservice.clientWidowActionType = 'EDIT';
-            this.appointmentservice.saveText = this.localization.captions.common.Update;
+            // this.appointmentservice.add_client = true;
+            // this.appointmentservice.IsAddClientFromSPA = true;
+            // this.appointmentservice.popupTitle = this.captions.EditClient;
+            // this.appointmentservice.clientWidowActionType = 'EDIT';
+            // this.appointmentservice.saveText = this.localization.captions.common.Update;
             if (event.length > 0) {
-                this.appointmentservice.clientId = event[0].client.id;
+                // this.appointmentservice.clientId = event[0].client.id;
                 this.guestId = event[0].client.guestId;
-                this.appointmentservice.guestId = event[0].client.guestId;
+                // this.appointmentservice.guestId = event[0].client.guestId;
             }
             else {
-                this.appointmentservice.clientId = event.client.id;
+                // this.appointmentservice.clientId = event.client.id;
                 this.guestId = event.client.guestId;
-                this.appointmentservice.guestId = event.client.guestId;
+                // this.appointmentservice.guestId = event.client.guestId;
             }
-            if (this.appointmentservice.clientId == 0) {
-                this.getClientDataByGuid(this.guestId);
-            } else {
-                this.getClientData(this.appointmentservice.clientId);
-            }
+            // if (this.appointmentservice.clientId == 0) {
+            //     this.getClientDataByGuid(this.guestId);
+            // } else {
+            //     this.getClientData(this.appointmentservice.clientId);
+            // }
         }
     }
 
@@ -805,7 +806,7 @@ export class ClientDetailsComponent implements OnInit {
         }
         else if (callDesc == "GetClients") {
             let clientData = <any>result.result;
-            this.appointmentservice.fromClientModule = true;
+            // this.appointmentservice.fromClientModule = true;
             this.guestArray = [];
             for (let i = 0; i < clientData.length; i++) {
                 let isAllMandatoryFieldsFilled = await this.clientService.MandatoryFieldsValidation(clientData[i]);
@@ -822,26 +823,26 @@ export class ClientDetailsComponent implements OnInit {
                 return;
             }
 
-            this.appointmentservice.recordsArray = [];
-            this.appointmentservice.recordsArray = clientData;
-            const dialogRef = this.dialog.open(AppointmentPopupComponent, {
-                width: '95%',
-                height: '85%',
-                disableClose: true,
-                hasBackdrop: true,
-                data: { data: '', closebool: true },
-                panelClass: 'small-popup'
-            });
-            dialogRef.afterClosed().subscribe(result => {
-              this.isAddAppointment = false;
-              this.appointmentservice.recordsArray = [];
-              this.appointmentservice.multiClientInfo = [];
-              if (this.clientService.selectedIndex == 1) {
-                this.RecentClientInformation(this.searchText);
-              } else {
-                this.searchdata(this.searchText);
-              }
-            })
+            // this.appointmentservice.recordsArray = [];
+            // this.appointmentservice.recordsArray = clientData;
+            // const dialogRef = this.dialog.open(AppointmentPopupComponent, {
+            //     width: '95%',
+            //     height: '85%',
+            //     disableClose: true,
+            //     hasBackdrop: true,
+            //     data: { data: '', closebool: true },
+            //     panelClass: 'small-popup'
+            // });
+            // dialogRef.afterClosed().subscribe(result => {
+            //   this.isAddAppointment = false;
+            //   this.appointmentservice.recordsArray = [];
+            //   this.appointmentservice.multiClientInfo = [];
+            //   if (this.clientService.selectedIndex == 1) {
+            //     this.RecentClientInformation(this.searchText);
+            //   } else {
+            //     this.searchdata(this.searchText);
+            //   }
+            // })
         }
         else if (callDesc == "getClientRecentAppointmentInfo") {
             let resp: any = result.result;
@@ -873,11 +874,11 @@ export class ClientDetailsComponent implements OnInit {
         else if (callDesc == "getClientInfo" || callDesc == "createClientByGuestId") {
             let clientDetail = <any>result.result;
             // this.appointmentservice.add_client = false;
-            this.appointmentservice.clientEditData = clientDetail;
-            this.appointmentservice.clientId = clientDetail.clientDetail.id;
-            this.appointmentservice.guestId = clientDetail.clientDetail.guestId;
-            this.imageprocessorservice.GetImagesByReference(this.appointmentservice.guestId, GlobalConst.ImgRefType.client, this.successCallback.bind(this), this.errorCallback.bind(this), [], true);
-            this.openEditDialog(this.appointmentservice.clientId, clientDetail);
+            // this.appointmentservice.clientEditData = clientDetail;
+            // this.appointmentservice.clientId = clientDetail.clientDetail.id;
+            // this.appointmentservice.guestId = clientDetail.clientDetail.guestId;
+            // this.imageprocessorservice.GetImagesByReference(this.appointmentservice.guestId, GlobalConst.ImgRefType.client, this.successCallback.bind(this), this.errorCallback.bind(this), [], true);
+            // this.openEditDialog(this.appointmentservice.clientId, clientDetail);
         }
         else if (callDesc == "getClientInfoByGuid") {
             let clientInfo = <any>result.result;
@@ -886,9 +887,9 @@ export class ClientDetailsComponent implements OnInit {
           let response = <any>result.result
           if (response && response.length > 0) {
               response.forEach((img) => {
-                  if (!this.appointmentservice.imageArray.find(x => x['imageReferenceId'] === img.imageReferenceId)) {
-                      this.appointmentservice.clientImageChange(response);
-                  }
+                //   if (!this.appointmentservice.imageArray.find(x => x['imageReferenceId'] === img.imageReferenceId)) {
+                //       this.appointmentservice.clientImageChange(response);
+                //   }
               })
           }
 

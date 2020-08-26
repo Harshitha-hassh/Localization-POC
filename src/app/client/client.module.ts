@@ -14,18 +14,25 @@ import { SingleUserViewComponent } from './view-client/client-details/single-use
 import { ClientfilterpipePipe } from './client-table/clientfilterpipe.pipe';
 import { ClientDetailsComponent } from './view-client/client-details/client-details.component';
 import { ClientsortpipePipe } from './client-table/clientsortpipe.pipe';
-
+import { ScrollbarModule } from 'ngx-scrollbar';
+import { NgDragDropModule } from 'ng-drag-drop';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AppModuleService } from '../common/shared/shared/service/app.service';
+import { ClientService } from '../shared/service/client-service.service';
 @NgModule({
   imports: [
     CommonModule,
     ClientRountingModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule,
-    MatTableModule
+  ReactiveFormsModule,
+    MatTableModule,
+    ScrollbarModule,
+    NgDragDropModule.forRoot(),
+    NgxPaginationModule
   ],
     declarations: [ClientComponent, ViewCientComponenet, AllClientsComponent, RecentsComponent, VipComponent, SingleUserViewComponent, ClientTableComponent, ClientfilterpipePipe, ClientDetailsComponent, ClientsortpipePipe],
-    providers: [],
+    providers: [ClientService, AppModuleService],
     exports:[ClientsortpipePipe]
 })
 export class ClientModule { }

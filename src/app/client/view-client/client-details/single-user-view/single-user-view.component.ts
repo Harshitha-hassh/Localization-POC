@@ -1,12 +1,12 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { Localization } from '../../../../core/localization/Localization';
 import { SubscriptionLike as ISubscription, ReplaySubject } from 'rxjs';
-import { AppointmentpopupService } from '../../../../shared/service/appointmentpopup.service';
+// import { AppointmentpopupService } from '../../../../shared/service/appointmentpopup.service';
 import { MatDialog } from '@angular/material';
 import { takeUntil } from 'rxjs/operators';
-import { Utilities } from 'src/app/shared/utilities/utilities';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { ClientCommonService } from 'src/app/client/client.service';
+import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
 
 
 @Component({
@@ -40,11 +40,11 @@ export class SingleUserViewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.captions = this.localization.captions;
-    this.propertyInfo._appointmentConfigurations$.pipe(takeUntil(this.destroyed$)).subscribe(result => {
-      if (result) {
-        this.setStatusColors();
-      }
-    });
+    // this.propertyInfo._appointmentConfigurations$.pipe(takeUntil(this.destroyed$)).subscribe(result => {
+    //   if (result) {
+    //     this.setStatusColors();
+    //   }
+    // });
   }
 
   setStatusColors() {

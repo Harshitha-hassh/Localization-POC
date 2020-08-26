@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Utilities } from '../../shared/utilities/utilities';
+import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
 
 @Pipe({
   name: 'clientsortpipe'

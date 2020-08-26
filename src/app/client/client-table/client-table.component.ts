@@ -1,15 +1,16 @@
 import { Component, OnInit, Input, ElementRef, ViewEncapsulation, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import * as myGlobals from '../../shared/globalsContant'; //CONSTANT FILE ADD ANY CONSTANT VALUE
+import * as myGlobals from 'src/app/common/shared/shared/globalsContant'; //CONSTANT FILE ADD ANY CONSTANT VALUE
 import { MatDialog } from '@angular/material';
 import { MatMenuTrigger } from '@angular/material';
 import * as _ from 'lodash';
 import { Localization } from '../../core/localization/Localization';
-import { SPAConfig } from '../../core/config/SPA-config';
 import { ScrollbarComponent } from 'ngx-scrollbar';
 import { ClientService } from '../../shared/service/client-service.service';
-import { Utilities } from '../../shared/utilities/utilities';
 import { ClientCommonService } from '../client.service';
+import { SPAConfig } from 'src/app/common/shared/config/SPA-config';
+import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
+
 @Component({
   selector: 'app-client-table',
   templateUrl: './client-table.component.html',

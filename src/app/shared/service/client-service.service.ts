@@ -1,16 +1,12 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { BaseResponse } from '../business/shared.modals';
-import { HttpServiceCall, HttpMethod } from './http-call.service';
-import { Host, ButtonOptions, ButtonType } from '../globalsContant';
 import { FormGroup, FormArray } from '@angular/forms';
-import { AppointmentpopupService } from './appointmentpopup.service';
-import { Appointment } from '../../appointment/appointment.component';
-import { formatAMPMPipes } from '../../appointment/spa-appointment/spa-appointment.component';
-import { Utilities } from '../utilities/utilities';
-import { Localization } from '../../core/localization/Localization';
+// import { AppointmentpopupService } from './appointmentpopup.service';
 import { MatDialog } from '@angular/material';
-import { appointmentService } from './appointment.service';
+// import { appointmentService } from './appointment.service';
+import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
+import { Localization } from 'src/app/common/shared/localization/Localization';
+import { Host } from 'src/app/common/shared/shared/globalsContant';
+import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 
 
 
@@ -25,9 +21,12 @@ export class ClientService implements OnDestroy {
     this.$destroyed.next(true);
     this.$destroyed.complete();
   }
-  constructor(private http : HttpServiceCall, private appointmentpopservice:AppointmentpopupService,
+  constructor(private http : HttpServiceCall, 
+    // private appointmentpopservice:AppointmentpopupService,
     private Utilities: Utilities,
-    public localization: Localization,public dialog: MatDialog,public appointmentServiceObject: appointmentService) { }
+    public localization: Localization,public dialog: MatDialog,
+    // public appointmentServiceObject: appointmentService
+    ) { }
 
   async MandatoryFieldsValidation(clientData: any): Promise<boolean> {
     let result: any = await this.http.CallApiAsync({
@@ -82,151 +81,121 @@ export class ClientService implements OnDestroy {
   }
 
   validateClientSave(): Boolean {
-    if (!this.appointmentpopservice.personalDetailsFormGroup.valid) {
-      if (!this.appointmentpopservice.isClientViewOnly) {
-        //prevents tab change while in viewonly mode.
-        this.appointmentpopservice.ClientSelectedTab = 0;
-      }
-      this.appointmentpopservice.personalDetailsFormGroup.controls['firstName'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['lastName'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['pronounced'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['dob'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['pincode'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['title'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['Email'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['Phone'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['Address'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['emailPrimary'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['phonePrimary'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['state'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['city'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['country'].markAsTouched();
-      this.appointmentpopservice.personalDetailsFormGroup.controls['postal_code'].markAsTouched();
-      // let phoneArr = this.appointmentpopservice.personalDetailsFormGroup.get('Phone') as FormArray;
-      // let phoneElem: any = phoneArr.at(0);
-      // phoneElem.controls.PhoneNumber.markAsTouched();
-      // phoneElem.controls.PhoneNumberLabel.markAsTouched();
-      // if(!phoneElem.controls['PhoneNumber'].valid && phoneElem.controls['PhoneNumberLabel'].value == "")
-      // {
-      //   phoneElem.controls['PhoneNumberLabel'].setErrors({'incorrect': true});
-      // }
-      // let emailArr = this.appointmentpopservice.personalDetailsFormGroup.get('Email') as FormArray;
-      // let emailElem: any = emailArr.at(0);
-      // emailElem.controls.EmailId.markAsTouched();
-      // emailElem.controls.EmailLabel.markAsTouched();
-      // if(!emailElem.controls['EmailId'].valid && emailElem.controls['EmailLabel'].value == "")
-      // {
-      //   emailElem.controls['EmailLabel'].setErrors({'incorrect': true});
-      // }
-      // let email = emailElem.controls['EmailId'].value;
-      // if (!this.validateEmail(email)) {
-      //   if (email.trim() != "") {
-      //     emailElem.controls['EmailId'].setErrors({'incorrect': true});
-      //     this.appointmentpopservice.personalDetailsFormGroup.setErrors({'incorrect': true});
-      //   }
-      // }
-      this.validatePhoneAndEmail();
-      let addressArray = this.appointmentpopservice.personalDetailsFormGroup.get('Address') as FormArray;
-      let addrElem: any = addressArray.at(0);
-      addrElem.controls.addressLine.markAsTouched();
-      return false;
-    }
-
-    if (this.appointmentpopservice.personalDetailsFormGroup.valid && this.appointmentpopservice.ClientSelectedTab != 1 && !this.appointmentpopservice.additionalDetailsFormGroup.valid) {
-
-      if(!this.isPhoneNumberValid())
-      {
-        return false;
-      }
-      if(!this.isEmailValide()){
-        return false;
-      }
-      this.appointmentpopservice.additionalDetailsFormGroup.controls['card_details'].markAsTouched();
-      this.appointmentpopservice.additionalDetailsFormGroup.controls['expiry_date'].markAsTouched();
-      this.appointmentpopservice.additionalDetailsFormGroup.controls['customField1'].markAsTouched();
-      this.appointmentpopservice.additionalDetailsFormGroup.controls['customField2'].markAsTouched();
-      this.appointmentpopservice.additionalDetailsFormGroup.controls['customField3'].markAsTouched();
-      this.appointmentpopservice.additionalDetailsFormGroup.controls['customField4'].markAsTouched();
-      this.appointmentpopservice.additionalDetailsFormGroup.controls['customField5'].markAsTouched();
-      this.appointmentpopservice.additionalDetailsFormGroup.controls['comments'].markAsTouched();
-      setTimeout(() => this.appointmentpopservice.ClientSelectedTab = 1, 500);
-      return false;
-    }
-
-    // if(!this.isPhoneNumberValid())
-    // {
+    // if (!this.appointmentpopservice.personalDetailsFormGroup.valid) {
+    //   if (!this.appointmentpopservice.isClientViewOnly) {
+    //     //prevents tab change while in viewonly mode.
+    //     this.appointmentpopservice.ClientSelectedTab = 0;
+    //   }
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['firstName'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['lastName'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['pronounced'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['dob'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['pincode'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['title'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['Email'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['Phone'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['Address'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['emailPrimary'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['phonePrimary'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['state'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['city'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['country'].markAsTouched();
+    //   this.appointmentpopservice.personalDetailsFormGroup.controls['postal_code'].markAsTouched();
+    //   this.validatePhoneAndEmail();
+    //   let addressArray = this.appointmentpopservice.personalDetailsFormGroup.get('Address') as FormArray;
+    //   let addrElem: any = addressArray.at(0);
+    //   addrElem.controls.addressLine.markAsTouched();
     //   return false;
     // }
-    // if(!this.isEmailValide()){
+
+    // if (this.appointmentpopservice.personalDetailsFormGroup.valid && this.appointmentpopservice.ClientSelectedTab != 1 && !this.appointmentpopservice.additionalDetailsFormGroup.valid) {
+
+    //   if(!this.isPhoneNumberValid())
+    //   {
+    //     return false;
+    //   }
+    //   if(!this.isEmailValide()){
+    //     return false;
+    //   }
+    //   this.appointmentpopservice.additionalDetailsFormGroup.controls['card_details'].markAsTouched();
+    //   this.appointmentpopservice.additionalDetailsFormGroup.controls['expiry_date'].markAsTouched();
+    //   this.appointmentpopservice.additionalDetailsFormGroup.controls['customField1'].markAsTouched();
+    //   this.appointmentpopservice.additionalDetailsFormGroup.controls['customField2'].markAsTouched();
+    //   this.appointmentpopservice.additionalDetailsFormGroup.controls['customField3'].markAsTouched();
+    //   this.appointmentpopservice.additionalDetailsFormGroup.controls['customField4'].markAsTouched();
+    //   this.appointmentpopservice.additionalDetailsFormGroup.controls['customField5'].markAsTouched();
+    //   this.appointmentpopservice.additionalDetailsFormGroup.controls['comments'].markAsTouched();
+    //   setTimeout(() => this.appointmentpopservice.ClientSelectedTab = 1, 500);
     //   return false;
     // }
+
     this.validatePhoneAndEmail();
 
     return true;
   }
 
   isPhoneNumberValid(){
-    let phoneArr = this.appointmentpopservice.personalDetailsFormGroup.get('Phone') as FormArray;
-    let phoneElem: any = phoneArr.at(0);
-    phoneElem.controls.PhoneNumber.markAsTouched();
-    phoneElem.controls.PhoneNumberLabel.markAsTouched();
-    if(!this.validatePhone(phoneElem.controls['PhoneNumber'].value))
-    {
-      phoneElem.controls['PhoneNumber'].setErrors({'incorrect': true});
-      return false;
-    }
+    // let phoneArr = this.appointmentpopservice.personalDetailsFormGroup.get('Phone') as FormArray;
+    // let phoneElem: any = phoneArr.at(0);
+    // phoneElem.controls.PhoneNumber.markAsTouched();
+    // phoneElem.controls.PhoneNumberLabel.markAsTouched();
+    // if(!this.validatePhone(phoneElem.controls['PhoneNumber'].value))
+    // {
+    //   phoneElem.controls['PhoneNumber'].setErrors({'incorrect': true});
+    //   return false;
+    // }
     return true;
   }
 
   isEmailValide(){
-    let emailArr = this.appointmentpopservice.personalDetailsFormGroup.get('Email') as FormArray;
-    let emailElem: any = emailArr.at(0);
-    let email = emailElem.controls['EmailId'].value;
-    if(!emailElem.controls['EmailId'].valid && emailElem.controls['EmailLabel'].value == "")
-    {
-      emailElem.controls['EmailLabel'].setErrors({'incorrect': true});
-    }
-    if (!this.validateEmail(email)) {
-      if (email.trim() != "") {
-        emailElem.controls['EmailId'].setErrors({'incorrect': true});
-        this.appointmentpopservice.personalDetailsFormGroup.setErrors({'incorrect': true});
-        return false;
-      }
-    }
+    // let emailArr = this.appointmentpopservice.personalDetailsFormGroup.get('Email') as FormArray;
+    // let emailElem: any = emailArr.at(0);
+    // let email = emailElem.controls['EmailId'].value;
+    // if(!emailElem.controls['EmailId'].valid && emailElem.controls['EmailLabel'].value == "")
+    // {
+    //   emailElem.controls['EmailLabel'].setErrors({'incorrect': true});
+    // }
+    // if (!this.validateEmail(email)) {
+    //   if (email.trim() != "") {
+    //     emailElem.controls['EmailId'].setErrors({'incorrect': true});
+    //     this.appointmentpopservice.personalDetailsFormGroup.setErrors({'incorrect': true});
+    //     return false;
+    //   }
+    // }
     return true;
   }
 
   validatePhoneAndEmail()
   {
-      if(this.appointmentpopservice.personalDetailsFormGroup.controls['Phone'].touched)
-      {
-        let phoneArr = this.appointmentpopservice.personalDetailsFormGroup.get('Phone') as FormArray;
-        let phoneElem: any = phoneArr.at(0);
-        phoneElem.controls.PhoneNumber.markAsTouched();
-        phoneElem.controls.PhoneNumberLabel.markAsTouched();
-        if(!phoneElem.controls['PhoneNumber'].valid && phoneElem.controls['PhoneNumberLabel'].value == "")
-        {
-          phoneElem.controls['PhoneNumberLabel'].setErrors({'incorrect': true});
-        }
-      }
-      if(this.appointmentpopservice.personalDetailsFormGroup.controls['Email'].touched)
-      {
-        let emailArr = this.appointmentpopservice.personalDetailsFormGroup.get('Email') as FormArray;
-        let emailElem: any = emailArr.at(0);
-        emailElem.controls.EmailId.markAsTouched();
-        emailElem.controls.EmailLabel.markAsTouched();
-        if(!emailElem.controls['EmailId'].valid && emailElem.controls['EmailLabel'].value == "")
-        {
-          emailElem.controls['EmailLabel'].setErrors({'incorrect': true});
-        }
-        let email = emailElem.controls['EmailId'].value;
-        if (!this.validateEmail(email)) {
-          if (email.trim() != "") {
-            emailElem.controls['EmailId'].setErrors({'incorrect': true});
-            this.appointmentpopservice.personalDetailsFormGroup.setErrors({'incorrect': true});
-          }
-        }
-      }
+      // if(this.appointmentpopservice.personalDetailsFormGroup.controls['Phone'].touched)
+      // {
+      //   let phoneArr = this.appointmentpopservice.personalDetailsFormGroup.get('Phone') as FormArray;
+      //   let phoneElem: any = phoneArr.at(0);
+      //   phoneElem.controls.PhoneNumber.markAsTouched();
+      //   phoneElem.controls.PhoneNumberLabel.markAsTouched();
+      //   if(!phoneElem.controls['PhoneNumber'].valid && phoneElem.controls['PhoneNumberLabel'].value == "")
+      //   {
+      //     phoneElem.controls['PhoneNumberLabel'].setErrors({'incorrect': true});
+      //   }
+      // }
+      // if(this.appointmentpopservice.personalDetailsFormGroup.controls['Email'].touched)
+      // {
+      //   let emailArr = this.appointmentpopservice.personalDetailsFormGroup.get('Email') as FormArray;
+      //   let emailElem: any = emailArr.at(0);
+      //   emailElem.controls.EmailId.markAsTouched();
+      //   emailElem.controls.EmailLabel.markAsTouched();
+      //   if(!emailElem.controls['EmailId'].valid && emailElem.controls['EmailLabel'].value == "")
+      //   {
+      //     emailElem.controls['EmailLabel'].setErrors({'incorrect': true});
+      //   }
+      //   let email = emailElem.controls['EmailId'].value;
+      //   if (!this.validateEmail(email)) {
+      //     if (email.trim() != "") {
+      //       emailElem.controls['EmailId'].setErrors({'incorrect': true});
+      //       this.appointmentpopservice.personalDetailsFormGroup.setErrors({'incorrect': true});
+      //     }
+      //   }
+      // }
   }
 
   validateEmail(email) {
@@ -250,16 +219,16 @@ export class ClientService implements OnDestroy {
 
   async checkClientMandatoryFields(): Promise<boolean> {
     let valid = true;
-    if (this.appointmentpopservice.recordsArray && this.appointmentpopservice.recordsArray.length > 0) {
-      for (let i = 0; i < this.appointmentpopservice.recordsArray.length; i++) {
-        valid = await this.MandatoryFieldsValidation(this.appointmentpopservice.recordsArray[i]);
-        if (!valid) {
-          let extraParams = { "clientDetail": this.appointmentpopservice.recordsArray[i].clientDetail, "packageEdit": false , 'clientData' : this.appointmentpopservice.recordsArray[i] }
-          this.Utilities.ShowError(this.captions.ErrorinCreatingAppointment, this.localization.replacePlaceholders(this.localization.getError(100005), ["clientName",], [this.appointmentpopservice.recordsArray[i].clientDetail.firstName.concat(' ', this.appointmentpopservice.recordsArray[i].clientDetail.lastName)]));
-          return valid;
-        }
-      }
-    }
+    // if (this.appointmentpopservice.recordsArray && this.appointmentpopservice.recordsArray.length > 0) {
+    //   for (let i = 0; i < this.appointmentpopservice.recordsArray.length; i++) {
+    //     valid = await this.MandatoryFieldsValidation(this.appointmentpopservice.recordsArray[i]);
+    //     if (!valid) {
+    //       let extraParams = { "clientDetail": this.appointmentpopservice.recordsArray[i].clientDetail, "packageEdit": false , 'clientData' : this.appointmentpopservice.recordsArray[i] }
+    //       this.Utilities.ShowError(this.captions.ErrorinCreatingAppointment, this.localization.replacePlaceholders(this.localization.getError(100005), ["clientName",], [this.appointmentpopservice.recordsArray[i].clientDetail.firstName.concat(' ', this.appointmentpopservice.recordsArray[i].clientDetail.lastName)]));
+    //       return valid;
+    //     }
+    //   }
+    // }
     return valid;
   }
 }
