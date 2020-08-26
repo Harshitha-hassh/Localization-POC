@@ -18,12 +18,16 @@ import { RetailPosCommunication } from './communication/services/retailpos.servi
 import { TemplatesModule } from '../common/templates/templates.module';
 import { RetailSharedModule } from '../retail/shared/retail-shared.module';
 import { CommonSharedModule } from '../common/shared/shared/shared.module';
+import { AboutComponent } from './components/about/about.component';
+import { MsGraphAuthComponent } from './components/ms-graph-auth/ms-graph-auth.component';
 
 
 @NgModule({
   declarations: [
     MenuComponent,
-    GlobalSearchComponent
+    GlobalSearchComponent,
+    AboutComponent,
+    MsGraphAuthComponent
   ],
   imports: [
     CommonModule,
@@ -59,9 +63,11 @@ import { CommonSharedModule } from '../common/shared/shared/shared.module';
     MenuComponent,
     GlobalSearchComponent,
     ReactiveFormsModule,
+    MsGraphAuthComponent,
     CommonSharedModule
   ],
   entryComponents: [
+    AboutComponent
   ]
 })
 export class SharedModule { }

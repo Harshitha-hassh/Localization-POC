@@ -22,7 +22,7 @@ export enum RetailRoutes {
   Login = 'Property/GetLoginDetails',
   LogOut = 'User/LogOutByUserId/{Username}/{TenantId}/{PropertyId}',
   SavePassword = 'User/SavePassword/{UserId}/{NewPassword}/{TenantId}/{PropertyId}',
-  CreateSession = 'User/session',  
+  CreateSession = 'User/session',
   UpdateSession = 'User/session/sessionId/{sessionId}',
   CheckPassword = 'User/CheckPasswordExists/{UserId}/{NewPassword}/{TenantId}',
   VerifyPassword = 'User/VerifyPassword/{UserId}/{NewPassword}/{TenantId}',
@@ -36,16 +36,31 @@ export enum RetailRoutes {
   GetAllPropertySettings = 'property/GetPropertySetting/{propertyId}',
   GetAllLanguages = 'language/GetAllLanguages',
   GetPaymentConfigurationByProperty = 'Payment/GetPaymentConfigurationByProperty/{propertyId}',
-   // SNC users
-   GetSncUserConfig = 'UserConfiguration?userId={id}',
-   //Dashboard
-   GetOutletCount = 'DashBoard/getOutletCount',
-   GetVendorCount = 'DashBoard/getVendorCount',
-   GetTransactionCount = 'DashBoard/GetTransactionCount',
-   GetOutOfStockItems = 'retailitems/GetInventoryRetailItems',
-   GetTransactionSaleDetail = 'Transaction/getTransactionSale/{startDate}/{dataFormat}',
-   GetItemSaleDetail = 'Transaction/getItemSale/{startDate}/{endDate}',
-   GetCategorySaleDetail = 'Transaction/getCategorySale/{startDate}/{endDate}',
-   GetOpenTickets = 'DashBoard/{processDate}',
-   GetReturnedItems = 'DashBoard/getReturnedItems/{startDate}/{dataFormat}'
+  GetAllPropertyConfigurationSettings = 'propertyConfiguration/configurationName/{configurationName}/propertyId/{propertyId}/productId/{productId}',
+  // SNC users
+  GetSncUserConfig = 'UserConfiguration?userId={id}',
+  //Dashboard
+  GetOutletCount = 'DashBoard/getOutletCount',
+  GetVendorCount = 'DashBoard/getVendorCount',
+  GetTransactionCount = 'DashBoard/GetTransactionCount',
+  GetOutOfStockItems = 'retailitems/GetInventoryRetailItems',
+  GetTransactionSaleDetail = 'Transaction/getTransactionSale/{startDate}/{dataFormat}',
+  GetItemSaleDetail = 'Transaction/getItemSale/{startDate}/{endDate}',
+  GetCategorySaleDetail = 'Transaction/getCategorySale/{startDate}/{endDate}',
+  GetOpenTickets = 'DashBoard/{processDate}',
+  GetReturnedItems = 'DashBoard/getReturnedItems/{startDate}/{dataFormat}'
+
+}
+
+export enum MsGraphRoutes {
+  Me = '/me',
+  MeMessages = '/me/messages',
+  MeEvents = '/me/events',
+  MeTasks = '/me/outlook/tasks',
+  MeContacts = '/me/contacts?$filter=createdDateTime ge {lastSyncTime} or lastModifiedDateTime ge {lastSyncTime} &$top=100',
+  // MeContacts='/me/contacts?$top=100',
+  MeDeltaContacts = '/me/contacts/delta',
+  MeUpdateContacts = '/me/contacts',
+  MeSendMail = '/me/sendMail',
+  Batch = '/$batch'
 }

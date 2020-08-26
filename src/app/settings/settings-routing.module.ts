@@ -16,7 +16,7 @@ const routes: Routes = [{
     {
       path: 'retailsetup',
       loadChildren: () => import('../retail/retail.module').then(m => m.RetailModule),
-      data: {preload: true}
+      data: { preload: true }
     },
     {
       path: 'inventorysetup',
@@ -30,11 +30,11 @@ const routes: Routes = [{
       path: 'utilities',
       loadChildren: () => import('../settings/retail-utilities/retail-utilities.module').then(m => m.UtilitiesModule)
     },
-    // {
-    //   path: 'usersetup',
-    //   loadChildren: () => import('../settings/user-setup/user-setup.module').then(m => m.UserSetupModule),
-    //   data: { redirectTo: 'systemsetup', hasChild: true }
-    // },
+     {
+       path: 'usersetup',
+       loadChildren: () => import('./user-config/user-config.module').then(m => m.UserSetupModule)
+       // data: { redirectTo: 'systemsetup', hasChild: true }
+     },
     
   ]
 }];

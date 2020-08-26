@@ -20,6 +20,7 @@ export interface localizationJSON {
     bookAppointment:any;
     breakpoint: any;
     utilities: any;
+    userConfig: any;
 }
 
 export interface Calendar {

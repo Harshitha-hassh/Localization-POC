@@ -1,7 +1,7 @@
 <section class="global-search">
 <section class="globalSearchWrapper">
   <section class="globalSearch-input">
-    <!-- <form [formGroup]="globalSearchForm">
+    <form [formGroup]="globalSearchForm">
       <mat-form-field floatLabel="never" class="global-searchField">
         <input autofocus #searchText type="text" matInput formControlName="searchGroup" required [matAutocomplete]="autoGroup" (input)="filterGroup(searchText.value)">     
         <mat-autocomplete #autoGroup="matAutocomplete" [displayWith]="valueMapper">          
@@ -14,9 +14,13 @@
              {{data.value}}
             </mat-option>
           </mat-optgroup>
-
-        </mat-autocomplete>
+        </mat-autocomplete>        
+        <button class="globalSearch-button" >
+          <span (click)="openAddClient($event)">
+            + {{captions.addClient}}
+          </span>
+        </button>
       </mat-form-field>
-    </form> -->
+    </form>
   </section>
 </section>

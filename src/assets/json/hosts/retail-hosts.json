@@ -1,6 +1,5 @@
 {
   "RetailApiHosts": {
-    "SalesCateringService": "https://snc-gateway-dev.rguest.com/SalesAndCateringGateway",
     "TenantManagement": "http://10.17.40.91/api",
     "RetailManagement": "http://localhost:44335/VisualOne/RetailManagementService",
     "SNCGateway": "https://snc-gateway-dev.rguest.com/SalesAndCateringGateway",

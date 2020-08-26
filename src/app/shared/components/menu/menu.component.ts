@@ -7,12 +7,16 @@ import { Localization } from 'src/app/core/localization/Localization';
 import { ManageSessionService } from 'src/app/login/manage-session.service';
 // import { SortOrderPipe } from 'src/app/pipes/sort-order.pipe';
 import { menuTypes } from '../../enums/menu.constant';
+import { ButtonType } from '../../shared-models';
+import { MatDialog } from '@angular/material';
+import { CommonAlertPopupComponent } from 'src/app/common/shared/shared/common-alert-popup/common-alert-popup.component';
+import { AboutComponent } from '../about/about.component';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-  encapsulation:ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None
 })
 export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
@@ -58,7 +62,8 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(public router: Router
     , private _localization: Localization
     , private _sessionService: ManageSessionService
-    , private activeRoute: ActivatedRoute) {
+    , private activeRoute: ActivatedRoute,
+    private dialog: MatDialog) {
     // this.sortPipe = new SortOrderPipe();
   }
 
@@ -78,9 +83,9 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       this.selectedItem = this.menuList.menu.find(x => this.router.url.indexOf(x.routePath) > -1);
       this.router.events.pipe(takeUntil(this.destroyed$)).subscribe(x => {
         this.selectedItem = this.menuList.menu.find(menu => this.router.url.indexOf(menu.routePath) > -1);
-        this.selectedItem = {...this.selectedItem};
+        this.selectedItem = { ...this.selectedItem };
       });
-    }  
+    }
   }
 
   compareSelect = (val1, val2) => {
@@ -109,7 +114,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.moreListItem = [];
     let headerWidth = 0;
     let moreCalc = false;
-    const parentelementWidth = this.navBar.nativeElement.clientWidth;
+    const parentelementWidth =  this.navBar && this.navBar.nativeElement.clientWidth;
     for (let i = 0; i < menuItem.length; i++) {
       const elementWidth = this.getTextWidth(menuItem[i].text, '100 14px LatoWeb');
       headerWidth += elementWidth + 66;
@@ -191,12 +196,12 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
   openGlobalSearch(e, type) {
     this.searchOpen = !this.searchOpen;
-    this.menusearchOpen=false;
+    this.menusearchOpen = false;
   }
 
   openMenuSearch() {
     this.menusearchOpen = !this.menusearchOpen;
-    this.searchOpen=false;
+    this.searchOpen = false;
   }
 
   OptionSelected(event) {
@@ -204,10 +209,43 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   MenuOptionSelected(event) {
-  this.menusearchOpen = false;
-}
+    this.menusearchOpen = false;
+  }
 
   navigateTo(option) {
-    this.router.navigate([option.value.routePath],{state:{ShowPopup: true, onSubmoduleChange: true}});
+    this.router.navigate([option.value.routePath], { state: { ShowPopup: true, onSubmoduleChange: true } });
+  }
+
+  //  help about
+
+  async openIcon() {
+    // To Do help service integration
+    // const hostUrl = this._HeaderService.getDocumentationRoute();
+    // let help_hosturl = hostUrl + '/retail/';
+    // let help_page = 'AgilysysGolf_Home.htm';
+    // const appver = sessionStorage.getItem('productVersion');
+    // const dotRegEx = /\./gi;
+    // const productVersion = appver && appver != 'null' ? appver : '12.2';
+    // let _applicationVersion = productVersion.replace(dotRegEx, '_');
+    // let url = help_hosturl + _applicationVersion + '/' + help_page;
+    // const jwt = sessionStorage.getItem('_jwt');
+    // const isAuthorized = await this._HeaderService.createHelpSession(jwt);
+    // if (isAuthorized && jwt) {
+    //   url = url + '?jwt=' + jwt
+    //   setTimeout(() => { window.open(url, '_blank') }, 1000)
+    // }
+  }
+
+  openAboutDialog() {
+    const message = this._localization.replacePlaceholders(this.captions.versionInfo, ['productVersion'], [sessionStorage.getItem('productVersion')]);
+    const dialogRef = this.dialog.open(AboutComponent, {
+      height: 'auto',
+      width: '300px',
+      data: { title: this.captions.about, message, buttonText: this.captions.okay, },
+      panelClass: 'small-popup',
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(res => {
+    });
   }
 }
