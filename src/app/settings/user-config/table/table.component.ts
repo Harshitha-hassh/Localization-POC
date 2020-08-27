@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, ElementRef, ViewEncapsulation, Output, EventEmitter, ViewChild, AfterViewInit, ChangeDetectorRef, OnDestroy, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ElementRef,
+  ViewEncapsulation,
+  Output, EventEmitter,
+  ViewChild, AfterViewInit, ChangeDetectorRef, OnDestroy, HostListener
+} from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 // import * as myGlobals from '../globalsContant'; //CONSTANT FILE ADD ANY CONSTANT VALUE
 import { MatDialog } from '@angular/material';
@@ -15,14 +23,10 @@ import * as _ from 'lodash';
 import { element } from 'protractor';
 import { takeUntil } from 'rxjs/operators';
 import { UserAlerts } from 'src/app/common/shared/config/alerts-config';
-import { CustomCurrencyPipe } from 'src/app/common/shared/localization/currency.pipe';
 import { GridType } from 'src/app/retail/shared/globalsContant';
 import { RetailTransactions, PromptType } from 'src/app/common/shared/shared/globalsContant';
 import { Localization } from 'src/app/core/localization/Localization';
-import { Utilities } from 'src/app/core/utilities';
-import { LoadDecimalValuePipe } from 'src/app/common/shared/shared/pipes/load-decimal-value.pipe';
 import { CommonAlertMessagePopupComponent } from 'src/app/common/shared/shared/alert-message-popup/alert-message-popup.component';
-import { LocalizeDatePipe } from 'src/app/common/shared/localization/localize-date.pipe';
 // declare var require: any
 // require('rxjs').fromEvent = fromEvent
 // require('rxjs').merge = merge
@@ -31,9 +35,31 @@ import { LocalizeDatePipe } from 'src/app/common/shared/localization/localize-da
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  //changeDetection:ChangeDetectionStrategy.OnPush
+  // changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  constructor(public dialog: MatDialog, private userAlerts: UserAlerts,
+              public el: ElementRef,
+              public fb: FormBuilder,
+              public localization: Localization,
+              private _cdRef: ChangeDetectorRef) {
+    this.captions = this.localization.captions;
+    this.customHeaderButton = this.localization.captions.setting.Add;
+    for (let i = 1; i <= this.ArrayList.length; i++) {
+      this.ArrayList.push(`item ${i}`);
+    }
+    this.table = this.fb.group({
+      IsCheckAll: false,
+      tablebody: this.fb.array([this.fb.group({ id: '', activetoggle: false, donecancel: false, category: '' })])
+    });
+    this.roleSetup = this.fb.group({
+      roleName: ['', Validators.required],
+      activetoggle: [false]
+    });
+    this.inActiveTherapist = new FormControl(false);
+    this.inActiveService = new FormControl(false);
+  }
   RadiobuttonOption = false;
   sortableHeader: any;
   maxCol: number;
@@ -76,7 +102,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('tableInput', { static: false }) tableInput: ElementRef;
   IsViewOnly = false;
   IsAccessAllowed = false;
-  IsCheckAll: Boolean = false;
+  IsCheckAll = false;
   InActiveTherapistChkBoxEvt: any;
   orderTypearr: any = [];
   orderType: any = 'asc';
@@ -131,7 +157,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   viewCheckedFlag = false;
   userAction = false;
   IsRetailCodeSetup: boolean;
-  disableEditButton: boolean; //this boolean will prevent certain screens to show Edit button during view only break point applied.
+  disableEditButton: boolean; // th is boolean will prevent certain screens to show Edit button during view only break point applied.
   isValidRoleName = false;
   isEdit: boolean;
   editableRow: any;
@@ -145,6 +171,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   $destroyed: ReplaySubject<boolean> = new ReplaySubject(1);
   GridType = GridType;
   RetailTransactions = RetailTransactions;
+  IsRoleSetupValid = false;
 
   @HostListener('mousedown', ['$event', '$event.target'])
   onMousedown(e: MouseEvent, ele: any) {
@@ -154,40 +181,14 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  constructor(public dialog: MatDialog, private userAlerts: UserAlerts,
-    public el: ElementRef,
-    public fb: FormBuilder,
-    public localization: Localization,
-    private utils: Utilities,
-    private _cdRef: ChangeDetectorRef,
-    private loaddecimalvalue: LoadDecimalValuePipe, private currency: CustomCurrencyPipe, private localizedate: LocalizeDatePipe) {
-    this.captions = this.localization.captions;
-    this.customHeaderButton = this.localization.captions.setting.Add;
-    for (let i = 1; i <= this.ArrayList.length; i++) {
-      this.ArrayList.push(`item ${i}`);
-    }
-    this.table = this.fb.group({
-      IsCheckAll: false,
-      tablebody: this.fb.array([this.fb.group({ id: '', activetoggle: false, donecancel: false, category: '' })])
-    });
-    this.roleSetup = this.fb.group({
-      roleName: ['', Validators.required],
-      activetoggle: [false]
-    });
-    this.inActiveTherapist = new FormControl(false);
-    this.inActiveService = new FormControl(false);
-  }
-
   UpdateValidation() {
     this.roleSetup.markAsDirty();
     this.validateRoleSetup();
   }
 
-  IsRoleSetupValid = false;
-
   private validateRoleSetup(): boolean {
     if (this.roleSetup.dirty && this.roleSetup.valid) {
-      //case when role-setup form is in create mode or in edit mode after controls are dirty
+      // ca se when role-setup form is in create mode or in edit mode after controls are dirty
       this.IsRoleSetupValid = true;
       return;
     }
@@ -244,7 +245,6 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
       });
       clearTimeout(timer);
     }, 100);
-    let reorderedarr;
     const draggeddata = event.dragData;
     const droppeddata = ele;
     const dragindex = newarr.indexOf(draggeddata);
@@ -278,7 +278,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   setMatformWidth(myElement) {
     if (this.tableInput) {
-      let minWidth = myElement.parentElement.parentElement.getElementsByClassName('actionitems')[0] ? myElement.parentElement.parentElement.getElementsByClassName('actionitems')[0]['offsetWidth'] : 300; //min-300 max-470
+      let minWidth = myElement.parentElement.parentElement.getElementsByClassName('actionitems')[0] ? myElement.parentElement.parentElement.getElementsByClassName('actionitems')[0]['offsetWidth'] : 300; //mi n-300 max-470
       minWidth += myElement.getElementsByClassName('search-container')[0] ? myElement.getElementsByClassName('search-container')[0]['offsetWidth'] : 0;
       minWidth += myElement.getElementsByClassName('table-toggle-switches')[0] ? myElement.getElementsByClassName('table-toggle-switches')[0]['offsetWidth'] : 0;
       minWidth += myElement.getElementsByClassName('custom-retail-inputs')[0] ? myElement.getElementsByClassName('custom-retail-inputs')[0]['offsetWidth'] : 0;
@@ -369,7 +369,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.bodyArray = [];
     this.bodyArray = this.options[0].TablebodyData;
     this.SelectedData = [];
-    //Set Checked items on load - based on the checked field in body data
+    // Se t Checked items on load - based on the checked field in body data
     this.bodyArray.forEach(element => {
       if (element.checked != null && element.checked == true) {
         this.SelectedData.push(element);
@@ -610,7 +610,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     let data = {};
     switch (belonTo) {
       case 'roleSetup': data = { value: this.roleSetup, type };
-        break;
+                        break;
       default: data = { value: '', type };
     }
     this.addClick.emit(data);
@@ -820,7 +820,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
           this.inactiveToggleEvtEmitter.emit(data);
           this.resetForm();
         } else {
-          //currentRecord.active = !currentRecord.active;
+          //cu rrentRecord.active = !currentRecord.active;
           this.editEvent = { id: currentRecord.id, rowDisabled: true };
           _.forEach(this.table.value.tablebody, (data, i) => {
             if (data.donecancel) {

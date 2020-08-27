@@ -65,6 +65,7 @@ export class RoleSetupComponent implements OnInit {
     // this.IsReadOnly = this.BPoint.GetBreakPoint([GlobalConst.SPAScheduleBreakPoint.UserRoleSetUp]).result[0].view;
     this.LoadUserRoles();
     [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(false, this.initialLoads, this.callCounter);
+    this.BindToGrid();
   }
 
   editEvt(event) {
@@ -178,7 +179,6 @@ export class RoleSetupComponent implements OnInit {
     } else if (!this.checked) {
       this.tableData = this.result.filter(res => res.active);
     }
-    this.BindToGrid();
   }
 
   InvokeServiceCall(route: string, domain: Host, callType: HttpMethod, uriParams?: any, body?: any, extraParams?: any) {
