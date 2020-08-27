@@ -21,11 +21,11 @@ export class CopyRolesComponent implements OnInit {
   captions: any = this.localization.captions.userConfig;
   sampleOptionsTemp: any;
   secondOptionsSet: any;
-  sampleOptions: any = [{ 'id': 1, 'name': 'System Administrator' }, { 'id': 2, 'name': 'Advanced User' }];
+  sampleOptions: any = [{ id: 1, name: 'System Administrator' }, { id: 2, name: 'Advanced User' }];
   roleGrp: FormGroup;
 
   constructor(private http: HttpServiceCall, public localization: Localization, @Inject(MAT_DIALOG_DATA) public data,
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     // private _viewSetting: ViewSettingClientBusiness,
     private dialogRef: MatDialogRef<CopyRolesComponent>, private dialog: MatDialog, private utils: Utilities) {
 
@@ -52,7 +52,7 @@ export class CopyRolesComponent implements OnInit {
       error: this.errorCallback.bind(this),
       callDesc: 'GetActiveUserRole',
       method: HttpMethod.Get,
-      uriParams: { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) , includeInActive : false },
+      uriParams: { tenantId: Number(this.utils.GetPropertyInfo('TenantId')), includeInActive: false },
       showError: true,
       extraParams: [false]
     });
@@ -62,8 +62,8 @@ export class CopyRolesComponent implements OnInit {
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
     if (callDesc == 'GetActiveUserRole') {
       this.sampleOptions = result.result ? result.result : [];
-      this.sampleOptions = this.sampleOptions.filter(x=> x.propertyId  === Number(this.utils.GetPropertyInfo('PropertyId'))
-      && x.productId.find(x=> x === Number(this.utils.GetPropertyInfo('ProductId'))));
+      this.sampleOptions = this.sampleOptions.filter(x => x.propertyId === Number(this.utils.GetPropertyInfo('PropertyId'))
+        && x.productId.find(x => x === Number(this.utils.GetPropertyInfo('ProductId'))));
       this.sampleOptionsTemp = _.cloneDeep(this.sampleOptions);
     } else if (callDesc == 'CopyUserRoles') {
       this.dialogRef.close();
@@ -72,7 +72,12 @@ export class CopyRolesComponent implements OnInit {
         height: '300px',
         hasBackdrop: true,
         panelClass: 'small-popup',
-        data: { headername: this.captions.wellDone, headerIcon: 'icon-success-icon', headerMessage: this.captions.configSuccessFrom + ' ' + this.roleGrp.controls.copyFrom.value + ' ' + this.captions.configSuccessTo + ' ' + this.roleGrp.controls.copyTo.value, buttonName: this.captions.okay, type: 'message' },
+        data: {
+          headername: this.captions.wellDone,
+          headerIcon: 'icon-success-icon',
+          headerMessage: this.captions.configSuccessFrom + ' ' + this.roleGrp.controls.copyFrom.value + ' ' + this.captions.configSuccessTo + ' ' + this.roleGrp.controls.copyTo.value,
+          buttonName: this.captions.okay, type: 'message'
+        },
         disableClose: true
       });
     }
