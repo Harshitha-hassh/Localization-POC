@@ -70,6 +70,12 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
     overflow: hidden;
   }
 
+  .dashBoard-wrapper
+  {
+    height:100%;
+    overflow:auto;
+  }
+
 .dashBoard-widgets-report-wrapper{
     width:100%;
     box-sizing: border-box;
