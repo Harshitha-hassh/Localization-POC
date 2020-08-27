@@ -20,7 +20,6 @@ import { Utilities } from 'src/app/core/utilities';
 import { BaseResponse, HttpMethod } from 'src/app/common/Models/http.model';
 import { Product } from 'src/app/common/Models/common.models';
 import { GridType, Host } from 'src/app/common/shared/shared/globalsContant';
-import { popupConfig } from 'src/app/common/shared/shared.modal';
 import { NewUserComponent } from '../new-user/new-user.component';
 
 @Component({
@@ -44,22 +43,22 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   usersInfo: any = [];
 
   IsReadOnly: boolean;
-  hasAccess: boolean = true;
+  hasAccess = true;
   dialogSubscription: ISubscription;
 
   FormGrp: FormGroup;
-  searchValue: boolean = true;
+  searchValue = true;
 
   constructor(private Form: FormBuilder, public localization: Localization, private dialog: MatDialog,
-    private _servicesetting: SettingsService,
-    private http: HttpServiceCall,
-    private utils: Utilities, private BPoint: BreakPointAccess,
-    private _userOutletsService: UserOutletAccessDataService) {
+              private servicesetting: SettingsService,
+              private http: HttpServiceCall,
+              private utils: Utilities, private BPoint: BreakPointAccess,
+              private userOutletsService: UserOutletAccessDataService) {
 
   }
 
   ngOnInit() {
-    this._servicesetting.tabLoaderEnable.next(false);
+    this.servicesetting.tabLoaderEnable.next(false);
     this.captions = this.localization.captions.userConfig;
     this.FormGrp = this.Form.group({
       searchtext: '',
@@ -72,7 +71,8 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     // this.IsReadOnly = this._servicesetting.breakpoints.find(bp => bp.breakPointNumber == GlobalConst.SPAScheduleBreakPoint.UserSetup).view;
 
     this.GetServiceCall('GetProductsByPropertyId', { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
-    this.GetServiceCall('GetActiveUserRolesByPropertyId', { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')), includeInActive: false });
+    this.GetServiceCall('GetActiveUserRolesByPropertyId',
+      { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')), includeInActive: false });
     // this.GetServiceCall('GetOutlets', { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
     this.GetRetailServiceCall('GetOutlets', { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
     this.GetServiceCall('GetAllUsers', { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
@@ -109,7 +109,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
         { id: 3, name: this.captions.Inactive, value: false }],
         filtered: []
       }
-    ]
+    ];
 
   }
 
@@ -125,7 +125,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
 
   bindTable(tableData) {
     const header = [{ title: this.captions.UserID, jsonkey: 'userId', alignType: 'left' },
-    { title: this.captions.Name, jsonkey: 'name', alignType: 'left', 'showStatus': true },
+    { title: this.captions.Name, jsonkey: 'name', alignType: 'left', showStatus: true },
     { title: this.captions.Email, jsonkey: 'email', alignType: 'left' },
     { title: this.captions.ApplicationAllowed, jsonkey: 'applicationAllowed', alignType: 'left' },
     { title: this.captions.Roles, jsonkey: 'roles', alignType: 'left' },
@@ -144,7 +144,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
       userAction: true,
       disableDelete: true,
       TableDraggable: false
-    }]
+    }];
   }
 
   createUser(type) {
@@ -218,7 +218,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
 
   async EditRecords(event) {
     const clientObj = this.usersInfo.filter(x => x.userId == event[0].id)[0];
-    const userRetailConfig: any = await this.GetUserConfigAsync('GetUserRetailConfiguration', Host.retailManagement, event[0].id)
+    const userRetailConfig: any = await this.GetUserConfigAsync('GetUserRetailConfiguration', Host.retailManagement, event[0].id);
 
     const userData: any = {
       activeuser: clientObj.isActive,
@@ -235,7 +235,8 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     let spaData: any;
     let retailData: any;
     let retailOutletMap: any;
-    clientObj.userPropertyAccesses = clientObj.userPropertyAccesses.filter(x => x.propertyID === Number(this.utils.GetPropertyInfo('PropertyId'))
+    clientObj.userPropertyAccesses = clientObj.userPropertyAccesses.filter(x =>
+      x.propertyID === Number(this.utils.GetPropertyInfo('PropertyId'))
       && this.products.map(v => v.id).includes(x.productId));
     for (let i = 0; i < clientObj.userPropertyAccesses.length; i++) {
       const prodId = clientObj.userPropertyAccesses[i].productId;
@@ -246,7 +247,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
           accountblocked: clientObj.userPropertyAccesses[i].accountBlocked,
           autologoff: clientObj.userPropertyAccesses[i].autoLogOff,
           logoffafter: clientObj.userPropertyAccesses[i].logOffAfter,
-        }
+        };
       } else if (prodName.toUpperCase() == 'RETAIL') {
         retailData = {
           rolename: clientObj.userPropertyAccesses[i].roleId,
@@ -257,13 +258,13 @@ export class UserSetupComponent implements OnInit, OnDestroy {
           allowservicecharge: userRetailConfig ? userRetailConfig.allowServiceCharge : false,
           allowcommission: userRetailConfig ? userRetailConfig.allowCommission : false,
           commissionclass: userRetailConfig ? userRetailConfig.commissionClass : false
-        }
+        };
         retailOutletMap = clientObj.userPropertyAccesses[i].userSubPropertyAccess;
       }
     }
-    this._servicesetting.userSettingsFormGrp.patchValue(userData);
-    retailData ? this._servicesetting.retailSettingsFormGrp.patchValue(retailData) : '';
-    this._servicesetting.editUserInfo = {
+    this.servicesetting.userSettingsFormGrp.patchValue(userData);
+    if (retailData) { this.servicesetting.retailSettingsFormGrp.patchValue(retailData); }
+    this.servicesetting.editUserInfo = {
       clientInfo: clientObj,
       retainInfo: userRetailConfig,
       retailOutletMap
@@ -311,17 +312,18 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     if (callDesc == 'GetProductsByPropertyId') {
       if (result.result) {
         this.products = result.result;
-        this.Categories[1].filters = this.products.map(x => { return { id: x.id, name: x.productName, value: false } })
+        this.Categories[1].filters = this.products.map(x => ({ id: x.id, name: x.productName, value: false }));
       }
     } else if (callDesc == 'GetOutlets') {
       if (result.result) {
-        this._servicesetting.propOutlets = result.result;
-        this.Categories[0].filters = this._servicesetting.propOutlets.map(x => { return { id: x.subPropertyID, name: x.subPropertyName, value: false } })
+        this.servicesetting.propOutlets = result.result;
+        this.Categories[0].filters = this.servicesetting.propOutlets.map(x =>
+           ({ id: x.subPropertyID, name: x.subPropertyName, value: false }));
       }
     } else if (callDesc == 'GetActiveUserRolesByPropertyId') {
       if (result.result) {
         this.roles = this.rolelst = result.result;
-        this._servicesetting.userRoles = this.roles;
+        this.servicesetting.userRoles = this.roles;
         this.roles = this.roles.filter(x => x.productId.includes(Number(this.utils.GetPropertyInfo('ProductId'))));
       }
     } else if (callDesc == 'GetAllUsers') {
@@ -330,17 +332,23 @@ export class UserSetupComponent implements OnInit, OnDestroy {
         let data = _.cloneDeep(result.result as any);
         if (data.length > 0) {
           data = await this.FillUserOutletsAccess(this.usersInfo);
-          data = data.filter(u => u.userPropertyAccesses && u.userPropertyAccesses.some(a => a.propertyID === Number(this.utils.GetPropertyInfo('PropertyId')) && a.productId === Number(this.utils.GetPropertyInfo('ProductId'))));
+          data = data.filter(u => u.userPropertyAccesses && u.userPropertyAccesses.some(a =>
+             a.propertyID === Number(this.utils.GetPropertyInfo('PropertyId')) &&
+             a.productId === Number(this.utils.GetPropertyInfo('ProductId'))));
           this.tableData = [];
-          this._servicesetting.existingUserIds = [];
-          this._servicesetting.existingQuickIds = [];
+          this.servicesetting.existingUserIds = [];
+          this.servicesetting.existingQuickIds = [];
           for (let x = 0; x < data.length; x++) {
             const propertyAccess = data[x].userPropertyAccesses;
-            let appAllowedNames, appAllowedIds, roleNames, roleIds;
+            let appAllowedNames;
+            let appAllowedIds;
+            let roleNames;
+            let roleIds;
             const outletAllowedIds = [];
             if (propertyAccess && propertyAccess.length > 0) {
-              appAllowedIds = propertyAccess.filter(x => x.hasAccess).map(y => y.productId);
-              roleIds = propertyAccess.filter(z => z.propertyID == Number(this.utils.GetPropertyInfo('PropertyId')) && (z.productId === Product.RETAIL)).map(y => y.roleId);
+              appAllowedIds = propertyAccess.filter((prop: { hasAccess: any; }) => prop.hasAccess).map(y => y.productId);
+              roleIds = propertyAccess.filter(z => z.propertyID == Number(this.utils.GetPropertyInfo('PropertyId'))
+               && (z.productId === Product.RETAIL)).map(y => y.roleId);
               appAllowedNames = this.products.filter(y => appAllowedIds.includes(y.id)).map(z => z.productName).toString();
               roleNames = this.rolelst.filter(y => roleIds.includes(y.id)).map(z => z.description).toString();
 
@@ -348,7 +356,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
                 const subPropAccess = propertyAccess[y].userSubPropertyAccess;
                 let outIds;
                 if (subPropAccess && subPropAccess.length > 0) {
-                  outIds = subPropAccess.filter(x => x.hasAccess == true).map(z => z.subPropertyID);
+                  outIds = subPropAccess.filter((x: { hasAccess: boolean; }) => x.hasAccess == true).map(z => z.subPropertyID);
                   outletAllowedIds.push(...outIds);
                 }
               }
@@ -366,18 +374,18 @@ export class UserSetupComponent implements OnInit, OnDestroy {
               allowedAppId: appAllowedIds,
               allowedOutId: outletAllowedIds,
               id: data[x].userId
-            }
+            };
 
             this.tableData.push(userInfo);
-            this._servicesetting.existingUserIds.push((data[x].userName ? data[x].userName : '').toUpperCase());
-            data[x].quickId ? this._servicesetting.existingQuickIds.push(data[x].quickId) : '';
+            this.servicesetting.existingUserIds.push((data[x].userName ? data[x].userName : '').toUpperCase());
+            if (data[x].quickId) {this.servicesetting.existingQuickIds.push(data[x].quickId); }
           }
         }
         this.bindTable(this.tableData);
       }
     } else if (callDesc == 'GetAllServiceGrp') {
       if (result.result) {
-        this._servicesetting.serviceGroups = result.result as any;
+        this.servicesetting.serviceGroups = result.result as any;
       }
     }
   }
@@ -387,7 +395,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   }
 
   private async FillUserOutletsAccess(users: any) {
-    const userOutlets = await this._userOutletsService.GetOutletsAccessByPropertyId();
+    const userOutlets = await this.userOutletsService.GetOutletsAccessByPropertyId();
     users.map(u => {
       const userAccessOutlets = userOutlets && userOutlets.length > 0 ? userOutlets.filter(r => r.userID == u.userId) : [];
       u.userPropertyAccesses.map(p => {
@@ -402,10 +410,10 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   }
 
   ResetServiceAttributes() {
-    this._servicesetting.userSettingsFormGrp.reset();
-    this._servicesetting.retailSettingsFormGrp.reset();
-    this._servicesetting.selectedAccess = [];
-    this._servicesetting.selectedServiceGrp = [];
-    this._servicesetting.selectedOutlets = [];
+    this.servicesetting.userSettingsFormGrp.reset();
+    this.servicesetting.retailSettingsFormGrp.reset();
+    this.servicesetting.selectedAccess = [];
+    this.servicesetting.selectedServiceGrp = [];
+    this.servicesetting.selectedOutlets = [];
   }
 }

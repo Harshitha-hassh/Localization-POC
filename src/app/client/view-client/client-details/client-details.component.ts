@@ -19,6 +19,7 @@ import { ImageProcessorService } from 'src/app/common/shared/shared/service/imag
 import { SPAManagementBreakPoint, ImgRefType, Host, GenderPreference } from 'src/app/common/shared/shared/globalsContant';
 import { SPAScheduleBreakPoint } from 'src/app/retail/shared/globalsContant';
 import { AppModuleService } from 'src/app/core/services/app.service';
+import { ClientPopupComponent } from '../../client-popup/client-popup.component';
 
 
 @Component({
@@ -28,15 +29,15 @@ import { AppModuleService } from 'src/app/core/services/app.service';
     animations: [
         trigger(
             'enterAnimation', [
-                transition(':enter', [
-                    style({ transform: 'translateX(100%)', opacity: 0 }),
-                    animate('1s', style({ transform: 'translateX(0)', opacity: 1 }))
-                ]),
-                transition(':leave', [
-                    style({ transform: 'translateX(0)', opacity: 1 }),
-                    animate('1s', style({ transform: 'translateX(100%)', opacity: 0 }))
-                ])
-            ]
+            transition(':enter', [
+                style({ transform: 'translateX(100%)', opacity: 0 }),
+                animate('1s', style({ transform: 'translateX(0)', opacity: 1 }))
+            ]),
+            transition(':leave', [
+                style({ transform: 'translateX(0)', opacity: 1 }),
+                animate('1s', style({ transform: 'translateX(100%)', opacity: 0 }))
+            ])
+        ]
         )
     ],
     encapsulation: ViewEncapsulation.None
@@ -47,15 +48,15 @@ export class ClientDetailsComponent implements OnInit {
     searchText = '';
     TablebodyData = [];
     tableoptions = [{
-        TableHdrData: [{ 'title': this.captions.BasicInformation, 'jsonkey': 'client', 'alignType': 'left', 'datatype': 'client', 'searchable': true, 'sortable': true },
-        { 'title': this.captions.PatronID, 'jsonkey': 'patronId', 'alignType': 'left', 'searchable': false, 'sortable': true },
-        { 'title': this.captions.Gender, 'jsonkey': 'gender', 'alignType': 'left', 'datatype': 'icon', 'searchable': false, 'sortable': false },
-        { 'title': this.captions.DateOfBirth, 'jsonkey': 'dateOfBirth', 'alignType': 'left', 'searchable': false, 'sortable': true },
-        { 'title': this.captions.Address, 'jsonkey': 'address', 'alignType': 'left', 'searchable': false, 'sortable': false },
-        { 'title': this.captions.PhoneNumber, 'jsonkey': 'phoneNumber', 'alignType': 'left', 'searchable': true, 'sortable': false, 'hover': 'phoneNumbers' },
-        { 'title': this.captions.LastVisitedDate, 'jsonkey': 'lastVisitedDate', 'alignType': 'left', 'searchable': false, 'sortable': true },
-        // { 'title': this.captions.LastAppointmentService, 'jsonkey': 'lastVisitedService', 'alignType': 'left', 'searchable': false, 'sortable': true }
-    ],
+        TableHdrData: [{ title: this.captions.BasicInformation, jsonkey: 'client', alignType: 'left', datatype: 'client', searchable: true, sortable: true },
+        { title: this.captions.PatronID, jsonkey: 'patronId', alignType: 'left', searchable: false, sortable: true },
+        { title: this.captions.Gender, jsonkey: 'gender', alignType: 'left', datatype: 'icon', searchable: false, sortable: false },
+        { title: this.captions.DateOfBirth, jsonkey: 'dateOfBirth', alignType: 'left', searchable: false, sortable: true },
+        { title: this.captions.Address, jsonkey: 'address', alignType: 'left', searchable: false, sortable: false },
+        { title: this.captions.PhoneNumber, jsonkey: 'phoneNumber', alignType: 'left', searchable: true, sortable: false, hover: 'phoneNumbers' },
+        { title: this.captions.LastVisitedDate, jsonkey: 'lastVisitedDate', alignType: 'left', searchable: false, sortable: true },
+            // { 'title': this.captions.LastAppointmentService, 'jsonkey': 'lastVisitedService', 'alignType': 'left', 'searchable': false, 'sortable': true }
+        ],
         TablebodyData: this.TablebodyData,
         ServiceId: 99,
         sortable: true,
@@ -111,7 +112,7 @@ export class ClientDetailsComponent implements OnInit {
     timer = null;
     constructor(private dialog: MatDialog,
         // private appointmentservice: AppointmentpopupService,
-         private localization: Localization, public http: HttpServiceCall, private utils: Utilities,
+        private localization: Localization, public http: HttpServiceCall, private utils: Utilities,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
         , private breakPoint: BreakPointAccess, private imageprocessorservice: ImageProcessorService) {
         route.params.subscribe(val => {
@@ -158,14 +159,14 @@ export class ClientDetailsComponent implements OnInit {
      * @description Opens new dialog to create a client
      */
     addNewClient = (event) => {
-        if(this.breakPoint.CheckForAccess([SPAManagementBreakPoint.AddNewClientProfile]))
-        {
-            // this.appointmentservice.add_client = true;
-            // this.appointmentservice.IsAddClientFromSPA = true;
-            // this.appointmentservice.ImgTempHolder = {};
-            // this.appointmentservice.popupTitle = this.captions.NewClient;
-            this.openAddActionDialog();
-        }
+        // if(this.breakPoint.CheckForAccess([SPAManagementBreakPoint.AddNewClientProfile]))
+        // {
+        // this.appointmentservice.add_client = true;
+        // this.appointmentservice.IsAddClientFromSPA = true;
+        // this.appointmentservice.ImgTempHolder = {};
+        // this.appointmentservice.popupTitle = this.captions.NewClient;
+        this.openAddActionDialog();
+        // }
     }
 
     /**
@@ -173,56 +174,53 @@ export class ClientDetailsComponent implements OnInit {
      * @description Opens dialog for Add/Edit action.
      */
     openActionDialog() {
-    if(this.breakPoint.CheckForAccess([SPAScheduleBreakPoint.BookAppointment]))
-    {
-        // this.appointmentservice.fromClientModule = true;
-        // this.appointmentservice.labelRecords = [];
-        this.guestArray = [];
-        for (let i = 0; i < this.selectedClient.length; i++) {
-            this.arrayCount = i;
-            if (this.selectedClient[i].client.id == 0) {
-                this.guestArray.push(this.selectedClient[i]);
+        if (this.breakPoint.CheckForAccess([SPAScheduleBreakPoint.BookAppointment])) {
+            // this.appointmentservice.fromClientModule = true;
+            // this.appointmentservice.labelRecords = [];
+            this.guestArray = [];
+            for (let i = 0; i < this.selectedClient.length; i++) {
+                this.arrayCount = i;
+                if (this.selectedClient[i].client.id == 0) {
+                    this.guestArray.push(this.selectedClient[i]);
+                }
             }
+            if (this.guestArray.length > 0) {
+                // return here
+                this.guestNames = this.guestArray.map(x => {
+                    return x.client.firstName.trim().concat(' ', x.client.lastName.trim());
+                }).join(',')
+                this.utils.ShowError(this.localization.captions.common.Information, this.localization.replacePlaceholders(this.localization.getError(100002), ["clientName",], [this.guestNames]));
+                return;
+            }
+            this.selectedClient.forEach(element => {
+                let clientData: ClientLabel = {
+                    Id: element.client.id,
+                    FirstName: element.client.firstName.trim(),
+                    LastName: element.client.lastName.trim()
+                };
+                // this.appointmentservice.labelRecords.push(clientData);
+            });
+            let clientIds: any[] = this.selectedClient.map(x => x.client.id);
+            this.getClientsInfo(clientIds);
         }
-        if (this.guestArray.length > 0) {
-            // return here
-            this.guestNames = this.guestArray.map(x => {
-                return x.client.firstName.trim().concat(' ', x.client.lastName.trim());
-            }).join(',')
-            this.utils.ShowError(this.localization.captions.common.Information, this.localization.replacePlaceholders(this.localization.getError(100002), ["clientName",], [this.guestNames]));
-            return;
-        }
-        this.selectedClient.forEach(element => {
-            let clientData: ClientLabel = {
-                Id: element.client.id,
-                FirstName: element.client.firstName.trim(),
-                LastName: element.client.lastName.trim()
-            };
-            // this.appointmentservice.labelRecords.push(clientData);
-        });
-        let clientIds: any[] = this.selectedClient.map(x => x.client.id);
-        this.getClientsInfo(clientIds);
-     }
     }
 
     openAddActionDialog() {
-        // this.appointmentservice.addFromClientModule = true;
-        // this.appointmentservice.clientWidowActionType = this.captions.New;
-        // const dialogRef = this.dialog.open(AppointmentPopupComponent, {
-        //     width: '95%',
-        //     height: '85%',
-        //     disableClose: true,
-        //     hasBackdrop: true,
-        //     data: { data: '', closebool: true },
-        //     panelClass: 'small-popup'
-        // });
-        // dialogRef.afterClosed().subscribe(result => {
-        //     if (this.clientService.selectedIndex == 1) {
-        //         this.RecentClientInformation(this.searchText);
-        //     } else {
-        //         this.searchdata(this.searchText);
-        //     }
-        // })
+        const dialogRef = this.dialog.open(ClientPopupComponent, {
+            width: '95%',
+            height: '85%',
+            disableClose: true,
+            hasBackdrop: true,
+            data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
+            panelClass: 'small-popup'
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (this.clientService.selectedIndex == 1) {
+                this.RecentClientInformation(this.searchText);
+            } else {
+                this.searchdata(this.searchText);
+            }
+        })
     }
 
 
@@ -349,22 +347,12 @@ export class ClientDetailsComponent implements OnInit {
      */
     EditRecords(event) {
         // To Do: Edit Client Info mapping.
-       if(this.breakPoint.CheckForAccess([SPAManagementBreakPoint.EditClientProfile]))
-       {
-            // this.appointmentservice.add_client = true;
-            // this.appointmentservice.IsAddClientFromSPA = true;
-            // this.appointmentservice.popupTitle = this.captions.EditClient;
-            // this.appointmentservice.clientWidowActionType = 'EDIT';
-            // this.appointmentservice.saveText = this.localization.captions.common.Update;
+        if (this.breakPoint.CheckForAccess([SPAManagementBreakPoint.EditClientProfile])) {
             if (event.length > 0) {
-                // this.appointmentservice.clientId = event[0].client.id;
                 this.guestId = event[0].client.guestId;
-                // this.appointmentservice.guestId = event[0].client.guestId;
             }
             else {
-                // this.appointmentservice.clientId = event.client.id;
                 this.guestId = event.client.guestId;
-                // this.appointmentservice.guestId = event.client.guestId;
             }
             // if (this.appointmentservice.clientId == 0) {
             //     this.getClientDataByGuid(this.guestId);
@@ -389,36 +377,47 @@ export class ClientDetailsComponent implements OnInit {
             this.singleUserView = false;
         }
         else {
-          if ((searchText.length == 0 || searchText.length > 2) && this.clientService.selectedIndex == 1) {
-                  this.RecentClientInformation(this.searchText);
-                  this.singleUserView = false;
-          }
-          else if (searchText.length > 2 && this.clientService.selectedIndex != 1){
-                  this.SearchClientInformation(this.searchText, this.clientService.isVip);
-                  this.singleUserView = false;
-           }
-          else {
-            this.formattedData = [];
-            this.sampleData = [];
-            this.BindGrid();
-            this.FilterClientInformation();
-            this.refreshData();
-            this.singleUserView = false;
-          }
+            if ((searchText.length == 0 || searchText.length > 2) && this.clientService.selectedIndex == 1) {
+                this.RecentClientInformation(this.searchText);
+                this.singleUserView = false;
+            }
+            else if (searchText.length > 2 && this.clientService.selectedIndex != 1) {
+                this.SearchClientInformation(this.searchText, this.clientService.isVip);
+                this.singleUserView = false;
+            }
+            else {
+                this.formattedData = [];
+                this.sampleData = [];
+                this.BindGrid();
+                this.FilterClientInformation();
+                this.refreshData();
+                this.singleUserView = false;
+            }
         }
     }
 
     BindGrid() {
         this.formattedData = this.formatTableData(this.formattedData);
         this.tableoptions = [{
-            TableHdrData: [{ 'title': this.captions.BasicInformation, 'jsonkey': 'client', 'alignType': 'left', 'datatype': 'client', 'searchable': true, 'sortable': true },
-            { 'title': this.captions.PatronID, 'jsonkey': 'patronId', 'alignType': 'left', 'searchable': true, 'sortable': true },
-            { 'title': this.captions.Gender, 'jsonkey': 'gender', 'alignType': 'left', 'datatype': 'icon', 'searchable': false, 'sortable': false },
-            { 'title': this.captions.DateOfBirth, 'jsonkey': 'dateOfBirth', 'alignType': 'left', 'searchable': false, 'sortable': true },
-            { 'title': this.captions.Address, 'jsonkey': 'address', 'alignType': 'left', 'searchable': false, 'sortable': false },
-            { 'title': this.captions.PhoneNumber, 'jsonkey': 'phoneNumber', 'alignType': 'left', 'searchable': true, 'sortable': false, 'hover': 'phoneNumbers' },
-            { 'title': this.captions.LastVisitedDate, 'jsonkey': 'lastVisitedDate', 'alignType': 'left', 'searchable': false, 'sortable': true },
-            { 'title': this.captions.LastAppointmentService, 'jsonkey': 'lastVisitedService', 'alignType': 'left', 'searchable': false, 'sortable': true }],
+            TableHdrData: [
+                {
+                    title: this.captions.BasicInformation, jsonkey: 'client', alignType: 'left',
+                    datatype: 'client', searchable: true, sortable: true
+                },
+                { title: this.captions.PatronID, jsonkey: 'patronId', alignType: 'left', searchable: true, sortable: true },
+                { title: this.captions.Gender, jsonkey: 'gender', alignType: 'left', datatype: 'icon', searchable: false, sortable: false },
+                { title: this.captions.DateOfBirth, jsonkey: 'dateOfBirth', alignType: 'left', searchable: false, sortable: true },
+                { title: this.captions.Address, jsonkey: 'address', alignType: 'left', searchable: false, sortable: false },
+                {
+                    title: this.captions.PhoneNumber, jsonkey: 'phoneNumber', alignType: 'left',
+                    searchable: true, sortable: false, hover: 'phoneNumbers'
+                },
+                {
+                    title: this.captions.LastVisitedDate, jsonkey: 'lastVisitedDate',
+                    alignType: 'left', searchable: false, sortable: true
+                },
+                // { 'title': this.captions.LastAppointmentService, 'jsonkey': 'lastVisitedService', 'alignType': 'left', 'searchable': false, 'sortable': true }
+            ],
             TablebodyData: this.formattedData,
             ServiceId: 99,
             sortable: true,
@@ -560,7 +559,7 @@ export class ClientDetailsComponent implements OnInit {
     }
 
     formatTableData(tableData) {
-        this.formattedData = tableData.map(data => { data.address = ((data.line1 != '' ? data.line1 + ', ' : '') + (data.city != '' ? data.city + ', ' : '') + (data.state != '' ? data.state + ', ' : '') + (data.country != '' ? data.country + ', ' :'') + (data.zip ? + data.zip : '')); return data; });
+        this.formattedData = tableData.map(data => { data.address = ((data.line1 != '' ? data.line1 + ', ' : '') + (data.city != '' ? data.city + ', ' : '') + (data.state != '' ? data.state + ', ' : '') + (data.country != '' ? data.country + ', ' : '') + (data.zip ? + data.zip : '')); return data; });
         return this.formattedData;
     }
 
@@ -710,7 +709,7 @@ export class ClientDetailsComponent implements OnInit {
                         let primaryPhone = this.formattedData[i].phoneNumber.find(x => x.isPrimary);
                         this.formattedPhoneNo = [];
                         this.formattedPhoneNos = [];
-                        let PhnoExt=[];
+                        let PhnoExt = [];
                         if (primaryPhone) {
                             //ADDING FOR EXTENSION FIELD
                             this.formattedPhoneNo = this.utils.getFormattedPhNo(primaryPhone);
@@ -790,8 +789,8 @@ export class ClientDetailsComponent implements OnInit {
             if (this.searchText.trim() == '' && this.guestNameFromGlobalSearch.trim() != '') {
                 //Do Nothing
             }
-            else if(this.searchText.length == 0 && this.clientService.selectedIndex == 1){
-               //Do Nothing
+            else if (this.searchText.length == 0 && this.clientService.selectedIndex == 1) {
+                //Do Nothing
             }
             else if (this.searchText.length < 3 && !this._as.isglobalSearch) {
                 this.formattedData = [];
@@ -885,16 +884,16 @@ export class ClientDetailsComponent implements OnInit {
             let clientInfo = <any>result.result;
             this.CreateClientByGuid(clientInfo);
         } else if (callDesc === "v2GetImagesByReferenceId") {
-          let response = <any>result.result
-          if (response && response.length > 0) {
-              response.forEach((img) => {
-                //   if (!this.appointmentservice.imageArray.find(x => x['imageReferenceId'] === img.imageReferenceId)) {
-                //       this.appointmentservice.clientImageChange(response);
-                //   }
-              })
-          }
+            let response = <any>result.result
+            if (response && response.length > 0) {
+                response.forEach((img) => {
+                    //   if (!this.appointmentservice.imageArray.find(x => x['imageReferenceId'] === img.imageReferenceId)) {
+                    //       this.appointmentservice.clientImageChange(response);
+                    //   }
+                })
+            }
 
-      }
+        }
     }
     errorCallback<T>(error: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
     }

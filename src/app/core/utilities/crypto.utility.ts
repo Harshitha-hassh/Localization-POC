@@ -19,7 +19,7 @@ export class CryptoUtility {
         try {
             encryptedText = crypto.AES.encrypt(JSON.stringify(plainObject), CipherKey);
         } catch (error) {
-            encryptedText = "";
+            encryptedText = '';
         }
         return encryptedText;
     }
@@ -32,10 +32,10 @@ export class CryptoUtility {
     public DecryptObject<T>(ciphertext: string): T {
         let decryptedData;
         try {
-            let bytes = crypto.AES.decrypt(ciphertext.toString(), CipherKey);
+            const bytes = crypto.AES.decrypt(ciphertext.toString(), CipherKey);
             decryptedData = JSON.parse(bytes.toString(crypto.enc.Utf8));
         } catch (error) {
-            decryptedData = "";
+            decryptedData = '';
         }
         return decryptedData;
     }

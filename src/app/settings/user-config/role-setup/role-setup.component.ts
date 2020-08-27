@@ -95,11 +95,11 @@ export class RoleSetupComponent implements OnInit {
   }
 
   addOutlet(data?: any, event?: any) {
-    if (data.value.controls.roleName.value.trim() == '') {
+    if (data.value.controls.roleName.value.trim() === '') {
       this.utils.showError(this.localization.captions.setting.RoleNameErr);
       return;
     }
-    if (data.type.toLowerCase() == this.localization.captions.setting.Add.toLowerCase()) {
+    if (data.type.toLowerCase() === this.localization.captions.setting.Add.toLowerCase()) {
 
       this.roleToBeCreated = {
         active: true,
@@ -110,7 +110,7 @@ export class RoleSetupComponent implements OnInit {
       };
       this.CheckUserRoleExist(data.value.controls.roleName.value.trim());
 
-    } else if (data.type.toLowerCase() == this.localization.captions.setting.update.toLowerCase()) {
+    } else if (data.type.toLowerCase() === this.localization.captions.setting.update.toLowerCase()) {
       const roleSetup: RoleSetup = {
         id: this.tableoptions[0].TablebodyData[this.currIndex].id,
         description: data.value.controls.roleName.value,
@@ -208,7 +208,7 @@ export class RoleSetupComponent implements OnInit {
     });
   }
 
-  CreateUserRole(Role: RoleSetup) {
+  CreateUserRole(roleSetup: RoleSetup) {
     let header: any;
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
@@ -217,13 +217,13 @@ export class RoleSetupComponent implements OnInit {
       callDesc: 'CreateUserRole',
       method: HttpMethod.Post,
       header,
-      body: Role,
+      body: roleSetup,
       showError: true,
       extraParams: []
     });
   }
 
-  UpdateUserRole(Role: RoleSetup) {
+  UpdateUserRole(roleSetup: RoleSetup) {
     let header: any;
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
@@ -232,13 +232,13 @@ export class RoleSetupComponent implements OnInit {
       callDesc: 'UpdateUserRole',
       method: HttpMethod.Put,
       header,
-      body: [Role],
+      body: [roleSetup],
       showError: true,
       extraParams: []
     });
   }
 
-  DeleteUserRole(Role: RoleSetup) {
+  DeleteUserRole(roleSetup: RoleSetup) {
     let header: any;
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
@@ -247,7 +247,7 @@ export class RoleSetupComponent implements OnInit {
       callDesc: 'DeleteUserRole',
       method: HttpMethod.Delete,
       header,
-      body: Role,
+      body: roleSetup,
       showError: true,
       extraParams: []
     });

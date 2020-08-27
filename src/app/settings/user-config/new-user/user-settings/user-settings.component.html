@@ -65,8 +65,8 @@
       <div [ngClass]="{'button_invalid': IsReadOnly}" class="settings-right pl-4 pt-4 pb-4">
         <div><label class="form-label-normal ">{{caption.setting.ApplicationAccess}}</label></div>
         <div class="LW16 pt-2 textColorGray" *ngFor="let access of accesses">
-          <span class="cursor" (click)="ButtonToggle(_servicesetting.selectedAccess,access.id)"><i class="icon-font-size"
-              [ngClass]="isExist(_servicesetting.selectedAccess, access.id) !=-1 ? 'icon-SuccessDark text-color' : 'icon-Success'"></i>{{access.name}}</span></div>
+          <span class="cursor" (click)="ButtonToggle(servicesetting.selectedAccess,access.id)"><i class="icon-font-size"
+              [ngClass]="isExist(servicesetting.selectedAccess, access.id) !=-1 ? 'icon-SuccessDark text-color' : 'icon-Success'"></i>{{access.name}}</span></div>
       </div>
     </div>
   </form>

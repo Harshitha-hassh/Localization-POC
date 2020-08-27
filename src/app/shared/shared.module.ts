@@ -20,7 +20,15 @@ import { CommonSharedModule } from '../common/shared/shared/shared.module';
 import { AboutComponent } from './components/about/about.component';
 import { MsGraphAuthComponent } from './components/ms-graph-auth/ms-graph-auth.component';
 import { ImgThumbnailComponent } from './components/img-thumbnail/img-thumbnail.component';
-
+import { ImageUploaderComponent } from './components/image-uploader/image-uploader.component';
+import { NgxImageCompressService } from 'ngx-image-compress';
+import { ClientPopupComponent } from '../client/client-popup/client-popup.component';
+import { CreateClientComponent } from '../client/client-popup/create-client/create-client.component';
+import { TransactionHistoryComponent } from '../client/client-popup/create-client/transaction-history/transaction-history.component';
+import { PersonalInformationComponent } from '../client/client-popup/create-client/personal-information/personal-information.component';
+import { AdditionalInformationComponent } from '../client/client-popup/create-client/additional-information/additional-information.component';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { CardTypeComponent } from './components/card-type/card-type.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +36,14 @@ import { ImgThumbnailComponent } from './components/img-thumbnail/img-thumbnail.
     GlobalSearchComponent,
     AboutComponent,
     MsGraphAuthComponent,
-    ImgThumbnailComponent
+    ImgThumbnailComponent,
+    ImageUploaderComponent,
+    ClientPopupComponent,
+    CreateClientComponent,
+    TransactionHistoryComponent,
+    PersonalInformationComponent,
+    AdditionalInformationComponent,
+    CardTypeComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +54,8 @@ import { ImgThumbnailComponent } from './components/img-thumbnail/img-thumbnail.
     ReactiveFormsModule,
     TemplatesModule,
     RetailSharedModule,
-    CommonSharedModule
+    CommonSharedModule,
+    GooglePlaceModule
   ],
   providers: [
     TenantManagementCommunication,
@@ -55,7 +71,8 @@ import { ImgThumbnailComponent } from './components/img-thumbnail/img-thumbnail.
     {
       provide: MAT_DATE_FORMATS,
       useValue: MY_DATE_FORMATS
-    }
+    },
+    NgxImageCompressService
   ],
   exports: [
     FormsModule,
@@ -67,10 +84,13 @@ import { ImgThumbnailComponent } from './components/img-thumbnail/img-thumbnail.
     CommonSharedModule,
     ImgThumbnailComponent,
     MsGraphAuthComponent,
-    CommonSharedModule
+    CommonSharedModule,
+    ImageUploaderComponent,
+    CardTypeComponent
   ],
   entryComponents: [
-    AboutComponent
+    AboutComponent,
+    ClientPopupComponent
   ]
 })
 export class SharedModule { }

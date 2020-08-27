@@ -64,8 +64,8 @@
       </div>
       <div [ngClass]="{'button_invalid': IsReadOnly}" class="retail-settings-right pl-4 pt-4">
         <label class="LW12 form-label-normal">{{caption.setting.Outlets}}</label>
-        <div class="LW16 pt-2 textColorGray" *ngFor="let outlet of outlets" (click)="ButtonToggle(_servicesetting.selectedOutlets,outlet)">
-          <span class="cursor"><i class="icon-font-size" [ngClass]="_servicesetting.selectedOutlets.indexOf(outlet.id) !=-1 ? 'icon-SuccessDark text-color' : 'icon-Success'"></i>{{outlet.name}}</span></div>
+        <div class="LW16 pt-2 textColorGray" *ngFor="let outlet of outlets" (click)="ButtonToggle(servicesetting.selectedOutlets,outlet)">
+          <span class="cursor"><i class="icon-font-size" [ngClass]="servicesetting.selectedOutlets.indexOf(outlet.id) !=-1 ? 'icon-SuccessDark text-color' : 'icon-Success'"></i>{{outlet.name}}</span></div>
       </div>
     </div>
   </form>

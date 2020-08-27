@@ -9,21 +9,20 @@ import { Injectable } from '@angular/core';
 export class Query<T> {
 
     // Filters  - default as return true
-    private _query: ((x: T) => boolean);
+    private query: ((x: T) => boolean);
 
     constructor() {
         this.and(null);
     }
 
     public and(expression: NonNullable<(data: T) => boolean>): Query<any> {
-        var priorexpression = this._query;
+        const priorexpression = this.query;
         // include latest expression
         if (expression) {
-            this._query = (x: T) => {
+            this.query = (x: T) => {
                 if (typeof priorexpression == 'function') {
                     return priorexpression(x) && expression(x);
-                }
-                else {
+                } else {
                     return expression(x);
                 }
             }
@@ -33,9 +32,9 @@ export class Query<T> {
     }
 
     public apply(data: NonNullable<T[]>): T[] {
-        var matches: T[] = [];
-        if (this._query && data) {
-            matches = data.filter(this._query);
+        let matches: T[] = [];
+        if (this.query && data) {
+            matches = data.filter(this.query);
         }
         return matches;
     }

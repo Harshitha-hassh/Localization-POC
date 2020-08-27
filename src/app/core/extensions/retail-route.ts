@@ -39,7 +39,7 @@ export enum RetailRoutes {
   GetAllPropertyConfigurationSettings = 'propertyConfiguration/configurationName/{configurationName}/propertyId/{propertyId}/productId/{productId}',
   // SNC users
   GetSncUserConfig = 'UserConfiguration?userId={id}',
-  //Dashboard
+  // Dashboard
   GetOutletCount = 'DashBoard/getOutletCount',
   GetVendorCount = 'DashBoard/getVendorCount',
   GetTransactionCount = 'DashBoard/GetTransactionCount',
