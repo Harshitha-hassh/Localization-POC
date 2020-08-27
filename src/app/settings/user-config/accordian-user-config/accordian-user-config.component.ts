@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, ViewChild, AfterViewInit, OnChanges } from '@angular/core';
 import * as _ from 'lodash';
 import { Localization } from '../../../core/localization/Localization';
 import { SettingsService } from '../../settings.service';
@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
   styleUrls: ['./accordian-user-config.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AccordianUserConfigComponent implements OnInit, AfterViewInit {
+export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() inputData: any;
   @Input() IsReadOnly: boolean;
   @ViewChild('ExapanedPanel', { static: false }) ExapanedPanel;
@@ -63,8 +63,8 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit {
       userRoleId: '',
       view: '',
       viewOnlyAllowed: '',
-      breakPointId : ''
-    })
+      breakPointId: ''
+    });
   }
   showAllAppointments(data, i, j, k, keyWord, $event) {
     if (keyWord == 'allow') {
@@ -74,24 +74,24 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit {
         data.controls.view.setValue(false);
         this.inputData[i].headerData.details[j].userClaims[k].view = false;
       }
-      let selectedData = data.controls;
-      let idx = _.findIndex(this._settingService.changedBreakPoints, (x) => { return x["breakPointNumber"] == selectedData.breakPointNumber.value });
+      const selectedData = data.controls;
+      const idx = _.findIndex(this._settingService.changedBreakPoints, (x) => x['breakPointNumber'] == selectedData.breakPointNumber.value);
       if (idx == -1) {
         this.setBreakPoints(selectedData);
       } else {
         this._settingService.changedBreakPoints.splice(idx, 1);
         this.setBreakPoints(selectedData);
       }
-    }
-    else {
+    } else {
       data.controls.view.value = $event[0];
-      let selectedData = data.controls;
+      const selectedData = data.controls;
       this.inputData[i].headerData.details[j].userClaims[k].view = data.controls.view.value;
       if (data.controls.view.value) {
         data.controls.allow.setValue(false);
         this.inputData[i].headerData.details[j].userClaims[k].allow = false;
       }
-      let idx = _.findIndex(this._settingService.changedBreakPoints, (x) => { return x["breakPointNumber"] == selectedData.breakPointNumber.value });
+      const idx = _.findIndex(this._settingService.changedBreakPoints,
+        (x) => x['breakPointNumber'] == selectedData.breakPointNumber.value);
       if (idx == -1) {
         this.setBreakPoints(selectedData);
       } else {
@@ -111,13 +111,13 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit {
       userRoleId: selectedData.userRoleId.value,
       view: selectedData.view.value,
       viewOnlyAllowed: selectedData.viewOnlyAllowed.value,
-      breakPointId : selectedData.breakPointId.value
+      breakPointId: selectedData.breakPointId.value
     });
   }
 
   findLength() {
-    _.forEach(this.inputData, function (value) {
-      _.forEach(value.details, function (dataValue) {
+    _.forEach(this.inputData, (value) => {
+      _.forEach(value.details, (dataValue) => {
         dataValue.count = _.filter(dataValue.userClaims, ['allow', true]).length + _.filter(dataValue.userClaims, ['view', true]).length;
       });
     });
@@ -155,7 +155,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit {
       userRoleId: claim.userRoleId,
       view: claim.view,
       viewOnlyAllowed: claim.viewOnlyAllowed,
-      breakPointId : claim.breakPointId
+      breakPointId: claim.breakPointId
     });
   }
   getUserDetails(userRoleGroup) {
@@ -167,9 +167,9 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit {
 
   UpdateCount() {
     if (this.inputData && this.inputData[0].headerData && this.inputData[0].headerData.details.length > 0) {
-      let userClaimLength = this.inputData[0].headerData.details.length;
+      const userClaimLength = this.inputData[0].headerData.details.length;
       for (let i = 0; i < userClaimLength; i++) {
-        let count: number = 0;
+        let count = 0;
         for (let j = 0; j < this.inputData[0].headerData.details[i].userClaims.length; j++) {
           if (this.inputData[0].headerData.details[i].userClaims[j].allow) {
             count = count + 1;
@@ -181,27 +181,22 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit {
   }
 
   setHeightforAccordian() {
-    this.ExapanedPanel.nativeElement;
-    let accordian = document.getElementsByClassName('accordian-section');
+    const accordian = document.getElementsByClassName('accordian-section');
     for (let i = 0; i < accordian.length; i++) {
       if (accordian[i].clientHeight > 200) {
-       document.getElementById('sed_' + i).style.height = "240px";
+        document.getElementById('sed_' + i).style.height = '240px';
       } else {
         document.getElementById('scroll_' + i).querySelector('.ng-scrollbar-view ').classList.add('overflow-scroll')
-
-       // }
-     //
-        //document.getElementById('scroll_'+i)).
       }
-      let toggleWdth = document.getElementById('sed_' + i).querySelector('.accordian-toggle-section').clientWidth + 1;
-      let leftSec = document.getElementById('sed_' + i).querySelectorAll('.breakpoint-name');
+      const toggleWdth = document.getElementById('sed_' + i).querySelector('.accordian-toggle-section').clientWidth + 1;
+      const leftSec = document.getElementById('sed_' + i).querySelectorAll('.breakpoint-name');
       for (let j = 0; j < leftSec.length; j++) {
         leftSec[j]['style']['width'] = 'calc(100% - ' + toggleWdth + 'px)';
       }
     }
-    let expanedPanel = this.ExapanedPanel.length;
+    const expanedPanel = this.ExapanedPanel.length;
     for (let indexParent = 0; indexParent < expanedPanel; indexParent++) {
-      let expandbodyLength = this.ExapanedPanel[indexParent].firstElementChild.querySelectorAll('.first-column').length;
+      const expandbodyLength = this.ExapanedPanel[indexParent].firstElementChild.querySelectorAll('.first-column').length;
       for (let index = 0; index < expandbodyLength; index++) {
         // let textWidth = this.ExapanedPanel[indexParent].firstElementChild.querySelectorAll('.first-column')[index].querySelectorAll('.msg-text')[0].offsetWidth;
         // let toogleWidth = this.ExapanedPanel[indexParent].firstElementChild.querySelectorAll('.first-column')[index].querySelectorAll('.accordian-toogle')[0].offsetWidth

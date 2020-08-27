@@ -16,7 +16,7 @@ import { ClientDetailsComponent } from './view-client/client-details/client-deta
 import { ClientsortpipePipe } from './client-table/clientsortpipe.pipe';
 import { ScrollbarModule } from 'ngx-scrollbar';
 import { NgDragDropModule } from 'ng-drag-drop';
-import { NgxPaginationModule } from 'ngx-pagination'; 
+// import { NgxPaginationModule } from 'ngx-pagination'; 
 import { ClientService } from '../shared/service/client-service.service';
 import { AppModuleService } from '../core/services/app.service';
 @NgModule({
@@ -28,8 +28,7 @@ import { AppModuleService } from '../core/services/app.service';
   ReactiveFormsModule,
     MatTableModule,
     ScrollbarModule,
-    NgDragDropModule.forRoot(),
-    NgxPaginationModule
+    NgDragDropModule.forRoot()
   ],
     declarations: [ClientComponent, ViewCientComponenet, AllClientsComponent, RecentsComponent, VipComponent, SingleUserViewComponent, ClientTableComponent, ClientfilterpipePipe, ClientDetailsComponent, ClientsortpipePipe],
     providers: [ClientService, AppModuleService],

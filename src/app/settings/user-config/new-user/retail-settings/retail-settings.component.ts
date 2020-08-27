@@ -29,8 +29,8 @@ export class RetailSettingsComponent implements OnInit {
   retailSettingsFormGrp: FormGroup;
   ActionButton: string;
   @Input() IsRoleSelected: any;
-  isCommissionClassRequired: boolean = false;
-  constructor(public localization: Localization, private _utilities: Utilities,
+  isCommissionClassRequired = false;
+  constructor(public localization: Localization, private utils: Utilities,
     public _servicesetting: SettingsService, private http: HttpServiceCall) {
 
   }
@@ -43,15 +43,17 @@ export class RetailSettingsComponent implements OnInit {
     // if (this.IsReadOnly) {
     //   this._utilities.disableControls(this.retailSettingsFormGrp);
     // }
-    this.roles = this._servicesetting.userRoles && this._servicesetting.userRoles.length > 0 ? this._servicesetting.userRoles.filter(x => x.active === true  && x.productId.includes(Product.RETAIL)).map(x => ({ id: x.id, name: x.description })) : this.GetServiceCall('GetActiveUserRolesByPropertyId', {propertyId: Number(this._utilities.GetPropertyInfo('PropertyId')) , includeInActive : false});
+    this.roles = this._servicesetting.userRoles && this._servicesetting.userRoles.length > 0 ?
+      this._servicesetting.userRoles.filter(x => x.active === true && x.productId.includes(Product.RETAIL)).map(x => ({ id: x.id, name: x.description }))
+      : this.GetServiceCall('GetActiveUserRolesByPropertyId', { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')), includeInActive: false });
     //this.GetServiceCall('GetActiveUserRole', { tenantId: Number(this._utilities.GetPropertyInfo('TenantId')) , includeInActive : false });
     if (!(this._servicesetting.propOutlets && this._servicesetting.propOutlets.length > 0)) {
       this.outlets = [];
     } else {
-      this.outlets = [{ id: 0, name: 'ALL' }]
+      this.outlets = [{ id: 0, name: 'ALL' }];
       const actOuts = this._servicesetting.propOutlets.map(x => ({ id: x.subPropertyID, name: x.subPropertyName }));
       this.outlets.push(...actOuts);
-      this._utilities.setUserAccessSettings(this.outlets, this._servicesetting.selectedOutlets);
+      this.utils.setUserAccessSettings(this.outlets, this._servicesetting.selectedOutlets);
     }
     const servicSettingControl = this._servicesetting.retailSettingsFormGrp.controls;
     if (!servicSettingControl.autologoff.value) {
@@ -73,19 +75,19 @@ export class RetailSettingsComponent implements OnInit {
 
   ButtonToggle(ga, gv) {
     if (gv.id === 0) {
-      this._servicesetting.selectedOutlets = this._utilities.getToggleAllFilter(this.outlets, ga);
+      this._servicesetting.selectedOutlets = this.utils.getToggleAllFilter(this.outlets, ga);
     } else {
-      this._servicesetting.selectedOutlets = this._utilities.getToggleFilter(this.outlets, ga, gv);
+      this._servicesetting.selectedOutlets = this.utils.getToggleFilter(this.outlets, ga, gv);
     }
-    this._utilities.setUserAccessSettings(this.outlets, this._servicesetting.selectedOutlets);
+    this.utils.setUserAccessSettings(this.outlets, this._servicesetting.selectedOutlets);
     this._servicesetting.isRadioButtonsChange = true;
   }
 
   sliderChange(event, type?) {
     const serviceSettingControl = this._servicesetting.retailSettingsFormGrp.controls;
-    if (type == 'ALO') {
+    if (type === 'ALO') {
       serviceSettingControl.autologoff.setValue(event[0]);
-    } else if (type == 'AC') {
+    } else if (type === 'AC') {
       serviceSettingControl.allowcommission.setValue(event[0]);
       if (event[0]) {
         serviceSettingControl.commissionclass.setValue(serviceSettingControl.commissionclass.value == 0 ? "" : serviceSettingControl.commissionclass.value);
@@ -121,13 +123,13 @@ export class RetailSettingsComponent implements OnInit {
     if (callDesc == 'GetActiveUserRolesByPropertyId') {
       if (result.result) {
         let data = result.result as any;
-        data = data.filter(x => x.productId.includes(Product.RETAIL)) ;
+        data = data.filter(x => x.productId.includes(Product.RETAIL));
         this.roles = data.map(x => ({ id: x.id, name: x.description }));
       }
     } else if (callDesc == 'GetOutlets') {
       if (result.result) {
         this._servicesetting.propOutlets = result.result as any;
-        const actOuts = this._servicesetting.propOutlets.map(x => ({ id: x.subPropertyId, name: x.subPropertyName }))
+        const actOuts = this._servicesetting.propOutlets.map(x => ({ id: x.subPropertyId, name: x.subPropertyName }));
         this.outlets.push(...actOuts);
       }
     }
@@ -138,7 +140,7 @@ export class RetailSettingsComponent implements OnInit {
   }
 
   checkCommissionClassRequired(): void {
-   this.isCommissionClassRequired = this.retailSettingsFormGrp && this.retailSettingsFormGrp.controls.commissionclass && this.retailSettingsFormGrp.controls.commissionclass.value;
+    this.isCommissionClassRequired = this.retailSettingsFormGrp && this.retailSettingsFormGrp.controls.commissionclass && this.retailSettingsFormGrp.controls.commissionclass.value;
   }
 
 }
