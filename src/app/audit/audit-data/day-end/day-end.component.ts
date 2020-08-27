@@ -18,9 +18,9 @@ import { ButtonOptions, Product,
    ButtonType, ActionType, Host } from 'src/app/common/shared/shared/globalsContant';
 import { HttpMethod , KeyValuePair, HttpServiceCall , } from 'src/app/common/shared/shared/service/http-call.service';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
-import { Utilities, RedirectToModules } from 'src/app/common/shared/shared/utilities/utilities';
-import { AppModuleService } from 'src/app/common/shared/shared/service/app.service';
+import { Utilities, RedirectToModules } from 'src/app/common/shared/shared/utilities/utilities'; 
 import { CommonAlertPopupComponent } from 'src/app/common/shared/shared/common-alert-popup/common-alert-popup.component';
+import { AppModuleService } from 'src/app/core/services/app.service';
 
 @Component({
   selector: 'app-day-end',

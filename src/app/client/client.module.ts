@@ -16,9 +16,9 @@ import { ClientDetailsComponent } from './view-client/client-details/client-deta
 import { ClientsortpipePipe } from './client-table/clientsortpipe.pipe';
 import { ScrollbarModule } from 'ngx-scrollbar';
 import { NgDragDropModule } from 'ng-drag-drop';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { AppModuleService } from '../common/shared/shared/service/app.service';
+import { NgxPaginationModule } from 'ngx-pagination'; 
 import { ClientService } from '../shared/service/client-service.service';
+import { AppModuleService } from '../core/services/app.service';
 @NgModule({
   imports: [
     CommonModule,

@@ -18,7 +18,8 @@ import { FormatText } from 'src/app/common/shared/shared/pipes/formatText-pipe.p
 import { ImageProcessorService } from 'src/app/common/shared/shared/service/image-processor-service';
 import { SPAManagementBreakPoint, ImgRefType, Host, GenderPreference } from 'src/app/common/shared/shared/globalsContant';
 import { SPAScheduleBreakPoint } from 'src/app/retail/shared/globalsContant';
-import { AppModuleService } from 'src/app/common/shared/shared/service/app.service';
+import { AppModuleService } from 'src/app/core/services/app.service';
+
 
 @Component({
     selector: 'app-client-details',
