@@ -4,6 +4,8 @@ import { searchtitleenum, GlobalSearchModel, GlobalSearchData } from './global-s
 import { Router } from '@angular/router';
 import { GlobalSearchBusiness } from './global-search.business';
 import { Localization } from 'src/app/core/localization/Localization';
+import { ClientPopupComponent } from 'src/app/client/client-popup/client-popup.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-global-search',
@@ -28,7 +30,8 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
   constructor(private _formBuilder: FormBuilder,
     private _router: Router,
     private globalSearchBusiness: GlobalSearchBusiness,
-    private localization: Localization
+    private localization: Localization,
+    private dialog: MatDialog
   ) { 
     this.captions = this.localization.captions;
   }
@@ -113,7 +116,14 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
   }
 
   openAddClient() {
-
+    const dialogRef = this.dialog.open(ClientPopupComponent, {
+      width: '95%',
+      height: '85%',
+      disableClose: true,
+      hasBackdrop: true,
+      data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
+      panelClass: 'small-popup'
+  });
   }
 
 

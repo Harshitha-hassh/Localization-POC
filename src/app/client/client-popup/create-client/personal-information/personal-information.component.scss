@@ -1,0 +1,255 @@
+// button.mat-mini-fab.mat-accent{
+//     background:#c2a653 !important;
+// }
+@import '../../../../../assets/sass/abstracts/_variables';
+.personal_container{
+    position: relative;
+}
+.display_style_toggle{
+    display: inline-block;
+    // margin-right:31px;
+    margin-right:58px;
+    .dob-label{
+        padding-top: 3px;
+    }
+    .d-datepicker{
+        padding-top: 20px;
+        margin-bottom: 0px;
+    mat-form-field{
+        float: left;
+    width: 80%;
+    .mat-form-field-infix{
+        padding: 0px;
+    }
+}
+.icon-Calender{
+    float: right;
+    margin-top: 4px;
+}
+}
+&.toggle-section {
+    max-width: 100%;
+}
+}
+.width_40{
+    width: 40%;
+}
+.width_180px{
+    width: 180px;
+}
+.secondSecTDImage{
+    width: 130px;
+    border: 1px solid #b6b6b6;
+    text-align: center;
+    height:130px;
+    display: table;
+    .ImageUpload{
+        display: table-cell;
+        vertical-align: middle;
+        font-size: 12px;
+    }
+    .ImageEdit{
+        position: absolute;
+        left: 47%;
+        /* top: 0%; */
+        font-size: 30px;
+        background: #fff;
+        opacity: 0.5;
+        &:hover{
+            opacity: 1;
+        }
+    }
+    img{
+        height: 130px;
+    }
+}
+.sidesection{
+    width: calc(100% - 155px);
+
+    .patron-section {
+      .patron-search, .player-worth {
+        width: 36px;
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        margin-left: 1rem;
+      }
+
+      .icon-Player-worth_enabled, .icon-Player-worth_disabled {
+        min-width: 0;
+        font-size: 36px;
+      }
+
+    }
+
+}
+.gender{
+    // top:3px;
+    top:-3px;
+    .mat-button-toggle-label{
+        width:100%
+    }
+}
+.contact-info-toggle{
+    position: relative;
+    // bottom: 16px;
+    // left: 0px;
+    top: 3px;
+}
+.emailDiv{
+    clear: both;
+}
+.border_right{
+    border-right: 1px solid #f2f2f2;
+}
+.width-286px{
+    width: 286px;
+}
+.width-408px{
+    width: 408px;
+}
+.width-90px{
+    width: 90px;
+}
+.width-287px{
+    width: 287px;
+}
+.width-490px{
+    width: 490px;
+}
+.width-380px{
+    width: 380px;
+}
+.width-20{
+    width: 20%;
+}
+.dob{
+    top:10px;
+}
+.margin_top_9{
+    min-width: 50px;
+    padding: 0px;
+    box-shadow: none;
+    // margin-top: 12px;
+    border: 1px solid #f2f2f2;
+    border-radius: 6px;
+    text-align: center;
+    width: 100%;
+    color: #000;
+    box-shadow: none !important;
+    .toggle-btn{
+        min-width: 11%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+    label.mat-button-toggle-label{
+        margin: 0px;
+        width:100%;
+        cursor: pointer;
+        .mat-button-toggle-label-content{
+            width: 100%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
+}
+}
+.toogle-switch {
+    .switch{
+        width: 59px;
+
+    .switch-input:checked ~ .switch-handle{
+        left: 38px;
+    }
+}
+}
+.buttonCust1{
+    height: 28px;
+    width: 28px;
+    min-width: 0;
+    border-radius: 50%;
+    font-size: 27px;
+    padding: 0 !important;
+    line-height: 30px;
+    top: 6px;
+    .whitecolor{
+        vertical-align: unset;
+    }
+}
+
+.width_15{
+    width: 15%;
+}
+.width_25{
+    width: 25%;
+}
+.width_80{
+    width: 85%;
+}
+.width_94{
+    width: 94%;
+}
+.width_50{
+    width: 50%;
+
+}
+.mat-datepicker-toggle-default-icon{
+    color:#C58D0B;
+    }
+// .display_date{
+//     display: inline-block;
+//     width:100%;
+//     .mat-form-field{
+//         .mat-input-wrapper{
+//             padding: 0px;
+//         }
+//     }
+// }
+.icon-calendar-empty-page-outline{
+    font-size: 19px;
+    color: #dfdfdf;
+}
+.icon_calender_icon{
+    position: absolute;
+    top: 18%;
+     left: -1%;
+}
+.picker{
+    padding-left: 28px;
+}
+.dob_style{
+    position: absolute;
+    top: 130px;
+}
+.contact_style{
+    margin:20px 0;
+}
+.margin_top_9 .mat-button-toggle-label-content{
+    line-height: 32px !important;
+}
+
+.phone-alignment{
+    z-index: 999999;
+    position: relative;
+}
+
+
+.error-div{
+    clear:both;
+    position: relative;
+    top: -12px;
+}
+
+.PI_searchbutton{
+    position: relative;
+    min-width: 0px;
+    padding: 6px;
+    margin: 0 0 0 10px;
+    height: 38px;
+    bottom: 7px;
+    width: 40px;
+    .icon-Search {
+        color: $color-gold;
+    }
+}
