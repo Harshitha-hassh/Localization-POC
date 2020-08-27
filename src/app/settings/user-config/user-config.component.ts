@@ -28,7 +28,7 @@ export class UserConfigComponent implements OnInit {
   menuType = menuTypes;
 
   constructor(private _servicesetting: SettingsService, private localization: Localization,
-    private breakpoint: BreakPointAccess, private routeDataService: RouteLoaderService) {
+              private breakpoint: BreakPointAccess, private routeDataService: RouteLoaderService) {
     const value = this.routeDataService.GetChildMenu('/settings/usersetup');
     this.menuList = {
       menu: value.linkedElement,
@@ -41,7 +41,7 @@ export class UserConfigComponent implements OnInit {
 
   ngOnInit() {
     this._servicesetting.GetBreakPoints();
-    this.config = [      
+    this.config = [
       // { id: "userSetup", viewValue: this.localization.captions.setting.UserSetup, callDesc: "", breakPointNumber: SPAScheduleBreakPoint.UserSetup, IsAuthorized: true },
       // { id: "roleSetup", viewValue: this.localization.captions.setting.RoleSetup, callDesc: "", breakPointNumber: SPAScheduleBreakPoint.UserRoleSetUp, IsAuthorized: true },
       // { id: "userRole", viewValue: this.localization.captions.setting.UserRoleConfiguration, callDesc: "", breakPointNumber: SPAScheduleBreakPoint.UserRoleConfiguration, IsAuthorized: true }
@@ -51,8 +51,8 @@ export class UserConfigComponent implements OnInit {
   }
 
   private IsActionAllowed(breakPoint: number): boolean {
-    let _breakPoint: UserBreakPoint = this.setupBreakPoints.find(bp => bp.breakPointNumber == breakPoint);
-    return _breakPoint ? (_breakPoint.allow || _breakPoint.view) : false;
+    const userBreakPoint: UserBreakPoint = this.setupBreakPoints.find(bp => bp.breakPointNumber == breakPoint);
+    return userBreakPoint ? (userBreakPoint.allow || userBreakPoint.view) : false;
   }
 
   public userManagementBreakPoints(setupMenu: SetupMenu[]): SetupMenu[] {
@@ -68,7 +68,4 @@ export class UserConfigComponent implements OnInit {
       this.breakpoint.showBreakPointPopup(this.localization.captions.breakpoint[setupMenu.breakPointNumber]);
     }
   }
-
-
-
 }

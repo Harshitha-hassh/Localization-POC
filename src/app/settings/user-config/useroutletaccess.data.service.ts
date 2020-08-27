@@ -55,10 +55,10 @@ export class UserOutletAccessDataService {
 
     private async invokeServiceCalls<T>(callDesc: string, callType: HttpMethod, body?: any, uRIParams?: any): Promise<T> {
         const response: BaseResponse<T> = await this.http.CallApiAsync<T>({
-            callDesc: callDesc,
+            callDesc,
             host: Host.retailManagement,
             method: callType,
-            body: body,
+            body,
             uriParams: uRIParams
         });
 

@@ -5,31 +5,19 @@ import {
   ElementRef,
   ViewEncapsulation,
   Output, EventEmitter,
-  ViewChild, AfterViewInit, ChangeDetectorRef, OnDestroy, HostListener
+  ViewChild, AfterViewInit, ChangeDetectorRef, OnDestroy, HostListener, OnChanges, AfterViewChecked
 } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
-// import * as myGlobals from '../globalsContant'; //CONSTANT FILE ADD ANY CONSTANT VALUE
 import { MatDialog } from '@angular/material';
-import { fromEvent, merge, ReplaySubject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { MatMenuTrigger } from '@angular/material';
 import * as _ from 'lodash';
-// import { Localization } from '../../core/localization/Localization';
-// import { UserAlerts } from '../../core/config/alerts-config';
-// import { Utilities } from '../utilities/utilities';
-// import { AlertMessagePopupComponent } from '../../shared/alert-message-popup/alert-message-popup.component';
-// import { CustomCurrencyPipe } from '../../core/localization/currency.pipe';
-// import { LocalizeDatePipe } from '../../core/localization/localize-date.pipe';
-// import { LoadDecimalValuePipe } from '../pipes/load-decimal-value.pipe';
-import { element } from 'protractor';
 import { takeUntil } from 'rxjs/operators';
 import { UserAlerts } from 'src/app/common/shared/config/alerts-config';
 import { GridType } from 'src/app/retail/shared/globalsContant';
 import { RetailTransactions, PromptType } from 'src/app/common/shared/shared/globalsContant';
 import { Localization } from 'src/app/core/localization/Localization';
 import { CommonAlertMessagePopupComponent } from 'src/app/common/shared/shared/alert-message-popup/alert-message-popup.component';
-// declare var require: any
-// require('rxjs').fromEvent = fromEvent
-// require('rxjs').merge = merge
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -37,13 +25,13 @@ import { CommonAlertMessagePopupComponent } from 'src/app/common/shared/shared/a
   encapsulation: ViewEncapsulation.None,
   // changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges, AfterViewChecked {
 
   constructor(public dialog: MatDialog, private userAlerts: UserAlerts,
               public el: ElementRef,
               public fb: FormBuilder,
               public localization: Localization,
-              private _cdRef: ChangeDetectorRef) {
+              private cdRef: ChangeDetectorRef) {
     this.captions = this.localization.captions;
     this.customHeaderButton = this.localization.captions.setting.Add;
     for (let i = 1; i <= this.ArrayList.length; i++) {
@@ -219,8 +207,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     const bodyArr: any = this.table.get('tablebody') as FormArray;
     if (optionsData) {
       optionsData[0].TablebodyData.forEach(res => {
-        const index = bodyArr.value.findIndex(x => x.id == res.id);
-        if (index != -1) {
+        const index = bodyArr.value.find(x => x.id == res.id);
+        if (index !== -1) {
           bodyArr.value[index].activetoggle = res.active;
         }
       });
@@ -264,8 +252,9 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.Sortable = this.selectedDefaultHeader ? this.selectedDefaultHeader : (this.options[0].Sortable ? this.options[0].Sortable : 'id');
     this.sortingColoumn = this.hdrkeyArray.indexOf(this.Sortable);
     this.selectedDefaultHeader = this.Sortable;
-    const overriddenSortColumn = this.hdrArray.filter(o => o.jsonkey == this.Sortable).length > 0 ? this.hdrArray.filter(o => o.jsonkey == this.Sortable)[0].sortcolumn : null;
-    const SortColumnDataType = this.hdrArray.filter(o => o.jsonkey == this.Sortable).length > 0 ? this.hdrArray.filter(o => o.jsonkey == this.Sortable)[0].sortcolumndatatype : null;
+    const sortableHeaders = this.hdrArray.filter(o => o.jsonkey == this.Sortable);
+    const overriddenSortColumn = sortableHeaders.length > 0 ? sortableHeaders[0].sortcolumn : null;
+    const SortColumnDataType = sortableHeaders.length > 0 ? sortableHeaders[0].sortcolumndatatype : null;
     this.orderTypearr = [];
     this.userAction = this.options[0].userAction;
     this.sortingFunc(this.selectedDefaultHeader, this.sortingColoumn, 'onInit', overriddenSortColumn, SortColumnDataType);
@@ -278,32 +267,42 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   setMatformWidth(myElement) {
     if (this.tableInput) {
-      let minWidth = myElement.parentElement.parentElement.getElementsByClassName('actionitems')[0] ? myElement.parentElement.parentElement.getElementsByClassName('actionitems')[0]['offsetWidth'] : 300; //mi n-300 max-470
-      minWidth += myElement.getElementsByClassName('search-container')[0] ? myElement.getElementsByClassName('search-container')[0]['offsetWidth'] : 0;
-      minWidth += myElement.getElementsByClassName('table-toggle-switches')[0] ? myElement.getElementsByClassName('table-toggle-switches')[0]['offsetWidth'] : 0;
-      minWidth += myElement.getElementsByClassName('custom-retail-inputs')[0] ? myElement.getElementsByClassName('custom-retail-inputs')[0]['offsetWidth'] : 0;
+      const actionItems = myElement.parentElement.parentElement.getElementsByClassName('actionitems')[0] as HTMLElement;
+      let minWidth =  actionItems ? actionItems.offsetWidth : 300; //mi n-300 max-470
+
+      const searchContainer = myElement.getElementsByClassName('search-container')[0] as HTMLElement;
+      minWidth += searchContainer ? searchContainer.offsetWidth : 0;
+
+      const toggleSwitches = myElement.getElementsByClassName('table-toggle-switches')[0] as HTMLElement;
+      minWidth += toggleSwitches ? toggleSwitches.offsetWidth : 0;
+
+      const customRetailInput = myElement.getElementsByClassName('custom-retail-inputs')[0] as HTMLElement;
+      minWidth +=  customRetailInput ? customRetailInput.offsetWidth : 0;
       return minWidth;
     }
   }
 
   calculateWidth() {
-    Array.from(document.querySelectorAll('#SPACustomTable>ng-scrollbar>.ng-scrollbar-container>.ng-scrollbar-view>table')).forEach((table, index) => {
+    const tableElements = Array.from(document.querySelectorAll<HTMLElement>(
+      '#SPACustomTable>ng-scrollbar>.ng-scrollbar-container>.ng-scrollbar-view>table'));
+    tableElements.forEach((table, index) => {
       if (table) {
-        const tableHeight = table['offsetHeight'];
-        const parentHeight = table.closest('#fixed-table-container')['offsetHeight'];
+        const tableHeight = table.offsetHeight;
+        const parentHeight = table.closest<HTMLElement>('#fixed-table-container').offsetHeight;
         if (parentHeight > tableHeight) {
-          table.closest('#SPACustomTable')['style']['height'] = tableHeight + 2 + 'px';
+          table.closest<HTMLElement>('#SPACustomTable').style.height = tableHeight + 2 + 'px';
         } else if (parentHeight < tableHeight) {
           // table.closest("#SPACustomTable")['style']['height'] = parentHeight + 20  + 'px';
-          table.closest('#SPACustomTable')['style']['height'] = (parentHeight - 60) + 'px';
+          table.closest<HTMLElement>('#SPACustomTable').style.height = (parentHeight - 60) + 'px';
         }
         // document.getElementById('SPACustomTable').style.height = parentHeight + 'px';
       }
     });
     const searchClass = document.getElementsByClassName('CustomDataTable');
     for (let i = 0; i < searchClass.length; i++) {
-      let pageHeader = searchClass[i].getElementsByClassName('page-header')[0] ? searchClass[i].getElementsByClassName('page-header')[0]['offsetWidth'] : 0;
-      const searchInput = searchClass[i].getElementsByClassName('searchpt')[0];
+      const hdrElement = searchClass[i].getElementsByClassName('page-header')[0] as HTMLElement;
+      let pageHeader = hdrElement ? hdrElement.offsetWidth : 0;
+      const searchInput = searchClass[i].getElementsByClassName('searchpt')[0] as HTMLElement;
       // console.log(searchInput);
       if (pageHeader > 0) {
         pageHeader = pageHeader - this.setMatformWidth(searchClass[i]) - 60;
@@ -311,7 +310,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
       const inputLength = this.tableInput ? this.tableInput.nativeElement.placeholder.length : 1;
       const inputWidth = inputLength <= 30 ? inputLength * 10 : inputLength * 7.5 + 20;
       if (searchInput && pageHeader > 0) {
-        searchInput['style'].width = (pageHeader > inputWidth) ? inputWidth + 'px' : pageHeader + 'px';
+        searchInput.style.width = (pageHeader > inputWidth) ? inputWidth + 'px' : pageHeader + 'px';
       }
     }
   }
@@ -322,12 +321,12 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
       this.calwidthwithtimeout();
       this.customtablealignment();
     }
-    this._cdRef.detectChanges();
+    this.cdRef.detectChanges();
   }
 
   ngAfterViewInit() {
     this.calwidthwithtimeout();
-    this._cdRef.detectChanges();
+    this.cdRef.detectChanges();
   }
 
   ngOnChanges() {
@@ -340,7 +339,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.isDataLoading = false;
     this.orderTypearr = [];
     this.defaulSortColumn = this.options[0].Sortable;
-    this.Sortable = (this.selectedDefaultHeader && !this.options[0].isInitial) ? this.selectedDefaultHeader : (this.options[0].Sortable ? this.options[0].Sortable : 'id');
+    this.Sortable = (this.selectedDefaultHeader && !this.options[0].isInitial) ?
+     this.selectedDefaultHeader : (this.options[0].Sortable ? this.options[0].Sortable : 'id');
     this.isReadOnly = this.options[0].IsReadOnly ? true : false;
     this.IsMoreOptionReadOnly = this.options[0].IsMoreOptionReadOnly ? true : false;
     this.selectedDefaultHeader = this.Sortable;
@@ -378,7 +378,9 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.NewerData = this.options[0].NewData;
     this.NewerData = this.bodyArray.filter(o => {
       if (this.NewerData) {
-        return ((o.code && o.code == this.NewerData.code) || (o.name && o.name == this.NewerData.name) || (o.addOnName && o.addOnName == this.NewerData.addOnName));
+        return ((o.code && o.code == this.NewerData.code) ||
+         (o.name && o.name == this.NewerData.name) ||
+          (o.addOnName && o.addOnName == this.NewerData.addOnName));
       }
     });
     if (this.NewerData[0]) {
@@ -388,7 +390,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
       }, 500);
     }
 
-    this.searchText = (this.options[0].TableSearchText || this.options[0].TableSearchText == '') ? this.options[0].TableSearchText : this.searchText;
+    this.searchText = (this.options[0].TableSearchText || this.options[0].TableSearchText == '') ?
+     this.options[0].TableSearchText : this.searchText;
     this.hdrkeyArray = [];
     if (this.hdrArray) {
       for (let l = 0; l < this.hdrArray.length; l++) {
@@ -415,27 +418,19 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     // Load Only active services
     if (this.ChkInactiveService) {
       this.InactiveService({ checked: false });
-
-    } this.sortingColoumn = this.hdrkeyArray.indexOf(this.Sortable);
-    const overriddenSortColumn = this.hdrArray.filter(o => o.jsonkey == this.Sortable).length > 0 ? this.hdrArray.filter(o => o.jsonkey == this.Sortable)[0].sortcolumn : null;
-    const SortColumnDataType = this.hdrArray.filter(o => o.jsonkey == this.Sortable).length > 0 ? this.hdrArray.filter(o => o.jsonkey == this.Sortable)[0].sortcolumndatatype : null;
+    }
+    this.sortingColoumn = this.hdrkeyArray.indexOf(this.Sortable);
+    const sortableHeaders = this.hdrArray.filter(o => o.jsonkey == this.Sortable);
+    const overriddenSortColumn = sortableHeaders.length > 0 ? sortableHeaders[0].sortcolumn : null;
+    const SortColumnDataType = sortableHeaders.length > 0 ? sortableHeaders[0].sortcolumndatatype : null;
     this.sortingFunc(this.selectedDefaultHeader, this.sortingColoumn, 'change', overriddenSortColumn, SortColumnDataType);
-    // this.table.value.IsCheckAll = this.bodyArray && this.bodyArray.length > 0 && (_.difference(this.bodyArray, this.SelectedData).length === 0);
-    this.table.controls['IsCheckAll'].setValue(this.bodyArray && this.bodyArray.length > 0 && (_.difference(this.bodyArray, this.SelectedData).length === 0));
-    // if (this.GridType.quickSale == this.SelectedSettingId){
-    //   let checkboxRow = this.bodyArray.filter(item => !item.checkbox);
-    //   // this.table.value.IsCheckAll = checkboxRow && checkboxRow.length > 0 && (_.difference(checkboxRow, this.SelectedData).length === 0);
-    //   this.table.controls['IsCheckAll'].setValue(checkboxRow && checkboxRow.length > 0 && (_.difference(checkboxRow, this.SelectedData).length === 0));
-    // }
+    this.table.get('IsCheckAll').setValue(this.bodyArray && this.bodyArray.length > 0 &&
+       (_.difference(this.bodyArray, this.SelectedData).length === 0));
     setTimeout(this.customtablealignment.bind(this), 1);
     this.IsViewOnly = this.options[0].IsViewOnly;
     this.disableEditButton = this.options[0].disableEditButton;
-    this.IsRetailCodeSetup = (this.options[0].ServiceId == 'quicksale' || this.options[0].ServiceId == 'measures' || this.options[0].ServiceId == 'outlets');
     this.IsAccessAllowed = this.options[0].IsAccessAllowed;
     this.isEditOptionRemove = this.options[0].isEditOptionRemove;
-    if (this.SelectedSettingId == GridType.waitlist) {
-      this.orderType = '';
-    }
     this.calwidthwithtimeout();
   }
 
@@ -488,7 +483,11 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
             for (let j = 0; j < dropdown.length; j++) {
               if (document.getElementsByTagName('tr')[i].cells) {
                 // document.getElementsByTagName('tr')[i].cells[j].style.maxWidth = parentWidth * (Number(Object.values(dropdown)[j])/100) + 'px';
-                document.getElementsByTagName('tr')[i].cells[j].querySelectorAll('#content').length > 0 ? document.getElementsByTagName('tr')[i].cells[j].querySelectorAll('#content')[0]['style'].maxWidth = parentWidth * (Number(Object.values(dropdown)[j]) / 100) + 'px' : '';
+                const content = document.getElementsByTagName('tr')[i].cells[j].querySelectorAll('#content');
+                if (content.length > 0) {
+                 content[0]['style'].maxWidth = parentWidth * (Number(Object.values(dropdown)[j]) / 100) + 'px';
+                } else {
+                    content[0]['style'].maxWidth =''};
               }
             }
           }
@@ -522,7 +521,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   showInactiveRoles(event, rowData, index) {
-    const tablebody = this.table.controls['tablebody'] as FormArray;
+    const tablebody = this.table.get('tablebody') as FormArray;
     const tableFormGroup = tablebody.controls[index] as FormGroup;
     tableFormGroup.controls.activetoggle.setValue(rowData.active);
     this.editRecordsArray.push({ index, data: rowData });
@@ -538,7 +537,9 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     const editRecordList = document.getElementsByClassName('rowDisabled');
     if ((editRecordList.length > 0 || doneCancelCount > 0) && this.isValidRoleName) {
 
-      const editableRecord = editRecordList.length > 0 ? _.filter(this.bodyArray, data => data.id == editRecordList[0].id) : _.filter(this.bodyArray, data => data.id == doneCancelRecords[0].id);
+      const editableRecord = editRecordList.length > 0 ? 
+      _.filter(this.bodyArray, data => data.id == editRecordList[0].id) :
+       _.filter(this.bodyArray, data => data.id == doneCancelRecords[0].id);
       const currentRecord = rowData;
       this.openAlertDialog(editableRecord, currentRecord, 'toggle', index, event, doneCancelCount);
     } else if (editRecordList.length > 0) {
@@ -761,7 +762,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     if (element) {
       eventType == 'remove' ? element.classList.remove('IC6') : element.classList.add('IC6');
 
-    } const headerElement = document.getElementById('header' + i);
+    }
+    const headerElement = document.getElementById('header' + i);
     if (headerElement) {
       eventType == 'remove' ? headerElement.classList.remove('IC6') : headerElement.classList.add('IC6');
 
@@ -856,7 +858,9 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     const editRecordList = document.getElementsByClassName('rowDisabled');
     if ((editRecordList.length > 0 || doneCancelCount > 0) && this.isValidRoleName) {
-      const editableRecord = editRecordList.length > 0 ? _.filter(this.options[0].TablebodyData, data => data.id == editRecordList[0].id) : _.filter(this.options[0].TablebodyData, data => data.id == doneCancelRecords[0].id);
+      const editableRecord = editRecordList.length > 0 ?
+       _.filter(this.options[0].TablebodyData, data => data.id == editRecordList[0].id) :
+        _.filter(this.options[0].TablebodyData, data => data.id == doneCancelRecords[0].id);
 
       const currentRecord = e;
       this.openAlertDialog(editableRecord, currentRecord, 'edit', index, event, doneCancelCount);
@@ -900,7 +904,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   EditRecords(e, type, index?) {
     if (this.editEvt) {
-      if (this.SelectedSettingId == GridType.commission) {
+      if (this.SelectedSettingId === GridType.commission) {
         this.editEvt.emit([e, type, index]);
       } else {
         this.editEvt.emit([e, this.options[0].ServiceId, type]);
@@ -924,7 +928,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy {
       for (let i = 0; i < arrKey.length; i++) {
         let val = bodyCnt[arrKey[i]];
         val = val ? val : '';
-        result = result + (i == 0 ? '' : ' ') + val;
+        result = result + (i === 0 ? '' : ' ') + val;
       }
       return result;
     }
