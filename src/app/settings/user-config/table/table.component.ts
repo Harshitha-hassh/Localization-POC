@@ -288,12 +288,12 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
     tableElements.forEach((table, index) => {
       if (table) {
         const tableHeight = table.offsetHeight;
-        const parentHeight = table.closest<HTMLElement>('#fixed-table-container').offsetHeight;
+        const parentHeight = table.closest('#fixed-table-container')['offsetHeight'];
         if (parentHeight > tableHeight) {
-          table.closest<HTMLElement>('#SPACustomTable').style.height = tableHeight + 2 + 'px';
+          table.closest('#SPACustomTable')['style']['height'] = tableHeight + 2 + 'px';
         } else if (parentHeight < tableHeight) {
           // table.closest("#SPACustomTable")['style']['height'] = parentHeight + 20  + 'px';
-          table.closest<HTMLElement>('#SPACustomTable').style.height = (parentHeight - 60) + 'px';
+          table.closest('#SPACustomTable')['style']['height'] = (parentHeight - 60) + 'px';
         }
         // document.getElementById('SPACustomTable').style.height = parentHeight + 'px';
       }
