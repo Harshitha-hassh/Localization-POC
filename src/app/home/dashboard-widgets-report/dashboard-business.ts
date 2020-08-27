@@ -11,15 +11,15 @@ export class DashBoardBusiness {
     public readonly dayFormat: number = 1;
     public readonly weekFormat: number = 2;
     public readonly monthFormat: number = 3;
-    constructor(private _dashBoardService: DashBoardService
-        , private _localization:Localization
-        , private _subPropertyDataService: SubPropertyDataService
-        ) {
-            this.Captions = this._localization.captions['dashBoard']; 
+    constructor(private dashBoardService: DashBoardService
+        ,       private localization: Localization
+        ,       private subPropertyDataService: SubPropertyDataService
+    ) {
+        this.Captions = this.localization.captions['dashBoard'];
     }
 
     async getOutlets(): Promise<DashBoardInterface.OutletOption[]> {
-      //  const outlets = await this._subPropertyDataService.getOutletsByPropertyAndProduct();
+        //  const outlets = await this._subPropertyDataService.getOutletsByPropertyAndProduct();
         // const result: DashBoardInterface.OutletOption[] = outlets?outlets.map(o => {
         //     return {
         //         id: o.id,
@@ -28,249 +28,255 @@ export class DashBoardBusiness {
         //         defaultOutletId: o.id
         //     }
         // }):[];
-        const data= [{
-             id: 1,
-            name: "TESt",
-            description: "TESt",
-            defaultOutletId : 1}];
+        const data = [{
+            id: 1,
+            name: 'TESt',
+            description: 'TESt',
+            defaultOutletId: 1
+        }];
 
         return data;
     }
 
     async getOutletsCount(): Promise<DashBoardInterface.DonutCount> {
-        const data= { active: 23,
-                    inActive: 5,
-                    total : 28};
+        const data = {
+            active: 23,
+            inActive: 5,
+            total: 28
+        };
         return data;
     }
 
     async getVendorsCount(): Promise<DashBoardInterface.DonutCount> {
-        const data= { active: 23,
-                    inActive: 50,
-                    total : 83};
+        const data = {
+            active: 23,
+            inActive: 50,
+            total: 83
+        };
         return data;
     }
 
     public async getTransactionCount(outletIds: number[]): Promise<DashBoardInterface.TransactionDetails> {
-        return this._dashBoardService.getTransactionCount(outletIds);
+        return this.dashBoardService.getTransactionCount(outletIds);
     }
-    
 
-    public async getTransactionSaleDetail<T>(dataFormat: number,startDate: Date, outletIds: number[]): Promise<DashBoardInterface.UITransactionSaleDetail[]> {
-      //  var transaction = await this._dashBoardService.getTransactionSaleDetail(startDate, dataFormat, outletIds);
-        var transaction = [
-        {transactions: 10,value: 10, booked: 10,avail: 4,dateOfTransaction: new Date(),id: 1,name:'name 1'},
-        {transactions: 30,value: 30, booked: 10,avail: 4,dateOfTransaction: new Date(),id: 2,name:'name 2'},
-        {transactions:50,value: 50, booked: 10,avail: 4,dateOfTransaction: new Date(),id: 3,name:'name 3'},
-        {transactions: 50,value: 50, booked: 10,avail: 4,dateOfTransaction: new Date(),id: 4,name:'name 4'},
-        {transactions: 50,value: 50, booked: 10,avail: 4,dateOfTransaction: new Date(),id: 5,name:'name 5'}
-        ]
-        var monthsArray = this._localization.monthsArray;
-        var daysArray = this._localization.daysNormalArray;
-        var weeksArray: DashBoardInterface.UIWeekArray[] = this.getWeekArray();
+    public async getTransactionSaleDetail<T>(dataFormat: number,
+                                             startDate: Date, outletIds: number[]): Promise<DashBoardInterface.UITransactionSaleDetail[]> {
+        //  var transaction = await this._dashBoardService.getTransactionSaleDetail(startDate, dataFormat, outletIds);
+        const transaction = [
+            { transactions: 10, value: 10, booked: 10, avail: 4, dateOfTransaction: new Date(), id: 1, name: 'name 1' },
+            { transactions: 30, value: 30, booked: 10, avail: 4, dateOfTransaction: new Date(), id: 2, name: 'name 2' },
+            { transactions: 50, value: 50, booked: 10, avail: 4, dateOfTransaction: new Date(), id: 3, name: 'name 3' },
+            { transactions: 50, value: 50, booked: 10, avail: 4, dateOfTransaction: new Date(), id: 4, name: 'name 4' },
+            { transactions: 50, value: 50, booked: 10, avail: 4, dateOfTransaction: new Date(), id: 5, name: 'name 5' }
+        ];
+        const monthsArray = this.localization.monthsArray;
+        const daysArray = this.localization.daysNormalArray;
+        const weeksArray: DashBoardInterface.UIWeekArray[] = this.getWeekArray();
         if (dataFormat == this.dayFormat) {
             transaction.forEach((trans) => {
                 daysArray.forEach((day) => {
                     if (trans.id == day.id) {
                         trans.id = day.id,
                             trans.name = day.short,
-                            trans.value = trans.value
+                            trans.value = trans.value;
                     }
-                })
-            })
-        }
-        else if (dataFormat == this.weekFormat) {
+                });
+            });
+        } else if (dataFormat == this.weekFormat) {
             transaction.forEach((trans) => {
                 weeksArray.forEach((week) => {
                     if (trans.id == week.id) {
                         trans.id = week.id,
                             trans.name = week.name,
-                            trans.value = trans.value
+                            trans.value = trans.value;
                     }
-                })
-            })
-        }
-        else if (dataFormat == this.monthFormat) {
+                });
+            });
+        } else if (dataFormat == this.monthFormat) {
             transaction.forEach((trans) => {
                 monthsArray.forEach((month) => {
                     if (trans.id == month.id) {
                         trans.id = month.id,
                             trans.name = month.short,
-                            trans.value = trans.value
+                            trans.value = trans.value;
                     }
-                })
-            })
+                });
+            });
         }
 
-        return transaction.map(x => { 
+        return transaction.map(x => {
             return {
-            id:x.id,
-            booked:x.booked,
-            avail:x.avail,
-            value: x.value, 
-           
-            name: x.name } });
-    }
-
-    public async getRevenueByOutletDetail<T>(dataFormat: number,startDate: Date, outletIds: number[]): Promise<DashBoardInterface.UIRevenueByOutlet[]> {
-        var transaction = [
-        {items: 10,value: 10,id: 1,name:'name 1'},
-        {items: 30,value: 30,id: 2,name:'name 2'},
-        {items: 50,value: 50,id: 3,name:'name 3'},
-        {items: 50,value: 50,id: 4,name:'name 4'},
-        {items: 50,value: 50,id: 5,name:'name 5'}
-        ]
-        // var transaction = await this._dashBoardService.getTransactionSaleDetail(startDate, dataFormat, outletIds);
-        var monthsArray = this._localization.monthsArray;
-        var daysArray = this._localization.daysNormalArray;
-        var weeksArray: DashBoardInterface.UIWeekArray[] = this.getWeekArray();
-        if (dataFormat == this.dayFormat) {
-            transaction.forEach((trans) => {
-                daysArray.forEach((day) => {
-                    if (trans.id == day.id) {
-                        trans.id = day.id,
-                            trans.name = day.short,
-                            trans.value = trans.value
-                    }
-                })
-            })
-        }
-        else if (dataFormat == this.weekFormat) {
-            transaction.forEach((trans) => {
-                weeksArray.forEach((week) => {
-                    if (trans.id == week.id) {
-                        trans.id = week.id,
-                            trans.name = week.name,
-                            trans.value = trans.value
-                    }
-                })
-            })
-        }
-        else if (dataFormat == this.monthFormat) {
-            transaction.forEach((trans) => {
-                monthsArray.forEach((month) => {
-                    if (trans.id == month.id) {
-                        trans.id = month.id,
-                            trans.name = month.short,
-                            trans.value = trans.value
-                    }
-                })
-            })
-        }
-
-        return transaction.map(x => { 
-            return {
-                value: x.value,
                 id: x.id,
-                name:x.name,
-                items:x.items} 
+                booked: x.booked,
+                avail: x.avail,
+                value: x.value,
+
+                name: x.name
+            };
         });
     }
 
-    
-    public async getReturned_ItemsDetail<T>(startDate: Date, dataFormat: number , outletIds: number[]): Promise<DashBoardInterface.UIReturned_Items[]> {
-        var transaction = await this._dashBoardService.getReturnedItems(startDate, dataFormat, outletIds);
-        //var transaction = [
-        //{items: 10,value: 10,id: 1,name:'name 1'},
+    public async getRevenueByOutletDetail<T>(dataFormat: number,
+                                             startDate: Date, outletIds: number[]): Promise<DashBoardInterface.UIRevenueByOutlet[]> {
+        const transaction = [
+            { items: 10, value: 10, id: 1, name: 'name 1' },
+            { items: 30, value: 30, id: 2, name: 'name 2' },
+            { items: 50, value: 50, id: 3, name: 'name 3' },
+            { items: 50, value: 50, id: 4, name: 'name 4' },
+            { items: 50, value: 50, id: 5, name: 'name 5' }
+        ];
+        // var transaction = await this._dashBoardService.getTransactionSaleDetail(startDate, dataFormat, outletIds);
+        const monthsArray = this.localization.monthsArray;
+        const daysArray = this.localization.daysNormalArray;
+        const weeksArray: DashBoardInterface.UIWeekArray[] = this.getWeekArray();
+        if (dataFormat == this.dayFormat) {
+            transaction.forEach((trans) => {
+                daysArray.forEach((day) => {
+                    if (trans.id == day.id) {
+                        trans.id = day.id,
+                            trans.name = day.short,
+                            trans.value = trans.value;
+                    }
+                });
+            });
+        } else if (dataFormat == this.weekFormat) {
+            transaction.forEach((trans) => {
+                weeksArray.forEach((week) => {
+                    if (trans.id == week.id) {
+                        trans.id = week.id,
+                            trans.name = week.name,
+                            trans.value = trans.value;
+                    }
+                });
+            });
+        } else if (dataFormat == this.monthFormat) {
+            transaction.forEach((trans) => {
+                monthsArray.forEach((month) => {
+                    if (trans.id == month.id) {
+                        trans.id = month.id,
+                            trans.name = month.short,
+                            trans.value = trans.value;
+                    }
+                });
+            });
+        }
+
+        return transaction.map(x => {
+            return {
+                value: x.value,
+                id: x.id,
+                name: x.name,
+                items: x.items
+            };
+        });
+    }
+
+
+    public async getReturned_ItemsDetail<T>(startDate: Date,
+                                            dataFormat: number, outletIds: number[]): Promise<DashBoardInterface.UIReturned_Items[]> {
+        const transaction = await this.dashBoardService.getReturnedItems(startDate, dataFormat, outletIds);
+        // var transaction = [
+        // {items: 10,value: 10,id: 1,name:'name 1'},
         // {items: 30,value: 30,id: 2,name:'name 2'},
         // {items: 50,value: 50,id: 3,name:'name 3'},
         // {items: 50,value: 50,id: 4,name:'name 4'},
         // {items: 50,value: 50,id: 5,name:'name 5'}
-        //]
-        var monthsArray = this._localization.monthsArray;
-        var daysArray = this._localization.daysNormalArray;
-        var weeksArray: DashBoardInterface.UIWeekArray[] = this.getWeekArray();
+        // ]
+        const monthsArray = this.localization.monthsArray;
+        const daysArray = this.localization.daysNormalArray;
+        const weeksArray: DashBoardInterface.UIWeekArray[] = this.getWeekArray();
         if (dataFormat == this.dayFormat) {
             transaction.forEach((trans) => {
                 daysArray.forEach((day) => {
                     if (trans.id == day.id) {
                         trans.id = day.id,
                             trans.name = day.short,
-                            trans.quantity = trans.quantity
+                            trans.quantity = trans.quantity;
                     }
-                })
-            })
-        }
-        else if (dataFormat == this.weekFormat) {
+                });
+            });
+        } else if (dataFormat == this.weekFormat) {
             transaction.forEach((trans) => {
                 weeksArray.forEach((week) => {
                     if (trans.id == week.id) {
                         trans.id = week.id,
                             trans.name = week.name,
-                            trans.quantity = trans.quantity
+                            trans.quantity = trans.quantity;
                     }
-                })
-            })
-        }
-        else if (dataFormat == this.monthFormat) {
+                });
+            });
+        } else if (dataFormat == this.monthFormat) {
             transaction.forEach((trans) => {
                 monthsArray.forEach((month) => {
                     if (trans.id == month.id) {
                         trans.id = month.id,
                             trans.name = month.short,
-                            trans.quantity = trans.quantity
+                            trans.quantity = trans.quantity;
                     }
-                })
-            })
+                });
+            });
         }
 
-        return transaction.map(x => { 
+        return transaction.map(x => {
             return {
                 value: x.quantity,
                 id: x.id,
-                name:x.name,
-                items:x.returnedItems} 
+                name: x.name,
+                items: x.returnedItems
+            };
         });
     }
 
-    public async  getItemSaleDetail<T>(startDate: Date, endDate: Date, outletIds: number[]): Promise<DashBoardInterface.UIItemData[]> {
-        var itemData = await [
-            {id: 1,amount: 1344,name:'name 1'},
-            {id: 2,amount: 2344,name:'name 2'},
-            {id: 3,amount: 3344,name:'name 3'},
-            {id: 4,amount: 4344,name:'name 4'},
-            {id: 5,amount: 5344,name:'name 5'}
+    public async getItemSaleDetail<T>(startDate: Date, endDate: Date, outletIds: number[]): Promise<DashBoardInterface.UIItemData[]> {
+        const itemData = await [
+            { id: 1, amount: 1344, name: 'name 1' },
+            { id: 2, amount: 2344, name: 'name 2' },
+            { id: 3, amount: 3344, name: 'name 3' },
+            { id: 4, amount: 4344, name: 'name 4' },
+            { id: 5, amount: 5344, name: 'name 5' }
         ];
-      //  var itemData = await this._dashBoardService.getItemSaleDetail(startDate, endDate, outletIds);
-        return itemData.map(x => { return { id: x.id, name: x.name, amount: this._localization.localizeCurrency(x.amount) } })
+        //  var itemData = await this._dashBoardService.getItemSaleDetail(startDate, endDate, outletIds);
+        return itemData.map(x => ({ id: x.id, name: x.name, amount: this.localization.localizeCurrency(x.amount) }));
     }
 
-    public async  getCategorySaleDetail<T>(startDate: Date, endDate: Date, outletIds: number[]): Promise<DashBoardInterface.UICategoryData[]> {
-        var categoryData = await [
-            {id: 1,amount: 1344,name:'name 1'},
-            {id: 2,amount: 2344,name:'name 2'},
-            {id: 3,amount: 3344,name:'name 3'},
-            {id: 4,amount: 4344,name:'name 4'},
-            {id: 5,amount: 5344,name:'name 5'}
+    public async getCategorySaleDetail<T>(startDate: Date,
+                                          endDate: Date, outletIds: number[]): Promise<DashBoardInterface.UICategoryData[]> {
+        const categoryData = await [
+            { id: 1, amount: 1344, name: 'name 1' },
+            { id: 2, amount: 2344, name: 'name 2' },
+            { id: 3, amount: 3344, name: 'name 3' },
+            { id: 4, amount: 4344, name: 'name 4' },
+            { id: 5, amount: 5344, name: 'name 5' }
         ];
-         //var categoryData = await this._dashBoardService.getCategorySaleDetail(startDate, endDate, outletIds);
-        return categoryData.map(x => { return { id: x.id, name: x.name, amount: this._localization.localizeCurrency(x.amount) } })
+        // var categoryData = await this._dashBoardService.getCategorySaleDetail(startDate, endDate, outletIds);
+        return categoryData.map(x => ({ id: x.id, name: x.name, amount: this.localization.localizeCurrency(x.amount) }));
     }
 
 
     public async getPurchaseOrderData(): Promise<DashBoardInterface.UIPurchaseDetails[]> {
-       let data = await [
-           {id: 1,orderNumber: "#354351"   ,status:'Pending'},
-           {id: 2,orderNumber: "#254463"   ,status:'Approved'},
-           {id: 3,orderNumber: "#334345"   ,status:'Yet to Approve'},
-           {id: 4,orderNumber: "#424343"   ,status:'Pending'},
-           {id: 5,orderNumber: "#784765"   ,status:'Approved'}
-       ]
+        const data = await [
+            { id: 1, orderNumber: '#354351', status: 'Pending' },
+            { id: 2, orderNumber: '#254463', status: 'Approved' },
+            { id: 3, orderNumber: '#334345', status: 'Yet to Approve' },
+            { id: 4, orderNumber: '#424343', status: 'Pending' },
+            { id: 5, orderNumber: '#784765', status: 'Approved' }
+        ];
         return data;
     }
 
 
     public async getOpenTicketsData(propertyDate: Date, outletIds: number[]): Promise<DashBoardInterface.UIOpenTickets[]> {
-        const action="Settle";
-        const outOfStockItems= await this._dashBoardService.getOpenTickets(propertyDate, outletIds);
-        const result: DashBoardInterface.UIOpenTickets[] = outOfStockItems?outOfStockItems.map(o => {
+        const action = 'Settle';
+        const outOfStockItems = await this.dashBoardService.getOpenTickets(propertyDate, outletIds);
+        const result: DashBoardInterface.UIOpenTickets[] = outOfStockItems ? outOfStockItems.map(o => {
             return {
                 id: o.outletId,
                 ticketNumber: o.transactionNumber,
-                transactionAmount: `${this._localization.currencySymbol}`+ o.amount,
-                action: action
-            }
-        }):[];
+                transactionAmount: `${this.localization.currencySymbol}` + o.amount,
+                action
+            };
+        }) : [];
         return result;
         // let data = await [
         //     {id: 1,ticketNumber:'OP123465',transactionAmount: "$354,351"   ,action:'Settle'},
@@ -280,17 +286,17 @@ export class DashBoardBusiness {
         //     {id: 5,ticketNumber:'OP123465',transactionAmount: "$784,765"   ,action:'Settle'},
         // ]
         //  return data;
-     }
+    }
 
-     public async getOutofStockOnData(outletIds: number[]): Promise<DashBoardInterface.UIOutOfStock[]> {
-        const outOfStockItems= await this._dashBoardService.getOutOfStockItems(outletIds);
-        const result: DashBoardInterface.UIOutOfStock[] = outOfStockItems?outOfStockItems.map(o => {
+    public async getOutofStockOnData(outletIds: number[]): Promise<DashBoardInterface.UIOutOfStock[]> {
+        const outOfStockItems = await this.dashBoardService.getOutOfStockItems(outletIds);
+        const result: DashBoardInterface.UIOutOfStock[] = outOfStockItems ? outOfStockItems.map(o => {
             return {
                 id: o.id,
                 item: o.item,
-                outofStockOn: this._localization.LocalizeShortDate(o.outofStockOn)
-            }
-        }):[];
+                outofStockOn: this.localization.LocalizeShortDate(o.outofStockOn)
+            };
+        }) : [];
         return result;
         // let data = await [
         //     {id: 1,item: "Item 3535",outofStockOn: '10/11/2020'},
@@ -300,18 +306,18 @@ export class DashBoardBusiness {
         //     {id: 5,item: "Item 535"   ,outofStockOn: '10/11/2020'},
         // ]
         //  return data;
-     }
-     
+    }
+
 
     getWeekArray() {
-        let weekKeys: string[] = [
+        const weekKeys: string[] = [
             this.Captions.Week1,
             this.Captions.Week2,
             this.Captions.Week2,
             this.Captions.Week4,
             this.Captions.Week5
         ];
-        let returnArr: DashBoardInterface.UIWeekArray[] = [];
+        const returnArr: DashBoardInterface.UIWeekArray[] = [];
         for (let i = 1; i <= 5; i++) {
             returnArr.push({
                 id: i,
@@ -320,6 +326,6 @@ export class DashBoardBusiness {
         }
         return returnArr;
     }
-   
+
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, ViewChild, ElementRef, Renderer2, AfterViewInit, OnDestroy } from '@angular/core';
 import ApexCharts from 'apexcharts';
 
 @Component({
@@ -7,24 +7,23 @@ import ApexCharts from 'apexcharts';
   styleUrls: ['./chart-donut.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ChartDonutComponent implements OnInit {
-  chart:any;
-  options:any;
+export class ChartDonutComponent implements OnInit , AfterViewInit , OnDestroy {
+  chart: any;
+  options: any;
   @Input() inputData;
   @ViewChild('donut_chart', { static: false }) donut_chart;
   constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     // console.log("inputData ",this.inputData);
     this.drawChart();
   }
-    
   drawChart() {
     this.options = {
       chart: {
         type: 'donut',
         height: this.inputData.Chartheight,
-        width: "100%"
+        width: '100%'
       },
       colors: this.inputData.customStyles.colors,
       series: this.inputData.series,
@@ -35,7 +34,7 @@ export class ChartDonutComponent implements OnInit {
       legend: {
         show: false
       },
-      states:{
+      states: {
         active: {
           allowMultipleDataPointsSelection: true,
           filter: {
@@ -61,37 +60,38 @@ export class ChartDonutComponent implements OnInit {
                 fontSize: '16px',
                 color: this.inputData.customStyles.labelColor,
                 offsetY: -35,
-                formatter: function (val) {
-                  return val
+                formatter(val) {
+                  return val;
                 }
               },
               total: {
                 show: true,
                 label: this.inputData.captions.courses,
                 color: this.inputData.customStyles.labelColor,
-                formatter: function (w) {
+                formatter(w) {
                   return w.globals.seriesTotals.reduce((a, b) => {
-                    return a + b
-                  }, 0)
+                    return a + b;
+                  }, 0);
                 }
               }
             }
           },
         }
       }
-    }
+    };
   }
 
   ngAfterViewInit() {
     if (this.donut_chart) {
-      this.chart = new ApexCharts(this.donut_chart.nativeElement,this.options);
+      this.chart = new ApexCharts(this.donut_chart.nativeElement, this.options);
       this.chart.render();
       this.chart.resetSeries();
     }
   }
-  ngOnDestroy(){
-    if(this.chart)
-    this.chart.destroy();    
+  ngOnDestroy() {
+    if (this.chart) {
+    this.chart.destroy();
+    }
   }
 }
 

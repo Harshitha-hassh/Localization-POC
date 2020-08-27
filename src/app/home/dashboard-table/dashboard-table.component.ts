@@ -23,7 +23,7 @@ export class DashboardTableComponent implements OnInit {
 
   setData() {
   }
-  arrowClick(e){
+  arrowClick(e) {
     this.rowEmitter.emit(e);
   }
 }

@@ -7,30 +7,30 @@ import { Localization } from 'src/app/core/localization/Localization';
 
 @Injectable()
 export class DashboardWidgetsReportService {
-  widgetsData: any; //dynamic template data
-  DashBoardwidgetsData: any; //dynamic template data
-  CourseData:any[];
-  AvailableTeeTimesCount:number;
-  CancelledTeeTimesCount:number;
-  NewPlayers:number;
-  RepeatPlayers:number;
+  widgetsData: any; // dynamic template data
+  DashBoardwidgetsData: any; // dynamic template data
+  CourseData: any[];
+  AvailableTeeTimesCount: number;
+  CancelledTeeTimesCount: number;
+  NewPlayers: number;
+  RepeatPlayers: number;
   // UpComingTournaments : UITournamentDetails[];
   // Outlets:OutletOption[];
   // ItemsData: ItemData[];
   OutletsData: OutletOption[];
   // CategoriesData: CategoryData[];
   // WaitlistData : UIWaitlistDetail[];
-  captions : any;
+  captions: any;
 
 
-  constructor(private _localization: Localization) {
-    this.captions = this._localization.captions['dashBoard'];
+  constructor(private localization: Localization) {
+    this.captions = this.localization.captions['dashBoard'];
     // this.OutletsData=[
     //   {id: 1 ,name: 'outlet 1' ,description: 'outlet 1' ,defaultOutletId : 1 },
     //   {id: 2 ,name: 'outlet 2' ,description: 'outlet 2' ,defaultOutletId : 2 },
     //   {id: 3 ,name: 'outlet 3' ,description: 'outlet 3' ,defaultOutletId : 3 }
     // ];
-    this.OutletsData=this.OutletsData;
+    this.OutletsData = this.OutletsData;
    }
 
   getWidget() {
@@ -46,9 +46,9 @@ export class DashboardWidgetsReportService {
             show: true,
             placeholder: 'Outlets',
             floatLabel: 'never',
-            dropDownControlname:'SalesHeadOutlet',
-            dropDownName: this.captions.allOutlets,            
-            defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+            dropDownControlname: 'SalesHeadOutlet',
+            dropDownName: this.captions.allOutlets,
+            defaultData: {id: 0, value: 'ALL', description: this.captions.allOutlets, showInDropDown: true},
             dropDownOptions: this.OutletsData,
           },
           manage: {
@@ -59,11 +59,11 @@ export class DashboardWidgetsReportService {
         },
         widget: [
           {
-            order:1,
+            order: 1,
             show: true,
-            allow:true,
-            parentClass:'sales',
-            customClass:'section_1 ',
+            allow: true,
+            parentClass: 'sales',
+            customClass: 'section_1 ',
             config: {
               useConfig: true,
               width: 60,
@@ -90,9 +90,9 @@ export class DashboardWidgetsReportService {
                 show: true,
                 placeholder: 'Outlets',
                 floatLabel: 'never',
-                dropDownControlname:'Sales_Revenue',
-                dropDownName: this.captions.allOutlets,            
-                defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+                dropDownControlname: 'Sales_Revenue',
+                dropDownName: this.captions.allOutlets,
+                defaultData: {id: 0, value: 'ALL', description: this.captions.allOutlets, showInDropDown: true},
                 dropDownOptions: this.OutletsData,
               }
             },
@@ -100,15 +100,15 @@ export class DashboardWidgetsReportService {
               name: 'Sales_Revenue'
             },
             footer: {
-              show: false            
+              show: false
             }
           },
           {
-            order:2,
+            order: 2,
             show: true,
-            allow:true,
-            parentClass:'sales',
-            customClass:'section_1',
+            allow: true,
+            parentClass: 'sales',
+            customClass: 'section_1',
             config: {
               useConfig: true,
               width: 40,
@@ -129,9 +129,9 @@ export class DashboardWidgetsReportService {
                 show: true,
                 placeholder: 'Outlets',
                 floatLabel: 'never',
-                dropDownControlname:'Out_of_StockItems',
-                dropDownName: this.captions.allOutlets,            
-                defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+                dropDownControlname: 'Out_of_StockItems',
+                dropDownName: this.captions.allOutlets,
+                defaultData: {id: 0, value: 'ALL', description: this.captions.allOutlets, showInDropDown: true},
                 dropDownOptions: this.OutletsData,
               }
             },
@@ -142,15 +142,15 @@ export class DashboardWidgetsReportService {
               show: true,
               title: this.captions.ViewCompleteList,
               showArrow: true,
-              routingPath:''
+              routingPath: ''
             }
           },
           {
-            order:3,
+            order: 3,
             show: true,
-            allow:true,
-            parentClass:'sales',
-            customClass:'section_1',
+            allow: true,
+            parentClass: 'sales',
+            customClass: 'section_1',
             config: {
               useConfig: true,
               width: 100,
@@ -177,26 +177,26 @@ export class DashboardWidgetsReportService {
                 show: true,
                 placeholder: 'Outlets',
                 floatLabel: 'never',
-                dropDownControlname:'Revenue_By_Outlet',
-                dropDownName: this.captions.allOutlets,            
-                defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+                dropDownControlname: 'Revenue_By_Outlet',
+                dropDownName: this.captions.allOutlets,
+                defaultData: {id: 0, value: 'ALL', description: this.captions.allOutlets, showInDropDown: true},
                 dropDownOptions: this.OutletsData,
               },
-             
+
             },
             template: {
               name: 'Revenue_By_Outlet'
             },
             footer: {
-              show: false            
+              show: false
             }
           },
           {
-            order:4,
+            order: 4,
             show: true,
-            allow:true,
-            parentClass:'sales',
-            customClass:'section_1 ',
+            allow: true,
+            parentClass: 'sales',
+            customClass: 'section_1 ',
             config: {
               useConfig: true,
               width: 50,
@@ -223,9 +223,9 @@ export class DashboardWidgetsReportService {
                 show: true,
                 placeholder: 'Outlets',
                 floatLabel: 'never',
-                dropDownControlname:'Sales_Top5Items',
-                dropDownName: this.captions.allOutlets,            
-                defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+                dropDownControlname: 'Sales_Top5Items',
+                dropDownName: this.captions.allOutlets,
+                defaultData: {id: 0, value: 'ALL', description: this.captions.allOutlets, showInDropDown: true},
                 dropDownOptions: this.OutletsData,
               }
             },
@@ -233,15 +233,15 @@ export class DashboardWidgetsReportService {
               name: 'Sales_Top5Items',
             },
             footer: {
-              show: false             
+              show: false
             }
           },
           {
-            order:5,
+            order: 5,
             show: true,
-            allow:true,
-            parentClass:'sales',
-            customClass:'section_1 ',
+            allow: true,
+            parentClass: 'sales',
+            customClass: 'section_1 ',
             config: {
               useConfig: true,
               width: 50,
@@ -268,9 +268,9 @@ export class DashboardWidgetsReportService {
                 show: true,
                 placeholder: 'Outlets',
                 floatLabel: 'never',
-                dropDownControlname:'Sales_Top5Categories',
-                dropDownName: this.captions.allOutlets,            
-                defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+                dropDownControlname: 'Sales_Top5Categories',
+                dropDownName: this.captions.allOutlets,
+                defaultData: {id: 0, value: 'ALL', description: this.captions.allOutlets, showInDropDown: true},
                 dropDownOptions: this.OutletsData,
               }
             },
@@ -278,7 +278,7 @@ export class DashboardWidgetsReportService {
               name: 'Sales_Top5Categories'
             },
             footer: {
-              show: false             
+              show: false
             }
           },
           // {
@@ -308,8 +308,8 @@ export class DashboardWidgetsReportService {
           //       placeholder: 'Outlets',
           //       floatLabel: 'never',
           //       dropDownControlname:'Purchase_Order',
-          //       dropDownName: this.captions.allOutlets,            
-          //       defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+          //       dropDownName: this.captions.allOutlets,
+          //       defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},
           //       dropDownOptions: this.OutletsData,
           //     },
           //   },
@@ -324,11 +324,11 @@ export class DashboardWidgetsReportService {
           //   }
           // },
           {
-            order:7,
+            order: 7,
             show: true,
-            allow:true,
-            parentClass:'sales',
-            customClass:'section_1 ',
+            allow: true,
+            parentClass: 'sales',
+            customClass: 'section_1 ',
             config: {
               useConfig: true,
               width: 40,
@@ -349,9 +349,9 @@ export class DashboardWidgetsReportService {
                 show: true,
                 placeholder: 'Outlets',
                 floatLabel: 'never',
-                dropDownControlname:'Open_Tickets',
-                dropDownName: this.captions.allOutlets,            
-                defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+                dropDownControlname: 'Open_Tickets',
+                dropDownName: this.captions.allOutlets,
+                defaultData: {id: 0, value: 'ALL', description: this.captions.allOutlets, showInDropDown: true},
                 dropDownOptions: this.OutletsData,
               }
             },
@@ -362,15 +362,15 @@ export class DashboardWidgetsReportService {
               show: true,
               title: this.captions.ViewCompleteList,
               showArrow: true,
-              routingPath:''
+              routingPath: ''
             }
           },
           {
-            order:8,
+            order: 8,
             show: true,
-            allow:true,
-            parentClass:'sales',
-            customClass:'section_1',
+            allow: true,
+            parentClass: 'sales',
+            customClass: 'section_1',
             config: {
               useConfig: true,
               width: 60,
@@ -396,9 +396,9 @@ export class DashboardWidgetsReportService {
                 show: true,
                 placeholder: 'Outlets',
                 floatLabel: 'never',
-                dropDownControlname:'Returned_Items',
-                dropDownName: this.captions.allOutlets,            
-                defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+                dropDownControlname: 'Returned_Items',
+                dropDownName: this.captions.allOutlets,
+                defaultData: {id: 0, value: 'ALL', description: this.captions.allOutlets, showInDropDown: true},
                 dropDownOptions: this.OutletsData,
               }
             },
@@ -406,7 +406,7 @@ export class DashboardWidgetsReportService {
               name: 'Returned_Items'
             },
             footer: {
-              show: false            
+              show: false
             }
           }
 
@@ -427,18 +427,18 @@ export class DashboardWidgetsReportService {
 
 
 
-         
+
         ]
       }
     ];
   }
 
   getDashBoardWidget() {
- 
+
     return this.DashBoardwidgetsData = [
       {
         widgetWrapper: {
-          title:this.captions.dashBoardTitle ,
+          title: this.captions.dashBoardTitle ,
           icon: {
             show: false,
             path: 'icon-name'
@@ -447,9 +447,9 @@ export class DashboardWidgetsReportService {
             show: true,
             placeholder: 'Courses',
             floatLabel: 'never',
-            dropDownControlname:'dashBoardHeadOutlet',
-            dropDownName: this.captions.allOutlets,            
-            defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},           
+            dropDownControlname: 'dashBoardHeadOutlet',
+            dropDownName: this.captions.allOutlets,
+            defaultData: {id: 0, value: 'ALL', description: this.captions.allOutlets, showInDropDown: true},
             dropDownOptions: this.OutletsData,
           },
           manage: {
@@ -460,8 +460,8 @@ export class DashboardWidgetsReportService {
         },
         widget: [
           {
-            show: true,            
-            parentClass:'sales',
+            show: true,
+            parentClass: 'sales',
             hasInnerComponent: false,
             config: {
               useConfig: true,
@@ -473,23 +473,23 @@ export class DashboardWidgetsReportService {
             template: {
               name: 'DB_OultetsChart',
               // templateData: {
-              //   data: {                                    
+              //   data: {
               //     series:[7,11],
               //     captions:{
               //       courses:this.captions.courses,
               //       courseStatus:this.captions.courseStatus,
               //       activeCourses:this.captions.activeCourses,
               //       inactiveCourses:this.captions.inactiveCourses
-              //     }                  
+              //     }
               //   }
-                  
+
               // }
             }
           },
           {
             show: true,
             hasInnerComponent: true,
-            customClass: "widgetInnerComponent",
+            customClass: 'widgetInnerComponent',
             innerComponent: [
               {
                 config: {
@@ -498,7 +498,7 @@ export class DashboardWidgetsReportService {
                   widthUnit: '%',
                   height: '46',
                   heightUnit: '%',
-                  customClass: "dbBlock_2_1",
+                  customClass: 'dbBlock_2_1',
                 },
                 template: {
                   name: 'DB_TotalSalesRevenue'
@@ -511,7 +511,7 @@ export class DashboardWidgetsReportService {
                   widthUnit: '%',
                   height: '47',
                   heightUnit: '%',
-                  customClass: "dbBlock_2_3",
+                  customClass: 'dbBlock_2_3',
                 },
                 template: {
                   name: 'DB_AverageTransaction',
@@ -519,7 +519,7 @@ export class DashboardWidgetsReportService {
                   //   data:{
                   //     icon:'icon-player',
                   //     count:this.NewPlayers,
-                  //     description:this.captions.DB_AverageTransaction 
+                  //     description:this.captions.DB_AverageTransaction
                   //   }
                   // }
                 }
@@ -531,7 +531,7 @@ export class DashboardWidgetsReportService {
                   widthUnit: '%',
                   height: '47',
                   heightUnit: '%',
-                  customClass: "dbBlock_2_2",
+                  customClass: 'dbBlock_2_2',
                 },
                 template: {
                   name: 'DB_NumberOfTransaction',
@@ -540,10 +540,10 @@ export class DashboardWidgetsReportService {
                   //     icon:'icon-player',
                   //     count:this.CancelledTeeTimesCount,
                   //     description:this.captions.DB_NumberOfTransaction
-                  //   } 
+                  //   }
                   // }
                 }
-              } 
+              }
               // ,{
               //   config: {
               //     useConfig: true,
@@ -560,7 +560,7 @@ export class DashboardWidgetsReportService {
                   //     icon:'icon-player',
                   //     count:this.RepeatPlayers,
                   //     description:this.captions.DB_AvgUnitPerCustomer
-                  //   } 
+                  //   }
                   // }
                 // }
               // }
@@ -625,11 +625,11 @@ export class DashboardWidgetsReportService {
 
 
    /**
-   *  
-   * @param countryCode 
+   *
+   * @param countryCode
    */
 async getCountryName(countryCode) {
-  let isoCountries = {
+  const isoCountries = {
     'AF' : 'Afghanistan',
     'AX' : 'Aland Islands',
     'AL' : 'Albania',
@@ -875,15 +875,15 @@ async getCountryName(countryCode) {
     'YE' : 'Yemen',
     'ZM' : 'Zambia',
     'ZW' : 'Zimbabwe'
-  }
+  };
 
-    let countryAbbr = Object.keys(isoCountries).find(key => isoCountries[key].toLowerCase() === countryCode.toLowerCase()),returnValue;
-    if(countryAbbr){  
-      returnValue ={message:countryAbbr,status:'s',};  
-    }else{
-      returnValue ={message:this.captions.countryNotFound,status:'e'};
-    }   
-    return returnValue; 
+    let countryAbbr = Object.keys(isoCountries).find(key => isoCountries[key].toLowerCase() === countryCode.toLowerCase()), returnValue;
+  if (countryAbbr) {
+      returnValue = {message: countryAbbr, status: 's', };
+    } else {
+      returnValue = {message: this.captions.countryNotFound, status: 'e'};
+    }
+  return returnValue;
   }
 
 
