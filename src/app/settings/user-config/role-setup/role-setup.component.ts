@@ -48,7 +48,7 @@ export class RoleSetupComponent implements OnInit {
   callCounter = 0;
 
   constructor(private http: HttpServiceCall, public localization: Localization,
-    private BPoint: BreakPointAccess, private utils: Utilities, private ss: SettingsService) {
+              private BPoint: BreakPointAccess, private utils: Utilities, private ss: SettingsService) {
   }
 
   ngOnInit() {
@@ -65,6 +65,7 @@ export class RoleSetupComponent implements OnInit {
     // this.IsReadOnly = this.BPoint.GetBreakPoint([GlobalConst.SPAScheduleBreakPoint.UserRoleSetUp]).result[0].view;
     this.LoadUserRoles();
     [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(false, this.initialLoads, this.callCounter);
+    this.BindToGrid();
   }
 
   editEvt(event) {
@@ -94,11 +95,11 @@ export class RoleSetupComponent implements OnInit {
   }
 
   addOutlet(data?: any, event?: any) {
-    if (data.value.controls.roleName.value.trim() == '') {
+    if (data.value.controls.roleName.value.trim() === '') {
       this.utils.showError(this.localization.captions.setting.RoleNameErr);
       return;
     }
-    if (data.type.toLowerCase() == this.localization.captions.setting.Add.toLowerCase()) {
+    if (data.type.toLowerCase() === this.localization.captions.setting.Add.toLowerCase()) {
 
       this.roleToBeCreated = {
         active: true,
@@ -106,11 +107,11 @@ export class RoleSetupComponent implements OnInit {
         propertyId: this.PropertyId,
         TenantId: this.TeantId,
         productId: this.ProductIdlst
-      }
+      };
       this.CheckUserRoleExist(data.value.controls.roleName.value.trim());
 
-    } else if (data.type.toLowerCase() == this.localization.captions.setting.update.toLowerCase()) {
-      let Role: RoleSetup = {
+    } else if (data.type.toLowerCase() === this.localization.captions.setting.update.toLowerCase()) {
+      const roleSetup: RoleSetup = {
         id: this.tableoptions[0].TablebodyData[this.currIndex].id,
         description: data.value.controls.roleName.value,
         active: this.tableoptions[0].TablebodyData[this.currIndex].isActive,
@@ -120,11 +121,11 @@ export class RoleSetupComponent implements OnInit {
       console.log(this.tableoptions[0].TablebodyData[this.currIndex]);
       // this.InvokeServiceCall("RoleWithId", Host.retailManagement, HttpMethod.Put, { id: Role.id }, Role);
 
-      let UpdatedDataIndex = this.result.findIndex(result => result.id == Role.id);
-      Role.active = data.value.controls.activetoggle.value;
-      this.result[UpdatedDataIndex] = Role;
-      Role.propertyId = this.PropertyId;
-      this.UpdateUserRole(Role);
+      const UpdatedDataIndex = this.result.findIndex(result => result.id == roleSetup.id);
+      roleSetup.active = data.value.controls.activetoggle.value;
+      this.result[UpdatedDataIndex] = roleSetup;
+      roleSetup.propertyId = this.PropertyId;
+      this.UpdateUserRole(roleSetup);
     }
     return true;
   }
@@ -134,12 +135,12 @@ export class RoleSetupComponent implements OnInit {
   }
 
   DeleteRecords(event: any) {
-    let currIndex = this.tableoptions[0].TablebodyData.findIndex(item => item.id == event[0].id);
-    let uriParam = { id: event[0].id };
-    //call
+    const currIndex = this.tableoptions[0].TablebodyData.findIndex(item => item.id == event[0].id);
+    const uriParam = { id: event[0].id };
+    // call
     this.AnyAsscociatedUser(event[0].id);
     this.indexToBeDeleted = currIndex;
-    //this.DeleteUserRole(this.tableData[currIndex]);
+    // this.DeleteUserRole(this.tableData[currIndex]);
   }
   AnyAsscociatedUser(id: number) {
     this.http.CallApiWithCallback<any>({
@@ -156,9 +157,9 @@ export class RoleSetupComponent implements OnInit {
 
   sliderChange(event: any) {
     if (event.data) {
-      let body: Role = event.data;
+      const body: Role = event.data;
       body.active = !event.value;
-      let uriParam = { id: body.id };
+      const uriParam = { id: body.id };
       // this.InvokeServiceCall("RoleWithId", Host.retailManagement, HttpMethod.Put, uriParam, body);
     }
     this.checked = event.value;
@@ -178,7 +179,6 @@ export class RoleSetupComponent implements OnInit {
     } else if (!this.checked) {
       this.tableData = this.result.filter(res => res.active);
     }
-    this.BindToGrid();
   }
 
   InvokeServiceCall(route: string, domain: Host, callType: HttpMethod, uriParams?: any, body?: any, extraParams?: any) {
@@ -188,10 +188,10 @@ export class RoleSetupComponent implements OnInit {
       error: this.errorCallback.bind(this),
       callDesc: route,
       method: callType,
-      body: body,
+      body,
       showError: true,
-      extraParams: extraParams,
-      uriParams: uriParams
+      extraParams,
+      uriParams
     });
   }
 
@@ -208,7 +208,7 @@ export class RoleSetupComponent implements OnInit {
     });
   }
 
-  CreateUserRole(Role: RoleSetup) {
+  CreateUserRole(roleSetup: RoleSetup) {
     let header: any;
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
@@ -216,14 +216,14 @@ export class RoleSetupComponent implements OnInit {
       error: this.errorCallback.bind(this),
       callDesc: 'CreateUserRole',
       method: HttpMethod.Post,
-      header: header,
-      body: Role,
+      header,
+      body: roleSetup,
       showError: true,
       extraParams: []
     });
   }
 
-  UpdateUserRole(Role: RoleSetup) {
+  UpdateUserRole(roleSetup: RoleSetup) {
     let header: any;
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
@@ -231,14 +231,14 @@ export class RoleSetupComponent implements OnInit {
       error: this.errorCallback.bind(this),
       callDesc: 'UpdateUserRole',
       method: HttpMethod.Put,
-      header: header,
-      body: [Role],
+      header,
+      body: [roleSetup],
       showError: true,
       extraParams: []
     });
   }
 
-  DeleteUserRole(Role: RoleSetup) {
+  DeleteUserRole(roleSetup: RoleSetup) {
     let header: any;
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
@@ -246,8 +246,8 @@ export class RoleSetupComponent implements OnInit {
       error: this.errorCallback.bind(this),
       callDesc: 'DeleteUserRole',
       method: HttpMethod.Delete,
-      header: header,
-      body: Role,
+      header,
+      body: roleSetup,
       showError: true,
       extraParams: []
     });
@@ -256,7 +256,7 @@ export class RoleSetupComponent implements OnInit {
 
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
     if (callDesc == 'Role' || callDesc == 'RoleWithId') {
-      this.Roles = <any>result.result;
+      this.Roles = result.result as any;
       this.PopulateData();
     } else if (['GetUserRoleByPropertyId'].includes(callDesc)) {
       [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(true, this.initialLoads, this.callCounter);
@@ -306,8 +306,8 @@ export class RoleSetupComponent implements OnInit {
   private BindToGrid() {
     this.tableoptions = [
       {
-        TableHdrData: [{ 'title': this.captions.RoleName, 'jsonkey': 'description', 'sortable': true },
-        { 'title': this.captions.Active, 'jsonkey': 'active', 'type': 'toggle', 'sortable': false }],
+        TableHdrData: [{ title: this.captions.RoleName, jsonkey: 'description', sortable: true },
+        { title: this.captions.Active, jsonkey: 'active', type: 'toggle', sortable: false }],
         TablebodyData: this.tableData,
         pagination: false,
         CustomColumn: true,

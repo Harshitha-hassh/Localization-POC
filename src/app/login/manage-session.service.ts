@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import * as _ from "lodash";
+import * as _ from 'lodash';
 import { Observable, Subject, Subscription, timer } from 'rxjs';
 import { Utilities } from '../core/utilities';
 import { TenantManagementCommunication } from '../shared/communication/services/tenantmanagement.service';
@@ -14,13 +14,13 @@ import * as moment from 'moment';
 })
 export class ManageSessionService implements OnDestroy {
 
-    public resetOnTrigger: boolean = false;
+    public resetOnTrigger = false;
     public timeoutExpired: Subject<number> = new Subject<number>();
 
-    private _count: number = 0;
-    userSessionId: string = "userSession";
+    private _count = 0;
+    userSessionId = 'userSession';
     private _serviceId: string = 'idleTimeoutSvc-' + Math.floor(Math.random() * 10000);
-    private _autoLogOff: boolean = false;
+    private _autoLogOff = false;
     private _logOffAfter: number;
     private _timeoutSeconds: number;
     private timerSubscription: Subscription;
@@ -35,21 +35,21 @@ export class ManageSessionService implements OnDestroy {
         }
     };
 
-    scope: string = "Spa"
-    state: string = Date.now() + "" + Math.random();
-    tokenKey: string = "a5smm_utoken"
-    propertyKey: string = "propertyInfo"
-    url: string = "";
+    scope = 'Spa';
+    state: string = Date.now() + '' + Math.random();
+    tokenKey = 'a5smm_utoken';
+    propertyKey = 'propertyInfo';
+    url = '';
     tenantId: any = 1;
     locations: any[];
     propertyValues: any[];
 
-    rememberDetail: any[] = [{ name: "" }];
+    rememberDetail: any[] = [{ name: '' }];
 
     constructor(private router: Router
-        , public dialogRef: MatDialog
-        , public loginService: TenantManagementCommunication
-        , private utils: Utilities) {
+        ,       public dialogRef: MatDialog
+        ,       public loginService: TenantManagementCommunication
+        ,       private utils: Utilities) {
 
         this.timeoutExpired.subscribe(n => {
         });
@@ -84,16 +84,15 @@ export class ManageSessionService implements OnDestroy {
     }
 
     getAccessToken() {
-        return JSON.parse(sessionStorage.getItem(this.tokenKey))['access_token'];
+        return JSON.parse(sessionStorage.getItem(this.tokenKey)).access_token;
     }
 
     isAuthenticated() {
-        let token = sessionStorage.getItem(this.tokenKey);
+        const token = sessionStorage.getItem(this.tokenKey);
 
         if (token) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -108,21 +107,21 @@ export class ManageSessionService implements OnDestroy {
     }
 
     clearLocalStore() {
-        let rememberDetails = sessionStorage.getItem(REMEMBER_INFO);
+        const rememberDetails = sessionStorage.getItem(REMEMBER_INFO);
         sessionStorage.clear();
         sessionStorage.setItem(REMEMBER_INFO, rememberDetails);
     }
 
     StoreUser(user: string) {
         let rememberList = this.GetRememberedUsers();
-        if (rememberList.find(x => x.name == user)) return;
+        if (rememberList.find(x => x.name == user)) { return; }
         rememberList = [{ name: user }];
         sessionStorage.setItem(REMEMBER_INFO, JSON.stringify(rememberList));
     }
 
     RemoveUser(user) {
-        let storedUsers = this.GetRememberedUsers();
-        let updatedStore = _.remove(storedUsers, (u) => {
+        const storedUsers = this.GetRememberedUsers();
+        const updatedStore = _.remove(storedUsers, (u) => {
             return !(u.name == user);
         });
         sessionStorage.setItem(REMEMBER_INFO, JSON.stringify(updatedStore));
@@ -141,26 +140,26 @@ export class ManageSessionService implements OnDestroy {
     }
 
     async doLogoutActivities() {
-        let userName = this.utils.GetUserInfo("userName");
-        if (userName != null && userName != undefined && userName != "null" && userName != "undefined") {
+        const userName = this.utils.GetUserInfo('userName');
+        if (userName != null && userName != undefined && userName != 'null' && userName != 'undefined') {
             await this.serverLogOut(userName);
         }
         this.router.navigate(['login']);
     }
 
     serverLogOut(userName: string) {
-        let tenantId = this.utils.GetPropertyInfo('TenantId');
-        let propertyId: number = Number(this.utils.GetPropertyInfo('PropertyId'));
+        const tenantId = this.utils.GetPropertyInfo('TenantId');
+        const propertyId: number = Number(this.utils.GetPropertyInfo('PropertyId'));
 
-        let uriParams = {
+        const uriParams = {
             Username: userName
             , TenantId: tenantId
             , PropertyId: propertyId
         };
 
-        let serviceParams = {
+        const serviceParams = {
             route: RetailApiRoute.LogOut,
-            uriParams: uriParams,
+            uriParams,
             header: '',
             body: '',
             showError: false,
@@ -172,25 +171,25 @@ export class ManageSessionService implements OnDestroy {
 
     createSession(): Promise<number> {
 
-        let userId: number = Number(this.utils.GetUserInfo('userId'));
-        let propertyId: number = Number(this.utils.GetPropertyInfo('PropertyId'));
-        let productId: number = Number(this.utils.GetPropertyInfo('ProductId'));
-        let timeZone = this.utils.GetPropertyInfo('TimeZone');
-        let userToken = sessionStorage.getItem(JWT_TOKEN);
+        const userId: number = Number(this.utils.GetUserInfo('userId'));
+        const propertyId: number = Number(this.utils.GetPropertyInfo('PropertyId'));
+        const productId: number = Number(this.utils.GetPropertyInfo('ProductId'));
+        const timeZone = this.utils.GetPropertyInfo('TimeZone');
+        const userToken = sessionStorage.getItem(JWT_TOKEN);
 
-        let sessionData = {
-            userId: userId,
-            startTime: moment().format("YYYY-MM-DDTHH:mm:ss"),
-            propertyId: propertyId,
-            productId: productId,
-            timeZone: timeZone,
-            userToken: userToken
+        const sessionData = {
+            userId,
+            startTime: moment().format('YYYY-MM-DDTHH:mm:ss'),
+            propertyId,
+            productId,
+            timeZone,
+            userToken
         };
 
-        let serviceParams = {
+        const serviceParams = {
             route: RetailRoutes.CreateSession,
-            uriParams: "",
-            header: "",
+            uriParams: '',
+            header: '',
             body: sessionData,
             showError: true,
             baseResponse: true
@@ -199,21 +198,21 @@ export class ManageSessionService implements OnDestroy {
         return this.loginService.postPromise<number>(serviceParams);
     }
 
-    async updateSession() {        
+    async updateSession() {
 
-        let sessionData = {
+        const sessionData = {
             isActive: false,
-            endTime: moment().format("YYYY-MM-DDTHH:mm:ss"),
+            endTime: moment().format('YYYY-MM-DDTHH:mm:ss'),
         };
 
-        const sessionId:string = sessionStorage.getItem(this.userSessionId);
+        const sessionId: string = sessionStorage.getItem(this.userSessionId);
         if (!sessionId) {
-             return;
+            return;
         }
-        let serviceParams = {
+        const serviceParams = {
             route: RetailRoutes.UpdateSession,
-            uriParams: { sessionId: sessionId },
-            header: "",
+            uriParams: { sessionId },
+            header: '',
             body: sessionData,
             showError: true,
             baseResponse: true

@@ -30,9 +30,9 @@ export class NewUserComponent implements OnInit {
   subPropertyAccess: any = [];
 
   constructor(public localization: Localization, public _servicesetting: SettingsService, @Inject(MAT_DIALOG_DATA) public data,
-    private dialogRef: MatDialogRef<NewUserComponent>, private http: HttpServiceCall,
-    private utils: Utilities, private PropertyInfo: PropertyInformation,
-    private _userOutletAccessDataService: UserOutletAccessDataService) {
+              private dialogRef: MatDialogRef<NewUserComponent>, private http: HttpServiceCall,
+              private utils: Utilities, private PropertyInfo: PropertyInformation,
+              private _userOutletAccessDataService: UserOutletAccessDataService) {
 
   }
 
@@ -48,17 +48,17 @@ export class NewUserComponent implements OnInit {
         return {
           id: x.serviceGroupId,
           name: servGroup && servGroup.length > 0 ? servGroup[0].description : ''
-        }
+        };
       });
       const selectedCurrSG = this._servicesetting.selectedServiceGrp.filter(x => this._servicesetting.serviceGroups.map(y => y.id).includes(x.id));
       if (selectedCurrSG.length >= this._servicesetting.serviceGroups.length) {
-        this._servicesetting.selectedServiceGrp.push({ id: 0, name: 'ALL' })
+        this._servicesetting.selectedServiceGrp.push({ id: 0, name: 'ALL' });
       }
       // this._servicesetting.selectedServiceGrp =  this._servicesetting.editUserInfo.spaInfo.map(x => x.serviceGroupId);
-      this._servicesetting.selectedOutlets = this._servicesetting.editUserInfo.retailOutletMap ? this._servicesetting.editUserInfo.retailOutletMap.filter(y => y.hasAccess && this._servicesetting.propOutlets && this._servicesetting.propOutlets.map(o => o.subPropertyID).includes(y.subPropertyID)).map(x => { return { id: x.subPropertyID, name: this._servicesetting.propOutlets.filter(y => y.subPropertyId == x.subPropertyID)[0] ? this._servicesetting.propOutlets.filter(y => y.subPropertyId == x.subPropertyID)[0].subPropertyName : '' } }) : [];
+      this._servicesetting.selectedOutlets = this._servicesetting.editUserInfo.retailOutletMap ? this._servicesetting.editUserInfo.retailOutletMap.filter(y => y.hasAccess && this._servicesetting.propOutlets && this._servicesetting.propOutlets.map(o => o.subPropertyID).includes(y.subPropertyID)).map(x => { return { id: x.subPropertyID, name: this._servicesetting.propOutlets.filter(y => y.subPropertyId == x.subPropertyID)[0] ? this._servicesetting.propOutlets.filter(y => y.subPropertyId == x.subPropertyID)[0].subPropertyName : '' }; }) : [];
       const selectedCurrOuts = this._servicesetting.selectedOutlets.filter(x => this._servicesetting.propOutlets.map(y => y.subPropertyID).includes(x.id));
       if (selectedCurrOuts.length >= this._servicesetting.propOutlets.length) {
-        this._servicesetting.selectedOutlets.push({ id: 0, name: 'ALL' })
+        this._servicesetting.selectedOutlets.push({ id: 0, name: 'ALL' });
       }
       this._servicesetting.isRadioButtonsChange = false;
     } else {
@@ -140,7 +140,7 @@ export class NewUserComponent implements OnInit {
       subPropAccess.push({
         hasAccess: this._servicesetting.selectedOutlets.includes(this._servicesetting.propOutlets[i].subPropertyID),
         subPropertyID: this._servicesetting.propOutlets[i].subPropertyID
-      })
+      });
     }
     this.subPropertyAccess = subPropAccess;
     const proAccess: any = [];
@@ -179,7 +179,7 @@ export class NewUserComponent implements OnInit {
       autoLogOff: serviceRetailControls.autologoff.value ? serviceRetailControls.autologoff.value : false,
       logOffAfter: serviceRetailControls.autologoff.value ? Number(serviceRetailControls.logoffafter.value) : Number(0),
       userSubPropertyAccess: subPropAccess
-    })
+    });
 
     // proAccess.push({
     //   propertyID: Number(this.utils.GetPropertyInfo('PropertyId')),
@@ -213,7 +213,7 @@ export class NewUserComponent implements OnInit {
       email: serviceUserControls.email.value ? serviceUserControls.email.value : '',
       userPropertyAccesses: proAccess,
       loggedUser: this.utils.GetPropertyInfo('userName')
-    }
+    };
 
     const retailData = {
       userId: 0,
@@ -221,7 +221,7 @@ export class NewUserComponent implements OnInit {
       allowServiceCharge: serviceRetailControls.allowservicecharge.value ? serviceRetailControls.allowservicecharge.value : false,
       allowCommission: serviceRetailControls.allowcommission.value ? serviceRetailControls.allowcommission.value : false,
       commissionClass: serviceRetailControls.allowcommission.value ? Number(serviceRetailControls.commissionclass.value) : Number(0)
-    }
+    };
     let spaData = this._servicesetting.selectedServiceGrp;
     spaData = _.uniq(spaData);
     const index = spaData.indexOf(0);
@@ -255,7 +255,7 @@ export class NewUserComponent implements OnInit {
       const serviceRetailControls = this._servicesetting.retailSettingsFormGrp.controls;
       editedInfo.userPropertyAccesses[retailRowIndex].hasAccess = this._servicesetting.selectedAccess.includes(retailProdId);
       if (this._servicesetting.selectedAccess.includes(retailProdId)) {
-        const roleid = this._servicesetting.retailSettingsFormGrp.controls.rolename.value ? Number(this._servicesetting.retailSettingsFormGrp.controls.rolename.value) : Number(0)
+        const roleid = this._servicesetting.retailSettingsFormGrp.controls.rolename.value ? Number(this._servicesetting.retailSettingsFormGrp.controls.rolename.value) : Number(0);
         if (roleid == 0) {
           this.IsRetailRoleSelected = false;
           this.selectedTabIndex = 2;
@@ -277,9 +277,9 @@ export class NewUserComponent implements OnInit {
       editedInfo.userPropertyAccesses[retailRowIndex].logOffAfter = this._servicesetting.retailSettingsFormGrp.controls.autologoff.value ? Number(this._servicesetting.retailSettingsFormGrp.controls.logoffafter.value) : Number(0);
       let selectedOuts = this._servicesetting.selectedOutlets;
       selectedOuts = _.uniq(selectedOuts);
-      const index = selectedOuts.indexOf(0);
-      if (index >= 0) {
-        selectedOuts.splice(index, 1);
+      const idx = selectedOuts.indexOf(0);
+      if (idx >= 0) {
+        selectedOuts.splice(idx, 1);
       }
       this.subPropertyAccess = [];
       if (this._servicesetting.propOutlets) {
@@ -294,7 +294,7 @@ export class NewUserComponent implements OnInit {
               userID: editedInfo.userId,
               userPropertyAccessID: 0,
               userSubPropertyAccessID: 0,
-            }
+            };
           }
 
           this.subPropertyAccess.push(subPropAccess);
@@ -302,7 +302,7 @@ export class NewUserComponent implements OnInit {
       }
 
       // if (editedInfo.userPropertyAccesses[retailRowIndex].userSubPropertyAccess.length < this._servicesetting.propOutlets.length) {
-      const alreadyConfigred = editedInfo.userPropertyAccesses[retailRowIndex].userSubPropertyAccess.map(x => x.subPropertyID)
+      const alreadyConfigred = editedInfo.userPropertyAccesses[retailRowIndex].userSubPropertyAccess.map(x => x.subPropertyID);
       let availableOuts = this._servicesetting.propOutlets.map(x => x.subPropertyID);
 
       availableOuts = availableOuts.filter((el) => !alreadyConfigred.includes(el));
@@ -313,7 +313,7 @@ export class NewUserComponent implements OnInit {
             hasAccess: selectedOuts.includes(availableOuts[j]),
             subPropertyID: availableOuts[j],
             userPropertyAccessID: editedInfo.userPropertyAccesses[retailRowIndex].userPropertyAccessID
-          })
+          });
         }
         editedInfo.userPropertyAccesses[retailRowIndex].userSubPropertyAccess.push(...addedOuts);
       }
@@ -350,7 +350,7 @@ export class NewUserComponent implements OnInit {
         allowServiceCharge: this._servicesetting.retailSettingsFormGrp.controls.allowservicecharge.value ? this._servicesetting.retailSettingsFormGrp.controls.allowservicecharge.value : false,
         allowCommission: this._servicesetting.retailSettingsFormGrp.controls.allowcommission.value ? this._servicesetting.retailSettingsFormGrp.controls.allowcommission.value : false,
         commissionClass: this._servicesetting.retailSettingsFormGrp.controls.allowcommission.value ? Number(this._servicesetting.retailSettingsFormGrp.controls.commissionclass.value) : Number(0)
-      }
+      };
     }
 
     let selServiceGrp = this._servicesetting.selectedServiceGrp;
@@ -359,9 +359,11 @@ export class NewUserComponent implements OnInit {
     if (index >= 0) {
       selServiceGrp.splice(index, 1);
     }
-
-
-    this.EditUser(editedInfo, Host.authentication, 'UpdateUser', [selServiceGrp, retailConf, newRetailConf], { PropertyId: Number(this.utils.GetPropertyInfo('PropertyId')) })
+    this.EditUser(editedInfo,
+       Host.authentication,
+        'UpdateUser',
+         [selServiceGrp, retailConf, newRetailConf],
+          { PropertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
   }
 
   cancel() {
@@ -407,26 +409,26 @@ export class NewUserComponent implements OnInit {
   }
 
   async successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): Promise<void> {
-    if (callDesc == 'CreateUser') {
+    if (callDesc === 'CreateUser') {
       if (result.result) {
-        extraParams[1].userId = Number(result.result)
+        extraParams[1].userId = Number(result.result);
         if (extraParams[0] && extraParams[0].length > 0) {
-          this.CreateUser(extraParams[0], Host.spaManagement, 'CreateUserSpaConfig', [], { id: result.result })
+          this.CreateUser(extraParams[0], Host.spaManagement, 'CreateUserSpaConfig', [], { id: result.result });
         }
         this.CreateUser(extraParams[1], Host.retailManagement, 'CreateUserRetailConfig', []);
         this.subPropertyAccess.forEach(x => x.userID = extraParams[1].userId);
         await this._userOutletAccessDataService.CreateUserOutletAccess(this.subPropertyAccess);
         this.dialogRef.close('saved');
       }
-    } else if (callDesc == 'UpdateUser') {
+    } else if (callDesc === 'UpdateUser') {
       if (result.result) {
         const updated = result.result as any;
         this.EditUser(extraParams[0], Host.spaManagement, 'UpdateUserSpaConfig', [], { id: updated.userId });
 
         if (extraParams[1]) {
-          this.EditUser(extraParams[1], Host.retailManagement, 'UpdateUserRetailConfig', [])
+          this.EditUser(extraParams[1], Host.retailManagement, 'UpdateUserRetailConfig', []);
         } else {
-          this.CreateUser(extraParams[2], Host.retailManagement, 'CreateUserRetailConfig', [])
+          this.CreateUser(extraParams[2], Host.retailManagement, 'CreateUserRetailConfig', []);
         }
         if (this.subPropertyAccess && this.subPropertyAccess.length > 0) {
           await this._userOutletAccessDataService.UpdateUserOutletAccess(this.subPropertyAccess);

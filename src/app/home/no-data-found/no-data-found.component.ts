@@ -12,10 +12,10 @@ export class NoDataFoundComponent implements OnInit {
 @Input() title;
 @Input() text;
 captions: any;
-  constructor(private _Localization: Localization) { }
+  constructor(private localization: Localization) { }
 
   ngOnInit() {
-    this.captions = this._Localization.captions.common;
+    this.captions = this.localization.captions.common;
   }
 
 }

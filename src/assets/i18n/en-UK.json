@@ -2675,5 +2675,7 @@
   "helpQuestion": "Help_uk",
   "about": "About_uk",
   "versionInfo": "The Product is running in the {productVersion} Version_uk",
-  "okay": "OKAY_uk"
+  "okay": "OKAY_uk",
+  "customerId": "Customer ID_uk",
+  "lbl_location": "Location_uk"
 }

@@ -25,14 +25,15 @@ export class UserRoleComponent implements OnInit, OnDestroy {
   selectedOption: any;
   userRoleConfiguration: any = [];
   captions: any = this.localization.captions.userConfig;
-  availableOptions: any = [{ id: 1, name: 'System Administrator' }]
+  availableOptions: any = [{ id: 1, name: 'System Administrator' }];
   hasAccess = true;
   IsReadOnly: boolean;
-  dialogSubscription: ISubscription;;
+  dialogSubscription: ISubscription;
 
 
-  constructor(public _settingService: SettingsService, private http: HttpServiceCall, private dialog: MatDialog,
-    private localization: Localization, private BPoint: BreakPointAccess, private utils: Utilities, private PropInfo: PropertyInformation,private ss: SettingsService) {
+  constructor(public settingService: SettingsService, private http: HttpServiceCall, private dialog: MatDialog,
+              private localization: Localization,
+              private BPoint: BreakPointAccess, private utils: Utilities, private PropInfo: PropertyInformation) {
 
   }
 
@@ -46,21 +47,21 @@ export class UserRoleComponent implements OnInit, OnDestroy {
     //   this.hasAccess = true;
     // }
     this.getUserRoles();
-    this.ss.tabLoaderEnable.next(false);
+    this.settingService.tabLoaderEnable.next(false);
   }
 
   async getArrayData() {
-    this._settingService.changedBreakPoints = [];
+    this.settingService.changedBreakPoints = [];
     let result: any;
     result = [{
       headerData: {
-        titleData: this.localization.captions.userConfig.SecurityCategories,//"Security Categories",
-        titledesc: this.localization.captions.userConfig.Selected,//"Selected ",
+        titleData: this.localization.captions.userConfig.SecurityCategories, // "Security Categories",
+        titledesc: this.localization.captions.userConfig.Selected, // "Selected ",
         details: this.userRoleConfiguration
       }
     }];
     this.arrayData = result ? result : [];
-    this._settingService.roleConfiguration = this.arrayData;
+    this.settingService.roleConfiguration = this.arrayData;
   }
 
   openDialog() {
@@ -88,7 +89,7 @@ export class UserRoleComponent implements OnInit, OnDestroy {
       error: this.errorCallback.bind(this),
       callDesc: 'UpdateUserRoles',
       method: HttpMethod.Put,
-      body: this._settingService.changedBreakPoints,
+      body: this.settingService.changedBreakPoints,
       showError: true,
       extraParams: [false]
     });
@@ -109,7 +110,7 @@ export class UserRoleComponent implements OnInit, OnDestroy {
   }
 
   getuserConfig(roleId: number): any {
-    //return this.httpCall.get(this.searchPath).map(response => response.json());
+    // return this.httpCall.get(this.searchPath).map(response => response.json());
     // this.userRoleConfiguration = this.httpCall.get(this.searchPath).map(response => response.json());
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
@@ -146,16 +147,19 @@ export class UserRoleComponent implements OnInit, OnDestroy {
       }
       this.getArrayData();
     } else if (callDesc == 'UpdateUserRoles') {
-      this._settingService.roleConfiguration = [];
+      this.settingService.roleConfiguration = [];
       const dialogRef = this.dialog.open(CommonAlertMessagePopupComponent, {
         width: '305px',
         height: '300px',
         hasBackdrop: true,
         panelClass: 'small-popup',
-        data: { headername: this.captions.wellDone, headerIcon: 'icon-success-icon', headerMessage: this.captions.configSaveSuccessFrom, buttonName: this.captions.okay, type: 'message' },
+        data: { headername: this.captions.wellDone,
+           headerIcon: 'icon-success-icon',
+           headerMessage: this.captions.configSaveSuccessFrom,
+           buttonName: this.captions.okay, type: 'message' },
         disableClose: true
       });
-      dialogRef.afterClosed().subscribe(result => {
+      dialogRef.afterClosed().subscribe(() => {
         this.getuserConfig(this.selectedOption);
     });
     }

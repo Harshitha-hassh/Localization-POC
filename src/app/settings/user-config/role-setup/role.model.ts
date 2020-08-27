@@ -4,8 +4,8 @@ export interface Role {
     roleName: string;
     active: boolean;
   }
-  
-  export interface RoleSetup {
+
+export interface RoleSetup {
     id?: number;
     description: string;
     active: boolean;

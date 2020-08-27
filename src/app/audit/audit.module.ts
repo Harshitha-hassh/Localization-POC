@@ -7,22 +7,24 @@ import { RouterModule } from '@angular/router';
 import { AuditRoutingModule } from './audit-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { AuditService } from './audit.service';
+import { ScrollbarModule } from 'ngx-scrollbar';
 // import { AppointmentActionModule } from '../shared/appointment-actions/appointment-action.module';
 // import { SlideInformationService } from '../shared/slide-information/slide-information.service';
-//import { AppointmentActionsDialogComponent } from '../appointment/appointment-actions-dialog/appointment-actions-dialog.component';
+// import { AppointmentActionsDialogComponent } from '../appointment/appointment-actions-dialog/appointment-actions-dialog.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
     AuditRoutingModule,
+    ScrollbarModule,
   // AppointmentActionModule,
   SharedModule
   ],
-  declarations: [AuditComponent, AuditDataComponent, DayEndComponent],//, AppointmentActionsDialogComponent],
+  declarations: [AuditComponent, AuditDataComponent, DayEndComponent],// , AppointmentActionsDialogComponent],
   providers: [ AuditService,
   //  SlideInformationService
   ],
-  //entryComponents: [AppointmentActionsDialogComponent]
+  // entryComponents: [AppointmentActionsDialogComponent]
 })
 export class AuditModule { }
