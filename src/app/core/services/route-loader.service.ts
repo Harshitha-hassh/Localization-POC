@@ -1133,9 +1133,8 @@ export class RouteLoaderService {
               "linkedElement": []
             }
           ]
-        },
-      ]
-    };
+        }
+      ];
     const menuList = this.currentSettings;
 
     if (menuList) {

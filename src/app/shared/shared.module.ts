@@ -27,7 +27,7 @@ import { ImgThumbnailComponent } from './components/img-thumbnail/img-thumbnail.
     MenuComponent,
     GlobalSearchComponent,
     AboutComponent,
-    MsGraphAuthComponent
+    MsGraphAuthComponent,
     ImgThumbnailComponent
   ],
   imports: [
