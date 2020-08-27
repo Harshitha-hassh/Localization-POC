@@ -201,3 +201,116 @@ export interface LoyaltyDetail {
     patronId: string;
     rank: string;
 }
+
+export interface HandleResponse {
+    status: string;
+    errorMessage: string;
+    paymentHandle: PayHandle[];
+}
+export interface PayHandle {
+    handle: string;
+    inquiryInfo: Inquiry; //(as passed in request)
+    name: string;
+    type: string;
+    balance: number;
+    isBalanceVisible: boolean
+    isPartialTenderAllowed: boolean;
+    isRefundable: boolean;
+    additionalAttributes: object;
+    allowedAPIs: string[];
+}
+export interface Inquiry {
+    id?: string;
+    type?: string; //(Required)
+    name?: string;
+    cardData?: CardData;
+    TenderId?: string;
+}
+
+export interface CardData {
+    track1?: string;
+    track2?: string
+    encryptedData: string;
+}
+export interface HandleRequest {
+    tenderId: string; // (Required)
+    inquiryInfo?: Inquiry; // (Required)
+}
+
+export interface GuestRetailTransactionHistory {
+    transaction: Transaction[];
+    itemDescription: any;
+}
+
+export interface Transaction {
+    id: number;
+    transactionData: TransactionData;
+    transactionDetails: TransactionDetail[];
+    transactionPayments: any[];
+}
+
+export interface TransactionDetail {
+    id: number;
+    transactionId: number;
+    lineNumber: number;
+    itemId: number;
+    serviceId: number;
+    staffId: number;
+    staffType?: any;
+    quantitySold: number;
+    unitPrice: number;
+    discount: number;
+    commission?: any;
+    serviceChargeGratuity?: any;
+    tax: number;
+    totalAmount: number;
+    outletId: number;
+    propertyId: number;
+    subPropertyId: number;
+}
+
+export interface TransactionData {
+    id: number;
+    ticketNumber: string;
+    transactionType: string;
+    status: string;
+    transactionDate: string;
+    clerkId: number;
+    totalPrice: number;
+    totalTax: number;
+    totalAmount: number;
+    guestId: number;
+    memberId: number;
+    comment: string;
+    stayId: number;
+    isTaxExempt: boolean;
+    isVoided: boolean;
+    outletId: number;
+    gratuity: number;
+    serviceCharge: number;
+    discount: number;
+    propertyId: number;
+    subPropertyId: number;
+    retailTicketNumber: string;
+}
+
+export const enum PatronInfoSearchResultType {
+    EDITEXISTINGPATRON = 0,
+    PATRONNOTFOUND,
+    PATRONFOUND,
+    UPDATECMSDATAONEXISTING
+}
+export interface ImageData {
+    id: number;
+    referenceType: string;
+    referenceId: number;
+    sequenceNo: number;
+    contentType: string;
+    data: any[];
+    thumbnailData: any[];
+}
+export interface Addresscomponent {
+    long_name: string;
+    short_name: string;
+    types: string[];
+}

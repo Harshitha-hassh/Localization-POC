@@ -1,0 +1,120 @@
+<section class="h-100">
+    <form [formGroup]="FormGrp" autocomplete="off" class="h-100">
+        <ng-scrollbar [trackX]="true" [autoHide]="true">
+            <div class="d-inline-block width_75 p-4 padding_container">
+                <div>
+                    <label class="form-label-primary">{{captions.PaymentInformation}}</label>
+                </div>
+                <div class="device-connection pt-2">
+                    <mat-form-field class="device-type">
+                        <mat-select [placeholder]="captions.device" formControlName="device"
+                            (selectionChange)="ondeviceChange($event)">
+                            <mat-option [value]="'defaultselected'">{{captions.selectDevice}}</mat-option>
+                            <mat-option [value]="device.handle" *ngFor="let device of availableDevices">{{device.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button mat-raised-button class="connect-btn icon-Device"
+                        [ngClass]="selectedDevice == 'defaultselected' ? 'secondary-disabled':'secondary-default-btn'"
+                        (click)="connectDeviceAndGetCardInfo()">{{captions.connect}}</button>
+                </div>
+                <div class="saved-card mb-3" *ngIf="displayCardInfo">
+                    <label for="" class="form-label-normal">{{captions.savedCardDetails}}</label>
+                    <div class="saved-card-details">
+                        <span>{{displayCardInfo.cardNumber}}</span>
+                        <span class="px-2">
+                            <!-- <app-card-type [type]="displayCardInfo.issuerType"></app-card-type> -->
+                        </span>
+                    </div>
+                </div>
+                <div class="" *ngIf="false">
+                    <mat-form-field class="width_371">
+                        <input matInput class="" [placeholder]="captions.CardDetails" formControlName="card_details">
+                    </mat-form-field>
+                </div>
+                <div class="" *ngIf="false">
+                    <div class=" width_220"
+                        [ngClass]="this.isClientViewOnly ? 'button_invalid' : ''">
+                        <mat-form-field class="width_180px">
+                            <input matInput class="" [min]="minFromDate" [matDatepicker]="picker"
+                                [placeholder]="captions.ExpiryDate" [readonly]="true">
+                            <mat-datepicker #picker></mat-datepicker>
+                            <i matSuffix
+                                class="icon-Calender cursor fs-xlarge position-relative d-inline-block customCalendar"
+                                (click)="picker.open()"></i>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <div class="">
+                    <label class="form-label-primary" [hidden]="isTitleHidden">{{captions.OTHERINFORMATION}}</label>
+                </div>
+                <div class="">
+                    <div class="d-inline-block mr-2" [class.customFieldDisplay]="customFieldHidden[0]">
+                        <mat-form-field class="">
+                            <mat-select [placeholder]="customFieldDesc[0]" formControlName="customField1">
+                                <mat-option value=""></mat-option>
+                                <mat-option [value]="name.id" *ngFor="let name of customFieldValues[0]">
+                                    {{name.description}}</mat-option>
+                            </mat-select>
+                            <mat-error class=""
+                                *ngIf="FormGrp.controls['customField1'].hasError('required') && FormGrp.controls['customField1'].touched && !FormGrp.controls['customField1'].valid">
+                                Missing {{customFieldDesc[0]}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="d-inline-block " [class.customFieldDisplay]="customFieldHidden[1]">
+                        <mat-form-field class=" w-100">
+                            <mat-select [placeholder]="customFieldDesc[1]" formControlName="customField2">
+                                <mat-option value=""></mat-option>
+                                <mat-option [value]="name.id" *ngFor="let name of customFieldValues[1]">
+                                    {{name.description}}</mat-option>
+                            </mat-select>
+                            <mat-error class=""
+                                *ngIf="FormGrp.controls['customField2'].hasError('required') && FormGrp.controls['customField2'].touched && !FormGrp.controls['customField2'].valid">
+                                Missing {{customFieldDesc[1]}}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="" [class.customFieldDisplay]="customFieldHidden[2]">
+                    <mat-form-field class="width_371">
+                        <mat-select [placeholder]="customFieldDesc[2]" formControlName="customField3">
+                            <mat-option value=""></mat-option>
+                            <mat-option [value]="name.id" *ngFor="let name of customFieldValues[2]">{{name.description}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error class=""
+                            *ngIf="FormGrp.controls['customField3'].hasError('required') && FormGrp.controls['customField3'].touched && !FormGrp.controls['customField3'].valid">
+                            Missing {{customFieldDesc[2]}}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field class="d-block width_371" [class.customFieldDisplay]="customFieldHidden[3]">
+                        <input matInput class="LW14" formControlName="customField4" [placeholder]="customFieldDesc[3]">
+                        <mat-error class=""
+                            *ngIf="FormGrp.controls['customField4'].hasError('required') && FormGrp.controls['customField4'].touched && !FormGrp.controls['customField4'].valid">
+                            Missing {{customFieldDesc[3]}}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="d-block width_371" [class.customFieldDisplay]="customFieldHidden[4]">
+                        <input matInput class="LW14" formControlName="customField5" [placeholder]="customFieldDesc[4]">
+                        <mat-error class=""
+                            *ngIf="FormGrp.controls['customField5'].hasError('required') && FormGrp.controls['customField5'].touched && !FormGrp.controls['customField5'].valid">
+                            Missing {{customFieldDesc[4]}}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <aside class="w-25 d-inline-block p-4">
+                <mat-form-field class="width_100">
+                    <textarea class="textarea-style" [maxlength]="250" matInput formControlName="comments"
+                        [placeholder]="captions.GeneralComments"></textarea>
+                </mat-form-field>
+
+            </aside>
+        </ng-scrollbar>
+    </form>
+</section>
