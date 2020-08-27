@@ -13,49 +13,48 @@ import { Utilities } from '../core/utilities';
 })
 export class LoginCommunicationService extends HttpCallService {
 
-  private utils:Utilities;
+  private utils: Utilities;
   constructor(httpclient: HttpClient, localization: Localization, utilities: Utilities, PropertyInfo: PropertyInformation) {
     super(RetailApiHost.TenantManagement, httpclient, localization, utilities, PropertyInfo);
-    this.utils= utilities;
+    this.utils = utilities;
   }
 
   public async makePostCall<T>(params: ServiceParams, handleErr: boolean = true) {
-    let response$: Promise<BaseResponse<T>> = super.postPromise<BaseResponse<T>>(params);
-    //on error =>
+    const response$: Promise<BaseResponse<T>> = super.postPromise<BaseResponse<T>>(params);
+    // on error =>
     response$.catch(err => this.error(err, handleErr));
-    //on success =>
-    let response: any = await response$;
+    // on success =>
+    const response: any = await response$;
     return response;
   }
   public async makePutCall<T>(params: ServiceParams, handleErr: boolean = true) {
-    let response$: Promise<BaseResponse<T>> = super.putPromise<BaseResponse<T>>(params);
-    //on error =>
+    const response$: Promise<BaseResponse<T>> = super.putPromise<BaseResponse<T>>(params);
+    // on error =>
     response$.catch(err => this.error(err, handleErr));
-    //on success =>
-    let response: any = await response$;
+    // on success =>
+    const response: any = await response$;
     return response;
   }
   public async makeGetCall<T>(params: ServiceParams, handleErr: boolean = true): Promise<T> {
-    let response$: Promise<BaseResponse<T>> = super.getPromise<BaseResponse<T>>(params);
+    const response$: Promise<BaseResponse<T>> = super.getPromise<BaseResponse<T>>(params);
 
-    //on error =>
+    // on error =>
     response$.catch(err => this.error(err, handleErr));
 
-    //on success =>
-    let response: any = await response$;
+    // on success =>
+    const response: any = await response$;
     return response;
 }
   private error(err: HttpErrorResponse, handleErr: boolean) {
     if (handleErr) {
       this.errorHandler(err);
-    }
-    else {
+    } else {
       throw err;
     }
   }
   protected errorHandler(err: HttpErrorResponse): void {
-    let code = parseInt(err.error.errorCode);
-    let message: string = this.utils.getError(isNaN(code) ? undefined : code);
+    const code = parseInt(err.error.errorCode);
+    const message: string = this.utils.getError(isNaN(code) ? undefined : code);
     this.utils.showAlert(message, AlertType.Error);
 }
 

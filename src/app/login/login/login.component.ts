@@ -11,7 +11,10 @@ import { Utilities } from 'src/app/core/utilities';
 import { PropertySettingDataService } from 'src/app/shared/data-services/authentication/propertysetting.data.service';
 import { ManageSessionService } from '../manage-session.service';
 import { SetPasswordComponent } from '../set-password/set-password.component';
-import { JWT_TOKEN, USER_INFO, USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, USER_SETTINGS, PROPERTY_CONFIGURATION_SETTINGS } from 'src/app/core/app-constants';
+import {
+  JWT_TOKEN, USER_INFO,
+  USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, USER_SETTINGS, PROPERTY_CONFIGURATION_SETTINGS
+} from 'src/app/core/app-constants';
 import { LoginCommunicationService } from '../login-communication.service';
 import * as moment from 'moment';
 import { ButtonValue } from 'src/app/shared/shared-models';
@@ -52,14 +55,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   errorMessage: { userId: string; password: string; customerId: string };
   useridSubscribe: any; passwordSubscribe: any;
   setPassword: boolean;
-  private _autoLogOff: any = false;
-  private _logOffAfter = 1;
+  private autoLogOff: any = false;
+  private logOffAfter = 1;
   showCustomerID = false;
   custId: any;
   userIdDir = 'capitalise,notallowspace,nospecailchar';
   tenantId: number;
   tenantIdFromParam: string;
-  currYear: string = '2020';
+  currYear = '2020';
 
   constructor(
     private dialog: MatDialog,
@@ -72,7 +75,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private PropertySettingService: PropertySettingDataService,
     private propertyInfo: PropertyInformation,
     // private userConfigService: RetailManagementCommunication,
-    private _compiler: Compiler,
+    private compiler: Compiler,
     private router: Router
   ) {
     this.initializeForm();
@@ -80,10 +83,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this._compiler.clearCache();
+    this.compiler.clearCache();
 
-    let _token = sessionStorage.getItem(JWT_TOKEN);
-    if (this.localize.validateString(_token)) {
+    const token = sessionStorage.getItem(JWT_TOKEN);
+    if (this.localize.validateString(token)) {
       this.router.navigate(['/home']);
     }
 
@@ -109,9 +112,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     };
     const getrememberresult = this.sessionService.GetRememberedUsers();
     const rememberedUser = (getrememberresult.length > 0) ? getrememberresult[0].name : '';
-    this.loginForms.controls['userId'].setValue(rememberedUser ? rememberedUser : '');
-    this.loginForms.controls['rememberme'].setValue(rememberedUser ? true : false);
-    this.loginForms.controls['password'].setValue('');
+    this.loginForms.controls.userId.setValue(rememberedUser ? rememberedUser : '');
+    this.loginForms.controls.rememberme.setValue(rememberedUser ? true : false);
+    this.loginForms.controls.password.setValue('');
   }
 
   OnFormValueChanges(): any {
@@ -196,7 +199,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.tenantIdFromParam != null
             ? this.tenantIdFromParam
             : this.utils.GetLocalStorageValue('propertyInfo', 'TenantId'),
-        Property: this.loginForms.controls['location'].value,
+        Property: this.loginForms.controls.location.value,
         ProductId: Product.RETAIL
       };
       await this.validateCredentials(credentials);
@@ -303,43 +306,43 @@ export class LoginComponent implements OnInit, OnDestroy {
     const userLanguageCode =
       this.userInfo != null && this.userInfo.languageCode != ''
         ? this.userInfo.languageCode
-        : result['languageCode'];
+        : result.languageCode;
     const PropertyValues =
       'Language=' +
-      result['languageCode'] +
+      result.languageCode +
       '; PropertyCode=' +
-      result['propertyCode'] +
+      result.propertyCode +
       '; SubPropertyCode=' +
-      result['subPropertyCode'] +
+      result.subPropertyCode +
       '; Currency=' +
-      result['currencyCode'] +
+      result.currencyCode +
       '; TenantId=' +
-      result['tenantId'] +
+      result.tenantId +
       '; userName=' +
       this.userName +
       '; UserId=' +
       this.userInfo.userId +
       '; PropertyId=' +
-      result['propertyId'] +
+      result.propertyId +
       '; SubPropertyId=' +
-      result['subPropertyId'] +
+      result.subPropertyId +
       '; PlatformTenantId=' +
-      result['platformTenantId'] +
+      result.platformTenantId +
       '; PropertyDate=' +
-      result['propertyDate'] +
+      result.propertyDate +
       '; TimeZone=' +
-      result['timeZone'] +
+      result.timeZone +
       '; PropertyName=' +
-      result['propertyName'] +
+      result.propertyName +
       '; UserLanguage=' +
       userLanguageCode +
       '; ProductId=' +
-      result['productId'] +
+      result.productId +
       '; PlatformPropertyId=' +
-      result['platformPropertyId'] +
+      result.platformPropertyId +
       ';';
     sessionStorage.setItem(PROPERTY_INFO, PropertyValues);
-    sessionStorage.setItem(PROPERTY_DATE, result['propertyDate']);
+    sessionStorage.setItem(PROPERTY_DATE, result.propertyDate);
     /*TODO: Uncomment this once jwt token update implementation done */
     //  return this.GetUserToken(result).then(() => {
     //     this.SetPropertyInfo(result);
@@ -350,10 +353,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.SetPropertyInfo(result);
     this.setUserSettings(result);
     this.propertyInfo.SetPropertyDate(
-      this.utils.getDate(result['propertyDate']),
+      this.utils.getDate(result.propertyDate),
       false
     );
-    //this.CreateUserSession(result); Duplicate Call For Session Creation 
     this.localize.SetLocaleBasedProperties();
     this.UpdateUserRole(Selectedproperty.id);
   }
@@ -361,10 +363,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   async CreateUserSession(sessionInfo) {
     const sessionData = {
       id: 0,
-      userId: Number(sessionInfo['userId']),
+      userId: Number(sessionInfo.userId),
       startTime: moment().format('YYYY-MM-DDTHH:mm:ss'),
-      propertyId: Number(sessionInfo['propertyId']),
-      productId: Number(sessionInfo['productId']),
+      propertyId: Number(sessionInfo.propertyId),
+      productId: Number(sessionInfo.productId),
       timeZone: this.utils.GetClientTimeZone()
     };
     await this.CreateSession(sessionData);
@@ -380,7 +382,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       baseResponse: true
     };
     const result = await this.loginService.makePostCall(serviceParams);
-    var response = <any>result.result;
+    const response = result.result as any;
     sessionStorage.setItem('userSession', response);
   }
 
@@ -404,8 +406,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   async SetPropertyInfo(result: any) {
-    const propertyId: number = Number(result['propertyId']);
-    this.propertyInfo.SetPropertyDate(result['propertyDate']);
+    const propertyId: number = Number(result.propertyId);
+    this.propertyInfo.SetPropertyDate(result.propertyDate);
     this.propertyInfo.SetPropertyId(propertyId);
     this.SetPropertyConfiguration();
     if (!this.propertyInfo.UseRetailInterface) {
@@ -463,11 +465,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   setAutoLogOff() {
-    this._autoLogOff = this.utils.GetUserSettings('AutoLogOff');
-    if (this._autoLogOff == 'true') {
+    this.autoLogOff = this.utils.GetUserSettings('AutoLogOff');
+    if (this.autoLogOff == 'true') {
       this.sessionService.resetOnTrigger = true;
-      this._logOffAfter = +this.utils.GetUserSettings('LogOffAfter');
-      this.sessionService.startTimer(this._logOffAfter);
+      this.logOffAfter = +this.utils.GetUserSettings('LogOffAfter');
+      this.sessionService.startTimer(this.logOffAfter);
     } else {
       this.sessionService.resetOnTrigger = false;
     }
@@ -483,7 +485,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.loginForms.valid) {
       let muname = '';
       let tenantCode = '';
-      const id: any = (this.loginForms.controls.customerId.value !== '' && this.loginForms.controls.customerId.value !== undefined) ? this.loginForms.controls.customerId.value : this.custId;
+      const id: any = (this.loginForms.controls.customerId.value !== '' && this.loginForms.controls.customerId.value !== undefined) ?
+       this.loginForms.controls.customerId.value : this.custId;
       this.userName = this.loginForms.value.userId;
 
       if (this.userName.includes('@')) {
@@ -495,13 +498,13 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.tenantId = Number(id);
       this.validateCredentials({
         UserName: muname,
-        Password: this.loginForms.controls['password'].value,
+        Password: this.loginForms.controls.password.value,
         TenantId: this.tenantId != null ? this.tenantId : 0,
-        Property: this.loginForms.controls['location'].value, ProductId: Product.RETAIL, TenantCode: tenantCode
+        Property: this.loginForms.controls.location.value, ProductId: Product.RETAIL, TenantCode: tenantCode
       });
     } else {
-      this.loginForms.controls['userId'].markAsTouched();
-      this.loginForms.controls['password'].markAsTouched();
+      this.loginForms.controls.userId.markAsTouched();
+      this.loginForms.controls.password.markAsTouched();
     }
   }
 
@@ -544,8 +547,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private rememberUser() {
-    this.rememberMe = this.loginForms.controls['rememberme'].value;
-    const user = this.loginForms.controls['userId'].value;
+    this.rememberMe = this.loginForms.controls.rememberme.value;
+    const user = this.loginForms.controls.userId.value;
     if (this.rememberMe) { this.sessionService.StoreUser(user); } else { this.sessionService.RemoveUser(user); }
   }
 
