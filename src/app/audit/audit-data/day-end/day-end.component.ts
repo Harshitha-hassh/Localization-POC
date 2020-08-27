@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy, AfterViewChecked } from '@angular/core'; 
 import * as _ from 'lodash'; // STORAGE THE BACK ARRAY
 import { MatDialog } from '@angular/material';
-import { BaseResponse , ManagementData} from '../../../common/shared/shared.modal';
+import { BaseResponse } from '../../../common/shared/shared.modal';
+import { ManagementData } from '../../../shared/shared-models';
 import { GridData, PendingAction, AppointmentData, GridAction, ManagementDataType } from '../../AuditModals';
 import { AuditService } from '../../audit.service';
 import { Router } from '@angular/router';

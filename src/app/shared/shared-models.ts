@@ -1,4 +1,5 @@
 import { FormGroup } from '@angular/forms';
+import { SpaServiceLocation, TherapistDetails, SpaServices, PackageDetail, ServiceAddOns, LinkCode, SystemConfiguration, BreakType } from '../retail/retail.modals';
 
 
 export interface LocalizedMonthsModel {
@@ -131,7 +132,7 @@ export interface BaseResponse<T> {
 export interface KeyValuePair {
     key: any;
     value: any;
-  }
+}
 export interface ImageData {
     id: number;
     referenceType: string;
@@ -155,4 +156,48 @@ export interface ClientLabel {
     Id: number;
     FirstName: string;
     LastName: string;
+}
+
+export interface ManagementData {
+    location: SpaServiceLocation[];
+    therapist: TherapistDetails[];
+    service: SpaServices[];
+    package: PackageDetail[];
+    client: ClientDetail[];
+    addOn: ServiceAddOns[];
+    linkCode: LinkCode[];
+    appointmentConfigurations: SystemConfiguration[];
+    breakType: BreakType[];
+}
+
+export interface ClientDetail {
+    id: number;
+    guestId?: string;
+    title: string;
+    firstName: string;
+    FirstName?: string;
+    lastName?: string;
+    LastName?: string;
+    pronounce: string;
+    gender: string;
+    dateOfBirth: string;
+    comments: string;
+    bypassClientScheduling: boolean;
+    propertyId: number;
+    subPropertyId: number;
+    customField1: any;
+    customField2: any;
+    customField3: any;
+    customField4: any;
+    customField5: any;
+    genderPreference: string;
+    lastChangeId?: string;
+    interfaceGuestId: string;
+    priceTypeId: number;
+    loyaltyDetail: LoyaltyDetail[];
+}
+
+export interface LoyaltyDetail {
+    patronId: string;
+    rank: string;
 }
