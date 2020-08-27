@@ -6,13 +6,13 @@ import { RouteLoaderService } from '../core/services/route-loader.service';
   selector: 'app-reports',
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss'],
-  encapsulation:ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None
 })
 export class ReportsComponent implements OnInit {
 
   menuList: any;
   menuType = menuTypes;
-  constructor(private routeDataService: RouteLoaderService) {    
+  constructor(private routeDataService: RouteLoaderService) {
    }
 
   async ngOnInit() {

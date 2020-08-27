@@ -493,7 +493,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
       this.retailValidationService.LockTransaction(data.Id);
       // tslint:disable-next-line: max-line-length
       this.InvokeServiceCall('GetTransactionDetails', Host.retailPOS, HttpMethod.Get, { transactionId: data.Id, productId: Product.SPA }, null, null, ['settle']);
-    } else if (option.action == GridAction.CancelTransaction) {
+    } else if (option.action === GridAction.CancelTransaction) {
       if (await this.retailValidationService.IsTransactionLocked(data.Id)) {
         this.utils.ShowError(this.localization.captions.common.Warning, this.localization.captions.shop.TransactionLock, ButtonType.Ok);
         return;
