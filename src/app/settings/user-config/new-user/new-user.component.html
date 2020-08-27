@@ -1,20 +1,29 @@
-<section id="usersetup" class="user-setup h-100">
-  <div class="content-area">
-    <mat-tab-group class="h-100 " [(selectedIndex)]="this.selectedTabIndex" (selectedTabChange)="handleSelectedTabChange($event)">
-      <mat-tab label="{{this.caption.userConfig.USERSETTINGS}}">
-        <app-user-settings *ngIf="this.selectedTabIndex === 0"></app-user-settings>
-      </mat-tab>
-      <mat-tab label="{{this.caption.userConfig.SPASETTINGS}}">
-        <app-spa-settings [IsRoleSelected]="IsSpaRoleSelected" *ngIf="this.selectedTabIndex === 1"></app-spa-settings>
-      </mat-tab>
-      <mat-tab label="{{this.caption.userConfig.RETAILSETTINGS}}">
-        <app-retail-settings [IsRoleSelected]="IsRetailRoleSelected" *ngIf="this.selectedTabIndex === 2"></app-retail-settings>
-      </mat-tab>
-    </mat-tab-group>
+<section class="pop-container">
+  <div class="pop-head border-top">
+    <label class="inner-header pl-4 LW20">{{data.headername | uppercase}}</label>
+    <i *ngIf="data.closebool" class="material-icons inner-close IC30 float-md-right cursPointer"
+      (click)="cancel()">close</i>
   </div>
-  <mat-dialog-actions class="actions pl-4">
-    <button mat-raised-button class="actionButton" [ngClass]="!IsReadOnly && (popupConfigs.operation == 'New' && _servicesetting.userSettingsFormGrp.valid) || (popupConfigs.operation == 'Edit' && (_servicesetting.userSettingsFormGrp.dirty || _servicesetting.spaSettingsFormGrp.dirty || _servicesetting.retailSettingsFormGrp.dirty || _servicesetting.isRadioButtonsChange)) ? 'spa-primary-default' : 'spa-primary-disabled'"
-      (click)="SaveOrUpdate()">{{ActionButton}}</button>
-    <button mat-raised-button (click)="cancel()">{{caption.setting.cancel}}</button>
-  </mat-dialog-actions>
+  <div class="pop-contents">
+    <section id="usersetup" class="user-setup h-100">
+      <div class="content-area">
+        <mat-tab-group class="h-100 " [(selectedIndex)]="this.selectedTabIndex"
+          (selectedTabChange)="handleSelectedTabChange($event)">
+          <mat-tab label="{{this.caption.userConfig.USERSETTINGS}}">
+            <app-user-settings *ngIf="this.selectedTabIndex === 0"></app-user-settings>
+          </mat-tab>
+          <mat-tab label="{{this.caption.userConfig.RETAILSETTINGS}}">
+            <app-retail-settings [IsRoleSelected]="IsRetailRoleSelected" *ngIf="this.selectedTabIndex === 1">
+            </app-retail-settings>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <mat-dialog-actions class="actions pl-4">
+        <button mat-raised-button class="actionButton"
+          [ngClass]="!IsReadOnly && (data.mode == 'New' && _servicesetting.userSettingsFormGrp.valid) || (data.mode == 'Edit' && (_servicesetting.userSettingsFormGrp.dirty || _servicesetting.retailSettingsFormGrp.dirty || _servicesetting.isRadioButtonsChange)) ? 'spa-primary-default' : 'spa-primary-disabled'"
+          (click)="SaveOrUpdate()">{{ActionButton}}</button>
+        <button mat-raised-button (click)="cancel()">{{caption.setting.cancel}}</button>
+      </mat-dialog-actions>
+    </section>
+  </div>
 </section>

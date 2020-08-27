@@ -1,0 +1,392 @@
+<div class="CustomDataTable" id="table_{{SelectedSettingId}}" (window:resize)="viewCheckedFlag = false">
+  <form class="w-100 h-100" [formGroup]="table">
+    <div class="page-header" id="pageHeader" (window:resize)="calculateWidth()">
+      <mat-form-field *ngIf="options ? options[0].Searchable : false" class="spa-searchbox searchpt custSearchbox"
+        floatLabel="never" id="searchInput">
+        <input #tableInput matInput autocomplete="off" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
+          type="text" placeholder="{{captions.common.SearchBy}} {{PlaceHoldertext}}" value="" (keypress)="currentPage=1"
+          (ngModelChange)="viewCheckedFlag=false">
+        <i [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor"
+          (click)="searchText='';viewCheckedFlag = false"></i>
+      </mat-form-field>
+
+      <div class="search-container pb-1 d-inline-block example-margin" *ngIf="InactiveTherapists || ChkInactiveService">
+        <div class="yes-col toggle-section" *ngIf="InactiveTherapists">
+          <label class="LW12 label-color pr-2">{{captions.common.ShowInactiveTherapist}}</label>
+          <app-toggle-switch [formControl]="inActiveTherapist" (changeToggleEvent)="InactiveTherapist($event)">
+          </app-toggle-switch>
+        </div>
+        <div class="yes-col toggle-section" *ngIf="ChkInactiveService">
+          <label class="LW12 label-color pr-2">{{captions.common.ShowInactiveService}}</label>
+          <app-toggle-switch [formControl]="inActiveService" (changeToggleEvent)="InactiveService($event)">
+          </app-toggle-switch>
+        </div>
+        <!-- <mat-checkbox *ngIf="InactiveTherapists" (change)="InactiveTherapist($event)" [(ngModel)]="indeterminate" [ngModelOptions]="{standalone: true}">{{captions.common.ShowInactiveTherapist}}</mat-checkbox>
+        <mat-checkbox *ngIf="ChkInactiveService" (change)="InactiveService($event)" [(ngModel)]="indeterminate" [ngModelOptions]="{standalone: true}">{{captions.common.ShowInactiveService}}</mat-checkbox> -->
+      </div>
+      <div class="align-items-center pt-1 ml-auto table-toggle-switches" *ngIf="showToggle">
+        <span class="LW14 pr-2 display-text">{{toggleDisplayText}}</span>
+        <!-- <label class="switch">
+          <input class="switch-input" type="checkbox" [name]="toggleDisplayText" (change)="sliderChange($event)" />
+          <span class="switch-label " [attr.data-on]="localization.captions.common.Yes" [attr.data-off]="localization.captions.common.No"></span>
+          <span class="switch-handle "></span>
+        </label> -->
+        <ui-switch class="LW14 switch-toggle" size="small" checkedLabel={{localization.captions.common.Yes}}
+          uncheckedLabel={{localization.captions.common.No}} (change)="sliderChange($event)" >
+        </ui-switch>
+      </div>
+
+      <div *ngIf="customHeader" class="custom-retail-inputs">
+        <!-- Removed the unwanted retail code  -->
+        <div ngSwitch={{pageTitle}} class="template-header">
+          <ng-template [ngSwitchCase]="'roleSetup'">
+            <div class='outletsHeader d-flex flex-wrap'>
+              <form [formGroup]="roleSetup">
+                <mat-form-field class="role-name">
+                  <input matInput placeholder="{{captions.retailsetup.RoleName}}" (input)="UpdateValidation()"
+                    formControlName="roleName" autofocus="false" autocomplete="off" [readonly]="isRoleSetUpReadOnly"
+                    [maxlength]="250">
+                  <mat-error class=""
+                    *ngIf="!isRoleSetUpReadOnly && (roleSetup.controls['roleName'].hasError('required') && !roleSetup.controls['roleName'].valid)">
+                    {{this.captions.retailsetup.MissingRoleName}}
+                  </mat-error>
+                </mat-form-field>
+                <div *ngIf="enableToggleButton" class="d-inline">
+                  <div class="align-toggle d-inline-block" *ngIf="enableToggleButton">
+                    <span class="role-setup-toggle-label LW12 pr-2 d-block">{{captions.setting.Active}}</span>
+                    <ui-switch class="LW14 switch-toggle" formControlName="activetoggle" size="small"
+                      checkedLabel={{localization.captions.common.Yes}}
+                      uncheckedLabel={{localization.captions.common.No}} (change)="UpdateValidation()"
+                      ></ui-switch>
+                  </div>
+                </div>
+                <button mat-raised-button type="button" class="p-2 search_button_width LW14 ml-2"
+                  [ngClass]="IsRoleSetupValid ? 'body-bgcolor whitecolor body-bordercolor' : ''"
+                  [disabled]="!IsRoleSetupValid"
+                  (click)="onButtonClick($event,customHeaderButton,options[0].ServiceId)">{{customHeaderButton}}</button>
+                <a *ngIf="customHeaderButton.toLowerCase() == this.localization.captions.setting.UPDATE.toLowerCase()"
+                  class="p-2 ml-2 search_button_width cancel-btn LW14"
+                  (click)="onButtonCancelClick($event)">{{captions.retailsetup.CANCEL}}</a>
+              </form>
+
+              <div class="text-align-right role-setup-header ml-auto">
+                <div class="align-items-center ml-auto d-inline-block mr-1 text-align-left inactive-roles">
+                  <span class="role-setup-toggle-label LW12 pr-2 d-block">{{captions.common.ShowInactiveRoles}}</span>
+                  <!-- <label class="switch">
+                    <input class="switch-input" type="checkbox" [name]="toggleDisplayText" (change)="sliderChange($event)" />
+                    <span class="switch-label " [attr.data-on]="localization.captions.common.Yes" [attr.data-off]="localization.captions.common.No"></span>
+                    <span class="switch-handle "></span>
+                  </label> -->
+                  <ui-switch class="LW14 switch-toggle" size="small" checkedLabel={{localization.captions.common.Yes}}
+                    uncheckedLabel={{localization.captions.common.No}} (change)="sliderChange($event)"
+                    ></ui-switch>
+                </div>
+                <mat-form-field class="searchArea spa-searchbox custSearchbox" floatLabel="never"
+                  [ngClass]="enableToggleButton ? 'searchWidth': ''">
+                  <input #tableInput matInput autocomplete="off" style="width:90%;" [(ngModel)]="searchText"
+                    [ngModelOptions]="{standalone: true}" type="text" placeholder="{{PlaceHoldertext}}"
+                    [maxlength]="250" value="" (keypress)="currentPage=1" (ngModelChange)="viewCheckedFlag=false">
+                  <i [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor"
+                    (click)="searchText='';viewCheckedFlag = false"></i>
+                </mat-form-field>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <!--- end -->
+    </div>
+
+    <div class="text-align-right status-btn" *ngIf="GridType.therapist == SelectedSettingId">
+      <span class="dot active"></span>
+      <span class="status LW14 pr-4 cursordefault">{{localization.captions.setting.Active}}</span>
+      <span class="dot inactive"></span>
+      <span class="status LW14 cursordefault">{{localization.captions.setting.Inactive}}</span>
+    </div>
+
+    <div class="fixed-table-container" id="fixed-table-container" [ngClass]="{'noSort': bodyArray.length < 1}">
+      <!--  hidden-head <div class="header-background"> </div> -->
+      <!-- <div class="fixed-table-container-inner"> -->
+      <div class="w-100 grid-table" id="SPACustomTable">
+        <ng-scrollbar [trackX]="true" [autoHide]="true">
+
+
+          <!-- <ng-scrollbar> -->
+          <table cellspacing="0" class="table mb-0">
+            <thead>
+              <tr id="SPAHeaderRow">
+                <th *ngIf="RadiobuttonOption" class="table-radio">
+                  <div class="th-inner"></div>
+                </th>
+                <th *ngIf="EditMoreOption && SelectRow" class="pr-3 table-checkbox noellipsis">
+                  <div class="th-inner">
+                    <mat-checkbox
+                      [disabled]="isReadOnly || ((bodyArray | filterPipe: searchText : hdrkeyArray).length <= 0)"
+                      (change)="RowSelect($event,bodyArray,'All')" formControlName="IsCheckAll"></mat-checkbox>
+                  </div>
+                </th>
+                <th *ngFor="let hdrCnt of hdrArray;let hi=index" id="header{{hi}}"
+                  [ngClass]="[hdrCnt.alignType=='right' ? 'text-right' : hdrCnt.alignType=='center' ? 'text-center':'',hdrCnt.sortable != undefined ? (hdrCnt.sortable ? '': 'pointerevents-none') : '']"
+                  [class.cursordefault]="hdrCnt.sortable != undefined ? (hdrCnt.sortable ? false: true) : false"
+                  [class.cursor]="hdrCnt.sortable != undefined ? (hdrCnt.sortable ? true: false) : true"
+                  (click)="sortingFunc(hdrCnt.jsonkey,hi,'Frmtable', hdrCnt.sortcolumn, hdrCnt.sortcolumndatatype)">
+                  <div class="th-inner"
+                    [class.font-weight-bold]="selectedDefaultHeader == hdrCnt.jsonkey && (bodyArray | filterPipe: searchText : hdrkeyArray).length > 0 && hdrCnt.sortable != undefined ? hdrCnt.sortable : (selectedDefaultHeader == hdrCnt.jsonkey && bodyArray.length > 0)">
+                    {{hdrCnt.title}}
+                    <span class="pl-1 position-relative" *ngIf="hdrCnt.jsonkey != ''">
+                      <i id="sortArrow{{hi}}"
+                        *ngIf="(hdrCnt.jsonkey != '' && hdrCnt.sortable != undefined ? hdrCnt.sortable : true) && (bodyArray | filterPipe: searchText : hdrkeyArray).length != 0"
+                        [ngStyle]="{'opacity':selectedDefaultHeader == hdrCnt.jsonkey ? '1' : '0.3' }" [ngClass]="selectedDefaultHeader == hdrCnt.jsonkey && orderType == 'asc' ? 'icon-filled_up_arrow position-absolute deg0 IC6': selectedDefaultHeader == hdrCnt.jsonkey && orderType =='desc' ?
+                        'icon-filled_up_arrow deg180 position-absolute IC6': 'icon-sortArrow sort-icon'">
+
+                      </i>
+                    </span>
+                  </div>
+                </th>
+                <th style="width: 25px;" *ngIf="SelectedSettingId != GridType.retail"></th>
+                <th *ngIf="!isRoleSetUpReadOnly && EnableActions"
+                  [ngClass]="{'column-sticky': sticky, 'minwidth177':DoneCancel, 'minwidth100':!DoneCancel}">
+                  <div class="th-inner  ">{{captions.setting.Actions}}</div>
+                </th>
+                <th
+                  *ngIf="(EditMoreOption || SelectRow) && (SelectedSettingId != GridType.retail && SelectedSettingId != GridType.quickSale) && !isEditOptionRemove"
+                  class="pr-3">
+                  <div class="th-inner">
+                    <div *ngIf="SelectedSettingId == GridType.password"> {{captions.setting.Actions}}</div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class=" h-100" flex formArrayName="tablebody">
+
+              <tr draggable [dragEnabled]="blnDraggable" [dragData]="bodyCnt" [dragHandle]="'.draggable'"
+                [dropEnabled]="blnDraggable" droppable (OnDragOver)="onDragOver($event,bodyCnt,bodyArray)"
+                (onDrop)="onItemDrop($event,bodyCnt,bodyArray)"
+                [ngClass]="{'highlight' :((NewerData[0] === bodyCnt) || (SelectedData === bodyCnt)), 'onEdit':isEdit, 'editRow':editableRow == bodyCnt.id, 'rowDisabled': (enableRowCheck | enablerow : bi : options : editEvent)}"
+                id="{{bodyCnt.id}}"
+                *ngFor="let bodyCnt of (bodyArray | filterPipe: searchText : hdrkeyArray | sortPipe : orderType : selectedDefaultHeader : overriddenSortColumn : sortColumnDataType);let bi=index;trackBy:trackByFn"
+                [formGroupName]="bi">
+
+                <td *ngIf="RadiobuttonOption">
+                  <mat-radio-group class="example-radio-group" name="radioButtonGrp">
+                    <mat-radio-button class="example-radio-button" value="" (click)="radioClick(bodyCnt,bi)">
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </td>
+                <td *ngIf="EditMoreOption && SelectRow && GridType.quickSale != SelectedSettingId"
+                  class="pr-3 table-checkbox noellipsis">
+                  <mat-checkbox (change)="RowSelect($event,bodyCnt,'Single')"
+                    [checked]="SelectedData.indexOf(bodyCnt) != -1" [disabled]="isReadOnly || bodyCnt.checkbox">
+                  </mat-checkbox>
+                </td>
+                <td *ngIf="EditMoreOption && SelectRow && GridType.quickSale == SelectedSettingId"
+                  class="pr-3 table-checkbox noellipsis">
+                  <mat-checkbox (change)="RowSelect($event,bodyCnt,'Single')"
+                    [checked]="(SelectedData.indexOf(bodyCnt) != -1)" [disabled]="isReadOnly"></mat-checkbox>
+                </td>
+
+                <td *ngFor="let hdrCnt of hdrArray;let hi=index"
+                  [ngClass]="[hdrCnt.alignType=='right' ? 'text-right pr23' : 'hello',hdrCnt.alignType=='center' ? 'text-center' : '']"
+                  class="table-data">
+                  <span
+                    [isEllipsis]="hdrCnt.datatype && hdrCnt.datatype == 'money' ? localization.localizeCurrency(bodyCnt[hdrCnt.jsonkey], false):bodyCnt[hdrCnt.jsonkey]"
+                    class="content textellipsis" id="content" matTooltipClass="tooltipClass">
+                    <span *ngIf="hdrCnt.jsonkey == 'printQty'">
+                      <input type="number" class="form-control" min='0'
+                        style="border-radius: 5px;width: 100px;height: 30px;" (change)="printQtyColor($event)"
+                        (keydown)="printQtyColor($event)"
+                        [value]="bodyCnt[hdrCnt.jsonkey] == null ? 0:bodyCnt[hdrCnt.jsonkey] ">
+                    </span>
+                    <div class=""
+                      [ngClass]="IsViewOnly || isRoleSetUpReadOnly || hdrCnt.jsonkey == 'isInActive' ? 'button_invalid' : ''"
+                      *ngIf="hdrCnt.jsonkey == 'inactive' || hdrCnt.jsonkey == 'active' || (hdrCnt.type && hdrCnt.type == 'toggle')">
+                      <!-- <label class="switch">
+                        <input class="switch-input" type="checkbox" [name]="toggleDisplayText" (change)="showInactiveRoles(bodyCnt[hdrCnt.jsonkey], bodyCnt, bi)"
+                          [(ngModel)]="bodyCnt[hdrCnt.jsonkey]" [ngModelOptions]="{standalone: true}"
+                        />
+                        <span class="switch-label " [attr.data-on]="localization.captions.common.Yes" [attr.data-off]="localization.captions.common.No"></span>
+                        <span class="switch-handle"></span>
+                      </label> -->
+                      <ui-switch class="LW14 switch-toggle" [(ngModel)]="bodyCnt[hdrCnt.jsonkey]"
+                        [ngModelOptions]="{standalone: true}" size="small"
+                        checkedLabel={{localization.captions.common.Yes}}
+                        uncheckedLabel={{localization.captions.common.No}}
+                        (change)="showInactiveRoles(bodyCnt[hdrCnt.jsonkey], bodyCnt, bi)" [name]="toggleDisplayText">
+                      </ui-switch>
+                    </div>
+                    <!-- <span *ngIf="hdrCnt.jsonkey == 'services'">
+                                    <span *ngFor="let service of bodyCnt[hdrCnt.jsonkey]; let isLast=index">
+                                      <span *ngIf="service.selectService == true">{{service.serviceName}}{{isLast == bodyCnt[hdrCnt.jsonkey].length -1 ? '' : ', '}}</span>
+                                    </span>
+                                  </span> -->
+                    <!-- MatSelect is removed and moved to retail table -->
+                    <span *ngIf="hdrCnt.jsonkey == 'splitLevels'">
+                      <span class='splitLevel'
+                        *ngFor="let level of bodyCnt.splitLevels">{{level.level}}&nbsp;{{level.split}}%</span>
+                    </span>
+                    <span
+                      *ngIf="SelectedSettingId == 21 && (hdrCnt.jsonkey == 'startDate' || hdrCnt.jsonkey == 'endDate')">
+                      <span>
+                        {{bodyCnt[hdrCnt.jsonkey] | localizeDate}}
+                      </span>
+                    </span>
+                    <span *ngIf="!(CheckInnerBoolValue | checkinnerbool : bodyCnt[hdrCnt.jsonkey])">
+                      <span
+                        *ngIf="hdrCnt.datatype && hdrCnt.datatype == 'decimal' && !(IfBooleanCheck | ifboolean : bodyCnt[hdrCnt.jsonkey])">
+                        {{bodyCnt[hdrCnt.jsonkey] | loaddecimalvalue}}
+                      </span>
+                      <span
+                        *ngIf="hdrCnt.datatype && hdrCnt.datatype == 'money' && !(IfBooleanCheck | ifboolean : bodyCnt[hdrCnt.jsonkey])">
+                        {{bodyCnt[hdrCnt.jsonkey] | Currency}}
+                      </span>
+                      <span
+                        *ngIf="hdrCnt.datatype && hdrCnt.datatype == 'percentage' && !(IfBooleanCheck | ifboolean : bodyCnt[hdrCnt.jsonkey])">
+                        {{bodyCnt[hdrCnt.jsonkey] | Currency : false}}%
+                      </span>
+                      <span
+                        *ngIf="hdrCnt.datatype && hdrCnt.datatype == 'date' && !(IfBooleanCheck | ifboolean : bodyCnt[hdrCnt.jsonkey])">
+                        {{bodyCnt[hdrCnt.jsonkey] | localizeDate}}
+                      </span>
+
+                      <!-- <span *ngIf="hdrCnt.datatype == 'decimal' || hdrCnt.datatype == 'money' || hdrCnt.datatype == 'percentage' || hdrCnt.datatype == 'date'">{{bodyCnt[hdrCnt.jsonkey]}}</span> -->
+                      <div *ngIf="hdrCnt.jsonkey=='color'" [ngStyle]="{'background-color': bodyCnt.color}"
+                        class="color-span d-inline-block mr-1"></div>
+                      <div *ngIf="hdrCnt.displayType && hdrCnt.displayType == 'icon'" class="d-inline-block">
+                        <ng-container *ngIf="SelectedSettingId == GridType.password">
+                          <span *ngIf="bodyCnt[hdrCnt.jsonkey]">
+                            <i class="icon-done icon-font-table"></i>
+                            <span>Set</span>
+                          </span>
+                          <span *ngIf="!bodyCnt[hdrCnt.jsonkey]">
+                            <i style="padding-right: 3px;" class="icon-close icon-font-table"></i>
+                            <span>Not Set</span>
+                          </span>
+                        </ng-container>
+                        <i *ngIf="bodyCnt[hdrCnt.jsonkey] == captions.setting.Revenue" class="icon-Revenue"></i>
+                        <i *ngIf="bodyCnt[hdrCnt.jsonkey] == captions.setting.Items" class="icon-Item"></i>
+                      </div>
+                      <span *ngIf="hdrCnt.jsonkey == 'services'">
+
+                      </span>
+                      <span
+                        *ngIf="!hdrCnt.datatype && !(IfBooleanCheck | ifboolean : bodyCnt[hdrCnt.jsonkey]) && hdrCnt.jsonkey != 'printQty' && hdrCnt.jsonkey != 'category'">
+                        <label class="label-green-round"
+                          *ngIf="hdrCnt.showStatus == true && bodyCnt.isActive == true"></label>
+                        <label class="label-red-round"
+                          *ngIf="hdrCnt.showStatus == true && bodyCnt.isActive == false"></label>
+                        <span [ngClass]="{'anchor-like': hdrCnt.type == 'clickable'}"
+                          (click)="lblclick(bodyCnt, bi , hdrCnt.type)">
+                          {{(SetColumnGridValue | setcolumnvalue : bodyCnt : hdrCnt.jsonkey)}}
+                        </span>
+                      </span>
+                      <span
+                        *ngIf="(IfBooleanCheck | ifboolean : bodyCnt[hdrCnt.jsonkey]) && !(SelectedSettingId == GridType.password || SelectedSettingId == GridType.retail || SelectedSettingId == GridType.outlet || SelectedSettingId == GridType.roleSetup || SelectedSettingId == GridType.cancelReasons)">
+                        <i *ngIf="bodyCnt[hdrCnt.jsonkey]" class="icon-SuccessDark"></i>
+                        <span *ngIf="SelectedSettingId == 8 && bodyCnt[hdrCnt.jsonkey]">Yes</span>
+                      </span>
+                      <span
+                        *ngIf="(!IfBooleanCheck | ifboolean : bodyCnt[hdrCnt.jsonkey]) && !(SelectedSettingId == GridType.password || SelectedSettingId == GridType.retail || SelectedSettingId == GridType.outlet || SelectedSettingId == GridType.roleSetup || SelectedSettingId == GridType.cancelReasons)">
+                        <i *ngIf="!bodyCnt[hdrCnt.jsonkey]" class="icon-error-icon"></i>
+                        <span *ngIf="SelectedSettingId == 8 && !bodyCnt[hdrCnt.jsonkey]">No</span>
+                      </span>
+
+                    </span>
+                  </span>
+                </td>
+                <!-- <td *ngFor="let remainLen of remailLength" class="adjustTBwidth">&nbsp;&nbsp;&nbsp;&nbsp;</td> -->
+                <td style="width: 25px" *ngIf="SelectedSettingId != GridType.retail"></td>
+                <!-- myGlobals.GridType.password - 12 (reffered as SelectedSettingId)-->
+                <td *ngIf="!isRoleSetUpReadOnly && EnableActions && !(SelectedSettingId == GridType.password)"
+                  [ngClass]="{'column-sticky': sticky,'minwidth177':DoneCancel}" class="noellipsis">
+                  <!-- <i *ngIf="SelectedSettingId == GridType.retail" class="icon-print cursor" matTooltip="{{captions.common.Print}}" (click)="PrintRecord(bodyCnt)"></i> -->
+                  <i class="icon-SuccessDark cursor" matTooltip="" (click)="waitlist(bodyCnt)" *ngIf="waitlistIcon"
+                    matTooltip="{{captions.bookAppointment.ConfirmWaitlist}}"></i>
+                  <i class="icon-Edit cursor"
+                    [ngClass]="(IsViewOnly && IsRetailCodeSetup)||disableEditButton ? 'button_invalid' : ''"
+                    *ngIf="editable && !table.value.tablebody[bi].donecancel" matTooltip="{{captions.common.Edit}}"
+                    (click)="editRow($event,bodyCnt,'edit',options[0].ServiceId)"></i>
+                  <i *ngIf="!disableDelete && !table.value.tablebody[bi].donecancel" class="icon-Delete cursor"
+                    [ngClass]="IsViewOnly ? 'button_invalid' : ''" matTooltip="{{captions.common.Delete}}"
+                    (click)="DeleteRecords(bodyCnt)"></i>
+                  <i class="icon-DragAndDrop movecursor draggable" [ngClass]="IsViewOnly ? 'button_invalid' : ''"
+                    *ngIf="blnDraggable && !table.value.tablebody[bi].donecancel"
+                    matTooltip="{{captions.common.Drag}}"></i>
+
+                  <i class="icon-enabled-user cursor" (click)="changeUserAction($event,bodyCnt,options[0].ServiceId)"
+                    *ngIf="userAction && !bodyCnt.isActive" matTooltip="{{captions.common.Activate}}"></i>
+
+                  <i class="icon-disabled-user cursor" (click)="changeUserAction($event,bodyCnt,options[0].ServiceId)"
+                    *ngIf="userAction && bodyCnt.isActive" matTooltip="{{captions.common.Deactivate}}"></i>
+
+                  <span *ngIf="table.value.tablebody[bi].donecancel" class="done" (click)="Done(bodyCnt, bi)">
+                    <i class="icon-done"></i>{{captions.common.cDone}}</span>
+                  <span *ngIf="table.value.tablebody[bi].donecancel" class="cancel" (click)="Cancel(bodyCnt, bi)">
+                    <i class="icon-Cancel"></i>{{captions.common.cCancel}}</span>
+                </td>
+                <td
+                  *ngIf="EditMoreOption && !SelectOnlyRow && (SelectedSettingId != GridType.retail) && !isEditOptionRemove"
+                  class="pr-3 noellipsis">
+                  <!-- myGlobals.GridType.commission - 8-->
+                  <i class="icon-More cursor" [ngClass]="IsMoreOptionReadOnly ? 'button_invalid':''"
+                    *ngIf="SelectedSettingId == GridType.commission || SelectedSettingId == RetailTransactions.opentransactions"
+                    matTooltip="{{captions.common.More}}" [matMenuTriggerFor]="menu"></i>
+                  <!-- myGlobals.GridType.appointmentsearch - 9 -->
+                  <i class="icon-More cursor" *ngIf="SelectedSettingId == 9 " matTooltip="{{captions.common.More}}"
+                    [matMenuTriggerFor]="menu2"></i>
+                  <!-- myGlobals.GridType.password - 12 -->
+                  <i class="icon-More cursor" *ngIf="SelectedSettingId == GridType.password "
+                    matTooltip="{{captions.common.More}}" [matMenuTriggerFor]="menuEditPasscode"></i>
+                  <mat-menu #menu="matMenu" class="matMenu">
+                    <button mat-menu-item (click)="editRow($event,bodyCnt,'new',options[0].ServiceId)">
+                      <!-- <mat-icon>dialpad</mat-icon> -->
+                      <span class="LW14">{{captions.common.New}}</span>
+                    </button>
+                    <!-- <button mat-menu-item disabled>
+                              <mat-icon>voicemail</mat-icon>
+                              <span>Check voicemail</span>
+                            </button> -->
+                    <button mat-menu-item (click)="editRow($event,bodyCnt,'edit',options[0].ServiceId, bi)">
+                      <!-- <mat-icon>notifications_off</mat-icon> -->
+                      <span class="LW14">{{captions.common.Edit}}</span>
+                    </button>
+                  </mat-menu>
+
+                  <mat-menu #menu2="matMenu" class="matMenu">
+                    <button mat-menu-item (click)="editRow($event,bodyCnt,'new',options[0].ServiceId)">
+                      <!-- <mat-icon>dialpad</mat-icon> -->
+                      <span class="LW14">{{captions.common.ChangeStatus}}</span>
+                    </button>
+                  </mat-menu>
+                  <mat-menu #menuEditPasscode="matMenu" class="matMenu">
+                    <button mat-menu-item (click)="editRow($event,bodyCnt,'new',options[0].ServiceId)">
+                      <!-- <mat-icon>dialpad</mat-icon> -->
+                      <span class="LW14">{{captions.common.AddPasscode}}</span>
+                    </button>
+                    <button mat-menu-item (click)="editRow($event,bodyCnt,'edit',options[0].ServiceId)">
+                      <!-- <mat-icon>dialpad</mat-icon> -->
+                      <span class="LW14">{{captions.common.EditPasscode}}</span>
+                    </button>
+                  </mat-menu>
+
+                </td>
+              </tr>
+              <tr *ngIf="(bodyArray | filterPipe: searchText : hdrkeyArray).length == 0 && !isDataLoading">
+                <td [colSpan]="SelectRow ? originalHdrKeyArray.length+2 : originalHdrKeyArray.length+1"
+                  class="text-center"> {{captions.common.NoDataFound}} </td>
+              </tr>
+              <tr *ngIf="isDataLoading">
+                <td [colSpan]="SelectRow ? originalHdrKeyArray.length+2 : originalHdrKeyArray.length+1"
+                  class="text-center">{{captions.common.loadingData}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- </ng-scrollbar> -->
+        </ng-scrollbar>
+
+
+      </div>
+      <!-- </div> -->
+    </div>
+
+  </form>
+</div>

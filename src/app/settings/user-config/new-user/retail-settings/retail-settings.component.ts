@@ -1,13 +1,19 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Localization } from '../../../../core/localization/Localization';
-import { Utilities } from '../../../../shared/utilities/utilities';
+// import { Utilities } from '../../../../shared/utilities/utilities';
 import { SettingsService } from '../../../settings.service';
-import { Host } from '../../../../shared/globalsContant';
-import { HttpMethod, HttpServiceCall } from '../../../../shared/service/http-call.service';
-import * as GlobalConst from '../../../../shared/globalsContant';
+// import { Host } from '../../../../shared/globalsContant';
+// import { HttpMethod, HttpServiceCall } from '../../../../shared/service/http-call.service';
+// import * as GlobalConst from '../../../../shared/globalsContant';
 import * as _ from 'lodash';
-import { BaseResponse } from '../../../../shared/business/shared.modals';
+import { Utilities } from 'src/app/core/utilities';
+import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.service';
+import { Product } from 'src/app/common/Models/common.models';
+import { BaseResponse } from 'src/app/common/shared/shared.modal';
+import { HttpMethod } from 'src/app/common/Models/http.model';
+import { Host } from 'src/app/common/shared/shared/globalsContant';
+// import { BaseResponse } from '../../../../shared/business/shared.modals';
 
 @Component({
   selector: 'app-retail-settings',
@@ -33,22 +39,21 @@ export class RetailSettingsComponent implements OnInit {
     this.caption = this.localization.captions;
     this.ActionButton = this.caption.setting.save;
     this.retailSettingsFormGrp = this._servicesetting.retailSettingsFormGrp;
-    this.IsReadOnly = this._servicesetting.breakpoints.find(bp => bp.breakPointNumber == GlobalConst.SPAScheduleBreakPoint.UserSetup).view;
-    if (this.IsReadOnly) {
-      this._utilities.disableControls(this.retailSettingsFormGrp);
-    }
-    this.roles = this._servicesetting.userRoles && this._servicesetting.userRoles.length > 0 ? this._servicesetting.userRoles.filter(x => x.active === true  && x.productId.includes(GlobalConst.Product.RETAIL)).map(x => { return { id: x.id, name: x.description } }) : this.GetServiceCall('GetActiveUserRolesByPropertyId', {propertyId: Number(this._utilities.GetPropertyInfo('PropertyId')) , includeInActive : false});
+    // this.IsReadOnly = this._servicesetting.breakpoints.find(bp => bp.breakPointNumber == GlobalConst.SPAScheduleBreakPoint.UserSetup).view;
+    // if (this.IsReadOnly) {
+    //   this._utilities.disableControls(this.retailSettingsFormGrp);
+    // }
+    this.roles = this._servicesetting.userRoles && this._servicesetting.userRoles.length > 0 ? this._servicesetting.userRoles.filter(x => x.active === true  && x.productId.includes(Product.RETAIL)).map(x => ({ id: x.id, name: x.description })) : this.GetServiceCall('GetActiveUserRolesByPropertyId', {propertyId: Number(this._utilities.GetPropertyInfo('PropertyId')) , includeInActive : false});
     //this.GetServiceCall('GetActiveUserRole', { tenantId: Number(this._utilities.GetPropertyInfo('TenantId')) , includeInActive : false });
     if (!(this._servicesetting.propOutlets && this._servicesetting.propOutlets.length > 0)) {
       this.outlets = [];
-    }
-    else {
+    } else {
       this.outlets = [{ id: 0, name: 'ALL' }]
-      let actOuts = this._servicesetting.propOutlets.map(x => { return { id: x.subPropertyID, name: x.subPropertyName } });
+      const actOuts = this._servicesetting.propOutlets.map(x => ({ id: x.subPropertyID, name: x.subPropertyName }));
       this.outlets.push(...actOuts);
       this._utilities.setUserAccessSettings(this.outlets, this._servicesetting.selectedOutlets);
     }
-    let servicSettingControl = this._servicesetting.retailSettingsFormGrp.controls;
+    const servicSettingControl = this._servicesetting.retailSettingsFormGrp.controls;
     if (!servicSettingControl.autologoff.value) {
       servicSettingControl.logoffafter.disable();
     } else {
@@ -77,11 +82,10 @@ export class RetailSettingsComponent implements OnInit {
   }
 
   sliderChange(event, type?) {
-    let serviceSettingControl = this._servicesetting.retailSettingsFormGrp.controls;
+    const serviceSettingControl = this._servicesetting.retailSettingsFormGrp.controls;
     if (type == 'ALO') {
       serviceSettingControl.autologoff.setValue(event[0]);
-    }
-    else if (type == 'AC') {
+    } else if (type == 'AC') {
       serviceSettingControl.allowcommission.setValue(event[0]);
       if (event[0]) {
         serviceSettingControl.commissionclass.setValue(serviceSettingControl.commissionclass.value == 0 ? "" : serviceSettingControl.commissionclass.value);
@@ -116,15 +120,14 @@ export class RetailSettingsComponent implements OnInit {
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
     if (callDesc == 'GetActiveUserRolesByPropertyId') {
       if (result.result) {
-        let data = <any>result.result;
-        data = data.filter(x => x.productId.includes(GlobalConst.Product.RETAIL)) ;
-        this.roles = data.map(x => { return { id: x.id, name: x.description } });
+        let data = result.result as any;
+        data = data.filter(x => x.productId.includes(Product.RETAIL)) ;
+        this.roles = data.map(x => ({ id: x.id, name: x.description }));
       }
-    }
-    else if (callDesc == 'GetOutlets') {
+    } else if (callDesc == 'GetOutlets') {
       if (result.result) {
-        this._servicesetting.propOutlets = <any>result.result;
-        let actOuts = this._servicesetting.propOutlets.map(x => { return { id: x.subPropertyId, name: x.subPropertyName } })
+        this._servicesetting.propOutlets = result.result as any;
+        const actOuts = this._servicesetting.propOutlets.map(x => ({ id: x.subPropertyId, name: x.subPropertyName }))
         this.outlets.push(...actOuts);
       }
     }

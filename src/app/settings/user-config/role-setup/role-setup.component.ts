@@ -1,13 +1,22 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import * as myGlobals from '../../../shared/globalsContant'; //CONSTANT FILE ADD ANY CONSTANT VALUE
-import { HttpServiceCall, HttpMethod } from '../../../shared/service/http-call.service';
+// import * as myGlobals from '../../../shared/globalsContant'; //CONSTANT FILE ADD ANY CONSTANT VALUE
+// import { HttpServiceCall, HttpMethod } from '../../../shared/service/http-call.service';
 import { Localization } from '../../../core/localization/Localization';
-import { Host, GridType, ButtonType } from '../../../shared/globalsContant';
-import { BreakPointAccess } from '../../../shared/service/breakpoint.service';
-import * as GlobalConst from '../../../shared/globalsContant';
-import { Utilities } from '../../../shared/utilities/utilities';
-import { BaseResponse, Role, RoleSetup } from '../../../shared/business/shared.modals';
+// import { Host, GridType, ButtonType } from '../../../shared/globalsContant';
+// import { BreakPointAccess } from '../../../shared/service/breakpoint.service';
+// import * as GlobalConst from '../../../shared/globalsContant';
+// import { Utilities } from '../../../shared/utilities/utilities';
+// import { BaseResponse, Role, RoleSetup } from '../../../shared/business/shared.modals';
 import { SettingsService } from '../../settings.service';
+import { Role } from 'src/app/retail/shared/business/shared.modals';
+import { RoleSetup } from './role.model';
+import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.service';
+import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
+import { Utilities } from 'src/app/core/utilities';
+import { Product } from 'src/app/retail/shared/globalsContant';
+import { BaseResponse } from 'src/app/common/shared/shared.modal';
+import { HttpMethod } from 'src/app/common/Models/http.model';
+import { Host, GridType } from 'src/app/common/shared/shared/globalsContant';
 
 @Component({
   selector: 'app-role-setup',
@@ -23,9 +32,9 @@ export class RoleSetupComponent implements OnInit {
   currIndex: any;
   tableData: any = [];
 
-  IsReadOnly: boolean = false;
-  hasAccess: boolean = true;
-  checked: boolean = false;
+  IsReadOnly = false;
+  hasAccess = true;
+  checked = false;
 
   private PropertyId: number;
   private TeantId: number;
@@ -40,22 +49,20 @@ export class RoleSetupComponent implements OnInit {
 
   constructor(private http: HttpServiceCall, public localization: Localization,
     private BPoint: BreakPointAccess, private utils: Utilities, private ss: SettingsService) {
-    
-
   }
 
   ngOnInit() {
     this.captions = this.localization.captions.retailsetup;
-    if (!this.BPoint.CheckForAccess([GlobalConst.SPAScheduleBreakPoint.UserRoleSetUp])) {
-      this.hasAccess = false;
-      return;
-    }
+    // if (!this.BPoint.CheckForAccess([GlobalConst.SPAScheduleBreakPoint.UserRoleSetUp])) {
+    //   this.hasAccess = false;
+    //   return;
+    // }
     this.PropertyId = +this.utils.GetPropertyInfo('PropertyId');
     this.TeantId = +this.utils.GetPropertyInfo('TenantId');
     this.ProductId = +this.utils.GetPropertyInfo('ProductId');
     this.ProductIdlst.push(this.ProductId ? this.ProductId : 1);
-    this.ProductIdlst.push(GlobalConst.Product.RETAIL);
-    this.IsReadOnly = this.BPoint.GetBreakPoint([GlobalConst.SPAScheduleBreakPoint.UserRoleSetUp]).result[0].view;
+    this.ProductIdlst.push(Product.RETAIL);
+    // this.IsReadOnly = this.BPoint.GetBreakPoint([GlobalConst.SPAScheduleBreakPoint.UserRoleSetUp]).result[0].view;
     this.LoadUserRoles();
     [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(false, this.initialLoads, this.callCounter);
   }
@@ -78,7 +85,7 @@ export class RoleSetupComponent implements OnInit {
       host: Host.authentication,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "CheckUserRoleExist",
+      callDesc: 'CheckUserRoleExist',
       method: HttpMethod.Get,
       uriParams: { tenantId: this.TeantId, roleName: encodeURIComponent(name) },
       showError: true,
@@ -87,8 +94,8 @@ export class RoleSetupComponent implements OnInit {
   }
 
   addOutlet(data?: any, event?: any) {
-    if(data.value.controls.roleName.value.trim() == ''){
-      this.utils.ShowError("Error", this.localization.captions.setting.RoleNameErr);
+    if (data.value.controls.roleName.value.trim() == '') {
+      this.utils.showError(this.localization.captions.setting.RoleNameErr);
       return;
     }
     if (data.type.toLowerCase() == this.localization.captions.setting.Add.toLowerCase()) {
@@ -98,18 +105,17 @@ export class RoleSetupComponent implements OnInit {
         description: data.value.controls.roleName.value.trim(),
         propertyId: this.PropertyId,
         TenantId: this.TeantId,
-        productId : this.ProductIdlst
+        productId: this.ProductIdlst
       }
       this.CheckUserRoleExist(data.value.controls.roleName.value.trim());
 
-    }
-    else if (data.type.toLowerCase() == this.localization.captions.setting.update.toLowerCase()) {
+    } else if (data.type.toLowerCase() == this.localization.captions.setting.update.toLowerCase()) {
       let Role: RoleSetup = {
         id: this.tableoptions[0].TablebodyData[this.currIndex].id,
         description: data.value.controls.roleName.value,
         active: this.tableoptions[0].TablebodyData[this.currIndex].isActive,
         TenantId: this.TeantId,
-        productId : this.tableoptions[0].TablebodyData[this.currIndex].productId
+        productId: this.tableoptions[0].TablebodyData[this.currIndex].productId
       };
       console.log(this.tableoptions[0].TablebodyData[this.currIndex]);
       // this.InvokeServiceCall("RoleWithId", Host.retailManagement, HttpMethod.Put, { id: Role.id }, Role);
@@ -140,7 +146,7 @@ export class RoleSetupComponent implements OnInit {
       host: Host.authentication,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "GetUserCountsByRoleId",
+      callDesc: 'GetUserCountsByRoleId',
       method: HttpMethod.Get,
       uriParams: { RoleId: id },
       showError: true,
@@ -164,19 +170,18 @@ export class RoleSetupComponent implements OnInit {
 
 
   PopulateData() {
-    if(this.result && this.result.length > 0){
-      this.result = this.result.filter(role => role.productId.find(x=> x === this.ProductId));
-    } 
+    if (this.result && this.result.length > 0) {
+      this.result = this.result.filter(role => role.productId.find(x => x === this.ProductId));
+    }
     if (this.checked) {
       this.tableData = this.result;
-    }
-    else if (!this.checked) {
+    } else if (!this.checked) {
       this.tableData = this.result.filter(res => res.active);
     }
     this.BindToGrid();
   }
 
-  InvokeServiceCall(route: string, domain: myGlobals.Host, callType: HttpMethod, uriParams?: any, body?: any, extraParams?: any) {
+  InvokeServiceCall(route: string, domain: Host, callType: HttpMethod, uriParams?: any, body?: any, extraParams?: any) {
     this.http.CallApiWithCallback<any>({
       host: domain,
       success: this.successCallback.bind(this),
@@ -195,7 +200,7 @@ export class RoleSetupComponent implements OnInit {
       host: Host.authentication,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "GetUserRoleByPropertyId",
+      callDesc: 'GetUserRoleByPropertyId',
       method: HttpMethod.Get,
       uriParams: { propertyId: this.PropertyId },
       showError: true,
@@ -209,7 +214,7 @@ export class RoleSetupComponent implements OnInit {
       host: Host.authentication,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "CreateUserRole",
+      callDesc: 'CreateUserRole',
       method: HttpMethod.Post,
       header: header,
       body: Role,
@@ -224,7 +229,7 @@ export class RoleSetupComponent implements OnInit {
       host: Host.authentication,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "UpdateUserRole",
+      callDesc: 'UpdateUserRole',
       method: HttpMethod.Put,
       header: header,
       body: [Role],
@@ -239,7 +244,7 @@ export class RoleSetupComponent implements OnInit {
       host: Host.authentication,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "DeleteUserRole",
+      callDesc: 'DeleteUserRole',
       method: HttpMethod.Delete,
       header: header,
       body: Role,
@@ -250,62 +255,50 @@ export class RoleSetupComponent implements OnInit {
 
 
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
-    if (callDesc == "Role" || callDesc == "RoleWithId") {
+    if (callDesc == 'Role' || callDesc == 'RoleWithId') {
       this.Roles = <any>result.result;
       this.PopulateData();
-    }
-    else if (["GetUserRoleByPropertyId"].includes(callDesc)) {
+    } else if (['GetUserRoleByPropertyId'].includes(callDesc)) {
       [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(true, this.initialLoads, this.callCounter);
       this.tableData = result.result ? result.result : [];
       this.result = this.tableData;
       this.PopulateData();
-    }
-    else if (["UpdateUserRole"].includes(callDesc)) {
+    } else if (['UpdateUserRole'].includes(callDesc)) {
 
       if (result.result) {
         this.LoadUserRoles();
         this.PopulateData();
-      }
-      else {
-        this.utils.ShowError(this.localization.captions.common.ErrorOnDeActivate, `${this.localization.captions.common.RoleNameInUseDeActivateNotAllowed}`, ButtonType.Ok);
+      } else {
+        this.utils.showError(`${this.localization.captions.common.RoleNameInUseDeActivateNotAllowed}`);
         this.LoadUserRoles();
         this.PopulateData();
       }
 
-    }
-    else if (["CreateUserRole"].includes(callDesc)) {
+    } else if (['CreateUserRole'].includes(callDesc)) {
       this.LoadUserRoles();
       this.PopulateData();
-    }
-    else if (["DeleteUserRole"].includes(callDesc)) {
+    } else if (['DeleteUserRole'].includes(callDesc)) {
       this.LoadUserRoles();
       this.PopulateData();
-    }
-    else if (["GetUserCountsByRoleId"].includes(callDesc)) {
+    } else if (['GetUserCountsByRoleId'].includes(callDesc)) {
       if (result && !result.result) {
         this.DeleteUserRole(this.tableData[this.indexToBeDeleted]);
+      } else {
+        this.utils.showError(`${this.localization.captions.common.RoleNameInUseDeleteNotAllowed}`);
       }
-      else {
-        this.utils.ShowError(this.localization.captions.common.ErrorOnDelete, `${this.localization.captions.common.RoleNameInUseDeleteNotAllowed}`, ButtonType.Ok);
-      }
-    }
-    else if (["CheckUserRoleExist"].includes(callDesc)) {
+    } else if (['CheckUserRoleExist'].includes(callDesc)) {
       if (result && !result.result) {
         this.CreateUserRole(this.roleToBeCreated);
-      }
-      else {
-        this.utils.ShowError(this.localization.captions.common.ErrorOnAddingNewRole, `${this.localization.captions.common.RoleNameAlreadyExists}`, ButtonType.Ok);
+      } else {
+        this.utils.showError(`${this.localization.captions.common.RoleNameAlreadyExists}`);
       }
     }
   }
   errorCallback<T>(error: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
-    if (callDesc == "UpdateUserRole") {
-    }
-    else if (["CreateUserRole"].includes(callDesc)) {
-    }
-    else if (["DeleteUserRole"].includes(callDesc)) {
-    }
-    else if(callDesc == "GetAllUserRole"){
+    if (callDesc == 'UpdateUserRole') {
+    } else if (['CreateUserRole'].includes(callDesc)) {
+    } else if (['DeleteUserRole'].includes(callDesc)) {
+    } else if (callDesc == 'GetAllUserRole') {
       [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(true, this.initialLoads, this.callCounter);
     }
   }
@@ -313,8 +306,8 @@ export class RoleSetupComponent implements OnInit {
   private BindToGrid() {
     this.tableoptions = [
       {
-        TableHdrData: [{ "title": this.captions.RoleName, "jsonkey": "description", "sortable": true },
-        { "title": this.captions.Active, "jsonkey": "active", "type": "toggle", "sortable": false }],
+        TableHdrData: [{ 'title': this.captions.RoleName, 'jsonkey': 'description', 'sortable': true },
+        { 'title': this.captions.Active, 'jsonkey': 'active', 'type': 'toggle', 'sortable': false }],
         TablebodyData: this.tableData,
         pagination: false,
         CustomColumn: true,
@@ -325,14 +318,14 @@ export class RoleSetupComponent implements OnInit {
         Searchable: false,
         EditMoreOption: false,
         SelectedSettingId: GridType.roleSetup,
-        TableId: myGlobals.GridType.roleSetup,
+        TableId: GridType.roleSetup,
         disableDelete: false,
         customHeader: true,
         pageTitle: 'roleSetup',
         ServiceId: 'roleSetup',
         InactiveRoles: true,
         DoneCancel: true,
-        Sortable: "description",
+        Sortable: 'description',
         TableDraggable: false
       }
     ];

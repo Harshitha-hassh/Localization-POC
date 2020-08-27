@@ -4,14 +4,24 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import * as _ from 'lodash';
 import { SubscriptionLike as ISubscription } from 'rxjs';
+// import { UserOutletAccessDataService } from '../useroutletaccess.data.service';
+// import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
+// import { GridType, Host, Product } from 'src/app/common/shared/shared/globalsContant';
+// import { popupConfig } from 'src/app/common/shared/shared.modal';
+// import { HttpMethod, BaseResponse } from 'src/app/common/Models/http.model';
+// import { Utilities } from 'src/app/core/utilities';
+// import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.service';
+// import { SettingDialogPopupComponent } from 'src/app/retail/shared/setting-dialog-popup/setting-dialog-popup.component';
+import { SettingsService } from '../../settings.service';
 import { UserOutletAccessDataService } from '../useroutletaccess.data.service';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
-import { GridType, Host, Product } from 'src/app/common/shared/shared/globalsContant';
-import { popupConfig } from 'src/app/common/shared/shared.modal';
-import { HttpMethod, BaseResponse } from 'src/app/common/Models/http.model';
-import { Utilities } from 'src/app/core/utilities';
 import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.service';
-import { SettingDialogPopupComponent } from 'src/app/retail/shared/setting-dialog-popup/setting-dialog-popup.component';
+import { Utilities } from 'src/app/core/utilities';
+import { BaseResponse, HttpMethod } from 'src/app/common/Models/http.model';
+import { Product } from 'src/app/common/Models/common.models';
+import { GridType, Host } from 'src/app/common/shared/shared/globalsContant';
+import { popupConfig } from 'src/app/common/shared/shared.modal';
+import { NewUserComponent } from '../new-user/new-user.component';
 
 @Component({
   selector: 'app-user-setup',
@@ -66,7 +76,6 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     // this.GetServiceCall('GetOutlets', { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
     this.GetRetailServiceCall('GetOutlets', { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
     this.GetServiceCall('GetAllUsers', { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
-    this.GetSPAServiceCall('GetAllServiceGrp');
     this.Categories = [
       {
         id: 1,
@@ -116,7 +125,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
 
   bindTable(tableData) {
     const header = [{ title: this.captions.UserID, jsonkey: 'userId', alignType: 'left' },
-    { title: this.captions.Name, jsonkey: 'name', alignType: 'left', "showStatus": true },
+    { title: this.captions.Name, jsonkey: 'name', alignType: 'left', 'showStatus': true },
     { title: this.captions.Email, jsonkey: 'email', alignType: 'left' },
     { title: this.captions.ApplicationAllowed, jsonkey: 'applicationAllowed', alignType: 'left' },
     { title: this.captions.Roles, jsonkey: 'roles', alignType: 'left' },
@@ -146,16 +155,11 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     } else {
       Dialogtitle = this.captions.EditUser;
     }
-
-    let popupConfiguration: popupConfig;
-    popupConfiguration = {
-      operation: type
-    }
     const DialogTemplate = 'NU';
-    const dialogRef = this.dialog.open(SettingDialogPopupComponent, {
+    const dialogRef = this.dialog.open(NewUserComponent, {
       height: '80%',
       width: '1000px',
-      data: { headername: Dialogtitle, closebool: true, templatename: DialogTemplate, datarecord: '', popupConfig: popupConfiguration },
+      data: { headername: Dialogtitle, closebool: true, templatename: DialogTemplate, datarecord: '', mode: type },
       panelClass: 'small-popup',
       disableClose: true,
       hasBackdrop: true
@@ -262,16 +266,16 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     this._servicesetting.editUserInfo = {
       clientInfo: clientObj,
       retainInfo: userRetailConfig,
-      retailOutletMap: retailOutletMap
+      retailOutletMap
     };
     this.createUser('Edit');
   }
 
   async GetUserConfigAsync(callDesc, host, id) {
     const info = await this.http.CallApiAsync({
-      host: host,
-      uriParams: { id: id },
-      callDesc: callDesc,
+      host,
+      uriParams: { id },
+      callDesc,
       method: HttpMethod.Get
     });
     return info ? info.result : null;
@@ -293,20 +297,6 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   GetRetailServiceCall(Route, Uri?) {
     this.http.CallApiWithCallback<any>({
       host: Host.retailManagement,
-      success: this.successCallback.bind(this),
-      error: this.errorCallback.bind(this),
-      callDesc: Route,
-      uriParams: Uri,
-      method: HttpMethod.Get,
-      showError: true,
-      extraParams: []
-    });
-  }
-
-
-  GetSPAServiceCall(Route, Uri?) {
-    this.http.CallApiWithCallback<any>({
-      host: Host.spaManagement,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
       callDesc: Route,
@@ -340,7 +330,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
         let data = _.cloneDeep(result.result as any);
         if (data.length > 0) {
           data = await this.FillUserOutletsAccess(this.usersInfo);
-          data = data.filter(u => u.userPropertyAccesses && u.userPropertyAccesses.some(a => a.propertyID === Number(this.utils.GetPropertyInfo('PropertyId')) && a.productId === Number(this.utils.GetPropertyInfo("ProductId"))));
+          data = data.filter(u => u.userPropertyAccesses && u.userPropertyAccesses.some(a => a.propertyID === Number(this.utils.GetPropertyInfo('PropertyId')) && a.productId === Number(this.utils.GetPropertyInfo('ProductId'))));
           this.tableData = [];
           this._servicesetting.existingUserIds = [];
           this._servicesetting.existingQuickIds = [];
@@ -387,7 +377,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
       }
     } else if (callDesc == 'GetAllServiceGrp') {
       if (result.result) {
-        this._servicesetting.serviceGroups = result.result
+        this._servicesetting.serviceGroups = result.result as any;
       }
     }
   }
@@ -397,7 +387,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   }
 
   private async FillUserOutletsAccess(users: any) {
-    var userOutlets = await this._userOutletsService.GetOutletsAccessByPropertyId();
+    const userOutlets = await this._userOutletsService.GetOutletsAccessByPropertyId();
     users.map(u => {
       const userAccessOutlets = userOutlets && userOutlets.length > 0 ? userOutlets.filter(r => r.userID == u.userId) : [];
       u.userPropertyAccesses.map(p => {

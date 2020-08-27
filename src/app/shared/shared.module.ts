@@ -4,7 +4,6 @@ import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from '../material-module';
 import { RouterModule } from '@angular/router';
 import { Localization } from '../core/localization/Localization';

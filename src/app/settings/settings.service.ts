@@ -10,6 +10,7 @@ import * as moment from 'moment';
 import { BehaviorSubject } from 'rxjs';
 // import { CommissionableRetailItem, Commission } from '../retail/retail.modals';
 import { Localization } from '../common/shared/localization/Localization';
+import { Utilities } from '../core/utilities';
 
 @Injectable()
 export class SettingsService {
@@ -17,37 +18,37 @@ export class SettingsService {
   // type1Array: any = [];
   // type2Array: any = [];
   // type3Array: any = [];
-  // roleConfiguration: any = [];
-  // changedBreakPoints: any = [];
+  roleConfiguration: any = [];
+  changedBreakPoints: any = [];
   // searchPath = "/assets/user-config.json";
   // packageClassArray: any = [];
   // deepCloneArray: any = [];
   // startDate: string;
   // endDate: any;
-  // userRoles: any = [];
-  // propOutlets: any = [];
-  // editUserInfo: any;
-  // selectedServiceGrp: any[] = [];
-  // selectedOutlets: any[] = [];
-  // selectedAccess: any[] = [];
-  // serviceGroups: any[] = [];
-  // isRadioButtonsChange = false;
-  // products: any[] = [];
-  // existingUserIds: any[] = [];
-  // existingQuickIds: any[] = [];
-  // breakpoints: any = [];
+  userRoles: any = [];
+  propOutlets: any = [];
+  editUserInfo: any;
+  selectedServiceGrp: any[] = [];
+  selectedOutlets: any[] = [];
+  selectedAccess: any[] = [];
+  serviceGroups: any[] = [];
+  isRadioButtonsChange = false;
+  products: any[] = [];
+  existingUserIds: any[] = [];
+  existingQuickIds: any[] = [];
+  breakpoints: any = [];
   tabLoaderEnable: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  // userSettingsFormGrp = this.Form.group({
-  //   activeuser: true,
-  //   fname: ['', Validators.required],
-  //   lname: ['', Validators.required],
-  //   userid: ['', Validators.required],
-  //   quickid: '',
-  //   email: '',
-  //   language: 0,
-  //   newpassword: true,
-  //   pwdexpirationdate: this.utils.getDate(this.PropertyInfo.CurrentDate)
-  // });
+  userSettingsFormGrp = this.Form.group({
+    activeuser: true,
+    fname: ['', Validators.required],
+    lname: ['', Validators.required],
+    userid: ['', Validators.required],
+    quickid: '',
+    email: '',
+    language: 0,
+    newpassword: true,
+    pwdexpirationdate: this.utils.getDate(this.PropertyInfo.CurrentDate)
+  });
 
   // spaSettingsFormGrp = this.Form.group({
   //   rolename: [0, Validators.required],
@@ -56,16 +57,16 @@ export class SettingsService {
   //   logoffafter: 0,
   // });
 
-  // retailSettingsFormGrp = this.Form.group({
-  //   rolename: [0, Validators.required],
-  //   accountblocked: false,
-  //   autologoff: false,
-  //   logoffafter: 0,
-  //   allowgratuity: false,
-  //   allowservicecharge: false,
-  //   allowcommission: false,
-  //   commissionclass: 0
-  // });
+  retailSettingsFormGrp = this.Form.group({
+    rolename: [0, Validators.required],
+    accountblocked: false,
+    autologoff: false,
+    logoffafter: 0,
+    allowgratuity: false,
+    allowservicecharge: false,
+    allowcommission: false,
+    commissionclass: 0
+  });
 
   // DateDiff = {
   //   inHours: function (d1, d2) {
@@ -109,8 +110,10 @@ export class SettingsService {
   // };
 
   constructor(
-    // private http: HttpServiceCall, private utils: Utilities,
-    // private Form: FormBuilder, private breakpoint: BreakPointAccess,
+    // private http: HttpServiceCall
+    private utils: Utilities,
+    private Form: FormBuilder,
+    // , private breakpoint: BreakPointAccess,
     private localization: Localization,
     private PropertyInfo: PropertyInformation) {
   }
@@ -308,11 +311,11 @@ export class SettingsService {
   //   });
   // }
 
-  // GetBreakPoints() {
-  //   this.breakpoints = this.breakpoint.GetBreakPoint([SPAScheduleBreakPoint.UserRoleConfiguration,
-  //   SPAScheduleBreakPoint.UserRoleSetUp,
-  //   SPAScheduleBreakPoint.UserSetup]).result;
-  // }
+  GetBreakPoints() {
+    // this.breakpoints = this.breakpoint.GetBreakPoint([SPAScheduleBreakPoint.UserRoleConfiguration,
+    // SPAScheduleBreakPoint.UserRoleSetUp,
+    // SPAScheduleBreakPoint.UserSetup]).result;
+  }
 
   // successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
   //   if (callDesc == "GetAllLunch") {

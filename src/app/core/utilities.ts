@@ -281,6 +281,14 @@ export class Utilities extends Localization implements OnDestroy {
         return returnArr;
     }
 
+     /**
+    * Converts a javascript date to Invariant date time format string (C# API can understand this format).
+    * @param Date javascript date or Javascript ISO string.*
+    */
+   convertDateFormat(dt: Date): string {
+    return super.ConvertDateToISODateTime(dt);
+}
+
     getTimeDifference(fromtime, toTime, type) {
         return super.getTimeDifference(fromtime, toTime, type);
     }

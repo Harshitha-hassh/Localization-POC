@@ -1,4 +1,4 @@
-@import '../../../../assets/sass/helpers/_variables';
+@import 'src/assets/sass/abstracts/variables';
 .copy-roles-section{
     width: 100%;
     display: inline-block;
@@ -20,3 +20,38 @@
     border-top: 1px solid $color-shop-border;   
   }
 }
+
+
+.pop-container{
+    height: 100%;
+    .pop-head{
+        height:64px;
+        position: relative;
+        &.border-top{
+        border-bottom: 1px solid $color-shop-border;
+        }
+        .inner-header{
+            position: absolute;
+            top: 24px;
+            font-size: 20px;
+            text-transform: uppercase;
+            color:$color-text-color;
+        }
+        .inner-close{
+            position: relative;
+            top:19px;
+            right:1rem;
+            color:$color-base;
+        }
+        .cursPointer{
+            cursor: pointer;
+        }
+    }
+    .pop-contents{
+        height: calc(100% - 64px);
+        .mat-dialog-content{
+            padding: 24px;
+            margin: unset;
+        }
+    }
+  }

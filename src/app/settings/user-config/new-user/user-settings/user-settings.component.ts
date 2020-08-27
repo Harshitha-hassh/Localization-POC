@@ -2,12 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Localization } from '../../../../core/localization/Localization';
 import { SettingsService } from '../../../settings.service';
-import { HttpServiceCall, HttpMethod } from '../../../../shared/service/http-call.service';
-import { Host } from '../../../../shared/globalsContant';
-import * as GlobalConst from '../../../../shared/globalsContant';
-import { Utilities } from '../../../../shared/utilities/utilities';
+// import { HttpServiceCall, HttpMethod } from '../../../../shared/service/http-call.service';
+// import { Host } from '../../../../shared/globalsContant';
+// import * as GlobalConst from '../../../../shared/globalsContant';
+// import { Utilities } from '../../../../shared/utilities/utilities';
 import { PropertyInformation } from '../../../../core/services/property-information.service';
-import { BaseResponse } from '../../../../shared/business/shared.modals';
+import { Utilities } from 'src/app/core/utilities';
+import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.service';
+import { HttpMethod, BaseResponse } from 'src/app/common/Models/http.model';
+import { Product } from 'src/app/common/Models/common.models';
+import { Host } from 'src/app/common/shared/shared/globalsContant';
+// import { BaseResponse } from '../../../../shared/business/shared.modals';
 
 @Component({
   selector: 'app-user-settings',
@@ -34,10 +39,10 @@ export class UserSettingsComponent implements OnInit {
     this.caption = this.localization.captions;
     this.ActionButton = this.caption.setting.save;
     this.userSettingsFormGrp = this._servicesetting.userSettingsFormGrp;
-    this.IsReadOnly = this._servicesetting.breakpoints.find(bp => bp.breakPointNumber == GlobalConst.SPAScheduleBreakPoint.UserSetup).view;
-    if (this.IsReadOnly) {
-      this.utils.disableControls(this.userSettingsFormGrp);
-    }
+    // this.IsReadOnly = this._servicesetting.breakpoints.find(bp => bp.breakPointNumber == GlobalConst.SPAScheduleBreakPoint.UserSetup).view;
+    // if (this.IsReadOnly) {
+    //   this.utils.disableControls(this.userSettingsFormGrp);
+    // }
     this.minDateValue = this.utils.getDate(this.PropertyInfo.CurrentDate);
     // this.GetServiceCall('GetPropLanguages', {propertyId: 1});
     this.GetServiceCall('GetAllLanguages');
@@ -112,7 +117,7 @@ export class UserSettingsComponent implements OnInit {
     else if (callDesc == 'GetStandAloneProducts') {
       if (result.result) {
         this._servicesetting.products = <any>result.result;
-        let products: number[] = [GlobalConst.Product.SPA, GlobalConst.Product.RETAIL];
+        let products: number[] = [Product.RETAIL];
         this.accesses = this._servicesetting.products.filter(r => products.includes(r.id)).map(x => { return { id: x.id, name: x.productName } });
         this.utils.setUserAccessSettings(this.accesses, this._servicesetting.selectedAccess);
       }

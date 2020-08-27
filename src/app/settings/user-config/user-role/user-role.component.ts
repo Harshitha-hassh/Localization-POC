@@ -2,16 +2,17 @@ import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { SettingsService } from '../../settings.service';
 import { MatDialog } from '@angular/material';
 import { Localization } from '../../../core/localization/Localization';
-import { HttpServiceCall, HttpMethod } from '../../../shared/service/http-call.service';
-import { Host, RetailBreakPoint } from '../../../shared/globalsContant';
-import { AlertMessagePopupComponent } from '../../../shared/alert-message-popup/alert-message-popup.component';
-import { BreakPointAccess } from '../../../shared/service/breakpoint.service';
-import * as GlobalConst from '../../../shared/globalsContant';
-import { Utilities } from '../../../shared/utilities/utilities';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-import { BaseResponse } from '../../../shared/business/shared.modals';
-import { SettingDialogPopupComponent } from '../../setting-dialog-popup/setting-dialog-popup.component';
-import { PropertyInformation } from "../../../core/services/property-information.service";
+import { PropertyInformation } from '../../../core/services/property-information.service';
+import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.service';
+import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
+import { HttpMethod } from 'src/app/shared/models/http.model';
+import { BaseResponse } from 'src/app/common/Models/http.model';
+import { CommonAlertMessagePopupComponent } from 'src/app/common/shared/shared/alert-message-popup/alert-message-popup.component';
+import { Utilities } from 'src/app/core/utilities';
+import { Host } from 'src/app/common/shared/shared/globalsContant';
+import { Product } from 'src/app/common/Models/common.models';
+import { CopyRolesComponent } from '../copy-roles/copy-roles.component';
 
 @Component({
   selector: 'app-user-role',
@@ -24,8 +25,8 @@ export class UserRoleComponent implements OnInit, OnDestroy {
   selectedOption: any;
   userRoleConfiguration: any = [];
   captions: any = this.localization.captions.userConfig;
-  availableOptions: any = [{ "id": 1, "name": "System Administrator" }]
-  hasAccess: boolean = true;
+  availableOptions: any = [{ id: 1, name: 'System Administrator' }]
+  hasAccess = true;
   IsReadOnly: boolean;
   dialogSubscription: ISubscription;;
 
@@ -36,14 +37,14 @@ export class UserRoleComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    if (!this.BPoint.CheckForAccess([GlobalConst.SPAScheduleBreakPoint.UserRoleConfiguration])) {
-      this.hasAccess = false;
-      return;
-    }
-    this.IsReadOnly = this.BPoint.GetBreakPoint([GlobalConst.SPAScheduleBreakPoint.UserRoleConfiguration]).result[0].view;
-    if (!this.IsReadOnly) {
-      this.hasAccess = true;
-    }
+    // if (!this.BPoint.CheckForAccess([GlobalConst.SPAScheduleBreakPoint.UserRoleConfiguration])) {
+    //   this.hasAccess = false;
+    //   return;
+    // }
+    // this.IsReadOnly = this.BPoint.GetBreakPoint([GlobalConst.SPAScheduleBreakPoint.UserRoleConfiguration]).result[0].view;
+    // if (!this.IsReadOnly) {
+    //   this.hasAccess = true;
+    // }
     this.getUserRoles();
     this.ss.tabLoaderEnable.next(false);
   }
@@ -63,10 +64,10 @@ export class UserRoleComponent implements OnInit, OnDestroy {
   }
 
   openDialog() {
-    let dialogRef = this.dialog.open(SettingDialogPopupComponent, {
+    const dialogRef = this.dialog.open(CopyRolesComponent, {
       width: '850px',
       height: '230px',
-      data: { headername: this.captions.copyRoles, closebool: true, templatename: "Fdf", datarecord: "", popupConfig: "" },
+      data: { headername: this.captions.copyRoles, closebool: true, templatename: 'Fdf', datarecord: '', popupConfig: '' },
       panelClass: 'small-popup',
       disableClose: true,
       hasBackdrop: true
@@ -85,7 +86,7 @@ export class UserRoleComponent implements OnInit, OnDestroy {
       host: Host.authentication,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "UpdateUserRoles",
+      callDesc: 'UpdateUserRoles',
       method: HttpMethod.Put,
       body: this._settingService.changedBreakPoints,
       showError: true,
@@ -98,7 +99,7 @@ export class UserRoleComponent implements OnInit, OnDestroy {
       host: Host.authentication,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "GetActiveUserRolesByPropertyId",
+      callDesc: 'GetActiveUserRolesByPropertyId',
       method: HttpMethod.Get,
       uriParams: { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) , includeInActive : false },
       showError: true,
@@ -114,7 +115,7 @@ export class UserRoleComponent implements OnInit, OnDestroy {
       host: Host.authentication,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "GetUserRoleConfiguration",
+      callDesc: 'GetUserRoleConfiguration',
       method: HttpMethod.Get,
       uriParams: { userRoleId: roleId },
       showError: true,
@@ -130,25 +131,23 @@ export class UserRoleComponent implements OnInit, OnDestroy {
   }
 
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
-    if (callDesc == "GetActiveUserRolesByPropertyId") {
+    if (callDesc == 'GetActiveUserRolesByPropertyId') {
       this.availableOptions = result.result ? result.result : [];
       this.availableOptions = this.availableOptions.filter(x => x.productId.includes(Number(this.utils.GetPropertyInfo('ProductId'))));
       this.selectedOption = this.availableOptions[0].id;
       this.getuserConfig(this.selectedOption);
-    }
-    else if (callDesc == "GetUserRoleConfiguration") {
+    } else if (callDesc == 'GetUserRoleConfiguration') {
       this.userRoleConfiguration = result.result ? result.result : [];
       if (this.userRoleConfiguration != null) {
-        this.userRoleConfiguration = this.userRoleConfiguration.filter(r => [GlobalConst.Product.SPA, GlobalConst.Product.RETAIL, GlobalConst.Product.COMMON].includes(r.productId));
+        this.userRoleConfiguration = this.userRoleConfiguration.filter(r => [Product.RETAIL, Product.COMMON].includes(r.productId));
         if (this.PropInfo.UseRetailInterface) {
           this.RemoveBreakPoints();
         }
       }
       this.getArrayData();
-    }
-    else if (callDesc == "UpdateUserRoles") {
+    } else if (callDesc == 'UpdateUserRoles') {
       this._settingService.roleConfiguration = [];
-      const dialogRef = this.dialog.open(AlertMessagePopupComponent, {
+      const dialogRef = this.dialog.open(CommonAlertMessagePopupComponent, {
         width: '305px',
         height: '300px',
         hasBackdrop: true,
@@ -167,14 +166,14 @@ export class UserRoleComponent implements OnInit, OnDestroy {
   }
 
   RemoveBreakPoints() {
-    this.userRoleConfiguration.forEach((claims, index) => {
-      if (this.userRoleConfiguration[index].userClaims.length > 0)
-        this.userRoleConfiguration[index].userClaims = this.userRoleConfiguration[index].userClaims.filter(claims => {
-          return claims.breakPointNumber != RetailBreakPoint.Taxconfiguration &&
-            claims.breakPointNumber != RetailBreakPoint.DiscountConfiguration &&
-            claims.breakPointNumber != RetailBreakPoint.DiscountType &&
-            claims.breakPointNumber != RetailBreakPoint.PaymentMethods
-        });
-    });
+    // this.userRoleConfiguration.forEach((claims, index) => {
+    //   if (this.userRoleConfiguration[index].userClaims.length > 0)
+    //     this.userRoleConfiguration[index].userClaims = this.userRoleConfiguration[index].userClaims.filter(claims => {
+    //       return claims.breakPointNumber != RetailBreakPoint.Taxconfiguration &&
+    //         claims.breakPointNumber != RetailBreakPoint.DiscountConfiguration &&
+    //         claims.breakPointNumber != RetailBreakPoint.DiscountType &&
+    //         claims.breakPointNumber != RetailBreakPoint.PaymentMethods
+    //     });
+    // });
   }
 }

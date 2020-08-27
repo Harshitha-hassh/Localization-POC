@@ -1,4 +1,4 @@
-@import '../../../../assets/sass/helpers/variables.scss';
+@import 'src/assets/sass/abstracts/variables';
 .user-setup {
     .user-search {
         display: flex;
@@ -34,9 +34,11 @@
                 padding-right: 30px;
                // height: 20px;
                 margin-top: 10px;
+                text-align: right;
             }
             .table-container {
                 height: calc(100% - 89px);
+                padding: 0;
             }
             .dot{
                 height: 10px;

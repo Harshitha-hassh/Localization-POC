@@ -7,6 +7,14 @@ import { RetailSettingsComponent } from './new-user/retail-settings/retail-setti
 import { RoleSetupComponent } from './role-setup/role-setup.component';
 import { UserSetupComponent } from './user-setup/user-setup.component';
 import { UserSettingsComponent } from './new-user/user-settings/user-settings.component';
+import { ScrollbarModule } from 'ngx-scrollbar';
+import { TableComponent } from './table/table.component';
+import { UserSetupRoutingModule } from './user-config-routing.module';
+import { UserConfigComponent } from './user-config.component';
+import { UserRoleComponent } from './user-role/user-role.component';
+import { NewUserComponent } from './new-user/new-user.component';
+import { UiSwitchModule } from 'ngx-ui-switch';
+import { NgDragDropModule } from 'ng-drag-drop';
 
 @NgModule({
     declarations: [
@@ -15,12 +23,20 @@ import { UserSettingsComponent } from './new-user/user-settings/user-settings.co
         RetailSettingsComponent,
         RoleSetupComponent,
         UserSetupComponent,
-        UserSettingsComponent
+        UserSettingsComponent,
+        UserConfigComponent,
+        TableComponent,
+        UserRoleComponent,
+        NewUserComponent
     ],
     imports: [
         CommonModule,
-        SharedModule
+        SharedModule,
+        ScrollbarModule,
+        UserSetupRoutingModule,
+        UiSwitchModule,
+        NgDragDropModule
     ],
-    entryComponents: []
+    entryComponents: [NewUserComponent, CopyRolesComponent]
 })
 export class UserSetupModule { }

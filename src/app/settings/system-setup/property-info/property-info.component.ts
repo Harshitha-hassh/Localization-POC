@@ -440,7 +440,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
         id: temp + 1,
         number: phoneItem.phonenumber ? (phoneItem.phonenumber).replace(/\D/g, '') : "",
         propertyId: _body.propertyId = this.localization.GetPropertyInfo("PropertyId"),
-        contactTypeId: contactType ? contactType[0].id : 0,
+        contactTypeId: (contactType ? contactType[0].id : 0).toString(),
         clientId: 1
       };
       _body.propertyContacts.push(phone);
