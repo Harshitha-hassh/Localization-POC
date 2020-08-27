@@ -2675,5 +2675,7 @@
   "helpQuestion": "Help_au",
   "about": "About_au",
   "versionInfo": "The Product is running in the {productVersion} Version_au",
-  "okay": "OKAY_au"
+  "okay": "OKAY_au",
+  "customerId": "Customer ID_au",
+  "lbl_location": "Location_au"
 }

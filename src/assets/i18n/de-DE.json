@@ -2675,5 +2675,7 @@
   "helpQuestion": "Help_de",
   "about": "About_de",
   "versionInfo": "The Product is running in the {productVersion} Version_de",
-  "okay": "OKAY_de"
+  "okay": "OKAY_de",
+  "customerId": "Customer ID_de",
+  "lbl_location": "Location_de"
 }
