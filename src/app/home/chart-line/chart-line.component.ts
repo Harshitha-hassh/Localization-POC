@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation, Input } from "@angular/core";
-import ApexCharts from "apexcharts";
+import { Component, OnInit, ViewEncapsulation, Input, OnDestroy, OnChanges } from '@angular/core';
+import ApexCharts from 'apexcharts';
 
 @Component({
   selector: 'app-chart-line',
@@ -7,15 +7,15 @@ import ApexCharts from "apexcharts";
   styleUrls: ['./chart-line.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ChartLineComponent implements OnInit {
+export class ChartLineComponent implements OnInit , OnDestroy , OnChanges {
 
   @Input() captionsLabel: any;
   @Input() categories: any[] = [];
   @Input() content: any[] = [];
   @Input() updateLineChartData: any;
   @Input() customStyles: any;
-  update:boolean=false;
-  chart:any;
+  update = false;
+  chart: any;
 
   value: any = [];
   constructor() { }
@@ -24,10 +24,10 @@ export class ChartLineComponent implements OnInit {
   }
 
   draw(content, captionsLabel, categories, customStyles) {
-    
-    var options = {
+
+    const options = {
       chart: {
-        id: "lineAreaChart",
+        id: 'lineAreaChart',
         type: customStyles.type,
         height: customStyles.chartHeight,
         toolbar: {
@@ -41,19 +41,19 @@ export class ChartLineComponent implements OnInit {
         show: true,
         width: 3,
         colors: customStyles.strokeColors,
-        curve: "smooth",
-        lineCap: "round"
+        curve: 'smooth',
+        lineCap: 'round'
       },
       series: [
         {
-          name: "series1",
+          name: 'series1',
           data: this.value
         }
       ],
       fill: {
         colors: customStyles.fillColor,
         opacity: 0.9,
-        type: "gradient",
+        type: 'gradient',
         gradient: {
           shadeIntensity: 1,
           opacityFrom: 0.7,
@@ -63,14 +63,14 @@ export class ChartLineComponent implements OnInit {
       markers: {
         size: 0,
         colors: customStyles.fillColor,
-        shape: "circle",
+        shape: 'circle',
         radius: 2
       },
       grid: {
         show: true,
         borderColor: customStyles.borderColor,
         strokeDashArray: 0,
-        position: "back",
+        position: 'back',
         row: {
           opacity: 0.5
         },
@@ -91,39 +91,39 @@ export class ChartLineComponent implements OnInit {
         onDatasetHover: {
           highlightDataSeries: true
         },
-        custom: function ({ series, seriesIndex, dataPointIndex }) {
+        custom({ series, seriesIndex, dataPointIndex }) {
           return (
             '<div class="tooltip_container">' +
             '<div class="tooltip_header">' +
-            "<span>" +
+            '<span>' +
             series[seriesIndex][dataPointIndex] +
-            "%" +
-            "</span>" +
-            "</div>" +
+            '%' +
+            '</span>' +
+            '</div>' +
             '<div *ngFor="let item of booked;let i=index">' +
-            '<div class="tooltip_content_booked">' + captionsLabel.booked + ": " + content[dataPointIndex].Booked +
-            "</div>" +
-            '<div class="tooltip_content_available">' + captionsLabel.avail + ": " + content[dataPointIndex].Available +
-            "</div>" +
-            "</div>" +
-            "</div>"
+            '<div class="tooltip_content_booked">' + captionsLabel.booked + ': ' + content[dataPointIndex].Booked +
+            '</div>' +
+            '<div class="tooltip_content_available">' + captionsLabel.avail + ': ' + content[dataPointIndex].Available +
+            '</div>' +
+            '</div>' +
+            '</div>'
           );
         }
       },
       xaxis: {
-        categories: categories,
+        categories,
         title: {
           text: captionsLabel.date,
           style: {
-            fontSize: "15px"
+            fontSize: '15px'
           }
         },
-        tooltip:{
-          enabled:false
+        tooltip: {
+          enabled: false
         } ,
         labels: {
           style: {
-            fontSize: "10px"
+            fontSize: '10px'
           }
         },
 
@@ -134,10 +134,10 @@ export class ChartLineComponent implements OnInit {
       yaxis: [{
         show: true,
         showAlways: true,
-        seriesName: "Booking",
+        seriesName: 'Booking',
         tickAmount: 5,
         min: 0,
-        max:100,
+        max: 100,
         // max: function (maxRev) {
         //   return (maxRev + (10-(maxRev % 10))) },
         axisBorder: {
@@ -151,8 +151,8 @@ export class ChartLineComponent implements OnInit {
           text: captionsLabel.booking
         },
         labels: {
-          formatter: function (val, index) {
-            return val + "%";
+          formatter(val, index) {
+            return val + '%';
           }
         }
       }, {
@@ -168,10 +168,10 @@ export class ChartLineComponent implements OnInit {
         }
       }]
     };
-    if(customStyles.type == 'line'){
+    if (customStyles.type == 'line') {
       delete options.fill;
     }
-    this.chart = new ApexCharts(document.querySelector("#linechart"), options);
+    this.chart = new ApexCharts(document.querySelector('#linechart'), options);
     this.chart.render();
     this.chart.resetSeries();
   }
@@ -183,7 +183,7 @@ export class ChartLineComponent implements OnInit {
         this.value.push(element.value);
       });
       this.draw(this.content, this.captionsLabel, this.categories, this.customStyles);
-      this.update=true;
+      this.update = true;
     }
   }
 
@@ -196,10 +196,10 @@ export class ChartLineComponent implements OnInit {
   }
 
   updateChart(data, captionsLabel) {
-    ApexCharts.exec("lineAreaChart", "updateOptions", {
+    ApexCharts.exec('lineAreaChart', 'updateOptions', {
       xaxis: {
-        categories: this.categories        
-        
+        categories: this.categories
+
       },
       series: [
         {
@@ -207,30 +207,31 @@ export class ChartLineComponent implements OnInit {
         }
       ],
       tooltip: {
-        custom: function ({ series, seriesIndex, dataPointIndex }) {
+        custom({ series, seriesIndex, dataPointIndex }) {
           return (
             '<div class="tooltip_container">' +
             '<div class="tooltip_header">' +
-            "<span>" +
+            '<span>' +
             series[seriesIndex][dataPointIndex] +
-            "%" +
-            "</span>" +
-            "</div>" +
+            '%' +
+            '</span>' +
+            '</div>' +
             '<div *ngFor="let item of booked;let i=index">' +
-            '<div class="tooltip_content_booked">' + captionsLabel.booked + ": " + data[dataPointIndex].Booked +
-            "</div>" +
-            '<div class="tooltip_content_available">' + captionsLabel.avail + ": " + data[dataPointIndex].Available +
-            "</div>" +
-            "</div>" +
-            "</div>"
+            '<div class="tooltip_content_booked">' + captionsLabel.booked + ': ' + data[dataPointIndex].Booked +
+            '</div>' +
+            '<div class="tooltip_content_available">' + captionsLabel.avail + ': ' + data[dataPointIndex].Available +
+            '</div>' +
+            '</div>' +
+            '</div>'
           );
         }
       }
     });
   }
-  ngOnDestroy(){
-    if(this.chart)
-    this.chart.destroy();    
+  ngOnDestroy() {
+    if (this.chart) {
+    this.chart.destroy();
+    }
   }
 }
 

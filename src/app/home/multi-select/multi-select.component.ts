@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, ViewEncapsulation,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewEncapsulation, EventEmitter, OnChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Localization } from 'src/app/core/localization/Localization';
 
@@ -8,39 +8,39 @@ import { Localization } from 'src/app/core/localization/Localization';
   styleUrls: ['./multi-select.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class MultiSelectComponent implements OnInit {
-  more:string;
+export class MultiSelectComponent implements OnInit , OnChanges {
+  more: string;
   valuesSelected: any[] = [];
   @Input() floatLabel: string;
   @Input() customClass: string;
   @Input() dropDownControlname: string;
   @Input() dropDownName: string;
-  @Input() dropDownFilterData; 
-  @Input() defaultData: any=[];  
+  @Input() dropDownFilterData;
+  @Input() defaultData: any = [];
   dropDownFrmGrp: FormGroup;
   @Output() dropDownFrmControl: EventEmitter<any> = new EventEmitter<any>();
-  @Output() IsAnySelected: EventEmitter<any> = new EventEmitter<any>(); 
-  constructor(private _localization: Localization) { }
+  @Output() IsAnySelected: EventEmitter<any> = new EventEmitter<any>();
+  constructor(private localization: Localization) { }
 
   ngOnInit() {
-    this.more = this._localization.captions.common.More;    
-    this.valuesSelected = this.dropDownFilterData.slice(0,this.dropDownFilterData.length);
+    this.more = this.localization.captions.common.More;
+    this.valuesSelected = this.dropDownFilterData.slice(0, this.dropDownFilterData.length);
   }
   ngOnChanges() {
     this.dropDownFrmGrp = new FormGroup({
       [this.dropDownControlname]: new FormControl([])
-    });   
-    this.dropDownFrmGrp.controls[this.dropDownControlname].setValue(this.dropDownFilterData);    
-    this.dropDownFrmControl.emit([this.dropDownControlname, <FormControl>this.dropDownFrmGrp.controls[this.dropDownControlname]]);
+    });
+    this.dropDownFrmGrp.controls[this.dropDownControlname].setValue(this.dropDownFilterData);
+    this.dropDownFrmControl.emit([this.dropDownControlname, <FormControl> this.dropDownFrmGrp.controls[this.dropDownControlname]]);
   }
 
-  filterDropDownSelected(event: any, data: any, allData: any[], dropDownType) {      
+  filterDropDownSelected(event: any, data: any, allData: any[], dropDownType) {
     if (data && data.value && data.value.toLowerCase() === 'all') {
       this.valuesSelected = this.toggleClickbtn(this.defaultData, allData, this.valuesSelected, this.defaultData, event.checked);
     } else {
       this.valuesSelected = this.toggleClickbtn(data, allData, this.valuesSelected, this.defaultData);
     }
-    this.dropDownFrmGrp.controls[dropDownType].setValue(this.valuesSelected);  
+    this.dropDownFrmGrp.controls[dropDownType].setValue(this.valuesSelected);
     this.IsAnySelected.emit(this.valuesSelected);
   }
 
@@ -50,15 +50,15 @@ export class MultiSelectComponent implements OnInit {
     if (currentlySelectedArray.id == defaultData.id) { /* For all button click */
       if (allselectedCheck) {
         selectedArray = [];
-        selectedArray = dataSourceArray.map(x => x);        
+        selectedArray = dataSourceArray.map(x => x);
       } else {
         selectedArray = [];
       }
     } else { /* For other than all button click */
-      if (selectedArray.indexOf(currentlySelectedArray) == -1) {        
-        selectedArray.push(currentlySelectedArray);        
-      } else {        
-        selectedArray.splice(selectedArray.indexOf(currentlySelectedArray), 1); 
+      if (selectedArray.indexOf(currentlySelectedArray) == -1) {
+        selectedArray.push(currentlySelectedArray);
+      } else {
+        selectedArray.splice(selectedArray.indexOf(currentlySelectedArray), 1);
         if (selectedArray.indexOf(defaultData) != -1) {
           selectedArray.splice(selectedArray.indexOf(defaultData), 1);
         }

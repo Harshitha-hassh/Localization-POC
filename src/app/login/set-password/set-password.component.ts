@@ -5,7 +5,7 @@ import { Localization } from 'src/app/core/localization/Localization';
 import { ActivatedRoute } from '@angular/router';
 import { LoginCommunicationService } from '../login-communication.service';
 import { ButtonValue } from 'src/app/shared/shared-models';
-import { RetailRoutes } from "src/app/core/extensions/retail-route";
+import { RetailRoutes } from 'src/app/core/extensions/retail-route';
 
 @Component({
   selector: 'app-set-password',
@@ -59,7 +59,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     if (this.data.setPassword) {
       this.setPasswordForms.get('oldpassword').clearValidators();
     }
-    let serviceParams = {
+    const serviceParams = {
       route: RetailApiRoute.PasswordSetting,
       uriParams: { TenantId: this.tenantId },
       header: '',
@@ -68,7 +68,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       baseResponse: true
     };
 
-    let resp: any = await this.loginService.makeGetCall(serviceParams);
+    const resp: any = await this.loginService.makeGetCall(serviceParams);
     this.confirmJson = resp;
     this.validationMessage(this.confirmJson.result);
     this.OnFormValueChanges();
@@ -86,22 +86,23 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
 
 
   async DoneClick(event: any) {
-    let newpwd = this.setPasswordForms.controls['newpassword'].value;
-    let cfmpwd = this.setPasswordForms.controls['confirmpassword'].value;
+    const newpwd = this.setPasswordForms.controls.newpassword.value;
+    const cfmpwd = this.setPasswordForms.controls.confirmpassword.value;
     this.CheckPasswordExists(this.data.userName, newpwd, cfmpwd).then(async () => {
       if (!this.IsLastPassword) {
-        let serviceParams = {
+        const serviceParams = {
           route: RetailApiRoute.SavePassword,
-          uriParams: { UserId: this.data.userName, NewPassword: encodeURIComponent(this.setPasswordForms.controls['newpassword'].value), TenantId: this.tenantId, PropertyId: "1" },
+          uriParams: { UserId: this.data.userName,
+             NewPassword: encodeURIComponent(this.setPasswordForms.controls.newpassword.value), TenantId: this.tenantId, PropertyId: '1' },
           header: '',
           body: '',
           showError: true,
           baseResponse: true
         };
-        let savePwdResponse = await this.loginService.makePostCall(serviceParams);
-        if (savePwdResponse.successStatus)
+        const savePwdResponse = await this.loginService.makePostCall(serviceParams);
+        if (savePwdResponse.successStatus) {
           this.dialogRef.close();
-        else {
+        } else {
           this.doneDisabled = true;
         }
       } else {
@@ -123,11 +124,11 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       this.IsSameAsUserName = res !== '' ? this.data.userName.toLowerCase() !== res.toLowerCase() : false;
       this.PasswordValidCheck();
       if (this.IsLengthValid) {
-        this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls['newpassword'].value, this)
+        this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls.newpassword.value, this)
           .then(() => {
             this.doneDisabled = true;
             if (!this.IsLastPassword) {
-              this.IsConfirmed = (this.setPasswordForms.controls['confirmpassword'].value == res && res != '') ? true : false;
+              this.IsConfirmed = (this.setPasswordForms.controls.confirmpassword.value == res && res != '') ? true : false;
               this.doneButtonChangeState();
             }
           }
@@ -141,10 +142,10 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     this.setPasswordForms.get('confirmpassword').valueChanges.subscribe(res => {
       this.doneDisabled = true;
       this.PasswordValidCheck();
-      this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls['newpassword'].value, this).then(() => {
+      this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls.newpassword.value, this).then(() => {
         if (!this.IsLastPassword) {
           this.doneDisabled = true;
-          this.IsConfirmed = (this.setPasswordForms.controls['newpassword'].value == res && res != '') ? true : false;
+          this.IsConfirmed = (this.setPasswordForms.controls.newpassword.value == res && res != '') ? true : false;
           this.doneButtonChangeState();
         }
       });
@@ -154,8 +155,8 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       this.setPasswordForms.get('oldpassword').valueChanges.subscribe(async (res) => {
         this.doneDisabled = true;
         this.PasswordValidCheck();
-        if (this.setPasswordForms.controls['oldpassword'].value && this.setPasswordForms.controls['oldpassword'].value.length > 0) {
-          await this.VerifyPassword(this.data.userName, this.setPasswordForms.controls['oldpassword'].value);
+        if (this.setPasswordForms.controls.oldpassword.value && this.setPasswordForms.controls.oldpassword.value.length > 0) {
+          await this.VerifyPassword(this.data.userName, this.setPasswordForms.controls.oldpassword.value);
           this.doneButtonChangeState();
         }
 
@@ -168,7 +169,8 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
 
   doneButtonChangeState() {
     this.doneDisabled = true;
-    if (this.IsPasswordValid && this.IsLengthValid && this.IsHavingAllTypes && !this.IsLastPassword && this.IsSameAsUserName && this.IsOldPassword) {
+    if (this.IsPasswordValid && this.IsLengthValid
+       && this.IsHavingAllTypes && !this.IsLastPassword && this.IsSameAsUserName && this.IsOldPassword) {
       this.doneDisabled = !this.IsConfirmed;
     }
   }
@@ -214,7 +216,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     this.IsPasswordValid = (this.IsLengthValid && this.IsHavingAllTypes && this.IsSameAsUserName);
   }
   async CheckPasswordExists(userName, password, confirmpassword: any) {
-    let serviceParams = {
+    const serviceParams = {
       route: RetailRoutes.CheckPassword,
       uriParams: { UserId: userName, NewPassword: encodeURIComponent(password), TenantId: this.tenantId },
       header: '',
@@ -223,7 +225,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       baseResponse: true
     };
     if (password.length != 0) {
-      let resp: any = await this.loginService.makeGetCall(serviceParams);
+      const resp: any = await this.loginService.makeGetCall(serviceParams);
       this.IsLastPassword = Boolean(resp.result);
     }
   }
@@ -242,7 +244,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     }
   }
   async VerifyPassword(userName, password) {
-    let serviceParams = {
+    const serviceParams = {
       route: RetailRoutes.VerifyPassword,
       uriParams: { UserId: userName, NewPassword: encodeURIComponent(password), TenantId: this.tenantId },
       header: '',
@@ -250,7 +252,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       showError: true,
       baseResponse: true
     };
-    let resp: any = await this.loginService.makeGetCall(serviceParams);
+    const resp: any = await this.loginService.makeGetCall(serviceParams);
     this.IsOldPassword = Boolean(resp.result);
   }
   ngOnDestroy() {
