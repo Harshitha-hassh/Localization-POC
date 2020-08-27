@@ -2675,5 +2675,7 @@
   "helpQuestion": "Help_fi",
   "about": "About_fi",
   "versionInfo": "The Product is running in the {productVersion} Version_fi",
-  "okay": "OKAY_fi"
+  "okay": "OKAY_fi",
+  "customerId": "Customer ID_fi",
+  "lbl_location": "Location_fi"
 }
