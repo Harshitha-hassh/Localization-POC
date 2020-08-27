@@ -65,6 +65,79 @@ export class RouteLoaderService {
           "propertyID": 0,
           "productID": 5,
           "textID": 2,
+          "text": "CLIENTS",
+          "routePath": "/client",
+          "imgPath": "icon-guest",
+          "order": 2,
+          "visibility": true,
+          "disable": false,
+          "parentID": 0,
+          "menuPosition": "Primary",
+          "menuAlignment": "Horizontal",
+          "externalLink": false,
+          "linkedElement": [
+            {
+              "elementID": 8,
+              "tenantID": 0,
+              "propertyID": 0,
+              "productID": 0,
+              "textID": 2,
+              "text": "ALL CLIENTS",
+              "routePath": "/client/allclients",
+              "imgPath": "/client/allclients",
+              "order": 1,
+              "visibility": true,
+              "disable": false,
+              "parentID": 7,
+              "menuPosition": "secondary",
+              "menuAlignment": "Horizontal",
+              "externalLink": false,
+              "linkedElement": []
+            },   
+            {
+              "elementID": 8,
+              "tenantID": 0,
+              "propertyID": 0,
+              "productID": 0,
+              "textID": 2,
+              "text": "RECENTS",
+              "routePath": "/client/recents",
+              "imgPath": "/client/recents",
+              "order": 1,
+              "visibility": true,
+              "disable": false,
+              "parentID": 7,
+              "menuPosition": "secondary",
+              "menuAlignment": "Horizontal",
+              "externalLink": false,
+              "linkedElement": []
+            },  
+            {
+              "elementID": 8,
+              "tenantID": 0,
+              "propertyID": 0,
+              "productID": 0,
+              "textID": 2,
+              "text": "VIP",
+              "routePath": "/client/vip",
+              "imgPath": "/client/vip",
+              "order": 1,
+              "visibility": true,
+              "disable": false,
+              "parentID": 7,
+              "menuPosition": "secondary",
+              "menuAlignment": "Horizontal",
+              "externalLink": false,
+              "linkedElement": []
+            },  
+          ]
+        },
+        {
+          "elementID": 7,
+          "tenantID": 0,
+          "propertyID": 0,
+          "productID": 0,
+          "textID": 2,
           "text": "SETTINGS",
           "routePath": "/settings",
           "imgPath": "icon-settings",
@@ -1024,7 +1097,45 @@ export class RouteLoaderService {
             }
           ]
         },
-      ];
+        {
+          "elementID": 7,
+          "tenantID": 0,
+          "propertyID": 0,
+          "productID": 0,
+          "textID": 2,
+          "text": "AUDIT",
+          "routePath": "/audit",
+          "imgPath": "icon-Audit",
+          "order": 2,
+          "visibility": true,
+          "disable": false,
+          "parentID": 0,
+          "menuPosition": "Primary",
+          "menuAlignment": "Horizontal",
+          "externalLink": false,
+          "linkedElement": [
+            {
+              "elementID": 8,
+              "tenantID": 0,
+              "propertyID": 0,
+              "productID": 0,
+              "textID": 2,
+              "text": "DAY END",
+              "routePath": "/audit/dayend",
+              "imgPath": "/audit/dayend",
+              "order": 1,
+              "visibility": true,
+              "disable": false,
+              "parentID": 7,
+              "menuPosition": "secondary",
+              "menuAlignment": "Horizontal",
+              "externalLink": false,
+              "linkedElement": []
+            }
+          ]
+        },
+      ]
+    };
     const menuList = this.currentSettings;
 
     if (menuList) {

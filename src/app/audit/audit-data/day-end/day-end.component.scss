@@ -1,0 +1,181 @@
+@import '../../../../assets/sass/abstracts/variables';
+.day-end{
+    .btn-disabled{
+        background-color: $color-disabled !important;
+        border-color: $color-disabled !important;
+        color: $disabled-button !important;
+        pointer-events: none;
+    }
+    .dayEnd-0 {
+        padding-top: 24px;
+    }
+    .dteFnt{
+        font-size: 25px;
+    }
+    .subdteFnt{
+        color: $disabled-button !important;
+    }
+    .rghtBrder{
+        border-right: 1px solid $disabled-button;
+    }
+    .w165{
+        width:165px;
+    }
+    .hdrlblwdth{
+        // width: 365px;
+    }
+    .V-Mid{
+        vertical-align: middle;
+    }
+    .notificationBG{
+        background-color: #faac40; //Need to confirm with deepan
+        padding: 8px;
+        border-radius: 4px;
+        color: $color-container-bg;
+    }
+    .processSec{
+        padding-top: 4rem;
+    }
+    .tableSec{
+        margin-top: 15px;
+        box-shadow: 0px 0px 7px 0px $color-form-bgColor;
+    }
+    .legendIcon {
+        height: 10px;
+        width: 10px;
+        display: inline-block;
+        border-radius: 10px;
+    }
+    /*Table Style*/
+    .DE_Table{
+        thead{
+            tr{
+                th{
+                    background: $color-form-bgColor;
+                    color: $color-base;
+                    height: 43px;
+                    padding: 0 30px;
+                    white-space: nowrap;
+                    &.fw100{
+                        width: 100px !important;
+                    }
+                }
+            }
+        }
+        tbody{
+            tr{
+                td{
+                    margin-right: 15px;
+                    padding: 0px 30px;
+                    border-top: none;
+                    text-align: left;
+                    vertical-align: middle;
+                    color: $color-form-field;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    border-bottom: 1px solid $color-form-bgColor;
+                    height: 43px;
+                    &.fw100{
+                        width: 100px !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .dayEnd-0, .dayEnd-1 , .dayEnd-2{
+        .DE_Table{
+            thead{
+                tr{
+                    th:nth-child(1){
+                        min-width: 250px;
+                        max-width: 250px;
+                    }th:nth-child(2){
+                        min-width: 200px;
+                        max-width: 200px;
+                    }th:nth-child(3){
+                        min-width: 200px;
+                        max-width: 200px;
+                    }th:nth-child(4){
+                        min-width: 300px;
+                        max-width: 300px;
+                    }th:nth-child(5){
+                        min-width: 300px;
+                        max-width: 300px;
+                    }th:nth-child(6){
+                        min-width: 200px;
+                        max-width: 200px;
+                    }th:nth-child(7){
+                        min-width: 200px;
+                        max-width: 200px;
+                    }th:nth-child(8){
+                        min-width: 150px;
+                        max-width: 150px;
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    td:nth-child(1){
+                        min-width: 250px;
+                        max-width: 250px;
+                    }
+                    td:nth-child(2){
+                        min-width: 200px;
+                        max-width: 200px;
+                    }
+                    td:nth-child(3){
+                        min-width: 200px;
+                        max-width: 200px;
+                    }
+                    td:nth-child(4){
+                        min-width: 300px;
+                        max-width: 300px;
+                    }
+                    td:nth-child(5){
+                        min-width: 300px;
+                        max-width: 300px;
+                     }
+                    td:nth-child(6){
+                        min-width: 200px;
+                        max-width: 200px;
+                     }
+                     td:nth-child(7){
+                         min-width: 200px;
+                         max-width: 200px;
+                      }
+                      td:nth-child(8){
+                          min-width: 150px;
+                          max-width: 150px;
+                       }
+                }
+            }
+        }
+
+    }
+
+
+    .rotate90{
+        transform: rotate(90deg);
+    }
+    .l6{
+        left: 6px;
+    }
+    .custmenuBtn{
+        height: 31px !important;
+    }
+    .right{
+        text-align: right;
+    }
+    .center{
+        text-align: center;
+    }
+    .DE_label-green-round {
+        background-color: $color-active;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-bottom: 0px;
+      }
+}

@@ -19,6 +19,7 @@ import { RetailSharedModule } from '../retail/shared/retail-shared.module';
 import { CommonSharedModule } from '../common/shared/shared/shared.module';
 import { AboutComponent } from './components/about/about.component';
 import { MsGraphAuthComponent } from './components/ms-graph-auth/ms-graph-auth.component';
+import { ImgThumbnailComponent } from './components/img-thumbnail/img-thumbnail.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { MsGraphAuthComponent } from './components/ms-graph-auth/ms-graph-auth.c
     GlobalSearchComponent,
     AboutComponent,
     MsGraphAuthComponent
+    ImgThumbnailComponent
   ],
   imports: [
     CommonModule,
@@ -62,6 +64,8 @@ import { MsGraphAuthComponent } from './components/ms-graph-auth/ms-graph-auth.c
     MenuComponent,
     GlobalSearchComponent,
     ReactiveFormsModule,
+    CommonSharedModule,
+    ImgThumbnailComponent,
     MsGraphAuthComponent,
     CommonSharedModule
   ],

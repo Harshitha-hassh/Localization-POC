@@ -1,0 +1,133 @@
+@import '../../../../../assets/sass/abstracts/variables';
+
+.single-view-container {
+  width: 600px;
+  top: 0;
+  height: 100%;
+  background-color: $color-save-button;
+
+  .close-icon {
+    font-size: 16px;
+    color: $color-base;
+  }
+
+  .user-info {
+    width: 100%;
+    display: inline-block;
+    padding: 20px 15px;
+
+    img {
+      width: 66px;
+      float: left;
+    }
+
+    .user-data {
+      float: left;
+      // padding-top: 6px;
+      padding-left: 15px;
+
+      .age-details {
+        color: $color-input-holder;
+        padding-top: 5px;
+      }
+    }
+
+    .edit-client-btn {
+      float: right;
+      line-height: 30px;
+      border-radius: 3px;
+    }
+  }
+
+  .user-details {
+    // width: 100%;
+    margin: 15px 15px;
+    color: $color-input-holder;
+
+    i {
+      padding: 0 5px;
+      font-size: 16px;
+    }
+
+    div {
+      padding-right: 40px;
+    }
+
+    td {
+      display: inline-block;
+    }
+
+    td:nth-child(even) {
+      max-width: 20%;
+    }
+  }
+
+  .recent-appointments {
+    width: 100%;
+    padding-top: 15px;
+    height: calc(100% - 150px);
+    .recent-name {
+    //   padding: 10px 15px;
+      padding: 10px 15px 25px 15px;
+      border-bottom: 1px solid $color-form-bgColor;
+    }
+
+    .client-recent {
+      height: calc(100% - 67px);
+    }
+
+    .client-appointment-details {
+      display: table;
+      width: 100%;
+    //   padding: 11px 15px;
+      padding: 7px 15px;
+      border-bottom: 1px solid $color-form-bgColor;
+      table-layout: fixed;
+      color: $color-input-holder;
+
+      .appointment-name {
+        display: table-cell;
+        max-width: 75%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        padding-right: 5px;
+      }
+
+      .appointment-status {
+        display: table-cell;
+        width: 25%;
+        text-align: right;
+        text-transform: capitalize;
+
+        .status-btn {
+          line-height: 30px;
+          border-radius: 18px;
+          width: 120px;
+          // pointer-events: none;
+          padding: 0 10px;
+
+      }
+    }
+  }
+  .mat-flat-button {
+    color: rgba(0,0,0,.87) !important;
+    background-color: #fff !important;
+}
+}
+
+.player-worth {
+  width: 26px;
+  line-height: 26px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  margin-left: 1rem;
+}
+
+.icon-Player-worth_enabled, .icon-Player-worth_disabled {
+  min-width: 0;
+  font-size: 26px;
+}
+}
+

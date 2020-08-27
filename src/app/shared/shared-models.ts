@@ -2,10 +2,10 @@ import { FormGroup } from '@angular/forms';
 
 
 export interface LocalizedMonthsModel {
-	id: number;
-	short: string;
-	long: string;
-	code: string;
+    id: number;
+    short: string;
+    long: string;
+    code: string;
 }
 
 export interface localizationJSON {
@@ -17,8 +17,8 @@ export interface localizationJSON {
     reports: any;
     settings: any;
     shop: any;
-    bookAppointment:any;
-    breakpoint: any;    
+    bookAppointment: any;
+    breakpoint: any;
     utilities: any;
     userConfig: any;
     retailsetup: any;
@@ -117,4 +117,42 @@ export interface ButtonValue {
     type: string;
     disabledproperty?: boolean;
     customclass?: string;
+}
+
+export interface BaseResponse<T> {
+    result: T;
+    errorCode: number;
+    errorDescription: string;
+    successStatus: boolean;
+    propertyId: number;
+    outletId: number;
+}
+
+export interface KeyValuePair {
+    key: any;
+    value: any;
+  }
+export interface ImageData {
+    id: number;
+    referenceType: string;
+    referenceId: number;
+    sequenceNo: number;
+    contentType: string;
+    data: any[];
+    thumbnailData: any[];
+}
+
+export interface clientInfoDisplay {
+    name: any;
+    age: any;
+    gender: any;
+    email: any[];
+    phone: any[];
+    address: any;
+}
+
+export interface ClientLabel {
+    Id: number;
+    FirstName: string;
+    LastName: string;
 }
