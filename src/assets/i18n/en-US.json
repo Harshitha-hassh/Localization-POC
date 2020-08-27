@@ -78,6 +78,7 @@
       "Y",
       "Z"
     ],
+    "Work":"Work",
     "ARPostNotAvailableForMember": "No AR Posting is available for this member",
     "CreditBookNotAvailableForMember": "No credit Book is available for this member",
     "MemberExceededAllowedCredit": "Member has exceeded cash allowed for this credit book",
@@ -265,7 +266,11 @@
     "close": "close",
     "SPA": "SPA",
     "GOLF": "GOLF",
-    "RETAIL": "RETAIL"
+    "RETAIL": "RETAIL",
+    "drp_txt_home": "Home",
+		"drp_txt_office": "Office",
+		"drp_txt_mobile": "Mobile",
+		"drp_txt_personal": "Personal"
   },
   "calendar": {
     "Sunday": "Sunday",
@@ -2675,5 +2680,8 @@
   "helpQuestion": "Help",
   "about": "About",
   "versionInfo": "The Product is running in the {productVersion} Version",
-  "okay": "OKAY"
+  "okay": "OKAY",
+  "NewClient":"NEW CLIENT",
+  "save":"SAVE",
+  "EditClient":"EDIT CLIENT"
 }

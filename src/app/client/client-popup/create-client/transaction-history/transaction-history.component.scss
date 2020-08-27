@@ -1,0 +1,316 @@
+@import '../../../../../assets/sass/abstracts/variables';
+
+.list-container{
+    .noBrdrTop{
+        border-top: 0px !important;
+        thead{
+            th{
+                span{
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+    .select-container{
+        height: 50px;
+        color: $color-base;
+        .select-width{
+            width: 230px;
+        }
+    }
+    .view-data{
+        height: calc(100% - 87px);
+        &.adjust-height{
+            height: calc(100% - 104px);
+        }
+        .label-table{
+            width: calc(100% - 383px);
+            color:$color-base;
+        }
+        .transaction-details-label{
+            width: 280px;
+            color: $color-base;
+        }
+
+        .transaction-details{
+            table{
+                th{
+                    background: #E4E5E8;
+                    color: #000;
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .transaction-div{
+            width: calc(100% - 400px);
+            //border:1px solid #f2f2f2;
+            float: left;
+            table{
+                width: 100%;
+                float: left;
+                table-layout: fixed;
+                // border:1px solid #f2f2f2;
+                border: 1px solid #E4E5E8;
+                tbody{
+                    tr:hover{
+                        background: #F9F3E5;
+                    }
+                }
+                .add-bg{
+                    background: #F9F3E5;
+                }
+                th{
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    position: sticky;
+                    top:0;
+                    width: 178px;
+                    cursor: default;
+                    background: #E4E5E8;
+                    color: #000;
+                    font-size: 14px;
+                    &:nth-child(1){
+                        width: 90px;
+                    }
+                    &:nth-child(2){
+                        width: 90px;
+                    }
+                }
+                td{
+                    height: 38px;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
+
+            }
+
+            #table-2{
+                // th:nth-child(5),th:nth-child(6),th:nth-child(7),th:nth-child(4),th:nth-child(3){
+                //     width: 120px;
+                // }
+                width: unset;
+                tr:hover{
+                    cursor: pointer;
+                }
+
+                th{
+                    &:nth-child(1),&:nth-child(2){
+                        width: 178px;
+                    }
+                }
+            }
+            #table-1{
+                th:nth-child(1){
+                    width: 23px;
+                    padding-left: 14px;
+                    max-width: 33px;
+                    // text-align: right
+                }
+                th:nth-child(2){
+                    width: 40px;
+                    // text-align: right;
+                    padding-left: 0;
+                    max-width: 50px;
+                }
+                th:nth-child(3), td:nth-child(3){
+                    padding-left: 42px;
+                }
+
+                td:nth-child(1),td:nth-child(2){
+                //    text-align: right;
+            }
+
+            }
+        }
+        section{
+            width: 380px;
+            float: left;
+            table{
+                width: 380px;
+                border: 1px solid white;
+                border-collapse: collapse;
+                border:1px solid $color-form-bgColor;
+                th{
+                    background: white;
+                    height: 43px;
+                    padding-left: 0.5rem;
+                    padding-right: 0.5rem;
+                    position: sticky;
+                    top:0;
+                }
+                td{
+                    // background: #f2f2f2;
+                    border-bottom: 0;
+                    border-top: 0;
+                    height: 38px;
+                    padding-left: 0.5rem;
+                    padding-right: 0.5rem;
+                }
+                td:nth-child(1){
+                    text-align: center;
+                }
+                th:nth-child(1){
+                    text-align: center;
+                    width: 10px;
+                }
+                th:nth-child(2){
+                    width: 247px;
+                }
+            }
+
+
+        }
+    }
+    mat-form-field{
+        font-size: 14px;
+
+    }
+
+    .transaction-table {
+        tr:nth-child(2) {
+            background: #e8dec0;
+        }
+        th {
+            background: #E4E5E8;
+            color: #000;
+            font-size: 14px;
+            height: 43px;
+            font-family: "LatoWeb";
+            white-space: nowrap;
+        }
+        td {
+            padding: 1rem;
+            // padding: 5px 2px;
+        }
+    }
+
+    .transaction-details-table {
+        height: 100%;
+        margin-bottom: 0px;
+        tr, th {
+            border: none;
+        }
+        th {
+            position: sticky;
+            top: 0;
+        }
+        td {
+            border-right: 2px solid white;
+            border-bottom: 0px;
+            border-top: 0px;
+            background-color: #f2f2f2;
+            padding-right: 2px;
+        }
+        tr:last-child {
+            height: 100%;
+        }
+    }
+}
+
+
+@media screen and (max-width:1600px){
+    .list-container{
+        .view-data{
+         //   height: 83%;
+           // margin-top:1rem !important;
+            .transaction-div{
+                width: 94%;
+                #table-1{
+                    th:nth-child(1){
+                        width: 23px;
+                        padding-left: 12px;
+                        max-width: 33px;
+                    }
+                    th:nth-child(2){
+                        width: 37px;
+                        // text-align: right;
+                        padding-left: 0;
+                        max-width: 50px;
+                    }
+
+                    // td:nth-child(1),td:nth-child(2){
+                    //     paddin
+                    // }
+                }
+            }
+            &.adjust-height{
+             //   height: 76%;
+               // margin-top: 1.5rem !important;
+                .transaction-div{
+                    width: calc(100% - 300px);
+                }
+            }
+            .label-table{
+                width: calc(100% - 293px);
+            }
+
+
+            section{
+                width: 280px;
+                table{
+                    width: 280px;
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width:1301px) and (max-width:1600px){
+.list-container{
+    .view-data{
+     //   height: 83%;
+       // margin-top:1rem !important;
+        .transaction-div{
+           // width: 94%;
+            #table-1{
+                th:nth-child(1){
+                    width: 23px;
+                    padding-left: 4px;
+                    max-width: 33px;
+                }
+                th:nth-child(2){
+                    width: 26px;
+                    // text-align: right;
+                    padding-left: 0;
+                    max-width: 50px;
+                }
+            }
+        }
+        // section{
+        //     width: 280px;
+        //     table{
+        //         width: 280px;
+        //     }
+        // }
+    }
+}
+}
+@media screen and (min-width:1601px){
+    .list-container{
+        .view-data{
+         //   height: 83%;
+           // margin-top:1rem !important;
+            .transaction-div{
+                width: calc(100% - 396px);
+                #table-1{
+                    th:nth-child(1){
+                        width: 16px;
+                        padding-left: 4px;
+                        max-width: 33px;
+                    }
+                    th:nth-child(2){
+                          width: 27px;
+
+                    }
+                }
+            }
+            section{
+                width: 380px;
+                table{
+                    width: 380px;
+                }
+            }
+        }
+    }
+}
+

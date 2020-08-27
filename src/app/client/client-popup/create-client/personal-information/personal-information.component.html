@@ -1,0 +1,295 @@
+<form class="personal_container  p-4 h-100" [formGroup]="FormGrp" autocomplete="off">
+  <ng-scrollbar [autoHide]="true">
+    <app-image-uploader [readOnly]="isClientViewOnly" [emptyImgCaption]="captions.UploadyourPhoto"
+      [imgData]="url" (fileDeleted)="fileDeleted()" (fileUploaded)="fileUploaded($event)"
+      (fileSizeExceeded)="fileSizeExceeded()"></app-image-uploader>
+    <div class="float-left sidesection ml-3">
+      <div>
+        <mat-form-field class="">
+          <mat-select [placeholder]="captions.CTitle" formControlName="title">
+            <mat-option *ngFor="let title of titles" [value]="title.id">{{title.value}}</mat-option>
+          </mat-select>
+          <mat-error class=""
+            *ngIf="FormGrp.controls['title'].hasError('required') && FormGrp.controls['title'].touched && !FormGrp.controls['title'].valid">
+            {{captions.MissingTitle}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="">
+        <mat-form-field class="">
+          <input matInput [placeholder]="captions.CFirstName" [maxlength]="1000" style="text-transform:capitalize"
+            value={{personalDetails.firstName}} autocomplete="off" formControlName="firstName">
+          <mat-error class=""
+            *ngIf="FormGrp.controls['firstName'].hasError('required') && FormGrp.controls['firstName'].touched && !FormGrp.controls['firstName'].valid">
+            {{captions.MissingFirstName}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class=" ml-3 mr-3">
+          <input matInput [placeholder]="captions.CLastName" [maxlength]="1000" style="text-transform:capitalize"
+            value={{personalDetails.lastName}} formControlName="lastName">
+          <mat-error class=""
+            *ngIf="FormGrp.controls['lastName'].hasError('required') && FormGrp.controls['lastName'].touched && !FormGrp.controls['lastName'].valid">
+            {{captions.MissingLastName}}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="">
+          <input matInput [placeholder]="captions.Pronounced" [maxlength]="20" style="text-transform:capitalize"
+            value={{personalDetails.pronounce}} formControlName="pronounced">
+        </mat-form-field>
+      </div>
+      <div class="">
+        <div class="display_style_toggle  toggle-section float-left ">
+          <label for="gender" class=" LW12 gender form-label-normal">{{captions.Gender}}</label>
+          <br>
+          <mat-button-toggle-group #group="matButtonToggleGroup" class="margin_top_9 LW14 mb-1 "
+            [value]="personalDetails.gender" formControlName="gender">
+            <mat-button-toggle class=" border_right toggle-btn" *ngFor="let gender of genderList"
+              value="{{gender.value}}">
+              {{gender.text}}
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+          <mat-error class=""
+            *ngIf="FormGrp.controls['gender'].hasError('required') && !FormGrp.controls['gender'].touched">
+            {{captions.MissingGender}}
+          </mat-error>
+        </div>
+        <div class="display_style_toggle  margin_left_5  width_180px">
+
+          <div class="float-left pr-4">
+            <label for="" class="form-label-normal d-block mb-0 dob-label">{{captions.CDateOfBirth}}</label>
+            <div class="d-inline-block">
+              <mat-form-field floatLabel="never" class="width_180px">
+                <input [max]="maxDate" matInput [matDatepicker]="picker" [placeholder]="captions.CDateofBirth" class=""
+                  formControlName="dob">
+                <mat-datepicker #picker></mat-datepicker>
+                <i matSuffix class="icon-Calender cursor fs-xlarge position-relative d-inline-block customCalendar"
+                  (click)="picker.open()"></i>
+                <mat-error class="" *ngIf="!FormGrp.controls['dob'].disabled && !FormGrp.controls['dob'].valid">
+                  {{localization.captions.common.MissingDOB}}
+                </mat-error>
+              </mat-form-field>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div class="patron-section">
+        <mat-form-field class="mr-3" [ngClass]="!isCMSConfigured || isPatronIdAvailable ? 'button_invalid' : ''">
+          <input matInput [placeholder]="captions.PatronID" formControlName="patronid"
+            [readonly]="!isCMSConfigured || isPatronIdAvailable" (focusout)="checkPatronValidation()">
+          <mat-error class="" *ngIf="isCMSConfigured && !isPatronIdAvailable">
+            {{captions.PlayerLookupNotHappened}}
+          </mat-error>
+
+        </mat-form-field>
+
+        <button mat-button class="body-bgcolor patron-search cursor" type="button"
+          [disabled]="!isCMSConfigured && isPatronIdAvailable"
+          [ngClass]="!isCMSConfigured || isPatronIdAvailable ? 'button_invalid' : ''" (click)="searchPatron()">
+          <i class="icon-Search whitecolor"></i>
+        </button>
+        <button mat-button (click)="playerWorthDetails($event)" class="player-worth cursor"
+          [disabled]="!isCMSConfigured || !isPatronIdAvailable"
+          [ngClass]="!isCMSConfigured || !isPatronIdAvailable ? 'button_invalid' : ''"
+          matTooltip="{{captions.PlayerWorth}}">
+          <ng-container *ngIf="isPatronIdAvailable">
+            <span class="icon-Player-worth_enabled"><span class="path1"></span><span class="path2"></span></span>
+          </ng-container>
+          <ng-container *ngIf="!isPatronIdAvailable">
+            <span class="icon-Player-worth_disabled"><span class="path1"></span><span class="path2"></span></span>
+          </ng-container>
+        </button>
+      </div>
+      <div>
+        <mat-form-field class="button_invalid">
+          <input matInput [placeholder]="captions.Rank" readonly formControlName="rank">
+        </mat-form-field>
+      </div>
+
+
+      <label class="form-label-primary">{{captions.Contact}}</label>
+
+      <div class="w-100 float-left">
+        <div *ngFor="let item of FormGrp.get('Phone')['controls']; let i = index;" formArrayName="Phone"
+          class="clearfix ">
+          <div class="phone-controls-wrapper float-left width-490px">
+            <div>
+              <mat-form-field class="inputwidth20 width-90px mr-3" [formGroupName]="i">
+                <mat-select [placeholder]="captions.CPhone" id="PhoneNumberLabel" name="TSpdd" class="LW14"
+                  formControlName="PhoneNumberLabel"
+                  (selectionChange)="setmandatory($event, 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', i)">
+                  <mat-option *ngFor="let ct of contactTypePhone" [value]="ct.id">{{ct.description}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field class="width-20 mr-2 LW14 " [formGroupName]="i">
+                <input matInput name="TSpi"
+                  (input)=" setmandatory($event,'countryCode','PhoneNumber', 'PhoneNumberLabel', i)"
+                  (blur)="phoneChange($event,'countryCode','PhoneNumber','PhoneNumberLabel',i)" [maxlength]="6"
+                  formControlName="countryCode" [placeholder]="commonCaptions.CountryCode">
+              </mat-form-field>
+
+              <mat-form-field class=" LW14 " [formGroupName]="i">
+                <input matInput name="TSpi"
+                  (input)=" setmandatory($event,'PhoneNumber','countryCode','PhoneNumberLabel', i)"
+                  (blur)="phoneChange($event,'PhoneNumber','countryCode','PhoneNumberLabel',i)" [maxlength]="30"
+                  textmask="{{textmaskFormat}}" id="PhoneNumber" formControlName="PhoneNumber">
+              </mat-form-field>
+              <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
+                (click)="removePhoneItem(i,'','');makeFormDirty()" *ngIf="i != 0"></span>
+              <span class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
+                (click)="addPhoneItem(i, '', '', '', '');makeFormDirty()"
+                *ngIf="(i == currentIndexPhone) || IsEdit"></span>
+            </div>
+            <div>
+              <mat-form-field class="d-block width-380px" *ngIf="enableExtension(i)" [formGroupName]="i">
+                <input matInput [placeholder]="commonCaptions.lbl_extension" formControlName='Extension'
+                  inputtype="onlynumber" maxlength="5">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="float-left contact-info-toggle">
+            <div class="yes-col float-left mr-5" [formGroupName]="i"
+              (click)="togglePrimaryContact('Phone', i, 'PhonePrimary')">
+              <label class="LW12 d-block form-label-normal">{{captions.PrimaryPhone}}</label>
+              <app-toggle-switch formControlName="PhonePrimary"></app-toggle-switch>
+            </div>
+            <div class="yes-col  float-left form-label-normal" [formGroupName]="i">
+              <label class="LW12 d-block">{{captions.PrivateInformation}}</label>
+              <app-toggle-switch formControlName="PhonePrivate"></app-toggle-switch>
+            </div>
+          </div>
+          <div class="error-div">
+            <mat-error class="mb-1"
+              *ngIf="!isClientViewOnly && item.controls['PhoneNumberLabel'].touched && (item.controls['PhoneNumberLabel'].hasError('required') || item.controls['PhoneNumberLabel'].invalid)">
+              {{validatePhoneType}}
+            </mat-error>
+            <mat-error class="mb-1"
+              *ngIf="!isClientViewOnly && item.controls['PhoneNumber'].touched && !item.controls['PhoneNumber'].valid && !FormGrp.controls.Phone.value[i].PhoneNumber">
+              {{captions.InvalidPhoneNumber}}
+            </mat-error>
+            <mat-error class="mb-1"
+              *ngIf="!isClientViewOnly && item.controls['countryCode'].touched && !item.controls['countryCode'].valid && !FormGrp.controls.Phone.value[i].countryCode">
+              {{commonCaptions.Missing}} {{commonCaptions.countryCode}}
+            </mat-error>
+
+          </div>
+        </div>
+      </div>
+      <div class="float-left w-100">
+        <div *ngFor="let item of FormGrp.get('Email')['controls']; let j = index;" formArrayName="Email"
+          class="w-100 emailDiv">
+          <div class="float-left width-490px" [formGroupName]="j">
+            <mat-form-field class="inputwidth20 width-90px mr-3">
+              <mat-select [placeholder]="captions.Email" (value)="selectedEmail" id="EmailSelect" name="TSedd"
+                formControlName="EmailLabel" class="">
+                <mat-option *ngFor="let ct of contactTypeEmail" [value]="ct.id">{{ct.description}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="inputwidth70 width-287px">
+              <input matInput name="TSei" (blur)="emailChange('EmailId','EmailLabel',j);"
+                [maxlength]="75" inputtype="email" id="EmailInput" formControlName="EmailId">
+
+            </mat-form-field>
+            <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
+              (click)="removeEmailItem(j,'','');makeFormDirty()" *ngIf="j != 0"></span>
+            <span class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
+              (click)="addEmailItem(j,'','');makeFormDirty()" *ngIf="(j == currentIndexemail) || IsEdit"></span>
+          </div>
+          <div class="float-left contact-info-toggle" [formGroupName]="j">
+            <div class="yes-col  float-left mr-5" (click)="togglePrimaryContact('Email', j, 'EmailPrimary')">
+              <label class="LW12 d-block form-label-normal">{{captions.PrimaryEmail}}</label>
+              <app-toggle-switch formControlName="EmailPrimary"></app-toggle-switch>
+            </div>
+            <div class="yes-col float-left">
+              <label class="LW12 d-block form-label-normal">{{captions.PrivateInformation}}</label>
+              <app-toggle-switch formControlName="EmailPrivate"></app-toggle-switch>
+            </div>
+          </div>
+          <div class="error-div">
+            <mat-error class="mb-1"
+              *ngIf="!isClientViewOnly && item.controls['EmailLabel'].touched && (FormGrp.controls['Email']['controls'][j].controls['EmailLabel'].hasError('required')|| item.controls['EmailLabel'].invalid)">
+              {{validateEmailType}}</mat-error>
+            <mat-error class="mb-1"
+              *ngIf="!isClientViewOnly &&!item.controls['EmailId'].valid && item.controls['EmailId'].touched && this.FormGrp.controls.Email.value[j].EmailId">
+              {{captions.InvalidEmailFormat}}
+            </mat-error>
+            <mat-error class="mb-1"
+              *ngIf="!isClientViewOnly &&!item.controls['EmailId'].valid && item.controls['EmailId'].touched && !this.FormGrp.controls.Email.value[j].EmailId">
+              {{captions.MissingEmail}}
+            </mat-error>
+
+          </div>
+
+        </div>
+      </div>
+      <div><label class="form-label-primary">{{captions.CAddress}}</label></div>
+      <div class=" w-100 position-relative float-left">
+        <div *ngFor="let item of FormGrp.get('Address')['controls']; let j = index;" formArrayName="Address"
+          class="clearfix">
+          <div class="float-left width-490px">
+            <mat-form-field class="width-380px" [formGroupName]="j">
+              <input matInput *ngIf="j==0" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+                (onAddressChange)="bindAddressFromGoogle($event,true,j)" name="TSei" [maxlength]="100"
+                id="AddressInput{{j}}" formControlName="addressLine" placeholder="{{captions.CAddress}}">
+              <input matInput *ngIf="j>0" (onAddressChange)="bindAddressFromGoogle($event,true,j)" name="TSei"
+                [maxlength]="100" id="AddressInput{{j}}" formControlName="addressLine"
+                placeholder="{{captions.CAddress}}">
+            </mat-form-field>
+            <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
+              (click)="removeAddressItem(j);makeFormDirty()" *ngIf="(j != 0 && j<3)"></span>
+            <span class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
+              (click)="addAddressItem(j);makeFormDirty()" *ngIf="(j == currentaddIndex && j != 2) || IsEdit"></span>
+            <mat-error class="width-380px d-inline-block"
+              *ngIf="!FormGrp.controls['Address'].disabled && FormGrp.controls['Address'].touched && !FormGrp.controls['Address']['controls'][j].valid">
+              {{captions.MissingAddress}}
+            </mat-error>
+          </div>
+          <div class="yes-col contact-info-toggle float-left" [formGroupName]="j" *ngIf="j==0">
+            <label class="LW12 d-block form-label-normal">{{captions.PrivateInformation}}</label>
+            <app-toggle-switch formControlName="privateAddress"></app-toggle-switch>
+          </div>
+        </div>
+      </div>
+      <mat-form-field class="mr-3">
+        <input matInput [placeholder]="captions.PostalCode" (blur)="PostalCodeChanged($event,false)"
+          formControlName="postal_code" [maxlength]="10">
+        <mat-error class=""
+          *ngIf="FormGrp.controls['postal_code'].hasError('required') && FormGrp.controls['postal_code'].touched && !FormGrp.controls['postal_code'].valid">
+          {{captions.MissingPostalCode}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="">
+        <input matInput [placeholder]="captions.City" formControlName="city" [maxlength]="50">
+        <mat-error class=""
+          *ngIf="FormGrp.controls['city'].hasError('required') && FormGrp.controls['city'].touched && !FormGrp.controls['city'].valid">
+          {{captions.MissingCityInformation}}
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <mat-form-field class="mr-3">
+          <input matInput [placeholder]="captions.State" formControlName="state">
+          <mat-error class=""
+            *ngIf="FormGrp.controls['state'].hasError('required') && FormGrp.controls['state'].touched && !FormGrp.controls['state'].valid">
+            {{captions.MissingStateInformation}}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="">
+          <input matInput [placeholder]="captions.Country" formControlName="country">
+          <mat-error class=""
+            *ngIf="FormGrp.controls['country'].hasError('required') && FormGrp.controls['country'].touched && !FormGrp.controls['country'].valid">
+            {{captions.MissingCountryInformation}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </ng-scrollbar>
+</form>

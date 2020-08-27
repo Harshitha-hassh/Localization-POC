@@ -9,14 +9,13 @@ import { RecentsComponent } from './view-client/recents/recents.component';
 import { VipComponent } from './view-client/vip/vip.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClientTableComponent } from './client-table/client-table.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { SingleUserViewComponent } from './view-client/client-details/single-user-view/single-user-view.component';
 import { ClientfilterpipePipe } from './client-table/clientfilterpipe.pipe';
 import { ClientDetailsComponent } from './view-client/client-details/client-details.component';
 import { ClientsortpipePipe } from './client-table/clientsortpipe.pipe';
 import { ScrollbarModule } from 'ngx-scrollbar';
 import { NgDragDropModule } from 'ng-drag-drop';
-import { NgxPaginationModule } from 'ngx-pagination'; 
 import { ClientService } from '../shared/service/client-service.service';
 import { AppModuleService } from '../core/services/app.service';
 @NgModule({
@@ -25,14 +24,29 @@ import { AppModuleService } from '../core/services/app.service';
     ClientRountingModule,
     SharedModule,
     FormsModule,
-  ReactiveFormsModule,
+    ReactiveFormsModule,
     MatTableModule,
     ScrollbarModule,
-    NgDragDropModule.forRoot(),
-    NgxPaginationModule
+    NgDragDropModule.forRoot()
   ],
-    declarations: [ClientComponent, ViewCientComponenet, AllClientsComponent, RecentsComponent, VipComponent, SingleUserViewComponent, ClientTableComponent, ClientfilterpipePipe, ClientDetailsComponent, ClientsortpipePipe],
-    providers: [ClientService, AppModuleService],
-    exports:[ClientsortpipePipe]
+  declarations: [
+    ClientComponent,
+    ViewCientComponenet,
+    AllClientsComponent,
+    RecentsComponent,
+    VipComponent,
+    SingleUserViewComponent,
+    ClientTableComponent,
+    ClientfilterpipePipe,
+    ClientDetailsComponent,
+    ClientsortpipePipe
+  ],
+  providers: [ClientService, AppModuleService],
+  exports: [
+    ClientsortpipePipe
+  ],
+  entryComponents:[
+    // ClientPopupComponent
+  ]
 })
 export class ClientModule { }
