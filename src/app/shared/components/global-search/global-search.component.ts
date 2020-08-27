@@ -2,13 +2,15 @@ import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, Input, View
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { searchtitleenum, GlobalSearchModel, GlobalSearchData } from './global-search.model';
 import { Router } from '@angular/router';
+import { GlobalSearchBusiness } from './global-search.business';
+import { Localization } from 'src/app/core/localization/Localization';
 
 @Component({
   selector: 'app-global-search',
   templateUrl: './global-search.component.html',
   styleUrls: ['./global-search.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: []
+  providers: [GlobalSearchBusiness]
 })
 
 export class GlobalSearchComponent implements OnInit, AfterViewInit {
@@ -20,14 +22,18 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
   @Output() onSearch = new EventEmitter();
   @Output() OnOptionSelected = new EventEmitter();
   titleEnum = searchtitleenum;
-  @ViewChild("searchText", { static: false }) searchText: ElementRef;
+  @ViewChild('searchText', { static: false }) searchText: ElementRef;
   captions: any;
 
-  constructor(private _formBuilder: FormBuilder
-    , private _router: Router    
-    ) { }
+  constructor(private _formBuilder: FormBuilder,
+    private _router: Router,
+    private globalSearchBusiness: GlobalSearchBusiness,
+    private localization: Localization
+  ) { 
+    this.captions = this.localization.captions;
+  }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.globalSearchForm = this._formBuilder.group({
       searchGroup: '',
     });
@@ -35,34 +41,34 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (this.searchText && this.searchText.nativeElement)
+    if (this.searchText && this.searchText.nativeElement) {
       this.searchText.nativeElement.focus();
+    }
   }
 
   public async filterGroup(value: string) {
     this.filterData = [];
     value = value ? value.toString() : "";
     value = value.trim();
-    if (value.length >= 3) {      
-      this.searchGroupOptions =this.globalSearch(value);
-      
-    }
-    else if (value.length <= 2) {
+    if (value.length >= 3) {
+      this.searchGroupOptions = this.globalSearchBusiness.globalSearch(value);
+
+    } else if (value.length <= 2) {
       this.filterData = [];
       this.searchGroupOptions = Promise.resolve([]);
     }
   }
 
   onInput(e) {
-    let inputValue = e.target.value;
+    const inputValue = e.target.value;
     if (inputValue.length > 3) {
       console.log(e.target.value);
     }
     this.onSearch.emit();
   }
 
-  addPlayer(e) {
-    var query = Math.random() * 10;
+  addClient(e) {
+    const query = Math.random() * 10;
     this._router.navigate([`login`]);
     // this._router.navigate([`home`], { queryParams: { action: 'add', query: query } });
   }
@@ -70,9 +76,9 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
   filter = (opt: any[], value: string): any[] => {
     const filterValue = value.toLowerCase();
     return opt.filter(item => {
-      for (var key in item) {
+      for (const key in item) {
         if (key == searchtitleenum.booking || key == searchtitleenum.settings || key == searchtitleenum.sales) {
-          let returnValue = (item[key].toLowerCase().indexOf(filterValue) === 0);
+          const returnValue = (item[key].toLowerCase().indexOf(filterValue) === 0);
           if (returnValue) {
             return returnValue;
           }
@@ -81,22 +87,22 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
     });
   };
 
-  linkClicked(title:string, data: GlobalSearchData, e) {
+  linkClicked(title: string, data: GlobalSearchData, e) {
     // Random number - To refresh the page everytime
-    var query = Math.random() * 10;
+    const query = Math.random() * 10;
     switch (title) {
-      case searchtitleenum.booking:
-        this._router.navigate([`booking`]);        
-      break;             
       case searchtitleenum.sales:
-        this._router.navigate([`sales`]);        
-      break;                              
+        this._router.navigate([`sales`]);
+        break;
       case searchtitleenum.settings:
-        this._router.navigate([`settings`]);        
-      break;                              
+        this._router.navigate([`settings`]);
+        break;
+      case searchtitleenum.retailItems:
+        this._router.navigate([`/shop/viewshop/`], { queryParams: { description: data.value, query } });
+        break;
       default:
-      
-      break;
+
+        break;
     }
     this.searchGroupOptions = Promise.resolve([]);
     this.OnOptionSelected.emit();
@@ -104,14 +110,18 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
 
   valueMapper() {
     return '';
-  };
+  }
+
+  openAddClient() {
+
+  }
 
 
   async globalSearch(pattern: string): Promise<any[]> {
-    let data =[
-      {"title" :"booking","dataCollection":[{"id":1,"value":"booking 1"},{"id":2,"value":"booking 2"}]},
-      {"title" :"settings","dataCollection":[{"id":1,"value":"settings 1"}]},
-      {"title" :"sales","dataCollection":[{"id":1,"value":"Sales 1"},{"id":2,"value":"Sales 2"}]}
+    const data = [
+      { "title": "booking", "dataCollection": [{ "id": 1, "value": "booking 1" }, { "id": 2, "value": "booking 2" }] },
+      { "title": "settings", "dataCollection": [{ "id": 1, "value": "settings 1" }] },
+      { "title": "sales", "dataCollection": [{ "id": 1, "value": "Sales 1" }, { "id": 2, "value": "Sales 2" }] }
     ];
     return data;
   }

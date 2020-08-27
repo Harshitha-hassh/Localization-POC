@@ -1,0 +1,29 @@
+@import '../../../assets/sass/abstracts/variables';
+.user-config {
+  &.list-container {
+    height: auto !important;
+  }
+.select-container-bg{
+  .select-container{
+    height: 60px !important;
+    mat-form-field{
+      font-size: unset !important;
+    }
+  }
+}
+  .w-20 {
+    max-width: 20% !important;
+  }
+
+  .w-80 {
+    width: 80% !important;
+  }
+
+}
+
+.rolesetupdiv {
+  height: calc(100% - 60px);
+}
+.userRolesetupdiv{
+  height: 100px;
+}

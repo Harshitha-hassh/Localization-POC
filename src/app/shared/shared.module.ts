@@ -4,7 +4,6 @@ import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from '../material-module';
 import { RouterModule } from '@angular/router';
 import { Localization } from '../core/localization/Localization';
@@ -18,6 +17,8 @@ import { RetailPosCommunication } from './communication/services/retailpos.servi
 import { TemplatesModule } from '../common/templates/templates.module';
 import { RetailSharedModule } from '../retail/shared/retail-shared.module';
 import { CommonSharedModule } from '../common/shared/shared/shared.module';
+import { AboutComponent } from './components/about/about.component';
+import { MsGraphAuthComponent } from './components/ms-graph-auth/ms-graph-auth.component';
 import { ImgThumbnailComponent } from './components/img-thumbnail/img-thumbnail.component';
 
 
@@ -25,6 +26,8 @@ import { ImgThumbnailComponent } from './components/img-thumbnail/img-thumbnail.
   declarations: [
     MenuComponent,
     GlobalSearchComponent,
+    AboutComponent,
+    MsGraphAuthComponent,
     ImgThumbnailComponent
   ],
   imports: [
@@ -62,9 +65,12 @@ import { ImgThumbnailComponent } from './components/img-thumbnail/img-thumbnail.
     GlobalSearchComponent,
     ReactiveFormsModule,
     CommonSharedModule,
-    ImgThumbnailComponent
+    ImgThumbnailComponent,
+    MsGraphAuthComponent,
+    CommonSharedModule
   ],
   entryComponents: [
+    AboutComponent
   ]
 })
 export class SharedModule { }

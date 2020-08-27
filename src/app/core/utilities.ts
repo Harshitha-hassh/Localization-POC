@@ -9,7 +9,7 @@ import { Calendar, ContactType, AlertType, ButtonType, AlertAction } from '../sh
 //import { AlertPopupComponent } from '../ag-common/components/alert-popup/alert-popup.component';
 // import { SorTypeEnum } from '../shared/components/cdkvirtual/cdkvirtual.model';
 import { USER_SESSION, USER_INFO } from './app-constants';
-// import { AuthenticationParameters, Configuration } from 'msal';
+import { AuthenticationParameters, Configuration } from 'msal';
 // import { MsalAngularConfiguration } from '@azure/msal-angular';
 import * as moment from 'moment';
 import { CardSwipePopupComponent } from '../retail/shared/card-swipe-popup/card-swipe-popup.component';
@@ -280,6 +280,14 @@ export class Utilities extends Localization implements OnDestroy {
 
         return returnArr;
     }
+
+     /**
+    * Converts a javascript date to Invariant date time format string (C# API can understand this format).
+    * @param Date javascript date or Javascript ISO string.*
+    */
+   convertDateFormat(dt: Date): string {
+    return super.ConvertDateToISODateTime(dt);
+}
 
     getTimeDifference(fromtime, toTime, type) {
         return super.getTimeDifference(fromtime, toTime, type);
@@ -1091,11 +1099,11 @@ export class Utilities extends Localization implements OnDestroy {
 //     return dialogRef;
 // }
 
-    // getMsalAuthParams(): AuthenticationParameters {
-    //     return {
-    //         scopes : Window.prototype.MsalConfig.Scopes
-    //     };
-    // }
+    getMsalAuthParams(): AuthenticationParameters {
+        return {
+            scopes : Window.prototype.MsalConfig.Scopes
+        };
+    }
 
     // getMsalConfigurationForRoot(): Configuration {
     //     return {

@@ -1,0 +1,49 @@
+@import '../../../../assets/sass/abstracts/variables';
+.user-setup{
+.content-area{
+    height: calc(100% - 64px);
+    border-bottom: 1px solid $color-shop-border;
+}
+.actions {
+    height: 64px;
+
+    .actionButton {
+    //  padding: 0 50px;
+    }
+  }
+}
+
+
+.pop-container{
+  height: 100%;
+  .pop-head{
+      height:64px;
+      position: relative;
+      &.border-top{
+      border-bottom: 1px solid $color-shop-border;
+      }
+      .inner-header{
+          position: absolute;
+          top: 24px;
+          font-size: 20px;
+          text-transform: uppercase;
+          color:$color-text-color;
+      }
+      .inner-close{
+          position: relative;
+          top:19px;
+          right:1rem;
+          color:$color-base;
+      }
+      .cursPointer{
+          cursor: pointer;
+      }
+  }
+  .pop-contents{
+      height: calc(100% - 64px);
+      .mat-dialog-content{
+          padding: 24px;
+          margin: unset;
+      }
+  }
+}

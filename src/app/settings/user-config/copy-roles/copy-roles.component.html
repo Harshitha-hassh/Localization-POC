@@ -1,0 +1,38 @@
+<section class="pop-container">
+  <div class="pop-head border-top">
+    <label class="inner-header pl-4 LW20">{{data.headername | uppercase}}</label>
+    <i *ngIf="data.closebool" class="material-icons inner-close IC30 float-md-right cursPointer"
+      (click)="Cancel()">close</i>
+  </div>
+  <div class="pop-contents">
+    <div class="copy-roles-section  pt-4">
+      <form [formGroup]="roleGrp" class="form-section">
+        <div class="content-section pl-4 pr-4">
+          <mat-form-field class="d-block mr-4 text-capitalize copy-from">
+            <mat-select formControlName="copyFrom" [placeholder]="captions.copyFrom"
+              (selectionChange)="configChanged($event)">
+              <mat-option [(value)]="item.description" *ngFor="let item of sampleOptions">{{item.description}}
+              </mat-option>
+            </mat-select>
+            <mat-error>{{captions.missingCopyFrom}}</mat-error>
+          </mat-form-field>
+          <mat-form-field class="d-block text-capitalize copy-to">
+            <mat-select formControlName="copyTo" [placeholder]="captions.copyTo">
+              <mat-option [(value)]="item.description" *ngFor="let item of secondOptionsSet">{{item.description}}
+              </mat-option>
+            </mat-select>
+            <mat-error>{{captions.missingCopyTo}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div mat-dialog-actions class=" dialog-section pl-4 pr-4">
+          <div class="pop-button ">
+            <button [ngClass]="this.roleGrp.valid && this.roleGrp.dirty ? 'button_valid': 'button_invalid'" mat-button
+              class="LW14 body-bgcolor text-uppercase  whitecolor"
+              (click)="SaveCopyRoles() ">{{captions.update}}</button>
+            <button mat-button class="ml-2 text-uppercase  LW14 " (click)="Cancel() "> {{captions.cancel}} </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

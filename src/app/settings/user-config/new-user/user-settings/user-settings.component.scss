@@ -1,0 +1,43 @@
+@import 'src/assets/sass/abstracts/variables';
+
+.user-settings {
+  .user-setting-form {
+    .settings {
+      .settings-left {
+        width: 400px;
+        height: 100%;
+        border-right: 1px solid $color-shop-border;
+
+        .date-label{
+            margin-bottom: 0;
+        }
+
+        .w250 {
+          width: 250px;
+        }
+
+        .w140{
+            width:140px;
+        }
+
+        .w100{
+            width:100px;
+        }
+        .user-name {
+          text-transform:capitalize
+        }
+      }
+
+      .settings-right {
+        width: calc(100% - 405px);
+        height: 100%;
+        .cursor{
+          cursor: pointer;
+        }
+        .icon-font-size {
+          padding-right: 8px;
+        }
+      }
+    }
+  }
+}

@@ -1,7 +1,8 @@
-export enum searchtitleenum {    
+export enum searchtitleenum {
     booking = 'booking',
     settings = 'settings',
-    sales = 'sales'  
+    sales = 'sales',
+    retailItems = 'Retail Items'
 
 }
 
@@ -11,8 +12,8 @@ export interface GlobalSearchModel {
 }
 
 export interface GlobalSearchData {
-    id: number;    
-    value: any
+    id: number;
+    value?: string;
 }
 
 

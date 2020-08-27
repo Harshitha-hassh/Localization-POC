@@ -10547,6 +10547,11 @@
 .icon-zoom-out1:before {
   content: "\e9bc";
 }
+.icon-help_question:before {
+  content: "\ed15";
+  color: #b1b3b5;
+}
+
 .icon-zoom-in1:before {
   content: "\e9bb";
 }

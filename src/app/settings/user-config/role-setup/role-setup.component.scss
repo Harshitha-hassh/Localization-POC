@@ -1,0 +1,85 @@
+@import 'src/assets/sass/abstracts/variables';
+.retailRoleSetup{
+    .roleGrid{
+    .Actions{
+        background-color: $color-form-bgColor;
+    }
+    .CustomDataTable{
+        .outletsHeader{
+            width: 100%;
+            padding-top: 0 !important;
+            align-items: flex-end;
+            height: 100%;
+            form{
+                display: inline-block;
+                mat-form-field{
+                    width: 235px;
+                    margin-right: 35px;
+                }
+                button[disabled]{
+                    cursor: default;
+                    background-color: $color-disabled !important;
+                      border-color: $color-disabled !important;
+                      span{
+                        cursor: default;
+                        color: $disabled-button !important
+                      }
+
+                  }
+            }
+            .searchArea{
+                width: 235px;
+                margin-left: 0 !important;
+                // margin-top: 10px;
+                top: -1px;
+            }
+        }
+
+        .page-header{           
+            height: 75px;
+            .custom-retail-inputs{
+                height: 100%;
+                .template-header{
+                    height: 100%;
+                }
+            }
+        }
+        .fixed-table-container{
+            height: calc(100% - 75px);
+            max-width: 1000px;
+            float: left;
+            // margin: 12px 30px;
+            width: 97% !important;
+            padding-right: 30px;
+            .toogle-switch-big{
+                .switch{
+                    margin-bottom: 0;
+                }
+            }
+
+            tbody{
+                tr{
+                    td{
+                        span.done,
+                        span.cancel{
+                            i{
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        .toogle-switch-big{
+            .switch{
+                margin-right: 15px;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+
+    }
+
+}

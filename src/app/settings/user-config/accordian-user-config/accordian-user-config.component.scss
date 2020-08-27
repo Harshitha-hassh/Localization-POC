@@ -1,0 +1,135 @@
+
+@import 'src/assets/sass/abstracts/variables';
+.accord-section{
+    padding: 0 30px;
+    padding-bottom: 10px;
+.header-section{
+    height: 43px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 24px;
+    background-color: $color-form-bgColor;
+    color: $color-base;
+    box-shadow: 0 3px 1px -2px $box-shadow-opacity, 0 2px 2px 0 $accordian-opacity, 0 1px 5px 0 $black-opacity;
+    font-size: 14px;
+
+    span{
+        //margin-right: 16px;
+        display: flex;
+        flex-grow: 2;
+        color: $color-input-holder;
+        width:50%;
+        &:first-child{
+            margin-right: 0;
+            width: 49.5%;
+            flex-grow: 1;
+            color: $color-base;
+        }
+    }
+}
+.expansion-panel-section{
+    font-size: 14px;
+    .mat-expansion-panel{
+
+        margin: 0px;
+        .mat-expansion-panel-header{
+            border-bottom: 1px solid $color-form-bgColor;
+            font-size: 14px;
+            .mat-content{
+                width: calc(100% - 10px);
+                .mat-expansion-panel-header-title{
+                    display: inline-block;
+                    width: 50%;
+                    //margin-right: 8px;
+                }
+                .mat-expansion-panel-header-description{
+                    width: 50%;
+                }
+            }
+
+}
+    .mat-expansion-panel-body{
+
+        padding: 0px;
+
+    }
+}
+    .accordian-section{
+    width: 100%;
+    max-height: 240px;
+    overflow: hidden;
+    .first-column,.second-column{
+        width: 100%;
+        border-bottom: 1px solid $color-form-bgColor;
+        max-height: 220px;
+    }
+    .second-column_style{
+        border-right: 1px solid $color-form-bgColor;
+    }
+    .data-section{
+        width: 50%;
+        float: left;
+        height: 48px;
+
+        padding: 0px 30px;
+        color: $color-input-holder;
+        .data-section-row{
+            width: 100%;
+        }
+        &.second-column_style{
+            border-right: 1px solid $color-form-bgColor;
+        }
+        //This is not required anymore as the display properties are set individually for each class below. Fix for Bug:22148
+        // .msg-text,.allow-toggle,.view-toggle{
+        //     display: table-cell;
+        //     vertical-align: middle;
+
+        // }
+        .allow-toggle,.view-toggle{
+            text-align: center;
+            padding: 0px 9px;
+            display: inline-block;
+            vertical-align: middle;
+            .toggle-text{
+                float: left;
+                padding-top: 6px;
+                padding-right: 5px;
+            }
+            .switch{
+                float: right;
+                margin-top: 6px;
+            }
+        }
+        .msg-text{
+            display: inline-block;
+            vertical-align: middle;
+            .setWidth{
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                margin-top: 10px;
+            }
+            .tooltipClass{
+                width: 100px;
+            }
+        }
+
+}
+
+}
+}
+
+}
+//Width needs to be calculated based on the toggle inputs(width: 235 temporary fix)
+.breakpoint-name {
+    // width: calc(100% - 235px) !important;
+    // display: inline-block !important;
+    // margin-top: 8px;
+}
+.switch.checked .switch-pane .switch-label-unchecked{
+    display: none !important;
+    }
+    .overflow-scroll{
+        overflow: hidden;
+    }

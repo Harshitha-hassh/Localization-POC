@@ -140,4 +140,13 @@ export class PropertyInformation {
         }
         return null;
     }
+
+    public SetPropertyConfiguration(settings) {
+        sessionStorage.setItem('propConfig', JSON.stringify(settings.configValue));
+    }
+
+    public GetPropertyConfiguration() {
+        const _config = sessionStorage.getItem('propConfig');
+        return _config && JSON.parse(_config);
+    }
 }

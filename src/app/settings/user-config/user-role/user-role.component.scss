@@ -1,0 +1,36 @@
+.user-role{
+
+    height: 100%;
+    width: 100%;
+    .control-section{
+        height: 60px;
+        padding: 0 30px;
+        display: inline-block;
+        width: 100%;
+    .select-container{
+        display: inline-block;
+        .select-width{
+            .mat-select-value{
+                width: auto;
+                max-width: 100%;
+            }
+            .mat-form-field-underline{
+                display: none;
+            }
+            .mat-select-arrow{
+                margin-left: 0.5rem;
+            }
+        }
+    }
+    .copy-btn{
+        float: right;
+        margin-top: 17px;
+        border-radius: 3px;
+        height: 30px;
+        margin-left: 15px;
+    }
+}
+.data-section{
+    height: calc(100% - 60px);
+}
+}

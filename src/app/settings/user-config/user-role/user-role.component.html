@@ -1,0 +1,20 @@
+<div *ngIf="hasAccess" class="user-role">
+  <div class="control-section">
+    <div class="select-container">
+      <mat-form-field class="select-width">
+        <mat-select id="selectSetup" #selectSetup [(ngModel)]="selectedOption" (ngModelChange)="LoadUserConfig()">
+          <mat-option *ngFor="let option of availableOptions" [(value)]="option.id">
+            {{option.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button [ngClass]="{'button_invalid': IsReadOnly }" mat-raised-button (click)="Save()" class="copy-btn body-bgcolor whitecolor text-uppercase">{{captions.save}}</button>
+    <button [ngClass]="{'button_invalid': IsReadOnly }" mat-raised-button (click)="openDialog()" class="copy-btn body-bgcolor whitecolor text-uppercase">{{captions.copy}}</button>
+  </div>
+  <div class="data-section">
+    <ng-scrollbar>
+      <app-accordian-user-config [IsReadOnly]="IsReadOnly" [inputData]="arrayData"></app-accordian-user-config>
+    </ng-scrollbar>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<section class="about-wrapper">
+<div class="pop-contents">
+    <div class="pop-message customHeaderTxt pb-4">
+        {{data?.title}}
+    </div>
+    <div class="pop-message">
+        {{data?.message}}
+    </div>
+</div>
+<mat-dialog-actions class="actions">
+    <button mat-button class="button--primary" (click)="dialogClose()">{{data?.buttonText}}</button>
+</mat-dialog-actions>
+</section>

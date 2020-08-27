@@ -11,11 +11,12 @@ import { Utilities } from 'src/app/core/utilities';
 import { PropertySettingDataService } from 'src/app/shared/data-services/authentication/propertysetting.data.service';
 import { ManageSessionService } from '../manage-session.service';
 import { SetPasswordComponent } from '../set-password/set-password.component';
-import { JWT_TOKEN, USER_INFO, USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, USER_SETTINGS } from 'src/app/core/app-constants';
+import { JWT_TOKEN, USER_INFO, USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, USER_SETTINGS, PROPERTY_CONFIGURATION_SETTINGS } from 'src/app/core/app-constants';
 import { LoginCommunicationService } from '../login-communication.service';
 import * as moment from 'moment';
 import { ButtonValue } from 'src/app/shared/shared-models';
 import { Product } from 'src/app/common/shared/shared/globalsContant';
+import { API } from 'src/app/shared/models/property-settings.model';
 // import { RetailManagementCommunication } from 'src/app/shared/communication/services/retailmanagement.service';
 
 @Component({
@@ -423,6 +424,22 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.propertyInfo.SetPaymentConfiguration(propertyPaymentConfig);
   }
 
+
+  async SetPropertyApiConfiguration() {
+    const propertityConfig = await this.PropertySettingService.GetAllPropertyConfigurationSettings({
+      configurationName: PROPERTY_CONFIGURATION_SETTINGS,
+      propertyId: this.propertyInfo.PropertyId,
+      productId: 0
+    } as API.PropertyConfigurationSettings<any>);
+    if ((propertityConfig != null) && (Object.keys(propertityConfig.configValue).length > 0)) {
+      this.propertyInfo.SetPropertyConfiguration(propertityConfig);
+      // const language=this.utils.GetSessionStorageValue('_userInfo', 'language')||'en-US';
+      // if(propertityConfig.configValue.GoogleMapApiKey)
+      //   this.generateGoogleMapApi(propertityConfig.configValue.GoogleMapApiKey,language);
+    }
+  }
+
+
   async setUserSettings(properties) {
     /*To get the daysout value*/
     // const serviceParams = {
@@ -456,12 +473,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-    /**
-   * @function getbuttonEmitvalue;
-   * @Param Input <object>
-   * @param output <Nothing>
-   * @description Get the return value of button emit
-   */
+  /**
+ * @function getbuttonEmitvalue;
+ * @Param Input <object>
+ * @param output <Nothing>
+ * @description Get the return value of button emit
+ */
   getbuttonEmitvalue(e): void {
     if (this.loginForms.valid) {
       let muname = '';
