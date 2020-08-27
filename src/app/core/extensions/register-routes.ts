@@ -29,18 +29,18 @@ function readHosts() {
     $.ajax({
         url: RetailHostUrl,
         async: false,
-        success: function (result) {
+        success(result) {
             try {
                 if (typeof result == 'object') {
                     apiHosts = result.RetailApiHosts;
+                } else {
+                    console.error(hostLoadErrMsg);
                 }
-                else {
-                    console.error(hostLoadErrMsg)
-                }
-            } catch (e) { console.error(hostLoadErrMsg) }
+            } catch (e) { console.error(hostLoadErrMsg); }
         },
-        error: function (error) {
-            console.error(hostLoadErrMsg + ' Exception: ' + error)
+        error(err) {
+            console.error(hostLoadErrMsg + ' Exception: ' + err)
+                ;
         }
     });
     return apiHosts;
@@ -52,34 +52,34 @@ function readMsalConfig() {
     $.ajax({
         url: RetailHostUrl,
         async: false,
-        success: function (result) {
+        success(result) {
             try {
                 if (typeof result == 'object') {
                     msalConfig = result.MsalConfiguration;
-                }
-                else {
+                } else {
                     console.error(hostLoadErrMsg);
                 }
             } catch (e) { console.error(hostLoadErrMsg); }
         },
-        error: function (error) {
+        error(error) {
             console.error(hostLoadErrMsg + ' Exception: ' + error);
         }
     });
     return msalConfig;
 }
 function readMenus() {
-    var menus;
+    let menus;
     const menuUrl = '../../../assets/json/menu.json';
 
     $.ajax({
         url: menuUrl,
         async: false,
-        success: function (response) {
+        success(response) {
             menus = response.result;
         },
-        error: function (error) {
+        error(error) {
             console.error(' Exception: ' + error)
+                ;
         }
     });
     return menus;

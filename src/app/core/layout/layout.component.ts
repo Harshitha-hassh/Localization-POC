@@ -15,7 +15,7 @@ export class LayoutComponent implements OnInit {
   constructor(private routeDataService: RouteLoaderService) { }
 
   ngOnInit() {
-      const value = this.routeDataService.GetChildMenu("/");
+      const value = this.routeDataService.GetChildMenu('/');
       this.menuList = {
         menuType: menuTypes.primary,
         menu: value
