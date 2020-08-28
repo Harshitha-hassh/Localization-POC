@@ -29,6 +29,8 @@ import { PersonalInformationComponent } from '../client/client-popup/create-clie
 import { AdditionalInformationComponent } from '../client/client-popup/create-client/additional-information/additional-information.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { CardTypeComponent } from './components/card-type/card-type.component';
+import { UserAccessBusiness } from '../common/dataservices/authentication/useraccess.business';
+import { UserAccessDataService } from '../common/dataservices/authentication/useraccess.data.service';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { CardTypeComponent } from './components/card-type/card-type.component';
       provide: MAT_DATE_FORMATS,
       useValue: MY_DATE_FORMATS
     },
-    NgxImageCompressService
+    NgxImageCompressService,
+    UserAccessDataService,
+    UserAccessBusiness,
   ],
   exports: [
     FormsModule,

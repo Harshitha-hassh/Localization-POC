@@ -4,33 +4,34 @@ import { UserSetupComponent } from './user-setup/user-setup.component';
 import { RoleSetupComponent } from './role-setup/role-setup.component';
 import { UserConfigComponent } from './user-config.component';
 import { UserRoleComponent } from './user-role/user-role.component';
-// import { RouteGuardService } from 'src/app/retail/shared/service/route-gaurd.service';
+import { RouteGuardService } from 'src/app/core/services/route.guard.service';
+import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
 
 
 const routes: Routes = [{
     path: '',
     component: UserConfigComponent,
-    // canActivate: [RouteGuardService],
+    canActivate: [RouteGuardService],
     data: { redirectTo: '', hasChild: true },
     children: [
         { path: '', redirectTo: 'usersetup', pathMatch: 'full' },
         {
             path: 'usersetup',
             component: UserSetupComponent,
-            // canActivate: [RouteGuardService],
-            // data: { breakPointNumber: SPAScheduleBreakPoint.UserSetup, redirectTo: '/settings/userconfig/rolesetup' }
+            canActivate: [RouteGuardService],
+            data: { breakPointNumber: BreakPoint.UserSetup, redirectTo: '/settings/userconfig/rolesetup' }
         },
         {
             path: 'rolesetup',
             component: RoleSetupComponent,
-            // canActivate: [RouteGuardService],
-            // data: { breakPointNumber: SPAScheduleBreakPoint.UserRoleSetUp, redirectTo: '/settings/userconfig/userroleconfiguration' }
+            canActivate: [RouteGuardService],
+            data: { breakPointNumber: BreakPoint.UserRoleSetUp, redirectTo: '/settings/userconfig/userroleconfiguration' }
         },
         {
             path: 'userroleconfiguration',
             component: UserRoleComponent,
-            // canActivate: [RouteGuardService],
-            // data: { breakPointNumber: SPAScheduleBreakPoint.UserRoleConfiguration, redirectTo: '' }
+            canActivate: [RouteGuardService],
+            data: { breakPointNumber: BreakPoint.UserRoleConfiguration, redirectTo: '' }
         }
     ]
 }];
