@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 //import { GolfScheduleCommunication } from '../../communication/services/golfschedule.service';
-import { TransactionDetails, OutOfStock, DonutCount, ItemData, TransactionSaleDetail, CategoryData,ReturnedItems,OpenTickets } from 'src/app/home/dashboard-widgets-report/dashboard.modal';
+import { TransactionDetails, OutOfStock, DonutCount, ItemData, TransactionSaleDetail, CategoryData,ReturnedItems,OpenTickets,VendorInfo } from 'src/app/home/dashboard-widgets-report/dashboard.modal';
 import { Localization } from 'src/app/core/localization/Localization';
 import { RetailPosCommunication } from '../../../communication/services/retailpos.service';
 import { RetailManagementCommunication } from '../../../communication/services/retailmanagement.service';
@@ -21,8 +21,8 @@ export class DashBoardService {
         return result;
     }
     
-    public  getVendorCount<T>(): Promise<DonutCount> {
-        let result: Promise<DonutCount> = this._httpPos.getPromise<DonutCount>(
+    public  getVendorCount<T>(): Promise<VendorInfo> {
+        let result: Promise<VendorInfo> = this._httpRetail.getPromise<VendorInfo>(
             { route: RetailApiRoute.GetVendorCount });
         return result;
     }
