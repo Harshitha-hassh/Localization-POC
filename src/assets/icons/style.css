@@ -10548,7 +10548,7 @@
   content: "\e9bc";
 }
 .icon-help_question:before {
-  content: "\ed15";
+  content: "\ed1a";
   color: #b1b3b5;
 }
 
@@ -10577,4 +10577,8 @@
   content: "\ecc3";
   margin-left: -1em;
   color: rgb(255, 255, 255);
+}
+
+.icon-Menu_search_icon:before {
+  content: "\ed1b";
 }
