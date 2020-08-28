@@ -31,12 +31,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   commonCaptions: any;
   isClientViewOnly = false;
   phoneTypes = PhoneTypes;
-
-  ngAfterViewChecked(): void {
-
-  }
   @Input() clientEditData: any;
-
   phoneCountArray: any = [{ id: 0, removeLine: false, addLine: true }];
   addressLineArray: any = [{ id: 0, addLine: true, removeLine: false }];
   personalDetails: any = [];
@@ -55,13 +50,14 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   titles = [{ id: 1, value: 'Dr.' }, { id: 2, value: 'Fr.' }, { id: 3, value: 'Miss' },
   { id: 4, value: 'Mr.' }, { id: 5, value: 'Mrs.' }, { id: 6, value: 'Ms.' },
   { id: 7, value: 'Prof.' }, { id: 8, value: 'Rev.' }];
-
+  placeNotfound: boolean;
+  Phone: any = [];
   options = {
     types: ['geocode']
-    //componentRestrictions: { country: "US" }
+    // componentRestrictions: { country: "US" }
   };
   @Output() personalInfoParams: EventEmitter<any> = new EventEmitter();
-
+  Email: any = [];
   genderList: any[] = [];
   IsEdit: boolean;
   captions: any;
@@ -75,10 +71,11 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   phoneRequired: boolean;
   AddressRequired: boolean;
   isPatronIdAvailable = false;
-  showLoader: boolean = false;
+  showLoader = false;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
-  isCMSConfigured: boolean = false;
+  isCMSConfigured = false;
   mailTypes = MailTypes;
+  Address: any = [];
   constructor(
     private Form: FormBuilder,
     private http: HttpServiceCall,
@@ -87,7 +84,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     private BP: BreakPointAccess,
     private PropertyInfo: PropertyInformation,
     private clientCommonService: ClientCommonService,
-    private _featureSwitch: RetailFeatureFlagInformationService
+    private featureSwitch: RetailFeatureFlagInformationService
   ) {
 
     this.captions = this.localization.captions.bookAppointment;
@@ -105,10 +102,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       Email: this.Form.array([this.createEmailItem(0, '', '', false, false)]),
       Phone: this.Form.array([this.createPhoneItem(0, '', '', '', false, false, '')]),
       Address: this.Form.array([this.createAddressItem('', false)]),
-      //privateAddress: false,
+      // privateAddress: false,
       emailPrimary: false,
       // emailPrivate: false,
-      //phonePrivate: false,
+      // phonePrivate: false,
       phonePrimary: false,
       state: '',
       city: '',
@@ -117,25 +114,28 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       patronid: '',
       rank: ''
     });
-    this.isCMSConfigured = this._featureSwitch.IsCMSConfigured;
+    this.isCMSConfigured = this.featureSwitch.IsCMSConfigured;
   }
 
-  createAddressItem(_address?: any, _addressPrivate?: any): FormGroup {
+  ngAfterViewChecked(): void {
+
+  }
+
+  createAddressItem(address?: any, addressPrivate?: any): FormGroup {
     return this.Form.group({
-      addressLine: [_address !== '' ? _address : '', this.AddressRequired ? [Validators.required, EmptyValueValidator] : ''],
-      privateAddress: _addressPrivate
+      addressLine: [address !== '' ? address : '', this.AddressRequired ? [Validators.required, EmptyValueValidator] : ''],
+      privateAddress: addressPrivate
     });
   }
-  Address: any = [];
 
-  addAddressItem(idx: any, _addressLine?: any, _addressPrivate?: any): void {
+  addAddressItem(idx: any, addressLine?: any, addressPrivate?: any): void {
 
     this.currentaddIndex = idx + 1;
     this.Address = this.FormGrp.get('Address') as FormArray;
     if (this.Address.controls.length > 2) {
       return;
     }
-    this.Address.push(this.createAddressItem(_addressLine, _addressPrivate));
+    this.Address.push(this.createAddressItem(addressLine, addressPrivate));
   }
 
   removeAddressItem(i) {
@@ -145,26 +145,26 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
 
-  createEmailItem(arr: number, _EmailLabel?: any, _EmailId?: any, _EmailIsPrivate?: any, _EmailIsPrimary?: any): FormGroup {
+  createEmailItem(arr: number, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): FormGroup {
 
     return this.Form.group({
-      //EmailLabel: [_EmailLabel,Validators.required],
-      EmailLabel: [_EmailLabel, this.emailRequired || _EmailId ? [Validators.required, EmptyValueValidator] : ''],
-      EmailId: [_EmailId, this.emailRequired ? [Validators.required, Validators.email, EmptyValueValidator] : ''],
+      // EmailLabel: [_EmailLabel,Validators.required],
+      EmailLabel: [EmailLabel, this.emailRequired || EmailId ? [Validators.required, EmptyValueValidator] : ''],
+      EmailId: [EmailId, this.emailRequired ? [Validators.required, Validators.email, EmptyValueValidator] : ''],
       // EmailId: _EmailId,
-      EmailPrimary: _EmailIsPrimary,
-      EmailPrivate: _EmailIsPrivate
+      EmailPrimary: EmailIsPrimary,
+      EmailPrivate: EmailIsPrivate
     });
   }
-  Email: any = [];
 
-  addEmailItem(i, _EmailLabel?: any, _EmailId?: any, _EmailIsPrivate?: any, _EmailIsPrimary?: any): void {
+
+  addEmailItem(i, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): void {
     this.currentIndexemail = i + 1;
     this.Email = this.FormGrp.get('Email') as FormArray;
     // if (this.Email.controls.length >= this.contactTypeEmail.length) {
     //   return;
     // }
-    this.Email.push(this.createEmailItem(i, _EmailLabel, _EmailId, _EmailIsPrivate, _EmailIsPrimary));
+    this.Email.push(this.createEmailItem(i, EmailLabel, EmailId, EmailIsPrivate, EmailIsPrimary));
     // this.FormGrp.get('Email')[0].push((this.createPhoneItem(i, _EmailLabel, _EmailId, _EmailIsPrivate, _EmailIsPrimary)));
 
   }
@@ -179,22 +179,21 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.currentIndexPhone = i - 1;
   }
 
-  Phone: any = [];
-
-  createPhoneItem(arr: number, _phoneNoLabel: any, _countryCode: any, _phoneNoDetails: any, _phoneIsPrivate: any, _phoneIsPrimary: any, extension?: any,): FormGroup {
+  createPhoneItem(arr: number, phoneNoLabel: any, countryCode: any, phoneNoDetails: any,
+                  phoneIsPrivate: any, phoneIsPrimary: any, extension?: any): FormGroup {
     return this.Form.group({
-      PhoneNumberLabel: [_phoneNoLabel, this.phoneRequired || _phoneNoDetails ? [Validators.required, EmptyValueValidator] : ''],
-      countryCode: [_countryCode, this.setCountryCodeValidator(this.phoneRequired, _phoneNoLabel)],
-      PhoneNumber: [_phoneNoDetails, this.phoneRequired ? [Validators.required, EmptyValueValidator] : ''],
+      PhoneNumberLabel: [phoneNoLabel, this.phoneRequired || phoneNoDetails ? [Validators.required, EmptyValueValidator] : ''],
+      countryCode: [countryCode, this.setCountryCodeValidator(this.phoneRequired, phoneNoLabel)],
+      PhoneNumber: [phoneNoDetails, this.phoneRequired ? [Validators.required, EmptyValueValidator] : ''],
       // PhoneNumber: _phoneNoDetails,
-      PhonePrivate: _phoneIsPrivate,
-      PhonePrimary: _phoneIsPrimary,
+      PhonePrivate: phoneIsPrivate,
+      PhonePrimary: phoneIsPrimary,
       Extension: extension
     });
   }
 
-  setCountryCodeValidator(phoneRequired, _phoneNoLabel) {
-    if (phoneRequired && _phoneNoLabel && _phoneNoLabel === 1) {
+  setCountryCodeValidator(phoneRequired, phoneNoLabel) {
+    if (phoneRequired && phoneNoLabel && phoneNoLabel === 1) {
       return [Validators.required, EmptyValueValidator];
     } else {
       return '';
@@ -205,46 +204,45 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.markAsDirty();
   }
 
-  addPhoneItem(i, _phoneNoLabel: any, _countryCode: any, _phoneNoDetails: any, _phoneIsPrivate: any, _phoneIsPrimary: any, extension: any = ''): void {
+  addPhoneItem(i, phoneNoLabel: any, countryCode: any, phoneNoDetails: any,
+               phoneIsPrivate: any, phoneIsPrimary: any, extension: any = ''): void {
     this.Phone = this.FormGrp.get('Phone') as FormArray;
-    // let extensionNo = extension == '' ? '' : ('+' + extension)
-    this.Phone.push(this.createPhoneItem(i, _phoneNoLabel, _countryCode, _phoneNoDetails, _phoneIsPrivate, _phoneIsPrimary, extension));
+    this.Phone.push(this.createPhoneItem(i, phoneNoLabel, countryCode, phoneNoDetails, phoneIsPrivate, phoneIsPrimary, extension));
     this.currentIndexPhone = i + 1;
-    // this.FormGrp.get('Phone')[0].push((this.createPhoneItem(i, _phoneNoLabel, _phoneNoDetails, _phoneIsPrivate, _phoneIsPrimary, extension)));
-
   }
 
   togglePrimaryContact(formArrayName: string, formGroupName: any, formControlName: any) {
-    let arr = this.FormGrp.get(formArrayName) as FormArray;
-    let ctrls = arr.controls.filter((x, idx) => idx != formGroupName);
+    const arr = this.FormGrp.get(formArrayName) as FormArray;
+    const ctrls = arr.controls.filter((x, idx) => idx != formGroupName);
     ctrls.forEach(x => {
-      let grp = x as FormGroup;
+      const grp = x as FormGroup;
       grp.controls[formControlName].setValue(false);
     });
   }
 
 
-  //enabling the extension only if the selected value is 'Office'
+  // enabling the extension only if the selected value is 'Office'
   enableExtension(index: number): boolean {
-    let phoneControlsArr: any = this.FormGrp.get('Phone') as FormArray;
-    let phoneNoSelectedValue: any = phoneControlsArr.at(index).controls['PhoneNumberLabel'].value
-    let officeDesc: string = '';
+    const phoneControlsArr: any = this.FormGrp.get('Phone') as FormArray;
+    const phoneNoSelectedValue: any = phoneControlsArr.at(index).get('PhoneNumberLabel').value;
+    let officeDesc = '';
     if (phoneNoSelectedValue) {
-      let officeNo = this.contactTypePhone.find(d => d.id == phoneNoSelectedValue);
+      const officeNo = this.contactTypePhone.find(d => d.id == phoneNoSelectedValue);
       officeDesc = officeNo ? officeNo.description : '';
     }
-    return (this.localization.captions.common.Work.toLowerCase() == officeDesc.toLowerCase())
+    return (this.localization.captions.common.Work.toLowerCase() == officeDesc.toLowerCase());
   }
 
   ngOnInit() {
     this.initializeFormData();
-    if(this.parentForm){
+    if(this.parentForm) {
       this.parentForm.addControl('personalDetailsFormGroup', this.FormGrp);
     }
   }
 
   initializeFormData() {
-    this.textmaskFormat = this.localization.captions.common.PhoneFormat != '' ? this.localization.captions.common.PhoneFormat : '999999999999999999';
+    this.textmaskFormat = this.localization.captions.common.PhoneFormat != '' ? 
+                          this.localization.captions.common.PhoneFormat : '999999999999999999';
     this.makeGetCall('GetClientConfiguration');
     this.contactTypePhone = this.getPhoneOptions();
     this.contactTypeEmail = this.getMailOptions();
@@ -288,14 +286,16 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   Validation(clientConfiguration: any) {
     clientConfiguration = clientConfiguration ? clientConfiguration : [];
-    if (clientConfiguration && clientConfiguration.length == 0) return;
+    if (clientConfiguration && clientConfiguration.length == 0) { return; }
 
-    this.FormGrp.controls['firstName'].clearValidators()
-    this.FormGrp.controls['firstName'].setValidators(clientConfiguration[0]['CLIENT_FIRST_NAME'] ? [Validators.required, EmptyValueValidator] : []);
+    this.FormGrp.controls['firstName'].clearValidators();
+    this.FormGrp.controls['firstName'].setValidators(clientConfiguration[0]['CLIENT_FIRST_NAME'] ?
+    [Validators.required, EmptyValueValidator] : []);
     this.FormGrp.controls['firstName'].updateValueAndValidity();
 
-    this.FormGrp.controls['lastName'].clearValidators()
-    this.FormGrp.controls['lastName'].setValidators(clientConfiguration[0]['CLIENT_LAST_NAME'] ? [Validators.required, EmptyValueValidator] : []);
+    this.FormGrp.controls['lastName'].clearValidators();
+    this.FormGrp.controls['lastName'].setValidators(clientConfiguration[0]['CLIENT_LAST_NAME'] ?
+    [Validators.required, EmptyValueValidator] : []);
     this.FormGrp.controls['lastName'].updateValueAndValidity();
 
     this.FormGrp.controls['title'].clearValidators();
@@ -315,54 +315,56 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['city'].updateValueAndValidity();
 
     this.FormGrp.controls['country'].clearValidators();
-    this.FormGrp.controls['country'].setValidators(clientConfiguration[0]['CLIENT_COUNTRY'] ? [Validators.required, EmptyValueValidator] : []);
+    this.FormGrp.controls['country'].setValidators(clientConfiguration[0]['CLIENT_COUNTRY'] ?
+    [Validators.required, EmptyValueValidator] : []);
     this.FormGrp.controls['country'].updateValueAndValidity();
 
     this.FormGrp.controls['postal_code'].clearValidators();
-    this.FormGrp.controls['postal_code'].setValidators(clientConfiguration[0]['CLIENT_POSTAL_CODE'] ? [Validators.required, EmptyValueValidator] : []);
+    this.FormGrp.controls['postal_code'].setValidators(clientConfiguration[0]['CLIENT_POSTAL_CODE'] ?
+    [Validators.required, EmptyValueValidator] : []);
     this.FormGrp.controls['postal_code'].updateValueAndValidity();
 
-
-    this.FormGrp.controls['dob'].clearValidators()
+    this.FormGrp.controls['dob'].clearValidators();
     this.FormGrp.controls['dob'].setValidators(clientConfiguration[0]['CLIENT_BIRTHDAY'] ? [Validators.required] : []);
     this.FormGrp.controls['dob'].updateValueAndValidity();
-
-
 
     this.emailRequired = clientConfiguration[0]['CLIENT_EMAIL'];
     this.phoneRequired = clientConfiguration[0]['CLIENT_PHONE'];
     this.AddressRequired = clientConfiguration[0]['CLIENT_ADDRESS_LINE_1'];
 
-
-    let EmailArray = this.FormGrp.get('Email') as FormArray;
-    EmailArray.controls.forEach(function (control) {
+    const EmailArray = this.FormGrp.get('Email') as FormArray;
+    EmailArray.controls.forEach((control) => {
       let EmailGroup: FormGroup;
-      EmailGroup = <FormGroup>control;
+      EmailGroup = control as FormGroup;
       EmailGroup.controls['EmailId'].clearValidators();
-      EmailGroup.controls['EmailId'].setValidators(clientConfiguration[0]['CLIENT_EMAIL'] ? [Validators.required, EmptyValueValidator] : []);
+      EmailGroup.controls['EmailId'].setValidators(clientConfiguration[0]['CLIENT_EMAIL'] ? 
+      [Validators.required, EmptyValueValidator] : []);
       EmailGroup.controls['EmailId'].updateValueAndValidity();
     });
-    let PhoneArray = this.FormGrp.get('Phone') as FormArray;
-    let that = this;
-    PhoneArray.controls.forEach(function (control, index) {
+    const PhoneArray = this.FormGrp.get('Phone') as FormArray;
+    const that = this;
+    PhoneArray.controls.forEach((control, index) => {
       let PhoneGroup: FormGroup;
-      PhoneGroup = <FormGroup>control;
+      PhoneGroup = control as FormGroup;
 
       PhoneGroup.controls['countryCode'].clearValidators();
-      PhoneGroup.controls['countryCode'].setValidators(clientConfiguration[0]['CLIENT_PHONE'] ? [Validators.required, EmptyValueValidator] : []);
+      PhoneGroup.controls['countryCode'].setValidators(clientConfiguration[0]['CLIENT_PHONE'] ? 
+      [Validators.required, EmptyValueValidator] : []);
       that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index);
       PhoneGroup.controls['countryCode'].updateValueAndValidity();
 
       PhoneGroup.controls['PhoneNumber'].clearValidators();
-      PhoneGroup.controls['PhoneNumber'].setValidators(clientConfiguration[0]['CLIENT_PHONE'] ? [Validators.required, EmptyValueValidator] : []);
+      PhoneGroup.controls['PhoneNumber'].setValidators(clientConfiguration[0]['CLIENT_PHONE'] ? 
+      [Validators.required, EmptyValueValidator] : []);
       PhoneGroup.controls['PhoneNumber'].updateValueAndValidity();
     });
-    let AddresArray = this.FormGrp.get('Address') as FormArray;
+    const AddresArray = this.FormGrp.get('Address') as FormArray;
     AddresArray.controls.forEach(function (control) {
       let AddressGroup: FormGroup;
-      AddressGroup = <FormGroup>control;
+      AddressGroup = control as FormGroup;
       AddressGroup.controls['addressLine'].clearValidators();
-      AddressGroup.controls['addressLine'].setValidators(clientConfiguration[0]['CLIENT_ADDRESS_LINE_1'] ? [Validators.required, EmptyValueValidator] : []);
+      AddressGroup.controls['addressLine'].setValidators(clientConfiguration[0]['CLIENT_ADDRESS_LINE_1'] ? 
+      [Validators.required, EmptyValueValidator] : []);
       AddressGroup.controls['addressLine'].updateValueAndValidity();
     });
 
@@ -371,8 +373,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
 
   PostalCodeChanged(e, IsAutoComplete) {
-
-    let inputPin = this.FormGrp.controls['postal_code'].value;
+    const inputPin = this.FormGrp.controls['postal_code'].value;
     this.http
       .getHTTPData(
         'http://maps.googleapis.com/maps/api/geocode/json?address=' + inputPin
@@ -384,7 +385,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   bindAddressFromGoogle(res: any, IsAutoComplete?, index?: number) {
     this.placeNotfound = false;
     if (IsAutoComplete) {
-      this.updateAddressField(res.address_components, true, index)
+      this.updateAddressField(res.address_components, true, index);
       if (!res.status) {
         this.googleAutoCompleteAddressLineBinding(index);
       }
@@ -392,8 +393,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     }
     if (res.status == 'OK') {
       if (IsAutoComplete) {
-        let result: any = res;
-        this.updateAddressField(res.address_components, true, index)
+        const result: any = res;
+        this.updateAddressField(res.address_components, true, index);
       } else {
         this.updateAddressField(res.results[0].address_components, false, index);
       }
@@ -412,25 +413,26 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
   googleAutoCompleteAddressLineBinding(index) {
-    //google auto complete from search
-    let addressFormArr = this.FormGrp.get('Address') as FormArray;
-    //populating auto completed value from text box(work around for angular issue)
-    let addressCtl: any = document.getElementById('AddressInput' + index);
-    let addressAutoPopulated: string = addressCtl.value;
+    // google auto complete from search
+    const addressFormArr = this.FormGrp.get('Address') as FormArray;
+    // populating auto completed value from text box(work around for angular issue)
+    const addressCtl: any = document.getElementById('AddressInput' + index);
+    const addressAutoPopulated: string = addressCtl.value;
     addressFormArr.at(index).patchValue({ 'addressLine': addressAutoPopulated });
-    let ctrl: any = addressFormArr.at(index)
+    const ctrl: any = addressFormArr.at(index);
     ctrl.controls.addressLine.setErrors(null);
   }
 
   updateAddressField(add: Addresscomponent[], IsAutoComplete: boolean, index?: number) {
-    let country: string = '';
-    let state: string = '';
-    let city: string = '';
+    let country = '';
+    let state = '';
+    let city = '';
     let googlePostalCode: string;
     if (add) {
-      let addressFormArr = this.FormGrp.get('Address') as FormArray;
-      addressFormArr.at(0).patchValue({ 'addressLine': ((add[0] && add[0].long_name) ? add[0].long_name.toString() : '') + ' ' + ((add[1] && add[1].long_name) ? add[1].long_name.toString() : '') });
-      let ctrl: any = addressFormArr.at(index)
+      const addressFormArr = this.FormGrp.get('Address') as FormArray;
+      addressFormArr.at(0).patchValue({ 'addressLine': ((add[0] && add[0].long_name) ? add[0].long_name.toString() : '')
+      + ' ' + ((add[1] && add[1].long_name) ? add[1].long_name.toString() : '') });
+      const ctrl: any = addressFormArr.at(index);
       ctrl.controls.addressLine.setErrors(null);
     }
     for (let i = 0; i < add.length; i++) {
@@ -468,8 +470,6 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['state'].setValue('');
   }
 
-
-  placeNotfound: boolean;
   makeGetCall(routeURL: string) {
     this.http.CallApiWithCallback<any[]>({
       host: Host.spaManagement,
@@ -490,11 +490,11 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   ) {
     switch (callDesc) {
       case 'GetClientConfiguration':
-        this.clientConfiguration = <any>result.result;
+        this.clientConfiguration = result.result as any;
         this.Validation(this.clientConfiguration);
         break;
       case 'getImagesByReference': {
-        let imageDetails = result.result;
+        const imageDetails = result.result;
         // this.appointmentService.clientImageChange(result.result);
         // this.appointmentService.clientHasPic = false;
         if (imageDetails[0]) {
@@ -504,7 +504,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
           this.editImageId = imageDetails[0].id;
         }
       }
-        break;
+                                   break;
     }
   }
   errorCallback() { }
@@ -558,13 +558,13 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.addressLineArray.splice(index, 1);
   }
   autoCompleteCallback1(e: Address) {
-    let addressArr: AddressComponent[] = [];
-    let _line1: string = '';
-    let _line2: string = '';
-    let _line3: string = '';
-    let _state: string = '';
-    let _country: string = '';
-    let _zip: string = '';
+    const addressArr: AddressComponent[] = [];
+    let _line1 = '';
+    let _line2 = '';
+    let _line3 = '';
+    let _state = '';
+    let _country = '';
+    let _zip = '';
 
     for (let i = 0; i < e.address_components.length; i++) {
       const element = e.address_components[i];
@@ -735,8 +735,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       imageObj.data = this.base64textString;
       imageObj.thumbnailData = this.base64textString;
       imageObj.contentType = this.selectedFile.type;
-    }
-    else {
+    } else {
       imageObj = {
         referenceId: 0,
         referenceType: ImgRefType.client,
@@ -745,10 +744,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         thumbnailData: this.base64textString,
         contentType: this.selectedFile.type,
         sequenceNo: 0
-      }
+      };
     }
     // this.appointmentService.ImgTempHolder = imageObj;
-    this.bindImage(this.selectedFile.type, this.base64textString)
+    this.bindImage(this.selectedFile.type, this.base64textString);
   }
 
   private bindImage(fileContentType, fileContent) {
@@ -795,7 +794,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   emailChange(emailid, emailLabel, index) {
 
-    if (this.FormGrp.controls['Email']['controls'][index].controls[emailid].value && !this.FormGrp.controls['Email']['controls'][index].controls[emailLabel].value) {
+    if (this.FormGrp.controls['Email']['controls'][index].controls[emailid].value &&
+    !this.FormGrp.controls['Email']['controls'][index].controls[emailLabel].value) {
 
       this.FormGrp.controls['Email']['controls'][index].controls[emailLabel].setValidators(Validators.required);
       this.FormGrp.controls['Email']['controls'][index].controls[emailLabel].markAsTouched();
@@ -812,21 +812,21 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.FormGrp.controls['Phone']['controls'][index].controls[altfield].setValidators([Validators.required]);
     }
     if (phoneNumber == 'PhoneNumber') {
-      if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value && this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value === 1) {
+      if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value &&
+      this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value === 1) {
         this.FormGrp.controls['Phone']['controls'][index].controls[altfield].setValidators(Validators.required);
       } else {
         this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
       }
     }
-
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].markAsTouched();
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].updateValueAndValidity();
   }
 
   phoneChange(eve, phoneNumber, altfield, phoneNumberLabel, index) {
     this.setmandatory(eve, phoneNumber, altfield, phoneNumberLabel, index);
-    if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumber].value && !this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumberLabel].value) {
-
+    if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumber].value && 
+    !this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumberLabel].value) {
       this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumberLabel].setValidators(Validators.required);
       this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumberLabel].markAsTouched();
     } else {
@@ -843,7 +843,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
 
   searchPatron() {
-    let patronId = this.FormGrp.controls.patronid.value;
+    const patronId = this.FormGrp.controls.patronid.value;
     if (patronId && patronId != '' && this.isCMSConfigured) {
       // this.appointmentService.searchClientByPatron(patronId, this.searchPatronCallBack.bind(this));
     }
@@ -853,24 +853,21 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     if (result == PatronInfoSearchResultType.EDITEXISTINGPATRON) {
       this.isPatronIdAvailable = true;
       this.initializeFormData();
-    }
-    else if (result == PatronInfoSearchResultType.PATRONNOTFOUND) {
+    } else if (result == PatronInfoSearchResultType.PATRONNOTFOUND) {
       this.isPatronIdAvailable = false;
       this.FormGrp.controls.patronid.setValue('');
       this.FormGrp.controls.patronid.markAsDirty();
-    }
-    else if (result == PatronInfoSearchResultType.PATRONFOUND) {
+    } else if (result == PatronInfoSearchResultType.PATRONFOUND) {
       this.isPatronIdAvailable = true;
-    }
-    else if (result == PatronInfoSearchResultType.UPDATECMSDATAONEXISTING) {
+    } else if (result == PatronInfoSearchResultType.UPDATECMSDATAONEXISTING) {
       this.FormGrp.controls.firstName.setValue(extraParams[0].firstName);
       this.FormGrp.controls.lastName.setValue(extraParams[0].lastName);
       this.FormGrp.controls.pronounced.setValue(extraParams[0].pronounced);
       this.FormGrp.controls.rank.setValue(extraParams[0].playerRank);
       this.FormGrp.controls.dob.setValue(this.utils.getDate(extraParams[0].dateOfBirth));
-      this.FormGrp.controls.gender.setValue(extraParams[0].gender == 'M' ? 'Male' : extraParams[0].gender == 'F' ? 'Female' : '')
+      this.FormGrp.controls.gender.setValue(extraParams[0].gender == 'M' ? 'Male' : extraParams[0].gender == 'F' ? 'Female' : '');
       if (extraParams[0].address) {
-        this.addAddressItem(0, extraParams[0].address.addressLine1, false)
+        this.addAddressItem(0, extraParams[0].address.addressLine1, false);
         this.FormGrp.controls.postal_code.setValue(extraParams[0].address.postalCode);
         this.FormGrp.controls.state.setValue(extraParams[0].address.state);
         this.FormGrp.controls.city.setValue(extraParams[0].address.city);
@@ -879,7 +876,9 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       }
       if (extraParams[0].phone && extraParams[0].phone.length > 0) {
         extraParams[0].phone.forEach((element, i) => {
-          this.addPhoneItem(i, element.phoneTypeId, element.countryCode, this.utils.appendFormat(element.phoneNumber, this.localization.captions.common.PhoneFormat), false, element.isPrimary, element.extension);
+          this.addPhoneItem(i, element.phoneTypeId, element.countryCode,
+            this.utils.appendFormat(element.phoneNumber, this.localization.captions.common.PhoneFormat),
+            false, element.isPrimary, element.extension);
         });
         this.Phone.removeAt(0);
       }
@@ -887,15 +886,15 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         extraParams[0].email.forEach((element, i) => {
           this.addEmailItem(i, element.emailTypeId, element.emailAddress, false, false);
         });
-        this.Email.removeAt(0)
+        this.Email.removeAt(0);
       }
       this.isPatronIdAvailable = true;
     }
-    this.clearPatronValidationError()
+    this.clearPatronValidationError();
   }
 
   checkPatronValidation() {
-    let patronValue = this.FormGrp.controls.patronid.value;
+    const patronValue = this.FormGrp.controls.patronid.value;
     if (patronValue) {
       this.FormGrp.controls.patronid.setValidators(Validators.required);
       if (!this.isPatronIdAvailable) {

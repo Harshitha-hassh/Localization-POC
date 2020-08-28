@@ -39,14 +39,13 @@ export class PropertySettingDataService {
     public GetAllPropertyConfigurationSettings(_propertyConfigurationSettings: API.PropertyConfigurationSettings<any>): Promise<API.PropertyConfigurationSettings<any>> {
         let result = this._authenticationCommunication.getPromise<API.PropertyConfigurationSettings<any>>(
             { 
-                route: RetailApiRoute.GetAllPropertyConfigurationSettings, 
-                uriParams: { 
+                route: RetailApiRoute.GetAllPropertyConfigurationSettings,
+                uriParams: {
                     configurationName: _propertyConfigurationSettings.configurationName,
                     propertyId: _propertyConfigurationSettings.propertyId,
                     productId: _propertyConfigurationSettings.productId
-                } 
+                }
             });
         return result;
     }
-   
 }
