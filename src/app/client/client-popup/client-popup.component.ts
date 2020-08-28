@@ -30,8 +30,9 @@ export class ClientPopupComponent implements OnInit {
 
   ngOnInit(): void {
     this.captions = this.localization.captions;
+    this.clientPopupForm = this._fb.group({});
     this.clientPopupForm.statusChanges.pipe(takeUntil(this.$destroyed)).subscribe(x => {
-      this.IsClientScreenDirty = !(this.clientPopupForm.valid && this.clientPopupForm.dirty);
+      this.IsClientScreenDirty = (this.clientPopupForm.valid && this.clientPopupForm.dirty);
     });
   }
 

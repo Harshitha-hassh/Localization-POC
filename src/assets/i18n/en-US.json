@@ -270,7 +270,8 @@
     "drp_txt_home": "Home",
     "drp_txt_office": "Office",
     "drp_txt_mobile": "Mobile",
-    "drp_txt_personal": "Personal"
+    "drp_txt_personal": "Personal",
+    "countryCode": "Country Code"
   },
   "calendar": {
     "Sunday": "Sunday",

@@ -42,7 +42,6 @@
       <div class="">
         <div class="display_style_toggle  toggle-section float-left ">
           <label for="gender" class=" LW12 gender form-label-normal">{{captions.Gender}}</label>
-          <br>
           <mat-button-toggle-group #group="matButtonToggleGroup" class="margin_top_9 LW14 mb-1 "
             [value]="personalDetails.gender" formControlName="gender">
             <mat-button-toggle class=" border_right toggle-btn" *ngFor="let gender of genderList"

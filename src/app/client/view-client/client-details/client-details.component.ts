@@ -209,6 +209,7 @@ export class ClientDetailsComponent implements OnInit {
         const dialogRef = this.dialog.open(ClientPopupComponent, {
             width: '95%',
             height: '85%',
+            maxWidth: '95%',
             disableClose: true,
             hasBackdrop: true,
             data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },

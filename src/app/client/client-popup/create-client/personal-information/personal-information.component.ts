@@ -17,7 +17,7 @@ import { PatronInfoSearchResultType, Addresscomponent, ImageData } from 'src/app
 import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { EmptyValueValidator } from 'src/app/retail/shared/Validators/EmptyValueValidator';
-import { PhoneTypes, ContactType } from 'src/app/common/shared/shared/enums/enums';
+import { PhoneTypes, ContactType, MailTypes } from 'src/app/common/shared/shared/enums/enums';
 
 @Component({
   selector: 'app-personal-information',
@@ -78,6 +78,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   showLoader: boolean = false;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   isCMSConfigured: boolean = false;
+  mailTypes = MailTypes;
   constructor(
     private Form: FormBuilder,
     private http: HttpServiceCall,
@@ -246,7 +247,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.textmaskFormat = this.localization.captions.common.PhoneFormat != '' ? this.localization.captions.common.PhoneFormat : '999999999999999999';
     this.makeGetCall('GetClientConfiguration');
     this.contactTypePhone = this.getPhoneOptions();
-    this.contactTypeEmail = this.localization.ContactTypes.Email;
+    this.contactTypeEmail = this.getMailOptions();
     this.validateEmailType = this.localization.getError(-87);
     this.validatePhoneType = this.localization.getError(-88);
     // this.appointmentService.isClientViewOnly = false;
@@ -916,6 +917,13 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       { id: this.phoneTypes.home, description: this.localization.captions.common.drp_txt_home, type: ContactType.phone },
       { id: this.phoneTypes.office, description: this.localization.captions.common.drp_txt_office, type: ContactType.phone },
       { id: this.phoneTypes.mobile, description: this.localization.captions.common.drp_txt_mobile, type: ContactType.phone }
+    ];
+  }
+
+  private getMailOptions() {
+    return [
+      { id: this.mailTypes.office, description: this.localization.captions.common.drp_txt_office, type: ContactType.email },
+      { id: this.mailTypes.personal, description: this.localization.captions.common.drp_txt_personal, type: ContactType.email }
     ];
   }
 
