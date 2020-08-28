@@ -6,6 +6,12 @@ export interface UserBreakPoint {
     view: boolean;
 }
 
+export interface BreakPointResult {
+    isAllow: boolean;
+    isViewOnly: boolean;
+    breakPointNumber?: number;
+}
+
 export enum BreakPoint{
     ShopScreen = 3000,
 
