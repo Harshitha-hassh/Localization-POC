@@ -1,7 +1,7 @@
 <ng-container [ngSwitch]="levelMenu">
     <!-- header -->
     <div class="wrapper-container"
-        [ngClass]="{'innerContainer': levelMenu == menuType.lowerLevel,'d-block': levelMenu == !menuType.lowerLevel}">
+        [ngClass]="{'innerContainer': levelMenu == menuType.lowerLevel}">
         <div
             [ngClass]="{'menuLowerlevel-container': levelMenu == menuType.lowerLevel,'menu-container' : levelMenu == menuType.primary,'menuSecondary-container':levelMenu ==menuType.secondary}">
             <div *ngSwitchCase="menuType.primary">
