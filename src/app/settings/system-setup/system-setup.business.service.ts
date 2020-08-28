@@ -4,8 +4,8 @@ import { FormGroup } from '@angular/forms';
 @Injectable()
 export class SystemSetupBusinessService {
 
-  public systemForm:FormGroup;
-  public systemConfigValues:any;
+  public systemForm: FormGroup;
+  public systemConfigValues: any;
 
   constructor() { }
 

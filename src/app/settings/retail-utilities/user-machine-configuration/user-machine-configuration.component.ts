@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Localization } from '../../../core/localization/Localization';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-import * as myGlobals from 'src/app/common/shared/shared/globalsContant'; //CONSTANT FILE ADD ANY CONSTANT VALUE
+import * as myGlobals from 'src/app/common/shared/shared/globalsContant'; // CONSTANT FILE ADD ANY CONSTANT VALUE
 import { SubPropertyModel, ZebraPrinters } from '../../../retail/retail.modals';
-import { NextId } from "../../../retail/retail.modals";
+import { NextId } from '../../../retail/retail.modals';
 import { HttpResponseStatus } from '../../../retail/shared/service/payment/payment-business.model';
 import { ZebraPrintService } from '../../../retail/retail-print/zebra-print.service';
 import { PropertyInformation } from '../../../core/services/property-information.service';
@@ -24,14 +24,14 @@ import { UserSessionConfiguration } from 'src/app/common/shared/core.model';
   providers: [PayAgentService],
   encapsulation: ViewEncapsulation.None
 })
-export class UserMachineConfigurationComponent implements OnInit {
+export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
 
   userSessionConfigForm: FormGroup;
   userSessionConfiguration = new UserSessionConfiguration();
 
   captions: any = this.localization.captions.utilities;
   outlets: Array<any>;
-  outletTerminals: StoreTerminal[] = [{ terminalId: "", terminalName: '' } as StoreTerminal];
+  outletTerminals: StoreTerminal[] = [{ terminalId: '', terminalName: '' } as StoreTerminal];
   courses: Array<any>;
   paymentDevices: Array<any>;
   deviceNames: Array<any>;
@@ -46,13 +46,13 @@ export class UserMachineConfigurationComponent implements OnInit {
   hangingTicketsPrinter: string;
 
   enableSave: boolean;
-  enablePaymentDeviceSelect: boolean = false;
-  enablePrinterSelect: boolean = false;
+  enablePaymentDeviceSelect = false;
+  enablePrinterSelect = false;
   userMachineConfigSubscription: ISubscription;
   IsViewOnly: boolean;
   userOperationType: myGlobals.OperationType = OperationType.None;
   useRetailInterface: boolean;
-  testMode: boolean = false;
+  testMode = false;
   showPaymentDevice: boolean;
 
   constructor(
@@ -109,7 +109,8 @@ export class UserMachineConfigurationComponent implements OnInit {
 
   // User Session Configuration
   private async getUserSessionConfiguration(userId) {
-    let userSessionConfiguration: UserSessionConfiguration = await this.userMachineConfigurationService.getUserSessionConfiguration(userId);
+    const userSessionConfiguration: UserSessionConfiguration = 
+    await this.userMachineConfigurationService.getUserSessionConfiguration(userId);
     if (userSessionConfiguration.defaultOutletId) {
       await this.GetStoreTerminals(userSessionConfiguration.defaultOutletId);
     }
@@ -142,12 +143,12 @@ export class UserMachineConfigurationComponent implements OnInit {
   }
 
   private async createUserSessionConfiguration(body: UserSessionConfiguration): Promise<NextId> {
-    let result = await this.userMachineConfigurationService.createUserSessionConfiguration(body);
+    const result = await this.userMachineConfigurationService.createUserSessionConfiguration(body);
     return result;
   }
 
   private async updateUserSessionConfiguration(body: UserSessionConfiguration): Promise<UserSessionConfiguration> {
-    let result = await this.userMachineConfigurationService.updateUserSessionConfiguration(body);
+    const result = await this.userMachineConfigurationService.updateUserSessionConfiguration(body);
     return result;
   }
 
@@ -157,25 +158,26 @@ export class UserMachineConfigurationComponent implements OnInit {
   }
 
   async GetOutletsByPropertyId() {
-    let result = await this.http.CallApiAsync<SubPropertyModel[]>({
+    const result = await this.http.CallApiAsync<SubPropertyModel[]>({
       host: myGlobals.Host.retailManagement,
-      callDesc: "GetOutletsByPropertyAndProduct",
+      callDesc: 'GetOutletsByPropertyAndProduct',
       method: HttpMethod.Get,
-      uriParams: { propertyId: Number(this.localization.GetPropertyInfo('PropertyId')), productId: Number(this.localization.GetPropertyInfo('ProductId')) }
+      uriParams: { propertyId: Number(this.localization.GetPropertyInfo('PropertyId')),
+       productId: Number(this.localization.GetPropertyInfo('ProductId')) }
     });
     let outlets: SubPropertyModel[] = result.result ? result.result : [];
     // console.dir(outlets);
     outlets = outlets.filter(x => x.isActive);
-    this.outlets = outlets.map(x => { return { id: x.subPropertyID, description: x.subPropertyName } });
+    this.outlets = outlets.map(x => { return { id: x.subPropertyID, description: x.subPropertyName }; });
     this.outlets.unshift({ id: 0, description: '' });
   }
 
   async GetStoreTerminals(selectedOutletId: number) {
     this.outletTerminals = [];
     if (selectedOutletId) {
-      let terminals = await this.http.CallApiAsync<StoreTerminal[]>({
+      const terminals = await this.http.CallApiAsync<StoreTerminal[]>({
         host: myGlobals.Host.retailManagement,
-        callDesc: "GetStoreTerminal",
+        callDesc: 'GetStoreTerminal',
         method: HttpMethod.Get,
         uriParams: { outletId: selectedOutletId }
       });
@@ -200,18 +202,17 @@ export class UserMachineConfigurationComponent implements OnInit {
   // Test method for use until Golf is ready
   async getCourses(): Promise<any> {
     return new Promise((resolve, reject) => {
-      let courses = [
+      const courses = [
         { id: 0, description: '' },
         { id: 1, description: 'course A' },
         { id: 2, description: 'course B' },
         { id: 3, description: 'course C' }];
       if (courses) {
         resolve(this.courses = courses);
-      }
-      else {
+      } else {
         reject('error');
       }
-    })
+    });
   }
 
   // Payment Devices
@@ -221,17 +222,16 @@ export class UserMachineConfigurationComponent implements OnInit {
 
   async getPaymentDevices(): Promise<any> {
     return new Promise((resolve, reject) => {
-      let paymentDevices = [
+      const paymentDevices = [
         { id: '', description: '' },
         { id: 'rguestpay', description: this.localization.captions.utilities.RGuestPay },
         { id: 'idtech', description: this.localization.captions.utilities.Idtech }];
       if (paymentDevices) {
         resolve(this.paymentDevices = paymentDevices);
-      }
-      else {
+      } else {
         reject('error');
       }
-    })
+    });
   }
 
   // Device Names
@@ -240,16 +240,16 @@ export class UserMachineConfigurationComponent implements OnInit {
   }
 
   private async GetHandles() {
-    let body: HandleRequest = {
+    const body: HandleRequest = {
       tenderId: PaymentMethods.CreditCard.toString()
     };
-    let handleResponse: Promise<HandleResponse> = this.payAgentService.GetHandlesWithTimeout(body);
+    const handleResponse: Promise<HandleResponse> = this.payAgentService.GetHandlesWithTimeout(body);
 
     handleResponse.then(response => {
       if (response.status.toLocaleLowerCase() == HttpResponseStatus.Success) {
         this.deviceNames = response.paymentHandle.map(x => x.name);
         // console.dir(this.deviceNames);
-        this.deviceNames = this.deviceNames.map(x => { return { id: x, description: x } });
+        this.deviceNames = this.deviceNames.map(x => { return { id: x, description: x }; });
         this.deviceNames.unshift({ id: '', description: '' });
         this.enablePaymentDeviceSelect = true;
       } else {
@@ -277,18 +277,17 @@ export class UserMachineConfigurationComponent implements OnInit {
   // Test method for use when no Pay Agent available
   async getDeviceNames(): Promise<any> {
     return new Promise((resolve, reject) => {
-      let deviceNames = [
+      const deviceNames = [
         { id: '', description: '' },
         { id: 'device1', description: 'Device 1' },
         { id: 'device2', description: 'Device 2' },
         { id: 'device3', description: 'Device 3' }];
       if (deviceNames) {
         resolve(this.deviceNames = deviceNames);
-      }
-      else {
+      } else {
         reject('error');
       }
-    })
+    });
   }
 
   // Printer Names
@@ -299,10 +298,10 @@ export class UserMachineConfigurationComponent implements OnInit {
       for (var p of this.ZebraPrinters.printer) {
         // console.dir(p);
         let description: string = p.name;
-        if (p.name.substring(0, 3).toLowerCase() == "18j") {
+        if (p.name.substring(0, 3).toLowerCase() == '18j') {
           description = `Zebra ZT410: ${p.name}`;
         }
-        if (p.name.substring(0, 3).toLowerCase() == "28j") {
+        if (p.name.substring(0, 3).toLowerCase() == '28j') {
           description = `Zebra GK420: ${p.name}`;
         }
         this.printers.push(
@@ -310,7 +309,7 @@ export class UserMachineConfigurationComponent implements OnInit {
             id: p.name,
             description: description
           }
-        )
+        );
       }
       this.printers.unshift({ id: '', description: '' });
       console.dir(this.printers);
@@ -329,18 +328,17 @@ export class UserMachineConfigurationComponent implements OnInit {
   // Test method to use when no Zebra printers connected
   async getPrinterNames(): Promise<any> {
     return new Promise((resolve, reject) => {
-      let printers = [
+      const printers = [
         { id: '', description: '' },
         { id: 'printer1', description: 'Printer 1' },
         { id: 'printer2', description: 'Printer 2' }
       ];
       if (printers) {
         resolve(this.printers = printers);
-      }
-      else {
+      } else {
         reject('error');
       }
-    })
+    });
   }
 
   async save() {
@@ -362,8 +360,8 @@ export class UserMachineConfigurationComponent implements OnInit {
   }
 
   private updatesessionStorage(values: any): void {
-    let userSessionConfigKey: string = 'userSessionConfigInfo';
-    let userSessionConfigValues: string =
+    const userSessionConfigKey = 'userSessionConfigInfo';
+    const userSessionConfigValues =
       ` Id=${values.id};
       UserId=${values.userId};
       DefaultOutletId=${values.defaultOutletId};
@@ -407,5 +405,4 @@ export class UserMachineConfigurationComponent implements OnInit {
       }
     }
   }
-  
 }

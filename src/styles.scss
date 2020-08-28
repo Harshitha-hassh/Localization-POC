@@ -2598,7 +2598,7 @@ mat-calendar {
   .icon-Search,
   .icon-Cancel {
     // font-size: 14px;
-    @extend .IC16;
+    @extend .IC12;
     // color: #000;
     right: 6px;
     position: absolute;
@@ -3464,6 +3464,7 @@ mat-color-picker-selector {
   .cdk-overlay-pane {
     .small-popup {
       width: 1000px !important;
+      max-width:unset !important
     }
 
     .medium {
