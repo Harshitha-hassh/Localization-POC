@@ -37,8 +37,8 @@ export class RouteGuardService implements CanActivate, CanActivateChild, OnDestr
      */
     async GetCurrentUserBreakPointDetails(CurrentRoute: ActivatedRouteSnapshot, ShowPopup?: boolean) {
         let CurrentUserAccess: Promise<BreakPointResult>;
-        if (CurrentRoute.data && CurrentRoute.data.BreakPointNumber) {
-            CurrentUserAccess = this.userAccessBusiness.getUserAccess(CurrentRoute.data.BreakPointNumber,
+        if (CurrentRoute.data && CurrentRoute.data.breakPointNumber) {
+            CurrentUserAccess = this.userAccessBusiness.getUserAccess(CurrentRoute.data.breakPointNumber,
                 ShowPopup ? ShowPopup : CurrentRoute.data.ShowPopup);
         }
         return CurrentUserAccess;
@@ -70,7 +70,7 @@ export class RouteGuardService implements CanActivate, CanActivateChild, OnDestr
 
     private async checkAccess(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         let CurrentUserAccess: BreakPointResult;
-        const breakpoint = route.data.BreakPointNumber;
+        const breakpoint = route.data.breakPointNumber;
         const checkSibling = route.data.checkAllSiblings;
         const isModule = route.data.isModule; // True if the current route is module level screen
         const isSubmodule = route.data.isSubmodule; // True if the current route is submodule level screen
@@ -102,7 +102,7 @@ export class RouteGuardService implements CanActivate, CanActivateChild, OnDestr
         if (routeHasChildAttr &&  (!isSubModuleChange && !isModuleChange)) {
             const childBreakPoints = this.getChildBreakpoints(route);
             const isAnyHasAccess = childBreakPoints.some(x => {
-                const currentChild = this.activatedChildresults.find(result => result.breakPointNumber === x.data.BreakPointNumber);
+                const currentChild = this.activatedChildresults.find(result => result.breakPointNumber === x.data.breakPointNumber);
                 return currentChild.isAllow || currentChild.isViewOnly;
             });
             if (!isAnyHasAccess && isModule) {
@@ -119,7 +119,7 @@ export class RouteGuardService implements CanActivate, CanActivateChild, OnDestr
         if (routeHasChildAttr && (isModuleChange || isSubModuleChange)) {
             const childBreakPoints = this.getChildBreakpoints(route);
             const isAnyHasAccess = childBreakPoints.some(x => {
-                const currentChild = this.activatedChildresults.find(result => result.breakPointNumber === x.data.BreakPointNumber);
+                const currentChild = this.activatedChildresults.find(result => result.breakPointNumber === x.data.breakPointNumber);
                 return currentChild.isAllow || currentChild.isViewOnly;
             });
             if (!isAnyHasAccess) {
@@ -153,13 +153,13 @@ export class RouteGuardService implements CanActivate, CanActivateChild, OnDestr
         if (route && route.routeConfig && route.routeConfig.children && route.routeConfig.children.length > 0) {
             route.routeConfig.children.forEach(child => {
                 if (child) {
-                    if (child && child.data && child.data.BreakPointNumber) {
-                        breakPointNumbers.push(child.data.BreakPointNumber);
+                    if (child && child.data && child.data.breakPointNumber) {
+                        breakPointNumbers.push(child.data.breakPointNumber);
                     }
                     if (child.children && child.children.length > 0) {
                         child.children.forEach(y => {
-                            if (y && y.data && y.data.BreakPointNumber) {
-                                breakPointNumbers.push(y.data.BreakPointNumber);
+                            if (y && y.data && y.data.breakPointNumber) {
+                                breakPointNumbers.push(y.data.breakPointNumber);
                             }
                         });
                     }
@@ -198,13 +198,13 @@ export class RouteGuardService implements CanActivate, CanActivateChild, OnDestr
         const routeChildrens = route.routeConfig.children;
         if (routeChildrens && routeChildrens.length > 0) {
                 routeChildrens.forEach(routeChildren => {
-                if (routeChildren.data && routeChildren.data.BreakPointNumber) {
+                if (routeChildren.data && routeChildren.data.breakPointNumber) {
                     routes.push(routeChildren);
                 }
                 const nestedChildrens =  routeChildren.children;
                 if (nestedChildrens && nestedChildrens.length > 0) {
                     nestedChildrens.forEach(nestedChildren => {
-                        if (nestedChildren.data && nestedChildren.data.BreakPointNumber) {
+                        if (nestedChildren.data && nestedChildren.data.breakPointNumber) {
                             routes.push(nestedChildren);
                         }
                     });

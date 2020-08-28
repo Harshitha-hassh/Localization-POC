@@ -15,8 +15,10 @@ export interface BreakPointResult {
 export enum BreakPoint{
     ShopScreen = 3000,
 
-    //user module
-    UserSetup = 2300
+    //user module    
+  UserSetup = 2300,
+  UserRoleSetUp = 2305,
+  UserRoleConfiguration = 2310
 }
 
 export const enum ReportBreakPoint {
