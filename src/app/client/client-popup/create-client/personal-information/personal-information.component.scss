@@ -4,6 +4,9 @@
 @import '../../../../../assets/sass/abstracts/_variables';
 .personal_container{
     position: relative;
+    label{
+        margin-bottom:0.7rem;
+    }
 }
 .display_style_toggle{
     display: inline-block;
@@ -137,6 +140,7 @@
     width: 100%;
     color: #000;
     box-shadow: none !important;
+    height: 34px;
     .toggle-btn{
         min-width: 11%;
         text-overflow: ellipsis;

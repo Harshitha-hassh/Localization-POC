@@ -10558,3 +10558,23 @@
 .icon-sphere:before {
   content: "\ecb4";
 }
+.icon-Player-worth_disabled .path1:before {
+  content: "\ecc0";
+  color: rgb(98, 98, 98);
+  opacity: 0.34;
+}
+.icon-Player-worth_disabled .path2:before {
+  content: "\ecc1";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+  opacity: 0.34;
+}
+.icon-Player-worth_enabled .path1:before {
+  content: "\ecc2";
+  color: rgb(194, 166, 83);
+}
+.icon-Player-worth_enabled .path2:before {
+  content: "\ecc3";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}

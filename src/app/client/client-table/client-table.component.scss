@@ -136,7 +136,7 @@
     border: 1px solid #ECECEC;
     background: #ffff;
     color: #000;
-    font-family: LatoWeb;
+    font-family: "LatoWeb";
   }
 
   .search-container {
@@ -268,7 +268,7 @@
     th {
       font-size: 14px;
       padding: 0 15px;
-      font-family: "LatoWeb";
+      font-family: "LatoWebMedium";
 
       //   &:last-child {
       //     position: sticky;
@@ -283,7 +283,7 @@
     tbody {
 
       span {
-        font-family: "LatoWeb";
+        font-family: "LatoWebMedium";
       }
 
       tr {
@@ -318,7 +318,7 @@
         td {
           margin-right: 15px;
           font-size: 14px;
-          font-family: "LatoWeb";
+          font-family: "LatoWebMedium";
           padding: 10px;
           border-top: none;
           text-align: left;
@@ -543,7 +543,7 @@
         }
 
         .th-inner {
-          font-family: 'LatoWeb' !important;
+          font-family: 'LatoWebMedium' !important;
         }
       }
     }
