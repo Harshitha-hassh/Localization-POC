@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PropertyInformation } from '../../../../core/services/property-information.service';
 import { SubscriptionLike as ISubscription, Subscription } from 'rxjs';
@@ -18,7 +18,8 @@ import { BaseResponse, Device, PaymentMethods, TokentransactionInfo, ClientCredi
   selector: 'app-additional-information',
   templateUrl: './additional-information.component.html',
   styleUrls: ['./additional-information.component.scss'],
-  providers:[UserMachineConfigurationService]
+  providers:[UserMachineConfigurationService],
+  encapsulation:ViewEncapsulation.None
 })
 export class AdditionalInformationComponent implements OnInit, OnDestroy {
   @Input() parentForm: FormGroup;
