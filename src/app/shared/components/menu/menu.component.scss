@@ -24,7 +24,7 @@ $router-width: calc(100% - 250px);
     font-family: "LatoRegular";
     font-size: 14px;
     display: flex;
-  
+
     .nav-section {
       width: calc(100% - #{$other-space});
       height: 100%;
@@ -291,7 +291,8 @@ svg-icon {
   height: 100%;
 
   .searchClass,
-  .notifyClass,.menuClass {
+  .notifyClass,
+  .menuClass {
     width: 60px;
     height: 100%;
     position: relative;
@@ -316,7 +317,15 @@ svg-icon {
         top: 22px;
         right: 22px;
       }
-
+      .icon-Menu_search_icon,
+      .icon-mail_integration,
+      .icon-user {
+        color: #000000;
+        font-size: 15px;
+        position: absolute;
+        right: 21px;
+        top: 22px;
+      }
       .icon-Circle {
         font-size: 35px;
 
@@ -325,13 +334,13 @@ svg-icon {
           color: unset;
         }
       }
-      .icon-filter{
+      .icon-filter {
         color: #000000;
         font-size: 15px;
         position: absolute;
         right: 21px;
         top: 23px;
-    }
+      }
     }
   }
   .buttonStyle {
@@ -348,9 +357,9 @@ svg-icon {
     border-left: 1px solid #2d3236 !important;
   }
 
-  .menuClass{
-    border-left: 1px solid #2D3236 !important;
-}
+  .menuClass {
+    border-left: 1px solid #2d3236 !important;
+  }
 
   .user-details {
     width: 165px;

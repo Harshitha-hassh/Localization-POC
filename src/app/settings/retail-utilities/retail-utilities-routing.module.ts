@@ -14,7 +14,7 @@ const routes: Routes = [{
   // canActivate: [RouteGuardService],
   data: { breakPointNumber: UserAccessBreakPoints.SYSTEMSETUP, ShowPopup: true, isModule: true },
   children: [
-    { path: '', redirectTo: 'propertyinfo', pathMatch: 'full' },
+    { path: '', redirectTo: 'receiptconfiguration', pathMatch: 'full' },
     {
         path:'receiptconfiguration',
         component: ReceiptConfigurationComponent,

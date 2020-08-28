@@ -14,9 +14,9 @@
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <button mat-raised-button class="connect-btn icon-Device"
+                    <button mat-raised-button class="connect-btn"
                         [ngClass]="selectedDevice == 'defaultselected' ? 'secondary-disabled':'secondary-default-btn'"
-                        (click)="connectDeviceAndGetCardInfo()">{{captions.connect}}</button>
+                        (click)="connectDeviceAndGetCardInfo()"><i class="icon-Device mr-1"></i>{{captions.connect}}</button>
                 </div>
                 <div class="saved-card mb-3" *ngIf="displayCardInfo">
                     <label for="" class="form-label-normal">{{captions.savedCardDetails}}</label>
