@@ -41,13 +41,13 @@ export enum RetailRoutes {
   GetSncUserConfig = 'UserConfiguration?userId={id}',
   // Dashboard
   GetOutletCount = 'DashBoard/getOutletCount',
-  GetVendorCount = 'DashBoard/getVendorCount',
+  GetVendorCount = 'Vendor/GetVendorInfo',
   GetTransactionCount = 'DashBoard/GetTransactionCount',
   GetOutOfStockItems = 'retailitems/GetInventoryRetailItems',
   GetTransactionSaleDetail = 'Transaction/getTransactionSale/{startDate}/{dataFormat}',
   GetItemSaleDetail = 'Transaction/getItemSale/{startDate}/{endDate}',
   GetCategorySaleDetail = 'Transaction/getCategorySale/{startDate}/{endDate}',
-  GetOpenTickets = 'DashBoard/{processDate}',
+  GetOpenTickets = 'DashBoard/getOpenTransactionList/{processDate}',
   GetReturnedItems = 'DashBoard/getReturnedItems/{startDate}/{dataFormat}'
 
 }

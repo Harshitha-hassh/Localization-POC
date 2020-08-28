@@ -132,3 +132,9 @@ export interface OpenTickets {
     transactionNumber :string;
     amount: string;    
 }
+
+export interface VendorInfo {
+    activeCount: number;
+    inActiveCount: number;
+    totalCounts : number;
+}

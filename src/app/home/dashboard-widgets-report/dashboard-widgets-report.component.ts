@@ -36,6 +36,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   endTime = 1440;
   teeTimeCourseId: number;
   outletIds: number[];
+  dashboardOutletIds: number[];
   outletId: number;
   userId: any;
   itemStartDate: Date;
@@ -131,6 +132,8 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     this.dashboardWidgetsReportService.OutletsData = await this.dashBoardBusiness.getOutlets();
     this.Outlet_Sales = this.dashboardWidgetsReportService.OutletsData.map(x => x.id);
     this.outletIds = this.dashboardWidgetsReportService.OutletsData.map(x => x.id);
+    this.dashboardOutletIds = this.outletIds; 
+    this.outletId=this.dashboardOutletIds[0];
     this.outletId = this.outletIds[0];
     if (this.outletId > this.numericZero) {
       this.getOutletsCount();
@@ -208,17 +211,47 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   }
   dashBoardIsAnySelected(e) {
     console.log('dashBoardIsAnySelected ', e);
+    this.dashboardOutletIds = e.map(x => x.id);
+    this.getTransactionCount();
   }
 
   widgetIsAnySelected(controlName, e) {
     console.log('controlName ', controlName, ' e', e);
-  }
+    this.dashboardWidgetsReportService.OutletsData = e;
+    this.outletIds = e.map(x => x.id);  
+    this.getReturned_ItemsDetail();
+    this.getOpenTicketsData();
+    this.getOutofStockOnData();
+  };
   loopWidgetDropDownFrmControl($event, loopWidget, loopWidget_Index) {
     console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
   }
   loopWidgetIsAnySelected($event, loopWidget, loopWidget_Index) {
 
     console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
+    this.outletIds = $event.map(x => x.id);
+    switch (loopWidget.template.name) {      
+      case 'Out_of_StockItems':
+        this.getOutofStockOnData();
+        break;
+      case 'Revenue_By_Outlet':
+        this.getRevenueByOutletDetail();
+        break;
+      case 'Open_Tickets':
+        this.getOpenTicketsData();
+        break;
+      case 'Returned_Items':
+        this.getReturned_ItemsDetail();
+        break;
+      case 'Sales_Top5Items':
+        this.getTop5ItemSaleDetail("day_0");
+        break;
+      case 'Sales_Top5Categories':
+        this.getCategorySaleDetail("day_1");
+        break;
+      default:
+        break;
+    }
   }
 
   dashboardData() {
@@ -386,7 +419,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   }
 
   async getTransactionCount() {
-    const transationDetail = await this.dashBoardBusiness.getTransactionCount(this.outletIds);
+    const transationDetail = await this.dashBoardBusiness.getTransactionCount(this.dashboardOutletIds);
     this.DB_NumberOfTransaction_data.count = transationDetail.transactionCount;
     this.DB_TotalSalesRevenue_data.count = `${this.localization.currencySymbol}`
                                             + this.localization.DisplayMillion(transationDetail.transactionRevenue, this.numericTwo);
