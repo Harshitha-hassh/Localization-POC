@@ -14,7 +14,7 @@ export class AboutComponent implements OnInit {
   }
 
   dialogClose() {
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
 
 }
