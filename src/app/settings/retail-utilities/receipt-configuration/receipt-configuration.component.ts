@@ -28,10 +28,14 @@ export class ReceiptConfigurationComponent implements OnInit {
   OutletInfo: ReceiptModel[];
   selectedOutletId: number;
   IsViewOnly: boolean;
-  isSaveDisabled: boolean
+  isSaveDisabled: boolean;
   ServiceCharge: any;
 
-  constructor(private Form: FormBuilder, private breakPoint: BreakPointAccess, private localization: Localization, private http: HttpServiceCall, private data: ReceiptConfigurationDataService, private outletData: RetailOutletsDataService, private retailService: RetailSetupService, private utils: Utilities) {
+  constructor(private Form: FormBuilder,
+              private breakPoint: BreakPointAccess,
+              private localization: Localization,
+              private http: HttpServiceCall, private data: ReceiptConfigurationDataService,
+              private outletData: RetailOutletsDataService, private retailService: RetailSetupService, private utils: Utilities) {
     this.textCaptions = this.localization.captions.utilities;
     this.FormGrp = this.Form.group({
       outlet: ['', Validators.required],
@@ -49,7 +53,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       { id: 1, value: this.textCaptions.Details },
       { id: 2, value: this.textCaptions.SummarySplit },
       { id: 3, value: this.textCaptions.SummaryCombine }
-    ]
+    ];
     this.Outlet = await this.outletData.getOutlets();
     this.Outlet = this.Outlet.filter(x => x.isActive == true);
     this.OutletInfo = await this.data.getOutletInfo();
@@ -84,20 +88,19 @@ export class ReceiptConfigurationComponent implements OnInit {
   changeSelection(e) {
     this.isSaveDisabled = true;
     this.selectedOutletId = e.value;
-    let selectedValues = this.OutletInfo.filter(x => x.outletId == e.value);
+    const selectedValues = this.OutletInfo.filter(x => x.outletId == e.value);
     if (selectedValues.length == 0) {
       this.resetData();
       this.cancelClick();
       this.FormGrp.get('outlet').setValue(this.selectedOutletId);
-    }
-    else {
+    } else {
       this.bindGridData(selectedValues);
     }
   }
 
   bindGridData(selectedValues) {
-    let selectedOutlet = this.Outlet.filter(x => x.id == this.selectedOutletId);
-    let printReceiptCustom: any = {
+    const selectedOutlet = this.Outlet.filter(x => x.id == this.selectedOutletId);
+    const printReceiptCustom: any = {
       discountOnReceipt: selectedValues[0].displayDiscount,
       addSecondLine: selectedValues[0].addSecondLine,
       packageItemOnReceipt: selectedValues[0].displayOnlyPackageItem,
@@ -115,7 +118,7 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.FormGrp.get('receiptNote').setValue(selectedValues[0].receiptNote);
     this.printReceiptArray = this.FormGrp.get('printReceipt') as FormArray;
     this.printReceiptArray.removeAt(0);
-    let x = this.savePrintDetails(printReceiptCustom);
+    const x = this.savePrintDetails(printReceiptCustom);
     this.printReceiptArray.push(x);
     if (selectedValues[0].displayPackageDescription && !this.IsViewOnly) {
       this.printInfo[3].enableToggle = true;
@@ -129,8 +132,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       this.printInfo[7].enableToggle = false;
     }
     if (selectedValues[0].displayOnlyPackageItem == false) {
-      if(selectedValues[0].displayPackageDescription)
-      {
+      if (selectedValues[0].displayPackageDescription) {
         this.printInfo[3].enableToggle = true;
         this.printInfo[5].enableToggle = true;
         this.printInfo[7].enableToggle = true;
@@ -170,23 +172,19 @@ export class ReceiptConfigurationComponent implements OnInit {
       this.printInfo[3].enableToggle = true;
       this.printInfo[5].enableToggle = true;
       this.printInfo[7].enableToggle = true;
-    }
-    else if (controlName == 'packItemDesc' && !event[0]) {
+    } else if (controlName == 'packItemDesc' && !event[0]) {
       this.printInfo[3].enableToggle = false;
       this.printInfo[5].enableToggle = false;
       this.printInfo[7].enableToggle = false;
-    }
-    else if (controlName == 'packageItemOnReceipt' && event[0]) {
+    } else if (controlName == 'packageItemOnReceipt' && event[0]) {
       this.printInfo[1].enableToggle = false;
-      //this.FormGrp.controls[0].value.packItemDesc = false;
-      //this.FormGrp.controls.printReceipt.value[0].packItemDesc = false;
+      // this.FormGrp.controls[0].value.packItemDesc = false;
+      // this.FormGrp.controls.printReceipt.value[0].packItemDesc = false;
       this.printInfo[3].enableToggle = false;
       this.printInfo[5].enableToggle = false;
       this.printInfo[7].enableToggle = false;
-    }
-    else if (controlName == 'packageItemOnReceipt' && !event[0] && !this.IsViewOnly) {
-      if(this.FormGrp.controls.printReceipt.value[0].packItemDesc)
-      {
+    } else if (controlName == 'packageItemOnReceipt' && !event[0] && !this.IsViewOnly) {
+      if (this.FormGrp.controls.printReceipt.value[0].packItemDesc) {
         this.printInfo[3].enableToggle = true;
         this.printInfo[5].enableToggle = true;
         this.printInfo[7].enableToggle = true;
@@ -208,7 +206,7 @@ export class ReceiptConfigurationComponent implements OnInit {
 
   async saveReceipt(data: any) {
     console.log(data);
-    let receiptobj: ReceiptModel = {
+    const receiptobj: ReceiptModel = {
       id: 0,
       outletId: this.selectedOutletId,
       numberOfReceipts: data.noOfReceipts,
@@ -223,9 +221,9 @@ export class ReceiptConfigurationComponent implements OnInit {
       serviceChargeGratuityDisplay: data.displayServiceCharge,
       gratuityLine: data.gratuityLine,
       receiptNote: data.receiptNote
-    }
+    };
     this.OutletInfo = await this.data.createReceipt(receiptobj);
-    let currOutlet = this.Outlet.filter(x => x.id == this.selectedOutletId);
+    const currOutlet = this.Outlet.filter(x => x.id == this.selectedOutletId);
     this.utils.ShowError(this.textCaptions.Success, this.textCaptions.AfterSaveMessage + currOutlet[0].outletName, ButtonType.Ok);
     this.resetData();
   }

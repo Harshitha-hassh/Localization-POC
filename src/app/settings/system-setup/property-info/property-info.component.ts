@@ -22,7 +22,7 @@ import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/servic
   providers: [SystemSetupBusinessService]
 })
 export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDestroy {
-  propertyInformation
+  propertyInformation;
   settingInfo: SystemConfiguration[] = [];
   propertyInfo: FormGroup;
   contactPhoneType: ComboOptions[];
@@ -32,7 +32,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   phone: FormArray;
   address: FormArray;
   requiredFields: FormArray;
-  addresslength: number = 0;
+  addresslength = 0;
   captions: any;
   requiredFieldsInfo: any;
   enableSave: boolean;
@@ -41,8 +41,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   CUSTOM_FIELD_3: any;
   CUSTOM_FIELD_4: any;
   CUSTOM_FIELD_5: any;
-  isUserAuthorized: boolean = true;
-  isViewOnly: boolean = true;
+  isUserAuthorized = true;
+  isViewOnly = true;
   propertyInfoSubscription: ISubscription;
   initialLoads = true;
   callCounter = 0;
@@ -51,36 +51,38 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   propertyConfigurationDetails: any;
   PhoneType: { id: number; description: any; }[];
   constructor(private spaConfig: SPAConfig,
-    private BP: BreakPointAccess,
-    private systemConfig: SystemSetupBusinessService,
-    private fb: FormBuilder,
-    private localization: Localization,
-    private utilities: Utilities,
-    public http: HttpServiceCall,
-    private utils: Utilities,
-    private ss: SettingsService) {
+              private BP: BreakPointAccess,
+              private systemConfig: SystemSetupBusinessService,
+              private fb: FormBuilder,
+              private localization: Localization,
+              private utilities: Utilities,
+              public http: HttpServiceCall,
+              private utils: Utilities,
+              private ss: SettingsService) {
     super(http);
     this.ss.tabLoaderEnable.next(true);
     this.commonCaptions = this.localization.captions.common;
     this.propertyConfigurationDetails = {
       name: '',
-      address: [{ addressDetails: "" }, { addressDetails: "" }],
+      address: [{ addressDetails: '' }, { addressDetails: '' }],
       postalcode: '',
-      state: "",
-      city: "",
-      country: "",
-      phone: [{ phonetype: 'Phone', phonelabel: this.commonCaptions.drp_txt_home, phonenumber: '' }, { phonetype: 'Phone', phonelabel: this.commonCaptions.drp_txt_office, phonenumber: '' },
+      state: '',
+      city: '',
+      country: '',
+      phone: [{ phonetype: 'Phone',
+       phonelabel: this.commonCaptions.drp_txt_home,
+        phonenumber: '' }, { phonetype: 'Phone', phonelabel: this.commonCaptions.drp_txt_office, phonenumber: '' },
       { phonetype: 'Phone', phonelabel: this.commonCaptions.drp_txt_mobile, phonenumber: '' }],
-      language: "",
+      language: '',
       tenantId: '',
-      propCode: "",
+      propCode: '',
       requiredFields: []
     };
 
     this.PhoneType = [
-      { "id": 1, "description": this.commonCaptions.drp_txt_home },
-      { "id": 2, "description": this.commonCaptions.drp_txt_office },
-      { "id": 3, "description": this.commonCaptions.drp_txt_mobile }
+      { 'id': 1, 'description': this.commonCaptions.drp_txt_home },
+      { 'id': 2, 'description': this.commonCaptions.drp_txt_office },
+      { 'id': 3, 'description': this.commonCaptions.drp_txt_mobile }
     ];
   }
 
@@ -98,13 +100,18 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       propCode: ['', Validators.required],
       requiredFields: this.fb.array([])
     });
-    this.contactPhoneType = [{ Id: 1, Description: this.commonCaptions.drp_txt_home, Type: "Phone" }, { Id: 2, Description: this.commonCaptions.drp_txt_office, Type: "Phone" }, { Id: 3, Description: this.commonCaptions.drp_txt_mobile, Type: "Phone" }];
-    this.languageType = [{ id: 1, value: "English", code: "en-US" }, { id: 2, value: "Spanish", code: "SPANISH" }, { id: 3, value: "Chinese", code: "Chinese" }];
-    this.textmaskFormat = this.localization.captions.common.PhoneFormat != '' ? this.localization.captions.common.PhoneFormat : "999999999999999999";
+    this.contactPhoneType = [{ Id: 1, Description: this.commonCaptions.drp_txt_home,
+       Type: 'Phone' },
+        { Id: 2, Description: this.commonCaptions.drp_txt_office, Type: 'Phone' },
+         { Id: 3, Description: this.commonCaptions.drp_txt_mobile, Type: 'Phone' }];
+    this.languageType = [{ id: 1, value: 'English', code: 'en-US' },
+     { id: 2, value: 'Spanish', code: 'SPANISH' }, { id: 3, value: 'Chinese', code: 'Chinese' }];
+    this.textmaskFormat = this.localization.captions.common.PhoneFormat != '' ?
+     this.localization.captions.common.PhoneFormat : '999999999999999999';
     this.address = this.propertyInfo.get('address') as FormArray;
     this.addresslength = this.address.length;
     this.captions = this.spaConfig.captions.setting;
-    //this.GetServiceCall('GetPropLanguages', {propertyId: 1});
+    // this.GetServiceCall('GetPropLanguages', {propertyId: 1});
     this.GetServiceCall('GetAllLanguages');
     [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(false, this.initialLoads, this.callCounter);
     this.GetCustomFields();
@@ -128,44 +135,44 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
 
   RequiredfieldsBind() {
     const personalInfo = [
-      { id: 1, name: this.captions.Title, controlName: "CLIENT_TITLE" },
-      { id: 2, name: this.captions.First_Name, controlName: "CLIENT_FIRST_NAME" },
-      { id: 3, name: this.captions.Last_Name, controlName: "CLIENT_LAST_NAME" },
-      { id: 4, name: this.captions.Birthday, controlName: "CLIENT_BIRTHDAY" },
-      { id: 5, name: this.captions.Gender, controlName: "CLIENT_GENDER" },
+      { id: 1, name: this.captions.Title, controlName: 'CLIENT_TITLE' },
+      { id: 2, name: this.captions.First_Name, controlName: 'CLIENT_FIRST_NAME' },
+      { id: 3, name: this.captions.Last_Name, controlName: 'CLIENT_LAST_NAME' },
+      { id: 4, name: this.captions.Birthday, controlName: 'CLIENT_BIRTHDAY' },
+      { id: 5, name: this.captions.Gender, controlName: 'CLIENT_GENDER' },
     ];
     const contactInfo = [
-      { id: 1, name: this.captions.Address, controlName: "CLIENT_ADDRESS_LINE_1" },
-      { id: 2, name: this.captions.City, controlName: "CLIENT_CITY" },
-      { id: 3, name: this.captions.State, controlName: "CLIENT_STATE" },
-      { id: 4, name: this.captions.Postal_Code, controlName: "CLIENT_POSTAL_CODE" },
-      { id: 5, name: this.captions.Country, controlName: "CLIENT_COUNTRY" },
-      { id: 6, name: this.captions.Phone, controlName: "CLIENT_PHONE" },
-      { id: 7, name: this.captions.Email, controlName: "CLIENT_EMAIL" },
+      { id: 1, name: this.captions.Address, controlName: 'CLIENT_ADDRESS_LINE_1' },
+      { id: 2, name: this.captions.City, controlName: 'CLIENT_CITY' },
+      { id: 3, name: this.captions.State, controlName: 'CLIENT_STATE' },
+      { id: 4, name: this.captions.Postal_Code, controlName: 'CLIENT_POSTAL_CODE' },
+      { id: 5, name: this.captions.Country, controlName: 'CLIENT_COUNTRY' },
+      { id: 6, name: this.captions.Phone, controlName: 'CLIENT_PHONE' },
+      { id: 7, name: this.captions.Email, controlName: 'CLIENT_EMAIL' },
     ];
     const paymentInfo = [
-      { id: 1, name: this.captions.Credit_Card, controlName: "CLIENT_CREDIT_CARD" },
+      { id: 1, name: this.captions.Credit_Card, controlName: 'CLIENT_CREDIT_CARD' },
       {
         id: 2, name: this.CUSTOM_FIELD_1.length > 0 ? this.CUSTOM_FIELD_1[0].fieldName :
-          this.captions.CUSTOM_FIELD_1, controlName: "CUSTOM_FIELD_1", Disabled: this.CUSTOM_FIELD_1.length <= 0
+          this.captions.CUSTOM_FIELD_1, controlName: 'CUSTOM_FIELD_1', Disabled: this.CUSTOM_FIELD_1.length <= 0
       },
       {
         id: 3, name: this.CUSTOM_FIELD_2.length > 0 ? this.CUSTOM_FIELD_2[0].fieldName :
-          this.captions.CUSTOM_FIELD_2, controlName: "CUSTOM_FIELD_2", Disabled: this.CUSTOM_FIELD_2.length <= 0
+          this.captions.CUSTOM_FIELD_2, controlName: 'CUSTOM_FIELD_2', Disabled: this.CUSTOM_FIELD_2.length <= 0
       },
       {
         id: 4, name: this.CUSTOM_FIELD_3.length > 0 ? this.CUSTOM_FIELD_3[0].fieldName :
-          this.captions.CUSTOM_FIELD_3, controlName: "CUSTOM_FIELD_3", Disabled: this.CUSTOM_FIELD_3.length <= 0
+          this.captions.CUSTOM_FIELD_3, controlName: 'CUSTOM_FIELD_3', Disabled: this.CUSTOM_FIELD_3.length <= 0
       },
       {
         id: 5, name: this.CUSTOM_FIELD_4.length > 0 ? this.CUSTOM_FIELD_4[0].fieldName :
-          this.captions.CUSTOM_FIELD_4, controlName: "CUSTOM_FIELD_4", Disabled: this.CUSTOM_FIELD_4.length <= 0
+          this.captions.CUSTOM_FIELD_4, controlName: 'CUSTOM_FIELD_4', Disabled: this.CUSTOM_FIELD_4.length <= 0
       },
       {
         id: 6, name: this.CUSTOM_FIELD_5.length > 0 ? this.CUSTOM_FIELD_5[0].fieldName :
-          this.captions.CUSTOM_FIELD_5, controlName: "CUSTOM_FIELD_5", Disabled: this.CUSTOM_FIELD_5.length <= 0
+          this.captions.CUSTOM_FIELD_5, controlName: 'CUSTOM_FIELD_5', Disabled: this.CUSTOM_FIELD_5.length <= 0
       }
-    ]
+    ];
     this.requiredFieldsInfo = [
       {
         name: this.captions.personalInformation,
@@ -208,34 +215,34 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       host: Host.authentication,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "GetPropertyInfoByPropertyId",
+      callDesc: 'GetPropertyInfoByPropertyId',
       uriParams: { Id: this.utils.GetPropertyInfo('PropertyId') },
       method: HttpMethod.Get,
       showError: true,
       extraParams: []
     });
-    //this.makeGetCall("GetPropertyInfoByPropertyId", Host.spaManagement, {Id:this.utils.GetPropertyInfo('PropertyId')});
-    //this.makeGetCall("GetPropertyInfoByPropertyId",Host.authentication,1);
+    // this.makeGetCall("GetPropertyInfoByPropertyId", Host.spaManagement, {Id:this.utils.GetPropertyInfo('PropertyId')});
+    // this.makeGetCall("GetPropertyInfoByPropertyId",Host.authentication,1);
   }
   GetlanguageInfo() {
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "GetLangugae",
+      callDesc: 'GetLangugae',
       uriParams: { Id: this.utils.GetPropertyInfo('PropertyId') },
       method: HttpMethod.Get,
       showError: true,
       extraParams: []
     });
-    //this.makeGetCall("GetPropertyInfoByPropertyId", Host.spaManagement, {Id:this.utils.GetPropertyInfo('PropertyId')});
-    //this.makeGetCall("GetPropertyInfoByPropertyId",Host.authentication,1);
+    // this.makeGetCall("GetPropertyInfoByPropertyId", Host.spaManagement, {Id:this.utils.GetPropertyInfo('PropertyId')});
+    // this.makeGetCall("GetPropertyInfoByPropertyId",Host.authentication,1);
   }
   GetAllSetting() {
-    this.makeGetCall("GetAllSetting", Host.spaManagement, { Id: this.utils.GetPropertyInfo('PropertyId') });
+    this.makeGetCall('GetAllSetting', Host.spaManagement, { Id: this.utils.GetPropertyInfo('PropertyId') });
   }
   ngAfterViewInit() {
-    //this.calculateHeight();
+    // this.calculateHeight();
   }
   GetServiceCall(Route, Uri?) {
     this.http.CallApiWithCallback<any>({
@@ -251,22 +258,20 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   }
   calculateHeight() {
     try {
-      let col1 = document.getElementById('required-0').offsetHeight;
-      let col2 = document.getElementById('required-1').offsetHeight;
-      let col3 = document.getElementById('required-2').offsetHeight;
-      let maxHeight = Math.max(col1, col2, col3)
+      const col1 = document.getElementById('required-0').offsetHeight;
+      const col2 = document.getElementById('required-1').offsetHeight;
+      const col3 = document.getElementById('required-2').offsetHeight;
+      const maxHeight = Math.max(col1, col2, col3);
       this.setHeight(maxHeight);
-    }
-    catch (e) { }
+    } catch (e) { }
   }
 
   setHeight(height) {
     try {
-      document.getElementById('required-0').style.height = height + 'px'
-      document.getElementById('required-1').style.height = height + 'px'
-      document.getElementById('required-2').style.height = height + 'px'
-    }
-    catch (e) { }
+      document.getElementById('required-0').style.height = height + 'px';
+      document.getElementById('required-1').style.height = height + 'px';
+      document.getElementById('required-2').style.height = height + 'px';
+    } catch (e) { }
   }
 
   addPersonalDetails(): FormGroup {
@@ -304,20 +309,20 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
 
   addPhoneDetails() {
     const phoneDetails = this.propertyConfigurationDetails.phone;
-    let phoneInfo = [];
+    const phoneInfo = [];
     for (let i = 0; i < phoneDetails.length; i++) {
       phoneInfo.push(this.fb.group({
-        phonetype: "Phone",
+        phonetype: 'Phone',
         phonelabel: phoneDetails[i].phonelabel,
         phonenumber: this.utilities.appendFormat(phoneDetails[i].phonenumber, this.localization.captions.common.PhoneFormat)
-      }))
+      }));
     }
     return phoneInfo;
-  };
+  }
 
   addPhoneArray(index, phoneLabel, phoneNumber): FormGroup {
     return this.fb.group({
-      phonetype: "Phone",
+      phonetype: 'Phone',
       phonelabel: phoneLabel,
       phonenumber: this.utilities.appendFormat(phoneNumber, this.localization.captions.common.PhoneFormat)
     });
@@ -352,9 +357,9 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   }
 
   save() {
-    let bodySettingData: SystemConfig[] = this.formSettingBody();
+    const bodySettingData: SystemConfig[] = this.formSettingBody();
     this.UpdateSetting(bodySettingData);
-    let bodyPropertyData: PropertyConfig = this.formPropertyData()
+    const bodyPropertyData: PropertyConfig = this.formPropertyData();
     this.UpdatePropertySetting(bodyPropertyData);
   }
   UpdatePropertySetting(bodyPropertyData) {
@@ -362,7 +367,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       host: Host.authentication,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "UpdatePropertyInfoByPropertyId",
+      callDesc: 'UpdatePropertyInfoByPropertyId',
       body: bodyPropertyData,
       method: HttpMethod.Post,
       showError: true,
@@ -374,11 +379,11 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       host: Host.spaManagement,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "GetCustomFields",
+      callDesc: 'GetCustomFields',
       method: HttpMethod.Get,
       showError: true,
       extraParams: []
-    })
+    });
   }
 
   UpdateSetting(bodyData) {
@@ -386,7 +391,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       host: Host.spaManagement,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "UpdateSetting",
+      callDesc: 'UpdateSetting',
       body: bodyData,
       method: HttpMethod.Put,
       showError: true,
@@ -394,21 +399,21 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     });
   }
   formSettingBody(): SystemConfig[] {
-    let allControls = [this.requiredFields.controls];
-    let con = allControls[0];
+    const allControls = [this.requiredFields.controls];
+    const con = allControls[0];
     let _body: SystemConfig[] = [];
-    for (let systemControl of con) {
-      let formControl = systemControl as FormGroup;
-      let controls: string[] = Object.keys(formControl.controls);
-      for (let control of controls) {
-        let switchName = control;
+    for (const systemControl of con) {
+      const formControl = systemControl as FormGroup;
+      const controls: string[] = Object.keys(formControl.controls);
+      for (const control of controls) {
+        const switchName = control;
         let _systemConfig: SystemConfig;
         _systemConfig = {
           id: this.settingInfo.find(setting => setting.switch == switchName).id,
           moduleId: this.settingInfo.find(s => s.switch == switchName).moduleId,
           switch: switchName,
           value: formControl.controls[control].value
-        }
+        };
         _body.push(_systemConfig);
       }
     }
@@ -417,8 +422,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   formPropertyData(): PropertyConfig {
     let _body: any = {};
     _body.propertyContacts = [];
-    let aa = this.propertyInfo.controls["address"].value;
-    let _phone = this.propertyInfo.controls["phone"].value
+    const aa = this.propertyInfo.controls['address'].value;
+    let _phone = this.propertyInfo.controls['phone'].value;
     _body.propertyName = this.propertyInfo.controls['name'].value;
     _body.propertyCode = this.propertyInfo.controls['propCode'].value;
     _body.tenantId = this.propertyInfo.controls['tenantId'].value;
@@ -427,19 +432,21 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     _body.state = this.propertyInfo.controls['state'].value;
     _body.country = this.propertyInfo.controls['country'].value;
     _body.zip = this.propertyInfo.controls['postalcode'].value;
-    _body.propertyId = parseInt(this.localization.GetPropertyInfo("PropertyId"));
+    _body.propertyId = parseInt(this.localization.GetPropertyInfo('PropertyId'));
     _body.address1 = this.propertyInfo.controls.address.value[0].addressDetails;
-    _body.address2 = (aa.length < 2) ? "" : (this.propertyInfo.controls.address.value[1].addressDetails) == null ? "" : this.propertyInfo.controls.address.value[1].addressDetails;
-    _body.address3 = (aa.length < 3) ? "" : (this.propertyInfo.controls.address.value[2].addressDetails) == null ? "" : this.propertyInfo.controls.address.value[2].addressDetails;
+    _body.address2 = (aa.length < 2) ? '' :
+     (this.propertyInfo.controls.address.value[1].addressDetails) == null ? '' : this.propertyInfo.controls.address.value[1].addressDetails;
+    _body.address3 = (aa.length < 3) ? '' :
+     (this.propertyInfo.controls.address.value[2].addressDetails) == null ? '' : this.propertyInfo.controls.address.value[2].addressDetails;
     for (let temp = 0; temp < _phone.length; temp++) {
-      let phoneItem = _phone[temp];
-      let ph = phoneItem.phonelabel == null ? this.PhoneType[1] : phoneItem.phonelabel
+      const phoneItem = _phone[temp];
+      const ph = phoneItem.phonelabel == null ? this.PhoneType[1] : phoneItem.phonelabel;
       let phone: PhNumber;
-      let contactType = this.PhoneType.filter(res => res.description === ph);
+      const contactType = this.PhoneType.filter(res => res.description === ph);
       phone = {
         id: temp + 1,
-        number: phoneItem.phonenumber ? (phoneItem.phonenumber).replace(/\D/g, '') : "",
-        propertyId: _body.propertyId = this.localization.GetPropertyInfo("PropertyId"),
+        number: phoneItem.phonenumber ? (phoneItem.phonenumber).replace(/\D/g, '') : '',
+        propertyId: _body.propertyId = this.localization.GetPropertyInfo('PropertyId'),
         contactTypeId: (contactType ? contactType[0].id : 0).toString(),
         clientId: 1
       };
@@ -457,8 +464,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       // if (sc.switchType == "Boolean") {
       //   sc.value = this.convertStringToBoolean(sc.value as string);
       // }
-      _propJSON[sc.switch] = sc.value
-      _propJSON[sc.id] = sc.id
+      _propJSON[sc.switch] = sc.value;
+      _propJSON[sc.id] = sc.id;
     });
     this.systemConfig.systemConfigValues = _propJSON;
     this.formAndPatchRequiredFieldsData(_propJSON);
@@ -468,11 +475,10 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     let address: any;
     if (this.propertyInformation) {
       address = [this.propertyInformation.address1, this.propertyInformation.address2, this.propertyInformation.address3,];
-    }
-    else {
+    } else {
       this.addAddress(0, '');
     }
-    let phone: any = this.propertyInformation ? this.propertyInformation.propertyContacts : null;
+    const phone: any = this.propertyInformation ? this.propertyInformation.propertyContacts : null;
     this.propertyInfo.controls.name.setValue(this.propertyInformation ? this.propertyInformation.propertyName : '');
     this.propertyInfo.controls.postalcode.setValue(this.propertyInformation ? this.propertyInformation.zip : '');
     this.propertyInfo.controls.state.setValue(this.propertyInformation ? this.propertyInformation.state : '');
@@ -481,17 +487,17 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.propertyInfo.controls.language.setValue(this.propertyInformation ? this.propertyInformation.languageCode : '');
     this.propertyInfo.controls.tenantId.setValue(this.propertyInformation ? this.propertyInformation.tenantId : '');
     this.propertyInfo.controls.propCode.setValue(this.propertyInformation ? this.propertyInformation.propertyCode : '');
-    //this.propertyInfo.patchValue(_adrsJSON);
-    this.clearFormArray(this.propertyInfo.get("address") as FormArray);
+    // this.propertyInfo.patchValue(_adrsJSON);
+    this.clearFormArray(this.propertyInfo.get('address') as FormArray);
     for (let index = 0; index < address.length; index++) {
-      if ((address[index] && address[index].trim() != "") || index == 0)
+      if ((address[index] && address[index].trim() != '') || index == 0)
         this.addAddress(index, address[index]);
     }
     this.clearFormArray(this.propertyInfo.get('phone') as FormArray);
     if (phone != null && (!this.phone || this.phone.length != phone.length)) {
       for (let index = 0; index < phone.length; index++) {
-        if ((phone[index].number && phone[index].number.toString().trim() != "") || index == 0) {
-          let contactType = this.PhoneType.filter(res => res.id === phone[index].contactTypeId);
+        if ((phone[index].number && phone[index].number.toString().trim() != '') || index == 0) {
+          const contactType = this.PhoneType.filter(res => res.id === phone[index].contactTypeId);
           this.addPhoneItem(index, contactType && contactType.length ? contactType[0].description : contactType[0], phone[index].number);
         }
       }
@@ -500,27 +506,24 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     }
   }
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams?: any[]): void {
-    if (callDesc == "GetAllSetting") {
+    if (callDesc == 'GetAllSetting') {
       this.settingInfo = <any>result.result;
       this.RequiredFieldsSetting();
       this.enableSave = false;
-    }
-    else if (callDesc == "GetPropertyInfoByPropertyId") {
+    } else if (callDesc == 'GetPropertyInfoByPropertyId') {
       this.propertyInformation = <any>result.result;
       this.PropertSetting();
       this.enableSave = false;
-    }
-    else if (callDesc == "UpdatePropertyInfoByPropertyId") {
+    } else if (callDesc == 'UpdatePropertyInfoByPropertyId') {
       this.GetPropertInfo();
       this.enableSave = false;
-    }
-    else if (callDesc == "UpdateSetting") {
+    } else if (callDesc == 'UpdateSetting') {
       this.GetAllSetting();
       this.enableSave = false;
-    } else if (callDesc == "GetCustomFields") {
+    } else if (callDesc == 'GetCustomFields') {
       [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(true, this.initialLoads, this.callCounter);
       this.RequiredFieldInfo = <any>result.result;
-      this.CUSTOM_FIELD_1 = this.RequiredFieldInfo.filter(o => o.columnName == 'CustomField1')
+      this.CUSTOM_FIELD_1 = this.RequiredFieldInfo.filter(o => o.columnName == 'CustomField1');
       this.CUSTOM_FIELD_2 = this.RequiredFieldInfo.filter(o => o.columnName == 'CustomField2');
       this.CUSTOM_FIELD_3 = this.RequiredFieldInfo.filter(o => o.columnName == 'CustomField3');
       this.CUSTOM_FIELD_4 = this.RequiredFieldInfo.filter(o => o.columnName == 'CustomField4');
@@ -528,17 +531,16 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       this.RequiredFieldsSetting();
       this.RequiredfieldsBind();
       this.enableSave = false;
-    }
-    else if (callDesc == 'GetAllLanguages') {
+    } else if (callDesc == 'GetAllLanguages') {
       [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(true, this.initialLoads, this.callCounter);
       if (result.result) {
-        let data = <any>result.result;
-        this.languageType = data.map(x => { return { id: x.languageID, value: x.languageName, code: x.languageCode } });
+        const data = <any>result.result;
+        this.languageType = data.map(x => { return { id: x.languageID, value: x.languageName, code: x.languageCode }; });
       }
     }
   }
   cancel() {
-    //this.propertyInfo.patchValue(this.propertyConfigurationDetails);
+    // this.propertyInfo.patchValue(this.propertyConfigurationDetails);
     this.RequiredFieldsSetting();
     this.PropertSetting();
     this.enableSave = false;
@@ -550,7 +552,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   }
   addAddressDetails() {
     const addressDetails = this.propertyConfigurationDetails.address;
-    let arr = [];
+    const arr = [];
     for (let i = 0; i < addressDetails; i++) {
       arr.push(this.fb.group({
         address: addressDetails[i].address
@@ -560,24 +562,24 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   }
 
   convertStringToBoolean(value: string): boolean {
-    return value == "true" ? true : false;
+    return value == 'true' ? true : false;
   }
 
   errorCallback<T>(error: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
-    if (callDesc = "GetAllSetting") {
+    if (callDesc = 'GetAllSetting') {
       this.systemConfig.systemConfigValues = this.settingInfo;
     }
-    if (callDesc == "UpdateSetting") {
+    if (callDesc == 'UpdateSetting') {
       this.systemConfig.systemConfigValues = this.settingInfo;
     }
-    if (callDesc == 'GetAllLanguages' || callDesc == "GetCustomFields") {
+    if (callDesc == 'GetAllLanguages' || callDesc == 'GetCustomFields') {
       [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(true, this.initialLoads, this.callCounter);
     }
   }
 
   clearFormArray(formArray: FormArray): void {
     while (formArray.length !== 0) {
-      formArray.removeAt(0)
+      formArray.removeAt(0);
     }
   }
 }
