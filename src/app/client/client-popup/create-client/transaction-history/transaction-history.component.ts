@@ -44,8 +44,8 @@ export class TransactionHistoryComponent implements OnInit {
     this.captions = this.localization.captions.bookAppointment;
     this.historyTypes = [{ "id": "1", "name": this.captions.FrequentlyPurchasedItems },
     { "id": "2", "name": this.captions.SalesHistory },
-    { "id": "3", "name": this.captions.AppointmentDetails },
-    { "id": "4", "name": this.captions.CancellationsandNoShows }
+    //{ "id": "3", "name": this.captions.AppointmentDetails },
+    //{ "id": "4", "name": this.captions.CancellationsandNoShows }
     // Commented below for disabling GroupAppointments, Activities option
     // { "id": "5", "name": this.captions.TeeTimes },
     // { "id": "6", "name": this.captions.Activities }
@@ -149,13 +149,13 @@ export class TransactionHistoryComponent implements OnInit {
   }
 
   async initializeFormData(){
-    this.allTherapists =  await this.InvokeServiceCallAsync("GetAllTherapist", Host.spaManagement);
-    this.allServices = await this.InvokeServiceCallAsync("GetAllSpaService", Host.spaManagement);
+    //this.allTherapists =  await this.InvokeServiceCallAsync("GetAllTherapist", Host.spaManagement);
+    //this.allServices = await this.InvokeServiceCallAsync("GetAllSpaService", Host.spaManagement);
     this.historyType = this.historyTypes[0].id;
     this.changeType();
     // if (this.appointmentPopupService && this.appointmentPopupService.clientId) {
       this.GetSalesHistory();
-      this.GetAllAppointments();
+      //this.GetAllAppointments();
     // }
     // this.clientWindowConvertion = this.appointmentPopupService.convertToEdit.subscribe(x =>{
     //   if(x && x.id > 0 && this.isFirstTime){
@@ -165,18 +165,18 @@ export class TransactionHistoryComponent implements OnInit {
     // });
   }
 
-  GetAllAppointments() {
-    this.http.CallApiWithCallback<any>({
-      host: Host.schedule,
-      success: this.successCallback.bind(this),
-      error: this.errorCallback.bind(this),
-      callDesc: "GetAppointmentsByStatus",
-      uriParams: { clientId: '', status: 'CANC,RESV,NOSHOW,CKIN,CKOUT', date: null },
-      method: HttpMethod.Get,
-      showError: true,
-      extraParams: []
-    });
-  }
+  // GetAllAppointments() {
+  //   this.http.CallApiWithCallback<any>({
+  //     host: Host.schedule,
+  //     success: this.successCallback.bind(this),
+  //     error: this.errorCallback.bind(this),
+  //     callDesc: "GetAppointmentsByStatus",
+  //     uriParams: { clientId: '', status: 'CANC,RESV,NOSHOW,CKIN,CKOUT', date: null },
+  //     method: HttpMethod.Get,
+  //     showError: true,
+  //     extraParams: []
+  //   });
+  // }
 
   GetSalesHistory()
   {

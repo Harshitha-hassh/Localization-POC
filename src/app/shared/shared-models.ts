@@ -128,7 +128,21 @@ export interface BaseResponse<T> {
     propertyId: number;
     outletId: number;
 }
-
+export const enum ImgRefType {
+	player = 'PLAYER',
+	guest = 'GUEST',
+	retailItem = 'RETAILITEM'
+}
+export interface Imagedata {
+    id: number;
+    referenceType: string;
+    referenceId: number;
+    sequenceNo: number;
+    contentType: string;
+    data: string;
+    thumbnailData: string;
+    imageReferenceId: string;
+}
 export interface KeyValuePair {
     key: any;
     value: any;

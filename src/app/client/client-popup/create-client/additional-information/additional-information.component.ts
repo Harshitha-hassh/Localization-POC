@@ -48,6 +48,14 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   clientWindowConvertion: Subscription;
   isFirstTime: boolean = true;
   isClientViewOnly = false;
+  additionalInfo :any;
+  @Input('inputData')
+  set formData(value) {
+    if(value)
+    {
+      this.additionalInfo = value;
+    }
+  }
   constructor(private Form: FormBuilder, private http: HttpServiceCall,
     public localization: Localization, public dialog: MatDialog, private utils: Utilities, private PropertyInfo: PropertyInformation,
     private payAgentService: PayAgentService, private userMachineConfigurationService: UserMachineConfigurationService) {

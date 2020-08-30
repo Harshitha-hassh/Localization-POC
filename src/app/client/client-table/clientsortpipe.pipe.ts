@@ -25,7 +25,7 @@ export class ClientsortpipePipe implements PipeTransform {
                   rowDataType = sortColumnDatatype;
               else if (typeof row1[defaultColHeader] !== 'undefined' || typeof row2[defaultColHeader] !== 'undefined')
                   rowDataType = typeof (row1[defaultColHeader]);
-              if (defaultColHeader == 'dateOfBirth' || defaultColHeader == 'lastVisitedDate') {
+              if (defaultColHeader == 'dateOfBirth' ){//|| defaultColHeader == 'lastVisitedDate') {
                 firstRowValue = row1[defaultColHeader] ? utils.getDate(row1[defaultColHeader]).getTime() : 0;
                 secondRowValue = row2[defaultColHeader] ? utils.getDate(row2[defaultColHeader]).getTime() : 0;
               }
@@ -73,7 +73,7 @@ export class ClientsortpipePipe implements PipeTransform {
                   rowDataType = sortColumnDatatype;
               else if (typeof row1[defaultColHeader] !== 'undefined' || typeof row2[defaultColHeader] !== 'undefined')
                   rowDataType = typeof (row1[defaultColHeader]);
-                 if (defaultColHeader == 'dateOfBirth' || defaultColHeader == 'lastVisitedDate') {
+                 if (defaultColHeader == 'dateOfBirth'){// || defaultColHeader == 'lastVisitedDate') {
                     firstRowValue = row1[defaultColHeader] ? utils.getDate(row1[defaultColHeader]).getTime() : 0;
                     secondRowValue = row2[defaultColHeader] ? utils.getDate(row2[defaultColHeader]).getTime() : 0;
                  }

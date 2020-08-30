@@ -83,7 +83,7 @@
                       {{bodyCnt[hdrCnt.jsonkey] | date: 'dd/MM/yyyy'}}
                     </span>
                   </span>
-                  <span *ngIf="hdrCnt.jsonkey == 'dateOfBirth' || hdrCnt.jsonkey == 'lastVisitedDate'" >
+                  <span *ngIf="hdrCnt.jsonkey == 'dateOfBirth'" >
                     {{ bodyCnt[hdrCnt.jsonkey] != '' ? utils.LocalizeDate(bodyCnt[hdrCnt.jsonkey]) : ''}}
                   </span>
                   <span *ngIf="!CheckInnerBool(bodyCnt[hdrCnt.jsonkey])">
@@ -112,7 +112,7 @@
                       {{bodyCnt[hdrCnt.jsonkey]}}
                     </span>
 
-                    <span *ngIf="!hdrCnt.datatype && !IfBoolean(bodyCnt[hdrCnt.jsonkey]) && hdrCnt.jsonkey != 'printQty' && !hdrCnt.type && hdrCnt.jsonkey != 'appointmentId' && hdrCnt.jsonkey != 'phoneNumber' && hdrCnt.jsonkey != 'dateOfBirth'  && hdrCnt.jsonkey != 'lastVisitedDate'">
+                    <span *ngIf="!hdrCnt.datatype && !IfBoolean(bodyCnt[hdrCnt.jsonkey]) && hdrCnt.jsonkey != 'printQty' && !hdrCnt.type && hdrCnt.jsonkey != 'appointmentId' && hdrCnt.jsonkey != 'phoneNumber' && hdrCnt.jsonkey != 'dateOfBirth'">
                       {{this.SetColumnValue(bodyCnt,hdrCnt.jsonkey)}}
                       <label class="label-green-round" *ngIf="hdrCnt.jsonkey == 'name' && bodyCnt.isActive == true"></label>
                     </span>
