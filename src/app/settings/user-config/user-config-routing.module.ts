@@ -19,13 +19,13 @@ const routes: Routes = [{
             path: 'usersetup',
             component: UserSetupComponent,
             canActivate: [RouteGuardService],
-            data: { breakPointNumber: BreakPoint.UserSetup, redirectTo: '/settings/userconfig/rolesetup' }
+            data: { breakPointNumber: BreakPoint.UserSetup, redirectTo: '/settings/usersetup/rolesetup' }
         },
         {
             path: 'rolesetup',
             component: RoleSetupComponent,
             canActivate: [RouteGuardService],
-            data: { breakPointNumber: BreakPoint.UserRoleSetUp, redirectTo: '/settings/userconfig/userroleconfiguration' }
+            data: { breakPointNumber: BreakPoint.UserRoleSetUp, redirectTo: '/settings/usersetup/userroleconfiguration' }
         },
         {
             path: 'userroleconfiguration',

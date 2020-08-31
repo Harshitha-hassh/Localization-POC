@@ -72,6 +72,7 @@ export interface ClientInfo {
     customField3: any;
     customField4: any;
     customField5: any;
+    comments:string;
     lastChangeId?: string;
     interfaceGuestId: string;
     loyaltyDetail: LoyaltyDetail[];

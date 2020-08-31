@@ -3,6 +3,8 @@ import { LoyaltyDetail, Client, ClientInfo, Address, Email, PhoneNumber } from '
 import { Utilities } from 'src/app/common/shared/shared/utilities/utilities'; 
 import { ClientDataService } from 'src/app/shared/data-services/client.data.service';
 import { DefaultGUID } from 'src/app/retail/shared/globalsContant';
+import { Localization } from 'src/app/core/localization/Localization';
+import _ from 'lodash';
 
 @Injectable()
 export class CreateClientBusiness {
@@ -12,7 +14,7 @@ export class CreateClientBusiness {
     isClientUpdate :boolean = false;
 
     constructor(
-        private Utilities: Utilities,
+        private Utilities: Utilities,  public localization: Localization,
         private _clientDataService: ClientDataService
       ) {}
     
@@ -51,6 +53,7 @@ export class CreateClientBusiness {
         customField3: this.additionalDetailsFormGroup.customField3 ? this.additionalDetailsFormGroup.customField3 : 0,
         customField4: this.additionalDetailsFormGroup.customField4 ? this.additionalDetailsFormGroup.customField4 : '',
         customField5: this.additionalDetailsFormGroup.customField5 ? this.additionalDetailsFormGroup.customField5 : '',
+        comments : this.additionalDetailsFormGroup.comments ? this.additionalDetailsFormGroup.comments : '',
         lastChangeId: isClientUpdate ?  details.personalDetailsFormGroup.lastChangeId: DefaultGUID,
         interfaceGuestId: isClientUpdate ?  details.personalDetailsFormGroup.id : '',
         loyaltyDetail: loyaltyObj
@@ -151,4 +154,10 @@ export class CreateClientBusiness {
         }
         return addrObj;
       }
+     
+     async searchClientByPatron(patronId: string){
+       return await this._clientDataService.searchClientByPatron(patronId);
+     }
+
+   
 }

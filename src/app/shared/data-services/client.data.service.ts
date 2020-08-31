@@ -27,4 +27,11 @@ export class ClientDataService {
             body: requestBody
         });
     }
+
+    public async searchClientByPatron(patronId: string): Promise<ClientInfo> {
+        return this._httpPos.putPromise({
+            route: RetailApiRoute.GetClientByPatronId,
+            uriParams: { patronId : patronId }
+        });
+    }
 }
