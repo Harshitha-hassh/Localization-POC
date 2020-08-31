@@ -2,22 +2,19 @@ import { Component, OnInit, ElementRef, ViewChild, ViewEncapsulation } from '@an
 import { trigger, style, animate, transition } from '@angular/animations';
 // import { AppointmentPopupComponent } from '../../../shared/appointment-popup/appointment-popup.component';
 import { MatDialog } from '@angular/material';
-// import { AppointmentpopupService } from '../../../shared/service/appointmentpopup.service';
 import { Localization } from '../../../core/localization/Localization';
 import * as _ from 'lodash';
 import { BaseResponse, KeyValuePair, ImageData, clientInfoDisplay, ClientLabel, Imagedata } from '../../../shared/shared-models';
 import { ClientService } from '../../../shared/service/client-service.service';
 import { PropertyInformation } from '../../../core/services/property-information.service';
 import { ActivatedRoute } from '@angular/router';
-import * as GlobalConst from 'src/app/common/shared/shared/globalsContant';
-import { AlertMessagePopupComponent } from 'src/app/retail/shared/alert-message-popup/alert-message-popup.component';
 import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { FormatText } from 'src/app/common/shared/shared/pipes/formatText-pipe.pipe';
 import { ImageProcessorService } from 'src/app/common/shared/shared/service/image-processor-service';
-import { SPAManagementBreakPoint, ImgRefType, Host, GenderPreference } from 'src/app/common/shared/shared/globalsContant';
-import { SPAScheduleBreakPoint, DefaultGUID } from 'src/app/retail/shared/globalsContant';
+import {  ImgRefType, Host } from 'src/app/common/shared/shared/globalsContant';
+import {  DefaultGUID } from 'src/app/retail/shared/globalsContant';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { ClientPopupComponent } from '../../client-popup/client-popup.component';
 import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Image.service';
@@ -49,13 +46,13 @@ export class ClientDetailsComponent implements OnInit {
     searchText = '';
     TablebodyData = [];
     tableoptions = [{
-        TableHdrData: [{ title: this.captions.BasicInformation, jsonkey: 'client', alignType: 'left', datatype: 'client', searchable: true, sortable: true },
+        TableHdrData: 
+        [{ title: this.captions.BasicInformation, jsonkey: 'client', alignType: 'left', datatype: 'client', searchable: true, sortable: true },
         { title: this.captions.PatronID, jsonkey: 'patronId', alignType: 'left', searchable: false, sortable: true },
         { title: this.captions.Gender, jsonkey: 'gender', alignType: 'left', datatype: 'icon', searchable: false, sortable: false },
         { title: this.captions.DateOfBirth, jsonkey: 'dateOfBirth', alignType: 'left', searchable: false, sortable: true },
         { title: this.captions.Address, jsonkey: 'address', alignType: 'left', searchable: false, sortable: false },
         { title: this.captions.PhoneNumber, jsonkey: 'phoneNumber', alignType: 'left', searchable: true, sortable: false, hover: 'phoneNumbers' },
-       // { title: this.captions.LastVisitedDate, jsonkey: 'lastVisitedDate', alignType: 'left', searchable: false, sortable: true },
         ],
         TablebodyData: this.TablebodyData,
         ServiceId: 99,
@@ -68,7 +65,7 @@ export class ClientDetailsComponent implements OnInit {
         Sortable: this.clientService.selectedIndex != 1 ? 'client' : '',
         SelectRows: true,
         Searchable: false,
-        EditMoreOption: true,
+        EditMoreOption: true, //No appointment selection s thr
         disableDelete: true
     }];
     isVip: any = false;
@@ -390,10 +387,6 @@ export class ClientDetailsComponent implements OnInit {
                     title: this.captions.PhoneNumber, jsonkey: 'phoneNumber', alignType: 'left',
                     searchable: true, sortable: false, hover: 'phoneNumbers'
                 },
-                // {
-                //     title: this.captions.LastVisitedDate, jsonkey: 'lastVisitedDate',
-                //     alignType: 'left', searchable: false, sortable: true
-                // },
             ],
             TablebodyData: this.formattedData,
             ServiceId: 99,
@@ -665,7 +658,7 @@ export class ClientDetailsComponent implements OnInit {
     async successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]) {
         if (callDesc == "SearchClientInfo" || callDesc == "RecentClientInfo") {
             this.formattedData = <any>result.result;
-            let imageRefIds =  this.formattedData.map(p => p.client.guestId ).filter(x => x != null && x != DefaultGUID);
+            let imageRefIds = this.formattedData.map(p => p.guestId ).filter(x => x != null && x != DefaultGUID);
             if (imageRefIds.length > 0) {
              this.imageList = await this._imageService.getImagesForClients(imageRefIds, false);
             }
@@ -732,17 +725,17 @@ export class ClientDetailsComponent implements OnInit {
                         firstName: this.formattedData[i].firstName,
                         lastName: this.formattedData[i].lastName,
                         name: this.formattedData[i].firstName + " " + this.formattedData[i].lastName,
-                        email: this.formattedData[i].emails.length > 0 ? this.formattedEmail : '',
-                        emails: this.formattedData[i].emails.length > 0 ? this.formattedEmails : '',
-                        image: this.formattedData[i].thumbNail ? img : null
+                        email: this.formattedData[i].emails && this.formattedData[i].emails.length > 0 ? this.formattedEmail : '',
+                        emails: this.formattedData[i].emails && this.formattedData[i].emails.length > 0 ? this.formattedEmails : '',
+                        image: img  ? img : null
                     }),
                         this.clientData.push({
                             client: client[0],
-                            dateOfBirth: this.formattedData[i].dateOfBirth != null ? new Date(this.formattedData[i].dateOfBirth) : '',
+                            dateOfBirth: this.formattedData[i].dateOfBirth && this.formattedData[i].dateOfBirth != null ? new Date(this.formattedData[i].dateOfBirth) : '',
                             gender: this.formattedData[i].gender,
-                            age: this.formattedData[i].dateOfBirth != null ? this.utils.getAge(this.utils.getDate(this.utils.LocalizeDate(this.formattedData[i].dateOfBirth))) : '',
-                            phoneNumber: this.formattedData[i].phoneNumbers.length > 0 ? this.formattedPhoneNo : '',
-                            phoneNumbers: this.formattedData[i].phoneNumbers.length > 0 ? this.formattedPhoneNos : '',
+                            age: this.formattedData[i].dateOfBirth && this.formattedData[i].dateOfBirth != null ? this.utils.getAge(this.utils.getDate(this.utils.LocalizeDate(this.formattedData[i].dateOfBirth))) : '',
+                            phoneNumber: this.formattedData[i].phoneNumbers && this.formattedData[i].phoneNumbers.length > 0 ? this.formattedPhoneNo : '',
+                            phoneNumbers: this.formattedData[i].phoneNumbers && this.formattedData[i].phoneNumbers.length > 0 ? this.formattedPhoneNos : '',
                             line1: this.formattedData[i].addresses && this.formattedData[i].addresses != null  ? this.formattedData[i].addresses.addressLine1 : '',
                             line2: this.formattedData[i].addresses && this.formattedData[i].addresses != null  ? this.formattedData[i].addresses.addressLine2 : '',
                             city: this.formattedData[i].addresses && this.formattedData[i].addresses != null  ? this.formattedData[i].addresses.city : '',
@@ -794,55 +787,7 @@ export class ClientDetailsComponent implements OnInit {
                 this.utils.ShowError(this.localization.captions.common.Information, this.localization.replacePlaceholders(this.localization.getError(100004), ["clientName",], [this.guestNames]));
                 return;
             }
-
-            // this.appointmentservice.recordsArray = [];
-            // this.appointmentservice.recordsArray = clientData;
-            // const dialogRef = this.dialog.open(AppointmentPopupComponent, {
-            //     width: '95%',
-            //     height: '85%',
-            //     disableClose: true,
-            //     hasBackdrop: true,
-            //     data: { data: '', closebool: true },
-            //     panelClass: 'small-popup'
-            // });
-            // dialogRef.afterClosed().subscribe(result => {
-            //   this.isAddAppointment = false;
-            //   this.appointmentservice.recordsArray = [];
-            //   this.appointmentservice.multiClientInfo = [];
-            //   if (this.clientService.selectedIndex == 1) {
-            //     this.RecentClientInformation(this.searchText);
-            //   } else {
-            //     this.searchdata(this.searchText);
-            //   }
-            // })
         }
-        // else if (callDesc == "getClientRecentAppointmentInfo") {
-        //     let resp: any = result.result;
-        //     this.Appointments = [];
-        //     for (let i = 0; i < resp.length; i++) {
-        //         const element = resp[i];
-        //         let status = '';
-        //         if (element.status == 'RESV') {
-        //             status = this.captions.Scheduled;
-        //         } else if (element.status == 'CANC') {
-        //             status = this.captions.Cancelled;
-        //         } else if (element.status == 'CKIN') {
-        //             status = this.captions.CheckedIn;
-        //         } else if (element.status == 'CKOUT') {
-        //             status = this.captions.CheckedOut;
-        //         } else if (element.status == 'NOSHOW') {
-        //             status = this.captions.NoShow;
-        //         }
-
-        //         this.Appointments.push({
-        //             serviceName: element.serviceName,
-        //             therapistNames: element.therapistNames,
-        //             date: this.localization.LocalizeShortDateTime(this.utils.getDate(element.date)),
-        //             status: status
-        //         });
-        //     }
-        //     this.singleUserView = true;
-        // }
         else if (callDesc == "getClientInfo" || callDesc == "createClientByGuestId") {
             let clientDetail = <any>result.result;
             // this.appointmentservice.add_client = false;

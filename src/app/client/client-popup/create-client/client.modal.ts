@@ -53,6 +53,7 @@ export interface ClientInfo {
     country?: string;
     Country?: string;
     zip: string;
+    zipCode: string;
     isPrivate: boolean;
   }
 

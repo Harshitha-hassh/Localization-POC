@@ -146,6 +146,7 @@ export class CreateClientBusiness {
           city: this.personalDetailsControls.city  ? this.personalDetailsControls.city  : '',
           country: this.personalDetailsControls.state  ? this.personalDetailsControls.state  : '',
           zip: this.personalDetailsControls.postal_code  ? this.personalDetailsControls.postal_code  : '',
+          zipCode : this.personalDetailsControls.postal_code  ? this.personalDetailsControls.postal_code  : '',
           isPrivate: isPrivate
         }
         return addrObj;
