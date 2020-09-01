@@ -465,10 +465,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   setAutoLogOff() {
-    this.autoLogOff = this.utils.GetUserSettings('AutoLogOff');
+    this.autoLogOff = this.utils.GetPropertyInfo('AutoLogOff');
     if (this.autoLogOff == 'true') {
       this.sessionService.resetOnTrigger = true;
-      this.logOffAfter = +this.utils.GetUserSettings('LogOffAfter');
+      this.logOffAfter = +this.utils.GetPropertyInfo('LogOffAfter');
       this.sessionService.startTimer(this.logOffAfter);
     } else {
       this.sessionService.resetOnTrigger = false;

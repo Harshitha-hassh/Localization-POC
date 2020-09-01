@@ -11,7 +11,12 @@ import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
 import { RetailAppService} from './retail-app-service';
 import { AppService } from './common/app-service';
-
+import { Localization } from './common/localization/localization';
+import { Localization as RetailStandAloneLocalization } from './core/localization/localization';
+import { CommonPropertyInformation } from './common/shared/services/common-property-information.service';
+import { RetailPropertyInformation } from './core/services/retail-property-information.service';
+import { CommonUtilities } from './common/shared/shared/utilities/common-utilities';
+import { Utilities } from './core/utilities';
 let AppServiceFactory = () => {
   return new RetailAppService();
 };
@@ -37,7 +42,11 @@ let AppServiceFactory = () => {
       provide:AppService,
       useFactory: AppServiceFactory,
       deps: []
-    }
+    },
+    {provide:CommonUtilities, useClass:Utilities},
+     RetailPropertyInformation,
+    { provide:Localization, useClass:RetailStandAloneLocalization },
+    {provide: CommonPropertyInformation, useClass: RetailPropertyInformation },
   ],
   bootstrap: [AppComponent]
 })

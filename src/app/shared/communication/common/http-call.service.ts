@@ -14,7 +14,7 @@ export class HttpCallService {
 
     constructor(host
         , private http: HttpClient
-        , private localization: Localization
+        , public localization: Localization
         , private utilities: Utilities,
         private PropertyInfo: PropertyInformation) {
         this.baseURL = host;
@@ -235,7 +235,7 @@ export class HttpCallService {
 
     private showBusinessError(errorCode: string) {
         let code: number = parseInt(errorCode);
-        let message: string = this.utilities.getError(code);
+        let message: string = this.localization.getError(code);
         this.utilities.showError(message);
     }
 
