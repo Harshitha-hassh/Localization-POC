@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { LoyaltyDetail, Client, ClientInfo, Address, Email, PhoneNumber } from './create-client/client.modal';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities'; 
 import { ClientDataService } from 'src/app/shared/data-services/client.data.service';
 import { DefaultGUID } from 'src/app/retail/shared/globalsContant';
 import { Localization } from 'src/app/core/localization/Localization';
 import _ from 'lodash';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Injectable()
 export class CreateClientBusiness {
@@ -14,7 +14,7 @@ export class CreateClientBusiness {
     isClientUpdate :boolean = false;
 
     constructor(
-        private Utilities: Utilities,  public localization: Localization,
+        private Utilities: RetailUtilities,  public localization: Localization,
         private _clientDataService: ClientDataService
       ) {}
     

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTabGroup, MatTabChangeEvent } from '@angular/material';
 import { ClientService } from '../../shared/service/client-service.service';
-import { Localization } from 'src/app/common/shared/localization/Localization';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 
 @Component({
   selector: 'view-client',
@@ -13,7 +13,7 @@ export class ViewCientComponenet implements OnInit {
 
   captions: any = this.localization.captions.bookAppointment;
   singleUserView: boolean = false;
-  constructor(public _cs: ClientService, public localization: Localization) {
+  constructor(public _cs: ClientService, public localization: RetailLocalization) {
     this._cs.selectedIndex = 0;
   }
 

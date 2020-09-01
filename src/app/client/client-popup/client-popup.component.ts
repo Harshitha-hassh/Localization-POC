@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Output, EventEmitter, ViewContainerRef, ViewChild, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Localization } from 'src/app/common/shared/localization/Localization';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserAlerts } from 'src/app/common/shared/config/alerts-config';
 import { PromptType, ButtonOptions, DefaultGUID } from 'src/app/common/shared/shared/globalsContant';
@@ -9,6 +8,7 @@ import { ReplaySubject } from 'rxjs';
 import { CreateClientBusiness } from './client-popup.business';
 import { ClientDataService } from 'src/app/shared/data-services/client.data.service';
 import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Image.service';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 
 @Component({
   selector: 'app-client-popup',
@@ -27,7 +27,7 @@ export class ClientPopupComponent implements OnInit {
   constructor(private dialog: MatDialog,
     public dialogRef: MatDialogRef<any>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public localization: Localization,
+    public localization: RetailLocalization,
     private userAlert: UserAlerts,
     public _fb: FormBuilder,
     public _imageService: RetailImageService,

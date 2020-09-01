@@ -13,15 +13,16 @@ import { takeUntil } from 'rxjs/operators';
 import { TransactionStatus } from '../../../retail/shared/service/common-variables.service';
 import { RetailSharedVariableService } from '../../../retail/shared/retail.shared.variable.service';
 import { RetailValidationService } from '../../../retail/shared/retail.validation.service';
-import { Localization } from 'src/app/common/shared/localization/Localization';
 import { ButtonOptions, Product,
    RetailBreakPoint, SPAScheduleBreakPoint,
    ButtonType, ActionType, Host } from 'src/app/common/shared/shared/globalsContant';
 import { HttpMethod , KeyValuePair, HttpServiceCall , } from 'src/app/common/shared/shared/service/http-call.service';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
-import { Utilities, RedirectToModules } from 'src/app/common/shared/shared/utilities/utilities'; 
 import { CommonAlertPopupComponent } from 'src/app/common/shared/shared/common-alert-popup/common-alert-popup.component';
 import { AppModuleService } from 'src/app/core/services/app.service';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { RedirectToModules } from 'src/app/common/shared/shared/utilities/common-utilities';
 
 @Component({
   selector: 'app-day-end',
@@ -57,7 +58,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
   subscriptions: ISubscription[] = [];
   propOutlets: SubPropertyModel[] = [];
 
-  constructor(public localization: Localization, private dialog: MatDialog, private utils: Utilities, private http: HttpServiceCall,
+  constructor(public localization: RetailLocalization, private dialog: MatDialog, private utils: RetailUtilities, private http: HttpServiceCall,
               private auditService: AuditService,  public router: Router,
               // tslint:disable-next-line: max-line-length
               private PropertyInfo: PropertyInformation,  private breakPoint: BreakPointAccess, public ams: AppModuleService,
@@ -302,7 +303,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
       transaction = {
         Id: tran.id,
         TicketNumber: tran.ticketNumber,
-        Date: this.utils.LocalizeDate(tran.transactionDate),
+        Date: this.localization.LocalizeDate(tran.transactionDate),
         ClerkID: (clerk && clerk.length > 0) ? clerk[0].userName : '',
         Outlet: tran.outletName,
         Amount: this.FormatCurrency(tran.totalAmount),
@@ -324,9 +325,9 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
   private FormatCurrency(amount): string {
     let formattedPrice = '';
     if (amount < 0) {
-      formattedPrice = `(${this.utils.localizeCurrency(amount * -1, false)})`;
+      formattedPrice = `(${this.localization.localizeCurrency(amount * -1, false)})`;
     } else {
-      formattedPrice = this.utils.localizeCurrency(amount, false);
+      formattedPrice = this.localization.localizeCurrency(amount, false);
     }
     return formattedPrice;
   }
@@ -530,7 +531,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
           // this.GetCheckInAppointment();
         }
       } else {
-        this.utils.ShowError(this.localization.captions.common.Information, this.utils.getError(response.result));
+        this.utils.ShowError(this.localization.captions.common.Information, this.localization.getError(response.result));
       }
     }
   }

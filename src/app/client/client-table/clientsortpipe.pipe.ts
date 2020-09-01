@@ -1,11 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Pipe({
   name: 'clientsortpipe'
 })
 export class ClientsortpipePipe implements PipeTransform {
-  constructor(private utils: Utilities) {
+  constructor(private utils: RetailUtilities) {
 
   }
   transform(inputArray: any[string], sortType?: string, defaultColHeader?: any, sortColumn?: string, sortColumnDatatype?: string): any[] {
@@ -15,7 +15,7 @@ export class ClientsortpipePipe implements PipeTransform {
       if (!defaultColHeader) return inputArray;
       if (!sortType) return inputArray;
       if (inputArray.every(x => x[defaultColHeader] == '')) return inputArray;
-      let utils: Utilities = this.utils;
+      let utils: RetailUtilities = this.utils;
       if (sortType == 'asc') {
           return inputArray.sort(function (row1, row2) {
               let firstRowValue;

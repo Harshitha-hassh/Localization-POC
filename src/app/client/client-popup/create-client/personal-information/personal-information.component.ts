@@ -14,7 +14,6 @@ import { takeUntil } from 'rxjs/operators';
 import { ClientCommonService } from 'src/app/client/client.service';
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 import { PatronInfoSearchResultType, Addresscomponent, ImageData, Imagedata } from 'src/app/shared/shared-models';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { EmptyValueValidator } from 'src/app/retail/shared/Validators/EmptyValueValidator';
 import { PhoneTypes, ContactType, GuestProfileMailTypes } from 'src/app/common/shared/shared/enums/enums';
@@ -23,6 +22,7 @@ import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Im
 import { CreateClientBusiness } from '../../client-popup.business';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { PlayerInformationService } from 'src/app/common/shared/shared/service/player.information.service';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Component({
   selector: 'app-personal-information',
@@ -98,7 +98,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     private Form: FormBuilder,
     private http: HttpServiceCall,
     public localization: Localization,
-    private utils: Utilities,
+    private utils: RetailUtilities,
     private BP: BreakPointAccess,
     private PropertyInfo: PropertyInformation,
     private clientCommonService: ClientCommonService,

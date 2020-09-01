@@ -8,7 +8,6 @@ import { BaseResponse, KeyValuePair, ImageData, clientInfoDisplay, ClientLabel, 
 import { ClientService } from '../../../shared/service/client-service.service';
 import { PropertyInformation } from '../../../core/services/property-information.service';
 import { ActivatedRoute } from '@angular/router';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { FormatText } from 'src/app/common/shared/shared/pipes/formatText-pipe.pipe';
@@ -18,6 +17,7 @@ import {  DefaultGUID } from 'src/app/retail/shared/globalsContant';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { ClientPopupComponent } from '../../client-popup/client-popup.component';
 import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Image.service';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 
 @Component({
@@ -109,7 +109,7 @@ export class ClientDetailsComponent implements OnInit {
     requestUid = '';
     timer = null;
     constructor(private dialog: MatDialog,
-        private localization: Localization, public http: HttpServiceCall, private utils: Utilities,public _imageService: RetailImageService,
+        private localization: Localization, public http: HttpServiceCall, private utils: RetailUtilities,public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
         , private breakPoint: BreakPointAccess, private imageprocessorservice: ImageProcessorService) {
         route.params.subscribe(val => {
@@ -733,7 +733,7 @@ export class ClientDetailsComponent implements OnInit {
                             client: client[0],
                             dateOfBirth: this.formattedData[i].dateOfBirth && this.formattedData[i].dateOfBirth != null ? new Date(this.formattedData[i].dateOfBirth) : '',
                             gender: this.formattedData[i].gender,
-                            age: this.formattedData[i].dateOfBirth && this.formattedData[i].dateOfBirth != null ? this.utils.getAge(this.utils.getDate(this.utils.LocalizeDate(this.formattedData[i].dateOfBirth))) : '',
+                            age: this.formattedData[i].dateOfBirth && this.formattedData[i].dateOfBirth != null ? this.utils.getAge(this.utils.getDate(this.localization.LocalizeDate(this.formattedData[i].dateOfBirth))) : '',
                             phoneNumber: this.formattedData[i].phoneNumbers && this.formattedData[i].phoneNumbers.length > 0 ? this.formattedPhoneNo : '',
                             phoneNumbers: this.formattedData[i].phoneNumbers && this.formattedData[i].phoneNumbers.length > 0 ? this.formattedPhoneNos : '',
                             line1: this.formattedData[i].addresses && this.formattedData[i].addresses != null  ? this.formattedData[i].addresses.addressLine1 : '',

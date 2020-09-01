@@ -3,10 +3,10 @@ import { FormGroup, FormArray } from '@angular/forms';
 // import { AppointmentpopupService } from './appointmentpopup.service';
 import { MatDialog } from '@angular/material';
 // import { appointmentService } from './appointment.service';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
-import { Localization } from 'src/app/common/shared/localization/Localization';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 
 
 
@@ -23,8 +23,8 @@ export class ClientService implements OnDestroy {
   }
   constructor(private http : HttpServiceCall, 
     // private appointmentpopservice:AppointmentpopupService,
-    private Utilities: Utilities,
-    public localization: Localization,public dialog: MatDialog,
+    private Utilities: RetailUtilities,
+    public localization: RetailLocalization,public dialog: MatDialog,
     // public appointmentServiceObject: appointmentService
     ) { }
 

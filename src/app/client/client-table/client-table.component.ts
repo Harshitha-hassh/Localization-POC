@@ -9,7 +9,7 @@ import { ScrollbarComponent } from 'ngx-scrollbar';
 import { ClientService } from '../../shared/service/client-service.service';
 import { ClientCommonService } from '../client.service';
 import { SPAConfig } from 'src/app/common/shared/config/SPA-config';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Component({
   selector: 'app-client-table',
@@ -100,7 +100,7 @@ export class ClientTableComponent implements OnInit {
   @Input() enableStickyColumn;
   selectedIndex : any = this.clientService.selectedIndex;
   isPlayerFound = false;
-  constructor(public dialog: MatDialog, private spaconfig: SPAConfig, public el: ElementRef, public fb: FormBuilder, public localization: Localization, private clientService : ClientService, public utils: Utilities, private clientCommonService: ClientCommonService) {
+  constructor(public dialog: MatDialog, private spaconfig: SPAConfig, public el: ElementRef, public fb: FormBuilder, public localization: Localization, private clientService : ClientService, public utils: RetailUtilities, private clientCommonService: ClientCommonService) {
 
   }
 

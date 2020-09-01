@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NgxImageCompressService } from 'ngx-image-compress';
-import { Localization } from 'src/app/common/shared/localization/Localization';
 import { ALLOWED_IMAGE_SIZE, COMPRESSION_LIMIT} from 'src/app/common/shared/shared/globalsContant';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 
 @Component({
   selector: 'app-image-uploader',
@@ -30,7 +30,7 @@ export class ImageUploaderComponent implements OnInit {
   captions: any;
   isViewOnly:boolean = false; // was not declared
 
-  constructor(private imageCompress: NgxImageCompressService, public _ls:Localization) { }
+  constructor(private imageCompress: NgxImageCompressService, public _ls:RetailLocalization) { }
 
   ngOnInit() {
 

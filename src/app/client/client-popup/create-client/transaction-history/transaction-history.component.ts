@@ -2,13 +2,13 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { GuestRetailTransactionHistory } from '../../../../shared/shared-models';
 import * as _ from 'lodash';
 import { Subscription } from 'rxjs';
-import { PropertyInformation } from 'src/app/retail/common/services/property-information.service';
 import { FormGroup } from '@angular/forms';
-import { Localization } from 'src/app/common/shared/localization/Localization';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { BaseResponse } from 'src/app/common/shared/shared.modal';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
+import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 @Component({
   selector: 'app-transaction-history',
   templateUrl: './transaction-history.component.html',
@@ -48,9 +48,9 @@ export class TransactionHistoryComponent implements OnInit {
     }
   }
 
-  constructor(public localization: Localization, private http: HttpServiceCall, 
-    private utilities: Utilities,
-    public PropertyInfo: PropertyInformation) {
+  constructor(public localization: RetailLocalization, private http: HttpServiceCall, 
+    private utilities: RetailUtilities,
+    public PropertyInfo: RetailPropertyInformation) {
     this.captions = this.localization.captions.bookAppointment;
     this.historyTypes = [{ "id": "1", "name": this.captions.FrequentlyPurchasedItems },
     { "id": "2", "name": this.captions.SalesHistory }
