@@ -54,7 +54,7 @@ export class LoginCommunicationService extends HttpCallService {
   }
   protected errorHandler(err: HttpErrorResponse): void {
     const code = parseInt(err.error.errorCode);
-    const message: string = this.utils.getError(isNaN(code) ? undefined : code);
+    const message: string = this.localization.getError(isNaN(code) ? undefined : code);
     this.utils.showAlert(message, AlertType.Error);
 }
 

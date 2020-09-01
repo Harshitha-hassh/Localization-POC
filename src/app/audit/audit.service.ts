@@ -1,13 +1,13 @@
 import { Injectable, OnInit } from '@angular/core';
 import { PendingAction, GridAction } from './AuditModals';
-import { Localization } from '../common/shared/localization/Localization';
+import { RetailLocalization } from '../retail/common/localization/retail-localization';
 
 
 @Injectable()
 export class AuditService {
 
     captions: any;
-    constructor(public localization: Localization) {
+    constructor(public localization: RetailLocalization) {
         this.captions = this.localization.captions.dayEnd;
     };
 

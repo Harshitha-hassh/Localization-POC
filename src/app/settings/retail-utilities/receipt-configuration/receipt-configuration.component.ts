@@ -8,7 +8,7 @@ import { RetailSetupService } from '../../../retail/retail-setup/retail-setup.se
 import { RetailBreakPoint, Host, ButtonType } from 'src/app/common/shared/shared/globalsContant';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.service';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Component({
   selector: 'app-receipt-configuration',
@@ -35,7 +35,7 @@ export class ReceiptConfigurationComponent implements OnInit {
               private breakPoint: BreakPointAccess,
               private localization: Localization,
               private http: HttpServiceCall, private data: ReceiptConfigurationDataService,
-              private outletData: RetailOutletsDataService, private retailService: RetailSetupService, private utils: Utilities) {
+              private outletData: RetailOutletsDataService, private retailService: RetailSetupService, private utils: RetailUtilities) {
     this.textCaptions = this.localization.captions.utilities;
     this.FormGrp = this.Form.group({
       outlet: ['', Validators.required],

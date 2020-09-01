@@ -7,7 +7,8 @@ export enum RetailApiHosts {
   PayAgent,
   MsDeeplink,
   V1IGPosting,
-  RetailPOS
+  RetailPOS,
+  Image
 }
 
 export class MsalConfiguration {
@@ -48,8 +49,21 @@ export enum RetailRoutes {
   GetItemSaleDetail = 'Transaction/getItemSale/{startDate}/{endDate}',
   GetCategorySaleDetail = 'Transaction/getCategorySale/{startDate}/{endDate}',
   GetOpenTickets = 'DashBoard/getOpenTransactionList/{processDate}',
-  GetReturnedItems = 'DashBoard/getReturnedItems/{startDate}/{dataFormat}'
+  GetReturnedItems = 'DashBoard/getReturnedItems/{startDate}/{dataFormat}',
 
+  //Client
+  CreateClient = 'Clients' ,
+  UpdateClient ='Clients',
+  RecentClientInfo ='Clients/recent/{propertyDate}/search/{requestUid?}',
+  SearchClientInfo = 'Clients/search/{pattern}',
+  GetClientByPatronId="Clients/getClientByPatronId/{patronId}",
+
+   //Image
+   saveImage = 'v2/Images',
+   updateImage = 'v2/Images',
+   DeleteImageByReference = 'v2/images/{guid}',
+   GetImagesByReferenceId = 'v2/images?guid={imageReferenceId}&isThumbnailOnly={isThumbnailOnly}',
+   GetAllImagesByReferenceId = 'v2/images/list?isThumbnailOnly={isThumbnailOnly}',
 }
 
 export enum MsGraphRoutes {

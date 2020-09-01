@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material';
-import { Localization } from 'src/app/common/shared/localization/Localization';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { Localization } from 'src/app/common/shared/localization/Localization';
 export class AuditDataComponent implements OnInit {
   selectedIndex = 0;
   captions: any;
-  constructor(public localization: Localization) {
+  constructor(public localization: RetailLocalization) {
    }
 
   ngOnInit() {

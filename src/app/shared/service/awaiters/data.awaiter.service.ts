@@ -14,12 +14,10 @@ export class DataAwaiterService {
         private localization: Localization,
         private routeLoaderService: RouteLoaderService
     ) {
-        debugger;
         this.setAwaiters();
     }
 
     private setAwaiters(): void {
-        debugger;
         RetailDataAwaiters.GetChildMenu = this.getChildMenu.bind(this);
     }
 

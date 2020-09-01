@@ -9,8 +9,8 @@ import { PropertyInformation } from '../core/services/property-information.servi
 import * as moment from 'moment';
 import { BehaviorSubject } from 'rxjs';
 // import { CommissionableRetailItem, Commission } from '../retail/retail.modals';
-import { Localization } from '../common/shared/localization/Localization';
 import { Utilities } from '../core/utilities';
+import { RetailLocalization } from '../retail/common/localization/retail-localization';
 
 @Injectable()
 export class SettingsService {
@@ -114,7 +114,7 @@ export class SettingsService {
     private utils: Utilities,
     private Form: FormBuilder,
     // , private breakpoint: BreakPointAccess,
-    private localization: Localization,
+    private localization: RetailLocalization,
     private PropertyInfo: PropertyInformation) {
   }
 

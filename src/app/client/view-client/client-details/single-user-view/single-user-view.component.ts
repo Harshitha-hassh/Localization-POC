@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material';
 import { takeUntil } from 'rxjs/operators';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { ClientCommonService } from 'src/app/client/client.service';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 
 @Component({
@@ -32,7 +32,7 @@ export class SingleUserViewComponent implements OnInit, OnDestroy {
   checkinBDRclr: string;
   checkoutBDRclr: string;
   sBDRclr: string;
-  constructor(public localization: Localization, private propertyInfo: PropertyInformation, private utils: Utilities, private clientCommonService: ClientCommonService) { }
+  constructor(public localization: Localization, private propertyInfo: PropertyInformation, private utils: RetailUtilities, private clientCommonService: ClientCommonService) { }
 
   trackByFn(index, cell) {
     return index;
@@ -47,13 +47,13 @@ export class SingleUserViewComponent implements OnInit, OnDestroy {
     // });
   }
 
-  setStatusColors() {
-    this.nsBDRclr = this.utils.getBorderColor('NOSHOW');
-    this.closeBDRclr = this.utils.getBorderColor('CLOSED');
-    this.checkinBDRclr = this.utils.getBorderColor('CKIN');
-    this.checkoutBDRclr = this.utils.getBorderColor('CKOUT');
-    this.sBDRclr = this.utils.getBorderColor('RESV');
-  }
+  // setStatusColors() {
+  //   this.nsBDRclr = this.utils.getBorderColor('NOSHOW');
+  //   this.closeBDRclr = this.utils.getBorderColor('CLOSED');
+  //   this.checkinBDRclr = this.utils.getBorderColor('CKIN');
+  //   this.checkoutBDRclr = this.utils.getBorderColor('CKOUT');
+  //   this.sBDRclr = this.utils.getBorderColor('RESV');
+  // }
 
   ngOnDestroy(): void {
     this.destroyed$.next(true);
@@ -67,7 +67,6 @@ export class SingleUserViewComponent implements OnInit, OnDestroy {
   }
 
   EditRecords(event, data, type, id) {
-    console.log(event);
     this.editclient.emit(data);
   }
 

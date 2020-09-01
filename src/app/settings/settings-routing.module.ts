@@ -32,7 +32,7 @@ const routes: Routes = [{
     },
     {
       path: 'usersetup',
-      loadChildren: () => import('./user-config/user-config.module').then(m => m.UserSetupModule)
+      loadChildren: () => import('../settings/user-config/user-config.module').then(m => m.UserSetupModule)
       // data: { redirectTo: 'systemsetup', hasChild: true }
     },
 

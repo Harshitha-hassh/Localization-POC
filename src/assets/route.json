@@ -174,8 +174,8 @@
   "UndoCheckOutAppointment": "appointments/checkout/undo",
   "UndoCheckOutAppointmentByTransactionId": "appointments/checkout/undo/transaction/{transactionId}",
   "CheckinAppointment": "appointments/checkin/tracknoshow/{isNoShow}",
-  "updateClient": "clients/{id}",
-  "createClientByGuestId": "clients/guid/{guid}",
+  "updateClient": "clients",
+  "createClientByGuestId": "clients",
   "GetItenerary": "itinerary/{clientId}",
   "GetItineraryForAppointment": "itinerary/{clientId}/time/{datetime}",
   "GetConflictingActivities": "itinerary/{clientId}/conflict/schedule/from/{startTime}/to/{endTime}",
@@ -551,5 +551,7 @@
   "VoidCMSPayment": "Transaction/{transactionId}/VoidCMSPayments/patronId/{patronId}/redemptionType/{redemptionType}",
   "CheckIsTerminalInUse": "Transaction/IsOpenTransactionExistForTerminal/Outlet/{outletId}/Terminal/{terminalId}",
   "GetFeatureConfiguration":"GetFeatureConfiguration/propertyId/{propertyId}/productId/{productId}",
-  "GetCommissionableUsers": "users/commissionable/item/{itemId}/productId/{productId}"
+  "GetCommissionableUsers": "users/commissionable/item/{itemId}/productId/{productId}",
+  "RecentClientInfo" :"Clients/recent/{propertyDate}/search/{requestUid?}",
+  "SearchClientInfo" :"Clients/search"
 }

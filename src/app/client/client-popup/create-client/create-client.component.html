@@ -1,11 +1,12 @@
 <mat-tab-group [selectedIndex]="clientSelectedTab" #clientTabGroup>
   <mat-tab label="{{captions.PersonalInformation}}">
-    <app-personal-information [parentForm]="parentForm" [clientEditData]="this"></app-personal-information>
+    <app-personal-information [parentForm]="parentForm" [clientEditData]="this" (imageUpdateEmit)="onImageUpdates($event)"
+     [inputData]="clientInfoInput"></app-personal-information>
   </mat-tab>
   <mat-tab label="{{captions.AdditionalInformation}}">
-    <app-additional-information [parentForm]="parentForm"></app-additional-information>
+    <app-additional-information [parentForm]="parentForm" [inputData]="clientInfoInput"></app-additional-information>
   </mat-tab>
   <mat-tab label="{{captions.History}}">
-    <app-transaction-history [parentForm]="parentForm"></app-transaction-history>
+    <app-transaction-history [parentForm]="parentForm" [inputData]="clientInfoInput"></app-transaction-history>
   </mat-tab>
 </mat-tab-group>

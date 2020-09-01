@@ -2,13 +2,13 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { GuestRetailTransactionHistory } from '../../../../shared/shared-models';
 import * as _ from 'lodash';
 import { Subscription } from 'rxjs';
-import { PropertyInformation } from 'src/app/retail/common/services/property-information.service';
 import { FormGroup } from '@angular/forms';
-import { Localization } from 'src/app/common/shared/localization/Localization';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { BaseResponse } from 'src/app/common/shared/shared.modal';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
+import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 @Component({
   selector: 'app-transaction-history',
   templateUrl: './transaction-history.component.html',
@@ -37,18 +37,23 @@ export class TransactionHistoryComponent implements OnInit {
   clientAppointments: any[];
   clientWindowConvertion : Subscription;
   isFirstTime: boolean = true;
+  clientId: number;
 
-  constructor(public localization: Localization, private http: HttpServiceCall, 
-    private utilities: Utilities,
-    public PropertyInfo: PropertyInformation) {
+  @Input('inputData')
+  set formData(value) {
+    if(value && value.data!='')
+    {
+      this.clientId = value.data.client.id;
+      this.initializeFormData();  
+    }
+  }
+
+  constructor(public localization: RetailLocalization, private http: HttpServiceCall, 
+    private utilities: RetailUtilities,
+    public PropertyInfo: RetailPropertyInformation) {
     this.captions = this.localization.captions.bookAppointment;
     this.historyTypes = [{ "id": "1", "name": this.captions.FrequentlyPurchasedItems },
-    { "id": "2", "name": this.captions.SalesHistory },
-    { "id": "3", "name": this.captions.AppointmentDetails },
-    { "id": "4", "name": this.captions.CancellationsandNoShows }
-    // Commented below for disabling GroupAppointments, Activities option
-    // { "id": "5", "name": this.captions.TeeTimes },
-    // { "id": "6", "name": this.captions.Activities }
+    { "id": "2", "name": this.captions.SalesHistory }
   ]
   }
 
@@ -75,50 +80,6 @@ export class TransactionHistoryComponent implements OnInit {
 
         this.tableDataArray = this.salesHistory;
         this.selectedRow(this.salesHistory[0]);
-        break;
-
-      case "3":
-        this.tableHeaderArray = [{ tableHeader: this.captions.Date, keyValue: "appointmentTime", alignType: "left" },
-        { tableHeader: this.captions.TransactionNo, keyValue: "transaction", alignType: "right" },
-        { tableHeader: this.captions.Service, keyValue: "service", alignType: "left" },
-        { tableHeader: this.captions.TherapistName, keyValue: "therapist", alignType: "left" }];
-        // this.tableDataArray = this.appointmentDetails;
-        this.tableDataArray = this.clientAppointments.filter(x => x.status == 'RESV' || x.status == 'CKIN' || x.status == 'CKOUT');
-        _.sortBy(this.tableDataArray, [function(data) {
-          return data.appointmentTime;
-        }]);
-        this.tableDataArray.reverse();
-        break;
-
-      case "4":
-        this.tableHeaderArray = [{ tableHeader: this.captions.Date, keyValue: "appointmentTime", alignType: "left" },
-        { tableHeader: this.captions.TransactionNo, keyValue: "transaction", alignType: "right" },
-        { tableHeader: this.captions.Service, keyValue: "service", alignType: "left" },
-        { tableHeader: this.captions.TherapistName, keyValue: "therapist", alignType: "left" },
-        { tableHeader: this.captions.CancellationNumber, keyValue: "cancelId", alignType: "left" },
-        { tableHeader: this.captions.CancellationComments, keyValue: "cancelComments", alignType: "left" }];
-        // this.tableDataArray = this.cancellations;
-        this.tableDataArray = this.clientAppointments.filter(x => x.status == 'CANC' || x.status == 'NOSHOW');
-        _.sortBy(this.tableDataArray, [function(data) {
-          return data.appointmentTime;
-        }]);
-        this.tableDataArray.reverse();
-        break;
-
-      case "5":
-        this.tableHeaderArray = [{ tableHeader: this.captions.Date, keyValue: "date", alignType: "left" },
-        { tableHeader: this.captions.TransactionNo, keyValue: "transaction", alignType: "right" },
-        { tableHeader: this.captions.Course, keyValue: "course", alignType: "left" },
-        { tableHeader: this.captions.Status, keyValue: "status", alignType: "left" }];
-        this.tableDataArray = this.teeTimes;
-        break;
-
-      case "6":
-        this.tableHeaderArray = [{ tableHeader: this.captions.Date, keyValue: "date", alignType: "left" },
-        { tableHeader: this.captions.TransactionNo, keyValue: "transaction", alignType: "right" },
-        { tableHeader: this.captions.Activity, keyValue: "activity", alignType: "left" },
-        { tableHeader: this.captions.Status, keyValue: "status", alignType: "left" }];
-        this.tableDataArray = this.activities;
         break;
     }
 
@@ -149,44 +110,18 @@ export class TransactionHistoryComponent implements OnInit {
   }
 
   async initializeFormData(){
-    this.allTherapists =  await this.InvokeServiceCallAsync("GetAllTherapist", Host.spaManagement);
-    this.allServices = await this.InvokeServiceCallAsync("GetAllSpaService", Host.spaManagement);
     this.historyType = this.historyTypes[0].id;
     this.changeType();
-    // if (this.appointmentPopupService && this.appointmentPopupService.clientId) {
-      this.GetSalesHistory();
-      this.GetAllAppointments();
-    // }
-    // this.clientWindowConvertion = this.appointmentPopupService.convertToEdit.subscribe(x =>{
-    //   if(x && x.id > 0 && this.isFirstTime){
-    //     this.isFirstTime = false;
-    //     this.initializeFormData();  
-    //   }
-    // });
-  }
-
-  GetAllAppointments() {
-    this.http.CallApiWithCallback<any>({
-      host: Host.schedule,
-      success: this.successCallback.bind(this),
-      error: this.errorCallback.bind(this),
-      callDesc: "GetAppointmentsByStatus",
-      uriParams: { clientId: '', status: 'CANC,RESV,NOSHOW,CKIN,CKOUT', date: null },
-      method: HttpMethod.Get,
-      showError: true,
-      extraParams: []
-    });
   }
 
   GetSalesHistory()
   {
-
     this.http.CallApiWithCallback<any>({
       host: Host.retailPOS,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
       callDesc: "GetGuestSalesHistoryTransaction",
-      uriParams: { id: ''},
+      uriParams: { id: this.clientId},
       method: HttpMethod.Get,
       showError: true,
       extraParams: []
@@ -195,31 +130,7 @@ export class TransactionHistoryComponent implements OnInit {
 
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams?: any[]) {
     let appointments = [];
-    if (callDesc == "GetAppointmentsByStatus") {
-      let responseResult: any = result.result;
-      for (let index = 0; index < responseResult.length; index++) {
-        let detail = responseResult[index].appointmentDetail;
-        let therapist = responseResult[index].appointmentTherapists;
-        let therapistNames: string[] = [];
-        therapist.forEach(therap => {
-          therapistNames.push(this.getTherapistName(therap.therapistId))
-        });
-        let appTime: string = this.localization.LocalizeShortDateTime(detail.startTime);
-        let appointment = {
-          "id": detail.id,
-          "appointmentTime": appTime,
-          "service": this.getServiceName(detail.serviceId),
-          "therapist": therapistNames.join(','),
-          "cancelComments": detail.cancelComments,
-          "status": detail.status,
-          "cancelId": detail.cancelId,
-          "transaction": detail.transactionId
-        }
-        appointments.push(appointment);
-      }
-      this.clientAppointments = appointments;
-    }
-    else if (callDesc == "GetGuestSalesHistoryTransaction")
+    if (callDesc == "GetGuestSalesHistoryTransaction")
     {
       let res:any = result.result;
       let responseResult: GuestRetailTransactionHistory = res;
@@ -273,18 +184,6 @@ export class TransactionHistoryComponent implements OnInit {
   }
   errorCallback<T>(result: BaseResponse<T>): void { }
 
-  getServiceName(serviceId: any) {
-    let services = this.allServices && this.allServices.length > 0 ? this.allServices : [];
-    let service = services.find(x => x.id == serviceId);
-    return service ? service.description : ''
-  }
-  getTherapistName(therapistId: any) {
-    let therapists = this.allTherapists && this.allTherapists.length > 0 ?this.allTherapists : [];
-    let therapist = therapists.find(x => x.id == therapistId);
-    return therapist ? `${therapist.firstName} ${therapist.lastName}` : ''
-  }
-
-
   async InvokeServiceCallAsync(route: string, domain: Host, uriParams?: any): Promise<BaseResponse<any>> {
     let result: BaseResponse<any> = await this.http.CallApiAsync({
         host: domain,
@@ -300,6 +199,4 @@ export class TransactionHistoryComponent implements OnInit {
     }
     this.isFirstTime = true;
   }
-
-
 }

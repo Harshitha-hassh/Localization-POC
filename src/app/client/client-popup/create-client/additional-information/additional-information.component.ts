@@ -6,13 +6,13 @@ import { HandleRequest, HandleResponse } from '../../../../shared/shared-models'
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { IDTechCardSwipeTimeout, Module, Host } from 'src/app/common/shared/shared/globalsContant';
-import { Localization } from 'src/app/common/shared/localization/Localization';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
 import { PayAgentService } from 'src/app/common/shared/shared/service/payagent.service';
 import { UserSessionConfiguration } from 'src/app/common/shared/retail.modals';
 import { UserMachineConfigurationService } from 'src/app/retail/common/services/user-machine-configuration.service';
 import { BaseResponse, Device, PaymentMethods, TokentransactionInfo, ClientCreditCardInfo, CardInfo, 
   PaymentBaseResponse, StoreTokenRequest, IDTech, IDTechHandle } from 'src/app/common/shared/shared/business/shared.modals';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Component({
   selector: 'app-additional-information',
@@ -48,8 +48,16 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   clientWindowConvertion: Subscription;
   isFirstTime: boolean = true;
   isClientViewOnly = false;
+  additionalInfo :any;
+  @Input('inputData')
+  set formData(value) {
+    if(value)
+    {
+      this.additionalInfo = value;
+    }
+  }
   constructor(private Form: FormBuilder, private http: HttpServiceCall,
-    public localization: Localization, public dialog: MatDialog, private utils: Utilities, private PropertyInfo: PropertyInformation,
+    public localization: RetailLocalization, public dialog: MatDialog, private utils: RetailUtilities, private PropertyInfo: PropertyInformation,
     private payAgentService: PayAgentService, private userMachineConfigurationService: UserMachineConfigurationService) {
     this.captions = this.localization.captions.bookAppointment;
     this.FormGrp = this.Form.group({
@@ -369,7 +377,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       if (!this.EncryptedCardData && !this.IDTechCardSwipePopupClosed) {
         this.cardConnectDialog.close();
-        this.utils.ShowError(this.localization.captions.common.Error, this.utils.getError(10725));
+        this.utils.ShowError(this.localization.captions.common.Error, this.localization.getError(10725));
       }
     }, IDTechCardSwipeTimeout);
   }

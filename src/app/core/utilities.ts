@@ -14,6 +14,14 @@ import { AuthenticationParameters, Configuration } from 'msal';
 import * as moment from 'moment';
 import { CardSwipePopupComponent } from '../retail/shared/card-swipe-popup/card-swipe-popup.component';
 import { CommonAlertPopupComponent } from '../common/shared/shared/common-alert-popup/common-alert-popup.component';
+import { CommonUtilities } from '../common/shared/shared/utilities/common-utilities';
+import { ISubscription } from 'rxjs/Subscription';
+import { RetailLocalization } from '../retail/common/localization/retail-localization';
+import { HttpServiceCall } from '../common/shared/shared/service/http-call.service';
+import { MoreSectionServiceService } from '../common/shared/shared/more-section/more-section-service.service';
+import { RetailPropertyInformation } from './services/retail-property-information.service';
+import { CommonPropertyInformation } from '../common/shared/services/common-property-information.service';
+import { FormatText } from '../common/shared/shared/pipes/formatText-pipe.pipe';
 
 export enum RedirectToModules {
     retail,
@@ -148,13 +156,12 @@ export function tConvert(tt) {
         providedIn: 'root'
     }
 )
-export class Utilities extends Localization implements OnDestroy {
-    subscription: any;
-    isDoubleClickDisabled: boolean = true;
-
-    constructor(public localization: Localization, private dialog: MatDialog, private route: Router,
-        public http: HttpClient) {
-        super()
+export class Utilities extends CommonUtilities implements OnDestroy {
+    subscription: ISubscription;
+    constructor(public localization: RetailLocalization, public dialog: MatDialog, public httpServiceCall: HttpServiceCall, public route: Router,
+        public _MoreSectionServiceService: MoreSectionServiceService, public PropertyInfo: RetailPropertyInformation, public CommonPropertyInfo: CommonPropertyInformation, public formatphno: FormatText) {
+            super(localization, dialog, httpServiceCall, route,
+                _MoreSectionServiceService, CommonPropertyInfo, formatphno);
     }
 
     ngOnDestroy() {
@@ -173,16 +180,16 @@ export class Utilities extends Localization implements OnDestroy {
         return validity;
     }
 
-    private hideOverlays() {
-        let LoaderElement = document.getElementById('cover-spin');
-        let customElement = document.getElementById('custom-cover-spin');
-        if (LoaderElement) {
-            LoaderElement.style.display = 'none';
-        }
-        if (customElement) {
-            customElement.style.display = 'none';
-        }
-    }
+    // private hideOverlays() {
+    //     let LoaderElement = document.getElementById('cover-spin');
+    //     let customElement = document.getElementById('custom-cover-spin');
+    //     if (LoaderElement) {
+    //         LoaderElement.style.display = 'none';
+    //     }
+    //     if (customElement) {
+    //         customElement.style.display = 'none';
+    //     }
+    // }
 
     /**
      * Checks whether given date lies in range
@@ -205,89 +212,89 @@ export class Utilities extends Localization implements OnDestroy {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    getShortWeekArrayLocaleSorted() {
-        let ShortWeekArr = this.getShortDaysOfWeek(); // locale sorted by default
-        let returnArr = [];
-        let localizedCalender: Calendar = this.captions.calendar;
+    // getShortWeekArrayLocaleSorted() {
+    //     let ShortWeekArr = this.getShortDaysOfWeek(); // locale sorted by default
+    //     let returnArr = [];
+    //     let localizedCalender: Calendar = this.captions.calendar;
 
-        returnArr.push({ id: 7, name: this.captions.common.AllDays });
-        for (let i = 0; i < ShortWeekArr.length; i++) {
-            const localeDay = ShortWeekArr[i];
-            switch (localeDay) {
-                case localizedCalender.Mon:
-                    returnArr.push({ id: 1, name: localeDay });
-                    break;
-                case localizedCalender.Tue:
-                    returnArr.push({ id: 2, name: localeDay });
-                    break;
-                case localizedCalender.Wed:
-                    returnArr.push({ id: 3, name: localeDay });
-                    break;
-                case localizedCalender.Thu:
-                    returnArr.push({ id: 4, name: localeDay });
-                    break;
-                case localizedCalender.Fri:
-                    returnArr.push({ id: 5, name: localeDay });
-                    break;
-                case localizedCalender.Sat:
-                    returnArr.push({ id: 6, name: localeDay });
-                    break;
-                case localizedCalender.Sun:
-                    returnArr.push({ id: 0, name: localeDay });
-                    break;
-                default:
-                    break;
-            }
-        }
+    //     returnArr.push({ id: 7, name: this.captions.common.AllDays });
+    //     for (let i = 0; i < ShortWeekArr.length; i++) {
+    //         const localeDay = ShortWeekArr[i];
+    //         switch (localeDay) {
+    //             case localizedCalender.Mon:
+    //                 returnArr.push({ id: 1, name: localeDay });
+    //                 break;
+    //             case localizedCalender.Tue:
+    //                 returnArr.push({ id: 2, name: localeDay });
+    //                 break;
+    //             case localizedCalender.Wed:
+    //                 returnArr.push({ id: 3, name: localeDay });
+    //                 break;
+    //             case localizedCalender.Thu:
+    //                 returnArr.push({ id: 4, name: localeDay });
+    //                 break;
+    //             case localizedCalender.Fri:
+    //                 returnArr.push({ id: 5, name: localeDay });
+    //                 break;
+    //             case localizedCalender.Sat:
+    //                 returnArr.push({ id: 6, name: localeDay });
+    //                 break;
+    //             case localizedCalender.Sun:
+    //                 returnArr.push({ id: 0, name: localeDay });
+    //                 break;
+    //             default:
+    //                 break;
+    //         }
+    //     }
 
-        return returnArr;
-    }
+    //     return returnArr;
+    // }
     //public weekArray:any = [{"id":0,"name":"All Days"},{"id":1,"name":"Monday"},{"id":2,"name":"TuesDay"},{"id":3,"name":"Wednesday"},{"id":4,"name":"Thursday"},{"id":5,"name":"Friday"},{"id":6,"name":"Saturday"},{"id":7,"name":"Sunday"}];
-    getLongWeekArrayLocaleSorted() {
-        let longWeekArr = this.getLongDaysOfWeek(); // locale sorted by default
-        let returnArr = [];
-        let localizedCalender: Calendar = this.captions.calendar;
+    // getLongWeekArrayLocaleSorted() {
+    //     let longWeekArr = this.getLongDaysOfWeek(); // locale sorted by default
+    //     let returnArr = [];
+    //     let localizedCalender: Calendar = this.captions.calendar;
 
-        returnArr.push({ id: 7, name: this.captions.common.AllDays });
-        for (let i = 0; i < longWeekArr.length; i++) {
-            const localeDay = longWeekArr[i];
-            switch (localeDay) {
-                case localizedCalender.Monday:
-                    returnArr.push({ id: 1, name: localeDay });
-                    break;
-                case localizedCalender.Tuesday:
-                    returnArr.push({ id: 2, name: localeDay });
-                    break;
-                case localizedCalender.Wednesday:
-                    returnArr.push({ id: 3, name: localeDay });
-                    break;
-                case localizedCalender.Thursday:
-                    returnArr.push({ id: 4, name: localeDay });
-                    break;
-                case localizedCalender.Friday:
-                    returnArr.push({ id: 5, name: localeDay });
-                    break;
-                case localizedCalender.Saturday:
-                    returnArr.push({ id: 6, name: localeDay });
-                    break;
-                case localizedCalender.Sunday:
-                    returnArr.push({ id: 0, name: localeDay });
-                    break;
-                default:
-                    break;
-            }
-        }
+    //     returnArr.push({ id: 7, name: this.captions.common.AllDays });
+    //     for (let i = 0; i < longWeekArr.length; i++) {
+    //         const localeDay = longWeekArr[i];
+    //         switch (localeDay) {
+    //             case localizedCalender.Monday:
+    //                 returnArr.push({ id: 1, name: localeDay });
+    //                 break;
+    //             case localizedCalender.Tuesday:
+    //                 returnArr.push({ id: 2, name: localeDay });
+    //                 break;
+    //             case localizedCalender.Wednesday:
+    //                 returnArr.push({ id: 3, name: localeDay });
+    //                 break;
+    //             case localizedCalender.Thursday:
+    //                 returnArr.push({ id: 4, name: localeDay });
+    //                 break;
+    //             case localizedCalender.Friday:
+    //                 returnArr.push({ id: 5, name: localeDay });
+    //                 break;
+    //             case localizedCalender.Saturday:
+    //                 returnArr.push({ id: 6, name: localeDay });
+    //                 break;
+    //             case localizedCalender.Sunday:
+    //                 returnArr.push({ id: 0, name: localeDay });
+    //                 break;
+    //             default:
+    //                 break;
+    //         }
+    //     }
 
-        return returnArr;
-    }
+    //     return returnArr;
+    // }
 
      /**
     * Converts a javascript date to Invariant date time format string (C# API can understand this format).
     * @param Date javascript date or Javascript ISO string.*
     */
-   convertDateFormat(dt: Date): string {
-    return super.ConvertDateToISODateTime(dt);
-}
+//    convertDateFormat(dt: Date): string {
+//     return super.ConvertDateToISODateTime(dt);
+// }
 
     getTimeDifference(fromtime, toTime, type) {
         return super.getTimeDifference(fromtime, toTime, type);
@@ -296,9 +303,9 @@ export class Utilities extends Localization implements OnDestroy {
     * Converts a javascript date to Invariant date format string (C# API can understand this format).
     * @param Date javascript date or Javascript ISO string.    *
     */
-    formatDate(dt: Date): string {
-        return super.ConvertDateToISODate(dt);
-    }
+    // formatDate(dt: Date): string {
+    //     return super.ConvertDateToISODate(dt);
+    // }
 
     /**
      * removes the duplicate values in the given array
@@ -535,141 +542,141 @@ export class Utilities extends Localization implements OnDestroy {
     }
 
 
-    getRecurringDates(type: RecurringType, startDate: Date, endDate: Date, everyRecurringNumber: number,
-        days?: any[], monthlyDate?: Date, monthlyDay?: number, month?: number): Date[] {
-        let dates: Date[] = [];
-        days = days ? days : [];
-        days = days.filter(x => { return (x || x == 0); });
-        let dayObject = [];
-        startDate = this.GetDateWithoutTime(startDate);
-        endDate = this.GetDateWithoutTime(endDate);
-        let dateDiff = this.DateDiff.inDays(startDate, endDate) + 1;
-        if (type == RecurringType.Daily) {
-            //check zero
-            everyRecurringNumber = everyRecurringNumber ? everyRecurringNumber : 1;
-            dateDiff = Math.round(dateDiff / everyRecurringNumber);
-            for (let i = 0; i <= dateDiff; i++) {
-                if (startDate.getTime() <= endDate.getTime()) {
-                    dates.push(startDate)
-                    startDate = this.AddDays(startDate, everyRecurringNumber);
-                }
-            }
-        } else if (type == RecurringType.Weekly) {
-            let daysArrayInGivenPeriod = [];
-            let dayOccurIndex = 0;
-            for (let index = 0; index < dateDiff; index++) {
-                let curday: number = this.AddDays(startDate, index).getDay();
-                if (curday == 0 && index != 0) {
-                    dayOccurIndex++;
-                }
-                dayObject.push({
-                    date: this.AddDays(startDate, index),
-                    dayIndex: dayOccurIndex,
-                    day: curday,
-                    added: false
-                })
-                if (!daysArrayInGivenPeriod.includes(curday) && days.some(item => (item['id']) % 7 === curday))// days.includes(curday))
-                {
-                    daysArrayInGivenPeriod.push(curday);
-                }
-            }
-            for (let i = 0; i < dateDiff; i++) {
-                let curDate = this.AddDays(startDate, i);
-                let flg = dayObject.filter(x => { return x.day == curDate.getDay() && !x.added && (x.dayIndex % everyRecurringNumber) == 0 });
-                if (flg.length > 0) {
-                    flg[0].added = true;
-                }
-                if (daysArrayInGivenPeriod.includes(curDate.getDay()) && (everyRecurringNumber == 1 || flg.length > 0)) {
-                    let dt = flg.length > 0 ? flg[0].date : curDate;
-                    if (dt.getTime() <= endDate.getTime()) {
-                        dates.push(dt)
-                    }
-                }
-            }
+    // getRecurringDates(type: RecurringType, startDate: Date, endDate: Date, everyRecurringNumber: number,
+    //     days?: any[], monthlyDate?: Date, monthlyDay?: number, month?: number): Date[] {
+    //     let dates: Date[] = [];
+    //     days = days ? days : [];
+    //     days = days.filter(x => { return (x || x == 0); });
+    //     let dayObject = [];
+    //     startDate = this.GetDateWithoutTime(startDate);
+    //     endDate = this.GetDateWithoutTime(endDate);
+    //     let dateDiff = this.DateDiff.inDays(startDate, endDate) + 1;
+    //     if (type == RecurringType.Daily) {
+    //         //check zero
+    //         everyRecurringNumber = everyRecurringNumber ? everyRecurringNumber : 1;
+    //         dateDiff = Math.round(dateDiff / everyRecurringNumber);
+    //         for (let i = 0; i <= dateDiff; i++) {
+    //             if (startDate.getTime() <= endDate.getTime()) {
+    //                 dates.push(startDate)
+    //                 startDate = this.AddDays(startDate, everyRecurringNumber);
+    //             }
+    //         }
+    //     } else if (type == RecurringType.Weekly) {
+    //         let daysArrayInGivenPeriod = [];
+    //         let dayOccurIndex = 0;
+    //         for (let index = 0; index < dateDiff; index++) {
+    //             let curday: number = this.AddDays(startDate, index).getDay();
+    //             if (curday == 0 && index != 0) {
+    //                 dayOccurIndex++;
+    //             }
+    //             dayObject.push({
+    //                 date: this.AddDays(startDate, index),
+    //                 dayIndex: dayOccurIndex,
+    //                 day: curday,
+    //                 added: false
+    //             })
+    //             if (!daysArrayInGivenPeriod.includes(curday) && days.some(item => (item['id']) % 7 === curday))// days.includes(curday))
+    //             {
+    //                 daysArrayInGivenPeriod.push(curday);
+    //             }
+    //         }
+    //         for (let i = 0; i < dateDiff; i++) {
+    //             let curDate = this.AddDays(startDate, i);
+    //             let flg = dayObject.filter(x => { return x.day == curDate.getDay() && !x.added && (x.dayIndex % everyRecurringNumber) == 0 });
+    //             if (flg.length > 0) {
+    //                 flg[0].added = true;
+    //             }
+    //             if (daysArrayInGivenPeriod.includes(curDate.getDay()) && (everyRecurringNumber == 1 || flg.length > 0)) {
+    //                 let dt = flg.length > 0 ? flg[0].date : curDate;
+    //                 if (dt.getTime() <= endDate.getTime()) {
+    //                     dates.push(dt)
+    //                 }
+    //             }
+    //         }
 
-        } else if (type == RecurringType.Monthly) {
-            // days
-            if (days && days.length > 0) {
-                let daysArrayInGivenPeriod = [];
-                let dayOccurIndex = 0, monthOccurIndex = 0;
-                for (let index = 0; index < dateDiff; index++) {
-                    let curday: number = this.AddDays(startDate, index).getDay();
-                    let curDate: number = this.AddDays(startDate, index).getDate();
-                    if (curDate == 1 && index != 0) {
-                        monthOccurIndex++;
-                    }
-                    dayObject.push({
-                        monthIndex: monthOccurIndex,
-                        date: this.AddDays(startDate, index),
-                        dayIndex: this.getDayIndexOfTheMonth(this.AddDays(startDate, index)),
-                        day: curday,
-                        added: false
-                    })
-                    if (!daysArrayInGivenPeriod.includes(curday) && days.some(item => (item['id'] % 7) === curday)) {
-                        daysArrayInGivenPeriod.push(curday);
-                    }
-                }
+    //     } else if (type == RecurringType.Monthly) {
+    //         // days
+    //         if (days && days.length > 0) {
+    //             let daysArrayInGivenPeriod = [];
+    //             let dayOccurIndex = 0, monthOccurIndex = 0;
+    //             for (let index = 0; index < dateDiff; index++) {
+    //                 let curday: number = this.AddDays(startDate, index).getDay();
+    //                 let curDate: number = this.AddDays(startDate, index).getDate();
+    //                 if (curDate == 1 && index != 0) {
+    //                     monthOccurIndex++;
+    //                 }
+    //                 dayObject.push({
+    //                     monthIndex: monthOccurIndex,
+    //                     date: this.AddDays(startDate, index),
+    //                     dayIndex: this.getDayIndexOfTheMonth(this.AddDays(startDate, index)),
+    //                     day: curday,
+    //                     added: false
+    //                 })
+    //                 if (!daysArrayInGivenPeriod.includes(curday) && days.some(item => (item['id'] % 7) === curday)) {
+    //                     daysArrayInGivenPeriod.push(curday);
+    //                 }
+    //             }
 
-                for (let i = 0; i < dateDiff; i++) {
-                    let curDate = this.AddDays(startDate, i);
-                    let flg = dayObject.filter(x => {
-                        return x.day == curDate.getDay() && !x.added && x.dayIndex == monthlyDay && (x.monthIndex % everyRecurringNumber) == 0;
-                    });
-                    if (flg.length > 0) {
-                        flg[0].added = true;
-                    }
-                    if (daysArrayInGivenPeriod.includes(curDate.getDay()) && flg.length > 0) {
-                        let dt = flg.length > 0 ? flg[0].date : curDate;
-                        if (dt.getTime() <= endDate.getTime()) {
-                            dates.push(dt);
-                        }
-                    }
-                }
+    //             for (let i = 0; i < dateDiff; i++) {
+    //                 let curDate = this.AddDays(startDate, i);
+    //                 let flg = dayObject.filter(x => {
+    //                     return x.day == curDate.getDay() && !x.added && x.dayIndex == monthlyDay && (x.monthIndex % everyRecurringNumber) == 0;
+    //                 });
+    //                 if (flg.length > 0) {
+    //                     flg[0].added = true;
+    //                 }
+    //                 if (daysArrayInGivenPeriod.includes(curDate.getDay()) && flg.length > 0) {
+    //                     let dt = flg.length > 0 ? flg[0].date : curDate;
+    //                     if (dt.getTime() <= endDate.getTime()) {
+    //                         dates.push(dt);
+    //                     }
+    //                 }
+    //             }
 
-            } else {
-                let monthDiff = this.DateDiff.inMonths(startDate, endDate) + 1;
-                for (let i = 0; i < monthDiff; i++) {
-                    if ((everyRecurringNumber == 1 || (i % everyRecurringNumber) == 0) && startDate.getTime() <= endDate.getTime()) {
-                        var monthlyDate1 = this.GetDateWithoutTime(new Date(startDate.getFullYear(), startDate.getMonth(), 1))
+    //         } else {
+    //             let monthDiff = this.DateDiff.inMonths(startDate, endDate) + 1;
+    //             for (let i = 0; i < monthDiff; i++) {
+    //                 if ((everyRecurringNumber == 1 || (i % everyRecurringNumber) == 0) && startDate.getTime() <= endDate.getTime()) {
+    //                     var monthlyDate1 = this.GetDateWithoutTime(new Date(startDate.getFullYear(), startDate.getMonth(), 1))
 
-                        monthlyDate1.setMonth(startDate.getMonth() + i)
-                        let m_startDate = cloneDeep(monthlyDate1);
+    //                     monthlyDate1.setMonth(startDate.getMonth() + i)
+    //                     let m_startDate = cloneDeep(monthlyDate1);
 
-                        let lastDate = new Date(m_startDate.getFullYear(), m_startDate.getMonth() + 1, 0).getDate();
-                        if (lastDate < monthlyDate.getDate()) {
-                            m_startDate.setDate(lastDate);
-                        } else {
-                            m_startDate.setDate(monthlyDate.getDate());
-                        }
-                        m_startDate = this.GetDateWithoutTime(m_startDate);
-                        if (m_startDate.getTime() >= startDate.getTime() && m_startDate.getTime() <= endDate.getTime()) {
-                            dates.push(m_startDate);
-                        }
-                    }
-                }
-            }
-        } else if (type == RecurringType.Yearly) {
-            let yearDiff = this.DateDiff.inYears(startDate, endDate) + 1;
-            // Loop through years
-            for (let i = 0; i < yearDiff; i++) {
-                var y_startDate = this.dateAdd.AddYears(startDate, i)
-                var y_year = y_startDate.getFullYear();
-                var y_month = everyRecurringNumber;
-                var weekArr: any[] = this.getWeekFirstArrayOfMonth(new Date(y_year, y_month, 1));
-                // loop through the days
-                for (let j = 0; j < days.length; j++) {
-                    var firstOccuranceOfDay = weekArr.find(a => a.day == (days[j].id % 7));
-                    var finalDate = firstOccuranceOfDay.dateOnly && (firstOccuranceOfDay.dateOnly + (7 * (monthlyDay)))
+    //                     let lastDate = new Date(m_startDate.getFullYear(), m_startDate.getMonth() + 1, 0).getDate();
+    //                     if (lastDate < monthlyDate.getDate()) {
+    //                         m_startDate.setDate(lastDate);
+    //                     } else {
+    //                         m_startDate.setDate(monthlyDate.getDate());
+    //                     }
+    //                     m_startDate = this.GetDateWithoutTime(m_startDate);
+    //                     if (m_startDate.getTime() >= startDate.getTime() && m_startDate.getTime() <= endDate.getTime()) {
+    //                         dates.push(m_startDate);
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     } else if (type == RecurringType.Yearly) {
+    //         let yearDiff = this.DateDiff.inYears(startDate, endDate) + 1;
+    //         // Loop through years
+    //         for (let i = 0; i < yearDiff; i++) {
+    //             var y_startDate = this.dateAdd.AddYears(startDate, i)
+    //             var y_year = y_startDate.getFullYear();
+    //             var y_month = everyRecurringNumber;
+    //             var weekArr: any[] = this.getWeekFirstArrayOfMonth(new Date(y_year, y_month, 1));
+    //             // loop through the days
+    //             for (let j = 0; j < days.length; j++) {
+    //                 var firstOccuranceOfDay = weekArr.find(a => a.day == (days[j].id % 7));
+    //                 var finalDate = firstOccuranceOfDay.dateOnly && (firstOccuranceOfDay.dateOnly + (7 * (monthlyDay)))
 
-                    var sch_date = this.GetDateWithoutTime(new Date(y_year, y_month, finalDate));
-                    if (sch_date.getTime() >= startDate.getTime() && sch_date.getTime() <= endDate.getTime()) {
-                        dates.push(sch_date)
-                    }
-                }
-            }
-        }
-        return dates;
-    }
+    //                 var sch_date = this.GetDateWithoutTime(new Date(y_year, y_month, finalDate));
+    //                 if (sch_date.getTime() >= startDate.getTime() && sch_date.getTime() <= endDate.getTime()) {
+    //                     dates.push(sch_date)
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return dates;
+    // }
 
     getDayIndexOfTheMonth(dt: Date): number {
         let startDate = cloneDeep(dt)
@@ -795,24 +802,24 @@ export class Utilities extends Localization implements OnDestroy {
         return returnVal;
     }
 
-    public phoneNumberFormatWithExtension(value: string) {
-        value = value ? value : '';
-        return value ? (value.indexOf(':') != -1) ?
-            this.appendFormat(value.split(':')[1], this.captions.common.PhoneFormat).toString() + ' ext:' + value.split(':')[0].toString()
-            : this.appendFormat(value, this.captions.common.PhoneFormat).toString() : ''
-    }
+    // public phoneNumberFormatWithExtension(value: string) {
+    //     value = value ? value : '';
+    //     return value ? (value.indexOf(':') != -1) ?
+    //         this.appendFormat(value.split(':')[1], this.captions.common.PhoneFormat).toString() + ' ext:' + value.split(':')[0].toString()
+    //         : this.appendFormat(value, this.captions.common.PhoneFormat).toString() : ''
+    // }
 
-    public formatPhoneNumber(value: string): string {
-        value = value ? value : '';
-        value = value.toString();
-        return <string>this.appendFormat(value, this.captions.common.PhoneFormat);
-    }
+    // public formatPhoneNumber(value: string): string {
+    //     value = value ? value : '';
+    //     value = value.toString();
+    //     return <string>this.appendFormat(value, this.captions.common.PhoneFormat);
+    // }
 
-    public formatPhoneExtention(value: string): string {
-        value = value ? value : '';
-        value = value.toString();
-        return <string>this.appendFormat(value, this.captions.common.ExtensionFormat);
-    }
+    // public formatPhoneExtention(value: string): string {
+    //     value = value ? value : '';
+    //     value = value.toString();
+    //     return <string>this.appendFormat(value, this.captions.common.ExtensionFormat);
+    // }
 
     public removePhoneFormat(value: string) {
         value = value ? value : '';
@@ -888,10 +895,10 @@ export class Utilities extends Localization implements OnDestroy {
         return sessionId;
     }
 
-    checkDateWithLocaleFormat(dateString: string): boolean {
-        return moment(dateString, this.dateFormat, true).isValid();
+    // checkDateWithLocaleFormat(dateString: string): boolean {
+    //     return moment(dateString, this.dateFormat, true).isValid();
 
-    }
+    // }
 
     getFullName(firstName: string, lastName: string) {
         return firstName + ' ' + lastName;

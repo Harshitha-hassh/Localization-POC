@@ -4,7 +4,8 @@ import { Injectable } from "@angular/core";
 import * as moment from "moment";
 import * as _ from "lodash";
 import { LocalizedMonthsModel, localizationJSON, Calendar, DaysModel } from 'src/app/shared/shared-models';
-
+import { Localization  as CommonLocalization} from 'src/app/common/localization/localization';
+import { JSONReaderService } from 'src/app/common/shared/services/load-json.service';
 
 declare var $: any;
 const DEFAULT_LOCALE = "en-US";
@@ -31,9 +32,7 @@ export const enum JsonDataSourceType {
     providedIn: 'root'
   }
 )
-export class Localization {
-
-  public captions: localizationJSON;
+export class Localization extends CommonLocalization{
   public localeCode: string = DEFAULT_LOCALE;
   public currencyCode: string = DEFAULT_CURRENCY;
   public decimalSeparator: string = DEFAULT_DECIMAL_SEP;
@@ -45,96 +44,96 @@ export class Localization {
   public daysNormalArray: DaysModel[] = [];
   public monthsArray: LocalizedMonthsModel[] = [];
   public shortDateFormat: string = "";
-  public propertyCaptions: localizationJSON;
   /**
    * Locale Days with Valid ID.
    */
 
-  public LongDaysModel;
-  public ShortDays;
-  public LongDays;
-  private errorCaptions: any = {};
-  ContactTypes: any;
+  //public LongDaysModel;
+  //public ShortDays;
+ // public LongDays;
+ // private errorCaptions: any = {};
+  //ContactTypes: any;
 
-  constructor() {
+  constructor(public jsonReader:JSONReaderService) {
+    super(jsonReader);
     this.SetLocaleBasedProperties();
   }
 
-  public SetLocaleBasedProperties() {
-    this.setLocaleCode();
-    this.setLocaleCurrency();
-    this.setDecimalSeparator();
-    this.setThousandSeparator();
-    this.setCurrencySymbol();
-    this.setDateTimeFormat();
-    this.captions = this.getCaptions();
-    this.propertyCaptions = this.getPropertyCaptions();
-    this.ContactTypes = this.loadJson(JsonDataSourceType.ContactType);
-    this.fillCalenderObject();
-    this.daysArray = this.getDaysModel(true);
-    this.daysNormalArray = this.getDaysArray();
-    this.monthsArray = this.generateMonthsArr();
-    this.errorCaptions = this.getErrorCaptions();
-  }
+  // public SetLocaleBasedProperties() {
+  //   this.setLocaleCode();
+  //   this.setLocaleCurrency();
+  //   this.setDecimalSeparator();
+  //   this.setThousandSeparator();
+  //   this.setCurrencySymbol();
+  //   this.setDateTimeFormat();
+  //   this.captions = this.getCaptions();
+  //   this.propertyCaptions = this.getPropertyCaptions();
+  //  // this.ContactTypes = this.loadJson(JsonDataSourceType.ContactType);
+  //   this.fillCalenderObject();
+  //   this.daysArray = this.getDaysModel(true);
+  //   this.daysNormalArray = this.getDaysArray();
+  //   this.monthsArray = this.generateMonthsArr();
+  //   this.errorCaptions = this.getErrorCaptions();
+  // }
 
-  private getJsonUrl(type: JsonDataSourceType): string {
-    let url = '';
-    switch (type) {
-      case JsonDataSourceType.ContactType:
-        url = `./assets/i18n/DataSource/${this.GetUserLanguage()}.ContactTypes.json`
-        break;
-      default:
-        break;
-    }
-    return url;
-  }
+  // private getJsonUrl(type: JsonDataSourceType): string {
+  //   let url = '';
+  //   switch (type) {
+  //     case JsonDataSourceType.ContactType:
+  //       url = `./assets/i18n/DataSource/${this.GetUserLanguage()}.ContactTypes.json`
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  //   return url;
+  // }
 
-  private loadJson(type: JsonDataSourceType): any {
-    let url: string = this.getJsonUrl(type);
-    let jsonResult: any;
-    $.ajax({
-      url: url,
-      async: false,
-      success: function (result) {
-        if (typeof result == "object") {
-          jsonResult = result;
-        }
-        else {
-          jsonResult = [];
-        }
-      },
-      error: function (result) {
-        jsonResult = [];
-      }
-    });
+  // private loadJson(type: JsonDataSourceType): any {
+  //   let url: string = this.getJsonUrl(type);
+  //   let jsonResult: any;
+  //   $.ajax({
+  //     url: url,
+  //     async: false,
+  //     success: function (result) {
+  //       if (typeof result == "object") {
+  //         jsonResult = result;
+  //       }
+  //       else {
+  //         jsonResult = [];
+  //       }
+  //     },
+  //     error: function (result) {
+  //       jsonResult = [];
+  //     }
+  //   });
 
-    if (jsonResult.length == 0) {
-      $.ajax({
-        url: `./assets/i18n/DataSource/${this.localeCode}.ContactTypes.json`,
-        async: false,
-        success: function (result) {
-          jsonResult = result;
-        },
-        error: function (result) {
-          jsonResult = [];
-        }
-      });
-    }
+  //   if (jsonResult.length == 0) {
+  //     $.ajax({
+  //       url: `./assets/i18n/DataSource/${this.localeCode}.ContactTypes.json`,
+  //       async: false,
+  //       success: function (result) {
+  //         jsonResult = result;
+  //       },
+  //       error: function (result) {
+  //         jsonResult = [];
+  //       }
+  //     });
+  //   }
 
-    if (jsonResult.length == 0) {
-      $.ajax({
-        url: `./assets/i18n/DataSource/en-US.ContactTypes.json`,
-        async: false,
-        success: function (result) {
-          jsonResult = result;
-        },
-        error: function (result) {
-          jsonResult = [];
-        }
-      });
-    }
-    return jsonResult;
-  }
+  //   if (jsonResult.length == 0) {
+  //     $.ajax({
+  //       url: `./assets/i18n/DataSource/en-US.ContactTypes.json`,
+  //       async: false,
+  //       success: function (result) {
+  //         jsonResult = result;
+  //       },
+  //       error: function (result) {
+  //         jsonResult = [];
+  //       }
+  //     });
+  //   }
+  //   return jsonResult;
+  // }
 
   /**
    * Returns the language based JSON
@@ -145,7 +144,7 @@ export class Localization {
     return this.parseCaptionsFromLanguageJSON(languageJsonValue);
   }
 
-  private getPropertyCaptions() {
+  protected getPropertyCaptions() {
       const propertyLanguage = this.GetPropertyInfo('Language');
       let languageJsonValue = (propertyLanguage == "" || propertyLanguage == null ? DEFAULT_LOCALE : propertyLanguage) + ".json";
       return this.parseCaptionsFromLanguageJSON(languageJsonValue);
@@ -153,7 +152,7 @@ export class Localization {
 
 
 
-  private parseCaptionsFromLanguageJSON(language: string) {
+  protected parseCaptionsFromLanguageJSON(language: string) {
     let languageJson: any = this.getLocaleLanguageJson(language);
     if (languageJson != null) {
       if (!languageJson[0].success) {
@@ -164,7 +163,7 @@ export class Localization {
     }
   }
 
-  private getLocaleLanguageJson(languageJsonValue: string) {
+  protected getLocaleLanguageJson(languageJsonValue: string) {
     let languageJson = [];
     $.ajax({
       url: "./assets/i18n/" + languageJsonValue,
@@ -230,7 +229,7 @@ export class Localization {
     }
   }
 
-  private GetUserLanguage(): string {
+  protected GetUserLanguage(): string {
     let userPreferred = this.GetUserInfo("language"); let propertyLanguage = this.GetPropertyInfo("UserLanguage");
     let userLanguage = this.validateString(userPreferred) ? userPreferred : this.validateString(propertyLanguage) ? propertyLanguage : "en-US";
     return userLanguage;
@@ -242,7 +241,7 @@ export class Localization {
     }
     return false;
   }
-  private getErrorCaptions() {
+  protected getErrorCaptions() {
     let userLanguage = this.GetUserLanguage();
     let errorJsonValue = "error." + (userLanguage == "" || userLanguage == null ? DEFAULT_LOCALE : userLanguage) + ".json";
     let errorJson: any = this.loadErrorJSON(errorJsonValue);
@@ -298,7 +297,7 @@ export class Localization {
     return errorJson;
   }
 
-  private ReadCookie(name: string) {
+  protected ReadCookie(name: string) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(";");
     //var ca = sessionStorage.getItem("propertyInfo").split(";");
@@ -342,19 +341,19 @@ export class Localization {
     return null;
   }
 
-  private setLocaleCode() {
+  protected setLocaleCode() {
     // const localeCode = this.GetUserLanguage();
     const localeCode = this.GetPropertyInfo("Language"); //bug fix for 27078
     this.localeCode = localeCode ? localeCode : DEFAULT_LOCALE;
     moment.locale(this.localeCode);
   }
 
-  private setLocaleCurrency() {
+  protected setLocaleCurrency() {
     let currencyCode = this.GetPropertyInfo("Currency");
     this.currencyCode = currencyCode == null ? DEFAULT_CURRENCY : currencyCode;
   }
 
-  private setCurrencySymbol() {
+  protected setCurrencySymbol() {
     const decimalNumber = 1;
     this.currencySymbol = decimalNumber
       .toLocaleString(this.localeCode, {
@@ -366,21 +365,21 @@ export class Localization {
       .trim();
   }
 
-  private setDecimalSeparator(localeCode = null) {
+  protected setDecimalSeparator(localeCode = null) {
     const decimalNumber = 1.1;
     this.decimalSeparator = decimalNumber
       .toLocaleString(localeCode ? localeCode : this.localeCode)
       .substring(1, 2);
   }
 
-  private setThousandSeparator(localeCode = null) {
+  protected setThousandSeparator(localeCode = null) {
     const decimalNumber = 1000;
     this.thousandSeparator = decimalNumber
       .toLocaleString(localeCode ? localeCode : this.localeCode)
       .substring(1, 2);
   }
 
-  private setDateTimeFormat() {
+  protected setDateTimeFormat() {
     var localeData = moment.localeData();
     this.timeFormat = localeData.longDateFormat("LT");
     // To append zero for single hours in time
@@ -393,7 +392,7 @@ export class Localization {
     this.shortDateFormat = localeData.longDateFormat("ll");
   }
 
-  private trimThousandSeparator(value: string): string {
+  protected trimThousandSeparator(value: string): string {
     return value
       .toString()
       .split(this.thousandSeparator)
@@ -401,7 +400,7 @@ export class Localization {
   }
 
 
-  private fillCalenderObject(): void {
+  protected fillCalenderObject(): void {
     let ShortDaysOfWeek: string[] = moment.weekdaysShort(false); // locally sorted false starts with SUNDAY For any language.
     let ShortDaysOfWeek_Keys: string[] = [
       "Sun",
@@ -462,14 +461,14 @@ export class Localization {
     this.createCalendarObject(monthsShortKeys, monthsShort);
   }
 
-  private createCalendarObject(keys: any[], values: any[]) {
+  protected createCalendarObject(keys: any[], values: any[]) {
     for (let i = 0; i < keys.length; i++) {
       const key = keys[i];
       this.captions.calendar[key] = values[i];
     }
   }
 
-  private generateMonthsArr(): LocalizedMonthsModel[] {
+  protected generateMonthsArr(): LocalizedMonthsModel[] {
     let monthsShortKeys: string[] = [
       "Jan",
       "Feb",

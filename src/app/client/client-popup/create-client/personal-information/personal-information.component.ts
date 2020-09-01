@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, EventEmitter, Output, Input, OnDestroy, AfterViewChecked } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
-import { Host, ImgRefType, SPAManagementBreakPoint, Module } from 'src/app/common/shared/shared/globalsContant';
+import { Host, ImgRefType, SPAManagementBreakPoint, Module, DefaultGUID, ButtonType } from 'src/app/common/shared/shared/globalsContant';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { AddressComponent } from 'ngx-google-places-autocomplete/objects/addressComponent';
@@ -13,20 +13,27 @@ import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ClientCommonService } from 'src/app/client/client.service';
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
-import { PatronInfoSearchResultType, Addresscomponent, ImageData } from 'src/app/shared/shared-models';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
+import { PatronInfoSearchResultType, Addresscomponent, ImageData, Imagedata } from 'src/app/shared/shared-models';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { EmptyValueValidator } from 'src/app/retail/shared/Validators/EmptyValueValidator';
-import { PhoneTypes, ContactType, MailTypes } from 'src/app/common/shared/shared/enums/enums';
+import { PhoneTypes, ContactType, GuestProfileMailTypes } from 'src/app/common/shared/shared/enums/enums';
+import { ImageDataService } from 'src/app/shared/data-services/Image/Image.data.services';
+import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Image.service';
+import { CreateClientBusiness } from '../../client-popup.business';
+import { AppModuleService } from 'src/app/core/services/app.service';
+import { PlayerInformationService } from 'src/app/common/shared/shared/service/player.information.service';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Component({
   selector: 'app-personal-information',
   templateUrl: './personal-information.component.html',
   styleUrls: ['./personal-information.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [ImageDataService ,CreateClientBusiness]
 })
 export class PersonalInformationComponent implements OnInit, OnDestroy, AfterViewChecked {
   @Input() parentForm: FormGroup;
+  @Output() imageUpdateEmit = new EventEmitter();
   thumbnailImg: any;
   commonCaptions: any;
   isClientViewOnly = false;
@@ -63,8 +70,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   captions: any;
   selectedFile: any;
   url: any;
-  ImageUploaded: boolean;
+  isImageRemoved: boolean =false;
+  ImageUploaded: boolean = false;
   editImageId: any;
+  imageId: number;
   imageObj: any;
   textmaskFormat: string;
   emailRequired: boolean;
@@ -74,17 +83,30 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   showLoader = false;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   isCMSConfigured = false;
-  mailTypes = MailTypes;
+  mailTypes = GuestProfileMailTypes;
   Address: any = [];
+  personalInfo : any;
+  @Input('inputData')
+  set formData(value) {
+    if(value && value.data!='')
+    {
+      this.personalInfo = value.data;
+      this.SetEditValues(value.data);
+    }
+  }
   constructor(
     private Form: FormBuilder,
     private http: HttpServiceCall,
     public localization: Localization,
-    private utils: Utilities,
+    private utils: RetailUtilities,
     private BP: BreakPointAccess,
     private PropertyInfo: PropertyInformation,
     private clientCommonService: ClientCommonService,
-    private featureSwitch: RetailFeatureFlagInformationService
+    public _imageService: RetailImageService,
+    private _createClientBusiness: CreateClientBusiness,
+    private featureSwitch: RetailFeatureFlagInformationService,
+    private _playerService: PlayerInformationService,
+    private _ams: AppModuleService
   ) {
 
     this.captions = this.localization.captions.bookAppointment;
@@ -92,6 +114,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.genderList = [{ text: this.captions['Male'], value: 'Male' }, { text: this.captions['Female'], value: 'Female' }];
 
     this.FormGrp = this.Form.group({
+      id : 0,
+      guestId : DefaultGUID,
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       pronounced: '',
@@ -102,17 +126,20 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       Email: this.Form.array([this.createEmailItem(0, '', '', false, false)]),
       Phone: this.Form.array([this.createPhoneItem(0, '', '', '', false, false, '')]),
       Address: this.Form.array([this.createAddressItem('', false)]),
-      // privateAddress: false,
       emailPrimary: false,
-      // emailPrivate: false,
-      // phonePrivate: false,
       phonePrimary: false,
       state: '',
       city: '',
       country: '',
       postal_code: '',
       patronid: '',
-      rank: ''
+      rank: '',
+      imageReferenceId: '',
+      lastChangeId :DefaultGUID,
+      guestImg: this.Form.group({
+        base64textString: '',
+        thumbnailImg: ''
+      }),
     });
     this.isCMSConfigured = this.featureSwitch.IsCMSConfigured;
   }
@@ -120,7 +147,17 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   ngAfterViewChecked(): void {
 
   }
+  ngAfterViewInit() {
 
+  this.FormGrp.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe((data) => {
+    data.base64textString = this.base64textString;
+    data.thumbnailImg = this.thumbnailImg;
+    data['imageId'] = this.imageId;
+    data.isImageRemoved = this.isImageRemoved;
+    
+  });
+  
+}
   createAddressItem(address?: any, addressPrivate?: any): FormGroup {
     return this.Form.group({
       addressLine: [address !== '' ? address : '', this.AddressRequired ? [Validators.required, EmptyValueValidator] : ''],
@@ -148,10 +185,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   createEmailItem(arr: number, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): FormGroup {
 
     return this.Form.group({
-      // EmailLabel: [_EmailLabel,Validators.required],
       EmailLabel: [EmailLabel, this.emailRequired || EmailId ? [Validators.required, EmptyValueValidator] : ''],
       EmailId: [EmailId, this.emailRequired ? [Validators.required, Validators.email, EmptyValueValidator] : ''],
-      // EmailId: _EmailId,
       EmailPrimary: EmailIsPrimary,
       EmailPrivate: EmailIsPrivate
     });
@@ -161,12 +196,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   addEmailItem(i, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): void {
     this.currentIndexemail = i + 1;
     this.Email = this.FormGrp.get('Email') as FormArray;
-    // if (this.Email.controls.length >= this.contactTypeEmail.length) {
-    //   return;
-    // }
     this.Email.push(this.createEmailItem(i, EmailLabel, EmailId, EmailIsPrivate, EmailIsPrimary));
-    // this.FormGrp.get('Email')[0].push((this.createPhoneItem(i, _EmailLabel, _EmailId, _EmailIsPrivate, _EmailIsPrimary)));
-
   }
 
   removeEmailItem(i: any, d?: any, f?: any) {
@@ -185,7 +215,6 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       PhoneNumberLabel: [phoneNoLabel, this.phoneRequired || phoneNoDetails ? [Validators.required, EmptyValueValidator] : ''],
       countryCode: [countryCode, this.setCountryCodeValidator(this.phoneRequired, phoneNoLabel)],
       PhoneNumber: [phoneNoDetails, this.phoneRequired ? [Validators.required, EmptyValueValidator] : ''],
-      // PhoneNumber: _phoneNoDetails,
       PhonePrivate: phoneIsPrivate,
       PhonePrimary: phoneIsPrimary,
       Extension: extension
@@ -243,35 +272,16 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   initializeFormData() {
     this.textmaskFormat = this.localization.captions.common.PhoneFormat != '' ? 
                           this.localization.captions.common.PhoneFormat : '999999999999999999';
-    this.makeGetCall('GetClientConfiguration');
+  //  this.makeGetCall('GetClientConfiguration');
     this.contactTypePhone = this.getPhoneOptions();
     this.contactTypeEmail = this.getMailOptions();
     this.validateEmailType = this.localization.getError(-87);
     this.validatePhoneType = this.localization.getError(-88);
     // this.appointmentService.isClientViewOnly = false;
-    // this.appointmentService.isPreferenceViewOnly = false;
-    // this.appointmentService.isSoapNotesViewOnly = false;
-    // this.appointmentService.isClientImgRemoved = false;
-
-    // if (this.appointmentService.clientEditData && this.appointmentService.clientWidowActionType == 'EDIT') {
-    //   this.appointmentService.clientImageObj.pipe(takeUntil(this.destroyed$)).subscribe(x => {
-    //     this.imageObj = x;
-    //     if (this.imageObj && this.imageObj.length > 0 && this.appointmentService.guestId == this.imageObj[0].imageReferenceId) {
-    //       // this.bindImage(this.imageObj[0].contentType, this.imageObj[0].data);
-    //       if (this.imageObj[0].contentType.includes('base64')) {
-    //         this.url = `${this.imageObj[0].contentType},${this.imageObj[0].data}`;
-    //       } else {
-    //         this.url = `data:${this.imageObj[0].contentType};base64,${this.imageObj[0].data}`;
-    //       }
-    //       this.editImageId = this.imageObj[0].id;
-    //     }
-    //   });
+    
     //   this.appointmentService.clientScreenBreakPoints = this.BP.GetBreakPoint([SPAManagementBreakPoint.EditClientProfile, SPAManagementBreakPoint.EditClientPreferences, SPAManagementBreakPoint.EditSOAPNotes]).result
     //   this.appointmentService.isClientViewOnly = this.appointmentService.clientScreenBreakPoints ? this.appointmentService.clientScreenBreakPoints.filter(x => x.breakPointNumber == SPAManagementBreakPoint.EditClientProfile)[0].view : false;
-    //   this.appointmentService.isPreferenceViewOnly = this.appointmentService.clientScreenBreakPoints ? this.appointmentService.clientScreenBreakPoints.filter(x => x.breakPointNumber == SPAManagementBreakPoint.EditClientPreferences)[0].view : false;
-    //   this.appointmentService.isSoapNotesViewOnly = this.appointmentService.clientScreenBreakPoints ? this.appointmentService.clientScreenBreakPoints.filter(x => x.breakPointNumber == SPAManagementBreakPoint.EditSOAPNotes)[0].view : false;
-    //   this.IsEdit = true;
-    //   this.SetEditValues();
+      //  this.SetEditValues(this.personalInfo);
     //   if (this.appointmentService.isClientViewOnly) {
     //     this.utils.disableControls(this.FormGrp);
     //   }
@@ -281,7 +291,6 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   ngOnDestroy(): void {
     this.destroyed$.next(true);
     this.destroyed$.complete();
-    // this.appointmentService.convertToEditClient(null);
   }
 
   Validation(clientConfiguration: any) {
@@ -491,7 +500,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     switch (callDesc) {
       case 'GetClientConfiguration':
         this.clientConfiguration = result.result as any;
-        this.Validation(this.clientConfiguration);
+      //  this.Validation(this.clientConfiguration);
         break;
       case 'getImagesByReference': {
         const imageDetails = result.result;
@@ -584,19 +593,6 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         _zip = element.long_name;
       }
     }
-
-    // this.appointmentService.personalDetailAddress = {
-    //   ContactTypeId: 1,
-    //   ClientId: 0,
-    //   Line1: _line1,
-    //   Line2: _line2,
-    //   Line3: _line3,
-    //   State: _state,
-    //   City: _country,
-    //   Country: _country,
-    //   Zip: _zip,
-    //   IsPrivate: false
-    // };
     this.FormGrp.controls['pincode'].setValue(_zip);
 
   }
@@ -607,187 +603,140 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     // Do some stuff
   }
 
-  async SetEditValues() {
-    // let loyalty = this.appointmentService.clientEditData.clientDetail.loyaltyDetail[0];
-    // let isCMSDataChanged: boolean = false;
-    // if (loyalty && loyalty.patronId && this.isCMSConfigured) {
-    //   isCMSDataChanged = await this.appointmentService.UpdateCMSDetailOnExistingGuest(loyalty.patronId, this.appointmentService.clientEditData, this.searchPatronCallBack.bind(this));
-    //   loyalty = this.appointmentService.clientEditData.clientDetail.loyaltyDetail[0];
-    //   if (!loyalty) {
-    //     this.isPatronIdAvailable = false;
-    //     this.FormGrp.controls.patronid.markAsDirty();
-    //   }
-    //   else {
-    //     this.isPatronIdAvailable = true;
-    //     this.FormGrp.reset();
-    //   }
-    //   isCMSDataChanged ? this.FormGrp.markAsDirty() : '';
-    // }
-    // else {
-    //   this.isPatronIdAvailable = false;
-    // }
-    // this.personalDetails = this.appointmentService.clientEditData.clientDetail;
-    // this.FormGrp.controls.title.setValue(this.utils.GetGuestIdbyTitle(this.appointmentService.clientEditData.clientDetail.title));
-    // this.FormGrp.controls.firstName.setValue(this.appointmentService.clientEditData.clientDetail.firstName);
-    // this.FormGrp.controls.lastName.setValue(this.appointmentService.clientEditData.clientDetail.lastName);
-    // this.FormGrp.controls.pronounced.setValue(this.appointmentService.clientEditData.clientDetail.pronounce);
-    // this.FormGrp.controls.gender.setValue(this.appointmentService.clientEditData.clientDetail.gender);
-    // this.FormGrp.controls.dob.setValue(
-    //   this.appointmentService.clientEditData.clientDetail.dateOfBirth ?
-    //     this.utils.getDate(this.appointmentService.clientEditData.clientDetail.dateOfBirth)
-    //     : ""
-    // );
+  async SetEditValues(clientInfo) {
+    let loyalty = clientInfo.client && clientInfo.client.length > 0 && clientInfo.client.loyaltyDetail[0];
+    let isCMSDataChanged: boolean = false;
+    if (loyalty && loyalty.patronId && this.isCMSConfigured) {
+        //  isCMSDataChanged = await this.UpdateCMSDetailOnExistingGuest(loyalty.patronId, clientInfo,
+        //  this.searchPatronCallBack.bind(this));
+      loyalty = clientInfo.client.clientDetail.loyaltyDetail[0];
+      if (!loyalty) {
+        this.isPatronIdAvailable = false;
+        this.FormGrp.controls.patronid.markAsDirty();
+      }
+      else {
+        this.isPatronIdAvailable = true;
+        this.FormGrp.reset();
+      }
+      isCMSDataChanged ? this.FormGrp.markAsDirty() : '';
+    }
+    else {
+      this.isPatronIdAvailable = false;
+    }
+    this.personalDetails = clientInfo.client;
+    this.FormGrp.controls.lastChangeId.setValue(clientInfo.client.lastChangeId);
+    this.FormGrp.controls.id.setValue(clientInfo.client.id);
+    this.FormGrp.controls.guestId.setValue(clientInfo.client.guestId);
+    this.FormGrp.controls.title.setValue(this.utils.GetGuestIdbyTitle(clientInfo.client.title));
+    this.FormGrp.controls.firstName.setValue(clientInfo.client.firstName);
+    this.FormGrp.controls.lastName.setValue(clientInfo.client.lastName);
+    this.FormGrp.controls.pronounced.setValue(clientInfo.client.pronounce);
+    this.FormGrp.controls.gender.setValue(clientInfo.client.gender);
+    this.FormGrp.controls.dob.setValue(
+      clientInfo.client.dateOfBirth ?
+        this.utils.getDate(clientInfo.client.dateOfBirth)
+        : ""
+    );
 
-    // this.FormGrp.controls.patronid.setValue(loyalty ? loyalty.patronId : '');
-    // this.FormGrp.controls.rank.setValue(loyalty ? loyalty.rank : '');
-    // if (this.appointmentService.clientEditData.addresses && this.appointmentService.clientEditData.addresses.length > 0) {
-    //   this.FormGrp.controls.postal_code.setValue(this.appointmentService.clientEditData.addresses[0].zip);
-    //   this.FormGrp.controls.state.setValue(this.appointmentService.clientEditData.addresses[0].state);
-    //   this.FormGrp.controls.city.setValue(this.appointmentService.clientEditData.addresses[0].city);
-    //   this.FormGrp.controls.country.setValue(this.appointmentService.clientEditData.addresses[0].country);
-    //   // this.FormGrp.controls.privateAddress.setValue(this.appointmentService.clientEditData.addresses[0].isPrivate);
-    // }
+    this.FormGrp.controls.patronid.setValue(loyalty ? loyalty.patronId : '');
+    this.FormGrp.controls.rank.setValue(loyalty ? loyalty.rank : '');
+    if (clientInfo.addresses && clientInfo.addresses!= null) {
+      this.FormGrp.controls.postal_code.setValue(clientInfo.addresses.zipCode);
+      this.FormGrp.controls.state.setValue(clientInfo.addresses.state);
+      this.FormGrp.controls.city.setValue(clientInfo.addresses.city);
+      this.FormGrp.controls.country.setValue(clientInfo.addresses.country);
+    }
+    
+    if (clientInfo.phoneNumbers && clientInfo.phoneNumbers.length > 0) {
+      clientInfo.phoneNumbers.forEach((element, i) => {
+        let _extension = element.extension ? element.extension : ''
+        let _countryCode = element.countryCode ? element.countryCode : ''
+        if (element.number != '') {
+          if (element.contactTypeId === 3) { //Added For Extension when contact type is work
+            if (element.number.indexOf(':') !== -1) {
+              const arr = element.number.split(':');
+              element.number = arr.length > 1 ? arr[1] : element.number;
+              _extension = arr[0] ? arr[0] : '';
+            } else {
+              _extension = '';
+            }
+          }
 
-    // // this.FormGrp.controls.PhoneNumber.setValue(this.appointmentService.clientEditData.phoneNumbers[0].number);
-    // if (this.appointmentService.clientEditData.phoneNumbers && this.appointmentService.clientEditData.phoneNumbers.length > 0) {
-    //   this.appointmentService.clientEditData.phoneNumbers.forEach((element, i) => {
-    //     let _extension = element.extension ? element.extension : ''
-    //     let _countryCode = element.countryCode ? element.countryCode : ''
-    //     if (element.number != '') {
-    //       if (element.contactTypeId === 3) { //Added For Extension when contact type is work
-    //         if (element.number.indexOf(':') !== -1) {
-    //           const arr = element.number.split(':');
-    //           element.number = arr.length > 1 ? arr[1] : element.number;
-    //           _extension = arr[0] ? arr[0] : '';
-    //         } else {
-    //           _extension = '';
-    //         }
-    //       }
+          if (element.number.indexOf('|') !== -1) {
+            const phonenum = element.number.split('|');
+            element.number = phonenum[1];
+            _countryCode = phonenum[0];
+          }
+        }
+        this.addPhoneItem(i, element.contactTypeId, _countryCode, this.utils.appendFormat(element.number, this.localization.captions.common.PhoneFormat), element.isPrivate, element.isPrimary, _extension);
+      });
+      this.Phone.removeAt(0);
+    }
 
-    //       if (element.number.indexOf('|') !== -1) {
-    //         const phonenum = element.number.split('|');
-    //         element.number = phonenum[1];
-    //         _countryCode = phonenum[0];
-    //       }
-    //     }
-    //     this.addPhoneItem(i, element.contactTypeId, _countryCode, this.utils.appendFormat(element.number, this.localization.captions.common.PhoneFormat), element.isPrivate, element.isPrimary, _extension);
-    //   });
-    //   this.Phone.removeAt(0);
-    // }
+    if (clientInfo.emails && clientInfo.emails.length > 0) {
+      clientInfo.emails.forEach((element, i) => {
+        this.addEmailItem(i, element.contactTypeId, element.emailId, element.isPrivate, element.isPrimary);
+      });
+      this.Email.removeAt(0);
+    }
 
-    // if (this.appointmentService.clientEditData.emails && this.appointmentService.clientEditData.emails.length > 0) {
-    //   this.appointmentService.clientEditData.emails.forEach((element, i) => {
-    //     this.addEmailItem(i, element.contactTypeId, element.emailId, element.isPrivate, element.isPrimary);
-    //   });
-    //   this.Email.removeAt(0);
-    // }
+    if (clientInfo.addresses && clientInfo.addresses != null) {
+      let addressItem = clientInfo.addresses;
+      if (addressItem.addressLine1) {
+        this.addAddressItem(0, addressItem.addressLine1, addressItem.isPrivate)
+        this.Address = this.FormGrp.get('Address') as FormArray;
+        this.Address.removeAt(0);
+      }
+      if (addressItem.addressLine2) {
+        this.addAddressItem(1, addressItem.addressLine2, addressItem.isPrivate)
+      }
+      if (addressItem.addressLine3) {
+        this.addAddressItem(2, addressItem.addressLine3, addressItem.isPrivate)
+      }
 
-    // if (this.appointmentService.clientEditData.addresses && this.appointmentService.clientEditData.addresses.length > 0) {
-    //   let addressItem = this.appointmentService.clientEditData.addresses[0];
-    //   //this.addAddressItem(element);
-    //   if (addressItem.line1) {
-    //     this.addAddressItem(0, addressItem.line1, addressItem.isPrivate)
-    //     this.Address = this.FormGrp.get('Address') as FormArray;
-    //     this.Address.removeAt(0);
-    //   }
-    //   if (addressItem.line2) {
-    //     this.addAddressItem(1, addressItem.line2, addressItem.isPrivate)
-    //   }
-    //   if (addressItem.line3) {
-    //     this.addAddressItem(2, addressItem.line3, addressItem.isPrivate)
-    //   }
-
-    // }
+    }
+    var imageData : Imagedata;
+    if (clientInfo.client.guestId && clientInfo.client.guestId != DefaultGUID) {
+      imageData = await this._imageService.getImageForClient(clientInfo.client.guestId, true);
+    }
+    var url = `${imageData && imageData[0] ? imageData[0].contentType : ''},${imageData && imageData[0] ? imageData[0].thumbnailData : ''}`
+    this.url = url;
+    this.imageId = imageData && imageData[0] ? imageData[0].id : '';
+   // this.imageReferenceId = clientInfo.client.guestId;
   }
 
   onFileDelete(event) {
-    // this.appointmentService.isClientImgRemoved = this.IsEdit;
     this.ImageUploaded = false;
     this.makeFormDirty();
   }
 
-  onFileChanged(event) {
-    this.selectedFile = event.target.files[0];
-    const file = event.target.files[0];
-    // convert to MB
-    const fileSize = file.size / (1024 * 1024);
-    // Allow upload if size is lesser than or equal to 2 MB
-    if (fileSize <= 2) {
-      this.ImageUploaded = true;
-      // this.appointmentService.isClientImgRemoved = false;
-      const reader = new FileReader();
-      reader.onload = this._handleReaderLoaded.bind(this);
-      reader.readAsBinaryString(file);
-      this.makeFormDirty();
-    } else {
-      this.utils.ShowError(this.localization.captions.common.Error, this.localization.captions.common.FileSizeExceeded);
-    }
-
-  }
 
   base64textString: any;
-  _handleReaderLoaded(readerEvt) {
-    var binaryString = readerEvt.target.result;
-    this.base64textString = btoa(binaryString);
-    let imageObj: ImageData;
-    if (this.imageObj && this.imageObj.length > 0) {
-      imageObj = _.clone(this.imageObj[0]);
-      imageObj.data = this.base64textString;
-      imageObj.thumbnailData = this.base64textString;
-      imageObj.contentType = this.selectedFile.type;
-    } else {
-      imageObj = {
-        referenceId: 0,
-        referenceType: ImgRefType.client,
-        data: this.base64textString,
-        id: 0,
-        thumbnailData: this.base64textString,
-        contentType: this.selectedFile.type,
-        sequenceNo: 0
-      };
-    }
-    // this.appointmentService.ImgTempHolder = imageObj;
-    this.bindImage(this.selectedFile.type, this.base64textString);
-  }
-
-  private bindImage(fileContentType, fileContent) {
-    if (fileContentType && fileContent) {
-      // this.appointmentService.clientImageUrl = `data:${fileContentType};base64,${fileContent}`;
-      // this.url = this.domSanitizer.bypassSecurityTrustUrl(this.appointmentService.clientImageUrl);
-      this.ImageUploaded = true;
-    }
-  }
-
+  
   fileDeleted() {
-    // this.appointmentService.isClientImgRemoved = this.IsEdit;
+    this.isImageRemoved = true;
     this.ImageUploaded = false;
+    this.base64textString ='';
+    this.thumbnailImg ='';
+    this.FormGrp.controls.guestImg.patchValue({
+      base64textString: '',
+      thumbnailImg: ''
+    });
     this.FormGrp.markAsDirty();
   }
+
   fileUploaded(data) {
     this.base64textString = data['orgImg'];
     this.thumbnailImg = data['tmbImg'];
-    const base64result = this.base64textString.split(',');
-    const base64Thumbnail = this.thumbnailImg.split(',');
-    let imageObj: ImageData;
-    if (this.imageObj && this.imageObj.length > 0) {
-      imageObj = _.clone(this.imageObj[0]);
-      imageObj.data = base64result[1];
-      imageObj.thumbnailData = base64Thumbnail[1];
-      imageObj.contentType = base64result[0];
-    } else {
-      imageObj = {
-        referenceId: 0,
-        referenceType: ImgRefType.client,
-        data: base64result[1],
-        id: 0,
-        thumbnailData: base64Thumbnail[1],
-        contentType: base64result[0],
-        sequenceNo: 0
-      };
-    }
-    // this.appointmentService.ImgTempHolder = imageObj;
-    this.FormGrp.markAsDirty();
+    this.imageId = data['imageID'];
+    this.isImageRemoved = false;
+    this.FormGrp.controls.guestImg.patchValue({
+      base64textString: data['orgImg'],
+      thumbnailImg: data['tmbImg']
+    });
+    this.makeFormDirty();
   }
+
   fileSizeExceeded() {
     this.utils.ShowError(this.captions.common.FileSizeExceeded, this.captions.common.Error, this.captions.common.Error);
   }
@@ -845,9 +794,52 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   searchPatron() {
     const patronId = this.FormGrp.controls.patronid.value;
     if (patronId && patronId != '' && this.isCMSConfigured) {
-      // this.appointmentService.searchClientByPatron(patronId, this.searchPatronCallBack.bind(this));
+       this.searchClientByPatron(patronId, this.searchPatronCallBack.bind(this));
     }
   }
+
+    async searchClientByPatron(patronId: string, callBack: (result: any, extraParams?) => void) {
+        let client = await this._createClientBusiness.searchClientByPatron(patronId);
+        if (client) {
+            this.utils.ShowError(this.captions.common.Information, this.captions.EnteredPatronIDIsAlreadyAvailable, ButtonType.YesNo, 
+                this.patronAlreadyExistCallBack.bind(this), [client, callBack, patronId])
+        }
+        else {
+            this._ams.loaderEnable.next(this.captions.common.LoadingPlayerInformation);
+            let playerInfo = await this._playerService.GetPlayerInformation(patronId);
+            this._ams.loaderEnable.next('');
+            if (playerInfo && playerInfo.personalDetails) {
+                if (this.featureSwitch.UpdateGuestInfoAsPerCMS ) { // *** TODO **** || this.popupTitle == this.captions.NewClient TODO
+                    callBack(PatronInfoSearchResultType.UPDATECMSDATAONEXISTING, [playerInfo.personalDetails])
+                }
+                else {
+                  this.FormGrp.controls.rank.setValue(playerInfo.personalDetails.playerRank);
+                    callBack(PatronInfoSearchResultType.PATRONFOUND);
+                }
+            }
+            else {
+                this.utils.ShowErrorPopup([14110]);
+                callBack(PatronInfoSearchResultType.PATRONNOTFOUND);
+            }
+        }
+    }
+
+    async patronAlreadyExistCallBack(result: any, extraParams?: any) {
+        if (result === 'YES') { // *** TODO ****
+            // this.popupTitle = this.captions.EditClient;
+            // this.clientWidowActionType = "EDIT";
+            // this.saveText = this.captions.update;
+            // this.clientEditData = _.cloneDeep(extraParams[0]);
+            // this.clientId = extraParams[0].id;
+            // this.guestId = extraParams[0].clientDetail.guestId;
+            // this.imgService.GetImagesByReference(this.guestId, GlobalConst.ImgRefType.client, this.successCallback.bind(this), this.errorCallback.bind(this), [], true);
+            // extraParams[1](PatronInfoSearchResultType.EDITEXISTINGPATRON);
+            // this.convertToEditClient(extraParams[0]);
+
+        } else {
+            extraParams[1](PatronInfoSearchResultType.PATRONNOTFOUND);
+        }
+    }
 
   searchPatronCallBack(result: number, extraParams?: any) {
     if (result == PatronInfoSearchResultType.EDITEXISTINGPATRON) {
@@ -926,6 +918,128 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     ];
   }
 
+  async UpdateCMSDetailOnExistingGuest(patronId, guestData, callBack?) {
+    this._ams.loaderEnable.next(this.captions.common.LoadingPlayerInformation);
+    let playerInfo = await this._playerService.GetPlayerInformation(patronId);
+    let cmsHasChange: boolean = false;
+    this._ams.loaderEnable.next('');
+    if (playerInfo && playerInfo.personalDetails) {
+        cmsHasChange = this.isCMSDataChanged(guestData, playerInfo.personalDetails);
+        if (this.featureSwitch.UpdateGuestInfoAsPerCMS) {
+            let playerDetail = playerInfo.personalDetails;
+            guestData.client.firstName = playerDetail.firstName;
+            guestData.client.lastName = playerDetail.lastName;
+            guestData.client.pronounce = playerDetail.pronounced;
+            guestData.client.loyaltyDetail[0].rank = playerDetail.playerRank;
+            guestData.client.dateOfBirth = playerDetail.dateOfBirth;
+            if (playerDetail.gender && playerDetail.gender != 'U') {
+                guestData.client.gender = playerDetail.gender == 'M' ? 'Male' : 'Female';
+            }
+            if (playerDetail.address) {
+                guestData.addresses = [];
+                guestData.addresses.push({
+                    line1: playerDetail.address.addressLine1,
+                    city: playerDetail.address.city,
+                    state: playerDetail.address.state,
+                    zip: playerDetail.address.postalCode,
+                    country: playerDetail.address.country
+                })
+            }
+            if (playerDetail.phone && playerDetail.phone.length > 0) {
+                guestData.phoneNumbers = [];
+                playerDetail.phone.forEach(element => {
+                    guestData.phoneNumbers.push({
+                        contactTypeId: element.phoneTypeId,
+                        number: (element.extension ? element.extension + ':' : '') + (element.countryCode ? element.countryCode + "|" : '|') + element.phoneNumber,
+                        extension: element.extension,
+                        isPrimary: element.isPrimary
+                    })
+                });
+            }
+            if (playerDetail.email && playerDetail.email.length > 0) {
+                guestData.emails = [];
+                playerDetail.email.forEach(element => {
+                    guestData.emails.push({
+                        contactTypeId: element.emailTypeId,
+                        emailId: element.emailAddress
+                    })
+                });
+            }
+        }
+        else {
+            guestData.client.loyaltyDetail[0].rank = playerInfo.personalDetails.playerRank;
+        }
+    }
+    else {
+        guestData.client.loyaltyDetail = [];
+        this.utils.ShowErrorPopup([14110]);
+    }
+    return cmsHasChange;
+}
+
+isCMSDataChanged(existingData, cmsData): boolean {
+    if (this.featureSwitch.UpdateGuestInfoAsPerCMS) {
+        if (existingData.client.firstName !== cmsData.firstName ||
+            existingData.client.lastName !== cmsData.lastName ||
+            existingData.client.pronounce !== cmsData.pronounced ||
+            existingData.client.loyaltyDetail[0].rank !== cmsData.playerRank ||
+            this.utils.GetFormattedDate(existingData.client.dateOfBirth) != this.utils.GetFormattedDate(cmsData.dateOfBirth)
+            ) {
+            return true;
+        }
+
+        if (cmsData.gender && cmsData.gender !== 'U' && cmsData.gender !== String(existingData.client.gender).charAt(0)) {
+            return true;
+        }
+
+        if (cmsData.address && (cmsData.address.addressLine1 != existingData.addresses[0].line1 ||
+            cmsData.address.city != existingData.addresses[0].city ||
+            cmsData.address.state != existingData.addresses[0].state ||
+            cmsData.address.postalCode != existingData.addresses[0].zip ||
+            cmsData.address.country != existingData.addresses[0].country)) {
+            return true;
+        }
+
+        let guestPhone = _.orderBy(_.cloneDeep(existingData.phoneNumbers), 'number', 'asc');
+        let formatedCMSPhone = cmsData.phone.map(x => {
+            return {
+                phoneNumber: x.phoneNumber,
+                phoneTypeId: x.phoneTypeId,
+                isPrimary: x.isPrimary,
+                formattedPhone: (x.extension ? x.extension + ':' : '') + (x.countryCode ? x.countryCode + "|" : '|') + x.phoneNumber,
+            }
+        })
+        formatedCMSPhone = _.orderBy(formatedCMSPhone, 'formattedPhone', 'asc')
+        if (guestPhone && guestPhone.length == formatedCMSPhone.length) {
+            for (let index = 0; index < guestPhone.length; index++) {
+                if (guestPhone[index].number != formatedCMSPhone[index].formattedPhone ||
+                    guestPhone[index].contactTypeId != formatedCMSPhone[index].phoneTypeId ||
+                    guestPhone[index].isPrimary != formatedCMSPhone[index].isPrimary) {
+                    return true;
+                }
+            }
+        } else {
+            return true;
+        }
+
+        let guestEmail = _.orderBy(_.cloneDeep(existingData.emails), 'emails', 'asc');
+        let cmsEmail = _.orderBy(cmsData.email, 'emailAddress', 'asc');
+        if (cmsEmail && cmsEmail.length == guestEmail.length) {
+            for (let index = 0; index < cmsEmail.length; index++) {
+                if (cmsEmail[index].emailAddress != guestEmail[index].emailId ||
+                    cmsEmail[index].emailTypeId != guestEmail[index].contactTypeId) {
+                    return true;
+                }
+            }
+        } else {
+            return true;
+        }
+    }
+    else {
+        return existingData.client.loyaltyDetail[0].rank == cmsData.playerRank ? false : true;
+    }
+    return false;
+}
 
 }
 

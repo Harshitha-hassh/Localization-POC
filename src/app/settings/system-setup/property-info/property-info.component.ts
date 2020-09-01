@@ -9,11 +9,11 @@ import * as GlobalConst from 'src/app/common/shared/shared/globalsContant';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { SettingsService } from '../../settings.service';
 import { SPAConfig } from 'src/app/common/shared/config/SPA-config';
-import { Localization } from 'src/app/common/shared/localization/Localization';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
-import { Utilities } from 'src/app/common/shared/shared/utilities/utilities';
 import { SpaFormAgent } from 'src/app/common/shared/shared/spa-form';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Component({
   selector: 'app-property-info',
@@ -54,10 +54,10 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
               private BP: BreakPointAccess,
               private systemConfig: SystemSetupBusinessService,
               private fb: FormBuilder,
-              private localization: Localization,
-              private utilities: Utilities,
+              private localization: RetailLocalization,
+              private utilities: RetailUtilities,
               public http: HttpServiceCall,
-              private utils: Utilities,
+              private utils: RetailUtilities,
               private ss: SettingsService) {
     super(http);
     this.ss.tabLoaderEnable.next(true);
