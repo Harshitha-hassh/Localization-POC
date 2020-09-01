@@ -31,6 +31,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { CardTypeComponent } from './components/card-type/card-type.component';
 import { UserAccessBusiness } from '../common/dataservices/authentication/useraccess.business';
 import { UserAccessDataService } from '../common/dataservices/authentication/useraccess.data.service';
+import { LocalizeDatePipe } from '../core/localization/localize-date.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { UserAccessDataService } from '../common/dataservices/authentication/use
     TransactionHistoryComponent,
     PersonalInformationComponent,
     AdditionalInformationComponent,
-    CardTypeComponent
+    CardTypeComponent,
+    LocalizeDatePipe
   ],
   imports: [
     CommonModule,
@@ -77,6 +79,7 @@ import { UserAccessDataService } from '../common/dataservices/authentication/use
     NgxImageCompressService,
     UserAccessDataService,
     UserAccessBusiness,
+    LocalizeDatePipe
   ],
   exports: [
     FormsModule,
@@ -90,7 +93,8 @@ import { UserAccessDataService } from '../common/dataservices/authentication/use
     MsGraphAuthComponent,
     CommonSharedModule,
     ImageUploaderComponent,
-    CardTypeComponent
+    CardTypeComponent,
+    LocalizeDatePipe
   ],
   entryComponents: [
     AboutComponent,
