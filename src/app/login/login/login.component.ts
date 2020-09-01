@@ -388,22 +388,22 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   UpdateUserRole(propertyId: string) {
     let user = sessionStorage.getItem('_userInfo');
-    const userSelectedProperty = this.userProperties.find(x => x.propertyCode == propertyId);
+    let userSelectedProperty = this.userProperties.find(x => x.propertyCode == propertyId);
     let userInfoArr = user.split(';');
 
     userInfoArr = userInfoArr.map(function (item) {
-      if (item.includes('roleId')) {
+      if (item.includes('roleId'))
         return userSelectedProperty && userSelectedProperty.roleId ? 'roleId=' + userSelectedProperty.roleId : item;
-      } else if (item.includes('roleName')) {
+      else if (item.includes('roleName'))
         return userSelectedProperty && userSelectedProperty.roleName ? 'roleName=' + userSelectedProperty.roleName : item;
-      } else {
+      else
         return item;
-      }
     });
 
     user = userInfoArr.join(';');
     sessionStorage.setItem('_userInfo', user);
   }
+    
 
   async SetPropertyInfo(result: any) {
     const propertyId: number = Number(result.propertyId);

@@ -607,8 +607,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     let loyalty = clientInfo.client && clientInfo.client.length > 0 && clientInfo.client.loyaltyDetail[0];
     let isCMSDataChanged: boolean = false;
     if (loyalty && loyalty.patronId && this.isCMSConfigured) {
-      isCMSDataChanged = await this.UpdateCMSDetailOnExistingGuest(loyalty.patronId, clientInfo,
-         this.searchPatronCallBack.bind(this));
+        //  isCMSDataChanged = await this.UpdateCMSDetailOnExistingGuest(loyalty.patronId, clientInfo,
+        //  this.searchPatronCallBack.bind(this));
       loyalty = clientInfo.client.clientDetail.loyaltyDetail[0];
       if (!loyalty) {
         this.isPatronIdAvailable = false;
