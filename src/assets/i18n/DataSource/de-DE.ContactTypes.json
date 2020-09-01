@@ -1,0 +1,11 @@
+{
+    "Phone": [
+        { "id": 1,  "description" : "Cell_de" } ,
+        { "id": 2,  "description" : "Home_de" } ,
+        { "id": 3,  "description" : "Work_de" }
+    ],
+    "Email":[
+        { "id": 9,  "description" : "Personal_de" },
+        { "id": 10,  "description" : "Office_de" }
+    ]
+}

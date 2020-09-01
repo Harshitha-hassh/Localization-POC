@@ -24,7 +24,7 @@ function loadHosts(): typeof RetailApiHosts {
 
 function readHosts() {
     let apiHosts: typeof RetailApiHosts;
-    const RetailHostUrl = '../../../assets/json/hosts/retail-hosts.json';
+    const RetailHostUrl = './assets/json/hosts/retail-hosts.json';
     const hostLoadErrMsg = 'Error in loading retail-hosts.json - ' + RetailHostUrl;
     $.ajax({
         url: RetailHostUrl,
@@ -47,7 +47,7 @@ function readHosts() {
 }
 function readMsalConfig() {
     let msalConfig: MsalConfiguration;
-    const RetailHostUrl = '../../../assets/json/hosts/retail-hosts.json';
+    const RetailHostUrl = './assets/json/hosts/retail-hosts.json';
     const hostLoadErrMsg = 'Error in loading retail-hosts.json - ' + RetailHostUrl;
     $.ajax({
         url: RetailHostUrl,
@@ -69,7 +69,7 @@ function readMsalConfig() {
 }
 function readMenus() {
     let menus;
-    const menuUrl = '../../../assets/json/menu.json';
+    const menuUrl = './assets/json/menu.json';
 
     $.ajax({
         url: menuUrl,
