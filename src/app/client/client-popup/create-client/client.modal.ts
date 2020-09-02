@@ -5,7 +5,7 @@ export interface ClientInfo {
   phoneNumbers: PhoneNumber[];
   addresses: Address;
   emails: Email[];
-  clientCreditCardInfo: ClientCreditCardInfo[];
+  clientCreditCardInfo: ClientCreditCardInfo;
  }
   
  export interface ClientCreditCardInfo {
@@ -67,11 +67,6 @@ export interface ClientInfo {
     pronounce: string;
     gender: string;
     dateOfBirth: string;
-    customField1: any;
-    customField2: any;
-    customField3: any;
-    customField4: any;
-    customField5: any;
     comments:string;
     lastChangeId?: string;
     interfaceGuestId: string;

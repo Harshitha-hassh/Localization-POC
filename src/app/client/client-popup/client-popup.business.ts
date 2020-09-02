@@ -48,14 +48,9 @@ export class CreateClientBusiness {
         dateOfBirth:
         this.personalDetailsControls.dob == '' ? ''
             : this.Utilities.GetFormattedDate(this.personalDetailsControls.dob),
-        customField1: this.additionalDetailsFormGroup.customField1 ? this.additionalDetailsFormGroup.customField1 : 0,
-        customField2: this.additionalDetailsFormGroup.customField2 ? this.additionalDetailsFormGroup.customField2 : 0,
-        customField3: this.additionalDetailsFormGroup.customField3 ? this.additionalDetailsFormGroup.customField3 : 0,
-        customField4: this.additionalDetailsFormGroup.customField4 ? this.additionalDetailsFormGroup.customField4 : '',
-        customField5: this.additionalDetailsFormGroup.customField5 ? this.additionalDetailsFormGroup.customField5 : '',
         comments : this.additionalDetailsFormGroup.comments ? this.additionalDetailsFormGroup.comments : '',
         lastChangeId: isClientUpdate ?  details.personalDetailsFormGroup.lastChangeId: DefaultGUID,
-        interfaceGuestId: isClientUpdate ?  details.personalDetailsFormGroup.id : '',
+        interfaceGuestId: isClientUpdate ?  details.personalDetailsFormGroup.interfaceGuestId : '',
         loyaltyDetail: loyaltyObj
       };
 

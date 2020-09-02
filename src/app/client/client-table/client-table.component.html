@@ -84,7 +84,7 @@
                     </span>
                   </span>
                   <span *ngIf="hdrCnt.jsonkey == 'dateOfBirth'" >
-                    {{ bodyCnt[hdrCnt.jsonkey] != '' ? utils.LocalizeDate(bodyCnt[hdrCnt.jsonkey]) : ''}}
+                    {{ bodyCnt[hdrCnt.jsonkey] != '' ? localization.LocalizeDate(bodyCnt[hdrCnt.jsonkey]) : ''}}
                   </span>
                   <span *ngIf="!CheckInnerBool(bodyCnt[hdrCnt.jsonkey])">
                     <span *ngIf="hdrCnt.datatype && hdrCnt.datatype == 'decimal' && !IfBoolean(bodyCnt[hdrCnt.jsonkey])">

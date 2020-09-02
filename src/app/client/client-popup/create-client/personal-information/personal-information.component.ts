@@ -135,6 +135,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       rank: '',
       imageReferenceId: '',
       lastChangeId :DefaultGUID,
+      interfaceGuestId :'',
       guestImg: this.Form.group({
         base64textString: '',
         thumbnailImg: ''
@@ -624,6 +625,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     }
     this.personalDetails = clientInfo.client;
     this.FormGrp.controls.lastChangeId.setValue(clientInfo.client.lastChangeId);
+    this.FormGrp.controls.interfaceGuestId.setValue(clientInfo.client.interfaceGuestId);
     this.FormGrp.controls.id.setValue(clientInfo.client.id);
     this.FormGrp.controls.guestId.setValue(clientInfo.client.guestId);
     this.FormGrp.controls.title.setValue(this.utils.GetGuestIdbyTitle(clientInfo.client.title));
