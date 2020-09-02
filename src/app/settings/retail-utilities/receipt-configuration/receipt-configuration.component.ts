@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { Localization } from '../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { Outlet, ReceiptModel, OutletTerminal } from '../../../retail/retail.modals';
 import { ReceiptConfigurationDataService } from './receipt-configuration-data';
 import { RetailOutletsDataService } from '../../../retail/retail-code-setup/retail-outlets/retail-outlets-data.service';
@@ -33,7 +33,7 @@ export class ReceiptConfigurationComponent implements OnInit {
 
   constructor(private Form: FormBuilder,
               private breakPoint: BreakPointAccess,
-              private localization: Localization,
+              private localization: RetailStandaloneLocalization,
               private http: HttpServiceCall, private data: ReceiptConfigurationDataService,
               private outletData: RetailOutletsDataService, private retailService: RetailSetupService, private utils: RetailUtilities) {
     this.textCaptions = this.localization.captions.utilities;

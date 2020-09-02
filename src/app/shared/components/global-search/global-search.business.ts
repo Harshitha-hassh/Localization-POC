@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { GlobalSearchModel, searchtitleenum, GlobalSearchData } from './global-search.model';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { RetailItemSearchModel } from '../../models/retail-item.model';
 
 @Injectable()
 export class GlobalSearchBusiness {
     constructor(
         // private _retailItemDataService: RetailItemDataService,
-        private _localization: Localization) { }
+        private _localization: RetailStandaloneLocalization) { }
     public async globalSearch(pattern: string): Promise<GlobalSearchModel[]> {
         const filterData = [];
         const searchables: Promise<any>[] = [];

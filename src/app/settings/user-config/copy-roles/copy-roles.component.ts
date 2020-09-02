@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Localization } from '../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 // import { AlertMessagePopupComponent } from '../../../shared/alert-message-popup/alert-message-popup.component';
@@ -24,7 +24,7 @@ export class CopyRolesComponent implements OnInit {
   sampleOptions: any = [{ id: 1, name: 'System Administrator' }, { id: 2, name: 'Advanced User' }];
   roleGrp: FormGroup;
 
-  constructor(private http: HttpServiceCall, public localization: Localization, @Inject(MAT_DIALOG_DATA) public data,
+  constructor(private http: HttpServiceCall, public localization: RetailStandaloneLocalization, @Inject(MAT_DIALOG_DATA) public data,
     private fb: FormBuilder,
     // private _viewSetting: ViewSettingClientBusiness,
     private dialogRef: MatDialogRef<CopyRolesComponent>, private dialog: MatDialog, private utils: Utilities) {

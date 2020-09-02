@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Localization } from '../../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 import { SettingsService } from '../../../settings.service';
 // import { HttpServiceCall, HttpMethod } from '../../../../shared/service/http-call.service';
 // import { Host } from '../../../../shared/globalsContant';
@@ -30,7 +30,7 @@ export class UserSettingsComponent implements OnInit {
   userSettingsFormGrp: FormGroup;
   ActionButton: string;
 
-  constructor(public localization: Localization, public servicesetting: SettingsService,
+  constructor(public localization: RetailStandaloneLocalization, public servicesetting: SettingsService,
               private http: HttpServiceCall, private utils: Utilities, private PropertyInfo: PropertyInformation) {
 
   }

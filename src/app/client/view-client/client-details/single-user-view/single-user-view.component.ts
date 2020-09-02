@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { Localization } from '../../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 import { SubscriptionLike as ISubscription, ReplaySubject } from 'rxjs';
 // import { AppointmentpopupService } from '../../../../shared/service/appointmentpopup.service';
 import { MatDialog } from '@angular/material';
@@ -32,7 +32,7 @@ export class SingleUserViewComponent implements OnInit, OnDestroy {
   checkinBDRclr: string;
   checkoutBDRclr: string;
   sBDRclr: string;
-  constructor(public localization: Localization, private propertyInfo: PropertyInformation, private utils: RetailUtilities, private clientCommonService: ClientCommonService) { }
+  constructor(public localization: RetailStandaloneLocalization, private propertyInfo: PropertyInformation, private utils: RetailUtilities, private clientCommonService: ClientCommonService) { }
 
   trackByFn(index, cell) {
     return index;

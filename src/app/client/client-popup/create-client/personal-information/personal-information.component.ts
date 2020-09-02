@@ -6,7 +6,7 @@ import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { AddressComponent } from 'ngx-google-places-autocomplete/objects/addressComponent';
 import { BaseResponse } from 'src/app/common/shared/shared.modal';
-import { Localization } from '../../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 import * as _ from 'lodash';
 import { PropertyInformation } from '../../../../core/services/property-information.service';
 import { ReplaySubject } from 'rxjs';
@@ -17,7 +17,6 @@ import { PatronInfoSearchResultType, Addresscomponent, ImageData, Imagedata } fr
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { EmptyValueValidator } from 'src/app/retail/shared/Validators/EmptyValueValidator';
 import { PhoneTypes, ContactType, GuestProfileMailTypes } from 'src/app/common/shared/shared/enums/enums';
-import { ImageDataService } from 'src/app/shared/data-services/Image/Image.data.services';
 import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Image.service';
 import { CreateClientBusiness } from '../../client-popup.business';
 import { AppModuleService } from 'src/app/core/services/app.service';
@@ -29,7 +28,7 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
   templateUrl: './personal-information.component.html',
   styleUrls: ['./personal-information.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ImageDataService ,CreateClientBusiness]
+  providers: [CreateClientBusiness]
 })
 export class PersonalInformationComponent implements OnInit, OnDestroy, AfterViewChecked {
   @Input() parentForm: FormGroup;
@@ -97,7 +96,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   constructor(
     private Form: FormBuilder,
     private http: HttpServiceCall,
-    public localization: Localization,
+    public localization: RetailStandaloneLocalization,
     private utils: RetailUtilities,
     private BP: BreakPointAccess,
     private PropertyInfo: PropertyInformation,

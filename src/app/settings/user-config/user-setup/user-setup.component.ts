@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
-import { Localization } from '../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import * as _ from 'lodash';
@@ -49,7 +49,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   FormGrp: FormGroup;
   searchValue = true;
 
-  constructor(private Form: FormBuilder, public localization: Localization, private dialog: MatDialog,
+  constructor(private Form: FormBuilder, public localization: RetailStandaloneLocalization, private dialog: MatDialog,
               private servicesetting: SettingsService,
               private http: HttpServiceCall,
               private utils: Utilities, private BPoint: BreakPointAccess,

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, OnDestroy, Input, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatTab, MatTabHeader, MatTabGroup } from '@angular/material';
-import { Localization } from '../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-create-client',
@@ -15,7 +15,7 @@ export class CreateClientComponent implements OnInit, OnDestroy {
   clientSelectedTab: number;
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
-    public localization: Localization) { }
+    public localization: RetailStandaloneLocalization) { }
 
   ngOnInit() {
     this.bindApiData();

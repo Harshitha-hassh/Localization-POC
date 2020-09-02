@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { ActivatedRoute } from '@angular/router';
 import { LoginCommunicationService } from '../login-communication.service';
 import { ButtonValue } from 'src/app/shared/shared-models';
@@ -44,7 +44,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder, private loginService: LoginCommunicationService,
     public dialogRef: MatDialogRef<SetPasswordComponent>,
-    private localization: Localization,
+    private localization: RetailStandaloneLocalization,
     private route: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     this.passwordSetUp = this.formBuilder.group({});

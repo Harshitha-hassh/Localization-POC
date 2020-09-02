@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { Utilities } from 'src/app/core/utilities';
 import { MsGraphHttpService } from '../common/ms-graph-http.service';
 import { GraphServiceParams } from '../../models/ms-graph-http.model';
@@ -18,7 +18,7 @@ export class MsGraphApiCommunication extends MsGraphHttpService {
     captions: any;
     constructor(
         propertyInfo: PropertyInformation,
-        localization: Localization,
+        localization: RetailStandaloneLocalization,
         utilities: Utilities) {
         super(propertyInfo, localization, utilities);
     }

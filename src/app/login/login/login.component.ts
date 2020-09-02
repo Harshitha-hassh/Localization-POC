@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { RetailRoutes } from 'src/app/core/extensions/retail-route';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { Utilities } from 'src/app/core/utilities';
 import { PropertySettingDataService } from 'src/app/shared/data-services/authentication/propertysetting.data.service';
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
-    private localize: Localization,
+    private localize: RetailStandaloneLocalization,
     private utils: Utilities,
     private route: ActivatedRoute,
     private sessionService: ManageSessionService,

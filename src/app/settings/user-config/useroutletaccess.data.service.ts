@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Localization } from '../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../core/localization/retailStandalone-localization';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { BaseResponse } from 'src/app/common/Models/http.model';
 import { Utilities } from 'src/app/core/utilities';
@@ -10,7 +10,7 @@ import { UserSubPropertyAccess } from 'src/app/common/shared/shared/business/vie
 
 export class UserOutletAccessDataService {
 
-    constructor(private http: HttpServiceCall, private utils: Utilities, private localization: Localization) { }
+    constructor(private http: HttpServiceCall, private utils: Utilities, private localization: RetailStandaloneLocalization) { }
     /**
       * @returns {Promise<UserSubPropertyAccess[]>}
       * @memberof UserOutletAccessDataService

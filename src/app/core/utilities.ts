@@ -2,7 +2,7 @@ import { FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { cloneDeep, map, orderBy, isEqual, forEach, includes, differenceWith } from 'lodash';
 import { Injectable, OnDestroy } from '@angular/core';
-import { Localization } from '../core/localization/Localization';
+import { RetailStandaloneLocalization } from './localization/retailStandalone-localization';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Calendar, ContactType, AlertType, ButtonType, AlertAction } from '../shared/shared-models';

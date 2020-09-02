@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 import { MaterialModule } from '../material-module';
 import { RouterModule } from '@angular/router';
-import { Localization } from '../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../core/localization/retailStandalone-localization';
 import { MenuComponent } from './components/menu/menu.component';
 import { GlobalSearchComponent } from './components/global-search/global-search.component';
 import { PopoverModule } from 'ngx-popover';
@@ -31,6 +31,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { CardTypeComponent } from './components/card-type/card-type.component';
 import { UserAccessBusiness } from '../common/dataservices/authentication/useraccess.business';
 import { UserAccessDataService } from '../common/dataservices/authentication/useraccess.data.service';
+import { LocalizeDatePipe } from '../core/localization/localize-date.pipe';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { UserAccessDataService } from '../common/dataservices/authentication/use
     TransactionHistoryComponent,
     PersonalInformationComponent,
     AdditionalInformationComponent,
-    CardTypeComponent
+    CardTypeComponent,
+    LocalizeDatePipe
   ],
   imports: [
     CommonModule,
@@ -67,7 +69,7 @@ import { UserAccessDataService } from '../common/dataservices/authentication/use
     {
       provide: DateAdapter,
       useClass: CustomDateAdapter,
-      deps: [Localization,
+      deps: [RetailStandaloneLocalization,
         Platform]
     },
     {
@@ -77,6 +79,7 @@ import { UserAccessDataService } from '../common/dataservices/authentication/use
     NgxImageCompressService,
     UserAccessDataService,
     UserAccessBusiness,
+    LocalizeDatePipe
   ],
   exports: [
     FormsModule,
@@ -90,7 +93,8 @@ import { UserAccessDataService } from '../common/dataservices/authentication/use
     MsGraphAuthComponent,
     CommonSharedModule,
     ImageUploaderComponent,
-    CardTypeComponent
+    CardTypeComponent,
+    LocalizeDatePipe
   ],
   entryComponents: [
     AboutComponent,

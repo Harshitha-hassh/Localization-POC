@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { ServiceParams } from '../../models/http.model';
 import { isNumber } from 'util';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { takeUntil } from 'rxjs/operators';
 import { Utilities } from 'src/app/core/utilities';
@@ -14,7 +14,7 @@ export class HttpCallService {
 
     constructor(host
         , private http: HttpClient
-        , public localization: Localization
+        , public localization: RetailStandaloneLocalization
         , private utilities: Utilities,
         private PropertyInfo: PropertyInformation) {
         this.baseURL = host;

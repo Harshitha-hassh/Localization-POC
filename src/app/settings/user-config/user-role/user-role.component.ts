@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { SettingsService } from '../../settings.service';
 import { MatDialog } from '@angular/material';
-import { Localization } from '../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { PropertyInformation } from '../../../core/services/property-information.service';
 import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.service';
@@ -32,7 +32,7 @@ export class UserRoleComponent implements OnInit, OnDestroy {
 
 
   constructor(public settingService: SettingsService, private http: HttpServiceCall, private dialog: MatDialog,
-              private localization: Localization,
+              private localization: RetailStandaloneLocalization,
               private BPoint: BreakPointAccess, private utils: Utilities, private PropInfo: PropertyInformation) {
 
   }

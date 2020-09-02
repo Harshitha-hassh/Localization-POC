@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 
 @Component({
   selector: 'app-no-data-found',
@@ -12,7 +12,7 @@ export class NoDataFoundComponent implements OnInit {
 @Input() title;
 @Input() text;
 captions: any;
-  constructor(private localization: Localization) { }
+  constructor(private localization: RetailStandaloneLocalization) { }
 
   ngOnInit() {
     this.captions = this.localization.captions.common;

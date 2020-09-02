@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { Imagedata } from 'src/app/shared/shared-models';
 import { ImageDataService } from './Image.data.services';
 import { ImgRefType } from 'src/app/retail/shared/globalsContant';
@@ -20,7 +20,7 @@ export class RetailImageService {
   thumbnailImg: any;
   oldMargin: any;
 
-  constructor(public localization: Localization,
+  constructor(public localization: RetailStandaloneLocalization,
     private imgService: ImageDataService) {
   }
 

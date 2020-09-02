@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Localization } from '../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import * as myGlobals from 'src/app/common/shared/shared/globalsContant'; // CONSTANT FILE ADD ANY CONSTANT VALUE
 import { SubPropertyModel, ZebraPrinters } from '../../../retail/retail.modals';
@@ -57,7 +57,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    public localization: Localization,
+    public localization: RetailStandaloneLocalization,
     public PropertyInfo: PropertyInformation,
     private userMachineConfigurationService: UserMachineConfigurationService,
     private http: HttpServiceCall,
