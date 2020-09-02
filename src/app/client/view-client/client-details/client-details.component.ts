@@ -125,6 +125,10 @@ export class ClientDetailsComponent implements OnInit {
     sampleData: any = [];
 
     ngOnInit() {
+      if (this.route.snapshot.routeConfig.path == 'allclients') { this.clientService.selectedIndex = 0; }
+      if (this.route.snapshot.routeConfig.path == 'recents') { this.clientService.selectedIndex = 1; }
+       else if (this.route.snapshot.routeConfig.path == 'vip') { this.clientService.selectedIndex = 2; }
+
         this.sampleData = _.cloneDeep(this.TablebodyData);
         this.selectedClient = [];
         this.innerfilterArray.forEach(element => {
@@ -135,7 +139,9 @@ export class ClientDetailsComponent implements OnInit {
             element.values = [];
         });
         if (this.clientService.selectedIndex == 1) {
-            this.RecentClientInformation(this.searchText)
+            if (this.searchText &&  this.searchText.length > 2){
+                this.RecentClientInformation(this.searchText)
+            }
             this.selectedClient = [];
             this.clientService.isVip = false;
         }
@@ -557,8 +563,8 @@ export class ClientDetailsComponent implements OnInit {
             error: this.errorCallback.bind(this),
             callDesc: "SearchClientInfo",
             method: HttpMethod.Put,
+            uriParams: { requestUid: this.requestUid },
             body: pattern,
-            uriParams:'',
             showError: true,
             extraParams: []
         });
