@@ -20,11 +20,11 @@ const routes: Routes = [{
       component: RecentsComponent,
       data: { redirectTo: 'client/vip', hasChild: false }
     },
-    {
-      path: 'vip',
-      component: VipComponent,
-      data: { redirectTo: '', hasChild: false }
-    },
+    // {
+    //   path: 'vip',
+    //   component: VipComponent,
+    //   data: { redirectTo: '', hasChild: false }
+    // },
     {
           path: 'allclients/:id',
           component: AllClientsComponent,
