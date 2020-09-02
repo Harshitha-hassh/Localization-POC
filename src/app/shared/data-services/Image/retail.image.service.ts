@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { Imagedata } from 'src/app/shared/shared-models';
-import { ImageDataService } from './Image.data.services';
+// import { ImageDataService } from './Image.data.services';
 import { ImgRefType } from 'src/app/retail/shared/globalsContant';
 
 @Injectable({
@@ -21,7 +21,8 @@ export class RetailImageService {
   oldMargin: any;
 
   constructor(public localization: RetailStandaloneLocalization,
-    private imgService: ImageDataService) {
+    // private imgService: ImageDataService
+    ) {
   }
 
 
@@ -40,7 +41,8 @@ export class RetailImageService {
         sequenceNo: this.sequenceNo,
         imageReferenceId: clientId
       };
-      await this.imgService.updateImage([imageDataObj]);
+      return null;
+     // await this.imgService.updateImage([imageDataObj]);
     }
   }
 
@@ -59,15 +61,21 @@ export class RetailImageService {
         sequenceNo: 0,
         imageReferenceId: clientId
       };
-      return await this.imgService.saveImage([imageDataObj]);
+      return null;
+
+     // return await this.imgService.saveImage([imageDataObj]);
     }
   }
   async getImageForClient(imgRefId: string, isthumbnailonly: boolean): Promise<Imagedata> {
-    return await this.imgService.GetImagesByReferenceId(imgRefId, isthumbnailonly);
+   // return await this.imgService.GetImagesByReferenceId(imgRefId, isthumbnailonly);
+   return null;
+
 
   }
   async getImagesForClients(imgRefIds: string[], isthumbnailonly: boolean): Promise<Imagedata[]> {
-    return await this.imgService.GetAllImagesByReference(imgRefIds, isthumbnailonly);
+   // return await this.imgService.GetAllImagesByReference(imgRefIds, isthumbnailonly);
+   return null;
+
   }
 
   //Get List of Profile Images
