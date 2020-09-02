@@ -11,6 +11,9 @@ import { ButtonType } from '../../shared-models';
 import { MatDialog } from '@angular/material';
 import { CommonAlertPopupComponent } from 'src/app/common/shared/shared/common-alert-popup/common-alert-popup.component';
 import { AboutComponent } from '../about/about.component';
+import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-config/payment-features-config/property-feature-config.service';
+import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
+import { ConfigKeys } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 
 @Component({
   selector: 'app-menu',
@@ -50,6 +53,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   lastName: string;
   // sortPipe: SortOrderPipe;
   captions: any;
+  isEatecEnabled: boolean;
 
   @Input('menu')
   set MenuValue(value) {
@@ -62,8 +66,10 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(public router: Router
     , private _localization: RetailStandaloneLocalization
     , private _sessionService: ManageSessionService
-    , private activeRoute: ActivatedRoute,
-    private dialog: MatDialog) {
+    , private activeRoute: ActivatedRoute
+    , private dialog: MatDialog
+    , private _propertyFeatureService: PropertyFeaturesConfigurationService
+    , private _propertyInfo: RetailPropertyInformation) {
     // this.sortPipe = new SortOrderPipe();
   }
 
@@ -84,6 +90,33 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       this.router.events.pipe(takeUntil(this.destroyed$)).subscribe(x => {
         this.selectedItem = this.menuList.menu.find(menu => this.router.url.indexOf(menu.routePath) > -1);
         this.selectedItem = { ...this.selectedItem };
+      });
+    }
+    if (!sessionStorage.getItem("giftCardConfiguration")) {
+      this._propertyFeatureService.GetGiftCardConfiguration().then((config) => {
+        this._propertyInfo.SetGiftCardConfiguration(config);
+      });
+    }
+
+    
+    if (!sessionStorage.getItem("EatecURI")) {
+      var configValue = "";
+      let featureNames = ["Enhanced Inventory"];
+      this._propertyFeatureService.GetFeatureConfigurations(featureNames).then((featureconfigurations) => {
+        if (featureconfigurations != null) {
+          this.isEatecEnabled = true;
+          sessionStorage.setItem('isEatecEnabled', 'true')
+          let eatecUser = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Eatec.EatecTenantUser);
+          let uri = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Eatec.EatecURI);
+          if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
+            configValue = uri.configurationValue
+          }
+        }
+        else {
+          this.isEatecEnabled = false;
+          sessionStorage.setItem('isEatecEnabled', 'false')
+        }
+        this._propertyInfo.SetEatecRI(configValue)
       });
     }
   }
