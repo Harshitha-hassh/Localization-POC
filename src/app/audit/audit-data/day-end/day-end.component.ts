@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, OnDestroy, AfterViewChecked } fro
 import * as _ from 'lodash'; // STORAGE THE BACK ARRAY
 import { MatDialog } from '@angular/material';
 import { BaseResponse } from '../../../common/shared/shared.modal';
-import { ManagementData } from '../../../shared/shared-models';
+import { ManagementData,ClientDetail } from '../../../shared/shared-models';
 import { GridData, PendingAction, AppointmentData, GridAction, ManagementDataType } from '../../AuditModals';
 import { AuditService } from '../../audit.service';
 import { Router } from '@angular/router';
@@ -288,9 +288,12 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
       this.ClearGridDate(gridData);
       return;
     }
+    var allClientIds = response.map(r => r.guestId);   
     // All item info will be required when Reopen/Settle transaction from dayend
     this.InvokeServiceCall('GetShopItems', Host.retailManagement, HttpMethod.Get);
-    const clerkInfo = await this.getClerkInfo();
+    let [clerkInfo, clients] = await Promise.all(
+      [this.getClerkInfo(),
+      this.getClients(allClientIds)]);
 
     const gridHeader = this.auditService.GetDayEndGridHeader(PendingAction.OpenTransaction);
     const gridActions = this.auditService.GetDayEndGridAction(PendingAction.OpenTransaction);
@@ -307,7 +310,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
         ClerkID: (clerk && clerk.length > 0) ? clerk[0].userName : '',
         Outlet: tran.outletName,
         Amount: this.FormatCurrency(tran.totalAmount),
-        ClientName: this.GetManagementNamebyId(tran.guestId, ManagementDataType.Client),
+        ClientName: this.getClientName(clients,tran.guestId),
         ClientId: tran.guestId,
         MemberName: '',
         AppointmentNumber: ''
@@ -645,6 +648,28 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
         uriParams,
     });
     return result;
+}
+private async getClients(clientId: number[]): Promise<ClientDetail[]> {
+  let result: ClientDetail[] = [];
+  if (clientId && clientId.length > 0) {
+    clientId = Array.from(new Set(clientId)); // Unique
+    let clientResponse: BaseResponse<ClientDetail[]> = await this.InvokeServiceCallAsync("GetClientByIds", Host.retailPOS, HttpMethod.Put, '', clientId)
+    if (clientResponse.result) {
+      result = clientResponse.result;
+    }
+  }
+  return result;
+}
+
+private getClientName(allClinets: ClientDetail[], clientId: number): string {
+  let clientName = '';
+  if (allClinets && allClinets.length > 0) {
+    var client = allClinets.find(r => r.id == clientId);
+    if (client) {
+      clientName = `${client.firstName} ${client.lastName}`
+    }
+  }
+  return clientName;
 }
 
 }

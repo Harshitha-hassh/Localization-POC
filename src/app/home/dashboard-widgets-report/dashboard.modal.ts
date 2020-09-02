@@ -3,6 +3,7 @@ export interface OutletOption {
     name: string;
     description: string;
     defaultOutletId : number;
+    isActive:boolean;
 }
 
 export interface DonutCount {
