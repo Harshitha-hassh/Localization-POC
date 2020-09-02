@@ -34,6 +34,9 @@ export const enum JsonDataSourceType {
 )
 export class RetailStandaloneLocalization extends CommonLocalization{
 
+  constructor(public jsonReader: JSONReaderService) {
+    super(jsonReader);
+  }
       /**
    * Display number in Million or Thousand format.
    * @param number value.
