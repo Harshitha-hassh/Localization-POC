@@ -17,7 +17,7 @@ import { PatronInfoSearchResultType, Addresscomponent, ImageData, Imagedata } fr
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { EmptyValueValidator } from 'src/app/retail/shared/Validators/EmptyValueValidator';
 import { PhoneTypes, ContactType, GuestProfileMailTypes } from 'src/app/common/shared/shared/enums/enums';
-import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Image.service';
+// import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Image.service';
 import { CreateClientBusiness } from '../../client-popup.business';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { PlayerInformationService } from 'src/app/common/shared/shared/service/player.information.service';
@@ -101,7 +101,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     private BP: BreakPointAccess,
     private PropertyInfo: PropertyInformation,
     private clientCommonService: ClientCommonService,
-    public _imageService: RetailImageService,
+    // public _imageService: RetailImageService,
     private _createClientBusiness: CreateClientBusiness,
     private featureSwitch: RetailFeatureFlagInformationService,
     private _playerService: PlayerInformationService,
@@ -696,7 +696,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     }
     var imageData : Imagedata;
     if (clientInfo.client.guestId && clientInfo.client.guestId != DefaultGUID) {
-      imageData = await this._imageService.getImageForClient(clientInfo.client.guestId, true);
+      // imageData = await this._imageService.getImageForClient(clientInfo.client.guestId, true);
     }
     var url = `${imageData && imageData[0] ? imageData[0].contentType : ''},${imageData && imageData[0] ? imageData[0].thumbnailData : ''}`
     this.url = url;
