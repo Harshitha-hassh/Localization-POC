@@ -17,7 +17,6 @@ import { PatronInfoSearchResultType, Addresscomponent, ImageData, Imagedata } fr
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { EmptyValueValidator } from 'src/app/retail/shared/Validators/EmptyValueValidator';
 import { PhoneTypes, ContactType, GuestProfileMailTypes } from 'src/app/common/shared/shared/enums/enums';
-import { ImageDataService } from 'src/app/shared/data-services/Image/Image.data.services';
 import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Image.service';
 import { CreateClientBusiness } from '../../client-popup.business';
 import { AppModuleService } from 'src/app/core/services/app.service';
@@ -29,7 +28,7 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
   templateUrl: './personal-information.component.html',
   styleUrls: ['./personal-information.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [ImageDataService ,CreateClientBusiness]
+  providers: [CreateClientBusiness]
 })
 export class PersonalInformationComponent implements OnInit, OnDestroy, AfterViewChecked {
   @Input() parentForm: FormGroup;
