@@ -25,7 +25,8 @@ export class DashBoardBusiness {
                 id: o.id,
                 name: o.outletName,
                 description: o.outletName,
-                defaultOutletId: o.id
+                defaultOutletId: o.id,
+                isActive: o.isActive
             }
         }):[];
         return result;

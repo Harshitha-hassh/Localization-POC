@@ -135,8 +135,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     this.dashboardOutletIds = this.outletIds; 
     this.outletId=this.dashboardOutletIds[0];
     this.outletId = this.outletIds[0];
-    if (this.outletId > this.numericZero) {
-      this.getOutletsCount();
+    if (this.outletId > this.numericZero) {      
       this.getTotalSalesRevenue();
       this.getNumberOfTransaction();
       this.getAverageTransaction();
@@ -222,6 +221,9 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     this.getReturned_ItemsDetail();
     this.getOpenTicketsData();
     this.getOutofStockOnData();
+    this.getRevenueByOutletDetail();
+    this.getTop5ItemSaleDetail("day_0");
+    this.getCategorySaleDetail("day_1");
   };
   loopWidgetDropDownFrmControl($event, loopWidget, loopWidget_Index) {
     console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
@@ -279,7 +281,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     setTimeout(() => {
       this.callDynamicWidthAlign(0); // PMS -sales widget only-1
     }, 1);
-
+    this.getOutletsCount();
   }
 
 
@@ -376,12 +378,13 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   }
 
 
-  async getOutletsCount() {
-    const outletsCount: DonutCount = await this.dashBoardBusiness.getOutletsCount();
+  getOutletsCount() {
+    //const outletsCount: DonutCount = await this.dashBoardBusiness.getOutletsCount();
+    const outletsCount = this.dashboardWidgetsReportService.OutletsData;    
     this.DB_OultetsChart_data = {
       data: {
         id: 'chart1',
-        series: [outletsCount.inActive, outletsCount.active],
+        series: [outletsCount.filter(o=>!o.isActive).length,outletsCount.filter(o=>o.isActive).length],
         captions: {
           courses: this.captions.Outlets,
           courseStatus: this.captions.Outlets,
@@ -436,20 +439,20 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 
   getNumberOfTransaction() {
     this.DB_NumberOfTransaction_data = {
-      count: '4.3M',
+      count: '0',
       description: this.captions.number_of_Transaction
     };
   }
 
   getAverageTransaction() {
     this.DB_AverageTransaction_data = {
-      count: '$62.36',
+      count: '0',
       description: this.captions.average_Transaction
     };
   }
   getAvgUnitPerCustomer() {
     this.DB_AvgUnitPerCustomer_data = {
-      count: '5.08',
+      count: '0',
       description: this.captions.unitPerCustomer
     };
   }
