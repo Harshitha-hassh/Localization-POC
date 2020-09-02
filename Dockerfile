@@ -8,8 +8,8 @@ WORKDIR /ui
 COPY ./package.json /ui/
 RUN npm install
 RUN npm audit fix
-RUN npm install moment@2.22.2
-RUN npm install @angular-devkit/build-angular@0.803.24
+#RUN npm install moment@2.22.2
+#RUN npm install @angular-devkit/build-angular@0.803.24
 
 ## copy app
 COPY . /ui/
