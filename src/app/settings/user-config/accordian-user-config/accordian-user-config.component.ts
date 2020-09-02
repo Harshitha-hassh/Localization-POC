@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation, ViewChild, AfterViewInit, OnChanges } from '@angular/core';
 import * as _ from 'lodash';
-import { Localization } from '../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { SettingsService } from '../../settings.service';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 
@@ -20,7 +20,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   userDetails: FormArray;
   userClaims: FormArray;
 
-  constructor(public _settingService: SettingsService, public localization: Localization, private fb: FormBuilder) {
+  constructor(public _settingService: SettingsService, public localization: RetailStandaloneLocalization, private fb: FormBuilder) {
 
   }
 

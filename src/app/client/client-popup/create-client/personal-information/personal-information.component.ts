@@ -6,7 +6,7 @@ import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { AddressComponent } from 'ngx-google-places-autocomplete/objects/addressComponent';
 import { BaseResponse } from 'src/app/common/shared/shared.modal';
-import { Localization } from '../../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 import * as _ from 'lodash';
 import { PropertyInformation } from '../../../../core/services/property-information.service';
 import { ReplaySubject } from 'rxjs';
@@ -97,7 +97,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   constructor(
     private Form: FormBuilder,
     private http: HttpServiceCall,
-    public localization: Localization,
+    public localization: RetailStandaloneLocalization,
     private utils: RetailUtilities,
     private BP: BreakPointAccess,
     private PropertyInfo: PropertyInformation,

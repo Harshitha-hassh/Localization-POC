@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonAlertMessagePopupComponent } from '../common/shared/shared/alert-message-popup/alert-message-popup.component';
@@ -11,7 +11,7 @@ export class ClientCommonService {
   commonCaptions: any;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   constructor(private dialog: MatDialog,
-    public localization: Localization) {
+    public localization: RetailStandaloneLocalization) {
     this.captions = this.localization.captions.bookAppointment;
     this.commonCaptions = this.localization.captions.common;
   }

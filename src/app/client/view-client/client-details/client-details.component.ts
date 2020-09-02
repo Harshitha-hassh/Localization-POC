@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, ViewEncapsulation } from '@an
 import { trigger, style, animate, transition } from '@angular/animations';
 // import { AppointmentPopupComponent } from '../../../shared/appointment-popup/appointment-popup.component';
 import { MatDialog } from '@angular/material';
-import { Localization } from '../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import * as _ from 'lodash';
 import { BaseResponse, KeyValuePair, ImageData, clientInfoDisplay, ClientLabel, Imagedata } from '../../../shared/shared-models';
 import { ClientService } from '../../../shared/service/client-service.service';
@@ -109,7 +109,7 @@ export class ClientDetailsComponent implements OnInit {
     requestUid = '';
     timer = null;
     constructor(private dialog: MatDialog,
-        private localization: Localization, public http: HttpServiceCall, private utils: RetailUtilities,public _imageService: RetailImageService,
+        private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities,public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
         , private breakPoint: BreakPointAccess, private imageprocessorservice: ImageProcessorService) {
         route.params.subscribe(val => {

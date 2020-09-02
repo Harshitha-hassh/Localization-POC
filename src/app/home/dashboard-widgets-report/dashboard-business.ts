@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import * as DashBoardInterface from './dashboard.modal';
 import { DashBoardService } from 'src/app/shared/data-services/authentication/retailmanagement/dashboard.data.service';
 import { SubPropertyDataService } from 'src/app/retail/retail-code-setup/retail-outlets/subproperty-data.service';
@@ -12,7 +12,7 @@ export class DashBoardBusiness {
     public readonly weekFormat: number = 2;
     public readonly monthFormat: number = 3;
     constructor(private dashBoardService: DashBoardService
-        ,       private localization: Localization
+        ,       private localization: RetailStandaloneLocalization
         ,       private _subPropertyDataService: SubPropertyDataService
     ) {
         this.Captions = this.localization.captions['dashBoard'];

@@ -3,7 +3,7 @@ import { Router, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { cloneDeep } from 'lodash';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { ManageSessionService } from 'src/app/login/manage-session.service';
 // import { SortOrderPipe } from 'src/app/pipes/sort-order.pipe';
 import { menuTypes } from '../../enums/menu.constant';
@@ -60,7 +60,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   constructor(public router: Router
-    , private _localization: Localization
+    , private _localization: RetailStandaloneLocalization
     , private _sessionService: ManageSessionService
     , private activeRoute: ActivatedRoute,
     private dialog: MatDialog) {

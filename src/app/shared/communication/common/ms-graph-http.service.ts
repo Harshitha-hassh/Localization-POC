@@ -3,7 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Client, GraphRequest, Options } from '@microsoft/microsoft-graph-client';
 import { MsalService } from '@azure/msal-angular';
 import { Utilities } from 'src/app/core/utilities';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { GraphServiceParams, GraphUser } from '../../models/ms-graph-http.model';
 import { UserAgentApplication, CacheLocation } from 'msal';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
@@ -23,7 +23,7 @@ export class MsGraphHttpService {
     pendingGraphRequest: GraphRequest[];
     constructor(
         private propertyInfo: PropertyInformation,
-        localization: Localization,
+        localization: RetailStandaloneLocalization,
         utilities: Utilities) {
         this.captions = localization.captions;
         this.utilities = utilities;

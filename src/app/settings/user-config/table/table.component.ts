@@ -16,7 +16,7 @@ import { takeUntil } from 'rxjs/operators';
 import { UserAlerts } from 'src/app/common/shared/config/alerts-config';
 import { GridType } from 'src/app/retail/shared/globalsContant';
 import { RetailTransactions, PromptType } from 'src/app/common/shared/shared/globalsContant';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { CommonAlertMessagePopupComponent } from 'src/app/common/shared/shared/alert-message-popup/alert-message-popup.component';
 @Component({
   selector: 'app-table',
@@ -30,7 +30,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
   constructor(public dialog: MatDialog, private userAlerts: UserAlerts,
               public el: ElementRef,
               public fb: FormBuilder,
-              public localization: Localization,
+              public localization: RetailStandaloneLocalization,
               private cdRef: ChangeDetectorRef) {
     this.captions = this.localization.captions;
     this.customHeaderButton = this.localization.captions.setting.Add;

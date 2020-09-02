@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
-import { Localization } from '../localization/Localization';
+import { RetailStandaloneLocalization } from '../localization/retailStandalone-localization';
 import { API } from '../../shared/models/property-settings.model';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class PropertyInformation {
     private paymentConfiguration: any[];
     private propertyId: number;
 
-    constructor(private localization: Localization) {
+    constructor(private localization: RetailStandaloneLocalization) {
         this.SetDefaultDataOnLoad();
     }
 

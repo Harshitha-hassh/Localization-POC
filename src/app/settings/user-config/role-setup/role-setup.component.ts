@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 // import * as myGlobals from '../../../shared/globalsContant'; //CONSTANT FILE ADD ANY CONSTANT VALUE
 // import { HttpServiceCall, HttpMethod } from '../../../shared/service/http-call.service';
-import { Localization } from '../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 // import { Host, GridType, ButtonType } from '../../../shared/globalsContant';
 // import { BreakPointAccess } from '../../../shared/service/breakpoint.service';
 // import * as GlobalConst from '../../../shared/globalsContant';
@@ -47,7 +47,7 @@ export class RoleSetupComponent implements OnInit {
   initialLoads = true;
   callCounter = 0;
 
-  constructor(private http: HttpServiceCall, public localization: Localization,
+  constructor(private http: HttpServiceCall, public localization: RetailStandaloneLocalization,
               private BPoint: BreakPointAccess, private utils: Utilities, private ss: SettingsService) {
   }
 

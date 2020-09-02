@@ -1,4 +1,4 @@
-import { Localization } from '../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { Outlet, ReceiptModel} from '../../../retail/retail.modals';
 import { Injectable } from '@angular/core';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
@@ -7,7 +7,7 @@ import { BaseResponse } from 'src/app/common/shared/shared.modal';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 @Injectable()
 export class ReceiptConfigurationDataService {
-    constructor(private http: HttpServiceCall, private utils: RetailUtilities, private localization: Localization) { }
+    constructor(private http: HttpServiceCall, private utils: RetailUtilities, private localization: RetailStandaloneLocalization) { }
 
     public async getOutletInfo(): Promise<ReceiptModel[]> {
         const receipts: Promise<ReceiptModel[]> = this.invokeServiceCall<ReceiptModel[]>(Host.retailManagement, 'getReceiptInfo', HttpMethod.Get);

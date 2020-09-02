@@ -9,7 +9,7 @@ import { Utilities } from 'src/app/core/utilities';
 import { ChartBarComponent } from '../chart-bar/chart-bar.component';
 import * as moment from 'moment';
 import { DashBoardService } from 'src/app/shared/data-services/authentication/retailmanagement/dashboard.data.service';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { sortPipe } from 'src/app/common/shared/shared/pipes/sort-pipe.pipe';
 
 @Component({
@@ -95,7 +95,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
               private fb: FormBuilder,
               private utilities: Utilities,
               private propertyInformation: PropertyInformation,
-              private localization: Localization,
+              private localization: RetailStandaloneLocalization,
               private sortpipe: sortPipe) {
   }
 

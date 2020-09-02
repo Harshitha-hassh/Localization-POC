@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { searchtitleenum, GlobalSearchModel, GlobalSearchData } from './global-search.model';
 import { Router } from '@angular/router';
 import { GlobalSearchBusiness } from './global-search.business';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { ClientPopupComponent } from 'src/app/client/client-popup/client-popup.component';
 import { MatDialog } from '@angular/material';
 
@@ -30,7 +30,7 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
   constructor(private _formBuilder: FormBuilder,
     private _router: Router,
     private globalSearchBusiness: GlobalSearchBusiness,
-    private localization: Localization,
+    private localization: RetailStandaloneLocalization,
     private dialog: MatDialog
   ) { 
     this.captions = this.localization.captions;

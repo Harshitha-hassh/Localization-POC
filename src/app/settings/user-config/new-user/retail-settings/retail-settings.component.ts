@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Localization } from '../../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 // import { Utilities } from '../../../../shared/utilities/utilities';
 import { SettingsService } from '../../../settings.service';
 // import { Host } from '../../../../shared/globalsContant';
@@ -30,7 +30,7 @@ export class RetailSettingsComponent implements OnInit {
   ActionButton: string;
   @Input() IsRoleSelected: any;
   isCommissionClassRequired = false;
-  constructor(public localization: Localization, private utils: Utilities,
+  constructor(public localization: RetailStandaloneLocalization, private utils: Utilities,
               public servicesetting: SettingsService, private http: HttpServiceCall) {
 
   }

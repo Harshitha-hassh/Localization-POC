@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { RetailDataAwaiters } from "../../../retail/shared/events/awaiters/retail.data.awaiters";
 import { MatDialog } from "@angular/material";
-import { Localization } from "../../../core/localization/Localization";
+import { RetailStandaloneLocalization } from "../../../core/localization/retailStandalone-localization";
 import * as _ from "lodash";
 import { RouteLoaderService } from 'src/app/core/services/route-loader.service';
 
@@ -11,7 +11,7 @@ import { RouteLoaderService } from 'src/app/core/services/route-loader.service';
 export class DataAwaiterService {
     constructor(
         private dialog: MatDialog,
-        private localization: Localization,
+        private localization: RetailStandaloneLocalization,
         private routeLoaderService: RouteLoaderService
     ) {
         this.setAwaiters();

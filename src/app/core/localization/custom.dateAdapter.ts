@@ -1,5 +1,5 @@
 import { NativeDateAdapter } from '@angular/material';
-import { Localization } from './Localization';
+import { RetailStandaloneLocalization } from './retailStandalone-localization';
 import { PropertyInformation } from '../services/property-information.service';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
@@ -22,7 +22,7 @@ export const MY_DATE_FORMATS = {
 @Injectable()
 export class CustomDateAdapter extends NativeDateAdapter {
   constructor(
-    public localization: Localization,
+    public localization: RetailStandaloneLocalization,
     private PropertyInfo: PropertyInformation
   ) {
     super(localization.localeCode, new Platform());

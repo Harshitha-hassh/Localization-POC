@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { OutletOption } from './dashboard.modal';
 // import { Filter } from 'src/app/shared/shared-models';
 import { DashBoardBusiness } from './dashboard-business';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 
 @Injectable()
 export class DashboardWidgetsReportService {
@@ -23,7 +23,7 @@ export class DashboardWidgetsReportService {
   captions: any;
 
 
-  constructor(private localization: Localization) {
+  constructor(private localization: RetailStandaloneLocalization) {
     this.captions = this.localization.captions['dashBoard'];
     // this.OutletsData=[
     //   {id: 1 ,name: 'outlet 1' ,description: 'outlet 1' ,defaultOutletId : 1 },

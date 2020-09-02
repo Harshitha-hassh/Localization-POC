@@ -1,6 +1,6 @@
 import { HttpCallService } from '../common/http-call.service';
 import { Injectable } from '@angular/core';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { ServiceParams, BaseResponse } from '../../models/http.model';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
@@ -12,7 +12,7 @@ import { Utilities } from 'src/app/core/utilities';
 */
 export class PaymentCommunication extends HttpCallService {
 
-    constructor(private utils: Utilities,httpclient: HttpClient, localization: Localization, PropertyInfo: PropertyInformation) {
+    constructor(private utils: Utilities,httpclient: HttpClient, localization: RetailStandaloneLocalization, PropertyInfo: PropertyInformation) {
         super(RetailApiHost.RetailManagement, httpclient, localization,utils, PropertyInfo);
     }
 

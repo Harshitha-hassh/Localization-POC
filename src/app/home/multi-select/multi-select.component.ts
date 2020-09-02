@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, ViewEncapsulation, EventEmitter, OnChanges } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 
 @Component({
   selector: 'app-multi-select',
@@ -20,7 +20,7 @@ export class MultiSelectComponent implements OnInit , OnChanges {
   dropDownFrmGrp: FormGroup;
   @Output() dropDownFrmControl: EventEmitter<any> = new EventEmitter<any>();
   @Output() IsAnySelected: EventEmitter<any> = new EventEmitter<any>();
-  constructor(private localization: Localization) { }
+  constructor(private localization: RetailStandaloneLocalization) { }
 
   ngOnInit() {
     this.more = this.localization.captions.common.More;

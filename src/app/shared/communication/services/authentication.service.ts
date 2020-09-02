@@ -2,14 +2,14 @@ import { HttpCallService } from '../common/http-call.service';
 import { Host, ServiceParams, BaseResponse } from '../../models/http.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Localization } from 'src/app/core/localization/Localization';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { Utilities } from 'src/app/core/utilities';
 
 @Injectable()
 export class AuthenticationCommunication extends HttpCallService {
 
-    constructor(httpclient: HttpClient, localization: Localization, utilities: Utilities, PropertyInfo: PropertyInformation) {
+    constructor(httpclient: HttpClient, localization: RetailStandaloneLocalization, utilities: Utilities, PropertyInfo: PropertyInformation) {
         super(RetailApiHost.TenantManagement, httpclient, localization, utilities, PropertyInfo);
     }
 

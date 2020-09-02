@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
 import { MaterialModule } from '../material-module';
 import { RouterModule } from '@angular/router';
-import { Localization } from '../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../core/localization/retailStandalone-localization';
 import { MenuComponent } from './components/menu/menu.component';
 import { GlobalSearchComponent } from './components/global-search/global-search.component';
 import { PopoverModule } from 'ngx-popover';
@@ -69,7 +69,7 @@ import { LocalizeDatePipe } from '../core/localization/localize-date.pipe';
     {
       provide: DateAdapter,
       useClass: CustomDateAdapter,
-      deps: [Localization,
+      deps: [RetailStandaloneLocalization,
         Platform]
     },
     {

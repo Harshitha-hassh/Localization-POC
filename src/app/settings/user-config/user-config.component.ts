@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Localization } from '../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../core/localization/retailStandalone-localization';
 import { SettingsService } from '../settings.service';
 // import { SPAScheduleBreakPoint } from '../../shared/globalsContant';
 // import { SetupMenu } from '../../shared/business/view-settings.modals';
@@ -27,7 +27,7 @@ export class UserConfigComponent implements OnInit {
   menuList: any;
   menuType = menuTypes;
 
-  constructor(private _servicesetting: SettingsService, private localization: Localization,
+  constructor(private _servicesetting: SettingsService, private localization: RetailStandaloneLocalization,
               private breakpoint: BreakPointAccess, private routeDataService: RouteLoaderService) {
     const value = this.routeDataService.GetChildMenu('/settings/usersetup');
     this.menuList = {

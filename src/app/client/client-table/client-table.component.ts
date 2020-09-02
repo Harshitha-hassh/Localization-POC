@@ -4,7 +4,7 @@ import * as myGlobals from 'src/app/common/shared/shared/globalsContant'; //CONS
 import { MatDialog } from '@angular/material';
 import { MatMenuTrigger } from '@angular/material';
 import * as _ from 'lodash';
-import { Localization } from '../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../core/localization/retailStandalone-localization';
 import { ScrollbarComponent } from 'ngx-scrollbar';
 import { ClientService } from '../../shared/service/client-service.service';
 import { ClientCommonService } from '../client.service';
@@ -100,7 +100,7 @@ export class ClientTableComponent implements OnInit {
   @Input() enableStickyColumn;
   selectedIndex : any = this.clientService.selectedIndex;
   isPlayerFound = false;
-  constructor(public dialog: MatDialog, private spaconfig: SPAConfig, public el: ElementRef, public fb: FormBuilder, public localization: Localization, private clientService : ClientService, public utils: RetailUtilities, private clientCommonService: ClientCommonService) {
+  constructor(public dialog: MatDialog, private spaconfig: SPAConfig, public el: ElementRef, public fb: FormBuilder, public localization: RetailStandaloneLocalization, private clientService : ClientService, public utils: RetailUtilities, private clientCommonService: ClientCommonService) {
 
   }
 

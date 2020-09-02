@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
 import { MatTabChangeEvent, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Localization } from '../../../core/localization/Localization';
+import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { SettingsService } from '../../settings.service';
 import * as _ from 'lodash';
 import { PropertyInformation } from '../../../core/services/property-information.service';
@@ -29,7 +29,7 @@ export class NewUserComponent implements OnInit {
   ActionButton: string;
   subPropertyAccess: any = [];
 
-  constructor(public localization: Localization, public _servicesetting: SettingsService, @Inject(MAT_DIALOG_DATA) public data,
+  constructor(public localization: RetailStandaloneLocalization, public _servicesetting: SettingsService, @Inject(MAT_DIALOG_DATA) public data,
               private dialogRef: MatDialogRef<NewUserComponent>, private http: HttpServiceCall,
               private utils: Utilities, private PropertyInfo: PropertyInformation,
               private _userOutletAccessDataService: UserOutletAccessDataService) {
