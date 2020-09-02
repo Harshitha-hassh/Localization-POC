@@ -597,5 +597,9 @@
    "GetItemSaleDetail" : "Transaction/getItemSale/{startDate}/{endDate}" ,
    "GetCategorySaleDetail" : "Transaction/getCategorySale/{startDate}/{endDate}" ,
    "GetOpenTickets" : "DashBoard/getOpenTransactionList/{processDate}" ,
-   "GetReturnedItems" : "DashBoard/getReturnedItems/{startDate}/{dataFormat}" 
+   "GetReturnedItems" : "DashBoard/getReturnedItems/{startDate}/{dataFormat}",
+   "GetPropertyConfiguration": "PropertyConfiguration/configurationName/{configName}/propertyId/{propertyId}/productId/{productId}",
+   "GetCommissionSetupByClassId": "CommissionSetup/class/{classId}/productId/{productId}",
+   "GetAllCommissionItemsByOutlet": "retailItems/commissionable",
+   "GetCommissionByItem": "CommissionSetup/items/{itemId}/productId/{productId}"
 }
