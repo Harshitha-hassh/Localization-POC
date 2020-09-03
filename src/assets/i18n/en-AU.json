@@ -2764,6 +2764,7 @@
   },
   "dayEnd": {
     "DAYEND": "DAY END_au",
+    "DayEndProcess": "Do you want to process day end?_au",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit_au",
     "CheckInAppointments": "Checked In Appointments_au",
     "CheckOutWithoutTransaction": "Checked Out Appointments without Transactions_au",
