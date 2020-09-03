@@ -78,6 +78,7 @@
       "Y",
       "Z"
     ],
+    "LoadingPlayerInformation": "Loading Player Information",
     "err_invalidEmailFormat": "Invalid Email",
 		"err_duplicateEmail": "Duplicate Email",
 		"lbl_email": "Email",
@@ -820,7 +821,21 @@
     "Unknown": "Unknown",
     "PatronID": "Patron ID",
     "Rank": "Rank",
-    "StoreTerminals": "Store Terminals"
+    "emailConfirmation": "SMS/Email not configured for the following client (s) - ( {Clients} ), Do you want to continue?",
+		"StoreTerminals": "Store Terminals",
+		"PointsValue": "Points Value",
+		"PlayerWorthDetails": "Player Worth Details",
+		"CompValue": "Comp Value",
+		"EnteredPatronIDIsAlreadyAvailable": "Entered Patron ID is already available in the application, Would you want to edit the player details?",
+		"WouldYouLikeTheUpdateTheGuest": "Would you like the update the guest details as per the CMS?",
+		"PlayerLookupNotHappened": "Player Lookup not Performed",
+		"Notify": "Notify",
+		"IntakeForm": "Intake Form",
+		"ViewIntakeForm": "View Intake Form",
+		"NoInTakeFormFound": "Intake form is not available",
+    "NoInTakeFormReceived": "No Intake form received",
+    "priceType": "Price Type",
+    "amount": "Amount"
   },
   "shop": {
     "BookingDetails": "Booking Details",
@@ -2765,6 +2780,7 @@
   },
   "dayEnd": {
     "DAYEND": "DAY END",
+    "DayEndProcess":"Do you want to process day end?",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit",
     "CheckInAppointments": "Checked In Appointments",
     "CheckOutWithoutTransaction": "Checked Out Appointments without Transactions",

@@ -13,7 +13,7 @@ import { CommonAlertPopupComponent } from 'src/app/common/shared/shared/common-a
 import { AboutComponent } from '../about/about.component';
 import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-config/payment-features-config/property-feature-config.service';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
-import { ConfigKeys } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
+import { ConfigKeys, RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 
 @Component({
   selector: 'app-menu',
@@ -68,6 +68,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     , private _sessionService: ManageSessionService
     , private activeRoute: ActivatedRoute
     , private dialog: MatDialog
+    , private _featureFlagService: RetailFeatureFlagInformationService
     , private _propertyFeatureService: PropertyFeaturesConfigurationService
     , private _propertyInfo: RetailPropertyInformation) {
     // this.sortPipe = new SortOrderPipe();
@@ -97,7 +98,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
         this._propertyInfo.SetGiftCardConfiguration(config);
       });
     }
-
+    this._featureFlagService.RefreshConfig();
     
     if (!sessionStorage.getItem("EatecURI")) {
       var configValue = "";

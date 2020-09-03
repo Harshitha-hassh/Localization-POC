@@ -71,9 +71,20 @@ export interface ClientInfo {
     lastChangeId?: string;
     interfaceGuestId: string;
     loyaltyDetail: LoyaltyDetail[];
+    memberId?: string;
+    ClientCategoryId: number;
   }
 
   export interface LoyaltyDetail{
     patronId: string;
     rank: string;
+  }
+
+  
+  export interface ClientSearchModel extends Client {
+    addresses: Address;
+    phoneNumbers: PhoneNumber[];
+    emails: Email[];
+    requestUid: string;
+    clientCreditCardInfo: ClientCreditCardInfo[];
   }

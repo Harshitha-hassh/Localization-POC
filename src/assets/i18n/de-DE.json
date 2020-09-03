@@ -78,6 +78,7 @@
       "Y",
       "Z"
     ],
+    "LoadingPlayerInformation": "Loading Player Information_de",
     "err_invalidEmailFormat": "Invalid Email_de",
     "err_duplicateEmail": "Duplicate Email_de",
     "lbl_email": "Email_de",
@@ -820,7 +821,21 @@
     "Unknown": "Unknown_de",
     "PatronID": "Patron ID_de",
     "Rank": "Rank_de",
-    "StoreTerminals": "Store Terminals_de"
+    "emailConfirmation": "SMS/Email not configured for the following client (s) - ( {Clients} ), Do you want to continue?_de",
+    "StoreTerminals": "Store Terminals_de",
+    "PointsValue": "Points Value_de",
+    "PlayerWorthDetails": "Player Worth Details_de",
+    "CompValue": "Comp Value_de",
+    "EnteredPatronIDIsAlreadyAvailable": "Entered Patron ID is already available in the application, Would you want to edit the player details?_de",
+    "WouldYouLikeTheUpdateTheGuest": "Would you like the update the guest details as per the CMS?_de",
+    "PlayerLookupNotHappened": "Player Lookup not Performed_de",
+    "Notify": "Notify_de",
+    "IntakeForm": "Intake Form_de",
+    "ViewIntakeForm": "View Intake Form_de",
+    "NoInTakeFormFound": "Intake form is not available_de",
+    "NoInTakeFormReceived": "No Intake form received_de",
+    "priceType": "Price Type_de",
+    "amount": "Amount_de"
   },
   "shop": {
     "BookingDetails": "Booking Details_de",
@@ -2764,6 +2779,7 @@
   },
   "dayEnd": {
     "DAYEND": "DAY END_de",
+    "DayEndProcess": "Do you want to process day end?_de",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit_de",
     "CheckInAppointments": "Checked In Appointments_de",
     "CheckOutWithoutTransaction": "Checked Out Appointments without Transactions_de",

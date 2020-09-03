@@ -76,7 +76,8 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       customField5: '',
       comments: '',
       socialMedia: '',
-      alergy: ''
+      alergy: '',
+      clientCreditCardInfo : []
     });
   }
 
@@ -249,6 +250,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     this.cardInfo.push(swipedcardInfo);
     this.displayCardInfo = newCardInfo;
     this.displayCardInfo.cardNumber = this.payAgentService.MaskCreditCardNumber(newCardInfo.cardNumber);
+    this.FormGrp.controls.clientCreditCardInfo.setValue(this.cardInfo);
   }
 
   formatCreditCardExpiryDate(date: string): string {
@@ -274,8 +276,20 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     this.isFirstTime = true;
   }
 
-  SetEditValues(clientInfo) {
+  async SetEditValues(clientInfo) {
     this.FormGrp.controls.comments.setValue(clientInfo.client.comments && clientInfo.client.comments !=null ? clientInfo.client.comments : '');
+    this.FormGrp.controls.clientCreditCardInfo.setValue(clientInfo.client.clientCreditCardInfo && clientInfo.client.clientCreditCardInfo !=null ? [clientInfo.client.clientCreditCardInfo] : []);
+    this.cardInfo =  clientInfo.client.clientCreditCardInfo && clientInfo.client.clientCreditCardInfo!=null ? [clientInfo.client.clientCreditCardInfo] : [];
+      if (this.cardInfo && this.cardInfo.length > 0) {
+        const activeCard = this.cardInfo.filter(x => x.isActive);
+        if (activeCard) {
+          let newCardInfo: CardInfo = await this.getCardInfo(activeCard[0].tokenTransId)
+          if (newCardInfo !== null) {
+            this.displayCardInfo = newCardInfo;
+            this.displayCardInfo.cardNumber = this.payAgentService.MaskCreditCardNumber(newCardInfo.cardNumber);
+          }
+        }
+      }
   }
 
   fetchCustomFieldInfo() {
