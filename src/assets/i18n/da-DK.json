@@ -78,6 +78,7 @@
       "Y",
       "Z"
     ],
+    "LoadingPlayerInformation": "Loading Player Information_da",
     "err_invalidEmailFormat": "Invalid Email_da",
     "err_duplicateEmail": "Duplicate Email_da",
     "lbl_email": "Email_da",
@@ -820,7 +821,21 @@
     "Unknown": "Unknown_da",
     "PatronID": "Patron ID_da",
     "Rank": "Rank_da",
-    "StoreTerminals": "Store Terminals_da"
+    "emailConfirmation": "SMS/Email not configured for the following client (s) - ( {Clients} ), Do you want to continue?_da",
+    "StoreTerminals": "Store Terminals_da",
+    "PointsValue": "Points Value_da",
+    "PlayerWorthDetails": "Player Worth Details_da",
+    "CompValue": "Comp Value_da",
+    "EnteredPatronIDIsAlreadyAvailable": "Entered Patron ID is already available in the application, Would you want to edit the player details?_da",
+    "WouldYouLikeTheUpdateTheGuest": "Would you like the update the guest details as per the CMS?_da",
+    "PlayerLookupNotHappened": "Player Lookup not Performed_da",
+    "Notify": "Notify_da",
+    "IntakeForm": "Intake Form_da",
+    "ViewIntakeForm": "View Intake Form_da",
+    "NoInTakeFormFound": "Intake form is not available_da",
+    "NoInTakeFormReceived": "No Intake form received_da",
+    "priceType": "Price Type_da",
+    "amount": "Amount_da"
   },
   "shop": {
     "BookingDetails": "Booking Details_da",

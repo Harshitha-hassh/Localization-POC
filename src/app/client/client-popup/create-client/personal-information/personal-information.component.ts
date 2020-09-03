@@ -85,7 +85,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   isCMSConfigured = false;
   mailTypes = GuestProfileMailTypes;
   Address: any = [];
-  personalInfo : any;
+  personalInfo : any = [];
   @Input('inputData')
   set formData(value) {
     if(value && value.data!='')
@@ -142,7 +142,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         thumbnailImg: ''
       }),
     });
-    this.isCMSConfigured = this.featureSwitch.IsCMSConfigured;
+    this.isCMSConfigured = true;//this.featureSwitch.IsCMSConfigured;
   }
 
   ngAfterViewChecked(): void {
@@ -605,12 +605,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
   async SetEditValues(clientInfo) {
-    let loyalty = clientInfo.client && clientInfo.client.length > 0 && clientInfo.client.loyaltyDetail[0];
+    let loyalty = clientInfo.client && clientInfo.client.loyaltyDetail && clientInfo.client.loyaltyDetail.length > 0 ? clientInfo.client.loyaltyDetail[0] : null;
     let isCMSDataChanged: boolean = false;
     if (loyalty && loyalty.patronId && this.isCMSConfigured) {
           isCMSDataChanged = await this.UpdateCMSDetailOnExistingGuest(loyalty.patronId, clientInfo,
           this.searchPatronCallBack.bind(this));
-      loyalty = clientInfo.client.clientDetail.loyaltyDetail[0];
+      loyalty = clientInfo.client.loyaltyDetail[0];
       if (!loyalty) {
         this.isPatronIdAvailable = false;
         this.FormGrp.controls.patronid.markAsDirty();
@@ -805,15 +805,15 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     async searchClientByPatron(patronId: string, callBack: (result: any, extraParams?) => void) {
         let client = await this._createClientBusiness.searchClientByPatron(patronId);
         if (client) {
-            this.utils.ShowError(this.captions.common.Information, this.captions.EnteredPatronIDIsAlreadyAvailable, ButtonType.YesNo, 
+            this.utils.ShowError(this.localization.captions.common.Information, this.localization.captions.bookAppointment.EnteredPatronIDIsAlreadyAvailable, ButtonType.YesNo, 
                 this.patronAlreadyExistCallBack.bind(this), [client, callBack, patronId])
         }
         else {
-            this._ams.loaderEnable.next(this.captions.common.LoadingPlayerInformation);
+            this._ams.loaderEnable.next(this.localization.captions.common.LoadingPlayerInformation);
             let playerInfo = await this._playerService.GetPlayerInformation(patronId);
             this._ams.loaderEnable.next('');
             if (playerInfo && playerInfo.personalDetails) {
-                if (this.featureSwitch.UpdateGuestInfoAsPerCMS ) { // *** TODO **** || this.popupTitle == this.captions.NewClient TODO
+                if (this.featureSwitch.UpdateGuestInfoAsPerCMS || this.personalInfo!='') {
                     callBack(PatronInfoSearchResultType.UPDATECMSDATAONEXISTING, [playerInfo.personalDetails])
                 }
                 else {
@@ -829,19 +829,11 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     }
 
     async patronAlreadyExistCallBack(result: any, extraParams?: any) {
-        if (result === 'YES') { // *** TODO ****
-            // this.popupTitle = this.captions.EditClient;
-            // this.clientWidowActionType = "EDIT";
-            // this.saveText = this.captions.update;
-            // this.clientEditData = _.cloneDeep(extraParams[0]);
-            // this.clientId = extraParams[0].id;
-            // this.guestId = extraParams[0].clientDetail.guestId;
-            // this.imgService.GetImagesByReference(this.guestId, GlobalConst.ImgRefType.client, this.successCallback.bind(this), this.errorCallback.bind(this), [], true);
-            // extraParams[1](PatronInfoSearchResultType.EDITEXISTINGPATRON);
-            // this.convertToEditClient(extraParams[0]);
-
+        if (result.toLowerCase() == 'yes') { 
+          this.SetEditValues(extraParams[0]);
+          extraParams[1](PatronInfoSearchResultType.EDITEXISTINGPATRON);
         } else {
-            extraParams[1](PatronInfoSearchResultType.PATRONNOTFOUND);
+          extraParams[1](PatronInfoSearchResultType.PATRONNOTFOUND ,extraParams);
         }
     }
 
@@ -849,6 +841,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     if (result == PatronInfoSearchResultType.EDITEXISTINGPATRON) {
       this.isPatronIdAvailable = true;
       this.initializeFormData();
+      if(extraParams)
+      this.SetEditValues(extraParams);
     } else if (result == PatronInfoSearchResultType.PATRONNOTFOUND) {
       this.isPatronIdAvailable = false;
       this.FormGrp.controls.patronid.setValue('');
@@ -923,7 +917,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
   async UpdateCMSDetailOnExistingGuest(patronId, guestData, callBack?) {
-    this._ams.loaderEnable.next(this.captions.common.LoadingPlayerInformation);
+    this._ams.loaderEnable.next(this.localization.captions.common.LoadingPlayerInformation);
     let playerInfo = await this._playerService.GetPlayerInformation(patronId);
     let cmsHasChange: boolean = false;
     this._ams.loaderEnable.next('');
