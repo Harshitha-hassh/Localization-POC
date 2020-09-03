@@ -60,7 +60,7 @@ export class CreateClientBusiness {
         emails: this.formEmailObj(),
         addresses: this.formAddressObject(),
         phoneNumbers: this.formPhoneObject(),
-        clientCreditCardInfo: this.additionalDetailsFormGroup.clientCreditCardInfo ? this.additionalDetailsFormGroup.clientCreditCardInfo[0] :null  //TODO
+        clientCreditCardInfo: this.additionalDetailsFormGroup.clientCreditCardInfo && this.additionalDetailsFormGroup.clientCreditCardInfo.length >0  ? this.additionalDetailsFormGroup.clientCreditCardInfo[0] :null 
       }
       return clientInfoObj;
     }

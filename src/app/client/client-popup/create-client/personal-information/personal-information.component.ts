@@ -142,7 +142,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         thumbnailImg: ''
       }),
     });
-    this.isCMSConfigured = true;//this.featureSwitch.IsCMSConfigured;
+    this.isCMSConfigured = this.featureSwitch.IsCMSConfigured;
   }
 
   ngAfterViewChecked(): void {
