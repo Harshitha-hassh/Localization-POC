@@ -78,6 +78,7 @@
       "Y",
       "Z"
     ],
+    "LoadingPlayerInformation": "Loading Player Information_au",
     "err_invalidEmailFormat": "Invalid Email_au",
     "err_duplicateEmail": "Duplicate Email_au",
     "lbl_email": "Email_au",
@@ -820,7 +821,21 @@
     "Unknown": "Unknown_au",
     "PatronID": "Patron ID_au",
     "Rank": "Rank_au",
-    "StoreTerminals": "Store Terminals_au"
+    "emailConfirmation": "SMS/Email not configured for the following client (s) - ( {Clients} ), Do you want to continue?_au",
+    "StoreTerminals": "Store Terminals_au",
+    "PointsValue": "Points Value_au",
+    "PlayerWorthDetails": "Player Worth Details_au",
+    "CompValue": "Comp Value_au",
+    "EnteredPatronIDIsAlreadyAvailable": "Entered Patron ID is already available in the application, Would you want to edit the player details?_au",
+    "WouldYouLikeTheUpdateTheGuest": "Would you like the update the guest details as per the CMS?_au",
+    "PlayerLookupNotHappened": "Player Lookup not Performed_au",
+    "Notify": "Notify_au",
+    "IntakeForm": "Intake Form_au",
+    "ViewIntakeForm": "View Intake Form_au",
+    "NoInTakeFormFound": "Intake form is not available_au",
+    "NoInTakeFormReceived": "No Intake form received_au",
+    "priceType": "Price Type_au",
+    "amount": "Amount_au"
   },
   "shop": {
     "BookingDetails": "Booking Details_au",

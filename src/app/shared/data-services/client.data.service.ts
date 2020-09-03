@@ -29,7 +29,7 @@ export class ClientDataService {
     }
 
     public async searchClientByPatron(patronId: string): Promise<ClientInfo> {
-        return this._httpPos.putPromise({
+        return this._httpPos.getPromise({
             route: RetailApiRoute.GetClientByPatronId,
             uriParams: { patronId : patronId }
         });
