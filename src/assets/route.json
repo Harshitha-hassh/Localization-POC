@@ -382,7 +382,7 @@
   "GetMedicalCondition": "services/{id}/getmedicalcondition",
   "GetMedicalWarning": "services/{id}/getmedicalwarning",
   "ConfirmWaitList": "appointmentwaitlists/{id}/confirm",
-  "GetClientByIds": "Clients/query",
+  "GetClientByIds": "Clients/query/{includeRelatedData}",
   "CreateCategoryGroup": "CategoryGroups",
   "DeleteCategoryGroup": "CategoryGroups/{id}",
   "GetAllActiveCategoryGroups": "CategoryGroups/active",
