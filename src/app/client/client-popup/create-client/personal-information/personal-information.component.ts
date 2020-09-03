@@ -116,8 +116,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp = this.Form.group({
       id : 0,
       guestId : DefaultGUID,
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['', [Validators.required, EmptyValueValidator]],
+      lastName: ['', [Validators.required, EmptyValueValidator]],
       pronounced: '',
       dob: '',
       pincode: '',
