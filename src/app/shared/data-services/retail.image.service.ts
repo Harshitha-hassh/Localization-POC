@@ -3,7 +3,7 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import { Imagedata } from 'src/app/shared/shared-models';
 // import { ImageDataService } from './Image.data.services';
 import { ImgRefType } from 'src/app/retail/shared/globalsContant';
-import { ImageDataService } from './image.data.services';
+import { ImageDataService } from './Image/image.data.services';
 
 @Injectable({
   providedIn: 'root'

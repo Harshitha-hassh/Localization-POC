@@ -16,7 +16,7 @@ import {  ImgRefType, Host } from 'src/app/common/shared/shared/globalsContant';
 import {  DefaultGUID } from 'src/app/retail/shared/globalsContant';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { ClientPopupComponent } from '../../client-popup/client-popup.component';
-import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Image.service';
+import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 
