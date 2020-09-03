@@ -2817,7 +2817,8 @@
     "ErrorInDayEnd": "Error during day end process_gb",
     "PROCESS": "PROCESS_gb",
     "NoData": "NoData_gb",
-    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_gb"
+    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_gb",
+    "systemMovedTo": "System date moved to_gb"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role_gb",

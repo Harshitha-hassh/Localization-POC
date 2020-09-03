@@ -2817,7 +2817,8 @@
     "ErrorInDayEnd": "Error during day end process_uk",
     "PROCESS": "PROCESS_uk",
     "NoData": "NoData_uk",
-    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_uk"
+    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_uk",
+    "systemMovedTo": "System date moved to_uk"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role_uk",

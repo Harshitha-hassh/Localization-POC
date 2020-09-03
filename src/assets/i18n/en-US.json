@@ -2818,7 +2818,8 @@
     "ErrorInDayEnd": "Error during day end process",
     "PROCESS": "PROCESS",
     "NoData": "NoData",
-    "CancelOpenTransaction": "Would you like to Cancel the Ticket?"
+    "CancelOpenTransaction": "Would you like to Cancel the Ticket?",
+		"systemMovedTo": "System date moved to"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role",

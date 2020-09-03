@@ -24,6 +24,7 @@ import { RetailLocalization } from 'src/app/retail/common/localization/retail-lo
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { RedirectToModules } from 'src/app/common/shared/shared/utilities/common-utilities';
 import { ButtonType as RetailButtonType} from 'src/app/retail/shared/globalsContant';
+import { AlertType } from 'src/app/retail/shared/shared.modal';
 
 @Component({
   selector: 'app-day-end',
@@ -184,9 +185,9 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
         const response = result.result as any;
         if (response) {
           this.PropertyInfo.SetPropertyDate(this.newSysDate);
-          this.ShowSuccessMessage();
           this.UpdateInventoryAudit();
           this.SyncUpItemAndTaxes();
+          this.ShowSuccessMessage();
         } else {
           this.isProcessClicked = false;
           this.utils.ShowError(this.localization.captions.common.Error, this.captions.ErrorInDayEnd, ButtonType.Ok);
@@ -331,22 +332,10 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
 
   ShowSuccessMessage() {
     // tslint:disable-next-line: max-line-length
-    const data = { headername: this.captions.Success, headerIcon: 'icon-success-icon', headerMessage: `${this.captions.SystemMovedTo} ${this.localization.LocalizeDate(this.newSysDate)}`, buttonName: this.captions.CONTINUE, type: 'message' };
-    const dialogRef = this.dialog.open(CommonAlertPopupComponent, {
-      width: '350px',
-      height: '300px',
-      hasBackdrop: true,
-      panelClass: 'small-popup',
-      data,
-      disableClose: true
-    });
-    const subscription = dialogRef.afterClosed().subscribe(() => {
-      this.successFlag = true;
-      this.canProcess = false;
-    });
-    this.subscriptions.push(subscription);
-
-
+    const message = `${this.captions.systemMovedTo} ${this.localization.LocalizeDate(this.newSysDate)}`;
+    this.successFlag = true;
+    this.canProcess = false;
+    this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue);
   }
   trackByFn(index, cell) {
     return index;

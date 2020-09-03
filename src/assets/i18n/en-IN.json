@@ -2817,7 +2817,8 @@
     "ErrorInDayEnd": "Error during day end process_in",
     "PROCESS": "PROCESS_in",
     "NoData": "NoData_in",
-    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_in"
+    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_in",
+    "systemMovedTo": "System date moved to_in"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role_in",
