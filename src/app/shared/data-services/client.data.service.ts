@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { TransactionDetails, OutOfStock, DonutCount, ItemData, TransactionSaleDetail, CategoryData,ReturnedItems,OpenTickets,VendorInfo } from 'src/app/home/dashboard-widgets-report/dashboard.modal';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { RetailPosCommunication } from '../communication/services/retailpos.service';
-import { ClientInfo } from 'src/app/client/client-popup/create-client/client.modal';
+import { ClientInfo, ClientSearchModel } from 'src/app/client/client-popup/create-client/client.modal';
 //import { GolfGatewayCommunication } from '../../communication/services/golfGateway';
 
 
@@ -14,7 +14,7 @@ export class ClientDataService {
         , private localization: RetailStandaloneLocalization) {
     }    
 
-    public async CreateClientDetails(requestBody:ClientInfo): Promise<string> {
+    public async CreateClientDetails(requestBody:ClientInfo): Promise<any> {
         return this._httpPos.postPromise({
             route: RetailApiRoute.CreateClient,
             body: requestBody
@@ -32,6 +32,14 @@ export class ClientDataService {
         return this._httpPos.putPromise({
             route: RetailApiRoute.GetClientByPatronId,
             uriParams: { patronId : patronId }
+        });
+    }
+
+    public async searchClient(name: string, requestUid: string): Promise<ClientSearchModel[]> {
+        return this._httpPos.putPromise({
+            route: RetailApiRoute.SearchClientInfo,
+            body: name,
+            uriParams: { requestUid: requestUid }
         });
     }
 }
