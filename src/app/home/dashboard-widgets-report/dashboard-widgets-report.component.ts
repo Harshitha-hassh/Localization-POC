@@ -11,6 +11,7 @@ import * as moment from 'moment';
 import { DashBoardService } from 'src/app/shared/data-services/authentication/retailmanagement/dashboard.data.service';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { sortPipe } from 'src/app/common/shared/shared/pipes/sort-pipe.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-widgets-report',
@@ -95,7 +96,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
               private fb: FormBuilder,
               private utilities: Utilities,
               private propertyInformation: PropertyInformation,
-              private localization: RetailStandaloneLocalization,
+              private localization: RetailStandaloneLocalization, private _router: Router,
               private sortpipe: sortPipe) {
   }
 
@@ -187,6 +188,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 
   async widgetView(widgetsData_Index, templateName, path) {
     console.log('widgetsData_Index ', widgetsData_Index, '  widgetView ', templateName);
+      this._router.navigate([path]);
   }
 
   manage(widgetsData_Index) {
