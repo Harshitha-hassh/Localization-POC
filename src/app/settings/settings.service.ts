@@ -28,7 +28,6 @@ export class SettingsService {
   userRoles: any = [];
   propOutlets: any = [];
   editUserInfo: any;
-  selectedServiceGrp: any[] = [];
   selectedOutlets: any[] = [];
   selectedAccess: any[] = [];
   serviceGroups: any[] = [];

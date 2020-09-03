@@ -4,14 +4,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import * as _ from 'lodash';
 import { SubscriptionLike as ISubscription } from 'rxjs';
-// import { UserOutletAccessDataService } from '../useroutletaccess.data.service';
-// import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
-// import { GridType, Host, Product } from 'src/app/common/shared/shared/globalsContant';
-// import { popupConfig } from 'src/app/common/shared/shared.modal';
-// import { HttpMethod, BaseResponse } from 'src/app/common/Models/http.model';
-// import { Utilities } from 'src/app/core/utilities';
-// import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.service';
-// import { SettingDialogPopupComponent } from 'src/app/retail/shared/setting-dialog-popup/setting-dialog-popup.component';
 import { SettingsService } from '../../settings.service';
 import { UserOutletAccessDataService } from '../useroutletaccess.data.service';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
@@ -413,7 +405,6 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     this.servicesetting.userSettingsFormGrp.reset();
     this.servicesetting.retailSettingsFormGrp.reset();
     this.servicesetting.selectedAccess = [];
-    this.servicesetting.selectedServiceGrp = [];
     this.servicesetting.selectedOutlets = [];
   }
 }

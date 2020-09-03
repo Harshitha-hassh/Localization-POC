@@ -603,7 +603,5 @@
   "GetPropertyConfiguration": "PropertyConfiguration/configurationName/{configName}/propertyId/{propertyId}/productId/{productId}",
   "GetCommissionSetupByClassId": "CommissionSetup/class/{classId}/productId/{productId}",
   "GetAllCommissionItemsByOutlet": "retailItems/commissionable",
-  "GetCommissionByItem": "CommissionSetup/items/{itemId}/productId/{productId}",
-  "GetGCConfiguration": "GiftCardConfiguration",
-  "UpdateGCConfiguration": "GiftCardConfiguration"
+  "GetCommissionByItem": "CommissionSetup/items/{itemId}/productId/{productId}"
 }
