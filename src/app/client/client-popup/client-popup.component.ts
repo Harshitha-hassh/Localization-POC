@@ -8,8 +8,7 @@ import { ReplaySubject } from 'rxjs';
 import { CreateClientBusiness } from './client-popup.business';
 import { ClientDataService } from 'src/app/shared/data-services/client.data.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
-import { RetailImageService } from 'src/app/shared/data-services/Image/retail.image.service';
-// import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Image.service';
+import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
 
 @Component({
   selector: 'app-client-popup',

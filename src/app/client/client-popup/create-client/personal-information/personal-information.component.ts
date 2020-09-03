@@ -22,7 +22,7 @@ import { CreateClientBusiness } from '../../client-popup.business';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { PlayerInformationService } from 'src/app/common/shared/shared/service/player.information.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
-import { RetailImageService } from 'src/app/shared/data-services/Image/retail.image.service';
+import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
 
 @Component({
   selector: 'app-personal-information',
