@@ -51,7 +51,8 @@ export class CreateClientBusiness {
         comments : this.additionalDetailsFormGroup.comments ? this.additionalDetailsFormGroup.comments : '',
         lastChangeId: isClientUpdate ?  details.personalDetailsFormGroup.lastChangeId: DefaultGUID,
         interfaceGuestId: isClientUpdate ?  details.personalDetailsFormGroup.interfaceGuestId : '',
-        loyaltyDetail: loyaltyObj
+        loyaltyDetail: loyaltyObj,
+        ClientCategoryId: 1
       };
 
       let clientInfoObj: ClientInfo = {

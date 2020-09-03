@@ -32,6 +32,8 @@ import { CardTypeComponent } from './components/card-type/card-type.component';
 import { UserAccessBusiness } from '../common/dataservices/authentication/useraccess.business';
 import { UserAccessDataService } from '../common/dataservices/authentication/useraccess.data.service';
 import { LocalizeDatePipe } from '../core/localization/localize-date.pipe';
+import { ClientDataService } from './data-services/client.data.service';
+import { AppModuleService } from '../core/services/app.service';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { LocalizeDatePipe } from '../core/localization/localize-date.pipe';
     },
     NgxImageCompressService,
     UserAccessDataService,
+    ClientDataService,
+    AppModuleService,
     UserAccessBusiness,
     LocalizeDatePipe
   ],
