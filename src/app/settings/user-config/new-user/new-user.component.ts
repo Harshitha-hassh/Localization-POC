@@ -68,7 +68,6 @@ export class NewUserComponent implements OnInit {
     }
 
     this._servicesetting.selectedOutlets = this._servicesetting.selectedOutlets.map(x => x.id);
-    this._servicesetting.selectedServiceGrp = this._servicesetting.selectedServiceGrp.map(x => x.id);
     this.GetAllUserbyTenantId();
   }
   async GetAllUserbyTenantId() {
@@ -222,13 +221,7 @@ export class NewUserComponent implements OnInit {
       allowCommission: serviceRetailControls.allowcommission.value ? serviceRetailControls.allowcommission.value : false,
       commissionClass: serviceRetailControls.allowcommission.value ? Number(serviceRetailControls.commissionclass.value) : Number(0)
     };
-    let spaData = this._servicesetting.selectedServiceGrp;
-    spaData = _.uniq(spaData);
-    const index = spaData.indexOf(0);
-    if (index >= 0) {
-      spaData.splice(index, 1);
-    }
-    this.CreateUser(userObj, Host.authentication, 'CreateUser', [spaData, retailData], { PropertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
+    this.CreateUser(userObj, Host.authentication, 'CreateUser', [retailData], { PropertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
   }
 
   Edit() {
@@ -353,16 +346,10 @@ export class NewUserComponent implements OnInit {
       };
     }
 
-    let selServiceGrp = this._servicesetting.selectedServiceGrp;
-    selServiceGrp = _.uniq(selServiceGrp);
-    const index = selServiceGrp.indexOf(0);
-    if (index >= 0) {
-      selServiceGrp.splice(index, 1);
-    }
     this.EditUser(editedInfo,
        Host.authentication,
         'UpdateUser',
-         [selServiceGrp, retailConf, newRetailConf],
+         [retailConf, newRetailConf],
           { PropertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
   }
 
@@ -411,24 +398,18 @@ export class NewUserComponent implements OnInit {
   async successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): Promise<void> {
     if (callDesc === 'CreateUser') {
       if (result.result) {
-        extraParams[1].userId = Number(result.result);
-        if (extraParams[0] && extraParams[0].length > 0) {
-          this.CreateUser(extraParams[0], Host.spaManagement, 'CreateUserSpaConfig', [], { id: result.result });
-        }
-        this.CreateUser(extraParams[1], Host.retailManagement, 'CreateUserRetailConfig', []);
-        this.subPropertyAccess.forEach(x => x.userID = extraParams[1].userId);
+        extraParams[0].userId = Number(result.result);        
+        this.CreateUser(extraParams[0], Host.retailManagement, 'CreateUserRetailConfig', []);
+        this.subPropertyAccess.forEach(x => x.userID = extraParams[0].userId);
         await this._userOutletAccessDataService.CreateUserOutletAccess(this.subPropertyAccess);
         this.dialogRef.close('saved');
       }
     } else if (callDesc === 'UpdateUser') {
       if (result.result) {
-        const updated = result.result as any;
-        this.EditUser(extraParams[0], Host.spaManagement, 'UpdateUserSpaConfig', [], { id: updated.userId });
-
-        if (extraParams[1]) {
-          this.EditUser(extraParams[1], Host.retailManagement, 'UpdateUserRetailConfig', []);
+        if (extraParams[0]) {
+          this.EditUser(extraParams[0], Host.retailManagement, 'UpdateUserRetailConfig', []);
         } else {
-          this.CreateUser(extraParams[2], Host.retailManagement, 'CreateUserRetailConfig', []);
+          this.CreateUser(extraParams[1], Host.retailManagement, 'CreateUserRetailConfig', []);
         }
         if (this.subPropertyAccess && this.subPropertyAccess.length > 0) {
           await this._userOutletAccessDataService.UpdateUserOutletAccess(this.subPropertyAccess);
