@@ -28,6 +28,7 @@ export class HttpCallService {
 
     protected put<T>(params: ServiceParams): Observable<T> {
         let url: string = this.formURL(params);
+        params.body = this.requestBodyStringify(params.body);
         return this.http.put<T>(url, params.body, { headers: this.setHeaders() })
     }
 
@@ -259,6 +260,13 @@ export class HttpCallService {
             alert(message);
             throw new Error(message);
         }
+    }
+
+    private requestBodyStringify(body: any) {
+        if (body != null && typeof (body) == "string") {
+            body = JSON.stringify(body);
+        }
+        return body;
     }
 
 }

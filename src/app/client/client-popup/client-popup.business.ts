@@ -51,7 +51,8 @@ export class CreateClientBusiness {
         comments : this.additionalDetailsFormGroup.comments ? this.additionalDetailsFormGroup.comments : '',
         lastChangeId: isClientUpdate ?  details.personalDetailsFormGroup.lastChangeId: DefaultGUID,
         interfaceGuestId: isClientUpdate ?  details.personalDetailsFormGroup.interfaceGuestId : '',
-        loyaltyDetail: loyaltyObj
+        loyaltyDetail: loyaltyObj,
+        ClientCategoryId: 1
       };
 
       let clientInfoObj: ClientInfo = {
@@ -60,7 +61,7 @@ export class CreateClientBusiness {
         emails: this.formEmailObj(),
         addresses: this.formAddressObject(),
         phoneNumbers: this.formPhoneObject(),
-        clientCreditCardInfo: null  //TODO
+        clientCreditCardInfo: this.additionalDetailsFormGroup.clientCreditCardInfo && this.additionalDetailsFormGroup.clientCreditCardInfo.length >0  ? this.additionalDetailsFormGroup.clientCreditCardInfo[0] :null 
       }
       return clientInfoObj;
     }
