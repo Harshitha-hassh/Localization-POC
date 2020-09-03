@@ -329,6 +329,8 @@
     "75009":"Please enter minimum one phone number",
     "75010":"Please enter minimum one Email ID",
     "100913":"Invalid Vendor Code",
-    "100713": "At least 3 characters need to be entered"
+    "100713": "At least 3 characters need to be entered",
+    "-301" : "Duplicate guest exists on the system",
+    "-302" : "Guest information is out of date. Please refresh and try again"
   }
   

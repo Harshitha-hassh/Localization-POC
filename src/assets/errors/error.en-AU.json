@@ -329,5 +329,7 @@
   "-118": "No Data available in selected date range._au",
   "-119": "No Logs found_au",
   "-1001": "Appointments exist out of date range, change not allowed_au",
-  "-1002": "Expiration Days must be Greater than Zero_au"
+  "-1002": "Expiration Days must be Greater than Zero_au",
+  "-301": "Duplicate guest exists on the system_au",
+  "-302": "Guest information is out of date. Please refresh and try again_au"
 }
