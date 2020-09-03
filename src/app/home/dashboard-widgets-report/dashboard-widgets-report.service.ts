@@ -142,7 +142,7 @@ export class DashboardWidgetsReportService {
               show: true,
               title: this.captions.ViewCompleteList,
               showArrow: true,
-              routingPath: ''
+              routingPath: 'settings/retailsetup/retailsetup'
             }
           },
           {
@@ -362,7 +362,7 @@ export class DashboardWidgetsReportService {
               show: true,
               title: this.captions.ViewCompleteList,
               showArrow: true,
-              routingPath: ''
+              routingPath: 'shop/viewshop/retailtransactions/opentransactions'
             }
           },
           {
@@ -409,25 +409,6 @@ export class DashboardWidgetsReportService {
               show: false
             }
           }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         ]
       }
     ];
