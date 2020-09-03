@@ -8,6 +8,7 @@ import { ReplaySubject } from 'rxjs';
 import { CreateClientBusiness } from './client-popup.business';
 import { ClientDataService } from 'src/app/shared/data-services/client.data.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
+import { RetailImageService } from 'src/app/shared/data-services/Image/retail.image.service';
 // import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Image.service';
 
 @Component({
@@ -30,7 +31,7 @@ export class ClientPopupComponent implements OnInit {
     public localization: RetailLocalization,
     private userAlert: UserAlerts,
     public _fb: FormBuilder,
-    // public _imageService: RetailImageService,
+     public _imageService: RetailImageService,
     private _createClientBusiness: CreateClientBusiness) {
 
   }
@@ -59,14 +60,14 @@ export class ClientPopupComponent implements OnInit {
     if (this.clientInfo && this.clientInfo.personalDetailsFormGroup.id && this.clientInfo.personalDetailsFormGroup.imageId &&
       this.clientInfo.personalDetailsFormGroup.imageId != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID
      || this.clientInfo.personalDetailsFormGroup.isImageRemoved) {
-      // var b = await this._imageService.updateItemImage(createPromise.toString(), this.clientInfo.personalDetailsFormGroup.imageId, 
-      // this.clientInfo.personalDetailsFormGroup.imageReferenceId, this.clientInfo.personalDetailsFormGroup.isImageRemoved,
-      //  this.clientInfo.personalDetailsFormGroup.base64textString,
-      //  this.clientInfo.personalDetailsFormGroup.thumbnailImg);
+      var b = await this._imageService.updateItemImage(createPromise.toString(), this.clientInfo.personalDetailsFormGroup.imageId, 
+      this.clientInfo.personalDetailsFormGroup.imageReferenceId, this.clientInfo.personalDetailsFormGroup.isImageRemoved,
+       this.clientInfo.personalDetailsFormGroup.base64textString,
+       this.clientInfo.personalDetailsFormGroup.thumbnailImg);
     }
     else if (this.clientInfo.personalDetailsFormGroup.base64textString) {
-      // var a = await this._imageService.saveImage(createPromise.toString(), this.clientInfo.personalDetailsFormGroup.base64textString,
-      //  this.clientInfo.personalDetailsFormGroup.thumbnailImg);
+       var a = await this._imageService.saveImage(createPromise.toString(), this.clientInfo.personalDetailsFormGroup.base64textString,
+        this.clientInfo.personalDetailsFormGroup.thumbnailImg);
     }
     this.closeDialog([createPromise]);
     console.log("Client Form", this.clientPopupForm.value);
