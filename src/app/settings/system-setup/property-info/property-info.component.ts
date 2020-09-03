@@ -14,6 +14,7 @@ import { SpaFormAgent } from 'src/app/common/shared/shared/spa-form';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 
 @Component({
   selector: 'app-property-info',
@@ -42,7 +43,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   CUSTOM_FIELD_4: any;
   CUSTOM_FIELD_5: any;
   isUserAuthorized = true;
-  isViewOnly = true;
+  isViewOnly = false;
   propertyInfoSubscription: ISubscription;
   initialLoads = true;
   callCounter = 0;
@@ -54,7 +55,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
               private BP: BreakPointAccess,
               private systemConfig: SystemSetupBusinessService,
               private fb: FormBuilder,
-              private localization: RetailLocalization,
+              private localization: RetailStandaloneLocalization,
               private utilities: RetailUtilities,
               public http: HttpServiceCall,
               private utils: RetailUtilities,
@@ -111,17 +112,14 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.address = this.propertyInfo.get('address') as FormArray;
     this.addresslength = this.address.length;
     this.captions = this.spaConfig.captions.setting;
-    // this.GetServiceCall('GetPropLanguages', {propertyId: 1});
     this.GetServiceCall('GetAllLanguages');
-    [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(false, this.initialLoads, this.callCounter);
-    this.GetCustomFields();
-    [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(false, this.initialLoads, this.callCounter);
-    // this.RequiredfieldsBind();
+   // this.ValidateBreakPoint();
+    this.GetPropertInfo();
   }
 
   ValidateBreakPoint(): void {
-    this.isUserAuthorized = this.BP.CheckForAccess([GlobalConst.SPAScheduleBreakPoint.SettingSystemSettings]);
-    this.isViewOnly = this.BP.IsViewOnly(GlobalConst.SPAScheduleBreakPoint.SettingSystemSettings);
+    this.isUserAuthorized = true //this.BP.CheckForAccess([GlobalConst.SPAScheduleBreakPoint.SettingSystemSettings]);
+    this.isViewOnly = false //this.BP.IsViewOnly(GlobalConst.SPAScheduleBreakPoint.SettingSystemSettings);
     if (this.isViewOnly) {
       this.utilities.disableControls(this.propertyInfo);
     }
@@ -133,83 +131,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     }
   }
 
-  RequiredfieldsBind() {
-    const personalInfo = [
-      { id: 1, name: this.captions.Title, controlName: 'CLIENT_TITLE' },
-      { id: 2, name: this.captions.First_Name, controlName: 'CLIENT_FIRST_NAME' },
-      { id: 3, name: this.captions.Last_Name, controlName: 'CLIENT_LAST_NAME' },
-      { id: 4, name: this.captions.Birthday, controlName: 'CLIENT_BIRTHDAY' },
-      { id: 5, name: this.captions.Gender, controlName: 'CLIENT_GENDER' },
-    ];
-    const contactInfo = [
-      { id: 1, name: this.captions.Address, controlName: 'CLIENT_ADDRESS_LINE_1' },
-      { id: 2, name: this.captions.City, controlName: 'CLIENT_CITY' },
-      { id: 3, name: this.captions.State, controlName: 'CLIENT_STATE' },
-      { id: 4, name: this.captions.Postal_Code, controlName: 'CLIENT_POSTAL_CODE' },
-      { id: 5, name: this.captions.Country, controlName: 'CLIENT_COUNTRY' },
-      { id: 6, name: this.captions.Phone, controlName: 'CLIENT_PHONE' },
-      { id: 7, name: this.captions.Email, controlName: 'CLIENT_EMAIL' },
-    ];
-    const paymentInfo = [
-      { id: 1, name: this.captions.Credit_Card, controlName: 'CLIENT_CREDIT_CARD' },
-      {
-        id: 2, name: this.CUSTOM_FIELD_1.length > 0 ? this.CUSTOM_FIELD_1[0].fieldName :
-          this.captions.CUSTOM_FIELD_1, controlName: 'CUSTOM_FIELD_1', Disabled: this.CUSTOM_FIELD_1.length <= 0
-      },
-      {
-        id: 3, name: this.CUSTOM_FIELD_2.length > 0 ? this.CUSTOM_FIELD_2[0].fieldName :
-          this.captions.CUSTOM_FIELD_2, controlName: 'CUSTOM_FIELD_2', Disabled: this.CUSTOM_FIELD_2.length <= 0
-      },
-      {
-        id: 4, name: this.CUSTOM_FIELD_3.length > 0 ? this.CUSTOM_FIELD_3[0].fieldName :
-          this.captions.CUSTOM_FIELD_3, controlName: 'CUSTOM_FIELD_3', Disabled: this.CUSTOM_FIELD_3.length <= 0
-      },
-      {
-        id: 5, name: this.CUSTOM_FIELD_4.length > 0 ? this.CUSTOM_FIELD_4[0].fieldName :
-          this.captions.CUSTOM_FIELD_4, controlName: 'CUSTOM_FIELD_4', Disabled: this.CUSTOM_FIELD_4.length <= 0
-      },
-      {
-        id: 6, name: this.CUSTOM_FIELD_5.length > 0 ? this.CUSTOM_FIELD_5[0].fieldName :
-          this.captions.CUSTOM_FIELD_5, controlName: 'CUSTOM_FIELD_5', Disabled: this.CUSTOM_FIELD_5.length <= 0
-      }
-    ];
-    this.requiredFieldsInfo = [
-      {
-        name: this.captions.personalInformation,
-        requiredInfo: personalInfo
-      },
-      {
-        name: this.captions.contactDetails,
-        requiredInfo: contactInfo
-      },
-      {
-        name: this.captions.paymentDetails,
-        requiredInfo: paymentInfo
-      }
-    ];
-    this.ValidateBreakPoint();
-    this.GetPropertInfo();
-    this.GetAllSetting();
-    this.requiredFields = this.propertyInfo.get('requiredFields') as FormArray;
-    for (let i = 0; i < this.requiredFieldsInfo.length; i++) {
-      switch (this.requiredFieldsInfo[i].name) {
-        case this.captions.personalInformation:
-          this.requiredFields.push(this.addPersonalDetails());
-          break;
-        case this.captions.contactDetails:
-          this.requiredFields.push(this.addContactDetails());
-          break;
-        case this.captions.paymentDetails:
-          this.requiredFields.push(this.addPaymentDetails());
-          break;
-      }
-    }
-    this.propertyInfo.patchValue(this.propertyConfigurationDetails);
-    this.propertyInfoSubscription = this.propertyInfo.valueChanges.subscribe(() => {
-      this.enableSave = true;
-    });
-    this.calculateHeight();
-  }
+  
   GetPropertInfo() {
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
@@ -221,8 +143,6 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       showError: true,
       extraParams: []
     });
-    // this.makeGetCall("GetPropertyInfoByPropertyId", Host.spaManagement, {Id:this.utils.GetPropertyInfo('PropertyId')});
-    // this.makeGetCall("GetPropertyInfoByPropertyId",Host.authentication,1);
   }
   GetlanguageInfo() {
     this.http.CallApiWithCallback<any>({
@@ -235,12 +155,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       showError: true,
       extraParams: []
     });
-    // this.makeGetCall("GetPropertyInfoByPropertyId", Host.spaManagement, {Id:this.utils.GetPropertyInfo('PropertyId')});
-    // this.makeGetCall("GetPropertyInfoByPropertyId",Host.authentication,1);
   }
-  GetAllSetting() {
-    this.makeGetCall('GetAllSetting', Host.spaManagement, { Id: this.utils.GetPropertyInfo('PropertyId') });
-  }
+
   ngAfterViewInit() {
     // this.calculateHeight();
   }
@@ -458,19 +374,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   validateProperty(): boolean {
     return (this.propertyInfo.valid && this.propertyInfo.dirty) && this.propertyInfo.touched;
   }
-  RequiredFieldsSetting() {
-    let _propJSON: any = {};
-    this.settingInfo.map(sc => {
-      // if (sc.switchType == "Boolean") {
-      //   sc.value = this.convertStringToBoolean(sc.value as string);
-      // }
-      _propJSON[sc.switch] = sc.value;
-      _propJSON[sc.id] = sc.id;
-    });
-    this.systemConfig.systemConfigValues = _propJSON;
-    this.formAndPatchRequiredFieldsData(_propJSON);
-    this.enableSave = false;
-  }
+  
   PropertSetting() {
     let address: any;
     if (this.propertyInformation) {
@@ -487,7 +391,6 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.propertyInfo.controls.language.setValue(this.propertyInformation ? this.propertyInformation.languageCode : '');
     this.propertyInfo.controls.tenantId.setValue(this.propertyInformation ? this.propertyInformation.tenantId : '');
     this.propertyInfo.controls.propCode.setValue(this.propertyInformation ? this.propertyInformation.propertyCode : '');
-    // this.propertyInfo.patchValue(_adrsJSON);
     this.clearFormArray(this.propertyInfo.get('address') as FormArray);
     for (let index = 0; index < address.length; index++) {
       if ((address[index] && address[index].trim() != '') || index == 0)
@@ -508,7 +411,6 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams?: any[]): void {
     if (callDesc == 'GetAllSetting') {
       this.settingInfo = <any>result.result;
-      this.RequiredFieldsSetting();
       this.enableSave = false;
     } else if (callDesc == 'GetPropertyInfoByPropertyId') {
       this.propertyInformation = <any>result.result;
@@ -518,20 +420,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       this.GetPropertInfo();
       this.enableSave = false;
     } else if (callDesc == 'UpdateSetting') {
-      this.GetAllSetting();
-      this.enableSave = false;
-    } else if (callDesc == 'GetCustomFields') {
-      [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(true, this.initialLoads, this.callCounter);
-      this.RequiredFieldInfo = <any>result.result;
-      this.CUSTOM_FIELD_1 = this.RequiredFieldInfo.filter(o => o.columnName == 'CustomField1');
-      this.CUSTOM_FIELD_2 = this.RequiredFieldInfo.filter(o => o.columnName == 'CustomField2');
-      this.CUSTOM_FIELD_3 = this.RequiredFieldInfo.filter(o => o.columnName == 'CustomField3');
-      this.CUSTOM_FIELD_4 = this.RequiredFieldInfo.filter(o => o.columnName == 'CustomField4');
-      this.CUSTOM_FIELD_5 = this.RequiredFieldInfo.filter(o => o.columnName == 'CustomField5');
-      this.RequiredFieldsSetting();
-      this.RequiredfieldsBind();
-      this.enableSave = false;
-    } else if (callDesc == 'GetAllLanguages') {
+    } 
+    else if (callDesc == 'GetAllLanguages') {
       [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(true, this.initialLoads, this.callCounter);
       if (result.result) {
         const data = <any>result.result;
@@ -540,8 +430,6 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     }
   }
   cancel() {
-    // this.propertyInfo.patchValue(this.propertyConfigurationDetails);
-    this.RequiredFieldsSetting();
     this.PropertSetting();
     this.enableSave = false;
   }

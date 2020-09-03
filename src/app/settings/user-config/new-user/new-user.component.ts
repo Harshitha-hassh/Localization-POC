@@ -43,17 +43,17 @@ export class NewUserComponent implements OnInit {
     if (this.data && this.data.mode && this.data.mode == 'Edit') {
       this.ActionButton = this.caption.setting.update;
       this._servicesetting.selectedAccess = this._servicesetting.editUserInfo.clientInfo.userPropertyAccesses.filter(x => x.hasAccess).map(y => y.productId);
-      this._servicesetting.selectedServiceGrp = this._servicesetting.editUserInfo.spaInfo.map(x => {
-        const servGroup = this._servicesetting.serviceGroups.filter(y => y.id == x.serviceGroupId);
-        return {
-          id: x.serviceGroupId,
-          name: servGroup && servGroup.length > 0 ? servGroup[0].description : ''
-        };
-      });
-      const selectedCurrSG = this._servicesetting.selectedServiceGrp.filter(x => this._servicesetting.serviceGroups.map(y => y.id).includes(x.id));
-      if (selectedCurrSG.length >= this._servicesetting.serviceGroups.length) {
-        this._servicesetting.selectedServiceGrp.push({ id: 0, name: 'ALL' });
-      }
+      // this._servicesetting.selectedServiceGrp = this._servicesetting.editUserInfo.spaInfo.map(x => {
+      //   const servGroup = this._servicesetting.serviceGroups.filter(y => y.id == x.serviceGroupId);
+      //   return {
+      //     id: x.serviceGroupId,
+      //     name: servGroup && servGroup.length > 0 ? servGroup[0].description : ''
+      //   };
+      // });
+      // const selectedCurrSG = this._servicesetting.selectedServiceGrp.filter(x => this._servicesetting.serviceGroups.map(y => y.id).includes(x.id));
+      // if (selectedCurrSG.length >= this._servicesetting.serviceGroups.length) {
+      //   this._servicesetting.selectedServiceGrp.push({ id: 0, name: 'ALL' });
+      // }
       // this._servicesetting.selectedServiceGrp =  this._servicesetting.editUserInfo.spaInfo.map(x => x.serviceGroupId);
       this._servicesetting.selectedOutlets = this._servicesetting.editUserInfo.retailOutletMap ? this._servicesetting.editUserInfo.retailOutletMap.filter(y => y.hasAccess && this._servicesetting.propOutlets && this._servicesetting.propOutlets.map(o => o.subPropertyID).includes(y.subPropertyID)).map(x => { return { id: x.subPropertyID, name: this._servicesetting.propOutlets.filter(y => y.subPropertyId == x.subPropertyID)[0] ? this._servicesetting.propOutlets.filter(y => y.subPropertyId == x.subPropertyID)[0].subPropertyName : '' }; }) : [];
       const selectedCurrOuts = this._servicesetting.selectedOutlets.filter(x => this._servicesetting.propOutlets.map(y => y.subPropertyID).includes(x.id));
