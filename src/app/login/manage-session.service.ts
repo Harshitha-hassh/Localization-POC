@@ -69,6 +69,7 @@ export class ManageSessionService implements OnDestroy {
         this.removeToken();
         this.dialogRef.closeAll();
         this.clearLocalStore();
+        this.goToLogin();
     }
 
     public GetPropertyInfo(name: string) {
@@ -144,7 +145,6 @@ export class ManageSessionService implements OnDestroy {
         if (userName != null && userName != undefined && userName != 'null' && userName != 'undefined') {
             await this.serverLogOut(userName);
         }
-        this.router.navigate(['login']);
     }
 
     serverLogOut(userName: string) {
