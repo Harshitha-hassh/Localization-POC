@@ -3,6 +3,7 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import { Imagedata } from 'src/app/shared/shared-models';
 // import { ImageDataService } from './Image.data.services';
 import { ImgRefType } from 'src/app/retail/shared/globalsContant';
+import { ImageDataService } from './Image/image.data.services';
 
 @Injectable({
   providedIn: 'root'
@@ -21,13 +22,12 @@ export class RetailImageService {
   oldMargin: any;
 
   constructor(public localization: RetailStandaloneLocalization,
-    // private imgService: ImageDataService
+     private imgService: ImageDataService
     ) {
   }
 
 
   async updateItemImage(clientId: string, imageID, imgRefId: string, isImageRemoved, base64textString, thumbnailImg) {
-    debugger;
     if (base64textString || isImageRemoved) {
       const base64result = isImageRemoved ? ['', ''] : base64textString.split(',');
       const base64Thumbnail = isImageRemoved ? ['', ''] : thumbnailImg.split(',');
@@ -41,13 +41,12 @@ export class RetailImageService {
         sequenceNo: this.sequenceNo,
         imageReferenceId: clientId
       };
-      return null;
-     // await this.imgService.updateImage([imageDataObj]);
+     // return null;
+      await this.imgService.updateImage([imageDataObj]);
     }
   }
 
   async saveImage(clientId: string, base64textString, thumbnailImg): Promise<string> {
-    debugger;
     if (base64textString) {
       const base64result = base64textString.split(',');
       const base64Thumbnail = thumbnailImg.split(',');
@@ -61,20 +60,17 @@ export class RetailImageService {
         sequenceNo: 0,
         imageReferenceId: clientId
       };
-      return null;
+    
 
-     // return await this.imgService.saveImage([imageDataObj]);
+      return await this.imgService.saveImage([imageDataObj]);
     }
   }
   async getImageForClient(imgRefId: string, isthumbnailonly: boolean): Promise<Imagedata> {
-   // return await this.imgService.GetImagesByReferenceId(imgRefId, isthumbnailonly);
-   return null;
-
-
+    return await this.imgService.GetImagesByReferenceId(imgRefId, isthumbnailonly);
   }
   async getImagesForClients(imgRefIds: string[], isthumbnailonly: boolean): Promise<Imagedata[]> {
-   // return await this.imgService.GetAllImagesByReference(imgRefIds, isthumbnailonly);
-   return null;
+    return await this.imgService.GetAllImagesByReference(imgRefIds, isthumbnailonly);
+   //return null;
 
   }
 

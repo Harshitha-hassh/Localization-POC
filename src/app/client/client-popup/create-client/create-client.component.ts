@@ -28,9 +28,9 @@ export class CreateClientComponent implements OnInit, OnDestroy {
    bindApiData() {
       this.clientInfoInput = this.data;
     }
-  onImageUpdates(isPlayerFormValid) {
+  onImageUpdates(isClientFormValid) {
 
-  // this.notifyParent.emit(isPlayerFormValid);
+   //this.notifyParent.emit(isClientFormValid);
  
   }
   handleTabChange(tab: MatTab, tabHeader: MatTabHeader, idx: number) {

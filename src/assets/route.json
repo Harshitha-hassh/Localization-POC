@@ -457,8 +457,6 @@
   "TransactionDetailWithPostedCommission": "transaction/{transactionId}/commissions",
   "GetCCConfiguration": "GatewayConfiguration",
   "UpdateCCConfiguration": "GatewayConfiguration",
-  "GetGCConfiguration": "GiftCardConfiguration",
-  "UpdateGCConfiguration": "GiftCardConfiguration",
   "getAllPropertySettings": "Property/GetPropertySetting/{propertyId}",
   "updatePropertySetting": "Property/PatchUpdatePropertySetting/{PropertyId}",
   "getReceiptInfo": "ReceiptConfiguration",

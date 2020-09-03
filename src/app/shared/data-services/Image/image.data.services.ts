@@ -36,6 +36,7 @@ export class ImageDataService {
     }
 
     public async GetImagesByReferenceId(imageReferenceId: string, isThumbnailOnly: boolean): Promise<Imagedata> {
+     
         return await this._gatewayCommunication.getPromise({
             route: RetailApiRoute.GetImagesByReferenceId,
             uriParams: { imageReferenceId: imageReferenceId, isThumbnailOnly: isThumbnailOnly }

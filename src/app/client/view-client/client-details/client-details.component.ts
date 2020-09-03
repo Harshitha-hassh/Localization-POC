@@ -16,7 +16,7 @@ import {  ImgRefType, Host } from 'src/app/common/shared/shared/globalsContant';
 import {  DefaultGUID } from 'src/app/retail/shared/globalsContant';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { ClientPopupComponent } from '../../client-popup/client-popup.component';
-//import { RetailImageService } from 'src/app/shared/data-services/Image/retail.Image.service';
+import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 
@@ -109,7 +109,7 @@ export class ClientDetailsComponent implements OnInit {
     requestUid = '';
     timer = null;
     constructor(private dialog: MatDialog,
-        private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities,
+        private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
         , private breakPoint: BreakPointAccess) {
         route.params.subscribe(val => {
@@ -608,8 +608,6 @@ export class ClientDetailsComponent implements OnInit {
                     "jsonkey": "gender"
                 }]
         };
-
-
         let finalArrCity: any = {};
         finalArrCity["name"] = this.captions.City;
         finalArrCity["values"] = [];
@@ -666,7 +664,7 @@ export class ClientDetailsComponent implements OnInit {
             this.formattedData = <any>result.result;
             let imageRefIds = this.formattedData.map(p => p.guestId ).filter(x => x != null && x != DefaultGUID);
             if (imageRefIds.length > 0) {
-            // this.imageList = await this._imageService.getImagesForClients(imageRefIds, false);
+              this.imageList = await this._imageService.getImagesForClients(imageRefIds, false);
             }
             var responseUid = "";
             if (this.formattedData != null) {

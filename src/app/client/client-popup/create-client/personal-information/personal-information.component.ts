@@ -22,6 +22,7 @@ import { CreateClientBusiness } from '../../client-popup.business';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { PlayerInformationService } from 'src/app/common/shared/shared/service/player.information.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
 
 @Component({
   selector: 'app-personal-information',
@@ -101,7 +102,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     private BP: BreakPointAccess,
     private PropertyInfo: PropertyInformation,
     private clientCommonService: ClientCommonService,
-    // public _imageService: RetailImageService,
+     public _imageService: RetailImageService,
     private _createClientBusiness: CreateClientBusiness,
     private featureSwitch: RetailFeatureFlagInformationService,
     private _playerService: PlayerInformationService,
@@ -607,8 +608,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     let loyalty = clientInfo.client && clientInfo.client.length > 0 && clientInfo.client.loyaltyDetail[0];
     let isCMSDataChanged: boolean = false;
     if (loyalty && loyalty.patronId && this.isCMSConfigured) {
-        //  isCMSDataChanged = await this.UpdateCMSDetailOnExistingGuest(loyalty.patronId, clientInfo,
-        //  this.searchPatronCallBack.bind(this));
+          isCMSDataChanged = await this.UpdateCMSDetailOnExistingGuest(loyalty.patronId, clientInfo,
+          this.searchPatronCallBack.bind(this));
       loyalty = clientInfo.client.clientDetail.loyaltyDetail[0];
       if (!loyalty) {
         this.isPatronIdAvailable = false;
@@ -698,11 +699,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     }
     var imageData : Imagedata;
     if (clientInfo.client.guestId && clientInfo.client.guestId != DefaultGUID) {
-      // imageData = await this._imageService.getImageForClient(clientInfo.client.guestId, true);
+       imageData = await this._imageService.getImageForClient(clientInfo.client.guestId, true);
     }
     var url = `${imageData && imageData[0] ? imageData[0].contentType : ''},${imageData && imageData[0] ? imageData[0].thumbnailData : ''}`
     this.url = url;
     this.imageId = imageData && imageData[0] ? imageData[0].id : '';
+    this.url =  imageData && imageData[0] ?  url : '';
    // this.imageReferenceId = clientInfo.client.guestId;
   }
 
@@ -735,7 +737,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       base64textString: data['orgImg'],
       thumbnailImg: data['tmbImg']
     });
-    this.makeFormDirty();
+    this.FormGrp.controls.imageReferenceId.markAsTouched();
+    this.FormGrp.markAsDirty();
   }
 
   fileSizeExceeded() {

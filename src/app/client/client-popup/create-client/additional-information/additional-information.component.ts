@@ -51,9 +51,10 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   additionalInfo :any;
   @Input('inputData')
   set formData(value) {
-    if(value)
+    if(value && value.data!='')
     {
-      this.additionalInfo = value;
+      this.additionalInfo = value.data;
+      this.SetEditValues(value.data)
     }
   }
   constructor(private Form: FormBuilder, private http: HttpServiceCall,
@@ -88,7 +89,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
 
   initializeFormData() {
     this.selectedDevice = this.FormGrp.controls.device.value;
-    this.makeGetCall("GetClientConfiguration");
+  //  this.makeGetCall("GetClientConfiguration");
     this.getDevices();
   }
 
@@ -273,8 +274,8 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     this.isFirstTime = true;
   }
 
-  SetEditValues() {
-
+  SetEditValues(clientInfo) {
+    this.FormGrp.controls.comments.setValue(clientInfo.client.comments && clientInfo.client.comments !=null ? clientInfo.client.comments : '');
   }
 
   fetchCustomFieldInfo() {
@@ -337,11 +338,11 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
         }
       }
       this.Validation(this.clientConfiguration);
-      this.SetEditValues();
+      //this.SetEditValues();
     }
     if (callDesc == "GetClientConfiguration") {
-      this.clientConfiguration = <any>result.result;
-      this.fetchCustomFieldInfo();
+      //this.clientConfiguration = <any>result.result;
+      //this.fetchCustomFieldInfo();
     }
   }
 
