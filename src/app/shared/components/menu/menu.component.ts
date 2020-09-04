@@ -100,7 +100,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this._featureFlagService.RefreshConfig();
     
-    if (!sessionStorage.getItem("isEatecEnabled")) {
+    if (!sessionStorage.getItem("EatecURI")) {
       var configValue = "";
       let featureNames = ["Enhanced Inventory"];
       this._propertyFeatureService.GetFeatureConfigurations(featureNames).then((featureconfigurations) => {
