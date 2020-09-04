@@ -17,8 +17,8 @@ import { CommonPropertyInformation } from './common/shared/services/common-prope
 import { RetailPropertyInformation } from './core/services/retail-property-information.service';
 import { CommonUtilities } from './common/shared/shared/utilities/common-utilities';
 import { Utilities } from './core/utilities';
-let AppServiceFactory = () => {
-  return new RetailAppService();
+let AppServiceFactory = (utilities: Utilities, localization:RetailStandAloneLocalization) => {
+  return new RetailAppService(utilities,localization);
 };
 
 
@@ -41,7 +41,7 @@ let AppServiceFactory = () => {
     {
       provide:AppService,
       useFactory: AppServiceFactory,
-      deps: []
+      deps: [Utilities, RetailStandAloneLocalization]
     },
     {provide:CommonUtilities, useClass:Utilities},
      RetailPropertyInformation,

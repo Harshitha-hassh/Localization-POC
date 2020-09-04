@@ -1,12 +1,14 @@
 import { IAppService, Hosts } from './common/app-service';
-import { Product } from './core/utilities';
+import { Product, Utilities } from './core/utilities';
 import { EventActorsDataProvider } from './common/Models/notification.model';
 import * as Retailroutes from '../assets/json/hosts/retail-hosts.json';
-
+import { RetailEventActorDataProvider } from './Retail-eventactor.dataprovider';
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 
 export class RetailAppService implements IAppService {
 
-    constructor() {
+    constructor(private utilities: Utilities, private localization: RetailStandaloneLocalization) {
+        
     }
 
     /**
@@ -17,7 +19,7 @@ export class RetailAppService implements IAppService {
         return <Hosts>{
             TenantManagement: Retailroutes.RetailApiHosts.TenantManagement,
             Report: Retailroutes.RetailApiHosts.Report,
-            Common: "",
+            Common: Retailroutes.RetailApiHosts.common,
         }
     }
 
@@ -26,11 +28,11 @@ export class RetailAppService implements IAppService {
     * @memberof IAppService
     */
     get productId(): number {
-        return Product.SNC;
+        return Product.RETAIL;
     }
 
     get notificationEventDataProvider(): EventActorsDataProvider {
-        return undefined;
+        return { providers: new RetailEventActorDataProvider(this.utilities, this.localization).providers }
     }
 
 }
