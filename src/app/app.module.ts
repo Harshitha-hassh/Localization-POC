@@ -18,8 +18,8 @@ import { RetailPropertyInformation } from './core/services/retail-property-infor
 import { CommonUtilities } from './common/shared/shared/utilities/common-utilities';
 import { Utilities } from './core/utilities';
 import { ServiceLocator } from './common/service.locator';
-let AppServiceFactory = () => {
-  return new RetailAppService();
+let AppServiceFactory = (utilities: Utilities, localization:RetailStandAloneLocalization) => {
+  return new RetailAppService(utilities,localization);
 };
 
 
@@ -42,7 +42,7 @@ let AppServiceFactory = () => {
     {
       provide:AppService,
       useFactory: AppServiceFactory,
-      deps: []
+      deps: [Utilities, RetailStandAloneLocalization]
     },
     {provide:CommonUtilities, useClass:Utilities},
      RetailPropertyInformation,
