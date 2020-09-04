@@ -15,7 +15,8 @@
           [dropDownName]="widgetData.widgetWrapper.dropDown.placeholder"
           (dropDownFrmControl)="dashBoardDropDownFrmControl($event)" (IsAnySelected)="dashBoardIsAnySelected($event)"
           [defaultData]="widgetData.widgetWrapper.dropDown.defaultData"
-          [floatLabel]="widgetData.widgetWrapper.dropDown.floatLabel"></app-multi-select>
+          [floatLabel]="widgetData.widgetWrapper.dropDown.floatLabel"
+          [selectedData]= "selecteddashboardOutlet" ></app-multi-select>
       </div>
       <!-- looping Dashboard widgets container -->
       <div class="widget_group_wrapper">
@@ -77,7 +78,7 @@
           (dropDownFrmControl)="headerDropDownChange(widgetData.widgetWrapper.dropDown.dropDownControlname,$event)"
           (IsAnySelected)="widgetIsAnySelected(widgetData.widgetWrapper.dropDown.dropDownControlname,$event)"
           [defaultData]="widgetData.widgetWrapper.dropDown.defaultData"
-          [floatLabel]="widgetData.widgetWrapper.dropDown.floatLabel"></app-multi-select>
+          [floatLabel]="widgetData.widgetWrapper.dropDown.floatLabel" [selectedData]= "selectedSalesOutlet"></app-multi-select>
         <div class="widget_group_manage" *ngIf="widgetData.widgetWrapper.manage.show"
           (click)="manage(widgetsData_Index)">
           <i [ngClass]="widgetData.widgetWrapper.icon.show ? widgetData.widgetWrapper.icon.path : ''"></i>
@@ -107,7 +108,8 @@
                     [dropDownFilterData]="loopWidget.title.dropDown.dropDownOptions"
                     [dropDownControlname]="loopWidget.title.dropDown.dropDownControlname"
                     (dropDownFrmControl)="loopWidgetDropDownFrmControl($event,loopWidget,loopWidget_Index)"
-                    (IsAnySelected)="loopWidgetIsAnySelected($event,loopWidget,loopWidget_Index)"></app-multi-select>
+                    (IsAnySelected)="loopWidgetIsAnySelected($event,loopWidget,loopWidget_Index)"
+                    [selectedData]= "selectedChildOutlet"></app-multi-select>
                   <div class="widget_header_inputs">
                     <div class="multi-select" *ngIf="loopWidget.title.multiSelect.show">
                       <button mat-button

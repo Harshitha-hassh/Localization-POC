@@ -12,7 +12,7 @@ import { DashBoardService } from 'src/app/shared/data-services/authentication/re
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { sortPipe } from 'src/app/common/shared/shared/pipes/sort-pipe.pipe';
 import { Router } from '@angular/router';
-
+import _ from 'lodash';
 @Component({
   selector: 'app-dashboard-widgets-report',
   templateUrl: './dashboard-widgets-report.component.html',
@@ -46,7 +46,9 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   outletEndDate: Date;
   categoryStartDate: Date;
   categoryEndDate: Date;
-
+  selecteddashboardOutlet = [];
+  selectedSalesOutlet = [];
+  selectedChildOutlet = [];
   numericZero = 0;
   numericOne = 1;
   numericTwo = 2;
@@ -133,6 +135,9 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     this.dashboardWidgetsReportService.OutletsData = await this.dashBoardBusiness.getOutlets();
     this.Outlet_Sales = this.dashboardWidgetsReportService.OutletsData.map(x => x.id);
     this.outletIds = this.dashboardWidgetsReportService.OutletsData.map(x => x.id);
+    this.selecteddashboardOutlet = _.clone(this.outletIds) ;
+    this.selectedChildOutlet =  _.clone(this.outletIds) ;
+    this.selectedSalesOutlet = _.clone(this.outletIds) ;
     this.dashboardOutletIds = this.outletIds; 
     this.outletId=this.dashboardOutletIds[0];
     this.outletId = this.outletIds[0];
@@ -188,7 +193,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 
   async widgetView(widgetsData_Index, templateName, path) {
     console.log('widgetsData_Index ', widgetsData_Index, '  widgetView ', templateName);
-    this._router.navigate([path]);
+      this._router.navigate([path]);
   }
 
   manage(widgetsData_Index) {
@@ -220,6 +225,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     console.log('controlName ', controlName, ' e', e);
     this.dashboardWidgetsReportService.OutletsData = e;
     this.outletIds = e.map(x => x.id);  
+    this.selectedChildOutlet =  _.clone(this.outletIds) ;
     this.getReturned_ItemsDetail();
     this.getOpenTicketsData();
     this.getOutofStockOnData();

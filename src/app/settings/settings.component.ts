@@ -10,10 +10,20 @@ import { RouteLoaderService } from '../core/services/route-loader.service';
 export class SettingsComponent implements OnInit {
   menuList: any;
   menuType = menuTypes;
+  eatecEnabled:boolean;
+  menu :any;
+
   constructor(private routeDataService: RouteLoaderService) {
-    const value = this.routeDataService.GetChildMenu('/settings');
+    var value = this.routeDataService.GetChildMenu('/settings');
+    this.menu = value.linkedElement;
+    const e = sessionStorage.getItem('isEatecEnabled');
+    this.eatecEnabled = e === 'true';
+    let configsToRemove = ['/settings/enhancedInventory'];
+  
+    this.menu = !this.eatecEnabled? this.menu.filter(r => !configsToRemove.includes(r.routePath)) :  this.menu;
+
     this.menuList = {
-      menu: value.linkedElement,
+      menu: this.menu ,
       menuType : menuTypes.secondary
     };
   }
