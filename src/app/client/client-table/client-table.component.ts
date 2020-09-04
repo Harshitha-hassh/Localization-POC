@@ -330,8 +330,7 @@ export class ClientTableComponent implements OnInit {
     let groupArray: any = {
 
       "allclients": {
-        "checkbox": "0",
-        "info": "15",
+        "info": "20",
         "gender": "5",
         "dob": "10",
         "address": "20",
