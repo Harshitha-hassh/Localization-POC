@@ -2780,6 +2780,7 @@
   },
   "dayEnd": {
     "DAYEND": "DAY END",
+    "DayEndProcess":"Do you want to process day end?",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit",
     "CheckInAppointments": "Checked In Appointments",
     "CheckOutWithoutTransaction": "Checked Out Appointments without Transactions",
@@ -2817,7 +2818,8 @@
     "ErrorInDayEnd": "Error during day end process",
     "PROCESS": "PROCESS",
     "NoData": "NoData",
-    "CancelOpenTransaction": "Would you like to Cancel the Ticket?"
+    "CancelOpenTransaction": "Would you like to Cancel the Ticket?",
+		"systemMovedTo": "System date moved to"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role",

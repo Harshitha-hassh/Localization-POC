@@ -15,7 +15,7 @@ import { RetailSharedVariableService } from '../../../retail/shared/retail.share
 import { RetailValidationService } from '../../../retail/shared/retail.validation.service';
 import { ButtonOptions, Product,
    RetailBreakPoint, SPAScheduleBreakPoint,
-   ButtonType, ActionType, Host } from 'src/app/common/shared/shared/globalsContant';
+    ActionType, Host, ButtonType} from 'src/app/common/shared/shared/globalsContant';
 import { HttpMethod , KeyValuePair, HttpServiceCall , } from 'src/app/common/shared/shared/service/http-call.service';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { CommonAlertPopupComponent } from 'src/app/common/shared/shared/common-alert-popup/common-alert-popup.component';
@@ -23,6 +23,8 @@ import { AppModuleService } from 'src/app/core/services/app.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { RedirectToModules } from 'src/app/common/shared/shared/utilities/common-utilities';
+import { ButtonType as RetailButtonType} from 'src/app/retail/shared/globalsContant';
+import { AlertType } from 'src/app/retail/shared/shared.modal';
 
 @Component({
   selector: 'app-day-end',
@@ -88,9 +90,9 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
     if (this.hasAccess) {
       this.currentDateForAPI = this.localization.convertDateObjToAPIdate(this.currSysDate);
       // this.newSysDate = this.newSysDate.setDate(this.newSysDate.getDate() + 1);
-      this.newSysDate.setDate(this.currSysDate.getDate() + 1);
-      this.InvokeServiceCall('GetManagementData', Host.spaManagement, HttpMethod.Get);
+      this.newSysDate.setDate(this.currSysDate.getDate() + 1);    
       this.InitializeGrid();
+      this.GetGridData();
       // tslint:disable-next-line: max-line-length
       this.InvokeServiceCall('GetOutletsByProperty', Host.retailManagement, HttpMethod.Get, { PropertyId: Number(this.localization.GetPropertyInfo('PropertyId')) });
     }
@@ -164,35 +166,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
   }
 
   async successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): Promise<void> {
-    switch (callDesc) {
-      case 'GetManagementData': {
-        this.managementData = result.result as any;
-        const managementData: any[] = [];
-        managementData['Service'] = this.managementData.service;
-        managementData['Therapist'] = this.managementData.therapist;
-        managementData['Location'] = this.managementData.location;
-        managementData['AddOn'] = this.managementData.addOn;
-        managementData['AppointmentConfigurations'] = this.managementData.appointmentConfigurations[0];
-        managementData['LinkCode'] = this.managementData.linkCode;
-        managementData['BreakType'] = this.managementData.breakType;
-        managementData['Addons'] = this.managementData.addOn;
-
-        this.GetGridData();
-
-        break;
-      }
-      case 'GetAppointmentWithDeposit': {
-        const response = result.result as any;
-        break;
-      }
-      case 'GetAllAppointmentsByStatus': {
-        const response = result.result as any;
-        break;
-      }
-      case 'GetAppointmentWithoutTransaction': {
-        const response = result.result as any;
-        break;
-      }
+    switch (callDesc) {      
       case 'GetAllTransactions': {
         const response = result.result as any;
         await this.BuildOpenTransactions(response);
@@ -206,24 +180,14 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
       case 'GetShopItems': {
         this.allShopItems = result.result as any;
         break;
-      }
-      case 'UndoCheckInAppointment': {
-        break;
-      }
-      case 'UndoCheckOutAppointment': {
-        break;
-      }
-      case 'CheckinAppointment': {
-        this.ActionClick({ action: GridAction.CheckOut }, extraParams[0]);
-        break;
-      }
+      }     
       case 'PerformDayEnd': {
         const response = result.result as any;
         if (response) {
           this.PropertyInfo.SetPropertyDate(this.newSysDate);
-          this.ShowSuccessMessage();
           this.UpdateInventoryAudit();
           this.SyncUpItemAndTaxes();
+          this.ShowSuccessMessage();
         } else {
           this.isProcessClicked = false;
           this.utils.ShowError(this.localization.captions.common.Error, this.captions.ErrorInDayEnd, ButtonType.Ok);
@@ -351,30 +315,27 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
     return this.canProcess;
   }
 
-  PerformDayend() {
-    this.isProcessClicked = true;
-    const uriParam = { currentDate: this.currentDateForAPI };
-    this.InvokeServiceCall('PerformDayEnd', Host.schedule, HttpMethod.Put, uriParam);
+
+
+ PerformDayend() {
+    this.utils.ShowErrorMessage(this.captions.DAYEND,this.captions.DayEndProcess, RetailButtonType.YesNo, this.PopupCallback.bind(this));             
+  }
+
+
+  async PopupCallback(result: string, extraParams?: any) {
+    if (result.toLowerCase() == "yes") {
+      this.isProcessClicked = true;
+      let uriParam = { currentDate: this.currentDateForAPI };
+      this.InvokeServiceCall("PerformDayEnd", Host.retailPOS, HttpMethod.Put, uriParam);
+    }    
   }
 
   ShowSuccessMessage() {
     // tslint:disable-next-line: max-line-length
-    const data = { headername: this.captions.Success, headerIcon: 'icon-success-icon', headerMessage: `${this.captions.SystemMovedTo} ${this.localization.LocalizeDate(this.newSysDate)}`, buttonName: this.captions.CONTINUE, type: 'message' };
-    const dialogRef = this.dialog.open(CommonAlertPopupComponent, {
-      width: '350px',
-      height: '300px',
-      hasBackdrop: true,
-      panelClass: 'small-popup',
-      data,
-      disableClose: true
-    });
-    const subscription = dialogRef.afterClosed().subscribe(() => {
-      this.successFlag = true;
-      this.canProcess = false;
-    });
-    this.subscriptions.push(subscription);
-
-
+    const message = `${this.captions.systemMovedTo} ${this.localization.LocalizeDate(this.newSysDate)}`;
+    this.successFlag = true;
+    this.canProcess = false;
+    this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue);
   }
   trackByFn(index, cell) {
     return index;

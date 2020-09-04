@@ -96,7 +96,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
               private fb: FormBuilder,
               private utilities: Utilities,
               private propertyInformation: PropertyInformation,
-              private localization: RetailStandaloneLocalization, private _router: Router,
+              private localization: RetailStandaloneLocalization,private _router: Router,
               private sortpipe: sortPipe) {
   }
 

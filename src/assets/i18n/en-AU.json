@@ -2779,6 +2779,7 @@
   },
   "dayEnd": {
     "DAYEND": "DAY END_au",
+    "DayEndProcess": "Do you want to process day end?_au",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit_au",
     "CheckInAppointments": "Checked In Appointments_au",
     "CheckOutWithoutTransaction": "Checked Out Appointments without Transactions_au",
@@ -2816,7 +2817,8 @@
     "ErrorInDayEnd": "Error during day end process_au",
     "PROCESS": "PROCESS_au",
     "NoData": "NoData_au",
-    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_au"
+    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_au",
+    "systemMovedTo": "System date moved to_au"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role_au",

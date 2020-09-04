@@ -2779,6 +2779,7 @@
   },
   "dayEnd": {
     "DAYEND": "DAY END_gb",
+    "DayEndProcess": "Do you want to process day end?_gb",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit_gb",
     "CheckInAppointments": "Checked In Appointments_gb",
     "CheckOutWithoutTransaction": "Checked Out Appointments without Transactions_gb",
@@ -2816,7 +2817,8 @@
     "ErrorInDayEnd": "Error during day end process_gb",
     "PROCESS": "PROCESS_gb",
     "NoData": "NoData_gb",
-    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_gb"
+    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_gb",
+    "systemMovedTo": "System date moved to_gb"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role_gb",

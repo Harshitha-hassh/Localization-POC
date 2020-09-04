@@ -2779,6 +2779,7 @@
   },
   "dayEnd": {
     "DAYEND": "DAY END_uk",
+    "DayEndProcess": "Do you want to process day end?_uk",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit_uk",
     "CheckInAppointments": "Checked In Appointments_uk",
     "CheckOutWithoutTransaction": "Checked Out Appointments without Transactions_uk",
@@ -2816,7 +2817,8 @@
     "ErrorInDayEnd": "Error during day end process_uk",
     "PROCESS": "PROCESS_uk",
     "NoData": "NoData_uk",
-    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_uk"
+    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_uk",
+    "systemMovedTo": "System date moved to_uk"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role_uk",
