@@ -42,4 +42,12 @@ export class ClientDataService {
             uriParams: { requestUid: requestUid }
         });
     }
+
+    public async getClients(id : number[]): Promise<any[]> {
+        return this._httpPos.putPromise({
+            route: RetailApiRoute.GetClientByIds,
+            body: id,
+            uriParams: { includeRelatedData: false }
+        });
+    }
 }

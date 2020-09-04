@@ -1,29 +1,31 @@
-import { Component, OnInit, ViewEncapsulation, OnDestroy, AfterViewChecked } from '@angular/core'; 
+import { Component, OnInit, ViewEncapsulation, OnDestroy, AfterViewChecked } from '@angular/core';
 import * as _ from 'lodash'; // STORAGE THE BACK ARRAY
 import { MatDialog } from '@angular/material';
 import { BaseResponse } from '../../../common/shared/shared.modal';
-import { ManagementData,ClientDetail } from '../../../shared/shared-models';
+import { ManagementData, ClientDetail } from '../../../shared/shared-models';
 import { GridData, PendingAction, AppointmentData, GridAction, ManagementDataType } from '../../AuditModals';
 import { AuditService } from '../../audit.service';
 import { Router } from '@angular/router';
 import { PropertyInformation } from '../../../core/services/property-information.service';
-import { SubscriptionLike as ISubscription ,  ReplaySubject } from 'rxjs';
+import { SubscriptionLike as ISubscription, ReplaySubject } from 'rxjs';
 import { SubPropertyModel } from '../../../retail/retail.modals';
 import { takeUntil } from 'rxjs/operators';
 import { TransactionStatus } from '../../../retail/shared/service/common-variables.service';
 import { RetailSharedVariableService } from '../../../retail/shared/retail.shared.variable.service';
 import { RetailValidationService } from '../../../retail/shared/retail.validation.service';
-import { ButtonOptions, Product,
-   RetailBreakPoint, SPAScheduleBreakPoint,
-    ActionType, Host, ButtonType} from 'src/app/common/shared/shared/globalsContant';
-import { HttpMethod , KeyValuePair, HttpServiceCall , } from 'src/app/common/shared/shared/service/http-call.service';
+import {
+  ButtonOptions, Product,
+  RetailBreakPoint, SPAScheduleBreakPoint,
+  ActionType, Host, ButtonType
+} from 'src/app/common/shared/shared/globalsContant';
+import { HttpMethod, KeyValuePair, HttpServiceCall, } from 'src/app/common/shared/shared/service/http-call.service';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { CommonAlertPopupComponent } from 'src/app/common/shared/shared/common-alert-popup/common-alert-popup.component';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { RedirectToModules } from 'src/app/common/shared/shared/utilities/common-utilities';
-import { ButtonType as RetailButtonType} from 'src/app/retail/shared/globalsContant';
+import { ButtonType as RetailButtonType } from 'src/app/retail/shared/globalsContant';
 import { AlertType } from 'src/app/retail/shared/shared.modal';
 
 @Component({
@@ -33,7 +35,7 @@ import { AlertType } from 'src/app/retail/shared/shared.modal';
   encapsulation: ViewEncapsulation.None,
   providers: [AppModuleService]
 })
-export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
+export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   captions: any;
   getheight: NodeJS.Timer;
@@ -61,10 +63,10 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
   propOutlets: SubPropertyModel[] = [];
 
   constructor(public localization: RetailLocalization, private dialog: MatDialog, private utils: RetailUtilities, private http: HttpServiceCall,
-              private auditService: AuditService,  public router: Router,
-              // tslint:disable-next-line: max-line-length
-              private PropertyInfo: PropertyInformation,  private breakPoint: BreakPointAccess, public ams: AppModuleService,
-              private retailSharedService: RetailSharedVariableService, private retailValidationService: RetailValidationService) {
+    private auditService: AuditService, public router: Router,
+    // tslint:disable-next-line: max-line-length
+    private PropertyInfo: PropertyInformation, private breakPoint: BreakPointAccess, public ams: AppModuleService,
+    private retailSharedService: RetailSharedVariableService, private retailValidationService: RetailValidationService) {
   }
 
   ngOnInit() {
@@ -90,7 +92,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
     if (this.hasAccess) {
       this.currentDateForAPI = this.localization.convertDateObjToAPIdate(this.currSysDate);
       // this.newSysDate = this.newSysDate.setDate(this.newSysDate.getDate() + 1);
-      this.newSysDate.setDate(this.currSysDate.getDate() + 1);    
+      this.newSysDate.setDate(this.currSysDate.getDate() + 1);
       this.InitializeGrid();
       this.GetGridData();
       // tslint:disable-next-line: max-line-length
@@ -166,7 +168,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
   }
 
   async successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): Promise<void> {
-    switch (callDesc) {      
+    switch (callDesc) {
       case 'GetAllTransactions': {
         const response = result.result as any;
         await this.BuildOpenTransactions(response);
@@ -180,7 +182,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
       case 'GetShopItems': {
         this.allShopItems = result.result as any;
         break;
-      }     
+      }
       case 'PerformDayEnd': {
         const response = result.result as any;
         if (response) {
@@ -252,7 +254,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
       this.ClearGridDate(gridData);
       return;
     }
-    var allClientIds = response.map(r => r.guestId);   
+    var allClientIds = response.filter(r => r.guestId > 0).map(r => r.guestId);
     // All item info will be required when Reopen/Settle transaction from dayend
     this.InvokeServiceCall('GetShopItems', Host.retailManagement, HttpMethod.Get);
     let [clerkInfo, clients] = await Promise.all(
@@ -274,7 +276,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
         ClerkID: (clerk && clerk.length > 0) ? clerk[0].userName : '',
         Outlet: tran.outletName,
         Amount: this.FormatCurrency(tran.totalAmount),
-        ClientName: this.getClientName(clients,tran.guestId),
+        ClientName: this.getClientName(clients, tran.guestId),
         ClientId: tran.guestId,
         MemberName: '',
         AppointmentNumber: ''
@@ -317,8 +319,8 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
 
 
 
- PerformDayend() {
-    this.utils.ShowErrorMessage(this.captions.DAYEND,this.captions.DayEndProcess, RetailButtonType.YesNo, this.PopupCallback.bind(this));             
+  PerformDayend() {
+    this.utils.ShowErrorMessage(this.captions.DAYEND, this.captions.DayEndProcess, RetailButtonType.YesNo, this.PopupCallback.bind(this));
   }
 
 
@@ -327,7 +329,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
       this.isProcessClicked = true;
       let uriParam = { currentDate: this.currentDateForAPI };
       this.InvokeServiceCall("PerformDayEnd", Host.retailPOS, HttpMethod.Put, uriParam);
-    }    
+    }
   }
 
   ShowSuccessMessage() {
@@ -409,7 +411,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
       isUserAuthorized = this.breakPoint.CheckForAccess(breakpointNumber);
     }
 
-    if (isUserAuthorized && (action === GridAction.ReOpen || action === GridAction.Settle || action ===  GridAction.CancelTransaction)) {
+    if (isUserAuthorized && (action === GridAction.ReOpen || action === GridAction.Settle || action === GridAction.CancelTransaction)) {
       isUserAuthorized = !this.breakPoint.IsViewOnly(breakpointNumber[0]);
       if (!isUserAuthorized) {
         this.breakPoint.showBreakPointPopup(this.localization.captions.breakpoint[RetailBreakPoint.ReOpenTransaction]);
@@ -474,7 +476,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
     if (result.toLowerCase() === ButtonOptions.Yes.toLowerCase()) {
       this.retailValidationService.LockTransaction(extraparams[0], true);
       this.InvokeServiceCall('GetTransactionDetails',
-       Host.retailPOS, HttpMethod.Get, { transactionId: extraparams[0], productId: Product.SPA }, null, null, [extraparams[1]]);
+        Host.retailPOS, HttpMethod.Get, { transactionId: extraparams[0], productId: Product.SPA }, null, null, [extraparams[1]]);
     } else {
       this.retailSharedService.settleOpenTransaction = false;
       this.retailSharedService.reOpenTransaction = false;
@@ -490,7 +492,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
       if (response && response.successStatus) {
         this.GetOpenTransactions();
         const undocheckoutrespone: any = await this.InvokeServiceCallAsync('UndoCheckOutAppointmentByTransactionId',
-         Host.schedule, HttpMethod.Put, {transactionId: this.retailSharedService.transactionId});
+          Host.schedule, HttpMethod.Put, { transactionId: this.retailSharedService.transactionId });
         if (undocheckoutrespone && undocheckoutrespone.successStatus) {
           // this.GetCheckInAppointment();
         }
@@ -548,7 +550,7 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
           name = `${client.firstName} ${client.lastName}`;
         }
       }
-                                      break ;
+        break;
     }
     return name;
   }
@@ -602,35 +604,35 @@ export class DayEndComponent implements OnInit, OnDestroy , AfterViewChecked {
 
   async InvokeServiceCallAsync(route: string, domain: Host, callType: HttpMethod, uriParams?: any, body?: any): Promise<BaseResponse<any>> {
     const result: BaseResponse<any> = await this.http.CallApiAsync({
-        host: domain,
-        callDesc: route,
-        method: callType,
-        body,
-        uriParams,
+      host: domain,
+      callDesc: route,
+      method: callType,
+      body,
+      uriParams,
     });
     return result;
-}
-private async getClients(clientId: number[]): Promise<ClientDetail[]> {
-  let result: ClientDetail[] = [];
-  if (clientId && clientId.length > 0) {
-    clientId = Array.from(new Set(clientId)); // Unique
-    let clientResponse: BaseResponse<ClientDetail[]> = await this.InvokeServiceCallAsync("GetClientByIds", Host.retailPOS, HttpMethod.Put, '', clientId)
-    if (clientResponse.result) {
-      result = clientResponse.result;
-    }
   }
-  return result;
-}
+  private async getClients(clientId: number[]): Promise<any[]> {
+    let result: any[] = [];
+    if (clientId && clientId.length > 0) {
+      clientId = Array.from(new Set(clientId)); // Unique
+      let clientResponse: BaseResponse<any[]> = await this.InvokeServiceCallAsync("GetClientByIds", Host.retailPOS, HttpMethod.Put, { includeRelatedData: false }, clientId)
+      if (clientResponse.result) {
+        result = clientResponse.result;
+      }
+    }
+    return result;
+  }
 
-private getClientName(allClinets: ClientDetail[], clientId: number): string {
-  let clientName = '';
-  if (allClinets && allClinets.length > 0) {
-    var client = allClinets.find(r => r.id == clientId);
-    if (client) {
-      clientName = `${client.firstName} ${client.lastName}`
+  private getClientName(allClinets: any[], clientId: number): string {
+    let clientName = '';
+    if (allClinets && allClinets.length > 0) {
+      var client = allClinets.find(r => r.id == clientId);
+      if (client) {
+        clientName = `${client.firstName} ${client.lastName}`
+      }
     }
+    return clientName;
   }
-  return clientName;
-}
 
 }

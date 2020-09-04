@@ -1,0 +1,118 @@
+@import '../../../assets/sass/abstracts/_variables';
+.transactionlog{
+  height: 100%;
+&.full-view {
+    .left-asidereports {
+      margin-left: -300px;
+      .aside-arrow{
+        right: -20px;
+        i{
+          transform: rotate(-180deg);
+        }
+      }
+    }
+
+    .right-contentreports {
+      width: 100%;
+
+    }
+
+  }
+  .left-asidereports{
+    .resetLink{
+      text-align: center;
+      display: block;
+      margin-top: 10px;
+    }
+    border-right: 1px solid $color-reports-border;
+    .customCalendar{
+      position: absolute; 
+      right: 0px;
+      bottom: 0px;
+    }
+  }
+  .right-contentreports{
+    padding: 15px;
+    background-color: $color-reports-background;
+    #table_transactionLog{
+     td:nth-child(3){      
+       max-width: 350px;             
+       &.showMore{        
+         white-space: unset;
+         text-overflow: unset;
+         overflow: hidden;
+         padding-top: 10px;
+         padding-bottom: 10px;
+         position: relative;
+         padding-right: unset;
+         .showText{
+          position: absolute;
+          right: 0px;
+          bottom: 1px;    
+                
+         }
+      
+       }
+       &.showLess{
+        white-space: nowrap; 
+        position: relative;      
+        padding-right: 6%;
+        .showText{
+         position: absolute;
+         right: 0px;
+         top: 13px;
+        }
+       }
+     }
+    }
+  }
+
+  .mat-tab-labels {
+    background: $mat-tab-labels;
+  }
+  .left-asidereports {
+    width: 300px;
+    float: left;
+    height: 100%;
+    position: relative;
+    transition: 0.3s;
+
+    .aside-arrow {
+      position: absolute;
+      top: calc(50% - 75px);
+      // right: -13px;
+      right: -20px;
+      width: 20px;
+      height: 120px;
+      border: none;
+      border-radius: 0px 8px 8px 0px;
+      cursor: pointer;     
+      z-index: 1;
+      .icon-left-arrow {
+        color: $PureWhite;
+        position: absolute;
+        top: calc(50% - 8px);
+        right: 6px;
+      }
+    }
+
+
+
+    form {
+      padding: 30px 15px 15px;
+    }
+  }
+  .right-contentreports {
+    width: calc(100% - 300px);
+    height: 100%;
+    float: right;
+    background: $reportBG;
+    transition: 0.3s;
+    padding: 20px;
+    .report-section{
+      height: 100%;
+      background-color: $color-reports-bg;
+    }
+  }
+
+}

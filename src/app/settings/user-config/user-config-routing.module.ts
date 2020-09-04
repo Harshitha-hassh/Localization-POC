@@ -12,26 +12,26 @@ const routes: Routes = [{
     path: '',
     component: UserConfigComponent,
     canActivate: [RouteGuardService],
-    data: { redirectTo: '', hasChild: true },
+    data: { checkAllSiblings: true, isModule: true, lastBreakPointNumber: BreakPoint.UserRoleConfiguration },
     children: [
         { path: '', redirectTo: 'usersetup', pathMatch: 'full' },
         {
             path: 'usersetup',
             component: UserSetupComponent,
             canActivate: [RouteGuardService],
-            data: { breakPointNumber: BreakPoint.UserSetup, redirectTo: '/settings/usersetup/rolesetup' }
+            data: { breakPointNumber: BreakPoint.UserSetup, redirectTo: 'rolesetup', ShowPopup: false, syncAccess: true,  isSubmodule: true }
         },
         {
             path: 'rolesetup',
             component: RoleSetupComponent,
             canActivate: [RouteGuardService],
-            data: { breakPointNumber: BreakPoint.UserRoleSetUp, redirectTo: '/settings/usersetup/userroleconfiguration' }
+            data: { breakPointNumber: BreakPoint.UserRoleSetUp, redirectTo: 'userroleconfiguration', ShowPopup: false, syncAccess: true,  isSubmodule: true }
         },
         {
             path: 'userroleconfiguration',
             component: UserRoleComponent,
             canActivate: [RouteGuardService],
-            data: { breakPointNumber: BreakPoint.UserRoleConfiguration, redirectTo: '' }
+            data: { breakPointNumber: BreakPoint.UserRoleConfiguration, redirectTo: '',ShowPopup: false, syncAccess: true,  isSubmodule: true }
         }
     ]
 }];

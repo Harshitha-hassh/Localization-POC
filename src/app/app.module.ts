@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { CommonPropertyInformation } from './common/shared/services/common-prope
 import { RetailPropertyInformation } from './core/services/retail-property-information.service';
 import { CommonUtilities } from './common/shared/shared/utilities/common-utilities';
 import { Utilities } from './core/utilities';
+import { ServiceLocator } from './common/service.locator';
 let AppServiceFactory = (utilities: Utilities, localization:RetailStandAloneLocalization) => {
   return new RetailAppService(utilities,localization);
 };
@@ -50,4 +51,8 @@ let AppServiceFactory = (utilities: Utilities, localization:RetailStandAloneLoca
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(private injector: Injector) {
+    ServiceLocator.injector = this.injector;    
+  }
+}

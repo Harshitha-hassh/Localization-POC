@@ -57,6 +57,7 @@ export enum RetailRoutes {
   RecentClientInfo ='Clients/recent/{propertyDate}/search/{requestUid}',
   SearchClientInfo = 'Clients/search/{requestUid}',
   GetClientByPatronId="Clients/getClientByPatronId/{patronId}",
+  GetClientByIds = "Clients/query/{includeRelatedData}",
 
    //Image
    saveImage = 'v2/Images',
