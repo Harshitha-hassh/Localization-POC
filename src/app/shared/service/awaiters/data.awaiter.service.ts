@@ -114,7 +114,9 @@ export class DataAwaiterService {
             panelClass: 'small-popup'
         });
         dialogRef.afterClosed().subscribe(result => {
-            
+            if (result && result.length > 0) {                
+                callback ? callback(this.BuildPayeeData(result[0])) : null;
+            }
         })
     }
 
