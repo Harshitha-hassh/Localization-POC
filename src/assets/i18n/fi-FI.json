@@ -2817,7 +2817,8 @@
     "ErrorInDayEnd": "Error during day end process_fi",
     "PROCESS": "PROCESS_fi",
     "NoData": "NoData_fi",
-    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_fi"
+    "CancelOpenTransaction": "Would you like to Cancel the Ticket?_fi",
+    "systemMovedTo": "System date moved to_fi"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role_fi",

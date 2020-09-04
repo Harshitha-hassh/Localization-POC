@@ -179,6 +179,7 @@ export class RoleSetupComponent implements OnInit {
     } else if (!this.checked) {
       this.tableData = this.result.filter(res => res.active);
     }
+    this.BindToGrid();
   }
 
   InvokeServiceCall(route: string, domain: Host, callType: HttpMethod, uriParams?: any, body?: any, extraParams?: any) {
