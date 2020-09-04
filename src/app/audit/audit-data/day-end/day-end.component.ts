@@ -612,11 +612,11 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     });
     return result;
   }
-  private async getClients(clientId: number[]): Promise<ClientDetail[]> {
-    let result: ClientDetail[] = [];
+  private async getClients(clientId: number[]): Promise<any[]> {
+    let result: any[] = [];
     if (clientId && clientId.length > 0) {
       clientId = Array.from(new Set(clientId)); // Unique
-      let clientResponse: BaseResponse<ClientDetail[]> = await this.InvokeServiceCallAsync("GetClientByIds", Host.retailPOS, HttpMethod.Put, { includeRelatedData: false }, clientId)
+      let clientResponse: BaseResponse<any[]> = await this.InvokeServiceCallAsync("GetClientByIds", Host.retailPOS, HttpMethod.Put, { includeRelatedData: false }, clientId)
       if (clientResponse.result) {
         result = clientResponse.result;
       }
@@ -624,7 +624,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     return result;
   }
 
-  private getClientName(allClinets: ClientDetail[], clientId: number): string {
+  private getClientName(allClinets: any[], clientId: number): string {
     let clientName = '';
     if (allClinets && allClinets.length > 0) {
       var client = allClinets.find(r => r.id == clientId);

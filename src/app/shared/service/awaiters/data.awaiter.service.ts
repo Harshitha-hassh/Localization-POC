@@ -31,6 +31,7 @@ export class DataAwaiterService {
         RetailDataAwaiters.searchPayee = this.searchClient.bind(this);
         RetailDataAwaiters.CreatePlayer = this.createClient.bind(this);
         RetailDataAwaiters.openAddPayeePopup = this.openAddGuestPopup.bind(this);
+        RetailDataAwaiters.getPayeeDetails = this.getClientDetails.bind(this);
     }
 
     getChildMenu(url, menutype?){
@@ -118,6 +119,25 @@ export class DataAwaiterService {
                 callback ? callback(this.BuildPayeeData(result[0])) : null;
             }
         })
+    }
+    private async getClientDetails(id: number[]): Promise<PayeeInfo[]> {
+        let response: any = await this.clientDataService.getClients(id);       
+        let clientDetails: PayeeInfo[] = [];
+        if (response.successStatus && response.result && response.result.length > 0) {
+            response.result.forEach(client => {
+                clientDetails.push({
+                    id : client.id,
+                    name : client.firstName + ' ' + client.lastName,
+                    guestProfileId : client.guestId,
+                    address : '',
+                    country : '',
+                    city : '',
+                    zip : '',
+                    cardInfo : []
+                });
+            });
+        }
+        return clientDetails;
     }
 
 }
