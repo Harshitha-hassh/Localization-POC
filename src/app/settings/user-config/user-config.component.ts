@@ -29,7 +29,7 @@ export class UserConfigComponent implements OnInit {
 
   constructor(private _servicesetting: SettingsService, private localization: RetailStandaloneLocalization,
               private breakpoint: BreakPointAccess, private routeDataService: RouteLoaderService) {
-    const value = this.routeDataService.GetChildMenu('/settings/usersetup');
+    const value = this.routeDataService.GetChildMenu('/settings/userconfig');
     this.menuList = {
       menu: value.linkedElement,
       menuType: menuTypes.tertiary

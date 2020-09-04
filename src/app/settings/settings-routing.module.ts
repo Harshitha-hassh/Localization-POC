@@ -31,8 +31,8 @@ const routes: Routes = [{
       loadChildren: () => import('../settings/retail-utilities/retail-utilities.module').then(m => m.UtilitiesModule)
     },
     {
-      path: 'usersetup',
-      loadChildren: () => import('../settings/user-config/user-config.module').then(m => m.UserSetupModule)
+      path: 'userconfig',
+      loadChildren: () => import('../settings/user-config/user-config.module').then(m => m.UserSetupModule),
       // data: { redirectTo: 'systemsetup', hasChild: true }
     },
 
