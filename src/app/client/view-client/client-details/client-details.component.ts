@@ -63,7 +63,7 @@ export class ClientDetailsComponent implements OnInit {
         EnableActions: true,
         SelectedSettingId: 99,
         Sortable: this.clientService.selectedIndex != 1 ? 'client' : '',
-        SelectRows: true,
+        SelectRows: false,
         Searchable: false,
         EditMoreOption: true, //No appointment selection s thr
         disableDelete: true
@@ -402,7 +402,7 @@ export class ClientDetailsComponent implements OnInit {
             EnableActions: true,
             SelectedSettingId: 99,
             Sortable: this.clientService.selectedIndex != 1 ? 'client' : '',
-            SelectRows: true,
+            SelectRows: false,
             Searchable: false,
             EditMoreOption: true,
             disableDelete: true

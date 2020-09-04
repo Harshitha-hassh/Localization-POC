@@ -34,6 +34,7 @@ import { UserAccessDataService } from '../common/dataservices/authentication/use
 import { LocalizeDatePipe } from '../core/localization/localize-date.pipe';
 import { ClientDataService } from './data-services/client.data.service';
 import { AppModuleService } from '../core/services/app.service';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { AppModuleService } from '../core/services/app.service';
     TemplatesModule,
     RetailSharedModule,
     CommonSharedModule,
-    GooglePlaceModule
+    GooglePlaceModule,
+    NgxMaterialTimepickerModule.forRoot()
   ],
   providers: [
     TenantManagementCommunication,
