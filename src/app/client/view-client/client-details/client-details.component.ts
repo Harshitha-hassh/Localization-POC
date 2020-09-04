@@ -139,9 +139,8 @@ export class ClientDetailsComponent implements OnInit {
             element.values = [];
         });
         if (this.clientService.selectedIndex == 1) {
-            if (this.searchText &&  this.searchText.length > 2){
-                this.RecentClientInformation(this.searchText)
-            }
+                this.RecentClientInformation(this.searchText);
+            
             this.selectedClient = [];
             this.clientService.isVip = false;
         }
@@ -571,6 +570,9 @@ export class ClientDetailsComponent implements OnInit {
     }
 
     RecentClientInformation(searchText: any) {
+        if(this.requestUid == '') {
+            this.requestUid = Date.now() + "" + Math.random() * 10000;
+        }
         this.http.CallApiWithCallback<number>({
             host: Host.retailPOS,
             success: this.successCallback.bind(this),

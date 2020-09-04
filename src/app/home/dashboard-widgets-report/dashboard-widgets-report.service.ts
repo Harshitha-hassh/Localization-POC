@@ -44,7 +44,7 @@ export class DashboardWidgetsReportService {
           },
           dropDown: {
             show: true,
-            placeholder: 'Outlets',
+            placeholder: this.captions.Outlets,
             floatLabel: 'never',
             dropDownControlname: 'SalesHeadOutlet',
             dropDownName: this.captions.allOutlets,
@@ -88,7 +88,7 @@ export class DashboardWidgetsReportService {
               },
               dropDown: {
                 show: true,
-                placeholder: 'Outlets',
+                placeholder: this.captions.Outlets,
                 floatLabel: 'never',
                 dropDownControlname: 'Sales_Revenue',
                 dropDownName: this.captions.allOutlets,
@@ -127,7 +127,7 @@ export class DashboardWidgetsReportService {
               },
               dropDown: {
                 show: true,
-                placeholder: 'Outlets',
+                placeholder: this.captions.Outlets,
                 floatLabel: 'never',
                 dropDownControlname: 'Out_of_StockItems',
                 dropDownName: this.captions.allOutlets,
@@ -175,7 +175,7 @@ export class DashboardWidgetsReportService {
               },
               dropDown: {
                 show: true,
-                placeholder: 'Outlets',
+                placeholder: this.captions.Outlets,
                 floatLabel: 'never',
                 dropDownControlname: 'Revenue_By_Outlet',
                 dropDownName: this.captions.allOutlets,
@@ -221,7 +221,7 @@ export class DashboardWidgetsReportService {
               },
               dropDown: {
                 show: true,
-                placeholder: 'Outlets',
+                placeholder:this.captions.Outlets,
                 floatLabel: 'never',
                 dropDownControlname: 'Sales_Top5Items',
                 dropDownName: this.captions.allOutlets,
@@ -266,7 +266,7 @@ export class DashboardWidgetsReportService {
               },
               dropDown: {
                 show: true,
-                placeholder: 'Outlets',
+                placeholder: this.captions.Outlets,
                 floatLabel: 'never',
                 dropDownControlname: 'Sales_Top5Categories',
                 dropDownName: this.captions.allOutlets,
@@ -281,48 +281,7 @@ export class DashboardWidgetsReportService {
               show: false
             }
           },
-          // {
-          //   order:6,
-          //   show: true,
-          //   allow:true,
-          //   parentClass:'sales',
-          //   customClass:'section_1 ',
-          //   config: {
-          //     useConfig: true,
-          //     width: 50,
-          //     widthUnit: '%',
-          //     height: '455',
-          //     heightUnit: 'px'
-          //   },
-          //   title: {
-          //     show: true,
-          //     icon: {
-          //       show: false
-          //     },
-          //     title: this.captions.PurchaseOrder,
-          //     multiSelect: {
-          //       show: false
-          //     },
-          //     dropDown: {
-          //       show: true,
-          //       placeholder: 'Outlets',
-          //       floatLabel: 'never',
-          //       dropDownControlname:'Purchase_Order',
-          //       dropDownName: this.captions.allOutlets,
-          //       defaultData:{id: 0, value: 'ALL', description: this.captions.allOutlets,showInDropDown: true},
-          //       dropDownOptions: this.OutletsData,
-          //     },
-          //   },
-          //   template: {
-          //     name: 'Purchase_Order'
-          //   },
-          //   footer: {
-          //     show: true,
-          //     title: this.captions.ViewCompleteList,
-          //     showArrow: true,
-          //     routingPath:''
-          //   }
-          // },
+         
           {
             order: 7,
             show: true,
@@ -347,7 +306,7 @@ export class DashboardWidgetsReportService {
               },
               dropDown: {
                 show: true,
-                placeholder: 'Outlets',
+                placeholder: this.captions.Outlets,
                 floatLabel: 'never',
                 dropDownControlname: 'Open_Tickets',
                 dropDownName: this.captions.allOutlets,
@@ -394,7 +353,7 @@ export class DashboardWidgetsReportService {
               },
               dropDown: {
                 show: true,
-                placeholder: 'Outlets',
+                placeholder: this.captions.Outlets,
                 floatLabel: 'never',
                 dropDownControlname: 'Returned_Items',
                 dropDownName: this.captions.allOutlets,
@@ -426,7 +385,7 @@ export class DashboardWidgetsReportService {
           },
           dropDown: {
             show: true,
-            placeholder: 'Courses',
+            placeholder: this.captions.Outlets ,
             floatLabel: 'never',
             dropDownControlname: 'dashBoardHeadOutlet',
             dropDownName: this.captions.allOutlets,

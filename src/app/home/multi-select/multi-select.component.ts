@@ -18,6 +18,7 @@ export class MultiSelectComponent implements OnInit , OnChanges {
   @Input() dropDownFilterData;
   @Input() defaultData: any = [];
   dropDownFrmGrp: FormGroup;
+  @Input() selectedData: any = [];
   @Output() dropDownFrmControl: EventEmitter<any> = new EventEmitter<any>();
   @Output() IsAnySelected: EventEmitter<any> = new EventEmitter<any>();
   constructor(private localization: RetailStandaloneLocalization) { }
@@ -30,7 +31,11 @@ export class MultiSelectComponent implements OnInit , OnChanges {
     this.dropDownFrmGrp = new FormGroup({
       [this.dropDownControlname]: new FormControl([])
     });
-    this.dropDownFrmGrp.controls[this.dropDownControlname].setValue(this.dropDownFilterData);
+    let x = this.dropDownFilterData.filter(x=>(this.selectedData.indexOf(x.id) !=-1));
+
+    this.dropDownFrmGrp.controls[this.dropDownControlname].setValue(x);
+
+   // this.dropDownFrmGrp.controls[this.dropDownControlname].setValue(this.dropDownFilterData);
     this.dropDownFrmControl.emit([this.dropDownControlname, <FormControl> this.dropDownFrmGrp.controls[this.dropDownControlname]]);
   }
 
