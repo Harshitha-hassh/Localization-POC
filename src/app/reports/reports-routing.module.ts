@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ReportsComponent } from './reports.component';
+import { TransactionLogComponent } from './transaction-log/transaction-log.component';
 
 const REPORT_TYPE = {
   "retail": "retail",
@@ -20,7 +21,8 @@ const routes: Routes = [{
     { path: '', redirectTo: ReportMenu.retail, pathMatch: 'full' },    
     { path: ReportMenu.retail, loadChildren: '../retail/retail-reports/reports.module#RetailReportModule', data: { type: REPORT_TYPE.retail } },
     { path: ReportMenu.commissiongratuity, loadChildren: '../retail/retail-reports/reports.module#RetailReportModule', data: { type: REPORT_TYPE.commission } },
-    // { path: ReportMenu.transactionlog, component: TransactionLogReportComponent },
+    { path: ReportMenu.transactionlog, component: TransactionLogComponent },    
+    { path: ReportMenu.giftcard, loadChildren: '../retail/retail-reports/reports.module#RetailReportModule', data: { type: REPORT_TYPE.giftcard } }
   ]
 }];
 

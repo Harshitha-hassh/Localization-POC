@@ -1,0 +1,77 @@
+<div class="transactionlog" #commissionGratutityServiceCharge [ngClass]="{'full-view': navbarStatus}">
+  <div class="h-100">
+    <div class="left-asidereports">
+      <ng-scrollbar [autoHide]="true">
+        <form [formGroup]="transactionForm" autocomplete="off">
+          <div>
+            <mat-form-field class="w-100">
+              <mat-select placeholder="{{captions.logType}}" name="reportNameChild" formControlName="logType">
+                <mat-option *ngFor="let log of logType " [value]="log.code">{{log.logtype}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="w-100">
+              <input matInput placeholder="{{captions.transactionNumber}}" inputtype ="nodecimal,nonnegative" [maxlength]="10"   formControlName="transactionNumber">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="w-100" >
+              <input matInput placeholder="{{captions.ClientFirstName}}" formControlName="firstName"   [maxlength]="15" >
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="w-100" >
+              <input matInput placeholder="{{captions.ClientLastName}}" formControlName="lastName"   [maxlength]="15">
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field class="w-100" >
+              <input matInput [matDatepicker]="picker1" placeholder="{{commonCaptions.Date}}" class="picker1"
+                     formControlName="date" readonly [max]="minDate">
+              <mat-datepicker #picker1></mat-datepicker>
+              <i class="icon-Calender customCalendar" (click)="picker1.open()"></i>
+            </mat-form-field>
+
+
+          </div>
+          <div>
+            <mat-form-field class="w-100">
+              <input matInput placeholder="{{captions.appointmentNumber}}"  inputtype ="nodecimal,nonnegative" [maxlength]="10"  formControlName="appointmentNumber">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="w-100">
+              <mat-select placeholder="{{captions.userID}}" name="userID" formControlName="userID">
+                <mat-option *ngFor="let user of users" [value]="user.userId">{{user.userName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div *ngIf="showIncludeTemp" class="mb-3 ng-star-inserted">
+            <label class="LW14">{{captions.IncludeTempAppointment}}</label>
+            <app-toggle-switch class="d-block"  (changeToggleEvent)="toggleIncludeInactive($event[0])" [formControl]="transactionForm.controls['includetempappointment']"></app-toggle-switch>
+          </div>
+          <div>
+              <mat-error *ngIf="showError">{{captions.MissingSearchCriteria}}</mat-error>
+            </div>
+          <div>
+            <button mat-button class="body-bgcolor whitecolor actionButton w-100 text-uppercase"  [ngClass]="(disableSearchBtn) ? 'button_invalid' : ''" (click)="searchReport($event)">{{commonCaptions.Search}}</button>
+            <a mat-button class="actionButton resetLink w-100 text-uppercase LW14 text-color mt-2" (click)="resetSearch($event)">{{commonCaptions.reset}}</a>
+          </div>
+        </form>
+      </ng-scrollbar>
+      <button class="aside-arrow body-bgcolor whitecolor" (click)="asideArrow($event)"><i class="pointercursor icon-left-arrow"></i></button>
+    </div>
+    <div class="right-contentreports">
+      <ng-scrollbar [autoHide]="true">
+      <div class="report-section">
+        <!-- <app-table-report [options]="tableoptions"></app-table-report> -->
+        <app-retail-report (disableGenerateEvtEmitter)="disableGenerateButtonEvent($event)" [options]="reportOption"></app-retail-report>
+      </div>
+      </ng-scrollbar>
+    </div>
+  </div>
+</div>
