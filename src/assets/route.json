@@ -1,14 +1,14 @@
 {
   "host": {
-    "image":"http://10.17.40.91/VisualOne/spagateway/",
-    "retailManagement":"http://10.17.40.91/VisualOne/retailgateway/",
-    "retailPOS":"http://10.17.40.91/VisualOne/retailgateway/",
-    "authentication":"http://10.17.40.91/commongateway/",
-    "report":"http://10.17.40.91/VisualOne/spagateway/",
-    "commission":"http://10.17.40.91/VisualOne/retailgateway/",
-    "payment":"http://10.17.40.91/VisualOne/retailgateway/",
-    "common": "http://10.17.40.91/VisualOne/spagateway/Spa/Services/Notification/",
-    "documentation": "http://10.17.40.91/Help/"   
+    "image": "/VisualOne/spagateway/",
+    "retailManagement": "/VisualOne/retailgateway/",
+    "retailPOS": "/VisualOne/retailgateway/",
+    "authentication": "/commongateway/",
+    "report": "/VisualOne/spagateway/",
+    "commission": "/VisualOne/spagateway/",
+    "payment": "/VisualOne/retailgateway/",
+    "common": "/VisualOne/spagateway/Spa/Services/Notification",
+    "documentation": "/Help/" 
   },
   "Login": "Property/GetLoginDetails",
   "LogOut": "Property/LogOutByUserId/{Username}/{TenantId}/{PropertyId}",
