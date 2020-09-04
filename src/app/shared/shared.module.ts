@@ -34,6 +34,12 @@ import { UserAccessDataService } from '../common/dataservices/authentication/use
 import { LocalizeDatePipe } from '../core/localization/localize-date.pipe';
 import { ClientDataService } from './data-services/client.data.service';
 import { AppModuleService } from '../core/services/app.service';
+import { RetailItemDataService } from './data-services/retail-management/retail-item.data.service';
+import { RedenderingOptionComponent } from './components/global-search/rendering-options/rendering.options.component';
+import { ImageValiation } from './pipes/image-validation.pipe';
+import { FormatText } from '../common/shared/shared/pipes/formatText-pipe.pipe';
+import { ConvertObjPipe } from './pipes/conver-object.pipe';
+import { FormatTextPipe } from './pipes/formatText-pipe.pipe';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
@@ -50,7 +56,11 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     PersonalInformationComponent,
     AdditionalInformationComponent,
     CardTypeComponent,
-    LocalizeDatePipe
+    LocalizeDatePipe,
+    RedenderingOptionComponent,
+    ConvertObjPipe,
+    ImageValiation,
+    FormatTextPipe
   ],
   imports: [
     CommonModule,
@@ -85,7 +95,9 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     ClientDataService,
     AppModuleService,
     UserAccessBusiness,
-    LocalizeDatePipe
+    LocalizeDatePipe,
+    RetailItemDataService,
+    FormatTextPipe
   ],
   exports: [
     FormsModule,
@@ -97,10 +109,13 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     CommonSharedModule,
     ImgThumbnailComponent,
     MsGraphAuthComponent,
-    CommonSharedModule,
     ImageUploaderComponent,
     CardTypeComponent,
-    LocalizeDatePipe
+    LocalizeDatePipe,
+    RedenderingOptionComponent,
+    ConvertObjPipe,
+    ImageValiation,
+    FormatTextPipe
   ],
   entryComponents: [
     AboutComponent,

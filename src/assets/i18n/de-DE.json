@@ -284,7 +284,9 @@
     "drp_txt_office": "Office_de",
     "drp_txt_mobile": "Mobile_de",
     "drp_txt_personal": "Personal_de",
-    "countryCode": "Country Code_de"
+    "countryCode": "Country Code_de",
+    "RetailItems": "Retail Items_de",
+    "Clients": "Clients_de"
   },
   "calendar": {
     "Sunday": "Sunday_de",

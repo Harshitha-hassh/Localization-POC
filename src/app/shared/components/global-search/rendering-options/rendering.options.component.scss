@@ -1,0 +1,74 @@
+
+@import '../../../../../assets/sass/abstracts/_variables';
+.rendering-option{
+    $img-height-width: 32px;
+    color: $color-base;
+    .global-search-base{
+    direction: row;
+    align-items: stretch;
+    flex-direction: row;
+    align-content: center
+  }
+  .global-search-base-span{
+      &:last-child{
+        &::after{
+            content: "";
+        }
+      }
+      &::after{
+          content: "|";
+          padding: 0 10px;
+
+      }
+  }
+
+  .global-search-base-img{
+    height: $img-height-width;
+    width: $img-height-width;
+    padding: 3px;
+    border: 1px solid $SelectionBgColor;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 12px;
+  }
+
+  .global-search-clinet{
+      @extend .global-search-base;
+
+      span{
+         @extend .global-search-base-span;
+      }
+      .client-image{
+        @extend .global-search-base-img;
+      }
+  }
+  .global-search-appoinment{
+    @extend .global-search-base;
+    span{
+       @extend .global-search-base-span;
+    }
+    .client-image{
+      @extend .global-search-base-img;
+    }
+}
+.global-search-items{
+    @extend .global-search-base;
+    span{
+       @extend .global-search-base-span;
+    }
+    .client-image{
+      @extend .global-search-base-img;
+    }
+}
+
+.global-search-therapist{
+    @extend .global-search-base;
+    span{
+       @extend .global-search-base-span;
+    }
+    .client-image{
+      @extend .global-search-base-img;
+    }
+}
+}
+

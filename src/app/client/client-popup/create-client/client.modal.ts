@@ -55,6 +55,7 @@ export interface ClientInfo {
     zip: string;
     zipCode: string;
     isPrivate: boolean;
+    county?: string;
   }
 
   
@@ -87,4 +88,28 @@ export interface ClientInfo {
     emails: Email[];
     requestUid: string;
     clientCreditCardInfo: ClientCreditCardInfo[];
+  }
+
+  export interface ClientDetails {
+    guestProfileId: string;
+    clientId: number;
+    name: string;
+    thumbNail: string,
+    address: Address[];
+    contactDetail: ContactDetails[],
+    loyaltyDetail: LoyaltyDetail[]
+  }
+  
+  export interface ClientGlobalSearchModel {
+    groupName: string;
+    clientDetails: ClientDetails[];
+  }
+  
+  export interface ContactDetails {
+    Type: number;
+    Name: string;
+    Description: string;
+    Value: string;
+    IsPrivate: boolean;
+    IsPrimary: boolean;
   }

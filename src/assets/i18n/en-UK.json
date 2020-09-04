@@ -284,7 +284,9 @@
     "drp_txt_office": "Office_uk",
     "drp_txt_mobile": "Mobile_uk",
     "drp_txt_personal": "Personal_uk",
-    "countryCode": "Country Code_uk"
+    "countryCode": "Country Code_uk",
+    "RetailItems": "Retail Items_uk",
+    "Clients": "Clients_uk"
   },
   "calendar": {
     "Sunday": "Sunday_uk",

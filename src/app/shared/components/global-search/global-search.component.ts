@@ -18,12 +18,13 @@ import { MatDialog } from '@angular/material';
 export class GlobalSearchComponent implements OnInit, AfterViewInit {
 
   filterData: any = []; // local filter array
-  searchGroupOptions: Promise<GlobalSearchModel[]>;
+  searchGroupOptions: Promise<GlobalSearchModel[]> = Promise.resolve([]);
   globalSearchForm: FormGroup;
   @Input() open: boolean = false;
   @Output() onSearch = new EventEmitter();
   @Output() OnOptionSelected = new EventEmitter();
   titleEnum = searchtitleenum;
+  input_value = '';
   @ViewChild('searchText', { static: false }) searchText: ElementRef;
   captions: any;
 
@@ -32,7 +33,7 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
     private globalSearchBusiness: GlobalSearchBusiness,
     private localization: RetailStandaloneLocalization,
     private dialog: MatDialog
-  ) { 
+  ) {
     this.captions = this.localization.captions;
   }
 
@@ -48,6 +49,7 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
       this.searchText.nativeElement.focus();
     }
   }
+
 
   public async filterGroup(value: string) {
     this.filterData = [];
@@ -90,7 +92,7 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
     });
   };
 
-  linkClicked(title: string, data: GlobalSearchData, e) {
+  linkClicked(title: string, data: any, e) {
     // Random number - To refresh the page everytime
     const query = Math.random() * 10;
     switch (title) {
@@ -101,41 +103,44 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
         this._router.navigate([`settings`]);
         break;
       case searchtitleenum.retailItems:
-        this._router.navigate([`/shop/viewshop/`], { queryParams: { description: data.value, query } });
+        this._router.navigate([`/shop/viewshop/`], { queryParams: { description: data.name, query } });
         break;
+      case searchtitleenum.clients:
+        this._router.navigate([`/client/allclients/`, data.guestProfileId + query]);
+    break;
       default:
 
-        break;
-    }
-    this.searchGroupOptions = Promise.resolve([]);
-    this.OnOptionSelected.emit();
+    break;
+}
+this.searchGroupOptions = Promise.resolve([]);
+this.OnOptionSelected.emit();
   }
 
-  valueMapper() {
-    return '';
-  }
+valueMapper() {
+  return '';
+}
 
-  openAddClient() {
-    const dialogRef = this.dialog.open(ClientPopupComponent, {
-      width: '95%',
-      height: '85%',
-      maxWidth: '95%',
-      disableClose: true,
-      hasBackdrop: true,
-      data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
-      panelClass: 'small-popup'
+openAddClient() {
+  const dialogRef = this.dialog.open(ClientPopupComponent, {
+    width: '95%',
+    height: '85%',
+    maxWidth: '95%',
+    disableClose: true,
+    hasBackdrop: true,
+    data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
+    panelClass: 'small-popup'
   });
-  }
+}
 
 
-  async globalSearch(pattern: string): Promise<any[]> {
-    const data = [
-      { "title": "booking", "dataCollection": [{ "id": 1, "value": "booking 1" }, { "id": 2, "value": "booking 2" }] },
-      { "title": "settings", "dataCollection": [{ "id": 1, "value": "settings 1" }] },
-      { "title": "sales", "dataCollection": [{ "id": 1, "value": "Sales 1" }, { "id": 2, "value": "Sales 2" }] }
-    ];
-    return data;
-  }
+async globalSearch(pattern: string): Promise < any[] > {
+  const data = [
+    { "title": "booking", "dataCollection": [{ "id": 1, "value": "booking 1" }, { "id": 2, "value": "booking 2" }] },
+    { "title": "settings", "dataCollection": [{ "id": 1, "value": "settings 1" }] },
+    { "title": "sales", "dataCollection": [{ "id": 1, "value": "Sales 1" }, { "id": 2, "value": "Sales 2" }] }
+  ];
+  return data;
+}
 
 
 }

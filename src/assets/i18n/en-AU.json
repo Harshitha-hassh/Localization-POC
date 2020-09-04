@@ -284,7 +284,9 @@
     "drp_txt_office": "Office_au",
     "drp_txt_mobile": "Mobile_au",
     "drp_txt_personal": "Personal_au",
-    "countryCode": "Country Code_au"
+    "countryCode": "Country Code_au",
+    "RetailItems": "Retail Items_au",
+    "Clients": "Clients_au"
   },
   "calendar": {
     "Sunday": "Sunday_au",

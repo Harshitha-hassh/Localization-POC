@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { TransactionDetails, OutOfStock, DonutCount, ItemData, TransactionSaleDetail, CategoryData,ReturnedItems,OpenTickets,VendorInfo } from 'src/app/home/dashboard-widgets-report/dashboard.modal';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { RetailPosCommunication } from '../communication/services/retailpos.service';
-import { ClientInfo, ClientSearchModel } from 'src/app/client/client-popup/create-client/client.modal';
+import { ClientInfo, ClientSearchModel, ClientGlobalSearchModel } from 'src/app/client/client-popup/create-client/client.modal';
 //import { GolfGatewayCommunication } from '../../communication/services/golfGateway';
 
 
@@ -43,6 +43,13 @@ export class ClientDataService {
         });
     }
 
+    public async searchClientForGlobalSerach(name: string): Promise<ClientGlobalSearchModel> {
+        return this._httpPos.putPromise({
+            route: RetailApiRoute.GlobalSearchClientInfo,
+            body: name 
+        })
+    }
+               
     public async getClients(id : number[]): Promise<any[]> {
         return this._httpPos.putPromise({
             route: RetailApiRoute.GetClientByIds,

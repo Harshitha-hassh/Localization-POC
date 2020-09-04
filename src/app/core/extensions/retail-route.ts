@@ -56,6 +56,7 @@ export enum RetailRoutes {
   UpdateClient ='Clients',
   RecentClientInfo ='Clients/recent/{propertyDate}/search/{requestUid}',
   SearchClientInfo = 'Clients/search/{requestUid}',
+  GlobalSearchClientInfo = 'Clients/searchByKey',
   GetClientByPatronId="Clients/getClientByPatronId/{patronId}",
   GetClientByIds = "Clients/query/{includeRelatedData}",
 
@@ -65,6 +66,9 @@ export enum RetailRoutes {
    DeleteImageByReference = 'v2/images/{guid}',
    GetImagesByReferenceId = 'v2/images?guid={imageReferenceId}&isThumbnailOnly={isThumbnailOnly}',
    GetAllImagesByReferenceId = 'v2/images/list?isThumbnailOnly={isThumbnailOnly}',
+
+   //Retail
+   GlobalSearchRetailItems = 'retailitems/search/name',
 }
 
 export enum MsGraphRoutes {

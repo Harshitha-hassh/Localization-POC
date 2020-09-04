@@ -1,0 +1,13 @@
+<div class="rendering-option LW16" [ngSwitch]="groupObjVal.groupName">              
+        <div *ngSwitchCase=" 'Clients' " class="global-search-clinet">
+                <img class="client-image" src="{{ groupObj.thumbNail | imagevalidation : groupObj.thumbNail }}">
+                <span>{{groupObj.name}}</span>
+                <span *ngIf="this.showPatronId">{{localization.captions.bookAppointment.PatronID}}: {{patronId}}</span>
+                <span *ngIf="this.showPhoneNumber">{{phoneNumber}}</span>
+                <span *ngIf="this.showEmail">{{email}}</span>
+                <span *ngIf="this.showAddress">{{address}}</span>                                
+        </div>
+        <div *ngSwitchCase=" 'Items' " class="global-search-items">
+                <span>{{groupObj.name}}</span>
+        </div>
+</div>
