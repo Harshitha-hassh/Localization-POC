@@ -73,7 +73,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     RetailSharedModule,
     CommonSharedModule,
     GooglePlaceModule,
-    NgxMaterialTimepickerModule.forRoot()
+    NgxMaterialTimepickerModule
   ],
   providers: [
     TenantManagementCommunication,
