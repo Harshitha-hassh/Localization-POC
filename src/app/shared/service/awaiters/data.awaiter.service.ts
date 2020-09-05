@@ -9,6 +9,7 @@ import { ClientDataService } from '../../data-services/client.data.service';
 import { ClientSearchModel, Client, ClientInfo } from 'src/app/client/client-popup/create-client/client.modal';
 import { DefaultGUID } from 'src/app/common/shared/shared/globalsContant';
 import { ClientPopupComponent } from 'src/app/client/client-popup/client-popup.component';
+import { UserdefaultsInformationService } from 'src/app/core/services/UserdefaultsInformationService';
 
 @Injectable({
     providedIn: "root"
@@ -21,7 +22,8 @@ export class DataAwaiterService {
         private dialog: MatDialog,
         private localization: RetailStandaloneLocalization,
         private routeLoaderService: RouteLoaderService,
-        private clientDataService: ClientDataService
+        private clientDataService: ClientDataService,
+        private userDefaultService: UserdefaultsInformationService
     ) {
         this.setAwaiters();
     }
@@ -32,6 +34,7 @@ export class DataAwaiterService {
         RetailDataAwaiters.CreatePlayer = this.createClient.bind(this);
         RetailDataAwaiters.openAddPayeePopup = this.openAddGuestPopup.bind(this);
         RetailDataAwaiters.getPayeeDetails = this.getClientDetails.bind(this);
+        RetailDataAwaiters.GetDefaultOutlet = this.GetDefaultOutlet.bind(this);
     }
 
     getChildMenu(url, menutype?){
@@ -123,8 +126,8 @@ export class DataAwaiterService {
     private async getClientDetails(id: number[]): Promise<PayeeInfo[]> {
         let response: any = await this.clientDataService.getClients(id);       
         let clientDetails: PayeeInfo[] = [];
-        if (response.successStatus && response.result && response.result.length > 0) {
-            response.result.forEach(client => {
+        if (response && response.length > 0) {
+            response.forEach(client => {
                 clientDetails.push({
                     id : client.id,
                     name : client.firstName + ' ' + client.lastName,
@@ -139,5 +142,8 @@ export class DataAwaiterService {
         }
         return clientDetails;
     }
+    GetDefaultOutlet() {
+		return this.userDefaultService.GetDefaultOutlet();
+	}
 
 }

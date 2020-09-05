@@ -20,6 +20,7 @@ import * as moment from 'moment';
 import { ButtonValue } from 'src/app/shared/shared-models';
 import { Product } from 'src/app/common/shared/shared/globalsContant';
 import { API } from 'src/app/shared/models/property-settings.model';
+import { UserdefaultsInformationService } from 'src/app/core/services/UserdefaultsInformationService';
 
 @Component({
   selector: 'app-login',
@@ -73,7 +74,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private loginService: LoginCommunicationService,
     private PropertySettingService: PropertySettingDataService,
     private propertyInfo: PropertyInformation,
-    // private userConfigService: RetailManagementCommunication,
+    private userDefaultsService: UserdefaultsInformationService,
     private compiler: Compiler,
     private router: Router
   ) {
@@ -214,7 +215,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.userInfo = loginDetails.result.userLoginInfo;
     const id = loginDetails.result.userLoginInfo.tenantId;
     this.setUserInfo(loginDetails);
-
     if (loginDetails.result.userLoginInfo.isNewUser === true) {
       this.setPassword = true;
       this.tenantId = Number(id);
@@ -356,7 +356,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     //     this.localize.SetLocaleBasedProperties();
     //   });
     this.SetPropertyInfo(result);
-    // this.setUserSettings(result);
+    this.userDefaultsService.syncDefaultValues(this.userInfo.userId);
     this.propertyInfo.SetPropertyDate(
       this.utils.getDate(result.propertyDate),
       false

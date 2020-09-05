@@ -373,7 +373,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
       HangingTicketsPrinter=${values.hangingTicketsPrinter};
       SmallStickersPrinter=${values.smallStickersPrinter};
 `;
-    sessionStorage.setItem(userSessionConfigKey, userSessionConfigValues);
+    sessionStorage.setItem(userSessionConfigKey, JSON.stringify(values));
   }
 
   afterSaveOrUpdate() {

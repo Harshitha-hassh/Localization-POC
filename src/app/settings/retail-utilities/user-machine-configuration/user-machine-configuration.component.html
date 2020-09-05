@@ -37,7 +37,7 @@
                         <label class="LW12 label-color d-block mt-2">{{captions.Idtechsred}}</label>
                         <app-toggle-switch formControlName="isIdtechSred"></app-toggle-switch>
                     </div>
-                    <!-- <label class='LW14 label'>{{captions.PrinterSelection}}</label><br>
+                    <label class='LW14 label'>{{captions.PrinterSelection}}</label><br>
                     <label class='LW14 label'>{{captions.SmallStickers}}</label>
                         <mat-form-field>
                             <mat-select placeholder="{{captions.PrinterName}}" formControlName="smallStickersPrinter" [disabled]="!enablePrinterSelect">
@@ -49,7 +49,7 @@
                         <mat-select placeholder="{{captions.PrinterName}}" formControlName="hangingTicketsPrinter" [disabled]="!enablePrinterSelect">
                             <mat-option *ngFor="let printer of printers" [value]="printer.id">{{printer.description}}</mat-option>
                         </mat-select>
-                    </mat-form-field> -->
+                    </mat-form-field>
                 </ng-container>
                 </div>
 

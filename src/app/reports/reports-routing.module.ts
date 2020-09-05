@@ -20,7 +20,7 @@ const routes: Routes = [{
   children: [
     { path: '', redirectTo: ReportMenu.retail, pathMatch: 'full' },    
     { path: ReportMenu.retail, loadChildren: 'src/app/retail/retail-reports/reports.module#RetailReportModule', data: { type: REPORT_TYPE.retail } },
-    { path: ReportMenu.commissiongratuity, loadChildren: '../retail/retail-reports/reports.module#RetailReportModule', data: { type: REPORT_TYPE.commission } },
+    { path: ReportMenu.commissiongratuity, loadChildren: 'src/app/retail/retail-reports/reports.module#RetailReportModule', data: { type: REPORT_TYPE.commission } },
     { path: ReportMenu.transactionlog, component: TransactionLogComponent },    
     { path: ReportMenu.giftcard, loadChildren: 'src/app/retail/retail-reports/reports.module#RetailReportModule', data: { type: REPORT_TYPE.giftcard } }
   ]
