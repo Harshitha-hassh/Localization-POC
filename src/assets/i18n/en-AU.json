@@ -1116,10 +1116,18 @@
       "4": "Pending Settlement_au",
       "5": "IDTECH_au",
       "6": "Rain Check_au",
-      "7": "AR Account_au",
-      "8": "Round Redeem_au",
+      "7": "Member_au",
+      "8": "Redeem Point_au",
       "9": "Credit Book_au",
-      "22": "Card On File_au"
+      "10": "Comp Redemption_au",
+      "11": "Offer Redemption_au",
+      "12": "V1 GiftCard_au",
+      "13": "Third Party GiftCard_au",
+      "14": "V1 GiftCard_au",
+      "15": "Third Party GiftCard_au",
+      "16": "City Ledger_au",
+      "22": "Card On File_au",
+      "44": "Other_au"
     },
     "GiftCard": {
       "GiftCard": "Gift Card_au",
@@ -1161,7 +1169,9 @@
       "TopUpInprogressMsg": "Please wait while the gift card top-up is in progress_au",
       "TopupSuccessMsg": "Top-up is successful_au",
       "CashBackInprogressMsg": "Please wait while we process your cashback request_au",
+      "IssueInprogressMsg": "Please wait while we process your giftcard issuance request_au",
       "CashbackSuccessMsg": "Cashback request processed._au",
+      "IssueSuccessMsg": "Giftcard Issuance processed._au",
       "None": "None_au",
       "V1GiftCard": "V1_au",
       "Givex": "Givex_au",
@@ -1181,7 +1191,9 @@
       "ItemAlreadyAddedToCart": "Gift card with the same card number is already added to the cart. Please proceed with a different card number._au",
       "CashbackAmount": "Cashback Amount_au",
       "CardExpired": "Gift card has been expired._au",
-      "ReloadNotAllowed": "Card has expired, please extend the expiry date to proceed_au"
+      "ReloadNotAllowed": "Card has expired, please extend the expiry date to proceed_au",
+      "CardAlreadySold": "The gift card is already sold_au",
+      "CardAlreadyIssued": "Gift card is already issued_au"
     },
     "CMS": {
       "searchPlaceHolder": "Patron search_au",
