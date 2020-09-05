@@ -1,13 +1,13 @@
 {
   "host": {
-    "image": "/VisualOne/spagateway/",
+    "image": "/VisualOne/retailgateway/",
     "retailManagement": "/VisualOne/retailgateway/",
     "retailPOS": "/VisualOne/retailgateway/",
     "authentication": "/commongateway/",
-    "report": "/VisualOne/spagateway/",
-    "commission": "/VisualOne/spagateway/",
+    "report": "/VisualOne/retailgateway/",
+    "commission": "/VisualOne/retailgateway/",
     "payment": "/VisualOne/retailgateway/",
-    "common": "/VisualOne/spagateway/Spa/Services/Notification",
+    "common": "/VisualOne/retailgateway/Retail/Services/Notification",
     "documentation": "/Help/" 
   },
   "Login": "Property/GetLoginDetails",
