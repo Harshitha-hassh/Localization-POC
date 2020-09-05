@@ -9,7 +9,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material-module';
 import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
-import { RetailAppService} from './retail-app-service';
+import { RetailAppService } from './retail-app-service';
 import { AppService } from './common/app-service';
 import { Localization } from './common/localization/localization';
 import { RetailStandaloneLocalization as RetailStandAloneLocalization } from './core/localization/retailStandalone-localization';
@@ -18,8 +18,9 @@ import { RetailPropertyInformation } from './core/services/retail-property-infor
 import { CommonUtilities } from './common/shared/shared/utilities/common-utilities';
 import { Utilities } from './core/utilities';
 import { ServiceLocator } from './common/service.locator';
-let AppServiceFactory = (utilities: Utilities, localization:RetailStandAloneLocalization) => {
-  return new RetailAppService(utilities,localization);
+import { AppModuleService } from './core/services/app.service';
+let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
+  return new RetailAppService(utilities, localization);
 };
 
 
@@ -40,19 +41,20 @@ let AppServiceFactory = (utilities: Utilities, localization:RetailStandAloneLoca
   ],
   providers: [
     {
-      provide:AppService,
+      provide: AppService,
       useFactory: AppServiceFactory,
       deps: [Utilities, RetailStandAloneLocalization]
     },
-    {provide:CommonUtilities, useClass:Utilities},
-     RetailPropertyInformation,
-    { provide:Localization, useClass:RetailStandAloneLocalization },
-    {provide: CommonPropertyInformation, useClass: RetailPropertyInformation },
+    { provide: CommonUtilities, useClass: Utilities },
+    RetailPropertyInformation,
+    { provide: Localization, useClass: RetailStandAloneLocalization },
+    { provide: CommonPropertyInformation, useClass: RetailPropertyInformation },
+    AppModuleService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   constructor(private injector: Injector) {
-    ServiceLocator.injector = this.injector;    
+    ServiceLocator.injector = this.injector;
   }
 }

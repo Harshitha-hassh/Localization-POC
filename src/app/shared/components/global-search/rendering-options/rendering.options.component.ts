@@ -39,7 +39,7 @@ export class RedenderingOptionComponent implements OnInit, OnChanges {
   }
 
   IsaddressMatching() {
-    if (this.datainput.address && this.datainput.address.length > 0) {
+    if (this.datainput.address && this.datainput.address.length > 0 && this.searchText) {
       let address = this.datainput.address[0];
       let searchTextLower = this.searchText.toLowerCase();
       this.showAddress = (address.addressLine1.toLowerCase().indexOf(searchTextLower) >= 0 || address.addressLine2.toLowerCase().indexOf(searchTextLower) >= 0 ||

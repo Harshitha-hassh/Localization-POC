@@ -4,7 +4,7 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import { RetailItemSearchModel } from '../../models/retail-item.model';
 import { RetailItemDataService } from '../../data-services/retail-management/retail-item.data.service';
 import { ClientDataService } from '../../data-services/client.data.service';
-import { ClientGlobalSearchModel } from 'src/app/client/client-popup/create-client/client.modal';
+import { ClientGlobalSearchModel, ClientDetails } from 'src/app/client/client-popup/create-client/client.modal';
 
 @Injectable()
 export class GlobalSearchBusiness {
@@ -27,8 +27,8 @@ export class GlobalSearchBusiness {
             if (retailItemResult && retailItemResult.length > 0) {
                 filterData.push(this.formRetailItemData(retailItemResult));
             }
-            const clientResult: ClientGlobalSearchModel = result[1];
-            if (clientResult) {
+            const clientResult: ClientDetails[] = result[1];
+            if (clientResult && clientResult.length) {
                 filterData.push(this.formClientData(clientResult));
             }
             return filterData;
@@ -39,7 +39,7 @@ export class GlobalSearchBusiness {
 
     private async searchClient(pattern: string) {
         const clientItems = await this._clientDataService.searchClientForGlobalSerach(pattern);
-        return clientItems && clientItems.clientDetails ? clientItems.clientDetails : [];        
+        return clientItems && clientItems.clientDetails ? clientItems.clientDetails : [];
     }
 
     private async searchRetailItem(pattern: string) {
@@ -52,16 +52,16 @@ export class GlobalSearchBusiness {
             displayname: this._localization.captions.common.RetailItems,
             title: searchtitleenum.retailItems,
             dataCollection: retailItemResult,
-            groupName: 'Items'            
+            groupName: 'Items'
         } as GlobalSearchModel;
     }
 
-    private formClientData(clientResult: ClientGlobalSearchModel): GlobalSearchModel {
+    private formClientData(clientResult: ClientDetails[]): GlobalSearchModel {
         return {
             displayname: this._localization.captions.common.Clients,
             title: searchtitleenum.clients,
-            dataCollection: clientResult.clientDetails,
-            groupName: 'Clients'            
+            dataCollection: clientResult,
+            groupName: 'Clients'
         } as GlobalSearchModel;
     }
 }

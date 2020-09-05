@@ -6,6 +6,7 @@ import { GlobalSearchBusiness } from './global-search.business';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { ClientPopupComponent } from 'src/app/client/client-popup/client-popup.component';
 import { MatDialog } from '@angular/material';
+import { AppModuleService } from 'src/app/core/services/app.service';
 
 @Component({
   selector: 'app-global-search',
@@ -32,7 +33,8 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
     private _router: Router,
     private globalSearchBusiness: GlobalSearchBusiness,
     private localization: RetailStandaloneLocalization,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _as: AppModuleService,
   ) {
     this.captions = this.localization.captions;
   }
@@ -106,6 +108,11 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
         this._router.navigate([`/shop/viewshop/`], { queryParams: { description: data.name, query } });
         break;
       case searchtitleenum.clients:
+        this._as.isglobalSearch = true;
+        this._as.selectedClient = data;
+        this._router.navigate([`/client/allclients/`, data.guestProfileId + query]);
+        break;
+      case searchtitleenum.clients:
         this._router.navigate([`/client/allclients/`, data.guestProfileId + query]);
     break;
       default:
@@ -120,17 +127,17 @@ valueMapper() {
   return '';
 }
 
-openAddClient() {
-  const dialogRef = this.dialog.open(ClientPopupComponent, {
-    width: '95%',
-    height: '85%',
-    maxWidth: '95%',
-    disableClose: true,
-    hasBackdrop: true,
-    data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
-    panelClass: 'small-popup'
-  });
-}
+  openAddClient() {
+    const dialogRef = this.dialog.open(ClientPopupComponent, {
+      width: '95%',
+      height: '85%',
+      maxWidth: '95%',
+      disableClose: true,
+      hasBackdrop: true,
+      data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
+      panelClass: 'small-popup'
+    });
+  }
 
 
 async globalSearch(pattern: string): Promise < any[] > {

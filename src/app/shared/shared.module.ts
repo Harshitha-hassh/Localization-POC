@@ -33,11 +33,9 @@ import { UserAccessBusiness } from '../common/dataservices/authentication/userac
 import { UserAccessDataService } from '../common/dataservices/authentication/useraccess.data.service';
 import { LocalizeDatePipe } from '../core/localization/localize-date.pipe';
 import { ClientDataService } from './data-services/client.data.service';
-import { AppModuleService } from '../core/services/app.service';
 import { RetailItemDataService } from './data-services/retail-management/retail-item.data.service';
 import { RedenderingOptionComponent } from './components/global-search/rendering-options/rendering.options.component';
 import { ImageValiation } from './pipes/image-validation.pipe';
-import { FormatText } from '../common/shared/shared/pipes/formatText-pipe.pipe';
 import { ConvertObjPipe } from './pipes/conver-object.pipe';
 import { FormatTextPipe } from './pipes/formatText-pipe.pipe';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
@@ -60,7 +58,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     RedenderingOptionComponent,
     ConvertObjPipe,
     ImageValiation,
-    FormatTextPipe
+    FormatTextPipe    
   ],
   imports: [
     CommonModule,
@@ -92,8 +90,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     },
     NgxImageCompressService,
     UserAccessDataService,
-    ClientDataService,
-    AppModuleService,
+    ClientDataService,    
     UserAccessBusiness,
     LocalizeDatePipe,
     RetailItemDataService,
@@ -115,7 +112,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     RedenderingOptionComponent,
     ConvertObjPipe,
     ImageValiation,
-    FormatTextPipe
+    FormatTextPipe    
   ],
   entryComponents: [
     AboutComponent,

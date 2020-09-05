@@ -7,7 +7,7 @@
         [(ngModel)]="input_value">     
         <mat-autocomplete #autoGroup="matAutocomplete" [displayWith]="valueMapper">          
           <mat-option *ngIf="(searchGroupOptions | async)?.length == 0 && searchText.value.length >= 3">
-            {{captions.NoMatchesFound}}
+            {{captions.common.NoMatchesFound}}
           </mat-option>
           <mat-optgroup class="global-search-optGroup" *ngFor="let group of searchGroupOptions | async"
             [label]="group.title">                        
