@@ -17,7 +17,7 @@ import { ClientsortpipePipe } from './client-table/clientsortpipe.pipe';
 import { ScrollbarModule } from 'ngx-scrollbar';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { ClientService } from '../shared/service/client-service.service';
-import { AppModuleService } from '../core/services/app.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -41,7 +41,7 @@ import { AppModuleService } from '../core/services/app.service';
     ClientDetailsComponent,
     ClientsortpipePipe
   ],
-  providers: [ClientService, AppModuleService],
+  providers: [ClientService],
   exports: [
     ClientsortpipePipe
   ],

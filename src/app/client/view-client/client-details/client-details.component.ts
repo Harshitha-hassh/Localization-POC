@@ -562,7 +562,7 @@ export class ClientDetailsComponent implements OnInit {
             error: this.errorCallback.bind(this),
             callDesc: "SearchClientInfo",
             method: HttpMethod.Put,
-            uriParams: { requestUid: this.requestUid },
+            uriParams: { requestUid: (this.requestUid || Date.now() + "" + Math.random() * 10000) },
             body: pattern,
             showError: true,
             extraParams: []
