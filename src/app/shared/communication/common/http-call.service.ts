@@ -191,7 +191,7 @@ export class HttpCallService {
             .set('UserName', this.getUserInfo('userName'))
             .set('PropertyCode', this.getPropertyInfo('PropertyCode'))
             .set('outletId', '1')
-            .set('ProductId', '5') //TODO: newly introduced for Auth service
+            .set('ProductId', '2') //TODO: newly introduced for Auth service
             .set('SubPropertyCode', this.getPropertyInfo('SubPropertyCode'))
             .set('TimeZone', this.getPropertyInfo('timeZone'))
             //.set('TimeZone', 'Asia/Kolkata')

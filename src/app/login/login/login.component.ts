@@ -20,7 +20,6 @@ import * as moment from 'moment';
 import { ButtonValue } from 'src/app/shared/shared-models';
 import { Product } from 'src/app/common/shared/shared/globalsContant';
 import { API } from 'src/app/shared/models/property-settings.model';
-// import { RetailManagementCommunication } from 'src/app/shared/communication/services/retailmanagement.service';
 
 @Component({
   selector: 'app-login',
@@ -295,6 +294,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       // create session and store session id into data service
       const usersessionId = await this.sessionService.createSession();
       sessionStorage.setItem(USER_SESSION, String(usersessionId));
+      this.setAutoLogOff();
+     // await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.router.navigate(['/home']);
     }
   }
@@ -340,6 +341,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       result.productId +
       '; PlatformPropertyId=' +
       result.platformPropertyId +
+      '; AutoLogOff=' +
+      result.autoLogOff +
+      ';LogOffAfter=' +
+      result.logOffAfter +
       ';';
     sessionStorage.setItem(PROPERTY_INFO, PropertyValues);
     sessionStorage.setItem(PROPERTY_DATE, result.propertyDate);
@@ -351,7 +356,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     //     this.localize.SetLocaleBasedProperties();
     //   });
     this.SetPropertyInfo(result);
-    this.setUserSettings(result);
+    // this.setUserSettings(result);
     this.propertyInfo.SetPropertyDate(
       this.utils.getDate(result.propertyDate),
       false
@@ -442,27 +447,30 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
 
-  async setUserSettings(properties) {
-    /*To get the daysout value*/
-    // const serviceParams = {
-    //   route: RetailApiRoute.GetUserConfig,
-    //   uriParams: { id: this.userInfo.userId },
-    //   header: '',
-    //   body: '',
-    //   showError: true,
-    //   baseResponse: true
-    // };
-    // const userConfig: any = await this.userConfigService.getPromise(serviceParams);
-    // const userSettings = `daysOut=${
-    //   userConfig && userConfig.userSncConfiguration
-    //     ? userConfig.userSncConfiguration.daysOut
-    //     : ''
-    //   };
-    //       AutoLogOff=${properties ? properties['autoLogOff'] : ''};
-    //       LogOffAfter=${properties ? properties['logOffAfter'] : ''};`;
-    // sessionStorage.setItem(USER_SETTINGS, userSettings);
-    // this.setAutoLogOff();
-  }
+  // async SetUserSessionConfiguration(userId: number) {
+  //   let userSessionConfig = await this.userSessionConfig.getUserSessionConfiguration(userId);
+
+  //   if (userSessionConfig) {
+  //     let userSessionConfigValues =
+  //       ` Id=${userSessionConfig.id};
+  //         UserId=${userSessionConfig.userId};
+  //         DefaultOutletId=${userSessionConfig.defaultOutletId};
+  //         DefaultTerminalId=${userSessionConfig.defaultTerminalId};
+  //         DefaultCourseId=${userSessionConfig.defaultCourseId};
+  //         DefaultPaymentDevice=${userSessionConfig.defaultPaymentDevice};
+  //         DefaultDeviceName=${userSessionConfig.defaultDeviceName};
+  //         IsIdtechSred=${userSessionConfig.isIdtechSred};
+  //         HangingTicketsPrinter=${userSessionConfig.hangingTicketsPrinter};
+  //         SmallStickersPrinter=${userSessionConfig.smallStickersPrinter};
+  //   `;
+
+  //     sessionStorage.setItem(this.userSessionConfig.userSessionConfigKey, userSessionConfigValues);
+
+  //     // Set Retail Shop service - outlet dropdown value
+  //     this.retailSharedService.SelectedOutletId = userSessionConfig.defaultOutletId;
+  //     this.retailSharedService.SelectedTerminalId = userSessionConfig.defaultTerminalId;
+  //   }
+  // }
 
   setAutoLogOff() {
     this.autoLogOff = this.utils.GetPropertyInfo('AutoLogOff');
