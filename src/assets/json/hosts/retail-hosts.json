@@ -1,14 +1,13 @@
 {
   "RetailApiHosts": {
-    "TenantManagement": "http://10.17.40.91/commongateway",
-    "RetailManagement": "http://10.17.40.91/VisualOne/retailgateway",
-    "Report": "https://snc-gateway-dev.rguest.com/SalesAndCateringGateway",
+    "TenantManagement": "/commongateway",
+    "RetailManagement": "/VisualOne/retailgateway",
     "PayAgent": "http://localhost:8020",
     "MsDeeplink": "https://outlook.office365.com/mail/deeplink/compose/",
     "V1IGPosting": "https://10.17.129.173/V1IGPostingWebService/V1IGInterface.asmx?wsdl",
-    "RetailPOS" : "http://10.17.40.91/VisualOne/retailgateway",
-    "Image": "http://10.17.40.91/golfGateway",
-    "common": "http://10.17.40.91/VisualOne/retailgateway/Retail/Services/Notification"
+    "RetailPOS" : "/VisualOne/retailgateway",
+    "Image": "/VisualOne/retailgateway",
+    "common": "/VisualOne/retailgateway/Retail/Services/Notification"
   },
   "MsalConfiguration": {
     "AppId": "5b16cff2-50b9-4e4b-966a-fc532419af0d",
