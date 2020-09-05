@@ -2,6 +2,7 @@
   "RetailApiHosts": {
     "TenantManagement": "/commongateway",
     "RetailManagement": "/VisualOne/retailgateway",
+    "Report": "/VisualOne/retailgateway",
     "PayAgent": "http://localhost:8020",
     "MsDeeplink": "https://outlook.office365.com/mail/deeplink/compose/",
     "V1IGPosting": "https://10.17.129.173/V1IGPostingWebService/V1IGInterface.asmx?wsdl",
