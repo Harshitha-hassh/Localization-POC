@@ -182,6 +182,7 @@
   "70607": "Quantity cannot be a Decimal Value._de",
   "70608": "Item Par cannot be a Decimal Value._de",
   "70609": "Card number not valid_de",
+  "70610": "Retail Item Type is not valid._de",
   "75001": "Feature Configurations are not available_de",
   "75002": "Web Proxy URI is not available_de",
   "75003": "IG WebPosting Service URI is not available_de",

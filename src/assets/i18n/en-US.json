@@ -2074,6 +2074,7 @@
     "ErrorInCreatingLinkCode": "Error in Creating LinkCode",
     "MissingCancelReason": "Missing Cancel Reason",
     "Categories": "Categories",
+    "RetailCategory" : "Retail Category",
     "None": "None",
     "CommissionValues": "Commission Values",
     "true": "true",

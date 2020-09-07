@@ -306,6 +306,7 @@
     "70607": "Quantity cannot be a Decimal Value.",
     "70608": "Item Par cannot be a Decimal Value.",
     "70609": "Card number not valid",
+    "70610": "Retail Item Type is not valid.",
     "11312":"Id cannot be zero for Distribution List",
     "11311":"Distribution List in this name already exists, Please provide different name",
     "11300": "Distribution list in use, delete not allowed",  
