@@ -1116,10 +1116,18 @@
       "4": "Pending Settlement_fi",
       "5": "IDTECH_fi",
       "6": "Rain Check_fi",
-      "7": "AR Account_fi",
-      "8": "Round Redeem_fi",
+      "7": "Member_fi",
+      "8": "Redeem Point_fi",
       "9": "Credit Book_fi",
-      "22": "Card On File_fi"
+      "10": "Comp Redemption_fi",
+      "11": "Offer Redemption_fi",
+      "12": "V1 GiftCard_fi",
+      "13": "Third Party GiftCard_fi",
+      "14": "V1 GiftCard_fi",
+      "15": "Third Party GiftCard_fi",
+      "16": "City Ledger_fi",
+      "22": "Card On File_fi",
+      "44": "Other_fi"
     },
     "GiftCard": {
       "GiftCard": "Gift Card_fi",
@@ -1161,7 +1169,9 @@
       "TopUpInprogressMsg": "Please wait while the gift card top-up is in progress_fi",
       "TopupSuccessMsg": "Top-up is successful_fi",
       "CashBackInprogressMsg": "Please wait while we process your cashback request_fi",
+      "IssueInprogressMsg": "Please wait while we process your giftcard issuance request_fi",
       "CashbackSuccessMsg": "Cashback request processed._fi",
+      "IssueSuccessMsg": "Giftcard Issuance processed._fi",
       "None": "None_fi",
       "V1GiftCard": "V1_fi",
       "Givex": "Givex_fi",
@@ -1181,7 +1191,9 @@
       "ItemAlreadyAddedToCart": "Gift card with the same card number is already added to the cart. Please proceed with a different card number._fi",
       "CashbackAmount": "Cashback Amount_fi",
       "CardExpired": "Gift card has been expired._fi",
-      "ReloadNotAllowed": "Card has expired, please extend the expiry date to proceed_fi"
+      "ReloadNotAllowed": "Card has expired, please extend the expiry date to proceed_fi",
+      "CardAlreadySold": "The gift card is already sold_fi",
+      "CardAlreadyIssued": "Gift card is already issued_fi"
     },
     "CMS": {
       "searchPlaceHolder": "Patron search_fi",

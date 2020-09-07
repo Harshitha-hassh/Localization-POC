@@ -719,6 +719,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   base64textString: any;
 
   fileDeleted() {
+    this.FormGrp.controls.imageReferenceId.markAsTouched();
+    this.FormGrp.markAsDirty();
     this.isImageRemoved = true;
     this.ImageUploaded = false;
     this.base64textString = '';
@@ -727,7 +729,6 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       base64textString: '',
       thumbnailImg: ''
     });
-    this.FormGrp.markAsDirty();
   }
 
   fileUploaded(data) {

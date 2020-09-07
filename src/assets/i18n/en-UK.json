@@ -1116,10 +1116,18 @@
       "4": "Pending Settlement_uk",
       "5": "IDTECH_uk",
       "6": "Rain Check_uk",
-      "7": "AR Account_uk",
-      "8": "Round Redeem_uk",
+      "7": "Member_uk",
+      "8": "Redeem Point_uk",
       "9": "Credit Book_uk",
-      "22": "Card On File_uk"
+      "10": "Comp Redemption_uk",
+      "11": "Offer Redemption_uk",
+      "12": "V1 GiftCard_uk",
+      "13": "Third Party GiftCard_uk",
+      "14": "V1 GiftCard_uk",
+      "15": "Third Party GiftCard_uk",
+      "16": "City Ledger_uk",
+      "22": "Card On File_uk",
+      "44": "Other_uk"
     },
     "GiftCard": {
       "GiftCard": "Gift Card_uk",
@@ -1161,7 +1169,9 @@
       "TopUpInprogressMsg": "Please wait while the gift card top-up is in progress_uk",
       "TopupSuccessMsg": "Top-up is successful_uk",
       "CashBackInprogressMsg": "Please wait while we process your cashback request_uk",
+      "IssueInprogressMsg": "Please wait while we process your giftcard issuance request_uk",
       "CashbackSuccessMsg": "Cashback request processed._uk",
+      "IssueSuccessMsg": "Giftcard Issuance processed._uk",
       "None": "None_uk",
       "V1GiftCard": "V1_uk",
       "Givex": "Givex_uk",
@@ -1181,7 +1191,9 @@
       "ItemAlreadyAddedToCart": "Gift card with the same card number is already added to the cart. Please proceed with a different card number._uk",
       "CashbackAmount": "Cashback Amount_uk",
       "CardExpired": "Gift card has been expired._uk",
-      "ReloadNotAllowed": "Card has expired, please extend the expiry date to proceed_uk"
+      "ReloadNotAllowed": "Card has expired, please extend the expiry date to proceed_uk",
+      "CardAlreadySold": "The gift card is already sold_uk",
+      "CardAlreadyIssued": "Gift card is already issued_uk"
     },
     "CMS": {
       "searchPlaceHolder": "Patron search_uk",
