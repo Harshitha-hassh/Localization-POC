@@ -29,11 +29,11 @@
         font-size: 11px !important;
       }
     }
-    .switch {
-      background: $toggleBg-color;
-      color: $color-theme;
-      border: none !important;
-    }
+    // .switch {
+    //   background: $toggleBg-color;
+    //   color: $color-theme;
+    //   border: none !important;
+    // }
   }
   &#table_3 {
     .fixed-table-container {
@@ -238,13 +238,13 @@
     border-top: none;
 
     .done {
-      color: $gold;
+      color: $theme-base-color;
       font-size: 12px !important;
       cursor: pointer;
 
       .icon-done {
         // padding-right: 5px;
-        color: $gold;
+        color: $theme-base-color;
         font-size: 8px !important;
       }
     }
@@ -439,7 +439,7 @@
 
   .icon-font-table {
     font-size: 10px;
-    color: $gold;
+    color: $theme-base-color;
   }
 
   .header-background {
@@ -515,7 +515,7 @@
   }
 
   .anchor-like {
-    color: $color-gold;
+    color: $theme-base-color;
     cursor: pointer;
   }
 }
