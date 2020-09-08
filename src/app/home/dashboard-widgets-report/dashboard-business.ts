@@ -116,7 +116,7 @@ export class DashBoardBusiness {
             return {
                 id: x.id,
                 booked: x.noOfTrasaction,
-                avail: x.totalAmount,
+                avail:`${this.localization.currencySymbol}`+ x.totalAmount,
                 value: x.totalAmount,
 
                 name: x.name
@@ -176,7 +176,7 @@ export class DashBoardBusiness {
                 name: x.name,
                 items: x.noOfTrasaction,
                 booked: x.noOfTrasaction,
-                avail: x.totalAmount,
+                avail:`${this.localization.currencySymbol}`+  x.totalAmount,
             };
         });
     }

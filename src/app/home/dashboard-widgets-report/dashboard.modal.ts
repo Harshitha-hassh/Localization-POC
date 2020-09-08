@@ -17,7 +17,7 @@ export interface UITransactionSaleDetail {
     id: number;
     name:string;
     booked:number,
-    avail:number;
+    avail:number |string;
 }
 
 export interface UIRevenueByOutlet {
@@ -27,10 +27,10 @@ export interface UIRevenueByOutlet {
     items:number;
 }
 export interface UIReturned_Items {
-    value: number;
+    value: number |string;
     id: number;
     name:string;
-    items:number;
+    items:number |string;
 }
 
 

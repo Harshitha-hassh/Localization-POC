@@ -532,7 +532,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 
 
       this.Revenue_By_Outlet_data_input = {
-        id: 'bar_chart1',
+        id: 'bar_chart2',
         chartData : barData,
         x_categories: xcategories,
         chartHeight: templateHeight,
