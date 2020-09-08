@@ -43,7 +43,8 @@
     "accessDenined": "Access Denied_in",
     "done": "Done_in",
     "resev": "Resev_in",
-    "all": "All_in"
+    "all": "All_in",
+    "viewFailed": "View Failed_in"
   },
   "common": {
     "AddPlayer": "Add Player_in",
@@ -78,6 +79,8 @@
       "Y",
       "Z"
     ],
+    "IMPORT": "IMPORT_in",
+    "UPLOAD": "UPLOAD_in",
     "LoadingPlayerInformation": "Loading Player Information_in",
     "err_invalidEmailFormat": "Invalid Email_in",
     "err_duplicateEmail": "Duplicate Email_in",
@@ -2545,7 +2548,9 @@
     "booked": "Booked_in",
     "avail": "Avail_in",
     "AllOutlets": "All Outlets_in",
-    "TeeTimes": "Tee Times_in"
+    "TeeTimes": "Tee Times_in",
+    "transaction": "Transaction_in",
+    "revenue": "Revenue_in"
   },
   "utilities": {
     "defaultOutlet": "Default Outlet_in",
