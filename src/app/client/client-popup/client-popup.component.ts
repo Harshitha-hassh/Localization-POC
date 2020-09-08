@@ -59,13 +59,13 @@ export class ClientPopupComponent implements OnInit {
     if (this.clientInfo && this.clientInfo.personalDetailsFormGroup.id && this.clientInfo.personalDetailsFormGroup.imageId &&
       this.clientInfo.personalDetailsFormGroup.imageId != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID
      || this.clientInfo.personalDetailsFormGroup.isImageRemoved) {
-      var b = await this._imageService.updateItemImage(createPromise.toString(), this.clientInfo.personalDetailsFormGroup.imageId, 
+      var b = await this._imageService.updateItemImage(createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.imageId, 
       this.clientInfo.personalDetailsFormGroup.imageReferenceId, this.clientInfo.personalDetailsFormGroup.isImageRemoved,
        this.clientInfo.personalDetailsFormGroup.base64textString,
        this.clientInfo.personalDetailsFormGroup.thumbnailImg);
     }
     else if (this.clientInfo.personalDetailsFormGroup.base64textString) {
-       var a = await this._imageService.saveImage(createPromise.toString(), this.clientInfo.personalDetailsFormGroup.base64textString,
+       var a = await this._imageService.saveImage(createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.base64textString,
         this.clientInfo.personalDetailsFormGroup.thumbnailImg);
     }
     this.closeDialog([createPromise]);

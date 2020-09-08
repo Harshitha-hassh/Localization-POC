@@ -20,7 +20,7 @@ export class ClientDataService {
         });
     }
 
-    public async UpdateClientDetails(requestBody: ClientInfo): Promise<string> {
+    public async UpdateClientDetails(requestBody: ClientInfo): Promise<any> {
         return this._httpPos.putPromise({
             route: RetailApiRoute.UpdateClient,
             body: requestBody
