@@ -59,6 +59,7 @@ export enum RetailRoutes {
   GlobalSearchClientInfo = 'Clients/searchByKey',
   GetClientByPatronId="Clients/getClientByPatronId/{patronId}",
   GetClientByIds = "Clients/query/{includeRelatedData}",
+  GetClientByGuestId = "clients/guid/{guid}",
 
    //Image
    saveImage = 'v2/Images',
