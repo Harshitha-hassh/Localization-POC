@@ -239,9 +239,19 @@ export class ChartBarComponent implements OnInit , AfterViewInit , OnDestroy {
             );
           } else if (id == 'bar_chart2') {
             return (
-              '<div class="item_barchart_div">' +
-              captions.items + ' : ' +
-              chartData[dataPointIndex].items +
+              '<div class="tooltip_container">' +
+              '<div class="tooltip_header">' +
+              '<span>' +
+              series[seriesIndex][dataPointIndex] +
+              '%' +
+              '</span>' +
+              '</div>' +
+              '<div *ngFor="let item of booked;let i=index">' +
+              '<div class="tooltip_content_booked">' + captions.booked + ' : ' + chartData[dataPointIndex].booked +
+              '</div>' +
+              '<div class="tooltip_content_available">' + captions.avail + ' : ' + chartData[dataPointIndex].avail +
+              '</div>' +
+              '</div>' +
               '</div>'
             );
           } else if (id == 'bar_chart3') {
