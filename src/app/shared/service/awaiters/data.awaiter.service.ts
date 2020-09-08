@@ -10,6 +10,7 @@ import { ClientSearchModel, Client, ClientInfo } from 'src/app/client/client-pop
 import { DefaultGUID } from 'src/app/common/shared/shared/globalsContant';
 import { ClientPopupComponent } from 'src/app/client/client-popup/client-popup.component';
 import { UserdefaultsInformationService } from 'src/app/core/services/UserdefaultsInformationService';
+import { first } from 'rxjs/operators';
 
 @Injectable({
     providedIn: "root"
@@ -37,8 +38,8 @@ export class DataAwaiterService {
         RetailDataAwaiters.GetDefaultOutlet = this.GetDefaultOutlet.bind(this);
     }
 
-    getChildMenu(url, menutype?){
-       return this.routeLoaderService.GetChildMenu(url, menutype);
+    getChildMenu(url, menutype?) {
+        return this.routeLoaderService.GetChildMenu(url, menutype);
     }
 
     private async searchClient(name: string, requestUid: string): Promise<[ClientSearchModel[], PayeeInfo[]]> {
@@ -54,7 +55,7 @@ export class DataAwaiterService {
                     client.playerCategoryId = 1;
                     clientDetails.push(this.BuildPayeeData(client));
                 });
-            }            
+            }
         }
         return [response, clientDetails];
     }
@@ -64,9 +65,9 @@ export class DataAwaiterService {
             id: client.id,
             name: client.firstName + ' ' + client.lastName,
             address: client.addresses ? (client.addresses.addressLine1 + ' ' + client.addresses.state) : '',
-            country: client.addresses  ? client.addresses.country : '',
-            zip: client.addresses  ? client.addresses.zipCode : '',
-            city: client.addresses  ? client.addresses.city : '',
+            country: client.addresses ? client.addresses.country : '',
+            zip: client.addresses ? client.addresses.zipCode : '',
+            city: client.addresses ? client.addresses.city : '',
             guestProfileId: client.guestId,
             cardInfo: client.clientCreditCardInfo,
             patronId: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].patronId : '',
@@ -81,69 +82,87 @@ export class DataAwaiterService {
         callback(response.id);
     }
 
-    private MapToClientInfoObj(clientobj){
+    private MapToClientInfoObj(clientobj) {
         return {
-            id: clientobj.id, 
-            client : {
+            id: clientobj.id,
+            client: {
                 id: clientobj.id,
-                guestId: clientobj.playerCategoryId == 1 &&  clientobj.guestId  ? clientobj.guestId : DefaultGUID,
-                title: clientobj.title ? clientobj.title : "" ,
-                firstName: clientobj.firstName  ? clientobj.firstName : "",
-                lastName: clientobj.lastName  ? clientobj.lastName : "",
-                pronounce: clientobj.pronounce  ? clientobj.pronounce : "",
-                gender: clientobj.gender  ? clientobj.gender : "",
-                dateOfBirth: clientobj.dateOfBirth  ? clientobj.dateOfBirth : "",
-                comments:clientobj.comments  ? clientobj.comments : "",
-                lastChangeId: clientobj.lastChangeId  ? clientobj.guestId : DefaultGUID,
-                interfaceGuestId: clientobj.interfaceGuestId  ? clientobj.interfaceGuestId : "",
-                loyaltyDetail: clientobj.loyaltyDetail  ? clientobj.loyaltyDetail : [],
-                memberId: clientobj.playerCategoryId == 3 && clientobj.playerLinkId  ? clientobj.playerLinkId : null,
+                guestId: clientobj.playerCategoryId == 1 && clientobj.guestId ? clientobj.guestId : DefaultGUID,
+                title: clientobj.title ? clientobj.title : "",
+                firstName: clientobj.firstName ? clientobj.firstName : "",
+                lastName: clientobj.lastName ? clientobj.lastName : "",
+                pronounce: clientobj.pronounce ? clientobj.pronounce : "",
+                gender: clientobj.gender ? clientobj.gender : "",
+                dateOfBirth: clientobj.dateOfBirth ? clientobj.dateOfBirth : "",
+                comments: clientobj.comments ? clientobj.comments : "",
+                lastChangeId: clientobj.lastChangeId ? clientobj.guestId : DefaultGUID,
+                interfaceGuestId: clientobj.interfaceGuestId ? clientobj.interfaceGuestId : "",
+                loyaltyDetail: clientobj.loyaltyDetail ? clientobj.loyaltyDetail : [],
+                memberId: clientobj.playerCategoryId == 3 && clientobj.playerLinkId ? clientobj.playerLinkId : null,
                 ClientCategoryId: clientobj.playerCategoryId
-            } as Client,  
+            } as Client,
             emails: clientobj.emails,
             addresses: clientobj.addresses,
             phoneNumbers: clientobj.phoneNumbers,
             clientCreditCardInfo: clientobj.clientCreditCardInfo ? clientobj.clientCreditCardInfo : null
-          } as ClientInfo;
+        } as ClientInfo;
     }
 
     async openAddGuestPopup(e, callback: Function, id?, guestId?) {
-        const dialogRef = this.dialog.open(ClientPopupComponent, {
-            width: '95%',
-            height: '85%',
-            maxWidth: '95%',
-            disableClose: true,
-            hasBackdrop: true,
-            data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
-            panelClass: 'small-popup'
-        });
-        dialogRef.afterClosed().subscribe(result => {
-            if (result && result.length > 0) {                
-                callback ? callback(this.BuildPayeeData(result[0])) : null;
-            }
-        })
+        let dialogRef = null;
+        if (e.toLowerCase() == "ordersummary") // TO DO :: Add breakpoint
+        {
+            dialogRef = this.dialog.open(ClientPopupComponent, {
+                width: '95%',
+                height: '85%',
+                maxWidth: '95%',
+                disableClose: true,
+                hasBackdrop: true,
+                data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
+                panelClass: 'small-popup'
+            });            
+        }
+        else if(e.toLowerCase() == "ordersummaryedit"){
+            var clientInfo = await this.clientDataService.getClientbyGuestId(guestId);
+            dialogRef = this.dialog.open(ClientPopupComponent, {
+                width: '95%',
+                height: '85%',
+                disableClose: true,
+                hasBackdrop: true,
+                data:  { mode: 'EDIT', title: this.captions.EditClient, type: this.captions.Update,id :id , data: clientInfo, closebool: true },
+                panelClass: 'small-popup'
+            });
+        }
+
+        if(dialogRef && callback){
+            dialogRef.afterClosed().pipe(first()).subscribe(result => {
+                if (result) {
+                    callback ? callback(this.BuildPayeeData(result)) : null;
+                }
+            });
+        }
     }
     private async getClientDetails(id: number[]): Promise<PayeeInfo[]> {
-        let response: any = await this.clientDataService.getClients(id);       
+        let response: any = await this.clientDataService.getClients(id);
         let clientDetails: PayeeInfo[] = [];
         if (response && response.length > 0) {
             response.forEach(client => {
                 clientDetails.push({
-                    id : client.id,
-                    name : client.firstName + ' ' + client.lastName,
-                    guestProfileId : client.guestId,
-                    address : '',
-                    country : '',
-                    city : '',
-                    zip : '',
-                    cardInfo : []
+                    id: client.id,
+                    name: client.firstName + ' ' + client.lastName,
+                    guestProfileId: client.guestId,
+                    address: '',
+                    country: '',
+                    city: '',
+                    zip: '',
+                    cardInfo: []
                 });
             });
         }
         return clientDetails;
     }
     GetDefaultOutlet() {
-		return this.userDefaultService.GetDefaultOutlet();
-	}
+        return this.userDefaultService.GetDefaultOutlet();
+    }
 
 }

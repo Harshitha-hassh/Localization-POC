@@ -4,7 +4,6 @@ import { TransactionDetails, OutOfStock, DonutCount, ItemData, TransactionSaleDe
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { RetailPosCommunication } from '../communication/services/retailpos.service';
 import { ClientInfo, ClientSearchModel, ClientGlobalSearchModel } from 'src/app/client/client-popup/create-client/client.modal';
-//import { GolfGatewayCommunication } from '../../communication/services/golfGateway';
 
 
 @Injectable()
@@ -32,6 +31,13 @@ export class ClientDataService {
         return this._httpPos.getPromise({
             route: RetailApiRoute.GetClientByPatronId,
             uriParams: { patronId : patronId }
+        });
+    }
+
+    public async getClientbyGuestId(guestId : string) : Promise<ClientInfo>{
+        return this._httpPos.getPromise({
+            route: RetailApiRoute.GetClientByGuestId,
+            uriParams: { guid : guestId }
         });
     }
 
