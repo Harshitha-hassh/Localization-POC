@@ -43,7 +43,8 @@
     "accessDenined": "Access Denied_au",
     "done": "Done_au",
     "resev": "Resev_au",
-    "all": "All_au"
+    "all": "All_au",
+    "viewFailed": "View Failed_au"
   },
   "common": {
     "AddPlayer": "Add Player_au",
@@ -78,6 +79,8 @@
       "Y",
       "Z"
     ],
+    "IMPORT": "IMPORT_au",
+    "UPLOAD": "UPLOAD_au",
     "LoadingPlayerInformation": "Loading Player Information_au",
     "err_invalidEmailFormat": "Invalid Email_au",
     "err_duplicateEmail": "Duplicate Email_au",
@@ -2545,7 +2548,9 @@
     "booked": "Booked_au",
     "avail": "Avail_au",
     "AllOutlets": "All Outlets_au",
-    "TeeTimes": "Tee Times_au"
+    "TeeTimes": "Tee Times_au",
+    "transaction": "Transaction_au",
+    "revenue": "Revenue_au"
   },
   "utilities": {
     "defaultOutlet": "Default Outlet_au",

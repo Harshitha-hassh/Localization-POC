@@ -174,7 +174,9 @@ export class DashBoardBusiness {
                 value: x.totalAmount,
                 id: x.id,
                 name: x.name,
-                items: x.noOfTrasaction
+                items: x.noOfTrasaction,
+                booked: x.noOfTrasaction,
+                avail: x.totalAmount,
             };
         });
     }
@@ -230,7 +232,7 @@ export class DashBoardBusiness {
                 value: x.quantity,
                 id: x.id,
                 name: x.name,
-                items: x.returnedItems
+                items: x.quantity
             };
         });
     }

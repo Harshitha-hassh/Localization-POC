@@ -33,7 +33,7 @@
 }
 
 .tooltip_container {
-  height: 70px;
+  height: 50px;
   width: 100px;
   border: 1px solid $line_tooltip_container_border;
 }
@@ -44,6 +44,7 @@
   font-size: 13px;
   padding: 0.4rem;
   font-weight: bold;
+  display: none;
 }
 
 .tooltip_content_booked,
