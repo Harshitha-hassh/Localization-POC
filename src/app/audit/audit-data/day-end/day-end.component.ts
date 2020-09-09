@@ -243,8 +243,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
 
   private async BuildOpenTransactions(response) {
-    const gridData = this.GridData.find(r => r.status === PendingAction.OpenTransaction);
-    gridData.isLoaded = true;
+    const gridData = this.GridData.find(r => r.status === PendingAction.OpenTransaction);    
     if (response && response.length > 0) {
       response = response.filter(r => {
         return this.utils.GetDateWithoutTime(this.utils.getDate(r.transactionDate)).getTime() === this.PropertyInfo.CurrentDate.getTime();
@@ -289,6 +288,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     };
     gridData.options = gridActions;
     gridData.dataCount = transactions.length;
+    gridData.isLoaded = true;
   }
 
   private FormatCurrency(amount): string {

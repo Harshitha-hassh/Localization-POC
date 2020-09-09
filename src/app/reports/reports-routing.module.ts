@@ -3,12 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { ReportsComponent } from './reports.component';
 import { TransactionLogComponent } from './transaction-log/transaction-log.component';
 
-const REPORT_TYPE = {
+export const REPORT_TYPE = {
   retail: 'retail',
   commission: 'commission',
   giftcard: 'giftcards'
 };
-const ReportMenu = {
+export const ReportMenu = {
 	transactionlog: 'transactionlog',
 	retail: 'retail',
 	commissiongratuity: 'commissiongratuity',
