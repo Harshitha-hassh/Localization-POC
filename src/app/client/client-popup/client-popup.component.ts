@@ -68,7 +68,7 @@ export class ClientPopupComponent implements OnInit {
        var a = await this._imageService.saveImage(createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.base64textString,
         this.clientInfo.personalDetailsFormGroup.thumbnailImg);
     }
-    this.closeDialog([createPromise]);
+    this.closeDialog(createPromise);
     console.log("Client Form", this.clientPopupForm.value);
   }
 
