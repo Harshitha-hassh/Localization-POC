@@ -53,6 +53,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   numericOne = 1;
   numericTwo = 2;
   numericThree = 3;
+  numericFour = 4;
   dataFormat = 1;
   rowDescription: string;
 
@@ -147,7 +148,6 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
       this.getAverageTransaction();
       this.getAvgUnitPerCustomer();
       this.getVendorsCount();
-
       this.getTransactionSaleDetail();
       this.getRevenueByOutletDetail();
       this.getReturned_ItemsDetail();
@@ -294,31 +294,46 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 
 
   async getDataSelectionChange(widget: number, loop: number, dataFormat: number, description, templateName) {
-    if (dataFormat == this.numericZero && loop == this.numericOne) {
+    if (dataFormat == this.numericZero && loop == this.numericOne) 
+    {
       this.outletStartDate = this.propertyDate;
       this.outletEndDate = this.propertyDate;
-    } else if (dataFormat == this.numericOne && loop == this.numericOne) {
+    }
+     else if (dataFormat == this.numericOne && loop == this.numericOne) 
+    {
       this.outletStartDate = moment(this.propertyDate).startOf('week').toDate();
       this.outletEndDate = moment(this.propertyDate).endOf('week').toDate();
-    } else if (dataFormat == this.numericTwo && loop == this.numericOne) {
+    } 
+    else if (dataFormat == this.numericTwo && loop == this.numericOne)
+    {
       this.outletStartDate = moment(this.propertyDate).startOf('month').toDate();
       this.outletEndDate = moment(this.propertyDate).endOf('month').toDate();
-    } else if (dataFormat == this.numericZero && loop == this.numericTwo) {
+    } 
+    if (dataFormat == this.numericZero && loop == this.numericThree) 
+    {
       this.itemStartDate = this.propertyDate;
       this.itemEndDate = this.propertyDate;
-    } else if (dataFormat == this.numericOne && loop == this.numericTwo) {
+    } 
+    else if (dataFormat == this.numericOne && loop == this.numericThree) 
+    {
       this.itemStartDate = moment(this.propertyDate).startOf('week').toDate();
       this.itemEndDate = moment(this.propertyDate).endOf('week').toDate();
-    } else if (dataFormat == this.numericTwo && loop == this.numericTwo) {
+    } 
+    else if (dataFormat == this.numericTwo && loop == this.numericThree) 
+    {
       this.itemStartDate = moment(this.propertyDate).startOf('month').toDate();
       this.itemEndDate = moment(this.propertyDate).endOf('month').toDate();
-    } else if (dataFormat == this.numericZero && loop == this.numericThree) {
+    }
+    else if (dataFormat == this.numericZero && loop == this.numericFour)
+    {
       this.categoryStartDate = this.propertyDate;
       this.categoryEndDate = this.propertyDate;
-    } else if (dataFormat == this.numericOne && loop == this.numericThree) {
+    } else if (dataFormat == this.numericOne && loop == this.numericFour) 
+    {
       this.categoryStartDate = moment(this.propertyDate).startOf('week').toDate();
       this.categoryEndDate = moment(this.propertyDate).endOf('week').toDate();
-    } else if (dataFormat == this.numericTwo && loop == this.numericThree) {
+    } else if (dataFormat == this.numericTwo && loop == this.numericFour)
+    {
       this.categoryStartDate = moment(this.propertyDate).startOf('month').toDate();
       this.categoryEndDate = moment(this.propertyDate).endOf('month').toDate();
     }
