@@ -10,7 +10,7 @@ import { UserAccessBreakPoints } from '../retail/shared/constants/useraccess.con
 const routes: Routes = [{
   path: '', component: SettingsComponent,
   children: [
-    { path: '', redirectTo: 'commisionsetup', pathMatch: 'full' },
+    { path: '', redirectTo: 'systemsetup', pathMatch: 'full' },
     {
       path: 'commisionsetup',
       loadChildren: () => import('../retail/commission-setup/commission-setup.module').then(m => m.CommissionSetupModule),
