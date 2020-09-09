@@ -19,9 +19,9 @@ export class CreateClientBusiness {
       ) {}
     
     async SubmitForm(details) {
-        this.isClientUpdate =  details.personalDetailsFormGroup.id > 0;
+        this.isClientUpdate = details.personalDetailsFormGroup.guestId != DefaultGUID;
         var clientDetail = this.CreateUpdateClient(details , this.isClientUpdate)
-        if (details.personalDetailsFormGroup.id > 0)
+        if (details.personalDetailsFormGroup.guestId != DefaultGUID)
           return  this._clientDataService.UpdateClientDetails(clientDetail);
         else
           return this._clientDataService.CreateClientDetails(clientDetail);
