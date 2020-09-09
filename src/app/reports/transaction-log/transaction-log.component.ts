@@ -88,7 +88,7 @@ export class TransactionLogComponent implements OnInit {
     const userPreferredLang = this.localization.GetPropertyInfo('UserLanguage');
     const preferredLanguage = userPreferredLang !== '' ? userPreferredLang : this.localization.GetPropertyInfo('Language');
     let params: ReportOptions = {
-      code: "TransLog",
+      code: "RetailTransLog",
       params: [ {"pPropertyName":_propertyName},{ "pDate" : this.localization.ConvertDateToISODateTime(new Date()) }],
       URIParams: [{ "FirstName": ctl["firstName"].value }, { "LastName": ctl["lastName"].value },
       { "UserId": ctl["userID"].value }, { "TransactionId": ctl["transactionNumber"].value },

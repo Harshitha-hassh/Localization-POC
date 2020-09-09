@@ -12,14 +12,20 @@ export class LayoutComponent implements OnInit {
 
   menuList: any;
 
-  constructor(private routeDataService: RouteLoaderService) { }
+  constructor(private routeDataService: RouteLoaderService) {
+    this.routeDataService.loadSettings().then(result => {
+      if (result) {
+        const value = this.routeDataService.GetChildMenu('/');
+        this.menuList = {
+          menuType: menuTypes.primary,
+          menu: value
+        };
+      }
+    });
+   }
 
   ngOnInit() {
-      const value = this.routeDataService.GetChildMenu('/');
-      this.menuList = {
-        menuType: menuTypes.primary,
-        menu: value
-      };
+      
   }
 
 }
