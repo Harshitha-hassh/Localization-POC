@@ -4,6 +4,7 @@ import * as DashBoardInterface from './dashboard.modal';
 import { DashBoardService } from 'src/app/shared/data-services/authentication/retailmanagement/dashboard.data.service';
 import { SubPropertyDataService } from 'src/app/retail/retail-code-setup/retail-outlets/subproperty-data.service';
 import { Outlet } from 'src/app/retail/retail.modals';
+import _ from 'lodash';
 
 @Injectable()
 export class DashBoardBusiness {
@@ -101,6 +102,7 @@ export class DashBoardBusiness {
                 });
             });
         } else if (dataFormat == this.monthFormat) {
+            transaction = _.orderBy(transaction,"id","asc");
             transaction.forEach((trans) => {
                 monthsArray.forEach((month) => {
                     if (trans.id == month.id) {
@@ -158,6 +160,7 @@ export class DashBoardBusiness {
                 });
             });
         } else if (dataFormat == this.monthFormat) {
+            transaction = _.orderBy(transaction,"id","asc");
             transaction.forEach((trans) => {
                 monthsArray.forEach((month) => {
                     if (trans.id == month.id) {
@@ -184,7 +187,7 @@ export class DashBoardBusiness {
 
     public async getReturned_ItemsDetail<T>(startDate: Date,
                                             dataFormat: number, outletIds: number[]): Promise<DashBoardInterface.UIReturned_Items[]> {
-        const transaction = await this.dashBoardService.getReturnedItems(startDate, dataFormat, outletIds);
+        var transaction = await this.dashBoardService.getReturnedItems(startDate, dataFormat, outletIds);
         // var transaction = [
         // {items: 10,value: 10,id: 1,name:'name 1'},
         // {items: 30,value: 30,id: 2,name:'name 2'},
@@ -216,6 +219,7 @@ export class DashBoardBusiness {
                 });
             });
         } else if (dataFormat == this.monthFormat) {
+            transaction = _.orderBy(transaction,"id","asc");
             transaction.forEach((trans) => {
                 monthsArray.forEach((month) => {
                     if (trans.id == month.id) {
@@ -322,7 +326,7 @@ export class DashBoardBusiness {
         const weekKeys: string[] = [
             this.Captions.Week1,
             this.Captions.Week2,
-            this.Captions.Week2,
+            this.Captions.Week3,
             this.Captions.Week4,
             this.Captions.Week5
         ];
