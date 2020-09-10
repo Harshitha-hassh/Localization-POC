@@ -152,7 +152,7 @@ export class ChartBarComponent implements OnInit , AfterViewInit , OnDestroy {
               color: customStyles.hoverColor,
               opacity: 1
             }],
-            backgroundBarColors: customStyles.backgroundBarColors,
+            //backgroundBarColors: customStyles.backgroundBarColors,
             backgroundBarOpacity: customStyles.backgroundBarOpacity,
           },
         },

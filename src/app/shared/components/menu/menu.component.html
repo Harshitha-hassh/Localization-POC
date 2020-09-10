@@ -167,7 +167,7 @@
             <i *ngIf="menuShowingArr.imgPath" class="{{menuShowingArr.imgPath}}"></i>
             <div *ngIf="levelMenu == menuType.lowerLevel" routerLinkActive="arrow-section border-left-color">
             </div>
-            <span class="ag_text--uppercase ag_pl--3" [matTooltip]="menuShowingArr.text">{{menuShowingArr.text}}</span>
+            <span class="ag_pl--3" [matTooltip]="menuShowingArr.text">{{menuShowingArr.text}}</span>
         </a>
     </ng-container>
 </ng-template>
@@ -212,7 +212,7 @@
                         <ng-container *ngFor="let menu of verticalList">
                             <li class="text" *ngIf="menu.visibility">
                                 <ng-container
-                                    *ngTemplateOutlet="menu.linkedElement?.length>0 ? subMenu: directMenu;context: { $implicit: menu, stateObj: {ShowPopup: true} }">
+                                    *ngTemplateOutlet="menu.linkedElement?.length>0 ? subMenu: directMenu;context: { $implicit: menu, stateObj: {ShowPopup: true, onChildChange: true} }">
                                 </ng-container>
                             </li>
                         </ng-container>
