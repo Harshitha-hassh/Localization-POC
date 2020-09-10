@@ -31,7 +31,7 @@ export class ClientService implements OnDestroy {
   async MandatoryFieldsValidation(clientData: any): Promise<boolean> {
     let result: any = await this.http.CallApiAsync({
       callDesc: 'GetClientConfiguration',
-      host: Host.spaManagement,
+      host: Host.retailManagement,
       method: HttpMethod.Get
     });
 

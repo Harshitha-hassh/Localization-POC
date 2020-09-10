@@ -83,6 +83,23 @@
           <mat-form-field class="propCode">
             <input type="text" matInput placeholder="{{captions.propertyCode}}" name="PropertyCode" formControlName="propCode" [maxlength]="10">
           </mat-form-field>
+          <hr />
+          <div class="mandatoryDetails">
+            <label class="form-label-primary">{{captions.requiredFields | uppercase}}</label>
+            <div class="infoDetails d-flex">
+              <div *ngFor="let requiredInfo of propertyInfo.get('requiredFields')['controls']; let i =index;" formArrayName="requiredFields" class="personal-info" id="required-{{i}}">
+                <div *ngFor="let requiredDetails of requiredFieldsInfo; let j =index;" [formGroupName]="i">
+                  <div *ngIf="i == j">
+                    <label class="textellipsis">{{requiredDetails.name}}</label>
+                    <div *ngFor="let details of requiredDetails['requiredInfo']" class="toogle-switch-big-class LW14 d-table">
+                      <span class="detailName d-table-cell" id="info-{{details.name}}">{{details.name}}</span>
+                      <app-toggle-switch  class="d-table-cell" formControlName="{{details.controlName}}" [ngClass]=" details.Disabled  ? 'button_invalid' : 'button_valid'"></app-toggle-switch>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
   
     </div>
