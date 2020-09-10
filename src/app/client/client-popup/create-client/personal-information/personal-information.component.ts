@@ -263,30 +263,21 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
   ngOnInit() {
-    this.initializeFormData();
     if (this.parentForm) {
       this.parentForm.addControl('personalDetailsFormGroup', this.FormGrp);
     }
-    this.setPhoneAsMandatory();
+    this.initializeFormData();
+    //this.setPhoneAsMandatory();
   }
 
   initializeFormData() {
     this.textmaskFormat = this.localization.captions.common.PhoneFormat != '' ?
-      this.localization.captions.common.PhoneFormat : '999999999999999999';
-    //  this.makeGetCall('GetClientConfiguration');
+    this.localization.captions.common.PhoneFormat : '999999999999999999'
     this.contactTypePhone = this.getPhoneOptions();
     this.contactTypeEmail = this.getMailOptions();
     this.validateEmailType = this.localization.getError(-87);
     this.validatePhoneType = this.localization.getError(-88);
-    // this.appointmentService.isClientViewOnly = false;
-
-    //   this.appointmentService.clientScreenBreakPoints = this.BP.GetBreakPoint([SPAManagementBreakPoint.EditClientProfile, SPAManagementBreakPoint.EditClientPreferences, SPAManagementBreakPoint.EditSOAPNotes]).result
-    //   this.appointmentService.isClientViewOnly = this.appointmentService.clientScreenBreakPoints ? this.appointmentService.clientScreenBreakPoints.filter(x => x.breakPointNumber == SPAManagementBreakPoint.EditClientProfile)[0].view : false;
-    //  this.SetEditValues(this.personalInfo);
-    //   if (this.appointmentService.isClientViewOnly) {
-    //     this.utils.disableControls(this.FormGrp);
-    //   }
-    // }
+    this.makeGetCall('GetClientConfiguration');
   }
 
   ngOnDestroy(): void {
@@ -379,6 +370,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     });
 
     this.FormGrp.updateValueAndValidity();
+    this.FormGrp.markAllAsTouched();
   }
 
 
@@ -484,7 +476,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   makeGetCall(routeURL: string) {
     this.http.CallApiWithCallback<any[]>({
-      host: Host.spaManagement,
+      host: Host.retailManagement,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
       callDesc: routeURL,
@@ -503,7 +495,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     switch (callDesc) {
       case 'GetClientConfiguration':
         this.clientConfiguration = result.result as any;
-        //  this.Validation(this.clientConfiguration);
+        this.Validation(this.clientConfiguration);
         break;
       case 'getImagesByReference': {
         const imageDetails = result.result;
@@ -707,7 +699,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.url = url;
     this.imageId = imageData && imageData[0] ? imageData[0].id : '';
     this.url = imageData && imageData[0] ? url : '';
-    // this.imageReferenceId = clientInfo.client.guestId;
+    this.initializeFormData();
   }
 
   onFileDelete(event) {

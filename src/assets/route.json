@@ -101,7 +101,6 @@
   "createNewClient": "clients",
   "GetContactTypes": "clients/contacttypes/{type}",
   "GetContactPhoneTypes": "clients/contacttypes/Phone",
-  "GetClientConfiguration": "settings/module/Client",
   "clientSearch": "clients/search/{name}/{requestUid}",
   "getClientInfo": "clients/{id}",
   "getClientInfoByGuid": "clients/guid/{guid}",
@@ -305,8 +304,7 @@
   "GetConfiguration": "settings/module/{module}/switch/{Switch}",
   "GetSeasonalSetting": "settings/seasonalhour",
   "UpdateSeasonalSetting": "settings/seasonalhour",
-  "GetAllSetting": "settings/AllSetting/All",
-  "GetSettingByModule": "settings/GetSettings/{module}",
+  "GetAllSetting": "Settings/AllSetting/All",
   "GetAllBreakPoint": "user/GetAllUserClaimsAsync",
   "GetBreakPoint": "user/GetUserClaimsAsync/",
   "GetAllUserRole": "userRole/GetUserRoleByTenantId/{tenantId}",
@@ -337,7 +335,6 @@
   "CreateUserSpaConfig": "spausers/{id}/servicegroup",
   "UpdateUserRetailConfig": "UserRetailConfiguration/update",
   "UpdateUserSpaConfig": "spausers/{id}/servicegroup",
-  "UpdateSetting": "settings",
   "IsLocationInUse": "appointments/validate/inuse/service/{serviceId}/location/{locationId}",
   "IsServiceInUse": "appointments/validate/inuse/Service/{serviceId}/from/{startDate}/to/{endDate}/dayofWeek/{dayOfWeek}",
   "CopyUserRoles": "user/CopyUserClaimsAsync/{from}/{to}",
@@ -610,5 +607,8 @@
   "ReverseRechargeV1GiftCard": "Payment/ReverseRechargeV1GiftCard/transactionId/{paymentTransactionId}",
   "IssueV1GiftCard": "Payment/IssueV1GiftCard",
   "ReturnV1GiftCard": "Payment/ReturnV1GiftCard",
-  "RedeemV1GiftCard": "Payment/RedeemV1GiftCard"
+  "RedeemV1GiftCard": "Payment/RedeemV1GiftCard",
+  "UpdateSetting": "settings",
+  "GetClientConfiguration": "settings/module/Client",
+  "GetSettingByModule": "Settings/AllSetting/{module}"
 }

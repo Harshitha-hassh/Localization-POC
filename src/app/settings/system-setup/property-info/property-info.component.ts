@@ -114,7 +114,9 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.captions = this.spaConfig.captions.setting;
     this.GetServiceCall('GetAllLanguages');
    // this.ValidateBreakPoint();
+    this.RequiredFieldsSetting();
     this.GetPropertInfo();
+    this.RequiredfieldsBind();
   }
 
   ValidateBreakPoint(): void {
@@ -131,7 +133,93 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     }
   }
 
+  RequiredFieldsSetting() {
+    let _propJSON: any = {};
+    this.settingInfo.map(sc => {
+      // if (sc.switchType == "Boolean") {
+      //   sc.value = this.convertStringToBoolean(sc.value as string);
+      // }
+      _propJSON[sc.switch] = sc.value
+      _propJSON[sc.id] = sc.id
+    });
+    this.systemConfig.systemConfigValues = _propJSON;
+    this.formAndPatchRequiredFieldsData(_propJSON);
+    this.enableSave = false;
+  }
+
+  RequiredfieldsBind(){
+    const personalInfo = [
+      { id: 1, name: this.captions.Title, controlName: "CLIENT_TITLE" },
+      { id: 2, name: this.captions.First_Name, controlName: "CLIENT_FIRST_NAME" },
+      { id: 3, name: this.captions.Last_Name, controlName: "CLIENT_LAST_NAME" },
+      { id: 4, name: this.captions.Birthday, controlName: "CLIENT_BIRTHDAY" },
+      { id: 5, name: this.captions.Gender, controlName: "CLIENT_GENDER" },
+    ];
+    const contactInfo = [
+      { id: 1, name: this.captions.Address, controlName: "CLIENT_ADDRESS_LINE_1" },
+      { id: 2, name: this.captions.City, controlName: "CLIENT_CITY" },
+      { id: 3, name: this.captions.State, controlName: "CLIENT_STATE" },
+      { id: 4, name: this.captions.Postal_Code, controlName: "CLIENT_POSTAL_CODE" },
+      { id: 5, name: this.captions.Country, controlName: "CLIENT_COUNTRY" },
+      { id: 6, name: this.captions.Phone, controlName: "CLIENT_PHONE" },
+      { id: 7, name: this.captions.Email, controlName: "CLIENT_EMAIL" },
+    ];
+    // const paymentInfo = [
+    //   { id: 1, name: this.captions.Credit_Card, controlName: "CLIENT_CREDIT_CARD" },
+    // ]
+    this.requiredFieldsInfo = [
+      {
+        name: this.captions.personalInformation,
+        requiredInfo: personalInfo
+      },
+      {
+        name: this.captions.contactDetails,
+        requiredInfo: contactInfo
+      },
+      // {
+      //   name: this.captions.paymentDetails,
+      //   requiredInfo: paymentInfo
+      // }
+    ];
+    //this.ValidateBreakPoint();
+    this.GetPropertInfo();
+    this.GetAllSetting();
+    this.requiredFields = this.propertyInfo.get('requiredFields') as FormArray;
+    for (let i = 0; i < this.requiredFieldsInfo.length; i++) {
+      switch (this.requiredFieldsInfo[i].name) {
+        case this.captions.personalInformation:
+          this.requiredFields.push(this.addPersonalDetails());
+          break;
+        case this.captions.contactDetails:
+          this.requiredFields.push(this.addContactDetails());
+          break;
+        case this.captions.paymentDetails:
+          this.requiredFields.push(this.addPaymentDetails());
+          break;
+      }
+    }
+    this.propertyInfo.patchValue(this.propertyConfigurationDetails);
+    this.propertyInfoSubscription = this.propertyInfo.valueChanges.subscribe(() => {
+      this.enableSave = true;
+    });
   
+  }
+  
+  GetAllSetting() {
+
+    this.http.CallApiWithCallback<any>({
+      host: Host.retailManagement,
+      success: this.successCallback.bind(this),
+      error: this.errorCallback.bind(this),
+      callDesc: "GetSettingByModule",
+      uriParams: { module: "Client" },
+      method: HttpMethod.Get,
+      showError: false,
+      extraParams: [{ Id: this.utils.GetPropertyInfo('PropertyId') }]
+    });
+  
+  }
+
   GetPropertInfo() {
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
@@ -304,7 +392,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
 
   UpdateSetting(bodyData) {
     this.http.CallApiWithCallback<any>({
-      host: Host.spaManagement,
+      host: Host.retailManagement,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
       callDesc: 'UpdateSetting',
@@ -409,8 +497,9 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     }
   }
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams?: any[]): void {
-    if (callDesc == 'GetAllSetting') {
+    if (callDesc == 'GetSettingByModule') {
       this.settingInfo = <any>result.result;
+      this.RequiredFieldsSetting();
       this.enableSave = false;
     } else if (callDesc == 'GetPropertyInfoByPropertyId') {
       this.propertyInformation = <any>result.result;
@@ -420,6 +509,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       this.GetPropertInfo();
       this.enableSave = false;
     } else if (callDesc == 'UpdateSetting') {
+      this.GetAllSetting();
+      this.enableSave = false;
     } 
     else if (callDesc == 'GetAllLanguages') {
       [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(true, this.initialLoads, this.callCounter);
