@@ -259,7 +259,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       const officeNo = this.contactTypePhone.find(d => d.id == phoneNoSelectedValue);
       officeDesc = officeNo ? officeNo.description : '';
     }
-    return (this.localization.captions.common.Work.toLowerCase() == officeDesc.toLowerCase());
+    return (this.localization.captions.common.Office.toLowerCase() == officeDesc.toLowerCase());
   }
 
   ngOnInit() {
