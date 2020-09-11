@@ -36,8 +36,8 @@
 
                         <button class="menuClass buttonStyle cursor" [matTooltip]="captions.menuSearch" (click)="openMenuSearch()">
                             <i class="icon-search-class">
-                                <span class="icon-Circle"></span>
-                                <span class="icon-Menu_search_icon" *ngIf="!menusearchOpen"></span>
+                                <span class="icon-Circle" [ngClass]="{'dark': !menusearchOpen }"></span>
+                                <span class="icon-menu-search" *ngIf="!menusearchOpen"></span>
                                 <span class="icon-Cancel" *ngIf="menusearchOpen"></span>
                             </i>
                         </button>

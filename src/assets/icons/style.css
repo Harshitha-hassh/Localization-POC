@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?srhz9z');
-  src:  url('fonts/icomoon.eot?srhz9z#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?srhz9z') format('truetype'),
-    url('fonts/icomoon.woff?srhz9z') format('woff'),
-    url('fonts/icomoon.svg?srhz9z#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?5kuopq');
+  src:  url('fonts/icomoon.eot?5kuopq#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?5kuopq') format('truetype'),
+    url('fonts/icomoon.woff?5kuopq') format('woff'),
+    url('fonts/icomoon.svg?5kuopq#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-menu-search:before {
+  content: "\edad";
+}
 .icon-Round_Redeem:before {
   content: "\ecb7";
 }
