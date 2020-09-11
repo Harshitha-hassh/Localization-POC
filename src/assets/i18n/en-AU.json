@@ -2855,6 +2855,7 @@
         "SMS": "SMS_au",
         "SelectedRecipients": "Selected Recipients_au",
         "AppointmentGuest": "Appointment Guest_au",
+        "BillingGuest": "Billing Guest_au",
         "AppointmentTherapist": "Appointment Therapist_au",
         "ActionEmployee": "Action Employee_au",
         "Therapist": "Therapist_au",
