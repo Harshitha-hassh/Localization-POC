@@ -2857,6 +2857,7 @@
         "SMS": "SMS",
         "SelectedRecipients": "Selected Recipients",
         "AppointmentGuest": "Appointment Guest",
+        "BillingGuest": "Billing Guest",
         "AppointmentTherapist": "Appointment Therapist",
         "ActionEmployee": "Action Employee",
         "Therapist": "Therapist",
