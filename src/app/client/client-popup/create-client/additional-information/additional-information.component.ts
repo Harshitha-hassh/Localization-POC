@@ -6,13 +6,13 @@ import { HandleRequest, HandleResponse } from '../../../../shared/shared-models'
 import { MatDialogRef, MatDialog } from '@angular/material';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { IDTechCardSwipeTimeout, Module, Host } from 'src/app/common/shared/shared/globalsContant';
-import { PayAgentService } from 'src/app/common/shared/shared/service/payagent.service';
 import { UserSessionConfiguration } from 'src/app/common/shared/retail.modals';
 import { UserMachineConfigurationService } from 'src/app/retail/common/services/user-machine-configuration.service';
 import { BaseResponse, Device, PaymentMethods, TokentransactionInfo, ClientCreditCardInfo, CardInfo, 
   PaymentBaseResponse, StoreTokenRequest, IDTech, IDTechHandle } from 'src/app/common/shared/shared/business/shared.modals';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';
 
 @Component({
   selector: 'app-additional-information',
@@ -57,9 +57,16 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       this.SetEditValues(value.data)
     }
   }
-  constructor(private Form: FormBuilder, private http: HttpServiceCall,
-    public localization: RetailLocalization, public dialog: MatDialog, private utils: RetailUtilities, private PropertyInfo: PropertyInformation,
-    private payAgentService: PayAgentService, private userMachineConfigurationService: UserMachineConfigurationService) {
+  constructor(
+    private Form: FormBuilder, 
+    private http: HttpServiceCall,
+    public localization: RetailLocalization, 
+    public dialog: MatDialog, 
+    private utils: RetailUtilities, 
+    private PropertyInfo: PropertyInformation,
+    private payAgentService: PayAgentService, 
+    private userMachineConfigurationService: UserMachineConfigurationService
+    ) {
     this.captions = this.localization.captions.bookAppointment;
     this.FormGrp = this.Form.group({
       // pricetype: 0,
