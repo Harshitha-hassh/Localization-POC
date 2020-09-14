@@ -1229,6 +1229,10 @@
   "breakpoint": {
     "800": "800 - Commission Class Setup_fi",
     "805": "805 - Staff Commission Setup_fi",
+    "1240": "1240 - Staff Member Summary Report_fi",
+    "1245": "1245 - Commission Report_fi",
+    "1250": "1250 - Gratuity Report_fi",
+    "1255": "1255 - Service Charge Report_fi",
     "1260": "1260 - Appointment Listing by Color Linking Code_fi",
     "2300": "2300 - User Setup_fi",
     "2305": "2305 - User Role Setup_fi",
