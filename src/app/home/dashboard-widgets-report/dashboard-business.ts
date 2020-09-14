@@ -302,7 +302,7 @@ export class DashBoardBusiness {
     }
 
     public async getOutofStockOnData(outletIds: number[]): Promise<DashBoardInterface.UIOutOfStock[]> {
-        const outOfStockItems = await this.dashBoardService.getOutOfStockItems(outletIds);
+        const outOfStockItems =outletIds.length > 0 ? await this.dashBoardService.getOutOfStockItems(outletIds) :[];
         const result: DashBoardInterface.UIOutOfStock[] = outOfStockItems ? outOfStockItems.map(o => {
             return {
                 id: o.id,
@@ -311,14 +311,6 @@ export class DashBoardBusiness {
             };
         }) : [];
         return result;
-        // let data = await [
-        //     {id: 1,item: "Item 3535",outofStockOn: '10/11/2020'},
-        //     {id: 2,item: "Item 235"   ,outofStockOn: '11/11/2020'},
-        //     {id: 3,item: "Item 3535"  ,outofStockOn: '12/11/2020'},
-        //     {id: 4,item: "Item 535"   ,outofStockOn: '13/11/2020'},
-        //     {id: 5,item: "Item 535"   ,outofStockOn: '10/11/2020'},
-        // ]
-        //  return data;
     }
 
 
