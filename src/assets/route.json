@@ -610,5 +610,6 @@
   "RedeemV1GiftCard": "Payment/RedeemV1GiftCard",
   "UpdateSetting": "settings",
   "GetClientConfiguration": "settings/module/Client",
-  "GetSettingByModule": "Settings/AllSetting/{module}"
+  "GetSettingByModule": "Settings/AllSetting/{module}",  
+  "GetCEDSByOutletId": "Outlets/GetCEDSByOutletId/{outletId}"
 }

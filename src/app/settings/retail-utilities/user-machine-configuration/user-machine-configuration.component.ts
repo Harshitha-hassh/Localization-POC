@@ -9,19 +9,18 @@ import { HttpResponseStatus } from '../../../retail/shared/service/payment/payme
 import { ZebraPrintService } from '../../../retail/retail-print/zebra-print.service';
 import { PropertyInformation } from '../../../core/services/property-information.service';
 import { StoreTerminal } from 'src/app/retail/shared/business/shared.modals';
-import { PayAgentService } from 'src/app/common/shared/shared/service/payagent.service';
 import { PaymentMethods, HandleRequest, HandleResponse } from 'src/app/common/shared/shared/business/shared.modals';
 import { OperationType } from 'src/app/common/shared/shared/globalsContant';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { UserMachineConfigurationService } from 'src/app/retail/common/services/user-machine-configuration.service';
 import { UserSessionConfiguration } from 'src/app/common/shared/core.model';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';
 
 @Component({
   selector: 'app-user-machine-configuration',
   templateUrl: './user-machine-configuration.component.html',
   styleUrls: ['./user-machine-configuration.component.scss'],
-  providers: [PayAgentService],
   encapsulation: ViewEncapsulation.None
 })
 export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
@@ -61,7 +60,8 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     public PropertyInfo: PropertyInformation,
     private userMachineConfigurationService: UserMachineConfigurationService,
     private http: HttpServiceCall,
-    private utils: RetailUtilities, private payAgentService: PayAgentService,
+    private utils: RetailUtilities, 
+    private payAgentService: PayAgentService,
     private zebra: ZebraPrintService) {
 
   }

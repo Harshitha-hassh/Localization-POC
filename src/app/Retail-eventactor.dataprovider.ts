@@ -10,6 +10,10 @@ export class RetailEventActorDataProvider implements EventActorsDataProvider {
         const caption = this.caption.captions.settings.utilities.distributionlist;
         return [
             {
+                actor: 'BillingGuest',
+                actorDescription: caption.BillingGuest
+            },
+            {
                 actor: 'UserRoles',
                 actorDescription: caption.UserRoles,
                 host: Retailroutes.RetailApiHosts.TenantManagement,
