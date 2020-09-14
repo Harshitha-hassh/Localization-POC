@@ -1320,7 +1320,11 @@
 		"8735": "8735 - PurchaseOrder",
 		"8095": "8095 - Tax Exempt Sales",
     "8100": "8100 - Transaction Detail",
-    "8105": "8105 - Top Spenders"
+    "8105": "8105 - Top Spenders",
+    "1240": "1240 - Staff Member Summary Report",
+		"1245": "1245 - Commission Report",
+		"1250": "1250 - Gratuity Report",
+		"1255": "1255 - Service Charge Report"
   },
   "userId": "User ID",
   "password": "Password",
