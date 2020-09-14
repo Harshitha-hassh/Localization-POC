@@ -44,7 +44,9 @@ export class TransactionHistoryComponent implements OnInit {
     if(value && value.data!='')
     {
       this.clientId = value.data.client.id;
-      this.initializeFormData();  
+      if(this.clientId > 0){
+        this.GetSalesHistory()
+      }  
     }
   }
 
@@ -88,7 +90,7 @@ export class TransactionHistoryComponent implements OnInit {
     if (this.historyType == 2) {
       this.itemArray = [];
 
-      this.itemArray = item.transactionDetails.items;
+      this.itemArray = item && item.transactionDetails.items;
     }
     this.selectedRowItem = item
   }
@@ -108,7 +110,6 @@ export class TransactionHistoryComponent implements OnInit {
   ngOnInit() {
     this.initializeFormData();
   }
-
   async initializeFormData(){
     this.historyType = this.historyTypes[0].id;
     this.changeType();
@@ -145,24 +146,36 @@ export class TransactionHistoryComponent implements OnInit {
         let TotalTax = (responseResult.transaction[index1].transactionData.totalTax).toFixed(2);
         let totalDiscount:number = 0;
          let itemDescription;
-        for(let index2 = 0; index2 < responseResult.transaction[index1].transactionDetails.length;index2++)
-       {
-         let QuantitySold = responseResult.transaction[index1].transactionDetails[index2].quantitySold;
-         let unitPrice = (responseResult.transaction[index1].transactionDetails[index2].unitPrice).toFixed(2);
-         for(let index3 =0,j=0; index3< Object.keys(responseResult.itemDescription).length; index3++)
-         {
 
-          let itemId = responseResult.transaction[index1].transactionDetails[index2].itemId;
-          itemDescription = responseResult.itemDescription[itemId];
+        if(responseResult.transaction[index1].transactionDetails.length <= 0){
+          transactionDetail = {
+            items: []
+          }
         }
 
+        for(let index2 = 0; index2 < responseResult.transaction[index1].transactionDetails.length;index2++)
+        {
+         let QuantitySold = responseResult.transaction[index1].transactionDetails[index2].quantitySold;
+         let unitPrice = (responseResult.transaction[index1].transactionDetails[index2].unitPrice).toFixed(2);
+         let itemId = responseResult.transaction[index1].transactionDetails[index2].itemId;
+         itemDescription = responseResult.itemDescription[itemId];
+          var indexOfItem = this.frequentlyPurchased.findIndex(i=> i.itemNumber == itemId);
+         if(indexOfItem > -1)
+         {
+          this.frequentlyPurchased[indexOfItem].quantity = Number(this.frequentlyPurchased[indexOfItem].quantity) + Number(QuantitySold);
+         }
+         else
+         {
+          this.frequentlyPurchased.push({ "description": itemDescription, "quantity": QuantitySold, "itemNumber": itemId})
+         }
+        
          let Discount :number= responseResult.transaction[index1].transactionDetails[index2].discount;
          totalDiscount += Discount;
          items.push({ "name": itemDescription, "quantity": QuantitySold, "price": unitPrice});
-         transactionDetail = {
-          //"transaction": transactionNumber,
+
+           transactionDetail = {
            items: items
-        }
+           }
 
         }
        let guestHistory = {
@@ -179,10 +192,25 @@ export class TransactionHistoryComponent implements OnInit {
        appointments.push(guestHistory);
        items = [];
       }
+      this.frequentlyPurchased = this.frequentlyPurchased.sort(this.compareItem).reverse();
       this.salesHistory = appointments;
+      this.changeType();
     }
   }
   errorCallback<T>(result: BaseResponse<T>): void { }
+
+  compareItem(a, b) {
+    const item1 = a.quantity;
+    const item2 = b.quantity;
+  
+    let comparison = 0;
+    if (item1 > item2) {
+      comparison = 1;
+    } else if (item1 < item2) {
+      comparison = -1;
+    }
+    return comparison;
+  }
 
   async InvokeServiceCallAsync(route: string, domain: Host, uriParams?: any): Promise<BaseResponse<any>> {
     let result: BaseResponse<any> = await this.http.CallApiAsync({
