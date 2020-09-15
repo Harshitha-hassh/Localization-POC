@@ -35,6 +35,7 @@ export class NotifyPopupComponent implements OnInit {
   isReadOnly:boolean=true;
   transactionId: number = 0;
   guestId: number =0;
+  title: string ='';
 
   constructor(private localilzation: RetailLocalization, 
     private _fb: FormBuilder,
@@ -43,7 +44,8 @@ export class NotifyPopupComponent implements OnInit {
     private clientDataService: ClientDataService,
     private notificationDataService: NotificationDataService ) {
      this.selectedClientId = this.data.guestId;
-     this.transactionId=  this.data.transactionId
+     this.transactionId=  this.data.transactionId;
+     this.title =this.data.title;
   }
 
 
