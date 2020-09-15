@@ -302,7 +302,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['title'].clearValidators();
     this.FormGrp.controls['title'].setValidators(clientConfiguration[0]['CLIENT_TITLE'] ? [Validators.required] : []);
     this.FormGrp.controls['title'].updateValueAndValidity();
-
+  
     this.FormGrp.controls['gender'].clearValidators();
     this.FormGrp.controls['gender'].setValidators(clientConfiguration[0]['CLIENT_GENDER'] ? [Validators.required] : []);
     this.FormGrp.controls['gender'].updateValueAndValidity();
@@ -359,6 +359,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         [Validators.required, EmptyValueValidator] : []);
       PhoneGroup.controls['PhoneNumber'].updateValueAndValidity();
     });
+    
     const AddresArray = this.FormGrp.get('Address') as FormArray;
     AddresArray.controls.forEach(function (control) {
       let AddressGroup: FormGroup;
@@ -765,10 +766,13 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         this.FormGrp.controls['Phone']['controls'][index].controls[altfield].setValidators(Validators.required);
       } else {
         this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
+        this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].clearValidators();
       }
     }
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].markAsTouched();
+    this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].markAsTouched();
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].updateValueAndValidity();
+    this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].updateValueAndValidity();
   }
 
   phoneChange(eve, phoneNumber, altfield, phoneNumberLabel, index) {
@@ -898,16 +902,16 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   private getPhoneOptions() {
     return [
+      { id: this.phoneTypes.mobile, description: this.localization.captions.common.drp_txt_cell, type: ContactType.phone },
       { id: this.phoneTypes.home, description: this.localization.captions.common.drp_txt_home, type: ContactType.phone },
-      { id: this.phoneTypes.office, description: this.localization.captions.common.drp_txt_office, type: ContactType.phone },
-      { id: this.phoneTypes.mobile, description: this.localization.captions.common.drp_txt_mobile, type: ContactType.phone }
+      { id: this.phoneTypes.office, description: this.localization.captions.common.drp_txt_work, type: ContactType.phone }
     ];
   }
 
   private getMailOptions() {
     return [
-      { id: this.mailTypes.office, description: this.localization.captions.common.drp_txt_office, type: ContactType.email },
-      { id: this.mailTypes.personal, description: this.localization.captions.common.drp_txt_personal, type: ContactType.email }
+      { id: this.mailTypes.personal, description: this.localization.captions.common.drp_txt_personal, type: ContactType.email },
+      { id: this.mailTypes.office, description: this.localization.captions.common.drp_txt_office, type: ContactType.email }
     ];
   }
 
