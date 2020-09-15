@@ -70,7 +70,8 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     , private dialog: MatDialog
     , private _featureFlagService: RetailFeatureFlagInformationService
     , private _propertyFeatureService: PropertyFeaturesConfigurationService
-    , private _propertyInfo: RetailPropertyInformation) {
+    , private _propertyInfo: RetailPropertyInformation
+    , private elementRef: ElementRef) {
     // this.sortPipe = new SortOrderPipe();
   }
 
@@ -221,7 +222,35 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async logout() {
+    this.logoutEatec();
     await this._sessionService.logout();
+  }
+
+  logoutEatec() {
+
+    let eatecUrl = this._propertyInfo.getEatecURI;
+    const url = 'sso/logout';
+
+    const eatecToken = sessionStorage.getItem('eatecJwt');
+
+    if (!eatecUrl || !eatecToken) {
+      return '';
+    }
+
+    if (!eatecUrl.endsWith('/')) {
+      eatecUrl += '/';
+    }
+
+    eatecUrl = `${eatecUrl}${url}`;
+
+    const doc = this.elementRef.nativeElement.offsetParent;
+    const eatecIframe = doc.querySelector('#eatec-iframe');
+
+    if (eatecIframe) {
+      doc.removeChild(eatecIframe);
+    }
+
+    doc.insertAdjacentHTML('beforeend', '<iframe id="eatec-iframe" style="display:none" src="' + eatecUrl + '"></iframe>');
   }
 
   onSearch(e: any) {

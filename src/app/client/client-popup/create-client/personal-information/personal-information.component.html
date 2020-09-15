@@ -50,7 +50,7 @@
             </mat-button-toggle>
           </mat-button-toggle-group>
           <mat-error class=""
-            *ngIf="FormGrp.controls['gender'].hasError('required') && !FormGrp.controls['gender'].touched">
+            *ngIf="FormGrp.controls['gender'].hasError('required') && FormGrp.controls['gender'].touched">
             {{captions.MissingGender}}
           </mat-error>
         </div>

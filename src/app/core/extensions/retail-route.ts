@@ -72,6 +72,8 @@ export enum RetailRoutes {
    GlobalSearchRetailItems = 'retailitems/search/name',
    GetDefaultUserConfiguration = 'UserSessionConfiguration/user/{userId}',
    GetOutletsByProperty = 'Outlets',
+   //EATEC
+   EatecToken = 'Login/Token/Eatec',
 
    //Notification
    SendManualNotification=  "EmailSMSNotification/SendNotification",

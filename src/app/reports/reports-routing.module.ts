@@ -15,7 +15,7 @@ export const ReportMenu = {
 	giftcard: 'giftcards'
 };
 
-const routes: Routes = [{
+var routes: Routes = [{
   path: '', component: ReportsComponent,
   children: [
     { path: '', redirectTo: ReportMenu.retail, pathMatch: 'full' },
