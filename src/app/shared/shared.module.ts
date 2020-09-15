@@ -39,6 +39,8 @@ import { ImageValiation } from './pipes/image-validation.pipe';
 import { ConvertObjPipe } from './pipes/conver-object.pipe';
 import { FormatTextPipe } from './pipes/formatText-pipe.pipe';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { NotifyPopupComponent } from './components/notify-popup/notify-popup.component';
+import { NotificationDataService } from './data-services/notification.data.service';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     LocalizeDatePipe,
     RedenderingOptionComponent,
     ConvertObjPipe,
+    NotifyPopupComponent,
     ImageValiation,
     FormatTextPipe    
   ],
@@ -78,6 +81,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     AuthenticationCommunication,
     RetailManagementCommunication,
     RetailPosCommunication,
+    NotificationDataService,
     {
       provide: DateAdapter,
       useClass: CustomDateAdapter,
@@ -116,7 +120,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
   ],
   entryComponents: [
     AboutComponent,
-    ClientPopupComponent
+    ClientPopupComponent,
+    NotifyPopupComponent
   ]
 })
 export class SharedModule { }

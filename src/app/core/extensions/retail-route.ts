@@ -71,7 +71,10 @@ export enum RetailRoutes {
    //Retail
    GlobalSearchRetailItems = 'retailitems/search/name',
    GetDefaultUserConfiguration = 'UserSessionConfiguration/user/{userId}',
-   GetOutletsByProperty = 'Outlets'
+   GetOutletsByProperty = 'Outlets',
+
+   //Notification
+   SendManualNotification=  "EmailSMSNotification/SendNotification",
 }
 
 export enum MsGraphRoutes {

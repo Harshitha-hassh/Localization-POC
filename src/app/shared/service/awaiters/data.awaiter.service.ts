@@ -11,6 +11,8 @@ import { DefaultGUID } from 'src/app/common/shared/shared/globalsContant';
 import { ClientPopupComponent } from 'src/app/client/client-popup/client-popup.component';
 import { UserdefaultsInformationService } from 'src/app/core/services/UserdefaultsInformationService';
 import { first } from 'rxjs/operators';
+import { NotificationDataService } from '../../data-services/notification.data.service';
+import { NotifyPopupComponent } from '../../components/notify-popup/notify-popup.component';
 
 @Injectable({
     providedIn: "root"
@@ -24,7 +26,8 @@ export class DataAwaiterService {
         private localization: RetailStandaloneLocalization,
         private routeLoaderService: RouteLoaderService,
         private clientDataService: ClientDataService,
-        private userDefaultService: UserdefaultsInformationService
+        private userDefaultService: UserdefaultsInformationService,
+        private notificationDataService: NotificationDataService,
     ) {
         this.setAwaiters();
     }
@@ -36,6 +39,8 @@ export class DataAwaiterService {
         RetailDataAwaiters.openAddPayeePopup = this.openAddGuestPopup.bind(this);
         RetailDataAwaiters.getPayeeDetails = this.getClientDetails.bind(this);
         RetailDataAwaiters.GetDefaultOutlet = this.GetDefaultOutlet.bind(this);
+        RetailDataAwaiters.SendNotification = this.SendNotification.bind(this);
+        RetailDataAwaiters.OpenManualNotifyPopup = this.OpenManualNotifyPopup.bind(this);
     }
 
     getChildMenu(url, menutype?) {
@@ -133,7 +138,7 @@ export class DataAwaiterService {
                 panelClass: 'small-popup'
             });
         }
-
+        
         if(dialogRef && callback){
             dialogRef.afterClosed().pipe(first()).subscribe(result => {
                 if (result) {
@@ -165,4 +170,18 @@ export class DataAwaiterService {
         return this.userDefaultService.GetDefaultOutlet();
     }
 
+    async SendNotification(transactionId: number) {
+        this.notificationDataService.SendNotification(transactionId, false );
+    }
+
+    OpenManualNotifyPopup(transactionId: number, guestId: number ) {
+        let dialogRef = this.dialog.open(NotifyPopupComponent, {
+            width: '85%',
+            height: '75%',
+            disableClose: true,
+            hasBackdrop: true,
+            data:  { mode: 'EDIT', title: this.captions.notify, type: this.captions.Update, guestId :guestId, transactionId: transactionId, closebool: true },
+            panelClass: 'small-popup'
+        });
+    }
 }

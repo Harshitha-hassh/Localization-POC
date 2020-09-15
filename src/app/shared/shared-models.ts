@@ -80,6 +80,15 @@ export enum ContactType {
     office = 3
 }
 
+export const enum ContactTypeId{
+    Cell = 1,
+    Home = 2,
+    Work =3,
+    Personal = 9,
+    Office = 10
+  }
+  
+
 export enum AlertType {
     Success = 1,
     Warning = 2,
@@ -282,6 +291,43 @@ export interface TransactionDetail {
     propertyId: number;
     subPropertyId: number;
 }
+
+
+export interface PhoneNumber {
+    id: number;
+    contactTypeId: number;
+    clientId: number;
+    countryCode: string | number;
+    number: string;
+    extension: string;
+    isPrivate: boolean;
+    isPrimary: boolean;
+    propertyId: number;
+    subPropertyId: number;
+  }
+  
+
+export interface Email {
+    id: number;
+    contactTypeId: number;
+    clientId: number;
+    emailId: string;
+    isPrivate: boolean;
+    isPrimary: boolean;
+    propertyId: number;
+    subPropertyId: number;
+  }
+  
+
+export interface NotificationModel {
+    transactionId : number,
+    action : string,
+    emailId : string,
+    phoneNumber : string,
+    canSendSMS : boolean,
+    canSendemail : boolean,
+    isManual: boolean
+    }
 
 export interface TransactionData {
     id: number;
