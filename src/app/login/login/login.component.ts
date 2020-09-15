@@ -300,7 +300,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  setpropertyvalues(Selectedproperty: any) {
+  async setpropertyvalues(Selectedproperty: any) {
     const result = this.propertyValues.find(
       item => item.propertyCode === Selectedproperty.id
     );
@@ -363,6 +363,20 @@ export class LoginComponent implements OnInit, OnDestroy {
     );
     this.localize.SetLocaleBasedProperties();
     this.UpdateUserRole(Selectedproperty.id);
+    await this.setEatecToken();
+  }
+
+  async setEatecToken() {
+    try {
+      const serviceParams = {
+        route: RetailRoutes.EatecToken,
+        showError: true
+      };
+      const token = await this.loginService.makePostCall(serviceParams, false);
+      sessionStorage.setItem('eatecJwt', token.result);
+    } catch (ex) {
+
+    }
   }
 
   async CreateUserSession(sessionInfo) {

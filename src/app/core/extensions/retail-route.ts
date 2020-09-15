@@ -71,7 +71,9 @@ export enum RetailRoutes {
    //Retail
    GlobalSearchRetailItems = 'retailitems/search/name',
    GetDefaultUserConfiguration = 'UserSessionConfiguration/user/{userId}',
-   GetOutletsByProperty = 'Outlets'
+   GetOutletsByProperty = 'Outlets',
+   //EATEC
+   EatecToken = 'Login/Token/Eatec',
 }
 
 export enum MsGraphRoutes {

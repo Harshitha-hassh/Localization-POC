@@ -41,9 +41,13 @@ const routes: Routes = [{
     {
       path: 'userconfig',
       loadChildren: () => import('../settings/user-config/user-config.module').then(m => m.UserSetupModule),
-      data: { redirectTo: '', hasChild: true }
+      data: { redirectTo: 'enhancedInventory', hasChild: true }
     },
-
+    {
+      path: 'enhancedInventory',
+      loadChildren: '../retail/eatec/eatec.module#EatecModule',
+      data: { redirectTo: '', hasChild: false }
+    }
   ]
 }];
 
