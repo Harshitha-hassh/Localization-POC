@@ -289,7 +289,9 @@
     "drp_txt_personal": "Personal_uk",
     "countryCode": "Country Code_uk",
     "RetailItems": "Retail Items_uk",
-    "Clients": "Clients_uk"
+    "Clients": "Clients_uk",
+    "drp_txt_cell": "Cell_uk",
+    "drp_txt_work": "Work_uk"
   },
   "calendar": {
     "Sunday": "Sunday_uk",
