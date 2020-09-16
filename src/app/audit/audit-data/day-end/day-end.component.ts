@@ -46,7 +46,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   currSysDate: Date = this.PropertyInfo.CurrentDate;
   newSysDate: Date = this.PropertyInfo.CurrentDate;
   canProcess = false;
-  isProcessClicked = false;
+  isProcessClicked = true;
   successFlag = false;
   success: any;
   GridData: GridData[] = [];
