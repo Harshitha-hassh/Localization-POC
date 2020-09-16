@@ -18,7 +18,7 @@
       <div class="">
         <mat-form-field class="">
           <input matInput [placeholder]="captions.CFirstName" [maxlength]="1000" style="text-transform:capitalize"
-            value={{personalDetails.firstName}} autocomplete="off" formControlName="firstName"> 
+            value={{personalDetails.firstName}} autocomplete="off" formControlName="firstName" required> 
           <mat-error class=""
             *ngIf="FormGrp.controls['firstName'].hasError('required') && FormGrp.controls['firstName'].touched && !FormGrp.controls['firstName'].valid">
             {{captions.MissingFirstName}}
@@ -27,7 +27,7 @@
 
         <mat-form-field class=" ml-3 mr-3">
           <input matInput [placeholder]="captions.CLastName" [maxlength]="1000" style="text-transform:capitalize"
-            value={{personalDetails.lastName}} formControlName="lastName">
+            value={{personalDetails.lastName}} formControlName="lastName" required>
           <mat-error class=""
             *ngIf="FormGrp.controls['lastName'].hasError('required') && FormGrp.controls['lastName'].touched && !FormGrp.controls['lastName'].valid">
             {{captions.MissingLastName}}
