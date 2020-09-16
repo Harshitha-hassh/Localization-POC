@@ -3,8 +3,7 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import * as DashBoardInterface from './dashboard.modal';
 import { DashBoardService } from 'src/app/shared/data-services/authentication/retailmanagement/dashboard.data.service';
 import { SubPropertyDataService } from 'src/app/retail/retail-code-setup/retail-outlets/subproperty-data.service';
-import { Outlet } from 'src/app/retail/retail.modals';
-import _ from 'lodash';
+
 
 @Injectable()
 export class DashBoardBusiness {
@@ -31,12 +30,6 @@ export class DashBoardBusiness {
             }
         }):[];
         return result;
-        //const data = [{
-        //     id: 1,
-        //     name: 'TESt',
-        //     description: 'TESt',
-        //     defaultOutletId: 1
-        // }];
     }
 
     async getOutletsCount(): Promise<DashBoardInterface.DonutCount> {
@@ -56,12 +49,6 @@ export class DashBoardBusiness {
             total: vendorsCount.totalCounts
         }
         return resultData;
-        // const data = {
-        //     active: 23,
-        //     inActive: 50,
-        //     total: 83
-        // };
-        // return data;
     }
 
     public async getTransactionCount(outletIds: number[]): Promise<DashBoardInterface.TransactionDetails> {
@@ -71,13 +58,6 @@ export class DashBoardBusiness {
     public async getTransactionSaleDetail<T>(dataFormat: number,
                                              startDate: Date, outletIds: number[]): Promise<DashBoardInterface.UITransactionSaleDetail[]> {
         var transaction = await this.dashBoardService.getTransactionSaleDetail(startDate, dataFormat, outletIds);
-        // const transaction = [
-        //     { transactions: 10, value: 10, booked: 10, avail: 4, dateOfTransaction: new Date(), id: 1, name: 'name 1' },
-        //     { transactions: 30, value: 30, booked: 10, avail: 4, dateOfTransaction: new Date(), id: 2, name: 'name 2' },
-        //     { transactions: 50, value: 50, booked: 10, avail: 4, dateOfTransaction: new Date(), id: 3, name: 'name 3' },
-        //     { transactions: 50, value: 50, booked: 10, avail: 4, dateOfTransaction: new Date(), id: 4, name: 'name 4' },
-        //     { transactions: 50, value: 50, booked: 10, avail: 4, dateOfTransaction: new Date(), id: 5, name: 'name 5' }
-        // ];
         const monthsArray = this.localization.monthsArray;
         const daysArray = this.localization.daysNormalArray;
         const weeksArray: DashBoardInterface.UIWeekArray[] = this.getWeekArray();
@@ -102,7 +82,6 @@ export class DashBoardBusiness {
                 });
             });
         } else if (dataFormat == this.monthFormat) {
-            transaction = _.orderBy(transaction,"id","asc");
             transaction.forEach((trans) => {
                 monthsArray.forEach((month) => {
                     if (trans.id == month.id) {
@@ -128,14 +107,7 @@ export class DashBoardBusiness {
 
     public async getRevenueByOutletDetail<T>(dataFormat: number,
                                              startDate: Date, outletIds: number[]): Promise<DashBoardInterface.UIRevenueByOutlet[]> {
-        // const transaction = [
-        //     { items: 10, value: 10, id: 1, name: 'name 1' },
-        //     { items: 30, value: 30, id: 2, name: 'name 2' },
-        //     { items: 50, value: 50, id: 3, name: 'name 3' },
-        //     { items: 50, value: 50, id: 4, name: 'name 4' },
-        //     { items: 50, value: 50, id: 5, name: 'name 5' }
-        // ];
-         var transaction = await this.dashBoardService.getTransactionSaleDetail(startDate, dataFormat, outletIds);
+       var transaction = await this.dashBoardService.getTransactionSaleDetail(startDate, dataFormat, outletIds);
         const monthsArray = this.localization.monthsArray;
         const daysArray = this.localization.daysNormalArray;
         const weeksArray: DashBoardInterface.UIWeekArray[] = this.getWeekArray();
@@ -160,7 +132,6 @@ export class DashBoardBusiness {
                 });
             });
         } else if (dataFormat == this.monthFormat) {
-            transaction = _.orderBy(transaction,"id","asc");
             transaction.forEach((trans) => {
                 monthsArray.forEach((month) => {
                     if (trans.id == month.id) {
@@ -188,13 +159,6 @@ export class DashBoardBusiness {
     public async getReturned_ItemsDetail<T>(startDate: Date,
                                             dataFormat: number, outletIds: number[]): Promise<DashBoardInterface.UIReturned_Items[]> {
         var transaction = await this.dashBoardService.getReturnedItems(startDate, dataFormat, outletIds);
-        // var transaction = [
-        // {items: 10,value: 10,id: 1,name:'name 1'},
-        // {items: 30,value: 30,id: 2,name:'name 2'},
-        // {items: 50,value: 50,id: 3,name:'name 3'},
-        // {items: 50,value: 50,id: 4,name:'name 4'},
-        // {items: 50,value: 50,id: 5,name:'name 5'}
-        // ]
         const monthsArray = this.localization.monthsArray;
         const daysArray = this.localization.daysNormalArray;
         const weeksArray: DashBoardInterface.UIWeekArray[] = this.getWeekArray();
@@ -219,7 +183,6 @@ export class DashBoardBusiness {
                 });
             });
         } else if (dataFormat == this.monthFormat) {
-            transaction = _.orderBy(transaction,"id","asc");
             transaction.forEach((trans) => {
                 monthsArray.forEach((month) => {
                     if (trans.id == month.id) {
@@ -281,7 +244,7 @@ export class DashBoardBusiness {
 
     public async getOpenTicketsData(propertyDate: Date, outletIds: number[]): Promise<DashBoardInterface.UIOpenTickets[]> {
         const action = 'Settle';
-        const outOfStockItems = await this.dashBoardService.getOpenTickets(propertyDate, outletIds);
+        const outOfStockItems =outletIds.length > 0 ? await this.dashBoardService.getOpenTickets(propertyDate, outletIds) :[];
         const result: DashBoardInterface.UIOpenTickets[] = outOfStockItems ? outOfStockItems.map(o => {
             return {
                 id: o.outletId,
