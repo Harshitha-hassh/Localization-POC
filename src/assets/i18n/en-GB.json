@@ -2518,6 +2518,12 @@
     "missingCustomField": "Missing Custom Field_gb",
     "PaymentMethods": "PaymentMethod(s)_gb"
   },
+  "receipt": {
+    "SalesTicket": "Sales Ticket_gb",
+    "VoidTicket": "Voided Ticket_gb",
+    "ReprintTicket": "Duplicate Ticket_gb",
+    "ReturnExchangeTicket": "Return/Exchange Ticket_gb"
+  },
   "lbl_resolutionText": "*The Application is best viewed in 1920×1080 resolution._gb",
   "lbl_copyRight": "Copyright_gb",
   "lbl_copyrightText": "by Agilysys NV, LLC. All right reserved_gb",
