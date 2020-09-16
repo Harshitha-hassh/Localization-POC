@@ -46,7 +46,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   currSysDate: Date = this.PropertyInfo.CurrentDate;
   newSysDate: Date = this.PropertyInfo.CurrentDate;
   canProcess = false;
-  isProcessClicked = false;
+  isProcessClicked = true;
   successFlag = false;
   success: any;
   GridData: GridData[] = [];
@@ -245,11 +245,13 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   private async BuildOpenTransactions(response) {
     const gridData = this.GridData.find(r => r.status === PendingAction.OpenTransaction);    
     if (response && response.length > 0) {
+      this.isProcessClicked = true;
       response = response.filter(r => {
         return this.utils.GetDateWithoutTime(this.utils.getDate(r.transactionDate)).getTime() === this.PropertyInfo.CurrentDate.getTime();
       });
     }
     if (!response || response.length === 0) {
+      this.isProcessClicked = false;
       this.ClearGridDate(gridData);
       return;
     }
