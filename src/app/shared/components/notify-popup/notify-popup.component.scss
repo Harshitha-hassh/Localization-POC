@@ -1,10 +1,12 @@
 @import "../../../../assets/sass/abstracts/variables";
-
-
+.notify-pop-head{
+  height: $dialog-header-height;
+}
 .notifySection {
-  border-top: 1px solid #81889280;
+  border-top: 1px solid $ag_border-color;
+  height: calc(100% - #{$dialog-header-height});
   .actions-div {
-    height: 64px;
+    height: $dialog-footer-height;
     .pop-button {
       button {
         width: 120px;
@@ -37,8 +39,8 @@
 
 }
 .notifyContact {
-  height: calc(100% - 64px);
-  border-bottom: 1px solid #e3d9d9;
+  height: calc(100% - #{$dialog-header-height});
+  border-bottom: 1px solid $ag_border-color;
   .swap-items {
     align-items: center;
     height: 50px;
