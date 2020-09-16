@@ -2,6 +2,10 @@
 .notify-pop-head{
   height: $dialog-header-height;
 }
+.cursPointer{
+  cursor: pointer;
+  margin-right: 20px;
+}
 .notifySection {
   border-top: 1px solid $ag_border-color;
   height: calc(100% - #{$dialog-header-height});
