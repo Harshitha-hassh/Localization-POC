@@ -87,11 +87,16 @@ export class RetailSettingsComponent implements OnInit {
     const serviceSettingControl = this.servicesetting.retailSettingsFormGrp.controls;
     if (type === 'ALO') {
       serviceSettingControl.autologoff.setValue(event[0]);
+      if (event[0]) {
+        serviceSettingControl.logoffafter.setValue(serviceSettingControl.logoffafter.value  ? serviceSettingControl.logoffafter.value : 1);
+      } else {
+        serviceSettingControl.logoffafter.setValue(0);
+      }
     } else if (type === 'AC') {
       serviceSettingControl.allowcommission.setValue(event[0]);
       if (event[0]) {
         serviceSettingControl.commissionclass.setValue(serviceSettingControl.commissionclass.value == 0 ? "" : serviceSettingControl.commissionclass.value);
-      }
+      } 
       this.checkCommissionClassRequired();
     }
     if (!serviceSettingControl.autologoff.value) {
@@ -140,8 +145,8 @@ export class RetailSettingsComponent implements OnInit {
   }
 
   checkCommissionClassRequired(): void {
-    this.isCommissionClassRequired = this.retailSettingsFormGrp && this.retailSettingsFormGrp.controls.commissionclass &&
-     this.retailSettingsFormGrp.controls.commissionclass.value;
+    this.isCommissionClassRequired = this.retailSettingsFormGrp && this.retailSettingsFormGrp.controls.allowcommission &&
+     this.retailSettingsFormGrp.controls.allowcommission.value;
   }
 
 }

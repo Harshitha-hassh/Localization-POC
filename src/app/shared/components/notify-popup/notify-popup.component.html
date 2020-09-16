@@ -71,11 +71,12 @@
   
   
   
-                      <div>
-                          <label class="form-label-normal unset-noWrap mr-2">{{captions.saveupdateEmailsms}}</label>
-                          <app-toggle-switch formControlName="enableSaveEmail" (changeToggleEvent)="enableSaveEmail($event[0])"></app-toggle-switch>
-                      </div>
+                      
                   </div>
+                  <div>
+                    <label class="form-label-normal unset-noWrap mr-2">{{captions.saveupdateEmailsms}}</label>
+                    <app-toggle-switch formControlName="enableSaveEmail" (changeToggleEvent)="enableSaveEmail($event[0])"></app-toggle-switch>
+                </div>
               </div>
           </div>
           <div mat-dialog-actions class=" pl-4 m-0  float-left mr-2 actions-div">

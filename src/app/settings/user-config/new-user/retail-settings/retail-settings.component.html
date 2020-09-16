@@ -54,7 +54,7 @@
               <mat-form-field class="">
                 <input matInput autocomplete="off" [required]="this.isCommissionClassRequired" placeholder="{{caption.setting.CommissionClass}}" [maxlength]="9"
                   inputtype="nonnegative,nodecimal" formControlName="commissionclass">
-                <mat-error class="" *ngIf="retailSettingsFormGrp.controls['commissionclass'].hasError('required') && retailSettingsFormGrp.controls['commissionclass'].touched && !retailSettingsFormGrp.controls['commissionclass'].valid">
+                <mat-error class="" *ngIf="retailSettingsFormGrp.controls['commissionclass'].hasError('required') && !retailSettingsFormGrp.controls['commissionclass'].valid">
                   {{caption.setting.MissingCommissionClass}}
                 </mat-error>
               </mat-form-field>
