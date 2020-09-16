@@ -74,6 +74,9 @@ export enum RetailRoutes {
    GetOutletsByProperty = 'Outlets',
    //EATEC
    EatecToken = 'Login/Token/Eatec',
+
+   //Notification
+   SendManualNotification=  "EmailSMSNotification/SendNotification",
 }
 
 export enum MsGraphRoutes {

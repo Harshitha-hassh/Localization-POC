@@ -1,0 +1,90 @@
+<div class="pop-head row m-0 align-items-center">
+    <span class="inner-header pl-4 LW20">{{title}}</span>
+    <i class="icon-close inner-close ml-auto cursPointer" (click)="close()"></i>
+</div>
+  <section class="notifySection h-100" *ngIf="this.clientInfo">
+      <div class="h-100" [formGroup]="notifydetails">
+          <div class="notifyContact p-4">
+              <div>
+                  <label class="form-label-normal unset-noWrap">{{captions.emailsmsNotification}}</label>
+                  <div>
+                      <label class="form-label-normal mr-2">{{captions.Email}}</label>
+                      <app-toggle-switch formControlName="enableSendEmail"
+                          (changeToggleEvent)="emailsmstoggle($event[0],'enableSendEmail','enableSendSMS')">
+                      </app-toggle-switch>
+  
+                      <label class="form-label-normal ml-4 mr-2">{{captions.Sms}}</label>
+                      <app-toggle-switch formControlName="enableSendSMS"
+                          (changeToggleEvent)="emailsmstoggle($event[0],'enableSendSMS','enableSendEmail')">
+                      </app-toggle-switch>
+                  </div>
+              </div>
+              <div *ngIf="showNotificationSection">
+                  <div formArrayName="detailList">
+                      
+                      <div >
+                          <!-- <div *ngFor="let PD of apptService.clientInfo;let i=index"> -->
+                             <!-- cliend info -  {{this.clientInfo | json}} -->
+                          <div [formGroupName]="0">
+                              <div class="d-inline-block Nw-33">
+                                  <!-- <mat-checkbox formControlName="ischecked" class="example-margin"
+                                      [checked]="rowchecked" (change)="checkclicked($event.checked,'0')">
+                                      {{apptService.clientInfo | json }}
+                                  </mat-checkbox> -->
+                                  
+                                  {{clientInfo.firstName}} {{clientInfo.lastName}}
+                              </div>
+                              <div class="d-inline-block w-60">
+                                  <mat-form-field class="Nw-30 mr-3">
+                                      <input matInput inputtype="email" [placeholder]="captions.Email"
+                                          formControlName="emailId" maxlength="100">
+                                      <mat-error class=""
+                                          *ngIf="notifydetails.controls['detailList'].controls[0].controls['emailId'].touched  && (notifydetails.controls['detailList'].controls[0].controls['emailId'].value!='') && !notifydetails.controls['detailList'].controls[0].controls['emailId'].valid">
+                                          {{captions.InvalidEmailFormat}}
+                                      </mat-error>
+                                          <mat-error class=""
+                                          *ngIf="notifydetails.controls['detailList'].controls[0].controls['emailId'].touched && (notifydetails.controls['detailList'].controls[0].controls['emailId'].value=='')">
+                                          {{captions.missing}} {{captions.Email}}
+                                      </mat-error>
+                                  </mat-form-field>
+      
+                                  <mat-form-field class="Nw-20 mr-2">
+                                      <input matInput name="countryCode" formControlName="countryCode" [placeholder]="captions.countryCode"
+                                          [maxlength]="countryCodeLength" inputtype='nonnegative' >
+                                          <mat-error class=""
+                                          *ngIf="notifydetails.controls['detailList'].controls[0].controls['countryCode'].touched && !notifydetails.controls['detailList'].controls[0].controls['countryCode'].valid">
+                                          {{captions.missing}} {{captions.countryCode}}
+                                      </mat-error>
+                                  </mat-form-field>
+                                  <mat-form-field class="Nw-40">
+                                      <input matInput [placeholder]="captions.phoneNo" formControlName="phoneNo"
+                                          [textmask]="textMaskPhone" maxlength="10">
+                                          <mat-error class=""
+                                          *ngIf="notifydetails.controls['detailList'].controls[0].controls['phoneNo'].touched && !notifydetails.controls['detailList'].controls[0].controls['phoneNo'].valid">
+                                          {{captions.missing}} {{captions.phoneNo}}
+                                      </mat-error> 
+                                  </mat-form-field>
+                              </div>
+      
+                          </div>
+                      </div>
+  
+  
+  
+                      <div>
+                          <label class="form-label-normal unset-noWrap mr-2">{{captions.saveupdateEmailsms}}</label>
+                          <app-toggle-switch formControlName="enableSaveEmail" (changeToggleEvent)="enableSaveEmail($event[0])"></app-toggle-switch>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div mat-dialog-actions class=" pl-4 m-0  float-left mr-2 actions-div">
+              <div class="ml-auto mr-3 pop-button">
+                  <button class="text_capitalize LW14"
+                      [ngClass]="(this.notifydetails.dirty && this.notifydetails.valid ) ? 'whitecolor body-bgcolor button_valid': 'spa-primary-disabled button_invalid'"
+                      mat-button (click)="sendNotification()"> {{captions.send}}</button>
+                  <a class="text_capitalize LW14 " (click)="close();">{{captions.Cancel}}</a>
+              </div>
+          </div>
+      </div>
+  </section>

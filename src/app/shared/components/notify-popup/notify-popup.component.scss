@@ -1,0 +1,46 @@
+@import "../../../../assets/sass/abstracts/variables";
+
+
+.notifySection {
+  border-top: 1px solid #81889280;
+  .actions-div {
+    height: 64px;
+    .pop-button {
+      button {
+        width: 120px;
+        height: 40px;
+        border-radius: 3px;
+      }
+      a {
+        color: $color-form-field !important;
+        padding-left: 19px;
+        padding-top: 13px;
+      }
+    }
+  }
+  .Nw-20 {
+    width: 15%;
+  }
+  .Nw-30 {
+    width: 60%;
+  }
+  .Nw-33 {
+    width: 33%;
+  }
+  .Nw-40 {
+    width: 35%;
+  }
+  .w-60 {
+    display: inline-flex !important;
+    width: 40%;
+  }
+
+}
+.notifyContact {
+  height: calc(100% - 64px);
+  border-bottom: 1px solid #e3d9d9;
+  .swap-items {
+    align-items: center;
+    height: 50px;
+  }
+}
