@@ -28,4 +28,13 @@ export class LayoutComponent implements OnInit {
       
   }
 
+  applyTheme(name) {
+    sessionStorage.setItem('theme', name);
+    setTimeout(() => {
+      const theme = sessionStorage.getItem('theme');
+      document.querySelectorAll('body')[0].setAttribute('class', theme);
+      // if css need to change for popover, apply class to body
+    }, 1);
+  }
+
 }

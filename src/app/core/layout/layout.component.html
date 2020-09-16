@@ -1,5 +1,13 @@
 <section class="ag__container showApp">
     <div class="ag__wrapper showApp">
-        <app-menu [menu]="menuList" *ngIf="menuList"></app-menu>
+        <div class="theme-color-wrapper"  *ngIf="menuList?.menu">
+            <div class="theme-color-container">
+                <p class="theme-color-button greytheme" (click)="applyTheme('greytheme')"></p>
+            </div>
+            <div class="text-font">{{propertyName}} | {{propertyDateTime}}</div>
+        </div>
+        <div class="menu-wrapper">
+            <app-menu [menu]="menuList" *ngIf="menuList"></app-menu>
+        </div>        
     </div>  
 </section>

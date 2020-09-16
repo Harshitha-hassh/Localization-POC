@@ -156,7 +156,11 @@ $toggle-height: 50px;
 $check-box-outer: $darkGrey;
 
 
-
+// header
+$menu-header-height: 60px;
+$theme-container-height: 18px;
+$total-header-height: $menu-header-height + $theme-container-height;
+$primary-menu-header-bg: $theme-color;
 
 
 
@@ -508,3 +512,11 @@ $order-summary-highlight-bg: $theme-blue-light;
 $theme-grey-bg-color: $ag_grey-darkest;
 $selected-menu-color: $ag_base-color;
 $header-bg:$header-bg;
+
+// golf theme
+$theme_golf_green   : $ag_golf_green ;
+
+// grey theme
+$theme_grey_base_color: $mildGrey;
+$active_bg : $black-theme;
+$icon_bg_color : $icon-black;

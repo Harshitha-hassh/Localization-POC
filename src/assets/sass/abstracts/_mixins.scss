@@ -122,19 +122,140 @@ $golf-media-queries:(
 // Color themes
 $themes: (
   goldtheme: $gold,
-  bluetheme: $blue
+  bluetheme: $blue,
+  greytheme: ''
   );
-
-
-
-
-
-
   // Helper theme mixin
   // @param $name: name of the theme (HTML class)
   // @param $color: color of the theme
-  @mixin theme($name, $color, $colortext, $colorbackground, $colorborder, $header-background,$menu-background) {
+  @mixin theme($name, $color, $color-text, $colorbackground,$icon-bg, $colorborder, $header-background, $header1_active-bg ,$menu-background,$header1_icon) {
     .#{$name} {
+      .wrapper-container {
+        .header-background {
+          background: $header-background !important;
+          .nav-section {
+            
+            .navItem {
+              ul {
+                li {
+                  i {
+                    color: $header1_icon !important;
+                  }
+                  a,
+                  label {
+                    color: $color-text !important;
+                    &.active-link,
+                    &:focus {
+                       background-color:  $header1_active-bg !important;
+                        color: $color-text !important;
+                      i {
+                        color: $color-text !important;
+                      }
+                    }
+                    &:hover {
+                        background-color:  $header1_active-bg !important;
+                        color: $color-text !important;
+                      i {
+                         color: $color-text !important;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .vertical-header .nav-section .navItem ul li.text a.active-link, .vertical-header .nav-section .navItem ul li.text label.active-link{
+          color: $color-text !important;
+          background-color: $header-background !important;
+        }
+        .profile-section {
+          .notifyClass  {
+            .icon-notify {
+              color: $icon-bg !important;
+            }       
+            .icon-help_question {
+              color: $icon-bg !important;
+            }     
+            .icon-menu-search {
+              color: $icon-bg !important;
+            }
+          }
+          .buttonStyle { 
+            border: 1px solid $header-background !important;
+            background: unset !important; 
+            .icon-search-class .icon-Circle {
+              color: $icon-bg !important;
+            }         
+          }
+          .user-details {
+            .detail-section {
+              .user-name {
+                color: $color-text !important;
+              }
+              .user-role {
+                color: $color-text !important;
+              }
+            }
+            .initial-box {
+              background: $header1_active-bg !important;
+              color: $color-text !important;
+            }
+          }
+        } 
+      }
+      .theme-color-wrapper{
+          background: $header-background !important;
+      }
+
+      .mat-tab-link.mat-tab-label-active, .mat-tab-label.mat-tab-label-active {
+        color: $color-text !important;
+      }
+
+      .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+        background-color: $header1_active-bg !important;
+      }
+
+      .icon-Minus, .icon-Plus {
+        color: $color-text !important;
+      }
+
+      .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+        background-color: $color-text !important;
+      }
+
+      .body-bgcolor {
+        background-color: $header-background !important;
+      }
+
+      .whitecolor {
+        color: $color-text !important;
+      }
+
+      .mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple{
+        background-color: $header-background !important;
+      }
+
+      .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+        border-color: $color-text !important;
+      }
+
+      ui-switch .switch.checked {
+        background: $header-background !important;
+      }
+
+      .setNotificationConfiguration .themecolor {
+        color: $header-background !important;
+      }
+      .spa-primary-default-save {
+        background-color: $header-background !important;
+      }
+      .spa-primary-default-save:hover {
+        background-color: $header-background !important;
+      }
+      .mat-button-wrapper {
+        color: $color-text !important;
+      }
       .border-color {
         border-color: $colorborder !important;
       }
@@ -178,17 +299,13 @@ $themes: (
       circle{
           stroke: $color;
       }
-  }
+      }
     }
    }
 
       .body-color {
         background: $colorbackground !important;
       }
-
-
-
-
       .timepicker__header{
         background: $colorbackground !important;
       }
@@ -219,20 +336,12 @@ $themes: (
       .header-background {
         background-color: $header-background !important;
       }
-
-      // .mat-tab-header {
-      //   background-color: $menu-background !important;
-      // }
-
       button.hover_css.mat-button:hover {
         background-color: $colorbackground !important;
       }
 
-      // .mat-tab-group.mat-primary .mat-ink-bar {
-      //   background-color: $colorbackground !important;
-      // }
       .text-color {
-        color: $colortext !important;
+        color: $color-text !important;
       }
 
       .active-link {
@@ -262,76 +371,11 @@ $themes: (
         }
       }
 
-      // .mat-step-header {
-      //   [ng-reflect-ng-switch="edit"].mat-step-icon {
-      //     background: #818892;
-      //   }
-      // }
-
-      // .mat-step-header {
-      //   [ng-reflect-ng-switch="number"].mat-step-icon {
-      //     background-color: $colorbackground !important;
-      //   }
-      // }
-
       .ngx-pagination {
         .current {
           background-color: $colorbackground !important;
         }
       }
-
-      // .mat-form-field-ripple {
-      //   background-color: $colorbackground !important;
-      // }
-
-      // .mat-form-field-invalid {
-      //   .mat-form-field-ripple {
-      //     background-color: #f44336 !important;
-      //   }
-      // }
-
-      // .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
-      //   background-color: $colorbackground !important;
-
-      //   span {
-      //     color: #fff;
-      //   }
-      // }
-
-      // .ngx-pagination .current, .ngx-pagination a, .ngx-pagination button {
-      //   padding: 10px 15px;
-      // }
-
-      // .mat-select-arrow,  {
-      //   color: $colorbackground !important;
-      // }
-
-      // .mat-mini-fab.mat-accent, .mat-radio-inner-circle, .mat-slide-toggle-thumb, .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-      //   background-color: $colorbackground !important;
-      // }
-      // .mat-radio-button.mat-accent .mat-radio-inner-circle{
-      //     background-color:$colorbackground !important;
-      // }
-
-      // .mat-button-toggle-checked {
-      //   background: $colorbackground;
-      //   color:#fff;
-      // }
-
-      // .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-      //   background-color: $colorbackground !important;
-      // }
-
-      // .mat-calendar-body-selected {
-      //   background-color: $colorbackground !important;
-      //   color:#fff;
-      // }
-      // .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate{
-      //   background: $colorbackground !important;
-      // }
-      // .mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
-      //   color: $colorbackground !important;
-      // }
     }
   }
     // Including themes
@@ -343,6 +387,9 @@ $themes: (
       $header-background: null;
       $menu-background: null;
       $color-theme: null;
+      $header1_active-bg : null;
+      $header1_icon: null;
+      $icon-bg:null;
       @if $key == "goldtheme" {
         $color-background: $gold;
         $color-text: $gold;
@@ -360,7 +407,15 @@ $themes: (
         $color-theme: $blue;
 
       }
-      @include theme($key, $value, $color-text, $color-background, $color-border, $header-background,$menu-background);
+      @else if $key == "greytheme" {        
+        $header-background: $theme_grey_base_color;
+        $color-text: $ag_base-text-black;
+        $colorborder: $theme_grey_base_color;
+        $header1_icon: $ag_base-text-black;
+        $header1_active-bg :$active_bg; 
+        $icon-bg:$active_bg;
+      }
+      @include theme($key, $value, $color-text, $color-background,$icon-bg, $color-border, $header-background, $header1_active-bg ,$menu-background,$header1_icon);
     }
 
 
@@ -401,3 +456,5 @@ $themes: (
       }
 
     }
+
+  
