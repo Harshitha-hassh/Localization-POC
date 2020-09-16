@@ -502,7 +502,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 
       const barChartCaptions = {
         x_label: this.rowDescription,
-        y_label: this.captions.number_of_Transaction,
+        y_label: this.captions.total_Revenue,
         booked: this.captions.transaction,
         avail: this.captions.revenue
       };
@@ -538,7 +538,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 
       const barChartCaptions = {
         x_label: this.rowDescription,
-        y_label: this.captions.number_of_Transaction,
+        y_label: this.captions.total_Revenue,
         currencySymbol: this.captions.currencySymbol,
         items: this.captions.items,
         booked: this.captions.transaction,

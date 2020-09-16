@@ -2556,6 +2556,7 @@
     "allOutlets": "All Outlets",
     "ViewCompleteList": "View Complete List",
     "total_Sales_Revenue": "Total Sales Revenue",
+    "total_Revenue": "Total Revenue",
     "number_of_Transaction": "Number of Transaction",
     "average_Transaction": "Average Transaction",
     "unitPerCustomer": "Unit per customer",
