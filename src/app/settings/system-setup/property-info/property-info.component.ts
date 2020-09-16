@@ -150,8 +150,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   RequiredfieldsBind(){
     const personalInfo = [
       { id: 1, name: this.captions.Title, controlName: "CLIENT_TITLE" },
-      { id: 2, name: this.captions.First_Name, controlName: "CLIENT_FIRST_NAME" },
-      { id: 3, name: this.captions.Last_Name, controlName: "CLIENT_LAST_NAME" },
+     // { id: 2, name: this.captions.First_Name, controlName: "CLIENT_FIRST_NAME" },
+     // { id: 3, name: this.captions.Last_Name, controlName: "CLIENT_LAST_NAME" },
       { id: 4, name: this.captions.Birthday, controlName: "CLIENT_BIRTHDAY" },
       { id: 5, name: this.captions.Gender, controlName: "CLIENT_GENDER" },
     ];
@@ -281,8 +281,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   addPersonalDetails(): FormGroup {
     return this.fb.group({
       CLIENT_TITLE: '',
-      CLIENT_FIRST_NAME: '',
-      CLIENT_LAST_NAME: '',
+    //  CLIENT_FIRST_NAME: '',
+    //  CLIENT_LAST_NAME: '',
       CLIENT_BIRTHDAY: '',
       CLIENT_GENDER: ''
     });
