@@ -1,13 +1,13 @@
-<div class="pop-head row m-0 align-items-center">
+<div class="notify-pop-head row m-0 align-items-center">
     <span class="inner-header pl-4 LW20">{{title}}</span>
     <i class="icon-close inner-close ml-auto cursPointer" (click)="close()"></i>
 </div>
-  <section class="notifySection h-100" *ngIf="this.clientInfo">
+  <section class="notifySection" *ngIf="this.clientInfo">
       <div class="h-100" [formGroup]="notifydetails">
           <div class="notifyContact p-4">
               <div>
                   <label class="form-label-normal unset-noWrap">{{captions.emailsmsNotification}}</label>
-                  <div>
+                  <div class="ag_display--flex">
                       <label class="form-label-normal mr-2">{{captions.Email}}</label>
                       <app-toggle-switch formControlName="enableSendEmail"
                           (changeToggleEvent)="emailsmstoggle($event[0],'enableSendEmail','enableSendSMS')">
