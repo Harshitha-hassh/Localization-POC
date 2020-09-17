@@ -651,8 +651,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     };
   }
 
-  Open_Tickets_data_rowEmitter(data) 
-  {
+  Open_Tickets_data_rowEmitter(data) {
     this.ActionClick(GridAction.Settle, data[0])
   }
 
@@ -763,7 +762,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
       headerData: [
         { key: 'ticketNumber', description: this.captions.ticketNumber, alignment: 'textLeft font-bold w-25' },
         { key: 'transactionAmount', description: this.captions.transactionAmount, alignment: 'textRight font-bold w-25' },
-        { key: 'action', description: this.captions.action, alignment: 'textRight font-bold w-25', showArrow: true  }
+        { key: 'action', description: this.captions.action, alignment: 'textRight font-bold w-25', customClass: 'themeTextColor' }
       ],
       headerEnable: true
     };
@@ -917,9 +916,6 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
       }
     });
   }
-
-
-
 }
 
 

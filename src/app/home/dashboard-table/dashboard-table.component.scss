@@ -49,8 +49,9 @@
             max-width: 0;
             // min-width:12px ;
             // max-width:12rem ;
-            .greenText{
-              color: $golf-base-color;
+            .themeTextColor{
+              color: $theme-base-color;
+              cursor: pointer;
             }
             .i_arrow{
               padding-left: 20px;
