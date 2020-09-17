@@ -111,7 +111,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
      this.localization.captions.common.PhoneFormat : '999999999999999999';
     this.address = this.propertyInfo.get('address') as FormArray;
     this.addresslength = this.address.length;
-    this.captions = this.spaConfig.captions.setting;
+    this.captions = this.localization.captions.setting;
     this.GetServiceCall('GetAllLanguages');
    // this.ValidateBreakPoint();
     this.RequiredFieldsSetting();
