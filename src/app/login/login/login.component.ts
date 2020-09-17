@@ -21,6 +21,7 @@ import { ButtonValue } from 'src/app/shared/shared-models';
 import { Product } from 'src/app/common/shared/shared/globalsContant';
 import { API } from 'src/app/shared/models/property-settings.model';
 import { UserdefaultsInformationService } from 'src/app/core/services/UserdefaultsInformationService';
+import { Localization } from 'src/app/common/localization/localization';
 
 @Component({
   selector: 'app-login',
@@ -68,6 +69,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
     private localize: RetailStandaloneLocalization,
+    private commonLocalize: Localization,
     private utils: Utilities,
     private route: ActivatedRoute,
     private sessionService: ManageSessionService,
@@ -362,6 +364,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       false
     );
     this.localize.SetLocaleBasedProperties();
+    this.commonLocalize.SetLocaleBasedProperties();
     this.UpdateUserRole(Selectedproperty.id);
     await this.setEatecToken();
   }
