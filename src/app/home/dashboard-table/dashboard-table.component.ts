@@ -26,5 +26,8 @@ export class DashboardTableComponent implements OnInit {
   arrowClick(e) {
     this.rowEmitter.emit(e);
   }
+  actionClick(e) {
+    this.rowEmitter.emit(e);
+  }
 }
 
