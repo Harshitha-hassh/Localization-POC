@@ -13,6 +13,15 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import { sortPipe } from 'src/app/common/shared/shared/pipes/sort-pipe.pipe';
 import { Router } from '@angular/router';
 import _ from 'lodash';
+import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
+import { ButtonOptions, ButtonType, Host, Product, RetailBreakPoint } from 'src/app/common/shared/shared/globalsContant';
+import { GridAction } from 'src/app/audit/AuditModals';
+import { RetailSharedVariableService } from 'src/app/retail/shared/retail.shared.variable.service';
+import { RetailValidationService } from 'src/app/retail/shared/retail.validation.service';
+import { BaseResponse } from 'src/app/common/shared/shared.modal';
+import { HttpMethod, HttpServiceCall, KeyValuePair } from 'src/app/common/shared/shared/service/http-call.service';
+import { AppModuleService } from 'src/app/core/services/app.service';
+import { RedirectToModules } from 'src/app/common/shared/shared/utilities/common-utilities';
 @Component({
   selector: 'app-dashboard-widgets-report',
   templateUrl: './dashboard-widgets-report.component.html',
@@ -92,14 +101,20 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   Sales_SalesRevenue_data_input: any;
   Revenue_By_Outlet_data_input: any;
   Returned_Items_data_input: any;
+  allShopItems: any[] = [];
 
   constructor(private cdr: ChangeDetectorRef,
               public dashboardWidgetsReportService: DashboardWidgetsReportService,
               private dashBoardBusiness: DashBoardBusiness,
               private fb: FormBuilder,
               private utilities: Utilities,
+              private breakPoint: BreakPointAccess,
               private propertyInformation: PropertyInformation,
               private localization: RetailStandaloneLocalization,private _router: Router,
+              private retailSharedService: RetailSharedVariableService, 
+              private retailValidationService: RetailValidationService,
+              private http: HttpServiceCall,
+              public ams: AppModuleService,
               private sortpipe: sortPipe) {
   }
 
@@ -160,6 +175,8 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
       this.getOutofStockOnData();
 
       this.getTransactionCount();
+
+      this.InvokeServiceCall('GetShopItems', Host.retailManagement, HttpMethod.Get);
     }
     this.dashboardData();
   }
@@ -623,9 +640,6 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   }
 
 
-
-
-
   async getPurchaseOrderData() {
     this.Purchase_Order_data = {
       data: await this.dashBoardBusiness.getPurchaseOrderData(),
@@ -637,6 +651,111 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     };
   }
 
+  Open_Tickets_data_rowEmitter(data) 
+  {
+    this.ActionClick(GridAction.Settle, data[0])
+  }
+
+  async ActionClick(option: any, data: any) 
+  {
+    if (!this.IsAuthorized(option)) {
+      return;
+    }
+    if (option === GridAction.Settle) {
+      this.retailSharedService.payeeId = data.clientId;
+      this.retailSharedService.reOpenTransaction = false;
+      this.retailSharedService.settleOpenTransaction = true;
+      this.retailSharedService.transactionId = data.uid;
+      if (! await this.retailValidationService.ValidateSettleReopenAction(data.uid, 'settle', this.TransactionLockCallback.bind(this))) {
+        return;
+      }
+      this.retailValidationService.LockTransaction(data.uid);
+      this.InvokeServiceCall('GetTransactionDetails', Host.retailPOS, HttpMethod.Get, { transactionId: data.uid, productId: Product.RETAIL }, null, null, ['settle']);
+    } 
+  }
+
+  async TransactionLockCallback(result: string, extraparams) {
+    if (result.toLowerCase() === ButtonOptions.Yes.toLowerCase()) {
+      this.retailValidationService.LockTransaction(extraparams[0], true);
+      this.InvokeServiceCall('GetTransactionDetails',
+        Host.retailPOS, HttpMethod.Get, { transactionId: extraparams[0], productId: Product.RETAIL }, null, null, [extraparams[1]]);
+    } else {
+      this.retailSharedService.settleOpenTransaction = false;
+      this.retailSharedService.reOpenTransaction = false;
+    }
+  }
+
+  private IsAuthorized(action: GridAction): boolean {
+    let isUserAuthorized = true;
+    const breakpointNumber: number[] = [];
+    breakpointNumber.push(RetailBreakPoint.ReOpenTransaction);
+   
+    if (breakpointNumber.length > 0) {
+      isUserAuthorized = this.breakPoint.CheckForAccess(breakpointNumber);
+    }
+
+    if (isUserAuthorized && ( action === GridAction.Settle)) {
+      isUserAuthorized = !this.breakPoint.IsViewOnly(breakpointNumber[0]);
+      if (!isUserAuthorized) {
+        this.breakPoint.showBreakPointPopup(this.localization.captions.breakpoint[RetailBreakPoint.ReOpenTransaction]);
+      }
+    }
+    return isUserAuthorized;
+  }
+
+  InvokeServiceCall(route: string, domain: Host, callType: HttpMethod, uriParams?: any, body?: any, queryString?: KeyValuePair, extraParams?: any) {
+    this.http.CallApiWithCallback<any>({
+      host: domain,
+      success: this.successCallback.bind(this),
+      error: this.errorCallback.bind(this),
+      callDesc: route,
+      method: callType,
+      body,
+      showError: true,
+      extraParams,
+      uriParams,
+      queryString
+    });
+  }
+
+  async successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): Promise<void> {
+    switch (callDesc) {
+     
+      case 'GetTransactionDetails': {
+        const response = result.result as any;
+        this.BuildTransactionDetails(response, extraParams ? extraParams[0] : '');
+        break;
+      }
+      case 'GetShopItems': {
+        this.allShopItems = result.result as any;
+        break;
+      
+    }
+  }
+}
+
+  private BuildTransactionDetails(result, action: string) {
+    this.InvokeServiceCall('GetShopItems', Host.retailManagement, HttpMethod.Get);
+    this.retailSharedService.selectedProducts = this.retailValidationService.LoadSelectedProducts(result, this.allShopItems, action);
+    this.retailSharedService.isFromRetailDashBoard = true;
+    this.retailSharedService.TaxValue = _.cloneDeep(this.retailValidationService.TaxValue);
+    this.retailValidationService.TaxValue = 0;
+    this.retailSharedService.GoToRetailTransaction = false;
+    if (!this.retailSharedService.SelectedOutletId && result && result.length > 0) {
+      this.retailSharedService.SelectedOutletId = result[0].outletId;
+    }
+    this.retailSharedService.propertyDate = this.propertyInformation.CurrentDate;
+    this.retailSharedService.useRetailInterface = this.propertyInformation.UseRetailInterface;
+    if (this.retailSharedService.settleOpenTransaction) {
+      this.utilities.RedirectTo(RedirectToModules.order);
+    } else if (this.retailSharedService.reOpenTransaction) {
+      this.utilities.RedirectTo(RedirectToModules.retail);
+    }
+  }
+
+  errorCallback<T>(error: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
+  
+  }
 
   async getOpenTicketsData() {
     this.Open_Tickets_data = {
@@ -644,7 +763,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
       headerData: [
         { key: 'ticketNumber', description: this.captions.ticketNumber, alignment: 'textLeft font-bold w-25' },
         { key: 'transactionAmount', description: this.captions.transactionAmount, alignment: 'textRight font-bold w-25' },
-        { key: 'action', description: this.captions.action, alignment: 'textRight font-bold w-25' }
+        { key: 'action', description: this.captions.action, alignment: 'textRight font-bold w-25', showArrow: true  }
       ],
       headerEnable: true
     };

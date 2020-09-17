@@ -53,6 +53,7 @@ export class ClientPopupComponent implements OnInit {
   }
 
   async save(){
+    this.IsClientScreenDirty = false;
     this.clientInfo = this.clientPopupForm.value;
     this.clientInfo.personalDetailsFormGroup.imageReferenceId = DefaultGUID ;
     var createPromise = await this._createClientBusiness.SubmitForm(this.clientInfo);
