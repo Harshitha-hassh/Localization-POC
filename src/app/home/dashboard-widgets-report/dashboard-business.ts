@@ -248,20 +248,14 @@ export class DashBoardBusiness {
         const result: DashBoardInterface.UIOpenTickets[] = outOfStockItems ? outOfStockItems.map(o => {
             return {
                 id: o.outletId,
+                uid :o.id,
+                clientId : o.clientId,
                 ticketNumber: o.transactionNumber,
                 transactionAmount: `${this.localization.currencySymbol}` + o.amount,
                 action
             };
         }) : [];
         return result;
-        // let data = await [
-        //     {id: 1,ticketNumber:'OP123465',transactionAmount: "$354,351"   ,action:'Settle'},
-        //     {id: 2,ticketNumber:'OP123465',transactionAmount: "$254,463"   ,action:'Settle'},
-        //     {id: 3,ticketNumber:'OP123465',transactionAmount: "$334,345"   ,action:'Settle'},
-        //     {id: 4,ticketNumber:'OP123465',transactionAmount: "$424,343"   ,action:'Settle'},
-        //     {id: 5,ticketNumber:'OP123465',transactionAmount: "$784,765"   ,action:'Settle'},
-        // ]
-        //  return data;
     }
 
     public async getOutofStockOnData(outletIds: number[]): Promise<DashBoardInterface.UIOutOfStock[]> {
