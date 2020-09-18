@@ -1237,6 +1237,8 @@
     "SelectCommissionTemplate": "Select Commission Template_uk"
   },
   "breakpoint": {
+    "600": "600 - Add New Client Profile_uk",
+    "605": "605 - Edit Client Profile_uk",
     "800": "800 - Commission Class Setup_uk",
     "805": "805 - Staff Commission Setup_uk",
     "1240": "1240 - Staff Member Summary Report_uk",
@@ -1302,6 +1304,7 @@
     "8075": "8075 - Inventory Wash_uk",
     "8080": "8080 - Inventory Transfer_uk",
     "8085": "8085 - Inventory Audit Trail_uk",
+    "8090": "8090 - Transaction Log_uk",
     "8095": "8095 - Tax Exempt Sales_uk",
     "8100": "8100 - Transaction Detail_uk",
     "8105": "8105 - Top Spenders_uk",

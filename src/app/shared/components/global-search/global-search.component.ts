@@ -7,6 +7,8 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import { ClientPopupComponent } from 'src/app/client/client-popup/client-popup.component';
 import { MatDialog } from '@angular/material';
 import { AppModuleService } from 'src/app/core/services/app.service';
+import { BreakPoint } from '../../models/breakpoint-models';
+import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
 
 @Component({
   selector: 'app-global-search',
@@ -35,6 +37,7 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
     private localization: RetailStandaloneLocalization,
     private dialog: MatDialog,
     private _as: AppModuleService,
+    private userAccessBusiness : UserAccessBusiness
   ) {
     this.captions = this.localization.captions;
   }
@@ -127,16 +130,19 @@ valueMapper() {
   return '';
 }
 
-  openAddClient() {
-    const dialogRef = this.dialog.open(ClientPopupComponent, {
-      width: '95%',
-      height: '85%',
-      maxWidth: '95%',
-      disableClose: true,
-      hasBackdrop: true,
-      data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
-      panelClass: 'small-popup'
-    });
+  async openAddClient() {
+    var result = await this.userAccessBusiness.getUserAccess(BreakPoint.AddNewClientProfile);
+    if (result.isAllow || result.isViewOnly) {
+      const dialogRef = this.dialog.open(ClientPopupComponent, {
+        width: '95%',
+        height: '85%',
+        maxWidth: '95%',
+        disableClose: true,
+        hasBackdrop: true,
+        data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
+        panelClass: 'small-popup'
+      });
+    }
   }
 
 

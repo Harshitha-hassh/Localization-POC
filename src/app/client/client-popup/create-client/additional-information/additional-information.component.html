@@ -14,7 +14,7 @@
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <button mat-raised-button class="connect-btn"
+                    <button [disabled] = "isClientViewOnly" mat-raised-button class="connect-btn"
                         [ngClass]="selectedDevice == 'defaultselected' ? 'secondary-disabled':'secondary-default-btn'"
                         (click)="connectDeviceAndGetCardInfo()"><i class="icon-Device mr-1"></i>{{captions.connect}}</button>
                 </div>

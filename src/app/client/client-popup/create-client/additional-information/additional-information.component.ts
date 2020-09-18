@@ -54,7 +54,8 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     if(value && value.data!='')
     {
       this.additionalInfo = value.data;
-      this.SetEditValues(value.data)
+      this.SetEditValues(value.data);
+      this.isClientViewOnly = value.isClientViewOnly ? value.isClientViewOnly : false;
     }
   }
   constructor(
@@ -92,6 +93,9 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     this.initializeFormData();
     if(this.parentForm){
       this.parentForm.addControl('additionalDetailsFormGroup', this.FormGrp);
+    }
+    if (this.isClientViewOnly) {
+      this.utils.disableControls(this.FormGrp);
     }
   }
 

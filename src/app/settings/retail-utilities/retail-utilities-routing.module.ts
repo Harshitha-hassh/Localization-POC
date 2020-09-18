@@ -7,6 +7,8 @@ import { TemplatesComponent } from 'src/app/common/templates/templates.component
 import { RetailTemplatesComponent } from './retail-templates/retail-templates.component';
 import { ReceiptConfigurationComponent } from './receipt-configuration/receipt-configuration.component';
 import { UserMachineConfigurationComponent } from './user-machine-configuration/user-machine-configuration.component';
+import { RouteGuardService } from 'src/app/core/services/route.guard.service';
+import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
 
 
 const routes: Routes = [{
@@ -18,14 +20,14 @@ const routes: Routes = [{
     {
         path:'receiptconfiguration',
         component: ReceiptConfigurationComponent,
-        // canActivate: [RouteGuardService],
-        // data: { breakPointNumber: RetailBreakPoint.ReceiptConfiguration, redirectTo: '/settings/utilities/usermachineconfiguration' }
+        canActivate: [RouteGuardService],
+        data: { breakPointNumber: BreakPoint.ReceiptConfiguration, redirectTo: 'usermachineconfiguration' }
       },
       {
         path: 'usermachineconfiguration',
         component: UserMachineConfigurationComponent,
-        // canActivate: [RouteGuardService],
-        // data: { breakPointNumber: RetailBreakPoint.UserSessionConfiguration, redirectTo: '/settings/utilities/templates' }
+        canActivate: [RouteGuardService],
+        data: { breakPointNumber: BreakPoint.UserSessionConfiguration, redirectTo: 'templates' }
       },
       {
         path:'templates',
