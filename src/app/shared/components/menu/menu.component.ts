@@ -223,6 +223,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
   async logout() {
     this.logoutEatec();
+    this._featureFlagService.reset();
     await this._sessionService.logout();
   }
 
