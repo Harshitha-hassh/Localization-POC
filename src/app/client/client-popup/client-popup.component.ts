@@ -9,6 +9,7 @@ import { CreateClientBusiness } from './client-popup.business';
 import { ClientDataService } from 'src/app/shared/data-services/client.data.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
+import { Utilities } from 'src/app/core/utilities';
 
 @Component({
   selector: 'app-client-popup',
@@ -31,7 +32,8 @@ export class ClientPopupComponent implements OnInit {
     private userAlert: UserAlerts,
     public _fb: FormBuilder,
      public _imageService: RetailImageService,
-    private _createClientBusiness: CreateClientBusiness) {
+    private _createClientBusiness: CreateClientBusiness,
+    private utils: Utilities) {
 
   }
 
@@ -41,6 +43,9 @@ export class ClientPopupComponent implements OnInit {
     this.clientPopupForm.statusChanges.pipe(takeUntil(this.$destroyed)).subscribe(x => {
       this.IsClientScreenDirty = (this.clientPopupForm.valid && this.clientPopupForm.dirty);
     });
+    if (this.data.isClientViewOnly) {
+      this.utils.disableControls(this.clientPopupForm);
+    }
   }
 
   ngOnDestroy() {

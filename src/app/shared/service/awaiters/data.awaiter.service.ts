@@ -13,6 +13,8 @@ import { UserdefaultsInformationService } from 'src/app/core/services/Userdefaul
 import { first } from 'rxjs/operators';
 import { NotificationDataService } from '../../data-services/notification.data.service';
 import { NotifyPopupComponent } from '../../components/notify-popup/notify-popup.component';
+import { BreakPoint } from '../../models/breakpoint-models';
+import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
 
 @Injectable({
     providedIn: "root"
@@ -28,6 +30,7 @@ export class DataAwaiterService {
         private clientDataService: ClientDataService,
         private userDefaultService: UserdefaultsInformationService,
         private notificationDataService: NotificationDataService,
+        private userAccessBusiness : UserAccessBusiness
     ) {
         this.setAwaiters();
     }
@@ -115,28 +118,33 @@ export class DataAwaiterService {
 
     async openAddGuestPopup(e, callback: Function, id?, guestId?) {
         let dialogRef = null;
-        if (e.toLowerCase() == "ordersummary") // TO DO :: Add breakpoint
-        {
-            dialogRef = this.dialog.open(ClientPopupComponent, {
-                width: '95%',
-                height: '85%',
-                maxWidth: '95%',
-                disableClose: true,
-                hasBackdrop: true,
-                data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
-                panelClass: 'small-popup'
-            });            
-        }
-        else if(e.toLowerCase() == "ordersummaryedit"){
-            var clientInfo = await this.clientDataService.getClientbyGuestId(guestId);
-            dialogRef = this.dialog.open(ClientPopupComponent, {
-                width: '95%',
-                height: '85%',
-                disableClose: true,
-                hasBackdrop: true,
-                data:  { mode: 'EDIT', title: this.captions.EditClient, type: this.captions.Update,id :id , data: clientInfo, closebool: true },
-                panelClass: 'small-popup'
-            });
+        if (e.toLowerCase() == "ordersummary" ) {
+            var result = await this.userAccessBusiness.getUserAccess(BreakPoint.AddNewClientProfile);
+            if (result.isAllow || result.isViewOnly) {
+                dialogRef = this.dialog.open(ClientPopupComponent, {
+                    width: '95%',
+                    height: '85%',
+                    maxWidth: '95%',
+                    disableClose: true,
+                    hasBackdrop: true,
+                    data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
+                    panelClass: 'small-popup'
+                });
+            }
+        } else if(e.toLowerCase() == "ordersummaryedit") {
+            var result = await this.userAccessBusiness.getUserAccess(BreakPoint.EditClientProfile);
+            if (result.isAllow || result.isViewOnly) {
+                var clientInfo = await this.clientDataService.getClientbyGuestId(guestId);
+                dialogRef = this.dialog.open(ClientPopupComponent, {
+                    width: '95%',
+                    height: '85%',
+                    disableClose: true,
+                    hasBackdrop: true,
+                    data:  { mode: 'EDIT', title: this.captions.EditClient, type: this.captions.Update,id :id ,
+                     data: clientInfo, closebool: true, isClientViewOnly : result.isViewOnly },
+                    panelClass: 'small-popup'
+                });
+            }
         }
         
         if(dialogRef && callback){

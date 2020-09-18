@@ -1237,6 +1237,8 @@
     "SelectCommissionTemplate": "Select Commission Template_fr"
   },
   "breakpoint": {
+    "600": "600 - Add New Client Profile_fr",
+    "605": "605 - Edit Client Profile_fr",
     "800": "800 - Commission Class Setup_fr",
     "805": "805 - Staff Commission Setup_fr",
     "1240": "1240 - Staff Member Summary Report_fr",
@@ -1302,6 +1304,7 @@
     "8075": "8075 - Inventory Wash_fr",
     "8080": "8080 - Inventory Transfer_fr",
     "8085": "8085 - Inventory Audit Trail_fr",
+    "8090": "8090 - Transaction Log_fr",
     "8095": "8095 - Tax Exempt Sales_fr",
     "8100": "8100 - Transaction Detail_fr",
     "8105": "8105 - Top Spenders_fr",

@@ -91,6 +91,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     if (value && value.data != '') {
       this.personalInfo = value.data;
       this.SetEditValues(value.data);
+      this.isClientViewOnly = value.isClientViewOnly ? value.isClientViewOnly : false;
     }
   }
   constructor(
@@ -267,6 +268,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.parentForm.addControl('personalDetailsFormGroup', this.FormGrp);
     }
     this.initializeFormData();
+
+    if(this.isClientViewOnly) {
+      this.utils.disableControls(this.FormGrp);
+    }
     //this.setPhoneAsMandatory();
   }
 
