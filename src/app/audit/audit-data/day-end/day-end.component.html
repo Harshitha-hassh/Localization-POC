@@ -6,7 +6,7 @@
         <div class="d-table" [ngClass]="{'hdrSection':coll.dataCount!=0}">
           <span class="d-table-cell V-Mid ">
             <i class="icon-success-icon blckClr mr-2 IC18"
-              [ngClass]="(coll.tableOptions.TablebodyData.length == 0 && coll.isLoaded) ? '' : 'closedTextclr'"></i>
+              [ngClass]="(isProcessClicked) ? 'closedTextclr' : ''"></i>
           </span>
           <span class=" d-table-cell hdrlblwdth V-Mid LWB16">{{coll.displayName}}</span>
 
