@@ -38,6 +38,7 @@ export class DataAwaiterService {
         RetailDataAwaiters.CreatePlayer = this.createClient.bind(this);
         RetailDataAwaiters.openAddPayeePopup = this.openAddGuestPopup.bind(this);
         RetailDataAwaiters.getPayeeDetails = this.getClientDetails.bind(this);
+        RetailDataAwaiters.getPayeeInfo = this.getClientInfo.bind(this);
         RetailDataAwaiters.GetDefaultOutlet = this.GetDefaultOutlet.bind(this);
         RetailDataAwaiters.SendNotification = this.SendNotification.bind(this);
         RetailDataAwaiters.OpenManualNotifyPopup = this.OpenManualNotifyPopup.bind(this);
@@ -74,7 +75,7 @@ export class DataAwaiterService {
             zip: client.addresses ? client.addresses.zipCode : '',
             city: client.addresses ? client.addresses.city : '',
             guestProfileId: client.guestId,
-            cardInfo: client.clientCreditCardInfo,
+            cardInfo: [client.clientCreditCardInfo],
             patronId: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].patronId : '',
             rank: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].rank : '',
             playerCategoryId: 1
@@ -166,6 +167,17 @@ export class DataAwaiterService {
         }
         return clientDetails;
     }
+
+    private async getClientInfo(id: number): Promise<PayeeInfo> {
+        let response: any = await this.clientDataService.getClients([id]);
+        let clientDetails: PayeeInfo;
+        if (response && response.length > 0) {
+            const client = response[0];
+            clientDetails = this.BuildPayeeData(client);
+        }
+        return clientDetails;
+    }
+
     GetDefaultOutlet() {
         return this.userDefaultService.GetDefaultOutlet();
     }
