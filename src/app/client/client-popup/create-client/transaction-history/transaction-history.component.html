@@ -48,7 +48,7 @@
                 <tr *ngFor="let item of itemArray">
                   <td>{{item.quantity}}</td>
                   <td>{{item.name?item.name:""}}</td>
-                  <td>{{localization.localizeCurrency(item.price,false)}}</td>
+                  <td>{{item.price}}</td>
                 </tr>
                 <tr *ngIf="itemArray.length == 0">
                     <td class="LW14 text-align-center no-data" [attr.colspan]="3">{{captions.NoDataFound}}</td>

@@ -142,9 +142,9 @@ export class TransactionHistoryComponent implements OnInit {
         let TransactionDate = responseResult.transaction[index1].transactionData.transactionDate ;
         let TotalPrice = (responseResult.transaction[index1].transactionData.totalPrice).toFixed(2);
         let TotalAmount = (responseResult.transaction[index1].transactionData.totalAmount).toFixed(2);
-        let totalGratuity = (responseResult.transaction[index1].transactionData.gratuity);
+        let totalGratuity = (responseResult.transaction[index1].transactionData.gratuity).toFixed(2);
         let TotalTax = (responseResult.transaction[index1].transactionData.totalTax).toFixed(2);
-        let totalDiscount:number = 0;
+        let totalDiscount : number = 0.0;
          let itemDescription;
 
         if(responseResult.transaction[index1].transactionDetails.length <= 0){
@@ -170,7 +170,7 @@ export class TransactionHistoryComponent implements OnInit {
          }
         
          let Discount :number= responseResult.transaction[index1].transactionDetails[index2].discount;
-         totalDiscount += Discount;
+         totalDiscount += Discount
          items.push({ "name": itemDescription, "quantity": QuantitySold, "price": unitPrice});
 
            transactionDetail = {
@@ -181,11 +181,11 @@ export class TransactionHistoryComponent implements OnInit {
        let guestHistory = {
         "date": this.localization.LocalizeDate(TransactionDate),
         "transaction": transactionNumber,
-        "grandTotal": TotalPrice,
-        "subTotal": TotalAmount,
-        "tax": TotalTax,
-        "gratuity":totalGratuity,
-        "discount": totalDiscount,
+        "grandTotal": this.localization.localizeCurrency(TotalPrice,false),
+        "subTotal": this.localization.localizeCurrency(TotalAmount,false),
+        "tax": this.localization.localizeCurrency(TotalTax,false),
+        "gratuity":this.localization.localizeCurrency(totalGratuity,false),
+        "discount": this.localization.localizeCurrency(totalDiscount.toFixed(2),false),
         "transactionDetails":transactionDetail
        }
 
