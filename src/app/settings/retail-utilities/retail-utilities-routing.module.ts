@@ -21,13 +21,13 @@ const routes: Routes = [{
         path:'receiptconfiguration',
         component: ReceiptConfigurationComponent,
         canActivate: [RouteGuardService],
-        data: { breakPointNumber: BreakPoint.ReceiptConfiguration, redirectTo: 'usermachineconfiguration' }
+        data: { breakPointNumber: BreakPoint.ReceiptConfiguration, redirectTo: 'usermachineconfiguration', syncAccess: true }
       },
       {
         path: 'usermachineconfiguration',
         component: UserMachineConfigurationComponent,
         canActivate: [RouteGuardService],
-        data: { breakPointNumber: BreakPoint.UserSessionConfiguration, redirectTo: 'templates' }
+        data: { breakPointNumber: BreakPoint.UserSessionConfiguration, redirectTo: 'templates', syncAccess: true }
       },
       {
         path:'templates',

@@ -29,7 +29,7 @@ const routes: Routes = [{
       path: 'dayend',
       component: DayEndComponent,
       canActivate: [RouteGuardService],
-      data: { breakPointNumber: BreakPoint.DayEnd , redirectTo: '', ShowPopup: true}
+      data: { breakPointNumber: BreakPoint.DayEnd , redirectTo: '', ShowPopup: true, syncAccess: true }
     }
   ]
 }];

@@ -25,7 +25,7 @@ var routes: Routes = [{
     { path: ReportMenu.retail, loadChildren: '../retail/retail-reports/reports.module#RetailReportModule', data: { type: REPORT_TYPE.retail } },
     { path: ReportMenu.commissiongratuity, loadChildren: '../retail/retail-reports/reports.module#RetailReportModule', data: { type: REPORT_TYPE.commission } },
     { path: ReportMenu.transactionlog, component: TransactionLogComponent, canActivate: [RouteGuardService],
-      data: { breakPointNumber: BreakPoint.TransactionLog } },
+      data: { breakPointNumber: BreakPoint.TransactionLog, syncAccess: true } },
     { path: ReportMenu.giftcard, loadChildren: '../retail/retail-reports/reports.module#RetailReportModule', data: { type: REPORT_TYPE.giftcard } }
   ]
 }];
