@@ -14,6 +14,7 @@ import { AboutComponent } from '../about/about.component';
 import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-config/payment-features-config/property-feature-config.service';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { ConfigKeys, RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
+import { RetailServiceRegistry } from 'src/app/retail/shared/service/base.service';
 
 @Component({
   selector: 'app-menu',
@@ -71,7 +72,9 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     , private _featureFlagService: RetailFeatureFlagInformationService
     , private _propertyFeatureService: PropertyFeaturesConfigurationService
     , private _propertyInfo: RetailPropertyInformation
-    , private elementRef: ElementRef) {
+    , private elementRef: ElementRef
+    , private retailServiceRegistry: RetailServiceRegistry
+    ) {
     // this.sortPipe = new SortOrderPipe();
   }
 
@@ -225,6 +228,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.logoutEatec();
     this._featureFlagService.reset();
     await this._sessionService.logout();
+    this.retailServiceRegistry.resetAllServiceData();
   }
 
   logoutEatec() {
