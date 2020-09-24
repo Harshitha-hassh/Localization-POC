@@ -2334,7 +2334,17 @@
     "ShowAllAppointmentsInCheckIn": "Show all Client Appointments during Check-in_fi",
     "InvalidCustomValues": "Invalid Custom Value_fi",
     "IntakeForm": "Intake Form_fi",
-    "IntakeFormDescription": "Allow Intake Forms to be attached in the Appointment Emails_fi"
+    "IntakeFormDescription": "Allow Intake Forms to be attached in the Appointment Emails_fi",
+    "AdvancedSearch": "Advanced Search_fi",
+    "ItemDescription": "Item Description_fi",
+    "SortBy": "Sort By_fi",
+    "SortOrder": "Sort Order_fi",
+    "Ascending": "Ascending_fi",
+    "Descending": "Descending_fi",
+    "CommissionOnItem": "Commission On Item_fi",
+    "CommissionOnRevenue": "Commission On Revenue_fi",
+    "WithDiscount": "With Discount_fi",
+    "ClearAll": "Clear All_fi"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_fi",
