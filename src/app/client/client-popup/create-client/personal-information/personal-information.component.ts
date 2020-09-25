@@ -141,6 +141,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         base64textString: '',
         thumbnailImg: ''
       }),
+      imgReferenceId :''
     });
     this.isCMSConfigured = this.featureSwitch.IsCMSConfigured;
   }
@@ -723,7 +724,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     var url = `${imageData && imageData[0] ? imageData[0].contentType : ''},${imageData && imageData[0] ? imageData[0].thumbnailData : ''}`
     this.url = url;
     this.imageId = imageData && imageData[0] ? imageData[0].id : '';
-    this.url = imageData && imageData[0] ? url : '';
+    this.FormGrp.controls.imgReferenceId.setValue(this.imageId);
+    this.url = imageData && imageData[0] && imageData[0].thumbnailData ? url : '';
     this.initializeFormData();
   }
 
@@ -759,6 +761,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       base64textString: data['orgImg'],
       thumbnailImg: data['tmbImg']
     });
+    this.FormGrp.controls.imgReferenceId.setValue(this.thumbnailImg);
   }
 
   fileSizeExceeded() {
