@@ -211,7 +211,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.InvokeServiceCall('UpdateInventoryAuditOnDayEnd', Host.retailManagement, HttpMethod.Post, { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) }, this.newSysDate);
   }
 
-  SyncUpItemAndTaxes() {
+  async SyncUpItemAndTaxes() {
     if (!this.PropertyInfo.UseRetailInterface && this.propOutlets && this.propOutlets.length > 0) {
       this.propOutlets.forEach(element => {
         // tslint:disable-next-line: max-line-length

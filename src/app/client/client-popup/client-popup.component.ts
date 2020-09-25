@@ -62,8 +62,8 @@ export class ClientPopupComponent implements OnInit {
     this.clientInfo = this.clientPopupForm.value;
     this.clientInfo.personalDetailsFormGroup.imageReferenceId = DefaultGUID ;
     var createPromise = await this._createClientBusiness.SubmitForm(this.clientInfo);
-    if (this.clientInfo && this.clientInfo.personalDetailsFormGroup.id && this.clientInfo.personalDetailsFormGroup.imageId &&
-      this.clientInfo.personalDetailsFormGroup.imageId != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID
+    if (this.clientInfo && this.clientInfo.personalDetailsFormGroup.id && this.clientInfo.personalDetailsFormGroup.imgReferenceId &&
+      this.clientInfo.personalDetailsFormGroup.imgReferenceId != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID
      || this.clientInfo.personalDetailsFormGroup.isImageRemoved) {
       var b = await this._imageService.updateItemImage(createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.imageId, 
       this.clientInfo.personalDetailsFormGroup.imageReferenceId, this.clientInfo.personalDetailsFormGroup.isImageRemoved,
