@@ -761,7 +761,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       base64textString: data['orgImg'],
       thumbnailImg: data['tmbImg']
     });
-    this.FormGrp.controls.imgReferenceId.setValue(this.thumbnailImg);
+  //  this.FormGrp.controls.imgReferenceId.setValue(this.thumbnailImg);
   }
 
   fileSizeExceeded() {
