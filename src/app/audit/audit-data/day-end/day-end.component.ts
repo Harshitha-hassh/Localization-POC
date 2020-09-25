@@ -568,8 +568,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     return name.join(',');
   }
 
-  private BuildTransactionDetails(result, action: string) {
-    this.retailSharedService.selectedProducts = this.retailValidationService.LoadSelectedProducts(result, this.allShopItems, action);
+  async BuildTransactionDetails(result, action: string) {
+    this.retailSharedService.selectedProducts = await this.retailValidationService.LoadSelectedProducts(result, this.allShopItems, action);
     this.retailSharedService.isFromDayEnd = true;
     this.retailSharedService.TaxValue = _.cloneDeep(this.retailValidationService.TaxValue);
     this.retailValidationService.TaxValue = 0;
