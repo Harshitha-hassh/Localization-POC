@@ -91,6 +91,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     if (value && value.data != '') {
       this.personalInfo = value.data;
       this.SetEditValues(value.data);
+      this.isClientViewOnly = value.isClientViewOnly ? value.isClientViewOnly : false;
     }
   }
   constructor(
@@ -140,6 +141,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         base64textString: '',
         thumbnailImg: ''
       }),
+      imgReferenceId :''
     });
     this.isCMSConfigured = this.featureSwitch.IsCMSConfigured;
   }
@@ -267,6 +269,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.parentForm.addControl('personalDetailsFormGroup', this.FormGrp);
     }
     this.initializeFormData();
+
+    if(this.isClientViewOnly) {
+      this.utils.disableControls(this.FormGrp);
+    }
     //this.setPhoneAsMandatory();
   }
 
@@ -289,45 +295,59 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     clientConfiguration = clientConfiguration ? clientConfiguration : [];
     if (clientConfiguration && clientConfiguration.length == 0) { return; }
 
-    this.FormGrp.controls['firstName'].clearValidators();
-    this.FormGrp.controls['firstName'].setValidators(clientConfiguration[0]['CLIENT_FIRST_NAME'] ?
-      [Validators.required, EmptyValueValidator] : []);
-    this.FormGrp.controls['firstName'].updateValueAndValidity();
+    // this.FormGrp.controls['firstName'].clearValidators();
+    // this.FormGrp.controls['firstName'].setValidators(clientConfiguration[0]['CLIENT_FIRST_NAME'] ?
+    //   [Validators.required, EmptyValueValidator] : []);
+    // this.FormGrp.controls['firstName'].updateValueAndValidity();
 
-    this.FormGrp.controls['lastName'].clearValidators();
-    this.FormGrp.controls['lastName'].setValidators(clientConfiguration[0]['CLIENT_LAST_NAME'] ?
-      [Validators.required, EmptyValueValidator] : []);
-    this.FormGrp.controls['lastName'].updateValueAndValidity();
+    // this.FormGrp.controls['lastName'].clearValidators();
+    // this.FormGrp.controls['lastName'].setValidators(clientConfiguration[0]['CLIENT_LAST_NAME'] ?
+    //   [Validators.required, EmptyValueValidator] : []);
+    // this.FormGrp.controls['lastName'].updateValueAndValidity();
 
     this.FormGrp.controls['title'].clearValidators();
     this.FormGrp.controls['title'].setValidators(clientConfiguration[0]['CLIENT_TITLE'] ? [Validators.required] : []);
     this.FormGrp.controls['title'].updateValueAndValidity();
+    if(clientConfiguration[0]['CLIENT_TITLE'])
+    this.FormGrp.controls.title.markAsTouched();
   
     this.FormGrp.controls['gender'].clearValidators();
     this.FormGrp.controls['gender'].setValidators(clientConfiguration[0]['CLIENT_GENDER'] ? [Validators.required] : []);
     this.FormGrp.controls['gender'].updateValueAndValidity();
+    if(clientConfiguration[0]['CLIENT_GENDER'])
+    this.FormGrp.controls.gender.markAsTouched();
 
     this.FormGrp.controls['state'].clearValidators();
     this.FormGrp.controls['state'].setValidators(clientConfiguration[0]['CLIENT_STATE'] ? [Validators.required, EmptyValueValidator] : []);
     this.FormGrp.controls['state'].updateValueAndValidity();
+    if(clientConfiguration[0]['CLIENT_STATE'])
+    this.FormGrp.controls.state.markAsTouched();
 
     this.FormGrp.controls['city'].clearValidators();
     this.FormGrp.controls['city'].setValidators(clientConfiguration[0]['CLIENT_CITY'] ? [Validators.required, EmptyValueValidator] : []);
     this.FormGrp.controls['city'].updateValueAndValidity();
+    if(clientConfiguration[0]['CLIENT_CITY'])
+    this.FormGrp.controls.city.markAsTouched();
 
     this.FormGrp.controls['country'].clearValidators();
     this.FormGrp.controls['country'].setValidators(clientConfiguration[0]['CLIENT_COUNTRY'] ?
       [Validators.required, EmptyValueValidator] : []);
     this.FormGrp.controls['country'].updateValueAndValidity();
+    if(clientConfiguration[0]['CLIENT_COUNTRY'])
+    this.FormGrp.controls.country.markAsTouched();
 
     this.FormGrp.controls['postal_code'].clearValidators();
     this.FormGrp.controls['postal_code'].setValidators(clientConfiguration[0]['CLIENT_POSTAL_CODE'] ?
       [Validators.required, EmptyValueValidator] : []);
     this.FormGrp.controls['postal_code'].updateValueAndValidity();
+    if(clientConfiguration[0]['CLIENT_POSTAL_CODE'])
+    this.FormGrp.controls.postal_code.markAsTouched();
 
     this.FormGrp.controls['dob'].clearValidators();
     this.FormGrp.controls['dob'].setValidators(clientConfiguration[0]['CLIENT_BIRTHDAY'] ? [Validators.required] : []);
     this.FormGrp.controls['dob'].updateValueAndValidity();
+    if(clientConfiguration[0]['CLIENT_BIRTHDAY'])
+    this.FormGrp.controls.dob.markAsTouched();
 
     this.emailRequired = clientConfiguration[0]['CLIENT_EMAIL'];
     this.phoneRequired = clientConfiguration[0]['CLIENT_PHONE'];
@@ -341,6 +361,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       EmailGroup.controls['EmailId'].setValidators(clientConfiguration[0]['CLIENT_EMAIL'] ?
         [Validators.required, EmptyValueValidator] : []);
       EmailGroup.controls['EmailId'].updateValueAndValidity();
+      if(clientConfiguration[0]['CLIENT_EMAIL'])
+      EmailGroup.markAllAsTouched();
     });
     const PhoneArray = this.FormGrp.get('Phone') as FormArray;
     const that = this;
@@ -358,6 +380,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       PhoneGroup.controls['PhoneNumber'].setValidators(clientConfiguration[0]['CLIENT_PHONE'] ?
         [Validators.required, EmptyValueValidator] : []);
       PhoneGroup.controls['PhoneNumber'].updateValueAndValidity();
+      if(clientConfiguration[0]['CLIENT_PHONE'])
+      PhoneGroup.markAllAsTouched();
     });
     
     const AddresArray = this.FormGrp.get('Address') as FormArray;
@@ -368,10 +392,11 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       AddressGroup.controls['addressLine'].setValidators(clientConfiguration[0]['CLIENT_ADDRESS_LINE_1'] ?
         [Validators.required, EmptyValueValidator] : []);
       AddressGroup.controls['addressLine'].updateValueAndValidity();
+      if(clientConfiguration[0]['CLIENT_ADDRESS_LINE_1'])
+      AddressGroup.markAllAsTouched();
     });
 
     this.FormGrp.updateValueAndValidity();
-    this.FormGrp.markAllAsTouched();
   }
 
 
@@ -699,7 +724,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     var url = `${imageData && imageData[0] ? imageData[0].contentType : ''},${imageData && imageData[0] ? imageData[0].thumbnailData : ''}`
     this.url = url;
     this.imageId = imageData && imageData[0] ? imageData[0].id : '';
-    this.url = imageData && imageData[0] ? url : '';
+    this.FormGrp.controls.imgReferenceId.setValue(this.imageId);
+    this.url = imageData && imageData[0] && imageData[0].thumbnailData ? url : '';
     this.initializeFormData();
   }
 
@@ -735,6 +761,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       base64textString: data['orgImg'],
       thumbnailImg: data['tmbImg']
     });
+  //  this.FormGrp.controls.imgReferenceId.setValue(this.thumbnailImg);
   }
 
   fileSizeExceeded() {

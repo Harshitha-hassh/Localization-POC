@@ -206,7 +206,8 @@
 
     <ng-container *ngIf="Open_Tickets_data;else noData">
       <app-dashboard-table class="h-100" [isEnableHeader]="Open_Tickets_data.headerEnable"
-        [headerOption]="Open_Tickets_data.headerData" [bodyContentdata]="Open_Tickets_data.data">
+        [headerOption]="Open_Tickets_data.headerData" [bodyContentdata]="Open_Tickets_data.data" 
+        (rowEmitter)="Open_Tickets_data_rowEmitter($event)">
       </app-dashboard-table>
     </ng-container>
   </ng-template>

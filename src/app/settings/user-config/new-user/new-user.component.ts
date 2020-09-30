@@ -149,13 +149,13 @@ export class NewUserComponent implements OnInit {
       const roleid = serviceRetailControls.rolename.value ? Number(serviceRetailControls.rolename.value) : Number(0);
       if (roleid == 0) {
         this.IsRetailRoleSelected = false;
-        this.selectedTabIndex = 2;
+        this.selectedTabIndex = 1;
         return;
       }
       if (serviceRetailControls.allowcommission.value && (!serviceRetailControls.commissionclass.value || serviceRetailControls.commissionclass.value == 0)) {
         serviceRetailControls.commissionclass.setValue('');
         serviceRetailControls.commissionclass.markAsTouched();
-        this.selectedTabIndex = 2;
+        this.selectedTabIndex = 1;
         return;
       }
     }
@@ -251,7 +251,7 @@ export class NewUserComponent implements OnInit {
         const roleid = this._servicesetting.retailSettingsFormGrp.controls.rolename.value ? Number(this._servicesetting.retailSettingsFormGrp.controls.rolename.value) : Number(0);
         if (roleid == 0) {
           this.IsRetailRoleSelected = false;
-          this.selectedTabIndex = 2;
+          this.selectedTabIndex = 1;
           return;
         }
 
@@ -259,7 +259,7 @@ export class NewUserComponent implements OnInit {
           (!serviceRetailControls.commissionclass.value || serviceRetailControls.commissionclass.value == 0)) {
           serviceRetailControls.commissionclass.setValue('');
           serviceRetailControls.commissionclass.markAsTouched();
-          this.selectedTabIndex = 2;
+          this.selectedTabIndex = 1;
           return;
         }
       }

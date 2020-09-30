@@ -18,7 +18,14 @@ export enum BreakPoint{
     //user module    
   UserSetup = 2300,
   UserRoleSetUp = 2305,
-  UserRoleConfiguration = 2310
+  UserRoleConfiguration = 2310,
+
+  ReceiptConfiguration = 7080,
+  AddNewClientProfile = 600,
+  EditClientProfile = 605,
+  DayEnd = 2430,
+  UserSessionConfiguration = 7085,
+  TransactionLog = 8090,
 }
 
 export const enum ReportBreakPoint {

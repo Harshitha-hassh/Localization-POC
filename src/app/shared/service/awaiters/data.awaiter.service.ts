@@ -11,6 +11,10 @@ import { DefaultGUID } from 'src/app/common/shared/shared/globalsContant';
 import { ClientPopupComponent } from 'src/app/client/client-popup/client-popup.component';
 import { UserdefaultsInformationService } from 'src/app/core/services/UserdefaultsInformationService';
 import { first } from 'rxjs/operators';
+import { NotificationDataService } from '../../data-services/notification.data.service';
+import { NotifyPopupComponent } from '../../components/notify-popup/notify-popup.component';
+import { BreakPoint } from '../../models/breakpoint-models';
+import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
 
 @Injectable({
     providedIn: "root"
@@ -24,7 +28,9 @@ export class DataAwaiterService {
         private localization: RetailStandaloneLocalization,
         private routeLoaderService: RouteLoaderService,
         private clientDataService: ClientDataService,
-        private userDefaultService: UserdefaultsInformationService
+        private userDefaultService: UserdefaultsInformationService,
+        private notificationDataService: NotificationDataService,
+        private userAccessBusiness : UserAccessBusiness
     ) {
         this.setAwaiters();
     }
@@ -35,7 +41,10 @@ export class DataAwaiterService {
         RetailDataAwaiters.CreatePlayer = this.createClient.bind(this);
         RetailDataAwaiters.openAddPayeePopup = this.openAddGuestPopup.bind(this);
         RetailDataAwaiters.getPayeeDetails = this.getClientDetails.bind(this);
+        RetailDataAwaiters.getPayeeInfo = this.getClientInfo.bind(this);
         RetailDataAwaiters.GetDefaultOutlet = this.GetDefaultOutlet.bind(this);
+        RetailDataAwaiters.SendNotification = this.SendNotification.bind(this);
+        RetailDataAwaiters.OpenManualNotifyPopup = this.OpenManualNotifyPopup.bind(this);
     }
 
     getChildMenu(url, menutype?) {
@@ -61,6 +70,21 @@ export class DataAwaiterService {
     }
 
     private BuildPayeeData(client: ClientSearchModel): PayeeInfo {
+        let emailId = '';
+        let phoneNo = '';
+        let emailObj = client.emails;
+        let phoneObj = client.phoneNumbers;
+
+        if (emailObj && emailObj.length) {
+            emailObj = emailObj.sort((a, b) => a.contactTypeId < b.contactTypeId ? -1 : a.contactTypeId > b.contactTypeId ? 1 : 0);
+            emailId = emailObj.find(x=> !x.isPrivate && x.isPrimary) ? emailObj.find(x=> !x.isPrivate && x.isPrimary).emailId :  emailObj[0].emailId;
+        }
+
+        if(phoneObj && phoneObj.length) {
+            phoneObj = phoneObj.sort((a, b) => a.contactTypeId < b.contactTypeId ? -1 : a.contactTypeId > b.contactTypeId ? 1 : 0);
+            phoneNo = phoneObj.find(x=> !x.isPrivate && x.isPrimary) ? phoneObj.find(x=> !x.isPrivate && x.isPrimary).number :  phoneObj[0].number;
+        }
+
         let payee: PayeeInfo = {
             id: client.id,
             name: client.firstName + ' ' + client.lastName,
@@ -69,10 +93,12 @@ export class DataAwaiterService {
             zip: client.addresses ? client.addresses.zipCode : '',
             city: client.addresses ? client.addresses.city : '',
             guestProfileId: client.guestId,
-            cardInfo: client.clientCreditCardInfo,
+            cardInfo: client.clientCreditCardInfo ? [client.clientCreditCardInfo] : null,
             patronId: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].patronId : '',
             rank: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].rank : '',
-            playerCategoryId: 1
+            playerCategoryId: 1,
+            emailId: emailId,
+            phoneNumber: phoneNo 
         };
         return payee;
     }
@@ -110,30 +136,35 @@ export class DataAwaiterService {
 
     async openAddGuestPopup(e, callback: Function, id?, guestId?) {
         let dialogRef = null;
-        if (e.toLowerCase() == "ordersummary") // TO DO :: Add breakpoint
-        {
-            dialogRef = this.dialog.open(ClientPopupComponent, {
-                width: '95%',
-                height: '85%',
-                maxWidth: '95%',
-                disableClose: true,
-                hasBackdrop: true,
-                data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
-                panelClass: 'small-popup'
-            });            
+        if (e.toLowerCase() == "ordersummary" ) {
+            var result = await this.userAccessBusiness.getUserAccess(BreakPoint.AddNewClientProfile);
+            if (result.isAllow || result.isViewOnly) {
+                dialogRef = this.dialog.open(ClientPopupComponent, {
+                    width: '95%',
+                    height: '85%',
+                    maxWidth: '95%',
+                    disableClose: true,
+                    hasBackdrop: true,
+                    data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
+                    panelClass: 'small-popup'
+                });
+            }
+        } else if(e.toLowerCase() == "ordersummaryedit") {
+            var result = await this.userAccessBusiness.getUserAccess(BreakPoint.EditClientProfile);
+            if (result.isAllow || result.isViewOnly) {
+                var clientInfo = await this.clientDataService.getClientbyGuestId(guestId);
+                dialogRef = this.dialog.open(ClientPopupComponent, {
+                    width: '95%',
+                    height: '85%',
+                    disableClose: true,
+                    hasBackdrop: true,
+                    data:  { mode: 'EDIT', title: this.captions.EditClient, type: this.captions.Update,id :id ,
+                     data: clientInfo, closebool: true, isClientViewOnly : result.isViewOnly },
+                    panelClass: 'small-popup'
+                });
+            }
         }
-        else if(e.toLowerCase() == "ordersummaryedit"){
-            var clientInfo = await this.clientDataService.getClientbyGuestId(guestId);
-            dialogRef = this.dialog.open(ClientPopupComponent, {
-                width: '95%',
-                height: '85%',
-                disableClose: true,
-                hasBackdrop: true,
-                data:  { mode: 'EDIT', title: this.captions.EditClient, type: this.captions.Update,id :id , data: clientInfo, closebool: true },
-                panelClass: 'small-popup'
-            });
-        }
-
+        
         if(dialogRef && callback){
             dialogRef.afterClosed().pipe(first()).subscribe(result => {
                 if (result) {
@@ -161,8 +192,33 @@ export class DataAwaiterService {
         }
         return clientDetails;
     }
+
+    private async getClientInfo(id: number): Promise<PayeeInfo> {
+        let response: any = await this.clientDataService.getClients([id]);
+        let clientDetails: PayeeInfo;
+        if (response && response.length > 0) {
+            const client = response[0];
+            clientDetails = this.BuildPayeeData(client);
+        }
+        return clientDetails;
+    }
+
     GetDefaultOutlet() {
         return this.userDefaultService.GetDefaultOutlet();
     }
 
+    async SendNotification(transactionId: number) {
+        this.notificationDataService.SendNotification(transactionId, false );
+    }
+
+    OpenManualNotifyPopup(transactionId: number, guestId: number ) {
+        let dialogRef = this.dialog.open(NotifyPopupComponent, {
+            width: '85%',
+            height: '75%',
+            disableClose: true,
+            hasBackdrop: true,
+            data:  { mode: 'EDIT', title: this.captions.notify, type: this.captions.Update, guestId :guestId, transactionId: transactionId, closebool: true },
+            panelClass: 'small-popup'
+        });
+    }
 }

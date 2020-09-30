@@ -18,12 +18,16 @@ import { AppModuleService } from 'src/app/core/services/app.service';
 import { ClientPopupComponent } from '../../client-popup/client-popup.component';
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
+import { UserAccessDataService } from 'src/app/common/dataservices/authentication/useraccess.data.service';
+import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
 
 
 @Component({
     selector: 'app-client-details',
     templateUrl: './client-details.component.html',
     styleUrls: ['./client-details.component.scss'],
+    providers: [ UserAccessBusiness, UserAccessDataService],
     animations: [
         trigger(
             'enterAnimation', [
@@ -90,6 +94,7 @@ export class ClientDetailsComponent implements OnInit {
     selectedArray: any = [];
     singleUserView = false;
 
+    isClientViewOnly = false;
     showFilterPopOver = false;
     isAddAppointment = false;
     formattedData: any = [];
@@ -111,7 +116,7 @@ export class ClientDetailsComponent implements OnInit {
     constructor(private dialog: MatDialog,
         private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
-        , private breakPoint: BreakPointAccess) {
+        ,private userAccessBusiness: UserAccessBusiness) {
         route.params.subscribe(val => {
             if (this._as.isglobalSearch) {
                 this.clientService.selectedIndex = 0;
@@ -160,15 +165,16 @@ export class ClientDetailsComponent implements OnInit {
      * @function addNewClient
      * @description Opens new dialog to create a client
      */
-    addNewClient = (event) => {
-        // if(this.breakPoint.CheckForAccess([SPAManagementBreakPoint.AddNewClientProfile]))
-        // {
+    addNewClient = async (event) => {
+        var result = await this.userAccessBusiness.getUserAccess(BreakPoint.AddNewClientProfile);
+        if(result.isAllow || result.isViewOnly)
+        {
         // this.appointmentservice.add_client = true;
         // this.appointmentservice.IsAddClientFromSPA = true;
         // this.appointmentservice.ImgTempHolder = {};
         // this.appointmentservice.popupTitle = this.captions.NewClient;
         this.openAddActionDialog();
-        // }
+        }
     }
 
     /**
@@ -245,7 +251,8 @@ export class ClientDetailsComponent implements OnInit {
             height: '85%',
             disableClose: true,
             hasBackdrop: true,
-            data:  { mode: 'EDIT', title: this.captions.EditClient, type: this.captions.Update,id :id , data: clientDetail, closebool: true },
+            data:  { mode: 'EDIT', title: this.captions.EditClient, type: this.captions.Update,id :id ,
+             data: clientDetail, closebool: true, isClientViewOnly : this.isClientViewOnly },
             panelClass: 'small-popup'
         });
         dialogRef.afterClosed().subscribe(result => {
@@ -328,10 +335,11 @@ export class ClientDetailsComponent implements OnInit {
      * @function EditRecords
      * @description Edit client listener.
      */
-    EditRecords(event) {
+    async EditRecords(event) {
         // To Do: Edit Client Info mapping.
-        // TODO breakpoint
-       // if (this.breakPoint.CheckForAccess([SPAManagementBreakPoint.EditClientProfile])) {
+       let response = await this.userAccessBusiness.getUserAccess(BreakPoint.EditClientProfile);
+       this.isClientViewOnly = response.isViewOnly;
+       if (response.isAllow || response.isViewOnly) {
             if (event.length > 0) {
                 this.guestId = event[0].client.guestId;
             }
@@ -339,7 +347,7 @@ export class ClientDetailsComponent implements OnInit {
                 this.guestId = event.client.guestId;
             }
             this.getClientDataByGuid(this.guestId);
-       // }
+       }
     }
 
     clientSearch(searchText) {

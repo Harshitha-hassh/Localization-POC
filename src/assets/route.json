@@ -452,7 +452,7 @@
   "RemoveItems": "transaction/removeItems/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/terminalId/{terminalId}",
   "getUserOutlet": "outlet/user/{userid}",
   "TransactionDetailWithPostedCommission": "transaction/{transactionId}/commissions",
-  "GetCCConfiguration": "GatewayConfiguration",
+  "GetCCConfiguration": "GatewayConfiguration/{type}",
   "UpdateCCConfiguration": "GatewayConfiguration",
   "GetGCConfiguration": "GiftCardConfiguration",
   "UpdateGCConfiguration": "GiftCardConfiguration",
@@ -547,7 +547,7 @@
   "GetTransactionPayment": "Transaction/getTransactionPayment/{transactionId}",
   "GetTransactionPaymentWithAdditionalDetails": "Transaction/getTransactionPaymentWithAdditionalDetails/{transactionId}",
   "UpdateSuccessfulPayment": "Transaction/{transactionId}/UpdateSuccessfulPayment",
-  "VoidCMSPayment": "Transaction/{transactionId}/VoidCMSPayments/patronId/{patronId}/redemptionType/{redemptionType}",
+  "VoidCMSPayment": "Transaction/{transactionId}/VoidCMSPayments/patronId/{patronId}/redemptionType/{redemptionType}/paymentMethodType/{paymentMethodType}",
   "CheckIsTerminalInUse": "Transaction/IsOpenTransactionExistForTerminal/Outlet/{outletId}/Terminal/{terminalId}",
   "GetFeatureConfiguration":"GetFeatureConfiguration/propertyId/{propertyId}/productId/{productId}",
   "GetCommissionableUsers": "users/commissionable/item/{itemId}/productId/{productId}",
@@ -611,5 +611,14 @@
   "UpdateSetting": "settings",
   "GetClientConfiguration": "settings/module/Client",
   "GetSettingByModule": "Settings/AllSetting/{module}",  
-  "GetCEDSByOutletId": "Outlets/GetCEDSByOutletId/{outletId}"
+  "GetCEDSByOutletId": "Outlets/GetCEDSByOutletId/{outletId}",
+  "GetItemByPagination": "RetailItems/items?outletId={outletId}&includeInactive={includeInactive}&pageStart={pageStart}&pageLength={pageLength}&sortBy={sortBy}&isSortByAscending={isSortByAscending}&searchText={searchText}&category={category}&subcategory1={subcategory1}&subcategory2={subcategory2}&subcategory3={subcategory3}&subcategory4={subcategory4}&subcategory5={subcategory5}",
+  "GetShopItemByPagination": "RetailItems/shop/items?outletId={outletId}&includeInactive={includeInactive}&pageStart={pageStart}&pageLength={pageLength}&sortBy={sortBy}&isSortByAscending={isSortByAscending}&searchText={searchText}&searchByBarcode={searchByBarcode}&quickSaleCategory={quickSaleCategory}",
+  "SearchRetailItemsByType": "retailitems/search",
+  "GetInventoryOutletStatus": "Inventory/outlet/{outletId}/status",
+  "GetRetailInventoryItemByPagination": "RetailItems/retail-inventory/items?outletId={outletId}&includeInactive={includeInactive}&pageStart={pageStart}&pageLength={pageLength}&sortBy={sortBy}&isSortByAscending={isSortByAscending}&searchText={searchText}&category={category}&subcategory1={subcategory1}&subcategory2={subcategory2}&subcategory3={subcategory3}&subcategory4={subcategory4}&subcategory5={subcategory5}&useInventory=true",
+  "GetCommissionSetup" : "retailitems/getcommissionsetup",
+  "IsBarcodeExists": "retailitems/validate/barcode/{barcode}",
+  "GetRetailItemDetailedInfo": "retailitems/detailed-info?id={id}",
+  "SyncInventory": "retailitems/syncinventory/outlets/{outletId}"
 }

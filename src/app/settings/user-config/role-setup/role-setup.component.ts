@@ -88,7 +88,7 @@ export class RoleSetupComponent implements OnInit {
       error: this.errorCallback.bind(this),
       callDesc: 'CheckUserRoleExist',
       method: HttpMethod.Get,
-      uriParams: { tenantId: this.TeantId, roleName: encodeURIComponent(name) },
+      uriParams: { tenantId: this.utils.GetPropertyInfo('PropertyId'), roleName: encodeURIComponent(name) },
       showError: true,
       extraParams: [false]
     });

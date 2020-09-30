@@ -9,6 +9,7 @@ import { CreateClientBusiness } from './client-popup.business';
 import { ClientDataService } from 'src/app/shared/data-services/client.data.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
+import { Utilities } from 'src/app/core/utilities';
 
 @Component({
   selector: 'app-client-popup',
@@ -31,7 +32,8 @@ export class ClientPopupComponent implements OnInit {
     private userAlert: UserAlerts,
     public _fb: FormBuilder,
      public _imageService: RetailImageService,
-    private _createClientBusiness: CreateClientBusiness) {
+    private _createClientBusiness: CreateClientBusiness,
+    private utils: Utilities) {
 
   }
 
@@ -41,6 +43,9 @@ export class ClientPopupComponent implements OnInit {
     this.clientPopupForm.statusChanges.pipe(takeUntil(this.$destroyed)).subscribe(x => {
       this.IsClientScreenDirty = (this.clientPopupForm.valid && this.clientPopupForm.dirty);
     });
+    if (this.data.isClientViewOnly) {
+      this.utils.disableControls(this.clientPopupForm);
+    }
   }
 
   ngOnDestroy() {
@@ -53,11 +58,12 @@ export class ClientPopupComponent implements OnInit {
   }
 
   async save(){
+    this.IsClientScreenDirty = false;
     this.clientInfo = this.clientPopupForm.value;
     this.clientInfo.personalDetailsFormGroup.imageReferenceId = DefaultGUID ;
     var createPromise = await this._createClientBusiness.SubmitForm(this.clientInfo);
-    if (this.clientInfo && this.clientInfo.personalDetailsFormGroup.id && this.clientInfo.personalDetailsFormGroup.imageId &&
-      this.clientInfo.personalDetailsFormGroup.imageId != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID
+    if (this.clientInfo && this.clientInfo.personalDetailsFormGroup.id && this.clientInfo.personalDetailsFormGroup.imgReferenceId &&
+      this.clientInfo.personalDetailsFormGroup.imgReferenceId != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID
      || this.clientInfo.personalDetailsFormGroup.isImageRemoved) {
       var b = await this._imageService.updateItemImage(createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.imageId, 
       this.clientInfo.personalDetailsFormGroup.imageReferenceId, this.clientInfo.personalDetailsFormGroup.isImageRemoved,

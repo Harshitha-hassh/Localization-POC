@@ -6,7 +6,7 @@
         <div class="d-table" [ngClass]="{'hdrSection':coll.dataCount!=0}">
           <span class="d-table-cell V-Mid ">
             <i class="icon-success-icon blckClr mr-2 IC18"
-              [ngClass]="(coll.tableOptions.TablebodyData.length == 0 && coll.isLoaded) ? '' : 'closedTextclr'"></i>
+              [ngClass]="(isProcessClicked) ? 'closedTextclr' : ''"></i>
           </span>
           <span class=" d-table-cell hdrlblwdth V-Mid LWB16">{{coll.displayName}}</span>
 
@@ -55,7 +55,7 @@
         </div>
       </div>
       <div class="pt-4 mb-3">
-        <button type="button" mat-button class="body-bgcolor whitecolor text_capitalize LW14 gold-btn w165" [ngClass]="{'btn-disabled': !CanProcessDayEnd() || isProcessClicked}" (click)="PerformDayend()">{{this.captions.PROCESS}}</button>
+        <button type="button" mat-button class="body-bgcolor whitecolor text_capitalize LW14 gold-btn w165" [ngClass]="{'btn-disabled': isProcessClicked}" (click)="PerformDayend()">{{this.captions.PROCESS}}</button>
       </div>
       <!-- Success Message -->
       <div class="notificationBG d-table  mb-4" *ngIf="successFlag">

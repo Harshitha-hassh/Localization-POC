@@ -73,14 +73,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       this.FormGrp.controls['noOfReceipts'].disable();
       this.FormGrp.controls['gratuityLine'].disable();
       this.FormGrp.controls['receiptNote'].disable();
-      this.printInfo[0].enableToggle = false;
-      this.printInfo[1].enableToggle = false;
-      this.printInfo[2].enableToggle = false;
-      this.printInfo[3].enableToggle = false;
-      this.printInfo[4].enableToggle = false;
-      this.printInfo[5].enableToggle = false;
-      this.printInfo[6].enableToggle = false;
-      this.printInfo[7].enableToggle = false;
+      this.printInfo.map(x => x.enableToggle = false);
     }
     this.isSaveDisabled = true;
   }
@@ -137,7 +130,7 @@ export class ReceiptConfigurationComponent implements OnInit {
         this.printInfo[5].enableToggle = true;
         this.printInfo[7].enableToggle = true;
       }
-      this.printInfo[1].enableToggle = true;
+      // this.printInfo[1].enableToggle = true;
     }
   }
 
@@ -230,8 +223,5 @@ export class ReceiptConfigurationComponent implements OnInit {
 
   resetData() {
     this.isSaveDisabled = true;
-    this.printInfo[3].enableToggle = false;
-    this.printInfo[5].enableToggle = false;
-    this.printInfo[7].enableToggle = false;
   }
 }

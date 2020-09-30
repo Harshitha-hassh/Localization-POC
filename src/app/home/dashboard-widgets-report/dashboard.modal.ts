@@ -73,6 +73,8 @@ export interface UIOpenTickets {
     ticketNumber :string;
     transactionAmount: string;
     action:string;
+    clientId : number;
+    uid :number;
 }
 export interface UIOutOfStock {
     id: number;
@@ -131,7 +133,9 @@ export interface ReturnedItems {
 export interface OpenTickets {
     outletId: number;
     transactionNumber :string;
-    amount: string;    
+    amount: string;   
+    clientId : number;
+    id : number; 
 }
 
 export interface VendorInfo {

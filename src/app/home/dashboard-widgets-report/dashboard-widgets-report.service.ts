@@ -87,13 +87,13 @@ export class DashboardWidgetsReportService {
                 ]
               },
               dropDown: {
-                show: true,
-                placeholder: this.captions.Outlets,
-                floatLabel: 'never',
-                dropDownControlname: 'Sales_Revenue',
-                dropDownName: this.captions.allOutlets,
-                defaultData: {id: 0, value: 'ALL', description: this.captions.allOutlets, showInDropDown: true},
-                dropDownOptions: this.OutletsData,
+                show: false,
+                // placeholder: this.captions.Outlets,
+                // floatLabel: 'never',
+                // dropDownControlname: 'Sales_Revenue',
+                // dropDownName: this.captions.allOutlets,
+                // defaultData: {id: 0, value: 'ALL', description: this.captions.allOutlets, showInDropDown: true},
+                // dropDownOptions: this.OutletsData,
               }
             },
             template: {

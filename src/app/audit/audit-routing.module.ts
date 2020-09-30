@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuditComponent } from './audit.component';
 import { DayEndComponent } from './audit-data/day-end/day-end.component';
-import { SPAManagementBreakPoint } from '../common/shared/shared/globalsContant';
-import { RouteGuardService } from '../retail/shared/service/route-gaurd.service';
+import { RouteGuardService } from '../core/services/route.guard.service';
+import { BreakPoint } from '../shared/models/breakpoint-models';
 
 // const routes: Routes = [
 //     {
@@ -28,7 +28,8 @@ const routes: Routes = [{
     {
       path: 'dayend',
       component: DayEndComponent,
-      data: { redirectTo: ''}
+      canActivate: [RouteGuardService],
+      data: { breakPointNumber: BreakPoint.DayEnd , redirectTo: '', ShowPopup: true, syncAccess: true }
     }
   ]
 }];

@@ -46,7 +46,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   currSysDate: Date = this.PropertyInfo.CurrentDate;
   newSysDate: Date = this.PropertyInfo.CurrentDate;
   canProcess = false;
-  isProcessClicked = false;
+  isProcessClicked = true;
   successFlag = false;
   success: any;
   GridData: GridData[] = [];
@@ -211,7 +211,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.InvokeServiceCall('UpdateInventoryAuditOnDayEnd', Host.retailManagement, HttpMethod.Post, { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) }, this.newSysDate);
   }
 
-  SyncUpItemAndTaxes() {
+  async SyncUpItemAndTaxes() {
     if (!this.PropertyInfo.UseRetailInterface && this.propOutlets && this.propOutlets.length > 0) {
       this.propOutlets.forEach(element => {
         // tslint:disable-next-line: max-line-length
@@ -245,11 +245,13 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   private async BuildOpenTransactions(response) {
     const gridData = this.GridData.find(r => r.status === PendingAction.OpenTransaction);    
     if (response && response.length > 0) {
+      this.isProcessClicked = true;
       response = response.filter(r => {
         return this.utils.GetDateWithoutTime(this.utils.getDate(r.transactionDate)).getTime() === this.PropertyInfo.CurrentDate.getTime();
       });
     }
     if (!response || response.length === 0) {
+      this.isProcessClicked = false;
       this.ClearGridDate(gridData);
       return;
     }
@@ -566,8 +568,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     return name.join(',');
   }
 
-  private BuildTransactionDetails(result, action: string) {
-    this.retailSharedService.selectedProducts = this.retailValidationService.LoadSelectedProducts(result, this.allShopItems, action);
+  async BuildTransactionDetails(result, action: string) {
+    this.retailSharedService.selectedProducts = await this.retailValidationService.LoadSelectedProducts(result, this.allShopItems, action);
     this.retailSharedService.isFromDayEnd = true;
     this.retailSharedService.TaxValue = _.cloneDeep(this.retailValidationService.TaxValue);
     this.retailValidationService.TaxValue = 0;
