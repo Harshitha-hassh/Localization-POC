@@ -45,6 +45,7 @@ export class DataAwaiterService {
         RetailDataAwaiters.GetDefaultOutlet = this.GetDefaultOutlet.bind(this);
         RetailDataAwaiters.SendNotification = this.SendNotification.bind(this);
         RetailDataAwaiters.OpenManualNotifyPopup = this.OpenManualNotifyPopup.bind(this);
+        RetailDataAwaiters.getGuestStayDetails = this.getGuestStayDetails.bind(this);
     }
 
     getChildMenu(url, menutype?) {
@@ -220,5 +221,9 @@ export class DataAwaiterService {
             data:  { mode: 'EDIT', title: this.captions.notify, type: this.captions.Update, guestId :guestId, transactionId: transactionId, closebool: true },
             panelClass: 'small-popup'
         });
+    }
+
+    private async getGuestStayDetails(guestId: string) {
+        return await this.clientDataService.getGuestStayDetails(guestId);
     }
 }
