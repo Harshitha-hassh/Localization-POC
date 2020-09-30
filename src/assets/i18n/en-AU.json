@@ -903,7 +903,7 @@
     "GratuityServiceCharges": "GRATUITY/SERVICE CHARGES_au",
     "CommissionSetup": "Commission Setup_au",
     "SelectGratuityServicesCharge": "Select Gratuity/Services Charges_au",
-    "emailConfirmation": "SMS/Email not configured for client - {Client}, Do you want to continue?_au",
+    "emailConfirmation": "SMS/Email not configured for guest - {Client}, Do you want to continue?_au",
     "SpaGratuity": "Spa Gratuity_au",
     "ServiceCharges": "Service Charges_au",
     "Values": "Values_au",
