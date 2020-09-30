@@ -445,6 +445,13 @@ $themes: (
           }
         }
       }
+      .CustomDataTable table .done {
+        color: $header-background !important;
+      }
+
+      .CustomDataTable table .done .icon-done {
+        color: $header-background !important;
+      }
 
       .color-numbers {
         color: $color !important;
