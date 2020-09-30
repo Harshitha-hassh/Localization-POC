@@ -619,5 +619,6 @@
   "GetRetailInventoryItemByPagination": "RetailItems/retail-inventory/items?outletId={outletId}&includeInactive={includeInactive}&pageStart={pageStart}&pageLength={pageLength}&sortBy={sortBy}&isSortByAscending={isSortByAscending}&searchText={searchText}&category={category}&subcategory1={subcategory1}&subcategory2={subcategory2}&subcategory3={subcategory3}&subcategory4={subcategory4}&subcategory5={subcategory5}&useInventory=true",
   "GetCommissionSetup" : "retailitems/getcommissionsetup",
   "IsBarcodeExists": "retailitems/validate/barcode/{barcode}",
-  "GetRetailItemDetailedInfo": "retailitems/detailed-info?id={id}"
+  "GetRetailItemDetailedInfo": "retailitems/detailed-info?id={id}",
+  "SyncInventory": "retailitems/syncinventory/outlets/{outletId}"
 }
