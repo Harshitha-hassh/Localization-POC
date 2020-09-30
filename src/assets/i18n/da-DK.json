@@ -51,6 +51,9 @@
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_da",
     "PhoneFormat": "(999) 999-9999",
     "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "Extension": " ext: _da",
+    "ExtensionReport": " ext _da",
+    "AppendReportCaption": " _da",
     "alphabets": [
       "A",
       "B",

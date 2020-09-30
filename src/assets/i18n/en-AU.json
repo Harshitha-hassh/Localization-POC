@@ -51,6 +51,9 @@
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_au",
     "PhoneFormat": "(999) 999-9999",
     "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "Extension": " ext: _au",
+    "ExtensionReport": " ext _au",
+    "AppendReportCaption": " _au",
     "alphabets": [
       "A",
       "B",
