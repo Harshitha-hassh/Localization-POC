@@ -336,9 +336,9 @@ svg-icon {
 
       .icon-Circle {
         font-size: 35px;
-        color: rgba(255, 255, 255, 0.6) !important;
+        color: rgba(255, 255, 255, 0.6);
         &.dark {
-          color: $ag_base-text-black !important;
+          color: $ag_base-text-black ;
         }
         &:before {
           color: unset;

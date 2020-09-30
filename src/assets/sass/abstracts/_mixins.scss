@@ -123,7 +123,11 @@ $golf-media-queries:(
 $themes: (
   goldtheme: $gold,
   bluetheme: $blue,
-  greytheme: ''
+  greytheme: '',
+  blacktheme: $black,
+  orangetheme: $theme_orange,
+  navybluetheme: $theme_blue,
+  greentheme: $theme_green
   );
   // Helper theme mixin
   // @param $name: name of the theme (HTML class)
@@ -230,15 +234,19 @@ $themes: (
       }
 
       .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
-        background-color: $active_bg !important;
+        background-color: $header1_active-bg !important;
       }
 
       .icon-Minus, .icon-Plus {
         // color: $color-text !important;
       }
+      
 
       .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
         background-color: $header-background !important;
+      }
+      .mat-option:hover, .mat-option:focus {
+
       }
 
       .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) span {
@@ -275,13 +283,52 @@ $themes: (
         background-color: $header-background !important;
       }
       .mat-button-wrapper {
-        color: $color-text !important;
+        // color: $color-text !important;
+      }
+      .dashBoard-widgets-report-wrapper .widget_group_wrapper .widget_group_header .widget_group_manage .title {
+        color: $header-background !important;
+      }
+      .dashBoard-widgets-report-wrapper .dashBoardCheckbox .dashBoardCheckboxInput:checked + .checkbox-material .check {
+        color: $header-background !important;
+      }
+      .dashBoard-widgets-report-wrapper .dashBoardCheckbox .checkbox-material .check {
+        border-color: $header-background !important;
+      }
+      .icon-filter_filled {
+        color: $header-background !important;
+        background: unset !important;
       }
       .border-color {
-        border-color: $colorborder !important;
+        border-color: $header-background !important;
+      }
+      .spa-btnlg-secondary {
+        border-color: 1px solid $header-background !important;
+      }
+      .secondary-default-btn:hover {
+        background: $header-background !important;
+        border-color: 1px solid $header-background !important;
+        .mat-button-wrapper {
+          color: $header1_icon !important;
+        }
+
+      }
+      .swipe-btn .icon-Device {
+        color:  $header1_icon !important;
+      }
+      .setNotificationConfiguration .expcollPosition {
+        background: $header-background !important;
+      }
+      .retail-gift-card .retail-form-section .header-container .icon-border-section {
+        border: 1px solid $header-background !important;
       }
       .border-left-color{
         border-left-color: $color !important;
+      }
+      #setting-cover-spin::after {
+        border-color: $header-background !important;
+      }
+      .button--primary {
+        background: $header-background !important;
       }
       .circle-hover{
         background-color: $lightyellow !important;  /*******NOTE: Change one theme Color base*******/
@@ -350,6 +397,11 @@ $themes: (
         }
       }
 
+      .dashBoard-widgets-report-wrapper .multiSelectButton.button--primary {
+        background-color: $header-background !important;
+        border-color: $header-background !important;
+      }
+
       .body-bordercolor {
         border: 1px solid $colorbackground !important;
       }
@@ -362,11 +414,24 @@ $themes: (
       }
 
       .text-color {
-        color: $color-text !important;
+        color: $header-background !important;
       }
 
+      .spa-primary-btn-default {
+        background-color: $header-background !important;
+      }
+      .spa-primary-btn-default:hover {
+        background-color: $header1_active-bg !important;
+      }
       .active-link {
         color: $color !important;
+      }
+      .mat-button-toggle-checked {
+        background-color: $header-background !important;
+      }
+
+      .icon-Minus, .icon-Plus {
+        color: $header-background !important;
       }
 
       .header-bar {
@@ -391,6 +456,66 @@ $themes: (
           color: #000000 !important;
         }
       }
+      // input fields
+      .mat-form-field.mat-focused .mat-form-field-label
+      {
+        color: $header-background !important;
+      }
+      // focus on underline input fields
+      .mat-form-field.mat-focused .mat-form-field-ripple {
+        background-color: $header-background !important;
+      }
+      // uncheck
+      i.icon-font-size.icon-Success {
+        opacity: 0.5 !important;
+      }
+
+      // check
+      i.icon-font-size.icon-SuccessDark.text-color {
+        color: $header-background !important;
+      }
+      // datepicker
+      .mat-calendar-body-selected {
+        background-color: $header-background !important;
+      }
+
+      .mat-datepicker-content .mat-calendar .mat-calendar-header {
+        background: $header-background !important;
+      }
+
+      .payment-feature-config .config-options ul li.selected {
+        background-color: $header-background !important;
+      }
+
+      .spa-filter-link {
+        color: $header-background !important;
+      }
+      .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate,
+      .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
+        background: $header-background !important;
+      }
+
+      .mat-checkbox-frame {
+        border-color: $header-background !important;
+      }
+
+      .mat-primary .mat-option.mat-selected:not(.mat-option-disabled),
+      .common-CustomDataTable table .done,
+      .common-CustomDataTable table .done .icon-done {
+        color: $header-background !important;
+      }
+      .template-sms-container .CustomTableGrid .filter-btn .icon-filter_filled {
+        background: $header-background !important;
+        color: $color-text !important;
+      }
+      .icon-help_question:before {
+        color: $header1_icon !important;
+      }
+      // .mat-option.mat-active {
+      //   background: $header-background !important;
+      //   color: $header1_icon !important;
+      // }
+
 
       .ngx-pagination {
         .current {
@@ -426,16 +551,48 @@ $themes: (
         $header-background: $lightsemiBlack;
         $menu-background: $blueMenuColor;
         $color-theme: $blue;
-
       }
       @else if $key == "greytheme" {        
         $header-background: $theme_grey_base_color;
-        $color-text: $white;
+        $color-text: $ag_white;
         $colorborder: $theme_grey_base_color;
-        $header1_icon: $white;
+        $header1_icon: $ag_white;
         $header1_active-bg :$active_bg; 
         $icon-bg:$icon_bg_color;
       }
+      @else if $key == "blacktheme" {        
+        $header-background: $theme_black_base_color;
+        $color-text: $ag_white;
+        $colorborder: $theme_black_base_color;
+        $header1_icon: $ag_white;
+        $header1_active-bg : $theme_black_active_bg; 
+        $icon-bg:$theme_black_icon_bg_color;
+      }
+      @else if $key == "orangetheme" {        
+        $header-background: $theme_orange_base_color;
+        $color-text: $theme_orange_text-color;
+        $colorborder: $theme_orange_base_color;
+        $header1_icon: $theme_orange_text-color;
+        $header1_active-bg : $theme_orange_active_bg; 
+        $icon-bg: $theme_black_icon_bg_color;
+      }
+      @else if $key == "navybluetheme" {        
+        $header-background: $theme_blue_base_color;
+        $color-text: $ag_white;
+        $colorborder: $theme_blue_base_color;
+        $header1_icon: $ag_white;
+        $header1_active-bg : $theme_blue_active_bg; 
+        $icon-bg: $theme_black_icon_bg_color;
+      }
+      @else if $key == "greentheme" {        
+        $header-background: $theme_green_base_color;
+        $color-text: $ag_white;
+        $colorborder: $theme_green_base_color;
+        $header1_icon: $ag_white;
+        $header1_active-bg : $theme_green_active_bg; 
+        $icon-bg: $theme_black_icon_bg_color;
+      }
+
       @include theme($key, $value, $color-text, $color-background,$icon-bg, $color-border, $header-background, $header1_active-bg ,$menu-background,$header1_icon);
     }
 

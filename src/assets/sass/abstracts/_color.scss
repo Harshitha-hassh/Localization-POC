@@ -424,3 +424,23 @@ $plum : unquote("#835c84");
 $black-theme: unquote("#2322223b");
 $dark-plum: unquote("#5e3f5e");
 $grey-plum : unquote("#ffffffa6");
+
+// default theme - black
+$mildBlack : rgb(74, 72, 72);
+$black : unquote("#000000");
+// $black-theme: unquote("#2322223b");
+$light-black: unquote("#5e3f5e");
+// $grey-plum : unquote("#ffffffa6");
+// $theme_white: #fff;
+
+// orange theme
+$theme_orange: rgb(238,116,31);
+$theme_darkOrange: rgb(112, 54, 7);
+
+// navy blue theme
+$theme_blue: rgb(72,145,206);
+$theme_navyBlue: rgb(0,68,106);
+
+// green theme
+$theme_green: rgb(72,169,76);
+$theme_grey: unquote("#3a754c");

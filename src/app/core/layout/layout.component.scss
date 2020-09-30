@@ -40,8 +40,19 @@
           
           &.greytheme {
               background-color: $theme_grey_base_color;
-          }         
-      
+          }  
+          &.blacktheme {
+            background-color: $theme_black_base_color;
+          }    
+          &.orangetheme {
+            background-color: $theme_orange_base_color;
+          }    
+          &.navybluetheme {
+            background-color: $theme_blue_base_color;
+          }
+          &.greentheme {
+            background-color: $theme_green_base_color;
+          }
       }
   }
   
