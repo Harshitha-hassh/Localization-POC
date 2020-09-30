@@ -2584,6 +2584,7 @@
     "transactionAmount": "Transaction Amount_in",
     "action": "Action_in",
     "item": "Item_in",
+    "outlet": "Outlet_in",
     "items": "Items_in",
     "outofStockOn": "Out of Stock On_in",
     "returnItems": " Return Items_in",

@@ -2584,6 +2584,7 @@
     "transactionAmount": "Transaction Amount",
     "action": "Action",
     "item": "Item",
+    "outlet": "Outlet",
     "items": "Items",
     "outofStockOn": "Out of Stock On",
     "returnItems": " Return Items",

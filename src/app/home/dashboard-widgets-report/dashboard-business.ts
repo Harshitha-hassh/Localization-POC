@@ -3,6 +3,7 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import * as DashBoardInterface from './dashboard.modal';
 import { DashBoardService } from 'src/app/shared/data-services/authentication/retailmanagement/dashboard.data.service';
 import { SubPropertyDataService } from 'src/app/retail/retail-code-setup/retail-outlets/subproperty-data.service';
+import { OutletOption } from './dashboard.modal';
 
 
 @Injectable()
@@ -242,7 +243,7 @@ export class DashBoardBusiness {
     }
 
 
-    public async getOpenTicketsData(propertyDate: Date, outletIds: number[]): Promise<DashBoardInterface.UIOpenTickets[]> {
+    public async getOpenTicketsData(propertyDate: Date, outletIds: number[],  outlets:OutletOption[] ): Promise<DashBoardInterface.UIOpenTickets[]> {
         const action = 'Settle';
         const outOfStockItems =outletIds.length > 0 ? await this.dashBoardService.getOpenTickets(propertyDate, outletIds) :[];
         const result: DashBoardInterface.UIOpenTickets[] = outOfStockItems ? outOfStockItems.map(o => {
@@ -250,6 +251,7 @@ export class DashBoardBusiness {
                 id: o.outletId,
                 uid :o.id,
                 clientId : o.clientId,
+                outlet: outlets.find(x=> x.id== o.outletId).description,
                 ticketNumber: o.transactionNumber,
                 transactionAmount: `${this.localization.currencySymbol}` + o.amount,
                 action
@@ -258,12 +260,13 @@ export class DashBoardBusiness {
         return result;
     }
 
-    public async getOutofStockOnData(outletIds: number[]): Promise<DashBoardInterface.UIOutOfStock[]> {
+    public async getOutofStockOnData(outletIds: number[], outlets:OutletOption[] ): Promise<DashBoardInterface.UIOutOfStock[]> {
         const outOfStockItems =outletIds.length > 0 ? await this.dashBoardService.getOutOfStockItems(outletIds) :[];
         const result: DashBoardInterface.UIOutOfStock[] = outOfStockItems ? outOfStockItems.map(o => {
             return {
                 id: o.id,
                 item: o.item,
+                outlet:outlets.find(x=> x.id== o.outletId).description,
                 outofStockOn: this.localization.LocalizeShortDate(o.outofStockOn)
             };
         }) : [];

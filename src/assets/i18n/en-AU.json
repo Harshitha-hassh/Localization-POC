@@ -2584,6 +2584,7 @@
     "transactionAmount": "Transaction Amount_au",
     "action": "Action_au",
     "item": "Item_au",
+    "outlet": "Outlet_au",
     "items": "Items_au",
     "outofStockOn": "Out of Stock On_au",
     "returnItems": " Return Items_au",

@@ -2584,6 +2584,7 @@
     "transactionAmount": "Transaction Amount_gb",
     "action": "Action_gb",
     "item": "Item_gb",
+    "outlet": "Outlet_gb",
     "items": "Items_gb",
     "outofStockOn": "Out of Stock On_gb",
     "returnItems": " Return Items_gb",

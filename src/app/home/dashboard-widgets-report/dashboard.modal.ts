@@ -79,10 +79,12 @@ export interface UIOpenTickets {
 export interface UIOutOfStock {
     id: number;
     item :string;
+    outlet:string;
     outofStockOn: string;  
 }
 
 export interface OutOfStock {
+    outletId: any;
     id: number;
     item :string;
     outofStockOn: Date;  
