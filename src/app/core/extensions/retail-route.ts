@@ -60,6 +60,7 @@ export enum RetailRoutes {
   GetClientByPatronId="Clients/getClientByPatronId/{patronId}",
   GetClientByIds = "Clients/query/{includeRelatedData}",
   GetClientByGuestId = "clients/guid/{guid}",
+  GetClientStayDetails = "Itinerary/clients/{clientId}/stay",
 
    //Image
    saveImage = 'v2/Images',

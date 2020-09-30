@@ -620,5 +620,6 @@
   "GetCommissionSetup" : "retailitems/getcommissionsetup",
   "IsBarcodeExists": "retailitems/validate/barcode/{barcode}",
   "GetRetailItemDetailedInfo": "retailitems/detailed-info?id={id}",
-  "SyncInventory": "retailitems/syncinventory/outlets/{outletId}"
+  "SyncInventory": "retailitems/syncinventory/outlets/{outletId}",
+  "GetRetailItemById": "RetailItems/{itemId}"
 }
