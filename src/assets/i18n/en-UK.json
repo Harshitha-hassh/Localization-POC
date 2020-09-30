@@ -903,6 +903,7 @@
     "GratuityServiceCharges": "GRATUITY/SERVICE CHARGES_uk",
     "CommissionSetup": "Commission Setup_uk",
     "SelectGratuityServicesCharge": "Select Gratuity/Services Charges_uk",
+    "emailConfirmation": "SMS/Email not configured for guest - {Client}, Do you want to continue?_uk",
     "SpaGratuity": "Spa Gratuity_uk",
     "ServiceCharges": "Service Charges_uk",
     "Values": "Values_uk",

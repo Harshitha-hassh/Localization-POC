@@ -903,6 +903,7 @@
     "GratuityServiceCharges": "GRATUITY/SERVICE CHARGES_in",
     "CommissionSetup": "Commission Setup_in",
     "SelectGratuityServicesCharge": "Select Gratuity/Services Charges_in",
+    "emailConfirmation": "SMS/Email not configured for guest - {Client}, Do you want to continue?_in",
     "SpaGratuity": "Spa Gratuity_in",
     "ServiceCharges": "Service Charges_in",
     "Values": "Values_in",
