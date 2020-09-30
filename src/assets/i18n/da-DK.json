@@ -51,6 +51,9 @@
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_da",
     "PhoneFormat": "(999) 999-9999",
     "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "Extension": " ext: _da",
+    "ExtensionReport": " ext _da",
+    "AppendReportCaption": " _da",
     "alphabets": [
       "A",
       "B",
@@ -903,6 +906,7 @@
     "GratuityServiceCharges": "GRATUITY/SERVICE CHARGES_da",
     "CommissionSetup": "Commission Setup_da",
     "SelectGratuityServicesCharge": "Select Gratuity/Services Charges_da",
+    "emailConfirmation": "SMS/Email not configured for guest - {Client}, Do you want to continue?_da",
     "SpaGratuity": "Spa Gratuity_da",
     "ServiceCharges": "Service Charges_da",
     "Values": "Values_da",

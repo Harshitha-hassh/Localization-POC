@@ -45,7 +45,7 @@ const routes: Routes = [{
     },
     {
       path: 'enhancedInventory',
-      loadChildren: '../retail/eatec/eatec.module#EatecModule',
+      loadChildren: () => import('../retail/eatec/eatec.module').then(m => m.EatecModule),
       data: { redirectTo: '', hasChild: false }
     }
   ]

@@ -71,6 +71,21 @@ export class DataAwaiterService {
     }
 
     private BuildPayeeData(client: ClientSearchModel): PayeeInfo {
+        let emailId = '';
+        let phoneNo = '';
+        let emailObj = client.emails;
+        let phoneObj = client.phoneNumbers;
+
+        if (emailObj && emailObj.length) {
+            emailObj = emailObj.sort((a, b) => a.contactTypeId < b.contactTypeId ? -1 : a.contactTypeId > b.contactTypeId ? 1 : 0);
+            emailId = emailObj.find(x=> !x.isPrivate && x.isPrimary) ? emailObj.find(x=> !x.isPrivate && x.isPrimary).emailId :  emailObj[0].emailId;
+        }
+
+        if(phoneObj && phoneObj.length) {
+            phoneObj = phoneObj.sort((a, b) => a.contactTypeId < b.contactTypeId ? -1 : a.contactTypeId > b.contactTypeId ? 1 : 0);
+            phoneNo = phoneObj.find(x=> !x.isPrivate && x.isPrimary) ? phoneObj.find(x=> !x.isPrivate && x.isPrimary).number :  phoneObj[0].number;
+        }
+
         let payee: PayeeInfo = {
             id: client.id,
             name: client.firstName + ' ' + client.lastName,
@@ -79,10 +94,12 @@ export class DataAwaiterService {
             zip: client.addresses ? client.addresses.zipCode : '',
             city: client.addresses ? client.addresses.city : '',
             guestProfileId: client.guestId,
-            cardInfo: [client.clientCreditCardInfo],
+            cardInfo: client.clientCreditCardInfo ? [client.clientCreditCardInfo] : null,
             patronId: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].patronId : '',
             rank: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].rank : '',
-            playerCategoryId: 1
+            playerCategoryId: 1,
+            emailId: emailId,
+            phoneNumber: phoneNo 
         };
         return payee;
     }
