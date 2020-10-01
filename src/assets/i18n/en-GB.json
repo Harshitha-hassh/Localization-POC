@@ -2534,7 +2534,7 @@
     "IncludeVoidedTransaction": "Include Voided Transaction_gb",
     "NotFullyApplied": "Not Fully Applied_gb",
     "missingCustomField": "Missing Custom Field_gb",
-    "PaymentMethods": "PaymentMethod(s)_gb"
+    "PaymentMethods": "Payment Method(s)_gb"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_gb",

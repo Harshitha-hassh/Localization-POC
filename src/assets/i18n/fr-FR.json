@@ -2534,7 +2534,7 @@
     "IncludeVoidedTransaction": "Include Voided Transaction_fr",
     "NotFullyApplied": "Not Fully Applied_fr",
     "missingCustomField": "Missing Custom Field_fr",
-    "PaymentMethods": "PaymentMethod(s)_fr"
+    "PaymentMethods": "Payment Method(s)_fr"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fr",
