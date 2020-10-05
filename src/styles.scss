@@ -5483,3 +5483,13 @@ a:hover {
   margin-left: -1.37890625em;
   color: rgb(162, 242, 216);
 }
+
+.icon-Player-worth_enabled .path1:before {
+  content: "\ecc2";
+  color: $theme-base-color;
+}
+.icon-Player-worth_enabled .path2:before {
+  content: "\ecc3";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
