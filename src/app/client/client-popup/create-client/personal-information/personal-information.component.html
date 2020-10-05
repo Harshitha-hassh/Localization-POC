@@ -147,7 +147,7 @@
                 *ngIf="(i == currentIndexPhone) || IsEdit"></span>
             </div>
             <div>
-              <mat-form-field class="d-block width-380px" *ngIf="enableExtension(i)" [formGroupName]="i">
+              <mat-form-field class="d-block width-380px" *ngIf="item.get('PhoneNumberLabel').value === phoneTypes.office" [formGroupName]="i">
                 <input matInput [placeholder]="commonCaptions.lbl_extension" formControlName='Extension'
                   inputtype="onlynumber" maxlength="5">
               </mat-form-field>

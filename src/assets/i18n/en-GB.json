@@ -51,6 +51,9 @@
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_gb",
     "PhoneFormat": "(999) 999-9999",
     "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "Extension": " ext: _gb",
+    "ExtensionReport": " ext _gb",
+    "AppendReportCaption": " _gb",
     "alphabets": [
       "A",
       "B",
@@ -917,7 +920,7 @@
     "CustomValues": "Custom Values_gb",
     "Percentage": "Percentage %_gb",
     "Amount": "Amount_gb",
-    "AmounttobePaid": "Amount to be Paid_gb",
+    "AmounttobePaid": "Amount Due_gb",
     "NoOfReceipts": "# of Receipts_gb",
     "RemainingDue": "Remaining Due_gb",
     "Favoritefood": "Favorite food_gb",
@@ -1018,6 +1021,7 @@
     "NoDevicesFound": "No Devices Found. Please select any other payment method_gb",
     "NoRoomsFound": "No Rooms Found_gb",
     "NoPaymentDevicesFound": "No Payment Devices Found_gb",
+    "NoPlayersFound": "Player/ Patron not available._gb",
     "SelectDevice": "Select a Device_gb",
     "SelectedDevice": "Selected Device_gb",
     "CardType": "Card Type_gb",
@@ -1088,6 +1092,7 @@
     "TransactionInprogressMsg": "Please wait, while your request is being processed_gb",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved._gb",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved._gb",
+    "RetrievePatronDetails": "Please wait, while the player details are being retrieved._gb",
     "RefundInProgress": "Please wait, while your request is being processed._gb",
     "SelectGuest": "Select a Guest_gb",
     "SelectedGuest": "Selected Guest_gb",
@@ -1115,10 +1120,10 @@
     },
     "fullPayment": "Full Payment_gb",
     "multiPayment": "Multiple Payment_gb",
-    "amountToBePaid": "Amount to be paid_gb",
+    "amountToBePaid": "Amount Due_gb",
     "cashPayment": "Cash Payment_gb",
-    "cashReceived": "Cash-received_gb",
-    "remainingChange": "Remaining Change_gb",
+    "cashReceived": "Cash Received_gb",
+    "remainingChange": "Change Due_gb",
     "CancelOpenTransaction": "Would you like to cancel the ticket?_gb",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_gb",
     "TransactionLock": "Transaction is locked, Please try after sometime._gb",
@@ -2531,7 +2536,7 @@
     "IncludeVoidedTransaction": "Include Voided Transaction_gb",
     "NotFullyApplied": "Not Fully Applied_gb",
     "missingCustomField": "Missing Custom Field_gb",
-    "PaymentMethods": "PaymentMethod(s)_gb"
+    "PaymentMethods": "Payment Method(s)_gb"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_gb",
@@ -2584,6 +2589,7 @@
     "transactionAmount": "Transaction Amount_gb",
     "action": "Action_gb",
     "item": "Item_gb",
+    "outlet": "Outlet_gb",
     "items": "Items_gb",
     "outofStockOn": "Out of Stock On_gb",
     "returnItems": " Return Items_gb",
@@ -3136,6 +3142,11 @@
     "Atleast2charactersneedtobeentered": "At least 2 characters need to be entered_gb",
     "AtleastXcharactersneedtobeentered": "At least {noOfCharacters} characters need to be entered_gb",
     "lbl_phone": "Phone_gb"
+  },
+  "guest": {
+    "players": {
+      "CreateGuestWithPatronID": "Would you like to create a guest with this Patron Id - {patronId}_gb"
+    }
   },
   "inventory": {
     "InventorySearch": "Search by Item #, Description_gb",

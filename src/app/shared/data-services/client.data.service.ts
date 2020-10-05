@@ -63,4 +63,11 @@ export class ClientDataService {
             uriParams: { includeRelatedData: false }
         });
     }
+
+    public async getGuestStayDetails(guestId: string): Promise<any[]> {
+        return this._httpPos.getPromise({
+            route: RetailApiRoute.GetClientStayDetails,
+            uriParams: { clientId: guestId }
+        });
+    }
 }

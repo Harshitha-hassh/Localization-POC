@@ -51,6 +51,9 @@
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters",
     "PhoneFormat": "(999) 999-9999",
     "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "Extension": " ext: ",
+    "ExtensionReport": " ext ",
+    "AppendReportCaption": " ",
     "alphabets": [
       "A",
       "B",
@@ -917,7 +920,7 @@
     "CustomValues": "Custom Values",
     "Percentage": "Percentage %",
     "Amount": "Amount",
-    "AmounttobePaid": "Amount to be Paid",
+    "AmounttobePaid": "Amount Due",
     "NoOfReceipts": "# of Receipts",
     "RemainingDue": "Remaining Due",
     "Favoritefood": "Favorite food",
@@ -1018,6 +1021,7 @@
     "NoDevicesFound": "No Devices Found. Please select any other payment method",
     "NoRoomsFound": "No Rooms Found",
     "NoPaymentDevicesFound": "No Payment Devices Found",
+    "NoPlayersFound": "Player/ Patron not available.",
     "SelectDevice": "Select a Device",
     "SelectedDevice": "Selected Device",
     "CardType": "Card Type",
@@ -1088,6 +1092,7 @@
     "TransactionInprogressMsg": "Please wait, while your request is being processed",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved.",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved.",
+    "RetrievePatronDetails": "Please wait, while the player details are being retrieved.",
     "RefundInProgress": "Please wait, while your request is being processed.",
     "SelectGuest": "Select a Guest",
     "SelectedGuest": "Selected Guest",
@@ -1115,10 +1120,10 @@
     },
     "fullPayment": "Full Payment",
     "multiPayment": "Multiple Payment",
-    "amountToBePaid": "Amount to be paid",
+    "amountToBePaid": "Amount Due",
     "cashPayment": "Cash Payment",
-    "cashReceived": "Cash-received",
-    "remainingChange": "Remaining Change",
+    "cashReceived": "Cash Received",
+		"remainingChange": "Change Due",
     "CancelOpenTransaction": "Would you like to cancel the ticket?",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?",
     "TransactionLock": "Transaction is locked, Please try after sometime.",
@@ -2531,7 +2536,7 @@
     "IncludeVoidedTransaction": "Include Voided Transaction",
     "NotFullyApplied": "Not Fully Applied",
     "missingCustomField": "Missing Custom Field",
-    "PaymentMethods": "PaymentMethod(s)"
+    "PaymentMethods": "Payment Method(s)"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",
@@ -2584,6 +2589,7 @@
     "transactionAmount": "Transaction Amount",
     "action": "Action",
     "item": "Item",
+    "outlet": "Outlet",
     "items": "Items",
     "outofStockOn": "Out of Stock On",
     "returnItems": " Return Items",
@@ -2757,7 +2763,7 @@
       "SmallStickers": "Small Stickers",
       "HangingTickets": "Hanging Tickets",
       "NoPrintersFound": "No printers found",
-      "NoPaymentDevicesFound": "No Payment Devices Found",
+      "NoPaymentDevicesFound": "No Payment Devices Found",      
       "EmailTemplates": "Email Templates",
       "SMSTemplates": "SMS Templates",
       "AppointmentBooking": "Appointment Booking",
@@ -3137,6 +3143,11 @@
     "AtleastXcharactersneedtobeentered": "At least {noOfCharacters} characters need to be entered",
     "lbl_phone": "Phone"
   },
+  "guest": {
+		"players": {
+			"CreateGuestWithPatronID":"Would you like to create a guest with this Patron Id - {patronId}"
+		}
+	},
   "inventory": {
     "InventorySearch": "Search by Item #, Description",
     "FreezeInventory": "Freeze Inventory",

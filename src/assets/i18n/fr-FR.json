@@ -51,6 +51,9 @@
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_fr",
     "PhoneFormat": "(999) 999-9999",
     "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "Extension": " ext: _fr",
+    "ExtensionReport": " ext _fr",
+    "AppendReportCaption": " _fr",
     "alphabets": [
       "A",
       "B",
@@ -917,7 +920,7 @@
     "CustomValues": "Custom Values_fr",
     "Percentage": "Percentage %_fr",
     "Amount": "Amount_fr",
-    "AmounttobePaid": "Amount to be Paid_fr",
+    "AmounttobePaid": "Amount Due_fr",
     "NoOfReceipts": "# of Receipts_fr",
     "RemainingDue": "Remaining Due_fr",
     "Favoritefood": "Favorite food_fr",
@@ -1018,6 +1021,7 @@
     "NoDevicesFound": "No Devices Found. Please select any other payment method_fr",
     "NoRoomsFound": "No Rooms Found_fr",
     "NoPaymentDevicesFound": "No Payment Devices Found_fr",
+    "NoPlayersFound": "Player/ Patron not available._fr",
     "SelectDevice": "Select a Device_fr",
     "SelectedDevice": "Selected Device_fr",
     "CardType": "Card Type_fr",
@@ -1088,6 +1092,7 @@
     "TransactionInprogressMsg": "Please wait, while your request is being processed_fr",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved._fr",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved._fr",
+    "RetrievePatronDetails": "Please wait, while the player details are being retrieved._fr",
     "RefundInProgress": "Please wait, while your request is being processed._fr",
     "SelectGuest": "Select a Guest_fr",
     "SelectedGuest": "Selected Guest_fr",
@@ -1115,10 +1120,10 @@
     },
     "fullPayment": "Full Payment_fr",
     "multiPayment": "Multiple Payment_fr",
-    "amountToBePaid": "Amount to be paid_fr",
+    "amountToBePaid": "Amount Due_fr",
     "cashPayment": "Cash Payment_fr",
-    "cashReceived": "Cash-received_fr",
-    "remainingChange": "Remaining Change_fr",
+    "cashReceived": "Cash Received_fr",
+    "remainingChange": "Change Due_fr",
     "CancelOpenTransaction": "Would you like to cancel the ticket?_fr",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_fr",
     "TransactionLock": "Transaction is locked, Please try after sometime._fr",
@@ -2531,7 +2536,7 @@
     "IncludeVoidedTransaction": "Include Voided Transaction_fr",
     "NotFullyApplied": "Not Fully Applied_fr",
     "missingCustomField": "Missing Custom Field_fr",
-    "PaymentMethods": "PaymentMethod(s)_fr"
+    "PaymentMethods": "Payment Method(s)_fr"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fr",
@@ -2584,6 +2589,7 @@
     "transactionAmount": "Transaction Amount_fr",
     "action": "Action_fr",
     "item": "Item_fr",
+    "outlet": "Outlet_fr",
     "items": "Items_fr",
     "outofStockOn": "Out of Stock On_fr",
     "returnItems": " Return Items_fr",
@@ -3136,6 +3142,11 @@
     "Atleast2charactersneedtobeentered": "At least 2 characters need to be entered_fr",
     "AtleastXcharactersneedtobeentered": "At least {noOfCharacters} characters need to be entered_fr",
     "lbl_phone": "Phone_fr"
+  },
+  "guest": {
+    "players": {
+      "CreateGuestWithPatronID": "Would you like to create a guest with this Patron Id - {patronId}_fr"
+    }
   },
   "inventory": {
     "InventorySearch": "Search by Item #, Description_fr",

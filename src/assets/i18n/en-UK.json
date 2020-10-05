@@ -51,6 +51,9 @@
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_uk",
     "PhoneFormat": "(999) 999-9999",
     "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "Extension": " ext: _uk",
+    "ExtensionReport": " ext _uk",
+    "AppendReportCaption": " _uk",
     "alphabets": [
       "A",
       "B",
@@ -917,7 +920,7 @@
     "CustomValues": "Custom Values_uk",
     "Percentage": "Percentage %_uk",
     "Amount": "Amount_uk",
-    "AmounttobePaid": "Amount to be Paid_uk",
+    "AmounttobePaid": "Amount Due_uk",
     "NoOfReceipts": "# of Receipts_uk",
     "RemainingDue": "Remaining Due_uk",
     "Favoritefood": "Favorite food_uk",
@@ -1018,6 +1021,7 @@
     "NoDevicesFound": "No Devices Found. Please select any other payment method_uk",
     "NoRoomsFound": "No Rooms Found_uk",
     "NoPaymentDevicesFound": "No Payment Devices Found_uk",
+    "NoPlayersFound": "Player/ Patron not available._uk",
     "SelectDevice": "Select a Device_uk",
     "SelectedDevice": "Selected Device_uk",
     "CardType": "Card Type_uk",
@@ -1088,6 +1092,7 @@
     "TransactionInprogressMsg": "Please wait, while your request is being processed_uk",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved._uk",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved._uk",
+    "RetrievePatronDetails": "Please wait, while the player details are being retrieved._uk",
     "RefundInProgress": "Please wait, while your request is being processed._uk",
     "SelectGuest": "Select a Guest_uk",
     "SelectedGuest": "Selected Guest_uk",
@@ -1115,10 +1120,10 @@
     },
     "fullPayment": "Full Payment_uk",
     "multiPayment": "Multiple Payment_uk",
-    "amountToBePaid": "Amount to be paid_uk",
+    "amountToBePaid": "Amount Due_uk",
     "cashPayment": "Cash Payment_uk",
-    "cashReceived": "Cash-received_uk",
-    "remainingChange": "Remaining Change_uk",
+    "cashReceived": "Cash Received_uk",
+    "remainingChange": "Change Due_uk",
     "CancelOpenTransaction": "Would you like to cancel the ticket?_uk",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_uk",
     "TransactionLock": "Transaction is locked, Please try after sometime._uk",
@@ -2531,7 +2536,7 @@
     "IncludeVoidedTransaction": "Include Voided Transaction_uk",
     "NotFullyApplied": "Not Fully Applied_uk",
     "missingCustomField": "Missing Custom Field_uk",
-    "PaymentMethods": "PaymentMethod(s)_uk"
+    "PaymentMethods": "Payment Method(s)_uk"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_uk",
@@ -2584,6 +2589,7 @@
     "transactionAmount": "Transaction Amount_uk",
     "action": "Action_uk",
     "item": "Item_uk",
+    "outlet": "Outlet_uk",
     "items": "Items_uk",
     "outofStockOn": "Out of Stock On_uk",
     "returnItems": " Return Items_uk",
@@ -3136,6 +3142,11 @@
     "Atleast2charactersneedtobeentered": "At least 2 characters need to be entered_uk",
     "AtleastXcharactersneedtobeentered": "At least {noOfCharacters} characters need to be entered_uk",
     "lbl_phone": "Phone_uk"
+  },
+  "guest": {
+    "players": {
+      "CreateGuestWithPatronID": "Would you like to create a guest with this Patron Id - {patronId}_uk"
+    }
   },
   "inventory": {
     "InventorySearch": "Search by Item #, Description_uk",

@@ -51,6 +51,9 @@
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_in",
     "PhoneFormat": "(999) 999-9999",
     "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "Extension": " ext: _in",
+    "ExtensionReport": " ext _in",
+    "AppendReportCaption": " _in",
     "alphabets": [
       "A",
       "B",
@@ -917,7 +920,7 @@
     "CustomValues": "Custom Values_in",
     "Percentage": "Percentage %_in",
     "Amount": "Amount_in",
-    "AmounttobePaid": "Amount to be Paid_in",
+    "AmounttobePaid": "Amount Due_in",
     "NoOfReceipts": "# of Receipts_in",
     "RemainingDue": "Remaining Due_in",
     "Favoritefood": "Favorite food_in",
@@ -1018,6 +1021,7 @@
     "NoDevicesFound": "No Devices Found. Please select any other payment method_in",
     "NoRoomsFound": "No Rooms Found_in",
     "NoPaymentDevicesFound": "No Payment Devices Found_in",
+    "NoPlayersFound": "Player/ Patron not available._in",
     "SelectDevice": "Select a Device_in",
     "SelectedDevice": "Selected Device_in",
     "CardType": "Card Type_in",
@@ -1088,6 +1092,7 @@
     "TransactionInprogressMsg": "Please wait, while your request is being processed_in",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved._in",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved._in",
+    "RetrievePatronDetails": "Please wait, while the player details are being retrieved._in",
     "RefundInProgress": "Please wait, while your request is being processed._in",
     "SelectGuest": "Select a Guest_in",
     "SelectedGuest": "Selected Guest_in",
@@ -1115,10 +1120,10 @@
     },
     "fullPayment": "Full Payment_in",
     "multiPayment": "Multiple Payment_in",
-    "amountToBePaid": "Amount to be paid_in",
+    "amountToBePaid": "Amount Due_in",
     "cashPayment": "Cash Payment_in",
-    "cashReceived": "Cash-received_in",
-    "remainingChange": "Remaining Change_in",
+    "cashReceived": "Cash Received_in",
+    "remainingChange": "Change Due_in",
     "CancelOpenTransaction": "Would you like to cancel the ticket?_in",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_in",
     "TransactionLock": "Transaction is locked, Please try after sometime._in",
@@ -2531,7 +2536,7 @@
     "IncludeVoidedTransaction": "Include Voided Transaction_in",
     "NotFullyApplied": "Not Fully Applied_in",
     "missingCustomField": "Missing Custom Field_in",
-    "PaymentMethods": "PaymentMethod(s)_in"
+    "PaymentMethods": "Payment Method(s)_in"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_in",
@@ -2584,6 +2589,7 @@
     "transactionAmount": "Transaction Amount_in",
     "action": "Action_in",
     "item": "Item_in",
+    "outlet": "Outlet_in",
     "items": "Items_in",
     "outofStockOn": "Out of Stock On_in",
     "returnItems": " Return Items_in",
@@ -3136,6 +3142,11 @@
     "Atleast2charactersneedtobeentered": "At least 2 characters need to be entered_in",
     "AtleastXcharactersneedtobeentered": "At least {noOfCharacters} characters need to be entered_in",
     "lbl_phone": "Phone_in"
+  },
+  "guest": {
+    "players": {
+      "CreateGuestWithPatronID": "Would you like to create a guest with this Patron Id - {patronId}_in"
+    }
   },
   "inventory": {
     "InventorySearch": "Search by Item #, Description_in",

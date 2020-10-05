@@ -51,6 +51,9 @@
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_au",
     "PhoneFormat": "(999) 999-9999",
     "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "Extension": " ext: _au",
+    "ExtensionReport": " ext _au",
+    "AppendReportCaption": " _au",
     "alphabets": [
       "A",
       "B",
@@ -917,7 +920,7 @@
     "CustomValues": "Custom Values_au",
     "Percentage": "Percentage %_au",
     "Amount": "Amount_au",
-    "AmounttobePaid": "Amount to be Paid_au",
+    "AmounttobePaid": "Amount Due_au",
     "NoOfReceipts": "# of Receipts_au",
     "RemainingDue": "Remaining Due_au",
     "Favoritefood": "Favorite food_au",
@@ -1018,6 +1021,7 @@
     "NoDevicesFound": "No Devices Found. Please select any other payment method_au",
     "NoRoomsFound": "No Rooms Found_au",
     "NoPaymentDevicesFound": "No Payment Devices Found_au",
+    "NoPlayersFound": "Player/ Patron not available._au",
     "SelectDevice": "Select a Device_au",
     "SelectedDevice": "Selected Device_au",
     "CardType": "Card Type_au",
@@ -1088,6 +1092,7 @@
     "TransactionInprogressMsg": "Please wait, while your request is being processed_au",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved._au",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved._au",
+    "RetrievePatronDetails": "Please wait, while the player details are being retrieved._au",
     "RefundInProgress": "Please wait, while your request is being processed._au",
     "SelectGuest": "Select a Guest_au",
     "SelectedGuest": "Selected Guest_au",
@@ -1115,10 +1120,10 @@
     },
     "fullPayment": "Full Payment_au",
     "multiPayment": "Multiple Payment_au",
-    "amountToBePaid": "Amount to be paid_au",
+    "amountToBePaid": "Amount Due_au",
     "cashPayment": "Cash Payment_au",
-    "cashReceived": "Cash-received_au",
-    "remainingChange": "Remaining Change_au",
+    "cashReceived": "Cash Received_au",
+    "remainingChange": "Change Due_au",
     "CancelOpenTransaction": "Would you like to cancel the ticket?_au",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_au",
     "TransactionLock": "Transaction is locked, Please try after sometime._au",
@@ -2531,7 +2536,7 @@
     "IncludeVoidedTransaction": "Include Voided Transaction_au",
     "NotFullyApplied": "Not Fully Applied_au",
     "missingCustomField": "Missing Custom Field_au",
-    "PaymentMethods": "PaymentMethod(s)_au"
+    "PaymentMethods": "Payment Method(s)_au"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_au",
@@ -2584,6 +2589,7 @@
     "transactionAmount": "Transaction Amount_au",
     "action": "Action_au",
     "item": "Item_au",
+    "outlet": "Outlet_au",
     "items": "Items_au",
     "outofStockOn": "Out of Stock On_au",
     "returnItems": " Return Items_au",
@@ -3136,6 +3142,11 @@
     "Atleast2charactersneedtobeentered": "At least 2 characters need to be entered_au",
     "AtleastXcharactersneedtobeentered": "At least {noOfCharacters} characters need to be entered_au",
     "lbl_phone": "Phone_au"
+  },
+  "guest": {
+    "players": {
+      "CreateGuestWithPatronID": "Would you like to create a guest with this Patron Id - {patronId}_au"
+    }
   },
   "inventory": {
     "InventorySearch": "Search by Item #, Description_au",

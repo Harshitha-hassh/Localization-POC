@@ -758,9 +758,10 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 
   async getOpenTicketsData() {
     this.Open_Tickets_data = {
-      data: await this.dashBoardBusiness.getOpenTicketsData(this.propertyDate, this.outletIds),
+      data: await this.dashBoardBusiness.getOpenTicketsData(this.propertyDate, this.outletIds, this.dashboardWidgetsReportService.OutletsData),
       headerData: [
         { key: 'ticketNumber', description: this.captions.ticketNumber, alignment: 'textLeft font-bold w-25' },
+        { key: 'outlet', description: this.captions.outlet, alignment: 'textLeft font-bold w-25' },
         { key: 'transactionAmount', description: this.captions.transactionAmount, alignment: 'textRight font-bold w-25' },
         { key: 'action', description: this.captions.action, alignment: 'textRight font-bold w-25', customClass: 'themeTextColor' }
       ],
@@ -770,9 +771,10 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 
   async getOutofStockOnData() {
     this.Out_of_StockItems_data = {
-      data: await this.dashBoardBusiness.getOutofStockOnData(this.outletIds),
+      data: await this.dashBoardBusiness.getOutofStockOnData(this.outletIds, this.dashboardWidgetsReportService.OutletsData),
       headerData: [
         { key: 'item', description: this.captions.item, alignment: 'textLeft font-bold w-25' },
+        { key: 'outlet', description: this.captions.outlet, alignment: 'textLeft font-bold w-25' },
         { key: 'outofStockOn', description: this.captions.outofStockOn, alignment: 'textRight font-bold w-25' }
       ],
       headerEnable: true
