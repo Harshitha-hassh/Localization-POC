@@ -1016,11 +1016,11 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         return true;
       }
 
-      if (cmsData.address && (cmsData.address.addressLine1 != existingData.addresses[0].line1 ||
-        cmsData.address.city != existingData.addresses[0].city ||
-        cmsData.address.state != existingData.addresses[0].state ||
-        cmsData.address.postalCode != existingData.addresses[0].zip ||
-        cmsData.address.country != existingData.addresses[0].country)) {
+      if (cmsData.address && (cmsData.address.addressLine1 != existingData.addresses.line1 ||
+        cmsData.address.city != existingData.addresses.city ||
+        cmsData.address.state != existingData.addresses.state ||
+        cmsData.address.postalCode != existingData.addresses.zip ||
+        cmsData.address.country != existingData.addresses.country)) {
         return true;
       }
 
