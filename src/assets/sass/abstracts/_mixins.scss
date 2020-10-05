@@ -508,7 +508,8 @@ $themes: (
 
       .mat-primary .mat-option.mat-selected:not(.mat-option-disabled),
       .common-CustomDataTable table .done,
-      .common-CustomDataTable table .done .icon-done {
+      .common-CustomDataTable table .done .icon-done,
+      .golf__link, .spa-btnlg-primary {
         color: $header-background !important;
       }
       .template-sms-container .CustomTableGrid .filter-btn .icon-filter_filled {
@@ -518,11 +519,17 @@ $themes: (
       .icon-help_question:before {
         color: $header1_icon !important;
       }
+
+      .icon-emptyshop:before {
+        color: $header-background !important
+      }
       // .mat-option.mat-active {
       //   background: $header-background !important;
       //   color: $header1_icon !important;
       // }
-
+      .profile-section .user-details .logout-style {
+        color: $header-background !important;
+      }
 
       .ngx-pagination {
         .current {

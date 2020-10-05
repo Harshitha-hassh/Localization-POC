@@ -25,7 +25,7 @@ export class LayoutComponent implements OnInit {
    }
 
   ngOnInit() {
-      
+      this.applyTheme('blacktheme');
   }
 
   applyTheme(name) {
