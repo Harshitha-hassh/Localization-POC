@@ -1,7 +1,7 @@
 {
   "RetailApiHosts": {
-    "TenantManagement": "/commongateway",
-    "RetailManagement": "/VisualOne/retailgateway",
+    "TenantManagement": "https://v1-tenantmanagement-dev.rguest.com/api",
+    "RetailManagement": "https://retail-gateway-dev.rguest.com/visualone/retailgateway",
     "Report": "/VisualOne/retailgateway",
     "PayAgent": "http://localhost:8020",
     "MsDeeplink": "https://outlook.office365.com/mail/deeplink/compose/",

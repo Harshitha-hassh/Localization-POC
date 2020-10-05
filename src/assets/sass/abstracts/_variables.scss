@@ -156,7 +156,11 @@ $toggle-height: 50px;
 $check-box-outer: $darkGrey;
 
 
-
+// header
+$menu-header-height: 60px;
+$theme-container-height: 0px;
+$total-header-height: $menu-header-height + $theme-container-height;
+$primary-menu-header-bg: $theme-color;
 
 
 
@@ -508,3 +512,36 @@ $order-summary-highlight-bg: $theme-blue-light;
 $theme-grey-bg-color: $ag_grey-darkest;
 $selected-menu-color: $ag_base-color;
 $header-bg:$header-bg;
+
+// golf theme
+$theme_golf_green   : $ag_golf_green ;
+
+// grey theme
+$theme_grey_base_color: $plum;
+$active_bg : $dark-plum;
+$icon_bg_color : $grey-plum;
+$text-color: $ag_white;
+$grey-color : $mildGrey;
+
+// balck theme
+$theme_black_base_color: $black;
+$theme_black_active_bg : $mildBlack ;
+$theme_black_icon_bg_color : red; // chng
+$theme_black_text-color: $ag_white;
+$theme_black_color : $mildGrey; //chg
+
+
+// orange theme
+$theme_orange_base_color: $theme_orange;
+$theme_orange_active_bg : $theme_darkOrange ;
+$theme_orange_text-color: $ag_white;
+
+// blue theme
+$theme_blue_base_color: $theme_blue;
+$theme_blue_active_bg : $theme_navyBlue ;
+$theme_blue_text-color: $ag_white;
+
+// green theme
+$theme_green_base_color: $theme_green;
+$theme_green_active_bg : $theme_grey ;
+$theme_green_text-color: $ag_white;
