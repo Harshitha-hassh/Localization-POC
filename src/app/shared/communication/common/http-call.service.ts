@@ -7,7 +7,7 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { takeUntil } from 'rxjs/operators';
 import { Utilities } from 'src/app/core/utilities';
-import { JWT_TOKEN } from 'src/app/core/app-constants';
+import { JWT_TOKEN, USER_SESSION } from 'src/app/core/app-constants';
 
 
 export class HttpCallService {
@@ -182,35 +182,13 @@ export class HttpCallService {
     }
 
     private setHeaders(): HttpHeaders {
-        const subPropertyId = this.getPropertyInfo('PropertyId');
-        const tenantId = this.getPropertyInfo('TenantId');
-        const propertyId = this.getPropertyInfo('PropertyId');
-        const language = this.getUserInfo('language') ? this.getUserInfo('language') : this.getPropertyInfo('Language');
+        const token = sessionStorage.getItem("_jwt");
+        const userSessionId = sessionStorage.getItem("userSession");
         let headers = new HttpHeaders()
-            .set('Accept-Language', navigator.language)
-            .set('UserName', this.getUserInfo('userName'))
-            .set('PropertyCode', this.getPropertyInfo('PropertyCode'))
-            .set('outletId', '1')
-            .set('ProductId', '2') //TODO: newly introduced for Auth service
-            .set('SubPropertyCode', this.getPropertyInfo('SubPropertyCode'))
-            .set('TimeZone', this.getPropertyInfo('timeZone'))
-            //.set('TimeZone', 'Asia/Kolkata')
-            .set('TenantId', tenantId ? tenantId : '1')
-            .set('Language', language)
-            .set('UserRoleId', this.getUserInfo('roleId'))
-            .set('UserId', this.getUserInfo('userId'))
-            .set('Content-Type', 'application/json')
-            // .set('PropertyDTTM', this.utilities.ConvertDateToISODateTime(this.utilities.getCurrentDate()))
-            .set('PropertyDTTM', this.localization.ConvertDateToISODateTime(this.PropertyInfo.CurrentDTTM)) //Changes added to fetch from properties set
-            .set('PropertyId', propertyId ? propertyId : '1')          //this.getPropertyInfo('PropertyId')
-            .set('SubPropertyId', this.getPropertyInfo('SubPropertyId'))    //this.getPropertyInfo('SubPropertyId')
-            .set('PlatformTenantId', this.getPropertyInfo('PlatformTenantId') || '831')
-            .set('Authorization', 'Bearer ' + sessionStorage.getItem(JWT_TOKEN))
-            /*  .set('UserToken', this.getUserToken()); */
-            //    .set('Access-Control-Allow-Origin','*')
-            //.set("TimeZone", this.getPropertyInfo("TimeZone"))
-            .set('UserToken', '1')
-            .set("PlatformPropertyId",this.getPropertyInfo("PlatformPropertyId"));
+        .set('Accept-Language', navigator.language)
+        .set('Content-Type', 'application/json')
+        .set("Authorization", token ? 'Bearer ' + token : "")
+        .set("SessionId", userSessionId ? userSessionId : "");
         return headers;
     }
 
