@@ -2534,7 +2534,7 @@
     "IncludeVoidedTransaction": "Include Voided Transaction_au",
     "NotFullyApplied": "Not Fully Applied_au",
     "missingCustomField": "Missing Custom Field_au",
-    "PaymentMethods": "PaymentMethod(s)_au"
+    "PaymentMethods": "Payment Method(s)_au"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_au",
