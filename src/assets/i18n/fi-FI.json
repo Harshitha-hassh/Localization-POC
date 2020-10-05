@@ -920,7 +920,7 @@
     "CustomValues": "Custom Values_fi",
     "Percentage": "Percentage %_fi",
     "Amount": "Amount_fi",
-    "AmounttobePaid": "Amount to be Paid_fi",
+    "AmounttobePaid": "Amount Due_fi",
     "NoOfReceipts": "# of Receipts_fi",
     "RemainingDue": "Remaining Due_fi",
     "Favoritefood": "Favorite food_fi",
@@ -1021,6 +1021,7 @@
     "NoDevicesFound": "No Devices Found. Please select any other payment method_fi",
     "NoRoomsFound": "No Rooms Found_fi",
     "NoPaymentDevicesFound": "No Payment Devices Found_fi",
+    "NoPlayersFound": "Player/ Patron not available._fi",
     "SelectDevice": "Select a Device_fi",
     "SelectedDevice": "Selected Device_fi",
     "CardType": "Card Type_fi",
@@ -1091,6 +1092,7 @@
     "TransactionInprogressMsg": "Please wait, while your request is being processed_fi",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved._fi",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved._fi",
+    "RetrievePatronDetails": "Please wait, while the player details are being retrieved._fi",
     "RefundInProgress": "Please wait, while your request is being processed._fi",
     "SelectGuest": "Select a Guest_fi",
     "SelectedGuest": "Selected Guest_fi",
@@ -1118,10 +1120,10 @@
     },
     "fullPayment": "Full Payment_fi",
     "multiPayment": "Multiple Payment_fi",
-    "amountToBePaid": "Amount to be paid_fi",
+    "amountToBePaid": "Amount Due_fi",
     "cashPayment": "Cash Payment_fi",
-    "cashReceived": "Cash-received_fi",
-    "remainingChange": "Remaining Change_fi",
+    "cashReceived": "Cash Received_fi",
+    "remainingChange": "Change Due_fi",
     "CancelOpenTransaction": "Would you like to cancel the ticket?_fi",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_fi",
     "TransactionLock": "Transaction is locked, Please try after sometime._fi",
@@ -3140,6 +3142,11 @@
     "Atleast2charactersneedtobeentered": "At least 2 characters need to be entered_fi",
     "AtleastXcharactersneedtobeentered": "At least {noOfCharacters} characters need to be entered_fi",
     "lbl_phone": "Phone_fi"
+  },
+  "guest": {
+    "players": {
+      "CreateGuestWithPatronID": "Would you like to create a guest with this Patron Id - {patronId}_fi"
+    }
   },
   "inventory": {
     "InventorySearch": "Search by Item #, Description_fi",

@@ -920,7 +920,7 @@
     "CustomValues": "Custom Values_de",
     "Percentage": "Percentage %_de",
     "Amount": "Amount_de",
-    "AmounttobePaid": "Amount to be Paid_de",
+    "AmounttobePaid": "Amount Due_de",
     "NoOfReceipts": "# of Receipts_de",
     "RemainingDue": "Remaining Due_de",
     "Favoritefood": "Favorite food_de",
@@ -1021,6 +1021,7 @@
     "NoDevicesFound": "No Devices Found. Please select any other payment method_de",
     "NoRoomsFound": "No Rooms Found_de",
     "NoPaymentDevicesFound": "No Payment Devices Found_de",
+    "NoPlayersFound": "Player/ Patron not available._de",
     "SelectDevice": "Select a Device_de",
     "SelectedDevice": "Selected Device_de",
     "CardType": "Card Type_de",
@@ -1091,6 +1092,7 @@
     "TransactionInprogressMsg": "Please wait, while your request is being processed_de",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved._de",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved._de",
+    "RetrievePatronDetails": "Please wait, while the player details are being retrieved._de",
     "RefundInProgress": "Please wait, while your request is being processed._de",
     "SelectGuest": "Select a Guest_de",
     "SelectedGuest": "Selected Guest_de",
@@ -1118,10 +1120,10 @@
     },
     "fullPayment": "Full Payment_de",
     "multiPayment": "Multiple Payment_de",
-    "amountToBePaid": "Amount to be paid_de",
+    "amountToBePaid": "Amount Due_de",
     "cashPayment": "Cash Payment_de",
-    "cashReceived": "Cash-received_de",
-    "remainingChange": "Remaining Change_de",
+    "cashReceived": "Cash Received_de",
+    "remainingChange": "Change Due_de",
     "CancelOpenTransaction": "Would you like to cancel the ticket?_de",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_de",
     "TransactionLock": "Transaction is locked, Please try after sometime._de",
@@ -3140,6 +3142,11 @@
     "Atleast2charactersneedtobeentered": "At least 2 characters need to be entered_de",
     "AtleastXcharactersneedtobeentered": "At least {noOfCharacters} characters need to be entered_de",
     "lbl_phone": "Phone_de"
+  },
+  "guest": {
+    "players": {
+      "CreateGuestWithPatronID": "Would you like to create a guest with this Patron Id - {patronId}_de"
+    }
   },
   "inventory": {
     "InventorySearch": "Search by Item #, Description_de",
