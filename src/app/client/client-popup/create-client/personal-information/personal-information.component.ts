@@ -265,6 +265,19 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
   ngOnInit() {
+    this._ams.loaderEnable.pipe(takeUntil(this.destroyed$)).subscribe(loader => {
+      const loadingContainer = document.getElementById('custom-cover-spin');
+      const loadingContainerMessage = document.getElementById('custom-cover-message');
+      if (loadingContainer && loadingContainerMessage) {
+        if (loader) {
+          loadingContainer.style.display = 'block';
+          loadingContainerMessage.innerText = loader;
+        } else {
+          loadingContainer.style.display = 'none';
+          loadingContainerMessage.innerText = '';
+        }
+      }
+    });
     if (this.parentForm) {
       this.parentForm.addControl('personalDetailsFormGroup', this.FormGrp);
     }
