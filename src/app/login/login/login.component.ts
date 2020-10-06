@@ -296,6 +296,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       // create session and store session id into data service
       const usersessionId = await this.sessionService.createSession();
       sessionStorage.setItem(USER_SESSION, String(usersessionId));
+      await this.setEatecToken();
       this.setAutoLogOff();
      // await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.router.navigate(['/home']);
@@ -366,7 +367,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.localize.SetLocaleBasedProperties();
     this.commonLocalize.SetLocaleBasedProperties();
     this.UpdateUserRole(Selectedproperty.id);
-    await this.setEatecToken();
   }
 
   async setEatecToken() {
