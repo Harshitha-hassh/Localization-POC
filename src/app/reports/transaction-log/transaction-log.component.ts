@@ -71,6 +71,9 @@ export class TransactionLogComponent implements OnInit {
   resetSearch(event?:any):void {
     this.transactionForm.reset();
     this.showIncludeTemp=false;
+    this.transactionForm.controls.logType.setValue(this.logType[0].code);
+    let currentDate = this.PropertyInfo.CurrentDate;
+    this.transactionForm.controls.date.setValue(currentDate);
   }
 
   searchReport(event?:any):void {
