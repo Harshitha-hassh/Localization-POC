@@ -621,5 +621,6 @@
   "IsBarcodeExists": "retailitems/validate/barcode/{barcode}",
   "GetRetailItemDetailedInfo": "retailitems/detailed-info?id={id}",
   "SyncInventory": "retailitems/syncinventory/outlets/{outletId}",
-  "GetRetailItemById": "RetailItems/{itemId}"
+  "GetRetailItemById": "RetailItems/{itemId}",
+  "GetTransactionCountByPaymentMethod": "Transaction/paymentmethod/{paymentmethodId}/count"
 }
