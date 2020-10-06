@@ -224,6 +224,7 @@
   "100301": "This process will update all items in the selected outlets with the data downloaded and/or manually modified for those Outlets. The Items will be Auto-Released, upon selecting Yes. Do you wish to proceed?_da",
   "100302": "Transaction is open, Would you still want to cancel this ticket #{TicketNumber}?_da",
   "100713": "At least 3 characters need to be entered_da",
+  "100714": "Payment method in use, deactivation not allowed_da",
   "100904": "Duplicate Vendor Code_da",
   "100905": "Duplicate Vendor Name_da",
   "100911": "Duplicate Vendor Type_da",

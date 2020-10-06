@@ -293,7 +293,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     this.cardInfo =  clientInfo.client.clientCreditCardInfo && clientInfo.client.clientCreditCardInfo!=null ? [clientInfo.client.clientCreditCardInfo] : [];
       if (this.cardInfo && this.cardInfo.length > 0) {
         const activeCard = this.cardInfo.filter(x => x.isActive);
-        if (activeCard) {
+        if (activeCard && activeCard.length > 0) {
           let newCardInfo: CardInfo = await this.getCardInfo(activeCard[0].tokenTransId)
           if (newCardInfo !== null) {
             this.displayCardInfo = newCardInfo;

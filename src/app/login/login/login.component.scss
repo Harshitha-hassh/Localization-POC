@@ -15,6 +15,8 @@
     #{ $self }__btn {
         width: 303px;
         text-transform: uppercase;
+        background-color: $ag_base-color;
+        color: white;
     }
 
     #{ $self }__btn:focus {
@@ -47,7 +49,7 @@
                     height: 20%;
                     position: absolute;
                     z-index: 1;
-                    right: 20px;
+                    right: 70px;
                     top: 50px;                
                 }
 

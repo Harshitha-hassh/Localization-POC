@@ -71,6 +71,9 @@ export class TransactionLogComponent implements OnInit {
   resetSearch(event?:any):void {
     this.transactionForm.reset();
     this.showIncludeTemp=false;
+    this.transactionForm.controls.logType.setValue(this.logType[0].code);
+    let currentDate = this.PropertyInfo.CurrentDate;
+    this.transactionForm.controls.date.setValue(currentDate);
   }
 
   searchReport(event?:any):void {
@@ -109,6 +112,7 @@ export class TransactionLogComponent implements OnInit {
   // }
 
   ngOnInit() {
+    let currentDate = this.PropertyInfo.CurrentDate;
     this.transactionForm = this.fb.group({
       logType: [''],
       transactionNumber: [''],
@@ -116,7 +120,7 @@ export class TransactionLogComponent implements OnInit {
       endDate: [''],
       firstName: [''],
       lastName: [''],
-      date: [''],
+      date: [currentDate],
       appointmentNumber: [''],
       includetempappointment:false,
       userID: ['']
@@ -126,6 +130,7 @@ export class TransactionLogComponent implements OnInit {
     this.getTransactionData();
     this.GetServiceCall('GetAllUsers', { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
     this.transactionForm.valueChanges.subscribe( a => this.validateEntries());
+    this.transactionForm.controls.logType.setValue(this.logType[0].code);
   }
 
   GetServiceCall(Route:any, Uri?:any):void {

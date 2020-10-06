@@ -1,4 +1,5 @@
 @import "../../../assets/sass/abstracts/variables";
+@import '../../../assets/sass/base/base';
 .ag {
   &__container {
     width: 100%;
@@ -18,6 +19,46 @@
   &__wrapper {
     width: 100%;
     height: 100%;
+    .theme-color-wrapper{
+      height: $theme-container-height;
+      display: flex;
+      background: $header-bg;
+      .theme-color-container{
+          margin-left:auto;
+          margin-right: 5px;
+      }
+      .theme-color-button{
+          border: 1px solid $ag_base-text-white;
+          border-radius: 50%;
+          width: 12px;
+          height: 12px;
+          display: inline-block;
+          margin: 0.5rem 2px;
+          cursor: pointer;
+          color:$ag_base-text-white;
+          font-size: 6px;
+          
+          &.greytheme {
+              background-color: $theme_grey_base_color;
+          }  
+          &.blacktheme {
+            background-color: $theme_black_base_color;
+          }    
+          &.orangetheme {
+            background-color: $theme_orange_base_color;
+          }    
+          &.navybluetheme {
+            background-color: $theme_blue_base_color;
+          }
+          &.greentheme {
+            background-color: $theme_green_base_color;
+          }
+      }
+  }
+  
+  .menu-wrapper{
+      height: calc(100% - #{$theme-container-height});
+  }
   }
 }
 

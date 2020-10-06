@@ -4229,7 +4229,7 @@ i {
   width: 60px;
   height: 60px;
   border-style: solid;
-  border-color: #43a047;
+  border-color: $theme-base-color;
   border-top-color: transparent;
   border-width: 4px;
   border-radius: 50%;
@@ -5482,4 +5482,14 @@ a:hover {
   content: "\ea28";
   margin-left: -1.37890625em;
   color: rgb(162, 242, 216);
+}
+
+.icon-Player-worth_enabled .path1:before {
+  content: "\ecc2";
+  color: $theme-base-color;
+}
+.icon-Player-worth_enabled .path2:before {
+  content: "\ecc3";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
 }

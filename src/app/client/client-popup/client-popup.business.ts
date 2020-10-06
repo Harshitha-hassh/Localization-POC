@@ -61,7 +61,9 @@ export class CreateClientBusiness {
         emails: this.formEmailObj(),
         addresses: this.formAddressObject(),
         phoneNumbers: this.formPhoneObject(),
-        clientCreditCardInfo: this.additionalDetailsFormGroup.clientCreditCardInfo && this.additionalDetailsFormGroup.clientCreditCardInfo.length >0  ? this.additionalDetailsFormGroup.clientCreditCardInfo[0] :null 
+        clientCreditCardInfo: this.additionalDetailsFormGroup.clientCreditCardInfo
+          && this.additionalDetailsFormGroup.clientCreditCardInfo.length > 0 ?
+          this.additionalDetailsFormGroup.clientCreditCardInfo.find(x => x.isActive) : null
       }
       return clientInfoObj;
     }

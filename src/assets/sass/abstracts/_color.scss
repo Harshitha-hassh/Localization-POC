@@ -65,6 +65,8 @@ $snow: #fbfbfb;
 $orange: unquote("#FF6600");
 
 // Colors used in Golf
+$ag_golf_green : unquote("#43a047"); 
+
 
 // Default colors
 $black: unquote("#000000");
@@ -413,3 +415,32 @@ $theme-light-bg: unquote("#e6f7e8");
 $theme-dark-bg: unquote("#a4fab9");
 $black-opacity38: rgba(0, 0, 0, 0.38);
 $header-bg: unquote("#2d3236");
+$theme-color: unquote("#1d3faa");
+
+
+// default theme - grey
+$mildGrey : unquote("#aeb4b8");
+$plum : unquote("#835c84");
+$black-theme: unquote("#2322223b");
+$dark-plum: unquote("#5e3f5e");
+$grey-plum : unquote("#ffffffa6");
+
+// default theme - black
+$mildBlack : rgb(74, 72, 72);
+$black : unquote("#000000");
+// $black-theme: unquote("#2322223b");
+$light-black: unquote("#5e3f5e");
+// $grey-plum : unquote("#ffffffa6");
+// $theme_white: #fff;
+
+// orange theme
+$theme_orange: rgb(238,116,31);
+$theme_darkOrange: rgb(112, 54, 7);
+
+// navy blue theme
+$theme_blue: rgb(72,145,206);
+$theme_navyBlue: rgb(0,68,106);
+
+// green theme
+$theme_green: rgb(72,169,76);
+$theme_grey: unquote("#3a754c");

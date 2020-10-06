@@ -38,7 +38,7 @@ $font-size28: 30px;
 
 /*** Agilysys base color variables ***/
 
-$ag_base-color: $navy-blue-darkest;
+$ag_base-color: $black ; //$navy-blue-darkest;
 $ag_base-text-black: $black;
 $ag_base-text-white: $white;
 
@@ -156,7 +156,11 @@ $toggle-height: 50px;
 $check-box-outer: $darkGrey;
 
 
-
+// header
+$menu-header-height: 60px;
+$theme-container-height: 0px;
+$total-header-height: $menu-header-height + $theme-container-height;
+$primary-menu-header-bg: $theme-color;
 
 
 
@@ -489,8 +493,10 @@ $weather-text: $Heather;
 $graphicalDrakRow: $mildGreenDarkRow;
 $graphicalLightRow: $mildGreenLightRow;
 
-$order-summary-light-bg: $theme-blue-lighttest;
-$order-summary-dark-bg: $theme-blue-light;
+// $order-summary-light-bg: $theme-blue-lighttest;
+$order-summary-light-bg: $gray-light;
+// $order-summary-dark-bg: $theme-blue-light;
+$order-summary-dark-bg: $gray-dark;
 $theme-base-color: $ag_base-color;
 $selected-menu-bg-color: $theme-blue-selection;
 /*Commission Setup Gratutity toggle*/
@@ -504,7 +510,41 @@ $error-color: $ag_error-color;
 $menu-search-hover-theme:$theme-blue-lighttest;
 
 // Added for Shop Order Summary
-$order-summary-highlight-bg: $theme-blue-light;
+// $order-summary-highlight-bg: $theme-blue-light;
+$order-summary-highlight-bg: $gray-dark;
 $theme-grey-bg-color: $ag_grey-darkest;
 $selected-menu-color: $ag_base-color;
 $header-bg:$header-bg;
+
+// golf theme
+$theme_golf_green   : $ag_golf_green ;
+
+// grey theme
+$theme_grey_base_color: $plum;
+$active_bg : $dark-plum;
+$icon_bg_color : $grey-plum;
+$text-color: $ag_white;
+$grey-color : $mildGrey;
+
+// balck theme
+$theme_black_base_color: $black;
+$theme_black_active_bg : $mildBlack ;
+$theme_black_icon_bg_color : red; // chng
+$theme_black_text-color: $ag_white;
+$theme_black_color : $mildGrey; //chg
+
+
+// orange theme
+$theme_orange_base_color: $theme_orange;
+$theme_orange_active_bg : $theme_darkOrange ;
+$theme_orange_text-color: $ag_white;
+
+// blue theme
+$theme_blue_base_color: $theme_blue;
+$theme_blue_active_bg : $theme_navyBlue ;
+$theme_blue_text-color: $ag_white;
+
+// green theme
+$theme_green_base_color: $theme_green;
+$theme_green_active_bg : $theme_grey ;
+$theme_green_text-color: $ag_white;
