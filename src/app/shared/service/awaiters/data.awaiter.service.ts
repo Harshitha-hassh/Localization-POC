@@ -46,10 +46,22 @@ export class DataAwaiterService {
         RetailDataAwaiters.SendNotification = this.SendNotification.bind(this);
         RetailDataAwaiters.OpenManualNotifyPopup = this.OpenManualNotifyPopup.bind(this);
         RetailDataAwaiters.getGuestStayDetails = this.getGuestStayDetails.bind(this);
+
+        RetailDataAwaiters.GetExistingPlayer = this.getExistingPlayer.bind(this);
+        RetailDataAwaiters.openGuestPatronPopup = this.openGuestPatronPopup.bind(this);
     }
 
     getChildMenu(url, menutype?) {
         return this.routeLoaderService.GetChildMenu(url, menutype);
+    }
+
+    async openGuestPatronPopup(e, callback: Function, id?, guestId?) {
+       this.openAddGuestPopup(e, callback, undefined, guestId, id);
+    }
+
+    private async getExistingPlayer(patronId) {
+        let client = await this.clientDataService.searchClientByPatron(patronId);
+        return client;
     }
 
     private async searchClient(name: string, requestUid: string): Promise<[ClientSearchModel[], PayeeInfo[]]> {
@@ -135,7 +147,7 @@ export class DataAwaiterService {
         } as ClientInfo;
     }
 
-    async openAddGuestPopup(e, callback: Function, id?, guestId?) {
+    async openAddGuestPopup(e, callback: Function, id?, guestId?, patronId?) {
         let dialogRef = null;
         if (e.toLowerCase() == "ordersummary" ) {
             var result = await this.userAccessBusiness.getUserAccess(BreakPoint.AddNewClientProfile);
@@ -146,7 +158,7 @@ export class DataAwaiterService {
                     maxWidth: '95%',
                     disableClose: true,
                     hasBackdrop: true,
-                    data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
+                    data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true, patronId: patronId },
                     panelClass: 'small-popup'
                 });
             }

@@ -39,6 +39,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   isClientViewOnly = false;
   phoneTypes = PhoneTypes;
   @Input() clientEditData: any;
+  @Input() patronId: any;
   phoneCountArray: any = [{ id: 0, removeLine: false, addLine: true }];
   addressLineArray: any = [{ id: 0, addLine: true, removeLine: false }];
   personalDetails: any = [];
@@ -282,6 +283,11 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.parentForm.addControl('personalDetailsFormGroup', this.FormGrp);
     }
     this.initializeFormData();
+
+    if (this.patronId) {
+      this.FormGrp.controls.patronid.setValue(this.patronId);
+      this.searchPatron();
+    }
 
     if(this.isClientViewOnly) {
       this.utils.disableControls(this.FormGrp);
@@ -973,14 +979,11 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
           guestData.client.gender = playerDetail.gender == 'M' ? 'Male' : 'Female';
         }
         if (playerDetail.address) {
-          guestData.addresses = [];
-          guestData.addresses.push({
-            line1: playerDetail.address.addressLine1,
-            city: playerDetail.address.city,
-            state: playerDetail.address.state,
-            zip: playerDetail.address.postalCode,
-            country: playerDetail.address.country
-          })
+          guestData.addresses.addressLine1 = playerDetail.address.addressLine1;
+          guestData.addresses.city = playerDetail.address.city;
+          guestData.addresses.state = playerDetail.address.state;
+          guestData.addresses.zipCode = playerDetail.address.postalCode;
+          guestData.addresses.country = playerDetail.address.country;
         }
         if (playerDetail.phone && playerDetail.phone.length > 0) {
           guestData.phoneNumbers = [];
@@ -1029,10 +1032,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         return true;
       }
 
-      if (cmsData.address && (cmsData.address.addressLine1 != existingData.addresses.line1 ||
+      if (cmsData.address && (cmsData.address.addressLine1 != existingData.addresses.addressLine1 ||
         cmsData.address.city != existingData.addresses.city ||
         cmsData.address.state != existingData.addresses.state ||
-        cmsData.address.postalCode != existingData.addresses.zip ||
+        cmsData.address.postalCode != existingData.addresses.zipCode ||
         cmsData.address.country != existingData.addresses.country)) {
         return true;
       }

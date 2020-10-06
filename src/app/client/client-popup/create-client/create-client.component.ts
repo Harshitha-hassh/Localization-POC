@@ -9,6 +9,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class CreateClientComponent implements OnInit, OnDestroy {
   @Input() parentForm:FormGroup;
+  @Input() patronId:any; 
   clientInfoInput:any;
   @ViewChild('clientTabGroup', { static: true }) tabGroup: MatTabGroup;
   captions: any = this.localization.captions.bookAppointment;

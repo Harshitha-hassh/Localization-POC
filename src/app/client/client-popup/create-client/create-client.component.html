@@ -1,7 +1,7 @@
 <mat-tab-group [selectedIndex]="clientSelectedTab" #clientTabGroup>
   <mat-tab label="{{captions.PersonalInformation}}">
     <app-personal-information [parentForm]="parentForm" [clientEditData]="this" (imageUpdateEmit)="onImageUpdates($event)"
-     [inputData]="clientInfoInput"></app-personal-information>
+     [inputData]="clientInfoInput" [patronId]="patronId"></app-personal-information>
   </mat-tab>
   <mat-tab label="{{captions.AdditionalInformation}}">
     <app-additional-information [parentForm]="parentForm" [inputData]="clientInfoInput"></app-additional-information>

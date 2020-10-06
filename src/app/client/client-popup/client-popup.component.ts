@@ -23,6 +23,7 @@ export class ClientPopupComponent implements OnInit {
   captions:any;
   clientPopupForm:FormGroup;
   clientInfo:any;
+  patronId = '';
   IsClientScreenDirty:boolean;
   private $destroyed: ReplaySubject<boolean> = new ReplaySubject();
   constructor(private dialog: MatDialog,
@@ -43,6 +44,11 @@ export class ClientPopupComponent implements OnInit {
     this.clientPopupForm.statusChanges.pipe(takeUntil(this.$destroyed)).subscribe(x => {
       this.IsClientScreenDirty = (this.clientPopupForm.valid && this.clientPopupForm.dirty);
     });
+
+    if(this.data.patronId) {
+      this.patronId = this.data.patronId;
+    }
+
     if (this.data.isClientViewOnly) {
       this.utils.disableControls(this.clientPopupForm);
     }
