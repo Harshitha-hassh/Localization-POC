@@ -510,7 +510,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
       x_categories = this.Sales_SalesRevenue_data.map(x => x.name);
       columnWidth = x_categories.length < 5 ? '20%' : '30%';
       let barChart_customStyles = {
-        fillColor: '#2e67b7',
+        fillColor: '#000000',//'#2e67b7',
         backgroundBarColors: ['#a8ada8'],
         backgroundBarOpacity: 0.3,
         columnWidth,
@@ -546,7 +546,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
       xcategories = this.Revenue_By_Outlet_data.map(x => x.name);
       columnWidth = xcategories.length < 5 ? '20%' : '30%';
       const barChartcustomStyles = {
-        fillColor: '#2e67b7',
+        fillColor:  '#000000',//'#2e67b7',
         backgroundBarColors: ['#a8ada8'],
         backgroundBarOpacity: 0.3,
         columnWidth,
@@ -584,7 +584,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
       x_categories = this.Returned_Items_data.map(x => x.name);
       columnWidth = x_categories.length < 5 ? '20%' : '30%';
       let barChart_customStyles = {
-        fillColor: '#2e67b7',
+        fillColor:  '#000000',//'#2e67b7',
         backgroundBarColors: ['#a8ada8'],
         backgroundBarOpacity: 0.3,
         columnWidth,

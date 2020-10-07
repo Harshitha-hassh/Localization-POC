@@ -1,6 +1,6 @@
-@import './variables';
+@import "./variables";
 
-@import './_color';
+@import "./_color";
 /*
   ****
   @Define the Media Queries for Tablet, Desktop
@@ -8,29 +8,35 @@
   ****
 */
 
-$ag_media-queries:(
-    "small":  ( breakpoint:'(max-width: #{$small-max-width})'),
-    "medium": ( breakpoint:'(min-width: #{$medium-min-width}) and (max-width: #{$medium-max-width})'),
-    "large":  ( breakpoint:'(min-width: #{$large-min-width}) and (max-width: #{$large-max-width})')
+$ag_media-queries: (
+  "small": (
+    breakpoint: "(max-width: #{$small-max-width})",
+  ),
+  "medium": (
+    breakpoint: "(min-width: #{$medium-min-width}) and (max-width: #{$medium-max-width})",
+  ),
+  "large": (
+    breakpoint: "(min-width: #{$large-min-width}) and (max-width: #{$large-max-width})",
+  ),
 );
 
-@mixin ag_media-query ($size) {
-    @each $item, $value in $ag_media-queries {
-            @if $item == $size {
-                @if map-get($value, breakpoint) != null {
-                        @media only screen and #{map-get($value, breakpoint)}{
-                            @content;
-                }
-            }
+@mixin ag_media-query($size) {
+  @each $item, $value in $ag_media-queries {
+    @if $item == $size {
+      @if map-get($value, breakpoint) != null {
+        @media only screen and #{map-get($value, breakpoint)} {
+          @content;
         }
+      }
     }
+  }
 }
 
 @mixin sticky-header($top, $bgColor, $zindex) {
-    position: sticky;
-    top: $top;
-    background-color:$bgColor;
-    z-index: $zindex;
+  position: sticky;
+  top: $top;
+  background-color: $bgColor;
+  z-index: $zindex;
 }
 
 @mixin set-browser-prefix($property, $val) {
@@ -42,126 +48,125 @@ $ag_media-queries:(
 }
 // Call the above method like this ---> .box { @include set-browser-prefix('transform', rotate(30deg)); }
 
-@mixin media-query($min-width: null, $max-width: null)
-{   
-    @if ($min-width and $max-width) {
-        @media screen and (max-width: $max-width) and (min-width: $min-width) {
-            @content;
-        }
+@mixin media-query($min-width: null, $max-width: null) {
+  @if ($min-width and $max-width) {
+    @media screen and (max-width: $max-width) and (min-width: $min-width) {
+      @content;
     }
-    @else if($max-width) {
-        @media screen and (max-width: $max-width){
-            @content;
-        }
+  } @else if($max-width) {
+    @media screen and (max-width: $max-width) {
+      @content;
     }
-    @else if($min-width) {
-        @media screen and (min-width: $min-width){
-            @content;
-        }
+  } @else if($min-width) {
+    @media screen and (min-width: $min-width) {
+      @content;
     }
+  }
 }
-
-
-
 
 //From Golf
-$golf-media-queries:(
-
-    "small":  ( breakpoint:'(max-width: #{$small-max-width})'),
-    "medium": ( breakpoint:'(min-width: #{$medium-min-width}) and (max-width: #{$medium-max-width})'),
-    "large":  ( breakpoint:'(min-width: #{$large-min-width}) and (max-width: #{$large-max-width})')
+$golf-media-queries: (
+  "small": (
+    breakpoint: "(max-width: #{$small-max-width})",
+  ),
+  "medium": (
+    breakpoint: "(min-width: #{$medium-min-width}) and (max-width: #{$medium-max-width})",
+  ),
+  "large": (
+    breakpoint: "(min-width: #{$large-min-width}) and (max-width: #{$large-max-width})",
+  ),
 );
 
-@mixin golf-media-query ($size) {
-    @each $item, $value in $golf-media-queries {
-            @if $item == $size {
-                @if map-get($value, breakpoint) != null {
-                        @media only screen and #{map-get($value, breakpoint)}{
-                            @content;
-                }
-            }
+@mixin golf-media-query($size) {
+  @each $item, $value in $golf-media-queries {
+    @if $item == $size {
+      @if map-get($value, breakpoint) != null {
+        @media only screen and #{map-get($value, breakpoint)} {
+          @content;
         }
+      }
     }
+  }
 }
 
-
-
-@mixin sticky-header($top, $bgColor, $zindex)
-{
-    position: sticky;
-    top: $top;
-    background-color:$bgColor;
-    z-index: $zindex;
+@mixin sticky-header($top, $bgColor, $zindex) {
+  position: sticky;
+  top: $top;
+  background-color: $bgColor;
+  z-index: $zindex;
 }
 
-@mixin media-query($min-width: null, $max-width: null)
-{   @debug $min-width;
-    @if ($min-width and $max-width) {
-        @media screen and (max-width: $max-width) and (min-width: $min-width) {
-            @content;
-        }
+@mixin media-query($min-width: null, $max-width: null) {
+  @debug $min-width;
+  @if ($min-width and $max-width) {
+    @media screen and (max-width: $max-width) and (min-width: $min-width) {
+      @content;
     }
-    @else if($max-width) {
-        @media screen and (max-width: $max-width){
-            @content;
-        }
+  } @else if($max-width) {
+    @media screen and (max-width: $max-width) {
+      @content;
     }
-    @else if($min-width) {
-        @media screen and (min-width: $min-width){
-            @content;
-        }
+  } @else if($min-width) {
+    @media screen and (min-width: $min-width) {
+      @content;
     }
+  }
+}
 
-
-    }
-
-
-
-     //SPA MIXIN
+//SPA MIXIN
 
 // Color themes
 $themes: (
   goldtheme: $gold,
   bluetheme: $blue,
-  greytheme: '',
+  greytheme: "",
   blacktheme: $black,
   orangetheme: $theme_orange,
   navybluetheme: $theme_blue,
-  greentheme: $theme_green
-  );
-  // Helper theme mixin
-  // @param $name: name of the theme (HTML class)
-  // @param $color: color of the theme
-  @mixin theme($name, $color, $color-text, $colorbackground,$icon-bg, $colorborder, $header-background, $header1_active-bg ,$menu-background,$header1_icon) {
-    .#{$name} {
-      .wrapper-container {
-        .header-background {
-          background: $header-background !important;
-          .nav-section {
-            
-            .navItem {
-              ul {
-                li {
-                  i {
-                    color: $header1_icon !important;
-                  }
-                  a,
-                  label {
+  greentheme: $theme_green,
+);
+// Helper theme mixin
+// @param $name: name of the theme (HTML class)
+// @param $color: color of the theme
+@mixin theme(
+  $name,
+  $color,
+  $color-text,
+  $colorbackground,
+  $icon-bg,
+  $colorborder,
+  $header-background,
+  $header1_active-bg,
+  $menu-background,
+  $header1_icon
+) {
+  .#{$name} {
+    .wrapper-container {
+      .header-background {
+        background: $header-background !important;
+        .nav-section {
+          .navItem {
+            ul {
+              li {
+                i {
+                  color: $header1_icon !important;
+                }
+                a,
+                label {
+                  color: $color-text !important;
+                  &.active-link,
+                  &:focus {
+                    background-color: $header1_active-bg !important;
                     color: $color-text !important;
-                    &.active-link,
-                    &:focus {
-                       background-color:  $header1_active-bg !important;
-                        color: $color-text !important;
-                      i {
-                        color: $color-text !important;
-                      }
+                    i {
+                      color: $color-text !important;
                     }
-                    &:hover {
-                        background-color:  $header1_active-bg !important;
-                        color: $color-text !important;
-                      i {
-                         color: $color-text !important;
-                      }
+                  }
+                  &:hover {
+                    background-color: $header1_active-bg !important;
+                    color: $color-text !important;
+                    i {
+                      color: $color-text !important;
                     }
                   }
                 }
@@ -169,485 +174,509 @@ $themes: (
             }
           }
         }
-        .vertical-header .nav-section .navItem ul li.text a.active-link, .vertical-header .nav-section .navItem ul li.text label.active-link{
-          color: $color-text !important;
-          background-color: $header-background !important;
-        }
-        .profile-section .searchClass .icon-search-class .icon-Circle.dark, .profile-section .notifyClass .icon-search-class .icon-Circle.dark, .profile-section .menuClass .icon-search-class .icon-Circle.dark {
-           // color: $icon-bg !important;
+      }
+      .vertical-header .nav-section .navItem ul li.text a.active-link,
+      .vertical-header .nav-section .navItem ul li.text label.active-link {
+        color: $color-text !important;
+        background-color: $header-background !important;
+      }
+      .profile-section .searchClass .icon-search-class .icon-Circle.dark,
+      .profile-section .notifyClass .icon-search-class .icon-Circle.dark,
+      .profile-section .menuClass .icon-search-class .icon-Circle.dark {
+        // color: $icon-bg !important;
+      }
+      .profile-section .searchClass .icon-search-class .icon-menu-search,
+      .profile-section .notifyClass .icon-search-class .icon-menu-search,
+      .profile-section .menuClass .icon-search-class .icon-menu-search {
+        color: unset !important;
+      }
+      .profile-section {
+        .notifyClass {
+          .icon-notify {
+            color: $white !important;
           }
-          .profile-section .searchClass .icon-search-class .icon-menu-search, .profile-section .notifyClass .icon-search-class .icon-menu-search, .profile-section .menuClass .icon-search-class .icon-menu-search {
+          .icon-help_question {
             color: unset !important;
-          }         
-        .profile-section {
-          .notifyClass  {
-            .icon-notify {
-              color: $white !important;
-            }       
-            .icon-help_question {
-              color: unset !important;
-            }     
-            
           }
+        }
 
-          .searchClass {
-            .icon-search-class {
-              .icon-Circle {
-                 color:  unset !important;
-              }
+        .searchClass {
+          .icon-search-class {
+            .icon-Circle {
+              color: unset !important;
             }
           }
-          .buttonStyle { 
-            border: 1px solid $header-background !important;
-            background: unset !important; 
-          }
-     
-          .user-details {
-            .detail-section {
-              .user-name {
-                color: $color-text !important;
-              }
-              .user-role {
-                color: $color-text !important;
-              }
+        }
+        .buttonStyle {
+          border: 1px solid $header-background !important;
+          background: unset !important;
+        }
+
+        .user-details {
+          .detail-section {
+            .user-name {
+              color: $color-text !important;
             }
-            .initial-box {
-              background: $header1_active-bg !important;
+            .user-role {
               color: $color-text !important;
             }
           }
-        } 
-      }
-
-      .mat-tab-link,
-      .mat-tab-label {       
-        &.mat-tab-label-active {
-          color: $header-background !important;
-        }
-      }
-      .theme-color-wrapper{
-          background: $header-background !important;
-      }
-
-      .mat-tab-link.mat-tab-label-active, .mat-tab-label.mat-tab-label-active {
-        color: $header-background !important;
-      }
-
-      .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
-        background-color: $header1_active-bg !important;
-      }
-
-      .icon-Minus, .icon-Plus {
-        // color: $color-text !important;
-      }
-      
-
-      .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
-        background-color: $header-background !important;
-      }
-      .mat-option:hover, .mat-option:focus {
-
-      }
-
-      .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) span {
-        color: $color-text !important;
-      }
-
-      .body-bgcolor {
-        background-color: $header-background !important;
-      }
-
-      .whitecolor {
-        color: $color-text !important;
-      }
-
-      .mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple{
-        background-color: $header-background !important;
-      }
-
-      .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
-        border-color: $header-background !important;
-      }
-
-      ui-switch .switch.checked {
-        background: $header-background !important;
-      }
-
-      .setNotificationConfiguration .themecolor {
-        color: $header-background !important;
-      }
-      .spa-primary-default-save {
-        background-color: $header-background !important;
-      }
-      .spa-primary-default-save:hover {
-        background-color: $header-background !important;
-      }
-      .mat-button-wrapper {
-        // color: $color-text !important;
-      }
-      .dashBoard-widgets-report-wrapper .widget_group_wrapper .widget_group_header .widget_group_manage .title {
-        color: $header-background !important;
-      }
-      .dashBoard-widgets-report-wrapper .dashBoardCheckbox .dashBoardCheckboxInput:checked + .checkbox-material .check {
-        color: $header-background !important;
-      }
-      .dashBoard-widgets-report-wrapper .dashBoardCheckbox .checkbox-material .check {
-        border-color: $header-background !important;
-      }
-      .icon-filter_filled {
-        color: $header-background !important;
-        background: unset !important;
-      }
-      .border-color {
-        border-color: $header-background !important;
-      }
-      .spa-btnlg-secondary {
-        border-color: 1px solid $header-background !important;
-      }
-      .secondary-default-btn:hover {
-        background: $header-background !important;
-        border-color: 1px solid $header-background !important;
-        .mat-button-wrapper {
-          color: $header1_icon !important;
-        }
-
-      }
-      .swipe-btn .icon-Device {
-        color:  $header1_icon !important;
-      }
-      .setNotificationConfiguration .expcollPosition {
-        background: $header-background !important;
-      }
-      .retail-gift-card .retail-form-section .header-container .icon-border-section {
-        border: 1px solid $header-background !important;
-      }
-      .border-left-color{
-        border-left-color: $color !important;
-      }
-      #setting-cover-spin::after {
-        border-color: $header-background !important;
-      }
-      .button--primary {
-        background: $header-background !important;
-      }
-      .circle-hover{
-        background-color: $lightyellow !important;  /*******NOTE: Change one theme Color base*******/
-      }
-      .circle-disbled{
-        background-color: $lightgrey !important;  /*******NOTE: Change one theme Color base*******/
-      }
-      .color-onpressed{
-        background-color: $darkyellowonpress !important;
-      }
-      .color-secondary-pressed{
-        background-color: $color-secondary-button-pressed;
-      }
-
-      .switch2, .switch3 {
-        .slider::before {
-          background-color: $colorbackground !important;
-        }
-      }
-
-      .selectedBtn {
-        background-color: $colorbackground !important;
-      }
-
-      .body-bgcolor {
-        background-color: $colorbackground !important;
-      }
-      .switch-toggle{
-      .switch.checked{
-        // background-color: $colorbackground !important;
-      }
-    }
-   .loader-wrapper{
-    .loader-content{
-    .spinner{
-      circle{
-          stroke: $color;
-      }
-      }
-    }
-   }
-
-      .body-color {
-        background: $colorbackground !important;
-      }
-      .timepicker__header{
-        background: $colorbackground !important;
-      }
-      .clock-face__number{
-        span{
-          &.active{
-            background: $colorbackground !important;
+          .initial-box {
+            background: $header1_active-bg !important;
+            color: $color-text !important;
           }
         }
       }
-      .timepicker-button{
-        color:$colorbackground !important;
-      }
-      .clock-face__clock-hand{
-        background: $colorbackground !important;
-        &::before{
-          border: 4px solid $colorbackground !important;
-        }
-        &::after{
-          background-color: $colorbackground !important;
-        }
-      }
+    }
 
-      .dashBoard-widgets-report-wrapper .multiSelectButton.button--primary {
-        background-color: $header-background !important;
-        border-color: $header-background !important;
+    .mat-tab-link,
+    .mat-tab-label {
+      &.mat-tab-label-active {
+        color: $header-background !important;
       }
+    }
+    .theme-color-wrapper,
+    .mat-step-header .mat-step-icon-selected,.mat-flat-button.mat-primary {
+      background: $header-background !important;
+    }
+    .mat-flat-button.mat-primary.btnDisabled{
+      opacity: 0.5;
+    }
 
-      .body-bordercolor {
-        border: 1px solid $colorbackground !important;
-      }
+    .mat-tab-link.mat-tab-label-active,
+    .mat-tab-label.mat-tab-label-active,
+    .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+      color: $header-background !important;
+    }
+    //Spinner
+    .mat-progress-spinner circle,
+    .mat-spinner circle {
+      stroke: $header-background !important;;
+    }
+    
+    .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+      background-color: $header1_active-bg !important;
+    }
+    .retailCustomDataTable .highlight{
+      // background-color: $header1_active-bg !important;
+      background-color: #dddddd !important
+    }
 
-      .header-background {
-        background-color: $header-background !important;
+    .icon-Minus,
+    .icon-Plus {
+      // color: $color-text !important;
+    }
+
+    .mat-tab-group.mat-primary .mat-ink-bar,
+    .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+      background-color: $header-background !important;
+    }
+    .mat-option:hover,
+    .mat-option:focus {
+    }
+
+    .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) span {
+      color: $color-text !important;
+    }
+
+    .body-bgcolor {
+      background-color: $header-background !important;
+    }
+
+    .whitecolor {
+      color: $color-text !important;
+    }
+
+    .mat-radio-button.mat-accent .mat-radio-inner-circle,
+    .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+    .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+      background-color: $header-background !important;
+    }
+
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+      border-color: $header-background !important;
+    }
+
+    ui-switch .switch.checked {
+      background: $header-background !important;
+    }
+
+    .setNotificationConfiguration .themecolor {
+      color: $header-background !important;
+    }
+    .spa-primary-default-save {
+      background-color: $header-background !important;
+    }
+    .spa-primary-default-save:hover {
+      background-color: $header-background !important;
+    }
+    .mat-button-wrapper {
+      // color: $color-text !important;
+    }
+    .dashBoard-widgets-report-wrapper .widget_group_wrapper .widget_group_header .widget_group_manage .title {
+      color: $header-background !important;
+    }
+    .dashBoard-widgets-report-wrapper .dashBoardCheckbox .dashBoardCheckboxInput:checked + .checkbox-material .check {
+      color: $header-background !important;
+    }
+    .dashBoard-widgets-report-wrapper .dashBoardCheckbox .checkbox-material .check {
+      border-color: $header-background !important;
+    }
+    .icon-filter_filled {
+      color: $header-background !important;
+      background: unset !important;
+    }
+    .border-color {
+      border-color: $header-background !important;
+    }
+    .spa-btnlg-secondary {
+      border-color: 1px solid $header-background !important;
+    }
+    .secondary-default-btn:hover {
+      background: $header-background !important;
+      border-color: 1px solid $header-background !important;
+      .mat-button-wrapper {
+        color: $header1_icon !important;
       }
-      button.hover_css.mat-button:hover {
+    }
+    .swipe-btn .icon-Device {
+      color: $header1_icon !important;
+    }
+    .setNotificationConfiguration .expcollPosition {
+      background: $header-background !important;
+    }
+    .retail-gift-card .retail-form-section .header-container .icon-border-section {
+      border: 1px solid $header-background !important;
+    }
+    .border-left-color {
+      border-left-color: $color !important;
+    }
+    #setting-cover-spin::after {
+      border-color: $header-background !important;
+    }
+    .button--primary {
+      background: $header-background !important;
+    }
+    .circle-hover {
+      background-color: $lightyellow !important; /*******NOTE: Change one theme Color base*******/
+    }
+    .circle-disbled {
+      background-color: $lightgrey !important; /*******NOTE: Change one theme Color base*******/
+    }
+    .color-onpressed {
+      background-color: $darkyellowonpress !important;
+    }
+    .color-secondary-pressed {
+      background-color: $color-secondary-button-pressed;
+    }
+
+    .switch2,
+    .switch3 {
+      .slider::before {
         background-color: $colorbackground !important;
       }
+    }
 
-      .text-color {
-        color: $header-background !important;
-      }
+    .selectedBtn {
+      background-color: $colorbackground !important;
+    }
 
-      .spa-primary-btn-default {
-        background-color: $header-background !important;
+    .body-bgcolor {
+      background-color: $colorbackground !important;
+    }
+    .switch-toggle {
+      .switch.checked {
+        // background-color: $colorbackground !important;
       }
-      .spa-primary-btn-default:hover {
-        background-color: $header1_active-bg !important;
+    }
+    .loader-wrapper {
+      .loader-content {
+        .spinner {
+          circle {
+            stroke: $color;
+          }
+        }
       }
-      .active-link {
-        color: $color !important;
-      }
-      .mat-button-toggle-checked {
-        background-color: $header-background !important;
-      }
+    }
 
-      .icon-Minus, .icon-Plus {
-        color: $header-background !important;
+    .body-color {
+      background: $colorbackground !important;
+    }
+    .timepicker__header {
+      background: $colorbackground !important;
+    }
+    .clock-face__number {
+      span {
+        &.active {
+          background: $colorbackground !important;
+        }
       }
+    }
+    .timepicker-button {
+      color: $colorbackground !important;
+    }
+    .clock-face__clock-hand {
+      background: $colorbackground !important;
+      &::before {
+        border: 4px solid $colorbackground !important;
+      }
+      &::after {
+        background-color: $colorbackground !important;
+      }
+    }
 
-      .header-bar {
-        nav {
-          li {
-            a {
-              &:before {
-                background: $color !important;
-              }
+    .dashBoard-widgets-report-wrapper .multiSelectButton.button--primary {
+      background-color: $header-background !important;
+      border-color: $header-background !important;
+    }
+
+    .body-bordercolor {
+      border: 1px solid $colorbackground !important;
+    }
+
+    .header-background {
+      background-color: $header-background !important;
+    }
+    button.hover_css.mat-button:hover {
+      background-color: $colorbackground !important;
+    }
+
+    .text-color {
+      color: $header-background !important;
+    }
+
+    .spa-primary-btn-default {
+      background-color: $header-background !important;
+    }
+    .spa-primary-btn-default:hover {
+      background-color: $header1_active-bg !important;
+    }
+    .active-link {
+      color: $color !important;
+    }
+    .mat-button-toggle-checked {
+      background-color: $header-background !important;
+    }
+
+    .icon-Minus,
+    .icon-Plus {
+      color: $header-background !important;
+    }
+
+    .header-bar {
+      nav {
+        li {
+          a {
+            &:before {
+              background: $color !important;
             }
           }
         }
       }
-      .CustomDataTable table .done {
-        color: $header-background !important;
-      }
+    }
+    .CustomDataTable table .done {
+      color: $header-background !important;
+    }
 
-      .CustomDataTable table .done .icon-done {
-        color: $header-background !important;
-      }
+    .CustomDataTable table .done .icon-done {
+      color: $header-background !important;
+    }
 
-      .color-numbers {
-        color: $color !important;
-      }
-      .mat-step-label-active {
-        color: #818892 !important;
+    .color-numbers {
+      color: $color !important;
+    }
+    .mat-step-label-active {
+      color: #818892 !important;
 
-        &.mat-step-label-selected {
-          color: #000000 !important;
-        }
+      &.mat-step-label-selected {
+        color: #000000 !important;
       }
-      // input fields
-      .mat-form-field.mat-focused .mat-form-field-label
-      {
-        color: $header-background !important;
-      }
-      // focus on underline input fields
-      .mat-form-field.mat-focused .mat-form-field-ripple {
-        background-color: $header-background !important;
-      }
-      // uncheck
-      i.icon-font-size.icon-Success {
-        opacity: 0.5 !important;
-      }
+    }
+    // input fields
+    .mat-form-field.mat-focused .mat-form-field-label {
+      color: $header-background !important;
+    }
+    // focus on underline input fields
+    .mat-form-field.mat-focused .mat-form-field-ripple {
+      background-color: $header-background !important;
+    }
+    // uncheck
+    i.icon-font-size.icon-Success {
+      opacity: 0.5 !important;
+    }
 
-      // check
-      i.icon-font-size.icon-SuccessDark.text-color {
-        color: $header-background !important;
-      }
-      // datepicker
-      .mat-calendar-body-selected {
-        background-color: $header-background !important;
-      }
+    // check
+    i.icon-font-size.icon-SuccessDark.text-color {
+      color: $header-background !important;
+    }
+    // datepicker
+    .mat-calendar-body-selected {
+      background-color: $header-background !important;
+    }
 
-      .mat-datepicker-content .mat-calendar .mat-calendar-header {
-        background: $header-background !important;
-      }
+    .mat-datepicker-content .mat-calendar .mat-calendar-header {
+      background: $header-background !important;
+    }
 
-      .payment-feature-config .config-options ul li.selected {
-        background-color: $header-background !important;
-        color: $white !important;
-      }
+    .payment-feature-config .config-options ul li.selected {
+      background-color: $header-background !important;
+      color: $white !important;
+    }
 
-      .spa-filter-link {
-        color: $header-background !important;
-      }
-      .mat-primary .mat-pseudo-checkbox-checked, .mat-primary .mat-pseudo-checkbox-indeterminate,
-      .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
-        background: $header-background !important;
-      }
+    .spa-filter-link {
+      color: $header-background !important;
+    }
+    .mat-primary .mat-pseudo-checkbox-checked,
+    .mat-primary .mat-pseudo-checkbox-indeterminate,
+    .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
+      background: $header-background !important;
+    }
 
-      .mat-checkbox-frame {
-        border-color: $header-background !important;
-      }
+    .mat-checkbox-frame {
+      border-color: $header-background !important;
+    }
 
-      .mat-primary .mat-option.mat-selected:not(.mat-option-disabled),
-      .common-CustomDataTable table .done,
-      .common-CustomDataTable table .done .icon-done,
-      .golf__link, .spa-btnlg-primary {
-        color: $header-background !important;
-      }
-      .template-sms-container .CustomTableGrid .filter-btn .icon-filter_filled {
-        background: $header-background !important;
-        color: $color-text !important;
-      }
-      .icon-help_question:before {
-        color: $header1_icon !important;
-      }
+    .mat-primary .mat-option.mat-selected:not(.mat-option-disabled),
+    .common-CustomDataTable table .done,
+    .common-CustomDataTable table .done .icon-done,
+    .golf__link,
+    .spa-btnlg-primary {
+      color: $header-background !important;
+    }
+    .template-sms-container .CustomTableGrid .filter-btn .icon-filter_filled {
+      background: $header-background !important;
+      color: $color-text !important;
+    }
+    .icon-help_question:before {
+      color: $header1_icon !important;
+    }
 
-      .icon-emptyshop:before {
-        color: $header-background !important
-      }
-      // .mat-option.mat-active {
-      //   background: $header-background !important;
-      //   color: $header1_icon !important;
-      // }
-      .profile-section .user-details .logout-style {
-        color: $header-background !important;
-      }
+    .icon-emptyshop:before {
+      color: $header-background !important;
+    }
+    // .mat-option.mat-active {
+    //   background: $header-background !important;
+    //   color: $header1_icon !important;
+    // }
+    .profile-section .user-details .logout-style {
+      color: $header-background !important;
+    }
 
-      .ngx-pagination {
-        .current {
-          background-color: $colorbackground !important;
-        }
+    .ngx-pagination {
+      .current {
+        background-color: $colorbackground !important;
       }
     }
   }
-    // Including themes
-    // By looping through the $themes map
-    @each $key, $value in $themes {
-      $color-text: null;
-      $color-background: null;
-      $color-border: null;
-      $header-background: null;
-      $menu-background: null;
-      $color-theme: null;
-      $header1_active-bg : null;
-      $header1_icon: null;
-      $icon-bg:null;
-      @if $key == "goldtheme" {
-        $color-background: $gold;
-        $color-text: $gold;
-        $color-border: $gold;
-        $header-background: $Darkgold;
-        $menu-background: $goldMenuColor;
-        $color-theme:$gold;
-      }
-      @else if $key == "bluetheme" {
-        $color-background: $blue;
-        $color-text: $blue;
-        $color-border: $blue;
-        $header-background: $lightsemiBlack;
-        $menu-background: $blueMenuColor;
-        $color-theme: $blue;
-      }
-      @else if $key == "greytheme" {        
-        $header-background: $theme_grey_base_color;
-        $color-text: $ag_white;
-        $colorborder: $theme_grey_base_color;
-        $header1_icon: $ag_white;
-        $header1_active-bg :$active_bg; 
-        $icon-bg:$icon_bg_color;
-      }
-      @else if $key == "blacktheme" {        
-        $header-background: $theme_black_base_color;
-        $color-text: $ag_white;
-        $colorborder: $theme_black_base_color;
-        $header1_icon: $ag_white;
-        $header1_active-bg : $theme_black_active_bg; 
-        $icon-bg:$theme_black_icon_bg_color;
-      }
-      @else if $key == "orangetheme" {        
-        $header-background: $theme_orange_base_color;
-        $color-text: $theme_orange_text-color;
-        $colorborder: $theme_orange_base_color;
-        $header1_icon: $theme_orange_text-color;
-        $header1_active-bg : $theme_orange_active_bg; 
-        $icon-bg: $theme_black_icon_bg_color;
-      }
-      @else if $key == "navybluetheme" {        
-        $header-background: $theme_blue_base_color;
-        $color-text: $ag_white;
-        $colorborder: $theme_blue_base_color;
-        $header1_icon: $ag_white;
-        $header1_active-bg : $theme_blue_active_bg; 
-        $icon-bg: $theme_black_icon_bg_color;
-      }
-      @else if $key == "greentheme" {        
-        $header-background: $theme_green_base_color;
-        $color-text: $ag_white;
-        $colorborder: $theme_green_base_color;
-        $header1_icon: $ag_white;
-        $header1_active-bg : $theme_green_active_bg; 
-        $icon-bg: $theme_black_icon_bg_color;
-      }
+}
+// Including themes
+// By looping through the $themes map
+@each $key, $value in $themes {
+  $color-text: null;
+  $color-background: null;
+  $color-border: null;
+  $header-background: null;
+  $menu-background: null;
+  $color-theme: null;
+  $header1_active-bg: null;
+  $header1_icon: null;
+  $icon-bg: null;
+  @if $key == "goldtheme" {
+    $color-background: $gold;
+    $color-text: $gold;
+    $color-border: $gold;
+    $header-background: $Darkgold;
+    $menu-background: $goldMenuColor;
+    $color-theme: $gold;
+  } @else if $key == "bluetheme" {
+    $color-background: $blue;
+    $color-text: $blue;
+    $color-border: $blue;
+    $header-background: $lightsemiBlack;
+    $menu-background: $blueMenuColor;
+    $color-theme: $blue;
+  } @else if $key == "greytheme" {
+    $header-background: $theme_grey_base_color;
+    $color-text: $ag_white;
+    $colorborder: $theme_grey_base_color;
+    $header1_icon: $ag_white;
+    $header1_active-bg: $active_bg;
+    $icon-bg: $icon_bg_color;
+  } @else if $key == "blacktheme" {
+    $header-background: $theme_black_base_color;
+    $color-text: $ag_white;
+    $colorborder: $theme_black_base_color;
+    $header1_icon: $ag_white;
+    $header1_active-bg: $theme_black_active_bg;
+    $icon-bg: $theme_black_icon_bg_color;
+  } @else if $key == "orangetheme" {
+    $header-background: $theme_orange_base_color;
+    $color-text: $theme_orange_text-color;
+    $colorborder: $theme_orange_base_color;
+    $header1_icon: $theme_orange_text-color;
+    $header1_active-bg: $theme_orange_active_bg;
+    $icon-bg: $theme_black_icon_bg_color;
+  } @else if $key == "navybluetheme" {
+    $header-background: $theme_blue_base_color;
+    $color-text: $ag_white;
+    $colorborder: $theme_blue_base_color;
+    $header1_icon: $ag_white;
+    $header1_active-bg: $theme_blue_active_bg;
+    $icon-bg: $theme_black_icon_bg_color;
+  } @else if $key == "greentheme" {
+    $header-background: $theme_green_base_color;
+    $color-text: $ag_white;
+    $colorborder: $theme_green_base_color;
+    $header1_icon: $ag_white;
+    $header1_active-bg: $theme_green_active_bg;
+    $icon-bg: $theme_black_icon_bg_color;
+  }
 
-      @include theme($key, $value, $color-text, $color-background,$icon-bg, $color-border, $header-background, $header1_active-bg ,$menu-background,$header1_icon);
-    }
+  @include theme(
+    $key,
+    $value,
+    $color-text,
+    $color-background,
+    $icon-bg,
+    $color-border,
+    $header-background,
+    $header1_active-bg,
+    $menu-background,
+    $header1_icon
+  );
+}
 
-
-  /*
+/*
     ****
     @Define the Media Quires for Tablet, Desktop, Mobile
     @Params Pass the Paramenter
     ****
   */
 
-    $spa-media-queries: (
-      tablet: ( breakpoint: '(min-width: 480px) and (max-width: 768px)'),
-      mobile: ( breakpoint: '(max-width: 480px)'),
-      midLevel: ( breakpoint: '(min-width: 1024px) and (max-width: 1200px)'),
-      retailLevel: (breakpoint: '(min-width: 1024px) and (max-width: 1220px)')
-    );
+$spa-media-queries: (
+  tablet: (
+    breakpoint: "(min-width: 480px) and (max-width: 768px)",
+  ),
+  mobile: (
+    breakpoint: "(max-width: 480px)",
+  ),
+  midLevel: (
+    breakpoint: "(min-width: 1024px) and (max-width: 1200px)",
+  ),
+  retailLevel: (
+    breakpoint: "(min-width: 1024px) and (max-width: 1220px)",
+  ),
+);
 
-
-
-    @mixin spa-media-query ($size) {
-
-      @each $item, $value in $spa-media-queries {
-
-        @if $item == $size {
-
-          @if map-get($value, breakpoint) != null {
-
-            @media only screen and #{map-get($value, breakpoint)} {
-
-              @content;
-
-            }
-
-          }
-
+@mixin spa-media-query($size) {
+  @each $item, $value in $spa-media-queries {
+    @if $item == $size {
+      @if map-get($value, breakpoint) != null {
+        @media only screen and #{map-get($value, breakpoint)} {
+          @content;
         }
-
       }
-
     }
-
-  
+  }
+}
