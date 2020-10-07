@@ -36,6 +36,7 @@ export class NotifyPopupComponent implements OnInit {
   transactionId: number = 0;
   guestId: number =0;
   title: string ='';
+  disableEmailSMSToggle: boolean = false
 
   constructor(private localilzation: RetailLocalization, 
     private _fb: FormBuilder,
@@ -81,6 +82,7 @@ export class NotifyPopupComponent implements OnInit {
         }      
     }
     this.showLoader = false;      
+    this.disableEmailSMSToggle = !this.clientInfo.guestId || this.clientInfo.guestId == DefaultGUID ? true : false;
   }
 
   setcliendetails(data) {
