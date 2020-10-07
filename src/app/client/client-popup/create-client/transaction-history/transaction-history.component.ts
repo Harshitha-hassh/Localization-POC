@@ -90,7 +90,7 @@ export class TransactionHistoryComponent implements OnInit {
     if (this.historyType == 2) {
       this.itemArray = [];
 
-      this.itemArray = item && item.transactionDetails.items;
+      this.itemArray = item ? item.transactionDetails.items : [];
     }
     this.selectedRowItem = item
   }
