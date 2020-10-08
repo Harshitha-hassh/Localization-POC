@@ -44,7 +44,7 @@
                                       </mat-error>
                                           <mat-error class=""
                                           *ngIf="notifydetails.controls['detailList'].controls[0].controls['emailId'].touched && (notifydetails.controls['detailList'].controls[0].controls['emailId'].value=='')">
-                                          {{captions.missing}} {{captions.Email}}
+                                          {{captions.Missing}} {{captions.Email}}
                                       </mat-error>
                                   </mat-form-field>
       
@@ -53,7 +53,7 @@
                                           [maxlength]="countryCodeLength" inputtype='nonnegative' >
                                           <mat-error class=""
                                           *ngIf="notifydetails.controls['detailList'].controls[0].controls['countryCode'].touched && !notifydetails.controls['detailList'].controls[0].controls['countryCode'].valid">
-                                          {{captions.missing}} {{captions.countryCode}}
+                                          {{captions.Missing}} {{captions.countryCode}}
                                       </mat-error>
                                   </mat-form-field>
                                   <mat-form-field class="Nw-40">
@@ -61,7 +61,7 @@
                                           [textmask]="textMaskPhone" maxlength="10">
                                           <mat-error class=""
                                           *ngIf="notifydetails.controls['detailList'].controls[0].controls['phoneNo'].touched && !notifydetails.controls['detailList'].controls[0].controls['phoneNo'].valid">
-                                          {{captions.missing}} {{captions.phoneNo}}
+                                          {{captions.Missing}} {{captions.phoneNo}}
                                       </mat-error> 
                                   </mat-form-field>
                               </div>
