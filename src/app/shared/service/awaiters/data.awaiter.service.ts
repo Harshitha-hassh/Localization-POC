@@ -106,7 +106,7 @@ export class DataAwaiterService {
             zip: client.addresses ? client.addresses.zipCode : '',
             city: client.addresses ? client.addresses.city : '',
             guestProfileId: client.guestId,
-            cardInfo: client.clientCreditCardInfo ? [client.clientCreditCardInfo] : [],
+            cardInfo: client.clientCreditCardInfo ? client.clientCreditCardInfo : [],
             patronId: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].patronId : '',
             rank: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].rank : '',
             playerCategoryId: 1,
