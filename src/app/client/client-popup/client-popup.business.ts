@@ -63,7 +63,7 @@ export class CreateClientBusiness {
         phoneNumbers: this.formPhoneObject(),
         clientCreditCardInfo: this.additionalDetailsFormGroup.clientCreditCardInfo
           && this.additionalDetailsFormGroup.clientCreditCardInfo.length > 0 ?
-          this.additionalDetailsFormGroup.clientCreditCardInfo.find(x => x.isActive) : null
+          this.additionalDetailsFormGroup.clientCreditCardInfo : null
       }
       return clientInfoObj;
     }

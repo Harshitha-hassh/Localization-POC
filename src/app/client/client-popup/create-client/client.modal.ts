@@ -5,7 +5,7 @@ export interface ClientInfo {
   phoneNumbers: PhoneNumber[];
   addresses: Address;
   emails: Email[];
-  clientCreditCardInfo: ClientCreditCardInfo;
+  clientCreditCardInfo: ClientCreditCardInfo[];
  }
   
  export interface ClientCreditCardInfo {
@@ -87,7 +87,7 @@ export interface ClientInfo {
     phoneNumbers: PhoneNumber[];
     emails: Email[];
     requestUid: string;
-    clientCreditCardInfo: ClientCreditCardInfo;
+    clientCreditCardInfo: ClientCreditCardInfo[];
   }
 
   export interface ClientDetails {
