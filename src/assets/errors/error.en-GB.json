@@ -121,6 +121,7 @@
   "10403": "Unit of Measure in use, delete not allowed_gb",
   "10502": "Duplicate Discount Type_gb",
   "10503": "Discount Type in use, delete not allowed_gb",
+  "10506": "Unable to change active to inactive if already associated with any retail transaction_gb",
   "10700": "Invalid Payment Method name_gb",
   "10701": "Payment Method Not Found_gb",
   "10702": "Duplicate Payment Method_gb",

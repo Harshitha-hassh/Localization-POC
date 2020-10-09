@@ -121,6 +121,7 @@
   "10403": "Unit of Measure in use, delete not allowed_in",
   "10502": "Duplicate Discount Type_in",
   "10503": "Discount Type in use, delete not allowed_in",
+  "10506": "Unable to change active to inactive if already associated with any retail transaction_in",
   "10700": "Invalid Payment Method name_in",
   "10701": "Payment Method Not Found_in",
   "10702": "Duplicate Payment Method_in",
