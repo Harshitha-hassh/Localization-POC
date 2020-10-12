@@ -338,7 +338,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
             let roleIds;
             const outletAllowedIds = [];
             if (propertyAccess && propertyAccess.length > 0) {
-              appAllowedIds = propertyAccess.filter(prop => prop.propertyID == Number(this.utils.GetPropertyInfo('PropertyId'))).map(y => y.productId);
+              appAllowedIds = propertyAccess.filter(prop => prop.propertyID == Number(this.utils.GetPropertyInfo('PropertyId')) && prop.hasAccess).map(y => y.productId);
               roleIds = propertyAccess.filter(z => z.propertyID == Number(this.utils.GetPropertyInfo('PropertyId'))).map(y => y.roleId);
               appAllowedNames = this.products.filter(y => appAllowedIds.includes(y.id)).map(z => z.productName).toString();
               roleNames = this.rolelst.filter(y => roleIds.includes(y.id)).map(z => z.description).toString();
