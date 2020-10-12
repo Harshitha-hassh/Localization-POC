@@ -2353,7 +2353,7 @@
     "CommissionOnRevenue": "Commission On Revenue_de",
     "WithDiscount": "With Discount_de",
     "ClearAll": "Clear All_de",
-    "NumberOfRetailItems": "Number Of Retail Items_de"
+    "DefaultSearchRecordsInShop": "Default search records in shop_de"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_de",
