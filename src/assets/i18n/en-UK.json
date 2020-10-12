@@ -2353,7 +2353,8 @@
     "CommissionOnRevenue": "Commission On Revenue_uk",
     "WithDiscount": "With Discount_uk",
     "ClearAll": "Clear All_uk",
-    "DefaultSearchRecordsInShop": "Default search records in shop_uk"
+    "DefaultSearchRecordsInShop": "Default search records in shop_uk",
+    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_uk"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_uk",

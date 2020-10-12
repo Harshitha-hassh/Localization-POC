@@ -2353,7 +2353,8 @@
     "CommissionOnRevenue": "Commission On Revenue_au",
     "WithDiscount": "With Discount_au",
     "ClearAll": "Clear All_au",
-    "DefaultSearchRecordsInShop": "Default search records in shop_au"
+    "DefaultSearchRecordsInShop": "Default search records in shop_au",
+    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_au"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_au",

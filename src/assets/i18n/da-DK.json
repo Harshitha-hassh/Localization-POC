@@ -2353,7 +2353,8 @@
     "CommissionOnRevenue": "Commission On Revenue_da",
     "WithDiscount": "With Discount_da",
     "ClearAll": "Clear All_da",
-    "DefaultSearchRecordsInShop": "Default search records in shop_da"
+    "DefaultSearchRecordsInShop": "Default search records in shop_da",
+    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_da"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_da",

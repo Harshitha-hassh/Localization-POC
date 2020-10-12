@@ -2353,7 +2353,8 @@
     "CommissionOnRevenue": "Commission On Revenue_fi",
     "WithDiscount": "With Discount_fi",
     "ClearAll": "Clear All_fi",
-    "DefaultSearchRecordsInShop": "Default search records in shop_fi"
+    "DefaultSearchRecordsInShop": "Default search records in shop_fi",
+    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_fi"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_fi",
