@@ -232,6 +232,7 @@
     "Select": "Select_gb",
     "ShowMore": "Show More_gb",
     "ViewAll": "View All_gb",
+    "ViewMore": "View More_gb",
     "logOut": "Log Out_gb",
     "has": "has_gb",
     "about": "about_gb",
@@ -2351,7 +2352,8 @@
     "CommissionOnItem": "Commission On Item_gb",
     "CommissionOnRevenue": "Commission On Revenue_gb",
     "WithDiscount": "With Discount_gb",
-    "ClearAll": "Clear All_gb"
+    "ClearAll": "Clear All_gb",
+    "NumberOfRetailItems": "Number Of Retail Items_gb"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_gb",

@@ -232,6 +232,7 @@
     "Select": "Select_fr",
     "ShowMore": "Show More_fr",
     "ViewAll": "View All_fr",
+    "ViewMore": "View More_fr",
     "logOut": "Log Out_fr",
     "has": "has_fr",
     "about": "about_fr",
@@ -2351,7 +2352,8 @@
     "CommissionOnItem": "Commission On Item_fr",
     "CommissionOnRevenue": "Commission On Revenue_fr",
     "WithDiscount": "With Discount_fr",
-    "ClearAll": "Clear All_fr"
+    "ClearAll": "Clear All_fr",
+    "NumberOfRetailItems": "Number Of Retail Items_fr"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_fr",

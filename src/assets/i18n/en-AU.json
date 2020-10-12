@@ -232,6 +232,7 @@
     "Select": "Select_au",
     "ShowMore": "Show More_au",
     "ViewAll": "View All_au",
+    "ViewMore": "View More_au",
     "logOut": "Log Out_au",
     "has": "has_au",
     "about": "about_au",
@@ -2351,7 +2352,8 @@
     "CommissionOnItem": "Commission On Item_au",
     "CommissionOnRevenue": "Commission On Revenue_au",
     "WithDiscount": "With Discount_au",
-    "ClearAll": "Clear All_au"
+    "ClearAll": "Clear All_au",
+    "NumberOfRetailItems": "Number Of Retail Items_au"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_au",

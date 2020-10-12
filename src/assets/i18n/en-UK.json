@@ -232,6 +232,7 @@
     "Select": "Select_uk",
     "ShowMore": "Show More_uk",
     "ViewAll": "View All_uk",
+    "ViewMore": "View More_uk",
     "logOut": "Log Out_uk",
     "has": "has_uk",
     "about": "about_uk",
@@ -2351,7 +2352,8 @@
     "CommissionOnItem": "Commission On Item_uk",
     "CommissionOnRevenue": "Commission On Revenue_uk",
     "WithDiscount": "With Discount_uk",
-    "ClearAll": "Clear All_uk"
+    "ClearAll": "Clear All_uk",
+    "NumberOfRetailItems": "Number Of Retail Items_uk"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_uk",

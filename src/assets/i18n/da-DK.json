@@ -232,6 +232,7 @@
     "Select": "Select_da",
     "ShowMore": "Show More_da",
     "ViewAll": "View All_da",
+    "ViewMore": "View More_da",
     "logOut": "Log Out_da",
     "has": "has_da",
     "about": "about_da",
@@ -2351,7 +2352,8 @@
     "CommissionOnItem": "Commission On Item_da",
     "CommissionOnRevenue": "Commission On Revenue_da",
     "WithDiscount": "With Discount_da",
-    "ClearAll": "Clear All_da"
+    "ClearAll": "Clear All_da",
+    "NumberOfRetailItems": "Number Of Retail Items_da"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_da",

@@ -232,6 +232,7 @@
     "Select": "Select",
     "ShowMore": "Show More",
     "ViewAll": "View All",
+		"ViewMore": "View More",
     "logOut": "Log Out",
     "has": "has",
     "about": "about",
@@ -2351,7 +2352,8 @@
 		"CommissionOnItem": "Commission On Item",
 		"CommissionOnRevenue": "Commission On Revenue",
 		"WithDiscount": "With Discount",
-		"ClearAll": "Clear All"
+		"ClearAll": "Clear All",
+		"NumberOfRetailItems": "Number Of Retail Items"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description",
