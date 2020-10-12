@@ -108,7 +108,7 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
         this._router.navigate([`settings`]);
         break;
       case searchtitleenum.retailItems:
-        this._router.navigate([`/shop/viewshop/`], { queryParams: { description: data.name, query } });
+        this._router.navigate([`/shop/viewshop/`], { queryParams: { description: data.name, id: data.itemId, query } });
         break;
       case searchtitleenum.clients:
         this._as.isglobalSearch = true;
