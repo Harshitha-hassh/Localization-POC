@@ -74,7 +74,7 @@ import { NotificationDataService } from './data-services/notification.data.servi
     RetailSharedModule,
     CommonSharedModule,
     GooglePlaceModule,
-    NgxMaterialTimepickerModule.forRoot()
+    NgxMaterialTimepickerModule
   ],
   providers: [
     TenantManagementCommunication,
