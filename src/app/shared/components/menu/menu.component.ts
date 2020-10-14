@@ -15,6 +15,9 @@ import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-confi
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { ConfigKeys, RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 import { RetailServiceRegistry } from 'src/app/retail/shared/service/base.service';
+import { SPAConfig } from 'src/app/retail/common/config/SPA-config';
+import { HttpServiceCall } from 'src/app/retail/shared/service/http-call.service';
+
 
 @Component({
   selector: 'app-menu',
@@ -74,6 +77,9 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     , private _propertyInfo: RetailPropertyInformation
     , private elementRef: ElementRef
     , private retailServiceRegistry: RetailServiceRegistry
+    , private _headerService: SPAConfig
+    , private _http: HttpServiceCall
+
     ) {
     // this.sortPipe = new SortOrderPipe();
   }
@@ -287,21 +293,20 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   //  help about
 
   async openIcon() {
-    // To Do help service integration
-    // const hostUrl = this._HeaderService.getDocumentationRoute();
-    // let help_hosturl = hostUrl + '/retail/';
-    // let help_page = 'AgilysysGolf_Home.htm';
-    // const appver = sessionStorage.getItem('productVersion');
-    // const dotRegEx = /\./gi;
-    // const productVersion = appver && appver != 'null' ? appver : '12.2';
-    // let _applicationVersion = productVersion.replace(dotRegEx, '_');
-    // let url = help_hosturl + _applicationVersion + '/' + help_page;
-    // const jwt = sessionStorage.getItem('_jwt');
-    // const isAuthorized = await this._HeaderService.createHelpSession(jwt);
-    // if (isAuthorized && jwt) {
-    //   url = url + '?jwt=' + jwt
-    //   setTimeout(() => { window.open(url, '_blank') }, 1000)
-    // }
+    const hostUrl = this._headerService.getUrl('host.documentation') + 'retail/';
+    //let help_hosturl = hostUrl + '/retail/';
+    let help_page = 'AgilysysRetail_Home.htm';
+    const appver = sessionStorage.getItem('productVersion');
+    const dotRegEx = /\./gi;
+    const productVersion = appver && appver != 'null' ? appver : '12.4';
+    let _applicationVersion = productVersion.replace(dotRegEx, '_');
+    let url = hostUrl + _applicationVersion + '/' + help_page;
+    const jwt = sessionStorage.getItem('_jwt');
+    const isAuthorized = await this._http.createHelpUserSession(jwt);
+    if (isAuthorized && jwt) {
+      url = url + '?jwt=' + jwt
+      setTimeout(() => { window.open(url, '_blank') }, 1000)
+    }
   }
 
   openAboutDialog() {

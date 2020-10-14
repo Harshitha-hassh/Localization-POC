@@ -8,6 +8,7 @@ import { TenantManagementCommunication } from '../shared/communication/services/
 import { RetailRoutes } from '../core/extensions/retail-route';
 import { JWT_TOKEN, REMEMBER_INFO, USER_SESSION } from '../core/app-constants';
 import * as moment from 'moment';
+import { HttpServiceCall } from '../retail/shared/service/http-call.service';
 
 @Injectable({
     providedIn: 'root'
@@ -49,7 +50,8 @@ export class ManageSessionService implements OnDestroy {
     constructor(private router: Router
         ,       public dialogRef: MatDialog
         ,       public loginService: TenantManagementCommunication
-        ,       private utils: Utilities) {
+        ,       private utils: Utilities
+        ,       public http: HttpServiceCall) {
 
         this.timeoutExpired.subscribe(n => {
         });
@@ -68,6 +70,7 @@ export class ManageSessionService implements OnDestroy {
         await this.updateSession();
         this.removeToken();
         this.dialogRef.closeAll();
+        this.http.removeHelpUserSession();
         this.clearLocalStore();
         this.goToLogin();
     }
