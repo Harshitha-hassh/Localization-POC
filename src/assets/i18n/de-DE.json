@@ -1147,6 +1147,8 @@
       "14": "V1 GiftCard_de",
       "15": "Third Party GiftCard_de",
       "16": "City Ledger_de",
+      "17": "Agilysys GiftCard_de",
+      "18": "Agilysys GiftCard_de",
       "22": "Card On File_de",
       "44": "Other_de"
     },
@@ -1205,7 +1207,8 @@
         "1": "V1_de",
         "2": "Givex_de",
         "3": "Vantiv_de",
-        "4": "Shift4_de"
+        "4": "Shift4_de",
+        "5": "Agilysys_de"
       },
       "popupHeader": "Gift Card Payment_de",
       "LoadCardFailureMsg": " Top-up process failed while loading following card(s): <br/> <ul> {cardNumber} </ul>_de",
@@ -1214,7 +1217,11 @@
       "CardExpired": "Gift card has been expired._de",
       "ReloadNotAllowed": "Card has expired, please extend the expiry date to proceed_de",
       "CardAlreadySold": "The gift card is already sold_de",
-      "CardAlreadyIssued": "Gift card is already issued_de"
+      "CardAlreadyIssued": "Gift card is already issued_de",
+      "CardStatusChangeConfirmationMsg": "Card status will be changed to {cardStatus}. Do you want to Proceed?_de",
+      "PinValidation": " PIN Validation_de",
+      "PinFieldPlaceholder": "Please enter 4 digit PIN_de",
+      "Submit": "Submit_de"
     },
     "CMS": {
       "searchPlaceHolder": "Patron search_de",

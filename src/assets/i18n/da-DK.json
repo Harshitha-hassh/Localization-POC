@@ -1147,6 +1147,8 @@
       "14": "V1 GiftCard_da",
       "15": "Third Party GiftCard_da",
       "16": "City Ledger_da",
+      "17": "Agilysys GiftCard_da",
+      "18": "Agilysys GiftCard_da",
       "22": "Card On File_da",
       "44": "Other_da"
     },
@@ -1205,7 +1207,8 @@
         "1": "V1_da",
         "2": "Givex_da",
         "3": "Vantiv_da",
-        "4": "Shift4_da"
+        "4": "Shift4_da",
+        "5": "Agilysys_da"
       },
       "popupHeader": "Gift Card Payment_da",
       "LoadCardFailureMsg": " Top-up process failed while loading following card(s): <br/> <ul> {cardNumber} </ul>_da",
@@ -1214,7 +1217,11 @@
       "CardExpired": "Gift card has been expired._da",
       "ReloadNotAllowed": "Card has expired, please extend the expiry date to proceed_da",
       "CardAlreadySold": "The gift card is already sold_da",
-      "CardAlreadyIssued": "Gift card is already issued_da"
+      "CardAlreadyIssued": "Gift card is already issued_da",
+      "CardStatusChangeConfirmationMsg": "Card status will be changed to {cardStatus}. Do you want to Proceed?_da",
+      "PinValidation": " PIN Validation_da",
+      "PinFieldPlaceholder": "Please enter 4 digit PIN_da",
+      "Submit": "Submit_da"
     },
     "CMS": {
       "searchPlaceHolder": "Patron search_da",
