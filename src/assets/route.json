@@ -625,5 +625,9 @@
   "GetRetailItemDetailedInfo": "retailitems/detailed-info?id={id}",
   "SyncInventory": "retailitems/syncinventory/outlets/{outletId}",
   "GetRetailItemById": "RetailItems/{itemId}",
-  "GetTransactionCountByPaymentMethod": "Transaction/paymentmethod/{paymentmethodId}/count"
+  "GetTransactionCountByPaymentMethod": "Transaction/paymentmethod/{paymentmethodId}/count",
+  "GetAllPostTypes": "RevenuePosting/GetPostTypes",
+  "CreateRevenuePostMapping": "RevenuePosting/AddPostTypeMappingDetails",
+  "GetRevenuePostings": "RevenuePosting/GetPostTypeMappingDetails",
+  "SyncPosting": "RevenuePosting/Sync"
 }

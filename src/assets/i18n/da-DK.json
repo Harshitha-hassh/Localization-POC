@@ -854,7 +854,8 @@
     "NoInTakeFormFound": "Intake form is not available_da",
     "NoInTakeFormReceived": "No Intake form received_da",
     "priceType": "Price Type_da",
-    "amount": "Amount_da"
+    "amount": "Amount_da",
+    "PostTypeMapping": "Post Type Mapping_da"
   },
   "shop": {
     "BookingDetails": "Booking Details_da",
@@ -1782,7 +1783,19 @@
       "unitOfMeasureId": "unitOfMeasureId_da",
       "categoryId": "categoryId_da",
       "id": "id_da"
-    }
+    },
+    "SearchCategory": "Search Category_da",
+    "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_da",
+    "SelectRevenuePostCode": "Select Revenue Post Code_da",
+    "SearchPostCode": "Search Post Code_da",
+    "Sync": "Sync_da",
+    "Settlement": "Settlement_da",
+    "Discount": "Discount_da",
+    "Tax": "Tax_da",
+    "PaymentMethod": "Payment Method_da",
+    "SearchByTax": "Search By Tax_da",
+    "SearchByPaymentMethod": "Search By Payment Method_da",
+    "SearchByCategories": "Search By Category_da"
   },
   "setting": {
     "Title": "Title_da",

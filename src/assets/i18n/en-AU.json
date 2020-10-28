@@ -854,7 +854,8 @@
     "NoInTakeFormFound": "Intake form is not available_au",
     "NoInTakeFormReceived": "No Intake form received_au",
     "priceType": "Price Type_au",
-    "amount": "Amount_au"
+    "amount": "Amount_au",
+    "PostTypeMapping": "Post Type Mapping_au"
   },
   "shop": {
     "BookingDetails": "Booking Details_au",
@@ -1782,7 +1783,19 @@
       "unitOfMeasureId": "unitOfMeasureId_au",
       "categoryId": "categoryId_au",
       "id": "id_au"
-    }
+    },
+    "SearchCategory": "Search Category_au",
+    "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_au",
+    "SelectRevenuePostCode": "Select Revenue Post Code_au",
+    "SearchPostCode": "Search Post Code_au",
+    "Sync": "Sync_au",
+    "Settlement": "Settlement_au",
+    "Discount": "Discount_au",
+    "Tax": "Tax_au",
+    "PaymentMethod": "Payment Method_au",
+    "SearchByTax": "Search By Tax_au",
+    "SearchByPaymentMethod": "Search By Payment Method_au",
+    "SearchByCategories": "Search By Category_au"
   },
   "setting": {
     "Title": "Title_au",
