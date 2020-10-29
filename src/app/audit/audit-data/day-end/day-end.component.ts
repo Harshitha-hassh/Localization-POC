@@ -3,7 +3,7 @@ import * as _ from 'lodash'; // STORAGE THE BACK ARRAY
 import { MatDialog } from '@angular/material';
 import { BaseResponse } from '../../../common/shared/shared.modal';
 import { ManagementData, ClientDetail } from '../../../shared/shared-models';
-import { GridData, PendingAction, AppointmentData, GridAction, ManagementDataType } from '../../AuditModals';
+import { GridData, PendingAction, AppointmentData, GridAction, ManagementDataType, NotifyDayEnd } from '../../AuditModals';
 import { AuditService } from '../../audit.service';
 import { Router } from '@angular/router';
 import { PropertyInformation } from '../../../core/services/property-information.service';
@@ -27,6 +27,7 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
 import { RedirectToModules } from 'src/app/common/shared/shared/utilities/common-utilities';
 import { ButtonType as RetailButtonType } from 'src/app/retail/shared/globalsContant';
 import { AlertType } from 'src/app/retail/shared/shared.modal';
+import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 
 @Component({
   selector: 'app-day-end',
@@ -66,7 +67,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     private auditService: AuditService, public router: Router,
     // tslint:disable-next-line: max-line-length
     private PropertyInfo: PropertyInformation, private breakPoint: BreakPointAccess, public ams: AppModuleService,
-    private retailSharedService: RetailSharedVariableService, private retailValidationService: RetailValidationService) {
+    private retailSharedService: RetailSharedVariableService, private retailValidationService: RetailValidationService,
+    private propertyInfo: RetailPropertyInformation,) {
   }
 
   ngOnInit() {
@@ -189,13 +191,26 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
           this.PropertyInfo.SetPropertyDate(this.newSysDate);
           this.UpdateInventoryAudit();
           this.SyncUpItemAndTaxes();
-          this.ShowSuccessMessage();
+          this.ShowSuccessMessage();        
+          if(this.propertyInfo.HasRevenuePostingEnabled)
+          {
+            this.SendNewSystemDate();
+          }    
         } else {
           this.isProcessClicked = false;
           this.utils.ShowError(this.localization.captions.common.Error, this.captions.ErrorInDayEnd, ButtonType.Ok);
         }
         break;
       }
+      case "NotifyDayEnd":
+        {
+          var response = <any>result.result;
+          if(!response)
+          {
+            this.utils.ShowError(this.localization.captions.common.Error, this.captions.NotifyDayEnd, ButtonType.Ok);
+          }          
+          break;
+        }
       case 'GetOutletsByProperty': {
         const response: any = result.result as any ? result.result : [];
         if (response) {
@@ -220,11 +235,21 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     }
 
   }
+  SendNewSystemDate()
+  { 
+    let obj: NotifyDayEnd = {DateTime:this.localization.convertDateObjToAPIdate(this.newSysDate)  }  
+    this.InvokeServiceCall('NotifyDayEnd', Host.retailManagement, HttpMethod.Put, {},
+    obj,null,null,false); 
+  }
 
   errorCallback<T>(error: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
     switch (callDesc) {
       case 'PerformDayEnd': {
         this.isProcessClicked = false;
+        break;
+      }
+      case "NotifyDayEnd": {
+        this.utils.ShowError(this.localization.captions.common.Error, this.captions.NotifyDayEnd, ButtonType.Ok);
         break;
       }
     }
@@ -346,7 +371,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   // tslint:disable-next-line: max-line-length
-  InvokeServiceCall(route: string, domain: Host, callType: HttpMethod, uriParams?: any, body?: any, queryString?: KeyValuePair, extraParams?: any) {
+  InvokeServiceCall(route: string, domain: Host, callType: HttpMethod, uriParams?: any, body?: any, queryString?: KeyValuePair, extraParams?: any, 
+    showError: boolean = true) {
     this.http.CallApiWithCallback<any>({
       host: domain,
       success: this.successCallback.bind(this),
@@ -354,7 +380,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       callDesc: route,
       method: callType,
       body,
-      showError: true,
+      showError: showError,
       extraParams,
       uriParams,
       queryString

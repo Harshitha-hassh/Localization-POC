@@ -3073,6 +3073,7 @@
     "CONTINUE": "CONTINUE_fi",
     "Success": "Success_fi",
     "ErrorInDayEnd": "Error during day end process_fi",
+    "NotifyDayEnd": "Error in notifying day end to PMS system_fi",
     "PROCESS": "PROCESS_fi",
     "NoData": "NoData_fi",
     "CancelOpenTransaction": "Would you like to Cancel the Ticket?_fi",

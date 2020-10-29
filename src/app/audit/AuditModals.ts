@@ -55,3 +55,17 @@ export enum PendingAction {
     Package,
     Client
   }
+
+  export interface NotifyDayEnd{
+    PMSEndPoint?: string;
+    PostingRoomNumber?: string;
+    DateTime : string;
+    PMSSystem?  : PMSSystem;
+   
+  }
+
+  export enum PMSSystem {
+    VisualOne = 1,
+        Stay,
+        LMS
+  }

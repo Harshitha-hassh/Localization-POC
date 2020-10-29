@@ -3073,6 +3073,7 @@
     "CONTINUE": "CONTINUE_au",
     "Success": "Success_au",
     "ErrorInDayEnd": "Error during day end process_au",
+    "NotifyDayEnd": "Error in notifying day end to PMS system_au",
     "PROCESS": "PROCESS_au",
     "NoData": "NoData_au",
     "CancelOpenTransaction": "Would you like to Cancel the Ticket?_au",
