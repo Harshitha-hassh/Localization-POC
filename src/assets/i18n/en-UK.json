@@ -113,6 +113,7 @@
     "Error": "Error_uk",
     "Warning": "Warning_uk",
     "saveChangesMessage": "Your updates will not be saved. Do you still want to continue?_uk",
+    "WarningMessage": "You have unsaved changes. Do you want to leave this page and discard your changes?_uk",
     "SearchBy": "Search by_uk",
     "Search": "Search_uk",
     "Cancel": "CANCEL_uk",

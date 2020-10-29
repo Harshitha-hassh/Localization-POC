@@ -113,6 +113,7 @@
     "Error": "Error_fr",
     "Warning": "Warning_fr",
     "saveChangesMessage": "Your updates will not be saved. Do you still want to continue?_fr",
+    "WarningMessage": "You have unsaved changes. Do you want to leave this page and discard your changes?_fr",
     "SearchBy": "Search by_fr",
     "Search": "Search_fr",
     "Cancel": "CANCEL_fr",
