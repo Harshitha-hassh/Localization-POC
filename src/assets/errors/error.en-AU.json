@@ -160,6 +160,7 @@
   "11303": "Sub Category in use, delete not allowed_au",
   "11311": "Distribution List in this name already exists, Please provide different name_au",
   "11312": "Id cannot be zero for Distribution List_au",
+  "12000": "Unable to get data from PMS system. Please check the configuration!_au",
   "14101": "Store Terminal Not Exists_au",
   "14102": "Duplicate Terminal Id_au",
   "14103": "Terminal in Use, Delete not allowed_au",

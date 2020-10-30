@@ -339,6 +339,7 @@
     "100713": "At least 3 characters need to be entered",
     "100714": "Payment method in use, deactivation not allowed",
     "-301" : "Duplicate guest exists on the system",
-    "-302" : "Guest information is out of date. Please refresh and try again"
+    "-302" : "Guest information is out of date. Please refresh and try again",
+    "12000": "Unable to get data from PMS system. Please check the configuration!"
   }
   
