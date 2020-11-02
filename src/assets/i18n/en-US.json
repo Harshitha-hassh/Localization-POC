@@ -1797,7 +1797,8 @@
     "PaymentMethod": "Payment Method",
     "SearchByTax": "Search By Tax",
     "SearchByPaymentMethod": "Search By Payment Method",
-    "SearchByCategories": "Search By Category"
+    "SearchByCategories": "Search By Category",
+    "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS"
   },
   "setting": {
     "Title": "Title",

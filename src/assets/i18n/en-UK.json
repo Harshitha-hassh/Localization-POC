@@ -1796,7 +1796,8 @@
     "PaymentMethod": "Payment Method_uk",
     "SearchByTax": "Search By Tax_uk",
     "SearchByPaymentMethod": "Search By Payment Method_uk",
-    "SearchByCategories": "Search By Category_uk"
+    "SearchByCategories": "Search By Category_uk",
+    "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_uk"
   },
   "setting": {
     "Title": "Title_uk",

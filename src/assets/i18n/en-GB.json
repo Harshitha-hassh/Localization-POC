@@ -1796,7 +1796,8 @@
     "PaymentMethod": "Payment Method_gb",
     "SearchByTax": "Search By Tax_gb",
     "SearchByPaymentMethod": "Search By Payment Method_gb",
-    "SearchByCategories": "Search By Category_gb"
+    "SearchByCategories": "Search By Category_gb",
+    "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_gb"
   },
   "setting": {
     "Title": "Title_gb",
