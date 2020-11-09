@@ -27,11 +27,11 @@
               {{caption.setting.MissingUserID}}
             </mat-error>
           </mat-form-field>
-
-          <mat-form-field class=" mt-2 w250">
+          <!-- #46309 - Hide unused fields -->
+          <!-- <mat-form-field class=" mt-2 w250">
             <input matInput placeholder="{{caption.setting.QuickId}}" maxlength="6" inputtype="nonnegative,nodecimal"
               autocomplete="off" formControlName="quickid">
-          </mat-form-field>
+          </mat-form-field> -->
 
           <mat-form-field class=" mt-2 w250">
             <input matInput placeholder="{{caption.setting.EmailAddress}}" autocomplete="off" [maxlength]="75" formControlName="email" inputtype="email">

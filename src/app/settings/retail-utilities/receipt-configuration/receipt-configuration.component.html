@@ -16,12 +16,13 @@
                             </mat-error>
                         </mat-form-field>
                         <!-- Number of Reciepts -->
-                        <mat-form-field class=" ml-4 receipts">
+                        <!-- #46309 - Hide unused fields -->
+                        <!-- <mat-form-field class=" ml-4 receipts">
                             <input matInput placeholder="{{textCaptions.NoOfReceipts}}"  maxLength = "2" (click)="viewChange($event)" inputtype="nodecimal,nonnegative" class="text-capitalize" formControlName="noOfReceipts" />
                             <mat-error *ngIf="FormGrp.controls['noOfReceipts'].hasError('required') && FormGrp.controls['noOfReceipts'].touched && !FormGrp.controls['noOfReceipts'].valid">
                               {{textCaptions.MissingNumber}}
                             </mat-error>
-                        </mat-form-field>
+                        </mat-form-field> -->
                       </div>
                       <!-- Print Info -->
                       <div class="printData">

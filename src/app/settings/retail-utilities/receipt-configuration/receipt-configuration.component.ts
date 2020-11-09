@@ -39,7 +39,9 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.textCaptions = this.localization.captions.utilities;
     this.FormGrp = this.Form.group({
       outlet: ['', Validators.required],
-      noOfReceipts: ['', Validators.required],
+      // #46309 - Hide unused fields
+      noOfReceipts: [''],
+      // noOfReceipts: ['', Validators.required],
       displayServiceCharge: ['1', Validators.required],
       gratuityLine: [''],
       receiptNote: [''],
@@ -202,7 +204,7 @@ export class ReceiptConfigurationComponent implements OnInit {
     const receiptobj: ReceiptModel = {
       id: 0,
       outletId: this.selectedOutletId,
-      numberOfReceipts: data.noOfReceipts,
+      numberOfReceipts: data.noOfReceipts || 0,
       displayDiscount: data.printReceipt[0].discountOnReceipt ? true : false,
       addSecondLine: data.printReceipt[0].addSecondLine ? true : false,
       displayOnlyPackageItem: data.printReceipt[0].packageItemOnReceipt ? true : false,
