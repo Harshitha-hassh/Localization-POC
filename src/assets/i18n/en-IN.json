@@ -1797,7 +1797,8 @@
     "SearchByTax": "Search By Tax_in",
     "SearchByPaymentMethod": "Search By Payment Method_in",
     "SearchByCategories": "Search By Category_in",
-    "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_in"
+    "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_in",
+    "NoPosting": "No Posting_in"
   },
   "setting": {
     "Title": "Title_in",

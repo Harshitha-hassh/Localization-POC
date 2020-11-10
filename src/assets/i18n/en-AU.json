@@ -1797,7 +1797,8 @@
     "SearchByTax": "Search By Tax_au",
     "SearchByPaymentMethod": "Search By Payment Method_au",
     "SearchByCategories": "Search By Category_au",
-    "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_au"
+    "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_au",
+    "NoPosting": "No Posting_au"
   },
   "setting": {
     "Title": "Title_au",
