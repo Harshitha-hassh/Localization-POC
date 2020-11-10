@@ -628,6 +628,7 @@
   "GetTransactionCountByPaymentMethod": "Transaction/paymentmethod/{paymentmethodId}/count",
   "GetAllPostTypes": "RevenuePosting/GetPostTypes",
   "CreateRevenuePostMapping": "RevenuePosting/AddPostTypeMappingDetails",
+  "DeleteRevenuePostMapping": "RevenuePosting/RemovePostTypeMapping",
   "GetRevenuePostings": "RevenuePosting/GetPostTypeMappingDetails",
   "SyncPosting": "RevenuePosting/Sync",
   "NotifyDayEnd":"RevenuePosting/NotifyDayEnd"
