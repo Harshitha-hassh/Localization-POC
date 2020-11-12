@@ -1223,7 +1223,16 @@
       "CardStatusChangeConfirmationMsg": "Card status will be changed to {cardStatus}. Do you want to Proceed?_fi",
       "PinValidation": " PIN Validation_fi",
       "PinFieldPlaceholder": "Please enter 4 digit PIN_fi",
-      "Submit": "Submit_fi"
+      "Submit": "Submit_fi",
+      "V1GCErrorMessages": {
+        "couponnumberisinvalid": "Gift Card Invalid_fi",
+        "couponnotfoundinsystem": "Gift Card not found in the system_fi",
+        "couponisunsold": "Gift Card is unsold_fi",
+        "couponhasexpired": "Gift Card has expired_fi",
+        "noavailablecouponatthistime": "Gift Card not available_fi",
+        "couponisalreadyonholdorsold": "Gift Card is on hold /  Gift Card is already sold_fi",
+        "cardhasinsufficientbalanceforthetransaction": "Gift Card has insufficient balance for the transaction_fi"
+      }
     },
     "CMS": {
       "searchPlaceHolder": "Patron search_fi",

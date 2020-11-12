@@ -1223,7 +1223,16 @@
       "CardStatusChangeConfirmationMsg": "Card status will be changed to {cardStatus}. Do you want to Proceed?_au",
       "PinValidation": " PIN Validation_au",
       "PinFieldPlaceholder": "Please enter 4 digit PIN_au",
-      "Submit": "Submit_au"
+      "Submit": "Submit_au",
+      "V1GCErrorMessages": {
+        "couponnumberisinvalid": "Gift Card Invalid_au",
+        "couponnotfoundinsystem": "Gift Card not found in the system_au",
+        "couponisunsold": "Gift Card is unsold_au",
+        "couponhasexpired": "Gift Card has expired_au",
+        "noavailablecouponatthistime": "Gift Card not available_au",
+        "couponisalreadyonholdorsold": "Gift Card is on hold /  Gift Card is already sold_au",
+        "cardhasinsufficientbalanceforthetransaction": "Gift Card has insufficient balance for the transaction_au"
+      }
     },
     "CMS": {
       "searchPlaceHolder": "Patron search_au",

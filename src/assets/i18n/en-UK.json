@@ -1223,7 +1223,16 @@
       "CardStatusChangeConfirmationMsg": "Card status will be changed to {cardStatus}. Do you want to Proceed?_uk",
       "PinValidation": " PIN Validation_uk",
       "PinFieldPlaceholder": "Please enter 4 digit PIN_uk",
-      "Submit": "Submit_uk"
+      "Submit": "Submit_uk",
+      "V1GCErrorMessages": {
+        "couponnumberisinvalid": "Gift Card Invalid_uk",
+        "couponnotfoundinsystem": "Gift Card not found in the system_uk",
+        "couponisunsold": "Gift Card is unsold_uk",
+        "couponhasexpired": "Gift Card has expired_uk",
+        "noavailablecouponatthistime": "Gift Card not available_uk",
+        "couponisalreadyonholdorsold": "Gift Card is on hold /  Gift Card is already sold_uk",
+        "cardhasinsufficientbalanceforthetransaction": "Gift Card has insufficient balance for the transaction_uk"
+      }
     },
     "CMS": {
       "searchPlaceHolder": "Patron search_uk",
