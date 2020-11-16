@@ -46,11 +46,11 @@
                     height: 100%;
                 }
                 #{ $self }__product-logo {
-                    height: 20%;
+                    height: 16.5%;
                     position: absolute;
                     z-index: 1;
-                    right: 70px;
-                    top: 50px;                
+                    right: 118px;
+                    top: 56px;
                 }
 
                 #{ $self }__agilysys-logo {
@@ -76,7 +76,7 @@
                 #{ $self }__details {
                     position: relative;
                     top: 9%;
-                    left: 7%;
+                    left: 7.5%;
                     #{ $self }__label-style {
                         color: $ag_base-color;
                         font-size: 35px;
@@ -112,8 +112,8 @@
     }
     .resolutionDiv {
         position: absolute;
-        bottom: 10px;
-        left: 45px;
+        bottom: 8px; //10px;
+        left: 7.5%;
         color: $grey-dark;
         .login__footer-agilLogo {
             display: block;
