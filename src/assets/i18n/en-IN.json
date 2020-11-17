@@ -3084,7 +3084,7 @@
     "CONTINUE": "CONTINUE_in",
     "Success": "Success_in",
     "ErrorInDayEnd": "Error during day end process_in",
-    "NotifyDayEnd": "Error in notifying day end to PMS system_in",
+    "NotifyDayEnd": "Web Communication proxy end point is down/wrong._in",
     "PROCESS": "PROCESS_in",
     "NoData": "NoData_in",
     "CancelOpenTransaction": "Would you like to Cancel the Ticket?_in",
