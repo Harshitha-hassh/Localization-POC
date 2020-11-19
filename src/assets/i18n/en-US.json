@@ -1232,7 +1232,8 @@
 				"noavailablecouponatthistime": "Gift Card not available",
 				"couponisalreadyonholdorsold": "Gift Card is on hold /  Gift Card is already sold",
 				"cardhasinsufficientbalanceforthetransaction": "Gift Card has insufficient balance for the transaction"
-			}
+      },
+      "LoadReversalNotSupportedMsg": "Load reversal is not supported for Aces gift cards."
     },
     "CMS": {
       "searchPlaceHolder": "Patron search",
