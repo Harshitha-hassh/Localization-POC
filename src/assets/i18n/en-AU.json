@@ -859,6 +859,7 @@
     "PostTypeMapping": "Post Type Mapping_au"
   },
   "shop": {
+    "WebProxyStatus": "Transaction was not posted to PMS System_au",
     "BookingDetails": "Booking Details_au",
     "ContactDetails": "Contact details_au",
     "RedeemRounds": "RedeemRounds_au",

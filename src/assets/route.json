@@ -631,5 +631,6 @@
   "DeleteRevenuePostMapping": "RevenuePosting/RemovePostTypeMapping",
   "GetRevenuePostings": "RevenuePosting/GetPostTypeMappingDetails",
   "SyncPosting": "RevenuePosting/Sync",
-  "NotifyDayEnd":"RevenuePosting/NotifyDayEnd"
+  "NotifyDayEnd":"RevenuePosting/NotifyDayEnd",
+  "WebProxyHealthCheck" : "Transaction/WebCommunicationProxy/HealthCheck"
 }

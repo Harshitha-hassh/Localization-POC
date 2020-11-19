@@ -859,6 +859,7 @@
     "PostTypeMapping": "Post Type Mapping_gb"
   },
   "shop": {
+    "WebProxyStatus": "Transaction was not posted to PMS System_gb",
     "BookingDetails": "Booking Details_gb",
     "ContactDetails": "Contact details_gb",
     "RedeemRounds": "RedeemRounds_gb",
