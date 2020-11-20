@@ -859,7 +859,7 @@
     "PostTypeMapping": "Post Type Mapping_fr"
   },
   "shop": {
-    "WebProxyStatus": "Transaction was not posted to PMS System_fr",
+    "WebProxyStatus": "Unable to reach PMS System for Revenue posting. Please check Web Communication proxy._fr",
     "BookingDetails": "Booking Details_fr",
     "ContactDetails": "Contact details_fr",
     "RedeemRounds": "RedeemRounds_fr",
@@ -3086,7 +3086,7 @@
     "CONTINUE": "CONTINUE_fr",
     "Success": "Success_fr",
     "ErrorInDayEnd": "Error during day end process_fr",
-    "NotifyDayEnd": "Web Communication proxy end point is down/wrong._fr",
+    "NotifyDayEnd": "Unable to reach PMS System for Revenue posting. Please check Web Communication proxy._fr",
     "PROCESS": "PROCESS_fr",
     "NoData": "NoData_fr",
     "CancelOpenTransaction": "Would you like to Cancel the Ticket?_fr",
