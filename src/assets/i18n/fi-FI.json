@@ -2574,7 +2574,8 @@
     "IncludeVoidedTransaction": "Include Voided Transaction_fi",
     "NotFullyApplied": "Not Fully Applied_fi",
     "missingCustomField": "Missing Custom Field_fi",
-    "PaymentMethods": "Payment Method(s)_fi"
+    "PaymentMethods": "Payment Method(s)_fi",
+    "IncludeZeroValue": "Include Zero Value_fi"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fi",

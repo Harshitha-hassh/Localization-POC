@@ -2574,7 +2574,8 @@
     "IncludeVoidedTransaction": "Include Voided Transaction_uk",
     "NotFullyApplied": "Not Fully Applied_uk",
     "missingCustomField": "Missing Custom Field_uk",
-    "PaymentMethods": "Payment Method(s)_uk"
+    "PaymentMethods": "Payment Method(s)_uk",
+    "IncludeZeroValue": "Include Zero Value_uk"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_uk",
