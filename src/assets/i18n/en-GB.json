@@ -2575,7 +2575,7 @@
     "NotFullyApplied": "Not Fully Applied_gb",
     "missingCustomField": "Missing Custom Field_gb",
     "PaymentMethods": "Payment Method(s)_gb",
-    "IncludeZeroValue": "Include Zero Value_gb"
+    "IncludeZeroValue": "Include Zero Comm, SC, Gratuity_gb"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_gb",

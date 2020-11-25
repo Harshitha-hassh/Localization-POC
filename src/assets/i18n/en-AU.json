@@ -2575,7 +2575,7 @@
     "NotFullyApplied": "Not Fully Applied_au",
     "missingCustomField": "Missing Custom Field_au",
     "PaymentMethods": "Payment Method(s)_au",
-    "IncludeZeroValue": "Include Zero Value_au"
+    "IncludeZeroValue": "Include Zero Comm, SC, Gratuity_au"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_au",

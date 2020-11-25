@@ -2576,7 +2576,7 @@
     "NotFullyApplied": "Not Fully Applied",
     "missingCustomField": "Missing Custom Field",
     "PaymentMethods": "Payment Method(s)",
-    "IncludeZeroValue": "Include Zero Value"
+    "IncludeZeroValue": "Include Zero Comm, SC, Gratuity"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",
