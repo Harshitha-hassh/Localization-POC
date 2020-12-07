@@ -1064,7 +1064,7 @@
     "PMInvalidRequest": "Payment declined due to invalid request._au",
     "MissingAmountTenderMsg": "Enter the Amount to be Tendered_au",
     "MissingRefundAmount": "Enter the Amount to be Refunded_au",
-    "AddedToRoomChrgSuccessMsg": "{amount} added to Room successfully_au",
+    "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully_au",
     "TicketCreationSuccess": "Ticket {checkNumber} is successfully generated_au",
     "RefundSuccessMsg": "Refund Successful_au",
     "PaymentComplete": "Transaction Completed_au",

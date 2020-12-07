@@ -1064,7 +1064,7 @@
     "PMInvalidRequest": "Payment declined due to invalid request._uk",
     "MissingAmountTenderMsg": "Enter the Amount to be Tendered_uk",
     "MissingRefundAmount": "Enter the Amount to be Refunded_uk",
-    "AddedToRoomChrgSuccessMsg": "{amount} added to Room successfully_uk",
+    "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully_uk",
     "TicketCreationSuccess": "Ticket {checkNumber} is successfully generated_uk",
     "RefundSuccessMsg": "Refund Successful_uk",
     "PaymentComplete": "Transaction Completed_uk",

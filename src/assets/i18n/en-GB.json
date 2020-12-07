@@ -1064,7 +1064,7 @@
     "PMInvalidRequest": "Payment declined due to invalid request._gb",
     "MissingAmountTenderMsg": "Enter the Amount to be Tendered_gb",
     "MissingRefundAmount": "Enter the Amount to be Refunded_gb",
-    "AddedToRoomChrgSuccessMsg": "{amount} added to Room successfully_gb",
+    "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully_gb",
     "TicketCreationSuccess": "Ticket {checkNumber} is successfully generated_gb",
     "RefundSuccessMsg": "Refund Successful_gb",
     "PaymentComplete": "Transaction Completed_gb",

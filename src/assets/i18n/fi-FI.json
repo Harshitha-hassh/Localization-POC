@@ -1064,7 +1064,7 @@
     "PMInvalidRequest": "Payment declined due to invalid request._fi",
     "MissingAmountTenderMsg": "Enter the Amount to be Tendered_fi",
     "MissingRefundAmount": "Enter the Amount to be Refunded_fi",
-    "AddedToRoomChrgSuccessMsg": "{amount} added to Room successfully_fi",
+    "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully_fi",
     "TicketCreationSuccess": "Ticket {checkNumber} is successfully generated_fi",
     "RefundSuccessMsg": "Refund Successful_fi",
     "PaymentComplete": "Transaction Completed_fi",
