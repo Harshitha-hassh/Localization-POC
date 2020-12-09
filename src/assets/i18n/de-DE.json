@@ -1261,6 +1261,10 @@
     "SearchARAcctNumber": "Search by Account Number_de",
     "ARAcctName": "Account Name_de",
     "ARAcctNumber": "Account Number_de",
+    "SearchByGuestName": "Search by Guest Last Name_de",
+    "SearchByRoomNumber": "Search by Room Number_de",
+    "GuestName": "Guest Last Name_de",
+    "RoomNumber": "Room Number_de",
     "NoMatchesFound": "No matches found._de",
     "SelectCommissionTemplate": "Select Commission Template_de"
   },
