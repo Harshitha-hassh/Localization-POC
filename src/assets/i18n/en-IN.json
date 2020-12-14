@@ -859,7 +859,7 @@
     "PostTypeMapping": "Post Type Mapping_in"
   },
   "shop": {
-    "AdvancedSearch": "ADVANCED SEARCH_in",
+    "AdvancedSearch": "Advanced Search_in",
     "ClerkId": "Clerk ID_in",
     "Search": "Search_in",
     "WebProxyStatus": "Unable to reach PMS System for Revenue posting. Please check Web Communication proxy._in",
