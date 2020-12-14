@@ -859,6 +859,9 @@
     "PostTypeMapping": "Post Type Mapping_gb"
   },
   "shop": {
+    "AdvancedSearch": "ADVANCED SEARCH_gb",
+    "ClerkId": "Clerk ID_gb",
+    "Search": "Search_gb",
     "WebProxyStatus": "Unable to reach PMS System for Revenue posting. Please check Web Communication proxy._gb",
     "BookingDetails": "Booking Details_gb",
     "ContactDetails": "Contact details_gb",
