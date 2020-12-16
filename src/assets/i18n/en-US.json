@@ -859,6 +859,9 @@
     "PostTypeMapping": "Post Type Mapping"
   },
   "shop": {
+    "AdvancedSearch": "Advanced Search",
+		"ClerkId": "Clerk ID",
+		"Search": "Search",
     "WebProxyStatus": "Unable to reach PMS System for Revenue posting. Please check Web Communication proxy.",
     "BookingDetails": "Booking Details",
     "ContactDetails": "Contact details",

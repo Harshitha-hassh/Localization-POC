@@ -8,7 +8,7 @@
     "commission": "/VisualOne/retailgateway/",
     "payment": "/VisualOne/retailgateway/",
     "common": "/VisualOne/retailgateway/Retail/Services/Notification",
-    "documentation": "/Help/"  
+    "documentation": "/Help/"
   },
   "Login": "Property/GetLoginDetails",
   "LogOut": "Property/LogOutByUserId/{Username}/{TenantId}/{PropertyId}",
@@ -287,6 +287,7 @@
   "GetTransactionDetails": "transaction/GetTransactionDetails/{transactionId}/productId/{productId}",
   "GetTransactionsForDay": "transaction/outlet/{outletId}/status/{status}/date/{transactionDate}/IncludeVoid/{IncludeVoid}",
   "GetTransactionByRange": "transaction/outlet/{outletId}/status/{status}/range/{startDate}/{endDate}",
+  "SearchTransaction": "transaction/search",
   "GetMultiAppointment": "appointments/{id}/multiclient",
   "GetMultiPacks": "multipack/getMultiPacks",
   "GetAllMultiPacks": "multipack/getAllMultiPacks",

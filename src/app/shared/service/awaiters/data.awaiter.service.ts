@@ -38,6 +38,7 @@ export class DataAwaiterService {
     private setAwaiters(): void {
         RetailDataAwaiters.GetChildMenu = this.getChildMenu.bind(this);
         RetailDataAwaiters.searchPayee = this.searchClient.bind(this);
+        RetailDataAwaiters.searchTransactionGuest = this.searchClient.bind(this);
         RetailDataAwaiters.CreatePlayer = this.createClient.bind(this);
         RetailDataAwaiters.openAddPayeePopup = this.openAddGuestPopup.bind(this);
         RetailDataAwaiters.getPayeeDetails = this.getClientDetails.bind(this);
