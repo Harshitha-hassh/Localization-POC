@@ -633,5 +633,6 @@
   "GetRevenuePostings": "RevenuePosting/GetPostTypeMappingDetails",
   "SyncPosting": "RevenuePosting/Sync",
   "NotifyDayEnd":"RevenuePosting/NotifyDayEnd",
-  "WebProxyHealthCheck" : "Transaction/WebCommunicationProxy/HealthCheck"
+  "WebProxyHealthCheck" : "Transaction/WebCommunicationProxy/HealthCheck",
+  "GetAllCreditCardIssuerType": "Payment/GetAllCreditCardIssuerType"
 }
