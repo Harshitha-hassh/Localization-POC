@@ -1270,7 +1270,14 @@
 		"GuestName": "Guest Last Name",
 		"RoomNumber": "Room Number",
     "NoMatchesFound": "No matches found.",
-    "SelectCommissionTemplate": "Select Commission Template"
+    "SelectCommissionTemplate": "Select Commission Template",
+    "ConfirmCancelMsg": "Do you want to cancel all the payments?",
+		"ConfirmPaymentReversal": "Do you want to cancel this payment?",
+		"ConfirmDeleteTransactionMsg": "Do you want to delete the transaction?",
+		"ReversalInprogressMsg": "Please wait while the payment is being removed",
+		"CancelAllPaymentInprogressMsg": "Please wait while the payments are being removed",
+		"UnableToProcessReversalMsg": "Unable to process the reversal request.",
+		"CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed."
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",

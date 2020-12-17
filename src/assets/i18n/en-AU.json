@@ -930,7 +930,7 @@
     "Amount": "Amount_au",
     "AmounttobePaid": "Amount Due_au",
     "NoOfReceipts": "# of Receipts_au",
-    "ReceiptComment":"Receipt Comment_au",
+    "ReceiptComment": "Receipt Comment_au",
     "RemainingDue": "Remaining Due_au",
     "Favoritefood": "Favorite food_au",
     "More": "More_au",
@@ -1270,7 +1270,14 @@
     "GuestName": "Guest Last Name_au",
     "RoomNumber": "Room Number_au",
     "NoMatchesFound": "No matches found._au",
-    "SelectCommissionTemplate": "Select Commission Template_au"
+    "SelectCommissionTemplate": "Select Commission Template_au",
+    "ConfirmCancelMsg": "Do you want to cancel all the payments?_au",
+    "ConfirmPaymentReversal": "Do you want to cancel this payment?_au",
+    "ConfirmDeleteTransactionMsg": "Do you want to delete the transaction?_au",
+    "ReversalInprogressMsg": "Please wait while the payment is being removed_au",
+    "CancelAllPaymentInprogressMsg": "Please wait while the payments are being removed_au",
+    "UnableToProcessReversalMsg": "Unable to process the reversal request._au",
+    "CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed._au"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_au",

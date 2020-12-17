@@ -634,5 +634,7 @@
   "SyncPosting": "RevenuePosting/Sync",
   "NotifyDayEnd":"RevenuePosting/NotifyDayEnd",
   "WebProxyHealthCheck" : "Transaction/WebCommunicationProxy/HealthCheck",
-  "GetAllCreditCardIssuerType": "Payment/GetAllCreditCardIssuerType"
+  "GetAllCreditCardIssuerType": "Payment/GetAllCreditCardIssuerType",
+  "ReversePayment": "transaction/{transactionId}/reversepayment/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/tenderId/{tenderId}/paymentReferenceId/{paymentReferenceId}/terminalId/{terminalId}",
+  "CancelAllPayments": "transaction/{transactionId}/cancelpayments/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/terminalId/{terminalId}"
 }
