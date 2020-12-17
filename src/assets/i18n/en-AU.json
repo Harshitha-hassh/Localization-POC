@@ -930,6 +930,7 @@
     "Amount": "Amount_au",
     "AmounttobePaid": "Amount Due_au",
     "NoOfReceipts": "# of Receipts_au",
+    "ReceiptComment":"Receipt Comment_au",
     "RemainingDue": "Remaining Due_au",
     "Favoritefood": "Favorite food_au",
     "More": "More_au",
