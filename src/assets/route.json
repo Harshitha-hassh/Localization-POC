@@ -324,7 +324,7 @@
   "GetOutlets": "Outlets/property/{propertyId}",
   "GetAllUsers": "User/GetAllUserbyTenantId/{tenantId}",
   "GetAllUsersByPropertyId": "User/GetAllUserbyPropertyId/{propertyId}/{productId}",
-  "GetAllUsersbyUserIds": "User/GetAllUserbyUserIds/",
+  "GetAllUsersbyUserIds": "User/GetAllUserbyUserIds/{tenantId}",
   "GetPropLanguages": "Language/GetAllLanguageByPropertyId/{PropertyId}",
   "GetAllLanguages": "Language/GetAllLanguages",
   "GetUserRetailConfiguration": "UserRetailConfiguration/{id}",
