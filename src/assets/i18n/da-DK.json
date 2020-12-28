@@ -303,7 +303,9 @@
     "RetailItems": "Retail Items_da",
     "Clients": "Clients_da",
     "drp_txt_cell": "Cell_da",
-    "drp_txt_work": "Work_da"
+    "drp_txt_work": "Work_da",
+    "contactAdministrator": "Please contact your administrator._da",
+    "unexpectedError": "An unexpected error has occurred, on {date} at {time}._da"
   },
   "calendar": {
     "Sunday": "Sunday_da",

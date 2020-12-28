@@ -303,7 +303,9 @@
     "RetailItems": "Retail Items_au",
     "Clients": "Clients_au",
     "drp_txt_cell": "Cell_au",
-    "drp_txt_work": "Work_au"
+    "drp_txt_work": "Work_au",
+    "contactAdministrator": "Please contact your administrator._au",
+    "unexpectedError": "An unexpected error has occurred, on {date} at {time}._au"
   },
   "calendar": {
     "Sunday": "Sunday_au",

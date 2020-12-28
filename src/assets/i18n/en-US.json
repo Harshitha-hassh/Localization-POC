@@ -303,7 +303,9 @@
     "RetailItems": "Retail Items",
     "Clients": "Clients",
     "drp_txt_cell": "Cell",
-    "drp_txt_work": "Work"
+    "drp_txt_work": "Work",
+    "contactAdministrator": "Please contact your administrator.",
+    "unexpectedError": "An unexpected error has occurred, on {date} at {time}."
   },
   "calendar": {
     "Sunday": "Sunday",
@@ -2818,7 +2820,7 @@
       "SmallStickers": "Small Stickers",
       "HangingTickets": "Hanging Tickets",
       "NoPrintersFound": "No printers found",
-      "NoPaymentDevicesFound": "No Payment Devices Found",      
+      "NoPaymentDevicesFound": "No Payment Devices Found",
       "EmailTemplates": "Email Templates",
       "SMSTemplates": "SMS Templates",
       "AppointmentBooking": "Appointment Booking",
