@@ -561,4 +561,17 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       formArray.removeAt(0);
     }
   }
+
+  onPhChange($event, i , item) {
+
+
+    //settingEmptyvalues 
+    if(!$event.value)
+    {
+     item['controls']['phonenumber'].setValue('');
+     item['controls']['phonenumber'].clearValidators();
+     item['controls']['phonelabel'].clearValidators();
+    }
+  
+   }
 }
