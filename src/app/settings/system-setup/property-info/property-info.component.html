@@ -48,7 +48,8 @@
               <label class="form-label-primary blckClr mb-0">{{captions.phone}}</label>
             <div [formGroupName]="i">
               <mat-form-field class="phone" floatLabel="never">
-                <mat-select placeholder="{{captions.phone}}" name="Phone" id="phone{{i}}" formControlName="phonelabel" >
+                <mat-select  (selectionChange)="onPhChange($event, i ,phone)" placeholder="{{captions.phone}}" name="Phone" id="phone{{i}}" formControlName="phonelabel" >
+                  <mat-option></mat-option>
                   <mat-option *ngFor="let phonetype of contactPhoneType" [value]="phonetype.Description">
                     {{phonetype.Description}}
                   </mat-option>

@@ -392,7 +392,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       PhoneGroup.controls['countryCode'].clearValidators();
       PhoneGroup.controls['countryCode'].setValidators(clientConfiguration[0]['CLIENT_PHONE'] ?
         [Validators.required, EmptyValueValidator] : []);
-      that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index);
+      that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index,'');
       PhoneGroup.controls['countryCode'].updateValueAndValidity();
 
       PhoneGroup.controls['PhoneNumber'].clearValidators();
@@ -802,7 +802,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['Email']['controls'][index].controls[emailLabel].updateValueAndValidity();
   }
 
-  setmandatory(eve, phoneNumber, altfield, phoneType, index) {
+  setmandatory(eve, phoneNumber, altfield, phoneType, index , item) {
     if (eve && eve.target && eve.target.value) {
       this.FormGrp.controls['Phone']['controls'][index].controls[altfield].setValidators([Validators.required]);
     }
@@ -819,10 +819,32 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].markAsTouched();
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].updateValueAndValidity();
     this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].updateValueAndValidity();
+    
+    //fordeselecting
+    if(!eve.value)
+    {
+     item['controls']['PhoneNumber'].setValue('');
+     item['controls']['countryCode'].setValue('');
+     item['controls']['PhoneNumber'].clearValidators();
+     item['controls']['countryCode'].clearValidators();
+     item['controls']['PhoneNumberLabel'].clearValidators();
+    }
+
+  }
+
+  onEmailChange($event,i,item)
+  {
+    if(!$event.value)
+   {
+    
+    item['controls']['EmailId'].setValue('');
+    item['controls']['EmailLabel'].clearValidators();
+   
+   }
   }
 
   phoneChange(eve, phoneNumber, altfield, phoneNumberLabel, index) {
-    this.setmandatory(eve, phoneNumber, altfield, phoneNumberLabel, index);
+    this.setmandatory(eve, phoneNumber, altfield, phoneNumberLabel, index,'');
     if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumber].value &&
       !this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumberLabel].value) {
       this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumberLabel].setValidators(Validators.required);
@@ -1090,7 +1112,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
       PhoneGroup.controls['countryCode'].clearValidators();
       PhoneGroup.controls['countryCode'].setValidators([Validators.required, EmptyValueValidator]);
-      that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index);
+      that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index,'');
       PhoneGroup.controls['countryCode'].updateValueAndValidity();
 
       PhoneGroup.controls['PhoneNumber'].clearValidators();

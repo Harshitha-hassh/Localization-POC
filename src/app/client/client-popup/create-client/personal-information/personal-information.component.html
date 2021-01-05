@@ -121,7 +121,8 @@
               <mat-form-field class="inputwidth20 width-90px mr-3" [formGroupName]="i">
                 <mat-select [placeholder]="captions.CPhone" id="PhoneNumberLabel" name="TSpdd" class="LW14"
                   formControlName="PhoneNumberLabel"
-                  (selectionChange)="setmandatory($event, 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', i)">
+                  (selectionChange)="setmandatory($event, 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', i ,item)">
+                  <mat-option></mat-option>
                   <mat-option *ngFor="let ct of contactTypePhone" [value]="ct.id">{{ct.description}}
                   </mat-option>
                 </mat-select>
@@ -186,8 +187,9 @@
           class="w-100 emailDiv">
           <div class="float-left width-490px" [formGroupName]="j">
             <mat-form-field class="inputwidth20 width-90px mr-3">
-              <mat-select [placeholder]="captions.Email" (value)="selectedEmail" id="EmailSelect" name="TSedd"
+              <mat-select (selectionChange)="onEmailChange($event, i ,item)"  [placeholder]="captions.Email" (value)="selectedEmail" id="EmailSelect" name="TSedd"
                 formControlName="EmailLabel" class="">
+                <mat-option></mat-option>
                 <mat-option *ngFor="let ct of contactTypeEmail" [value]="ct.id">{{ct.description}}
                 </mat-option>
               </mat-select>
