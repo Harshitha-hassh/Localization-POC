@@ -943,7 +943,7 @@
     "EditCommissionGratuity": "Edit Commission/Gratuity_fi",
     "AddCommissionGratuity": "Add Commission/Gratuity_fi",
     "QuantityZero": "Quantity cannot be 0_fi",
-    "RequiredGuest":"Guest is required to be attached to the transaction.<br/><br/> Please select a guest._fi",
+    "RequiredGuest": "Guest is required to be attached to the transaction.<br/><br/> Please select a guest._fi",
     "RemoveGratuity": "Remove Gratuity_fi",
     "RemoveCommission": "Remove Commission_fi",
     "RemoveServicecharge": "Remove Service Charge_fi",
@@ -959,7 +959,7 @@
     "RedeemingMultipack": "Redeeming multipack - _fi",
     "OpenPricedItem": "ENTER PRICE_fi",
     "EnterComment": "ENTER COMMENT_fi",
-    "Comment":"Comment_fi",
+    "Comment": "Comment_fi",
     "OK": "Ok_fi",
     "ReturnReason": "Return Reason_fi",
     "OriginalAmount": "Original Amount_fi",
@@ -2408,7 +2408,9 @@
     "WithDiscount": "With Discount_fi",
     "ClearAll": "Clear All_fi",
     "DefaultSearchRecordsInShop": "Default search records in shop_fi",
-    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_fi"
+    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_fi",
+    "AllowReturnstoOriginalSettlement": "Allow Returns to Original Settlement Method Only_fi",
+    "PMSProxyEndPoint": "PMS Proxy Endpoint_fi"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_fi",

@@ -943,7 +943,7 @@
     "EditCommissionGratuity": "Edit Commission/Gratuity_de",
     "AddCommissionGratuity": "Add Commission/Gratuity_de",
     "QuantityZero": "Quantity cannot be 0_de",
-    "RequiredGuest":"Guest is required to be attached to the transaction.<br/><br/> Please select a guest._de",
+    "RequiredGuest": "Guest is required to be attached to the transaction.<br/><br/> Please select a guest._de",
     "RemoveGratuity": "Remove Gratuity_de",
     "RemoveCommission": "Remove Commission_de",
     "RemoveServicecharge": "Remove Service Charge_de",
@@ -959,7 +959,7 @@
     "RedeemingMultipack": "Redeeming multipack - _de",
     "OpenPricedItem": "ENTER PRICE_de",
     "EnterComment": "ENTER COMMENT_de",
-    "Comment":"Comment_de",
+    "Comment": "Comment_de",
     "OK": "Ok_de",
     "ReturnReason": "Return Reason_de",
     "OriginalAmount": "Original Amount_de",
@@ -2408,7 +2408,9 @@
     "WithDiscount": "With Discount_de",
     "ClearAll": "Clear All_de",
     "DefaultSearchRecordsInShop": "Default search records in shop_de",
-    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_de"
+    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_de",
+    "AllowReturnstoOriginalSettlement": "Allow Returns to Original Settlement Method Only_de",
+    "PMSProxyEndPoint": "PMS Proxy Endpoint_de"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_de",
