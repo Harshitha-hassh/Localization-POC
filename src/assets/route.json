@@ -624,6 +624,7 @@
   "GetCommissionSetup" : "retailitems/getcommissionsetup",
   "IsBarcodeExists": "retailitems/validate/barcode/{barcode}",
   "GetRetailItemDetailedInfo": "retailitems/detailed-info?id={id}",
+  "GetRetailItemDetailedInfoList": "retailitems/detailed-infolist",
   "SyncInventory": "retailitems/syncinventory/outlets/{outletId}",
   "GetRetailItemById": "RetailItems/{itemId}",
   "GetTransactionCountByPaymentMethod": "Transaction/paymentmethod/{paymentmethodId}/count",
