@@ -504,6 +504,7 @@
   "SyncItemAndTax": "Inventory/Syncup/outlets/{outletId}/type/{type}/operation/{operation}/id/{id}",
   "CloseReturnTransaction": "transaction/closeReturnTransaction/{transactionId}/transactionDate/{transactionDate}/productId/{productId}",
   "GetTransactionInfoById": "transaction/transactionInfoById/{transactionId}",
+  "GetTransactionDetailsForReceipt": "transaction/GetTransactionDetailsForReceipt/{transactionId}",
   "Pay": "Transaction/pay/outletId/{outletId}/terminalId/{terminalId}",
   "Refund": "transaction/{transactionId}/refund/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/tenderId/{tenderId}/paymentReferenceId/{paymentReferenceId}/terminalId/{terminalId}",
   "GetLinkedTransactions": "transaction/{transactionId}/outlet/{outletId}/linkedTransactions",
