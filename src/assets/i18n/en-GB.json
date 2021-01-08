@@ -2408,7 +2408,9 @@
     "WithDiscount": "With Discount_gb",
     "ClearAll": "Clear All_gb",
     "DefaultSearchRecordsInShop": "Default search records in shop_gb",
-    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_gb"
+    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_gb",
+    "AllowReturnstoOriginalSettlement": "Allow Returns to Original Settlement Method Only_gb",
+    "PMSProxyEndPoint": "PMS Proxy Endpoint_gb"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_gb",

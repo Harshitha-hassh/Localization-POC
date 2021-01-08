@@ -2408,7 +2408,9 @@
     "WithDiscount": "With Discount_au",
     "ClearAll": "Clear All_au",
     "DefaultSearchRecordsInShop": "Default search records in shop_au",
-    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_au"
+    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_au",
+    "AllowReturnstoOriginalSettlement": "Allow Returns to Original Settlement Method Only_au",
+    "PMSProxyEndPoint": "PMS Proxy Endpoint_au"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_au",

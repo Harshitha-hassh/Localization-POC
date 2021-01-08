@@ -2408,7 +2408,9 @@
     "WithDiscount": "With Discount_uk",
     "ClearAll": "Clear All_uk",
     "DefaultSearchRecordsInShop": "Default search records in shop_uk",
-    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_uk"
+    "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_uk",
+    "AllowReturnstoOriginalSettlement": "Allow Returns to Original Settlement Method Only_uk",
+    "PMSProxyEndPoint": "PMS Proxy Endpoint_uk"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_uk",
