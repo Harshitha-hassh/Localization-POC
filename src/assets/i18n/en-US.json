@@ -2411,7 +2411,9 @@
     "DefaultSearchRecordsInShop": "Default search records in shop",
     "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero",
     "AllowReturnstoOriginalSettlement":"Allow Returns to Original Settlement Method Only",
-		"PMSProxyEndPoint": "PMS Proxy Endpoint"
+		"PMSProxyEndPoint": "PMS Proxy Endpoint",
+		"ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge",
+		"ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description",
