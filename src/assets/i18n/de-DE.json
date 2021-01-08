@@ -2410,7 +2410,9 @@
     "DefaultSearchRecordsInShop": "Default search records in shop_de",
     "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_de",
     "AllowReturnstoOriginalSettlement": "Allow Returns to Original Settlement Method Only_de",
-    "PMSProxyEndPoint": "PMS Proxy Endpoint_de"
+    "PMSProxyEndPoint": "PMS Proxy Endpoint_de",
+    "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_de",
+    "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_de"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_de",
