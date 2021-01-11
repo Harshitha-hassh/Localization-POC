@@ -2795,7 +2795,9 @@
     "SMS": "SMS_gb",
     "DistributionList": "Distribution List_gb",
     "DistributionName": "Distribution Name_gb",
-    "NewDistributionList": "New Distribution List_gb"
+    "NewDistributionList": "New Distribution List_gb",
+    "AllowQuickID": "Allow Quick ID_gb",
+    "ForRetailTransactions": "For Retail Transactions_gb"
   },
   "settings": {
     "prices": "Price ({option})_gb",

@@ -2795,7 +2795,9 @@
     "SMS": "SMS_da",
     "DistributionList": "Distribution List_da",
     "DistributionName": "Distribution Name_da",
-    "NewDistributionList": "New Distribution List_da"
+    "NewDistributionList": "New Distribution List_da",
+    "AllowQuickID": "Allow Quick ID_da",
+    "ForRetailTransactions": "For Retail Transactions_da"
   },
   "settings": {
     "prices": "Price ({option})_da",

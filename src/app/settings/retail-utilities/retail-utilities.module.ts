@@ -8,9 +8,10 @@ import { UtilitiesRoutingModule } from './retail-utilities-routing.module';
 import { ReceiptConfigurationComponent } from './receipt-configuration/receipt-configuration.component';
 import { RetailTemplatesComponent } from './retail-templates/retail-templates.component';
 import { UserMachineConfigurationComponent } from './user-machine-configuration/user-machine-configuration.component';
+import { QuickidConfigComponent } from './quickid-config/quickid-config.component';
 
 @NgModule({
-  declarations: [RetailUtilitiesComponent,ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent],
+  declarations: [RetailUtilitiesComponent,ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent],
   imports: [
     CommonModule,
     SharedModule,

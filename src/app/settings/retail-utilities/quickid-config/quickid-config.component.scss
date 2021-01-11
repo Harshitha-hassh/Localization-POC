@@ -1,0 +1,63 @@
+@import '../../../../assets/sass/abstracts/variables';
+.quickid-config {
+  .quickid-config-container {
+    padding: 20px;
+    height: calc(100% - 64px);
+
+    .page-header-label {
+      margin: 0;
+    }
+
+    .quick-bottomSection {
+      display: flex;
+      margin: $twenty-px 0px;
+      min-width: 650px;
+
+      .quick-bottomSection-toggle-section {
+        display: inline-block;
+        background: $block-bg-color;
+        margin-right: $twenty-px;
+
+        .toggle-section-div {
+          margin: 20px;
+          height: 35px;
+
+          .toggle-section-label {
+            display: inline-block;
+          }
+
+          .primary-label {
+            padding-right: 1rem;
+          }
+
+          .toggle-section-switch {
+            vertical-align: top;
+            text-align: right;
+            float: right;
+          }
+        }
+        .toggle-section-default-switch {
+          vertical-align: top;
+          text-align: right;
+          float: unset;
+        }
+      }
+      .toggle-section-padingleft {
+        padding-left: 1rem;
+      }
+    }
+  }
+  .quickid-config-footer{
+    height: 64px;
+    border-top: 1px solid $color-grey-border;
+    padding: 12px 0px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding-left: 30px;
+    border-top: 1px solid #CCD3D7;
+    .save {
+      margin-right: 10px;
+    }
+  }
+}

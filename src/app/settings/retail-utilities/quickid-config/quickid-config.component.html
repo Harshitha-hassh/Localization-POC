@@ -1,0 +1,22 @@
+  <section  class="quickid-config">
+    <div class="quickid-config-container">
+      <label class="toggle-section-label page-header-label">{{captions.AllowQuickID}}</label>
+      <section class="quick-bottomSection w-50" [formGroup]="toggleGroup">
+        <section class="quick-bottomSection-toggle-section custom-switch w-50 pl-lg-0">
+          <div class="toggle-section-div">
+            <label class="toggle-section-label w-70">{{captions.ForRetailTransactions}}</label>
+            <div class="toggle-section-switch">
+              <app-toggle-switch  class="d-table-cell pl-4" (changeToggleEvent)="toggleChange($event,value.controlName)" formControlName="retailtransactions"
+                ></app-toggle-switch>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+    <div class='quickid-config-footer'>
+      <div>
+          <button class="text_capitalize LW14 save" mat-button (click)="OnSave()" [ngClass]="enableSave ? 'spa-primary-default-save whitecolor': 'spa-primary-disabled'" [disabled]='!enableSave'>{{captions.save}}</button>
+          <a class="text_capitalize LW14 spa-button-cancel" (click)="OnCancel()">{{captions.cancel}}</a>
+      </div>
+    </div>
+  </section>

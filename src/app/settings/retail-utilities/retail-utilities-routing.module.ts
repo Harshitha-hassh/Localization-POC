@@ -9,6 +9,7 @@ import { ReceiptConfigurationComponent } from './receipt-configuration/receipt-c
 import { UserMachineConfigurationComponent } from './user-machine-configuration/user-machine-configuration.component';
 import { RouteGuardService } from 'src/app/core/services/route.guard.service';
 import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
+import { QuickidConfigComponent } from './quickid-config/quickid-config.component';
 
 
 const routes: Routes = [{
@@ -48,7 +49,11 @@ const routes: Routes = [{
       },
       {
         path: 'distributionlist',
-        component: DistributionListComponent,
+        component: DistributionListComponent
+      },
+      {
+        path: 'quickidconfig',
+        component: QuickidConfigComponent
       }
   ]
 }];

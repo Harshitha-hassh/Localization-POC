@@ -2795,7 +2795,9 @@
     "SMS": "SMS_uk",
     "DistributionList": "Distribution List_uk",
     "DistributionName": "Distribution Name_uk",
-    "NewDistributionList": "New Distribution List_uk"
+    "NewDistributionList": "New Distribution List_uk",
+    "AllowQuickID": "Allow Quick ID_uk",
+    "ForRetailTransactions": "For Retail Transactions_uk"
   },
   "settings": {
     "prices": "Price ({option})_uk",

@@ -2795,7 +2795,9 @@
     "SMS": "SMS_in",
     "DistributionList": "Distribution List_in",
     "DistributionName": "Distribution Name_in",
-    "NewDistributionList": "New Distribution List_in"
+    "NewDistributionList": "New Distribution List_in",
+    "AllowQuickID": "Allow Quick ID_in",
+    "ForRetailTransactions": "For Retail Transactions_in"
   },
   "settings": {
     "prices": "Price ({option})_in",
