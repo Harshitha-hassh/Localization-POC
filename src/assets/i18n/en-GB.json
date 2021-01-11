@@ -1,4 +1,30 @@
 {
+  "contactTypesOptions": {
+    "Phone": [
+      {
+        "id": "1_gb",
+        "description": "Cell_gb"
+      },
+      {
+        "id": "2_gb",
+        "description": "Home_gb"
+      },
+      {
+        "id": "3_gb",
+        "description": "Work_gb"
+      }
+    ],
+    "Email": [
+      {
+        "id": "9_gb",
+        "description": "Personal_gb"
+      },
+      {
+        "id": "10_gb",
+        "description": "Office_gb"
+      }
+    ]
+  },
   "PhoneFormat": "(999) 999-9999",
   "ExtensionFormat": "(999) 999-9999 ext: 99",
   "alphabet": [
