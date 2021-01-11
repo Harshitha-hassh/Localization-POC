@@ -22,11 +22,14 @@ import { Product } from 'src/app/common/shared/shared/globalsContant';
 import { API } from 'src/app/shared/models/property-settings.model';
 import { UserdefaultsInformationService } from 'src/app/core/services/UserdefaultsInformationService';
 import { Localization } from 'src/app/common/localization/localization';
+import { UserMachineConfigurationService } from 'src/app/retail/common/services/user-machine-configuration.service';
+import { RetailSharedVariableService } from 'src/app/retail/shared/retail.shared.variable.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  providers:[UserMachineConfigurationService],
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit, OnDestroy {
@@ -78,7 +81,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     private propertyInfo: PropertyInformation,
     private userDefaultsService: UserdefaultsInformationService,
     private compiler: Compiler,
-    private router: Router
+    private router: Router,
+    private userSessionConfig: UserMachineConfigurationService, 
+    private retailSharedService: RetailSharedVariableService
   ) {
     this.initializeForm();
     this.captions = this.localize.captions;
@@ -99,7 +104,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.loginButton = {
       type: 'primary',
-      label: this.captions.login,
+      label: this.captions.Login,
       customclass: 'w-307px'
     };
     this.buttonValueprimary1 = {
@@ -298,7 +303,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       sessionStorage.setItem(USER_SESSION, String(usersessionId));
       await this.setEatecToken();
       this.setAutoLogOff();
-     // await this.SetUserSessionConfiguration(this.userInfo.userId);
+      await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.router.navigate(['/home']);
     }
   }
@@ -464,30 +469,30 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
 
-  // async SetUserSessionConfiguration(userId: number) {
-  //   let userSessionConfig = await this.userSessionConfig.getUserSessionConfiguration(userId);
+  async SetUserSessionConfiguration(userId: number) {
+    let userSessionConfig = await this.userSessionConfig.getUserSessionConfiguration(userId);
 
-  //   if (userSessionConfig) {
-  //     let userSessionConfigValues =
-  //       ` Id=${userSessionConfig.id};
-  //         UserId=${userSessionConfig.userId};
-  //         DefaultOutletId=${userSessionConfig.defaultOutletId};
-  //         DefaultTerminalId=${userSessionConfig.defaultTerminalId};
-  //         DefaultCourseId=${userSessionConfig.defaultCourseId};
-  //         DefaultPaymentDevice=${userSessionConfig.defaultPaymentDevice};
-  //         DefaultDeviceName=${userSessionConfig.defaultDeviceName};
-  //         IsIdtechSred=${userSessionConfig.isIdtechSred};
-  //         HangingTicketsPrinter=${userSessionConfig.hangingTicketsPrinter};
-  //         SmallStickersPrinter=${userSessionConfig.smallStickersPrinter};
-  //   `;
+    if (userSessionConfig) {
+    //   let userSessionConfigValues =
+    //     ` Id=${userSessionConfig.id};
+    //       UserId=${userSessionConfig.userId};
+    //       DefaultOutletId=${userSessionConfig.defaultOutletId};
+    //       DefaultTerminalId=${userSessionConfig.defaultTerminalId};
+    //       DefaultCourseId=${userSessionConfig.defaultCourseId};
+    //       DefaultPaymentDevice=${userSessionConfig.defaultPaymentDevice};
+    //       DefaultDeviceName=${userSessionConfig.defaultDeviceName};
+    //       IsIdtechSred=${userSessionConfig.isIdtechSred};
+    //       HangingTicketsPrinter=${userSessionConfig.hangingTicketsPrinter};
+    //       SmallStickersPrinter=${userSessionConfig.smallStickersPrinter};
+    // `;
 
-  //     sessionStorage.setItem(this.userSessionConfig.userSessionConfigKey, userSessionConfigValues);
+      sessionStorage.setItem(this.userSessionConfig.userSessionConfigKey, JSON.stringify(userSessionConfig));
 
-  //     // Set Retail Shop service - outlet dropdown value
-  //     this.retailSharedService.SelectedOutletId = userSessionConfig.defaultOutletId;
-  //     this.retailSharedService.SelectedTerminalId = userSessionConfig.defaultTerminalId;
-  //   }
-  // }
+      // Set Retail Shop service - outlet dropdown value
+      this.retailSharedService.SelectedOutletId = userSessionConfig.defaultOutletId;
+      this.retailSharedService.SelectedTerminalId = userSessionConfig.defaultTerminalId;
+    }
+  }
 
   setAutoLogOff() {
     this.autoLogOff = this.utils.GetPropertyInfo('AutoLogOff');

@@ -72,6 +72,18 @@
     "all": "All_in",
     "viewFailed": "View Failed_in"
   },
+  "login": {
+    "enterUserId": "Please Enter the User ID_in",
+    "enterPassword": "Please Enter the Password_in",
+    "enterQuickId": "Please Enter the Quick ID_in",
+    "invalidQuickId": "Invalid Quick ID_in",
+    "invaliduserIdLogin": "Invalid User ID or Password_in",
+    "userid": "User ID_in",
+    "quickId": "Quick ID_in",
+    "password": "Password_in",
+    "Login": "Login_in",
+    "QUICKLOGIN": "QUICK LOGIN_in"
+  },
   "common": {
     "AddPlayer": "Add Player_in",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_in",
@@ -80,6 +92,8 @@
     "Extension": " ext: _in",
     "ExtensionReport": " ext _in",
     "AppendReportCaption": " _in",
+    "QUICKLOGIN": "QUICK LOGIN_in",
+    "Login": "Login_in",
     "alphabets": [
       "A",
       "B",
@@ -1418,7 +1432,7 @@
   "location": "Location_in",
   "missingUserID": "Missing User ID_in",
   "missingPassword": "Missing Password_in",
-  "login": "Login_in",
+  "Login": "Login_in",
   "welcomeToRetail": "Please login to your account_in",
   "enter": "Enter_in",
   "done": "Done_in",

@@ -72,6 +72,18 @@
     "all": "All_au",
     "viewFailed": "View Failed_au"
   },
+  "login": {
+    "enterUserId": "Please Enter the User ID_au",
+    "enterPassword": "Please Enter the Password_au",
+    "enterQuickId": "Please Enter the Quick ID_au",
+    "invalidQuickId": "Invalid Quick ID_au",
+    "invaliduserIdLogin": "Invalid User ID or Password_au",
+    "userid": "User ID_au",
+    "quickId": "Quick ID_au",
+    "password": "Password_au",
+    "Login": "Login_au",
+    "QUICKLOGIN": "QUICK LOGIN_au"
+  },
   "common": {
     "AddPlayer": "Add Player_au",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_au",
@@ -80,6 +92,8 @@
     "Extension": " ext: _au",
     "ExtensionReport": " ext _au",
     "AppendReportCaption": " _au",
+    "QUICKLOGIN": "QUICK LOGIN_au",
+    "Login": "Login_au",
     "alphabets": [
       "A",
       "B",
@@ -1418,7 +1432,7 @@
   "location": "Location_au",
   "missingUserID": "Missing User ID_au",
   "missingPassword": "Missing Password_au",
-  "login": "Login_au",
+  "Login": "Login_au",
   "welcomeToRetail": "Please login to your account_au",
   "enter": "Enter_au",
   "done": "Done_au",

@@ -21,6 +21,12 @@ export class QuickIdConfigBusiness {
         return this.mapToUI(result);
     }
 
+    public async GetSettingByModule(): Promise<any> {    
+        let result = await this.quickIdConfigService.GetAllSettingbyModule("QuickIdConfig");
+        console.log(result);        
+        return result;
+    }
+
     private mapToUI(configData: ConfigData[]): ConfigData[]{
         let result = [];
         this.quickIdConfig.forEach(val => {

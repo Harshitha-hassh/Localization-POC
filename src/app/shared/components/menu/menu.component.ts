@@ -17,6 +17,7 @@ import { ConfigKeys, RetailFeatureFlagInformationService } from 'src/app/retail/
 import { RetailServiceRegistry } from 'src/app/retail/shared/service/base.service';
 import { SPAConfig } from 'src/app/retail/common/config/SPA-config';
 import { HttpServiceCall } from 'src/app/retail/shared/service/http-call.service';
+import { QuickLoginUtilities } from 'src/app/common/shared/shared/utilities/quick-login-utilities';
 
 
 @Component({
@@ -79,6 +80,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     , private retailServiceRegistry: RetailServiceRegistry
     , private _headerService: SPAConfig
     , private _http: HttpServiceCall
+    ,public quickLoginUtils: QuickLoginUtilities
 
     ) {
     // this.sortPipe = new SortOrderPipe();
@@ -90,6 +92,11 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.firstName = this._localization.GetUserInfo("firstName");
     this.lastName = this._localization.GetUserInfo("lastName");
     this.userRole = this._localization.GetUserInfo("roleName");
+    this.quickLoginUtils.resetQuickIdDetails();
+    if(!sessionStorage.getItem("QuickIdConfig"))
+    {
+      this._propertyFeatureService.SetQuickIdConfigSettingForRetail("QuickIdConfig"); 
+    }
     if (this.firstName == "undefined" || this.lastName == "undefined" || this.firstName == undefined || this.lastName == undefined) {
       this.userText = this.userName ? this.userName.charAt(0).toUpperCase() : '';
     }
