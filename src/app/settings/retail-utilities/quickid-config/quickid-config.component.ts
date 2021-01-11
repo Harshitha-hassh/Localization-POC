@@ -51,6 +51,8 @@ export class QuickidConfigComponent implements OnInit {
     this.quickIdConfigFormValue = _.cloneDeep(quickIdConfigValues);
     this.patchInitialValues(quickIdConfigValues);
     this.enableSave  = false;
+    const QuickConfigSetting:any = await this.quickidconfigBusiness.GetSettingByModule();
+    sessionStorage.setItem('QuickIdConfig',JSON.stringify(QuickConfigSetting[0]));
   }
 
   patchInitialValues(values: ConfigData[])
@@ -59,7 +61,12 @@ export class QuickidConfigComponent implements OnInit {
   }
 
   toggleChange(event,action) {
-    
+    if(action == QuickIdConfigSetting.retailtransactions) {
+      this.toggleGroup.patchValue({
+        retailtransactions:event[0]
+      });
+      this.quickIdConfigFormValue.find(x=>x.switch === QuickIdConfigSetting.retailtransactions).value = event[0];
+    }
   }
 
   async OnSave() {

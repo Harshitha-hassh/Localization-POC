@@ -104,7 +104,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.loginButton = {
       type: 'primary',
-      label: this.captions.login,
+      label: this.captions.Login,
       customclass: 'w-307px'
     };
     this.buttonValueprimary1 = {

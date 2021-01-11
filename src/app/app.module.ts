@@ -19,6 +19,7 @@ import { CommonUtilities } from './common/shared/shared/utilities/common-utiliti
 import { Utilities } from './core/utilities';
 import { ServiceLocator } from './common/service.locator';
 import { AppModuleService } from './core/services/app.service';
+import { OAuthModule } from 'angular-oauth2-oidc';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
@@ -37,7 +38,8 @@ let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLoc
     HttpClientModule,
     MaterialModule,
     CoreModule,
-    LoginModule
+    LoginModule,
+    OAuthModule.forRoot()
   ],
   providers: [
     {

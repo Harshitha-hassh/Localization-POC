@@ -31,4 +31,15 @@ export class QuickIdConfigService {
       );
       return response.result;
     }
+
+    public async GetAllSettingbyModule(data): Promise<ConfigData[]> {
+      let response: any = await this.http.CallApiAsync<any>({
+        host: GlobalConst.Host.retailManagement,
+        callDesc: "GetAllSettingByModule",
+        method: HttpMethod.Get,
+        uriParams: {  module:data },
+       
+    });        
+      return response.result;
+    }
 }
