@@ -1,4 +1,30 @@
 {
+  "contactTypesOptions": {
+    "Phone": [
+      {
+        "id": "1_uk",
+        "description": "Cell_uk"
+      },
+      {
+        "id": "2_uk",
+        "description": "Home_uk"
+      },
+      {
+        "id": "3_uk",
+        "description": "Work_uk"
+      }
+    ],
+    "Email": [
+      {
+        "id": "9_uk",
+        "description": "Personal_uk"
+      },
+      {
+        "id": "10_uk",
+        "description": "Office_uk"
+      }
+    ]
+  },
   "PhoneFormat": "(999) 999-9999",
   "ExtensionFormat": "(999) 999-9999 ext: 99",
   "alphabet": [

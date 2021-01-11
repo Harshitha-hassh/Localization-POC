@@ -1,4 +1,30 @@
 {
+  "contactTypesOptions": {
+    "Phone": [
+      {
+        "id": "1_fi",
+        "description": "Cell_fi"
+      },
+      {
+        "id": "2_fi",
+        "description": "Home_fi"
+      },
+      {
+        "id": "3_fi",
+        "description": "Work_fi"
+      }
+    ],
+    "Email": [
+      {
+        "id": "9_fi",
+        "description": "Personal_fi"
+      },
+      {
+        "id": "10_fi",
+        "description": "Office_fi"
+      }
+    ]
+  },
   "PhoneFormat": "(999) 999-9999",
   "ExtensionFormat": "(999) 999-9999 ext: 99",
   "alphabet": [

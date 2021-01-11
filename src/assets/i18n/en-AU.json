@@ -1,4 +1,30 @@
 {
+  "contactTypesOptions": {
+    "Phone": [
+      {
+        "id": "1_au",
+        "description": "Cell_au"
+      },
+      {
+        "id": "2_au",
+        "description": "Home_au"
+      },
+      {
+        "id": "3_au",
+        "description": "Work_au"
+      }
+    ],
+    "Email": [
+      {
+        "id": "9_au",
+        "description": "Personal_au"
+      },
+      {
+        "id": "10_au",
+        "description": "Office_au"
+      }
+    ]
+  },
   "PhoneFormat": "(999) 999-9999",
   "ExtensionFormat": "(999) 999-9999 ext: 99",
   "alphabet": [

@@ -42,13 +42,15 @@ export class RedenderingOptionComponent implements OnInit, OnChanges {
     if (this.datainput.address && this.datainput.address.length > 0 && this.searchText) {
       let address = this.datainput.address[0];
       let searchTextLower = this.searchText.toLowerCase();
-      this.showAddress = (address.addressLine1.toLowerCase().indexOf(searchTextLower) >= 0 || address.addressLine2.toLowerCase().indexOf(searchTextLower) >= 0 ||
-        (address.addressLine3 != null && address.addressLine3.toLowerCase().indexOf(searchTextLower) >= 0) ||
-        address.city.toLowerCase().indexOf(searchTextLower) >= 0 ||
-        address.state.toLowerCase().indexOf(searchTextLower) >= 0 ||
-        address.country.toLowerCase().indexOf(searchTextLower) >= 0 ||
-        (address.county != null && address.county.toLowerCase().indexOf(searchTextLower) >= 0) ||
-        address.zipCode.toLowerCase().indexOf(searchTextLower) >= 0)
+      this.showAddress = (
+        (address.addressLine1 || '').toLowerCase().indexOf(searchTextLower) >= 0 || 
+        (address.addressLine2 || '').toLowerCase().indexOf(searchTextLower) >= 0 ||
+        (address.addressLine3 || '').toLowerCase().indexOf(searchTextLower) >= 0 ||
+        (address.city || '').toLowerCase().indexOf(searchTextLower) >= 0 ||
+        (address.state || '').toLowerCase().indexOf(searchTextLower) >= 0 ||
+        (address.country || '').toLowerCase().indexOf(searchTextLower) >= 0 ||
+        (address.county || '').toLowerCase().indexOf(searchTextLower) >= 0 ||
+        (address.zipCode || '').toLowerCase().indexOf(searchTextLower) >= 0)
       if (this.showAddress) {
         let addressArray = new Array();
         if (address.addressLine1 && address.addressLine1 != null && address.addressLine1.trim() != "") {
