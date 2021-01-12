@@ -112,7 +112,8 @@ export class DataAwaiterService {
             rank: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].rank : '',
             playerCategoryId: 1,
             emailId: emailId,
-            phoneNumber: phoneNo 
+            phoneNumber: phoneNo,
+            lastName: client.lastName
         };
         return payee;
     }
