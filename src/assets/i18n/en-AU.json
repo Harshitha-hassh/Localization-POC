@@ -1322,7 +1322,9 @@
     "ReversalInprogressMsg": "Please wait while the payment is being removed_au",
     "CancelAllPaymentInprogressMsg": "Please wait while the payments are being removed_au",
     "UnableToProcessReversalMsg": "Unable to process the reversal request._au",
-    "CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed._au"
+    "CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed._au",
+    "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed_au",
+    "ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed_au"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_au",

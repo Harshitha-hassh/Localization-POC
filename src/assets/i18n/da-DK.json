@@ -1322,7 +1322,9 @@
     "ReversalInprogressMsg": "Please wait while the payment is being removed_da",
     "CancelAllPaymentInprogressMsg": "Please wait while the payments are being removed_da",
     "UnableToProcessReversalMsg": "Unable to process the reversal request._da",
-    "CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed._da"
+    "CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed._da",
+    "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed_da",
+    "ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed_da"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_da",

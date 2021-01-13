@@ -1322,7 +1322,9 @@
 		"ReversalInprogressMsg": "Please wait while the payment is being removed",
 		"CancelAllPaymentInprogressMsg": "Please wait while the payments are being removed",
 		"UnableToProcessReversalMsg": "Unable to process the reversal request.",
-		"CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed."
+    "CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed.",
+    "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed",
+		"ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed"
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",
