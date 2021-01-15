@@ -100,6 +100,8 @@
   "5008": "Unable to Delete SubProperty Details._fi",
   "5009": "User Property Access Restricted_fi",
   "5010": "User not having access to Property/ Invalid Property Requested_fi",
+  "5011": "Invalid Quick ID_fi",
+  "5012": "Password is not setup. Please create your password from the Login Screen_fi",
   "10100": "Invalid Outlet Name_fi",
   "10101": "Outlet Not Found_fi",
   "10110": "Unable to Create Retail Item, Invalid Request_fi",

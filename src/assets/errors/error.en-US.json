@@ -225,6 +225,8 @@
     "5008": "Unable to Delete SubProperty Details.",
     "5009": "User Property Access Restricted",
     "5010": "User not having access to Property/ Invalid Property Requested",
+    "5011": "Invalid Quick ID",
+    "5012": "Password is not setup. Please create your password from the Login Screen",
     "100000": "Current appointment has been locked by other User",
     "100001": "Continuing with move will result in an overbook, continue?",
     "100002": "Guest Information's are not available, Please create client profile on SPA for the mentioned guest {clientName}",
