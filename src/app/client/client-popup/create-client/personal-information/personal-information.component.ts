@@ -392,7 +392,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       PhoneGroup.controls['countryCode'].clearValidators();
       PhoneGroup.controls['countryCode'].setValidators(clientConfiguration[0]['CLIENT_PHONE'] ?
         [Validators.required, EmptyValueValidator] : []);
-      that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index,'');
+      that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index, PhoneGroup);
       PhoneGroup.controls['countryCode'].updateValueAndValidity();
 
       PhoneGroup.controls['PhoneNumber'].clearValidators();
