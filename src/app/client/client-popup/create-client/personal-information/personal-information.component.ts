@@ -825,9 +825,14 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     {
      item['controls']['PhoneNumber'].setValue('');
      item['controls']['countryCode'].setValue('');
+     item['controls']['Extension'].setValue('');
+     item['controls']['PhonePrimary'].setValue('');
+     item['controls']['PhonePrivate'].setValue('');
      item['controls']['PhoneNumber'].clearValidators();
      item['controls']['countryCode'].clearValidators();
+     item['controls']['Extension'].clearValidators();
      item['controls']['PhoneNumberLabel'].clearValidators();
+     item.markAsDirty();
     }
 
   }
@@ -838,8 +843,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
    {
     
     item['controls']['EmailId'].setValue('');
+    item['controls']['EmailPrimary'].setValue('');
+    item['controls']['EmailPrivate'].setValue('');
     item['controls']['EmailLabel'].clearValidators();
-   
+    item.markAsDirty();
    }
   }
 

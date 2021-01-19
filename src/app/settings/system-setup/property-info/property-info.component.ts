@@ -571,6 +571,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
      item['controls']['phonenumber'].setValue('');
      item['controls']['phonenumber'].clearValidators();
      item['controls']['phonelabel'].clearValidators();
+     item.markAsDirty();
     }
   
    }
