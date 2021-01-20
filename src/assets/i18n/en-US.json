@@ -1324,7 +1324,9 @@
 		"UnableToProcessReversalMsg": "Unable to process the reversal request.",
     "CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed.",
     "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed",
-		"ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed"
+		"ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed",
+		"RefundToOriginalSettlement": "Refund to original settlements",
+		"RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded"
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",

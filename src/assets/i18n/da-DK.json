@@ -1324,7 +1324,9 @@
     "UnableToProcessReversalMsg": "Unable to process the reversal request._da",
     "CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed._da",
     "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed_da",
-    "ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed_da"
+    "ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed_da",
+    "RefundToOriginalSettlement": "Refund to original settlements_da",
+    "RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded_da"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_da",
