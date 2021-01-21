@@ -101,6 +101,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       propCode: ['', Validators.required],
       requiredFields: this.fb.array([])
     });
+    this.phone = this.propertyInfo.get('phone') as FormArray;
     this.contactPhoneType = [{ Id: 1, Description: this.commonCaptions.drp_txt_home,
        Type: 'Phone' },
         { Id: 2, Description: this.commonCaptions.drp_txt_office, Type: 'Phone' },
