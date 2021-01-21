@@ -445,6 +445,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
      (this.propertyInfo.controls.address.value[2].addressDetails) == null ? '' : this.propertyInfo.controls.address.value[2].addressDetails;
     for (let temp = 0; temp < _phone.length; temp++) {
       const phoneItem = _phone[temp];
+      if (phoneItem.phonetype != null) {
       const ph = phoneItem.phonelabel == null ? this.PhoneType[1] : phoneItem.phonelabel;
       let phone: PhNumber;
       const contactType = this.PhoneType.filter(res => res.description === ph);
@@ -456,6 +457,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
         clientId: 1
       };
       _body.propertyContacts.push(phone);
+    }
     }
     return _body;
   }
@@ -569,9 +571,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     //settingEmptyvalues 
     if(!$event.value)
     {
-     item['controls']['phonenumber'].setValue('');
-     item['controls']['phonenumber'].clearValidators();
-     item['controls']['phonelabel'].clearValidators();
+     item.reset();
      item.markAsDirty();
     }
   
