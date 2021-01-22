@@ -1303,7 +1303,9 @@
         "subheaderMsg": "Please select a player to proceed refund_de"
       },
       "VoidMessage": "Transaction Cannot be Voided_de",
-      "CorrectMessage": "Transaction Cannot be Corrected_de"
+      "CorrectMessage": "Transaction Cannot be Corrected_de",
+      "OfferRefundNotAllowed": "Refund cannot be done to Original Settlements as Offers cannot be Reversed_de",
+      "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_de"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_de",
     "SearchARAcctName": "Search by Account Name_de",
