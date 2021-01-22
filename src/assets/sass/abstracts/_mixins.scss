@@ -239,6 +239,9 @@ $themes: (
     .mat-step-header .mat-step-icon-selected,.mat-flat-button.mat-primary {
       background: $header-background !important;
     }
+    .mat-flat-button.mat-primary[disabled] {
+      background-color: rgba(0, 0, 0, 0.12) !important;
+    }
     .mat-flat-button.mat-primary.btnDisabled{
       opacity: 0.5;
     }

@@ -3,6 +3,7 @@
   .quickid-config-container {
     padding: 20px;
     height: calc(100% - 64px);
+    overflow: auto;
 
     .page-header-label {
       margin: 0;
