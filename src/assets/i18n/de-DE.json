@@ -2456,7 +2456,16 @@
     "AllowReturnstoOriginalSettlement": "Allow Returns to Original Settlement Method Only_de",
     "PMSProxyEndPoint": "PMS Proxy Endpoint_de",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_de",
-    "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_de"
+    "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_de",
+    "RetailFeature": {
+      "ACES Membership": "Agilysys Engage_de",
+      "CMS": "CMS_de",
+      "Enhanced Inventory": "Enhanced Inventory_de",
+      "External Gift Card": "External Gift Card_de",
+      "ARAccountPosting": "City Ledger_de",
+      "PMS Revenue Posting": "PMS Revenue Posting_de",
+      "Offer Management System": "Offer Management System_de"
+    }
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_de",
