@@ -25,8 +25,8 @@
       }
     ]
   },
-  "PhoneFormat": "(999) 999-9999",
-  "ExtensionFormat": "(999) 999-9999 ext: 99",
+  "PhoneFormat": "9999 999999",
+  "ExtensionFormat": "9999 999999 ext: 99",
   "alphabet": [
     "A_uk",
     "B_uk",
@@ -87,8 +87,8 @@
   "common": {
     "AddPlayer": "Add Player_uk",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_uk",
-    "PhoneFormat": "(999) 999-9999",
-    "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "PhoneFormat": "9999 999999",
+    "ExtensionFormat": "9999 999999 ext: 99",
     "Extension": " ext: _uk",
     "ExtensionReport": " ext _uk",
     "AppendReportCaption": " _uk",
