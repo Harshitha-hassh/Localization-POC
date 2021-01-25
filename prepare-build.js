@@ -16,6 +16,7 @@ const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
 const fileFormat = "json";
 const keysToBeExcluded = ["PhoneFormat", "ExtensionFormat", "alphabets"];
+const phoneFormate = ["PhoneFormat", "ExtensionFormat"];
 
 
 console.log("Started generating localization files");
@@ -81,6 +82,15 @@ function applyLocalization(data, langSuffix) {
                 data[key] = applyLocalization(data[key], langSuffix);
             else
                 data[key] = word + langSuffix;
+        }        
+        else if(data.hasOwnProperty(key) && phoneFormate.includes(key)){
+            if(langSuffix == '_uk' || langSuffix == '_gb'){
+                if(key == 'PhoneFormat'){
+                    data[key] = '9999 999999'
+                }else if(key == 'ExtensionFormat'){
+                    data[key] = '9999 999999 ext: 99'
+                }
+            }
         }
     }
     return data;
