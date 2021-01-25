@@ -21,7 +21,7 @@ import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/u
 export class GlobalSearchComponent implements OnInit, AfterViewInit {
 
   filterData: any = []; // local filter array
-  searchGroupOptions: Promise<GlobalSearchModel[]> = Promise.resolve([]);
+  searchGroupOptions: Promise<{isSearched: boolean, data: GlobalSearchModel[]}> = Promise.resolve({isSearched: false, data: []});
   globalSearchForm: FormGroup;
   @Input() open: boolean = false;
   @Output() onSearch = new EventEmitter();
@@ -65,7 +65,7 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
 
     } else if (value.length <= 2) {
       this.filterData = [];
-      this.searchGroupOptions = Promise.resolve([]);
+      this.searchGroupOptions = Promise.resolve({isSearched: false, data: []});
     }
   }
 
@@ -122,7 +122,7 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
 
     break;
 }
-this.searchGroupOptions = Promise.resolve([]);
+this.searchGroupOptions = Promise.resolve({isSearched: false, data: []});
 this.OnOptionSelected.emit();
   }
 

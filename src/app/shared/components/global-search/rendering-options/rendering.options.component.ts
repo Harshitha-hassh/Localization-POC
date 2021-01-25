@@ -117,8 +117,9 @@ export class RedenderingOptionComponent implements OnInit, OnChanges {
           if (eMailRecords.length >= 1) {
             var sortedeMailsBasedOnIsPrimary = eMailRecords.sort(function (a, b) {
               return b.isPrimary - a.isPrimary
-            })
-            this.email = this.contactTypeEmail.find(d => d.id == sortedeMailsBasedOnIsPrimary[0].type).description + " : " + sortedeMailsBasedOnIsPrimary[0].value
+            });
+            let contact = this.contactTypeEmail.find(d => d.id == sortedeMailsBasedOnIsPrimary[0].type);
+            this.email = (contact ? contact.description : '') + " : " + sortedeMailsBasedOnIsPrimary[0].value
             this.showPhoneNumber = false;
             this.showEmail = true;
             this.showAddress = false;
