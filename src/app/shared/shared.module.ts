@@ -41,6 +41,7 @@ import { FormatTextPipe } from './pipes/formatText-pipe.pipe';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { NotifyPopupComponent } from './components/notify-popup/notify-popup.component';
 import { NotificationDataService } from './data-services/notification.data.service';
+import { AllowedSpecialCharacterDirective } from './directives/allowedSpecialCharacter.directive';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { NotificationDataService } from './data-services/notification.data.servi
     ConvertObjPipe,
     NotifyPopupComponent,
     ImageValiation,
-    FormatTextPipe    
+    FormatTextPipe,
+    AllowedSpecialCharacterDirective    
   ],
   imports: [
     CommonModule,
@@ -116,7 +118,8 @@ import { NotificationDataService } from './data-services/notification.data.servi
     RedenderingOptionComponent,
     ConvertObjPipe,
     ImageValiation,
-    FormatTextPipe    
+    FormatTextPipe,
+    AllowedSpecialCharacterDirective    
   ],
   entryComponents: [
     AboutComponent,
