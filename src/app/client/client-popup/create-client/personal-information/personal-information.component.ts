@@ -392,7 +392,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       PhoneGroup.controls['countryCode'].clearValidators();
       PhoneGroup.controls['countryCode'].setValidators(clientConfiguration[0]['CLIENT_PHONE'] ?
         [Validators.required, EmptyValueValidator] : []);
-      that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index, PhoneGroup);
+      that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index, '');
       PhoneGroup.controls['countryCode'].updateValueAndValidity();
 
       PhoneGroup.controls['PhoneNumber'].clearValidators();
@@ -821,7 +821,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].updateValueAndValidity();
     
     //fordeselecting
-    if(!eve.value)
+    if(!eve.value && item)
     {
      item['controls']['PhoneNumber'].setValue('');
      item['controls']['countryCode'].setValue('');
