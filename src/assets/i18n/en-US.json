@@ -1329,7 +1329,11 @@
     "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed",
 		"ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed",
 		"RefundToOriginalSettlement": "Refund to original settlements",
-		"RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded"
+    "RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded",
+    "ReturnToOriginalSettlementInfoDialog":{
+			"Header": "Settlement information",
+			"SubHeader": "Following payments will be refunded"
+		}
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",

@@ -1329,7 +1329,11 @@
     "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed_fi",
     "ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed_fi",
     "RefundToOriginalSettlement": "Refund to original settlements_fi",
-    "RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded_fi"
+    "RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded_fi",
+    "ReturnToOriginalSettlementInfoDialog": {
+      "Header": "Settlement information_fi",
+      "SubHeader": "Following payments will be refunded_fi"
+    }
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fi",
