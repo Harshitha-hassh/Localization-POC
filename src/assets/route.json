@@ -248,6 +248,7 @@
   "CorrectRetailTransaction": "transaction/correct/voidedTransactionId/{voidedTransactionId}",
   "Outlet": "outlet",
   "ActiveOutlet": "outlet/active",
+  "ActiveOutlets": "outlets/active",
   "OutletWithId": "outlet/{id}",
   "GetShopItems": "retailitems",
   "CreateRetailItem": "retailItems",
