@@ -189,7 +189,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
     return this.Form.group({
       EmailLabel: [EmailLabel, this.emailRequired || EmailId ? [Validators.required, EmptyValueValidator] : ''],
-      EmailId: [EmailId, this.emailRequired ? [Validators.required, Validators.email, EmptyValueValidator] : ''],
+      EmailId: [{value: EmailId, disabled: !EmailLabel}, this.emailRequired ? [Validators.required, Validators.email, EmptyValueValidator] : ''],
       EmailPrimary: EmailIsPrimary,
       EmailPrivate: EmailIsPrivate
     });
@@ -216,8 +216,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     phoneIsPrivate: any, phoneIsPrimary: any, extension?: any): FormGroup {
     return this.Form.group({
       PhoneNumberLabel: [phoneNoLabel, this.phoneRequired || phoneNoDetails ? [Validators.required, EmptyValueValidator] : ''],
-      countryCode: [countryCode, this.setCountryCodeValidator(this.phoneRequired, phoneNoLabel)],
-      PhoneNumber: [phoneNoDetails, this.phoneRequired ? [Validators.required, EmptyValueValidator] : ''],
+      countryCode: [{value: countryCode, disabled: !phoneNoLabel}, this.setCountryCodeValidator(this.phoneRequired, phoneNoLabel)],
+      PhoneNumber: [{value: phoneNoDetails, disabled: !phoneNoLabel}, this.phoneRequired ? [Validators.required, EmptyValueValidator] : ''],
       PhonePrivate: phoneIsPrivate,
       PhonePrimary: phoneIsPrimary,
       Extension: extension
