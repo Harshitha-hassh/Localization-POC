@@ -496,8 +496,14 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
         }
       }
     } else {
-      this.addPhoneItem(0, 1, '');
+      this.addPhoneItem(0, '', '');
     }
+    const phonenumbers = this.propertyInfo.get('phone') as FormArray;
+    phonenumbers.controls.forEach((obj: FormGroup) => {
+        if (!obj.value['phonelabel']) {
+          obj.get('phonenumber').disable();
+        }
+      });
   }
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams?: any[]): void {
     if (callDesc == 'GetSettingByModule') {
@@ -567,11 +573,12 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
 
   onPhChange($event, i , item) {
 
-
+    item['controls']['phonenumber'].enable();
     //settingEmptyvalues 
     if(!$event.value)
     {
      item.reset();
+     item['controls']['phonenumber'].disable();
      item.markAsDirty();
     }
   
