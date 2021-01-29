@@ -1,7 +1,7 @@
 [
     {
         "id":1001,
-        "message":"Are you sure to want to Delete_sa?",
+        "message":"Are you sure to delete this record_sa?",
         "priority":1
     },
     {

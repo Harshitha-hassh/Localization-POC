@@ -2464,6 +2464,7 @@
     "PMSProxyEndPoint": "PMS Proxy Endpoint_fr",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_fr",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_fr",
+    "Confirmationdialog": "Enable Retail Confirmation Dialog_fr",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_fr",
       "CMS": "CMS_fr",

@@ -2464,7 +2464,8 @@
     "AllowReturnstoOriginalSettlement":"Allow Returns to Original Settlement Method Only",
 		"PMSProxyEndPoint": "PMS Proxy Endpoint",
 		"ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge",
-		"ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity",
+    "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity",
+    "Confirmationdialog": "Enable Retail Confirmation Dialog",
 		"RetailFeature": {
 			"ACES Membership": "Agilysys Engage",
 			"CMS": "CMS",
