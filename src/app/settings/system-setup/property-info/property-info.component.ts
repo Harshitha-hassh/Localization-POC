@@ -329,7 +329,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     return this.fb.group({
       phonetype: 'Phone',
       phonelabel: phoneLabel,
-      phonenumber: this.utilities.appendFormat(phoneNumber, this.localization.captions.common.PhoneFormat)
+      phonenumber: {value: this.utilities.appendFormat(phoneNumber, this.localization.captions.common.PhoneFormat), disabled: !phoneLabel}
     });
   }
   addPhoneItem(index, phoneLabel: any, phoneNumber: any): void {
