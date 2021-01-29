@@ -817,6 +817,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     }
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].markAsTouched();
     this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].markAsTouched();
+    if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value) {
+    this.FormGrp.controls['Phone']['controls'][index].controls[altfield].enable();
+    this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumber].enable();
+    }
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].updateValueAndValidity();
     this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].updateValueAndValidity();
     
@@ -825,6 +829,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     {
      item['controls']['PhoneNumber'].setValue('');
      item['controls']['countryCode'].setValue('');
+     item['controls']['PhoneNumber'].disable();
+     item['controls']['countryCode'].disable();
      item['controls']['Extension'].setValue('');
      item['controls']['PhonePrimary'].setValue('');
      item['controls']['PhonePrivate'].setValue('');
@@ -839,10 +845,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   onEmailChange($event,i,item)
   {
+    item['controls']['EmailId'].enable();
     if(!$event.value)
    {
     
     item['controls']['EmailId'].setValue('');
+    item['controls']['EmailId'].disable();
     item['controls']['EmailPrimary'].setValue('');
     item['controls']['EmailPrivate'].setValue('');
     item['controls']['EmailLabel'].clearValidators();
