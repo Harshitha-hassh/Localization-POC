@@ -1202,6 +1202,7 @@
       "16": "City Ledger_fi",
       "17": "Agilysys Gift Card_fi",
       "18": "Agilysys Gift Card_fi",
+      "19": "Comp Slip Redemption_fi",
       "22": "Card On File_fi",
       "44": "Other_fi"
     },
@@ -1306,7 +1307,10 @@
       "VoidMessage": "Transaction Cannot be Voided_fi",
       "CorrectMessage": "Transaction Cannot be Corrected_fi",
       "OfferRefundNotAllowed": "Refund cannot be done to Original Settlements as Offers cannot be Reversed_fi",
-      "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_fi"
+      "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_fi",
+      "CompSlipNotFound": "Comp Slip not found._fi",
+      "CompSlipSearch": "Comp slip search_fi",
+      "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_fi"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_fi",
     "SearchARAcctName": "Search by Account Name_fi",

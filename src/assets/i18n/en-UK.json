@@ -1202,6 +1202,7 @@
       "16": "City Ledger_uk",
       "17": "Agilysys Gift Card_uk",
       "18": "Agilysys Gift Card_uk",
+      "19": "Comp Slip Redemption_uk",
       "22": "Card On File_uk",
       "44": "Other_uk"
     },
@@ -1306,7 +1307,10 @@
       "VoidMessage": "Transaction Cannot be Voided_uk",
       "CorrectMessage": "Transaction Cannot be Corrected_uk",
       "OfferRefundNotAllowed": "Refund cannot be done to Original Settlements as Offers cannot be Reversed_uk",
-      "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_uk"
+      "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_uk",
+      "CompSlipNotFound": "Comp Slip not found._uk",
+      "CompSlipSearch": "Comp slip search_uk",
+      "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_uk"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_uk",
     "SearchARAcctName": "Search by Account Name_uk",
