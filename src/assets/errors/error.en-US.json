@@ -301,7 +301,7 @@
     "14103": "Terminal in Use, Delete not allowed",
     "14104": "Terminal in Use, Inactive not allowed",
     "100024": "Amount exceeds the player {paymentType} value",
-    "100025": "Offer value applied on original transaction is greater than the refund amount. Please use other payment method to proceed further.",
+    "100025": "{voucherType} value applied on original transaction is greater than the refund amount. Please use other payment method to proceed further.",
     "14110": "Patron is not available in Casino System",
     "70604": "Do not enable both Grouping and Open Item,either one should be true",
     "70605":"Do not enable both Multipack and Open Item,either one should be true",
