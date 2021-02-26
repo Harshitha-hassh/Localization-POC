@@ -934,6 +934,7 @@
     "PaymentDetails": "Payment Details_au",
     "TransactionDetails": "Transaction Details_au",
     "NoDataFound": "No Data Found_au",
+    "NoDataAvailable": "No Data Available_au",
     "ShopMore": "Would you like to Shop more?_au",
     "CONTINUESHOPPING": "CONTINUE SHOPPING_au",
     "TaxExemption": "Tax Exemption_au",
@@ -1308,8 +1309,8 @@
       "CorrectMessage": "Transaction Cannot be Corrected_au",
       "OfferRefundNotAllowed": "Refund cannot be done to Original Settlements as Offers cannot be Reversed_au",
       "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_au",
-      "CompSlipNotFound": "Comp Slip not found._au",
-      "CompSlipSearch": "Comp Slip Search_au",
+      "CompSlipNotFound": "Comp Slip Not Found_au",
+      "CompSlipSearch": "Enter Comp Slip Number_au",
       "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_au"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_au",

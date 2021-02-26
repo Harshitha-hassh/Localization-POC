@@ -934,6 +934,7 @@
     "PaymentDetails": "Payment Details_de",
     "TransactionDetails": "Transaction Details_de",
     "NoDataFound": "No Data Found_de",
+    "NoDataAvailable": "No Data Available_de",
     "ShopMore": "Would you like to Shop more?_de",
     "CONTINUESHOPPING": "CONTINUE SHOPPING_de",
     "TaxExemption": "Tax Exemption_de",
@@ -1308,8 +1309,8 @@
       "CorrectMessage": "Transaction Cannot be Corrected_de",
       "OfferRefundNotAllowed": "Refund cannot be done to Original Settlements as Offers cannot be Reversed_de",
       "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_de",
-      "CompSlipNotFound": "Comp Slip not found._de",
-      "CompSlipSearch": "Comp Slip Search_de",
+      "CompSlipNotFound": "Comp Slip Not Found_de",
+      "CompSlipSearch": "Enter Comp Slip Number_de",
       "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_de"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_de",
