@@ -1288,7 +1288,7 @@
       "LoadReversalNotSupportedMsg": "Load reversal is not supported for Agilysys Engage gift cards._fi"
     },
     "CMS": {
-      "searchPlaceHolder": "Patron search_fi",
+      "searchPlaceHolder": "Patron Search_fi",
       "GuestName": "Guest Name_fi",
       "PatronId": "PatronId_fi",
       "Balance": "Balance_fi",
@@ -1309,7 +1309,7 @@
       "OfferRefundNotAllowed": "Refund cannot be done to Original Settlements as Offers cannot be Reversed_fi",
       "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_fi",
       "CompSlipNotFound": "Comp Slip not found._fi",
-      "CompSlipSearch": "Comp slip search_fi",
+      "CompSlipSearch": "Comp Slip Search_fi",
       "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_fi"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_fi",
