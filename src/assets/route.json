@@ -535,6 +535,7 @@
   "GetPaymentRecordsbyTransactionId": "Membership/GetPaymentRecord/{TransactionId}",
   "CreateACESPaymentRecord": "Membership/CreatePaymentRecord",
   "ARPost": "Membership/ARPost",
+  "MemberPayment": "Membership/MemberPayment",
   "RedeemPoint": "Membership/RedeemPoint",
   "MemberSummary": "Membership/CreateACESPaymentSummary",
   "GetMember": "transaction/GetPaymentById/{transactionId}",
