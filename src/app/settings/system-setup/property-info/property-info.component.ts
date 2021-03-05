@@ -108,8 +108,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
          { Id: 3, Description: this.commonCaptions.drp_txt_mobile, Type: 'Phone' }];
     this.languageType = [{ id: 1, value: 'English', code: 'en-US' },
      { id: 2, value: 'Spanish', code: 'SPANISH' }, { id: 3, value: 'Chinese', code: 'Chinese' }];
-    this.textmaskFormat = this.localization.captions.common.PhoneFormat != '' ?
-     this.localization.captions.common.PhoneFormat : '999999999999999999';
+    this.textmaskFormat = this.localization.propertyCaptions.common.PhoneFormat != '' ?
+     this.localization.propertyCaptions.common.PhoneFormat : '999999999999999999';
     this.address = this.propertyInfo.get('address') as FormArray;
     this.addresslength = this.address.length;
     this.captions = this.localization.captions.setting;
@@ -319,7 +319,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       phoneInfo.push(this.fb.group({
         phonetype: 'Phone',
         phonelabel: phoneDetails[i].phonelabel,
-        phonenumber: this.utilities.appendFormat(phoneDetails[i].phonenumber, this.localization.captions.common.PhoneFormat)
+        phonenumber: this.utilities.appendFormat(phoneDetails[i].phonenumber, this.localization.propertyCaptions.common.PhoneFormat)
       }));
     }
     return phoneInfo;
@@ -329,7 +329,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     return this.fb.group({
       phonetype: 'Phone',
       phonelabel: phoneLabel,
-      phonenumber: {value: this.utilities.appendFormat(phoneNumber, this.localization.captions.common.PhoneFormat), disabled: !phoneLabel}
+      phonenumber: {value: this.utilities.appendFormat(phoneNumber, this.localization.propertyCaptions.common.PhoneFormat), disabled: !phoneLabel}
     });
   }
   addPhoneItem(index, phoneLabel: any, phoneNumber: any): void {

@@ -25,8 +25,8 @@
       }
     ]
   },
-  "PhoneFormat": "(999) 999-9999",
-  "ExtensionFormat": "(999) 999-9999 ext: 99",
+  "PhoneFormat": "(09) 9999 9999",
+  "ExtensionFormat": "(09) 9999 9999 ext: 9999",
   "alphabet": [
     "A_au",
     "B_au",
@@ -87,8 +87,8 @@
   "common": {
     "AddPlayer": "Add Player_au",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_au",
-    "PhoneFormat": "(999) 999-9999",
-    "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "PhoneFormat": "(09) 9999 9999",
+    "ExtensionFormat": "(09) 9999 9999 ext: 9999",
     "Extension": " ext: _au",
     "ExtensionReport": " ext _au",
     "AppendReportCaption": " _au",
