@@ -26,7 +26,7 @@
     ]
   },
   "PhoneFormat": "(999) 999-9999",
-  "ExtensionFormat": "(999) 999-9999 ext: 99",
+  "ExtensionFormat": "(999) 999-9999 ext: 9999",
   "alphabet": [
     "A_de",
     "B_de",
@@ -88,7 +88,7 @@
     "AddPlayer": "Add Player_de",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_de",
     "PhoneFormat": "(999) 999-9999",
-    "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "ExtensionFormat": "(999) 999-9999 ext: 9999",
     "Extension": " ext: _de",
     "ExtensionReport": " ext _de",
     "AppendReportCaption": " _de",
