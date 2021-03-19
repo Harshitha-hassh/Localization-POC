@@ -57,7 +57,7 @@ export class DataAwaiterService {
     }
 
     async openGuestPatronPopup(e, callback: Function, id?, guestId?) {
-       this.openAddGuestPopup(e, callback, undefined, guestId, id);
+       this.openAddGuestPopup(e, callback, undefined, guestId, undefined, id);
     }
 
     private async getExistingPlayer(patronId) {
@@ -149,7 +149,7 @@ export class DataAwaiterService {
         } as ClientInfo;
     }
 
-    async openAddGuestPopup(e, callback: Function, id?, guestId?, patronId?) {
+    async openAddGuestPopup(e, callback: Function, id?, guestId?,  modifyLineItemsCallback?: Function, patronId?) {
         let dialogRef = null;
         if (e.toLowerCase() == "ordersummary" ) {
             var result = await this.userAccessBusiness.getUserAccess(BreakPoint.AddNewClientProfile);
