@@ -227,7 +227,7 @@
   "100022": "Unable to move Break_da",
   "100023": "Break cannot be moved across Therapists_da",
   "100024": "Amount exceeds the player {paymentType} value_da",
-  "100025": "Offer value applied on original transaction is greater than the refund amount. Please use other payment method to proceed further._da",
+  "100025": "{voucherType} value applied on original transaction is greater than the refund amount. Please use other payment method to proceed further._da",
   "100026": "Schedule overlaps with an Appointment, Edit not allowed_da",
   "100300": "This Process will Freeze the Inventory for the selected outlets at their current On-Hand Quantities. Sales will continue to be tracked and included in the Final inventory update process.\n Outlets Already Frozen will only have items added that did not exist prior to Freezing. Do you wish to proceed?_da",
   "100301": "This process will update all items in the selected outlets with the data downloaded and/or manually modified for those Outlets. The Items will be Auto-Released, upon selecting Yes. Do you wish to proceed?_da",

@@ -1,4 +1,4 @@
-<div class="rendering-option LW16" [ngSwitch]="groupObjVal.groupName">              
+<div class="rendering-option LW16" [ngSwitch]="groupObjVal?.groupName">              
         <div *ngSwitchCase=" 'Clients' " class="global-search-clinet">
                 <img class="client-image" src="{{ groupObj.thumbNail | imagevalidation : groupObj.thumbNail }}">
                 <span>{{groupObj.name}}</span>

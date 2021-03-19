@@ -189,7 +189,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
     return this.Form.group({
       EmailLabel: [EmailLabel, this.emailRequired || EmailId ? [Validators.required, EmptyValueValidator] : ''],
-      EmailId: [EmailId, this.emailRequired ? [Validators.required, Validators.email, EmptyValueValidator] : ''],
+      EmailId: [{value: EmailId, disabled: !EmailLabel}, this.emailRequired ? [Validators.required, Validators.email, EmptyValueValidator] : ''],
       EmailPrimary: EmailIsPrimary,
       EmailPrivate: EmailIsPrivate
     });
@@ -216,8 +216,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     phoneIsPrivate: any, phoneIsPrimary: any, extension?: any): FormGroup {
     return this.Form.group({
       PhoneNumberLabel: [phoneNoLabel, this.phoneRequired || phoneNoDetails ? [Validators.required, EmptyValueValidator] : ''],
-      countryCode: [countryCode, this.setCountryCodeValidator(this.phoneRequired, phoneNoLabel)],
-      PhoneNumber: [phoneNoDetails, this.phoneRequired ? [Validators.required, EmptyValueValidator] : ''],
+      countryCode: [{value: countryCode, disabled: !phoneNoLabel}, this.setCountryCodeValidator(this.phoneRequired, phoneNoLabel)],
+      PhoneNumber: [{value: phoneNoDetails, disabled: !phoneNoLabel}, this.phoneRequired ? [Validators.required, EmptyValueValidator] : ''],
       PhonePrivate: phoneIsPrivate,
       PhonePrimary: phoneIsPrimary,
       Extension: extension
@@ -392,7 +392,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       PhoneGroup.controls['countryCode'].clearValidators();
       PhoneGroup.controls['countryCode'].setValidators(clientConfiguration[0]['CLIENT_PHONE'] ?
         [Validators.required, EmptyValueValidator] : []);
-      that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index, PhoneGroup);
+      that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index, '');
       PhoneGroup.controls['countryCode'].updateValueAndValidity();
 
       PhoneGroup.controls['PhoneNumber'].clearValidators();
@@ -817,14 +817,20 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     }
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].markAsTouched();
     this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].markAsTouched();
+    if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value) {
+    this.FormGrp.controls['Phone']['controls'][index].controls[altfield].enable();
+    this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumber].enable();
+    }
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].updateValueAndValidity();
     this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].updateValueAndValidity();
     
     //fordeselecting
-    if(!eve.value)
+    if(!eve.value && item)
     {
      item['controls']['PhoneNumber'].setValue('');
      item['controls']['countryCode'].setValue('');
+     item['controls']['PhoneNumber'].disable();
+     item['controls']['countryCode'].disable();
      item['controls']['Extension'].setValue('');
      item['controls']['PhonePrimary'].setValue('');
      item['controls']['PhonePrivate'].setValue('');
@@ -839,10 +845,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   onEmailChange($event,i,item)
   {
+    item['controls']['EmailId'].enable();
     if(!$event.value)
    {
     
     item['controls']['EmailId'].setValue('');
+    item['controls']['EmailId'].disable();
     item['controls']['EmailPrimary'].setValue('');
     item['controls']['EmailPrivate'].setValue('');
     item['controls']['EmailLabel'].clearValidators();

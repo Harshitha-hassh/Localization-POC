@@ -14,26 +14,30 @@ export class GlobalSearchBusiness {
         private _retailItemDataService: RetailItemDataService,
         private _clientDataService: ClientDataService
     ) { }
-    public async globalSearch(pattern: string): Promise<GlobalSearchModel[]> {
-        const filterData = [];
+    public async globalSearch(pattern: string): Promise<{isSearched: boolean, data: GlobalSearchModel[]}> {
+        let filterData = {
+            isSearched: false,
+            data: []
+        };
         const searchables: Promise<any>[] = [];
         // Items
         const items = this.searchRetailItem(pattern);
         searchables.push(items);
         const clients = this.searchClient(pattern);
         searchables.push(clients);
-        return Promise.all(searchables).then(result => {
+        Promise.all(searchables).then(result => {
+            filterData.isSearched = true;
             const retailItemResult: RetailItemSearchModel[] = result[0];
             if (retailItemResult && retailItemResult.length > 0) {
-                filterData.push(this.formRetailItemData(retailItemResult));
+                filterData.data.push(this.formRetailItemData(retailItemResult));
             }
             const clientResult: ClientDetails[] = result[1];
             if (clientResult && clientResult.length) {
-                filterData.push(this.formClientData(clientResult));
+                filterData.data.push(this.formClientData(clientResult));
             }
-            return filterData;
         });
 
+        return filterData;
 
     }
 

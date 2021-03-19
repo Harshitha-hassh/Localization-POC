@@ -6,11 +6,14 @@
         <input autofocus #searchText type="text" matInput formControlName="searchGroup" required [matAutocomplete]="autoGroup" (input)="filterGroup(searchText.value)"
         [(ngModel)]="input_value">     
         <mat-autocomplete #autoGroup="matAutocomplete" [displayWith]="valueMapper">          
-          <mat-option *ngIf="(searchGroupOptions | async)?.length == 0 && searchText.value.length >= 3">
+          <mat-option *ngIf="(searchGroupOptions | async)?.data.length == 0 && (searchGroupOptions | async)?.isSearched == true && searchText.value.length >= 3">
             {{captions.common.NoMatchesFound}}
           </mat-option>
-          <mat-optgroup class="global-search-optGroup" *ngFor="let group of searchGroupOptions | async"
-            [label]="group.title">                        
+          <mat-option *ngIf="(searchGroupOptions | async)?.isSearched == false && searchText.value.length >= 3" disabled="true">
+            {{captions.common.Loading}}
+          </mat-option>
+          <mat-optgroup class="global-search-optGroup" *ngFor="let group of (searchGroupOptions | async)?.data"
+            [label]="group.title">
             <mat-option *ngFor="let data of group.dataCollection" [value]="data.id" (click)="linkClicked(group.title,data,$event)">
               <app-rendering-options [datainput]="data" [groupvalue]="group" [searchText]="input_value">
               </app-rendering-options>

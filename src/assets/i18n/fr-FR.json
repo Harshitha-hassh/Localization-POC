@@ -26,7 +26,7 @@
     ]
   },
   "PhoneFormat": "(999) 999-9999",
-  "ExtensionFormat": "(999) 999-9999 ext: 99",
+  "ExtensionFormat": "(999) 999-9999 ext: 9999",
   "alphabet": [
     "A_fr",
     "B_fr",
@@ -88,7 +88,7 @@
     "AddPlayer": "Add Player_fr",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_fr",
     "PhoneFormat": "(999) 999-9999",
-    "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "ExtensionFormat": "(999) 999-9999 ext: 9999",
     "Extension": " ext: _fr",
     "ExtensionReport": " ext _fr",
     "AppendReportCaption": " _fr",
@@ -192,6 +192,7 @@
     "Less": "Less_fr",
     "phoneNo": "Phone Number_fr",
     "NoDataFound": "No Data Found_fr",
+    "Loading": "Loading..._fr",
     "NoMatchesFound": "No matches found_fr",
     "NoOfSessions": "No. Of Sessions_fr",
     "New": "New_fr",
@@ -933,6 +934,7 @@
     "PaymentDetails": "Payment Details_fr",
     "TransactionDetails": "Transaction Details_fr",
     "NoDataFound": "No Data Found_fr",
+    "NoDataAvailable": "No Data Available_fr",
     "ShopMore": "Would you like to Shop more?_fr",
     "CONTINUESHOPPING": "CONTINUE SHOPPING_fr",
     "TaxExemption": "Tax Exemption_fr",
@@ -1201,6 +1203,7 @@
       "16": "City Ledger_fr",
       "17": "Agilysys Gift Card_fr",
       "18": "Agilysys Gift Card_fr",
+      "19": "Comp Slip Redemption_fr",
       "22": "Card On File_fr",
       "44": "Other_fr"
     },
@@ -1286,7 +1289,7 @@
       "LoadReversalNotSupportedMsg": "Load reversal is not supported for Agilysys Engage gift cards._fr"
     },
     "CMS": {
-      "searchPlaceHolder": "Patron search_fr",
+      "searchPlaceHolder": "Patron Search_fr",
       "GuestName": "Guest Name_fr",
       "PatronId": "PatronId_fr",
       "Balance": "Balance_fr",
@@ -1305,7 +1308,10 @@
       "VoidMessage": "Transaction Cannot be Voided_fr",
       "CorrectMessage": "Transaction Cannot be Corrected_fr",
       "OfferRefundNotAllowed": "Refund cannot be done to Original Settlements as Offers cannot be Reversed_fr",
-      "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_fr"
+      "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_fr",
+      "CompSlipNotFound": "Comp Slip Not Found_fr",
+      "CompSlipSearch": "Enter Comp Slip Number_fr",
+      "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_fr"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_fr",
     "SearchARAcctName": "Search by Account Name_fr",
@@ -1328,7 +1334,11 @@
     "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed_fr",
     "ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed_fr",
     "RefundToOriginalSettlement": "Refund to original settlements_fr",
-    "RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded_fr"
+    "RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded_fr",
+    "ReturnToOriginalSettlementInfoDialog": {
+      "Header": "Settlement information_fr",
+      "SubHeader": "Following payments will be refunded_fr"
+    }
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fr",
@@ -2459,6 +2469,7 @@
     "PMSProxyEndPoint": "PMS Proxy Endpoint_fr",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_fr",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_fr",
+    "Confirmationdialog": "Enable Retail Confirmation Dialog_fr",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_fr",
       "CMS": "CMS_fr",

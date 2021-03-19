@@ -25,8 +25,8 @@
       }
     ]
   },
-  "PhoneFormat": "9999 999999",
-  "ExtensionFormat": "9999 999999 ext: 99",
+  "PhoneFormat": "99 9999 9999",
+  "ExtensionFormat": "99 9999 9999 ext: 9999",
   "alphabet": [
     "A_uk",
     "B_uk",
@@ -87,8 +87,8 @@
   "common": {
     "AddPlayer": "Add Player_uk",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_uk",
-    "PhoneFormat": "9999 999999",
-    "ExtensionFormat": "9999 999999 ext: 99",
+    "PhoneFormat": "99 9999 9999",
+    "ExtensionFormat": "99 9999 9999 ext: 9999",
     "Extension": " ext: _uk",
     "ExtensionReport": " ext _uk",
     "AppendReportCaption": " _uk",
@@ -192,6 +192,7 @@
     "Less": "Less_uk",
     "phoneNo": "Phone Number_uk",
     "NoDataFound": "No Data Found_uk",
+    "Loading": "Loading..._uk",
     "NoMatchesFound": "No matches found_uk",
     "NoOfSessions": "No. Of Sessions_uk",
     "New": "New_uk",
@@ -933,6 +934,7 @@
     "PaymentDetails": "Payment Details_uk",
     "TransactionDetails": "Transaction Details_uk",
     "NoDataFound": "No Data Found_uk",
+    "NoDataAvailable": "No Data Available_uk",
     "ShopMore": "Would you like to Shop more?_uk",
     "CONTINUESHOPPING": "CONTINUE SHOPPING_uk",
     "TaxExemption": "Tax Exemption_uk",
@@ -1201,6 +1203,7 @@
       "16": "City Ledger_uk",
       "17": "Agilysys Gift Card_uk",
       "18": "Agilysys Gift Card_uk",
+      "19": "Comp Slip Redemption_uk",
       "22": "Card On File_uk",
       "44": "Other_uk"
     },
@@ -1286,7 +1289,7 @@
       "LoadReversalNotSupportedMsg": "Load reversal is not supported for Agilysys Engage gift cards._uk"
     },
     "CMS": {
-      "searchPlaceHolder": "Patron search_uk",
+      "searchPlaceHolder": "Patron Search_uk",
       "GuestName": "Guest Name_uk",
       "PatronId": "PatronId_uk",
       "Balance": "Balance_uk",
@@ -1305,7 +1308,10 @@
       "VoidMessage": "Transaction Cannot be Voided_uk",
       "CorrectMessage": "Transaction Cannot be Corrected_uk",
       "OfferRefundNotAllowed": "Refund cannot be done to Original Settlements as Offers cannot be Reversed_uk",
-      "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_uk"
+      "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_uk",
+      "CompSlipNotFound": "Comp Slip Not Found_uk",
+      "CompSlipSearch": "Enter Comp Slip Number_uk",
+      "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_uk"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_uk",
     "SearchARAcctName": "Search by Account Name_uk",
@@ -1328,7 +1334,11 @@
     "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed_uk",
     "ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed_uk",
     "RefundToOriginalSettlement": "Refund to original settlements_uk",
-    "RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded_uk"
+    "RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded_uk",
+    "ReturnToOriginalSettlementInfoDialog": {
+      "Header": "Settlement information_uk",
+      "SubHeader": "Following payments will be refunded_uk"
+    }
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_uk",
@@ -2459,6 +2469,7 @@
     "PMSProxyEndPoint": "PMS Proxy Endpoint_uk",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_uk",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_uk",
+    "Confirmationdialog": "Enable Retail Confirmation Dialog_uk",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_uk",
       "CMS": "CMS_uk",

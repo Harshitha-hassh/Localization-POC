@@ -25,8 +25,8 @@
       }
     ]
   },
-  "PhoneFormat": "(999) 999-9999",
-  "ExtensionFormat": "(999) 999-9999 ext: 99",
+  "PhoneFormat": "(09) 9999 9999",
+  "ExtensionFormat": "(09) 9999 9999 ext: 9999",
   "alphabet": [
     "A_au",
     "B_au",
@@ -87,8 +87,8 @@
   "common": {
     "AddPlayer": "Add Player_au",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_au",
-    "PhoneFormat": "(999) 999-9999",
-    "ExtensionFormat": "(999) 999-9999 ext: 99",
+    "PhoneFormat": "(09) 9999 9999",
+    "ExtensionFormat": "(09) 9999 9999 ext: 9999",
     "Extension": " ext: _au",
     "ExtensionReport": " ext _au",
     "AppendReportCaption": " _au",
@@ -192,6 +192,7 @@
     "Less": "Less_au",
     "phoneNo": "Phone Number_au",
     "NoDataFound": "No Data Found_au",
+    "Loading": "Loading..._au",
     "NoMatchesFound": "No matches found_au",
     "NoOfSessions": "No. Of Sessions_au",
     "New": "New_au",
@@ -933,6 +934,7 @@
     "PaymentDetails": "Payment Details_au",
     "TransactionDetails": "Transaction Details_au",
     "NoDataFound": "No Data Found_au",
+    "NoDataAvailable": "No Data Available_au",
     "ShopMore": "Would you like to Shop more?_au",
     "CONTINUESHOPPING": "CONTINUE SHOPPING_au",
     "TaxExemption": "Tax Exemption_au",
@@ -1201,6 +1203,7 @@
       "16": "City Ledger_au",
       "17": "Agilysys Gift Card_au",
       "18": "Agilysys Gift Card_au",
+      "19": "Comp Slip Redemption_au",
       "22": "Card On File_au",
       "44": "Other_au"
     },
@@ -1286,7 +1289,7 @@
       "LoadReversalNotSupportedMsg": "Load reversal is not supported for Agilysys Engage gift cards._au"
     },
     "CMS": {
-      "searchPlaceHolder": "Patron search_au",
+      "searchPlaceHolder": "Patron Search_au",
       "GuestName": "Guest Name_au",
       "PatronId": "PatronId_au",
       "Balance": "Balance_au",
@@ -1305,7 +1308,10 @@
       "VoidMessage": "Transaction Cannot be Voided_au",
       "CorrectMessage": "Transaction Cannot be Corrected_au",
       "OfferRefundNotAllowed": "Refund cannot be done to Original Settlements as Offers cannot be Reversed_au",
-      "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_au"
+      "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_au",
+      "CompSlipNotFound": "Comp Slip Not Found_au",
+      "CompSlipSearch": "Enter Comp Slip Number_au",
+      "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_au"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_au",
     "SearchARAcctName": "Search by Account Name_au",
@@ -1328,7 +1334,11 @@
     "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed_au",
     "ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed_au",
     "RefundToOriginalSettlement": "Refund to original settlements_au",
-    "RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded_au"
+    "RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded_au",
+    "ReturnToOriginalSettlementInfoDialog": {
+      "Header": "Settlement information_au",
+      "SubHeader": "Following payments will be refunded_au"
+    }
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_au",
@@ -2459,6 +2469,7 @@
     "PMSProxyEndPoint": "PMS Proxy Endpoint_au",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_au",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_au",
+    "Confirmationdialog": "Enable Retail Confirmation Dialog_au",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_au",
       "CMS": "CMS_au",

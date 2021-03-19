@@ -29,13 +29,14 @@ export class UserSettingsComponent implements OnInit {
   IsReadOnly: boolean;
   userSettingsFormGrp: FormGroup;
   ActionButton: string;
+  userIdPattern;
 
   constructor(public localization: RetailStandaloneLocalization, public servicesetting: SettingsService,
               private http: HttpServiceCall, private utils: Utilities, private PropertyInfo: PropertyInformation) {
 
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.caption = this.localization.captions;
     this.ActionButton = this.caption.setting.save;
     this.userSettingsFormGrp = this.servicesetting.userSettingsFormGrp;
@@ -45,6 +46,8 @@ export class UserSettingsComponent implements OnInit {
     // }
     this.minDateValue = this.utils.getDate(this.PropertyInfo.CurrentDate);
     // this.GetServiceCall('GetPropLanguages', {propertyId: 1});
+    const tenantConfig = await this.GetTenantConfigurationCall('GetTenantConfiguration',{configurationName: 'TENANTCONFIGURATION'});
+    this.setUserIdPattern(tenantConfig);
     this.GetServiceCall('GetAllLanguages');
     this.GetServiceCall('GetPropLanguages', { propertyId: this.utils.GetPropertyInfo('PropertyId') });
     this.GetServiceCall('GetStandAloneProducts');
@@ -71,6 +74,17 @@ export class UserSettingsComponent implements OnInit {
 
   sliderChange(event) {
 
+  }
+
+  async GetTenantConfigurationCall(Route, Uri?): Promise<any> {
+    const response = await this.http.CallApiAsync<any>({
+      host: Host.authentication,
+      callDesc: Route,
+      uriParams: Uri,
+      method: HttpMethod.Get,
+      showError: true,
+    });
+    return response.result;
   }
 
   GetServiceCall(Route, Uri?) {
@@ -125,5 +139,14 @@ export class UserSettingsComponent implements OnInit {
   errorCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
 
   }
+
+  setUserIdPattern(jsonString) {
+    if(jsonString) {
+      const tenantConfig = jsonString.configValue;
+      if(Object.keys(tenantConfig).length > 0) {
+        this.userIdPattern = '^[\\w'+tenantConfig.AllowedSpecialCharacter+']+$';
+      }
+    }
+  }     
 
 }
