@@ -16,7 +16,7 @@ export class RetailTemplatesComponent implements OnInit {
     const value = this.routeDataService.GetChildMenu('/settings/utilities/templates', 3);
     this.menuList = {
       menu: value.linkedElement,
-      menuType : menuTypes.lowerLevel
+      menuType : value.linkedElement[0].menuAlignment
     };
   }
 

@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { PendingAction, GridAction } from './AuditModals';
 import { RetailLocalization } from '../retail/common/localization/retail-localization';
 

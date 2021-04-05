@@ -25,8 +25,8 @@
       }
     ]
   },
-  "PhoneFormat": "(09) 9999 9999",
-  "ExtensionFormat": "(09) 9999 9999 ext: 9999",
+  "PhoneFormat": "(999) 999-9999",
+  "ExtensionFormat": "(999) 999-9999 ext: 9999",
   "alphabet": [
     "A_au",
     "B_au",
@@ -87,8 +87,8 @@
   "common": {
     "AddPlayer": "Add Player_au",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_au",
-    "PhoneFormat": "(09) 9999 9999",
-    "ExtensionFormat": "(09) 9999 9999 ext: 9999",
+    "PhoneFormat": "(999) 999-9999",
+    "ExtensionFormat": "(999) 999-9999 ext: 9999",
     "Extension": " ext: _au",
     "ExtensionReport": " ext _au",
     "AppendReportCaption": " _au",
@@ -346,7 +346,8 @@
     "drp_txt_cell": "Cell_au",
     "drp_txt_work": "Work_au",
     "contactAdministrator": "Please contact your administrator._au",
-    "unexpectedError": "An unexpected error has occurred, on {date} at {time}._au"
+    "unexpectedError": "An unexpected error has occurred, on {date} at {time}._au",
+    "pg_title_create": "CREATE_au"
   },
   "calendar": {
     "Sunday": "Sunday_au",
@@ -1885,7 +1886,27 @@
     "SearchByPaymentMethod": "Search By Payment Method_au",
     "SearchByCategories": "Search By Category_au",
     "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_au",
-    "NoPosting": "No Posting_au"
+    "NoPosting": "No Posting_au",
+    "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_au",
+    "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_au",
+    "tog_lbl_showInactive": "Show Inactive_au",
+    "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_au",
+    "CreditCardTerminallbl_Code": "Credit Card Terminal ID_au",
+    "CreditCardTerminalerr_missing_Code": "Missing Credit Card Terminal ID_au",
+    "CreditCardTerminal_grid_hdr_Name": "Credit Card Terminal Name_au",
+    "CreditCardTerminallbl_Name": "Credit Card Terminal Name_au",
+    "CreditCardTerminalerr_missing_Name": "Missing Credit Card Terminal Name_au",
+    "CreditCardTerminal_grid_hdr_ListOrder": "List Order_au",
+    "CreditCardTerminallbl_ListOrder": "List Order_au",
+    "CreditCardTerminalerr_missing_ListOrder": "Missing List Order_au",
+    "CreditCardTerminal_grid_hdr_IsActive": "Active_au",
+    "CreditCardTerminallbl_IsActive": "Active_au",
+    "CreditCardTerminalerr_missing_IsActive": "Missing Active_au",
+    "CreditCardTerminallbl_Folio": "Folio Number_au",
+    "CreditCardTerminalerr_missing_Folio": "Missing Folio Number_au",
+    "CreditCardTerminallbl_StoreId": "Store ID_au",
+    "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_au",
+    "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_au"
   },
   "setting": {
     "Title": "Title_au",
@@ -3323,5 +3344,14 @@
   "lbl_location": "Location_au",
   "NewClient": "NEW CLIENT_au",
   "save": "SAVE_au",
-  "EditClient": "EDIT CLIENT_au"
+  "EditClient": "EDIT CLIENT_au",
+  "lbl_filter": "FILTERS_au",
+  "lbl_reset": "RESET ALL_au",
+  "lbl_searchByOutlet": "Search by Outlet_au",
+  "lbl_More": "More_au",
+  "header": {
+    "SignInToMicrosoft": "Sign In To Microsoft Outlook_au",
+    "SignInAs": "Signed in as_au",
+    "ConfirmOutlookSignOut": "Outlook session must be ended to log out from PMS. Click the signed in email icon from within PMS and log out from Outlook._au"
+  }
 }

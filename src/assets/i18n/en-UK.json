@@ -25,8 +25,8 @@
       }
     ]
   },
-  "PhoneFormat": "99 9999 9999",
-  "ExtensionFormat": "99 9999 9999 ext: 9999",
+  "PhoneFormat": "9999 999999",
+  "ExtensionFormat": "9999 999999 ext: 99",
   "alphabet": [
     "A_uk",
     "B_uk",
@@ -87,8 +87,8 @@
   "common": {
     "AddPlayer": "Add Player_uk",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_uk",
-    "PhoneFormat": "99 9999 9999",
-    "ExtensionFormat": "99 9999 9999 ext: 9999",
+    "PhoneFormat": "9999 999999",
+    "ExtensionFormat": "9999 999999 ext: 99",
     "Extension": " ext: _uk",
     "ExtensionReport": " ext _uk",
     "AppendReportCaption": " _uk",
@@ -346,7 +346,8 @@
     "drp_txt_cell": "Cell_uk",
     "drp_txt_work": "Work_uk",
     "contactAdministrator": "Please contact your administrator._uk",
-    "unexpectedError": "An unexpected error has occurred, on {date} at {time}._uk"
+    "unexpectedError": "An unexpected error has occurred, on {date} at {time}._uk",
+    "pg_title_create": "CREATE_uk"
   },
   "calendar": {
     "Sunday": "Sunday_uk",
@@ -1885,7 +1886,27 @@
     "SearchByPaymentMethod": "Search By Payment Method_uk",
     "SearchByCategories": "Search By Category_uk",
     "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_uk",
-    "NoPosting": "No Posting_uk"
+    "NoPosting": "No Posting_uk",
+    "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_uk",
+    "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_uk",
+    "tog_lbl_showInactive": "Show Inactive_uk",
+    "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_uk",
+    "CreditCardTerminallbl_Code": "Credit Card Terminal ID_uk",
+    "CreditCardTerminalerr_missing_Code": "Missing Credit Card Terminal ID_uk",
+    "CreditCardTerminal_grid_hdr_Name": "Credit Card Terminal Name_uk",
+    "CreditCardTerminallbl_Name": "Credit Card Terminal Name_uk",
+    "CreditCardTerminalerr_missing_Name": "Missing Credit Card Terminal Name_uk",
+    "CreditCardTerminal_grid_hdr_ListOrder": "List Order_uk",
+    "CreditCardTerminallbl_ListOrder": "List Order_uk",
+    "CreditCardTerminalerr_missing_ListOrder": "Missing List Order_uk",
+    "CreditCardTerminal_grid_hdr_IsActive": "Active_uk",
+    "CreditCardTerminallbl_IsActive": "Active_uk",
+    "CreditCardTerminalerr_missing_IsActive": "Missing Active_uk",
+    "CreditCardTerminallbl_Folio": "Folio Number_uk",
+    "CreditCardTerminalerr_missing_Folio": "Missing Folio Number_uk",
+    "CreditCardTerminallbl_StoreId": "Store ID_uk",
+    "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_uk",
+    "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_uk"
   },
   "setting": {
     "Title": "Title_uk",
@@ -3323,5 +3344,14 @@
   "lbl_location": "Location_uk",
   "NewClient": "NEW CLIENT_uk",
   "save": "SAVE_uk",
-  "EditClient": "EDIT CLIENT_uk"
+  "EditClient": "EDIT CLIENT_uk",
+  "lbl_filter": "FILTERS_uk",
+  "lbl_reset": "RESET ALL_uk",
+  "lbl_searchByOutlet": "Search by Outlet_uk",
+  "lbl_More": "More_uk",
+  "header": {
+    "SignInToMicrosoft": "Sign In To Microsoft Outlook_uk",
+    "SignInAs": "Signed in as_uk",
+    "ConfirmOutlookSignOut": "Outlook session must be ended to log out from PMS. Click the signed in email icon from within PMS and log out from Outlook._uk"
+  }
 }

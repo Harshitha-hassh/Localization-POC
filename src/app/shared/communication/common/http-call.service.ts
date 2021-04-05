@@ -2,12 +2,10 @@
 import { Observable, Subject } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { ServiceParams } from '../../models/http.model';
-import { isNumber } from 'util';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { takeUntil } from 'rxjs/operators';
 import { Utilities } from 'src/app/core/utilities';
-import { JWT_TOKEN, USER_SESSION } from 'src/app/core/app-constants';
 
 
 export class HttpCallService {

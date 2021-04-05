@@ -1,14 +1,16 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
 import { Observable, Subject, Subscription, timer } from 'rxjs';
 import { Utilities } from '../core/utilities';
 import { TenantManagementCommunication } from '../shared/communication/services/tenantmanagement.service';
 import { RetailRoutes } from '../core/extensions/retail-route';
-import { JWT_TOKEN, REMEMBER_INFO, USER_SESSION } from '../core/app-constants';
-import * as moment from 'moment';
+import moment from 'moment';
 import { HttpServiceCall } from '../retail/shared/service/http-call.service';
+import { AlertType, ButtonType } from '../common/enums/shared-enums';
+import { RetailLocalization } from '../retail/common/localization/retail-localization';
+import { JWT_TOKEN, REMEMBER_INFO, USERS_SESSSIONS_INFO } from '../app-constants';
 
 @Injectable({
     providedIn: 'root'
@@ -46,15 +48,23 @@ export class ManageSessionService implements OnDestroy {
     propertyValues: any[];
 
     rememberDetail: any[] = [{ name: '' }];
+    logOutWaitingtime: number = 120000; //milliseconds
+    tokenTimerSubscription: Subscription;
+    private tokenTimer: Observable<number>;
+    private triggerTimeout: any;
 
     constructor(private router: Router
         ,       public dialogRef: MatDialog
         ,       public loginService: TenantManagementCommunication
         ,       private utils: Utilities
-        ,       public http: HttpServiceCall) {
+        ,       public http: HttpServiceCall,
+        private localize: RetailLocalization) {
 
         this.timeoutExpired.subscribe(n => {
         });
+        if (this.tokenTimerSubscription) {
+            this.tokenTimerSubscription.unsubscribe();
+        }
     }
 
     goToLogin() {
@@ -63,9 +73,14 @@ export class ManageSessionService implements OnDestroy {
 
     ngOnDestroy() {
         this.timeoutExpired.unsubscribe();
+        if (this.tokenTimerSubscription) {
+          this.tokenTimerSubscription.unsubscribe();
+        }
     }
 
     async logout() {
+        clearTimeout(this.triggerTimeout);
+        this.triggerTimeout = null;
         this.doLogoutActivities();
         await this.updateSession();
         this.removeToken();
@@ -172,6 +187,12 @@ export class ManageSessionService implements OnDestroy {
         return this.loginService.postPromise(serviceParams);
     }
 
+    public changeTitle() {
+        const title = document.getElementsByTagName('title')[0];
+        title.innerText = this.getPropertyName() ? this.getPropertyName() + ' - ' + this.localize.captions.app_title :
+                        this.localize.captions.app_title;
+    }
+
     createSession(): Promise<number> {
 
         const userId: number = Number(this.utils.GetUserInfo('userId'));
@@ -224,7 +245,26 @@ export class ManageSessionService implements OnDestroy {
         await this.loginService.putPromise(serviceParams);
     }
 
-    public startTimer(logOffAfter: any) {
+    public UpdateUserSessionsInfo(loginDetails) {
+        let userSessionDetails = this.GetUserSessionsInfo();
+        userSessionDetails = this.mapLoginDetailsToLocalModel(loginDetails);
+        this.SetUserSessionsInfo(userSessionDetails);
+    }
+
+    public SetUserSessionsInfo(userSessionDetails) {
+        this.setUserSessionsInfoItem(USERS_SESSSIONS_INFO, JSON.stringify(userSessionDetails));
+    }
+
+    public GetUserSessionsInfo()  {
+        let userSessions;
+        const sessionDetails = this.getUserSessionsInfoItem(USERS_SESSSIONS_INFO);
+        if (sessionDetails) {
+            userSessions = JSON.parse(sessionDetails);
+        }
+        return userSessions;
+    }
+
+    public startTimer(logOffAfter: any, tokenExpiry?: number) {
         if (logOffAfter == 0) {
             logOffAfter = this._logOffAfter;
         }
@@ -235,13 +275,16 @@ export class ManageSessionService implements OnDestroy {
         this._timeoutSeconds = logOffAfter * 60;
         this.timer = timer(this._timeoutSeconds * 1000);
         this.timerSubscription = this.timer.subscribe(n => {
-            this.timerComplete(n);
+            this.timerComplete(n, true);
         });
     }
 
     public stopTimer() {
         if (this.timerSubscription) {
             this.timerSubscription.unsubscribe();
+        }
+        if (this.tokenTimerSubscription) {
+          this.tokenTimerSubscription.unsubscribe();
         }
     }
 
@@ -252,12 +295,111 @@ export class ManageSessionService implements OnDestroy {
 
         this.timer = timer(this._timeoutSeconds * 1000);
         this.timerSubscription = this.timer.subscribe(async n => {
-            await this.timerComplete(n);
+            await this.timerComplete(n, false);
         });
     }
 
-    private async timerComplete(n: number) {
+    public forceLogOff() {
+        // added empty method to avoid conflict in common
+        // let jwtExpiryTime: any = localStorage.getItem('jwtExpiryTime');
+        // jwtExpiryTime = new Date(jwtExpiryTime);
+        // let currentTime: any = new Date();
+        // let expirySeconds = jwtExpiryTime - currentTime;
+        // if (!localStorage.getItem('popupEnabled')) {
+        //   if (this.tokenTimerSubscription) {
+        //     this.tokenTimerSubscription.unsubscribe();
+        //   }
+        //   if (expirySeconds > this.logOutWaitingtime) {
+        //     expirySeconds = expirySeconds - this.logOutWaitingtime;
+        //   }
+        //   this.tokenTimer = timer(expirySeconds);
+        //   this.tokenTimerSubscription = this.tokenTimer.subscribe(n => {
+        //     this.timerComplete(n, true);
+        //   });
+        // }
+        // else {
+        //   if (expirySeconds > 0) {
+        //     this.triggerTimeout = setTimeout(() => {
+        //       this.logout();
+        //     }, expirySeconds);
+        //   }
+        //   else {
+        //     this.logout();
+        //   }
+    
+        // }
+      }
+
+    private async timerComplete(n: number, displayAlert: boolean) {
         this.timeoutExpired.next(++this._count);
-        await this.logout();
+        if (!displayAlert) {
+            this.logout();
+          }
+          else {
+            this.utils.showAlert(this.localize.captions.AutologoffWarning, AlertType.Warning);
+            localStorage.setItem('popupEnabled', 'true')
+            this.triggerTimeout = setTimeout(() => {
+              this.logout();
+            }, this.logOutWaitingtime);
+          }
+    }
+    
+    private getPropertyName() {
+        return this.localize.GetsessionStorageValue('propertyInfo', 'PropertyName');
+    }
+
+    private getUserSessionsInfoItem(key: string): string | null {
+        return localStorage.getItem(key);
+    }
+
+    private setUserSessionsInfoItem(key: string, value: string): void {
+        return localStorage.setItem(key, value);
+    }
+
+    private mapLoginDetailsToLocalModel(loginDetails) {
+        return {
+            token: loginDetails.token,
+            expiresOn: new Date(),
+            userLoginInfo: {
+                firstName: loginDetails.userLoginInfo.firstName,
+                lastName: loginDetails.userLoginInfo.lastName,
+                isNewUser: loginDetails.userLoginInfo.isNewUser,
+                isPasswordExpired: loginDetails.userLoginInfo.isPasswordExpired,
+                languageCode: loginDetails.userLoginInfo.languageCode,
+                productId: loginDetails.userLoginInfo.productId,
+                propertyId: loginDetails.userLoginInfo.propertyId,
+                tenantCode: loginDetails.userLoginInfo.tenantCode,
+                tenantId: loginDetails.userLoginInfo.tenantId,
+                userId: loginDetails.userLoginInfo.userId,
+                isPropertyChangeAllow: loginDetails.userLoginInfo.isPropertyChangeAllow,
+                userName: loginDetails.userLoginInfo.userName
+            },
+            userProperties: loginDetails.userProperties.map(userProperty => {
+                return {
+                    autoLogOff: userProperty.autoLogOff,
+                    currencyCode: userProperty.currencyCode,
+                    isActive: userProperty.isActive,
+                    languageCode: userProperty.languageCode,
+                    logOffAfter: userProperty.logOffAfter,
+                    platformPropertyId: userProperty.platformPropertyId,
+                    platformTenantId: userProperty.platformTenantId,
+                    productId: userProperty.productId,
+                    profitCenter: userProperty.profitCenter,
+                    propertyCode: userProperty.propertyCode,
+                    propertyDate: userProperty.propertyDate,
+                    propertyId: userProperty.propertyId,
+                    propertyName: userProperty.propertyName,
+                    roleId: userProperty.roleId,
+                    roleName: userProperty.roleName,
+                    subPropertyCode: userProperty.subPropertyCode,
+                    subPropertyId: userProperty.subPropertyId,
+                    subPropertyName: userProperty.subPropertyName,
+                    tenantId: userProperty.tenantId,
+                    timeZone: userProperty.timeZone,
+                    userId: userProperty.userId,
+                    sessionId: null
+                };
+            })
+        };
     }
 }

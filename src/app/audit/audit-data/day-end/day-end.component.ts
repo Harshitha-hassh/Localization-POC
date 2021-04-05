@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy, AfterViewChecked } from '@angular/core';
 import * as _ from 'lodash'; // STORAGE THE BACK ARRAY
-import { MatDialog } from '@angular/material';
 import { BaseResponse } from '../../../common/shared/shared.modal';
-import { ManagementData, ClientDetail } from '../../../shared/shared-models';
-import { GridData, PendingAction, AppointmentData, GridAction, ManagementDataType, NotifyDayEnd } from '../../AuditModals';
+import { ManagementData } from '../../../shared/shared-models';
+import { GridData, PendingAction, AppointmentData, GridAction, NotifyDayEnd } from '../../AuditModals';
 import { AuditService } from '../../audit.service';
 import { Router } from '@angular/router';
-import { PropertyInformation } from '../../../core/services/property-information.service';
 import { SubscriptionLike as ISubscription, ReplaySubject } from 'rxjs';
 import { SubPropertyModel } from '../../../retail/retail.modals';
 import { takeUntil } from 'rxjs/operators';
@@ -20,7 +18,6 @@ import {
 } from 'src/app/common/shared/shared/globalsContant';
 import { HttpMethod, KeyValuePair, HttpServiceCall, } from 'src/app/common/shared/shared/service/http-call.service';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
-import { CommonAlertPopupComponent } from 'src/app/common/shared/shared/common-alert-popup/common-alert-popup.component';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
@@ -44,8 +41,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   tableData1: any[];
   header: any;
   DayendCollection: any = [];
-  currSysDate: Date = this.PropertyInfo.CurrentDate;
-  newSysDate: Date = this.PropertyInfo.CurrentDate;
+  currSysDate: Date = this.propertyInfo.CurrentDate;
+  newSysDate: Date = this.propertyInfo.CurrentDate;
   canProcess = false;
   isProcessClicked = true;
   successFlag = false;
@@ -63,12 +60,13 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   subscriptions: ISubscription[] = [];
   propOutlets: SubPropertyModel[] = [];
 
-  constructor(public localization: RetailLocalization, private dialog: MatDialog, private utils: RetailUtilities, private http: HttpServiceCall,
+  constructor(public localization: RetailLocalization, private utils: RetailUtilities, private http: HttpServiceCall,
     private auditService: AuditService, public router: Router,
     // tslint:disable-next-line: max-line-length
-    private PropertyInfo: PropertyInformation, private breakPoint: BreakPointAccess, public ams: AppModuleService,
+    // private propertyInfo: PropertyInformation,
+    private breakPoint: BreakPointAccess, public ams: AppModuleService,
     private retailSharedService: RetailSharedVariableService, private retailValidationService: RetailValidationService,
-    private propertyInfo: RetailPropertyInformation,) {
+    private propertyInfo: RetailPropertyInformation) {
   }
 
   ngOnInit() {
@@ -188,7 +186,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       case 'PerformDayEnd': {
         const response = result.result as any;
         if (response) {
-          this.PropertyInfo.SetPropertyDate(this.newSysDate);
+          this.propertyInfo.SetPropertyDate(this.newSysDate);
           this.UpdateInventoryAudit();
           this.SyncUpItemAndTaxes();
           this.ShowSuccessMessage();        
@@ -227,7 +225,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   async SyncUpItemAndTaxes() {
-    if (!this.PropertyInfo.UseRetailInterface && this.propOutlets && this.propOutlets.length > 0) {
+    if (!this.propertyInfo.UseRetailInterface && this.propOutlets && this.propOutlets.length > 0) {
       this.propOutlets.forEach(element => {
         // tslint:disable-next-line: max-line-length
         this.InvokeServiceCall('SyncItemAndTax', Host.retailManagement, HttpMethod.Get, { outletId: element.subPropertyID, type: 'DayEnd', operation: 'Sync', id: 0 });
@@ -272,7 +270,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     if (response && response.length > 0) {
       this.isProcessClicked = true;
       response = response.filter(r => {
-        return this.utils.GetDateWithoutTime(this.utils.getDate(r.transactionDate)).getTime() === this.PropertyInfo.CurrentDate.getTime();
+        return this.utils.GetDateWithoutTime(this.utils.getDate(r.transactionDate)).getTime() === this.propertyInfo.CurrentDate.getTime();
       });
     }
     if (!response || response.length === 0) {
@@ -387,21 +385,21 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     });
   }
 
-  private GetAppointmentStatus(status: string): string {
-    let statusString = '';
-    switch (status) {
-      case 'RESV':
-        statusString = this.AppointmentStatus.Scheduled;
-        break;
-      case 'CKIN':
-        statusString = this.AppointmentStatus.CheckedIn;
-        break;
-      case 'CKOUT':
-        statusString = this.AppointmentStatus.CheckedOut;
-        break;
-    }
-    return statusString;
-  }
+  // private GetAppointmentStatus(status: string): string {
+  //   let statusString = '';
+  //   switch (status) {
+  //     case 'RESV':
+  //       statusString = this.AppointmentStatus.Scheduled;
+  //       break;
+  //     case 'CKIN':
+  //       statusString = this.AppointmentStatus.CheckedIn;
+  //       break;
+  //     case 'CKOUT':
+  //       statusString = this.AppointmentStatus.CheckedOut;
+  //       break;
+  //   }
+  //   return statusString;
+  // }
 
   getStatusColor(statuscode) {
     // return this.utils.getLegendColor(this._appService, statuscode);
@@ -546,53 +544,53 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     return appointmentAction;
   }
 
-  private GetManagementNamebyId(id: number, type: ManagementDataType): string {
-    let name = '';
-    switch (type) {
-      case ManagementDataType.Location: {
-        const location = this.managementData.location.find(r => r.id === id);
-        if (location) {
-          name = location.description;
-        } else {
-          name = this.localization.captions.setting.Offsite;
-        }
-        break;
-      }
-      case ManagementDataType.Service: {
-        const service = this.managementData.service.find(r => r.id === id);
-        if (service) {
-          name = service.description;
-        }
-        break;
-      }
-      case ManagementDataType.Package: {
-        const packageData = this.managementData.package.find(r => r.id === id);
-        if (packageData) {
-          name = packageData.description;
-        }
-        break;
-      }
-      case ManagementDataType.Client: {
-        const client = this.managementData.client.find(r => r.id === id);
-        if (client) {
-          name = `${client.firstName} ${client.lastName}`;
-        }
-      }
-        break;
-    }
-    return name;
-  }
+  // private GetManagementNamebyId(id: number, type: ManagementDataType): string {
+  //   let name = '';
+  //   switch (type) {
+  //     case ManagementDataType.Location: {
+  //       const location = this.managementData.location.find(r => r.id === id);
+  //       if (location) {
+  //         name = location.description;
+  //       } else {
+  //         name = this.localization.captions.setting.Offsite;
+  //       }
+  //       break;
+  //     }
+  //     case ManagementDataType.Service: {
+  //       const service = this.managementData.service.find(r => r.id === id);
+  //       if (service) {
+  //         name = service.description;
+  //       }
+  //       break;
+  //     }
+  //     case ManagementDataType.Package: {
+  //       const packageData = this.managementData.package.find(r => r.id === id);
+  //       if (packageData) {
+  //         name = packageData.description;
+  //       }
+  //       break;
+  //     }
+  //     case ManagementDataType.Client: {
+  //       const client = this.managementData.client.find(r => r.id === id);
+  //       if (client) {
+  //         name = `${client.firstName} ${client.lastName}`;
+  //       }
+  //     }
+  //       break;
+  //   }
+  //   return name;
+  // }
 
-  private GetTherapistName(id: number[]): string {
-    const name: string[] = [];
-    const therapist = this.managementData.therapist.filter(r => id.includes(r.id));
-    if (therapist && therapist.length > 0) {
-      therapist.forEach(t => {
-        name.push(`${t.firstName} ${t.lastName}`);
-      });
-    }
-    return name.join(',');
-  }
+  // private GetTherapistName(id: number[]): string {
+  //   const name: string[] = [];
+  //   const therapist = this.managementData.therapist.filter(r => id.includes(r.id));
+  //   if (therapist && therapist.length > 0) {
+  //     therapist.forEach(t => {
+  //       name.push(`${t.firstName} ${t.lastName}`);
+  //     });
+  //   }
+  //   return name.join(',');
+  // }
 
   async BuildTransactionDetails(result, action: string) {
     this.retailSharedService.selectedProducts = await this.retailValidationService.LoadSelectedProducts(result, this.allShopItems, action);
@@ -603,8 +601,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     if (!this.retailSharedService.SelectedOutletId && result && result.length > 0) {
       this.retailSharedService.SelectedOutletId = result[0].outletId;
     }
-    this.retailSharedService.propertyDate = this.PropertyInfo.CurrentDate;
-    this.retailSharedService.useRetailInterface = this.PropertyInfo.UseRetailInterface;
+    this.retailSharedService.propertyDate = this.propertyInfo.CurrentDate;
+    this.retailSharedService.useRetailInterface = this.propertyInfo.UseRetailInterface;
     if (this.retailSharedService.settleOpenTransaction) {
       this.utils.RedirectTo(RedirectToModules.order);
     } else if (this.retailSharedService.reOpenTransaction) {

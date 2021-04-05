@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Host, ServiceParams, BaseResponse } from '../shared/models/http.model';
+import { ServiceParams, BaseResponse } from '../shared/models/http.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { HttpCallService } from '../shared/communication/common/http-call.service';
-import { Observable } from 'rxjs';
 import { AlertType } from '../shared/shared-models';
 import { PropertyInformation } from '../core/services/property-information.service';
 import { Utilities } from '../core/utilities';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class LoginCommunicationService extends HttpCallService {
 
   private utils: Utilities;
   constructor(httpclient: HttpClient, localization: RetailStandaloneLocalization, utilities: Utilities, PropertyInfo: PropertyInformation) {
-    super(RetailApiHost.TenantManagement, httpclient, localization, utilities, PropertyInfo);
+    super(environment['TenantManagement'], httpclient, localization, utilities, PropertyInfo);
     this.utils = utilities;
   }
 

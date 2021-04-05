@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTabGroup, MatTabChangeEvent } from '@angular/material';
+import { MatTabGroup, MatTabChangeEvent } from '@angular/material/tabs';
 import { ClientService } from '../../shared/service/client-service.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 

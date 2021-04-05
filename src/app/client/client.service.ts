@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

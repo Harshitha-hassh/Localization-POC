@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GlobalSearchComponent } from './global-search.component';
+import { RetailGlobalSearchComponent } from './global-search.component';
 
 describe('GlobalSearchComponent', () => {
-  let component: GlobalSearchComponent;
-  let fixture: ComponentFixture<GlobalSearchComponent>;
+  let component: RetailGlobalSearchComponent;
+  let fixture: ComponentFixture<RetailGlobalSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GlobalSearchComponent ]
+      declarations: [ RetailGlobalSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GlobalSearchComponent);
+    fixture = TestBed.createComponent(RetailGlobalSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

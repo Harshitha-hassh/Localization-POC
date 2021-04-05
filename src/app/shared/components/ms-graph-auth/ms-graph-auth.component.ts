@@ -13,7 +13,7 @@ export class MsGraphAuthComponent implements OnInit {
   gClient: MsGraphApiCommunication;
 
   constructor(private graphClient: MsGraphApiCommunication) {
-    this.gClient = graphClient;
+    this.gClient = this.graphClient;
   }
 
   ngOnInit() {

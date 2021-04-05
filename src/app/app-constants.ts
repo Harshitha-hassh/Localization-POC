@@ -13,3 +13,4 @@ export const USE_RETAIL_INTERFACE = 'useRetailInterface';
 export const VAT_ENABLED = 'VATEnabled';
 
 export const PROPERTY_CONFIGURATION_SETTINGS = 'PROPERTYCONFIGURATION';
+export const USERS_SESSSIONS_INFO = 'usersSessionsInfo';

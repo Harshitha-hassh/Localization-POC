@@ -1,16 +1,15 @@
-export enum RetailApiHosts {
-  SalesCateringService,
-  TenantManagement,
-  RetailManagement,
-  SNCGateway,
-  Report,
-  PayAgent,
-  MsDeeplink,
-  V1IGPosting,
-  RetailPOS,
-  Image
+export class RetailApiHosts {
+  SalesCateringService: string;
+  TenantManagement: string;
+  RetailManagement: string;
+  SNCGateway: string;
+  Report: string;
+  PayAgent: string;
+  MsDeeplink: string;
+  V1IGPosting: string;
+  RetailPOS: string;
+  Image: string;
 }
-
 export class MsalConfiguration {
   AppId: string;
   RedirectUri: string;

@@ -48,3 +48,10 @@ export interface linkedElementObj {
 export interface Menu {
   menu: MenuObj[];
 }
+
+export enum AgMenuTypes {
+  initial = 'Initial',
+  horizontal = 'Horizontal',
+  combo = 'Combo',
+  vertical = 'Vertical' 
+}

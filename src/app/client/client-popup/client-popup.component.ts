@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Output, EventEmitter, ViewContainerRef, ViewChild, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserAlerts } from 'src/app/common/shared/config/alerts-config';
 import { PromptType, ButtonOptions, DefaultGUID } from 'src/app/common/shared/shared/globalsContant';

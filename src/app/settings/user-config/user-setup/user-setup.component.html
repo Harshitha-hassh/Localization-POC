@@ -2,7 +2,7 @@
   <form name="user-setup-form" [formGroup]="FormGrp" class="h-100" autocomplete="off">
     <div class="result-wrapper">
       <section class="filter">
-        <app-aside-filter [Categories]="Categories" (filterEmitter)="filterChange($event)"></app-aside-filter>
+        <app-aside-filter [filterGroups]="Categories" [config]="configuration" [filterLimit]="4"  (filterEmitter)="filterChange($event)"></app-aside-filter>
       </section>
       <section class="result-grid">
         <div class="user-search custSearchbox">

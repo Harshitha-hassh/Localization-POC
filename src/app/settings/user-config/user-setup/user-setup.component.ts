@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import * as _ from 'lodash';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { SettingsService } from '../../settings.service';
@@ -13,6 +13,7 @@ import { BaseResponse, HttpMethod } from 'src/app/common/Models/http.model';
 import { Product } from 'src/app/common/Models/common.models';
 import { GridType, Host } from 'src/app/common/shared/shared/globalsContant';
 import { NewUserComponent } from '../new-user/new-user.component';
+import { AsideFilterConfig } from 'src/app/common/Models/ag-models';
 
 @Component({
   selector: 'app-user-setup',
@@ -33,6 +34,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   roles: any = [];
   rolelst: any = [];
   usersInfo: any = [];
+  configuration: AsideFilterConfig;
 
   IsReadOnly: boolean;
   hasAccess = true;
@@ -55,6 +57,25 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     this.FormGrp = this.Form.group({
       searchtext: '',
     });
+    this.configuration = {
+      filterText: this.localization.captions['lbl_filter'],
+      resetText: this.localization.captions['lbl_reset'],
+      displayCount: 3,
+      isMultiSelect: true,
+      viewMoreConfig: {
+        apply: 'apply',
+        cancel: 'cancel',
+        alphabets: ['All',
+          'A', 'B', 'C', 'D',
+          'E', 'F', 'G', 'H',
+          'I', 'J', 'K', 'L',
+          'M', 'N', 'O', 'P',
+          'Q', 'R', 'S', 'T',
+          'U', 'V', 'W', 'X',
+          'Y', 'Z'],
+        searchByPlaceHolder: this.localization.captions['lbl_searchByOutlet']
+      }
+    };
 
     // if (!this.BPoint.CheckForAccess([GlobalConst.SPAScheduleBreakPoint.UserSetup])) {
     //   this.hasAccess = false;

@@ -1,7 +1,7 @@
 import { Compiler, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { RetailRoutes } from 'src/app/core/extensions/retail-route';
@@ -13,10 +13,10 @@ import { ManageSessionService } from '../manage-session.service';
 import { SetPasswordComponent } from '../set-password/set-password.component';
 import {
   JWT_TOKEN, USER_INFO,
-  USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, USER_SETTINGS, PROPERTY_CONFIGURATION_SETTINGS
-} from 'src/app/core/app-constants';
+  USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, PROPERTY_CONFIGURATION_SETTINGS
+} from 'src/app/app-constants';
 import { LoginCommunicationService } from '../login-communication.service';
-import * as moment from 'moment';
+import moment from 'moment';
 import { ButtonValue } from 'src/app/shared/shared-models';
 import { Product } from 'src/app/common/shared/shared/globalsContant';
 import { API } from 'src/app/shared/models/property-settings.model';
@@ -24,12 +24,14 @@ import { UserdefaultsInformationService } from 'src/app/core/services/Userdefaul
 import { Localization } from 'src/app/common/localization/localization';
 import { UserMachineConfigurationService } from 'src/app/retail/common/services/user-machine-configuration.service';
 import { RetailSharedVariableService } from 'src/app/retail/shared/retail.shared.variable.service';
+import { RetailFunctionalityBusiness } from 'src/app/retail/shared/business/retail-functionality.business';
+import { RetailFunctionalityService } from 'src/app/retail/shared/service/retail-functionality.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers:[UserMachineConfigurationService],
+  providers:[UserMachineConfigurationService, RetailFunctionalityBusiness, RetailFunctionalityService],
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit, OnDestroy {
@@ -74,7 +76,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     private localize: RetailStandaloneLocalization,
     private commonLocalize: Localization,
     private utils: Utilities,
-    private route: ActivatedRoute,
     private sessionService: ManageSessionService,
     private loginService: LoginCommunicationService,
     private PropertySettingService: PropertySettingDataService,
@@ -83,7 +84,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private compiler: Compiler,
     private router: Router,
     private userSessionConfig: UserMachineConfigurationService, 
-    private retailSharedService: RetailSharedVariableService
+    private retailSharedService: RetailSharedVariableService,
+    private retailFunc: RetailFunctionalityBusiness    
   ) {
     this.initializeForm();
     this.captions = this.localize.captions;
@@ -304,7 +306,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       await this.setEatecToken();
       this.setAutoLogOff();
       await this.SetUserSessionConfiguration(this.userInfo.userId);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home']);      
+      await this.retailFunc.getRetailFunctionality();
     }
   }
 

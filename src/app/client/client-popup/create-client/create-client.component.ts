@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject, OnDestroy, Input, ViewChild } from '@angular/core';
-import { MAT_DIALOG_DATA, MatTab, MatTabHeader, MatTabGroup } from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatTab, MatTabHeader, MatTabGroup } from '@angular/material/tabs';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { FormGroup } from '@angular/forms';
 @Component({

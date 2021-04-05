@@ -32,7 +32,7 @@ export class UserConfigComponent implements OnInit {
     const value = this.routeDataService.GetChildMenu('/settings/userconfig');
     this.menuList = {
       menu: value.linkedElement,
-      menuType: menuTypes.tertiary
+      menuType: value.linkedElement[0].menuAlignment
     };
 
     this._servicesetting.tabLoaderEnable.next(true);

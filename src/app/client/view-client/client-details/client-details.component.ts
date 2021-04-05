@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 // import { AppointmentPopupComponent } from '../../../shared/appointment-popup/appointment-popup.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import * as _ from 'lodash';
 import { BaseResponse, KeyValuePair, ImageData, clientInfoDisplay, ClientLabel, Imagedata } from '../../../shared/shared-models';
@@ -45,7 +45,7 @@ import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
     encapsulation: ViewEncapsulation.None
 })
 export class ClientDetailsComponent implements OnInit {
-    @ViewChild('tableInput', { static: false }) tableInput: ElementRef;
+    @ViewChild('tableInput') tableInput: ElementRef;
     captions = this.localization.captions.bookAppointment;
     searchText = '';
     TablebodyData = [];
@@ -435,7 +435,7 @@ export class ClientDetailsComponent implements OnInit {
             if (pageHeader > 0) {
                 pageHeader = pageHeader - this.setMatformWidth(searchClass[i]) - 60;
             }
-            let inputLength = this.tableInput ? this.tableInput.nativeElement.placeholder.length : 1;
+            let inputLength = this.tableInput ? this.tableInput.nativeElement.getAttribute('data-placeholder').length : 1;
             let inputWidth = inputLength <= 30 ? inputLength * 13 : inputLength * 7.5 + 20;
             if (searchInput && pageHeader > 0) {
                 searchInput['style'].width = (pageHeader > inputWidth) ? inputWidth + 'px' : pageHeader + 'px';

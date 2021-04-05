@@ -24,7 +24,7 @@ export class SettingsComponent implements OnInit {
 
     this.menuList = {
       menu: this.menu ,
-      menuType : menuTypes.secondary
+      menuType : value.linkedElement[0].menuAlignment
     };
   }
 

@@ -1,17 +1,16 @@
 import { FormGroup } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { cloneDeep, map, orderBy, isEqual, forEach, includes, differenceWith } from 'lodash';
 import { Injectable, OnDestroy } from '@angular/core';
-import { RetailStandaloneLocalization } from './localization/retailStandalone-localization';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Calendar, ContactType, AlertType, ButtonType, AlertAction } from '../shared/shared-models';
+import { Calendar, ContactType, ButtonType, AlertAction } from '../shared/shared-models';
 //import { AlertPopupComponent } from '../ag-common/components/alert-popup/alert-popup.component';
 // import { SorTypeEnum } from '../shared/components/cdkvirtual/cdkvirtual.model';
-import { USER_SESSION, USER_INFO } from './app-constants';
+import { USER_SESSION, USER_INFO } from '../app-constants';
 import { AuthenticationParameters, Configuration } from 'msal';
 // import { MsalAngularConfiguration } from '@azure/msal-angular';
-import * as moment from 'moment';
+import moment from 'moment';
 import { CardSwipePopupComponent } from '../retail/shared/card-swipe-popup/card-swipe-popup.component';
 import { CommonAlertPopupComponent } from '../common/shared/shared/common-alert-popup/common-alert-popup.component';
 import { CommonUtilities } from '../common/shared/shared/utilities/common-utilities';
@@ -22,6 +21,7 @@ import { MoreSectionServiceService } from '../common/shared/shared/more-section/
 import { RetailPropertyInformation } from './services/retail-property-information.service';
 import { CommonPropertyInformation } from '../common/shared/services/common-property-information.service';
 import { FormatText } from '../common/shared/shared/pipes/formatText-pipe.pipe';
+import { AlertType } from '../common/Models/common.models';
 
 export enum RedirectToModules {
     retail,
@@ -1136,6 +1136,11 @@ export class Utilities extends CommonUtilities implements OnDestroy {
     
     openUrlAsPopoutWindow(url: string) {
         window.open(url, '', 'width=800,height=900');
+    }    
+
+    // To do : to be removed once login details moved to localStorage
+    public GetUserInfo(name: string) {
+        return this.localization.GetsessionStorageValue('_userInfo', name);
     }
 }
 

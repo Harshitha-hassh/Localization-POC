@@ -346,7 +346,8 @@
     "drp_txt_cell": "Cell",
     "drp_txt_work": "Work",
     "contactAdministrator": "Please contact your administrator.",
-    "unexpectedError": "An unexpected error has occurred, on {date} at {time}."
+    "unexpectedError": "An unexpected error has occurred, on {date} at {time}.",
+    "pg_title_create": "CREATE"
   },
   "calendar": {
     "Sunday": "Sunday",
@@ -1876,7 +1877,6 @@
 		"PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details",
 		"SelectRevenuePostCode": "Select Revenue Post Code",
 		"SearchPostCode": "Search By Post Code Number, Description, Department",
-		"Category": "Category",
 		"Sync": "Sync",
 		"Settlement": "Settlement",
     "Discount": "Discount",
@@ -1886,7 +1886,27 @@
     "SearchByPaymentMethod": "Search By Payment Method",
     "SearchByCategories": "Search By Category",
     "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS",
-    "NoPosting": "No Posting"
+    "NoPosting": "No Posting",
+    "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID",
+    "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name",
+    "tog_lbl_showInactive": "Show Inactive",
+    "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL",
+    "CreditCardTerminallbl_Code": "Credit Card Terminal ID",
+    "CreditCardTerminalerr_missing_Code": "Missing Credit Card Terminal ID",
+    "CreditCardTerminal_grid_hdr_Name": "Credit Card Terminal Name",
+    "CreditCardTerminallbl_Name": "Credit Card Terminal Name",
+    "CreditCardTerminalerr_missing_Name": "Missing Credit Card Terminal Name",
+    "CreditCardTerminal_grid_hdr_ListOrder": "List Order",
+    "CreditCardTerminallbl_ListOrder": "List Order",
+    "CreditCardTerminalerr_missing_ListOrder": "Missing List Order",
+    "CreditCardTerminal_grid_hdr_IsActive": "Active",
+    "CreditCardTerminallbl_IsActive": "Active",
+    "CreditCardTerminalerr_missing_IsActive": "Missing Active",
+    "CreditCardTerminallbl_Folio": "Folio Number",
+    "CreditCardTerminalerr_missing_Folio": "Missing Folio Number",
+    "CreditCardTerminallbl_StoreId": "Store ID",
+    "CreditCardTerminalerr_missing_StoreId": "Missing Store ID",
+    "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal"
   },
   "setting": {
     "Title": "Title",
@@ -3324,5 +3344,14 @@
   "lbl_location": "Location",
   "NewClient": "NEW CLIENT",
   "save": "SAVE",
-  "EditClient": "EDIT CLIENT"
+  "EditClient": "EDIT CLIENT",
+  "lbl_filter": "FILTERS",
+  "lbl_reset": "RESET ALL",
+  "lbl_searchByOutlet": "Search by Outlet",
+  "lbl_More": "More",
+  "header": {
+    "SignInToMicrosoft": "Sign In To Microsoft Outlook",
+    "SignInAs": "Signed in as",
+    "ConfirmOutlookSignOut": "Outlook session must be ended to log out from PMS. Click the signed in email icon from within PMS and log out from Outlook."
+  }
 }

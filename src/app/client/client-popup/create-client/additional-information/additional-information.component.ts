@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PropertyInformation } from '../../../../core/services/property-information.service';
 import { SubscriptionLike as ISubscription, Subscription } from 'rxjs';
 import { HandleRequest, HandleResponse } from '../../../../shared/shared-models';
-import { MatDialogRef, MatDialog } from '@angular/material';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { IDTechCardSwipeTimeout, Module, Host } from 'src/app/common/shared/shared/globalsContant';
 import { UserSessionConfiguration } from 'src/app/common/shared/retail.modals';

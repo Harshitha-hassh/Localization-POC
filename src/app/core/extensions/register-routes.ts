@@ -16,35 +16,35 @@ declare global {
 
 }
 
-function loadHosts(): typeof RetailApiHosts {
-    let apiHosts: typeof RetailApiHosts;
-    apiHosts = readHosts();
-    return apiHosts;
-}
+// function loadHosts(): typeof RetailApiHosts {
+//     let apiHosts: typeof RetailApiHosts;
+//     apiHosts = readHosts();
+//     return apiHosts;
+// }
 
-function readHosts() {
-    let apiHosts: typeof RetailApiHosts;
-    const RetailHostUrl = './assets/json/hosts/retail-hosts.json';
-    const hostLoadErrMsg = 'Error in loading retail-hosts.json - ' + RetailHostUrl;
-    $.ajax({
-        url: RetailHostUrl,
-        async: false,
-        success(result) {
-            try {
-                if (typeof result == 'object') {
-                    apiHosts = result.RetailApiHosts;
-                } else {
-                    console.error(hostLoadErrMsg);
-                }
-            } catch (e) { console.error(hostLoadErrMsg); }
-        },
-        error(err) {
-            console.error(hostLoadErrMsg + ' Exception: ' + err)
-                ;
-        }
-    });
-    return apiHosts;
-}
+// function readHosts() {
+//     let apiHosts: typeof RetailApiHosts;
+//     const RetailHostUrl = './assets/json/hosts/retail-hosts.json';
+//     const hostLoadErrMsg = 'Error in loading retail-hosts.json - ' + RetailHostUrl;
+//     $.ajax({
+//         url: RetailHostUrl,
+//         async: false,
+//         success(result) {
+//             try {
+//                 if (typeof result == 'object') {
+//                     apiHosts = result.RetailApiHosts;
+//                 } else {
+//                     console.error(hostLoadErrMsg);
+//                 }
+//             } catch (e) { console.error(hostLoadErrMsg); }
+//         },
+//         error(err) {
+//             console.error(hostLoadErrMsg + ' Exception: ' + err)
+//                 ;
+//         }
+//     });
+//     return apiHosts;
+// }
 function readMsalConfig() {
     let msalConfig: MsalConfiguration;
     const RetailHostUrl = './assets/json/hosts/retail-hosts.json';
@@ -90,7 +90,7 @@ function loadMsalConfig() {
     return msalConfig;
 }
 /* Register Routes and API */
-Window.prototype.RetailApiHost = loadHosts();
+// Window.prototype.RetailApiHost = loadHosts();
 Window.prototype.RetailApiRoute = RetailRoutes;
 Window.prototype.RetailMenus = readMenus();
 Window.prototype.MsalConfig = loadMsalConfig();

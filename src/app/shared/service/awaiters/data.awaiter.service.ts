@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { RetailDataAwaiters } from "../../../retail/shared/events/awaiters/retail.data.awaiters";
-import { MatDialog } from "@angular/material";
+import { MatDialog } from "@angular/material/dialog";
 import { RetailStandaloneLocalization } from "../../../core/localization/retailStandalone-localization";
 import * as _ from "lodash";
 import { RouteLoaderService } from 'src/app/core/services/route-loader.service';

@@ -24,7 +24,7 @@ const routes: Routes = [{
     },
     {
       path: 'inventorysetup',
-      loadChildren: () => import('../retail/Inventory/inventory.module').then(m => m.InventoryModule),
+      loadChildren: () => import('../retail/inventory/inventory.module').then(m => m.InventoryModule),
       canActivate: [RouteGuardService],
       data: { breakPointNumber: UserAccessBreakPoints.INVENTORYMANAGEMENT, redirectTo: 'systemsetup', syncAccess: true }
     },

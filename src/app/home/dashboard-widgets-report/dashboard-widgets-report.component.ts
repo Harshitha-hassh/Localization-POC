@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { Utilities } from 'src/app/core/utilities';
 import { ChartBarComponent } from '../chart-bar/chart-bar.component';
-import * as moment from 'moment';
+import moment from 'moment';
 import { DashBoardService } from 'src/app/shared/data-services/authentication/retailmanagement/dashboard.data.service';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { sortPipe } from 'src/app/common/shared/shared/pipes/sort-pipe.pipe';
@@ -66,22 +66,22 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   dataFormat = 1;
   rowDescription: string;
 
-  @ViewChild('Sales_Revenue', { static: false }) Sales_Revenue;
-  @ViewChild('Out_of_StockItems', { static: false }) Out_of_StockItems;
-  @ViewChild('Revenue_By_Outlet', { static: false }) Revenue_By_Outlet;
-  @ViewChild('Sales_Top5Items', { static: false }) Sales_Top5Items;
-  @ViewChild('Sales_Top5Categories', { static: false }) Sales_Top5Categories;
-  @ViewChild('Purchase_Order', { static: false }) Purchase_Order;
-  @ViewChild('Open_Tickets', { static: false }) Open_Tickets;
-  @ViewChild('Returned_Items', { static: false }) Returned_Items;
+  @ViewChild('Sales_Revenue') Sales_Revenue;
+  @ViewChild('Out_of_StockItems') Out_of_StockItems;
+  @ViewChild('Revenue_By_Outlet') Revenue_By_Outlet;
+  @ViewChild('Sales_Top5Items') Sales_Top5Items;
+  @ViewChild('Sales_Top5Categories') Sales_Top5Categories;
+  @ViewChild('Purchase_Order') Purchase_Order;
+  @ViewChild('Open_Tickets') Open_Tickets;
+  @ViewChild('Returned_Items') Returned_Items;
 
 
-  @ViewChild('DB_OultetsChart', { static: false }) DB_OultetsChart;
-  @ViewChild('DB_TotalSalesRevenue', { static: false }) DB_TotalSalesRevenue;
-  @ViewChild('DB_NumberOfTransaction', { static: false }) DB_NumberOfTransaction;
-  @ViewChild('DB_AverageTransaction', { static: false }) DB_AverageTransaction;
-  @ViewChild('DB_AvgUnitPerCustomer', { static: false }) DB_AvgUnitPerCustomer;
-  @ViewChild('DB_VendorsChart', { static: false }) DB_VendorsChart;
+  @ViewChild('DB_OultetsChart') DB_OultetsChart;
+  @ViewChild('DB_TotalSalesRevenue') DB_TotalSalesRevenue;
+  @ViewChild('DB_NumberOfTransaction') DB_NumberOfTransaction;
+  @ViewChild('DB_AverageTransaction') DB_AverageTransaction;
+  @ViewChild('DB_AvgUnitPerCustomer') DB_AvgUnitPerCustomer;
+  @ViewChild('DB_VendorsChart') DB_VendorsChart;
 
   DB_OultetsChart_data: any;
   DB_TotalSalesRevenue_data: any;
