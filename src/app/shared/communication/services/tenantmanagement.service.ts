@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { Utilities } from 'src/app/core/utilities';
+import { environment } from 'src/environments/environment';
 import { BaseResponse, ServiceParams } from '../../models/http.model';
 import { HttpCallService } from '../common/http-call.service';
 
@@ -10,7 +11,7 @@ import { HttpCallService } from '../common/http-call.service';
 export class TenantManagementCommunication extends HttpCallService {
 
     constructor(httpclient: HttpClient, localization: RetailStandaloneLocalization, utilities: Utilities, PropertyInfo: PropertyInformation) {
-        super(RetailApiHost.TenantManagement, httpclient, localization, utilities, PropertyInfo);
+        super(environment['TenantManagement'], httpclient, localization, utilities, PropertyInfo);
     }
 
     public async getPromise<T>(params: ServiceParams, handleErr: boolean = true): Promise<T> {

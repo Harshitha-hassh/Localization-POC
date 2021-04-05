@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 // import { AlertMessagePopupComponent } from '../../../shared/alert-message-popup/alert-message-popup.component';
 // import { ViewSettingClientBusiness } from '../../../shared/common-functionalities/business/view-settings.business';
 import * as _ from 'lodash';

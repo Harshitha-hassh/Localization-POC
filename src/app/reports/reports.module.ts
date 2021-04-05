@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RetailReportModule } from '../retail/retail-reports/reports.module';
 import { SharedModule } from '../shared/shared.module';
-import { DateAdapter } from '@angular/material';
+import { DateAdapter } from '@angular/material/core';
 import { ReportsComponent } from './reports.component';
 import { ReportsRoutingModule } from './reports-routing.module';
 import { ReportRetailComponent } from './report-retail/report-retail.component';

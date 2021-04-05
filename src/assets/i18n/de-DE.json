@@ -346,7 +346,8 @@
     "drp_txt_cell": "Cell_de",
     "drp_txt_work": "Work_de",
     "contactAdministrator": "Please contact your administrator._de",
-    "unexpectedError": "An unexpected error has occurred, on {date} at {time}._de"
+    "unexpectedError": "An unexpected error has occurred, on {date} at {time}._de",
+    "pg_title_create": "CREATE_de"
   },
   "calendar": {
     "Sunday": "Sunday_de",
@@ -1885,7 +1886,27 @@
     "SearchByPaymentMethod": "Search By Payment Method_de",
     "SearchByCategories": "Search By Category_de",
     "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_de",
-    "NoPosting": "No Posting_de"
+    "NoPosting": "No Posting_de",
+    "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_de",
+    "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_de",
+    "tog_lbl_showInactive": "Show Inactive_de",
+    "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_de",
+    "CreditCardTerminallbl_Code": "Credit Card Terminal ID_de",
+    "CreditCardTerminalerr_missing_Code": "Missing Credit Card Terminal ID_de",
+    "CreditCardTerminal_grid_hdr_Name": "Credit Card Terminal Name_de",
+    "CreditCardTerminallbl_Name": "Credit Card Terminal Name_de",
+    "CreditCardTerminalerr_missing_Name": "Missing Credit Card Terminal Name_de",
+    "CreditCardTerminal_grid_hdr_ListOrder": "List Order_de",
+    "CreditCardTerminallbl_ListOrder": "List Order_de",
+    "CreditCardTerminalerr_missing_ListOrder": "Missing List Order_de",
+    "CreditCardTerminal_grid_hdr_IsActive": "Active_de",
+    "CreditCardTerminallbl_IsActive": "Active_de",
+    "CreditCardTerminalerr_missing_IsActive": "Missing Active_de",
+    "CreditCardTerminallbl_Folio": "Folio Number_de",
+    "CreditCardTerminalerr_missing_Folio": "Missing Folio Number_de",
+    "CreditCardTerminallbl_StoreId": "Store ID_de",
+    "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_de",
+    "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_de"
   },
   "setting": {
     "Title": "Title_de",
@@ -3323,5 +3344,14 @@
   "lbl_location": "Location_de",
   "NewClient": "NEW CLIENT_de",
   "save": "SAVE_de",
-  "EditClient": "EDIT CLIENT_de"
+  "EditClient": "EDIT CLIENT_de",
+  "lbl_filter": "FILTERS_de",
+  "lbl_reset": "RESET ALL_de",
+  "lbl_searchByOutlet": "Search by Outlet_de",
+  "lbl_More": "More_de",
+  "header": {
+    "SignInToMicrosoft": "Sign In To Microsoft Outlook_de",
+    "SignInAs": "Signed in as_de",
+    "ConfirmOutlookSignOut": "Outlook session must be ended to log out from PMS. Click the signed in email icon from within PMS and log out from Outlook._de"
+  }
 }

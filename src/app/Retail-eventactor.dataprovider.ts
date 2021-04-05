@@ -1,5 +1,5 @@
+import { environment } from 'src/environments/environment';
 import { EventActorsDataProvider, IEventActorDataProvider, EventActorCollection, Users } from './common/Models/notification.model';
-import * as Retailroutes from '../assets/json/hosts/retail-hosts.json';
 import { Utilities, Product } from './core/utilities';
 
 export class RetailEventActorDataProvider implements EventActorsDataProvider {
@@ -16,7 +16,7 @@ export class RetailEventActorDataProvider implements EventActorsDataProvider {
             {
                 actor: 'UserRoles',
                 actorDescription: caption.UserRoles,
-                host: Retailroutes.RetailApiHosts.TenantManagement,
+                host: environment['TenantManagement'],
                 route: `UserRole/GetActiveUserRolesByPropertyId/${this.utils.GetPropertyInfo('PropertyId')}/false`,
                 uiMapper: (apiValue: any[]) => {
                     return apiValue.filter(o=>o.productId.includes(Product.RETAIL)).map(a => {
@@ -30,7 +30,7 @@ export class RetailEventActorDataProvider implements EventActorsDataProvider {
             {
                 actor: 'Users',
                 actorDescription: caption.Users,
-                host: Retailroutes.RetailApiHosts.TenantManagement,
+                host: environment['TenantManagement'],
                 route: `User/GetAllUserbyTenantId/${this.utils.GetPropertyInfo('TenantId')}?inActive=false`,
                 uiMapper: (apiValue: Users[]) => {
                     return apiValue.map(a => {

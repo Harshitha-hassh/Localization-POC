@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material-module';
 import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
@@ -24,6 +24,12 @@ let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLoc
   return new RetailAppService(utilities, localization);
 };
 
+declare module "@angular/core" {
+  interface ModuleWithProviders<T = any> {
+    ngModule: Type<T>;
+    providers?: Provider[];
+  }
+}
 
 @NgModule({
   declarations: [
@@ -47,10 +53,10 @@ let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLoc
       useFactory: AppServiceFactory,
       deps: [Utilities, RetailStandAloneLocalization]
     },
-    { provide: CommonUtilities, useClass: Utilities },
+    { provide: CommonUtilities, useExisting: Utilities },
     RetailPropertyInformation,
-    { provide: Localization, useClass: RetailStandAloneLocalization },
-    { provide: CommonPropertyInformation, useClass: RetailPropertyInformation },
+    { provide: Localization, useExisting: RetailStandAloneLocalization },
+    { provide: CommonPropertyInformation, useExisting: RetailPropertyInformation },
     AppModuleService
   ],
   bootstrap: [AppComponent]

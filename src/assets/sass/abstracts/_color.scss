@@ -35,6 +35,7 @@ $orange-lightest: rgb(255, 240, 220);
 $red-dark: unquote("#992315");
 $red: rgb(224, 4, 4);
 $red-lightest: rgb(255, 225, 219);
+$lightest-red: unquote("#fc6c79");
 
 //Blue
 $blue: rgb(83, 147, 225);
@@ -444,3 +445,8 @@ $theme_navyBlue: rgb(0,68,106);
 // green theme
 $theme_green: rgb(72,169,76);
 $theme_grey: unquote("#3a754c");
+
+
+$blue-shade12: rgb(215,228,250);
+$blue-shade13: rgb(241,243,249);
+$menu-hover-color: rgba(255, 255, 255, 0.12);

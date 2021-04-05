@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, ElementRef, ViewEncapsulation, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import * as myGlobals from 'src/app/common/shared/shared/globalsContant'; //CONSTANT FILE ADD ANY CONSTANT VALUE
-import { MatDialog } from '@angular/material';
-import { MatMenuTrigger } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatMenuTrigger } from '@angular/material/menu';
 import * as _ from 'lodash';
 import { RetailStandaloneLocalization } from '../../core/localization/retailStandalone-localization';
 import { ScrollbarComponent } from 'ngx-scrollbar';
@@ -41,8 +41,8 @@ export class ClientTableComponent implements OnInit {
   // @Output() dropDownChange: EventEmitter<any> = new EventEmitter();
   // @Output() printEvt: EventEmitter<any> = new EventEmitter();
   // @Output() LBLClickEvtEmitter: EventEmitter<any> = new EventEmitter();
-  @ViewChild(MatMenuTrigger, { static: false }) trigger: MatMenuTrigger;
-  @ViewChild(ScrollbarComponent, { static: false }) scrollRef: ScrollbarComponent;
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+  @ViewChild(ScrollbarComponent) scrollRef: ScrollbarComponent;
   IsCheckAll: Boolean = false;
   InActiveTherapistChkBoxEvt: any;
   orderTypearr: any = [];

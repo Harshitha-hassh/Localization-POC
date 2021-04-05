@@ -1,8 +1,8 @@
-import { NativeDateAdapter } from '@angular/material';
+import { NativeDateAdapter } from '@angular/material/core';
 import { RetailStandaloneLocalization } from './retailStandalone-localization';
 import { PropertyInformation } from '../services/property-information.service';
-import { Injectable } from '@angular/core';
-import * as moment from 'moment';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import moment from 'moment';
 import { Platform } from '@angular/cdk/platform';
 
 const dateFormat = 'l';
@@ -23,9 +23,10 @@ export const MY_DATE_FORMATS = {
 export class CustomDateAdapter extends NativeDateAdapter {
   constructor(
     public localization: RetailStandaloneLocalization,
-    private PropertyInfo: PropertyInformation
+    private PropertyInfo: PropertyInformation,
+    @Inject(PLATFORM_ID) platformId: Object
   ) {
-    super(localization.localeCode, new Platform());
+    super(localization.localeCode, new Platform(platformId));
   }
   format(date: Date, displayFormat: any): string {
     let data = moment;

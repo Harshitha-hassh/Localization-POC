@@ -1,5 +1,5 @@
 import { HttpCallService } from '../common/http-call.service';
-import { Host, ServiceParams, BaseResponse } from '../../models/http.model';
+import { ServiceParams, BaseResponse } from '../../models/http.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
@@ -7,6 +7,7 @@ import { PropertyInformation } from 'src/app/core/services/property-information.
 import { Utilities } from 'src/app/core/utilities';
 import { Observable, throwError, Subject } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable(
     
@@ -14,7 +15,7 @@ import { map, catchError } from 'rxjs/operators';
 export class RetailPosCommunication extends HttpCallService {
 
     constructor(httpclient: HttpClient, localization: RetailStandaloneLocalization, utilities: Utilities, PropertyInfo: PropertyInformation) {
-        super(RetailApiHost.RetailPOS, httpclient, localization, utilities, PropertyInfo);
+        super(environment['RetailPOS'], httpclient, localization, utilities, PropertyInfo);
     }
 
     public getObservable<T>(params: ServiceParams, handleErr: boolean = true): Observable<T> {

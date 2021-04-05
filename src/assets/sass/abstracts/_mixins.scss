@@ -238,9 +238,11 @@ $themes: (
     .theme-color-wrapper,
     .mat-step-header .mat-step-icon-selected,.mat-flat-button.mat-primary {
       background: $header-background !important;
+      border: 2px solid $header-background !important;
     }
     .mat-flat-button.mat-primary[disabled] {
       background-color: rgba(0, 0, 0, 0.12) !important;
+      border: none !important;
     }
     .mat-flat-button.mat-primary.btnDisabled{
       opacity: 0.5;
@@ -353,7 +355,7 @@ $themes: (
       border: 1px solid $header-background !important;
     }
     .border-left-color {
-      border-left-color: $color !important;
+      border-left-color: $color-text !important;
     }
     #setting-cover-spin::after {
       border-color: $header-background !important;

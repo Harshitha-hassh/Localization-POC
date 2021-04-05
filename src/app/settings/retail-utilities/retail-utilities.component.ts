@@ -16,7 +16,7 @@ export class RetailUtilitiesComponent implements OnInit {
     const value = this.routeDataService.GetChildMenu('/settings/utilities', 3);
     this.menuList = {
       menu: value.linkedElement,
-      menuType : menuTypes.tertiary
+      menuType : value.linkedElement[0].menuAlignment
     };
   }
 

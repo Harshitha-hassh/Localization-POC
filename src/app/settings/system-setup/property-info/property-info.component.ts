@@ -5,14 +5,11 @@ import * as _ from 'lodash';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { SystemSetupBusinessService } from '../system-setup.business.service';
 import { SystemConfig, PropertyConfig, PhNumber, BaseResponse } from 'src/app/common/shared/shared/business/shared.modals';
-import * as GlobalConst from 'src/app/common/shared/shared/globalsContant';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { SettingsService } from '../../settings.service';
-import { SPAConfig } from 'src/app/common/shared/config/SPA-config';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { SpaFormAgent } from 'src/app/common/shared/shared/spa-form';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
-import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 
@@ -51,8 +48,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   commonCaptions: any;
   propertyConfigurationDetails: any;
   PhoneType: { id: number; description: any; }[];
-  constructor(private spaConfig: SPAConfig,
-              private BP: BreakPointAccess,
+  constructor(private BP: BreakPointAccess,
               private systemConfig: SystemSetupBusinessService,
               private fb: FormBuilder,
               private localization: RetailStandaloneLocalization,

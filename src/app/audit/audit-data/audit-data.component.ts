@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatTabChangeEvent } from '@angular/material';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 
 

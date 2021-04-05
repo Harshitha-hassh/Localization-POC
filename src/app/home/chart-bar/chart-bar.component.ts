@@ -93,7 +93,7 @@ export class ChartBarComponent implements OnInit , AfterViewInit , OnDestroy {
   }
 
   options: any;
-  @ViewChild('barChart', { static: false }) barChart;
+  @ViewChild('barChart') barChart;
   constructor() { }
 
   ngOnInit() {

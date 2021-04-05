@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { CustomDateAdapter, MY_DATE_FORMATS } from '../core/localization/custom.dateAdapter';
-import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { Platform } from '@angular/cdk/platform';
@@ -8,8 +8,8 @@ import { MaterialModule } from '../material-module';
 import { RouterModule } from '@angular/router';
 import { RetailStandaloneLocalization } from '../core/localization/retailStandalone-localization';
 import { MenuComponent } from './components/menu/menu.component';
-import { GlobalSearchComponent } from './components/global-search/global-search.component';
-import { PopoverModule } from 'ngx-popover';
+import { RetailGlobalSearchComponent } from './components/global-search/global-search.component';
+import { PopoverModule } from "ngx-smart-popover";
 import { TenantManagementCommunication } from './communication/services/tenantmanagement.service';
 import { AuthenticationCommunication } from './communication/services/authentication.service';
 import { RetailManagementCommunication } from './communication/services/retailmanagement.service';
@@ -46,7 +46,7 @@ import { AllowedSpecialCharacterDirective } from './directives/allowedSpecialCha
 @NgModule({
   declarations: [
     MenuComponent,
-    GlobalSearchComponent,
+    RetailGlobalSearchComponent,
     AboutComponent,
     MsGraphAuthComponent,
     ImgThumbnailComponent,
@@ -107,7 +107,7 @@ import { AllowedSpecialCharacterDirective } from './directives/allowedSpecialCha
     MaterialModule,
     PopoverModule,
     MenuComponent,
-    GlobalSearchComponent,
+    RetailGlobalSearchComponent,
     ReactiveFormsModule,
     CommonSharedModule,
     ImgThumbnailComponent,

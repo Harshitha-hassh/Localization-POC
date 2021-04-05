@@ -11,7 +11,7 @@ export class ChartDonutComponent implements OnInit , AfterViewInit , OnDestroy {
   chart: any;
   options: any;
   @Input() inputData;
-  @ViewChild('donut_chart', { static: false }) donut_chart;
+  @ViewChild('donut_chart') donut_chart;
   constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit() {

@@ -1,10 +1,11 @@
-<ng-container [ngSwitch]="levelMenu">
+<ng-container [ngSwitch]="true">
     <!-- header -->
     <div class="wrapper-container"
-        [ngClass]="{'innerContainer': levelMenu == menuType.lowerLevel}">
+        [ngClass]="{'innerContainer': levelMenu == menuType.lowerLevel || levelMenu == agMenuTypes.vertical}">
         <div
-            [ngClass]="{'menuLowerlevel-container': levelMenu == menuType.lowerLevel,'menu-container' : levelMenu == menuType.primary,'menuSecondary-container':levelMenu ==menuType.secondary}">
-            <div *ngSwitchCase="menuType.primary">
+            [ngClass]="{'menuLowerlevel-container': levelMenu == menuType.lowerLevel || levelMenu == agMenuTypes.vertical,'menu-container' : levelMenu == menuType.primary || levelMenu == agMenuTypes.initial,'menuSecondary-container':levelMenu ==menuType.secondary || levelMenu == agMenuTypes.horizontal}">
+            <!-- {{levelMenu}} --- {{menuType.primary}} -->
+            <div *ngSwitchCase="(levelMenu == menuType.primary) || (levelMenu == agMenuTypes.initial)">
                 <div class="header-background" (window:resize)="bindHeaderData()">
                     <div class="logo-section">
                         <a class="logo-anchor" routerLink="/home">
@@ -13,8 +14,8 @@
                     </div>
                     <div class="menu-section">
                         <ng-container *ngIf="searchOpen">
-                            <app-global-search class="global-search" (OnOptionSelected)="OptionSelected($event)"
-                                (onSearch)="onSearch($event)"></app-global-search>
+                            <app-retail-global-search class="global-search" (OnOptionSelected)="OptionSelected($event)"
+                                (onSearch)="onSearch($event)"></app-retail-global-search>
                         </ng-container>
                         <ng-container *ngIf="menusearchOpen">
                             <app-menu-search class="menu-search" (OnMenuOptionSelected)="MenuOptionSelected($event)"
@@ -49,12 +50,12 @@
                         </button> -->
                          <!-- --help--- -->
                         <button class="notifyClass buttonStyle cursor" [popover]="helpQuestionPopOver"
-                            popoverPlacement="bottom" [matTooltip]="captions.helpQuestion">
+                            popoverPlacement="bottom" [popoverOnHover]="false" [matTooltip]="captions.helpQuestion">
                             <i class="icon-notify icon-help_question"></i>
                         </button>
                         <!-- --help--- -->
                         <div class="user-details">
-                            <div class="d-flex cursor" [popover]="logOutPopOver" popoverPlacement="bottom"
+                            <div class="d-flex cursor" [popover]="logOutPopOver" [popoverOnHover]="false" popoverPlacement="bottom"
                                 (click)="userPop(logOutPopOver)">
                                 <div class="ag_text--uppercase initial-box ">{{userText}}</div>
                                 <div class="detail-section">
@@ -79,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <div *ngSwitchCase="menuType.tertiary">
+            <div *ngSwitchCase="(levelMenu == menuType.tertiary) || (levelMenu == agMenuTypes.combo)">
                 <div class="snc-subnav-wrapper underline-hide">
                     <div class="ag_w--50">
                         <mat-form-field class="ag_form-control--xs">
@@ -93,7 +94,7 @@
                     </div>
                 </div>
             </div>
-            <div *ngSwitchCase="menuType.secondary">
+            <div *ngSwitchCase="(levelMenu == menuType.secondary) || (levelMenu == agMenuTypes.horizontal)">
                 <div class="header">
                     <nav mat-tab-nav-bar class="ag_text--uppercase">
                         <p *ngFor="let link of menuList.menu" class="ag-mb-0">
@@ -105,13 +106,13 @@
                     </nav>
                 </div>
             </div>
-            <div *ngSwitchCase="menuType.lowerLevel">
+            <div *ngSwitchCase="(levelMenu == menuType.lowerLevel) || (levelMenu == agMenuTypes.vertical)">
                 <ng-container *ngTemplateOutlet="verticalMenu;context: {$implicit:menuList.menu }">
                 </ng-container>
             </div>
         </div>
         <div
-            [ngClass]="{'router-container': levelMenu == menuType.lowerLevel,'other-container':levelMenu == menuType.primary,'secondary-router-container':levelMenu == menuType.secondary,'tertiary-container':levelMenu==menuType.tertiary}">
+            [ngClass]="{'router-container': levelMenu == menuType.lowerLevel || levelMenu == agMenuTypes.vertical,'other-container':levelMenu == menuType.primary || levelMenu == agMenuTypes.initial,'secondary-router-container':levelMenu == menuType.secondary || levelMenu == agMenuTypes.horizontal,'tertiary-container':levelMenu==menuType.tertiary || levelMenu == agMenuTypes.combo}">
             <router-outlet></router-outlet>
         </div>
     </div>
@@ -133,7 +134,7 @@
                     </ng-container>
 
                     <li *ngIf="more && more.length>0">
-                        <a class="cursor" [popover]="headerPopover" popoverPlacement="bottom">
+                        <a class="cursor" [popover]="headerPopover" [popoverOnHover]="false" popoverPlacement="bottom">
                             <i class="icon-filled-more"></i>
                             {{moreTextName}}
                         </a>
@@ -166,7 +167,7 @@
             routerLinkActive="active-link" [routerLink]="menuShowingArr.routePath"
             [ngClass]="{'menuHide' : menuShowingArr.disable}" [state]="stateObj">
             <i *ngIf="menuShowingArr.imgPath" class="{{menuShowingArr.imgPath}}"></i>
-            <div *ngIf="levelMenu == menuType.lowerLevel" routerLinkActive="arrow-section border-left-color">
+            <div *ngIf="levelMenu == menuType.lowerLevel || levelMenu == agMenuTypes.vertical" routerLinkActive="arrow-section border-left-color">
             </div>
             <span class="ag_pl--3" [matTooltip]="menuShowingArr.text">{{menuShowingArr.text}}</span>
         </a>

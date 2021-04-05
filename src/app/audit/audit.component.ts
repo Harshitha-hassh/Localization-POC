@@ -15,7 +15,7 @@ export class AuditComponent implements OnInit {
     const value = this.routeDataService.GetChildMenu('/audit');
     this.menuList = {
       menu: value.linkedElement,
-      menuType : menuTypes.secondary
+      menuType : value.linkedElement[0].menuAlignment
     };
   }
 

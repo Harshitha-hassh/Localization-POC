@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { ActivatedRoute } from '@angular/router';
 import { LoginCommunicationService } from '../login-communication.service';

@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
-import { MatTabChangeEvent, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { SettingsService } from '../../settings.service';
 import * as _ from 'lodash';

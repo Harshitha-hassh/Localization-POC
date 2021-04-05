@@ -5,20 +5,20 @@ import { Router } from '@angular/router';
 import { GlobalSearchBusiness } from './global-search.business';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { ClientPopupComponent } from 'src/app/client/client-popup/client-popup.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { BreakPoint } from '../../models/breakpoint-models';
 import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
 
 @Component({
-  selector: 'app-global-search',
+  selector: 'app-retail-global-search',
   templateUrl: './global-search.component.html',
   styleUrls: ['./global-search.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [GlobalSearchBusiness]
 })
 
-export class GlobalSearchComponent implements OnInit, AfterViewInit {
+export class RetailGlobalSearchComponent implements OnInit, AfterViewInit {
 
   filterData: any = []; // local filter array
   searchGroupOptions: Promise<{isSearched: boolean, data: GlobalSearchModel[]}> = Promise.resolve({isSearched: false, data: []});
@@ -28,7 +28,7 @@ export class GlobalSearchComponent implements OnInit, AfterViewInit {
   @Output() OnOptionSelected = new EventEmitter();
   titleEnum = searchtitleenum;
   input_value = '';
-  @ViewChild('searchText', { static: false }) searchText: ElementRef;
+  @ViewChild('searchText') searchText: ElementRef;
   captions: any;
 
   constructor(private _formBuilder: FormBuilder,

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { SettingsService } from '../../settings.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import { PropertyInformation } from '../../../core/services/property-information.service';

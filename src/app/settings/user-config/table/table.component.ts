@@ -8,9 +8,9 @@ import {
   ViewChild, AfterViewInit, ChangeDetectorRef, OnDestroy, HostListener, OnChanges, AfterViewChecked
 } from '@angular/core';
 import { Validators, FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ReplaySubject } from 'rxjs';
-import { MatMenuTrigger } from '@angular/material';
+import { MatMenuTrigger } from '@angular/material/menu';
 import * as _ from 'lodash';
 import { takeUntil } from 'rxjs/operators';
 import { UserAlerts } from 'src/app/common/shared/config/alerts-config';
@@ -86,8 +86,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
   @Output() LBLClickEvtEmitter: EventEmitter<any> = new EventEmitter();
   @Output() radioClickEvtEmitter: EventEmitter<any> = new EventEmitter();
   @Output() openWaitlist: EventEmitter<any> = new EventEmitter();
-  @ViewChild(MatMenuTrigger, { static: false }) trigger: MatMenuTrigger;
-  @ViewChild('tableInput', { static: false }) tableInput: ElementRef;
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+  @ViewChild('tableInput') tableInput: ElementRef;
   IsViewOnly = false;
   IsAccessAllowed = false;
   IsCheckAll = false;

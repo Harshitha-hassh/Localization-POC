@@ -161,6 +161,7 @@ $menu-header-height: 60px;
 $theme-container-height: 0px;
 $total-header-height: $menu-header-height + $theme-container-height;
 $primary-menu-header-bg: $theme-color;
+$theme-bg-hover-color: $menu-hover-color;
 
 
 
@@ -553,3 +554,41 @@ $theme_green_text-color: $ag_white;
 $theme-popup-header-bg: $white;
 $theme-popup-header-fg: $black;
 $theme-popup-header-close-bg: $white;
+
+
+/******** POP Over Variables ************/
+$popover-bg: $white !default;
+$popover-inner-padding: 10px !default;
+$zindex-popover: 1060 !default;
+$popover-arrow-width: 20px !default;
+$popover-arrow-height: 10px !default;
+$popover-arrow-outer-width: ($popover-arrow-width + 1px) !default;
+$popover-arrow-outer-color: $gray !default;
+$popover-arrow-color: $popover-bg !default;
+$popover-header-bg: $popover-bg !default;
+$popover-border-width: 1px !default;
+$popover-border-radius: 6px !default;
+$popover-box-shadow: 0 0.25rem 0.5rem $black-lightest !default;
+$popover-body-color: $white !default;
+$popover-header-color: $white !default;
+$border_bottom_color_1: $gray-dark;
+$border_bottom_color_2: $black-lightest;
+$border_bottom_color_3: $white;
+$arrow-border-width: $popover-arrow-width / 2;
+/****************************************/
+$color-error-red: $lightest-red;
+$phone-wrapper-width: 460px;
+$default-side-panel-width-sm: 200px;
+$default-side-panel-width-md: 250px;
+$default-side-panel-width-lg: 280px;
+$ag_confirmation_color: $yellow;
+$create-modal-bg: $theme-base-color;
+$theme-bg-color: transparent;
+$vertical-menu-header-bg: $white;
+$vertical-menu-text: $black;
+$header-initial-text: $white;
+$header-initial-box: $black;
+$dialog-header-bg: $white;
+$dialog-text-color: $black;
+
+$search-bgColor : $blue-shade13;

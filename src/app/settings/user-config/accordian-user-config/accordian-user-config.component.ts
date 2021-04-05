@@ -13,7 +13,7 @@ import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() inputData: any;
   @Input() IsReadOnly: boolean;
-  @ViewChild('ExapanedPanel', { static: false }) ExapanedPanel;
+  @ViewChild('ExapanedPanel') ExapanedPanel;
   captions: any = this.localization.captions.userConfig;
   selectedCount: any = [];
   userRoleGroup: FormGroup;

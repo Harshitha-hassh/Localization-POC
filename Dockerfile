@@ -7,7 +7,8 @@ WORKDIR /ui
 ## install and copy depndencies
 COPY ./package.json /ui/
 RUN npm install
-RUN npm audit fix
+#RUN npm i adjust-sourcemap-loader
+#RUN npm audit fix
 #RUN npm install moment@2.22.2
 #RUN npm install @angular-devkit/build-angular@0.803.24
 
@@ -17,7 +18,7 @@ COPY . /ui/
 ## RUN ls
 
 ## build app
-RUN npm run build 
+RUN npm run appliance-build 
 ## RUN ls
 
 FROM docker-registry.bellevue.agilysys.com:5000/official/nginxbase:latest

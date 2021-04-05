@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input, OnDestroy, ViewEncapsul
 import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 import { SubscriptionLike as ISubscription, ReplaySubject } from 'rxjs';
 // import { AppointmentpopupService } from '../../../../shared/service/appointmentpopup.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { takeUntil } from 'rxjs/operators';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { ClientCommonService } from 'src/app/client/client.service';

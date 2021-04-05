@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
-import { Outlet, ReceiptModel, OutletTerminal } from '../../../retail/retail.modals';
+import { Outlet, ReceiptModel } from '../../../retail/retail.modals';
 import { ReceiptConfigurationDataService } from './receipt-configuration-data';
 import { RetailOutletsDataService } from '../../../retail/retail-code-setup/retail-outlets/retail-outlets-data.service';
-import { RetailSetupService } from '../../../retail/retail-setup/retail-setup.service';
-import { RetailBreakPoint, Host, ButtonType } from 'src/app/common/shared/shared/globalsContant';
+import { RetailBreakPoint, ButtonType } from 'src/app/common/shared/shared/globalsContant';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
-import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Component({
@@ -34,8 +32,8 @@ export class ReceiptConfigurationComponent implements OnInit {
   constructor(private Form: FormBuilder,
               private breakPoint: BreakPointAccess,
               private localization: RetailStandaloneLocalization,
-              private http: HttpServiceCall, private data: ReceiptConfigurationDataService,
-              private outletData: RetailOutletsDataService, private retailService: RetailSetupService, private utils: RetailUtilities) {
+              private data: ReceiptConfigurationDataService,
+              private outletData: RetailOutletsDataService, private utils: RetailUtilities) {
     this.textCaptions = this.localization.captions.utilities;
     this.FormGrp = this.Form.group({
       outlet: ['', Validators.required],
@@ -94,7 +92,7 @@ export class ReceiptConfigurationComponent implements OnInit {
   }
 
   bindGridData(selectedValues) {
-    const selectedOutlet = this.Outlet.filter(x => x.id == this.selectedOutletId);
+    // const selectedOutlet = this.Outlet.filter(x => x.id == this.selectedOutletId);
     const printReceiptCustom: any = {
       discountOnReceipt: selectedValues[0].displayDiscount,
       addSecondLine: selectedValues[0].addSecondLine,

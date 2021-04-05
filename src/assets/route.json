@@ -1,5 +1,5 @@
 {
-  "host": {
+ "host": {
     "image": "/VisualOne/retailgateway/",
     "retailManagement": "/VisualOne/retailgateway/",
     "retailPOS": "/VisualOne/retailgateway/",
@@ -648,5 +648,9 @@
   "GetMiscConfiguration": "settings/AllSetting/Misc",
   "GetAggregateTransactionByIds": "Transaction/GetTransactionAggregateByIds",
   "GetPaymentTransaction": "Payment/GetPaymentTransaction",
-  "RefundAllPayments": "Transaction/{transactionId}/returnpayments/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/terminalId/{terminalId}"
+  "RefundAllPayments": "Transaction/{transactionId}/returnpayments/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/terminalId/{terminalId}",
+  "RetailFunctionalitiesByProduct": "RetailManagementService/RetailFunctionalities/product/{productId}",
+  "GetTaxesV2": "RetailManagementService/Tax",  
+  "GetPaymentSettingByModuleAndScreen": "Setting/{module}/{screen}",
+  "PaymentSetting": "Setting"
 }

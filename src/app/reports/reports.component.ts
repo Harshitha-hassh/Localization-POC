@@ -19,7 +19,7 @@ export class ReportsComponent implements OnInit {
     const value = this.routeDataService.GetChildMenu('/reports');
     this.menuList = {
       menu: value.linkedElement,
-      menuType : menuTypes.secondary
+      menuType :  value.linkedElement[0].menuAlignment
     };
   }
 

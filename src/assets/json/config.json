@@ -1,0 +1,20 @@
+{
+    "TenantManagement": "/commongateway",
+    "RetailManagement": "/VisualOne/retailgateway",
+    "Report": "/VisualOne/retailgateway",
+    "PayAgent": "http://localhost:8020",
+    "MsDeeplink": "https://outlook.office365.com/mail/deeplink/compose/",
+    "V1IGPosting": "/V1IGPostingWebService/V1IGInterface.asmx?wsdl",
+    "RetailPOS": "/VisualOne/retailgateway",
+    "Image": "/VisualOne/retailgateway",
+    "Common": "/VisualOne/retailgateway/Retail/Services/Notification",
+    "image": "/VisualOne/retailgateway/",
+    "retailManagement": "/VisualOne/retailgateway/",
+    "retailPOS": "/VisualOne/retailgateway/",
+    "authentication": "/commongateway/",
+    "report": "/VisualOne/retailgateway/",
+    "commission": "/VisualOne/retailgateway/",
+    "payment": "/VisualOne/retailgateway/",
+    "common": "/VisualOne/retailgateway/Retail/Services/Notification",
+    "documentation": "/Help/"
+}

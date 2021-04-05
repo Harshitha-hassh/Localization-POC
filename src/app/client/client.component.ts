@@ -15,7 +15,7 @@ export class ClientComponent implements OnInit {
     const value = this.routeDataService.GetChildMenu('/client');
     this.menuList = {
       menu: value.linkedElement,
-      menuType : menuTypes.secondary
+      menuType : value.linkedElement[0].menuAlignment
     };
   }
 

@@ -637,7 +637,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   }
 
-  @ViewChild('placesRef', { static: false }) placesRef: GooglePlaceDirective;
+  @ViewChild('placesRef') placesRef: GooglePlaceDirective;
 
   public handleAddressChange(address: Address) {
     // Do some stuff

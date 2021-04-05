@@ -8,7 +8,7 @@ import { ManageSessionService } from 'src/app/login/manage-session.service';
 // import { SortOrderPipe } from 'src/app/pipes/sort-order.pipe';
 import { menuTypes } from '../../enums/menu.constant';
 import { ButtonType } from '../../shared-models';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { CommonAlertPopupComponent } from 'src/app/common/shared/shared/common-alert-popup/common-alert-popup.component';
 import { AboutComponent } from '../about/about.component';
 import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-config/payment-features-config/property-feature-config.service';
@@ -18,6 +18,7 @@ import { RetailServiceRegistry } from 'src/app/retail/shared/service/base.servic
 import { SPAConfig } from 'src/app/retail/common/config/SPA-config';
 import { HttpServiceCall } from 'src/app/retail/shared/service/http-call.service';
 import { QuickLoginUtilities } from 'src/app/common/shared/shared/utilities/quick-login-utilities';
+import { AgMenuTypes } from './menu.model';
 
 
 @Component({
@@ -41,14 +42,15 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   logOutPopOver: any;
   lowerLevelSubMenu: any;
   verticalFlag = false;
-  levelMenu: menuTypes;
+  levelMenu: menuTypes | AgMenuTypes;
   menuType = menuTypes;
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  agMenuTypes  = AgMenuTypes;
 
-  @ViewChild('userPopOver', { static: false }) userPopUp: ElementRef;
-  @ViewChild('logOutPopOver', { static: false }) logPopOver: ElementRef;
-  @ViewChild('navBar', { static: false }) navBar: ElementRef;
-  @ViewChild('RouterOutlet', { static: false }) outlet: RouterOutlet;
+  @ViewChild('userPopOver') userPopUp: ElementRef;
+  @ViewChild('logOutPopOver') logPopOver: ElementRef;
+  @ViewChild('navBar') navBar: ElementRef;
+  @ViewChild('RouterOutlet') outlet: RouterOutlet;
 
   selectedItem: any;
   userName: string;
@@ -103,7 +105,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     else {
       this.userText = this.firstName.charAt(0).toUpperCase() + this.lastName.charAt(0).toUpperCase();
     }
-    if (this.levelMenu === menuTypes.tertiary) {
+    if (this.levelMenu === menuTypes.tertiary || this.levelMenu === AgMenuTypes.combo) {
       this.selectedItem = this.menuList.menu.find(x => this.router.url.indexOf(x.routePath) > -1);
       this.router.events.pipe(takeUntil(this.destroyed$)).subscribe(x => {
         this.selectedItem = this.menuList.menu.find(menu => this.router.url.indexOf(menu.routePath) > -1);
@@ -144,7 +146,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    if (this.levelMenu === menuTypes.primary) {
+    if (this.levelMenu === menuTypes.primary || this.levelMenu === AgMenuTypes.initial) {
       setTimeout(() => {
         this.bindHeaderData();
       }, 1);

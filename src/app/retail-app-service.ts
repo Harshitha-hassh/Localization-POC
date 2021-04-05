@@ -1,9 +1,9 @@
 import { IAppService, Hosts } from './common/app-service';
 import { Product, Utilities } from './core/utilities';
-import { EventActorsDataProvider } from './common/Models/notification.model';
-import * as Retailroutes from '../assets/json/hosts/retail-hosts.json';
+import { EventActorsDataProvider, NotificationDataProvider } from './common/Models/notification.model';
 import { RetailEventActorDataProvider } from './Retail-eventactor.dataprovider';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
+import { environment } from 'src/environments/environment';
 
 export class RetailAppService implements IAppService {
 
@@ -17,9 +17,9 @@ export class RetailAppService implements IAppService {
      */
     get hosts(): Hosts {
         return <Hosts>{
-            TenantManagement: Retailroutes.RetailApiHosts.TenantManagement,
-            Report: Retailroutes.RetailApiHosts.Report,
-            Common: Retailroutes.RetailApiHosts.common,
+            TenantManagement: environment['TenantManagement'],
+            Report: environment['Report'],
+            Common: environment['common'],
         }
     }
 
@@ -34,5 +34,8 @@ export class RetailAppService implements IAppService {
     get notificationEventDataProvider(): EventActorsDataProvider {
         return { providers: new RetailEventActorDataProvider(this.utilities, this.localization).providers }
     }
+
+    // To do : to be implemented
+    notificationDataProvider: NotificationDataProvider;
 
 }

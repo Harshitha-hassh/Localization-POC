@@ -21,11 +21,6 @@ export class RetailPropertyInformation extends CommonPropertyInformation {
         sessionStorage.setItem('propConfig', JSON.stringify(settings.configValue));
     }
 
-    public GetPropertyConfiguration() {
-        const _config = sessionStorage.getItem('propConfig');
-        return _config && JSON.parse(_config);
-    }
-
     public SetPaymentConfiguration(payConfig: PaymentConfiguration[]) {
         this._paymentConfiguration = [];
         if (payConfig && payConfig.length > 0) {

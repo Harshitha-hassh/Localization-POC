@@ -27,8 +27,10 @@
             width: 200px;
         }
         .result-grid{
-            width: calc(100% - 200px);
+            // width: calc(100% - 200px);
             border-left: 1px solid $color-light-gray;
+            flex: 1;
+            overflow: auto;
             // padding: 24px 0;
             .status-btn {
                 padding-right: 30px;

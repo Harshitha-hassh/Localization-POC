@@ -5,6 +5,7 @@ import { ServiceParams, BaseResponse } from '../../models/http.model';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { Utilities } from 'src/app/core/utilities';
+import { environment } from 'src/environments/environment';
 @Injectable({ providedIn: 'root' })
 /**
  * Communication layer for payment micro service
@@ -13,7 +14,7 @@ import { Utilities } from 'src/app/core/utilities';
 export class PaymentCommunication extends HttpCallService {
 
     constructor(private utils: Utilities,httpclient: HttpClient, localization: RetailStandaloneLocalization, PropertyInfo: PropertyInformation) {
-        super(RetailApiHost.RetailManagement, httpclient, localization,utils, PropertyInfo);
+        super(environment['RetailManagement'], httpclient, localization,utils, PropertyInfo);
     }
 
     public async getPromise<T>(params: ServiceParams, handleErr: boolean = true): Promise<T> {

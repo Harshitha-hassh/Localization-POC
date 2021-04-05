@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { MaterialModule } from '../material-module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SetPasswordComponent } from './set-password/set-password.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { PlatformModule } from '@angular/cdk/platform';
 import { PropertySettingDataService } from '../shared/data-services/authentication/propertysetting.data.service';
