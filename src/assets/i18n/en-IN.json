@@ -347,7 +347,8 @@
     "drp_txt_work": "Work_in",
     "contactAdministrator": "Please contact your administrator._in",
     "unexpectedError": "An unexpected error has occurred, on {date} at {time}._in",
-    "pg_title_create": "CREATE_in"
+    "pg_title_create": "CREATE_in",
+    "ServerTakingTimeError": "Server is taking longer than expected time to process your request. Please revisit in some time._in"
   },
   "calendar": {
     "Sunday": "Sunday_in",
@@ -1099,6 +1100,9 @@
     "selectTerminal": "Please select a Terminal_in",
     "Terminal": "Terminal_in",
     "SwipeCardMessage": "Please Swipe/Insert/Tap the card to pay_in",
+    "KeyInCardMessage": "Please Key-In the card to pay_in",
+    "SwipeCardCaptureMessage": "Please Swipe/Insert/Tap the card to save_in",
+    "KeyInCardCaptureMessage": "Please Key-In the card to save_in",
     "TrnsactionSuccessMsg": "Payment Successful._in",
     "AmountTenderShouldNotBeZero": "Amount Tendered should not be zero_in",
     "AmountTenderValidationMsg": "Amount entered should not be greater than remaining due_in",
@@ -1398,6 +1402,7 @@
     "8005": "8005 - Transaction Report_in",
     "8010": "8010 - Revenue Summary_in",
     "8015": "8015 - Correct/Void Report_in",
+    "8020": "8020 - Accrual Report_in",
     "8035": "8035 - Sales by Item_in",
     "8040": "8040 - Sale by Category_in",
     "8045": "8045 - Sale by Sub-Category_in",
@@ -1466,6 +1471,7 @@
   "passwordRequirements": "Password Requirements_in",
   "passwordMustContain": "Your password must contain at least 6 characters_in",
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _in",
+  "oldPasswordVerified": "Old Password Verified_in",
   "lbl_NoDataFound": "No Data Found_in",
   "lbl_userId": "User ID_in",
   "lbl_logout": "Log Out_in",
@@ -1871,7 +1877,8 @@
       "subCategory5Id": "subCategory5Id_in",
       "unitOfMeasureId": "unitOfMeasureId_in",
       "categoryId": "categoryId_in",
-      "id": "id_in"
+      "id": "id_in",
+      "Allow Earn": "Allow Earn_in"
     },
     "SearchCategory": "Search Category_in",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_in",
@@ -1906,7 +1913,8 @@
     "CreditCardTerminalerr_missing_Folio": "Missing Folio Number_in",
     "CreditCardTerminallbl_StoreId": "Store ID_in",
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_in",
-    "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_in"
+    "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_in",
+    "AllowEarn": "Allow Earn_in"
   },
   "setting": {
     "Title": "Title_in",
@@ -2491,6 +2499,12 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_in",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_in",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_in",
+    "cardInputMethods": "Card Input Methods_in",
+    "bothSwipeInsertTapOrKeyIn": "Both (Key-In & Swipe/Insert/Tap)_in",
+    "keyIn": "Key-In_in",
+    "swipeInsertTap": "Swipe/Insert/Tap_in",
+    "cardEntryMode": "Card Entry Mode_in",
+    "proceed": "PROCEED_in",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_in",
       "CMS": "CMS_in",
@@ -2686,7 +2700,11 @@
     "NotFullyApplied": "Not Fully Applied_in",
     "missingCustomField": "Missing Custom Field_in",
     "PaymentMethods": "Payment Method(s)_in",
-    "IncludeZeroValue": "Include Zero Comm, SC, Gratuity_in"
+    "IncludeZeroValue": "Include Zero Comm, SC, Gratuity_in",
+    "AccrualReport": "Accrual Report_in",
+    "IncludeInActiveGuests": "Include Inactive Guests_in",
+    "SearchByClientName": "Search By Client Name_in",
+    "IncludeInActiveUsers": "Include Inactive Users_in"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_in",
@@ -3353,5 +3371,19 @@
     "SignInToMicrosoft": "Sign In To Microsoft Outlook_in",
     "SignInAs": "Signed in as_in",
     "ConfirmOutlookSignOut": "Outlook session must be ended to log out from PMS. Click the signed in email icon from within PMS and log out from Outlook._in"
+  },
+  "commonItinerary": {
+    "BookingId": "Booking ID_in",
+    "Location": "Location_in",
+    "Reserved": "Reserved_in",
+    "CheckedIn": "Checked In_in",
+    "CheckedOut": "Checked Out_in",
+    "NoShow": "No Show_in",
+    "Cancelled": "Cancelled_in",
+    "Unknow": "Unknow_in",
+    "Booked": "Booked_in",
+    "Paid": "Paid_in",
+    "FromDate": "From Date_in",
+    "ToDate": "To Date_in"
   }
 }

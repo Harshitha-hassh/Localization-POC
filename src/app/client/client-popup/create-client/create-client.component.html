@@ -9,4 +9,9 @@
   <mat-tab label="{{captions.History}}">
     <app-transaction-history [parentForm]="parentForm" [inputData]="clientInfoInput"></app-transaction-history>
   </mat-tab>
+  <mat-tab label="{{captions.Itinerary}}">
+    <div class="cus-pad">
+      <app-common-itinerary [guestId]="guestId"></app-common-itinerary>
+    </div>
+  </mat-tab>
 </mat-tab-group>

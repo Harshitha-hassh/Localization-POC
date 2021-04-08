@@ -347,7 +347,8 @@
     "drp_txt_work": "Work_gb",
     "contactAdministrator": "Please contact your administrator._gb",
     "unexpectedError": "An unexpected error has occurred, on {date} at {time}._gb",
-    "pg_title_create": "CREATE_gb"
+    "pg_title_create": "CREATE_gb",
+    "ServerTakingTimeError": "Server is taking longer than expected time to process your request. Please revisit in some time._gb"
   },
   "calendar": {
     "Sunday": "Sunday_gb",
@@ -1099,6 +1100,9 @@
     "selectTerminal": "Please select a Terminal_gb",
     "Terminal": "Terminal_gb",
     "SwipeCardMessage": "Please Swipe/Insert/Tap the card to pay_gb",
+    "KeyInCardMessage": "Please Key-In the card to pay_gb",
+    "SwipeCardCaptureMessage": "Please Swipe/Insert/Tap the card to save_gb",
+    "KeyInCardCaptureMessage": "Please Key-In the card to save_gb",
     "TrnsactionSuccessMsg": "Payment Successful._gb",
     "AmountTenderShouldNotBeZero": "Amount Tendered should not be zero_gb",
     "AmountTenderValidationMsg": "Amount entered should not be greater than remaining due_gb",
@@ -1398,6 +1402,7 @@
     "8005": "8005 - Transaction Report_gb",
     "8010": "8010 - Revenue Summary_gb",
     "8015": "8015 - Correct/Void Report_gb",
+    "8020": "8020 - Accrual Report_gb",
     "8035": "8035 - Sales by Item_gb",
     "8040": "8040 - Sale by Category_gb",
     "8045": "8045 - Sale by Sub-Category_gb",
@@ -1466,6 +1471,7 @@
   "passwordRequirements": "Password Requirements_gb",
   "passwordMustContain": "Your password must contain at least 6 characters_gb",
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _gb",
+  "oldPasswordVerified": "Old Password Verified_gb",
   "lbl_NoDataFound": "No Data Found_gb",
   "lbl_userId": "User ID_gb",
   "lbl_logout": "Log Out_gb",
@@ -1871,7 +1877,8 @@
       "subCategory5Id": "subCategory5Id_gb",
       "unitOfMeasureId": "unitOfMeasureId_gb",
       "categoryId": "categoryId_gb",
-      "id": "id_gb"
+      "id": "id_gb",
+      "Allow Earn": "Allow Earn_gb"
     },
     "SearchCategory": "Search Category_gb",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_gb",
@@ -1887,6 +1894,7 @@
     "SearchByCategories": "Search By Category_gb",
     "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_gb",
     "NoPosting": "No Posting_gb",
+<<<<<<< HEAD
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_gb",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_gb",
     "tog_lbl_showInactive": "Show Inactive_gb",
@@ -1906,7 +1914,8 @@
     "CreditCardTerminalerr_missing_Folio": "Missing Folio Number_gb",
     "CreditCardTerminallbl_StoreId": "Store ID_gb",
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_gb",
-    "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_gb"
+    "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_gb",
+    "AllowEarn": "Allow Earn_gb"
   },
   "setting": {
     "Title": "Title_gb",
@@ -2491,6 +2500,12 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_gb",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_gb",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_gb",
+    "cardInputMethods": "Card Input Methods_gb",
+    "bothSwipeInsertTapOrKeyIn": "Both (Key-In & Swipe/Insert/Tap)_gb",
+    "keyIn": "Key-In_gb",
+    "swipeInsertTap": "Swipe/Insert/Tap_gb",
+    "cardEntryMode": "Card Entry Mode_gb",
+    "proceed": "PROCEED_gb",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_gb",
       "CMS": "CMS_gb",
@@ -2686,7 +2701,11 @@
     "NotFullyApplied": "Not Fully Applied_gb",
     "missingCustomField": "Missing Custom Field_gb",
     "PaymentMethods": "Payment Method(s)_gb",
-    "IncludeZeroValue": "Include Zero Comm, SC, Gratuity_gb"
+    "IncludeZeroValue": "Include Zero Comm, SC, Gratuity_gb",
+    "AccrualReport": "Accrual Report_gb",
+    "IncludeInActiveGuests": "Include Inactive Guests_gb",
+    "SearchByClientName": "Search By Client Name_gb",
+    "IncludeInActiveUsers": "Include Inactive Users_gb"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_gb",
@@ -3353,5 +3372,19 @@
     "SignInToMicrosoft": "Sign In To Microsoft Outlook_gb",
     "SignInAs": "Signed in as_gb",
     "ConfirmOutlookSignOut": "Outlook session must be ended to log out from PMS. Click the signed in email icon from within PMS and log out from Outlook._gb"
+  },
+  "commonItinerary": {
+    "BookingId": "Booking ID_gb",
+    "Location": "Location_gb",
+    "Reserved": "Reserved_gb",
+    "CheckedIn": "Checked In_gb",
+    "CheckedOut": "Checked Out_gb",
+    "NoShow": "No Show_gb",
+    "Cancelled": "Cancelled_gb",
+    "Unknow": "Unknow_gb",
+    "Booked": "Booked_gb",
+    "Paid": "Paid_gb",
+    "FromDate": "From Date_gb",
+    "ToDate": "To Date_gb"
   }
 }

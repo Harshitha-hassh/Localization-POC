@@ -1397,6 +1397,7 @@
       "8005": "8005 - Transaction Report_zh",
       "8010": "8010 - Revenue Summary_zh",
       "8015": "8015 - Correct/Void Report_zh",
+      "8020": "8020 - Accrual Report_zh",
       "8035": "8035 - Sales by Item_zh",
       "8040": "8040 - Sale by Category_zh",
       "8045": "8045 - Sale by Sub-Category_zh",
@@ -1465,6 +1466,7 @@
     "passwordRequirements": "Password Requirements_zh",
     "passwordMustContain": "Your password must contain at least 6 characters_zh",
     "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _zh",
+    "oldPasswordVerified": "Old Password Verified_zh",
     "lbl_NoDataFound": "No Data Found_zh",
     "lbl_userId": "User ID_zh",
     "lbl_logout": "Log Out_zh",
@@ -1885,7 +1887,8 @@
       "SearchByPaymentMethod": "Search By Payment Method_zh",
       "SearchByCategories": "Search By Category_zh",
       "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_zh",
-      "NoPosting": "No Posting_zh"
+      "NoPosting": "No Posting_zh",
+      "AllowEarn": "Allow Earn_zh"
     },
     "setting": {
       "Title": "Title_zh",
