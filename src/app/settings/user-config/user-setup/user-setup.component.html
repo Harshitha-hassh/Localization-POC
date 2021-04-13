@@ -12,7 +12,7 @@
               <i [ngClass]="searchValue ? 'icon-Search' : 'icon-Cancel'" class="cursor" (click)="clearSearch()"></i>
           </mat-form-field>
 
-          <button [ngClass]="{'button_invalid': IsReadOnly}" mat-raised-button
+          <button type="button" [ngClass]="{'button_invalid': IsReadOnly}" mat-raised-button
             class="body-bgcolor whitecolor body-bordercolor text-capital" (click)="createUser('New')">{{captions.CreateUser}}
           </button>
         </div>

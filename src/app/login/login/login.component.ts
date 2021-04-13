@@ -319,6 +319,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.userInfo != null && this.userInfo.languageCode != ''
         ? this.userInfo.languageCode
         : result.languageCode;
+    let maxDecimalPlace = result["maximumDecimalPlaces"] ? result["maximumDecimalPlaces"] : 2;    
+
     const PropertyValues =
       'Language=' +
       result.languageCode +
@@ -356,7 +358,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       result.autoLogOff +
       ';LogOffAfter=' +
       result.logOffAfter +
-      ';';
+      '; MaxDecimalPlaces=' +
+        maxDecimalPlace;
     sessionStorage.setItem(PROPERTY_INFO, PropertyValues);
     sessionStorage.setItem(PROPERTY_DATE, result.propertyDate);
     /*TODO: Uncomment this once jwt token update implementation done */

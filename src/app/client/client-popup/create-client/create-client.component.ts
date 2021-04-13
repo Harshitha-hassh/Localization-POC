@@ -15,11 +15,15 @@ export class CreateClientComponent implements OnInit, OnDestroy {
   @ViewChild('clientTabGroup', { static: true }) tabGroup: MatTabGroup;
   captions: any = this.localization.captions.bookAppointment;
   clientSelectedTab: number;
+  guestId: any;
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
     public localization: RetailStandaloneLocalization) { }
 
   ngOnInit() {
+    if(this.data && this.data.data){
+      this.guestId =  this.data.data.guestId;
+    }
     this.bindApiData();
     this.tabGroup._handleClick = this.handleTabChange.bind(this);
   }

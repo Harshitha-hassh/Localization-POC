@@ -8,7 +8,8 @@
     "commission": "/VisualOne/retailgateway/",
     "payment": "/VisualOne/retailgateway/",
     "common": "/VisualOne/retailgateway/Retail/Services/Notification",
-    "documentation": "/Help/"
+    "documentation": "/Help/",
+    "commonGateway": "/commongateway/"
   },
   "Login": "Property/GetLoginDetails",
   "LogOut": "Property/LogOutByUserId/{Username}/{TenantId}/{PropertyId}",
@@ -629,7 +630,7 @@
   "GetInventoryOutletStatus": "Inventory/outlet/{outletId}/status",
   "GetRetailInventoryItemByPagination": "RetailItems/retail-inventory/items?outletId={outletId}&includeInactive={includeInactive}&pageStart={pageStart}&pageLength={pageLength}&sortBy={sortBy}&isSortByAscending={isSortByAscending}&searchText={searchText}&category={category}&subcategory1={subcategory1}&subcategory2={subcategory2}&subcategory3={subcategory3}&subcategory4={subcategory4}&subcategory5={subcategory5}&useInventory=true",
   "GetCommissionSetup" : "retailitems/getcommissionsetup",
-  "IsBarcodeExists": "retailitems/validate/barcode/{barcode}",
+  "IsBarcodeExists": "retailitems/validate/barcode/{barcode}/{itemId}",
   "GetRetailItemDetailedInfo": "retailitems/detailed-info?id={id}",
   "GetRetailItemDetailedInfoList": "retailitems/detailed-infolist",
   "SyncInventory": "retailitems/syncinventory/outlets/{outletId}",
@@ -652,5 +653,6 @@
   "RetailFunctionalitiesByProduct": "RetailManagementService/RetailFunctionalities/product/{productId}",
   "GetTaxesV2": "RetailManagementService/Tax",  
   "GetPaymentSettingByModuleAndScreen": "Setting/{module}/{screen}",
-  "PaymentSetting": "Setting"
+  "PaymentSetting": "Setting",
+  "GetGuestItinerary": "Activity/GetActivitiesByGuestAndDate"
 }

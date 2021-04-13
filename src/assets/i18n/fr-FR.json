@@ -347,7 +347,8 @@
     "drp_txt_work": "Work_fr",
     "contactAdministrator": "Please contact your administrator._fr",
     "unexpectedError": "An unexpected error has occurred, on {date} at {time}._fr",
-    "pg_title_create": "CREATE_fr"
+    "pg_title_create": "CREATE_fr",
+    "ServerTakingTimeError": "Server is taking longer than expected time to process your request. Please revisit in some time._fr"
   },
   "calendar": {
     "Sunday": "Sunday_fr",
@@ -1099,6 +1100,9 @@
     "selectTerminal": "Please select a Terminal_fr",
     "Terminal": "Terminal_fr",
     "SwipeCardMessage": "Please Swipe/Insert/Tap the card to pay_fr",
+    "KeyInCardMessage": "Please Key-In the card to pay_fr",
+    "SwipeCardCaptureMessage": "Please Swipe/Insert/Tap the card to save_fr",
+    "KeyInCardCaptureMessage": "Please Key-In the card to save_fr",
     "TrnsactionSuccessMsg": "Payment Successful._fr",
     "AmountTenderShouldNotBeZero": "Amount Tendered should not be zero_fr",
     "AmountTenderValidationMsg": "Amount entered should not be greater than remaining due_fr",
@@ -1398,6 +1402,7 @@
     "8005": "8005 - Transaction Report_fr",
     "8010": "8010 - Revenue Summary_fr",
     "8015": "8015 - Correct/Void Report_fr",
+    "8020": "8020 - Accrual Report_fr",
     "8035": "8035 - Sales by Item_fr",
     "8040": "8040 - Sale by Category_fr",
     "8045": "8045 - Sale by Sub-Category_fr",
@@ -1466,6 +1471,7 @@
   "passwordRequirements": "Password Requirements_fr",
   "passwordMustContain": "Your password must contain at least 6 characters_fr",
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _fr",
+  "oldPasswordVerified": "Old Password Verified_fr",
   "lbl_NoDataFound": "No Data Found_fr",
   "lbl_userId": "User ID_fr",
   "lbl_logout": "Log Out_fr",
@@ -1871,7 +1877,8 @@
       "subCategory5Id": "subCategory5Id_fr",
       "unitOfMeasureId": "unitOfMeasureId_fr",
       "categoryId": "categoryId_fr",
-      "id": "id_fr"
+      "id": "id_fr",
+      "Allow Earn": "Allow Earn_fr"
     },
     "SearchCategory": "Search Category_fr",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_fr",
@@ -1906,7 +1913,8 @@
     "CreditCardTerminalerr_missing_Folio": "Missing Folio Number_fr",
     "CreditCardTerminallbl_StoreId": "Store ID_fr",
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_fr",
-    "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_fr"
+    "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_fr",
+    "AllowEarn": "Allow Earn_fr"
   },
   "setting": {
     "Title": "Title_fr",
@@ -2491,6 +2499,12 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_fr",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_fr",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_fr",
+    "cardInputMethods": "Card Input Methods_fr",
+    "bothSwipeInsertTapOrKeyIn": "Both (Key-In & Swipe/Insert/Tap)_fr",
+    "keyIn": "Key-In_fr",
+    "swipeInsertTap": "Swipe/Insert/Tap_fr",
+    "cardEntryMode": "Card Entry Mode_fr",
+    "proceed": "PROCEED_fr",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_fr",
       "CMS": "CMS_fr",
@@ -2686,7 +2700,11 @@
     "NotFullyApplied": "Not Fully Applied_fr",
     "missingCustomField": "Missing Custom Field_fr",
     "PaymentMethods": "Payment Method(s)_fr",
-    "IncludeZeroValue": "Include Zero Comm, SC, Gratuity_fr"
+    "IncludeZeroValue": "Include Zero Comm, SC, Gratuity_fr",
+    "AccrualReport": "Accrual Report_fr",
+    "IncludeInActiveGuests": "Include Inactive Guests_fr",
+    "SearchByClientName": "Search By Client Name_fr",
+    "IncludeInActiveUsers": "Include Inactive Users_fr"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fr",
@@ -3353,5 +3371,19 @@
     "SignInToMicrosoft": "Sign In To Microsoft Outlook_fr",
     "SignInAs": "Signed in as_fr",
     "ConfirmOutlookSignOut": "Outlook session must be ended to log out from PMS. Click the signed in email icon from within PMS and log out from Outlook._fr"
+  },
+  "commonItinerary": {
+    "BookingId": "Booking ID_fr",
+    "Location": "Location_fr",
+    "Reserved": "Reserved_fr",
+    "CheckedIn": "Checked In_fr",
+    "CheckedOut": "Checked Out_fr",
+    "NoShow": "No Show_fr",
+    "Cancelled": "Cancelled_fr",
+    "Unknow": "Unknow_fr",
+    "Booked": "Booked_fr",
+    "Paid": "Paid_fr",
+    "FromDate": "From Date_fr",
+    "ToDate": "To Date_fr"
   }
 }

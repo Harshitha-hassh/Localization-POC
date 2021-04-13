@@ -347,7 +347,8 @@
     "drp_txt_work": "Work_uk",
     "contactAdministrator": "Please contact your administrator._uk",
     "unexpectedError": "An unexpected error has occurred, on {date} at {time}._uk",
-    "pg_title_create": "CREATE_uk"
+    "pg_title_create": "CREATE_uk",
+    "ServerTakingTimeError": "Server is taking longer than expected time to process your request. Please revisit in some time._uk"
   },
   "calendar": {
     "Sunday": "Sunday_uk",
@@ -1099,6 +1100,9 @@
     "selectTerminal": "Please select a Terminal_uk",
     "Terminal": "Terminal_uk",
     "SwipeCardMessage": "Please Swipe/Insert/Tap the card to pay_uk",
+    "KeyInCardMessage": "Please Key-In the card to pay_uk",
+    "SwipeCardCaptureMessage": "Please Swipe/Insert/Tap the card to save_uk",
+    "KeyInCardCaptureMessage": "Please Key-In the card to save_uk",
     "TrnsactionSuccessMsg": "Payment Successful._uk",
     "AmountTenderShouldNotBeZero": "Amount Tendered should not be zero_uk",
     "AmountTenderValidationMsg": "Amount entered should not be greater than remaining due_uk",
@@ -1398,6 +1402,7 @@
     "8005": "8005 - Transaction Report_uk",
     "8010": "8010 - Revenue Summary_uk",
     "8015": "8015 - Correct/Void Report_uk",
+    "8020": "8020 - Accrual Report_uk",
     "8035": "8035 - Sales by Item_uk",
     "8040": "8040 - Sale by Category_uk",
     "8045": "8045 - Sale by Sub-Category_uk",
@@ -1466,6 +1471,7 @@
   "passwordRequirements": "Password Requirements_uk",
   "passwordMustContain": "Your password must contain at least 6 characters_uk",
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _uk",
+  "oldPasswordVerified": "Old Password Verified_uk",
   "lbl_NoDataFound": "No Data Found_uk",
   "lbl_userId": "User ID_uk",
   "lbl_logout": "Log Out_uk",
@@ -1871,7 +1877,8 @@
       "subCategory5Id": "subCategory5Id_uk",
       "unitOfMeasureId": "unitOfMeasureId_uk",
       "categoryId": "categoryId_uk",
-      "id": "id_uk"
+      "id": "id_uk",
+      "Allow Earn": "Allow Earn_uk"
     },
     "SearchCategory": "Search Category_uk",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_uk",
@@ -1906,7 +1913,8 @@
     "CreditCardTerminalerr_missing_Folio": "Missing Folio Number_uk",
     "CreditCardTerminallbl_StoreId": "Store ID_uk",
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_uk",
-    "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_uk"
+    "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_uk",
+    "AllowEarn": "Allow Earn_uk"
   },
   "setting": {
     "Title": "Title_uk",
@@ -2491,6 +2499,12 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_uk",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_uk",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_uk",
+    "cardInputMethods": "Card Input Methods_uk",
+    "bothSwipeInsertTapOrKeyIn": "Both (Key-In & Swipe/Insert/Tap)_uk",
+    "keyIn": "Key-In_uk",
+    "swipeInsertTap": "Swipe/Insert/Tap_uk",
+    "cardEntryMode": "Card Entry Mode_uk",
+    "proceed": "PROCEED_uk",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_uk",
       "CMS": "CMS_uk",
@@ -2686,7 +2700,11 @@
     "NotFullyApplied": "Not Fully Applied_uk",
     "missingCustomField": "Missing Custom Field_uk",
     "PaymentMethods": "Payment Method(s)_uk",
-    "IncludeZeroValue": "Include Zero Comm, SC, Gratuity_uk"
+    "IncludeZeroValue": "Include Zero Comm, SC, Gratuity_uk",
+    "AccrualReport": "Accrual Report_uk",
+    "IncludeInActiveGuests": "Include Inactive Guests_uk",
+    "SearchByClientName": "Search By Client Name_uk",
+    "IncludeInActiveUsers": "Include Inactive Users_uk"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_uk",
@@ -3353,5 +3371,19 @@
     "SignInToMicrosoft": "Sign In To Microsoft Outlook_uk",
     "SignInAs": "Signed in as_uk",
     "ConfirmOutlookSignOut": "Outlook session must be ended to log out from PMS. Click the signed in email icon from within PMS and log out from Outlook._uk"
+  },
+  "commonItinerary": {
+    "BookingId": "Booking ID_uk",
+    "Location": "Location_uk",
+    "Reserved": "Reserved_uk",
+    "CheckedIn": "Checked In_uk",
+    "CheckedOut": "Checked Out_uk",
+    "NoShow": "No Show_uk",
+    "Cancelled": "Cancelled_uk",
+    "Unknow": "Unknow_uk",
+    "Booked": "Booked_uk",
+    "Paid": "Paid_uk",
+    "FromDate": "From Date_uk",
+    "ToDate": "To Date_uk"
   }
 }
