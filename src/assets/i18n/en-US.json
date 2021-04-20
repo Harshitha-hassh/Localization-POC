@@ -1443,6 +1443,7 @@
     "8095": "8095 - Tax Exempt Sales",
     "8100": "8100 - Transaction Detail",
     "8105": "8105 - Top Spenders",
+    "8140": "8140 - Sales Mix Report",
     "1240": "1240 - Staff Member Summary Report",
 		"1245": "1245 - Commission Report",
 		"1250": "1250 - Gratuity Report",
@@ -2704,7 +2705,8 @@
     "AccrualReport": "Accrual Report",
 		"IncludeInActiveGuests": "Include Inactive Guests",
 		"SearchByClientName": "Search By Client Name",
-		"IncludeInActiveUsers": "Include Inactive Users"
+		"IncludeInActiveUsers": "Include Inactive Users",
+    "SalesMix": "Sales Mix Report"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",
