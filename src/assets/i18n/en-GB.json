@@ -3053,6 +3053,7 @@
       "distributionlist": {
         "createNew": "Create New_gb",
         "DistributionName": "Distribution Name_gb",
+        "searchDistributionName": "Search by Distribution Name_gb",
         "newDL": "New Distribution List_gb",
         "DistributionListName": "Distribution List Name_gb",
         "missingDistributionListName": "Mising Distribution List Name_gb",

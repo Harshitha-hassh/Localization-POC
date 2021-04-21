@@ -3053,6 +3053,7 @@
       "distributionlist": {
         "createNew": "Create New_uk",
         "DistributionName": "Distribution Name_uk",
+        "searchDistributionName": "Search by Distribution Name_uk",
         "newDL": "New Distribution List_uk",
         "DistributionListName": "Distribution List Name_uk",
         "missingDistributionListName": "Mising Distribution List Name_uk",

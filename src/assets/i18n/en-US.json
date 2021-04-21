@@ -3052,7 +3052,8 @@
       },
       "distributionlist": {
         "createNew": "Create New",
-        "DistributionName": "Distribution Name",
+        "DistributionName": "Distribution Name",        
+        "searchDistributionName": "Search by Distribution Name",
         "newDL": "New Distribution List",
         "DistributionListName": "Distribution List Name",
         "missingDistributionListName": "Mising Distribution List Name",
