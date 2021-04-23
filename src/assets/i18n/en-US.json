@@ -1450,7 +1450,8 @@
     "1240": "1240 - Staff Member Summary Report",
 		"1245": "1245 - Commission Report",
 		"1250": "1250 - Gratuity Report",
-		"1255": "1255 - Service Charge Report"
+		"1255": "1255 - Service Charge Report",
+    "7055": "7055 - Discount Reason"
   },
   "userId": "User ID",
   "password": "Password",
