@@ -1421,6 +1421,7 @@
     "8095": "8095 - Tax Exempt Sales_uk",
     "8100": "8100 - Transaction Detail_uk",
     "8105": "8105 - Top Spenders_uk",
+    "8140": "8140 - Sales Mix Report_uk",
     "8700": "8700 - Update Qty on Hand_uk",
     "8705": "8705 – Freeze Inventory_uk",
     "8710": "8710 - Release Inventory_uk",
@@ -2714,7 +2715,8 @@
     "AccrualReport": "Accrual Report_uk",
     "IncludeInActiveGuests": "Include Inactive Guests_uk",
     "SearchByClientName": "Search By Client Name_uk",
-    "IncludeInActiveUsers": "Include Inactive Users_uk"
+    "IncludeInActiveUsers": "Include Inactive Users_uk",
+    "SalesMix": "Sales Mix Report_uk"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_uk",
@@ -3061,6 +3063,7 @@
       "distributionlist": {
         "createNew": "Create New_uk",
         "DistributionName": "Distribution Name_uk",
+        "searchDistributionName": "Search by Distribution Name_uk",
         "newDL": "New Distribution List_uk",
         "DistributionListName": "Distribution List Name_uk",
         "missingDistributionListName": "Mising Distribution List Name_uk",

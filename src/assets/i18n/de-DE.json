@@ -1421,6 +1421,7 @@
     "8095": "8095 - Tax Exempt Sales_de",
     "8100": "8100 - Transaction Detail_de",
     "8105": "8105 - Top Spenders_de",
+    "8140": "8140 - Sales Mix Report_de",
     "8700": "8700 - Update Qty on Hand_de",
     "8705": "8705 – Freeze Inventory_de",
     "8710": "8710 - Release Inventory_de",
@@ -2714,7 +2715,8 @@
     "AccrualReport": "Accrual Report_de",
     "IncludeInActiveGuests": "Include Inactive Guests_de",
     "SearchByClientName": "Search By Client Name_de",
-    "IncludeInActiveUsers": "Include Inactive Users_de"
+    "IncludeInActiveUsers": "Include Inactive Users_de",
+    "SalesMix": "Sales Mix Report_de"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_de",
@@ -3061,6 +3063,7 @@
       "distributionlist": {
         "createNew": "Create New_de",
         "DistributionName": "Distribution Name_de",
+        "searchDistributionName": "Search by Distribution Name_de",
         "newDL": "New Distribution List_de",
         "DistributionListName": "Distribution List Name_de",
         "missingDistributionListName": "Mising Distribution List Name_de",

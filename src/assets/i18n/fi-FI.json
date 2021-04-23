@@ -1421,6 +1421,7 @@
     "8095": "8095 - Tax Exempt Sales_fi",
     "8100": "8100 - Transaction Detail_fi",
     "8105": "8105 - Top Spenders_fi",
+    "8140": "8140 - Sales Mix Report_fi",
     "8700": "8700 - Update Qty on Hand_fi",
     "8705": "8705 – Freeze Inventory_fi",
     "8710": "8710 - Release Inventory_fi",
@@ -2714,7 +2715,8 @@
     "AccrualReport": "Accrual Report_fi",
     "IncludeInActiveGuests": "Include Inactive Guests_fi",
     "SearchByClientName": "Search By Client Name_fi",
-    "IncludeInActiveUsers": "Include Inactive Users_fi"
+    "IncludeInActiveUsers": "Include Inactive Users_fi",
+    "SalesMix": "Sales Mix Report_fi"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fi",
@@ -3061,6 +3063,7 @@
       "distributionlist": {
         "createNew": "Create New_fi",
         "DistributionName": "Distribution Name_fi",
+        "searchDistributionName": "Search by Distribution Name_fi",
         "newDL": "New Distribution List_fi",
         "DistributionListName": "Distribution List Name_fi",
         "missingDistributionListName": "Mising Distribution List Name_fi",
