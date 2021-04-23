@@ -654,5 +654,9 @@
   "GetTaxesV2": "RetailManagementService/Tax",  
   "GetPaymentSettingByModuleAndScreen": "Setting/{module}/{screen}",
   "PaymentSetting": "Setting",
-  "GetGuestItinerary": "Activity/GetActivitiesByGuestAndDate"
+  "GetGuestItinerary": "Activity/GetActivitiesByGuestAndDate",
+  "GetDiscountReason": "RetailManagementService/DiscountReason",
+  "CreateDiscountReason": "RetailManagementService/DiscountReason",
+  "UpdateDiscountReason": "RetailManagementService/DiscountReason",
+  "DeleteDiscountReason": "RetailManagementService/DiscountReason/{id}"
 }
