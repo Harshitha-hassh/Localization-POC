@@ -87,6 +87,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   mailTypes = GuestProfileMailTypes;
   Address: any = [];
   personalInfo: any = [];
+  placeHolderFormat: string;
   @Input('inputData')
   set formData(value) {
     if (value && value.data != '') {
@@ -113,7 +114,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.captions = this.localization.captions.bookAppointment;
     this.commonCaptions = this.localization.captions.common;
     this.genderList = [{ text: this.captions['Male'], value: 'Male' }, { text: this.captions['Female'], value: 'Female' }];
-
+    this.placeHolderFormat = this.localization.inputDateFormat;
     this.FormGrp = this.Form.group({
       id: 0,
       guestId: DefaultGUID,
@@ -1137,6 +1138,9 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     });
   }
 
+  validateIncorrect(event) {
+    this.localization.validateIncorrect(event, this.FormGrp, 'dob')
+  }
 }
 
 

@@ -34,7 +34,7 @@ export class TransactionLogComponent implements OnInit {
   { title: "Type", jsonkey: "type", alignType: "left" }, { title: "Description", jsonkey: "description", alignType: "left" },
   { title: "User ID", jsonkey: "userId", alignType: "left" }, { title: "Appointment #", jsonkey: "appointment", alignType: "left" },
   { title: "Transaction #", jsonkey: "transaction", alignType: "left" }, { title: "Client Name", jsonkey: "clientName", alignType: "left" }];
-
+  placeholderFormat: string;
   constructor(private fb: FormBuilder, private http: HttpServiceCall, private utils: Utilities, private localization: RetailStandaloneLocalization,
     private PropertyInfo: PropertyInformation) {
     this.logType = translog;
@@ -112,6 +112,7 @@ export class TransactionLogComponent implements OnInit {
   // }
 
   ngOnInit() {
+    this.placeholderFormat = this.localization.inputDateFormat;
     let currentDate = this.PropertyInfo.CurrentDate;
     this.transactionForm = this.fb.group({
       logType: [''],
@@ -184,6 +185,10 @@ export class TransactionLogComponent implements OnInit {
     }else{
       this.transactionForm.controls['includetempappointment'].setValue(false);
     }
+  }
+
+  validateIncorrect(event) {
+    this.localization.validateIncorrect(event, this.transactionForm, 'date')
   }
 
 
