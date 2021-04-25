@@ -59,15 +59,18 @@
           <div class="float-left pr-4">
             <label for="" class="form-label-normal d-block mb-0 dob-label">{{captions.CDateOfBirth}}</label>
             <div class="d-inline-block">
-              <mat-form-field floatLabel="never" class="width_180px">
-                <input [max]="maxDate" matInput [matDatepicker]="picker" [placeholder]="captions.CDateofBirth" class=""
-                  formControlName="dob">
+              <mat-form-field floatLabel="never" class="width_180px" appearance="legacy">
+                <input [max]="maxDate" matInput [matDatepicker]="picker" [placeholder]="placeHolderFormat" class=""
+                  formControlName="dob" (blur)="validateIncorrect($event)">
                 <mat-datepicker #picker></mat-datepicker>
                 <i matSuffix class="icon-Calender cursor fs-xlarge position-relative d-inline-block customCalendar"
                   (click)="picker.open()"></i>
-                <mat-error class="" *ngIf="!FormGrp.controls['dob'].disabled && !FormGrp.controls['dob'].valid">
+                <mat-error class="" *ngIf="FormGrp.controls['dob'].hasError('required')">
                   {{localization.captions.common.MissingDOB}}
                 </mat-error>
+                <mat-error *ngIf="FormGrp.controls['dob'].hasError('invalidDate')">{{commonCaptions.dateFormat}}</mat-error>   
+                <mat-error *ngIf="FormGrp.controls['dob'].hasError('matDatepickerMin')">{{commonCaptions.minimum}} {{captions.CDateOfBirth}}</mat-error>
+                <mat-error *ngIf="FormGrp.controls['dob'].hasError('matDatepickerMax')">{{commonCaptions.maximum}} {{captions.CDateOfBirth}}</mat-error>
               </mat-form-field>
 
             </div>

@@ -30,6 +30,8 @@ export class UserSettingsComponent implements OnInit {
   userSettingsFormGrp: FormGroup;
   ActionButton: string;
   userIdPattern;
+  commonCaptions: any;
+  placeHolderFormat: string;
 
   constructor(public localization: RetailStandaloneLocalization, public servicesetting: SettingsService,
               private http: HttpServiceCall, private utils: Utilities, private PropertyInfo: PropertyInformation) {
@@ -38,6 +40,8 @@ export class UserSettingsComponent implements OnInit {
 
   async ngOnInit() {
     this.caption = this.localization.captions;
+    this.commonCaptions = this.localization.captions.common;
+    this.placeHolderFormat = this.localization.inputDateFormat;
     this.ActionButton = this.caption.setting.save;
     this.userSettingsFormGrp = this.servicesetting.userSettingsFormGrp;
     // this.IsReadOnly = this._servicesetting.breakpoints.find(bp => bp.breakPointNumber == GlobalConst.SPAScheduleBreakPoint.UserSetup).view;
@@ -148,5 +152,9 @@ export class UserSettingsComponent implements OnInit {
       }
     }
   }     
+
+  validateIncorrect(event) {
+    this.localization.validateIncorrect(event, this.userSettingsFormGrp, 'pwdexpirationdate')
+  }
 
 }
