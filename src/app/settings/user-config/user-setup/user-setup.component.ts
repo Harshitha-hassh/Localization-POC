@@ -357,6 +357,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
             let appAllowedIds;
             let roleNames;
             let roleIds;
+            let userblocked = false;
             const outletAllowedIds = [];
             if (propertyAccess && propertyAccess.length > 0) {
               appAllowedIds = propertyAccess.filter(prop => prop.propertyID == Number(this.utils.GetPropertyInfo('PropertyId')) && prop.hasAccess).map(y => y.productId);
@@ -373,6 +374,8 @@ export class UserSetupComponent implements OnInit, OnDestroy {
                 }
               }
             }
+            var retailProd = propertyAccess.find(x => x.propertyID === Number(this.utils.GetPropertyInfo('PropertyId')) && x.productId === Number(this.utils.GetPropertyInfo("ProductId")));
+            userblocked = data[x].isLocked ? data[x].isLocked : (retailProd ? retailProd.accountBlocked : userblocked);
             const userInfo = {
               userId: (data[x].userName ? data[x].userName : '').toUpperCase(),
               name: data[x].firstName + ' ' + data[x].lastName,
@@ -385,7 +388,9 @@ export class UserSetupComponent implements OnInit, OnDestroy {
               roles: roleNames,
               allowedAppId: appAllowedIds,
               allowedOutId: outletAllowedIds,
-              id: data[x].userId
+              id: data[x].userId,
+              blockedUser: userblocked,
+              isRestrictuserBlock:this.hasAccess
             };
 
             this.tableData.push(userInfo);
@@ -426,5 +431,16 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     this.servicesetting.retailSettingsFormGrp.reset();
     this.servicesetting.selectedAccess = [];
     this.servicesetting.selectedOutlets = [];
+  }
+
+  BlockUserEdit(event)
+  {
+    let clientObj = this.usersInfo.filter(x => x.userId == event[0].id)[0];
+    clientObj.userPropertyAccesses = clientObj.userPropertyAccesses.filter(x => x.propertyID === Number(this.utils.GetPropertyInfo('PropertyId'))
+      && this.products.map(v => v.id).includes(x.productId));
+      if (clientObj.userPropertyAccesses) {
+        this.GetServiceCall('BlockUserProfile', { userId: event[0].id, accountBlocked: !event[0].blockedUser });
+        this.GetServiceCall('GetAllUsers', { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
+      }
   }
 }

@@ -305,6 +305,8 @@
                     [ngClass]="(IsViewOnly && IsRetailCodeSetup)||disableEditButton ? 'button_invalid' : ''"
                     *ngIf="editable && !table.value.tablebody[bi].donecancel" matTooltip="{{captions.common.Edit}}"
                     (click)="editRow($event,bodyCnt,'edit',options[0].ServiceId)"></i>
+                  <i class="ag_pr--2 ag_cursor--pointer" [ngClass]="{'restricted': bodyCnt.isRestrictuserBlock , 'icon-active-user' : !bodyCnt.blockedUser,  'icon-block-user' : bodyCnt.blockedUser}"
+                    (click)="emitBlockrowdata($event,bodyCnt)" [matTooltipClass]="'AgysMatCustTooltip'" [matTooltip]="bodyCnt.blockedUser ? this.captions.common.unBlock : this.captions.common.block"></i>
                   <i *ngIf="!disableDelete && !table.value.tablebody[bi].donecancel" class="icon-Delete cursor"
                     [ngClass]="IsViewOnly ? 'button_invalid' : ''" matTooltip="{{captions.common.Delete}}"
                     (click)="DeleteRecords(bodyCnt)"></i>
