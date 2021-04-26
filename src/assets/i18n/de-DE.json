@@ -348,7 +348,10 @@
     "contactAdministrator": "Please contact your administrator._de",
     "unexpectedError": "An unexpected error has occurred, on {date} at {time}._de",
     "pg_title_create": "CREATE_de",
-    "ServerTakingTimeError": "Server is taking longer than expected time to process your request. Please revisit in some time._de"
+    "ServerTakingTimeError": "Server is taking longer than expected time to process your request. Please revisit in some time._de",
+    "dateFormat": "Invalid Date_de",
+    "minimum": "Invalid Minimum_de",
+    "maximum": "Invalid Maximum_de"
   },
   "calendar": {
     "Sunday": "Sunday_de",
