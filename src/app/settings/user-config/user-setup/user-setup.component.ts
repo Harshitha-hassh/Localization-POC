@@ -11,10 +11,9 @@ import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.
 import { Utilities } from 'src/app/core/utilities';
 import { BaseResponse, HttpMethod } from 'src/app/common/Models/http.model';
 import { Product } from 'src/app/common/Models/common.models';
-import { GridType, Host } from 'src/app/common/shared/shared/globalsContant';
+import { GridType, Host, SPAScheduleBreakPoint } from 'src/app/common/shared/shared/globalsContant';
 import { NewUserComponent } from '../new-user/new-user.component';
 import { AsideFilterConfig } from 'src/app/common/Models/ag-models';
-
 @Component({
   selector: 'app-user-setup',
   templateUrl: './user-setup.component.html',
@@ -77,11 +76,12 @@ export class UserSetupComponent implements OnInit, OnDestroy {
       }
     };
 
-    // if (!this.BPoint.CheckForAccess([GlobalConst.SPAScheduleBreakPoint.UserSetup])) {
-    //   this.hasAccess = false;
-    //   return;
-    // }
-    // this.IsReadOnly = this._servicesetting.breakpoints.find(bp => bp.breakPointNumber == GlobalConst.SPAScheduleBreakPoint.UserSetup).view;
+    if (!this.BPoint.CheckForAccess([SPAScheduleBreakPoint.UserSetup])) {
+      this.hasAccess = false;
+      return;
+    }
+
+    this.IsReadOnly = this.BPoint.IsViewOnly(SPAScheduleBreakPoint.UserSetup);
 
     this.GetServiceCall('GetProductsByPropertyId', { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
     this.GetServiceCall('GetActiveUserRolesByPropertyId',
@@ -390,7 +390,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
               allowedOutId: outletAllowedIds,
               id: data[x].userId,
               blockedUser: userblocked,
-              isRestrictuserBlock:this.hasAccess
+              isRestrictuserBlock:this.IsReadOnly
             };
 
             this.tableData.push(userInfo);
