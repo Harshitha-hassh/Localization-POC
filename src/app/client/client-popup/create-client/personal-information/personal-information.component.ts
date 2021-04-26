@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, EventEmitter, Output, Input, OnDestroy, AfterViewChecked } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { Host, ImgRefType, SPAManagementBreakPoint, Module, DefaultGUID, ButtonType } from 'src/app/common/shared/shared/globalsContant';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
@@ -23,6 +23,7 @@ import { AppModuleService } from 'src/app/core/services/app.service';
 import { PlayerInformationService } from 'src/app/common/shared/shared/service/player.information.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
+import moment from 'moment';
 
 @Component({
   selector: 'app-personal-information',
@@ -88,6 +89,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   Address: any = [];
   personalInfo: any = [];
   placeHolderFormat: string;
+  // receiptDate: any;
+  maxReceiptDate: any;
   @Input('inputData')
   set formData(value) {
     if (value && value.data != '') {
@@ -110,6 +113,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     private _playerService: PlayerInformationService,
     private _ams: AppModuleService
   ) {
+    this.maxReceiptDate = new Date();
+    // this.receiptDate = new FormControl("");
 
     this.captions = this.localization.captions.bookAppointment;
     this.commonCaptions = this.localization.captions.common;
@@ -143,7 +148,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         base64textString: '',
         thumbnailImg: ''
       }),
-      imgReferenceId :''
+      imgReferenceId :'',
+      receiptDate: ''
     });
     this.isCMSConfigured = this.featureSwitch.IsCMSConfigured;
   }
@@ -363,9 +369,14 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     if(clientConfiguration[0]['CLIENT_POSTAL_CODE'])
     this.FormGrp.controls.postal_code.markAsTouched();
 
-    this.FormGrp.controls['dob'].clearValidators();
-    this.FormGrp.controls['dob'].setValidators(clientConfiguration[0]['CLIENT_BIRTHDAY'] ? [Validators.required] : []);
-    this.FormGrp.controls['dob'].updateValueAndValidity();
+    // this.FormGrp.controls['dob'].clearValidators();
+    if(clientConfiguration[0]['CLIENT_BIRTHDAY']){
+      this.FormGrp.controls['dob'].clearValidators();
+      this.FormGrp.controls['dob'].setValidators([Validators.required]);
+      this.FormGrp.controls['dob'].updateValueAndValidity();
+    }
+    
+    
     if(clientConfiguration[0]['CLIENT_BIRTHDAY'])
     this.FormGrp.controls.dob.markAsTouched();
 
