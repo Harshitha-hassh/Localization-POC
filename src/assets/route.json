@@ -659,5 +659,6 @@
   "GetDiscountReason": "RetailManagementService/DiscountReason",
   "CreateDiscountReason": "RetailManagementService/DiscountReason",
   "UpdateDiscountReason": "RetailManagementService/DiscountReason",
-  "DeleteDiscountReason": "RetailManagementService/DiscountReason/{id}"
+  "DeleteDiscountReason": "RetailManagementService/DiscountReason/{id}",
+  "CategoryOutletListOrderChange": "QuickSale/category/listorder/outlet/{outletId}/from/{fromOrder}/to/{toOrder}"
 }
