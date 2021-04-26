@@ -51,8 +51,9 @@
           </div>
 
           <div class="d-inline-block pt-4">
+            <div><label class="date-label   form-label-normal">{{caption.setting.PasswordExpirationDate}}</label></div>
             <mat-form-field class="" appearance="legacy">
-              <mat-label>{{caption.setting.PasswordExpirationDatee}}</mat-label>
+              <mat-label></mat-label>
               <input matInput [matDatepicker]="picker" autocomplete="off"  [min]="minDateValue" [placeholder]="placeHolderFormat"
                 formControlName="pwdexpirationdate" (blur)="validateIncorrect($event)" >
               <mat-datepicker [startAt]="userSettingsFormGrp.controls['pwdexpirationdate'].value == null ? minDateValue : userSettingsFormGrp.controls['pwdexpirationdate'].value" #picker></mat-datepicker>
@@ -61,7 +62,6 @@
               <mat-error *ngIf="userSettingsFormGrp.controls['pwdexpirationdate'].hasError('matDatepickerMax')">{{commonCaptions.maximum}} {{caption.setting.SelectDate}}</mat-error>
             </mat-form-field>
             <i class="icon-Calender pointercursor" (click)="picker.open()"></i>
-            <!-- <app-ag-date-picker [inputs]="datePickerInputs"></app-ag-date-picker> -->
           </div>
         </ng-scrollbar>
       </div>
