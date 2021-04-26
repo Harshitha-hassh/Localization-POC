@@ -348,7 +348,10 @@
     "contactAdministrator": "Please contact your administrator._uk",
     "unexpectedError": "An unexpected error has occurred, on {date} at {time}._uk",
     "pg_title_create": "CREATE_uk",
-    "ServerTakingTimeError": "Server is taking longer than expected time to process your request. Please revisit in some time._uk"
+    "ServerTakingTimeError": "Server is taking longer than expected time to process your request. Please revisit in some time._uk",
+    "dateFormat": "Invalid Date_uk",
+    "minimum": "Invalid Minimum_uk",
+    "maximum": "Invalid Maximum_uk"
   },
   "calendar": {
     "Sunday": "Sunday_uk",

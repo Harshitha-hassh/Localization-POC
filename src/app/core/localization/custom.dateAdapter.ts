@@ -39,7 +39,7 @@ export class CustomDateAdapter extends NativeDateAdapter {
   getFirstDayOfWeek(): number {
     return this.localization.getFirstDayOfWeek();
   }
-  parse(value: any): Date {
-    return this.PropertyInfo.CurrentDate;
-  }
+  // parse(value: any): Date {
+  //   return this.PropertyInfo.CurrentDate;
+  // }
 }
