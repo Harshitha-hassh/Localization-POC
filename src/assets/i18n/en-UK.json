@@ -351,7 +351,9 @@
     "ServerTakingTimeError": "Server is taking longer than expected time to process your request. Please revisit in some time._uk",
     "dateFormat": "Invalid Date_uk",
     "minimum": "Invalid Minimum_uk",
-    "maximum": "Invalid Maximum_uk"
+    "maximum": "Invalid Maximum_uk",
+    "block": "Block_uk",
+    "unBlock": "UnBlock_uk"
   },
   "calendar": {
     "Sunday": "Sunday_uk",

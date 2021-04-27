@@ -345,6 +345,7 @@
   "IsServiceInUse": "appointments/validate/inuse/Service/{serviceId}/from/{startDate}/to/{endDate}/dayofWeek/{dayOfWeek}",
   "CopyUserRoles": "user/CopyUserClaimsAsync/{from}/{to}",
   "UpdateUserRoles": "User/UpdateUserClaimsAsync",
+  "BlockUserProfile":"user/BlockUserProfile?userId={userId}&accountBlocked={accountBlocked}",
   "GetPropertyInfoByPropertyId": "Property/GetPropertyInfoByPropertyId/{Id}",
   "UpdatePropertyInfoByPropertyId": "Property/UpdatePropertyInfo",
   "CheckTherapistAssociatedInAppointment": "appointments/Validate/resource/Therapist/{id}/action/Update",
