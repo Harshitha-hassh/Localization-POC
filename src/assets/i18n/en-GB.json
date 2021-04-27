@@ -353,7 +353,8 @@
     "minimum": "Invalid Minimum_gb",
     "maximum": "Invalid Maximum_gb",
     "block": "Block_gb",
-    "unBlock": "UnBlock_gb"
+    "unBlock": "UnBlock_gb",
+    "InputDateFormat": "MM/DD/YYYY_gb"
   },
   "calendar": {
     "Sunday": "Sunday_gb",

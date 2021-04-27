@@ -353,7 +353,8 @@
     "minimum": "Invalid Minimum_de",
     "maximum": "Invalid Maximum_de",
     "block": "Block_de",
-    "unBlock": "UnBlock_de"
+    "unBlock": "UnBlock_de",
+    "InputDateFormat": "MM/DD/YYYY_de"
   },
   "calendar": {
     "Sunday": "Sunday_de",
