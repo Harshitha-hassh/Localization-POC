@@ -23,7 +23,7 @@
           <span class="status LW14 cursordefault">{{this.captions.Inactive}}</span>
         </div>
         <div class="table-container">
-          <app-table [options]="tableoptions" (editEvt)="EditRecords($event)"></app-table>
+          <app-table [options]="tableoptions" (editEvt)="EditRecords($event)"  (blockUserEdit)="BlockUserEdit($event)"></app-table>
         </div>
       </section>
     </div>

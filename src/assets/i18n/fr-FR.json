@@ -352,7 +352,8 @@
     "dateFormat": "Invalid Date_fr",
     "minimum": "Invalid Minimum_fr",
     "maximum": "Invalid Maximum_fr",
-    "InputDateFormat": "MM/DD/YYYY_fr"
+    "block": "Block_fr",
+    "unBlock": "UnBlock_fr"
   },
   "calendar": {
     "Sunday": "Sunday_fr",

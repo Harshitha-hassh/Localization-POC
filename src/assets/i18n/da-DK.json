@@ -352,7 +352,8 @@
     "dateFormat": "Invalid Date_da",
     "minimum": "Invalid Minimum_da",
     "maximum": "Invalid Maximum_da",
-    "InputDateFormat": "MM/DD/YYYY_da"
+    "block": "Block_da",
+    "unBlock": "UnBlock_da"
   },
   "calendar": {
     "Sunday": "Sunday_da",

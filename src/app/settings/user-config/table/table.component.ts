@@ -86,6 +86,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
   @Output() LBLClickEvtEmitter: EventEmitter<any> = new EventEmitter();
   @Output() radioClickEvtEmitter: EventEmitter<any> = new EventEmitter();
   @Output() openWaitlist: EventEmitter<any> = new EventEmitter();
+  @Output() blockUserEdit: EventEmitter<any> = new EventEmitter();
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   @ViewChild('tableInput') tableInput: ElementRef;
   IsViewOnly = false;
@@ -973,6 +974,11 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
       ReturnBool = false;
     }
     return ReturnBool;
+  }
+  
+  emitBlockrowdata(eve, data) {
+    console.log("emitDeleterowdata", data);
+    this.blockUserEdit.emit([data, 'blockUseredit']);
   }
 }
 

@@ -352,7 +352,8 @@
     "dateFormat": "Invalid Date_fi",
     "minimum": "Invalid Minimum_fi",
     "maximum": "Invalid Maximum_fi",
-    "InputDateFormat": "MM/DD/YYYY_fi"
+    "block": "Block_fi",
+    "unBlock": "UnBlock_fi"
   },
   "calendar": {
     "Sunday": "Sunday_fi",

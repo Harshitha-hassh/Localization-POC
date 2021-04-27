@@ -352,7 +352,8 @@
     "dateFormat": "Invalid Date_uk",
     "minimum": "Invalid Minimum_uk",
     "maximum": "Invalid Maximum_uk",
-    "InputDateFormat": "MM/DD/YYYY_uk"
+    "block": "Block_uk",
+    "unBlock": "UnBlock_uk"
   },
   "calendar": {
     "Sunday": "Sunday_uk",

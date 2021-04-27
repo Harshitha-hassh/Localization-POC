@@ -352,7 +352,8 @@
     "dateFormat": "Invalid Date_in",
     "minimum": "Invalid Minimum_in",
     "maximum": "Invalid Maximum_in",
-    "InputDateFormat": "MM/DD/YYYY_in"
+    "block": "Block_in",
+    "unBlock": "UnBlock_in"
   },
   "calendar": {
     "Sunday": "Sunday_in",
