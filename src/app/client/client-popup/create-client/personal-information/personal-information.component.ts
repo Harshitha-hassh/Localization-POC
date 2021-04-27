@@ -1149,9 +1149,6 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     });
   }
 
-  validateIncorrect(event) {
-    this.localization.validateIncorrect(event, this.FormGrp, 'dob')
-  }
 }
 
 

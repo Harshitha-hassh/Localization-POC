@@ -353,7 +353,8 @@
     "minimum": "Invalid Minimum_au",
     "maximum": "Invalid Maximum_au",
     "block": "Block_au",
-    "unBlock": "UnBlock_au"
+    "unBlock": "UnBlock_au",
+    "InputDateFormat": "MM/DD/YYYY_au"
   },
   "calendar": {
     "Sunday": "Sunday_au",

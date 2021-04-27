@@ -187,9 +187,5 @@ export class TransactionLogComponent implements OnInit {
     }
   }
 
-  validateIncorrect(event) {
-    this.localization.validateIncorrect(event, this.transactionForm, 'date')
-  }
-
 
 }
