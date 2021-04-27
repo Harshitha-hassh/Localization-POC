@@ -351,7 +351,8 @@
     "ServerTakingTimeError": "Server is taking longer than expected time to process your request. Please revisit in some time._au",
     "dateFormat": "Invalid Date_au",
     "minimum": "Invalid Minimum_au",
-    "maximum": "Invalid Maximum_au"
+    "maximum": "Invalid Maximum_au",
+    "InputDateFormat": "MM/DD/YYYY_au"
   },
   "calendar": {
     "Sunday": "Sunday_au",

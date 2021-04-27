@@ -153,8 +153,4 @@ export class UserSettingsComponent implements OnInit {
     }
   }     
 
-  validateIncorrect(event) {
-    this.localization.validateIncorrect(event, this.userSettingsFormGrp, 'pwdexpirationdate')
-  }
-
 }

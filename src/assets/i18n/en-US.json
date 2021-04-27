@@ -351,7 +351,8 @@
 		"ServerTakingTimeError": "Server is taking longer than expected time to process your request. Please revisit in some time.",
     "dateFormat":"Invalid Date",
 		"minimum":"Invalid Minimum",
-		"maximum":"Invalid Maximum"
+		"maximum":"Invalid Maximum",
+    "InputDateFormat":"MM/DD/YYYY"
   },
   "calendar": {
     "Sunday": "Sunday",
