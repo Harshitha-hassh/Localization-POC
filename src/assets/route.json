@@ -1,5 +1,5 @@
 {
- "host": {
+  "host": {
     "image": "/VisualOne/retailgateway/",
     "retailManagement": "/VisualOne/retailgateway/",
     "retailPOS": "/VisualOne/retailgateway/",
@@ -432,6 +432,7 @@
   "updateCCTerminal": "CreditCardTerminals/{id}",
   "deleteCCTerminal": "CreditCardTerminals/{id}",
   "UpdateCCTerminalListOrder": "CreditCardTerminals/listorder/from/{fromorder}/to/{toorder}",
+  "getCCTerminalNextListOrder": "CreditCardTerminals/NextListOrder",
   "getAllOutletTerminals": "OutletTerminal",
   "createOutletTerminal": "OutletTerminal",
   "updateOutletTerminal": "OutletTerminal/{id}",
