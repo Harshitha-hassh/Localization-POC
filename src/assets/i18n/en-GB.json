@@ -1352,7 +1352,13 @@
     "ReturnToOriginalSettlementInfoDialog": {
       "Header": "Settlement information_gb",
       "SubHeader": "Following payments will be refunded_gb"
-    }
+    },
+    "paymentInfoHeader": "PAYMENT INFORMATION_gb",
+    "preferredInputModeSelectedBanner": "Preferred Card Capture Mode is selected as {preferredMethod}._gb",
+    "clickHere": "Click Here_gb",
+    "ToChange": "to change_gb",
+    "connect": "Connect_gb",
+    "savedCardDetail": "Save Card Details_gb"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_gb",

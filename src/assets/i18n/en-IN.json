@@ -1352,7 +1352,13 @@
     "ReturnToOriginalSettlementInfoDialog": {
       "Header": "Settlement information_in",
       "SubHeader": "Following payments will be refunded_in"
-    }
+    },
+    "paymentInfoHeader": "PAYMENT INFORMATION_in",
+    "preferredInputModeSelectedBanner": "Preferred Card Capture Mode is selected as {preferredMethod}._in",
+    "clickHere": "Click Here_in",
+    "ToChange": "to change_in",
+    "connect": "Connect_in",
+    "savedCardDetail": "Save Card Details_in"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_in",

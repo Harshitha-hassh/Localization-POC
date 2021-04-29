@@ -1352,7 +1352,13 @@
     "ReturnToOriginalSettlementInfoDialog":{
 			"Header": "Settlement information",
 			"SubHeader": "Following payments will be refunded"
-		}
+		},
+    "paymentInfoHeader": "PAYMENT INFORMATION",
+		"preferredInputModeSelectedBanner": "Preferred Card Capture Mode is selected as {preferredMethod}.",
+		"clickHere":"Click Here",
+		"ToChange":"to change",
+		"connect": "Connect",
+		"savedCardDetail": "Save Card Details"
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",
