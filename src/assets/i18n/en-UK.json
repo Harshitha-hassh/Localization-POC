@@ -353,7 +353,8 @@
     "minimum": "Invalid Minimum_uk",
     "maximum": "Invalid Maximum_uk",
     "block": "Block_uk",
-    "unBlock": "UnBlock_uk"
+    "unBlock": "UnBlock_uk",
+    "InputDateFormat": "MM/DD/YYYY_uk"
   },
   "calendar": {
     "Sunday": "Sunday_uk",
@@ -1351,7 +1352,13 @@
     "ReturnToOriginalSettlementInfoDialog": {
       "Header": "Settlement information_uk",
       "SubHeader": "Following payments will be refunded_uk"
-    }
+    },
+    "paymentInfoHeader": "PAYMENT INFORMATION_uk",
+    "preferredInputModeSelectedBanner": "Preferred Card Capture Mode is selected as {preferredMethod}._uk",
+    "clickHere": "Click Here_uk",
+    "ToChange": "to change_uk",
+    "connect": "Connect_uk",
+    "savedCardDetail": "Save Card Details_uk"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_uk",

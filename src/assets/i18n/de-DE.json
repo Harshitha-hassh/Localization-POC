@@ -353,7 +353,8 @@
     "minimum": "Invalid Minimum_de",
     "maximum": "Invalid Maximum_de",
     "block": "Block_de",
-    "unBlock": "UnBlock_de"
+    "unBlock": "UnBlock_de",
+    "InputDateFormat": "MM/DD/YYYY_de"
   },
   "calendar": {
     "Sunday": "Sunday_de",
@@ -1351,7 +1352,13 @@
     "ReturnToOriginalSettlementInfoDialog": {
       "Header": "Settlement information_de",
       "SubHeader": "Following payments will be refunded_de"
-    }
+    },
+    "paymentInfoHeader": "PAYMENT INFORMATION_de",
+    "preferredInputModeSelectedBanner": "Preferred Card Capture Mode is selected as {preferredMethod}._de",
+    "clickHere": "Click Here_de",
+    "ToChange": "to change_de",
+    "connect": "Connect_de",
+    "savedCardDetail": "Save Card Details_de"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_de",

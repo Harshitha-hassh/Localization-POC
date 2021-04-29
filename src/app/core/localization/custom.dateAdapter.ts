@@ -42,4 +42,11 @@ export class CustomDateAdapter extends NativeDateAdapter {
   // parse(value: any): Date {
   //   return this.PropertyInfo.CurrentDate;
   // }
+  parse(value: any): Date | null {
+    if(value){
+        const date = moment(value, this.localization.inputDateFormat);
+        return date? date.toDate(): null;
+    }
+    return null;
+  }
 }

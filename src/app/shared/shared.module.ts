@@ -76,7 +76,8 @@ import { AllowedSpecialCharacterDirective } from './directives/allowedSpecialCha
     RetailSharedModule,
     CommonSharedModule,
     GooglePlaceModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    RetailSharedModule
   ],
   providers: [
     TenantManagementCommunication,

@@ -31,10 +31,11 @@
             <mat-form-field class="w-100" appearance="legacy">
               <mat-label>{{commonCaptions.Date}}</mat-label>
               <input matInput [matDatepicker]="picker1" placeholder="{{placeholderFormat}}" class="picker1"
-                     formControlName="date" [max]="minDate" (blur)="validateIncorrect($event)">
+                     formControlName="date" [max]="minDate">
               <mat-datepicker #picker1></mat-datepicker>
               <i class="icon-Calender customCalendar" (click)="picker1.open()"></i>
-              <mat-error *ngIf="transactionForm.controls['date'].hasError('invalidDate')">{{commonCaptions.dateFormat}}</mat-error>   
+              <mat-error *ngIf="transactionForm.controls['date'].hasError('matDatepickerParse')">{{commonCaptions.dateFormat}}</mat-error>   
+              <mat-error *ngIf="transactionForm.controls['date'].hasError('required') && !transactionForm.controls['date'].hasError('matDatepickerParse')">{{commonCaptions.Missing}} {{commonCaptions.Date}}</mat-error>   
               <mat-error *ngIf="transactionForm.controls['date'].hasError('matDatepickerMin')">{{commonCaptions.minimum}} {{commonCaptions.Date}}</mat-error>
               <mat-error *ngIf="transactionForm.controls['date'].hasError('matDatepickerMax')">{{commonCaptions.maximum}} {{commonCaptions.Date}}</mat-error>
             </mat-form-field>

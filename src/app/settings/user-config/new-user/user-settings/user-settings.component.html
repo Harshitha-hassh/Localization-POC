@@ -55,13 +55,14 @@
             <mat-form-field class="" appearance="legacy">
               <mat-label></mat-label>
               <input matInput [matDatepicker]="picker" autocomplete="off"  [min]="minDateValue" [placeholder]="placeHolderFormat"
-                formControlName="pwdexpirationdate" (blur)="validateIncorrect($event)" >
+                formControlName="pwdexpirationdate" >
               <mat-datepicker [startAt]="userSettingsFormGrp.controls['pwdexpirationdate'].value == null ? minDateValue : userSettingsFormGrp.controls['pwdexpirationdate'].value" #picker></mat-datepicker>
-              <mat-error *ngIf="userSettingsFormGrp.controls['pwdexpirationdate'].hasError('invalidDate')">{{commonCaptions.dateFormat}}</mat-error>   
+              <mat-error *ngIf="userSettingsFormGrp.controls['pwdexpirationdate'].hasError('matDatepickerParse')">{{commonCaptions.dateFormat}}</mat-error>   
+              <mat-error *ngIf="userSettingsFormGrp.controls['pwdexpirationdate'].hasError('required') && !userSettingsFormGrp.controls['pwdexpirationdate'].hasError('matDatepickerParse')">{{commonCaptions.Missing}} {{caption.setting.SelectDate}}</mat-error>   
               <mat-error *ngIf="userSettingsFormGrp.controls['pwdexpirationdate'].hasError('matDatepickerMin')">{{commonCaptions.minimum}} {{caption.setting.SelectDate}}</mat-error>
               <mat-error *ngIf="userSettingsFormGrp.controls['pwdexpirationdate'].hasError('matDatepickerMax')">{{commonCaptions.maximum}} {{caption.setting.SelectDate}}</mat-error>
+              <i matSuffix class="icon-Calender pointercursor" (click)="picker.open()"></i>
             </mat-form-field>
-            <i class="icon-Calender pointercursor" (click)="picker.open()"></i>
           </div>
         </ng-scrollbar>
       </div>
