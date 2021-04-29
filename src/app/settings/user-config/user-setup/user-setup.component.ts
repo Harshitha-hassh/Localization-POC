@@ -405,6 +405,11 @@ export class UserSetupComponent implements OnInit, OnDestroy {
         this.servicesetting.serviceGroups = result.result as any;
       }
     }
+    else if (callDesc == 'BlockUserProfile') {
+      if (result.result) {
+        this.GetServiceCall('GetAllUsers', { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
+      }
+    }
   }
 
   errorCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
@@ -440,7 +445,6 @@ export class UserSetupComponent implements OnInit, OnDestroy {
       && this.products.map(v => v.id).includes(x.productId));
       if (clientObj.userPropertyAccesses) {
         this.GetServiceCall('BlockUserProfile', { userId: event[0].id, accountBlocked: !event[0].blockedUser });
-        this.GetServiceCall('GetAllUsers', { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
       }
   }
 }
