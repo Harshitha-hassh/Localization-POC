@@ -5620,6 +5620,7 @@ a:hover {
 .timepicker__actions{
   .button--primary:focus, .ag_button--primary:focus, .picker-ok:focus{
     opacity: 0.8;
+    background-color: $golf-button-bg !important;
   }
   .button--tertiary:focus, .ag_button--secondary:focus, .picker-cancel:focus{
     background-color: $golf-button-bg !important;
