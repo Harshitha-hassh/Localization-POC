@@ -139,6 +139,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
         this._propertyInfo.SetEatecRI(configValue)
       });
     }
+    this._propertyFeatureService.GetMiscConfig();
   }
 
   compareSelect = (val1, val2) => {

@@ -18,7 +18,7 @@ import {
 import { LoginCommunicationService } from '../login-communication.service';
 import moment from 'moment';
 import { ButtonValue } from 'src/app/shared/shared-models';
-import { Product } from 'src/app/common/shared/shared/globalsContant';
+import { Product, SELECTION_ON_LOGIN, TRANSACTION_BY_MACHINENAME } from 'src/app/common/shared/shared/globalsContant';
 import { API } from 'src/app/shared/models/property-settings.model';
 import { UserdefaultsInformationService } from 'src/app/core/services/UserdefaultsInformationService';
 import { Localization } from 'src/app/common/localization/localization';
@@ -26,6 +26,8 @@ import { UserMachineConfigurationService } from 'src/app/retail/common/services/
 import { RetailSharedVariableService } from 'src/app/retail/shared/retail.shared.variable.service';
 import { RetailFunctionalityBusiness } from 'src/app/retail/shared/business/retail-functionality.business';
 import { RetailFunctionalityService } from 'src/app/retail/shared/service/retail-functionality.service';
+import { UserMachineInfo } from 'src/app/common/shared/shared.modal';
+import { PropertySettingDataService as RetailPropertySettingDataService } from 'src/app/retail/sytem-config/property-setting.data.service';
 
 @Component({
   selector: 'app-login',
@@ -70,6 +72,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   tenantIdFromParam: string;
   currYear = '2020';
 
+  //Machine Name
+  isMachineNameEnabled: boolean;
+  isPromptOnLoginEnabled: boolean;
+  defaultMachineId: number = 0;
+  machineNames = [];
+  userMachineInfo: UserMachineInfo;
+
   constructor(
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
@@ -81,6 +90,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private PropertySettingService: PropertySettingDataService,
     private propertyInfo: PropertyInformation,
     private userDefaultsService: UserdefaultsInformationService,
+    private retailPropertySettingDataService: RetailPropertySettingDataService,
     private compiler: Compiler,
     private router: Router,
     private userSessionConfig: UserMachineConfigurationService, 
@@ -174,7 +184,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: ['', Validators.required],
       customerId: [''],
       rememberme: false,
-      location: ['Agilysys', Validators.required]
+      location: ['Agilysys', Validators.required],
+      machineName:['0', Validators.required]
     });
   }
 
@@ -198,6 +209,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   loadProperties() { }
+
+  onPropertyChange(eve) {
+    const propertyInfo = this.propertyValues.find(item => item.propertyCode === eve.value.id);
+    this.setMachineInfo(propertyInfo.propertyId);
+  }
 
   async handleclick() {
     if (this.loginForms.valid) {
@@ -240,10 +256,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         id: x.propertyCode,
         name: x.propertyName
       }));
-
+      this.userMachineInfo = await this.retailPropertySettingDataService.GetMachineNamesAndConfigurationSetting(this.userInfo.userId,
+        this.propertyValues.map(x=> x.propertyId));
       // Selecting property by default when there is only one property configured for tenant
       if (this.multipleProperties.length == 1) {
         this.loginForms.controls.location.setValue(this.multipleProperties[0]);
+        this.setMachineDetails();
       }
     }
   }
@@ -306,6 +324,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       await this.setEatecToken();
       this.setAutoLogOff();
       await this.SetUserSessionConfiguration(this.userInfo.userId);
+      this.setMachineDetails();
       this.router.navigate(['/home']);      
       await this.retailFunc.getRetailFunctionality();
     }
@@ -541,6 +560,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     } else {
       this.loginForms.controls.userId.markAsTouched();
       this.loginForms.controls.password.markAsTouched();
+      this.loginForms.controls['machineName'].markAsTouched();
     }
   }
 
@@ -601,5 +621,66 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.loginError = false;
         this.errResponse = '';
       });
+  }
+
+  private async setMachineInfo(propertyId: number) {
+    this.resetMachineNameInfo();
+    const userMachinePropertyInfo = this.userMachineInfo.userPropertiesMachineInfo.find(x=>x.propertyId == propertyId);
+    const retailPropertyInfo = userMachinePropertyInfo.settings;
+    // TRANSACTION_BY_MACHINENAME
+    const retailMachineConfig = retailPropertyInfo.find(x=> x.switch == TRANSACTION_BY_MACHINENAME);
+    if (retailMachineConfig) {
+      this.isMachineNameEnabled = retailMachineConfig.value == 'true';
+    }
+    // SELECTION_ON_LOGIN
+    const retailPromptConfig = retailPropertyInfo.find(x=> x.switch == SELECTION_ON_LOGIN);
+    if (retailPromptConfig) {
+      this.isPromptOnLoginEnabled = retailPromptConfig.value == 'true';
+    }
+    this.defaultMachineId = userMachinePropertyInfo.defaultMachineId;
+    if(this.isMachineNameEnabled) {
+      if(this.isPromptOnLoginEnabled) {      
+        this.machineNames = userMachinePropertyInfo.machineNames.map(x => {
+          return {
+            id: x.id,
+            name: x.name
+          }
+        });
+        if(this.machineNames.length > 0) {
+          this.loginForms.controls['machineName'].setValue('');
+        }
+      }      
+    }
+    if(this.defaultMachineId) {
+      const machineName = this.machineNames.find(x => x.id == this.defaultMachineId);
+      if(machineName) {
+        this.loginForms.controls['machineName'].setValue(machineName);
+      } else {
+        this.loginForms.controls['machineName'].setValue(this.defaultMachineId);
+      }
+    }
+  }
+
+  compareSelect = (val1, val2) => {
+    return val1 && val2 && val1.id === val2.id;
+  }
+
+  private resetMachineNameInfo() {
+    this.isMachineNameEnabled = false;
+    this.isPromptOnLoginEnabled = false;
+    this.defaultMachineId = 0;
+    this.machineNames = [];
+    this.loginForms.controls['machineName'].setValue('0');  
+  }
+
+  private setMachineDetails() {
+    const userMachine = this.loginForms.value.machineName;
+    if(typeof(userMachine) == 'object') {
+      this.localize.SetMachineId(userMachine.id);
+      this.localize.SetMachineName(userMachine.name);
+    } else {
+      this.localize.SetMachineId(0);
+      this.localize.SetMachineName('');
+    }
   }
 }

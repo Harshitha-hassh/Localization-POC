@@ -17,5 +17,6 @@
     "payment": "/VisualOne/retailgateway",
     "common": "/VisualOne/retailgateway/Retail/Services/Notification",
     "documentation": "/Help",
-    "commonGateway": "/commongateway"
+    "commonGateway": "/commongateway",
+    "RetailGateway": "/VisualOne/retailgateway"
 }

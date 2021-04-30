@@ -649,6 +649,8 @@
   "ReversePayment": "transaction/{transactionId}/reversepayment/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/tenderId/{tenderId}/paymentReferenceId/{paymentReferenceId}/terminalId/{terminalId}",
   "CancelAllPayments": "transaction/{transactionId}/cancelpayments/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/terminalId/{terminalId}",
   "GetMiscConfiguration": "settings/AllSetting/Misc",
+  "GetMiscConfigurationByPropertyId": "settings/AllSetting/{propertyId}/Misc",
+  "GetMachineNamesConfigurationInfo": "MachineName/GetMachineNames/ConfigInfo/{userId}",
   "GetAggregateTransactionByIds": "Transaction/GetTransactionAggregateByIds",
   "GetPaymentTransaction": "Payment/GetPaymentTransaction",
   "RefundAllPayments": "Transaction/{transactionId}/returnpayments/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/terminalId/{terminalId}",
@@ -661,5 +663,6 @@
   "CreateDiscountReason": "RetailManagementService/DiscountReason",
   "UpdateDiscountReason": "RetailManagementService/DiscountReason",
   "DeleteDiscountReason": "RetailManagementService/DiscountReason/{id}",
-  "CategoryOutletListOrderChange": "QuickSale/category/listorder/outlet/{outletId}/from/{fromOrder}/to/{toOrder}"
+  "CategoryOutletListOrderChange": "QuickSale/category/listorder/outlet/{outletId}/from/{fromOrder}/to/{toOrder}",
+  "GetMachineNamesByPropertyId": "MachineName/property/{propertyId}"
 }

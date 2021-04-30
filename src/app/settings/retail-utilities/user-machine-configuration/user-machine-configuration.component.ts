@@ -16,6 +16,9 @@ import { UserMachineConfigurationService } from 'src/app/retail/common/services/
 import { UserSessionConfiguration } from 'src/app/common/shared/core.model';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';
+import { MachineName } from 'src/app/common/shared/shared.modal';
+import { MachineNameDataService } from 'src/app/common/dataservices/machinename.data.service';
+import { DropdownOptions } from 'src/app/common/Models/ag-models';
 
 @Component({
   selector: 'app-user-machine-configuration',
@@ -31,6 +34,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
   captions: any = this.localization.captions.utilities;
   outlets: Array<any>;
   outletTerminals: StoreTerminal[] = [{ terminalId: '', terminalName: '' } as StoreTerminal];
+  defaultMachineOptions: DropdownOptions[] = [];
   courses: Array<any>;
   paymentDevices: Array<any>;
   deviceNames: Array<any>;
@@ -53,9 +57,11 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
   useRetailInterface: boolean;
   testMode = false;
   showPaymentDevice: boolean;
+  enableMachineTransaction: boolean = false;
 
   constructor(
     private fb: FormBuilder,
+    public machineNameDataService: MachineNameDataService,
     public localization: RetailStandaloneLocalization,
     public PropertyInfo: PropertyInformation,
     private userMachineConfigurationService: UserMachineConfigurationService,
@@ -71,6 +77,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
       defaultOutletId: '',
       defaultTerminalId: 0,
       defaultCourseId: '',
+      defaultMachineId: 0,
       defaultPaymentDevice: '',
       defaultDeviceName: '',
       isIdtechSred: false,
@@ -83,8 +90,11 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
         this.enableSave = true;
       }
     });
-
     await this.onPageLoad();
+    if(this.utils.GetEnablemachineTransaction() == 'true') {
+      this.enableMachineTransaction = true;
+    }
+    this.GetMachineNames();
   }
 
   async onPageLoad() {
@@ -132,6 +142,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     this.userSessionConfigForm.patchValue({
       defaultOutletId: this.userSessionConfiguration.defaultOutletId,
       defaultTerminalId: this.userSessionConfiguration.defaultTerminalId,
+      defaultMachineId: this.userSessionConfiguration.defaultMachineId,
       defaultCourseId: this.userSessionConfiguration.defaultCourseId,
       defaultPaymentDevice: this.userSessionConfiguration.defaultPaymentDevice,
       defaultDeviceName: this.userSessionConfiguration.defaultDeviceName,
@@ -184,6 +195,15 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
       this.outletTerminals = terminals.result && terminals.result.length > 0 ? terminals.result : [];
       this.outletTerminals.map(o => o.terminalId = Number(o.terminalId));
       this.outletTerminals.unshift({ terminalId: 0, terminalName: '' } as StoreTerminal);
+    }
+  }
+
+  async GetMachineNames() {
+    this.defaultMachineOptions = [];
+    const propertyId: number = Number(this.localization.GetPropertyInfo("PropertyId"));
+    if (propertyId) {
+      const machineNames = await this.machineNameDataService.GetMachineNames(propertyId);
+      this.defaultMachineOptions = this.mapMachineOptions(machineNames);
     }
   }
 
@@ -405,4 +425,17 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
       }
     }
   }
+
+  private mapMachineOptions(machineNames : MachineName[]):DropdownOptions[]{
+    let userMachineNames = [] as DropdownOptions[];
+    userMachineNames = machineNames.map(machineName => {
+      return {
+        id: machineName.id,
+        value: machineName.id,
+        viewValue: machineName.name
+      } as DropdownOptions       
+    });
+    return userMachineNames;
+}
+
 }

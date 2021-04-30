@@ -14,6 +14,13 @@
                             <mat-option *ngFor="let terminal of outletTerminals" [value]="terminal.terminalId">{{terminal.terminalName}}</mat-option>
                         </mat-select>
                     </mat-form-field>
+                    <mat-form-field class="mtop" *ngIf = "enableMachineTransaction">
+                        <mat-select placeholder="{{captions.defaultMachineName}}" formControlName="defaultMachineId">
+                            <mat-option *ngFor="let obj of defaultMachineOptions" [value]="obj.value">
+                                {{obj.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
 <!-- Commented until ready for use with Golf
                     <mat-form-field>
                         <mat-select placeholder="{{captions.defaultCourse}}" formControlName="defaultCourseId">

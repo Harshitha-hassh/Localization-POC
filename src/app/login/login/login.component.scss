@@ -110,6 +110,7 @@
         position: relative;
         color: red;
     }
+
     .resolutionDiv {
         position: absolute;
         bottom: 8px; //10px;
@@ -126,5 +127,9 @@
             font-size: 12px;
             color: #818892;
         }
+    }
+
+    .machine-name {
+        margin-left: 20px;
     }
 }
