@@ -1933,7 +1933,8 @@
     "CreditCardTerminallbl_StoreId": "Store ID_da",
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_da",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_da",
-    "AllowEarn": "Allow Earn_da"
+    "AllowEarn": "Allow Earn_da",
+    "btn_create": "CREATE_da"
   },
   "setting": {
     "Title": "Title_da",
