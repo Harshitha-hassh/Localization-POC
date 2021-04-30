@@ -69,9 +69,10 @@ export class TransactionLogComponent implements OnInit {
   }
 
   resetSearch(event?:any):void {
+    const currentreport: string = this.transactionForm.controls.logType.value;
     this.transactionForm.reset();
     this.showIncludeTemp=false;
-    this.transactionForm.controls.logType.setValue(this.logType[0].code);
+    this.transactionForm.controls.logType.setValue(currentreport);
     let currentDate = this.PropertyInfo.CurrentDate;
     this.transactionForm.controls.date.setValue(currentDate);
   }
