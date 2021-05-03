@@ -664,5 +664,6 @@
   "UpdateDiscountReason": "RetailManagementService/DiscountReason",
   "DeleteDiscountReason": "RetailManagementService/DiscountReason/{id}",
   "CategoryOutletListOrderChange": "QuickSale/category/listorder/outlet/{outletId}/from/{fromOrder}/to/{toOrder}",
-  "GetMachineNamesByPropertyId": "MachineName/property/{propertyId}"
+  "GetMachineNamesByPropertyId": "MachineName/property/{propertyId}",
+  "CheckVoidForMultipack":"transaction/checkVoidForMultiPack/transactionId/{transactionId}"
 }
