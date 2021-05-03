@@ -5,7 +5,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import moment from 'moment';
 import { Platform } from '@angular/cdk/platform';
 
-const dateFormat = 'l';
+const dateFormat = 'DD MMM YYYY';
 const calenderDateFormat = 'MMM YYYY';
 
 export const MY_DATE_FORMATS = {
