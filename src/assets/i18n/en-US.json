@@ -346,6 +346,7 @@
     "drp_txt_cell": "Cell",
     "drp_txt_work": "Work",
     "contactAdministrator": "Please contact your administrator.",
+    "MaximumCharactersOnlyAllowed": "Maximum of {num} characters only allowed",
     "unexpectedError": "An unexpected error has occurred, on {date} at {time}.",
     "pg_title_create": "CREATE",
     "ServerTakingTimeError": "Server is taking longer than expected time to process your request. Please revisit in some time.",
