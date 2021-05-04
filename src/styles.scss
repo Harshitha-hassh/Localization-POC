@@ -5626,3 +5626,69 @@ a:hover {
     background-color: $golf-button-bg !important;
   }
 }
+.ag_form-control {
+  padding-right: $default-control-padding;
+}
+
+.ag_display--flex {
+  display: flex !important;
+}
+
+.ag_align-items--center {
+  align-items: center;
+}
+
+.ag_text--center {
+  text-align: center;
+}
+
+.ag_cursor--not-allowed {
+  cursor: not-allowed;
+}
+
+.ag_pointer--none {
+  pointer-events: none;
+}
+
+.ag_ml--auto {
+  margin-left: auto !important;
+}
+
+.ag_height--100,
+.h-100 {
+  height: 100% !important;
+}
+
+.ag_display--block {
+  display: block !important;
+}
+
+.table-container {
+  flex-grow: 1;
+  padding: 0.75rem 1.25rem 1.25rem 1.25rem;
+  user-select: none;
+}
+
+.ag_form--label {
+  font-size: $font-size12;
+  @extend .ag_display--block;
+  color: $ag_black-lighter !important;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  color: $black;
+}
+
+.ag_w--20 {
+  width: 20%;
+}
+
+.ag_w--25 {
+  width: 25%;
+}
+
+// Disables complete section
+.ag_section--disable {
+  @extend .ag_cursor--not-allowed;
+  @extend .ag_pointer--none;
+  opacity: 0.5;
+}

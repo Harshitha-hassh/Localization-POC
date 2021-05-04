@@ -10,6 +10,7 @@ import { UserMachineConfigurationComponent } from './user-machine-configuration/
 import { RouteGuardService } from 'src/app/core/services/route.guard.service';
 import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
 import { QuickidConfigComponent } from './quickid-config/quickid-config.component';
+import { AgCombineGuestRecordsComponent } from 'src/app/common/components/combine-guest-records/combine-guest-records.component';
 
 
 const routes: Routes = [{
@@ -54,6 +55,10 @@ const routes: Routes = [{
       {
         path: 'quickidconfig',
         component: QuickidConfigComponent
+      },      
+      {
+        path: 'combineguest',
+        component: AgCombineGuestRecordsComponent
       }
   ]
 }];
