@@ -665,5 +665,11 @@
   "DeleteDiscountReason": "RetailManagementService/DiscountReason/{id}",
   "CategoryOutletListOrderChange": "QuickSale/category/listorder/outlet/{outletId}/from/{fromOrder}/to/{toOrder}",
   "GetMachineNamesByPropertyId": "MachineName/property/{propertyId}",
-  "CheckVoidForMultipack":"transaction/checkVoidForMultiPack/transactionId/{transactionId}"
+  "CheckVoidForMultipack":"transaction/checkVoidForMultiPack/transactionId/{transactionId}",
+  "GetMachineNames": "MachineName",
+  "GetActiveMachineNames": "MachineName/active",
+  "CreateMachineName": "MachineName",
+  "UpdateMachineName": "MachineName/{id}",
+  "DeleteMachineName": "MachineName/{id}",
+  "MachineNameDragDrop": "MachineName/listorder/from/{fromOrder}/to/{toOrder}"
 }

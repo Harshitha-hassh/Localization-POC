@@ -215,6 +215,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.setMachineInfo(propertyInfo.propertyId);
   }
 
+  loadMachineNames() {
+    this.machineNames = this.machineNames;
+  }
+
   async handleclick() {
     if (this.loginForms.valid) {
       const credentials = {
