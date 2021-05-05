@@ -77,6 +77,12 @@ export enum RetailRoutes {
 
    //Notification
    SendManualNotification=  "EmailSMSNotification/SendNotification",
+
+   // Combine Guests
+   GetGuestInformation= "GuestCombine/guestsearch",
+   CombineGuestInformation= "GuestCombine/{primaryGuestId}",  
+   GetGuestInfoByGuid="GuestCombine/guestdata/{id}",
+   UpdateGuestInformation= "GuestCombine/updateguest" 
 }
 
 export enum MsGraphRoutes {
