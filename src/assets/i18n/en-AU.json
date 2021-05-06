@@ -1496,6 +1496,7 @@
   "lbl_userId": "User ID_au",
   "lbl_logout": "Log Out_au",
   "retailsetup": {
+    "DiscountReasonDeletionConfirmmsg": "Are you sure want to delete the 'Discount Reason {Discount Reason}'?_au",
     "InventoryType": "Inventory Type_au",
     "ImportFailedItems": "Import Failed Items_au",
     "level": "Level_au",
