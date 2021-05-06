@@ -144,6 +144,8 @@
   "10724": "Error in refund._au",
   "10725": "No card swipes detected... Please try again._au",
   "10800": "Duplicate Terminal Id_au",
+  "10802": "Duplicate Machine Name_au",
+  "10803": "Machine Name in use, delete not allowed_au",
   "10901": "This Outlet already has the same Tax name that overlaps with the specified Start/End Date_au",
   "10902": "Tax in use, delete not allowed_au",
   "10903": "Property already has the same Tax name that overlaps with the specified Start/End Date_au",

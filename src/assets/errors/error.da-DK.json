@@ -144,6 +144,8 @@
   "10724": "Error in refund._da",
   "10725": "No card swipes detected... Please try again._da",
   "10800": "Duplicate Terminal Id_da",
+  "10802": "Duplicate Machine Name_da",
+  "10803": "Machine Name in use, delete not allowed_da",
   "10901": "This Outlet already has the same Tax name that overlaps with the specified Start/End Date_da",
   "10902": "Tax in use, delete not allowed_da",
   "10903": "Property already has the same Tax name that overlaps with the specified Start/End Date_da",
