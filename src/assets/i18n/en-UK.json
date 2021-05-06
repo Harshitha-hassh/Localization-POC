@@ -1496,6 +1496,7 @@
   "lbl_userId": "User ID_uk",
   "lbl_logout": "Log Out_uk",
   "retailsetup": {
+    "DiscountReasonDeletionConfirmmsg": "Are you sure want to delete the 'Discount Reason {Discount Reason}'?_uk",
     "InventoryType": "Inventory Type_uk",
     "ImportFailedItems": "Import Failed Items_uk",
     "level": "Level_uk",
