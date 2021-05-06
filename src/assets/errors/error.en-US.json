@@ -266,6 +266,8 @@
     "10902": "Tax in use, delete not allowed",
     "10903": "Property already has the same Tax name that overlaps with the specified Start/End Date",
     "10800": "Duplicate Terminal Id",
+    "10802": "Duplicate Machine Name",
+  "10803": "Machine Name in use, delete not allowed",
     "10710": "Duplicate Outlet Name",
     "10711": "Please Enter Valid Outlet Name",
     "10712": "At least 2 characters need to be entered",

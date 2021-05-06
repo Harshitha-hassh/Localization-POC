@@ -144,6 +144,8 @@
   "10724": "Error in refund._uk",
   "10725": "No card swipes detected... Please try again._uk",
   "10800": "Duplicate Terminal Id_uk",
+  "10802": "Duplicate Machine Name_uk",
+  "10803": "Machine Name in use, delete not allowed_uk",
   "10901": "This Outlet already has the same Tax name that overlaps with the specified Start/End Date_uk",
   "10902": "Tax in use, delete not allowed_uk",
   "10903": "Property already has the same Tax name that overlaps with the specified Start/End Date_uk",
