@@ -158,7 +158,7 @@ $check-box-outer: $darkGrey;
 
 // header
 $menu-header-height: 60px;
-$theme-container-height: 0px;
+$theme-container-height: 24px;
 $total-header-height: $menu-header-height + $theme-container-height;
 $primary-menu-header-bg: $theme-color;
 $theme-bg-hover-color: $menu-hover-color;
@@ -595,3 +595,7 @@ $search-bgColor : $blue-shade13;
 $summary-bg: $blue-shade3;
 $ag_button-primary-bc: $formBackGroundGray;
 $blue-shade4: $blue-shade4;
+$ag_base-text-black: $black;
+$ag_base-text-white: $white;
+$menu-header-bg: $text-color-dark;
+$menu-header-font-color: $header-font-color;
