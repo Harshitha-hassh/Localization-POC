@@ -2673,6 +2673,7 @@
     "EndDatecannotbepriortoStartDate": "End Date cannot be prior to Start Date_au",
     "StartDateShouldNotBeGreaterThanEndDate": "Start date should not be greater than the End date_au",
     "PleaseSelectAtleastOneOption": "Please Select any {option}_au",
+    "PleaseSelectAtleastOneUser": "Please Select any User(s)_au",
     "PleaseSelectAnyOutlet": "Outlet_au",
     "ReportCategory": "Report Category(s)_au",
     "Category": "Category(s)_au",

@@ -2673,6 +2673,7 @@
     "EndDatecannotbepriortoStartDate": "End Date cannot be prior to Start Date_in",
     "StartDateShouldNotBeGreaterThanEndDate": "Start date should not be greater than the End date_in",
     "PleaseSelectAtleastOneOption": "Please Select any {option}_in",
+    "PleaseSelectAtleastOneUser": "Please Select any User(s)_in",
     "PleaseSelectAnyOutlet": "Outlet_in",
     "ReportCategory": "Report Category(s)_in",
     "Category": "Category(s)_in",
