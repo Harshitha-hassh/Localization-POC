@@ -13,47 +13,78 @@
                         <div class="login_form">
                             <form [formGroup]="loginForms" autocomplete="off">
                                 <div *ngIf="!loginSuccess" class="overall_login_wrapper">
-                                    <div>
-                                        <i class="icon-user ag_pr--2 "></i>
-                                        <mat-form-field class="ag_w--50">
-
-                                            <input matInput type="text" [placeholder]="captions.lbl_userId"
-                                                class="ag_text--uppercase"
-                                                formControlName="userId" (keydown.enter)="getbuttonEmitvalue($event)">
-                                            <mat-error *ngIf="loginForms.get('userId').hasError('required')">
-                                                {{errorMessage.userId}}
-                                            </mat-error>
-                                        </mat-form-field>
+                                    <div *ngIf="!showCustomerID && custId">
+                                        <div>
+                                            <i class="icon-user ag_pr--2 "></i>
+                                            <mat-form-field class="ag_w--50">
+    
+                                                <input matInput type="text" [placeholder]="captions.lbl_userId"
+                                                    class="ag_text--uppercase"
+                                                    formControlName="userId" (keydown.enter)="getbuttonEmitvalue($event)">
+                                                <mat-error *ngIf="loginForms.get('userId').hasError('required')">
+                                                    {{errorMessage.userId}}
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="hide-view">
+                                            <i class="icon-password ag_pr--2 "></i>
+                                            <mat-form-field class="ag_w--50">
+    
+                                                <input matInput [type]="hidePassword ? 'text' : 'password'"
+                                                    [placeholder]="captions.password" formControlName="password"
+                                                    (keydown.enter)="getbuttonEmitvalue($event)" autocomplete="new-password">
+                                                <i matSuffix class="IC18"
+                                                    [ngClass]="hidePassword ? 'icon-password-show' : 'icon-password-hide '"
+                                                     (click)="hidePassword=!hidePassword"  ></i>
+                                                <mat-error *ngIf="loginForms.get('password').hasError('required')">
+                                                    {{errorMessage.password}}
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
                                     </div>
-                                    <div class="hide-view">
-                                        <i class="icon-password ag_pr--2 "></i>
-                                        <mat-form-field class="ag_w--50">
-
-                                            <input matInput [type]="hidePassword ? 'text' : 'password'"
-                                                [placeholder]="captions.password" formControlName="password"
-                                                (keydown.enter)="getbuttonEmitvalue($event)" autocomplete="new-password">
-                                            <i matSuffix class="IC18"
-                                                [ngClass]="hidePassword ? 'icon-password-show' : 'icon-password-hide '"
-                                                 (click)="hidePassword=!hidePassword"  ></i>
-                                            <mat-error *ngIf="loginForms.get('password').hasError('required')">
-                                                {{errorMessage.password}}
-                                            </mat-error>
-                                        </mat-form-field>
+                                    <div *ngIf="showCustomerID && custId">
+                                        <div>
+                                            <i class="icon-user ag_pr--2 "></i>
+                                            <mat-form-field class="ag_w--50">
+    
+                                                <input matInput type="text" [placeholder]="captions.lbl_userId"
+                                                    class="ag_text--uppercase"
+                                                    formControlName="userId" (keydown.enter)="getbuttonEmitvalue($event)">
+                                                <mat-error *ngIf="loginForms.get('userId').hasError('required')">
+                                                    {{errorMessage.userId}}
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="hide-view">
+                                            <i class="icon-password ag_pr--2 "></i>
+                                            <mat-form-field class="ag_w--50">
+    
+                                                <input matInput [type]="hidePassword ? 'text' : 'password'"
+                                                    [placeholder]="captions.password" formControlName="password"
+                                                    (keydown.enter)="getbuttonEmitvalue($event)" autocomplete="new-password">
+                                                <i matSuffix class="IC18"
+                                                    [ngClass]="hidePassword ? 'icon-password-show' : 'icon-password-hide '"
+                                                     (click)="hidePassword=!hidePassword"  ></i>
+                                                <mat-error *ngIf="loginForms.get('password').hasError('required')">
+                                                    {{errorMessage.password}}
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <i class="icon-guest ag_pr--2"></i>
+                                            <mat-form-field class="w-50">
+                                                <input matInput inputtype="nonnegative" type="number"
+                                                    [placeholder]="captions.customerId" class="text-uppercase"
+                                                    inputtype="capitalise,notallowspace,nospecailchar"
+                                                    formControlName="customerId"
+                                                    (keydown.enter)="getbuttonEmitvalue($event)">
+                                                <mat-error *ngIf="loginForms.get('customerId').hasError('required')">
+                                                    {{errorMessage.customerId}}
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
                                     </div>
                                     
-                                    <div *ngIf="showCustomerID">
-                                        <i class="icon-guest ag_pr--2"></i>
-                                        <mat-form-field class="w-50">
-                                            <input matInput inputtype="nonnegative" type="number"
-                                                [placeholder]="captions.customerId" class="text-uppercase"
-                                                inputtype="capitalise,notallowspace,nospecailchar"
-                                                formControlName="customerId"
-                                                (keydown.enter)="getbuttonEmitvalue($event)">
-                                            <mat-error *ngIf="loginForms.get('customerId').hasError('required')">
-                                                {{errorMessage.customerId}}
-                                            </mat-error>
-                                        </mat-form-field>
-                                    </div>
                                     <div>
                                         <!-- <mat-checkbox formControlName="rememberme">{{captions.rememberMe}}
                                         </mat-checkbox> -->
@@ -91,7 +122,7 @@
                         </div>
                     </div>
 
-                    <div class="margintop--10"><button mat-flat-button class="login__btn"
+                    <div class="margintop--10" *ngIf="custId"><button mat-flat-button class="login__btn"
                             (click)="getbuttonEmitvalue($event)">{{loginSuccess?captions.enter:captions.Login}}</button>
                     </div>
                 </div>
