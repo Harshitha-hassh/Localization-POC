@@ -2673,6 +2673,7 @@
     "EndDatecannotbepriortoStartDate": "End Date cannot be prior to Start Date_uk",
     "StartDateShouldNotBeGreaterThanEndDate": "Start date should not be greater than the End date_uk",
     "PleaseSelectAtleastOneOption": "Please Select any {option}_uk",
+    "PleaseSelectAtleastOneUser": "Please Select any User(s)_uk",
     "PleaseSelectAnyOutlet": "Outlet_uk",
     "ReportCategory": "Report Category(s)_uk",
     "Category": "Category(s)_uk",

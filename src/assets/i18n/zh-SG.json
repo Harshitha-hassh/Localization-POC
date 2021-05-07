@@ -2608,6 +2608,7 @@
       "EndDatecannotbepriortoStartDate": "End Date cannot be prior to Start Date_zh",
       "StartDateShouldNotBeGreaterThanEndDate": "Start date should not be greater than the End date_zh",
       "PleaseSelectAtleastOneOption": "Please Select any {option}_zh",
+      "PleaseSelectAtleastOneUser": "Please Select any User(s)_zh",
       "PleaseSelectAnyOutlet": "Outlet_zh",
       "ReportCategory": "Report Category(s)_zh",
       "Category": "Category(s)_zh",
