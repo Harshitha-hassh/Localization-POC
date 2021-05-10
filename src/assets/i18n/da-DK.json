@@ -1375,6 +1375,7 @@
     "2305": "2305 - User Role Setup_da",
     "2310": "2310 - User Role Configuration_da",
     "2430": "2430 - Day End_da",
+    "2435": "2435 - Combine Guest Records_da",
     "3000": "3000 - Create Transaction_da",
     "3005": "3005 - Apply Gratuity_da",
     "3010": "3010 - Apply Service Charge_da",
@@ -3445,7 +3446,7 @@
   "lbl_city": "City_da",
   "lbl_state": "State_da",
   "lbl_postalCode": "Postal Code_da",
-  "pg_title_combineMembers": "COMBINE MEMBER_da",
+  "pg_title_combineMembers": "COMBINE GUEST RECORDS_da",
   "btn_combine": "COMBINE_da",
   "lbl_usetargetsrchcriteria": "Use Target Search Criteria_da",
   "lbl_showMatchField": "Show Match Field_da",
@@ -3463,6 +3464,6 @@
   "lbl_phoneno": "Phone Number_da",
   "Search": "Search_da",
   "Cancel": "CANCEL_da",
-  "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} ({primaryGuestId}) \n \n Are you sure want to combine_da",
+  "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} \n \n Are you sure want to combine_da",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_da"
 }

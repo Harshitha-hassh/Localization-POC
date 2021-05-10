@@ -1375,6 +1375,7 @@
     "2305": "2305 - User Role Setup_uk",
     "2310": "2310 - User Role Configuration_uk",
     "2430": "2430 - Day End_uk",
+    "2435": "2435 - Combine Guest Records_uk",
     "3000": "3000 - Create Transaction_uk",
     "3005": "3005 - Apply Gratuity_uk",
     "3010": "3010 - Apply Service Charge_uk",
@@ -3445,7 +3446,7 @@
   "lbl_city": "City_uk",
   "lbl_state": "State_uk",
   "lbl_postalCode": "Postal Code_uk",
-  "pg_title_combineMembers": "COMBINE MEMBER_uk",
+  "pg_title_combineMembers": "COMBINE GUEST RECORDS_uk",
   "btn_combine": "COMBINE_uk",
   "lbl_usetargetsrchcriteria": "Use Target Search Criteria_uk",
   "lbl_showMatchField": "Show Match Field_uk",
@@ -3463,6 +3464,6 @@
   "lbl_phoneno": "Phone Number_uk",
   "Search": "Search_uk",
   "Cancel": "CANCEL_uk",
-  "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} ({primaryGuestId}) \n \n Are you sure want to combine_uk",
+  "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} \n \n Are you sure want to combine_uk",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_uk"
 }
