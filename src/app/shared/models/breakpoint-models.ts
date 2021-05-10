@@ -26,6 +26,7 @@ export enum BreakPoint{
   DayEnd = 2430,
   UserSessionConfiguration = 7085,
   TransactionLog = 8090,
+  CombineGuestRecords=2435
 }
 
 export const enum ReportBreakPoint {

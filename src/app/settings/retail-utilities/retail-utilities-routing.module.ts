@@ -58,7 +58,9 @@ const routes: Routes = [{
       },      
       {
         path: 'combineguest',
-        component: AgCombineGuestRecordsComponent
+        component: AgCombineGuestRecordsComponent,
+        canActivate: [RouteGuardService],
+        data: { breakPointNumber: BreakPoint.CombineGuestRecords, redirectTo: 'combineguest', syncAccess: true }
       }
   ]
 }];

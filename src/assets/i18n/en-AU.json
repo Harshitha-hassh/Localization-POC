@@ -1375,6 +1375,7 @@
     "2305": "2305 - User Role Setup_au",
     "2310": "2310 - User Role Configuration_au",
     "2430": "2430 - Day End_au",
+    "2435": "2435 - Combine Guest Records_au",
     "3000": "3000 - Create Transaction_au",
     "3005": "3005 - Apply Gratuity_au",
     "3010": "3010 - Apply Service Charge_au",
@@ -3443,7 +3444,7 @@
   "lbl_city": "City_au",
   "lbl_state": "State_au",
   "lbl_postalCode": "Postal Code_au",
-  "pg_title_combineMembers": "COMBINE MEMBER_au",
+  "pg_title_combineMembers": "COMBINE GUEST RECORDS_au",
   "btn_combine": "COMBINE_au",
   "lbl_usetargetsrchcriteria": "Use Target Search Criteria_au",
   "lbl_showMatchField": "Show Match Field_au",
@@ -3461,6 +3462,6 @@
   "lbl_phoneno": "Phone Number_au",
   "Search": "Search_au",
   "Cancel": "CANCEL_au",
-  "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} ({primaryGuestId}) \n \n Are you sure want to combine_au",
+  "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} \n \n Are you sure want to combine_au",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_au"
 }
