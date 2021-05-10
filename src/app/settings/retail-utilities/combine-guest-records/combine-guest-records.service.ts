@@ -69,7 +69,7 @@ public uiGridMapper(GuestAPIModel: API.Guest): CGtablecontent {
     company: GuestAPIModel.companyName,
     companyid: '0',
     address: GuestAPIModel.guestProfileAddress[0]?.addressLine1,
-    postalcode: GuestAPIModel.guestProfileAddress[0]?.postalCode,
+    postalcode: GuestAPIModel.guestProfileAddress[0]?.zipCode,
     city: GuestAPIModel.guestProfileAddress[0]?.city,
     county: GuestAPIModel.guestProfileAddress[0]?.county,
     phonenumber: this.getPhoneNo(GuestAPIModel.guestProfileContact),

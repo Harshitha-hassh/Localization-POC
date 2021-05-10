@@ -81,7 +81,7 @@ export enum RetailRoutes {
    // Combine Guests
    GetGuestInformation= "GuestCombine/guestsearch",
    CombineGuestInformation= "GuestCombine/{primaryGuestId}",  
-   GetGuestInfoByGuid="GuestCombine/guestdata/{id}",
+   GetGuestInfoByGuid="GuestCombine/{id}",
    UpdateGuestInformation= "GuestCombine/updateguest" 
 }
 

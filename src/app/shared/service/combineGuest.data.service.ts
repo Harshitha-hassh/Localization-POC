@@ -21,7 +21,7 @@ export class CombineGuestDataService {
   }
 
   GetClientDataByGuid(guestId: any):Promise<API.Guest>{
-     return this._http.putPromise<API.Guest>({route:RetailRoutes.GetGuestInfoByGuid,uriParams: { id: guestId }});
+     return this._http.getPromise<API.Guest>({route:RetailRoutes.GetGuestInfoByGuid,uriParams: { id: guestId }});
       
     }
 
