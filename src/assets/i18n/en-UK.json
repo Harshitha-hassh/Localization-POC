@@ -1941,7 +1941,11 @@
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_uk",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_uk",
     "AllowEarn": "Allow Earn_uk",
-    "btn_create": "CREATE_uk"
+    "btn_create": "CREATE_uk",
+    "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_uk",
+    "pg_title_PaymentMethod": "PAYMENT METHOD_uk",
+    "lbl_paymentMethodName": "Payment Method Name_uk",
+    "err_paymentMethodName": "Missing Payment Method Name_uk"
   },
   "setting": {
     "Title": "Title_uk",
