@@ -3464,6 +3464,7 @@
   "lbl_phoneno": "Phone Number_de",
   "Search": "Search_de",
   "Cancel": "CANCEL_de",
+  "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_de",
   "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} \n \n Are you sure want to combine_de",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_de"
 }
