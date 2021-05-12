@@ -425,6 +425,7 @@
   "ApplyAndUpdateDiscountConfiguration": "DiscountConfigurations",
   "GetPaymentConfiguration": "GetPaymentConfiguration",
   "PaymentMethod": "GetPaymentMethodsByProductId",
+  "AddPaymentMethod": "paymentmethods",
   "PaymentMethodWithId": "paymentmethods/{id}",
   "UpdatePaymentMethodListOrder": "paymentmethods/listorder/from/{fromorder}/to/{toorder}",
   "getAllCCTerminals": "CreditCardTerminals",

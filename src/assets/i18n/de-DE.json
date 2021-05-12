@@ -1941,7 +1941,11 @@
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_de",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_de",
     "AllowEarn": "Allow Earn_de",
-    "btn_create": "CREATE_de"
+    "btn_create": "CREATE_de",
+    "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_de",
+    "pg_title_PaymentMethod": "PAYMENT METHOD_de",
+    "lbl_paymentMethodName": "Payment Method Name_de",
+    "err_paymentMethodName": "Missing Payment Method Name_de"
   },
   "setting": {
     "Title": "Title_de",
@@ -3464,6 +3468,7 @@
   "lbl_phoneno": "Phone Number_de",
   "Search": "Search_de",
   "Cancel": "CANCEL_de",
+  "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_de",
   "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} \n \n Are you sure want to combine_de",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_de"
 }
