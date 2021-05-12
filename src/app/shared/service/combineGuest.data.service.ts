@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { RetailPosCommunication } from 'src/app/shared/communication/services/retailpos.service';
 import { RetailRoutes } from 'src/app/core/extensions/retail-route';
 import { API } from 'src/app/common/components/combine-guest-records/combine-guest-ui-model';
+import { HttpMethod,  HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.service';
+import { Host } from 'src/app/common/shared/shared/globalsContant';
 
 
 @Injectable({
@@ -9,37 +11,48 @@ import { API } from 'src/app/common/components/combine-guest-records/combine-gue
 })
 export class CombineGuestDataService {
 
-  constructor(private _http: RetailPosCommunication) { }
+  constructor(private _http: RetailPosCommunication,private http:HttpServiceCall) { }
 
   getGuestsBySearchCriteria(guestSearchFields: API.GuestSearchFields): Promise<API.Guest[]> {  
     return this._http.postPromise<API.Guest[]>({route:RetailRoutes.GetGuestInformation,body:guestSearchFields },false);
   }
   
   
- MergeGuestsRecords(primaryGuest: string, secondaryGuest: string[]): Promise<boolean> {
-    return this._http.putPromise<boolean>({route:RetailRoutes.CombineGuestInformation,uriParams: { primaryGuestId: primaryGuest },body:secondaryGuest },false);
+  public async MergeGuestsRecords(primaryGuest: string, secondaryGuest: string[]): Promise<boolean> {
+   
+    let result: any = await this.http.CallApiAsync({
+        callDesc: 'CombineGuestInformation',
+        host: Host.retailPOS,
+        method: HttpMethod.Put,
+        uriParams: { primaryGuestId: primaryGuest },
+        body: secondaryGuest
+      });
+     
+      return result;
   }
 
-  GetClientDataByGuid(guestId: any):Promise<API.Guest>{
-     return this._http.getPromise<API.Guest>({route:RetailRoutes.GetGuestInfoByGuid,uriParams: { id: guestId }});
-      
+  public async GetClientDataByGuid(guestId: any):Promise<API.Guest>{
+    let result: any = await this.http.CallApiAsync({
+      callDesc: 'GetGuestInfoByGuid',
+      host: Host.retailPOS,
+      method: HttpMethod.Get,
+      uriParams: { id: guestId }     
+    });
+   
+    return result;     
     }
 
-  UpdateGuestInformation(guestInfo: API.Guest):Promise<boolean>
+  public async UpdateGuestInformation(guestInfo: API.Guest):Promise<boolean>
   {
-    return this._http.putPromise<boolean>({route:RetailRoutes.UpdateGuestInformation,body:guestInfo },false);
+    let result: any = await this.http.CallApiAsync({
+      callDesc: 'UpdateGuestInformation',
+      host: Host.retailPOS,
+      method: HttpMethod.Put,
+      body: guestInfo     
+    });
+   
+    return result; 
   }
 }
 
 
-export interface ContactPhoneType {
-  id?: number;
-  description?: string;
-  type?: string;
-}
-
-export interface ContactEmailType {
-  id?: number;
-  description?: string;
-  type?: string;
-}
