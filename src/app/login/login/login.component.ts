@@ -683,7 +683,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.localize.SetMachineId(userMachine.id);
       this.localize.SetMachineName(userMachine.name);
     } else {
-      this.localize.SetMachineId(0);
+      this.localize.SetMachineId(this.defaultMachineId);
       this.localize.SetMachineName('');
     }
   }
