@@ -3465,6 +3465,6 @@
   "Search": "Search_uk",
   "Cancel": "CANCEL_uk",
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_uk",
-  "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} \n \n Are you sure want to combine_uk",
+  "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_uk",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_uk"
 }

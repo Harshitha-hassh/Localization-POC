@@ -3465,6 +3465,6 @@
   "Search": "Search_fi",
   "Cancel": "CANCEL_fi",
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_fi",
-  "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} \n \n Are you sure want to combine_fi",
+  "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_fi",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_fi"
 }
