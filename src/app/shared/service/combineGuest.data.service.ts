@@ -56,14 +56,3 @@ export class CombineGuestDataService {
 }
 
 
-export interface ContactPhoneType {
-  id?: number;
-  description?: string;
-  type?: string;
-}
-
-export interface ContactEmailType {
-  id?: number;
-  description?: string;
-  type?: string;
-}
