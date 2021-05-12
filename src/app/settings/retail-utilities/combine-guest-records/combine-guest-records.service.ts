@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ActionTypeEnum, SorTypeEnum } from 'src/app/common/components/cdkvirtual/cdkvirtual.model';
 import { UI, API, CGtablecontent } from 'src/app/common/components/combine-guest-records/combine-guest-ui-model';
-import { CombineGuestDataService, ContactEmailType, ContactPhoneType } from 'src/app/shared/service/combineGuest.data.service';
-import { UI as GuestUI } from 'src/app/common/components/combine-guest-records/guest-model';
+import { CombineGuestDataService} from 'src/app/shared/service/combineGuest.data.service';
+import { UI as GuestUI, ContactPhoneType, ContactEmailType } from 'src/app/common/components/combine-guest-records/guest-model';
 import { combineGuestRecordBusiness } from 'src/app/common/components/combine-guest-records/combine-guest-records.business';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 
