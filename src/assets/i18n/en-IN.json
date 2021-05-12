@@ -1941,11 +1941,7 @@
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_in",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_in",
     "AllowEarn": "Allow Earn_in",
-    "btn_create": "CREATE_in",
-    "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_in",
-    "pg_title_PaymentMethod": "PAYMENT METHOD_in",
-    "lbl_paymentMethodName": "Payment Method Name_in",
-    "err_paymentMethodName": "Missing Payment Method Name_in"
+    "btn_create": "CREATE_in"
   },
   "setting": {
     "Title": "Title_in",
@@ -3469,6 +3465,6 @@
   "Search": "Search_in",
   "Cancel": "CANCEL_in",
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_in",
-  "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} \n \n Are you sure want to combine_in",
+  "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_in",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_in"
 }
