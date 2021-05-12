@@ -1359,7 +1359,8 @@
     "clickHere": "Click Here_in",
     "ToChange": "to change_in",
     "connect": "Connect_in",
-    "savedCardDetail": "Save Card Details_in"
+    "savedCardDetail": "Save Card Details_in",
+    "RoomChargePostingNotAllowed": "Posting is restricted to this Room._in"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_in",

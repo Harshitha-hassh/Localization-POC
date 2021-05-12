@@ -1359,7 +1359,8 @@
     "clickHere": "Click Here_fi",
     "ToChange": "to change_fi",
     "connect": "Connect_fi",
-    "savedCardDetail": "Save Card Details_fi"
+    "savedCardDetail": "Save Card Details_fi",
+    "RoomChargePostingNotAllowed": "Posting is restricted to this Room._fi"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fi",

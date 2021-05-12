@@ -1359,7 +1359,8 @@
 		"clickHere":"Click Here",
 		"ToChange":"to change",
 		"connect": "Connect",
-		"savedCardDetail": "Save Card Details"
+		"savedCardDetail": "Save Card Details",
+    "RoomChargePostingNotAllowed": "Posting is restricted to this Room."
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",

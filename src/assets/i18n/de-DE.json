@@ -1359,7 +1359,8 @@
     "clickHere": "Click Here_de",
     "ToChange": "to change_de",
     "connect": "Connect_de",
-    "savedCardDetail": "Save Card Details_de"
+    "savedCardDetail": "Save Card Details_de",
+    "RoomChargePostingNotAllowed": "Posting is restricted to this Room._de"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_de",
@@ -1941,11 +1942,7 @@
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_de",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_de",
     "AllowEarn": "Allow Earn_de",
-    "btn_create": "CREATE_de",
-    "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_de",
-    "pg_title_PaymentMethod": "PAYMENT METHOD_de",
-    "lbl_paymentMethodName": "Payment Method Name_de",
-    "err_paymentMethodName": "Missing Payment Method Name_de"
+    "btn_create": "CREATE_de"
   },
   "setting": {
     "Title": "Title_de",

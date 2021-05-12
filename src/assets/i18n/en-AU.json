@@ -1359,7 +1359,8 @@
     "clickHere": "Click Here_au",
     "ToChange": "to change_au",
     "connect": "Connect_au",
-    "savedCardDetail": "Save Card Details_au"
+    "savedCardDetail": "Save Card Details_au",
+    "RoomChargePostingNotAllowed": "Posting is restricted to this Room._au"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_au",
