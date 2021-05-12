@@ -673,5 +673,8 @@
   "CreateMachineName": "MachineName",
   "UpdateMachineName": "MachineName/{id}",
   "DeleteMachineName": "MachineName/{id}",
-  "MachineNameDragDrop": "MachineName/listorder/from/{fromOrder}/to/{toOrder}"
+  "MachineNameDragDrop": "MachineName/listorder/from/{fromOrder}/to/{toOrder}",
+  "CombineGuestInformation": "GuestCombine/{primaryGuestId}",
+  "UpdateGuestInformation": "GuestCombine/updateguest",
+  "GetGuestInfoByGuid":"GuestCombine/{id}"
 }

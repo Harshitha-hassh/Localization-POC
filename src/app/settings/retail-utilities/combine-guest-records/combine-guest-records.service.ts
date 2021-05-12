@@ -40,7 +40,7 @@ export class CombineGuestRecordsService extends combineGuestRecordBusiness  {
   //    return breakpoint;
   //}
 
-   public async combineGuestRecords(primarydata, secondarydata) {
+   public async combineGuestRecords(primarydata, secondarydata):Promise<boolean> {
        const mergeResponse = await this.combineGuestdataservice.MergeGuestsRecords(primarydata, secondarydata);
        return mergeResponse;
    }
@@ -292,7 +292,7 @@ getConfigureDataList(hdrObj) {
 }
 
 public async getGuestInformationByGuid(Guid: string): Promise<GuestUI.Guest> {
-  const guestData: API.Guest = await this.combineGuestdataservice.GetClientDataByGuid([Guid]);
+  const guestData: API.Guest =await  this.combineGuestdataservice.GetClientDataByGuid([Guid]);
   return this.uiMapper_GuestInformation(guestData);
 }
 
