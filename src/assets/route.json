@@ -676,5 +676,6 @@
   "MachineNameDragDrop": "MachineName/listorder/from/{fromOrder}/to/{toOrder}",
   "CombineGuestInformation": "GuestCombine/{primaryGuestId}",
   "UpdateGuestInformation": "GuestCombine/updateguest",
-  "GetGuestInfoByGuid":"GuestCombine/{id}"
+  "GetGuestInfoByGuid":"GuestCombine/{id}",
+  "RoomLookupWithRoomKeyData": "Payment/GetRoomDetailsFromRoomkeyData"
 }
