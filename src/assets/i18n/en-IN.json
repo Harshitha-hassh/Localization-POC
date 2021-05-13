@@ -2550,6 +2550,14 @@
       "ARAccountPosting": "City Ledger_in",
       "PMS Revenue Posting": "PMS Revenue Posting_in",
       "Offer Management System": "Offer Management System_in"
+    },
+    "RoomKeySwipe": {
+      "EnableRoomKeySwipe": "Enable Room Key Swipe_in",
+      "CardSourceType": "Card Source Type_in",
+      "DataReadStartPosition": "Start Position_in",
+      "DataReadEndPosition": "End Position_in",
+      "Track1": "Track1_in",
+      "Track2": "Track2_in"
     }
   },
   "retailInventory": {

@@ -2550,6 +2550,14 @@
       "ARAccountPosting": "City Ledger_uk",
       "PMS Revenue Posting": "PMS Revenue Posting_uk",
       "Offer Management System": "Offer Management System_uk"
+    },
+    "RoomKeySwipe": {
+      "EnableRoomKeySwipe": "Enable Room Key Swipe_uk",
+      "CardSourceType": "Card Source Type_uk",
+      "DataReadStartPosition": "Start Position_uk",
+      "DataReadEndPosition": "End Position_uk",
+      "Track1": "Track1_uk",
+      "Track2": "Track2_uk"
     }
   },
   "retailInventory": {
