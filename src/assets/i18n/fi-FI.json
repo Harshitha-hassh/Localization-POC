@@ -1335,8 +1335,10 @@
     "ARAcctNumber": "Account Number_fi",
     "SearchByGuestName": "Search by Guest Last Name_fi",
     "SearchByRoomNumber": "Search by Room Number_fi",
+    "SearchByRoomKey": "Search by  Room Key_fi",
     "GuestName": "Guest Last Name_fi",
     "RoomNumber": "Room Number_fi",
+    "RoomKey": "Room Key_fi",
     "NoMatchesFound": "No matches found._fi",
     "SelectCommissionTemplate": "Select Commission Template_fi",
     "ConfirmCancelMsg": "Do you want to cancel all the payments?_fi",
@@ -1359,7 +1361,8 @@
     "clickHere": "Click Here_fi",
     "ToChange": "to change_fi",
     "connect": "Connect_fi",
-    "savedCardDetail": "Save Card Details_fi"
+    "savedCardDetail": "Save Card Details_fi",
+    "RoomChargePostingNotAllowed": "Posting is restricted to this Room._fi"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fi",
@@ -1941,11 +1944,7 @@
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_fi",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_fi",
     "AllowEarn": "Allow Earn_fi",
-    "btn_create": "CREATE_fi",
-    "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_fi",
-    "pg_title_PaymentMethod": "PAYMENT METHOD_fi",
-    "lbl_paymentMethodName": "Payment Method Name_fi",
-    "err_paymentMethodName": "Missing Payment Method Name_fi"
+    "btn_create": "CREATE_fi"
   },
   "setting": {
     "Title": "Title_fi",
@@ -2551,6 +2550,14 @@
       "ARAccountPosting": "City Ledger_fi",
       "PMS Revenue Posting": "PMS Revenue Posting_fi",
       "Offer Management System": "Offer Management System_fi"
+    },
+    "RoomKeySwipe": {
+      "EnableRoomKeySwipe": "Enable Room Key Swipe_fi",
+      "CardSourceType": "Card Source Type_fi",
+      "DataReadStartPosition": "Start Position_fi",
+      "DataReadEndPosition": "End Position_fi",
+      "Track1": "Track1_fi",
+      "Track2": "Track2_fi"
     }
   },
   "retailInventory": {
@@ -3469,6 +3476,6 @@
   "Search": "Search_fi",
   "Cancel": "CANCEL_fi",
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_fi",
-  "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} \n \n Are you sure want to combine_fi",
+  "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_fi",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_fi"
 }

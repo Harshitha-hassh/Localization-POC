@@ -1335,8 +1335,10 @@
     "ARAcctNumber": "Account Number",
     "SearchByGuestName": "Search by Guest Last Name",
 		"SearchByRoomNumber": "Search by Room Number",
+		"SearchByRoomKey": "Search by  Room Key",		
 		"GuestName": "Guest Last Name",
 		"RoomNumber": "Room Number",
+		"RoomKey": "Room Key",
     "NoMatchesFound": "No matches found.",
     "SelectCommissionTemplate": "Select Commission Template",
     "ConfirmCancelMsg": "Do you want to cancel all the payments?",
@@ -1359,7 +1361,8 @@
 		"clickHere":"Click Here",
 		"ToChange":"to change",
 		"connect": "Connect",
-		"savedCardDetail": "Save Card Details"
+		"savedCardDetail": "Save Card Details",
+    "RoomChargePostingNotAllowed": "Posting is restricted to this Room."
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",
@@ -1941,11 +1944,7 @@
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal",
     "AllowEarn": "Allow Earn",
-		"btn_create": "CREATE",
-    "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD",
-		"pg_title_PaymentMethod": "PAYMENT METHOD",
-		"lbl_paymentMethodName": "Payment Method Name",
-		"err_paymentMethodName": "Missing Payment Method Name"
+		"btn_create": "CREATE"
   },
   "setting": {
     "Title": "Title",
@@ -2551,6 +2550,14 @@
 			"ARAccountPosting": "City Ledger",
 			"PMS Revenue Posting": "PMS Revenue Posting",
 			"Offer Management System": "Offer Management System"
+		},
+    "RoomKeySwipe":{
+			"EnableRoomKeySwipe":"Enable Room Key Swipe",
+			"CardSourceType":"Card Source Type",
+			"DataReadStartPosition":"Start Position",
+			"DataReadEndPosition":"End Position",
+			"Track1":"Track1",
+			"Track2":"Track2"	
 		}
   },
   "retailInventory": {
@@ -3469,6 +3476,6 @@
   "Search": "Search",
   "Cancel": "CANCEL",
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?",
-  "combineGuestWarn_Merge": "Combine Guest Records \n with {primaryName} \n \n Are you sure want to combine",
+  "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?",  
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}"
 }
