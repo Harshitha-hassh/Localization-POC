@@ -1350,6 +1350,7 @@
     "CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed._gb",
     "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed_gb",
     "ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed_gb",
+    "SettleNotAllowedReturnInProgress": "Return Operation already Initiated. Settle not Allowed_gb",
     "RefundToOriginalSettlement": "Refund to original settlements_gb",
     "RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded_gb",
     "ReturnToOriginalSettlementInfoDialog": {

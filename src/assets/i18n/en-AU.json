@@ -1350,6 +1350,7 @@
     "CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed._au",
     "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed_au",
     "ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed_au",
+    "SettleNotAllowedReturnInProgress": "Return Operation already Initiated. Settle not Allowed_au",
     "RefundToOriginalSettlement": "Refund to original settlements_au",
     "RefundToOriginalSettlementsInProgress": "Please wait while the payments are being refunded_au",
     "ReturnToOriginalSettlementInfoDialog": {
