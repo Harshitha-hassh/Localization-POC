@@ -138,7 +138,7 @@ public apiMapperGuestSearchFields(GuestSearchFieldsUIModel: UI.GuestSearchFields
     socialSecurityNumber: GuestSearchFieldsUIModel.socialSecurityNumber,
     emailAddress: GuestSearchFieldsUIModel.emailAddress,
     driversLicense: GuestSearchFieldsUIModel.driversLicense,
-    patronId: GuestSearchFieldsUIModel.playerId,
+    playerId: GuestSearchFieldsUIModel.playerId,
     memberTypeId: GuestSearchFieldsUIModel.memberTypeId,
     includeInactive: false,
     //PMSGuestSearchCriteria: this.mapPMSSearchCriteria(GuestSearchFieldsUIModel),
