@@ -22,7 +22,7 @@ import { AppModuleService } from 'src/app/core/services/app.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { RedirectToModules } from 'src/app/common/shared/shared/utilities/common-utilities';
-import { ButtonType as RetailButtonType } from 'src/app/retail/shared/globalsContant';
+import { ButtonType as RetailButtonType, OpenTransactionAction } from 'src/app/retail/shared/globalsContant';
 import { AlertType } from 'src/app/retail/shared/shared.modal';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 
@@ -303,7 +303,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         ClientName: this.getClientName(clients, tran.guestId),
         ClientId: tran.guestId,
         MemberName: '',
-        AppointmentNumber: ''
+        AppointmentNumber: '',
+        transactionInfo: tran
       };
       transactions.push(transaction);
     }
@@ -464,6 +465,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       const uriParam = { id: data.AppointmentId };
       this.InvokeServiceCall('UndoCheckInAppointment', Host.schedule, HttpMethod.Put, uriParam);
     } else if (option.action === GridAction.ReOpen) {
+      if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Reopen)) { return; }
       this.retailSharedService.payeeId = data.ClientId;
       this.retailSharedService.settleOpenTransaction = false;
       this.retailSharedService.reOpenTransaction = true;
@@ -476,6 +478,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       // tslint:disable-next-line: max-line-length
       this.InvokeServiceCall('GetTransactionDetails', Host.retailPOS, HttpMethod.Get, { transactionId: data.Id, productId: Product.SPA }, null, null, ['reopen']);
     } else if (option.action === GridAction.Settle) {
+      if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Settle)) { return; }
       this.retailSharedService.payeeId = data.ClientId;
       this.retailSharedService.reOpenTransaction = false;
       this.retailSharedService.settleOpenTransaction = true;
@@ -487,6 +490,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       // tslint:disable-next-line: max-line-length
       this.InvokeServiceCall('GetTransactionDetails', Host.retailPOS, HttpMethod.Get, { transactionId: data.Id, productId: Product.SPA }, null, null, ['settle']);
     } else if (option.action === GridAction.CancelTransaction) {
+      if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Cancel)) { return; }
       if (await this.retailValidationService.IsTransactionLocked(data.Id)) {
         this.utils.ShowError(this.localization.captions.common.Warning, this.localization.captions.shop.TransactionLock, ButtonType.Ok);
         return;
