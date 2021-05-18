@@ -2753,7 +2753,9 @@
     "IncludeInActiveGuests": "Include Inactive Guests_au",
     "SearchByClientName": "Search By Client Name_au",
     "IncludeInActiveUsers": "Include Inactive Users_au",
-    "SalesMix": "Sales Mix Report_au"
+    "SalesMix": "Sales Mix Report_au",
+    "InventoryReport": "InventoryReport_au",
+    "InventoryPickupDelivery": "Inventory Pickup Delivery Report_au"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_au",

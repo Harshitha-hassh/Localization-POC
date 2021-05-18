@@ -2753,7 +2753,9 @@
     "IncludeInActiveGuests": "Include Inactive Guests_fi",
     "SearchByClientName": "Search By Client Name_fi",
     "IncludeInActiveUsers": "Include Inactive Users_fi",
-    "SalesMix": "Sales Mix Report_fi"
+    "SalesMix": "Sales Mix Report_fi",
+    "InventoryReport": "InventoryReport_fi",
+    "InventoryPickupDelivery": "Inventory Pickup Delivery Report_fi"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fi",
