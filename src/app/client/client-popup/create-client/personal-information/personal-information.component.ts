@@ -91,6 +91,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   placeHolderFormat: string;
   // receiptDate: any;
   maxReceiptDate: any;
+  
   @Input('inputData')
   set formData(value) {
     if (value && value.data != '') {
@@ -334,14 +335,14 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['title'].clearValidators();
     this.FormGrp.controls['title'].setValidators(clientConfiguration[0]['CLIENT_TITLE'] ? [Validators.required] : []);
     this.FormGrp.controls['title'].updateValueAndValidity();
-    if(clientConfiguration[0]['CLIENT_TITLE'])
-    this.FormGrp.controls.title.markAsTouched();
+    // if(clientConfiguration[0]['CLIENT_TITLE'])
+    // this.FormGrp.controls.title.markAsTouched();
   
     this.FormGrp.controls['gender'].clearValidators();
     this.FormGrp.controls['gender'].setValidators(clientConfiguration[0]['CLIENT_GENDER'] ? [Validators.required] : []);
     this.FormGrp.controls['gender'].updateValueAndValidity();
-    if(clientConfiguration[0]['CLIENT_GENDER'])
-    this.FormGrp.controls.gender.markAsTouched();
+    // if(clientConfiguration[0]['CLIENT_GENDER'])
+    // this.FormGrp.controls.gender.markAsTouched();
 
     this.FormGrp.controls['state'].clearValidators();
     this.FormGrp.controls['state'].setValidators(clientConfiguration[0]['CLIENT_STATE'] ? [Validators.required, EmptyValueValidator] : []);
@@ -411,8 +412,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       PhoneGroup.controls['PhoneNumber'].setValidators(clientConfiguration[0]['CLIENT_PHONE'] ?
         [Validators.required, EmptyValueValidator] : []);
       PhoneGroup.controls['PhoneNumber'].updateValueAndValidity();
-      if(clientConfiguration[0]['CLIENT_PHONE'])
-      PhoneGroup.markAllAsTouched();
+      // if(clientConfiguration[0]['CLIENT_PHONE'])
+      // PhoneGroup.markAllAsTouched();
     });
     
     const AddresArray = this.FormGrp.get('Address') as FormArray;
@@ -815,6 +816,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
   setmandatory(eve, phoneNumber, altfield, phoneType, index , item) {
+    this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
+    this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].clearValidators();
     if (eve && eve.target && eve.target.value) {
       this.FormGrp.controls['Phone']['controls'][index].controls[altfield].setValidators([Validators.required]);
     }
@@ -822,13 +825,13 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value &&
         this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value === 1) {
         this.FormGrp.controls['Phone']['controls'][index].controls[altfield].setValidators(Validators.required);
+        this.FormGrp.controls['Phone']['controls'][index].controls[altfield].markAsTouched();
+        this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].markAsTouched();
       } else {
         this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
         this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].clearValidators();
       }
     }
-    this.FormGrp.controls['Phone']['controls'][index].controls[altfield].markAsTouched();
-    this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].markAsTouched();
     if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value) {
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].enable();
     this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumber].enable();
