@@ -641,28 +641,26 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (retailPromptConfig) {
       this.isPromptOnLoginEnabled = retailPromptConfig.value == 'true';
     }
-    this.defaultMachineId = userMachinePropertyInfo.defaultMachineId;
     if(this.isMachineNameEnabled) {
-      if(this.isPromptOnLoginEnabled) {      
-        this.machineNames = userMachinePropertyInfo.machineNames.map(x => {
-          return {
-            id: x.id,
-            name: x.name
-          }
-        });
-        if(this.machineNames.length > 0) {
-          this.loginForms.controls['machineName'].setValue('');
+      this.defaultMachineId = userMachinePropertyInfo.defaultMachineId;    
+      this.machineNames = userMachinePropertyInfo.machineNames.map(x => {
+        return {
+          id: x.id,
+          name: x.name
         }
-      }      
+      });
+      if(this.machineNames.length > 0) {
+        this.loginForms.controls['machineName'].setValue('');
+      }     
     }
     if(this.defaultMachineId) {
       const machineName = this.machineNames.find(x => x.id == this.defaultMachineId);
       if(machineName) {
         this.loginForms.controls['machineName'].setValue(machineName);
       } else {
-        this.loginForms.controls['machineName'].setValue(this.defaultMachineId);
+        this.loginForms.controls['machineName'].setValue(0);
       }
-    }
+    } 
   }
 
   compareSelect = (val1, val2) => {
@@ -683,7 +681,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.localize.SetMachineId(userMachine.id);
       this.localize.SetMachineName(userMachine.name);
     } else {
-      this.localize.SetMachineId(this.defaultMachineId);
+      this.localize.SetMachineId(0);
       this.localize.SetMachineName('');
     }
   }
