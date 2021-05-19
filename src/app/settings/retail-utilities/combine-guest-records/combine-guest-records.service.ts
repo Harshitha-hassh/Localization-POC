@@ -5,6 +5,11 @@ import { CombineGuestDataService} from 'src/app/shared/service/combineGuest.data
 import { UI as GuestUI, ContactPhoneType, ContactEmailType } from 'src/app/common/components/combine-guest-records/guest-model';
 import { combineGuestRecordBusiness } from 'src/app/common/components/combine-guest-records/combine-guest-records.business';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
+import { AlertType } from 'src/app/common/shared/shared/enums/enums';
+import { ButtonType } from 'src/app/common/enums/shared-enums';
+import { AlertAction } from 'src/app/common/shared/shared.modal';
+import { AlertPopupComponent } from 'src/app/common/components/alert-popup/alert-popup.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable()
 export class CombineGuestRecordsService extends combineGuestRecordBusiness  {
@@ -13,9 +18,10 @@ export class CombineGuestRecordsService extends combineGuestRecordBusiness  {
   contactPhoneType: ContactPhoneType[] = [];
   contactEmailType: ContactEmailType[] = [];
   isViewOnly: boolean;
+  subscription: any;
 
   constructor(public localization: RetailStandaloneLocalization,
-      public combineGuestdataservice: CombineGuestDataService
+      public combineGuestdataservice: CombineGuestDataService,public dialog:MatDialog
   ) {
       super(localization);
       this.captions = this.localization.captions;
@@ -306,6 +312,35 @@ public uiMapper_GuestInformation(GuestAPIModel: API.Guest): GuestUI.Guest {
 
   return guestItem;
 }
+
+  /**
+* Alert popup to show 'Warning' , 'Error' , 'Success'
+* @param {string} message  - Content
+* @param {AlertType} type  - Type of Popup
+* @param {ButtonType} [btnType=ButtonType.Ok] - Button Actions Type( by default 'Ok')
+* @param {(result: string, extraParams?: any[]) => void} [callback] - CallBack ( optional )
+* @returns - Dialog Reference of the modal with Result of enum AlertAction
+* @memberof Utilities
+*/
+public showAlert(message: string, type: AlertType, btnType: ButtonType = ButtonType.Ok,
+  callback?: (result: AlertAction, extraParams?: any[]) => void, extraParams?: any[], headerText?: string,
+  additionalInfo?: { message: string, class: string }, moreOptionsLabel?: string, moreOptions?: any) {
+
+    const dialogRef = this.dialog.open(AlertPopupComponent, {
+      height: 'auto',
+      width: '300px',
+      data: { type, message, buttontype: btnType, header: headerText, additionalInfo, moreOptionsLabel, moreOptions },
+      panelClass: 'small-popup',
+      disableClose: true,
+    });
+    this.subscription = dialogRef.afterClosed().subscribe(res => {
+      if (callback) {
+        callback(res, extraParams);
+      }
+    });
+    return dialogRef;
+}
+
 //public  async getGuestTypeOptions() {
 //  return await this._guestTypeDataService.getAllGuestTypes();
 // }
