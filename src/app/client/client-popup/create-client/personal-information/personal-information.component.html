@@ -6,7 +6,7 @@
     <div class="float-left sidesection ml-3">
       <div>
         <mat-form-field class="">
-          <mat-select [placeholder]="captions.CTitle" formControlName="title">
+          <mat-select [placeholder]="captions.CTitle" formControlName="title" [required]="clientConfiguration[0]['CLIENT_TITLE']">
             <mat-option *ngFor="let title of titles" [value]="title.id">{{title.value}}</mat-option>
           </mat-select>
           <mat-error class=""
@@ -41,9 +41,9 @@
       </div>
       <div class="">
         <div class="display_style_toggle  toggle-section float-left ">
-          <label for="gender" class=" LW12 gender form-label-normal">{{captions.Gender}}</label>
+          <label for="gender" class=" LW12 gender form-label-normal" >{{captions.Gender}}</label>
           <mat-button-toggle-group #group="matButtonToggleGroup" class="margin_top_9 LW14 mb-1 "
-            [value]="personalDetails.gender" formControlName="gender">
+            [value]="personalDetails.gender" formControlName="gender" [required] ="clientConfiguration[0]['CLIENT_GENDER']">
             <mat-button-toggle class=" border_right toggle-btn" *ngFor="let gender of genderList"
               value="{{gender.value}}">
               {{gender.text}}
@@ -60,7 +60,7 @@
             <label for="" class="form-label-normal d-block mb-0 dob-label">{{captions.CDateOfBirth}}</label>
             <div class="d-inline-block">
               <mat-form-field floatLabel="never" class="width_180px" appearance="legacy">
-                <input [max]="maxDate" matInput [matDatepicker]="picker" [placeholder]="placeHolderFormat" class=""
+                <input required [max]="maxDate" matInput [matDatepicker]="picker" [placeholder]="placeHolderFormat" class=""
                   formControlName="dob">
                 <mat-datepicker #picker></mat-datepicker>
                 <i matSuffix class="icon-Calender cursor fs-xlarge position-relative d-inline-block customCalendar"
