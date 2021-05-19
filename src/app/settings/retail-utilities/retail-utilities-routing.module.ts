@@ -11,6 +11,7 @@ import { RouteGuardService } from 'src/app/core/services/route.guard.service';
 import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
 import { QuickidConfigComponent } from './quickid-config/quickid-config.component';
 import { AgCombineGuestRecordsComponent } from 'src/app/common/components/combine-guest-records/combine-guest-records.component';
+import { DeactivateGuard } from 'src/app/core/services/Route-Guards/deactivate.guard.service';
 
 
 const routes: Routes = [{
@@ -59,7 +60,7 @@ const routes: Routes = [{
       {
         path: 'combineguest',
         component: AgCombineGuestRecordsComponent,
-        canActivate: [RouteGuardService],
+        canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
         data: { breakPointNumber: BreakPoint.CombineGuestRecords, redirectTo: 'combineguest', syncAccess: true }
       }
   ]
