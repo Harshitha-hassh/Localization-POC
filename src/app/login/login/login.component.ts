@@ -649,7 +649,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           name: x.name
         }
       });
-      if(this.machineNames.length > 0) {
+      if(this.isPromptOnLoginEnabled && this.machineNames.length > 0) {
         this.loginForms.controls['machineName'].setValue('');
       }     
     }
