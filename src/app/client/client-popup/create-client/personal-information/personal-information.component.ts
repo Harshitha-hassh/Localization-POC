@@ -91,6 +91,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   placeHolderFormat: string;
   // receiptDate: any;
   maxReceiptDate: any;
+  isDobRequired: boolean = false;
   
   @Input('inputData')
   set formData(value) {
@@ -372,9 +373,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
     // this.FormGrp.controls['dob'].clearValidators();
     if(clientConfiguration[0]['CLIENT_BIRTHDAY']){
-      this.FormGrp.controls['dob'].clearValidators();
-      this.FormGrp.controls['dob'].setValidators([Validators.required]);
-      this.FormGrp.controls['dob'].updateValueAndValidity();
+      // this.FormGrp.controls['dob'].clearValidators();
+      // this.FormGrp.controls['dob'].setValidators([Validators.required]);
+      // this.FormGrp.controls['dob'].updateValueAndValidity();
+      this.isDobRequired = true;
     }
     
     
