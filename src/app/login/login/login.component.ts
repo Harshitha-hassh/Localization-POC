@@ -653,14 +653,11 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.loginForms.controls['machineName'].setValue('');
       }     
     }
+    const machineName = this.machineNames.find(x => x.id == this.defaultMachineId);
+    this.defaultMachineId = machineName ? machineName.id : 0;
     if(this.defaultMachineId) {
-      const machineName = this.machineNames.find(x => x.id == this.defaultMachineId);
-      if(machineName) {
-        this.loginForms.controls['machineName'].setValue(machineName);
-      } else {
-        this.loginForms.controls['machineName'].setValue(0);
-      }
-    } 
+      this.loginForms.controls['machineName'].setValue(machineName);
+    }
   }
 
   compareSelect = (val1, val2) => {

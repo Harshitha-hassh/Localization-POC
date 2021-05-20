@@ -107,7 +107,7 @@
                                     </mat-form-field>
                                     <mat-form-field class="w-50 machine-name" *ngIf = "isPromptOnLoginEnabled && machineNames.length > 0">
                                         <mat-select formControlName="machineName" (click)="loadMachineNames()"
-                                        [compareWith]="compareSelect"  placeholder="{{this.captions.Machine}}">
+                                        [compareWith]="compareSelect"  placeholder="{{this.captions.Machine}}" required>
                                             <mat-option *ngFor="let machineName of machineNames"
                                                 [value]="machineName">
                                                 {{machineName.name}}

@@ -437,6 +437,5 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     });
     userMachineNames.unshift({ id: 0,value: 0, viewValue: '' });
     return userMachineNames;
-}
-
+  }
 }
