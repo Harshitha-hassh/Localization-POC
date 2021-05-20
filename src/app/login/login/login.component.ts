@@ -263,9 +263,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.userMachineInfo = await this.retailPropertySettingDataService.GetMachineNamesAndConfigurationSetting(this.userInfo.userId,
         this.propertyValues.map(x=> x.propertyId));
       // Selecting property by default when there is only one property configured for tenant
-      if (this.multipleProperties.length == 1) {
-        this.loginForms.controls.location.setValue(this.multipleProperties[0]);
-        this.setMachineDetails();
+      if (this.multipleProperties.length == 1) {    
+        this.loginForms.controls.location.setValue(this.multipleProperties[0]);           
+        this.setMachineInfo(this.propertyValues[0].propertyId);        
       }
     }
   }
