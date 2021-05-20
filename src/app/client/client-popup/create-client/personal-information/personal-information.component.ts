@@ -335,14 +335,14 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['title'].clearValidators();
     this.FormGrp.controls['title'].setValidators(clientConfiguration[0]['CLIENT_TITLE'] ? [Validators.required] : []);
     this.FormGrp.controls['title'].updateValueAndValidity();
-    // if(clientConfiguration[0]['CLIENT_TITLE'])
-    // this.FormGrp.controls.title.markAsTouched();
+    if(clientConfiguration[0]['CLIENT_TITLE'])
+    this.FormGrp.controls.title.markAsTouched();
   
     this.FormGrp.controls['gender'].clearValidators();
     this.FormGrp.controls['gender'].setValidators(clientConfiguration[0]['CLIENT_GENDER'] ? [Validators.required] : []);
     this.FormGrp.controls['gender'].updateValueAndValidity();
-    // if(clientConfiguration[0]['CLIENT_GENDER'])
-    // this.FormGrp.controls.gender.markAsTouched();
+    if(clientConfiguration[0]['CLIENT_GENDER'])
+    this.FormGrp.controls.gender.markAsTouched();
 
     this.FormGrp.controls['state'].clearValidators();
     this.FormGrp.controls['state'].setValidators(clientConfiguration[0]['CLIENT_STATE'] ? [Validators.required, EmptyValueValidator] : []);
@@ -412,8 +412,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       PhoneGroup.controls['PhoneNumber'].setValidators(clientConfiguration[0]['CLIENT_PHONE'] ?
         [Validators.required, EmptyValueValidator] : []);
       PhoneGroup.controls['PhoneNumber'].updateValueAndValidity();
-      // if(clientConfiguration[0]['CLIENT_PHONE'])
-      // PhoneGroup.markAllAsTouched();
+      if(clientConfiguration[0]['CLIENT_PHONE'])
+      PhoneGroup.markAllAsTouched();
     });
     
     const AddresArray = this.FormGrp.get('Address') as FormArray;

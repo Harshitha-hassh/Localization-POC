@@ -55,12 +55,11 @@
           </mat-error>
         </div>
         <div class="display_style_toggle width_180px">
-
           <div class="float-left pr-4">
             <label for="" class="form-label-normal d-block mb-0 dob-label">{{captions.CDateOfBirth}}</label>
             <div class="d-inline-block">
               <mat-form-field floatLabel="never" class="width_180px" appearance="legacy">
-                <input required [max]="maxDate" matInput [matDatepicker]="picker" [placeholder]="placeHolderFormat" class=""
+                <input [required] ="clientConfiguration[0]['CLIENT_BIRTHDAY']" [max]="maxDate" matInput [matDatepicker]="picker" [placeholder]="placeHolderFormat" class=""
                   formControlName="dob">
                 <mat-datepicker #picker></mat-datepicker>
                 <i matSuffix class="icon-Calender cursor fs-xlarge position-relative d-inline-block customCalendar"
