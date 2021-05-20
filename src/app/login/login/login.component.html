@@ -94,7 +94,7 @@
                                 <div *ngIf="loginSuccess" class="overall_login_wrapper">
                                     <i class="icon-location-login ag_pr--2"></i>
                                     <mat-form-field class="ag_w--50">
-                                        <mat-select formControlName="location" (click)="loadProperties()" (selectionChange)="onPropertyChange($event)"
+                                        <mat-select formControlName="location" (click)="loadProperties()" [disabled] = "multipleProperties.length ==1" (selectionChange)="onPropertyChange($event)"
                                             [placeholder]="captions.lbl_location">
                                             <mat-option *ngFor="let location of multipleProperties" [value]="location">
                                                 {{location.name}}
