@@ -1513,6 +1513,7 @@
     "ImportRetailFailed": "Retail Items import fails_fr",
     "ImportRetailPartialSuccess": "items imported successfully_fr",
     "ImportAlertMessage": "Do you want to import_fr",
+    "PreviousImportMessage": "Previous Import has not Processed Completely, Do you want to import_fr",
     "downloadSampleCSV": "Sample Download_fr",
     "downloadSampleCSVFileName": "RetailItemSample_fr",
     "creditCardTerminals": "Credit Card Terminals_fr",
@@ -1945,7 +1946,11 @@
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_fr",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_fr",
     "AllowEarn": "Allow Earn_fr",
-    "btn_create": "CREATE_fr"
+    "btn_create": "CREATE_fr",
+    "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_fr",
+    "pg_title_PaymentMethod": "PAYMENT METHOD_fr",
+    "lbl_paymentMethodName": "Payment Method Name_fr",
+    "err_paymentMethodName": "Missing Payment Method Name_fr"
   },
   "setting": {
     "Title": "Title_fr",

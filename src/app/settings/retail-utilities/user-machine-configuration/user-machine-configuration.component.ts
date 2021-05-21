@@ -203,7 +203,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     const propertyId: number = Number(this.localization.GetPropertyInfo("PropertyId"));
     if (propertyId) {
       const machineNames = await this.machineNameDataService.GetMachineNames(propertyId);
-      this.defaultMachineOptions = this.mapMachineOptions(machineNames);
+      this.defaultMachineOptions = this.mapMachineOptions(machineNames);      
     }
   }
 
@@ -435,7 +435,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
         viewValue: machineName.name
       } as DropdownOptions       
     });
+    userMachineNames.unshift({ id: 0,value: 0, viewValue: '' });
     return userMachineNames;
-}
-
+  }
 }

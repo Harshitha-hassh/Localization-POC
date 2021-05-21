@@ -94,7 +94,7 @@
                                 <div *ngIf="loginSuccess" class="overall_login_wrapper">
                                     <i class="icon-location-login ag_pr--2"></i>
                                     <mat-form-field class="ag_w--50">
-                                        <mat-select formControlName="location" (click)="loadProperties()" (selectionChange)="onPropertyChange($event)"
+                                        <mat-select formControlName="location" (click)="loadProperties()" [disabled] = "multipleProperties.length ==1" (selectionChange)="onPropertyChange($event)"
                                             [placeholder]="captions.lbl_location">
                                             <mat-option *ngFor="let location of multipleProperties" [value]="location">
                                                 {{location.name}}
@@ -107,7 +107,7 @@
                                     </mat-form-field>
                                     <mat-form-field class="w-50 machine-name" *ngIf = "isPromptOnLoginEnabled && machineNames.length > 0">
                                         <mat-select formControlName="machineName" (click)="loadMachineNames()"
-                                        [compareWith]="compareSelect"  placeholder="{{this.captions.Machine}}">
+                                        [compareWith]="compareSelect"  placeholder="{{this.captions.Machine}}" required>
                                             <mat-option *ngFor="let machineName of machineNames"
                                                 [value]="machineName">
                                                 {{machineName.name}}

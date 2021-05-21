@@ -1513,6 +1513,7 @@
     "ImportRetailFailed": "Retail Items import fails_au",
     "ImportRetailPartialSuccess": "items imported successfully_au",
     "ImportAlertMessage": "Do you want to import_au",
+    "PreviousImportMessage": "Previous Import has not Processed Completely, Do you want to import_au",
     "downloadSampleCSV": "Sample Download_au",
     "downloadSampleCSVFileName": "RetailItemSample_au",
     "creditCardTerminals": "Credit Card Terminals_au",
@@ -1945,7 +1946,11 @@
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_au",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_au",
     "AllowEarn": "Allow Earn_au",
-    "btn_create": "CREATE_au"
+    "btn_create": "CREATE_au",
+    "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_au",
+    "pg_title_PaymentMethod": "PAYMENT METHOD_au",
+    "lbl_paymentMethodName": "Payment Method Name_au",
+    "err_paymentMethodName": "Missing Payment Method Name_au"
   },
   "setting": {
     "Title": "Title_au",

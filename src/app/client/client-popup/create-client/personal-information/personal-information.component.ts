@@ -54,6 +54,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   currentIndexemail: any = 0;
   currentIndexPhone: any = 0;
   selectedEmail: any;
+  selectedPhone:any;
   validateEmailType: string;
   validatePhoneType: string;
   titles = [{ id: 1, value: 'Dr.' }, { id: 2, value: 'Fr.' }, { id: 3, value: 'Miss' },
@@ -83,6 +84,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   AddressRequired: boolean;
   isPatronIdAvailable = false;
   showLoader = false;
+  titleRequired : boolean =false;
+  genderRequired : boolean =false;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   isCMSConfigured = false;
   mailTypes = GuestProfileMailTypes;
@@ -91,6 +94,19 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   placeHolderFormat: string;
   // receiptDate: any;
   maxReceiptDate: any;
+  isDobRequired: boolean = false;
+  customRequired = {
+    title: false,
+    gender: false,
+    address: false,
+    email: false,
+    phone: false,
+    city: false,
+    state: false,
+    country: false,
+    postalCode:false,
+    dob:false
+  };
   
   @Input('inputData')
   set formData(value) {
@@ -322,6 +338,19 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     clientConfiguration = clientConfiguration ? clientConfiguration : [];
     if (clientConfiguration && clientConfiguration.length == 0) { return; }
 
+    this.customRequired = {
+      address: clientConfiguration[0]['CLIENT_ADDRESS_LINE_1'],
+      city: clientConfiguration[0]['CLIENT_CITY'],
+      country: clientConfiguration[0]['CLIENT_COUNTRY'],
+      phone: clientConfiguration[0]['CLIENT_PHONE'],
+      email: clientConfiguration[0]['CLIENT_EMAIL'],
+      gender: clientConfiguration[0]['CLIENT_GENDER'],
+      state: clientConfiguration[0]['CLIENT_STATE'],
+      title: clientConfiguration[0]['CLIENT_TITLE'],
+      postalCode: clientConfiguration[0]['CLIENT_POSTAL_CODE'],
+      dob: clientConfiguration[0]['CLIENT_BIRTHDAY']
+    }
+    
     // this.FormGrp.controls['firstName'].clearValidators();
     // this.FormGrp.controls['firstName'].setValidators(clientConfiguration[0]['CLIENT_FIRST_NAME'] ?
     //   [Validators.required, EmptyValueValidator] : []);
@@ -347,39 +376,40 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['state'].clearValidators();
     this.FormGrp.controls['state'].setValidators(clientConfiguration[0]['CLIENT_STATE'] ? [Validators.required, EmptyValueValidator] : []);
     this.FormGrp.controls['state'].updateValueAndValidity();
-    if(clientConfiguration[0]['CLIENT_STATE'])
-    this.FormGrp.controls.state.markAsTouched();
+    // if(clientConfiguration[0]['CLIENT_STATE'])
+    // this.FormGrp.controls.state.markAsTouched();
 
     this.FormGrp.controls['city'].clearValidators();
     this.FormGrp.controls['city'].setValidators(clientConfiguration[0]['CLIENT_CITY'] ? [Validators.required, EmptyValueValidator] : []);
     this.FormGrp.controls['city'].updateValueAndValidity();
-    if(clientConfiguration[0]['CLIENT_CITY'])
-    this.FormGrp.controls.city.markAsTouched();
+    // if(clientConfiguration[0]['CLIENT_CITY'])
+    // this.FormGrp.controls.city.markAsTouched();
 
     this.FormGrp.controls['country'].clearValidators();
     this.FormGrp.controls['country'].setValidators(clientConfiguration[0]['CLIENT_COUNTRY'] ?
       [Validators.required, EmptyValueValidator] : []);
     this.FormGrp.controls['country'].updateValueAndValidity();
-    if(clientConfiguration[0]['CLIENT_COUNTRY'])
-    this.FormGrp.controls.country.markAsTouched();
+    // if(clientConfiguration[0]['CLIENT_COUNTRY'])
+    // this.FormGrp.controls.country.markAsTouched();
 
     this.FormGrp.controls['postal_code'].clearValidators();
     this.FormGrp.controls['postal_code'].setValidators(clientConfiguration[0]['CLIENT_POSTAL_CODE'] ?
       [Validators.required, EmptyValueValidator] : []);
     this.FormGrp.controls['postal_code'].updateValueAndValidity();
-    if(clientConfiguration[0]['CLIENT_POSTAL_CODE'])
-    this.FormGrp.controls.postal_code.markAsTouched();
+    // if(clientConfiguration[0]['CLIENT_POSTAL_CODE'])
+    // this.FormGrp.controls.postal_code.markAsTouched();
 
     // this.FormGrp.controls['dob'].clearValidators();
     if(clientConfiguration[0]['CLIENT_BIRTHDAY']){
-      this.FormGrp.controls['dob'].clearValidators();
-      this.FormGrp.controls['dob'].setValidators([Validators.required]);
-      this.FormGrp.controls['dob'].updateValueAndValidity();
+      // this.FormGrp.controls['dob'].clearValidators();
+      // this.FormGrp.controls['dob'].setValidators([Validators.required]);
+      // this.FormGrp.controls['dob'].updateValueAndValidity();
+      this.isDobRequired = true;
     }
     
     
-    if(clientConfiguration[0]['CLIENT_BIRTHDAY'])
-    this.FormGrp.controls.dob.markAsTouched();
+    // if(clientConfiguration[0]['CLIENT_BIRTHDAY'])
+    // this.FormGrp.controls.dob.markAsTouched();
 
     this.emailRequired = clientConfiguration[0]['CLIENT_EMAIL'];
     this.phoneRequired = clientConfiguration[0]['CLIENT_PHONE'];
@@ -393,8 +423,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       EmailGroup.controls['EmailId'].setValidators(clientConfiguration[0]['CLIENT_EMAIL'] ?
         [Validators.required, EmptyValueValidator] : []);
       EmailGroup.controls['EmailId'].updateValueAndValidity();
-      if(clientConfiguration[0]['CLIENT_EMAIL'])
-      EmailGroup.markAllAsTouched();
+      // if(clientConfiguration[0]['CLIENT_EMAIL'])
+      // EmailGroup.markAllAsTouched();
     });
     const PhoneArray = this.FormGrp.get('Phone') as FormArray;
     const that = this;
@@ -424,8 +454,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       AddressGroup.controls['addressLine'].setValidators(clientConfiguration[0]['CLIENT_ADDRESS_LINE_1'] ?
         [Validators.required, EmptyValueValidator] : []);
       AddressGroup.controls['addressLine'].updateValueAndValidity();
-      if(clientConfiguration[0]['CLIENT_ADDRESS_LINE_1'])
-      AddressGroup.markAllAsTouched();
+      // if(clientConfiguration[0]['CLIENT_ADDRESS_LINE_1'])
+      // AddressGroup.markAllAsTouched();
     });
 
     this.FormGrp.updateValueAndValidity();
