@@ -1513,6 +1513,7 @@
     "ImportRetailFailed": "Retail Items import fails_uk",
     "ImportRetailPartialSuccess": "items imported successfully_uk",
     "ImportAlertMessage": "Do you want to import_uk",
+    "PreviousImportMessage": "Previous Import has not Processed Completely, Do you want to import_uk",
     "downloadSampleCSV": "Sample Download_uk",
     "downloadSampleCSVFileName": "RetailItemSample_uk",
     "creditCardTerminals": "Credit Card Terminals_uk",

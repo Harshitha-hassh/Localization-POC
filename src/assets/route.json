@@ -677,5 +677,7 @@
   "CombineGuestInformation": "GuestCombine/{primaryGuestId}",
   "UpdateGuestInformation": "GuestCombine/updateguest",
   "GetGuestInfoByGuid":"GuestCombine/{id}",
-  "RoomLookupWithRoomKeyData": "Payment/GetRoomDetailsFromRoomkeyData"
+  "RoomLookupWithRoomKeyData": "Payment/GetRoomDetailsFromRoomkeyData",
+  "ImportItem":"RetailItems/ImportItems/{isAuthorised}",
+  "ValidateImport":"RetailItems/ValidateImport"
 }

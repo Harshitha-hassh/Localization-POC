@@ -1513,6 +1513,7 @@
     "ImportRetailFailed": "Retail Items import fails_gb",
     "ImportRetailPartialSuccess": "items imported successfully_gb",
     "ImportAlertMessage": "Do you want to import_gb",
+    "PreviousImportMessage": "Previous Import has not Processed Completely, Do you want to import_gb",
     "downloadSampleCSV": "Sample Download_gb",
     "downloadSampleCSVFileName": "RetailItemSample_gb",
     "creditCardTerminals": "Credit Card Terminals_gb",

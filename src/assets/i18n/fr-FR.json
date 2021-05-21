@@ -1513,6 +1513,7 @@
     "ImportRetailFailed": "Retail Items import fails_fr",
     "ImportRetailPartialSuccess": "items imported successfully_fr",
     "ImportAlertMessage": "Do you want to import_fr",
+    "PreviousImportMessage": "Previous Import has not Processed Completely, Do you want to import_fr",
     "downloadSampleCSV": "Sample Download_fr",
     "downloadSampleCSVFileName": "RetailItemSample_fr",
     "creditCardTerminals": "Credit Card Terminals_fr",
