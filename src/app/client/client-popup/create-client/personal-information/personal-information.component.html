@@ -42,9 +42,9 @@
       <div class="">
         <div class="display_style_toggle  toggle-section float-left ">
           <label *ngIf="!customRequired.gender" for="gender" class=" LW12 gender form-label-normal" >{{captions.Gender}}</label>
-          <div *ngIf="customRequired.gender" style="width:100%">
-          <div style="float: left;width: 40%;">{{captions.Gender}}</div>
-          <div style="color: red;float: left;width: 20%;">*</div>
+          <div *ngIf="customRequired.gender" class="wdt-100">
+          <div class="gender-left">{{captions.Gender}}</div>
+          <div class=gender-right>*</div>
           </div>
           <mat-button-toggle-group #group="matButtonToggleGroup" class="margin_top_9 LW14 mb-1 "
             [value]="personalDetails.gender" formControlName="gender" [required] ="customRequired.gender">
@@ -61,9 +61,9 @@
         <div class="display_style_toggle width_180px">
           <div class="float-left pr-4">
             <label for="" *ngIf="!customRequired.dob" class="form-label-normal d-block mb-0 dob-label">{{captions.CDateOfBirth}}</label>
-            <div *ngIf="customRequired.dob" style="width:100%">
-              <div style="float: left;width: 60%;">{{captions.CDateOfBirth}}</div>
-              <div style="color: red;float: left;width: 1%;">*</div>
+            <div *ngIf="customRequired.dob" class="wdt-100">
+              <div class="dob-left">{{captions.CDateOfBirth}}</div>
+              <div class="dob-right">*</div>
               </div>
             <div class="d-inline-block">
               <mat-form-field floatLabel="never" class="width_180px" appearance="legacy">
@@ -175,9 +175,10 @@
           </div>
           <div class="error-div">
             <mat-error class="mb-1"
-              *ngIf="!isClientViewOnly && item.controls['PhoneNumberLabel'].touched && (item.controls['PhoneNumberLabel'].hasError('required') || item.controls['PhoneNumberLabel'].invalid)">
+              *ngIf="!isClientViewOnly && item.controls['PhoneNumberLabel'].touched && !phoneErrorRequired">
               {{validatePhoneType}}
             </mat-error>
+
             <mat-error class="mb-1"
               *ngIf="!isClientViewOnly && item.controls['PhoneNumber'].touched && !item.controls['PhoneNumber'].valid && !FormGrp.controls.Phone.value[i].PhoneNumber">
               {{captions.InvalidPhoneNumber}}

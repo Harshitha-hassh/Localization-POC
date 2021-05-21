@@ -81,6 +81,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   textmaskFormat: string;
   emailRequired: boolean;
   phoneRequired: boolean = true;
+  phoneErrorRequired:boolean=false;
   AddressRequired: boolean;
   isPatronIdAvailable = false;
   showLoader = false;
@@ -845,6 +846,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['Email']['controls'][index].controls[emailLabel].updateValueAndValidity();
   }
 
+  
+
   setmandatory(eve, phoneNumber, altfield, phoneType, index , item) {
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
     this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].clearValidators();
@@ -854,10 +857,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     if (phoneNumber == 'PhoneNumber') {
       if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value &&
         this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value === 1) {
+        this.phoneErrorRequired =true;
         this.FormGrp.controls['Phone']['controls'][index].controls[altfield].setValidators(Validators.required);
         this.FormGrp.controls['Phone']['controls'][index].controls[altfield].markAsTouched();
         this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].markAsTouched();
       } else {
+        this.phoneErrorRequired =false;
         this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
         this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].clearValidators();
       }
