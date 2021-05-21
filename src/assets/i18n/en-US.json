@@ -1946,7 +1946,11 @@
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal",
     "AllowEarn": "Allow Earn",
-		"btn_create": "CREATE"
+		"btn_create": "CREATE",
+    "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD",
+		"pg_title_PaymentMethod": "PAYMENT METHOD",
+		"lbl_paymentMethodName": "Payment Method Name",
+		"err_paymentMethodName": "Missing Payment Method Name"
   },
   "setting": {
     "Title": "Title",

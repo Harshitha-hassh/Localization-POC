@@ -1946,7 +1946,11 @@
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_fr",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_fr",
     "AllowEarn": "Allow Earn_fr",
-    "btn_create": "CREATE_fr"
+    "btn_create": "CREATE_fr",
+    "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_fr",
+    "pg_title_PaymentMethod": "PAYMENT METHOD_fr",
+    "lbl_paymentMethodName": "Payment Method Name_fr",
+    "err_paymentMethodName": "Missing Payment Method Name_fr"
   },
   "setting": {
     "Title": "Title_fr",
