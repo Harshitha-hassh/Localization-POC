@@ -637,6 +637,7 @@
   "GetRetailItemDetailedInfo": "retailitems/detailed-info?id={id}",
   "GetRetailItemDetailedInfoList": "retailitems/detailed-infolist",
   "SyncInventory": "retailitems/syncinventory/outlets/{outletId}",
+  "PosFullSync": "POSSync/SyncOutletItems/{outletId}",
   "GetRetailItemById": "RetailItems/{itemId}",
   "GetTransactionCountByPaymentMethod": "Transaction/paymentmethod/{paymentmethodId}/count",
   "GetAllPostTypes": "RevenuePosting/GetPostTypes",

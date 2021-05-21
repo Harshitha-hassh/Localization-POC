@@ -251,6 +251,7 @@
   "-87": "Please select an Email Type_uk",
   "-88": "Please select a Phone Type_uk",
   "-200": "Retail POS is down, please try again later_uk",
+  "-201": "Items have not been synced properly. Kindly, Sync from the Retail Item Setup._uk",
   "-107": "Package associated with appointments, change not allowed_uk",
   "-113": "Unable to schedule break due to a conflict in therapist schedule._uk",
   "-114": "Unable to schedule break as therapist is not scheduled in the requested date time._uk",
