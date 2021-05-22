@@ -1501,6 +1501,8 @@
   "lbl_userId": "User ID_da",
   "lbl_logout": "Log Out_da",
   "retailsetup": {
+    "ImportRetailStatus": "Retail Items Import Status_da_da",
+    "ImportStatus": "Import Status_da_da",
     "DiscountReasonDeletionConfirmmsg": "Are you sure want to delete the 'Discount Reason {Discount Reason}'?_da",
     "InventoryType": "Inventory Type_da",
     "ImportFailedItems": "Import Failed Items_da",
