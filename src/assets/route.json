@@ -680,5 +680,6 @@
   "GetGuestInfoByGuid":"GuestCombine/{id}",
   "RoomLookupWithRoomKeyData": "Payment/GetRoomDetailsFromRoomkeyData",
   "ImportItem":"RetailItems/ImportItems/{isAuthorised}",
-  "ValidateImport":"RetailItems/ValidateImport"
+  "ValidateImport":"RetailItems/ValidateImport",
+  "ImportStatus":"RetailItems/ImportStatus"
 }
