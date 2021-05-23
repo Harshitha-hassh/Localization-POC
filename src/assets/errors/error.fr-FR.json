@@ -186,6 +186,7 @@
   "70605": "Do not enable both Multipack and Open Item,either one should be true_fr",
   "70606": "Do not enable both Scaled Item and Open,either one should be true_fr",
   "70607": "Quantity cannot be a Decimal Value._fr",
+  "70616": "Item Number cannot be a Decimal Value._fr",
   "70608": "Item Par cannot be a Decimal Value._fr",
   "70609": "Card number not valid_fr",
   "70610": "Retail Item Type is not valid._fr",
