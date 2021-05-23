@@ -8,6 +8,7 @@
     "-87": "Please select an Email Type",
     "-88": "Please select a Phone Type",
     "-200": "Retail POS is down, please try again later", 
+    "-201": "Items have not been synced properly. Kindly, Sync from the Retail Item Setup.",
     "330":  "Missing Item Number.",
     "331":  "Missing Item Description.",
     "332":  "Missing Retail Category.",

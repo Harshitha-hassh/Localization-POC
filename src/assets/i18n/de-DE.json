@@ -1501,6 +1501,8 @@
   "lbl_userId": "User ID_de",
   "lbl_logout": "Log Out_de",
   "retailsetup": {
+    "ImportRetailStatus": "Retail Items Import Status_da_de",
+    "ImportStatus": "Import Status_da_de",
     "DiscountReasonDeletionConfirmmsg": "Are you sure want to delete the 'Discount Reason {Discount Reason}'?_de",
     "InventoryType": "Inventory Type_de",
     "ImportFailedItems": "Import Failed Items_de",
@@ -1513,6 +1515,7 @@
     "ImportRetailFailed": "Retail Items import fails_de",
     "ImportRetailPartialSuccess": "items imported successfully_de",
     "ImportAlertMessage": "Do you want to import_de",
+    "PreviousImportMessage": "Previous Import has not Processed Completely, Do you want to import_de",
     "downloadSampleCSV": "Sample Download_de",
     "downloadSampleCSVFileName": "RetailItemSample_de",
     "creditCardTerminals": "Credit Card Terminals_de",
@@ -1829,6 +1832,9 @@
     "taxIn": "Tax in_de",
     "PleaseEnteraPrintQty": "Please Enter a Print Qty_de",
     "PleaseSelectanItem": "Please Select an Item_de",
+    "PosSyncFailed": "Retail Item Sync Failure_de",
+    "PosSyncSuccess": "Retail Item Sync Success_de",
+    "PosSyncProgress": "Sync is in Progress_de",
     "printQty": "Print Qty_de",
     "ProductName": "Product Name_de",
     "Taxes": "TAXES_de",
@@ -1945,7 +1951,11 @@
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_de",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_de",
     "AllowEarn": "Allow Earn_de",
-    "btn_create": "CREATE_de"
+    "btn_create": "CREATE_de",
+    "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_de",
+    "pg_title_PaymentMethod": "PAYMENT METHOD_de",
+    "lbl_paymentMethodName": "Payment Method Name_de",
+    "err_paymentMethodName": "Missing Payment Method Name_de"
   },
   "setting": {
     "Title": "Title_de",

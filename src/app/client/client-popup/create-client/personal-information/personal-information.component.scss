@@ -2,6 +2,21 @@
 //     background:#c2a653 !important;
 // }
 @import '../../../../../assets/sass/abstracts/_variables';
+.wdt-100{
+    width: 100%;
+}
+.dob-left{
+    float: left;width: 60%;
+}
+.dob-right{
+    color: red;float: left;width: 1%;
+}
+.gender-left{
+    float: left;width: 40%;
+}
+.gender-right{
+    color: red;float: left;width: 20%;
+}
 .personal_container{
     position: relative;
     label{
@@ -113,6 +128,9 @@
 }
 .width-90px{
     width: 90px;
+}
+.width-100px{
+    width: 100px;
 }
 .width-287px{
     width: 287px;
