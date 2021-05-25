@@ -1501,6 +1501,8 @@
   "lbl_userId": "User ID_au",
   "lbl_logout": "Log Out_au",
   "retailsetup": {
+    "ImportRetailStatus": "Retail Items Import Status_da_au",
+    "ImportStatus": "Import Status_da_au",
     "DiscountReasonDeletionConfirmmsg": "Are you sure want to delete the 'Discount Reason {Discount Reason}'?_au",
     "InventoryType": "Inventory Type_au",
     "ImportFailedItems": "Import Failed Items_au",
@@ -1513,6 +1515,7 @@
     "ImportRetailFailed": "Retail Items import fails_au",
     "ImportRetailPartialSuccess": "items imported successfully_au",
     "ImportAlertMessage": "Do you want to import_au",
+    "PreviousImportMessage": "Previous Import has not Processed Completely, Do you want to import_au",
     "downloadSampleCSV": "Sample Download_au",
     "downloadSampleCSVFileName": "RetailItemSample_au",
     "creditCardTerminals": "Credit Card Terminals_au",
@@ -1829,6 +1832,9 @@
     "taxIn": "Tax in_au",
     "PleaseEnteraPrintQty": "Please Enter a Print Qty_au",
     "PleaseSelectanItem": "Please Select an Item_au",
+    "PosSyncFailed": "Retail Item Sync Failure_au",
+    "PosSyncSuccess": "Retail Item Sync Success_au",
+    "PosSyncProgress": "Sync is in Progress_au",
     "printQty": "Print Qty_au",
     "ProductName": "Product Name_au",
     "Taxes": "TAXES_au",
@@ -1945,7 +1951,11 @@
     "CreditCardTerminalerr_missing_StoreId": "Missing Store ID_au",
     "lbl_createCreditCardTerminalTitle": "Create Credit Card Terminal_au",
     "AllowEarn": "Allow Earn_au",
-    "btn_create": "CREATE_au"
+    "btn_create": "CREATE_au",
+    "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_au",
+    "pg_title_PaymentMethod": "PAYMENT METHOD_au",
+    "lbl_paymentMethodName": "Payment Method Name_au",
+    "err_paymentMethodName": "Missing Payment Method Name_au"
   },
   "setting": {
     "Title": "Title_au",

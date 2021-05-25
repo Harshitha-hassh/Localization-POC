@@ -637,6 +637,7 @@
   "GetRetailItemDetailedInfo": "retailitems/detailed-info?id={id}",
   "GetRetailItemDetailedInfoList": "retailitems/detailed-infolist",
   "SyncInventory": "retailitems/syncinventory/outlets/{outletId}",
+  "PosFullSync": "POSSync/SyncOutletItems/{outletId}",
   "GetRetailItemById": "RetailItems/{itemId}",
   "GetTransactionCountByPaymentMethod": "Transaction/paymentmethod/{paymentmethodId}/count",
   "GetAllPostTypes": "RevenuePosting/GetPostTypes",
@@ -677,5 +678,8 @@
   "CombineGuestInformation": "GuestCombine/{primaryGuestId}",
   "UpdateGuestInformation": "GuestCombine/updateguest",
   "GetGuestInfoByGuid":"GuestCombine/{id}",
-  "RoomLookupWithRoomKeyData": "Payment/GetRoomDetailsFromRoomkeyData"
+  "RoomLookupWithRoomKeyData": "Payment/GetRoomDetailsFromRoomkeyData",
+  "ImportItem":"RetailItems/ImportItems/{isAuthorised}",
+  "ValidateImport":"RetailItems/ValidateImport",
+  "ImportStatus":"RetailItems/ImportStatus"
 }
