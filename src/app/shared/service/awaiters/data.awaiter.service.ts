@@ -66,7 +66,7 @@ export class DataAwaiterService {
     }
 
     private async searchClient(name: string, requestUid: string): Promise<[ClientSearchModel[], PayeeInfo[]]> {
-        let response: any = await this.clientDataService.searchClient(encodeURIComponent(name), requestUid);
+        let response: any = await this.clientDataService.searchClient(name, requestUid);
 
         let clientDetails: PayeeInfo[] = [];
         let responseUid = "";
