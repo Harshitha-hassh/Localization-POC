@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 import { SettingsService } from '../../../settings.service';
@@ -32,6 +32,7 @@ export class UserSettingsComponent implements OnInit {
   userIdPattern;
   commonCaptions: any;
   placeHolderFormat: string;
+  @Input() popConfig: any;
 
   constructor(public localization: RetailStandaloneLocalization, public servicesetting: SettingsService,
               private http: HttpServiceCall, private utils: Utilities, private PropertyInfo: PropertyInformation) {
@@ -49,6 +50,11 @@ export class UserSettingsComponent implements OnInit {
     //   this.utils.disableControls(this.userSettingsFormGrp);
     // }
     this.minDateValue = this.utils.getDate(this.PropertyInfo.CurrentDate);
+    if(this.popConfig && this.popConfig.mode === 'Edit'){
+      this.userSettingsFormGrp.controls['userid'].disable();
+    } else {
+      this.userSettingsFormGrp.controls['userid'].enable();
+    }
     // this.GetServiceCall('GetPropLanguages', {propertyId: 1});
     const tenantConfig = await this.GetTenantConfigurationCall('GetTenantConfiguration',{configurationName: 'TENANTCONFIGURATION'});
     this.setUserIdPattern(tenantConfig);
