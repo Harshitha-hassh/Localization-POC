@@ -3474,7 +3474,7 @@
   "btn_combine": "COMBINE",
   "lbl_usetargetsrchcriteria": "Use Target Search Criteria",
   "lbl_showMatchField": "Show Match Field",
-  "lbl_usefiltercriteria": "Use only filter criteria",
+  "lbl_usefiltercriteria": "Use Only Filter Criteria",
   "btn_search": "SEARCH",
   "stp_hdr_sourcesearchcriteria": "SOURCE SEARCH CRITERIA",
   "stp_hdr_setvaluetocombine": "SET VALUE TO COMBINE",
