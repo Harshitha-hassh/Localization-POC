@@ -70,7 +70,8 @@
     "done": "Done_fi",
     "resev": "Resev_fi",
     "all": "All_fi",
-    "viewFailed": "View Failed_fi"
+    "viewFailed": "View Failed_fi",
+    "viewFailedUnprocessed": "View Failed / Unprocessed_fi"
   },
   "login": {
     "enterUserId": "Please Enter the User ID_fi",
@@ -1512,6 +1513,11 @@
     "machineName": "Machine Name_fi",
     "MissingMachineName": "Missing Machine Name_fi",
     "ImportRetailSuccess": "Retail Items import succeeded_fi",
+    "ImportRetailInitiate": "Retail Items Import Initiated Successfully_fi",
+    "ImportNotProcessed": "Not Processed_fi",
+    "ImportProcessed": "Processed_fi",
+    "ImportFailed": "Failed_fi",
+    "ImportItemStatus": "Import Item Status_fi",
     "ImportRetailFailed": "Retail Items import fails_fi",
     "ImportRetailPartialSuccess": "items imported successfully_fi",
     "ImportAlertMessage": "Do you want to import_fi",

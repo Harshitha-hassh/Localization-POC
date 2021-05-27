@@ -70,7 +70,8 @@
     "done": "Done_da",
     "resev": "Resev_da",
     "all": "All_da",
-    "viewFailed": "View Failed_da"
+    "viewFailed": "View Failed_da",
+    "viewFailedUnprocessed": "View Failed / Unprocessed_da"
   },
   "login": {
     "enterUserId": "Please Enter the User ID_da",
@@ -1512,6 +1513,11 @@
     "machineName": "Machine Name_da",
     "MissingMachineName": "Missing Machine Name_da",
     "ImportRetailSuccess": "Retail Items import succeeded_da",
+    "ImportRetailInitiate": "Retail Items Import Initiated Successfully_da",
+    "ImportNotProcessed": "Not Processed_da",
+    "ImportProcessed": "Processed_da",
+    "ImportFailed": "Failed_da",
+    "ImportItemStatus": "Import Item Status_da",
     "ImportRetailFailed": "Retail Items import fails_da",
     "ImportRetailPartialSuccess": "items imported successfully_da",
     "ImportAlertMessage": "Do you want to import_da",

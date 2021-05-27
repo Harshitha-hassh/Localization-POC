@@ -70,7 +70,8 @@
     "done": "Done_uk",
     "resev": "Resev_uk",
     "all": "All_uk",
-    "viewFailed": "View Failed_uk"
+    "viewFailed": "View Failed_uk",
+    "viewFailedUnprocessed": "View Failed / Unprocessed_uk"
   },
   "login": {
     "enterUserId": "Please Enter the User ID_uk",
@@ -1512,6 +1513,11 @@
     "machineName": "Machine Name_uk",
     "MissingMachineName": "Missing Machine Name_uk",
     "ImportRetailSuccess": "Retail Items import succeeded_uk",
+    "ImportRetailInitiate": "Retail Items Import Initiated Successfully_uk",
+    "ImportNotProcessed": "Not Processed_uk",
+    "ImportProcessed": "Processed_uk",
+    "ImportFailed": "Failed_uk",
+    "ImportItemStatus": "Import Item Status_uk",
     "ImportRetailFailed": "Retail Items import fails_uk",
     "ImportRetailPartialSuccess": "items imported successfully_uk",
     "ImportAlertMessage": "Do you want to import_uk",

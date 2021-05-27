@@ -70,7 +70,8 @@
     "done": "Done_gb",
     "resev": "Resev_gb",
     "all": "All_gb",
-    "viewFailed": "View Failed_gb"
+    "viewFailed": "View Failed_gb",
+    "viewFailedUnprocessed": "View Failed / Unprocessed_gb"
   },
   "login": {
     "enterUserId": "Please Enter the User ID_gb",
@@ -1512,6 +1513,11 @@
     "machineName": "Machine Name_gb",
     "MissingMachineName": "Missing Machine Name_gb",
     "ImportRetailSuccess": "Retail Items import succeeded_gb",
+    "ImportRetailInitiate": "Retail Items Import Initiated Successfully_gb",
+    "ImportNotProcessed": "Not Processed_gb",
+    "ImportProcessed": "Processed_gb",
+    "ImportFailed": "Failed_gb",
+    "ImportItemStatus": "Import Item Status_gb",
     "ImportRetailFailed": "Retail Items import fails_gb",
     "ImportRetailPartialSuccess": "items imported successfully_gb",
     "ImportAlertMessage": "Do you want to import_gb",
