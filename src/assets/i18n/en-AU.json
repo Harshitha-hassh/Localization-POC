@@ -70,7 +70,8 @@
     "done": "Done_au",
     "resev": "Resev_au",
     "all": "All_au",
-    "viewFailed": "View Failed_au"
+    "viewFailed": "View Failed_au",
+    "viewFailedUnprocessed": "View Failed / Unprocessed_au"
   },
   "login": {
     "enterUserId": "Please Enter the User ID_au",
@@ -1512,6 +1513,11 @@
     "machineName": "Machine Name_au",
     "MissingMachineName": "Missing Machine Name_au",
     "ImportRetailSuccess": "Retail Items import succeeded_au",
+    "ImportRetailInitiate": "Retail Items Import Initiated Successfully_au",
+    "ImportNotProcessed": "Not Processed_au",
+    "ImportProcessed": "Processed_au",
+    "ImportFailed": "Failed_au",
+    "ImportItemStatus": "Import Item Status_au",
     "ImportRetailFailed": "Retail Items import fails_au",
     "ImportRetailPartialSuccess": "items imported successfully_au",
     "ImportAlertMessage": "Do you want to import_au",
@@ -2122,6 +2128,7 @@
     "ShowInactiveTherapist": "Show Inactive Therapist_au",
     "ShowInactiveService": "Show Inactive Service_au",
     "UploadYourPhoto": "Upload your Photo_au",
+    "UploadYourPhotoRetailImage": "Upload retail item image/photo_au",
     "Active": "Active_au",
     "MissingStaffCode": "Missing Staff Code_au",
     "MissingListOrder": "Missing List Order_au",

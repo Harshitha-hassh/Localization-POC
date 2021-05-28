@@ -70,7 +70,8 @@
     "done": "Done_fr",
     "resev": "Resev_fr",
     "all": "All_fr",
-    "viewFailed": "View Failed_fr"
+    "viewFailed": "View Failed_fr",
+    "viewFailedUnprocessed": "View Failed / Unprocessed_fr"
   },
   "login": {
     "enterUserId": "Please Enter the User ID_fr",
@@ -1512,6 +1513,11 @@
     "machineName": "Machine Name_fr",
     "MissingMachineName": "Missing Machine Name_fr",
     "ImportRetailSuccess": "Retail Items import succeeded_fr",
+    "ImportRetailInitiate": "Retail Items Import Initiated Successfully_fr",
+    "ImportNotProcessed": "Not Processed_fr",
+    "ImportProcessed": "Processed_fr",
+    "ImportFailed": "Failed_fr",
+    "ImportItemStatus": "Import Item Status_fr",
     "ImportRetailFailed": "Retail Items import fails_fr",
     "ImportRetailPartialSuccess": "items imported successfully_fr",
     "ImportAlertMessage": "Do you want to import_fr",
@@ -2122,6 +2128,7 @@
     "ShowInactiveTherapist": "Show Inactive Therapist_fr",
     "ShowInactiveService": "Show Inactive Service_fr",
     "UploadYourPhoto": "Upload your Photo_fr",
+    "UploadYourPhotoRetailImage": "Upload retail item image/photo_fr",
     "Active": "Active_fr",
     "MissingStaffCode": "Missing Staff Code_fr",
     "MissingListOrder": "Missing List Order_fr",

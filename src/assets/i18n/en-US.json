@@ -70,7 +70,8 @@
     "done": "Done",
     "resev": "Resev",
     "all": "All",
-    "viewFailed": "View Failed"
+    "viewFailed": "View Failed",
+    "viewFailedUnprocessed": "View Failed / Unprocessed"
   },
   "login": {
 		"enterUserId": "Please Enter the User ID",
@@ -1512,6 +1513,11 @@
     "machineName": "Machine Name",
     "MissingMachineName": "Missing Machine Name",
     "ImportRetailSuccess": "Retail Items import succeeded",
+    "ImportRetailInitiate": "Retail Items Import Initiated Successfully",
+		"ImportNotProcessed":"Not Processed",
+		"ImportProcessed":"Processed",
+		"ImportFailed":"Failed",
+		"ImportItemStatus": "Import Item Status",
     "ImportRetailFailed": "Retail Items import fails",
     "ImportRetailPartialSuccess": "items imported successfully",
     "ImportAlertMessage": "Do you want to import",
@@ -2122,6 +2128,7 @@
     "ShowInactiveTherapist": "Show Inactive Therapist",
     "ShowInactiveService": "Show Inactive Service",
     "UploadYourPhoto": "Upload your Photo",
+		"UploadYourPhotoRetailImage": "Upload retail item image/photo",
     "Active": "Active",
     "MissingStaffCode": "Missing Staff Code",
     "MissingListOrder": "Missing List Order",
