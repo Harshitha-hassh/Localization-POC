@@ -147,6 +147,8 @@ public apiMapperGuestSearchFields(GuestSearchFieldsUIModel: UI.GuestSearchFields
     playerId: GuestSearchFieldsUIModel.playerId,
     memberTypeId: GuestSearchFieldsUIModel.memberTypeId,
     includeInactive: false,
+    title:GuestSearchFieldsUIModel.title,
+    address:GuestSearchFieldsUIModel.address,
     //PMSGuestSearchCriteria: this.mapPMSSearchCriteria(GuestSearchFieldsUIModel),
     AdditionalSearchCriteria: this.mapAdditionalSearchCriteria(GuestSearchFieldsUIModel)
   } as API.GuestSearchFields;
@@ -304,6 +306,12 @@ public async getGuestInformationByGuid(Guid: string): Promise<GuestUI.Guest> {
 
 public async combineGuestInfo(guestInfo){
    await this.combineGuestdataservice.UpdateGuestInformation(guestInfo);
+}
+
+async getGuestsforEmptyFilter(filterName: string): Promise<CGtablecontent[]>{
+  const apiGuestModels: API.Guest[] = await this.combineGuestdataservice.getGuestsByEmptySearchCriteria(filterName);
+  const returnArray: CGtablecontent[] = apiGuestModels.map(x => this.uiGridMapper(x));
+  return returnArray;
 }
 
 public uiMapper_GuestInformation(GuestAPIModel: API.Guest): GuestUI.Guest {

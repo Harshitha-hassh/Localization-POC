@@ -681,5 +681,6 @@
   "RoomLookupWithRoomKeyData": "Payment/GetRoomDetailsFromRoomkeyData",
   "ImportItem":"RetailItems/ImportItems/{isAuthorised}",
   "ValidateImport":"RetailItems/ValidateImport",
-  "ImportStatus":"RetailItems/ImportStatus"
+  "ImportStatus":"RetailItems/ImportStatus",
+  "EmptyFilterSearch":"GuestCombine/search/{filterName}"
 }
