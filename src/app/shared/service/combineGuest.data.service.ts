@@ -57,7 +57,7 @@ export class CombineGuestDataService {
   public async getGuestsByEmptySearchCriteria(filterName: string): Promise<API.Guest[]> {
     let result: any = await this.http.CallApiAsync({
       callDesc: 'EmptyFilterSearch',
-      host: Host.golfSchedule,
+      host: Host.retailPOS,
       method: HttpMethod.Put,
       uriParams :{filterName:filterName}
     });
