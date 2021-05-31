@@ -7,11 +7,13 @@ declare global {
     export const RetailApiRoute: typeof RetailRoutes;
     export const RetailMenus: typeof Array;
     export const MsalConfig: MsalConfiguration;
+    export const RouteJsonConfig: typeof Object;
     export interface Window {
         RetailApiHost: typeof RetailApiHosts;
         RetailApiRoute: typeof RetailRoutes;
         RetailMenus: typeof Array;
         MsalConfig: MsalConfiguration;
+        RouteJsonConfig : typeof Object;
     }
 
 }
@@ -89,8 +91,23 @@ function loadMsalConfig() {
     msalConfig = readMsalConfig();
     return msalConfig;
 }
+function loadRouteJson() {
+    let routes;
+    $.ajax({
+        url: './assets/route.json',
+        async: false,
+        success: function (result) {
+            routes = result;
+        },
+        error: function(result){
+            console.error(result);
+        }
+    });
+    return routes;
+}
 /* Register Routes and API */
 // Window.prototype.RetailApiHost = loadHosts();
 Window.prototype.RetailApiRoute = RetailRoutes;
 Window.prototype.RetailMenus = readMenus();
 Window.prototype.MsalConfig = loadMsalConfig();
+Window.prototype.RouteJsonConfig = loadRouteJson();
