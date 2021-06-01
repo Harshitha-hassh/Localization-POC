@@ -1,6 +1,4 @@
 import { Injectable } from "@angular/core";
-//import { GolfScheduleCommunication } from '../../communication/services/golfschedule.service';
-import { TransactionDetails, OutOfStock, DonutCount, ItemData, TransactionSaleDetail, CategoryData,ReturnedItems,OpenTickets,VendorInfo } from 'src/app/home/dashboard-widgets-report/dashboard.modal';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { RetailPosCommunication } from '../communication/services/retailpos.service';
 import { ClientInfo, ClientSearchModel, ClientGlobalSearchModel } from 'src/app/client/client-popup/create-client/client.modal';

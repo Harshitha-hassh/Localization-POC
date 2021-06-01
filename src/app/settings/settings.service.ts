@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 // import { BreakPointAccess } from '../shared/service/breakpoint.service';
 import { PropertyInformation } from '../core/services/property-information.service';
-// import { BaseResponse, DaysModel, OutletSubProperty } from '../shared/business/shared.modals';
-import moment from 'moment';
 import { BehaviorSubject } from 'rxjs';
 // import { CommissionableRetailItem, Commission } from '../retail/retail.modals';
 import { Utilities } from '../core/utilities';

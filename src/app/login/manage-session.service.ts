@@ -8,7 +8,7 @@ import { TenantManagementCommunication } from '../shared/communication/services/
 import { RetailRoutes } from '../core/extensions/retail-route';
 import moment from 'moment';
 import { HttpServiceCall } from '../retail/shared/service/http-call.service';
-import { AlertType, ButtonType } from '../common/enums/shared-enums';
+import { AlertType } from '../common/enums/shared-enums';
 import { RetailLocalization } from '../retail/common/localization/retail-localization';
 import { JWT_TOKEN, REMEMBER_INFO, USERS_SESSSIONS_INFO } from '../app-constants';
 

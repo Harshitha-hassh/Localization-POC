@@ -1,4 +1,4 @@
-import { FormGroup, ValidatorFn, AbstractControlOptions, AsyncValidatorFn, Validators, FormBuilder, AbstractControl, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, ValidatorFn, AbstractControlOptions, AsyncValidatorFn, FormBuilder, AbstractControl, FormControl, FormArray } from '@angular/forms';
 import { Injectable } from '@angular/core';
 
 export type AgysFormControlType = [string, ValidatorFn | null, AsyncValidatorFn | null];

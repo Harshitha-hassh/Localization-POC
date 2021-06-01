@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { ComboOptions, SystemConfiguration } from 'src/app/common/shared/shared/business/view-settings.modals';
-import * as _ from 'lodash';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { SystemSetupBusinessService } from '../system-setup.business.service';
 import { SystemConfig, PropertyConfig, PhNumber, BaseResponse } from 'src/app/common/shared/shared/business/shared.modals';

@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 // import { CourseOption } from 'src/app/settings/rate-setup/rate-setup.model';
 import { OutletOption } from './dashboard.modal';
-// import { Filter } from 'src/app/shared/shared-models';
-import { DashBoardBusiness } from './dashboard-business';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 
 @Injectable()

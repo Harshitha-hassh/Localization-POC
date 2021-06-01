@@ -1,5 +1,5 @@
 import { HttpCallService } from '../common/http-call.service';
-import { Host, ServiceParams, BaseResponse } from '../../models/http.model';
+import { ServiceParams, BaseResponse } from '../../models/http.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';

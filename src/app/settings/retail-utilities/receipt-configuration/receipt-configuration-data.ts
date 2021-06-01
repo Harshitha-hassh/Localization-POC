@@ -1,5 +1,5 @@
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
-import { Outlet, ReceiptModel} from '../../../retail/retail.modals';
+import { ReceiptModel} from '../../../retail/retail.modals';
 import { Injectable } from '@angular/core';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { Host } from 'src/app/common/shared/shared/globalsContant';

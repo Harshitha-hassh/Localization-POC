@@ -1,7 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { menuTypes } from 'src/app/shared/enums/menu.constant';
 import { MenuObj } from 'src/app/common/shared/shared/components/menu-search/menu.model';
 import { TenantManagementCommunication } from 'src/app/common/communication/services/tenantmanagement-communication-service';

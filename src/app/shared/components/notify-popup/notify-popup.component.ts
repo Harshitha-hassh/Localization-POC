@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ReplaySubject } from 'rxjs';
-import { HttpMethod, HttpServiceCall } from 'src/app/retail/shared/service/http-call.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { EmptyValueValidator } from 'src/app/retail/shared/Validators/EmptyValueValidator';
-import { ContactTypeId, NotificationModel, PhoneNumber, Email } from '../../shared-models';
+import { ContactTypeId, PhoneNumber, Email } from '../../shared-models';
 import { ClientDataService } from '../../data-services/client.data.service';
 import { NotificationDataService } from '../../data-services/notification.data.service';
 import { Client, ClientInfo } from 'src/app/client/client-popup/create-client/client.modal';

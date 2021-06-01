@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { GiftCardConfiguration, GiftCardConfigurationStore } from 'src/app/retail/shared/service/payment/payment-model';
-import { Subject, ReplaySubject } from 'rxjs';
 import { CommonPropertyInformation } from 'src/app/common/shared/services/common-property-information.service';
 import { PaymentConfiguration } from 'src/app/common/shared/shared/business/view-settings.modals';
 import { PropertyConfiguration } from 'src/app/retail/shared/business/view-settings.modals';

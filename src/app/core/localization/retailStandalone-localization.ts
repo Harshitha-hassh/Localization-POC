@@ -1,9 +1,5 @@
-import * as EnUs from "../../../assets/i18n/en-US.json";
-import * as DefaultErrors from '../../../assets/errors/error.en-US.json';
+
 import { Injectable } from "@angular/core";
-import moment from "moment";
-import * as _ from "lodash";
-import { LocalizedMonthsModel, localizationJSON, Calendar, DaysModel } from 'src/app/shared/shared-models';
 import { Localization  as CommonLocalization} from 'src/app/common/localization/localization';
 import { JSONReaderService } from 'src/app/common/shared/services/load-json.service';
 

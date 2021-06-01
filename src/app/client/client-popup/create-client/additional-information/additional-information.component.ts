@@ -2,14 +2,12 @@ import { Component, OnInit, OnDestroy, Input, ViewEncapsulation } from '@angular
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PropertyInformation } from '../../../../core/services/property-information.service';
 import { SubscriptionLike as ISubscription, Subscription } from 'rxjs';
-import { HandleRequest, HandleResponse } from '../../../../shared/shared-models';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
-import { IDTechCardSwipeTimeout, Module, Host } from 'src/app/common/shared/shared/globalsContant';
+import { Module, Host } from 'src/app/common/shared/shared/globalsContant';
 import { UserSessionConfiguration } from 'src/app/common/shared/retail.modals';
 import { UserMachineConfigurationService } from 'src/app/retail/common/services/user-machine-configuration.service';
-import { BaseResponse, Device, PaymentMethods, TokentransactionInfo, ClientCreditCardInfo, CardInfo, 
-  PaymentBaseResponse, StoreTokenRequest, IDTech, IDTechHandle } from 'src/app/common/shared/shared/business/shared.modals';
+import { BaseResponse, ClientCreditCardInfo } from 'src/app/common/shared/shared/business/shared.modals';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';

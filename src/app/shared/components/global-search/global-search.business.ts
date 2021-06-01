@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { GlobalSearchModel, searchtitleenum, GlobalSearchData } from './global-search.model';
+import { GlobalSearchModel, searchtitleenum } from './global-search.model';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { RetailItemSearchModel } from '../../models/retail-item.model';
 import { RetailItemDataService } from '../../data-services/retail-management/retail-item.data.service';
 import { ClientDataService } from '../../data-services/client.data.service';
-import { ClientGlobalSearchModel, ClientDetails } from 'src/app/client/client-popup/create-client/client.modal';
+import { ClientDetails } from 'src/app/client/client-popup/create-client/client.modal';
 
 @Injectable()
 export class GlobalSearchBusiness {

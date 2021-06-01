@@ -1,4 +1,4 @@
-import { menuTypes } from '../../enums/menu.constant';
+
 
 export interface MenuObj {
   elementId: number | string; //guid

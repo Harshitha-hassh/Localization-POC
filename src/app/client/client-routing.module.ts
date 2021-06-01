@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClientComponent } from './client.component';
 import { AllClientsComponent } from './view-client/all-clients/all-clients.component';
 import { RecentsComponent } from './view-client/recents/recents.component';
-import { VipComponent } from './view-client/vip/vip.component';
 
 const routes: Routes = [{
   path: '',

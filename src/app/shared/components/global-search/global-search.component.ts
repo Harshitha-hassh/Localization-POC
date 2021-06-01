@@ -1,6 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, Input, ViewChild, AfterViewInit, ElementRef, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, Input, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { searchtitleenum, GlobalSearchModel, GlobalSearchData } from './global-search.model';
+import { searchtitleenum, GlobalSearchModel } from './global-search.model';
 import { Router } from '@angular/router';
 import { GlobalSearchBusiness } from './global-search.business';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';

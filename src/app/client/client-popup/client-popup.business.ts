@@ -3,7 +3,6 @@ import { LoyaltyDetail, Client, ClientInfo, Address, Email, PhoneNumber } from '
 import { ClientDataService } from 'src/app/shared/data-services/client.data.service';
 import { DefaultGUID } from 'src/app/retail/shared/globalsContant';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
-import _ from 'lodash';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Injectable()

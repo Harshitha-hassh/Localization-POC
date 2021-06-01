@@ -7,9 +7,7 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import { ManageSessionService } from 'src/app/login/manage-session.service';
 // import { SortOrderPipe } from 'src/app/pipes/sort-order.pipe';
 import { menuTypes } from '../../enums/menu.constant';
-import { ButtonType } from '../../shared-models';
 import { MatDialog } from '@angular/material/dialog';
-import { CommonAlertPopupComponent } from 'src/app/common/shared/shared/common-alert-popup/common-alert-popup.component';
 import { AboutComponent } from '../about/about.component';
 import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-config/payment-features-config/property-feature-config.service';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';

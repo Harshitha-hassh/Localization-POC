@@ -1,6 +1,6 @@
 
 import {filter} from 'rxjs/operators';
-import { Injectable, EventEmitter, ViewChild } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 // import { SetUpComponent } from './settings/Setup/setup.component'; 
 import { Router, NavigationEnd } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';

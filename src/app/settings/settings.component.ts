@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { menuTypes } from '../shared/enums/menu.constant';
 import { RouteLoaderService } from '../core/services/route-loader.service';
 

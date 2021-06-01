@@ -14,7 +14,7 @@ import { sortPipe } from 'src/app/common/shared/shared/pipes/sort-pipe.pipe';
 import { Router } from '@angular/router';
 import _ from 'lodash';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
-import { ButtonOptions, ButtonType, Host, Product, RetailBreakPoint } from 'src/app/common/shared/shared/globalsContant';
+import { ButtonOptions, Host, Product, RetailBreakPoint } from 'src/app/common/shared/shared/globalsContant';
 import { GridAction } from 'src/app/audit/AuditModals';
 import { RetailSharedVariableService } from 'src/app/retail/shared/retail.shared.variable.service';
 import { RetailValidationService } from 'src/app/retail/shared/retail.validation.service';

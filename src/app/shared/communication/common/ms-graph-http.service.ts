@@ -1,7 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Client, GraphRequest, Options } from '@microsoft/microsoft-graph-client';
-import { MsalService } from '@azure/msal-angular';
 import { Utilities } from 'src/app/core/utilities';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { GraphServiceParams, GraphUser } from '../../models/ms-graph-http.model';

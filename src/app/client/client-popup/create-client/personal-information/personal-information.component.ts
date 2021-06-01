@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, EventEmitter, Output, Input, OnDestroy, AfterViewChecked } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
-import { Host, ImgRefType, SPAManagementBreakPoint, Module, DefaultGUID, ButtonType } from 'src/app/common/shared/shared/globalsContant';
+import { Host, Module, DefaultGUID, ButtonType } from 'src/app/common/shared/shared/globalsContant';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { AddressComponent } from 'ngx-google-places-autocomplete/objects/addressComponent';
@@ -13,7 +13,7 @@ import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ClientCommonService } from 'src/app/client/client.service';
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
-import { PatronInfoSearchResultType, Addresscomponent, ImageData, Imagedata } from 'src/app/shared/shared-models';
+import { PatronInfoSearchResultType, Addresscomponent, Imagedata } from 'src/app/shared/shared-models';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { EmptyValueValidator } from 'src/app/retail/shared/Validators/EmptyValueValidator';
 import { PhoneTypes, ContactType, GuestProfileMailTypes } from 'src/app/common/shared/shared/enums/enums';
@@ -23,7 +23,6 @@ import { AppModuleService } from 'src/app/core/services/app.service';
 import { PlayerInformationService } from 'src/app/common/shared/shared/service/player.information.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
-import moment from 'moment';
 
 @Component({
   selector: 'app-personal-information',

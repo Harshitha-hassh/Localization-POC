@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { GuestRetailTransactionHistory } from '../../../../shared/shared-models';
-import * as _ from 'lodash';
 import { Subscription } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
