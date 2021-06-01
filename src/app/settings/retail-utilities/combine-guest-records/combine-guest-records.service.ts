@@ -98,19 +98,40 @@ public getEmaiId(guestProfileContact: any) {
   const result = guestProfileContact.filter(x => mailTypes.includes(x.type) && x.ispublic !== 'true');
   if (result && result.length > 0) {
     const isprimary = result.find(x => x.isPrimary === 'true');
-    emailId = (isprimary && isprimary.length > 0) ? isprimary[0].value : result[0].value;
+    if (isprimary) 
+    {
+      emailId = isprimary.value
+    }
+    else
+    {
+      const ispersonal = result.find(x => x.name === 'Personal');        
+      emailId = ispersonal ? ispersonal.value : result[0].value;
+    }  
   }
   return emailId;
 }
 public getPhoneNo(guestphoneContact: any) {
-  let emailId = '';
+  let phoneNo = '';
   const phoneTypes = this.getPhoneType().map(x => x.id);
   const result = guestphoneContact.filter(x => phoneTypes.includes(x.type) && x.ispublic !== true);
   if (result && result.length > 0) {
     const isprimary = result.find(x => x.isPrimary === true);
-    emailId = (isprimary) ? isprimary.value : result[0].value;
+    if (isprimary) {
+      phoneNo = isprimary.value
+    }
+    else {
+      const phoneType = result.find(x => x.name == "Cell");
+      if (phoneType?.value) {
+        phoneNo = phoneType?.value;
+      }
+      else {
+        const ispersonal = result.find(x => x.name == "Home");
+        phoneNo = ispersonal ? ispersonal.value : result[0].value;
+      }
+
+    }
   }
-  return emailId;
+  return phoneNo;
 }
 getPhoneType() {
   this.contactTypes = this.captions.contactTypesOptions;
