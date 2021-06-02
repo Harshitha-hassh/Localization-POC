@@ -14,6 +14,7 @@ import { NotificationDataService } from '../../data-services/notification.data.s
 import { NotifyPopupComponent } from '../../components/notify-popup/notify-popup.component';
 import { BreakPoint } from '../../models/breakpoint-models';
 import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
+import * as RetailClientInfo from 'src/app/retail/shared/shared.modal';
 
 @Injectable({
     providedIn: "root"
@@ -221,8 +222,8 @@ export class DataAwaiterService {
         return this.userDefaultService.GetDefaultOutlet();
     }
 
-    async SendNotification(transactionId: number) {
-        this.notificationDataService.SendNotification(transactionId, false );
+    async SendNotification(clientInfo :RetailClientInfo.ClientInfo) {
+        this.notificationDataService.SendNotification(clientInfo.transactionId, false, '', '', true,true,clientInfo.reportQuery);
     }
 
     OpenManualNotifyPopup(transactionId: number, guestId: number ) {
