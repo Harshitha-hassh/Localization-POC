@@ -1,4 +1,5 @@
 import { FormGroup } from '@angular/forms';
+import { ReportAPIModel } from '../retail/retail-reports/business/report.modals';
 import { SpaServiceLocation, TherapistDetails, SpaServices, PackageDetail, ServiceAddOns, LinkCode, SystemConfiguration, BreakType, ReportAPIOptions } from '../retail/retail.modals';
 
 
@@ -328,7 +329,7 @@ export interface NotificationModel {
     canSendSMS : boolean,
     canSendemail : boolean,
     isManual: boolean,
-    reportQuery : ReportAPIOptions
+    reportQuery : ReportAPIModel
     }
 
 export interface TransactionData {
