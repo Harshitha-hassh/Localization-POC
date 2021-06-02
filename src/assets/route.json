@@ -306,6 +306,7 @@
   "ReturnWithoutTicket": "transaction/return/withoutticket/{transactionType}",
   "RetunWithticket": "transaction/return/withticket/{transactionId}/productId/{productId}",
   "VoidTransaction": "transaction/void",
+  "GetDefaultOutlet": "Outlets/GetDefaultOutlet",
   "GetConfiguration": "settings/module/{module}/switch/{Switch}",
   "GetAllSettingByModule":"Settings/module/{module}",
   "GetSeasonalSetting": "settings/seasonalhour",

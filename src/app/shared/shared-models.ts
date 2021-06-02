@@ -1,5 +1,7 @@
+import { FormGroup } from '@angular/forms';
+import { ReportAPIModel } from '../retail/retail-reports/business/report.modals';
+import { SpaServiceLocation, TherapistDetails, SpaServices, PackageDetail, ServiceAddOns, LinkCode, SystemConfiguration, BreakType, ReportAPIOptions } from '../retail/retail.modals';
 
-import { SpaServiceLocation, TherapistDetails, SpaServices, PackageDetail, ServiceAddOns, LinkCode, SystemConfiguration, BreakType } from '../retail/retail.modals';
 
 
 export interface LocalizedMonthsModel {
@@ -326,7 +328,8 @@ export interface NotificationModel {
     phoneNumber : string,
     canSendSMS : boolean,
     canSendemail : boolean,
-    isManual: boolean
+    isManual: boolean,
+    reportQuery : ReportAPIModel
     }
 
 export interface TransactionData {

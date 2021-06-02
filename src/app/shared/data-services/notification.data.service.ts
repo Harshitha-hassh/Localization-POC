@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { RetailPosCommunication } from '../communication/services/retailpos.service';
 import { NotificationModel } from '../shared-models';
+import { ReportAPIOptions } from 'src/app/retail/shop/shop.modals';
+import { ReportAPIModel } from "src/app/retail/retail-reports/business/report.modals";
 
 
 @Injectable()
@@ -12,7 +14,7 @@ export class NotificationDataService {
     }
 
     public async SendNotification(transactionId: number, isManual: boolean, emailId: string = '', phoneNumber: string ='',
-        canSendSMS: boolean=true, canSendemail: boolean=true): Promise<any> {
+        canSendSMS: boolean=true, canSendemail: boolean=true, reportAPIOptions : ReportAPIModel = null): Promise<any> {
 
         let bodyObj : NotificationModel;
         bodyObj = {
@@ -22,7 +24,8 @@ export class NotificationDataService {
             phoneNumber : phoneNumber ? phoneNumber : null,
             canSendSMS : canSendSMS ? canSendSMS : false,
             canSendemail : canSendemail ? canSendemail : false,
-            isManual:  isManual
+            isManual:  isManual,
+            reportQuery : reportAPIOptions
         }
 
         return this._httpPos.putPromise({
