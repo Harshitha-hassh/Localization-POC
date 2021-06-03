@@ -1964,7 +1964,8 @@
     "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_fr",
     "pg_title_PaymentMethod": "PAYMENT METHOD_fr",
     "lbl_paymentMethodName": "Payment Method Name_fr",
-    "err_paymentMethodName": "Missing Payment Method Name_fr"
+    "err_paymentMethodName": "Missing Payment Method Name_fr",
+    "AutoPrintReceipts": "Auto Print Receipts_fr"
   },
   "setting": {
     "Title": "Title_fr",

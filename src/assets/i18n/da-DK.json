@@ -1964,7 +1964,8 @@
     "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_da",
     "pg_title_PaymentMethod": "PAYMENT METHOD_da",
     "lbl_paymentMethodName": "Payment Method Name_da",
-    "err_paymentMethodName": "Missing Payment Method Name_da"
+    "err_paymentMethodName": "Missing Payment Method Name_da",
+    "AutoPrintReceipts": "Auto Print Receipts_da"
   },
   "setting": {
     "Title": "Title_da",
