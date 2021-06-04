@@ -1504,6 +1504,7 @@
   "lbl_userId": "User ID_in",
   "lbl_logout": "Log Out_in",
   "retailsetup": {
+    "LoaderWaitMsg": "Please wait while data is being uploaded_in",
     "ImportRetailStatus": "Retail Items Import Status_da_in",
     "ImportStatus": "Import Status_da_in",
     "DiscountReasonDeletionConfirmmsg": "Are you sure want to delete the 'Discount Reason {Discount Reason}'?_in",

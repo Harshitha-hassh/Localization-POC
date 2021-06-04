@@ -313,7 +313,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
   // Printer Names
   private async getPrinterNamesAsync(): Promise<void> {
     this.printers = [];
-    this.ZebraPrinters = await this.zebra.getLocalDevices().toPromise();
+    this.ZebraPrinters = await this.zebra.getLocalDevices();
     if (this.ZebraPrinters !== undefined && this.ZebraPrinters.printer.length > 0) {
       for (var p of this.ZebraPrinters.printer) {
         // console.dir(p);
