@@ -1504,6 +1504,7 @@
   "lbl_userId": "User ID_au",
   "lbl_logout": "Log Out_au",
   "retailsetup": {
+    "LoaderWaitMsg": "Please wait while data is being uploaded_au",
     "ImportRetailStatus": "Retail Items Import Status_da_au",
     "ImportStatus": "Import Status_da_au",
     "DiscountReasonDeletionConfirmmsg": "Are you sure want to delete the 'Discount Reason {Discount Reason}'?_au",
@@ -1964,7 +1965,8 @@
     "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_au",
     "pg_title_PaymentMethod": "PAYMENT METHOD_au",
     "lbl_paymentMethodName": "Payment Method Name_au",
-    "err_paymentMethodName": "Missing Payment Method Name_au"
+    "err_paymentMethodName": "Missing Payment Method Name_au",
+    "AutoPrintReceipts": "Auto Print Receipts_au"
   },
   "setting": {
     "Title": "Title_au",

@@ -1504,6 +1504,7 @@
   "lbl_userId": "User ID_uk",
   "lbl_logout": "Log Out_uk",
   "retailsetup": {
+    "LoaderWaitMsg": "Please wait while data is being uploaded_uk",
     "ImportRetailStatus": "Retail Items Import Status_da_uk",
     "ImportStatus": "Import Status_da_uk",
     "DiscountReasonDeletionConfirmmsg": "Are you sure want to delete the 'Discount Reason {Discount Reason}'?_uk",
@@ -1964,7 +1965,8 @@
     "btn_createPaymentMethod": "CREATE NEW PAYMENT METHOD_uk",
     "pg_title_PaymentMethod": "PAYMENT METHOD_uk",
     "lbl_paymentMethodName": "Payment Method Name_uk",
-    "err_paymentMethodName": "Missing Payment Method Name_uk"
+    "err_paymentMethodName": "Missing Payment Method Name_uk",
+    "AutoPrintReceipts": "Auto Print Receipts_uk"
   },
   "setting": {
     "Title": "Title_uk",
