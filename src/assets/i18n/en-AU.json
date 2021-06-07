@@ -1612,6 +1612,7 @@
     "CartTrigger": "Cart Trigger_au",
     "Miscellaneous": "Miscellaneous_au",
     "RequireComments": "Require Comments_au",
+    "RequirePaymentComments": "Require Comment_au",
     "RequestName": "Request Name_au",
     "OpenItem": "Open Item_au",
     "PMSPackageItem": "PMS Package Item_au",

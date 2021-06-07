@@ -1612,6 +1612,7 @@
     "CartTrigger": "Cart Trigger_in",
     "Miscellaneous": "Miscellaneous_in",
     "RequireComments": "Require Comments_in",
+    "RequirePaymentComments": "Require Comment_in",
     "RequestName": "Request Name_in",
     "OpenItem": "Open Item_in",
     "PMSPackageItem": "PMS Package Item_in",

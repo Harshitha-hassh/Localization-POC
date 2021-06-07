@@ -1612,6 +1612,7 @@
     "CartTrigger": "Cart Trigger",
     "Miscellaneous": "Miscellaneous",
     "RequireComments": "Require Comments",
+    "RequirePaymentComments": "Require Comment",
     "RequestName": "Request Name",
     "OpenItem": "Open Item",
     "PMSPackageItem": "PMS Package Item",
