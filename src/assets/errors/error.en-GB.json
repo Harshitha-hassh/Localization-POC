@@ -94,7 +94,7 @@
   "5002": "User Account Locked! Please check with System Admin._gb",
   "5003": "Inactive User! please check with system Admin._gb",
   "5004": "Invalid TenantId!_gb",
-  "5005": "Password Expired!_gb",
+  "5005": "Password Expired! Please check with System Admin._gb",
   "5006": "Unable to Update SubProperty Details._gb",
   "5007": "Unable to Add SubProperty Details._gb",
   "5008": "Unable to Delete SubProperty Details._gb",
