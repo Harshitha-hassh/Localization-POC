@@ -29,6 +29,7 @@ export class NewUserComponent implements OnInit {
   selectedTabIndex = 0;
   ActionButton: string;
   subPropertyAccess: any = [];
+  saveDisabled = false;
 
   constructor(public localization: RetailStandaloneLocalization, public _servicesetting: SettingsService, @Inject(MAT_DIALOG_DATA) public data,
               private dialogRef: MatDialogRef<NewUserComponent>, private http: HttpServiceCall,
@@ -168,6 +169,8 @@ export class NewUserComponent implements OnInit {
     //     return;
     //   }
     // }
+    try {
+      this.saveDisabled = true;
     proAccess.push({
       propertyID: Number(this.utils.GetPropertyInfo('PropertyId')),
       subPropertyID: 0,
@@ -223,7 +226,10 @@ export class NewUserComponent implements OnInit {
       commissionClass: serviceRetailControls.allowcommission.value ? Number(serviceRetailControls.commissionclass.value) : Number(0)
     };
     this.CreateUser(userObj, Host.authentication, 'CreateUser', [retailData], { PropertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
+  }  catch {
+    this.saveDisabled = false;
   }
+}
 
   Edit() {
     const editedInfo = _.cloneDeep(this._servicesetting.editUserInfo.clientInfo);
@@ -346,12 +352,18 @@ export class NewUserComponent implements OnInit {
         commissionClass: this._servicesetting.retailSettingsFormGrp.controls.allowcommission.value ? Number(this._servicesetting.retailSettingsFormGrp.controls.commissionclass.value) : Number(0)
       };
     }
-
-    this.EditUser(editedInfo,
-       Host.authentication,
+    try {
+      this.saveDisabled = true;
+      this.EditUser(
+        editedInfo,
+        Host.authentication,
         'UpdateUser',
-         [retailConf, newRetailConf],
-          { PropertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
+        [retailConf, newRetailConf],
+        { PropertyId: Number(this.utils.GetPropertyInfo('PropertyId')) }
+      );
+    } catch {
+      this.saveDisabled = false;
+    }
   }
 
   cancel() {
@@ -397,31 +409,37 @@ export class NewUserComponent implements OnInit {
   }
 
   async successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): Promise<void> {
-    if (callDesc === 'CreateUser') {
-      if (result.result) {
-        extraParams[0].userId = Number(result.result);        
-        this.CreateUser(extraParams[0], Host.retailManagement, 'CreateUserRetailConfig', []);
-        this.subPropertyAccess.forEach(x => x.userID = extraParams[0].userId);
-        await this._userOutletAccessDataService.CreateUserOutletAccess(this.subPropertyAccess);
-        this.dialogRef.close('saved');
-      }
-    } else if (callDesc === 'UpdateUser') {
-      if (result.result) {
-        if (extraParams[0]) {
-          this.EditUser(extraParams[0], Host.retailManagement, 'UpdateUserRetailConfig', []);
-        } else {
-          this.CreateUser(extraParams[1], Host.retailManagement, 'CreateUserRetailConfig', []);
+    try {
+      if (callDesc === 'CreateUser') {
+        if (result.result) {
+          extraParams[0].userId = Number(result.result);        
+          this.CreateUser(extraParams[0], Host.retailManagement, 'CreateUserRetailConfig', []);
+          this.subPropertyAccess.forEach(x => x.userID = extraParams[0].userId);
+          await this._userOutletAccessDataService.CreateUserOutletAccess(this.subPropertyAccess);
+          this.dialogRef.close('saved');
         }
-        if (this.subPropertyAccess && this.subPropertyAccess.length > 0) {
-          await this._userOutletAccessDataService.UpdateUserOutletAccess(this.subPropertyAccess);
+      } else if (callDesc === 'UpdateUser') {
+        if (result.result) {
+          if (extraParams[0]) {
+            this.EditUser(extraParams[0], Host.retailManagement, 'UpdateUserRetailConfig', []);
+          } else {
+            this.CreateUser(extraParams[1], Host.retailManagement, 'CreateUserRetailConfig', []);
+          }
+          if (this.subPropertyAccess && this.subPropertyAccess.length > 0) {
+            await this._userOutletAccessDataService.UpdateUserOutletAccess(this.subPropertyAccess);
+          }
+          this.dialogRef.close('saved');
         }
-        this.dialogRef.close('saved');
       }
+    } catch {
+      this.saveDisabled = false;
     }
   }
 
   errorCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
-
+    if (callDesc == 'CreateUser' || callDesc == 'UpdateUser') {
+      this.saveDisabled = false;
+    }
   }
 
   async CreateUserConfig(callDesc, host, body, uri?) {
