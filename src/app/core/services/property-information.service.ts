@@ -68,6 +68,7 @@ export class PropertyInformation {
         sessionStorage.setItem('useRetailInterface', _.cloneDeep(this.useRetailInterface).toString());
         sessionStorage.setItem('VATEnabled', _.cloneDeep(this.VATEnabled).toString());
         sessionStorage.setItem('productVersion', settings['productVersion']);
+        sessionStorage.setItem('userProductVersion', settings['userProductVersion']);
     }
 
     public SetPaymentConfiguration(payConfig: any[]) {

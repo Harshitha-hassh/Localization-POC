@@ -318,7 +318,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   openAboutDialog() {
-    const message = this._localization.replacePlaceholders(this.captions.versionInfo, ['productVersion'], [sessionStorage.getItem('productVersion')]);
+    const message = this._localization.replacePlaceholders(this.captions.versionInfo, ['productVersion'], [sessionStorage.getItem('userProductVersion')]);
     const dialogRef = this.dialog.open(AboutComponent, {
       height: 'auto',
       width: '300px',
