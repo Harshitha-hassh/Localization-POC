@@ -94,7 +94,7 @@
   "5002": "User Account Locked! Please check with System Admin._fr",
   "5003": "Inactive User! please check with system Admin._fr",
   "5004": "Invalid TenantId!_fr",
-  "5005": "Password Expired!_fr",
+  "5005": "Password Expired! Please check with System Admin._fr",
   "5006": "Unable to Update SubProperty Details._fr",
   "5007": "Unable to Add SubProperty Details._fr",
   "5008": "Unable to Delete SubProperty Details._fr",

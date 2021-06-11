@@ -94,7 +94,7 @@
   "5002": "User Account Locked! Please check with System Admin._uk",
   "5003": "Inactive User! please check with system Admin._uk",
   "5004": "Invalid TenantId!_uk",
-  "5005": "Password Expired!_uk",
+  "5005": "Password Expired! Please check with System Admin._uk",
   "5006": "Unable to Update SubProperty Details._uk",
   "5007": "Unable to Add SubProperty Details._uk",
   "5008": "Unable to Delete SubProperty Details._uk",
