@@ -3079,6 +3079,7 @@
       "typehere": "Type here_in",
       "ShowInactive": "Show Inactive_in",
       "OverrideDefaultTemplate": "Already default Template is available, do you want to override?_in",
+      "General": "General_in",
       "template": {
         "GuestLastName": "Guest Last Name_in",
         "Services": "Services_in",
