@@ -3079,6 +3079,7 @@
       "typehere": "Type here_fr",
       "ShowInactive": "Show Inactive_fr",
       "OverrideDefaultTemplate": "Already default Template is available, do you want to override?_fr",
+      "General": "General_fr",
       "template": {
         "GuestLastName": "Guest Last Name_fr",
         "Services": "Services_fr",

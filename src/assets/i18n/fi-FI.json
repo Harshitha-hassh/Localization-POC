@@ -3079,6 +3079,7 @@
       "typehere": "Type here_fi",
       "ShowInactive": "Show Inactive_fi",
       "OverrideDefaultTemplate": "Already default Template is available, do you want to override?_fi",
+      "General": "General_fi",
       "template": {
         "GuestLastName": "Guest Last Name_fi",
         "Services": "Services_fi",

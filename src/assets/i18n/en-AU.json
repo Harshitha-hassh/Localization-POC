@@ -3079,6 +3079,7 @@
       "typehere": "Type here_au",
       "ShowInactive": "Show Inactive_au",
       "OverrideDefaultTemplate": "Already default Template is available, do you want to override?_au",
+      "General": "General_au",
       "template": {
         "GuestLastName": "Guest Last Name_au",
         "Services": "Services_au",
