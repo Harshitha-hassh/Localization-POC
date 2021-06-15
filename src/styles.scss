@@ -5,7 +5,7 @@
 @import "assets/icons/style.css";
 
 // Display Properties
-body{
+body {
   min-width: 1024px;
 }
 .ag_display--none {
@@ -212,7 +212,8 @@ body{
   }
 }
 @for $i from 0 through 8 {
-  .ag_mb--#{$i}, .ag-mb-#{$i} {
+  .ag_mb--#{$i},
+  .ag-mb-#{$i} {
     margin-bottom: #{$i * 0.25}rem !important;
   }
 }
@@ -266,13 +267,13 @@ body{
   @extend .ag_display--block;
   @extend .ag_mb--5;
 }
-.ag_error{
+.ag_error {
   color: $error-color;
 }
 
-.ag_mandatory-lbl{
-  &::after{
-    content: '*';
+.ag_mandatory-lbl {
+  &::after {
+    content: "*";
     color: $ag_red;
     padding-left: 0.25rem;
   }
@@ -497,30 +498,30 @@ h4 {
 /* POP OVER*/
 @mixin fix-arrow-position-for-retina($direction) {
   .arrow {
-      &:before,
-      &:after {
-          #{$direction}: 2px !important; // Fix visual gap on retina displays
-      }
+    &:before,
+    &:after {
+      #{$direction}: 2px !important; // Fix visual gap on retina displays
+    }
   }
 }
 
 .popover {
   .virtual-area {
-      height: 11px;
-      width: 100%;
-      position: absolute;
+    height: 11px;
+    width: 100%;
+    position: absolute;
   }
   &.bs-popover-top .virtual-area {
-      bottom: -11px;
+    bottom: -11px;
   }
   &.bs-popover-bottom .virtual-area {
-      top: -11px;
+    top: -11px;
   }
   &.bs-popover-left .virtual-area {
-      right: -11px;
+    right: -11px;
   }
   &.bs-popover-right .virtual-area {
-      left: -11px;
+    left: -11px;
   }
 }
 
@@ -537,20 +538,20 @@ h4 {
   box-shadow: $popover-box-shadow;
 
   .arrow {
+    position: absolute;
+    display: block;
+    width: $popover-arrow-width;
+    height: $popover-arrow-height;
+    margin: 0 !important;
+
+    &::before,
+    &::after {
       position: absolute;
       display: block;
-      width: $popover-arrow-width;
-      height: $popover-arrow-height;
-      margin: 0 !important;
-
-      &::before,
-      &::after {
-          position: absolute;
-          display: block;
-          content: "";
-          border-color: transparent;
-          border-style: solid;
-      }
+      content: "";
+      border-color: transparent;
+      border-style: solid;
+    }
   }
   /* &.sm {
       width: 20rem;
@@ -575,193 +576,193 @@ h4 {
   } */
 
   .popover-header {
-      color: $popover-header-color;
-      font-size: 1.6rem;
-      font-weight: bold;
-      line-height: 2.1rem;
+    color: $popover-header-color;
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 2.1rem;
   }
 
   .popover-body {
-      color: $ag_black;
-      line-height: 1.3rem;
+    color: $ag_black;
+    line-height: 1.3rem;
   }
 
   &.bs-popover {
-      // These margins all define distance from the target to render
-      &-left {
-          margin-left: -$popover-arrow-width * 1.5;
-          @include fix-arrow-position-for-retina(right);
+    // These margins all define distance from the target to render
+    &-left {
+      margin-left: -$popover-arrow-width * 1.5;
+      @include fix-arrow-position-for-retina(right);
+    }
+    &-right {
+      margin-left: $popover-arrow-width * 1.5;
+      @include fix-arrow-position-for-retina(left);
+    }
+    &-top,
+    &-top-right,
+    &-top-left {
+      margin-top: -$popover-arrow-height * 1.5;
+      @include fix-arrow-position-for-retina(bottom);
+    }
+    &-bottom,
+    &-bottom-right,
+    &-bottom-left {
+      /* margin-top: $popover-arrow-height * 1.5; */
+      @include fix-arrow-position-for-retina(top);
+    }
+
+    &-right,
+    &-left {
+      .arrow {
+        top: 50%;
+        transform: translateY(-50%);
       }
-      &-right {
-          margin-left: $popover-arrow-width * 1.5;
-          @include fix-arrow-position-for-retina(left);
+    }
+
+    &-top,
+    &-bottom {
+      .arrow {
+        left: 50%;
+        transform: translateX(-50%);
       }
-      &-top,
-      &-top-right,
-      &-top-left {
-          margin-top: -$popover-arrow-height * 1.5;
-          @include fix-arrow-position-for-retina(bottom);
-      }
-      &-bottom,
-      &-bottom-right,
-      &-bottom-left {
-          /* margin-top: $popover-arrow-height * 1.5; */
-          @include fix-arrow-position-for-retina(top);
-      }
+    }
 
-      &-right,
-      &-left {
-          .arrow {
-              top: 50%;
-              transform: translateY(-50%);
-          }
-      }
-
-      &-top,
-      &-bottom {
-          .arrow {
-              left: 50%;
-              transform: translateX(-50%);
-          }
-      }
-
-      &-right {
-          .arrow {
-              left: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
-              width: $popover-arrow-height;
-              height: $popover-arrow-width;
-              margin: 0 !important;
-          }
-
-          .arrow::before {
-              border-width: $arrow-border-width $popover-arrow-height $arrow-border-width 0;
-          }
-
-          .arrow::after {
-              border-width: $arrow-border-width $popover-arrow-height $arrow-border-width 1.5px;
-          }
-
-          .arrow::before {
-              left: 0;
-              border-right-color: $popover-arrow-outer-color;
-          }
-
-          .arrow::after {
-              left: $popover-border-width;
-              border-right-color: $popover-arrow-color;
-          }
+    &-right {
+      .arrow {
+        left: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
+        width: $popover-arrow-height;
+        height: $popover-arrow-width;
+        margin: 0 !important;
       }
 
-      &-left {
-          .arrow {
-              right: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
-              width: $popover-arrow-height;
-              height: $popover-arrow-width;
-              margin: 0 !important;
-          }
-
-          .arrow::before {
-              border-width: $arrow-border-width 0 $arrow-border-width $popover-arrow-height;
-          }
-
-          .arrow::after {
-              border-width: $arrow-border-width 1.5px $arrow-border-width $popover-arrow-height;
-          }
-
-          .arrow::before {
-              right: 0;
-              border-left-color: $popover-arrow-outer-color;
-          }
-
-          .arrow::after {
-              right: $popover-border-width;
-              border-left-color: $popover-arrow-color;
-          }
+      .arrow::before {
+        border-width: $arrow-border-width $popover-arrow-height $arrow-border-width 0;
       }
 
-      &-top,
-      &-top-right,
-      &-top-left {
-          .arrow {
-              bottom: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
-          }
-
-          .arrow::before {
-              border-width: $popover-arrow-height $arrow-border-width 0;
-          }
-
-          .arrow::after {
-              border-width: $popover-arrow-height $arrow-border-width 1.5px;
-          }
-
-          .arrow::before {
-              bottom: 0;
-              border-top-color: $popover-arrow-outer-color;
-          }
-
-          .arrow::after {
-              bottom: $popover-border-width;
-              border-top-color: $popover-arrow-color;
-          }
+      .arrow::after {
+        border-width: $arrow-border-width $popover-arrow-height $arrow-border-width 1.5px;
       }
 
-      &-bottom,
-      &-bottom-right,
-      &-bottom-left {
-          .arrow {
-              top: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
-              border-top-width: 0;
-              // border-bottom-color: $border_bottom_color_1;
-              // border-bottom-color: $border_bottom_color_2;
-              top: -11px;
-          }
-
-          .arrow::before {
-              border-width: 0 $arrow-border-width $popover-arrow-height $arrow-border-width;
-          }
-
-          .arrow::after {
-              border-width: 1.5px $arrow-border-width $popover-arrow-height $arrow-border-width;
-          }
-
-          .arrow::before {
-              top: 0;
-              border-bottom-color: $popover-arrow-outer-color;
-          }
-
-          .arrow::after {
-              top: $popover-border-width;
-              border-bottom-color: $popover-arrow-color;
-          }
-
-          // This will remove the popover-header's border just below the arrow
-          .popover-header::before {
-              position: absolute;
-              top: 0;
-              left: 50%;
-              display: block;
-              width: $popover-arrow-width;
-              margin-left: ($popover-arrow-width / -2);
-              content: "";
-              border-bottom: $popover-border-width solid $popover-header-bg;
-          }
+      .arrow::before {
+        left: 0;
+        border-right-color: $popover-arrow-outer-color;
       }
 
-      &-top-right,
-      &-bottom-right {
-          transform: translateX(-2rem);
-          .arrow {
-              left: 0.9rem;
-          }
+      .arrow::after {
+        left: $popover-border-width;
+        border-right-color: $popover-arrow-color;
+      }
+    }
+
+    &-left {
+      .arrow {
+        right: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
+        width: $popover-arrow-height;
+        height: $popover-arrow-width;
+        margin: 0 !important;
       }
 
-      &-top-left,
-      &-bottom-left {
-          transform: translateX(2rem);
-          .arrow {
-              right: 0.9rem;
-          }
+      .arrow::before {
+        border-width: $arrow-border-width 0 $arrow-border-width $popover-arrow-height;
       }
+
+      .arrow::after {
+        border-width: $arrow-border-width 1.5px $arrow-border-width $popover-arrow-height;
+      }
+
+      .arrow::before {
+        right: 0;
+        border-left-color: $popover-arrow-outer-color;
+      }
+
+      .arrow::after {
+        right: $popover-border-width;
+        border-left-color: $popover-arrow-color;
+      }
+    }
+
+    &-top,
+    &-top-right,
+    &-top-left {
+      .arrow {
+        bottom: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
+      }
+
+      .arrow::before {
+        border-width: $popover-arrow-height $arrow-border-width 0;
+      }
+
+      .arrow::after {
+        border-width: $popover-arrow-height $arrow-border-width 1.5px;
+      }
+
+      .arrow::before {
+        bottom: 0;
+        border-top-color: $popover-arrow-outer-color;
+      }
+
+      .arrow::after {
+        bottom: $popover-border-width;
+        border-top-color: $popover-arrow-color;
+      }
+    }
+
+    &-bottom,
+    &-bottom-right,
+    &-bottom-left {
+      .arrow {
+        top: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
+        border-top-width: 0;
+        // border-bottom-color: $border_bottom_color_1;
+        // border-bottom-color: $border_bottom_color_2;
+        top: -11px;
+      }
+
+      .arrow::before {
+        border-width: 0 $arrow-border-width $popover-arrow-height $arrow-border-width;
+      }
+
+      .arrow::after {
+        border-width: 1.5px $arrow-border-width $popover-arrow-height $arrow-border-width;
+      }
+
+      .arrow::before {
+        top: 0;
+        border-bottom-color: $popover-arrow-outer-color;
+      }
+
+      .arrow::after {
+        top: $popover-border-width;
+        border-bottom-color: $popover-arrow-color;
+      }
+
+      // This will remove the popover-header's border just below the arrow
+      .popover-header::before {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        display: block;
+        width: $popover-arrow-width;
+        margin-left: ($popover-arrow-width / -2);
+        content: "";
+        border-bottom: $popover-border-width solid $popover-header-bg;
+      }
+    }
+
+    &-top-right,
+    &-bottom-right {
+      transform: translateX(-2rem);
+      .arrow {
+        left: 0.9rem;
+      }
+    }
+
+    &-top-left,
+    &-bottom-left {
+      transform: translateX(2rem);
+      .arrow {
+        right: 0.9rem;
+      }
+    }
   }
 }
 
@@ -873,7 +874,7 @@ label.ag_form--label {
   .icon-confirmed {
     font-size: 1.5rem;
     cursor: pointer;
-    color: $check-box-outer;    
+    color: $check-box-outer;
     &.disabled {
       opacity: 0.5;
       pointer-events: none !important;
@@ -941,7 +942,6 @@ p.ag_state--headers {
   color: $ag_red;
   font-size: $font-size20;
 }
-
 
 //From Golf
 html {
@@ -1551,10 +1551,10 @@ ui-switch {
     border: none !important;
     // margin-bottom: 20px;
   }
-  .switch.switch-medium{
-    height:20px;
+  .switch.switch-medium {
+    height: 20px;
   }
-  .switch.switch-medium > .switch-pane > span{
+  .switch.switch-medium > .switch-pane > span {
     line-height: 20px;
   }
 }
@@ -3582,7 +3582,7 @@ mat-color-picker-selector {
   .cdk-overlay-pane {
     .small-popup {
       width: 1000px !important;
-      max-width:unset !important
+      max-width: unset !important;
     }
 
     .medium {
@@ -4458,20 +4458,18 @@ a:hover {
   }
 }
 
-
-  //safari only css
-@media not all and (min-resolution:.001dpcm){ 
-  @supports (-webkit-appearance:none) {
-    .mat-tab-body-wrapper, 
+//safari only css
+@media not all and (min-resolution: 0.001dpcm) {
+  @supports (-webkit-appearance: none) {
+    .mat-tab-body-wrapper,
     .mat-tab-body-active,
-    .mat-tab-body-content { 
-      overflow: visible !important; 
+    .mat-tab-body-content {
+      overflow: visible !important;
     }
   }
 }
 
-
-//icon default colors 
+//icon default colors
 
 .icon-dashboard-cross:before {
   content: "\ebd7";
@@ -4490,7 +4488,8 @@ a:hover {
   background: linear-gradient(-90deg, #6ed6f8, #3bc2ee);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}.icon-dashboard-tick:before {
+}
+.icon-dashboard-tick:before {
   content: "\ebe1";
   background: linear-gradient(-90deg, #73ecb4, #37df91);
   -webkit-background-clip: text;
@@ -4539,139 +4538,25 @@ a:hover {
   margin-left: -1.0595703125em;
   color: rgb(246, 246, 246);
 }
-.icon-emptyshop .path1:before {
-  content: "\e91d";
-  color: #2665c0;
-  opacity: 0.1;
+
+.icon-emptyshop {
+  > span {
+    &:before {
+      color: $ag_base-color !important;
+    }
+    &.path11:before {
+      color: rgb(255, 255, 255) !important;
+    }
+  }
 }
-.icon-emptyshop .path2:before {
-  content: "\e9c3";
-  margin-left: -1.494140625em;
-  color: #2665c0;
-  opacity: 0.1;
+.icon-Shop_nocart {
+  > span {
+    &:before {
+      color: $ag_base-color !important;
+    }
+  }
 }
-.icon-emptyshop .path3:before {
-  content: "\e9c4";
-  margin-left: -1.494140625em;
-  color: #2665c0;
-  opacity: 0.1;
-}
-.icon-emptyshop .path4:before {
-  content: "\e9c5";
-  margin-left: -1.494140625em;
-  color: #2665c0;
-  opacity: 0.1;
-}
-.icon-emptyshop .path5:before {
-  content: "\e9c6";
-  margin-left: -1.494140625em;
-  color: #2665c0;
-  opacity: 0.1;
-}
-.icon-emptyshop .path6:before {
-  content: "\e9c7";
-  margin-left: -1.494140625em;
-  color: #2665c0;
-}
-.icon-emptyshop .path7:before {
-  content: "\e9c8";
-  margin-left: -1.494140625em;
-  color: #2665c0;
-}
-.icon-emptyshop .path8:before {
-  content: "\e9c9";
-  margin-left: -1.494140625em;
-  color: #2665c0;
-}
-.icon-emptyshop .path9:before {
-  content: "\e9ca";
-  margin-left: -1.494140625em;
-  color: #2665c0;
-}
-.icon-emptyshop .path10:before {
-  content: "\e9cb";
-  margin-left: -1.494140625em;
-  color: #2665c0;
-}
-.icon-emptyshop .path11:before {
-  content: "\e9cc";
-  margin-left: -1.494140625em;
-  color: rgb(255, 255, 255);
-}
-.icon-emptyshop .path12:before {
-  content: "\e9cd";
-  margin-left: -1.494140625em;
-  color: #2665c0;
-}
-.icon-emptyshop .path13:before {
-  content: "\e9ce";
-  margin-left: -1.494140625em;
-  color: #2665c0;
-}
-.icon-emptyshop .path14:before {
-  content: "\e9cf";
-  margin-left: -1.494140625em;
-  color: #2665c0;
-}
-.icon-Shop_nocart .path1:before {
-  content: "\e9d0";
-  color: #2665c0;
-  opacity: 0.1;
-}
-.icon-Shop_nocart .path2:before {
-  content: "\e9d1";
-  margin-left: -1.6533203125em;
-  color: #2665c0;
-  opacity: 0.1;
-}
-.icon-Shop_nocart .path3:before {
-  content: "\e9d2";
-  margin-left: -1.6533203125em;
-  color: #2665c0;
-  opacity: 0.1;
-}
-.icon-Shop_nocart .path4:before {
-  content: "\e9d3";
-  margin-left: -1.6533203125em;
-  color: #2665c0;
-  opacity: 0.1;
-}
-.icon-Shop_nocart .path5:before {
-  content: "\e9d4";
-  margin-left: -1.6533203125em;
-  color: #2665c0;
-  opacity: 0.1;
-}
-.icon-Shop_nocart .path6:before {
-  content: "\e9d5";
-  margin-left: -1.6533203125em;
-  color: #2665c0;
-}
-.icon-Shop_nocart .path7:before {
-  content: "\e9d6";
-  margin-left: -1.6533203125em;
-  color: #2665c0;
-}
-.icon-Shop_nocart .path8:before {
-  content: "\e9d7";
-  margin-left: -1.6533203125em;
-  color: #2665c0;
-}
-.icon-Shop_nocart .path9:before {
-  content: "\e9d8";
-  margin-left: -1.6533203125em;
-  color: #2665c0;
-}
-.icon-Shop_nocart .path10:before {
-  content: "\e9d9";
-  margin-left: -1.6533203125em;
-  color: #2665c0;
-}
-.icon-Shop_nocart .path11:before {
-  content: "\e9da";
-  margin-left: -1.6533203125em;
-  color: #2665c0;
-}
+
 .icon-No-Search-Results-2 .path1:before {
   content: "\e986";
   color: #ebf4eb;
@@ -5545,7 +5430,7 @@ a:hover {
 .icon-No-Search-Results .path4:before {
   content: "\e97c";
   margin-left: -1.37890625em;
-  color: rgb(38, 101, 192)
+  color: rgb(38, 101, 192);
 }
 .icon-No-Search-Results .path5:before {
   content: "\e97d";
@@ -5565,7 +5450,7 @@ a:hover {
 .icon-No-Search-Results .path8:before {
   content: "\e980";
   margin-left: -1.37890625em;
-  color: rgb(38, 101, 192)
+  color: rgb(38, 101, 192);
 }
 .icon-No-Search-Results .path9:before {
   content: "\e981";
@@ -5609,20 +5494,24 @@ a:hover {
   color: rgb(255, 255, 255);
 }
 //ngx-material-timepicker latest version fix
- 
+
 .timepicker-overlay {
   z-index: 10000000 !important;
 }
- 
+
 .timepicker-backdrop-overlay {
   z-index: 10000000 !important;
 }
-.timepicker__actions{
-  .button--primary:focus, .ag_button--primary:focus, .picker-ok:focus{
+.timepicker__actions {
+  .button--primary:focus,
+  .ag_button--primary:focus,
+  .picker-ok:focus {
     opacity: 0.8;
     background-color: $golf-button-bg !important;
   }
-  .button--tertiary:focus, .ag_button--secondary:focus, .picker-cancel:focus{
+  .button--tertiary:focus,
+  .ag_button--secondary:focus,
+  .picker-cancel:focus {
     background-color: $golf-button-bg !important;
   }
 }
