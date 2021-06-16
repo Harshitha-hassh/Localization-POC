@@ -12,9 +12,9 @@
                  [popoverCloseOnMouseOutside]="false" (click)="showFilterPopOver=true;setFilterPopover($event)"></i>
 
           </button>
-          <popover-content #filterpopover placement="auto bottom" class="filter-popover position-absolute" [closeOnClickOutside]="true"
+          <popover-content #filterpopover placement="bottom" class="filter-popover position-absolute" [closeOnClickOutside]="true"
                            [closeOnMouseOutside]="false" [style.top]="top + 'px'" [style.left]="left + 'px'">
-              <div *ngIf="showFilterPopOver">
+              <div>
                   <div class="filter-popover-header  LW16 text-color">
                       <span class="table-class">{{this.captions.ResetAll}}</span>
                       <i class="icon-recurring table-class pl-4" (click)="refreshData()"></i>
