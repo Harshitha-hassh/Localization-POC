@@ -170,6 +170,7 @@ public apiMapperGuestSearchFields(GuestSearchFieldsUIModel: UI.GuestSearchFields
     includeInactive: false,
     title:GuestSearchFieldsUIModel.title,
     address:GuestSearchFieldsUIModel.address,
+    isFilterApplied:GuestSearchFieldsUIModel.isFilterApplied,
     //PMSGuestSearchCriteria: this.mapPMSSearchCriteria(GuestSearchFieldsUIModel),
     AdditionalSearchCriteria: this.mapAdditionalSearchCriteria(GuestSearchFieldsUIModel)
   } as API.GuestSearchFields;
