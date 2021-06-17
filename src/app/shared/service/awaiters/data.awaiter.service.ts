@@ -15,6 +15,8 @@ import { NotifyPopupComponent } from '../../components/notify-popup/notify-popup
 import { BreakPoint } from '../../models/breakpoint-models';
 import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
 import * as RetailClientInfo from 'src/app/retail/shared/shared.modal';
+import { NotificationConfigurationService } from "src/app/common/templates/notification-configuration/notification-configuration.service";
+import { EventNotificationGroup } from "src/app/common/templates/notification-configuration/notification-configuration.model";
 
 @Injectable({
     providedIn: "root"
@@ -30,7 +32,8 @@ export class DataAwaiterService {
         private clientDataService: ClientDataService,
         private userDefaultService: UserdefaultsInformationService,
         private notificationDataService: NotificationDataService,
-        private userAccessBusiness : UserAccessBusiness
+        private userAccessBusiness : UserAccessBusiness,
+        private notificationConfigurationService: NotificationConfigurationService
     ) {
         this.setAwaiters();
     }
@@ -223,7 +226,14 @@ export class DataAwaiterService {
     }
 
     async SendNotification(clientInfo :RetailClientInfo.ClientInfo) {
-        this.notificationDataService.SendNotification(clientInfo.transactionId, false, '', '', true,true,clientInfo.reportQuery);
+        const eventConfiguration: EventNotificationGroup[] = await this.notificationConfigurationService.GetEventNotificationGroupByProduct();
+        const guesteventConfiguration = eventConfiguration.filter(x => x.groupName === "Guest");
+        let canSendemail: boolean, canSendSMS: boolean ;
+        if(guesteventConfiguration && guesteventConfiguration.length > 0){
+            canSendemail = guesteventConfiguration[0].sendMail;
+            canSendSMS = guesteventConfiguration[0].sendSMS;
+        }
+        this.notificationDataService.SendNotification(clientInfo.transactionId, false, '', '', canSendSMS,canSendemail,clientInfo.reportQuery);
     }
 
     OpenManualNotifyPopup(transactionId: number, guestId: number ) {
