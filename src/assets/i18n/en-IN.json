@@ -3300,7 +3300,9 @@
     "PROCESS": "PROCESS_in",
     "NoData": "NoData_in",
     "CancelOpenTransaction": "Would you like to Cancel the Ticket?_in",
-    "systemMovedTo": "System date moved to_in"
+    "systemMovedTo": "System date moved to_in",
+    "ErrorSyncOutlet": "The following outlet(s) are not synced properly : {OutletName}_in",
+    "OutletSyncWait": "Please wait while outlet(s) are syncing_in"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role_in",

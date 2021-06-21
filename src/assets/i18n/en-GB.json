@@ -3300,7 +3300,9 @@
     "PROCESS": "PROCESS_gb",
     "NoData": "NoData_gb",
     "CancelOpenTransaction": "Would you like to Cancel the Ticket?_gb",
-    "systemMovedTo": "System date moved to_gb"
+    "systemMovedTo": "System date moved to_gb",
+    "ErrorSyncOutlet": "The following outlet(s) are not synced properly : {OutletName}_gb",
+    "OutletSyncWait": "Please wait while outlet(s) are syncing_gb"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role_gb",

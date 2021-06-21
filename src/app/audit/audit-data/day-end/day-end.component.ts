@@ -25,6 +25,7 @@ import { RedirectToModules } from 'src/app/common/shared/shared/utilities/common
 import { ButtonType as RetailButtonType, OpenTransactionAction } from 'src/app/retail/shared/globalsContant';
 import { AlertType } from 'src/app/retail/shared/shared.modal';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
+import { ButtonTypes } from 'src/app/common/Models/common.models';
 
 @Component({
   selector: 'app-day-end',
@@ -187,8 +188,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         const response = result.result as any;
         if (response) {
           this.propertyInfo.SetPropertyDate(this.newSysDate);
-          this.UpdateInventoryAudit();
-          this.SyncUpItemAndTaxes();
+          this.UpdateInventoryAudit();          
           this.ShowSuccessMessage();        
           if(this.propertyInfo.HasRevenuePostingEnabled)
           {
@@ -226,13 +226,34 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   async SyncUpItemAndTaxes() {
     if (!this.propertyInfo.UseRetailInterface && this.propOutlets && this.propOutlets.length > 0) {
-      this.propOutlets.forEach(element => {
-        // tslint:disable-next-line: max-line-length
-        this.InvokeServiceCall('SyncItemAndTax', Host.retailManagement, HttpMethod.Get, { outletId: element.subPropertyID, type: 'DayEnd', operation: 'Sync', id: 0 });
-      });
+      try {
+        this.utils.ToggleLoaderWithMessage(true, this.captions.OutletSyncWait);
+        let failedOutlet = [];
+        for (let i = 0; i < this.propOutlets.length; i++) {
+          let result = await this.http.CallApiAsync<boolean>({
+            host: Host.retailManagement,
+            callDesc: 'SyncItemAndTax',
+            method: HttpMethod.Get,
+            showError: false,
+            uriParams: { outletId: this.propOutlets[i].subPropertyID, type: 'DayEnd', operation: 'Sync', id: 0 }
+          });
+          if (!result.result) {
+            failedOutlet.push(this.propOutlets[i].subPropertyName);
+          }
+        }
+        if (failedOutlet.length) {
+          this.utils.showCommonAlert(this.localization.replacePlaceholders(this.captions.ErrorSyncOutlet,["OutletName"],['<ul class="text-left pt-1"><li>' + failedOutlet.join('</li><li>') + '</li></ul>']),  AlertType.Info, ButtonTypes.Ok);
+        }
+      }
+      catch (ex) {
+        console.dir(ex);
+      }
+      finally {
+        this.utils.ToggleLoaderWithMessage(false);
+      }
     }
-
   }
+
   SendNewSystemDate()
   { 
     let obj: NotifyDayEnd = {DateTime:this.localization.convertDateObjToAPIdate(this.newSysDate)  }  
@@ -363,7 +384,9 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     const message = `${this.captions.systemMovedTo} ${this.localization.LocalizeDate(this.newSysDate)}`;
     this.successFlag = true;
     this.canProcess = false;
-    this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue);
+    this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue, x=>{
+      this.SyncUpItemAndTaxes();
+    });
   }
   trackByFn(index, cell) {
     return index;
