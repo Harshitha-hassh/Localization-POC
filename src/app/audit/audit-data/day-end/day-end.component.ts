@@ -230,14 +230,20 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         this.utils.ToggleLoaderWithMessage(true, this.captions.OutletSyncWait);
         let failedOutlet = [];
         for (let i = 0; i < this.propOutlets.length; i++) {
-          let result = await this.http.CallApiAsync<boolean>({
-            host: Host.retailManagement,
-            callDesc: 'SyncItemAndTax',
-            method: HttpMethod.Get,
-            showError: false,
-            uriParams: { outletId: this.propOutlets[i].subPropertyID, type: 'DayEnd', operation: 'Sync', id: 0 }
-          });
-          if (!result.result) {
+          try {
+            let result = await this.http.CallApiAsync<boolean>({
+              host: Host.retailManagement,
+              callDesc: 'SyncItemAndTax',
+              method: HttpMethod.Get,
+              showError: true,
+              uriParams: { outletId: this.propOutlets[i].subPropertyID, type: 'DayEnd', operation: 'Sync', id: 0 }
+            });
+            if (!result.result) {
+              failedOutlet.push(this.propOutlets[i].subPropertyName);
+            }
+          }
+          catch (err) {
+            console.log(`Sync Failed For Outlet :: ${this.propOutlets[i].subPropertyID} `, err);
             failedOutlet.push(this.propOutlets[i].subPropertyName);
           }
         }
