@@ -1305,7 +1305,7 @@
 				"couponisalreadyonholdorsold": "Gift Card is on hold /  Gift Card is already sold",
 				"cardhasinsufficientbalanceforthetransaction": "Gift Card has insufficient balance for the transaction"
       },
-      "LoadReversalNotSupportedMsg": "Load reversal is not supported for Agilysys Engage gift cards."
+      "LoadReversalNotSupportedMsg": "Load reversal is not supported for {vendorName} gift cards."
     },
     "CMS": {
       "searchPlaceHolder": "Patron Search",
