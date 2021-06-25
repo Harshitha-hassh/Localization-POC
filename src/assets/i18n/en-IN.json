@@ -1039,6 +1039,7 @@
     "Correct": "Correct_in",
     "TicketNumber": "Ticket #_in",
     "Date": "Date_in",
+    "Time": "Time_in",
     "ClerkID": "Clerk ID_in",
     "Outlet": "Outlet_in",
     "AllOutlets": "All Outlets_in",
