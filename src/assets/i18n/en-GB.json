@@ -1445,6 +1445,7 @@
     "8100": "8100 - Transaction Detail_gb",
     "8105": "8105 - Top Spenders_gb",
     "8140": "8140 - Sales Mix Report_gb",
+    "8150": "8150 - Items Extract Report_gb",
     "8700": "8700 - Update Qty on Hand_gb",
     "8705": "8705 – Freeze Inventory_gb",
     "8710": "8710 - Release Inventory_gb",
@@ -2709,6 +2710,7 @@
     "EndDatecannotbepriortoStartDate": "End Date cannot be prior to Start Date_gb",
     "StartDateShouldNotBeGreaterThanEndDate": "Start date should not be greater than the End date_gb",
     "PleaseSelectAtleastOneOption": "Please Select any {option}_gb",
+    "PleaseSelectCategoryOrPayment": "Please Select Category or paymentMethod_gb",
     "PleaseSelectAtleastOneUser": "Please Select any User(s)_gb",
     "PleaseSelectAnyOutlet": "Outlet_gb",
     "ReportCategory": "Report Category(s)_gb",
@@ -2778,7 +2780,8 @@
     "IncludeInActiveUsers": "Include Inactive Users_gb",
     "SalesMix": "Sales Mix Report_gb",
     "InventoryReport": "InventoryReport_gb",
-    "InventoryPickupDelivery": "Inventory Pickup Delivery Report_gb"
+    "InventoryPickupDelivery": "Inventory Pickup Delivery Report_gb",
+    "ItemsExtract": "Items Extract_gb"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_gb",
