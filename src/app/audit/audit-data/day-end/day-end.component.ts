@@ -323,7 +323,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       transaction = {
         Id: tran.id,
         TicketNumber: tran.ticketNumber,
-        Date: this.localization.LocalizeDate(tran.transactionDate),
+        Date: this.localization.LocalizeShortDateTime(tran.transactionDate),
         ClerkID: (clerk && clerk.length > 0) ? clerk[0].userName : '',
         Outlet: tran.outletName,
         Amount: this.FormatCurrency(tran.totalAmount),
