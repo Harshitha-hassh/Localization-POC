@@ -1445,6 +1445,7 @@
     "8100": "8100 - Transaction Detail_uk",
     "8105": "8105 - Top Spenders_uk",
     "8140": "8140 - Sales Mix Report_uk",
+    "8150": "8150 - Items Extract Report_uk",
     "8700": "8700 - Update Qty on Hand_uk",
     "8705": "8705 – Freeze Inventory_uk",
     "8710": "8710 - Release Inventory_uk",
@@ -2709,6 +2710,7 @@
     "EndDatecannotbepriortoStartDate": "End Date cannot be prior to Start Date_uk",
     "StartDateShouldNotBeGreaterThanEndDate": "Start date should not be greater than the End date_uk",
     "PleaseSelectAtleastOneOption": "Please Select any {option}_uk",
+    "PleaseSelectCategoryOrPayment": "Please Select Category or paymentMethod_uk",
     "PleaseSelectAtleastOneUser": "Please Select any User(s)_uk",
     "PleaseSelectAnyOutlet": "Outlet_uk",
     "ReportCategory": "Report Category(s)_uk",
@@ -2778,7 +2780,8 @@
     "IncludeInActiveUsers": "Include Inactive Users_uk",
     "SalesMix": "Sales Mix Report_uk",
     "InventoryReport": "InventoryReport_uk",
-    "InventoryPickupDelivery": "Inventory Pickup Delivery Report_uk"
+    "InventoryPickupDelivery": "Inventory Pickup Delivery Report_uk",
+    "ItemsExtract": "Items Extract_uk"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_uk",
