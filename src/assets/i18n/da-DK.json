@@ -1118,6 +1118,7 @@
     "AmountTenderValidationMsg": "Amount entered should not be greater than remaining due_da",
     "PaymentTransactionFailureMsg": "{paymentmethod} transaction failed, please try again._da",
     "PayAgentUnavailable": "An unexpected error has occurred in Pay Agent, please try again._da",
+    "PayAgentConfigError": "Pay Agent not configured properly, please check the configuration._da",
     "PMAgentUnavailable": "Payment Manager services is temporarily unavailable, Please try again later._da",
     "PMDeviceNotAvailable": "Device not available, Please check for connectivity or try different devices._da",
     "PMTransactionTimeOut": "Transaction Time Out, Please try again._da",
