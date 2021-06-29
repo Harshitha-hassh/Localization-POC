@@ -29,6 +29,11 @@
                     </mat-form-field>
 -->
                 <ng-container *ngIf="!useRetailInterface">
+                    <mat-form-field>
+                        <mat-select placeholder="{{captions.paymentMethod}}" formControlName="defaultPaymentId">
+                            <mat-option *ngFor="let payment of paymentMethods" [value]="payment.id">{{payment.paymentMethod}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                     <label class='LW14 label'>{{captions.rguestPayDevices}}</label>
                     <mat-form-field>
                         <mat-select placeholder="{{captions.paymentDevice}}" formControlName="defaultPaymentDevice" (selectionChange)="deviceChanged($event)">

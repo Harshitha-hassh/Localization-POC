@@ -2981,7 +2981,8 @@
     "DistributionName": "Distribution Name_au",
     "NewDistributionList": "New Distribution List_au",
     "AllowQuickID": "Allow Quick ID_au",
-    "ForRetailTransactions": "For Retail Transactions_au"
+    "ForRetailTransactions": "For Retail Transactions_au",
+    "paymentMethod": "Default Payment Method_au"
   },
   "settings": {
     "prices": "Price ({option})_au",

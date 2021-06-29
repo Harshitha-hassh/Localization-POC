@@ -2981,7 +2981,8 @@
     "DistributionName": "Distribution Name_gb",
     "NewDistributionList": "New Distribution List_gb",
     "AllowQuickID": "Allow Quick ID_gb",
-    "ForRetailTransactions": "For Retail Transactions_gb"
+    "ForRetailTransactions": "For Retail Transactions_gb",
+    "paymentMethod": "Default Payment Method_gb"
   },
   "settings": {
     "prices": "Price ({option})_gb",

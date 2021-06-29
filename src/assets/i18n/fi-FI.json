@@ -2981,7 +2981,8 @@
     "DistributionName": "Distribution Name_fi",
     "NewDistributionList": "New Distribution List_fi",
     "AllowQuickID": "Allow Quick ID_fi",
-    "ForRetailTransactions": "For Retail Transactions_fi"
+    "ForRetailTransactions": "For Retail Transactions_fi",
+    "paymentMethod": "Default Payment Method_fi"
   },
   "settings": {
     "prices": "Price ({option})_fi",

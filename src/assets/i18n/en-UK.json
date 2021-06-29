@@ -2981,7 +2981,8 @@
     "DistributionName": "Distribution Name_uk",
     "NewDistributionList": "New Distribution List_uk",
     "AllowQuickID": "Allow Quick ID_uk",
-    "ForRetailTransactions": "For Retail Transactions_uk"
+    "ForRetailTransactions": "For Retail Transactions_uk",
+    "paymentMethod": "Default Payment Method_uk"
   },
   "settings": {
     "prices": "Price ({option})_uk",

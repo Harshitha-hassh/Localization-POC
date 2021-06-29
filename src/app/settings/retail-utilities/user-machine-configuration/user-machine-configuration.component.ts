@@ -19,6 +19,7 @@ import { PayAgentService } from 'src/app/retail/shared/service/payagent.service'
 import { MachineName } from 'src/app/common/shared/shared.modal';
 import { MachineNameDataService } from 'src/app/common/dataservices/machinename.data.service';
 import { DropdownOptions } from 'src/app/common/Models/ag-models';
+import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 
 @Component({
   selector: 'app-user-machine-configuration',
@@ -68,7 +69,8 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     private http: HttpServiceCall,
     private utils: RetailUtilities, 
     private payAgentService: PayAgentService,
-    private zebra: ZebraPrintService) {
+    private zebra: ZebraPrintService,
+    private featureFlagInfo: RetailFeatureFlagInformationService,) {
 
   }
 
@@ -82,7 +84,8 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
       defaultDeviceName: '',
       isIdtechSred: false,
       smallStickersPrinter: '',
-      hangingTicketsPrinter: ''
+      hangingTicketsPrinter: '',
+      defaultPaymentId: 0
     });
     this.useRetailInterface = this.PropertyInfo.UseRetailInterface;
     this.userMachineConfigSubscription = this.userSessionConfigForm.valueChanges.subscribe(() => {
@@ -110,12 +113,38 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
       this.getDeviceNamesAsync();
       this.GetPaymentDevicesAsync();
       this.getPrinterNamesAsync();
+      this.GetPaymentMethodsAsync();
     }
     // .catch(err => console.error(err));
     // .catch(err => console.error(err));
     // .catch(err => console.error(err));
 
   }
+
+  paymentMethods: any[] = [];
+  private async GetPaymentMethodsAsync() {
+    var _paymentMethods = await this.userMachineConfigurationService.GetPaymentMethods();
+    if(Array.isArray(_paymentMethods) && _paymentMethods.length){
+      this.paymentMethods = _paymentMethods;
+      const PaymentsToBeSkipped = [PaymentMethods.IDTECH, PaymentMethods.V1GiftCardIdTech, PaymentMethods.ExternalGiftCardIdTech, PaymentMethods.AgilysysGiftCardIdTech, PaymentMethods.PendingSettlement];
+      this.paymentMethods = this.paymentMethods.filter(x => !PaymentsToBeSkipped.includes(x.paymentTypeId)); 
+       
+      this.paymentMethods.forEach((method) => {
+        if (this.localization.captions.shop.paymentMethods[method.paymentTypeId]) {
+          method.paymentMethod = this.localization.captions.shop.paymentMethods[method.paymentTypeId];
+        } else {
+          method.paymentMethod = method.paymentMethod;
+        }
+      });
+ 
+      let giftcardMethod = this.paymentMethods.find(x => x.paymentTypeId == PaymentMethods.ExternalGiftCard);
+      if (giftcardMethod && this.featureFlagInfo.GatewayType) {
+        const paymentMethod = this.localization.replacePlaceholders(this.localization.captions.shop.paymentMethods[giftcardMethod.paymentTypeId], ["Third Party"], [this.featureFlagInfo.GatewayType]);
+        giftcardMethod.paymentMethod = paymentMethod;
+      }
+    }
+  }
+
 
   // User Session Configuration
   private async getUserSessionConfiguration(userId) {
@@ -148,7 +177,8 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
       defaultDeviceName: this.userSessionConfiguration.defaultDeviceName,
       isIdtechSred: this.userSessionConfiguration.isIdtechSred,
       smallStickersPrinter: this.userSessionConfiguration.smallStickersPrinter,
-      hangingTicketsPrinter: this.userSessionConfiguration.hangingTicketsPrinter
+      hangingTicketsPrinter: this.userSessionConfiguration.hangingTicketsPrinter,
+      defaultPaymentId: this.userSessionConfiguration.defaultPaymentId
     });
 
   }
@@ -392,6 +422,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
       IsIdtechSred=${values.isIdtechSred};
       HangingTicketsPrinter=${values.hangingTicketsPrinter};
       SmallStickersPrinter=${values.smallStickersPrinter};
+      DefaultPaymentId=${values.defaultPaymentId};
 `;
     sessionStorage.setItem(userSessionConfigKey, JSON.stringify(values));
   }

@@ -2981,7 +2981,8 @@
     "DistributionName": "Distribution Name_in",
     "NewDistributionList": "New Distribution List_in",
     "AllowQuickID": "Allow Quick ID_in",
-    "ForRetailTransactions": "For Retail Transactions_in"
+    "ForRetailTransactions": "For Retail Transactions_in",
+    "paymentMethod": "Default Payment Method_in"
   },
   "settings": {
     "prices": "Price ({option})_in",
