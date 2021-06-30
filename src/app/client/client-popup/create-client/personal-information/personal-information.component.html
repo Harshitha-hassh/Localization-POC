@@ -1,8 +1,8 @@
 <form class="personal_container  p-4 h-100" [formGroup]="FormGrp" autocomplete="off">
   <ng-scrollbar [autoHide]="true">
-    <app-image-uploader [readOnly]="isClientViewOnly" [emptyImgCaption]="captions.UploadyourPhoto"
-      [imgData]="url" (fileDeleted)="fileDeleted()" (fileUploaded)="fileUploaded($event)"
-      (fileSizeExceeded)="fileSizeExceeded()"></app-image-uploader>
+    <app-image-uploader [readOnly]="isClientViewOnly" [emptyImgCaption]="captions.UploadyourPhoto" [imgData]="url"
+      (fileDeleted)="fileDeleted()" (fileUploaded)="fileUploaded($event)" (fileSizeExceeded)="fileSizeExceeded()">
+    </app-image-uploader>
     <div class="float-left sidesection ml-3">
       <div>
         <mat-form-field class="">
@@ -18,7 +18,7 @@
       <div class="">
         <mat-form-field class="">
           <input matInput [placeholder]="captions.CFirstName" [maxlength]="1000" style="text-transform:capitalize"
-            value={{personalDetails.firstName}} autocomplete="off" formControlName="firstName" required> 
+            value={{personalDetails.firstName}} autocomplete="off" formControlName="firstName" required>
           <mat-error class=""
             *ngIf="FormGrp.controls['firstName'].hasError('required') && FormGrp.controls['firstName'].touched && !FormGrp.controls['firstName'].valid">
             {{captions.MissingFirstName}}
@@ -41,13 +41,14 @@
       </div>
       <div class="">
         <div class="display_style_toggle  toggle-section float-left ">
-          <label *ngIf="!customRequired.gender" for="gender" class=" LW12 gender form-label-normal" >{{captions.Gender}}</label>
+          <label *ngIf="!customRequired.gender" for="gender"
+            class=" LW12 gender form-label-normal">{{captions.Gender}}</label>
           <div *ngIf="customRequired.gender" class="wdt-100">
-          <div class="gender-left">{{captions.Gender}}</div>
-          <div class=gender-right>*</div>
+            <div class="gender-left">{{captions.Gender}}</div>
+            <div class=gender-right>*</div>
           </div>
           <mat-button-toggle-group #group="matButtonToggleGroup" class="margin_top_9 LW14 mb-1 "
-            [value]="personalDetails.gender" formControlName="gender" [required] ="customRequired.gender">
+            [value]="personalDetails.gender" formControlName="gender" [required]="customRequired.gender">
             <mat-button-toggle class=" border_right toggle-btn" *ngFor="let gender of genderList"
               value="{{gender.value}}">
               {{gender.text}}
@@ -60,22 +61,28 @@
         </div>
         <div class="display_style_toggle width_180px">
           <div class="float-left pr-4">
-            <label for="" *ngIf="!customRequired.dob" class="form-label-normal d-block mb-0 dob-label">{{captions.CDateOfBirth}}</label>
+            <label for="" *ngIf="!customRequired.dob"
+              class="form-label-normal d-block mb-0 dob-label">{{captions.CDateOfBirth}}</label>
             <div *ngIf="customRequired.dob" class="wdt-100">
               <div class="dob-left">{{captions.CDateOfBirth}}</div>
               <div class="dob-right">*</div>
-              </div>
+            </div>
             <div class="d-inline-block">
               <mat-form-field floatLabel="never" class="width_180px" appearance="legacy">
-                <input [required]="customRequired.dob" [max]="maxDate" matInput [matDatepicker]="picker" [placeholder]="placeHolderFormat" class=""
-                  formControlName="dob">
+                <input [required]="customRequired.dob" [max]="maxDate" matInput [matDatepicker]="picker"
+                  [placeholder]="placeHolderFormat" class="" formControlName="dob">
                 <mat-datepicker #picker></mat-datepicker>
                 <i matSuffix class="icon-Calender cursor fs-xlarge position-relative d-inline-block customCalendar"
                   (click)="picker.open()"></i>
-                <mat-error *ngIf="FormGrp.controls['dob'].hasError('matDatepickerParse')">{{commonCaptions.dateFormat}}</mat-error>   
-                <mat-error *ngIf="FormGrp.controls['dob'].hasError('required') && !FormGrp.controls['dob'].hasError('matDatepickerParse')">{{localization.captions.common.MissingDOB}}</mat-error>   
-                <mat-error *ngIf="FormGrp.controls['dob'].hasError('matDatepickerMin')">{{commonCaptions.minimum}} {{captions.CDateOfBirth}}</mat-error>
-                <mat-error *ngIf="FormGrp.controls['dob'].hasError('matDatepickerMax')">{{commonCaptions.maximum}} {{captions.CDateOfBirth}}</mat-error>
+                <mat-error *ngIf="FormGrp.controls['dob'].hasError('matDatepickerParse')">{{commonCaptions.dateFormat}}
+                </mat-error>
+                <mat-error
+                  *ngIf="FormGrp.controls['dob'].hasError('required') && !FormGrp.controls['dob'].hasError('matDatepickerParse')">
+                  {{localization.captions.common.MissingDOB}}</mat-error>
+                <mat-error *ngIf="FormGrp.controls['dob'].hasError('matDatepickerMin')">{{commonCaptions.minimum}}
+                  {{captions.CDateOfBirth}}</mat-error>
+                <mat-error *ngIf="FormGrp.controls['dob'].hasError('matDatepickerMax')">{{commonCaptions.maximum}}
+                  {{captions.CDateOfBirth}}</mat-error>
               </mat-form-field>
 
             </div>
@@ -127,8 +134,8 @@
           <div class="phone-controls-wrapper float-left width-490px">
             <div>
               <mat-form-field class="inputwidth20 width-100px mr-3" [formGroupName]="i">
-                <mat-select [required]="customRequired.phone" [placeholder]="captions.CPhone" id="PhoneNumberLabel" name="TSpdd" class="LW14"
-                  formControlName="PhoneNumberLabel" 
+                <mat-select [required]="customRequired.phone" [placeholder]="captions.CPhone" ref-phonedropDown
+                  id="PhoneNumberLabel" name="TSpdd" class="LW14" formControlName="PhoneNumberLabel"
                   (selectionChange)="setmandatory($event, 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', i ,item)">
                   <mat-option></mat-option>
                   <mat-option *ngFor="let ct of contactTypePhone" [value]="ct.id">{{ct.description}}
@@ -156,7 +163,8 @@
                 *ngIf="(i == currentIndexPhone) || IsEdit"></span>
             </div>
             <div>
-              <mat-form-field class="d-block width-380px" *ngIf="item.get('PhoneNumberLabel').value === phoneTypes.office" [formGroupName]="i">
+              <mat-form-field class="d-block width-380px"
+                *ngIf="item.get('PhoneNumberLabel').value === phoneTypes.office" [formGroupName]="i">
                 <input matInput [placeholder]="commonCaptions.lbl_extension" formControlName='Extension'
                   inputtype="onlynumber" maxlength="5">
               </mat-form-field>
@@ -173,9 +181,9 @@
               <app-toggle-switch formControlName="PhonePrivate"></app-toggle-switch>
             </div>
           </div>
-          <div class="error-div">
+          <div class="error-div" *ngIf="phonedropDown.value">
             <mat-error class="mb-1"
-              *ngIf="!isClientViewOnly && item.controls['PhoneNumberLabel'].touched && !phoneErrorRequired">
+              *ngIf=" !isClientViewOnly && item.controls['PhoneNumberLabel'].touched && !phoneErrorRequired">
               {{validatePhoneType}}
             </mat-error>
 
@@ -196,7 +204,8 @@
           class="w-100 emailDiv">
           <div class="float-left width-490px" [formGroupName]="j">
             <mat-form-field class="inputwidth20 width-100px mr-3">
-              <mat-select (selectionChange)="onEmailChange($event, i ,item)" [required]="customRequired.email"  [placeholder]="captions.Email" (value)="selectedEmail" id="EmailSelect" name="TSedd"
+              <mat-select (selectionChange)="onEmailChange($event, i ,item)" [required]="customRequired.email"
+                [placeholder]="captions.Email" (value)="selectedEmail" id="EmailSelect" name="TSedd"
                 formControlName="EmailLabel" class="">
                 <mat-option></mat-option>
                 <mat-option *ngFor="let ct of contactTypeEmail" [value]="ct.id">{{ct.description}}
@@ -205,8 +214,8 @@
             </mat-form-field>
 
             <mat-form-field class="inputwidth70 width-287px">
-              <input matInput name="TSei" (blur)="emailChange('EmailId','EmailLabel',j);"
-                [maxlength]="75" inputtype="email" id="EmailInput" formControlName="EmailId">
+              <input matInput name="TSei" (blur)="emailChange('EmailId','EmailLabel',j);" [maxlength]="75"
+                inputtype="email" id="EmailInput" formControlName="EmailId">
 
             </mat-form-field>
             <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
@@ -247,12 +256,13 @@
           class="clearfix">
           <div class="float-left width-490px">
             <mat-form-field class="width-380px" [formGroupName]="j">
-              <input matInput [required]="customRequired.address" *ngIf="j==0" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+              <input matInput [required]="customRequired.address" *ngIf="j==0" ngx-google-places-autocomplete
+                [options]='options' #placesRef="ngx-places" (onAddressChange)="bindAddressFromGoogle($event,true,j)"
+                name="TSei" [maxlength]="100" id="AddressInput{{j}}" formControlName="addressLine"
+                placeholder="{{captions.CAddress}}">
+              <input matInput [required]="customRequired.address" *ngIf="j>0"
                 (onAddressChange)="bindAddressFromGoogle($event,true,j)" name="TSei" [maxlength]="100"
                 id="AddressInput{{j}}" formControlName="addressLine" placeholder="{{captions.CAddress}}">
-              <input matInput [required]="customRequired.address" *ngIf="j>0" (onAddressChange)="bindAddressFromGoogle($event,true,j)" name="TSei"
-                [maxlength]="100" id="AddressInput{{j}}" formControlName="addressLine"
-                placeholder="{{captions.CAddress}}">
             </mat-form-field>
             <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
               (click)="removeAddressItem(j);makeFormDirty()" *ngIf="(j != 0 && j<3)"></span>
@@ -270,15 +280,16 @@
         </div>
       </div>
       <mat-form-field class="mr-3">
-        <input matInput [required]="customRequired.postalCode" [placeholder]="captions.PostalCode" (blur)="PostalCodeChanged($event,false)"
-          formControlName="postal_code" [maxlength]="10">
+        <input matInput [required]="customRequired.postalCode" [placeholder]="captions.PostalCode"
+          (blur)="PostalCodeChanged($event,false)" formControlName="postal_code" [maxlength]="10">
         <mat-error class=""
           *ngIf="FormGrp.controls['postal_code'].hasError('required') && FormGrp.controls['postal_code'].touched && !FormGrp.controls['postal_code'].valid">
           {{captions.MissingPostalCode}}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="">
-        <input matInput [placeholder]="captions.City" formControlName="city" [required]="customRequired.city" [maxlength]="50">
+        <input matInput [placeholder]="captions.City" formControlName="city" [required]="customRequired.city"
+          [maxlength]="50">
         <mat-error class=""
           *ngIf="FormGrp.controls['city'].hasError('required') && FormGrp.controls['city'].touched && !FormGrp.controls['city'].valid">
           {{captions.MissingCityInformation}}
@@ -293,7 +304,8 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field class="">
-          <input matInput [placeholder]="captions.Country" [required]="customRequired.country" formControlName="country">
+          <input matInput [placeholder]="captions.Country" [required]="customRequired.country"
+            formControlName="country">
           <mat-error class=""
             *ngIf="FormGrp.controls['country'].hasError('required') && FormGrp.controls['country'].touched && !FormGrp.controls['country'].valid">
             {{captions.MissingCountryInformation}}
