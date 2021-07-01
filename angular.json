@@ -38,7 +38,9 @@
               "./node_modules/ngx-ui-switch/ui-switch.component.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {
