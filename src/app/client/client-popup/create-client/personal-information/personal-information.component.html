@@ -205,7 +205,7 @@
           <div class="float-left width-490px" [formGroupName]="j">
             <mat-form-field class="inputwidth20 width-100px mr-3">
               <mat-select (selectionChange)="onEmailChange($event, i ,item)" [required]="customRequired.email"
-                [placeholder]="captions.Email" (value)="selectedEmail" id="EmailSelect" name="TSedd"
+                [placeholder]="captions.Email" (value)="selectedEmail" id="EmailSelect" name="TSedd" ref-emailDropdown
                 formControlName="EmailLabel" class="">
                 <mat-option></mat-option>
                 <mat-option *ngFor="let ct of contactTypeEmail" [value]="ct.id">{{ct.description}}
@@ -233,7 +233,7 @@
               <app-toggle-switch formControlName="EmailPrivate"></app-toggle-switch>
             </div>
           </div>
-          <div class="error-div">
+          <div class="error-div" *ngIf="emailDropdown.value">
             <mat-error class="mb-1"
               *ngIf="!isClientViewOnly && item.controls['EmailLabel'].touched && (FormGrp.controls['Email']['controls'][j].controls['EmailLabel'].hasError('required')|| item.controls['EmailLabel'].invalid)">
               {{validateEmailType}}</mat-error>
