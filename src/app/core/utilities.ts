@@ -12,7 +12,7 @@ import { AuthenticationParameters } from 'msal';
 import moment from 'moment';
 import { CommonAlertPopupComponent } from '../common/shared/shared/common-alert-popup/common-alert-popup.component';
 import { CommonUtilities } from '../common/shared/shared/utilities/common-utilities';
-import { ISubscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { RetailLocalization } from '../retail/common/localization/retail-localization';
 import { HttpServiceCall } from '../common/shared/shared/service/http-call.service';
 import { MoreSectionServiceService } from '../common/shared/shared/more-section/more-section-service.service';
@@ -155,7 +155,7 @@ export function tConvert(tt) {
     }
 )
 export class Utilities extends CommonUtilities implements OnDestroy {
-    subscription: ISubscription;
+    subscription: Subscription;
     constructor(public localization: RetailLocalization, public dialog: MatDialog, public httpServiceCall: HttpServiceCall, public route: Router,
         public _MoreSectionServiceService: MoreSectionServiceService, public PropertyInfo: RetailPropertyInformation, public CommonPropertyInfo: CommonPropertyInformation, public formatphno: FormatText) {
             super(localization, dialog, httpServiceCall, route,
