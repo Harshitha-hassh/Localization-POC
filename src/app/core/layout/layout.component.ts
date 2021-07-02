@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { PropertyService } from 'src/app/common/services/property.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { menuTypes } from 'src/app/shared/enums/menu.constant';
+import { PropertyInformation } from '../services/property-information.service';
 import { RetailPropertyInformation } from '../services/retail-property-information.service';
 import { RouteLoaderService } from '../services/route-loader.service';
 
@@ -18,7 +20,8 @@ export class LayoutComponent implements OnInit {
 
   constructor(private routeDataService: RouteLoaderService,
     private localization: RetailLocalization,
-    private propertyInfo: RetailPropertyInformation) {
+    private propertyInfo: PropertyInformation,
+    private propertyService: PropertyService) {
     this.routeDataService.loadSettings().then(result => {
       if (result) {
         const value = this.routeDataService.GetChildMenu('/');
@@ -32,6 +35,15 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit() {
       this.applyTheme('blacktheme');
+      this.loadGoogleMap();
+  }
+
+  private loadGoogleMap(){
+    let propertyConfig = this.propertyInfo.GetPropertyConfiguration()
+    if (propertyConfig?.GoogleMapApiKey) { 
+      const language = this.localization.GetsessionStorageValue('_userInfo', 'language') || 'en-US';
+      this.propertyService.generateGoogleMapApi(propertyConfig.GoogleMapApiKey, language);
+  }
   }
 
   applyTheme(name) {
