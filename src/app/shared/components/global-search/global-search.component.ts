@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { BreakPoint } from '../../models/breakpoint-models';
 import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Component({
   selector: 'app-retail-global-search',
@@ -21,7 +22,7 @@ import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/u
 export class RetailGlobalSearchComponent implements OnInit, AfterViewInit {
 
   filterData: any = []; // local filter array
-  searchGroupOptions: Promise<{isSearched: boolean, data: GlobalSearchModel[]}> = Promise.resolve({isSearched: false, data: []});
+  searchGroupOptions: Promise<{ isSearched: boolean, data: GlobalSearchModel[] }> = Promise.resolve({ isSearched: false, data: [] });
   globalSearchForm: FormGroup;
   @Input() open: boolean = false;
   @Output() onSearch = new EventEmitter();
@@ -37,7 +38,7 @@ export class RetailGlobalSearchComponent implements OnInit, AfterViewInit {
     private localization: RetailStandaloneLocalization,
     private dialog: MatDialog,
     private _as: AppModuleService,
-    private userAccessBusiness : UserAccessBusiness
+    private userAccessBusiness: UserAccessBusiness, private util: RetailUtilities
   ) {
     this.captions = this.localization.captions;
   }
@@ -65,7 +66,7 @@ export class RetailGlobalSearchComponent implements OnInit, AfterViewInit {
 
     } else if (value.length <= 2) {
       this.filterData = [];
-      this.searchGroupOptions = Promise.resolve({isSearched: false, data: []});
+      this.searchGroupOptions = Promise.resolve({ isSearched: false, data: [] });
     }
   }
 
@@ -78,7 +79,6 @@ export class RetailGlobalSearchComponent implements OnInit, AfterViewInit {
   }
 
   addClient(e) {
-    const query = Math.random() * 10;
     this._router.navigate([`login`]);
     // this._router.navigate([`home`], { queryParams: { action: 'add', query: query } });
   }
@@ -99,7 +99,7 @@ export class RetailGlobalSearchComponent implements OnInit, AfterViewInit {
 
   linkClicked(title: string, data: any, e) {
     // Random number - To refresh the page everytime
-    const query = Math.random() * 10;
+    const query = this.util.getRandomDecimal() * 10;
     switch (title) {
       case searchtitleenum.sales:
         this._router.navigate([`sales`]);
@@ -117,18 +117,18 @@ export class RetailGlobalSearchComponent implements OnInit, AfterViewInit {
         break;
       case searchtitleenum.clients:
         this._router.navigate([`/client/allclients/`, data.guestProfileId + query]);
-    break;
+        break;
       default:
 
-    break;
-}
-this.searchGroupOptions = Promise.resolve({isSearched: false, data: []});
-this.OnOptionSelected.emit();
+        break;
+    }
+    this.searchGroupOptions = Promise.resolve({ isSearched: false, data: [] });
+    this.OnOptionSelected.emit();
   }
 
-valueMapper() {
-  return '';
-}
+  valueMapper() {
+    return '';
+  }
 
   async openAddClient() {
     var result = await this.userAccessBusiness.getUserAccess(BreakPoint.AddNewClientProfile);
@@ -146,14 +146,14 @@ valueMapper() {
   }
 
 
-async globalSearch(pattern: string): Promise < any[] > {
-  const data = [
-    { "title": "booking", "dataCollection": [{ "id": 1, "value": "booking 1" }, { "id": 2, "value": "booking 2" }] },
-    { "title": "settings", "dataCollection": [{ "id": 1, "value": "settings 1" }] },
-    { "title": "sales", "dataCollection": [{ "id": 1, "value": "Sales 1" }, { "id": 2, "value": "Sales 2" }] }
-  ];
-  return data;
-}
+  async globalSearch(pattern: string): Promise<any[]> {
+    const data = [
+      { "title": "booking", "dataCollection": [{ "id": 1, "value": "booking 1" }, { "id": 2, "value": "booking 2" }] },
+      { "title": "settings", "dataCollection": [{ "id": 1, "value": "settings 1" }] },
+      { "title": "sales", "dataCollection": [{ "id": 1, "value": "Sales 1" }, { "id": 2, "value": "Sales 2" }] }
+    ];
+    return data;
+  }
 
 
 }
