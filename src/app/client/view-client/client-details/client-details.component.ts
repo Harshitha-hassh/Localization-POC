@@ -349,7 +349,7 @@ export class ClientDetailsComponent implements OnInit {
     }
 
     clientSearch(searchText) {
-        this.requestUid = Date.now() + "" + Math.random() * 10000;
+        this.requestUid = Date.now() + "" + this.utils.getRandomDecimal() * 10000;
         if (this.timer) {
             clearTimeout(this.timer); //cancel the previous timer.
             this.timer = null;
@@ -577,7 +577,7 @@ export class ClientDetailsComponent implements OnInit {
 
     RecentClientInformation(searchText: any) {
         if(this.requestUid == '') {
-            this.requestUid = Date.now() + "" + Math.random() * 10000;
+            this.requestUid = Date.now() + "" + this.utils.getRandomDecimal() * 10000;
         }
         this.http.CallApiWithCallback<number>({
             host: Host.retailPOS,

@@ -22,7 +22,7 @@ export class ManageSessionService implements OnDestroy {
 
     private _count = 0;
     userSessionId = 'userSession';
-    private _serviceId: string = 'idleTimeoutSvc-' + Math.floor(Math.random() * 10000);
+    private _serviceId: string = 'idleTimeoutSvc-' + Math.floor(this.utils.getRandomDecimal() * 10000);
     private _autoLogOff = false;
     private _logOffAfter: number;
     private _timeoutSeconds: number;
