@@ -466,7 +466,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     const inputPin = this.FormGrp.controls['postal_code'].value;
     this.http
       .getHTTPData(
-        'http://maps.googleapis.com/maps/api/geocode/json?address=' + inputPin
+        'https://maps.googleapis.com/maps/api/geocode/json?address=' + inputPin
       )
       .pipe(takeUntil(this.destroyed$))
       .subscribe(result => this.bindAddressFromGoogle(result, IsAutoComplete));
