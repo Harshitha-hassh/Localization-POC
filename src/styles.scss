@@ -5581,3 +5581,7 @@ a:hover {
   @extend .ag_pointer--none;
   opacity: 0.5;
 }
+
+.swiper-button-next:after,.swiper-button-prev:after{
+  display: none;
+}
