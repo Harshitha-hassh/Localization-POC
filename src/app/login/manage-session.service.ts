@@ -22,8 +22,6 @@ export class ManageSessionService implements OnDestroy {
 
     private _count = 0;
     userSessionId = 'userSession';
-    private _serviceId: string = 'idleTimeoutSvc-' + Math.floor(Math.random() * 10000);
-    private _autoLogOff = false;
     private _logOffAfter: number;
     private _timeoutSeconds: number;
     private timerSubscription: Subscription;
@@ -39,7 +37,7 @@ export class ManageSessionService implements OnDestroy {
     };
 
     scope = 'Spa';
-    state: string = Date.now() + '' + Math.random();
+    state: string = Date.now() + '' + this.utils.getRandomDecimal();
     tokenKey = 'a5smm_utoken';
     propertyKey = 'propertyInfo';
     url = '';
@@ -54,10 +52,10 @@ export class ManageSessionService implements OnDestroy {
     private triggerTimeout: any;
 
     constructor(private router: Router
-        ,       public dialogRef: MatDialog
-        ,       public loginService: TenantManagementCommunication
-        ,       private utils: Utilities
-        ,       public http: HttpServiceCall,
+        , public dialogRef: MatDialog
+        , public loginService: TenantManagementCommunication
+        , private utils: Utilities
+        , public http: HttpServiceCall,
         private localize: RetailLocalization) {
 
         this.timeoutExpired.subscribe(n => {
@@ -74,7 +72,7 @@ export class ManageSessionService implements OnDestroy {
     ngOnDestroy() {
         this.timeoutExpired.unsubscribe();
         if (this.tokenTimerSubscription) {
-          this.tokenTimerSubscription.unsubscribe();
+            this.tokenTimerSubscription.unsubscribe();
         }
     }
 
@@ -190,7 +188,7 @@ export class ManageSessionService implements OnDestroy {
     public changeTitle() {
         const title = document.getElementsByTagName('title')[0];
         title.innerText = this.getPropertyName() ? this.getPropertyName() + ' - ' + this.localize.captions.app_title :
-                        this.localize.captions.app_title;
+            this.localize.captions.app_title;
     }
 
     createSession(): Promise<number> {
@@ -255,7 +253,7 @@ export class ManageSessionService implements OnDestroy {
         this.setUserSessionsInfoItem(USERS_SESSSIONS_INFO, JSON.stringify(userSessionDetails));
     }
 
-    public GetUserSessionsInfo()  {
+    public GetUserSessionsInfo() {
         let userSessions;
         const sessionDetails = this.getUserSessionsInfoItem(USERS_SESSSIONS_INFO);
         if (sessionDetails) {
@@ -284,7 +282,7 @@ export class ManageSessionService implements OnDestroy {
             this.timerSubscription.unsubscribe();
         }
         if (this.tokenTimerSubscription) {
-          this.tokenTimerSubscription.unsubscribe();
+            this.tokenTimerSubscription.unsubscribe();
         }
     }
 
@@ -326,24 +324,24 @@ export class ManageSessionService implements OnDestroy {
         //   else {
         //     this.logout();
         //   }
-    
+
         // }
-      }
+    }
 
     private async timerComplete(n: number, displayAlert: boolean) {
         this.timeoutExpired.next(++this._count);
         if (!displayAlert) {
             this.logout();
-          }
-          else {
+        }
+        else {
             this.utils.showAlert(this.localize.captions.AutologoffWarning, AlertType.Warning);
             localStorage.setItem('popupEnabled', 'true')
             this.triggerTimeout = setTimeout(() => {
-              this.logout();
+                this.logout();
             }, this.logOutWaitingtime);
-          }
+        }
     }
-    
+
     private getPropertyName() {
         return this.localize.GetsessionStorageValue('propertyInfo', 'PropertyName');
     }
