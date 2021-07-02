@@ -466,6 +466,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.propertyInfo.SetPropertyDate(result.propertyDate);
     this.propertyInfo.SetPropertyId(propertyId);
     this.SetPropertyConfiguration();
+    this.SetPropertyApiConfiguration();
     if (!this.propertyInfo.UseRetailInterface) {
       this.SetPaymentConfiguration(propertyId);
     }
@@ -491,9 +492,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     } as API.PropertyConfigurationSettings<any>);
     if ((propertityConfig != null) && (Object.keys(propertityConfig.configValue).length > 0)) {
       this.propertyInfo.SetPropertyConfiguration(propertityConfig);
-      // const language=this.utils.GetSessionStorageValue('_userInfo', 'language')||'en-US';
-      // if(propertityConfig.configValue.GoogleMapApiKey)
-      //   this.generateGoogleMapApi(propertityConfig.configValue.GoogleMapApiKey,language);
     }
   }
 

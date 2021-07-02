@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { FormatText } from 'src/app/common/shared/shared/pipes/formatText-pipe.pipe';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
-import {  DefaultGUID } from 'src/app/retail/shared/globalsContant';
+import { DefaultGUID } from 'src/app/retail/shared/globalsContant';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { ClientPopupComponent } from '../../client-popup/client-popup.component';
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
@@ -25,7 +25,7 @@ import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
     selector: 'app-client-details',
     templateUrl: './client-details.component.html',
     styleUrls: ['./client-details.component.scss'],
-    providers: [ UserAccessBusiness, UserAccessDataService],
+    providers: [UserAccessBusiness, UserAccessDataService],
     animations: [
         trigger(
             'enterAnimation', [
@@ -48,14 +48,14 @@ export class ClientDetailsComponent implements OnInit {
     searchText = '';
     TablebodyData = [];
     tableoptions = [{
-        TableHdrData: 
-        [{ title: this.captions.BasicInformation, jsonkey: 'client', alignType: 'left', datatype: 'client', searchable: true, sortable: true },
-        { title: this.captions.PatronID, jsonkey: 'patronId', alignType: 'left', searchable: false, sortable: true },
-        { title: this.captions.Gender, jsonkey: 'gender', alignType: 'left', datatype: 'icon', searchable: false, sortable: false },
-        { title: this.captions.DateOfBirth, jsonkey: 'dateOfBirth', alignType: 'left', searchable: false, sortable: true },
-        { title: this.captions.Address, jsonkey: 'address', alignType: 'left', searchable: false, sortable: false },
-        { title: this.captions.PhoneNumber, jsonkey: 'phoneNumber', alignType: 'left', searchable: true, sortable: false, hover: 'phoneNumbers' },
-        ],
+        TableHdrData:
+            [{ title: this.captions.BasicInformation, jsonkey: 'client', alignType: 'left', datatype: 'client', searchable: true, sortable: true },
+            { title: this.captions.PatronID, jsonkey: 'patronId', alignType: 'left', searchable: false, sortable: true },
+            { title: this.captions.Gender, jsonkey: 'gender', alignType: 'left', datatype: 'icon', searchable: false, sortable: false },
+            { title: this.captions.DateOfBirth, jsonkey: 'dateOfBirth', alignType: 'left', searchable: false, sortable: true },
+            { title: this.captions.Address, jsonkey: 'address', alignType: 'left', searchable: false, sortable: false },
+            { title: this.captions.PhoneNumber, jsonkey: 'phoneNumber', alignType: 'left', searchable: true, sortable: false, hover: 'phoneNumbers' },
+            ],
         TablebodyData: this.TablebodyData,
         ServiceId: 99,
         sortable: true,
@@ -114,7 +114,7 @@ export class ClientDetailsComponent implements OnInit {
     constructor(private dialog: MatDialog,
         private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
-        ,private userAccessBusiness: UserAccessBusiness) {
+        , private userAccessBusiness: UserAccessBusiness) {
         route.params.subscribe(val => {
             if (this._as.isglobalSearch) {
                 this.clientService.selectedIndex = 0;
@@ -128,9 +128,9 @@ export class ClientDetailsComponent implements OnInit {
     sampleData: any = [];
 
     ngOnInit() {
-      if (this.route.snapshot.routeConfig.path == 'allclients') { this.clientService.selectedIndex = 0; }
-      if (this.route.snapshot.routeConfig.path == 'recents') { this.clientService.selectedIndex = 1; }
-       else if (this.route.snapshot.routeConfig.path == 'vip') { this.clientService.selectedIndex = 2; }
+        if (this.route.snapshot.routeConfig.path == 'allclients') { this.clientService.selectedIndex = 0; }
+        if (this.route.snapshot.routeConfig.path == 'recents') { this.clientService.selectedIndex = 1; }
+        else if (this.route.snapshot.routeConfig.path == 'vip') { this.clientService.selectedIndex = 2; }
 
         this.sampleData = _.cloneDeep(this.TablebodyData);
         this.selectedClient = [];
@@ -142,8 +142,8 @@ export class ClientDetailsComponent implements OnInit {
             element.values = [];
         });
         if (this.clientService.selectedIndex == 1) {
-                this.RecentClientInformation(this.searchText);
-            
+            this.RecentClientInformation(this.searchText);
+
             this.selectedClient = [];
             this.clientService.isVip = false;
         }
@@ -165,13 +165,12 @@ export class ClientDetailsComponent implements OnInit {
      */
     addNewClient = async (event) => {
         var result = await this.userAccessBusiness.getUserAccess(BreakPoint.AddNewClientProfile);
-        if(result.isAllow || result.isViewOnly)
-        {
-        // this.appointmentservice.add_client = true;
-        // this.appointmentservice.IsAddClientFromSPA = true;
-        // this.appointmentservice.ImgTempHolder = {};
-        // this.appointmentservice.popupTitle = this.captions.NewClient;
-        this.openAddActionDialog();
+        if (result.isAllow || result.isViewOnly) {
+            // this.appointmentservice.add_client = true;
+            // this.appointmentservice.IsAddClientFromSPA = true;
+            // this.appointmentservice.ImgTempHolder = {};
+            // this.appointmentservice.popupTitle = this.captions.NewClient;
+            this.openAddActionDialog();
         }
     }
 
@@ -180,35 +179,35 @@ export class ClientDetailsComponent implements OnInit {
      * @description Opens dialog for Add/Edit action.
      */
     openActionDialog() {
-      //  if (this.breakPoint.CheckForAccess([SPAScheduleBreakPoint.BookAppointment])) { //TODO add breakpoints
-            // this.appointmentservice.fromClientModule = true;
-            // this.appointmentservice.labelRecords = [];
-            this.guestArray = [];
-            for (let i = 0; i < this.selectedClient.length; i++) {
-                this.arrayCount = i;
-                if (this.selectedClient[i].client.id == 0) {
-                    this.guestArray.push(this.selectedClient[i]);
-                }
+        //  if (this.breakPoint.CheckForAccess([SPAScheduleBreakPoint.BookAppointment])) { //TODO add breakpoints
+        // this.appointmentservice.fromClientModule = true;
+        // this.appointmentservice.labelRecords = [];
+        this.guestArray = [];
+        for (let i = 0; i < this.selectedClient.length; i++) {
+            this.arrayCount = i;
+            if (this.selectedClient[i].client.id == 0) {
+                this.guestArray.push(this.selectedClient[i]);
             }
-            if (this.guestArray.length > 0) {
-                // return here
-                this.guestNames = this.guestArray.map(x => {
-                    return x.client.firstName.trim().concat(' ', x.client.lastName.trim());
-                }).join(',')
-                this.utils.ShowError(this.localization.captions.common.Information, this.localization.replacePlaceholders(this.localization.getError(100002), ["clientName",], [this.guestNames]));
-                return;
-            }
-            this.selectedClient.forEach(element => {
-                let clientData: ClientLabel = {
-                    Id: element.client.id,
-                    FirstName: element.client.firstName.trim(),
-                    LastName: element.client.lastName.trim()
-                };
-                // this.appointmentservice.labelRecords.push(clientData);
-            });
-            let clientIds: any[] = this.selectedClient.map(x => x.client.id);
-            this.getClientsInfo(clientIds);
-     //   }
+        }
+        if (this.guestArray.length > 0) {
+            // return here
+            this.guestNames = this.guestArray.map(x => {
+                return x.client.firstName.trim().concat(' ', x.client.lastName.trim());
+            }).join(',')
+            this.utils.ShowError(this.localization.captions.common.Information, this.localization.replacePlaceholders(this.localization.getError(100002), ["clientName",], [this.guestNames]));
+            return;
+        }
+        this.selectedClient.forEach(element => {
+            let clientData: ClientLabel = {
+                Id: element.client.id,
+                FirstName: element.client.firstName.trim(),
+                LastName: element.client.lastName.trim()
+            };
+            // this.appointmentservice.labelRecords.push(clientData);
+        });
+        let clientIds: any[] = this.selectedClient.map(x => x.client.id);
+        this.getClientsInfo(clientIds);
+        //   }
     }
 
     openAddActionDialog() {
@@ -249,13 +248,15 @@ export class ClientDetailsComponent implements OnInit {
             height: '85%',
             disableClose: true,
             hasBackdrop: true,
-            data:  { mode: 'EDIT', title: this.captions.EditClient, type: this.captions.Update,id :id ,
-             data: clientDetail, closebool: true, isClientViewOnly : this.isClientViewOnly },
+            data: {
+                mode: 'EDIT', title: this.captions.EditClient, type: this.captions.Update, id: id,
+                data: clientDetail, closebool: true, isClientViewOnly: this.isClientViewOnly
+            },
             panelClass: 'small-popup'
         });
         dialogRef.afterClosed().subscribe(result => {
-          this.isAddAppointment = false;
-          this.singleUserView = false;
+            this.isAddAppointment = false;
+            this.singleUserView = false;
             if (this.clientService.selectedIndex == 1) {
                 this.RecentClientInformation(this.searchText);
             } else {
@@ -324,7 +325,7 @@ export class ClientDetailsComponent implements OnInit {
         this.enableStickyColumn = false;
         this.userData = clientRowData;
         this.singleUserView = true;
-       // this.getRecentAppointments(clientRowData.client.id);
+        // this.getRecentAppointments(clientRowData.client.id);
         this.selectedClient = [];
         this.isAddAppointment = false;
     }
@@ -335,9 +336,9 @@ export class ClientDetailsComponent implements OnInit {
      */
     async EditRecords(event) {
         // To Do: Edit Client Info mapping.
-       let response = await this.userAccessBusiness.getUserAccess(BreakPoint.EditClientProfile);
-       this.isClientViewOnly = response.isViewOnly;
-       if (response.isAllow || response.isViewOnly) {
+        let response = await this.userAccessBusiness.getUserAccess(BreakPoint.EditClientProfile);
+        this.isClientViewOnly = response.isViewOnly;
+        if (response.isAllow || response.isViewOnly) {
             if (event.length > 0) {
                 this.guestId = event[0].client.guestId;
             }
@@ -345,7 +346,7 @@ export class ClientDetailsComponent implements OnInit {
                 this.guestId = event.client.guestId;
             }
             this.getClientDataByGuid(this.guestId);
-       }
+        }
     }
 
     clientSearch(searchText) {
@@ -561,14 +562,14 @@ export class ClientDetailsComponent implements OnInit {
         this.top = posY;
     }
 
-    SearchClientInformation(pattern: any,isVip: any, clientGuid: any = "0") {
+    SearchClientInformation(pattern: any, isVip: any, clientGuid: any = "0") {
         this.http.CallApiWithCallback<number>({
             host: Host.retailPOS,
             success: this.successCallback.bind(this),
             error: this.errorCallback.bind(this),
             callDesc: "SearchClientInfo",
             method: HttpMethod.Put,
-            uriParams: { requestUid: (this.requestUid || Date.now() + "" + Math.random() * 10000) },
+            uriParams: { requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000) },
             body: pattern,
             showError: true,
             extraParams: []
@@ -576,14 +577,14 @@ export class ClientDetailsComponent implements OnInit {
     }
 
     RecentClientInformation(searchText: any) {
-        if(this.requestUid == '') {
+        if (this.requestUid == '') {
             this.requestUid = Date.now() + "" + this.utils.getRandomDecimal() * 10000;
         }
         this.http.CallApiWithCallback<number>({
             host: Host.retailPOS,
             success: this.successCallback.bind(this),
             error: this.errorCallback.bind(this),
-            callDesc:"RecentClientInfo",
+            callDesc: "RecentClientInfo",
             method: HttpMethod.Put,
             body: searchText,
             uriParams: { propertyDate: this.utils.convertDateFormat(this.PropertyInfo.CurrentDate), requestUid: this.requestUid },
@@ -670,9 +671,9 @@ export class ClientDetailsComponent implements OnInit {
     async successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]) {
         if (callDesc == "SearchClientInfo" || callDesc == "RecentClientInfo") {
             this.formattedData = <any>result.result;
-            let imageRefIds = this.formattedData.map(p => p.guestId ).filter(x => x != null && x != DefaultGUID);
+            let imageRefIds = this.formattedData.map(p => p.guestId).filter(x => x != null && x != DefaultGUID);
             if (imageRefIds.length > 0) {
-              this.imageList = await this._imageService.getImagesForClients(imageRefIds, false);
+                this.imageList = await this._imageService.getImagesForClients(imageRefIds, false);
             }
             var responseUid = "";
             if (this.formattedData != null) {
@@ -728,8 +729,8 @@ export class ClientDetailsComponent implements OnInit {
                             }).join(' | ')
                         }
                     }
-                    let img = this.imageList ? this.imageList.find((image) => this.formattedData[i].guestId && 
-                    (image.imageReferenceId.toLocaleLowerCase() === this.formattedData[i].guestId.toLocaleLowerCase())) : '';
+                    let img = this.imageList ? this.imageList.find((image) => this.formattedData[i].guestId &&
+                        (image.imageReferenceId.toLocaleLowerCase() === this.formattedData[i].guestId.toLocaleLowerCase())) : '';
 
                     client.push({
                         id: this.formattedData[i].id,
@@ -739,7 +740,7 @@ export class ClientDetailsComponent implements OnInit {
                         name: this.formattedData[i].firstName + " " + this.formattedData[i].lastName,
                         email: this.formattedData[i].emails && this.formattedData[i].emails.length > 0 ? this.formattedEmail : '',
                         emails: this.formattedData[i].emails && this.formattedData[i].emails.length > 0 ? this.formattedEmails : '',
-                        image: img  ? img : null
+                        image: img ? img : null
                     }),
                         this.clientData.push({
                             client: client[0],
@@ -748,14 +749,14 @@ export class ClientDetailsComponent implements OnInit {
                             age: this.formattedData[i].dateOfBirth && this.formattedData[i].dateOfBirth != null ? this.utils.getAge(this.utils.getDate(this.localization.LocalizeDate(this.formattedData[i].dateOfBirth))) : '',
                             phoneNumber: this.formattedData[i].phoneNumbers && this.formattedData[i].phoneNumbers.length > 0 ? this.formattedPhoneNo : '',
                             phoneNumbers: this.formattedData[i].phoneNumbers && this.formattedData[i].phoneNumbers.length > 0 ? this.formattedPhoneNos : '',
-                            line1: this.formattedData[i].addresses && this.formattedData[i].addresses != null  ? this.formattedData[i].addresses.addressLine1 : '',
-                            line2: this.formattedData[i].addresses && this.formattedData[i].addresses != null  ? this.formattedData[i].addresses.addressLine2 : '',
-                            city: this.formattedData[i].addresses && this.formattedData[i].addresses != null  ? this.formattedData[i].addresses.city : '',
-                            state: this.formattedData[i].addresses && this.formattedData[i].addresses != null  ? this.formattedData[i].addresses.state : '',
-                            country: this.formattedData[i].addresses && this.formattedData[i].addresses != null  ? this.formattedData[i].addresses.country : '',
-                            zip:this.formattedData[i].addresses && this.formattedData[i].addresses != null  ? this.formattedData[i].addresses.zip : '',
-                            patronId: this.formattedData[i].loyaltyDetail && this.formattedData[i].loyaltyDetail[0] ? 
-                            this.formattedData[i].loyaltyDetail[0].patronId : ''
+                            line1: this.formattedData[i].addresses && this.formattedData[i].addresses != null ? this.formattedData[i].addresses.addressLine1 : '',
+                            line2: this.formattedData[i].addresses && this.formattedData[i].addresses != null ? this.formattedData[i].addresses.addressLine2 : '',
+                            city: this.formattedData[i].addresses && this.formattedData[i].addresses != null ? this.formattedData[i].addresses.city : '',
+                            state: this.formattedData[i].addresses && this.formattedData[i].addresses != null ? this.formattedData[i].addresses.state : '',
+                            country: this.formattedData[i].addresses && this.formattedData[i].addresses != null ? this.formattedData[i].addresses.country : '',
+                            zip: this.formattedData[i].addresses && this.formattedData[i].addresses != null ? this.formattedData[i].addresses.zip : '',
+                            patronId: this.formattedData[i].loyaltyDetail && this.formattedData[i].loyaltyDetail[0] ?
+                                this.formattedData[i].loyaltyDetail[0].patronId : ''
                         });
                 }
             }
