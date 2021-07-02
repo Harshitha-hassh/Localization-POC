@@ -39,7 +39,7 @@ export class ManageSessionService implements OnDestroy {
     };
 
     scope = 'Spa';
-    state: string = Date.now() + '' + Math.random();
+    state: string = Date.now() + '' + this.utils.getRandomDecimal();
     tokenKey = 'a5smm_utoken';
     propertyKey = 'propertyInfo';
     url = '';
