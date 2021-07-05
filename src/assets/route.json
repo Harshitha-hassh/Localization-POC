@@ -683,5 +683,7 @@
   "ImportItem":"RetailItems/ImportItems/{isAuthorised}",
   "ValidateImport":"RetailItems/ValidateImport",
   "ImportStatus":"RetailItems/ImportStatus",
+  "SaveIntegrationsLog": "Payment/PostIntegrationsLog",  
+  "UpdateIntegrationsLog": "Payment/UpdateIntegrationsLog", 
   "EmptyFilterSearch":"GuestCombine/search/{filterName}"
 }

@@ -42,6 +42,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { NotifyPopupComponent } from './components/notify-popup/notify-popup.component';
 import { NotificationDataService } from './data-services/notification.data.service';
 import { AllowedSpecialCharacterDirective } from './directives/allowedSpecialCharacter.directive';
+import { RetailIntegrationLogService } from '../retail/shared/service/retail-integrationLog.service';
 
 @NgModule({
   declarations: [
@@ -84,6 +85,7 @@ import { AllowedSpecialCharacterDirective } from './directives/allowedSpecialCha
     AuthenticationCommunication,
     RetailManagementCommunication,
     RetailPosCommunication,
+    RetailIntegrationLogService,
     NotificationDataService,
     {
       provide: DateAdapter,
