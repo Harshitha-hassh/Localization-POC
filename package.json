@@ -56,7 +56,7 @@
     "ngx-scrollbar": "2.1.0",
     "ngx-smart-popover": "^1.4.0",
     "ngx-swiper-wrapper": "^10.0.0",
-    "ngx-ui-switch": "^12.0.0",
+    "ngx-ui-switch": "^12.0.1",
     "ngx-virtual-scroller": "^3.0.3",
     "popper.js": "^1.14.7",
     "pubsub-ts": "^0.2.0",
