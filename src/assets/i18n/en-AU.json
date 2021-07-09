@@ -1509,8 +1509,8 @@
   "lbl_logout": "Log Out_au",
   "retailsetup": {
     "LoaderWaitMsg": "Please wait while data is being uploaded_au",
-    "ImportRetailStatus": "Retail Items Import Status_da_au",
-    "ImportStatus": "Import Status_da_au",
+    "ImportRetailStatus": "Retail Items Import Status_au",
+    "ImportStatus": "Import Status_au",
     "DiscountReasonDeletionConfirmmsg": "Are you sure want to delete the 'Discount Reason {Discount Reason}'?_au",
     "InventoryType": "Inventory Type_au",
     "ImportFailedItems": "Import Failed Items_au",

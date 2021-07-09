@@ -1509,8 +1509,8 @@
   "lbl_logout": "Log Out_gb",
   "retailsetup": {
     "LoaderWaitMsg": "Please wait while data is being uploaded_gb",
-    "ImportRetailStatus": "Retail Items Import Status_da_gb",
-    "ImportStatus": "Import Status_da_gb",
+    "ImportRetailStatus": "Retail Items Import Status_gb",
+    "ImportStatus": "Import Status_gb",
     "DiscountReasonDeletionConfirmmsg": "Are you sure want to delete the 'Discount Reason {Discount Reason}'?_gb",
     "InventoryType": "Inventory Type_gb",
     "ImportFailedItems": "Import Failed Items_gb",
