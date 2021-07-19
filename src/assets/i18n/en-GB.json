@@ -154,6 +154,7 @@
     "Error": "Error_gb",
     "Warning": "Warning_gb",
     "saveChangesMessage": "Your updates will not be saved. Do you still want to continue?_gb",
+    "duplicateCommissionRecord": "Entered Threshold and Percentage/Flat Amount combination already exists! Please Provide different values._gb",
     "WarningMessage": "You have unsaved changes. Do you want to leave this page and discard your changes?_gb",
     "SearchBy": "Search by_gb",
     "Search": "Search_gb",

@@ -154,6 +154,7 @@
     "Error": "Error_au",
     "Warning": "Warning_au",
     "saveChangesMessage": "Your updates will not be saved. Do you still want to continue?_au",
+    "duplicateCommissionRecord": "Entered Threshold and Percentage/Flat Amount combination already exists! Please Provide different values._au",
     "WarningMessage": "You have unsaved changes. Do you want to leave this page and discard your changes?_au",
     "SearchBy": "Search by_au",
     "Search": "Search_au",
