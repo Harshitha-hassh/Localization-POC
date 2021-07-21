@@ -1539,6 +1539,7 @@
     "PreviousImportMessage": "Previous Import has not Processed Completely, Do you want to import_gb",
     "downloadSampleCSV": "Sample Download_gb",
     "downloadSampleCSVFileName": "RetailItemSample_gb",
+    "downloadCategoryList": "Download Category List_gb",
     "creditCardTerminals": "Credit Card Terminals_gb",
     "outlets": "Outlets_gb",
     "terminalId": "Terminal ID_gb",

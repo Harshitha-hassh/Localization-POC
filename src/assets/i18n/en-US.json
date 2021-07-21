@@ -1540,6 +1540,7 @@
     "PreviousImportMessage":"Previous Import has not Processed Completely, Do you want to import",
     "downloadSampleCSV": "Sample Download",
     "downloadSampleCSVFileName": "RetailItemSample",
+    "downloadCategoryList": "Download Category List",
     "creditCardTerminals": "Credit Card Terminals",
     "outlets": "Outlets",
     "terminalId": "Terminal ID",

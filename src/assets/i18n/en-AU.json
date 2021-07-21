@@ -1539,6 +1539,7 @@
     "PreviousImportMessage": "Previous Import has not Processed Completely, Do you want to import_au",
     "downloadSampleCSV": "Sample Download_au",
     "downloadSampleCSVFileName": "RetailItemSample_au",
+    "downloadCategoryList": "Download Category List_au",
     "creditCardTerminals": "Credit Card Terminals_au",
     "outlets": "Outlets_au",
     "terminalId": "Terminal ID_au",

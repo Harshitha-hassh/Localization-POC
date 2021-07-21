@@ -1539,6 +1539,7 @@
     "PreviousImportMessage": "Previous Import has not Processed Completely, Do you want to import_in",
     "downloadSampleCSV": "Sample Download_in",
     "downloadSampleCSVFileName": "RetailItemSample_in",
+    "downloadCategoryList": "Download Category List_in",
     "creditCardTerminals": "Credit Card Terminals_in",
     "outlets": "Outlets_in",
     "terminalId": "Terminal ID_in",
