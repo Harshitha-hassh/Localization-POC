@@ -154,6 +154,7 @@
     "Error": "Error_uk",
     "Warning": "Warning_uk",
     "saveChangesMessage": "Your updates will not be saved. Do you still want to continue?_uk",
+    "duplicateCommissionRecord": "Entered Threshold and Percentage/Flat Amount combination already exists! Please Provide different values._uk",
     "WarningMessage": "You have unsaved changes. Do you want to leave this page and discard your changes?_uk",
     "SearchBy": "Search by_uk",
     "Search": "Search_uk",

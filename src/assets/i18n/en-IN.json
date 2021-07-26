@@ -154,6 +154,7 @@
     "Error": "Error_in",
     "Warning": "Warning_in",
     "saveChangesMessage": "Your updates will not be saved. Do you still want to continue?_in",
+    "duplicateCommissionRecord": "Entered Threshold and Percentage/Flat Amount combination already exists! Please Provide different values._in",
     "WarningMessage": "You have unsaved changes. Do you want to leave this page and discard your changes?_in",
     "SearchBy": "Search by_in",
     "Search": "Search_in",

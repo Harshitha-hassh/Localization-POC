@@ -154,6 +154,7 @@
     "Error": "Error_fi",
     "Warning": "Warning_fi",
     "saveChangesMessage": "Your updates will not be saved. Do you still want to continue?_fi",
+    "duplicateCommissionRecord": "Entered Threshold and Percentage/Flat Amount combination already exists! Please Provide different values._fi",
     "WarningMessage": "You have unsaved changes. Do you want to leave this page and discard your changes?_fi",
     "SearchBy": "Search by_fi",
     "Search": "Search_fi",
