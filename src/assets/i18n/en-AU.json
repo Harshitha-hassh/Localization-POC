@@ -1545,6 +1545,7 @@
     "outlets": "Outlets_au",
     "terminalId": "Terminal ID_au",
     "merchantNumber": "Merchant Number_au",
+    "ProceedWithoutSubcatConfirmation": "No Sub Categories are linked, Do you want to continue?_au",
     "category": "Category_au",
     "categoryGroup": "Category Group_au",
     "CategoryGroups": "Category Groups_au",

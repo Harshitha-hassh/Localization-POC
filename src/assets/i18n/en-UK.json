@@ -1545,6 +1545,7 @@
     "outlets": "Outlets_uk",
     "terminalId": "Terminal ID_uk",
     "merchantNumber": "Merchant Number_uk",
+    "ProceedWithoutSubcatConfirmation": "No Sub Categories are linked, Do you want to continue?_uk",
     "category": "Category_uk",
     "categoryGroup": "Category Group_uk",
     "CategoryGroups": "Category Groups_uk",

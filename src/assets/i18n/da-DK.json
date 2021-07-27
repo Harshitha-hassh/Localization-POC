@@ -1545,6 +1545,7 @@
     "outlets": "Outlets_da",
     "terminalId": "Terminal ID_da",
     "merchantNumber": "Merchant Number_da",
+    "ProceedWithoutSubcatConfirmation": "No Sub Categories are linked, Do you want to continue?_da",
     "category": "Category_da",
     "categoryGroup": "Category Group_da",
     "CategoryGroups": "Category Groups_da",
