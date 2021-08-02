@@ -26,6 +26,7 @@ import { ButtonType as RetailButtonType, OpenTransactionAction } from 'src/app/r
 import { AlertType } from 'src/app/retail/shared/shared.modal';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { ButtonTypes } from 'src/app/common/Models/common.models';
+import { RetailTaxesDataService } from 'src/app/retail/retail-code-setup/retail-taxes/retail-taxes-data.service';
 
 @Component({
   selector: 'app-day-end',
@@ -67,7 +68,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     // private propertyInfo: PropertyInformation,
     private breakPoint: BreakPointAccess, public ams: AppModuleService,
     private retailSharedService: RetailSharedVariableService, private retailValidationService: RetailValidationService,
-    private propertyInfo: RetailPropertyInformation) {
+    private propertyInfo: RetailPropertyInformation, private retailTaxService: RetailTaxesDataService) {
   }
 
   ngOnInit() {
@@ -224,27 +225,31 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.InvokeServiceCall('UpdateInventoryAuditOnDayEnd', Host.retailManagement, HttpMethod.Post, { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) }, this.newSysDate);
   }
 
-  async SyncUpItemAndTaxes() {
-    if (!this.propertyInfo.UseRetailInterface && this.propOutlets && this.propOutlets.length > 0) {
+  async SyncUpItemAndTaxes(prevDate) {
+    if (!this.propertyInfo.UseRetailInterface && this.propOutlets && this.propOutlets.length > 0) {      
       try {
+        let taxes = await this.retailTaxService.getAllTaxConfiguration();
         this.utils.ToggleLoaderWithMessage(true, this.captions.OutletSyncWait);
         let failedOutlet = [];
         for (let i = 0; i < this.propOutlets.length; i++) {
-          try {
-            let result = await this.http.CallApiAsync<boolean>({
-              host: Host.retailManagement,
-              callDesc: 'SyncItemAndTax',
-              method: HttpMethod.Get,
-              showError: true,
-              uriParams: { outletId: this.propOutlets[i].subPropertyID, type: 'DayEnd', operation: 'Sync', id: 0 }
-            });
-            if (!result.result) {
+          if (taxes && taxes.length && taxes.find(x => this.propOutlets[i].subPropertyID == x.outletId &&
+            this.localization.getDateDifference(this.localization.getDate(x.endDate), prevDate) == 0)) {
+            try {
+              let result = await this.http.CallApiAsync<boolean>({
+                host: Host.retailManagement,
+                callDesc: 'SyncItemAndTax',
+                method: HttpMethod.Get,
+                showError: true,
+                uriParams: { outletId: this.propOutlets[i].subPropertyID, type: 'DayEnd', operation: 'Sync', id: 0 }
+              });
+              if (!result.result) {
+                failedOutlet.push(this.propOutlets[i].subPropertyName);
+              }
+            }
+            catch (err) {
+              console.log(`Sync Failed For Outlet :: ${this.propOutlets[i].subPropertyID} `, err);
               failedOutlet.push(this.propOutlets[i].subPropertyName);
             }
-          }
-          catch (err) {
-            console.log(`Sync Failed For Outlet :: ${this.propOutlets[i].subPropertyID} `, err);
-            failedOutlet.push(this.propOutlets[i].subPropertyName);
           }
         }
         if (failedOutlet.length) {
@@ -391,7 +396,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.successFlag = true;
     this.canProcess = false;
     this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue, x=>{
-      this.SyncUpItemAndTaxes();
+      this.SyncUpItemAndTaxes(this.currSysDate);
     });
   }
   trackByFn(index, cell) {
