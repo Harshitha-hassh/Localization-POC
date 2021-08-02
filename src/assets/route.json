@@ -685,5 +685,10 @@
   "ImportStatus":"RetailItems/ImportStatus",
   "SaveIntegrationsLog": "Payment/PostIntegrationsLog",  
   "UpdateIntegrationsLog": "Payment/UpdateIntegrationsLog", 
-  "EmptyFilterSearch":"GuestCombine/search/{filterName}"
+  "EmptyFilterSearch":"GuestCombine/search/{filterName}",
+  "CreateSettlementHistory": "Transaction/CreateSettlementHistory",
+  "GetSettlementHistory": "Transaction/GetSettlementHistoryList/outlet/{outletId}/{transactionDate}/{status}",
+  "TryCloseTransaction": "Checks/TryCloseTransaction/{transactionId}",
+  "ValidateCloseTransaction": "Checks/ValidateCloseTransaction/{transactionId}",
+  "CreateTransLog": "CreateTransLog/transaction/{transactionId}/logtype/{logType}"
 }

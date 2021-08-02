@@ -942,6 +942,7 @@
     "SENDFORPAYMENT": "SEND FOR PAYMENT_de",
     "Cancel": "CANCEL_de",
     "CancelTransaction": "Cancel_de",
+    "Close": "Close_de",
     "PaymentMethods": "Payment Methods_de",
     "PaymentDetails": "Payment Details_de",
     "TransactionDetails": "Transaction Details_de",
@@ -1056,6 +1057,7 @@
     "AddClient": "Add Client_de",
     "ReasonForVoid": "Reason for Void_de",
     "ReasonForCorrection": "Reason for Correction_de",
+    "ReasonForClose": "Reason for Close_de",
     "Reason": "Reason_de",
     "SyncUpOpenTransactions": "SYNCUP OPEN TRANSACTION_de",
     "NoTherapistAssociated": "Staff member not associated for service charge/gratuity. Cannot send for payment._de",
@@ -1370,7 +1372,8 @@
     "ToChange": "to change_de",
     "connect": "Connect_de",
     "savedCardDetail": "Save Card Details_de",
-    "RoomChargePostingNotAllowed": "Posting is restricted to this Room._de"
+    "RoomChargePostingNotAllowed": "Posting is restricted to this Room._de",
+    "UnableToCloseTransaction": "Unable to Close Transaction_de"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_de",
