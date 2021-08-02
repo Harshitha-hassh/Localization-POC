@@ -923,7 +923,7 @@
     "RedeemRoundsHeader": "Membership Pin_gb",
     "TicketDetails": "Ticket Details_gb",
     "RetailItems": "RETAIL ITEMS_gb",
-    "SearchBy": "Search by Brand, Price_gb",
+    "SearchBy": "Search by Brand, Price, Item #_gb",
     "SearchByBarCode": "Search by Barcode #_gb",
     "NoItemstoShow": "No Items to Show_gb",
     "ViewLess": "View Less_gb",
