@@ -923,7 +923,7 @@
     "RedeemRoundsHeader": "Membership Pin",
     "TicketDetails": "Ticket Details",
     "RetailItems": "RETAIL ITEMS",
-    "SearchBy": "Search by Brand, Price",
+    "SearchBy": "Search by Brand, Price, Item #",
     "SearchByBarCode": "Search by Barcode #",
     "NoItemstoShow": "No Items to Show",
     "ViewLess": "View Less",
@@ -942,6 +942,7 @@
     "SENDFORPAYMENT": "SEND FOR PAYMENT",
     "Cancel": "CANCEL",
     "CancelTransaction": "Cancel",
+    "Close":"Close",
     "PaymentMethods": "Payment Methods",
     "PaymentDetails": "Payment Details",
     "TransactionDetails": "Transaction Details",
@@ -1056,6 +1057,7 @@
     "AddClient": "Add Client",
     "ReasonForVoid": "Reason for Void",
     "ReasonForCorrection": "Reason for Correction",
+    "ReasonForClose": "Reason for Close",
     "Reason": "Reason",
     "SyncUpOpenTransactions": "SYNCUP OPEN TRANSACTION",
     "NoTherapistAssociated": "Staff member not associated for service charge/gratuity. Cannot send for payment.",
@@ -1370,7 +1372,8 @@
 		"ToChange":"to change",
 		"connect": "Connect",
 		"savedCardDetail": "Save Card Details",
-    "RoomChargePostingNotAllowed": "Posting is restricted to this Room."
+    "RoomChargePostingNotAllowed": "Posting is restricted to this Room.",
+    "UnableToCloseTransaction" : "Unable to Close Transaction"
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",

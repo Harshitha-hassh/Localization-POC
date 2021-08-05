@@ -923,7 +923,7 @@
     "RedeemRoundsHeader": "Membership Pin_fr",
     "TicketDetails": "Ticket Details_fr",
     "RetailItems": "RETAIL ITEMS_fr",
-    "SearchBy": "Search by Brand, Price_fr",
+    "SearchBy": "Search by Brand, Price, Item #_fr",
     "SearchByBarCode": "Search by Barcode #_fr",
     "NoItemstoShow": "No Items to Show_fr",
     "ViewLess": "View Less_fr",
@@ -942,6 +942,7 @@
     "SENDFORPAYMENT": "SEND FOR PAYMENT_fr",
     "Cancel": "CANCEL_fr",
     "CancelTransaction": "Cancel_fr",
+    "Close": "Close_fr",
     "PaymentMethods": "Payment Methods_fr",
     "PaymentDetails": "Payment Details_fr",
     "TransactionDetails": "Transaction Details_fr",
@@ -1056,6 +1057,7 @@
     "AddClient": "Add Client_fr",
     "ReasonForVoid": "Reason for Void_fr",
     "ReasonForCorrection": "Reason for Correction_fr",
+    "ReasonForClose": "Reason for Close_fr",
     "Reason": "Reason_fr",
     "SyncUpOpenTransactions": "SYNCUP OPEN TRANSACTION_fr",
     "NoTherapistAssociated": "Staff member not associated for service charge/gratuity. Cannot send for payment._fr",
@@ -1370,7 +1372,8 @@
     "ToChange": "to change_fr",
     "connect": "Connect_fr",
     "savedCardDetail": "Save Card Details_fr",
-    "RoomChargePostingNotAllowed": "Posting is restricted to this Room._fr"
+    "RoomChargePostingNotAllowed": "Posting is restricted to this Room._fr",
+    "UnableToCloseTransaction": "Unable to Close Transaction_fr"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fr",

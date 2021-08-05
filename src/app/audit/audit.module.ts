@@ -8,6 +8,7 @@ import { AuditRoutingModule } from './audit-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { AuditService } from './audit.service';
 import { ScrollbarModule } from 'ngx-scrollbar';
+import { RetailTaxesDataService } from '../retail/retail-code-setup/retail-taxes/retail-taxes-data.service';
 // import { AppointmentActionModule } from '../shared/appointment-actions/appointment-action.module';
 // import { SlideInformationService } from '../shared/slide-information/slide-information.service';
 // import { AppointmentActionsDialogComponent } from '../appointment/appointment-actions-dialog/appointment-actions-dialog.component';
@@ -23,6 +24,7 @@ import { ScrollbarModule } from 'ngx-scrollbar';
   ],
   declarations: [AuditComponent, AuditDataComponent, DayEndComponent],// , AppointmentActionsDialogComponent],
   providers: [ AuditService,
+    RetailTaxesDataService
   //  SlideInformationService
   ],
   // entryComponents: [AppointmentActionsDialogComponent]

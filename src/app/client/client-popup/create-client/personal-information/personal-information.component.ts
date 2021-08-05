@@ -9,8 +9,8 @@ import { BaseResponse } from 'src/app/common/shared/shared.modal';
 import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 import * as _ from 'lodash';
 import { PropertyInformation } from '../../../../core/services/property-information.service';
-import { ReplaySubject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, ReplaySubject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, startWith, takeUntil } from 'rxjs/operators';
 import { ClientCommonService } from 'src/app/client/client.service';
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 import { PatronInfoSearchResultType, Addresscomponent, Imagedata } from 'src/app/shared/shared-models';
@@ -95,6 +95,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   // receiptDate: any;
   maxReceiptDate: any;
   isDobRequired: boolean = false;
+  filteredCountries: Observable<any>;
   customRequired = {
     title: false,
     gender: false,
@@ -317,6 +318,13 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.utils.disableControls(this.FormGrp);
     }
     //this.setPhoneAsMandatory();
+    this.utils.geCountriesJSON();
+    this.filteredCountries = this.FormGrp.controls.country.valueChanges.pipe(
+      startWith(''),
+      debounceTime(100),
+      distinctUntilChanged(),
+      map((country: string) => country ? this.utils.FilterCountry(country, this.utils.countryDetails) : [])
+    );
   }
 
   initializeFormData() {
