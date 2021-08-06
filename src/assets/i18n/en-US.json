@@ -1959,6 +1959,7 @@
     "tog_lbl_showInactive": "Show Inactive",
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL",
     "pg_title_outlet": "OUTLET",
+    "createOutlet":"CREATE OUTLET",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID",
     "CreditCardTerminalerr_missing_Code": "Missing Credit Card Terminal ID",
     "CreditCardTerminal_grid_hdr_Name": "Credit Card Terminal Name",
