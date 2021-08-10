@@ -1956,6 +1956,7 @@
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_gb",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_gb",
     "tog_lbl_showInactive": "Show Inactive_gb",
+    "lbl_searchOutletPlaceholder": "Search by Outlet Name, Outlet TerminalId_gb",
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_gb",
     "pg_title_outlet": "OUTLET_gb",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID_gb",
@@ -3525,5 +3526,6 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_gb",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_gb",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_gb",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?_gb"
+  "combineGuest_warning": "Are you sure you want to cancel the changes?_gb",
+  "lbl_searchOutletPlaceholder": "Search by Outlet Name, Outlet TerminalId_gb"
 }

@@ -1956,6 +1956,8 @@
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_in",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_in",
     "tog_lbl_showInactive": "Show Inactive_in",
+    "createOutlet":"CREATE OUTLET_in",
+    "lbl_searchOutletPlaceholder": "Search by Outlet Name, Outlet TerminalId_in",
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_in",
     "pg_title_outlet": "OUTLET_in",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID_in",

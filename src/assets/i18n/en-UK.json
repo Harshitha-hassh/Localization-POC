@@ -1956,6 +1956,8 @@
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_uk",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_uk",
     "tog_lbl_showInactive": "Show Inactive_uk",
+    "createOutlet":"CREATE OUTLET_uk",
+    "lbl_searchOutletPlaceholder": "Search by Outlet Name, Outlet TerminalId",
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_uk",
     "pg_title_outlet": "OUTLET_uk",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID_uk",
