@@ -102,6 +102,12 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   Revenue_By_Outlet_data_input: any;
   Returned_Items_data_input: any;
   allShopItems: any[] = [];
+  outOfStockOutletIds: number[] = [];
+  revenueByOutletIds: number[] = [];
+  returnedItemOutletIds: number[] = [];
+  openTicketOutletIds: number[] = [];
+  top5ItemOutletIds: number[] = [];
+  top5CategoryOutletIds: number[] = [];
 
   constructor(private cdr: ChangeDetectorRef,
               public dashboardWidgetsReportService: DashboardWidgetsReportService,
@@ -153,26 +159,27 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     this.outletIds = this.dashboardWidgetsReportService.OutletsData.map(x => x.id);
     this.selecteddashboardOutlet = _.clone(this.outletIds) ;
     this.selectedChildOutlet =  _.clone(this.outletIds) ;
+    this.assignOutletsToChildWidgets();
     this.selectedSalesOutlet = _.clone(this.outletIds) ;
-    this.dashboardOutletIds = this.outletIds; 
-    this.outletId=this.dashboardOutletIds[0];
+    this.dashboardOutletIds = this.outletIds;
+    this.outletId = this.dashboardOutletIds[0];
     this.outletId = this.outletIds[0];
-    if (this.outletId > this.numericZero) {      
+    if (this.outletId > this.numericZero) {
       this.getTotalSalesRevenue();
       this.getNumberOfTransaction();
       this.getAverageTransaction();
       this.getAvgUnitPerCustomer();
       this.getVendorsCount();
       this.getTransactionSaleDetail();
-      this.getRevenueByOutletDetail();
-      this.getReturned_ItemsDetail();
+      this.getRevenueByOutletDetail(this.outletIds);
+      this.getReturned_ItemsDetail(this.outletIds);
 
-      this.getTop5ItemSaleDetail('day_0');
-      this.getCategorySaleDetail('day_1');
+      this.getTop5ItemSaleDetail('day_0', this.outletIds);
+      this.getCategorySaleDetail('day_1', this.outletIds);
 
       this.getPurchaseOrderData();
-      this.getOpenTicketsData();
-      this.getOutofStockOnData();
+      this.getOpenTicketsData(this.outletIds);
+      this.getOutofStockOnData(this.outletIds);
 
       this.getTransactionCount();
 
@@ -237,44 +244,60 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     this.dashboardOutletIds = e.map(x => x.id);
     this.getTransactionCount();
   }
+ 
+  assignOutletsToChildWidgets(){
+    this.top5ItemOutletIds = _.clone(this.outletIds) ;
+    this.top5CategoryOutletIds = _.clone(this.outletIds) ;
+    this.returnedItemOutletIds = _.clone(this.outletIds) ;
+    this.outOfStockOutletIds = _.clone(this.outletIds) ;
+    this.revenueByOutletIds = _.clone(this.outletIds) ;
+    this.openTicketOutletIds = _.clone(this.outletIds) ;
+  }
 
   widgetIsAnySelected(controlName, e) {
     console.log('controlName ', controlName, ' e', e);
     this.dashboardWidgetsReportService.OutletsData = e;
-    this.outletIds = e.map(x => x.id);  
+    this.outletIds = e.map(x => x.id);
     this.selectedChildOutlet =  _.clone(this.outletIds) ;
-    this.getReturned_ItemsDetail();
-    this.getOpenTicketsData();
-    this.getOutofStockOnData();
-    this.getRevenueByOutletDetail();
-    this.getTop5ItemSaleDetail("day_0");
-    this.getCategorySaleDetail("day_1");
-  };
+    this.assignOutletsToChildWidgets();
+    this.getReturned_ItemsDetail(this.outletIds);
+    this.getOpenTicketsData(this.outletIds);
+    this.getOutofStockOnData(this.outletIds);
+    this.getRevenueByOutletDetail(this.outletIds);
+    this.getTop5ItemSaleDetail("day_0", this.outletIds);
+    this.getCategorySaleDetail("day_1", this.outletIds);
+  }
+
   loopWidgetDropDownFrmControl($event, loopWidget, loopWidget_Index) {
     console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
   }
-  loopWidgetIsAnySelected($event, loopWidget, loopWidget_Index) {
 
+  loopWidgetIsAnySelected($event, loopWidget, loopWidget_Index) {
     console.log($event, ' loopWidget - ', loopWidget, ' loopWidget_Index -', loopWidget_Index);
-    this.outletIds = $event.map(x => x.id);
-    switch (loopWidget.template.name) {      
+    switch (loopWidget.template.name) {
       case 'Out_of_StockItems':
-        this.getOutofStockOnData();
+        this.outOfStockOutletIds = $event.map(x => x.id);
+        this.getOutofStockOnData( $event.map(x => x.id));
         break;
       case 'Revenue_By_Outlet':
-        this.getRevenueByOutletDetail();
+        this.revenueByOutletIds = $event.map(x => x.id);
+        this.getRevenueByOutletDetail($event.map(x => x.id));
         break;
       case 'Open_Tickets':
-        this.getOpenTicketsData();
+        this.openTicketOutletIds = $event.map(x => x.id);
+        this.getOpenTicketsData($event.map(x => x.id));
         break;
       case 'Returned_Items':
-        this.getReturned_ItemsDetail();
+        this.returnedItemOutletIds = $event.map(x => x.id);
+        this.getReturned_ItemsDetail($event.map(x => x.id));
         break;
       case 'Sales_Top5Items':
-        this.getTop5ItemSaleDetail("day_0");
+        this.top5ItemOutletIds = $event.map(x => x.id);
+        this.getTop5ItemSaleDetail("day_0", $event.map(x => x.id));
         break;
       case 'Sales_Top5Categories':
-        this.getCategorySaleDetail("day_1");
+        this.top5CategoryOutletIds = $event.map(x => x.id);
+        this.getCategorySaleDetail("day_1", $event.map(x => x.id));
         break;
       default:
         break;
@@ -376,7 +399,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
         } else if (this.dataFormat == 3) {
           this.rowDescription = this.captions.MONTH;
         }
-        await this.getRevenueByOutletDetail();
+        await this.getRevenueByOutletDetail(this.revenueByOutletIds);
         break;
         case 'Returned_Items':
         this.dataFormat = dataFormat + 1;
@@ -387,7 +410,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
         } else if (this.dataFormat == 3) {
           this.rowDescription = this.captions.MONTH;
         }
-        await this.getReturned_ItemsDetail();
+        await this.getReturned_ItemsDetail(this.returnedItemOutletIds);
         break;
     case 'Sales_Top5Items':
         let mountaintype_0: String = '';
@@ -398,7 +421,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
         } else if (dataFormat == this.numericTwo) {
           mountaintype_0 = 'month_0';
         }
-        await this.getTop5ItemSaleDetail(mountaintype_0);
+        await this.getTop5ItemSaleDetail(mountaintype_0, this.top5ItemOutletIds);
         break;
       case 'Sales_Top5Categories':
         let mountaintype_1: String = '';
@@ -409,7 +432,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
         } else if (dataFormat == this.numericTwo) {
           mountaintype_1 = 'month_1';
         }
-        await this.getCategorySaleDetail(mountaintype_1);
+        await this.getCategorySaleDetail(mountaintype_1, this.top5CategoryOutletIds);
         break;
 
       default:
@@ -535,8 +558,8 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   }
 
 
-  async getRevenueByOutletDetail() {
-    this.Revenue_By_Outlet_data = await this.dashBoardBusiness.getRevenueByOutletDetail(this.dataFormat, this.startDate, this.outletIds);
+  async getRevenueByOutletDetail(outletIds: number[]) {
+    this.Revenue_By_Outlet_data = await this.dashBoardBusiness.getRevenueByOutletDetail(this.dataFormat, this.startDate, outletIds);
 
     if (this.Revenue_By_Outlet_data.length > 0) {
 
@@ -575,8 +598,8 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   }
 
 
-  async getReturned_ItemsDetail() {
-    this.Returned_Items_data = await this.dashBoardBusiness.getReturned_ItemsDetail(this.propertyDate, this.dataFormat, this.outletIds);
+  async getReturned_ItemsDetail(outletIds: number[]) {
+    this.Returned_Items_data = await this.dashBoardBusiness.getReturned_ItemsDetail(this.propertyDate, this.dataFormat, outletIds);
     if (this.Returned_Items_data.length > 0) {
       const templateHeight = (this.widgetsData[0].widget[0].config.height - 90); // (60 - template title, 30 - chart needs)
       let barData, x_categories, columnWidth;
@@ -611,10 +634,10 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   }
 
 
-  async getTop5ItemSaleDetail(mountaintype) {
+  async getTop5ItemSaleDetail(mountaintype, outletIds: number[]) {
     console.log('mountaintype ', mountaintype);
     this.Sales_Top5Items_data = {
-      data: await this.dashBoardBusiness.getItemSaleDetail(this.itemStartDate, this.itemEndDate, this.outletIds),
+      data: await this.dashBoardBusiness.getItemSaleDetail(this.itemStartDate, this.itemEndDate, outletIds),
       headerData: [
         { key: 'name', description: 'Number', alignment: 'textLeft', },
         { key: 'amount', description: 'Status', alignment: 'textRight font-bold' }
@@ -626,10 +649,10 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   }
 
 
-  async getCategorySaleDetail(mountaintype_1) {
+  async getCategorySaleDetail(mountaintype_1, outletIds: number[]) {
     console.log('mountaintype ', mountaintype_1);
     this.Sales_Top5Categories_data = {
-      data: await this.dashBoardBusiness.getCategorySaleDetail(this.categoryStartDate, this.categoryEndDate, this.outletIds),
+      data: await this.dashBoardBusiness.getCategorySaleDetail(this.categoryStartDate, this.categoryEndDate, outletIds),
       headerData: [
         { key: 'name', description: 'Number', alignment: 'textLeft', },
         { key: 'amount', description: 'Status', alignment: 'textRight font-bold' }
@@ -756,9 +779,9 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   
   }
 
-  async getOpenTicketsData() {
+  async getOpenTicketsData(outletIds: number[]) {
     this.Open_Tickets_data = {
-      data: await this.dashBoardBusiness.getOpenTicketsData(this.propertyDate, this.outletIds, this.dashboardWidgetsReportService.OutletsData),
+      data: await this.dashBoardBusiness.getOpenTicketsData(this.propertyDate, outletIds, this.dashboardWidgetsReportService.OutletsData),
       headerData: [
         { key: 'ticketNumber', description: this.captions.ticketNumber, alignment: 'textLeft font-bold w-25' },
         { key: 'outlet', description: this.captions.outlet, alignment: 'textLeft font-bold w-25' },
@@ -769,9 +792,9 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     };
   }
 
-  async getOutofStockOnData() {
+  async getOutofStockOnData(outletIds: number[]) {
     this.Out_of_StockItems_data = {
-      data: await this.dashBoardBusiness.getOutofStockOnData(this.outletIds, this.dashboardWidgetsReportService.OutletsData),
+      data: await this.dashBoardBusiness.getOutofStockOnData(outletIds, this.dashboardWidgetsReportService.OutletsData),
       headerData: [
         { key: 'item', description: this.captions.item, alignment: 'textLeft font-bold w-25' },
         { key: 'outlet', description: this.captions.outlet, alignment: 'textLeft font-bold w-25' },
