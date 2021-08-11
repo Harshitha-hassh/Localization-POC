@@ -910,7 +910,9 @@
     "NoInTakeFormReceived": "No Intake form received",
     "priceType": "Price Type",
     "amount": "Amount",
-    "PostTypeMapping": "Post Type Mapping"
+    "PostTypeMapping": "Post Type Mapping",
+		"missingCountryName": "Missing country name",
+		"invalidCountryName": "Invalid country name"
   },
   "shop": {
     "AdvancedSearch": "Advanced Search",
@@ -2584,6 +2586,8 @@
     "swipeInsertTap":"Swipe/Insert/Tap",
     "cardEntryMode":"Card Entry Mode",
     "proceed":"PROCEED",
+		"missingCountryName": "Missing country name",
+		"invalidCountryName": "Invalid country name",
 		"RetailFeature": {
 			"ACES Membership": "Agilysys Engage",
 			"CMS": "CMS",

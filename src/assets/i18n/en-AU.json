@@ -910,7 +910,9 @@
     "NoInTakeFormReceived": "No Intake form received_au",
     "priceType": "Price Type_au",
     "amount": "Amount_au",
-    "PostTypeMapping": "Post Type Mapping_au"
+    "PostTypeMapping": "Post Type Mapping_au",
+    "missingCountryName": "Missing country name_au",
+    "invalidCountryName": "Invalid country name_au"
   },
   "shop": {
     "AdvancedSearch": "Advanced Search_au",
@@ -2583,6 +2585,8 @@
     "swipeInsertTap": "Swipe/Insert/Tap_au",
     "cardEntryMode": "Card Entry Mode_au",
     "proceed": "PROCEED_au",
+    "missingCountryName": "Missing country name_au",
+    "invalidCountryName": "Invalid country name_au",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_au",
       "CMS": "CMS_au",
