@@ -311,10 +311,13 @@
             {{captions.MissingCountryInformation}}
           </mat-error>
           <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let country of filteredCountries | async" [value]="country.CountryName">
+            <mat-option *ngFor="let country of filteredCountries | async" [value]="country.CountryName" [matTooltip]="country.CountryName">
               <span>{{country.CountryName}}</span>
             </mat-option>
           </mat-autocomplete>
+          <mat-error *ngIf="FormGrp.get('country').value && FormGrp.get('country').hasError('invalid')">
+            {{captions.invalidCountryName}}
+          </mat-error>
         </mat-form-field>
       </div>
     </div>
