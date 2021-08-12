@@ -1,0 +1,1747 @@
+﻿{
+    "Countries": [
+        {
+            "CountryName": "Afghanistan",
+            "OfficialName": "The Islamic Republic of Afghanistan",
+            "Alpha2Code": "AF",
+            "Alpha3Code": "AFG",
+            "NumericCode": "4"
+        },
+        {
+            "CountryName": "Aland Islands",
+            "OfficialName": "Aland",
+            "Alpha2Code": "AX",
+            "Alpha3Code": "ALA",
+            "NumericCode": "248"
+        },
+        {
+            "CountryName": "Albania",
+            "OfficialName": "The Republic of Albania",
+            "Alpha2Code": "AL",
+            "Alpha3Code": "ALB",
+            "NumericCode": "8"
+        },
+        {
+            "CountryName": "Algeria",
+            "OfficialName": "The People's Democratic Republic of Algeria",
+            "Alpha2Code": "DZ",
+            "Alpha3Code": "DZA",
+            "NumericCode": "12"
+        },
+        {
+            "CountryName": "American Samoa",
+            "OfficialName": "The Territory of American Samoa",
+            "Alpha2Code": "AS",
+            "Alpha3Code": "ASM",
+            "NumericCode": "16"
+        },
+        {
+            "CountryName": "Andorra",
+            "OfficialName": "The Principality of Andorra",
+            "Alpha2Code": "AD",
+            "Alpha3Code": "AND",
+            "NumericCode": "20"
+        },
+        {
+            "CountryName": "Angola",
+            "OfficialName": "The Republic of Angola",
+            "Alpha2Code": "AO",
+            "Alpha3Code": "AGO",
+            "NumericCode": "24"
+        },
+        {
+            "CountryName": "Anguilla",
+            "OfficialName": "Anguilla",
+            "Alpha2Code": "AI",
+            "Alpha3Code": "AIA",
+            "NumericCode": "660"
+        },
+        {
+            "CountryName": "Antarctica",
+            "OfficialName": "All land and ice shelves south of the 60th parallel south",
+            "Alpha2Code": "AQ",
+            "Alpha3Code": "ATA",
+            "NumericCode": "10"
+        },
+        {
+            "CountryName": "Antigua and Barbuda",
+            "OfficialName": "Antigua and Barbuda",
+            "Alpha2Code": "AG",
+            "Alpha3Code": "ATG",
+            "NumericCode": "28"
+        },
+        {
+            "CountryName": "Argentina",
+            "OfficialName": "The Argentine Republic",
+            "Alpha2Code": "AR",
+            "Alpha3Code": "ARG",
+            "NumericCode": "32"
+        },
+        {
+            "CountryName": "Armenia",
+            "OfficialName": "The Republic of Armenia",
+            "Alpha2Code": "AM",
+            "Alpha3Code": "ARM",
+            "NumericCode": "51"
+        },
+        {
+            "CountryName": "Aruba",
+            "OfficialName": "Aruba",
+            "Alpha2Code": "AW",
+            "Alpha3Code": "ABW",
+            "NumericCode": "533"
+        },
+        {
+            "CountryName": "Australia",
+            "OfficialName": "The Commonwealth of Australia",
+            "Alpha2Code": "AU",
+            "Alpha3Code": "AUS",
+            "NumericCode": "36"
+        },
+        {
+            "CountryName": "Austria",
+            "OfficialName": "The Republic of Austria",
+            "Alpha2Code": "AT",
+            "Alpha3Code": "AUT",
+            "NumericCode": "40"
+        },
+        {
+            "CountryName": "Azerbaijan",
+            "OfficialName": "The Republic of Azerbaijan",
+            "Alpha2Code": "AZ",
+            "Alpha3Code": "AZE",
+            "NumericCode": "31"
+        },
+        {
+            "CountryName": "Bahamas",
+            "OfficialName": "The Commonwealth of The Bahamas",
+            "Alpha2Code": "BS",
+            "Alpha3Code": "BHS",
+            "NumericCode": "44"
+        },
+        {
+            "CountryName": "Bahrain",
+            "OfficialName": "The Kingdom of Bahrain",
+            "Alpha2Code": "BH",
+            "Alpha3Code": "BHR",
+            "NumericCode": "48"
+        },
+        {
+            "CountryName": "Bangladesh",
+            "OfficialName": "The People's Republic of Bangladesh",
+            "Alpha2Code": "BD",
+            "Alpha3Code": "BGD",
+            "NumericCode": "50"
+        },
+        {
+            "CountryName": "Barbados",
+            "OfficialName": "Barbados",
+            "Alpha2Code": "BB",
+            "Alpha3Code": "BRB",
+            "NumericCode": "52"
+        },
+        {
+            "CountryName": "Belarus",
+            "OfficialName": "The Republic of Belarus",
+            "Alpha2Code": "BY",
+            "Alpha3Code": "BLR",
+            "NumericCode": "112"
+        },
+        {
+            "CountryName": "Belgium",
+            "OfficialName": "The Kingdom of Belgium",
+            "Alpha2Code": "BE",
+            "Alpha3Code": "BEL",
+            "NumericCode": "56"
+        },
+        {
+            "CountryName": "Belize",
+            "OfficialName": "Belize",
+            "Alpha2Code": "BZ",
+            "Alpha3Code": "BLZ",
+            "NumericCode": "84"
+        },
+        {
+            "CountryName": "Benin",
+            "OfficialName": "The Republic of Benin",
+            "Alpha2Code": "BJ",
+            "Alpha3Code": "BEN",
+            "NumericCode": "204"
+        },
+        {
+            "CountryName": "Bermuda",
+            "OfficialName": "Bermuda",
+            "Alpha2Code": "BM",
+            "Alpha3Code": "BMU",
+            "NumericCode": "60"
+        },
+        {
+            "CountryName": "Bhutan",
+            "OfficialName": "The Kingdom of Bhutan",
+            "Alpha2Code": "BT",
+            "Alpha3Code": "BTN",
+            "NumericCode": "64"
+        },
+        {
+            "CountryName": "Bolivia",
+            "OfficialName": "The Plurinational State of Bolivia",
+            "Alpha2Code": "BO",
+            "Alpha3Code": "BOL",
+            "NumericCode": "68"
+        },
+        {
+            "CountryName": "Bonaire",
+            "OfficialName": "Bonaire, Sint Eustatius and Saba",
+            "Alpha2Code": "BQ",
+            "Alpha3Code": "BES",
+            "NumericCode": "535"
+        },
+        {
+            "CountryName": "Bosnia and Herzegovina",
+            "OfficialName": "Bosnia and Herzegovina",
+            "Alpha2Code": "BA",
+            "Alpha3Code": "BIH",
+            "NumericCode": "70"
+        },
+        {
+            "CountryName": "Botswana",
+            "OfficialName": "The Republic of Botswana",
+            "Alpha2Code": "BW",
+            "Alpha3Code": "BWA",
+            "NumericCode": "72"
+        },
+        {
+            "CountryName": "Bouvet Island",
+            "OfficialName": "Bouvet Island",
+            "Alpha2Code": "BV",
+            "Alpha3Code": "BVT",
+            "NumericCode": "74"
+        },
+        {
+            "CountryName": "Brazil",
+            "OfficialName": "The Federative Republic of Brazil",
+            "Alpha2Code": "BR",
+            "Alpha3Code": "BRA",
+            "NumericCode": "76"
+        },
+        {
+            "CountryName": "British Indian Ocean Territory",
+            "OfficialName": "The British Indian Ocean Territory",
+            "Alpha2Code": "IO",
+            "Alpha3Code": "IOT",
+            "NumericCode": "86"
+        },
+        {
+            "CountryName": "Brunei Darussalam",
+            "OfficialName": "The Nation of Brunei, the Abode of Peace",
+            "Alpha2Code": "BN",
+            "Alpha3Code": "BRN",
+            "NumericCode": "96"
+        },
+        {
+            "CountryName": "Bulgaria",
+            "OfficialName": "The Republic of Bulgaria",
+            "Alpha2Code": "BG",
+            "Alpha3Code": "BGR",
+            "NumericCode": "100"
+        },
+        {
+            "CountryName": "Burkina Faso",
+            "OfficialName": "Burkina Faso",
+            "Alpha2Code": "BF",
+            "Alpha3Code": "BFA",
+            "NumericCode": "854"
+        },
+        {
+            "CountryName": "Burundi",
+            "OfficialName": "The Republic of Burundi",
+            "Alpha2Code": "BI",
+            "Alpha3Code": "BDI",
+            "NumericCode": "108"
+        },
+        {
+            "CountryName": "Cabo Verde",
+            "OfficialName": "The Republic of Cabo Verde",
+            "Alpha2Code": "CV",
+            "Alpha3Code": "CPV",
+            "NumericCode": "132"
+        },
+        {
+            "CountryName": "Cambodia",
+            "OfficialName": "The Kingdom of Cambodia",
+            "Alpha2Code": "KH",
+            "Alpha3Code": "KHM",
+            "NumericCode": "116"
+        },
+        {
+            "CountryName": "Cameroon",
+            "OfficialName": "The Republic of Cameroon",
+            "Alpha2Code": "CM",
+            "Alpha3Code": "CMR",
+            "NumericCode": "120"
+        },
+        {
+            "CountryName": "Canada",
+            "OfficialName": "Canada",
+            "Alpha2Code": "CA",
+            "Alpha3Code": "CAN",
+            "NumericCode": "124"
+        },
+        {
+            "CountryName": "Cayman Islands",
+            "OfficialName": "The Cayman Islands",
+            "Alpha2Code": "KY",
+            "Alpha3Code": "CYM",
+            "NumericCode": "136"
+        },
+        {
+            "CountryName": "Central African Republic",
+            "OfficialName": "The Central African Republic",
+            "Alpha2Code": "CF",
+            "Alpha3Code": "CAF",
+            "NumericCode": "140"
+        },
+        {
+            "CountryName": "Chad",
+            "OfficialName": "The Republic of Chad",
+            "Alpha2Code": "TD",
+            "Alpha3Code": "TCD",
+            "NumericCode": "148"
+        },
+        {
+            "CountryName": "Chile",
+            "OfficialName": "The Republic of Chile",
+            "Alpha2Code": "CL",
+            "Alpha3Code": "CHL",
+            "NumericCode": "152"
+        },
+        {
+            "CountryName": "China",
+            "OfficialName": "The People's Republic of China",
+            "Alpha2Code": "CN",
+            "Alpha3Code": "CHN",
+            "NumericCode": "156"
+        },
+        {
+            "CountryName": "Christmas Island",
+            "OfficialName": "The Territory of Christmas Island",
+            "Alpha2Code": "CX",
+            "Alpha3Code": "CXR",
+            "NumericCode": "162"
+        },
+        {
+            "CountryName": "Cocos Islands",
+            "OfficialName": "The Territory of Cocos (Keeling) Islands",
+            "Alpha2Code": "CC",
+            "Alpha3Code": "CCK",
+            "NumericCode": "166"
+        },
+        {
+            "CountryName": "Colombia",
+            "OfficialName": "The Republic of Colombia",
+            "Alpha2Code": "CO",
+            "Alpha3Code": "COL",
+            "NumericCode": "170"
+        },
+        {
+            "CountryName": "Comoros",
+            "OfficialName": "The Union of the Comoros",
+            "Alpha2Code": "KM",
+            "Alpha3Code": "COM",
+            "NumericCode": "174"
+        },
+        {
+            "CountryName": "Cook Islands",
+            "OfficialName": "The Cook Islands",
+            "Alpha2Code": "CK",
+            "Alpha3Code": "COK",
+            "NumericCode": "184"
+        },
+        {
+            "CountryName": "Costa Rica",
+            "OfficialName": "The Republic of Costa Rica",
+            "Alpha2Code": "CR",
+            "Alpha3Code": "CRI",
+            "NumericCode": "188"
+        },
+        {
+            "CountryName": "Croatia",
+            "OfficialName": "The Republic of Croatia",
+            "Alpha2Code": "HR",
+            "Alpha3Code": "HRV",
+            "NumericCode": "191"
+        },
+        {
+            "CountryName": "Cuba",
+            "OfficialName": "The Republic of Cuba",
+            "Alpha2Code": "CU",
+            "Alpha3Code": "CUB",
+            "NumericCode": "192"
+        },
+        {
+            "CountryName": "Curacao",
+            "OfficialName": "The Country of Curacao",
+            "Alpha2Code": "CW",
+            "Alpha3Code": "CUW",
+            "NumericCode": "531"
+        },
+        {
+            "CountryName": "Cyprus",
+            "OfficialName": "The Republic of Cyprus",
+            "Alpha2Code": "CY",
+            "Alpha3Code": "CYP",
+            "NumericCode": "196"
+        },
+        {
+            "CountryName": "Czechia",
+            "OfficialName": "The Czech Republic",
+            "Alpha2Code": "CZ",
+            "Alpha3Code": "CZE",
+            "NumericCode": "203"
+        },
+        {
+            "CountryName": "Democratic Republic of the Congo",
+            "OfficialName": "The Democratic Republic of the Congo",
+            "Alpha2Code": "CD",
+            "Alpha3Code": "COD",
+            "NumericCode": "180"
+        },
+        {
+            "CountryName": "Denmark",
+            "OfficialName": "The Kingdom of Denmark",
+            "Alpha2Code": "DK",
+            "Alpha3Code": "DNK",
+            "NumericCode": "208"
+        },
+        {
+            "CountryName": "Djibouti",
+            "OfficialName": "The Republic of Djibouti",
+            "Alpha2Code": "DJ",
+            "Alpha3Code": "DJI",
+            "NumericCode": "262"
+        },
+        {
+            "CountryName": "Dominica",
+            "OfficialName": "The Commonwealth of Dominica",
+            "Alpha2Code": "DM",
+            "Alpha3Code": "DMA",
+            "NumericCode": "212"
+        },
+        {
+            "CountryName": "Dominican Republic",
+            "OfficialName": "The Dominican Republic",
+            "Alpha2Code": "DO",
+            "Alpha3Code": "DOM",
+            "NumericCode": "214"
+        },
+        {
+            "CountryName": "East Timor",
+            "OfficialName": "The Democratic Republic of Timor-Leste",
+            "Alpha2Code": "TL",
+            "Alpha3Code": "TLS",
+            "NumericCode": "626"
+        },
+        {
+            "CountryName": "Ecuador",
+            "OfficialName": "The Republic of Ecuador",
+            "Alpha2Code": "EC",
+            "Alpha3Code": "ECU",
+            "NumericCode": "218"
+        },
+        {
+            "CountryName": "Egypt",
+            "OfficialName": "The Arab Republic of Egypt",
+            "Alpha2Code": "EG",
+            "Alpha3Code": "EGY",
+            "NumericCode": "818"
+        },
+        {
+            "CountryName": "El Salvador",
+            "OfficialName": "The Republic of El Salvador",
+            "Alpha2Code": "SV",
+            "Alpha3Code": "SLV",
+            "NumericCode": "222"
+        },
+        {
+            "CountryName": "Equatorial Guinea",
+            "OfficialName": "The Republic of Equatorial Guinea",
+            "Alpha2Code": "GQ",
+            "Alpha3Code": "GNQ",
+            "NumericCode": "226"
+        },
+        {
+            "CountryName": "Eritrea",
+            "OfficialName": "The State of Eritrea",
+            "Alpha2Code": "ER",
+            "Alpha3Code": "ERI",
+            "NumericCode": "232"
+        },
+        {
+            "CountryName": "Estonia",
+            "OfficialName": "The Republic of Estonia",
+            "Alpha2Code": "EE",
+            "Alpha3Code": "EST",
+            "NumericCode": "233"
+        },
+        {
+            "CountryName": "Eswatini",
+            "OfficialName": "The Kingdom of Eswatini",
+            "Alpha2Code": "SZ",
+            "Alpha3Code": "SWZ",
+            "NumericCode": "748"
+        },
+        {
+            "CountryName": "Ethiopia",
+            "OfficialName": "The Federal Democratic Republic of Ethiopia",
+            "Alpha2Code": "ET",
+            "Alpha3Code": "ETH",
+            "NumericCode": "231"
+        },
+        {
+            "CountryName": "Falkland Islands",
+            "OfficialName": "The Falkland Islands",
+            "Alpha2Code": "FK",
+            "Alpha3Code": "FLK",
+            "NumericCode": "238"
+        },
+        {
+            "CountryName": "Faroe Islands",
+            "OfficialName": "The Faroe Islands",
+            "Alpha2Code": "FO",
+            "Alpha3Code": "FRO",
+            "NumericCode": "234"
+        },
+        {
+            "CountryName": "Fiji",
+            "OfficialName": "The Republic of Fiji",
+            "Alpha2Code": "FJ",
+            "Alpha3Code": "FJI",
+            "NumericCode": "242"
+        },
+        {
+            "CountryName": "Finland",
+            "OfficialName": "The Republic of Finland",
+            "Alpha2Code": "FI",
+            "Alpha3Code": "FIN",
+            "NumericCode": "246"
+        },
+        {
+            "CountryName": "France",
+            "OfficialName": "The French Republic",
+            "Alpha2Code": "FR",
+            "Alpha3Code": "FRA",
+            "NumericCode": "250"
+        },
+        {
+            "CountryName": "French Guiana",
+            "OfficialName": "Guyane",
+            "Alpha2Code": "GF",
+            "Alpha3Code": "GUF",
+            "NumericCode": "254"
+        },
+        {
+            "CountryName": "French Polynesia",
+            "OfficialName": "French Polynesia",
+            "Alpha2Code": "PF",
+            "Alpha3Code": "PYF",
+            "NumericCode": "258"
+        },
+        {
+            "CountryName": "French Southern Territories",
+            "OfficialName": "The French Southern and Antarctic Lands",
+            "Alpha2Code": "TF",
+            "Alpha3Code": "ATF",
+            "NumericCode": "260"
+        },
+        {
+            "CountryName": "Gabon",
+            "OfficialName": "The Gabonese Republic",
+            "Alpha2Code": "GA",
+            "Alpha3Code": "GAB",
+            "NumericCode": "266"
+        },
+        {
+            "CountryName": "Gambia",
+            "OfficialName": "The Republic of The Gambia",
+            "Alpha2Code": "GM",
+            "Alpha3Code": "GMB",
+            "NumericCode": "270"
+        },
+        {
+            "CountryName": "Georgia",
+            "OfficialName": "Georgia",
+            "Alpha2Code": "GE",
+            "Alpha3Code": "GEO",
+            "NumericCode": "268"
+        },
+        {
+            "CountryName": "Germany",
+            "OfficialName": "The Federal Republic of Germany",
+            "Alpha2Code": "DE",
+            "Alpha3Code": "DEU",
+            "NumericCode": "276"
+        },
+        {
+            "CountryName": "Ghana",
+            "OfficialName": "The Republic of Ghana",
+            "Alpha2Code": "GH",
+            "Alpha3Code": "GHA",
+            "NumericCode": "288"
+        },
+        {
+            "CountryName": "Gibraltar",
+            "OfficialName": "Gibraltar",
+            "Alpha2Code": "GI",
+            "Alpha3Code": "GIB",
+            "NumericCode": "292"
+        },
+        {
+            "CountryName": "Greece",
+            "OfficialName": "The Hellenic Republic",
+            "Alpha2Code": "GR",
+            "Alpha3Code": "GRC",
+            "NumericCode": "300"
+        },
+        {
+            "CountryName": "Greenland",
+            "OfficialName": "Kalaallit Nunaat",
+            "Alpha2Code": "GL",
+            "Alpha3Code": "GRL",
+            "NumericCode": "304"
+        },
+        {
+            "CountryName": "Grenada",
+            "OfficialName": "Grenada",
+            "Alpha2Code": "GD",
+            "Alpha3Code": "GRD",
+            "NumericCode": "308"
+        },
+        {
+            "CountryName": "Guadeloupe",
+            "OfficialName": "Guadeloupe",
+            "Alpha2Code": "GP",
+            "Alpha3Code": "GLP",
+            "NumericCode": "312"
+        },
+        {
+            "CountryName": "Guam",
+            "OfficialName": "The Territory of Guam",
+            "Alpha2Code": "GU",
+            "Alpha3Code": "GUM",
+            "NumericCode": "316"
+        },
+        {
+            "CountryName": "Guatemala",
+            "OfficialName": "The Republic of Guatemala",
+            "Alpha2Code": "GT",
+            "Alpha3Code": "GTM",
+            "NumericCode": "320"
+        },
+        {
+            "CountryName": "Guernsey",
+            "OfficialName": "The Bailiwick of Guernsey",
+            "Alpha2Code": "GG",
+            "Alpha3Code": "GGY",
+            "NumericCode": "831"
+        },
+        {
+            "CountryName": "Guinea",
+            "OfficialName": "The Republic of Guinea",
+            "Alpha2Code": "GN",
+            "Alpha3Code": "GIN",
+            "NumericCode": "324"
+        },
+        {
+            "CountryName": "Guinea-Bissau",
+            "OfficialName": "The Republic of Guinea-Bissau",
+            "Alpha2Code": "GW",
+            "Alpha3Code": "GNB",
+            "NumericCode": "624"
+        },
+        {
+            "CountryName": "Guyana",
+            "OfficialName": "The Co-operative Republic of Guyana",
+            "Alpha2Code": "GY",
+            "Alpha3Code": "GUY",
+            "NumericCode": "328"
+        },
+        {
+            "CountryName": "Haiti",
+            "OfficialName": "The Republic of Haiti",
+            "Alpha2Code": "HT",
+            "Alpha3Code": "HTI",
+            "NumericCode": "332"
+        },
+        {
+            "CountryName": "Heard Island and McDonald Islands",
+            "OfficialName": "The Territory of Heard Island and McDonald Islands",
+            "Alpha2Code": "HM",
+            "Alpha3Code": "HMD",
+            "NumericCode": "334"
+        },
+        {
+            "CountryName": "Holy See",
+            "OfficialName": "The Holy See",
+            "Alpha2Code": "VA",
+            "Alpha3Code": "VAT",
+            "NumericCode": "336"
+        },
+        {
+            "CountryName": "Honduras",
+            "OfficialName": "The Republic of Honduras",
+            "Alpha2Code": "HN",
+            "Alpha3Code": "HND",
+            "NumericCode": "340"
+        },
+        {
+            "CountryName": "Hong Kong",
+            "OfficialName": "The Hong Kong Special Administrative Region of China",
+            "Alpha2Code": "HK",
+            "Alpha3Code": "HKG",
+            "NumericCode": "344"
+        },
+        {
+            "CountryName": "Hungary",
+            "OfficialName": "Hungary",
+            "Alpha2Code": "HU",
+            "Alpha3Code": "HUN",
+            "NumericCode": "348"
+        },
+        {
+            "CountryName": "Iceland",
+            "OfficialName": "Iceland",
+            "Alpha2Code": "IS",
+            "Alpha3Code": "ISL",
+            "NumericCode": "352"
+        },
+        {
+            "CountryName": "India",
+            "OfficialName": "The Republic of India",
+            "Alpha2Code": "IN",
+            "Alpha3Code": "IND",
+            "NumericCode": "356"
+        },
+        {
+            "CountryName": "Indonesia",
+            "OfficialName": "The Republic of Indonesia",
+            "Alpha2Code": "ID",
+            "Alpha3Code": "IDN",
+            "NumericCode": "360"
+        },
+        {
+            "CountryName": "Iran",
+            "OfficialName": "The Islamic Republic of Iran",
+            "Alpha2Code": "IR",
+            "Alpha3Code": "IRN",
+            "NumericCode": "364"
+        },
+        {
+            "CountryName": "Iraq",
+            "OfficialName": "The Republic of Iraq",
+            "Alpha2Code": "IQ",
+            "Alpha3Code": "IRQ",
+            "NumericCode": "368"
+        },
+        {
+            "CountryName": "Ireland",
+            "OfficialName": "Ireland",
+            "Alpha2Code": "IE",
+            "Alpha3Code": "IRL",
+            "NumericCode": "372"
+        },
+        {
+            "CountryName": "Isle of Man",
+            "OfficialName": "The Isle of Man",
+            "Alpha2Code": "IM",
+            "Alpha3Code": "IMN",
+            "NumericCode": "833"
+        },
+        {
+            "CountryName": "Israel",
+            "OfficialName": "The State of Israel",
+            "Alpha2Code": "IL",
+            "Alpha3Code": "ISR",
+            "NumericCode": "376"
+        },
+        {
+            "CountryName": "Italy",
+            "OfficialName": "The Italian Republic",
+            "Alpha2Code": "IT",
+            "Alpha3Code": "ITA",
+            "NumericCode": "380"
+        },
+        {
+            "CountryName": "Ivory Coast",
+            "OfficialName": "The Republic of Côte d'Ivoire",
+            "Alpha2Code": "CI",
+            "Alpha3Code": "CIV",
+            "NumericCode": "384"
+        },
+        {
+            "CountryName": "Jamaica",
+            "OfficialName": "Jamaica",
+            "Alpha2Code": "JM",
+            "Alpha3Code": "JAM",
+            "NumericCode": "388"
+        },
+        {
+            "CountryName": "Japan",
+            "OfficialName": "Japan",
+            "Alpha2Code": "JP",
+            "Alpha3Code": "JPN",
+            "NumericCode": "392"
+        },
+        {
+            "CountryName": "Jersey",
+            "OfficialName": "The Bailiwick of Jersey",
+            "Alpha2Code": "JE",
+            "Alpha3Code": "JEY",
+            "NumericCode": "832"
+        },
+        {
+            "CountryName": "Jordan",
+            "OfficialName": "The Hashemite Kingdom of Jordan",
+            "Alpha2Code": "JO",
+            "Alpha3Code": "JOR",
+            "NumericCode": "400"
+        },
+        {
+            "CountryName": "Kazakhstan",
+            "OfficialName": "The Republic of Kazakhstan",
+            "Alpha2Code": "KZ",
+            "Alpha3Code": "KAZ",
+            "NumericCode": "398"
+        },
+        {
+            "CountryName": "Kenya",
+            "OfficialName": "The Republic of Kenya",
+            "Alpha2Code": "KE",
+            "Alpha3Code": "KEN",
+            "NumericCode": "404"
+        },
+        {
+            "CountryName": "Kiribati",
+            "OfficialName": "The Republic of Kiribati",
+            "Alpha2Code": "KI",
+            "Alpha3Code": "KIR",
+            "NumericCode": "296"
+        },
+        {
+            "CountryName": "North Korea",
+            "OfficialName": "The Democratic People's Republic of Korea",
+            "Alpha2Code": "KP",
+            "Alpha3Code": "PRK",
+            "NumericCode": "408"
+        },
+        {
+            "CountryName": "South Korea",
+            "OfficialName": "The Republic of Korea",
+            "Alpha2Code": "KR",
+            "Alpha3Code": "KOR",
+            "NumericCode": "410"
+        },
+        {
+            "CountryName": "Kuwait",
+            "OfficialName": "The State of Kuwait",
+            "Alpha2Code": "KW",
+            "Alpha3Code": "KWT",
+            "NumericCode": "414"
+        },
+        {
+            "CountryName": "Kyrgyzstan",
+            "OfficialName": "The Kyrgyz Republic",
+            "Alpha2Code": "KG",
+            "Alpha3Code": "KGZ",
+            "NumericCode": "417"
+        },
+        {
+            "CountryName": "Laos",
+            "OfficialName": "The Lao People's Democratic Republic",
+            "Alpha2Code": "LA",
+            "Alpha3Code": "LAO",
+            "NumericCode": "418"
+        },
+        {
+            "CountryName": "Latvia",
+            "OfficialName": "The Republic of Latvia",
+            "Alpha2Code": "LV",
+            "Alpha3Code": "LVA",
+            "NumericCode": "428"
+        },
+        {
+            "CountryName": "Lebanon",
+            "OfficialName": "The Lebanese Republic",
+            "Alpha2Code": "LB",
+            "Alpha3Code": "LBN",
+            "NumericCode": "422"
+        },
+        {
+            "CountryName": "Lesotho",
+            "OfficialName": "The Kingdom of Lesotho",
+            "Alpha2Code": "LS",
+            "Alpha3Code": "LSO",
+            "NumericCode": "426"
+        },
+        {
+            "CountryName": "Liberia",
+            "OfficialName": "The Republic of Liberia",
+            "Alpha2Code": "LR",
+            "Alpha3Code": "LBR",
+            "NumericCode": "430"
+        },
+        {
+            "CountryName": "Libya",
+            "OfficialName": "The State of Libya",
+            "Alpha2Code": "LY",
+            "Alpha3Code": "LBY",
+            "NumericCode": "434"
+        },
+        {
+            "CountryName": "Liechtenstein",
+            "OfficialName": "The Principality of Liechtenstein",
+            "Alpha2Code": "LI",
+            "Alpha3Code": "LIE",
+            "NumericCode": "438"
+        },
+        {
+            "CountryName": "Lithuania",
+            "OfficialName": "The Republic of Lithuania",
+            "Alpha2Code": "LT",
+            "Alpha3Code": "LTU",
+            "NumericCode": "440"
+        },
+        {
+            "CountryName": "Luxembourg",
+            "OfficialName": "The Grand Duchy of Luxembourg",
+            "Alpha2Code": "LU",
+            "Alpha3Code": "LUX",
+            "NumericCode": "442"
+        },
+        {
+            "CountryName": "Macao",
+            "OfficialName": "Macao Special Administrative Region of China",
+            "Alpha2Code": "MO",
+            "Alpha3Code": "MAC",
+            "NumericCode": "446"
+        },
+        {
+            "CountryName": "North Macedonia",
+            "OfficialName": "The Republic of North Macedonia",
+            "Alpha2Code": "MK",
+            "Alpha3Code": "MKD",
+            "NumericCode": "807"
+        },
+        {
+            "CountryName": "Madagascar",
+            "OfficialName": "The Republic of Madagascar",
+            "Alpha2Code": "MG",
+            "Alpha3Code": "MDG",
+            "NumericCode": "450"
+        },
+        {
+            "CountryName": "Malawi",
+            "OfficialName": "The Republic of Malawi",
+            "Alpha2Code": "MW",
+            "Alpha3Code": "MWI",
+            "NumericCode": "454"
+        },
+        {
+            "CountryName": "Malaysia",
+            "OfficialName": "Malaysia",
+            "Alpha2Code": "MY",
+            "Alpha3Code": "MYS",
+            "NumericCode": "458"
+        },
+        {
+            "CountryName": "Maldives",
+            "OfficialName": "The Republic of Maldives",
+            "Alpha2Code": "MV",
+            "Alpha3Code": "MDV",
+            "NumericCode": "462"
+        },
+        {
+            "CountryName": "Mali",
+            "OfficialName": "The Republic of Mali",
+            "Alpha2Code": "ML",
+            "Alpha3Code": "MLI",
+            "NumericCode": "466"
+        },
+        {
+            "CountryName": "Malta",
+            "OfficialName": "The Republic of Malta",
+            "Alpha2Code": "MT",
+            "Alpha3Code": "MLT",
+            "NumericCode": "470"
+        },
+        {
+            "CountryName": "Marshall Islands",
+            "OfficialName": "The Republic of the Marshall Islands",
+            "Alpha2Code": "MH",
+            "Alpha3Code": "MHL",
+            "NumericCode": "584"
+        },
+        {
+            "CountryName": "Martinique",
+            "OfficialName": "Martinique",
+            "Alpha2Code": "MQ",
+            "Alpha3Code": "MTQ",
+            "NumericCode": "474"
+        },
+        {
+            "CountryName": "Mauritania",
+            "OfficialName": "The Islamic Republic of Mauritania",
+            "Alpha2Code": "MR",
+            "Alpha3Code": "MRT",
+            "NumericCode": "478"
+        },
+        {
+            "CountryName": "Mauritius",
+            "OfficialName": "The Republic of Mauritius",
+            "Alpha2Code": "MU",
+            "Alpha3Code": "MUS",
+            "NumericCode": "480"
+        },
+        {
+            "CountryName": "Mayotte",
+            "OfficialName": "The Department of Mayotte",
+            "Alpha2Code": "YT",
+            "Alpha3Code": "MYT",
+            "NumericCode": "175"
+        },
+        {
+            "CountryName": "Mexico",
+            "OfficialName": "The United Mexican States",
+            "Alpha2Code": "MX",
+            "Alpha3Code": "MEX",
+            "NumericCode": "484"
+        },
+        {
+            "CountryName": "Micronesia",
+            "OfficialName": "The Federated States of Micronesia",
+            "Alpha2Code": "FM",
+            "Alpha3Code": "FSM",
+            "NumericCode": "583"
+        },
+        {
+            "CountryName": "Moldova",
+            "OfficialName": "The Republic of Moldova",
+            "Alpha2Code": "MD",
+            "Alpha3Code": "MDA",
+            "NumericCode": "498"
+        },
+        {
+            "CountryName": "Monaco",
+            "OfficialName": "The Principality of Monaco",
+            "Alpha2Code": "MC",
+            "Alpha3Code": "MCO",
+            "NumericCode": "492"
+        },
+        {
+            "CountryName": "Mongolia",
+            "OfficialName": "Mongolia",
+            "Alpha2Code": "MN",
+            "Alpha3Code": "MNG",
+            "NumericCode": "496"
+        },
+        {
+            "CountryName": "Montenegro",
+            "OfficialName": "Montenegro",
+            "Alpha2Code": "ME",
+            "Alpha3Code": "MNE",
+            "NumericCode": "499"
+        },
+        {
+            "CountryName": "Montserrat",
+            "OfficialName": "Montserrat",
+            "Alpha2Code": "MS",
+            "Alpha3Code": "MSR",
+            "NumericCode": "500"
+        },
+        {
+            "CountryName": "Morocco",
+            "OfficialName": "The Kingdom of Morocco",
+            "Alpha2Code": "MA",
+            "Alpha3Code": "MAR",
+            "NumericCode": "504"
+        },
+        {
+            "CountryName": "Mozambique",
+            "OfficialName": "The Republic of Mozambique",
+            "Alpha2Code": "MZ",
+            "Alpha3Code": "MOZ",
+            "NumericCode": "508"
+        },
+        {
+            "CountryName": "Myanmar",
+            "OfficialName": "The Republic of the Union of Myanmar",
+            "Alpha2Code": "MM",
+            "Alpha3Code": "MMR",
+            "NumericCode": "104"
+        },
+        {
+            "CountryName": "Namibia",
+            "OfficialName": "The Republic of Namibia",
+            "Alpha2Code": "NA",
+            "Alpha3Code": "NAM",
+            "NumericCode": "516"
+        },
+        {
+            "CountryName": "Nauru",
+            "OfficialName": "The Republic of Nauru",
+            "Alpha2Code": "NR",
+            "Alpha3Code": "NRU",
+            "NumericCode": "520"
+        },
+        {
+            "CountryName": "Nepal",
+            "OfficialName": "The Federal Democratic Republic of Nepal",
+            "Alpha2Code": "NP",
+            "Alpha3Code": "NPL",
+            "NumericCode": "524"
+        },
+        {
+            "CountryName": "Netherlands",
+            "OfficialName": "The Kingdom of the Netherlands",
+            "Alpha2Code": "NL",
+            "Alpha3Code": "NLD",
+            "NumericCode": "528"
+        },
+        {
+            "CountryName": "New Caledonia",
+            "OfficialName": "New Caledonia",
+            "Alpha2Code": "NC",
+            "Alpha3Code": "NCL",
+            "NumericCode": "540"
+        },
+        {
+            "CountryName": "New Zealand",
+            "OfficialName": "New Zealand",
+            "Alpha2Code": "NZ",
+            "Alpha3Code": "NZL",
+            "NumericCode": "554"
+        },
+        {
+            "CountryName": "Nicaragua",
+            "OfficialName": "The Republic of Nicaragua",
+            "Alpha2Code": "NI",
+            "Alpha3Code": "NIC",
+            "NumericCode": "558"
+        },
+        {
+            "CountryName": "Niger",
+            "OfficialName": "The Republic of the Niger",
+            "Alpha2Code": "NE",
+            "Alpha3Code": "NER",
+            "NumericCode": "562"
+        },
+        {
+            "CountryName": "Nigeria",
+            "OfficialName": "The Federal Republic of Nigeria",
+            "Alpha2Code": "NG",
+            "Alpha3Code": "NGA",
+            "NumericCode": "566"
+        },
+        {
+            "CountryName": "Niue",
+            "OfficialName": "Niue",
+            "Alpha2Code": "NU",
+            "Alpha3Code": "NIU",
+            "NumericCode": "570"
+        },
+        {
+            "CountryName": "Norfolk Island",
+            "OfficialName": "The Territory of Norfolk Island",
+            "Alpha2Code": "NF",
+            "Alpha3Code": "NFK",
+            "NumericCode": "574"
+        },
+        {
+            "CountryName": "Northern Mariana Islands",
+            "OfficialName": "The Commonwealth of the Northern Mariana Islands",
+            "Alpha2Code": "MP",
+            "Alpha3Code": "MNP",
+            "NumericCode": "580"
+        },
+        {
+            "CountryName": "Norway",
+            "OfficialName": "The Kingdom of Norway",
+            "Alpha2Code": "NO",
+            "Alpha3Code": "NOR",
+            "NumericCode": "578"
+        },
+        {
+            "CountryName": "Oman",
+            "OfficialName": "The Sultanate of Oman",
+            "Alpha2Code": "OM",
+            "Alpha3Code": "OMN",
+            "NumericCode": "512"
+        },
+        {
+            "CountryName": "Pakistan",
+            "OfficialName": "The Islamic Republic of Pakistan",
+            "Alpha2Code": "PK",
+            "Alpha3Code": "PAK",
+            "NumericCode": "586"
+        },
+        {
+            "CountryName": "Palau",
+            "OfficialName": "The Republic of Palau",
+            "Alpha2Code": "PW",
+            "Alpha3Code": "PLW",
+            "NumericCode": "585"
+        },
+        {
+            "CountryName": "Palestine, State of",
+            "OfficialName": "The State of Palestine",
+            "Alpha2Code": "PS",
+            "Alpha3Code": "PSE",
+            "NumericCode": "275"
+        },
+        {
+            "CountryName": "Panama",
+            "OfficialName": "The Republic of Panamá",
+            "Alpha2Code": "PA",
+            "Alpha3Code": "PAN",
+            "NumericCode": "591"
+        },
+        {
+            "CountryName": "Papua New Guinea",
+            "OfficialName": "The Independent State of Papua New Guinea",
+            "Alpha2Code": "PG",
+            "Alpha3Code": "PNG",
+            "NumericCode": "598"
+        },
+        {
+            "CountryName": "Paraguay",
+            "OfficialName": "The Republic of Paraguay",
+            "Alpha2Code": "PY",
+            "Alpha3Code": "PRY",
+            "NumericCode": "600"
+        },
+        {
+            "CountryName": "Peru",
+            "OfficialName": "The Republic of Perú",
+            "Alpha2Code": "PE",
+            "Alpha3Code": "PER",
+            "NumericCode": "604"
+        },
+        {
+            "CountryName": "Philippines",
+            "OfficialName": "The Republic of the Philippines",
+            "Alpha2Code": "PH",
+            "Alpha3Code": "PHL",
+            "NumericCode": "608"
+        },
+        {
+            "CountryName": "Pitcairn",
+            "OfficialName": "The Pitcairn, Henderson, Ducie and Oeno Islands",
+            "Alpha2Code": "PN",
+            "Alpha3Code": "PCN",
+            "NumericCode": "612"
+        },
+        {
+            "CountryName": "Poland",
+            "OfficialName": "The Republic of Poland",
+            "Alpha2Code": "PL",
+            "Alpha3Code": "POL",
+            "NumericCode": "616"
+        },
+        {
+            "CountryName": "Portugal",
+            "OfficialName": "The Portuguese Republic",
+            "Alpha2Code": "PT",
+            "Alpha3Code": "PRT",
+            "NumericCode": "620"
+        },
+        {
+            "CountryName": "Puerto Rico",
+            "OfficialName": "The Commonwealth of Puerto Rico",
+            "Alpha2Code": "PR",
+            "Alpha3Code": "PRI",
+            "NumericCode": "630"
+        },
+        {
+            "CountryName": "Qatar",
+            "OfficialName": "The State of Qatar",
+            "Alpha2Code": "QA",
+            "Alpha3Code": "QAT",
+            "NumericCode": "634"
+        },
+        {
+            "CountryName": "Republic of the Congo",
+            "OfficialName": "The Republic of the Congo",
+            "Alpha2Code": "CG",
+            "Alpha3Code": "COG",
+            "NumericCode": "178"
+        },
+        {
+            "CountryName": "Reunion",
+            "OfficialName": "Reunion",
+            "Alpha2Code": "RE",
+            "Alpha3Code": "REU",
+            "NumericCode": "638"
+        },
+        {
+            "CountryName": "Romania",
+            "OfficialName": "Romania",
+            "Alpha2Code": "RO",
+            "Alpha3Code": "ROU",
+            "NumericCode": "642"
+        },
+        {
+            "CountryName": "Russian Federation",
+            "OfficialName": "The Russian Federation",
+            "Alpha2Code": "RU",
+            "Alpha3Code": "RUS",
+            "NumericCode": "643"
+        },
+        {
+            "CountryName": "Rwanda",
+            "OfficialName": "The Republic of Rwanda",
+            "Alpha2Code": "RW",
+            "Alpha3Code": "RWA",
+            "NumericCode": "646"
+        },
+        {
+            "CountryName": "Saint Barthélemy",
+            "OfficialName": "The Collectivity of Saint-Barthélemy",
+            "Alpha2Code": "BL",
+            "Alpha3Code": "BLM",
+            "NumericCode": "652"
+        },
+        {
+            "CountryName": "Saint Kitts and Nevis",
+            "OfficialName": "Saint Kitts and Nevis",
+            "Alpha2Code": "KN",
+            "Alpha3Code": "KNA",
+            "NumericCode": "659"
+        },
+        {
+            "CountryName": "Saint Lucia",
+            "OfficialName": "Saint Lucia",
+            "Alpha2Code": "LC",
+            "Alpha3Code": "LCA",
+            "NumericCode": "662"
+        },
+        {
+            "CountryName": "Saint Martin",
+            "OfficialName": "The Collectivity of Saint-Martin",
+            "Alpha2Code": "MF",
+            "Alpha3Code": "MAF",
+            "NumericCode": "663"
+        },
+        {
+            "CountryName": "Saint Pierre and Miquelon",
+            "OfficialName": "The Overseas Collectivity of Saint-Pierre and Miquelon",
+            "Alpha2Code": "PM",
+            "Alpha3Code": "SPM",
+            "NumericCode": "666"
+        },
+        {
+            "CountryName": "Saint Vincent and the Grenadines",
+            "OfficialName": "Saint Vincent and the Grenadines",
+            "Alpha2Code": "VC",
+            "Alpha3Code": "VCT",
+            "NumericCode": "670"
+        },
+        {
+            "CountryName": "Saint Helena",
+            "OfficialName": "Saint Helena, Ascension and Tristan da Cunha",
+            "Alpha2Code": "SH",
+            "Alpha3Code": "SHN",
+            "NumericCode": "654"
+        },
+        {
+            "CountryName": "Samoa",
+            "OfficialName": "The Independent State of Samoa",
+            "Alpha2Code": "WS",
+            "Alpha3Code": "WSM",
+            "NumericCode": "882"
+        },
+        {
+            "CountryName": "San Marino",
+            "OfficialName": "The Republic of San Marino",
+            "Alpha2Code": "SM",
+            "Alpha3Code": "SMR",
+            "NumericCode": "674"
+        },
+        {
+            "CountryName": "Sao Tome and Principe",
+            "OfficialName": "The Democratic Republic of São Tomé and Príncipe",
+            "Alpha2Code": "ST",
+            "Alpha3Code": "STP",
+            "NumericCode": "678"
+        },
+        {
+            "CountryName": "Saudi Arabia",
+            "OfficialName": "The Kingdom of Saudi Arabia",
+            "Alpha2Code": "SA",
+            "Alpha3Code": "SAU",
+            "NumericCode": "682"
+        },
+        {
+            "CountryName": "Senegal",
+            "OfficialName": "The Republic of Senegal",
+            "Alpha2Code": "SN",
+            "Alpha3Code": "SEN",
+            "NumericCode": "686"
+        },
+        {
+            "CountryName": "Serbia",
+            "OfficialName": "The Republic of Serbia",
+            "Alpha2Code": "RS",
+            "Alpha3Code": "SRB",
+            "NumericCode": "688"
+        },
+        {
+            "CountryName": "Seychelles",
+            "OfficialName": "The Republic of Seychelles",
+            "Alpha2Code": "SC",
+            "Alpha3Code": "SYC",
+            "NumericCode": "690"
+        },
+        {
+            "CountryName": "Sierra Leone",
+            "OfficialName": "The Republic of Sierra Leone",
+            "Alpha2Code": "SL",
+            "Alpha3Code": "SLE",
+            "NumericCode": "694"
+        },
+        {
+            "CountryName": "Singapore",
+            "OfficialName": "The Republic of Singapore",
+            "Alpha2Code": "SG",
+            "Alpha3Code": "SGP",
+            "NumericCode": "702"
+        },
+        {
+            "CountryName": "Sint Maarten",
+            "OfficialName": "Sint Maarten",
+            "Alpha2Code": "SX",
+            "Alpha3Code": "SXM",
+            "NumericCode": "534"
+        },
+        {
+            "CountryName": "Slovakia",
+            "OfficialName": "The Slovak Republic",
+            "Alpha2Code": "SK",
+            "Alpha3Code": "SVK",
+            "NumericCode": "703"
+        },
+        {
+            "CountryName": "Slovenia",
+            "OfficialName": "The Republic of Slovenia",
+            "Alpha2Code": "SI",
+            "Alpha3Code": "SVN",
+            "NumericCode": "705"
+        },
+        {
+            "CountryName": "Solomon Islands",
+            "OfficialName": "The Solomon Islands",
+            "Alpha2Code": "SB",
+            "Alpha3Code": "SLB",
+            "NumericCode": "90"
+        },
+        {
+            "CountryName": "Somalia",
+            "OfficialName": "The Federal Republic of Somalia",
+            "Alpha2Code": "SO",
+            "Alpha3Code": "SOM",
+            "NumericCode": "706"
+        },
+        {
+            "CountryName": "South Africa",
+            "OfficialName": "The Republic of South Africa",
+            "Alpha2Code": "ZA",
+            "Alpha3Code": "ZAF",
+            "NumericCode": "710"
+        },
+        {
+            "CountryName": "South Georgia and the South Sandwich Islands",
+            "OfficialName": "South Georgia and the South Sandwich Islands",
+            "Alpha2Code": "GS",
+            "Alpha3Code": "SGS",
+            "NumericCode": "239"
+        },
+        {
+            "CountryName": "South Sudan",
+            "OfficialName": "The Republic of South Sudan",
+            "Alpha2Code": "SS",
+            "Alpha3Code": "SSD",
+            "NumericCode": "728"
+        },
+        {
+            "CountryName": "Spain",
+            "OfficialName": "The Kingdom of Spain",
+            "Alpha2Code": "ES",
+            "Alpha3Code": "ESP",
+            "NumericCode": "724"
+        },
+        {
+            "CountryName": "Sri Lanka",
+            "OfficialName": "The Democratic Socialist Republic of Sri Lanka",
+            "Alpha2Code": "LK",
+            "Alpha3Code": "LKA",
+            "NumericCode": "144"
+        },
+        {
+            "CountryName": "Sudan",
+            "OfficialName": "The Republic of the Sudan",
+            "Alpha2Code": "SD",
+            "Alpha3Code": "SDN",
+            "NumericCode": "729"
+        },
+        {
+            "CountryName": "Suriname",
+            "OfficialName": "The Republic of Suriname",
+            "Alpha2Code": "SR",
+            "Alpha3Code": "SUR",
+            "NumericCode": "740"
+        },
+        {
+            "CountryName": "Svalbard",
+            "OfficialName": "Svalbard and Jan Mayen",
+            "Alpha2Code": "SJ",
+            "Alpha3Code": "SJM",
+            "NumericCode": "744"
+        },
+        {
+            "CountryName": "Sweden",
+            "OfficialName": "The Kingdom of Sweden",
+            "Alpha2Code": "SE",
+            "Alpha3Code": "SWE",
+            "NumericCode": "752"
+        },
+        {
+            "CountryName": "Switzerland",
+            "OfficialName": "The Swiss Confederation",
+            "Alpha2Code": "CH",
+            "Alpha3Code": "CHE",
+            "NumericCode": "756"
+        },
+        {
+            "CountryName": "Syrian Arab Republic",
+            "OfficialName": "The Syrian Arab Republic",
+            "Alpha2Code": "SY",
+            "Alpha3Code": "SYR",
+            "NumericCode": "760"
+        },
+        {
+            "CountryName": "Taiwan",
+            "OfficialName": "The Republic of China",
+            "Alpha2Code": "TW",
+            "Alpha3Code": "TWN",
+            "NumericCode": "158"
+        },
+        {
+            "CountryName": "Tajikistan",
+            "OfficialName": "The Republic of Tajikistan",
+            "Alpha2Code": "TJ",
+            "Alpha3Code": "TJK",
+            "NumericCode": "762"
+        },
+        {
+            "CountryName": "Tanzania",
+            "OfficialName": "The United Republic of Tanzania",
+            "Alpha2Code": "TZ",
+            "Alpha3Code": "TZA",
+            "NumericCode": "834"
+        },
+        {
+            "CountryName": "Thailand",
+            "OfficialName": "The Kingdom of Thailand",
+            "Alpha2Code": "TH",
+            "Alpha3Code": "THA",
+            "NumericCode": "764"
+        },
+        {
+            "CountryName": "Togo",
+            "OfficialName": "The Togolese Republic",
+            "Alpha2Code": "TG",
+            "Alpha3Code": "TGO",
+            "NumericCode": "768"
+        },
+        {
+            "CountryName": "Tokelau",
+            "OfficialName": "Tokelau",
+            "Alpha2Code": "TK",
+            "Alpha3Code": "TKL",
+            "NumericCode": "772"
+        },
+        {
+            "CountryName": "Tonga",
+            "OfficialName": "The Kingdom of Tonga",
+            "Alpha2Code": "TO",
+            "Alpha3Code": "TON",
+            "NumericCode": "776"
+        },
+        {
+            "CountryName": "Trinidad and Tobago",
+            "OfficialName": "The Republic of Trinidad and Tobago",
+            "Alpha2Code": "TT",
+            "Alpha3Code": "TTO",
+            "NumericCode": "780"
+        },
+        {
+            "CountryName": "Tunisia",
+            "OfficialName": "The Republic of Tunisia",
+            "Alpha2Code": "TN",
+            "Alpha3Code": "TUN",
+            "NumericCode": "788"
+        },
+        {
+            "CountryName": "Turkey",
+            "OfficialName": "The Republic of Turkey",
+            "Alpha2Code": "TR",
+            "Alpha3Code": "TUR",
+            "NumericCode": "792"
+        },
+        {
+            "CountryName": "Turkmenistan",
+            "OfficialName": "Turkmenistan",
+            "Alpha2Code": "TM",
+            "Alpha3Code": "TKM",
+            "NumericCode": "795"
+        },
+        {
+            "CountryName": "Turks and Caicos Islands",
+            "OfficialName": "The Turks and Caicos Islands",
+            "Alpha2Code": "TC",
+            "Alpha3Code": "TCA",
+            "NumericCode": "796"
+        },
+        {
+            "CountryName": "Tuvalu",
+            "OfficialName": "Tuvalu",
+            "Alpha2Code": "TV",
+            "Alpha3Code": "TUV",
+            "NumericCode": "798"
+        },
+        {
+            "CountryName": "Uganda",
+            "OfficialName": "The Republic of Uganda",
+            "Alpha2Code": "UG",
+            "Alpha3Code": "UGA",
+            "NumericCode": "800"
+        },
+        {
+            "CountryName": "Ukraine",
+            "OfficialName": "Ukraine",
+            "Alpha2Code": "UA",
+            "Alpha3Code": "UKR",
+            "NumericCode": "804"
+        },
+        {
+            "CountryName": "United Arab Emirates",
+            "OfficialName": "The United Arab Emirates",
+            "Alpha2Code": "AE",
+            "Alpha3Code": "ARE",
+            "NumericCode": "784"
+        },
+        {
+            "CountryName": "United Kingdom",
+            "OfficialName": "The United Kingdom of Great Britain and Northern Ireland",
+            "Alpha2Code": "GB",
+            "Alpha3Code": "GBR",
+            "NumericCode": "826"
+        },
+        {
+            "CountryName": "United States Minor Outlying Islands",
+            "OfficialName": "Baker Island,Howland Island,Jarvis Island,Johnston Atoll,Kingman Reef,Midway Atoll,Navassa Island,Palmyra Atoll, and Wake Island",
+            "Alpha2Code": "UM",
+            "Alpha3Code": "UMI",
+            "NumericCode": "581"
+        },
+        {
+            "CountryName": "United States of America",
+            "OfficialName": "The United States of America",
+            "Alpha2Code": "US",
+            "Alpha3Code": "USA",
+            "NumericCode": "840"
+        },
+        {
+            "CountryName": "Uruguay",
+            "OfficialName": "The Oriental Republic of Uruguay",
+            "Alpha2Code": "UY",
+            "Alpha3Code": "URY",
+            "NumericCode": "858"
+        },
+        {
+            "CountryName": "Uzbekistan",
+            "OfficialName": "The Republic of Uzbekistan",
+            "Alpha2Code": "UZ",
+            "Alpha3Code": "UZB",
+            "NumericCode": "860"
+        },
+        {
+            "CountryName": "Vanuatu",
+            "OfficialName": "The Republic of Vanuatu",
+            "Alpha2Code": "VU",
+            "Alpha3Code": "VUT",
+            "NumericCode": "548"
+        },
+        {
+            "CountryName": "Venezuela",
+            "OfficialName": "The Bolivarian Republic of Venezuela",
+            "Alpha2Code": "VE",
+            "Alpha3Code": "VEN",
+            "NumericCode": "862"
+        },
+        {
+            "CountryName": "Vietnam",
+            "OfficialName": "The Socialist Republic of Viet Nam",
+            "Alpha2Code": "VN",
+            "Alpha3Code": "VNM",
+            "NumericCode": "704"
+        },
+        {
+            "CountryName": "British Virgin Islands",
+            "OfficialName": "The Virgin Islands",
+            "Alpha2Code": "VG",
+            "Alpha3Code": "VGB",
+            "NumericCode": "92"
+        },
+        {
+            "CountryName": "U.S. Virgin Islands",
+            "OfficialName": "The Virgin Islands of the United States",
+            "Alpha2Code": "VI",
+            "Alpha3Code": "VIR",
+            "NumericCode": "850"
+        },
+        {
+            "CountryName": "Wallis and Futuna",
+            "OfficialName": "The Territory of the Wallis and Futuna Islands",
+            "Alpha2Code": "WF",
+            "Alpha3Code": "WLF",
+            "NumericCode": "876"
+        },
+        {
+            "CountryName": "Western Sahara",
+            "OfficialName": "The Sahrawi Arab Democratic Republic",
+            "Alpha2Code": "EH",
+            "Alpha3Code": "ESH",
+            "NumericCode": "732"
+        },
+        {
+            "CountryName": "Yemen",
+            "OfficialName": "The Republic of Yemen",
+            "Alpha2Code": "YE",
+            "Alpha3Code": "YEM",
+            "NumericCode": "887"
+        },
+        {
+            "CountryName": "Zambia",
+            "OfficialName": "The Republic of Zambia",
+            "Alpha2Code": "ZM",
+            "Alpha3Code": "ZMB",
+            "NumericCode": "894"
+        },
+        {
+            "CountryName": "Zimbabwe",
+            "OfficialName": "The Republic of Zimbabwe",
+            "Alpha2Code": "ZW",
+            "Alpha3Code": "ZWE",
+            "NumericCode": "716"
+        }
+    ]
+}

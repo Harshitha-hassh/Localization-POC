@@ -910,7 +910,9 @@
     "NoInTakeFormReceived": "No Intake form received_fi",
     "priceType": "Price Type_fi",
     "amount": "Amount_fi",
-    "PostTypeMapping": "Post Type Mapping_fi"
+    "PostTypeMapping": "Post Type Mapping_fi",
+    "missingCountryName": "Missing country name_fi",
+    "invalidCountryName": "Invalid country name_fi"
   },
   "shop": {
     "AdvancedSearch": "Advanced Search_fi",
@@ -1044,11 +1046,13 @@
     "Date": "Date_fi",
     "Time": "Time_fi",
     "ClerkID": "Clerk ID_fi",
+    "SoldBy": "Sold By_fi",
     "Outlet": "Outlet_fi",
     "AllOutlets": "All Outlets_fi",
     "ClientName": "Client Name_fi",
     "MemberName": "Member Name_fi",
-    "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name_fi",
+    "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_fi",
+    "CorrectedOrVoidedBy": "Corrected/Voided By_fi",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_fi",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_fi",
     "Incorrectquantity": "Incorrect quantity_fi",
@@ -1660,6 +1664,7 @@
     "Subcategory5": "Sub Category 5_fi",
     "SelectedOutlets": "Selected Outlets:_fi",
     "AdvancedSearch": "Advanced Search_fi",
+    "CorrectedOrVoidedByID": "Corrected/Voided By_fi",
     "GroupedItems": "Grouped Items_fi",
     "SearchbyItemNumberDescriptionBarcodeScannerCodeSupplier": "Search by  Item Number, Description, Barcode #, Scanner Code, Supplier, Supplier Number and Purchase Order_fi",
     "StartDate": "Start Date_fi",
@@ -2584,6 +2589,8 @@
     "swipeInsertTap": "Swipe/Insert/Tap_fi",
     "cardEntryMode": "Card Entry Mode_fi",
     "proceed": "PROCEED_fi",
+    "missingCountryName": "Missing country name_fi",
+    "invalidCountryName": "Invalid country name_fi",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_fi",
       "CMS": "CMS_fi",

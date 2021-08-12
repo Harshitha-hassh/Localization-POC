@@ -318,13 +318,31 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.utils.disableControls(this.FormGrp);
     }
     //this.setPhoneAsMandatory();
-    this.utils.geCountriesJSON();
+    this.utils.geCountriesJSON().then(res => {
     this.filteredCountries = this.FormGrp.controls.country.valueChanges.pipe(
       startWith(''),
       debounceTime(100),
       distinctUntilChanged(),
       map((country: string) => country ? this.utils.FilterCountry(country, this.utils.countryDetails) : [])
     );
+    this.FormGrp.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe(res => {
+      if (this.FormGrp.controls['city'].value) {
+        this.FormGrp.controls.country.setErrors({ required: true });
+      } else {
+        this.FormGrp.controls.country.setErrors(null);
+      }
+      if (this.FormGrp.controls['country'].value &&
+        !this.utils.FilterCountryValueFromData(this.FormGrp.controls['country'].value)) {
+        this.FormGrp.controls.country.setErrors({ invalid: true });
+      } else if ((this.FormGrp.controls['city'].value &&
+        this.utils.FilterCountryValueFromData(this.FormGrp.controls['country'].value) &&
+        this.FormGrp.controls['country'].value) || (!this.FormGrp.controls['city'].value &&
+          !this.FormGrp.controls['country'].value)) {
+        this.FormGrp.controls.country.setErrors(null);
+      }
+      this.FormGrp.controls['country'].markAsTouched();
+    });
+  });
   }
 
   initializeFormData() {

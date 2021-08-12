@@ -910,7 +910,9 @@
     "NoInTakeFormReceived": "No Intake form received_in",
     "priceType": "Price Type_in",
     "amount": "Amount_in",
-    "PostTypeMapping": "Post Type Mapping_in"
+    "PostTypeMapping": "Post Type Mapping_in",
+    "missingCountryName": "Missing country name_in",
+    "invalidCountryName": "Invalid country name_in"
   },
   "shop": {
     "AdvancedSearch": "Advanced Search_in",
@@ -1044,11 +1046,13 @@
     "Date": "Date_in",
     "Time": "Time_in",
     "ClerkID": "Clerk ID_in",
+    "SoldBy": "Sold By_in",
     "Outlet": "Outlet_in",
     "AllOutlets": "All Outlets_in",
     "ClientName": "Client Name_in",
     "MemberName": "Member Name_in",
-    "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name_in",
+    "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_in",
+    "CorrectedOrVoidedBy": "Corrected/Voided By_in",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_in",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_in",
     "Incorrectquantity": "Incorrect quantity_in",
@@ -1660,6 +1664,7 @@
     "Subcategory5": "Sub Category 5_in",
     "SelectedOutlets": "Selected Outlets:_in",
     "AdvancedSearch": "Advanced Search_in",
+    "CorrectedOrVoidedByID": "Corrected/Voided By_in",
     "GroupedItems": "Grouped Items_in",
     "SearchbyItemNumberDescriptionBarcodeScannerCodeSupplier": "Search by  Item Number, Description, Barcode #, Scanner Code, Supplier, Supplier Number and Purchase Order_in",
     "StartDate": "Start Date_in",
@@ -2584,6 +2589,8 @@
     "swipeInsertTap": "Swipe/Insert/Tap_in",
     "cardEntryMode": "Card Entry Mode_in",
     "proceed": "PROCEED_in",
+    "missingCountryName": "Missing country name_in",
+    "invalidCountryName": "Invalid country name_in",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_in",
       "CMS": "CMS_in",

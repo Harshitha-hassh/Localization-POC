@@ -910,7 +910,9 @@
     "NoInTakeFormReceived": "No Intake form received_fr",
     "priceType": "Price Type_fr",
     "amount": "Amount_fr",
-    "PostTypeMapping": "Post Type Mapping_fr"
+    "PostTypeMapping": "Post Type Mapping_fr",
+    "missingCountryName": "Missing country name_fr",
+    "invalidCountryName": "Invalid country name_fr"
   },
   "shop": {
     "AdvancedSearch": "Advanced Search_fr",
@@ -1044,11 +1046,13 @@
     "Date": "Date_fr",
     "Time": "Time_fr",
     "ClerkID": "Clerk ID_fr",
+    "SoldBy": "Sold By_fr",
     "Outlet": "Outlet_fr",
     "AllOutlets": "All Outlets_fr",
     "ClientName": "Client Name_fr",
     "MemberName": "Member Name_fr",
-    "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name_fr",
+    "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_fr",
+    "CorrectedOrVoidedBy": "Corrected/Voided By_fr",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_fr",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_fr",
     "Incorrectquantity": "Incorrect quantity_fr",
@@ -1660,6 +1664,7 @@
     "Subcategory5": "Sub Category 5_fr",
     "SelectedOutlets": "Selected Outlets:_fr",
     "AdvancedSearch": "Advanced Search_fr",
+    "CorrectedOrVoidedByID": "Corrected/Voided By_fr",
     "GroupedItems": "Grouped Items_fr",
     "SearchbyItemNumberDescriptionBarcodeScannerCodeSupplier": "Search by  Item Number, Description, Barcode #, Scanner Code, Supplier, Supplier Number and Purchase Order_fr",
     "StartDate": "Start Date_fr",
@@ -2584,6 +2589,8 @@
     "swipeInsertTap": "Swipe/Insert/Tap_fr",
     "cardEntryMode": "Card Entry Mode_fr",
     "proceed": "PROCEED_fr",
+    "missingCountryName": "Missing country name_fr",
+    "invalidCountryName": "Invalid country name_fr",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_fr",
       "CMS": "CMS_fr",
