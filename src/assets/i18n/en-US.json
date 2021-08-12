@@ -1513,6 +1513,7 @@
   "oneSpecialCharacterNumberAlphabet": "Your password must contain atleast one special characters one numbers and one alphabets ",
   "changePassword": "Change Password",
   "setPassword": "Set Password",
+  "confirmationDragandDrop":"Do you want to Navigate Across Outlet",
   "passwordRequirements": "Password Requirements",
   "passwordMustContain": "Your password must contain at least 6 characters",
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used ",

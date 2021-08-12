@@ -1512,6 +1512,7 @@
   "oneSpecialCharacterNumberAlphabet": "Your password must contain atleast one special characters one numbers and one alphabets _au",
   "changePassword": "Change Password_au",
   "setPassword": "Set Password_au",
+  "confirmationDragandDrop": "Do you want to Navigate Across Outlet_au",
   "passwordRequirements": "Password Requirements_au",
   "passwordMustContain": "Your password must contain at least 6 characters_au",
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _au",
