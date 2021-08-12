@@ -12,6 +12,7 @@ export class DashBoardBusiness {
     public readonly dayFormat: number = 1;
     public readonly weekFormat: number = 2;
     public readonly monthFormat: number = 3;
+    public readonly numericTwo = 2;
     constructor(private dashBoardService: DashBoardService
         ,       private localization: RetailStandaloneLocalization
         ,       private _subPropertyDataService: SubPropertyDataService
@@ -98,7 +99,7 @@ export class DashBoardBusiness {
             return {
                 id: x.id,
                 booked: x.noOfTrasaction,
-                avail:`${this.localization.currencySymbol}`+ x.totalAmount,
+                avail:`${this.localization.currencySymbol}`+ this.localization.DisplayMillion(x.totalAmount, this.numericTwo),
                 value: x.totalAmount,
 
                 name: x.name
@@ -151,7 +152,7 @@ export class DashBoardBusiness {
                 name: x.name,
                 items: x.noOfTrasaction,
                 booked: x.noOfTrasaction,
-                avail:`${this.localization.currencySymbol}`+  x.totalAmount,
+                avail:`${this.localization.currencySymbol}`+  this.localization.DisplayMillion(x.totalAmount, this.numericTwo),
             };
         });
     }
