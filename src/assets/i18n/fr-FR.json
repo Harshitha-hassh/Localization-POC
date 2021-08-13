@@ -1517,6 +1517,8 @@
   "changePassword": "Change Password_fr",
   "setPassword": "Set Password_fr",
   "confirmationDragandDrop": "Do you want to change the category of_fr",
+  "from": "from_fr",
+  "to": "to_fr",
   "passwordRequirements": "Password Requirements_fr",
   "passwordMustContain": "Your password must contain at least 6 characters_fr",
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _fr",

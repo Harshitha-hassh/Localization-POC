@@ -1517,6 +1517,8 @@
   "changePassword": "Change Password_gb",
   "setPassword": "Set Password_gb",
   "confirmationDragandDrop": "Do you want to change the category of_gb",
+  "from": "from_gb",
+  "to": "to_gb",
   "passwordRequirements": "Password Requirements_gb",
   "passwordMustContain": "Your password must contain at least 6 characters_gb",
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _gb",

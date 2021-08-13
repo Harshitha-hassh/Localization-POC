@@ -1517,6 +1517,8 @@
   "changePassword": "Change Password_fi",
   "setPassword": "Set Password_fi",
   "confirmationDragandDrop": "Do you want to change the category of_fi",
+  "from": "from_fi",
+  "to": "to_fi",
   "passwordRequirements": "Password Requirements_fi",
   "passwordMustContain": "Your password must contain at least 6 characters_fi",
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _fi",

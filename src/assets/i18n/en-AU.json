@@ -1517,6 +1517,8 @@
   "changePassword": "Change Password_au",
   "setPassword": "Set Password_au",
   "confirmationDragandDrop": "Do you want to change the category of_au",
+  "from": "from_au",
+  "to": "to_au",
   "passwordRequirements": "Password Requirements_au",
   "passwordMustContain": "Your password must contain at least 6 characters_au",
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _au",

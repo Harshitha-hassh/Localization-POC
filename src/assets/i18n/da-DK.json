@@ -1517,6 +1517,8 @@
   "changePassword": "Change Password_da",
   "setPassword": "Set Password_da",
   "confirmationDragandDrop": "Do you want to change the category of_da",
+  "from": "from_da",
+  "to": "to_da",
   "passwordRequirements": "Password Requirements_da",
   "passwordMustContain": "Your password must contain at least 6 characters_da",
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _da",
