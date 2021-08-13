@@ -1516,7 +1516,7 @@
   "oneSpecialCharacterNumberAlphabet": "Your password must contain atleast one special characters one numbers and one alphabets _in",
   "changePassword": "Change Password_in",
   "setPassword": "Set Password_in",
-  "confirmationDragandDrop": "Do you want to Navigate Across Outlet_in",
+  "confirmationDragandDrop": "Do you want to change the category of_in",
   "passwordRequirements": "Password Requirements_in",
   "passwordMustContain": "Your password must contain at least 6 characters_in",
   "cannotBeSameAsTheLast": "Cannot be same as the last 3 passwords used _in",
