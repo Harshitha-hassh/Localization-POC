@@ -1702,6 +1702,7 @@
     "MissingQuickSaleCategory": "Missing Quick Sale Category_uk",
     "AddQuickSaleItems": "ADD QUICK SALE ITEMS_uk",
     "AddQuickSale": "ADD TO QUICK SALE_uk",
+    "ConfirmationDragandDrop": "Do you want to change the category of {item} from {previouscategory} to {tocategory}_uk",
     "ItemName": "Item Name_uk",
     "ItemNum": "Item #_uk",
     "NoItemsAddedToQuickSale": "No Items Added to Quick Sale_uk",
