@@ -232,7 +232,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         this.utils.ToggleLoaderWithMessage(true, this.captions.OutletSyncWait);
         let failedOutlet = [];
         for (let i = 0; i < this.propOutlets.length; i++) {
-          if (taxes && taxes.length && taxes.find(x => this.propOutlets[i].subPropertyID == x.outletId &&
+          if (taxes && taxes.length && taxes.find(x => 
+            (this.propOutlets[i].subPropertyID == x.outletId || this.propertyInfo.IsVATEnabled) &&
             this.localization.getDateDifference(this.localization.getDate(x.endDate), prevDate) == 0)) {
             try {
               let result = await this.http.CallApiAsync<boolean>({
