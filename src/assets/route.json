@@ -634,6 +634,8 @@
   "GetInventoryOutletStatus": "Inventory/outlet/{outletId}/status",
   "GetRetailInventoryItemByPagination": "RetailItems/retail-inventory/items?outletId={outletId}&includeInactive={includeInactive}&pageStart={pageStart}&pageLength={pageLength}&sortBy={sortBy}&isSortByAscending={isSortByAscending}&searchText={searchText}&category={category}&subcategory1={subcategory1}&subcategory2={subcategory2}&subcategory3={subcategory3}&subcategory4={subcategory4}&subcategory5={subcategory5}&useInventory=true",
   "GetCommissionSetup" : "retailitems/getcommissionsetup",
+  "UpdateCommissionSetupByFilter" : "CommissionSetup/updatecommissionsetupbyfilter",
+  "UpdateRetaCommissionSetupByFilter" : "retailitems/updatecommissionsetupbyfilter",
   "IsBarcodeExists": "retailitems/validate/barcode/{barcode}/{itemId}",
   "GetRetailItemDetailedInfo": "retailitems/detailed-info?id={id}",
   "GetRetailItemDetailedInfoList": "retailitems/detailed-infolist",
@@ -685,5 +687,10 @@
   "ImportStatus":"RetailItems/ImportStatus",
   "SaveIntegrationsLog": "Payment/PostIntegrationsLog",  
   "UpdateIntegrationsLog": "Payment/UpdateIntegrationsLog", 
-  "EmptyFilterSearch":"GuestCombine/search/{filterName}"
+  "EmptyFilterSearch":"GuestCombine/search/{filterName}",
+  "CreateSettlementHistory": "Transaction/CreateSettlementHistory",
+  "GetSettlementHistory": "Transaction/GetSettlementHistoryList/outlet/{outletId}/{transactionDate}/{status}",
+  "TryCloseTransaction": "Checks/TryCloseTransaction/{transactionId}",
+  "ValidateCloseTransaction": "Checks/ValidateCloseTransaction/{transactionId}",
+  "CreateTransLog": "CreateTransLog/transaction/{transactionId}/logtype/{logType}"
 }

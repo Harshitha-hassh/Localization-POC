@@ -4,13 +4,14 @@ import { ComboOptions, SystemConfiguration } from 'src/app/common/shared/shared/
 import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { SystemSetupBusinessService } from '../system-setup.business.service';
 import { SystemConfig, PropertyConfig, PhNumber, BaseResponse } from 'src/app/common/shared/shared/business/shared.modals';
-import { SubscriptionLike as ISubscription } from 'rxjs';
+import { Observable, ReplaySubject, SubscriptionLike as ISubscription } from 'rxjs';
 import { SettingsService } from '../../settings.service';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { SpaFormAgent } from 'src/app/common/shared/shared/spa-form';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
+import { debounceTime, distinctUntilChanged, map, startWith, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-property-info',
@@ -47,6 +48,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   commonCaptions: any;
   propertyConfigurationDetails: any;
   PhoneType: { id: number; description: any; }[];
+  filteredCountries: Observable<any>;
+  destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   constructor(private BP: BreakPointAccess,
               private systemConfig: SystemSetupBusinessService,
               private fb: FormBuilder,
@@ -113,6 +116,31 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.RequiredFieldsSetting();
     this.GetPropertInfo();
     this.RequiredfieldsBind();
+    this.utilities.geCountriesJSON().then(res => {
+    this.filteredCountries = this.propertyInfo.controls.country.valueChanges.pipe(
+      startWith(''),
+      debounceTime(100),
+      distinctUntilChanged(),
+      map((country: string) => country ? this.utilities.FilterCountry(country, this.utilities.countryDetails) : [])
+    );
+    this.propertyInfo.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe(res => {
+      if (this.propertyInfo.controls['city'].value) {
+        this.propertyInfo.controls.country.setErrors({ required: true });
+      } else {
+        this.propertyInfo.controls.country.setErrors(null);
+      }
+      if (this.propertyInfo.controls['country'].value &&
+        !this.utilities.FilterCountryValueFromData(this.propertyInfo.controls['country'].value)) {
+        this.propertyInfo.controls.country.setErrors({ invalid: true });
+      } else if ((this.propertyInfo.controls['city'].value &&
+        this.utilities.FilterCountryValueFromData(this.propertyInfo.controls['country'].value) &&
+        this.propertyInfo.controls['country'].value) || (!this.propertyInfo.controls['city'].value &&
+          !this.propertyInfo.controls['country'].value)) {
+        this.propertyInfo.controls.country.setErrors(null);
+      }
+      this.propertyInfo.controls['country'].markAsTouched();
+    });
+  });
   }
 
   ValidateBreakPoint(): void {
@@ -126,6 +154,10 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   ngOnDestroy() {
     if (this.propertyInfoSubscription) {
       this.propertyInfoSubscription.unsubscribe();
+    }
+    if (this.destroyed$) {
+      this.destroyed$.next(true);
+      this.destroyed$.complete();
     }
   }
 

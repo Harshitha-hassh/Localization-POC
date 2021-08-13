@@ -304,11 +304,19 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field class="">
-          <input matInput [placeholder]="captions.Country" [required]="customRequired.country"
-            formControlName="country">
+          <input matInput formControlName="country" [matAutocomplete]="auto" [required]="customRequired.country"
+            [placeholder]="captions.Country" autocomplete="off" name="Country">
           <mat-error class=""
             *ngIf="FormGrp.controls['country'].hasError('required') && FormGrp.controls['country'].touched && !FormGrp.controls['country'].valid">
             {{captions.MissingCountryInformation}}
+          </mat-error>
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let country of filteredCountries | async" [value]="country.CountryName" [matTooltip]="country.CountryName">
+              <span>{{country.CountryName}}</span>
+            </mat-option>
+          </mat-autocomplete>
+          <mat-error *ngIf="FormGrp.get('country').value && FormGrp.get('country').hasError('invalid')">
+            {{captions.invalidCountryName}}
           </mat-error>
         </mat-form-field>
       </div>

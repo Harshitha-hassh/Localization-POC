@@ -349,6 +349,7 @@
     "12000": "Unable to get data from PMS system. Please check the configuration!",
     "101911":"Duplicate Discount Reason",
     "101916":"Discount Reason in use, Delete not allowed,",
-    "101915":"Discount Reason in use, Inactive not allowed"
+    "101915":"Discount Reason in use, Inactive not allowed",
+    "500109": "You have Unsettled Transaction! Ticket can't be Closed."
   }
   

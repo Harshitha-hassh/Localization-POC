@@ -39,7 +39,19 @@
                 <input type="text" matInput placeholder="{{captions.city}}" name="City" formControlName="city" > <!-- bug fix [maxlength]="10" 4128-->
               </mat-form-field>
               <mat-form-field class="country">
-                <input type="text" matInput placeholder="{{captions.country}}" name="Country" formControlName="country"[maxlength]="10">
+                <input matInput type="text" formControlName="country" [matAutocomplete]="auto"
+                  [placeholder]="captions.country" autocomplete="off" [maxlength]="10" name="Country">
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let country of filteredCountries | async" [value]="country.CountryName" [matTooltip]="country.CountryName">
+                    <span>{{country.CountryName}}</span>
+                  </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="!propertyInfo.get('country').value && propertyInfo.get('country').hasError('required')">
+                  {{captions.missingCountryName}}
+                </mat-error>
+                <mat-error *ngIf="propertyInfo.get('country').value && propertyInfo.get('country').hasError('invalid')">
+                  {{captions.invalidCountryName}}
+                </mat-error>
               </mat-form-field>
             </div>
           </div>
