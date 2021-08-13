@@ -108,6 +108,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   openTicketOutletIds: number[] = [];
   top5ItemOutletIds: number[] = [];
   top5CategoryOutletIds: number[] = [];
+  salesRevenueOutletIds: number[] = [];
 
   constructor(private cdr: ChangeDetectorRef,
               public dashboardWidgetsReportService: DashboardWidgetsReportService,
@@ -170,7 +171,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
       this.getAverageTransaction();
       this.getAvgUnitPerCustomer();
       this.getVendorsCount();
-      this.getTransactionSaleDetail();
+      this.getTransactionSaleDetail(this.outletIds);
       this.getRevenueByOutletDetail(this.outletIds);
       this.getReturned_ItemsDetail(this.outletIds);
 
@@ -252,6 +253,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     this.outOfStockOutletIds = _.clone(this.outletIds) ;
     this.revenueByOutletIds = _.clone(this.outletIds) ;
     this.openTicketOutletIds = _.clone(this.outletIds) ;
+    this.salesRevenueOutletIds = _.clone(this.outletIds) ;
   }
 
   widgetIsAnySelected(controlName, e) {
@@ -260,6 +262,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     this.outletIds = e.map(x => x.id);
     this.selectedChildOutlet =  _.clone(this.outletIds) ;
     this.assignOutletsToChildWidgets();
+    this.getTransactionSaleDetail(this.outletIds);
     this.getReturned_ItemsDetail(this.outletIds);
     this.getOpenTicketsData(this.outletIds);
     this.getOutofStockOnData(this.outletIds);
@@ -388,7 +391,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
         } else if (this.dataFormat == 3) {
           this.rowDescription = this.captions.MONTH;
         }
-        await this.getTransactionSaleDetail();
+        await this.getTransactionSaleDetail(this.salesRevenueOutletIds);
         break;
       case 'Revenue_By_Outlet':
         this.dataFormat = dataFormat + 1;
@@ -521,10 +524,10 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   }
 
 
-  async getTransactionSaleDetail() {
+  async getTransactionSaleDetail(outletIds: number[]) {
 
     this.Sales_SalesRevenue_data = await this.dashBoardBusiness.getTransactionSaleDetail(this.dataFormat,
-       this.startDate, this.Outlet_Sales);
+       this.startDate, outletIds);
 
     if (this.Sales_SalesRevenue_data.length > 0) {
       const templateHeight = (this.widgetsData[0].widget[0].config.height - 90); // (60 - template title, 30 - chart needs)
