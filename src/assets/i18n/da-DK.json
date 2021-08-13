@@ -1701,6 +1701,7 @@
     "MissingQuickSaleCategory": "Missing Quick Sale Category_da",
     "AddQuickSaleItems": "ADD QUICK SALE ITEMS_da",
     "AddQuickSale": "ADD TO QUICK SALE_da",
+    "ConfirmationDragandDrop": "Do you want to change the category of {item} from {previouscategory} to {tocategory}_da",
     "ItemName": "Item Name_da",
     "ItemNum": "Item #_da",
     "NoItemsAddedToQuickSale": "No Items Added to Quick Sale_da",
