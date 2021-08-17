@@ -1968,7 +1968,7 @@
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_de",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_de",
     "tog_lbl_showInactive": "Show Inactive_de",
-    "lbl_searchOutletPlaceholder": "Search by Outlet Name, Outlet TerminalId_de",
+    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center_de",
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_de",
     "pg_title_outlet": "OUTLET_de",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID_de",

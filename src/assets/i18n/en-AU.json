@@ -1969,7 +1969,7 @@
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_au",
     "tog_lbl_showInactive": "Show Inactive_au",
     "createOutlet":"CREATE OUTLET_au",
-    "lbl_searchOutletPlaceholder": "Search by Outlet Name, Outlet TerminalId_au",
+    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center_au",
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_au",
     "pg_title_outlet": "OUTLET_au",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID_au",
