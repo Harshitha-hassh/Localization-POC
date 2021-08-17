@@ -1047,6 +1047,7 @@
     "Time": "Time_fi",
     "ClerkID": "Clerk ID_fi",
     "SoldBy": "Sold By_fi",
+    "CorrectedOrVoidedByID": "Corrected/Voided By_fi",
     "Outlet": "Outlet_fi",
     "AllOutlets": "All Outlets_fi",
     "ClientName": "Client Name_fi",

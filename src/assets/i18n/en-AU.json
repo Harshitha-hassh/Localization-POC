@@ -1047,6 +1047,7 @@
     "Time": "Time_au",
     "ClerkID": "Clerk ID_au",
     "SoldBy": "Sold By_au",
+    "CorrectedOrVoidedByID": "Corrected/Voided By_au",
     "Outlet": "Outlet_au",
     "AllOutlets": "All Outlets_au",
     "ClientName": "Client Name_au",

@@ -1047,6 +1047,7 @@
     "Time": "Time_fr",
     "ClerkID": "Clerk ID_fr",
     "SoldBy": "Sold By_fr",
+    "CorrectedOrVoidedByID": "Corrected/Voided By_fr",
     "Outlet": "Outlet_fr",
     "AllOutlets": "All Outlets_fr",
     "ClientName": "Client Name_fr",

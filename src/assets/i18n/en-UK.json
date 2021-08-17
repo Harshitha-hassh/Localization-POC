@@ -1047,6 +1047,7 @@
     "Time": "Time_uk",
     "ClerkID": "Clerk ID_uk",
     "SoldBy": "Sold By_uk",
+    "CorrectedOrVoidedByID": "Corrected/Voided By_uk",
     "Outlet": "Outlet_uk",
     "AllOutlets": "All Outlets_uk",
     "ClientName": "Client Name_uk",
