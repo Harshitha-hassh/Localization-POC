@@ -275,6 +275,7 @@
   "QuickSaleActiveCategory": "quicksale/category/active",
   "QuickSaleCategoryWithId": "quicksale/category/{id}",
   "UpdateQuickSaleCategoryListOrder": "quicksale/category/listorder/from/{fromorder}/to/{toorder}",
+  "CategoryItemAndListOrderChange":"QuickSale/items/Categoryandlistorder",
   "GetAllTransactions": "transaction/{status}/{outletId}/{transactionDate}",
   "getCommissionableTherapist": "GetCommissionableStaffs/item/{itemId}",
   "GetCommissionableStaffs": "GetCommissionableStaffs/item/{itemId}/productId/{productId}",

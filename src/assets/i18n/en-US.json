@@ -1691,6 +1691,7 @@
     "MissingPaymentMethod": "Missing Payment Method",
     "MissingPaymentName": "Missing Payment Name",
     "MissingMailOrderSource": "Missing Mail Order Name",
+    "profitCentreId":"Profit Center Id",
     "RoleName": "Role Name",
     "MissingRoleName": "Missing Role Name",
     "Active": "Active",
@@ -1703,6 +1704,7 @@
     "MissingQuickSaleCategory": "Missing Quick Sale Category",
     "AddQuickSaleItems": "ADD QUICK SALE ITEMS",
     "AddQuickSale": "ADD TO QUICK SALE",
+    "ConfirmationDragandDrop":"Do you want to change the category of {item} from {previouscategory} to {tocategory}",
     "ItemName": "Item Name",
     "ItemNum": "Item #",
     "NoItemsAddedToQuickSale": "No Items Added to Quick Sale",
@@ -1969,6 +1971,9 @@
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name",
     "tog_lbl_showInactive": "Show Inactive",
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL",
+    "pg_title_outlet": "OUTLET",
+    "createOutlet":"CREATE OUTLET",
+    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID",
     "CreditCardTerminalerr_missing_Code": "Missing Credit Card Terminal ID",
     "CreditCardTerminal_grid_hdr_Name": "Credit Card Terminal Name",
@@ -3538,5 +3543,5 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?",  
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?"
+  "combineGuest_warning": "Are you sure you want to cancel the changes?"  
 }
