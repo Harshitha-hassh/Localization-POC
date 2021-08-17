@@ -1970,6 +1970,8 @@
     "tog_lbl_showInactive": "Show Inactive_fr",
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_fr",
     "pg_title_outlet": "OUTLET_fr",
+    "createOutlet":"CREATE OUTLET_fr",
+    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center_fr",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID_fr",
     "CreditCardTerminalerr_missing_Code": "Missing Credit Card Terminal ID_fr",
     "CreditCardTerminal_grid_hdr_Name": "Credit Card Terminal Name_fr",

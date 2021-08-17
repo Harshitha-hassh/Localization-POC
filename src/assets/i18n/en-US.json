@@ -1972,7 +1972,7 @@
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL",
     "pg_title_outlet": "OUTLET",
     "createOutlet":"CREATE OUTLET",
-    "lbl_searchOutletPlaceholder": "Search by Outlet Name, Outlet TerminalId",
+    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID",
     "CreditCardTerminalerr_missing_Code": "Missing Credit Card Terminal ID",
     "CreditCardTerminal_grid_hdr_Name": "Credit Card Terminal Name",
