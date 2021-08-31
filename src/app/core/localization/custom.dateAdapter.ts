@@ -31,9 +31,9 @@ export class CustomDateAdapter extends NativeDateAdapter {
   format(date: Date, displayFormat: any): string {
     let data = moment;
     if (displayFormat === 'input') {
-      return moment(date).format(dateFormat);
+      return moment(date).format(this.localization.inputDateFormat);
     } else {
-      return moment(date).format(calenderDateFormat);
+      return moment(date).format(this.localization.inputDateFormat);
     }
   }
   getFirstDayOfWeek(): number {
