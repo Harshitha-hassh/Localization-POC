@@ -693,5 +693,6 @@
   "GetSettlementHistory": "Transaction/GetSettlementHistoryList/outlet/{outletId}/{transactionDate}/{status}",
   "TryCloseTransaction": "Checks/TryCloseTransaction/{transactionId}",
   "ValidateCloseTransaction": "Checks/ValidateCloseTransaction/{transactionId}",
-  "CreateTransLog": "CreateTransLog/transaction/{transactionId}/logtype/{logType}"
+  "CreateTransLog": "CreateTransLog/transaction/{transactionId}/logtype/{logType}",
+  "UpdateRetailTransactionData": "transaction/updatetransaction/{id}"
 }
