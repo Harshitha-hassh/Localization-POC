@@ -694,5 +694,6 @@
   "TryCloseTransaction": "Checks/TryCloseTransaction/{transactionId}",
   "ValidateCloseTransaction": "Checks/ValidateCloseTransaction/{transactionId}",
   "CreateTransLog": "CreateTransLog/transaction/{transactionId}/logtype/{logType}",
-  "UpdateRetailTransactionData": "transaction/updatetransaction/{id}"
+  "UpdateRetailTransactionData": "transaction/updatetransaction/{id}",
+  "GetUserInfoByPropertyId":"User/GetUserInfoByPropertyId/{propertyId}/{productId}"
 }
