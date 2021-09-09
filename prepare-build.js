@@ -86,9 +86,9 @@ function applyLocalization(data, langSuffix) {
         else if(data.hasOwnProperty(key) && phoneFormate.includes(key)){
             if(langSuffix == '_uk' || langSuffix == '_gb'){
                 if(key == 'PhoneFormat'){
-                    data[key] = '9999 999999'
+                    data[key] = '(0) 9999999999'
                 }else if(key == 'ExtensionFormat'){
-                    data[key] = '9999 999999 ext: 99'
+                    data[key] = '(0) 9999999999 ext: 99'
                 }
             }
         }
