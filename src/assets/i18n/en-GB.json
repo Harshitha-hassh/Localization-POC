@@ -915,6 +915,18 @@
     "invalidCountryName": "Invalid country name_gb"
   },
   "shop": {
+    "fromDate": "From Date_gb",
+    "toDate": "To Date_gb",
+    "tbl_hdr_ticketNumber": "Ticket Number_gb",
+    "tbl_hdr_cardNumber": "Card Number_gb",
+    "tbl_hdr_errorMessage": "Error Message_gb",
+    "tbl_hdr_failedAmount": "Failed Amount_gb",
+    "tbl_hdr_roomNumber": "Room Number_gb",
+    "tbl_hdr_revenuePosttype": "Revenue Post Type_gb",
+    "tbl_hdr_user": "User_gb",
+    "tbl_hdr_Action": "Action_gb",
+    "retry": "RETRY_gb",
+    "cancel": "CANCEL_gb",
     "AdvancedSearch": "Advanced Search_gb",
     "ClerkId": "Clerk ID_gb",
     "Search": "Search_gb",
@@ -1080,8 +1092,6 @@
     "reprintticket": "Reprint Ticket_gb",
     "reprint": "Reprint_gb",
     "notify": "Notify_gb",
-    "fromDate": "From Date_gb",
-    "toDate": "To Date_gb",
     "date": "Date_gb",
     "ScaledItem": "Scaled Item_gb",
     "EditedDataWontBeSaved": "Edited data won't be saved_gb",
@@ -1969,9 +1979,10 @@
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_gb",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_gb",
     "tog_lbl_showInactive": "Show Inactive_gb",
-    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center_gb",
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_gb",
     "pg_title_outlet": "OUTLET_gb",
+    "createOutlet": "CREATE OUTLET_gb",
+    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center_gb",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID_gb",
     "CreditCardTerminalerr_missing_Code": "Missing Credit Card Terminal ID_gb",
     "CreditCardTerminal_grid_hdr_Name": "Credit Card Terminal Name_gb",
@@ -3541,6 +3552,5 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_gb",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_gb",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_gb",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?_gb",
-  "lbl_searchOutletPlaceholder": "Search by Outlet Name, Outlet TerminalId_gb"
+  "combineGuest_warning": "Are you sure you want to cancel the changes?_gb"
 }
