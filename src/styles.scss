@@ -5585,3 +5585,10 @@ a:hover {
 .swiper-button-next:after,.swiper-button-prev:after{
   display: none;
 }
+
+.hidden-submit {
+  position: absolute; 
+  left: -9999px; 
+  width: 1px; 
+  height: 1px;
+}
