@@ -49,6 +49,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('logOutPopOver') logPopOver: ElementRef;
   @ViewChild('navBar') navBar: ElementRef;
   @ViewChild('RouterOutlet') outlet: RouterOutlet;
+  @ViewChild('notificationPopOver') notificationPopOver;
 
   selectedItem: any;
   userName: string;
@@ -328,5 +329,11 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     });
     dialogRef.afterClosed().subscribe(res => {
     });
+  }
+
+  routeTransc()
+  {
+    this.router.navigate(['/shop/viewshop/retailtransactions/transcationsLog']);
+    this.notificationPopOver.hide();
   }
 }
