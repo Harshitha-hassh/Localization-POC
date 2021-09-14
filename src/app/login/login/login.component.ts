@@ -478,12 +478,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   async SetPropertyConfiguration() {
     const propertityConfig = await this.PropertySettingService.getAllPropertySetting(this.propertyInfo.PropertyId);
     this.propertyInfo.SetPropertySetting(propertityConfig);
-    this.payAgentService.ValidatePayAgentVersion();
   }
 
   async SetPaymentConfiguration(propertyId: number) {
     const propertyPaymentConfig = await this.PropertySettingService.GetPaymentConfigurationByProperty(propertyId);
     this.propertyInfo.SetPaymentConfiguration(propertyPaymentConfig);
+    this.payAgentService.ValidatePayAgentVersion();
   }
 
 

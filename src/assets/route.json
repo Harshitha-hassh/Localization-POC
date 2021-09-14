@@ -593,6 +593,7 @@
   "GetGiftcardItems": "Transaction/getGiftCardTransactionItems/{transactionId}",
   "ValidateGiftCardCashback": "Payment/ValidateGiftCardCashback/outletId/{outletId}",
   "CreateHelpSession": "Login/?product={product}&session={sessionid}",
+  "GetInstalledPMAgentVersion":"admin/configuration/getPMAgentVersion",
   "RemoveHelpSession": "Logout/?product={product}",
   "GetClosedTransactionByDate" : "Transaction/closeddate/{closedDate}",
   "GetARPostingConfiguration": "Payment/ARPostingConfiguration",
