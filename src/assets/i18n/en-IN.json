@@ -927,6 +927,8 @@
     "tbl_hdr_Action": "Action_in",
     "retry": "RETRY_in",
     "cancel": "CANCEL_in",
+    "search": "SEARCH_in",
+    "reset": "RESET_in",
     "AdvancedSearch": "Advanced Search_in",
     "ClerkId": "Clerk ID_in",
     "Search": "Search_in",

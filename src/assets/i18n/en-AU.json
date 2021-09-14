@@ -927,6 +927,8 @@
     "tbl_hdr_Action": "Action_au",
     "retry": "RETRY_au",
     "cancel": "CANCEL_au",
+    "search": "SEARCH_au",
+    "reset": "RESET_au",
     "AdvancedSearch": "Advanced Search_au",
     "ClerkId": "Clerk ID_au",
     "Search": "Search_au",

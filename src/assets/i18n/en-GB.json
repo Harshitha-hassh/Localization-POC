@@ -927,6 +927,8 @@
     "tbl_hdr_Action": "Action_gb",
     "retry": "RETRY_gb",
     "cancel": "CANCEL_gb",
+    "search": "SEARCH_gb",
+    "reset": "RESET_gb",
     "AdvancedSearch": "Advanced Search_gb",
     "ClerkId": "Clerk ID_gb",
     "Search": "Search_gb",

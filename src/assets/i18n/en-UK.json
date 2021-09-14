@@ -927,6 +927,8 @@
     "tbl_hdr_Action": "Action_uk",
     "retry": "RETRY_uk",
     "cancel": "CANCEL_uk",
+    "search": "SEARCH_uk",
+    "reset": "RESET_uk",
     "AdvancedSearch": "Advanced Search_uk",
     "ClerkId": "Clerk ID_uk",
     "Search": "Search_uk",

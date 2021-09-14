@@ -927,6 +927,8 @@
     "tbl_hdr_Action":"Action",
     "retry":"RETRY",
     "cancel":"CANCEL",
+    "search":"SEARCH",
+    "reset":"RESET",
     "AdvancedSearch": "Advanced Search",
 		"ClerkId": "Clerk ID",
 		"Search": "Search",
