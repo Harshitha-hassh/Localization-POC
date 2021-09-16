@@ -23,6 +23,12 @@ export class PropertySettingDataService {
         return result;
     }
 
+    public async GetSupportedPMAgentVersionByPropertyID(propertyId : number): Promise<any> {
+        let result = await this._paymentCommunication.getPromise<any>(
+            { route: RetailApiRoute.GetSupportedPMAgentVersionByProperty, uriParams: { propertyId: propertyId } });
+        return result;
+    }
+
     public  patchPropertySetting(_propertyId: number,body: Partial<API.PropertySetting>): Promise<boolean> {
         let patchJson: PatchJson = {
             op: PatchOperation.replace,

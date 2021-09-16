@@ -483,9 +483,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   async SetPaymentConfiguration(propertyId: number) {
     const propertyPaymentConfig = await this.PropertySettingService.GetPaymentConfigurationByProperty(propertyId);
     this.propertyInfo.SetPaymentConfiguration(propertyPaymentConfig);
-    this.payAgentService.ValidatePayAgentVersion();
+    this.GetSupportedPMAgentVersionByPropertyID(propertyId);
   }
 
+  async GetSupportedPMAgentVersionByPropertyID(propertyId: number) {
+    const supportedPmAgentVersion = await this.PropertySettingService.GetSupportedPMAgentVersionByPropertyID(propertyId);
+    this.propertyInfo.SetSupportedPMAgentVersion(supportedPmAgentVersion);
+    this.payAgentService.ValidatePayAgentVersion();
+  }
 
   async SetPropertyApiConfiguration() {
     const propertityConfig = await this.PropertySettingService.GetAllPropertyConfigurationSettings({
