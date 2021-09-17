@@ -16,7 +16,8 @@ export enum GridAction {
     Settle,
     ReOpen,
     UndoCheckOut,
-    CancelTransaction
+    CancelTransaction,
+    Close
 }
 
 export enum PendingAction {

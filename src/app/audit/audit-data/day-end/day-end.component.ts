@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { SubscriptionLike as ISubscription, ReplaySubject } from 'rxjs';
 import { SubPropertyModel } from '../../../retail/retail.modals';
 import { takeUntil } from 'rxjs/operators';
-import { TransactionStatus } from '../../../retail/shared/service/common-variables.service';
+import { CommonVariablesService, TransactionStatus } from '../../../retail/shared/service/common-variables.service';
 import { RetailSharedVariableService } from '../../../retail/shared/retail.shared.variable.service';
 import { RetailValidationService } from '../../../retail/shared/retail.validation.service';
 import {
@@ -27,13 +27,19 @@ import { AlertType } from 'src/app/retail/shared/shared.modal';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { ButtonTypes } from 'src/app/common/Models/common.models';
 import { RetailTaxesDataService } from 'src/app/retail/retail-code-setup/retail-taxes/retail-taxes-data.service';
+import { ShopBussinessService } from 'src/app/retail/shop/shop-business.service';
+import { PaymentHistoryDetails } from 'src/app/retail/shared/service/payment/payment-business.model';
+import { MatDialog } from '@angular/material/dialog';
+import { VoidReasonComponent } from 'src/app/retail/shop/view-categories/void-reason/void-reason.component';
+import { FinancialBinHelper } from 'src/app/retail/shared/business/FinancialBin-business';
 
 @Component({
   selector: 'app-day-end',
   templateUrl: './day-end.component.html',
   styleUrls: ['./day-end.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [AppModuleService]
+  providers: [AppModuleService, ShopBussinessService,FinancialBinHelper],
+  entryComponents:[VoidReasonComponent]
 })
 export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
@@ -68,7 +74,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     // private propertyInfo: PropertyInformation,
     private breakPoint: BreakPointAccess, public ams: AppModuleService,
     private retailSharedService: RetailSharedVariableService, private retailValidationService: RetailValidationService,
-    private propertyInfo: RetailPropertyInformation, private retailTaxService: RetailTaxesDataService) {
+    private propertyInfo: RetailPropertyInformation, private retailTaxService: RetailTaxesDataService, private shopBusinessService: ShopBussinessService
+    ,public _shopservice: CommonVariablesService,public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -501,6 +508,17 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.InvokeServiceCall('UndoCheckInAppointment', Host.schedule, HttpMethod.Put, uriParam);
     } else if (option.action === GridAction.ReOpen) {
       if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Reopen)) { return; }
+      var paymentHistoryDetails:PaymentHistoryDetails = await this.shopBusinessService.GetPaymentHistoryDetails(data.Id);
+      if ((paymentHistoryDetails && (paymentHistoryDetails.paymentHistory.length > 0 || paymentHistoryDetails.isHavingPaymentHistory))) {
+          const confirmationMsgForReopen = this.localization.replacePlaceholders(
+            this.localization.captions.shop.ReOpenNotAllowed,
+            ['TicketNumber'],
+            [data.TicketNumber]
+          );
+          this.utils.ShowError(this.localization.captions.common.Error, confirmationMsgForReopen, ButtonType.Ok);
+          this._shopservice.destroy();
+          return;
+        }
       this.retailSharedService.payeeId = data.ClientId;
       this.retailSharedService.settleOpenTransaction = false;
       this.retailSharedService.reOpenTransaction = true;
@@ -527,16 +545,56 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     } else if (option.action === GridAction.CancelTransaction) {
       if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Cancel)) { return; }
       if (await this.retailValidationService.IsTransactionLocked(data.Id)) {
-        this.utils.ShowError(this.localization.captions.common.Warning, this.localization.captions.shop.TransactionLock, ButtonType.Ok);
+        this.utils.ShowError(this.localization.captions.common.Error, this.localization.captions.shop.TransactionLock, ButtonType.Ok);
         return;
       }
       this.retailSharedService.ticketNumber = data.TicketNumber;
       this.retailSharedService.transactionId = data.Id;
       // tslint:disable-next-line: max-line-length
+      var paymentHistoryDetails:PaymentHistoryDetails = await this.shopBusinessService.GetPaymentHistoryDetails(data.Id);
+      if ((paymentHistoryDetails && (paymentHistoryDetails.paymentHistory.length > 0 || paymentHistoryDetails.isHavingPaymentHistory))) {
+        const confirmationMsgForCancel = this.localization.replacePlaceholders(
+          this.localization.captions.shop.CancelNotAllowed,
+          ['TicketNumber'],
+          [this.retailSharedService.ticketNumber]
+        );
+        this.utils.ShowError(this.localization.captions.common.Error, confirmationMsgForCancel, ButtonType.Ok);
+        this._shopservice.destroy();
+        return;
+      }
+      const confirmationMsg = this.localization.replacePlaceholders(
+        this.captions.CancelOpenTransaction,
+        ['TicketNumber'],
+        [this.retailSharedService.ticketNumber]
+      );
       this.utils.ShowError(this.localization.captions.common.Warning, this.captions.CancelOpenTransaction, ButtonType.YesNo, this.CancelTransaction.bind(this));
+    }
+    else if (option.action === GridAction.Close) {
+      this.shopBusinessService.CheckIfcloseTransactionllowed(data.Id,data.TicketNumber)
+      .then(async x=>{       
+        await this.CommentsPopup(data.Id,data.TicketNumber)
+      }).catch()
     }
   }
 
+  async CommentsPopup(transactionId:number,ticketNumber:string) {
+    const dialogRef = this.dialog.open(VoidReasonComponent, {
+      height: 'auto',
+      width: '40%',
+      data: { headername: this.localization.captions.shop.ReasonForClose, closebool: true },
+      panelClass: 'small-popup',
+      disableClose: true,
+      hasBackdrop: true
+    });
+    dialogRef.afterClosed().pipe(takeUntil(this.$destroyed)).subscribe(resultData => {
+      if (resultData.action.toLowerCase() === 'ok') {
+           this.shopBusinessService.closeTransaction(resultData.reason,transactionId,ticketNumber).then(
+             x => this.GetGridData()
+           )
+      }
+    });
+  }
+  
   async TransactionLockCallback(result: string, extraparams) {
     if (result.toLowerCase() === ButtonOptions.Yes.toLowerCase()) {
       this.retailValidationService.LockTransaction(extraparams[0], true);

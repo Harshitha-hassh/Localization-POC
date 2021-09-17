@@ -915,6 +915,7 @@
     "invalidCountryName": "Invalid country name_de"
   },
   "shop": {
+    "lbl_payment_received": "Amount Received_de",
     "AdvancedSearch": "Advanced Search_de",
     "ClerkId": "Clerk ID_de",
     "Search": "Search_de",
@@ -1053,6 +1054,7 @@
     "ClientName": "Client Name_de",
     "MemberName": "Member Name_de",
     "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_de",
+    "searchTextOpenTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Amount Received_de",
     "CorrectedOrVoidedBy": "Corrected/Voided By_de",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_de",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_de",
@@ -1152,7 +1154,8 @@
     "ProceedRefund": "PROCEED REFUND_de",
     "Add": "ADD_de",
     "SelectGuestForRoomCharge": "Select a guest in order to continue with room charge payment_de",
-    "ReOpenNotAllowed": "Reopen is not allowed, Use settle to continue_de",
+    "ReOpenNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Reopen not allowed. Use the Settle option to clear the unsettled amount._de",
+    "CancelNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Cancellation not allowed. Use the Settle option to clear the unsettled amount._de",
     "ProceedWithCardOnFile": "Do you want to proceed with Card on File?_de",
     "InsufficientFunds": "Payment failed. Due to insufficient Funds._de",
     "Card": "Card_de",
@@ -1208,7 +1211,7 @@
     "cashPayment": "Cash Payment_de",
     "cashReceived": "Cash Received_de",
     "remainingChange": "Change Due_de",
-    "CancelOpenTransaction": "Would you like to cancel the ticket?_de",
+    "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?_de",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_de",
     "TransactionLock": "Transaction is locked, Please try after sometime._de",
     "RoomChargeNumber": "Room_de",
@@ -1378,7 +1381,7 @@
     "connect": "Connect_de",
     "savedCardDetail": "Save Card Details_de",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._de",
-    "UnableToCloseTransaction": "Unable to Close Transaction_de"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_de"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_de",
@@ -1969,9 +1972,10 @@
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_de",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_de",
     "tog_lbl_showInactive": "Show Inactive_de",
-    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center_de",
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_de",
     "pg_title_outlet": "OUTLET_de",
+    "createOutlet": "CREATE OUTLET_de",
+    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center_de",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID_de",
     "CreditCardTerminalerr_missing_Code": "Missing Credit Card Terminal ID_de",
     "CreditCardTerminal_grid_hdr_Name": "Credit Card Terminal Name_de",

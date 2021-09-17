@@ -915,6 +915,7 @@
     "invalidCountryName": "Invalid country name_gb"
   },
   "shop": {
+    "lbl_payment_received": "Amount Received_gb",
     "AdvancedSearch": "Advanced Search_gb",
     "ClerkId": "Clerk ID_gb",
     "Search": "Search_gb",
@@ -1053,6 +1054,7 @@
     "ClientName": "Client Name_gb",
     "MemberName": "Member Name_gb",
     "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_gb",
+    "searchTextOpenTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Amount Received_gb",
     "CorrectedOrVoidedBy": "Corrected/Voided By_gb",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_gb",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_gb",
@@ -1152,7 +1154,8 @@
     "ProceedRefund": "PROCEED REFUND_gb",
     "Add": "ADD_gb",
     "SelectGuestForRoomCharge": "Select a guest in order to continue with room charge payment_gb",
-    "ReOpenNotAllowed": "Reopen is not allowed, Use settle to continue_gb",
+    "ReOpenNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Reopen not allowed. Use the Settle option to clear the unsettled amount._gb",
+    "CancelNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Cancellation not allowed. Use the Settle option to clear the unsettled amount._gb",
     "ProceedWithCardOnFile": "Do you want to proceed with Card on File?_gb",
     "InsufficientFunds": "Payment failed. Due to insufficient Funds._gb",
     "Card": "Card_gb",
@@ -1208,7 +1211,7 @@
     "cashPayment": "Cash Payment_gb",
     "cashReceived": "Cash Received_gb",
     "remainingChange": "Change Due_gb",
-    "CancelOpenTransaction": "Would you like to cancel the ticket?_gb",
+    "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?_gb",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_gb",
     "TransactionLock": "Transaction is locked, Please try after sometime._gb",
     "RoomChargeNumber": "Room_gb",
@@ -1378,7 +1381,7 @@
     "connect": "Connect_gb",
     "savedCardDetail": "Save Card Details_gb",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._gb",
-    "UnableToCloseTransaction": "Unable to Close Transaction_gb"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_gb"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_gb",
@@ -1969,9 +1972,10 @@
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_gb",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_gb",
     "tog_lbl_showInactive": "Show Inactive_gb",
-    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center_gb",
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_gb",
     "pg_title_outlet": "OUTLET_gb",
+    "createOutlet": "CREATE OUTLET_gb",
+    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center_gb",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID_gb",
     "CreditCardTerminalerr_missing_Code": "Missing Credit Card Terminal ID_gb",
     "CreditCardTerminal_grid_hdr_Name": "Credit Card Terminal Name_gb",
@@ -3541,6 +3545,5 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_gb",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_gb",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_gb",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?_gb",
-  "lbl_searchOutletPlaceholder": "Search by Outlet Name, Outlet TerminalId_gb"
+  "combineGuest_warning": "Are you sure you want to cancel the changes?_gb"
 }
