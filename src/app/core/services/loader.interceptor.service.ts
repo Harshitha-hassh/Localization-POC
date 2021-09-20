@@ -60,7 +60,7 @@ export class LoaderInterceptor implements HttpInterceptor {
                 }),            
             catchError(errs => {
               console.log("catchError -->", errs);
-              return observableThrowError(errs);
+              return throwError(errs);
             }),);       
             
           }
@@ -102,7 +102,3 @@ export class LoaderInterceptor implements HttpInterceptor {
     }
   }
 }
-function observableThrowError(errs: any): any {
-  throw new Error('Function not implemented.');
-}
-
