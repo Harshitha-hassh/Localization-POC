@@ -915,6 +915,7 @@
     "invalidCountryName": "Invalid country name_au"
   },
   "shop": {
+    "lbl_payment_received": "Amount Received_au",
     "AdvancedSearch": "Advanced Search_au",
     "ClerkId": "Clerk ID_au",
     "Search": "Search_au",
@@ -1053,6 +1054,7 @@
     "ClientName": "Client Name_au",
     "MemberName": "Member Name_au",
     "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_au",
+    "searchTextOpenTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Amount Received_au",
     "CorrectedOrVoidedBy": "Corrected/Voided By_au",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_au",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_au",
@@ -1155,7 +1157,8 @@
     "ProceedRefund": "PROCEED REFUND_au",
     "Add": "ADD_au",
     "SelectGuestForRoomCharge": "Select a guest in order to continue with room charge payment_au",
-    "ReOpenNotAllowed": "Reopen is not allowed, Use settle to continue_au",
+    "ReOpenNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Reopen not allowed. Use the Settle option to clear the unsettled amount._au",
+    "CancelNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Cancellation not allowed. Use the Settle option to clear the unsettled amount._au",
     "ProceedWithCardOnFile": "Do you want to proceed with Card on File?_au",
     "InsufficientFunds": "Payment failed. Due to insufficient Funds._au",
     "Card": "Card_au",
@@ -1211,7 +1214,7 @@
     "cashPayment": "Cash Payment_au",
     "cashReceived": "Cash Received_au",
     "remainingChange": "Change Due_au",
-    "CancelOpenTransaction": "Would you like to cancel the ticket?_au",
+    "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?_au",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_au",
     "TransactionLock": "Transaction is locked, Please try after sometime._au",
     "RoomChargeNumber": "Room_au",
@@ -1381,7 +1384,7 @@
     "connect": "Connect_au",
     "savedCardDetail": "Save Card Details_au",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._au",
-    "UnableToCloseTransaction": "Unable to Close Transaction_au"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_au"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_au",

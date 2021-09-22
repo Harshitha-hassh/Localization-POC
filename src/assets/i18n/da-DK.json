@@ -915,6 +915,7 @@
     "invalidCountryName": "Invalid country name_da"
   },
   "shop": {
+    "lbl_payment_received": "Amount Received_da",
     "AdvancedSearch": "Advanced Search_da",
     "ClerkId": "Clerk ID_da",
     "Search": "Search_da",
@@ -1053,6 +1054,7 @@
     "ClientName": "Client Name_da",
     "MemberName": "Member Name_da",
     "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_da",
+    "searchTextOpenTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Amount Received_da",
     "CorrectedOrVoidedBy": "Corrected/Voided By_da",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_da",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_da",
@@ -1155,7 +1157,8 @@
     "ProceedRefund": "PROCEED REFUND_da",
     "Add": "ADD_da",
     "SelectGuestForRoomCharge": "Select a guest in order to continue with room charge payment_da",
-    "ReOpenNotAllowed": "Reopen is not allowed, Use settle to continue_da",
+    "ReOpenNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Reopen not allowed. Use the Settle option to clear the unsettled amount._da",
+    "CancelNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Cancellation not allowed. Use the Settle option to clear the unsettled amount._da",
     "ProceedWithCardOnFile": "Do you want to proceed with Card on File?_da",
     "InsufficientFunds": "Payment failed. Due to insufficient Funds._da",
     "Card": "Card_da",
@@ -1211,7 +1214,7 @@
     "cashPayment": "Cash Payment_da",
     "cashReceived": "Cash Received_da",
     "remainingChange": "Change Due_da",
-    "CancelOpenTransaction": "Would you like to cancel the ticket?_da",
+    "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?_da",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_da",
     "TransactionLock": "Transaction is locked, Please try after sometime._da",
     "RoomChargeNumber": "Room_da",
@@ -1381,7 +1384,7 @@
     "connect": "Connect_da",
     "savedCardDetail": "Save Card Details_da",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._da",
-    "UnableToCloseTransaction": "Unable to Close Transaction_da"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_da"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_da",

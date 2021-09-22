@@ -915,6 +915,7 @@
     "invalidCountryName": "Invalid country name_uk"
   },
   "shop": {
+    "lbl_payment_received": "Amount Received_uk",
     "AdvancedSearch": "Advanced Search_uk",
     "ClerkId": "Clerk ID_uk",
     "Search": "Search_uk",
@@ -1053,6 +1054,7 @@
     "ClientName": "Client Name_uk",
     "MemberName": "Member Name_uk",
     "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_uk",
+    "searchTextOpenTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Amount Received_uk",
     "CorrectedOrVoidedBy": "Corrected/Voided By_uk",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_uk",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_uk",
@@ -1155,7 +1157,8 @@
     "ProceedRefund": "PROCEED REFUND_uk",
     "Add": "ADD_uk",
     "SelectGuestForRoomCharge": "Select a guest in order to continue with room charge payment_uk",
-    "ReOpenNotAllowed": "Reopen is not allowed, Use settle to continue_uk",
+    "ReOpenNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Reopen not allowed. Use the Settle option to clear the unsettled amount._uk",
+    "CancelNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Cancellation not allowed. Use the Settle option to clear the unsettled amount._uk",
     "ProceedWithCardOnFile": "Do you want to proceed with Card on File?_uk",
     "InsufficientFunds": "Payment failed. Due to insufficient Funds._uk",
     "Card": "Card_uk",
@@ -1211,7 +1214,7 @@
     "cashPayment": "Cash Payment_uk",
     "cashReceived": "Cash Received_uk",
     "remainingChange": "Change Due_uk",
-    "CancelOpenTransaction": "Would you like to cancel the ticket?_uk",
+    "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?_uk",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_uk",
     "TransactionLock": "Transaction is locked, Please try after sometime._uk",
     "RoomChargeNumber": "Room_uk",
@@ -1381,7 +1384,7 @@
     "connect": "Connect_uk",
     "savedCardDetail": "Save Card Details_uk",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._uk",
-    "UnableToCloseTransaction": "Unable to Close Transaction_uk"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_uk"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_uk",
