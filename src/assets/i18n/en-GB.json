@@ -1138,6 +1138,9 @@
     "PMAuthFailed": "Payment gateway authentication failed._gb",
     "PMcardDeclinedChipDecline": "Payment Declined, Please check for card information and try again._gb",
     "PMInvalidRequest": "Payment declined due to invalid request._gb",
+    "PayAgentNotInstalledError": "Pay Agent Not Installed, Please Install Supported Pay Agent Version {{version}} and Try Again.._gb",
+    "InstalledPayAgentFetchError": "Unable To Detect Installed Pay Agent Version, Please Install Supported Pay Agent Version '{{version}}' and Try Again.._gb",
+    "UnSupportedPayAgentInstalledError": "Unsupported Pay Agent Installed, Please Install Supported Pay Agent Version '{{version}}' and Try Again.._gb",
     "MissingAmountTenderMsg": "Enter the Amount to be Tendered_gb",
     "MissingRefundAmount": "Enter the Amount to be Refunded_gb",
     "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully_gb",
@@ -1969,9 +1972,10 @@
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_gb",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_gb",
     "tog_lbl_showInactive": "Show Inactive_gb",
-    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center_gb",
     "pg_title_creditCardTerminal": "CREDIT CARD TERMINAL_gb",
     "pg_title_outlet": "OUTLET_gb",
+    "createOutlet": "CREATE OUTLET_gb",
+    "lbl_searchOutletPlaceholder": "Search by Outlet Name, TerminalId, Profit Center_gb",
     "CreditCardTerminallbl_Code": "Credit Card Terminal ID_gb",
     "CreditCardTerminalerr_missing_Code": "Missing Credit Card Terminal ID_gb",
     "CreditCardTerminal_grid_hdr_Name": "Credit Card Terminal Name_gb",
@@ -3541,6 +3545,5 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_gb",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_gb",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_gb",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?_gb",
-  "lbl_searchOutletPlaceholder": "Search by Outlet Name, Outlet TerminalId_gb"
+  "combineGuest_warning": "Are you sure you want to cancel the changes?_gb"
 }
