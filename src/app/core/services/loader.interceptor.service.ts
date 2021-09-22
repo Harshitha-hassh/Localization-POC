@@ -102,7 +102,3 @@ export class LoaderInterceptor implements HttpInterceptor {
     }
   }
 }
-
-function observableThrowError(errs: any): any {
-  throw errs;
-}
