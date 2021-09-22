@@ -36,6 +36,7 @@ export enum RetailRoutes {
   GetAllPropertySettings = 'property/GetPropertySetting/{propertyId}',
   GetAllLanguages = 'language/GetAllLanguages',
   GetPaymentConfigurationByProperty = 'Payment/GetPaymentConfigurationByProperty/{propertyId}',
+  GetSupportedPMAgentVersionByProperty = 'Payment/GetPMAgentVersion/{propertyId}',
   GetAllPropertyConfigurationSettings = 'propertyConfiguration/configurationName/{configurationName}/propertyId/{propertyId}/productId/{productId}',
   // SNC users
   GetSncUserConfig = 'UserConfiguration?userId={id}',

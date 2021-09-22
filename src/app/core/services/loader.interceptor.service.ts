@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpRequest, HttpInterceptor, HttpHandler, HttpEvent } from '@angular/common/http';
+import { HttpRequest, HttpInterceptor, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { ALLOWED_URL } from 'src/app/shared/enums/constants';
 import { tap, catchError } from 'rxjs/operators';
@@ -101,4 +101,10 @@ export class LoaderInterceptor implements HttpInterceptor {
       console.log('Spinner issue caught -> ', ex);
     }
   }
+}
+
+function observableThrowError(errs: any): any {
+  throw errs;
+}
+
 }

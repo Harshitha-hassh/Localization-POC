@@ -4,6 +4,7 @@
             <div class="d-inline-block width_75 p-4 padding_container">                
                 <app-retail-capture-card 
                     [PaymentReferenceID]="PaymentReferenceID" 
+                    [isShowPMAgentValidationMessage]="false"
                     (NewPaymentReferenceID)="SaveReferenceId($event)">
                 </app-retail-capture-card>
                 <div class="" *ngIf="false">
