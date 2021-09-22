@@ -79,6 +79,10 @@ export class PropertyInformation {
         sessionStorage.setItem('paymentConfiguration', _.cloneDeep(JSON.stringify(this.paymentConfiguration)));
     }
 
+    public SetSupportedPMAgentVersion(supportedPMAgentVersion: string) {
+        sessionStorage.setItem('supportedPMAgentVersion', supportedPMAgentVersion);
+    }
+
     public GetPaymentConfigValueByKey(configKey: string, outletId: number): string {
         let payConfigValue = '';
         const payConfig = this.paymentConfiguration.find(r =>
