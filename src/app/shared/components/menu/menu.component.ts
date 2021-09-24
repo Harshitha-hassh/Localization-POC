@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router, RouterOutlet, ActivatedRoute } from '@angular/router';
 import { cloneDeep } from 'lodash';
-import { ReplaySubject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { ReplaySubject, Subscription } from 'rxjs';
+import { takeUntil, map } from 'rxjs/operators';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { ManageSessionService } from 'src/app/login/manage-session.service';
 // import { SortOrderPipe } from 'src/app/pipes/sort-order.pipe';
@@ -16,7 +16,7 @@ import { RetailServiceRegistry } from 'src/app/retail/shared/service/base.servic
 import { SPAConfig } from 'src/app/retail/common/config/SPA-config';
 import { HttpServiceCall } from 'src/app/retail/shared/service/http-call.service';
 import { QuickLoginUtilities } from 'src/app/common/shared/shared/utilities/quick-login-utilities';
-import { AgMenuTypes } from './menu.model';
+import { AgMenuTypes, NotificationFailureType } from './menu.model';
 
 
 @Component({
@@ -60,6 +60,9 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   // sortPipe: SortOrderPipe;
   captions: any;
   isEatecEnabled: boolean;
+  transactionCountSubscription: Subscription;
+  notificationCount: number = 0;
+  notificationInfo: {id: number , message: string, count: number }[] = [];
 
   @Input('menu')
   set MenuValue(value) {
@@ -93,9 +96,24 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.firstName = this._localization.GetUserInfo("firstName");
     this.lastName = this._localization.GetUserInfo("lastName");
     this.userRole = this._localization.GetUserInfo("roleName");
+
+    this.transactionCountSubscription = this._sessionService.transactionCount.subscribe(res => {
+      // TODO for Gateway aggregate => Revenue posting n Payment Transaction Payment Failure
+      if (res && res > 0 && !this.notificationInfo.some(x => x.count === this.notificationCount)) {
+        this.notificationInfo.push({
+          id :  NotificationFailureType.revenuePostingFailure,
+          message : this._localization.replacePlaceholders(this.captions.RevenuePostingInfo, ['count'], [res]),
+          count : res
+        });
+      }
+      else {
+        this.removeRevenuePostInfo();
+      }
+      this.notificationCount = this.notificationInfo.length;
+    });
+
     this.quickLoginUtils.resetQuickIdDetails();
-    if(!sessionStorage.getItem("QuickIdConfig"))
-    {
+    if (!sessionStorage.getItem("QuickIdConfig")) {
       this._propertyFeatureService.SetQuickIdConfigSettingForRetail("QuickIdConfig"); 
     }
     if (this.firstName == "undefined" || this.lastName == "undefined" || this.firstName == undefined || this.lastName == undefined) {
@@ -157,6 +175,9 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.destroyed$) {
       this.destroyed$.next(true);
       this.destroyed$.complete();
+    }
+    if (this.transactionCountSubscription) {
+      this.transactionCountSubscription.unsubscribe();
     }
   }
 
@@ -331,9 +352,19 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  routeTransc()
-  {
-    this.router.navigate(['/shop/viewshop/retailtransactions/transcationsLog']);
+  removeRevenuePostInfo(){
+    this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.revenuePostingFailure);
+  }
+
+  routeTransc(id: number) {
+    if (id === NotificationFailureType.revenuePostingFailure) {
+      this.router.navigate(['/shop/viewshop/retailtransactions/reprintticket']);
+      this.removeRevenuePostInfo();
+      this.notificationCount = this.notificationInfo?.length;
+    }
+    else{//TODO
+      this.router.navigate(['/shop/viewshop/retailtransactions/reprintticket']);
+    }
     this.notificationPopOver.hide();
   }
 }

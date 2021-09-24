@@ -3559,5 +3559,7 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?",  
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?"  
+  "combineGuest_warning": "Are you sure you want to cancel the changes?"  ,
+  "RevenuePostingInfo" : "Total {count} Records Found in revenue Posting",
+  "PaymentInfo" : "Total {count} Records Found in Payment Logs"
 }
