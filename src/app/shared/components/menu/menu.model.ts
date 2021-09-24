@@ -55,3 +55,8 @@ export enum AgMenuTypes {
   combo = 'Combo',
   vertical = 'Vertical' 
 }
+
+export enum NotificationFailureType {
+  paymentTransactionFailure = 1,
+  revenuePostingFailure = 2
+}

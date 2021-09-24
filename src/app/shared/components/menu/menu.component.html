@@ -47,7 +47,7 @@
                         <!-- #46309 - Hide unused fields -->
                          <button class="notifyClass buttonStyle cursor custom-notify-relative" [popover]="notificationPopOver"  popoverPlacement="bottom" [popoverOnHover]="false" >
                             <i class="icon-notify icon-notification"></i>
-                            <span class="count">12</span>
+                            <span *ngIf = "notificationCount > 0" class="count">{{notificationCount}}</span>
                         </button>
                          <!-- --help--- -->
                         <button class="notifyClass buttonStyle cursor" [popover]="helpQuestionPopOver"
@@ -245,6 +245,9 @@
     [closeOnClickOutside]="true" id="logOutPopOverID">
 
     <div class="custom-popover textCenter">
-        <a class="logout-style" (click)="notificationPopOver.hide();routeTransc()">Total 204 error messages found</a>
+        <div *ngFor="let n of notificationInfo">
+            <a class="logout-style" (click)="notificationPopOver.hide();routeTransc(n.id)">{{n.message}}</a>
+        </div>
+        
     </div>
 </popover-content>

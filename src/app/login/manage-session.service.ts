@@ -2,15 +2,16 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
-import { Observable, Subject, Subscription, timer } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, Subscription, timer } from 'rxjs';
 import { Utilities } from '../core/utilities';
 import { TenantManagementCommunication } from '../shared/communication/services/tenantmanagement.service';
 import { RetailRoutes } from '../core/extensions/retail-route';
 import moment from 'moment';
-import { HttpServiceCall } from '../retail/shared/service/http-call.service';
+import { HttpMethod, HttpServiceCall } from '../retail/shared/service/http-call.service';
 import { AlertType } from '../common/enums/shared-enums';
 import { RetailLocalization } from '../retail/common/localization/retail-localization';
 import { JWT_TOKEN, REMEMBER_INFO, USERS_SESSSIONS_INFO } from '../app-constants';
+import { Host } from '../retail/shared/globalsContant';
 
 @Injectable({
     providedIn: 'root'
@@ -26,6 +27,10 @@ export class ManageSessionService implements OnDestroy {
     private _timeoutSeconds: number;
     private timerSubscription: Subscription;
     private timer: Observable<number>;
+    public timerSubscriptionForNotification: Subscription;
+    public timerForNotification: Observable<number>;
+    public timeoutExpiredForNotification: Subject<number> = new Subject<number>();
+    public transactionCount = new BehaviorSubject<number>(0);
 
     token = {
         refresh_token: 'refreshtokencode',
@@ -63,6 +68,9 @@ export class ManageSessionService implements OnDestroy {
         if (this.tokenTimerSubscription) {
             this.tokenTimerSubscription.unsubscribe();
         }
+        if (this.timerSubscriptionForNotification) {
+            this.timerSubscriptionForNotification.unsubscribe();
+        }
     }
 
     goToLogin() {
@@ -79,6 +87,7 @@ export class ManageSessionService implements OnDestroy {
     async logout() {
         clearTimeout(this.triggerTimeout);
         this.triggerTimeout = null;
+        this.stopTimerForNotification();
         this.doLogoutActivities();
         await this.updateSession();
         this.removeToken();
@@ -399,5 +408,39 @@ export class ManageSessionService implements OnDestroy {
                 };
             })
         };
+    }
+
+    public startTimerForNotification(notifyin: number) {
+        if (notifyin && notifyin > 0) {
+           this.stopTimerForNotification();
+           this.timerForNotification = timer(notifyin * 60 * 1000);
+           this.timerSubscriptionForNotification = this.timerForNotification.subscribe(n => {
+               this.timerCompleteForNotification(n);
+           });
+        }
+    }
+
+    private timerCompleteForNotification(n: number) {
+        this.timeoutExpiredForNotification.next(++this._count);
+        this.getRevenuePostingCount().then(x => {
+            this.transactionCount.next(x);
+            this.startTimerForNotification(10);
+        });
+    }
+
+
+    public async getRevenuePostingCount(): Promise<number> {
+        const response = await this.http.CallApiAsync<number>({
+            callDesc: 'GetRevenuePostingCount',
+            host: Host.retailPOS,
+            method: HttpMethod.Get
+        });
+        return response.result;
+    }
+
+    public stopTimerForNotification() {
+        if (this.timerSubscriptionForNotification) {
+            this.timerSubscriptionForNotification.unsubscribe();
+        }
     }
 }
