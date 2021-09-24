@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector } from '@angular/core';
+import { NgModule, Injector, ErrorHandler } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,7 @@ import { Utilities } from './core/utilities';
 import { ServiceLocator } from './common/service.locator';
 import { AppModuleService } from './core/services/app.service';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { GlobalErrorHandler } from './shared/service/global-error-handler.service';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
@@ -53,6 +54,7 @@ declare module "@angular/core" {
       useFactory: AppServiceFactory,
       deps: [Utilities, RetailStandAloneLocalization]
     },
+    {provide: ErrorHandler, useClass: GlobalErrorHandler},
     { provide: CommonUtilities, useExisting: Utilities },
     RetailPropertyInformation,
     { provide: Localization, useExisting: RetailStandAloneLocalization },
