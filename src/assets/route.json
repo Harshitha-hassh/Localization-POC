@@ -1,15 +1,15 @@
 {
   "host": {
-    "image": "/VisualOne/retailgateway/",
-    "retailManagement": "/VisualOne/retailgateway/",
-    "retailPOS": "/VisualOne/retailgateway/",
-    "authentication": "/commongateway/",
-    "report": "/VisualOne/retailgateway/",
-    "commission": "/VisualOne/retailgateway/",
-    "payment": "/VisualOne/retailgateway/",
-    "common": "/VisualOne/retailgateway/Retail/Services/Notification",
+    "image": "http://10.17.100.221/VisualOne/retailgateway/",
+    "retailManagement": "http://10.17.100.221/VisualOne/retailgateway/",
+    "retailPOS": "http://10.17.100.221/VisualOne/retailgateway/",
+    "authentication": "http://10.17.100.221/commongateway/",
+    "report": "http://10.17.100.221/VisualOne/retailgateway/",
+    "commission": "http://10.17.100.221/VisualOne/retailgateway/",
+    "payment": "http://localhost:7000/VisualOne/retailgateway/",
+    "common": "http://10.17.100.221/VisualOne/retailgateway/Retail/Services/Notification",
     "documentation": "/Help/",
-    "commonGateway": "/commongateway/"
+    "commonGateway": "http://10.17.100.221/commongateway/"
   },
   "Login": "Property/GetLoginDetails",
   "LogOut": "Property/LogOutByUserId/{Username}/{TenantId}/{PropertyId}",
@@ -695,5 +695,7 @@
   "ValidateCloseTransaction": "Checks/ValidateCloseTransaction/{transactionId}",
   "CreateTransLog": "CreateTransLog/transaction/{transactionId}/logtype/{logType}",
   "UpdateRetailTransactionData": "transaction/updatetransaction/{id}",
-  "GetUserInfoByPropertyId":"User/GetUserInfoByPropertyId/{propertyId}/{productId}"
-}
+  "GetUserInfoByPropertyId":"User/GetUserInfoByPropertyId/{propertyId}/{productId}",
+  "GetFailedTransactions":"PaymentTransaction/GetFailedTransactions/{searchText}/{startDate}/{endDate}/{pageStart}",
+  "BatchProcessFailedTransactions":"PaymentTransaction/BatchProcessFailedTransactions"
+  }
