@@ -915,6 +915,7 @@
     "invalidCountryName": "Invalid country name_au"
   },
   "shop": {
+ "lbl_payment_received": "Amount Received_au",
     "tbl_hdr_ticketNumber": "Ticket #_au",
     "tbl_hdr_transactiontime": "Time_au",
     "tbl_hdr_transactionDate": "Date_au",

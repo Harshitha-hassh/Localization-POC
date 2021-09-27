@@ -915,6 +915,7 @@
     "invalidCountryName": "Invalid country name_da"
   },
   "shop": {
+ "lbl_payment_received": "Amount Received_da",
     "tbl_hdr_ticketNumber": "Ticket #_da",
     "tbl_hdr_transactiontime": "Time_da",
     "tbl_hdr_transactionDate": "Date_da",
@@ -1068,6 +1069,7 @@
     "ClientName": "Client Name_da",
     "MemberName": "Member Name_da",
     "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_da",
+    "searchTextOpenTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Amount Received_da",
     "CorrectedOrVoidedBy": "Corrected/Voided By_da",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_da",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_da",
@@ -1154,6 +1156,9 @@
     "PMAuthFailed": "Payment gateway authentication failed._da",
     "PMcardDeclinedChipDecline": "Payment Declined, Please check for card information and try again._da",
     "PMInvalidRequest": "Payment declined due to invalid request._da",
+    "PayAgentNotInstalledError": "Pay Agent Not Installed, Please Install Supported Pay Agent Version {{version}} and Try Again.._da",
+    "InstalledPayAgentFetchError": "Unable To Detect Installed Pay Agent Version, Please Install Supported Pay Agent Version '{{version}}' and Try Again.._da",
+    "UnSupportedPayAgentInstalledError": "Unsupported Pay Agent Installed, Please Install Supported Pay Agent Version '{{version}}' and Try Again.._da",
     "MissingAmountTenderMsg": "Enter the Amount to be Tendered_da",
     "MissingRefundAmount": "Enter the Amount to be Refunded_da",
     "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully_da",
@@ -1168,7 +1173,8 @@
     "ProceedRefund": "PROCEED REFUND_da",
     "Add": "ADD_da",
     "SelectGuestForRoomCharge": "Select a guest in order to continue with room charge payment_da",
-    "ReOpenNotAllowed": "Reopen is not allowed, Use settle to continue_da",
+    "ReOpenNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Reopen not allowed. Use the Settle option to clear the unsettled amount._da",
+    "CancelNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Cancellation not allowed. Use the Settle option to clear the unsettled amount._da",
     "ProceedWithCardOnFile": "Do you want to proceed with Card on File?_da",
     "InsufficientFunds": "Payment failed. Due to insufficient Funds._da",
     "Card": "Card_da",
@@ -1224,7 +1230,7 @@
     "cashPayment": "Cash Payment_da",
     "cashReceived": "Cash Received_da",
     "remainingChange": "Change Due_da",
-    "CancelOpenTransaction": "Would you like to cancel the ticket?_da",
+    "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?_da",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_da",
     "TransactionLock": "Transaction is locked, Please try after sometime._da",
     "RoomChargeNumber": "Room_da",
@@ -1394,7 +1400,7 @@
     "connect": "Connect_da",
     "savedCardDetail": "Save Card Details_da",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._da",
-    "UnableToCloseTransaction": "Unable to Close Transaction_da"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_da"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_da",
