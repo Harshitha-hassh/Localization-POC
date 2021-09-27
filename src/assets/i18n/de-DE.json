@@ -915,7 +915,6 @@
     "invalidCountryName": "Invalid country name_de"
   },
   "shop": {
-"lbl_payment_received": "Amount Received_de",
     "tbl_hdr_ticketNumber": "Ticket #_de",
     "tbl_hdr_transactiontime": "Time_de",
     "tbl_hdr_transactionDate": "Date_de",
@@ -931,6 +930,7 @@
     "cancel": "CANCEL_de",
     "search": "SEARCH_de",
     "reset": "RESET_de",
+    "lbl_payment_received": "Amount Received_de",
     "AdvancedSearch": "Advanced Search_de",
     "ClerkId": "Clerk ID_de",
     "Search": "Search_de",
@@ -3564,5 +3564,7 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_de",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_de",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_de",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?_de"
+  "combineGuest_warning": "Are you sure you want to cancel the changes?_de",
+  "RevenuePostingInfo": "Total {count} Records Found in revenue Posting_de",
+  "PaymentInfo": "Total {count} Records Found in Payment Logs_de"
 }

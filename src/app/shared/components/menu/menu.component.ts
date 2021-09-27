@@ -99,11 +99,11 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.transactionCountSubscription = this._sessionService.transactionCount.subscribe(res => {
       // TODO for Gateway aggregate => Revenue posting n Payment Transaction Payment Failure
-      if (res && res > 0 && !this.notificationInfo.some(x => x.count === this.notificationCount)) {
+      if (res && res[1] > 0 && !this.notificationInfo.some(x => x.count === this.notificationCount)) {
         this.notificationInfo.push({
           id :  NotificationFailureType.revenuePostingFailure,
-          message : this._localization.replacePlaceholders(this.captions.RevenuePostingInfo, ['count'], [res]),
-          count : res
+          message : this._localization.replacePlaceholders(this.captions.RevenuePostingInfo, ['count'], [res[1]]),
+          count : res[1]
         });
       }
       else {
@@ -355,11 +355,20 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   removeRevenuePostInfo(){
     this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.revenuePostingFailure);
   }
+  removePaymentFailureInfo(){
+    this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.paymentTransactionFailure);
+  }
 
   routeTransc(id: number) {
     if (id === NotificationFailureType.revenuePostingFailure) {
       this.router.navigate(['/shop/viewshop/retailtransactions/reprintticket']);
       this.removeRevenuePostInfo();
+      this.notificationCount = this.notificationInfo?.length;
+    }
+    else if(id === NotificationFailureType.paymentTransactionFailure)
+    {
+      this.router.navigate(['/shop/viewshop/retailtransactions/reprintticket']);
+      this.removePaymentFailureInfo();
       this.notificationCount = this.notificationInfo?.length;
     }
     else{//TODO

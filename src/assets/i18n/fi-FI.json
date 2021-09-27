@@ -915,7 +915,6 @@
     "invalidCountryName": "Invalid country name_fi"
   },
   "shop": {
-"lbl_payment_received": "Amount Received_fi",
     "tbl_hdr_ticketNumber": "Ticket #_fi",
     "tbl_hdr_transactiontime": "Time_fi",
     "tbl_hdr_transactionDate": "Date_fi",
@@ -931,6 +930,7 @@
     "cancel": "CANCEL_fi",
     "search": "SEARCH_fi",
     "reset": "RESET_fi",
+    "lbl_payment_received": "Amount Received_fi",
     "AdvancedSearch": "Advanced Search_fi",
     "ClerkId": "Clerk ID_fi",
     "Search": "Search_fi",
@@ -1069,6 +1069,7 @@
     "ClientName": "Client Name_fi",
     "MemberName": "Member Name_fi",
     "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_fi",
+    "searchTextOpenTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Amount Received_fi",
     "CorrectedOrVoidedBy": "Corrected/Voided By_fi",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_fi",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_fi",
@@ -1155,6 +1156,9 @@
     "PMAuthFailed": "Payment gateway authentication failed._fi",
     "PMcardDeclinedChipDecline": "Payment Declined, Please check for card information and try again._fi",
     "PMInvalidRequest": "Payment declined due to invalid request._fi",
+    "PayAgentNotInstalledError": "Pay Agent Not Installed, Please Install Supported Pay Agent Version {{version}} and Try Again.._fi",
+    "InstalledPayAgentFetchError": "Unable To Detect Installed Pay Agent Version, Please Install Supported Pay Agent Version '{{version}}' and Try Again.._fi",
+    "UnSupportedPayAgentInstalledError": "Unsupported Pay Agent Installed, Please Install Supported Pay Agent Version '{{version}}' and Try Again.._fi",
     "MissingAmountTenderMsg": "Enter the Amount to be Tendered_fi",
     "MissingRefundAmount": "Enter the Amount to be Refunded_fi",
     "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully_fi",
@@ -1169,7 +1173,8 @@
     "ProceedRefund": "PROCEED REFUND_fi",
     "Add": "ADD_fi",
     "SelectGuestForRoomCharge": "Select a guest in order to continue with room charge payment_fi",
-    "ReOpenNotAllowed": "Reopen is not allowed, Use settle to continue_fi",
+    "ReOpenNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Reopen not allowed. Use the Settle option to clear the unsettled amount._fi",
+    "CancelNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Cancellation not allowed. Use the Settle option to clear the unsettled amount._fi",
     "ProceedWithCardOnFile": "Do you want to proceed with Card on File?_fi",
     "InsufficientFunds": "Payment failed. Due to insufficient Funds._fi",
     "Card": "Card_fi",
@@ -1225,7 +1230,7 @@
     "cashPayment": "Cash Payment_fi",
     "cashReceived": "Cash Received_fi",
     "remainingChange": "Change Due_fi",
-    "CancelOpenTransaction": "Would you like to cancel the ticket?_fi",
+    "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?_fi",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_fi",
     "TransactionLock": "Transaction is locked, Please try after sometime._fi",
     "RoomChargeNumber": "Room_fi",
@@ -1395,7 +1400,7 @@
     "connect": "Connect_fi",
     "savedCardDetail": "Save Card Details_fi",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._fi",
-    "UnableToCloseTransaction": "Unable to Close Transaction_fi"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_fi"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fi",
@@ -3559,5 +3564,7 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_fi",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_fi",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_fi",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?_fi"
+  "combineGuest_warning": "Are you sure you want to cancel the changes?_fi",
+  "RevenuePostingInfo": "Total {count} Records Found in revenue Posting_fi",
+  "PaymentInfo": "Total {count} Records Found in Payment Logs_fi"
 }

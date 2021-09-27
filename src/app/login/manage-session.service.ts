@@ -30,7 +30,7 @@ export class ManageSessionService implements OnDestroy {
     public timerSubscriptionForNotification: Subscription;
     public timerForNotification: Observable<number>;
     public timeoutExpiredForNotification: Subject<number> = new Subject<number>();
-    public transactionCount = new BehaviorSubject<number>(0);
+    public transactionCount: BehaviorSubject<{ id: number, Count: number }[]> = new BehaviorSubject([]);
 
     token = {
         refresh_token: 'refreshtokencode',
@@ -412,20 +412,29 @@ export class ManageSessionService implements OnDestroy {
 
     public startTimerForNotification(notifyin: number) {
         if (notifyin && notifyin > 0) {
-           this.stopTimerForNotification();
-           this.timerForNotification = timer(notifyin * 60 * 1000);
-           this.timerSubscriptionForNotification = this.timerForNotification.subscribe(n => {
-               this.timerCompleteForNotification(n);
-           });
+            this.stopTimerForNotification();
+            this.timerForNotification = timer(notifyin * 60 * 1000);
+            this.timerSubscriptionForNotification = this.timerForNotification.subscribe(n => {
+                this.timerCompleteForNotification(n);
+            });
         }
     }
 
     private timerCompleteForNotification(n: number) {
         this.timeoutExpiredForNotification.next(++this._count);
         this.getRevenuePostingCount().then(x => {
-            this.transactionCount.next(x);
+            this.transactionCount.next(x=>  
+                {
+                    id 
+                });
             this.startTimerForNotification(10);
         });
+        this.getTransactionLogCount().then(s => {
+            this.transactionCount[1].next(s);
+            this.startTimerForNotification(10);
+        }
+
+        )
     }
 
 
@@ -433,6 +442,14 @@ export class ManageSessionService implements OnDestroy {
         const response = await this.http.CallApiAsync<number>({
             callDesc: 'GetRevenuePostingCount',
             host: Host.retailPOS,
+            method: HttpMethod.Get
+        });
+        return response.result;
+    }
+    public async getTransactionLogCount(): Promise<number> {
+        const response = await this.http.CallApiAsync<number>({
+            callDesc: 'GetFailureDetails',
+            host: Host.payment,
             method: HttpMethod.Get
         });
         return response.result;

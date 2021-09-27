@@ -915,7 +915,6 @@
     "invalidCountryName": "Invalid country name_fr"
   },
   "shop": {
-  "lbl_payment_received": "Amount Received_fr",
     "tbl_hdr_ticketNumber": "Ticket #_fr",
     "tbl_hdr_transactiontime": "Time_fr",
     "tbl_hdr_transactionDate": "Date_fr",
@@ -931,6 +930,7 @@
     "cancel": "CANCEL_fr",
     "search": "SEARCH_fr",
     "reset": "RESET_fr",
+    "lbl_payment_received": "Amount Received_fr",
     "AdvancedSearch": "Advanced Search_fr",
     "ClerkId": "Clerk ID_fr",
     "Search": "Search_fr",
@@ -1069,6 +1069,7 @@
     "ClientName": "Client Name_fr",
     "MemberName": "Member Name_fr",
     "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_fr",
+    "searchTextOpenTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Amount Received_fr",
     "CorrectedOrVoidedBy": "Corrected/Voided By_fr",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_fr",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_fr",
@@ -1155,6 +1156,9 @@
     "PMAuthFailed": "Payment gateway authentication failed._fr",
     "PMcardDeclinedChipDecline": "Payment Declined, Please check for card information and try again._fr",
     "PMInvalidRequest": "Payment declined due to invalid request._fr",
+    "PayAgentNotInstalledError": "Pay Agent Not Installed, Please Install Supported Pay Agent Version {{version}} and Try Again.._fr",
+    "InstalledPayAgentFetchError": "Unable To Detect Installed Pay Agent Version, Please Install Supported Pay Agent Version '{{version}}' and Try Again.._fr",
+    "UnSupportedPayAgentInstalledError": "Unsupported Pay Agent Installed, Please Install Supported Pay Agent Version '{{version}}' and Try Again.._fr",
     "MissingAmountTenderMsg": "Enter the Amount to be Tendered_fr",
     "MissingRefundAmount": "Enter the Amount to be Refunded_fr",
     "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully_fr",
@@ -1169,7 +1173,8 @@
     "ProceedRefund": "PROCEED REFUND_fr",
     "Add": "ADD_fr",
     "SelectGuestForRoomCharge": "Select a guest in order to continue with room charge payment_fr",
-    "ReOpenNotAllowed": "Reopen is not allowed, Use settle to continue_fr",
+    "ReOpenNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Reopen not allowed. Use the Settle option to clear the unsettled amount._fr",
+    "CancelNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Cancellation not allowed. Use the Settle option to clear the unsettled amount._fr",
     "ProceedWithCardOnFile": "Do you want to proceed with Card on File?_fr",
     "InsufficientFunds": "Payment failed. Due to insufficient Funds._fr",
     "Card": "Card_fr",
@@ -1225,7 +1230,7 @@
     "cashPayment": "Cash Payment_fr",
     "cashReceived": "Cash Received_fr",
     "remainingChange": "Change Due_fr",
-    "CancelOpenTransaction": "Would you like to cancel the ticket?_fr",
+    "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?_fr",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_fr",
     "TransactionLock": "Transaction is locked, Please try after sometime._fr",
     "RoomChargeNumber": "Room_fr",
@@ -1395,7 +1400,7 @@
     "connect": "Connect_fr",
     "savedCardDetail": "Save Card Details_fr",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._fr",
-    "UnableToCloseTransaction": "Unable to Close Transaction_fr"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_fr"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fr",
@@ -3559,5 +3564,7 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_fr",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_fr",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_fr",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?_fr"
+  "combineGuest_warning": "Are you sure you want to cancel the changes?_fr",
+  "RevenuePostingInfo": "Total {count} Records Found in revenue Posting_fr",
+  "PaymentInfo": "Total {count} Records Found in Payment Logs_fr"
 }

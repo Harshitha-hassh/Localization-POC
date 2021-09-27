@@ -915,7 +915,6 @@
     "invalidCountryName": "Invalid country name_in"
   },
   "shop": {
- "lbl_payment_received": "Amount Received_in",
     "tbl_hdr_ticketNumber": "Ticket #_in",
     "tbl_hdr_transactiontime": "Time_in",
     "tbl_hdr_transactionDate": "Date_in",
@@ -931,6 +930,7 @@
     "cancel": "CANCEL_in",
     "search": "SEARCH_in",
     "reset": "RESET_in",
+    "lbl_payment_received": "Amount Received_in",
     "AdvancedSearch": "Advanced Search_in",
     "ClerkId": "Clerk ID_in",
     "Search": "Search_in",
@@ -1069,6 +1069,7 @@
     "ClientName": "Client Name_in",
     "MemberName": "Member Name_in",
     "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_in",
+    "searchTextOpenTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Amount Received_in",
     "CorrectedOrVoidedBy": "Corrected/Voided By_in",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_in",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_in",
@@ -1155,6 +1156,9 @@
     "PMAuthFailed": "Payment gateway authentication failed._in",
     "PMcardDeclinedChipDecline": "Payment Declined, Please check for card information and try again._in",
     "PMInvalidRequest": "Payment declined due to invalid request._in",
+    "PayAgentNotInstalledError": "Pay Agent Not Installed, Please Install Supported Pay Agent Version {{version}} and Try Again.._in",
+    "InstalledPayAgentFetchError": "Unable To Detect Installed Pay Agent Version, Please Install Supported Pay Agent Version '{{version}}' and Try Again.._in",
+    "UnSupportedPayAgentInstalledError": "Unsupported Pay Agent Installed, Please Install Supported Pay Agent Version '{{version}}' and Try Again.._in",
     "MissingAmountTenderMsg": "Enter the Amount to be Tendered_in",
     "MissingRefundAmount": "Enter the Amount to be Refunded_in",
     "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully_in",
@@ -1169,7 +1173,8 @@
     "ProceedRefund": "PROCEED REFUND_in",
     "Add": "ADD_in",
     "SelectGuestForRoomCharge": "Select a guest in order to continue with room charge payment_in",
-    "ReOpenNotAllowed": "Reopen is not allowed, Use settle to continue_in",
+    "ReOpenNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Reopen not allowed. Use the Settle option to clear the unsettled amount._in",
+    "CancelNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Cancellation not allowed. Use the Settle option to clear the unsettled amount._in",
     "ProceedWithCardOnFile": "Do you want to proceed with Card on File?_in",
     "InsufficientFunds": "Payment failed. Due to insufficient Funds._in",
     "Card": "Card_in",
@@ -1225,7 +1230,7 @@
     "cashPayment": "Cash Payment_in",
     "cashReceived": "Cash Received_in",
     "remainingChange": "Change Due_in",
-    "CancelOpenTransaction": "Would you like to cancel the ticket?_in",
+    "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?_in",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_in",
     "TransactionLock": "Transaction is locked, Please try after sometime._in",
     "RoomChargeNumber": "Room_in",
@@ -1395,7 +1400,7 @@
     "connect": "Connect_in",
     "savedCardDetail": "Save Card Details_in",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._in",
-    "UnableToCloseTransaction": "Unable to Close Transaction_in"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_in"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_in",
@@ -3559,5 +3564,7 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_in",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_in",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_in",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?_in"
+  "combineGuest_warning": "Are you sure you want to cancel the changes?_in",
+  "RevenuePostingInfo": "Total {count} Records Found in revenue Posting_in",
+  "PaymentInfo": "Total {count} Records Found in Payment Logs_in"
 }

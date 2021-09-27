@@ -915,7 +915,6 @@
     "invalidCountryName": "Invalid country name_au"
   },
   "shop": {
- "lbl_payment_received": "Amount Received_au",
     "tbl_hdr_ticketNumber": "Ticket #_au",
     "tbl_hdr_transactiontime": "Time_au",
     "tbl_hdr_transactionDate": "Date_au",
@@ -931,6 +930,7 @@
     "cancel": "CANCEL_au",
     "search": "SEARCH_au",
     "reset": "RESET_au",
+    "lbl_payment_received": "Amount Received_au",
     "AdvancedSearch": "Advanced Search_au",
     "ClerkId": "Clerk ID_au",
     "Search": "Search_au",
@@ -1069,6 +1069,7 @@
     "ClientName": "Client Name_au",
     "MemberName": "Member Name_au",
     "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Corrected/Voided By_au",
+    "searchTextOpenTransaction": "Ticket #, Clerk ID, Amount, Client Name, Member Name, Amount Received_au",
     "CorrectedOrVoidedBy": "Corrected/Voided By_au",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_au",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_au",
@@ -1155,6 +1156,9 @@
     "PMAuthFailed": "Payment gateway authentication failed._au",
     "PMcardDeclinedChipDecline": "Payment Declined, Please check for card information and try again._au",
     "PMInvalidRequest": "Payment declined due to invalid request._au",
+    "PayAgentNotInstalledError": "Pay Agent Not Installed, Please Install Supported Pay Agent Version {{version}} and Try Again.._au",
+    "InstalledPayAgentFetchError": "Unable To Detect Installed Pay Agent Version, Please Install Supported Pay Agent Version '{{version}}' and Try Again.._au",
+    "UnSupportedPayAgentInstalledError": "Unsupported Pay Agent Installed, Please Install Supported Pay Agent Version '{{version}}' and Try Again.._au",
     "MissingAmountTenderMsg": "Enter the Amount to be Tendered_au",
     "MissingRefundAmount": "Enter the Amount to be Refunded_au",
     "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully_au",
@@ -1169,7 +1173,8 @@
     "ProceedRefund": "PROCEED REFUND_au",
     "Add": "ADD_au",
     "SelectGuestForRoomCharge": "Select a guest in order to continue with room charge payment_au",
-    "ReOpenNotAllowed": "Reopen is not allowed, Use settle to continue_au",
+    "ReOpenNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Reopen not allowed. Use the Settle option to clear the unsettled amount._au",
+    "CancelNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Cancellation not allowed. Use the Settle option to clear the unsettled amount._au",
     "ProceedWithCardOnFile": "Do you want to proceed with Card on File?_au",
     "InsufficientFunds": "Payment failed. Due to insufficient Funds._au",
     "Card": "Card_au",
@@ -1225,7 +1230,7 @@
     "cashPayment": "Cash Payment_au",
     "cashReceived": "Cash Received_au",
     "remainingChange": "Change Due_au",
-    "CancelOpenTransaction": "Would you like to cancel the ticket?_au",
+    "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?_au",
     "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_au",
     "TransactionLock": "Transaction is locked, Please try after sometime._au",
     "RoomChargeNumber": "Room_au",
@@ -1395,7 +1400,7 @@
     "connect": "Connect_au",
     "savedCardDetail": "Save Card Details_au",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._au",
-    "UnableToCloseTransaction": "Unable to Close Transaction_au"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_au"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_au",
@@ -3559,5 +3564,7 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_au",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_au",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_au",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?_au"
+  "combineGuest_warning": "Are you sure you want to cancel the changes?_au",
+  "RevenuePostingInfo": "Total {count} Records Found in revenue Posting_au",
+  "PaymentInfo": "Total {count} Records Found in Payment Logs_au"
 }
