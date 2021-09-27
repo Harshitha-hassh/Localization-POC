@@ -701,7 +701,7 @@
   "GetFailedTransactions":"PaymentTransaction/GetFailedTransactions/{searchText}/{startDate}/{endDate}/{pageStart}",
   "BatchProcessFailedTransactions":"PaymentTransaction/BatchProcessFailedTransactions",
   "GetFailureRevenuePosting" : "POS/RevenuePosting",
-  "RevenuePosting" : "POS/RevenuePosting/Post",
+  "RevenuePost" : "POS/RevenuePosting/Post",
   "GetRevenuePostingLogs":"POS/RevenuePosting/GetRevenuePostingLogs",
   "IsBatchProcessingPending":"POS/RevenuePosting/IsBatchProcessingPending"
   }
