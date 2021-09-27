@@ -699,5 +699,9 @@
   "UpdateRetailTransactionData": "transaction/updatetransaction/{id}",
   "GetUserInfoByPropertyId":"User/GetUserInfoByPropertyId/{propertyId}/{productId}",
   "GetFailedTransactions":"PaymentTransaction/GetFailedTransactions/{searchText}/{startDate}/{endDate}/{pageStart}",
-  "BatchProcessFailedTransactions":"PaymentTransaction/BatchProcessFailedTransactions"
+  "BatchProcessFailedTransactions":"PaymentTransaction/BatchProcessFailedTransactions",
+  "GetFailureRevenuePosting" : "POS/RevenuePosting",
+  "RevenuePosting" : "POS/RevenuePosting/Post",
+  "GetRevenuePostingLogs":"POS/RevenuePosting/GetRevenuePostingLogs",
+  "IsBatchProcessingPending":"POS/RevenuePosting/IsBatchProcessingPending"
   }

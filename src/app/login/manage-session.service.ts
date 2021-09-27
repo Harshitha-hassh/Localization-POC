@@ -435,7 +435,7 @@ export class ManageSessionService implements OnDestroy {
 
     public async getRevenuePostingCount(): Promise<number> {
         const response = await this.http.CallApiAsync<number>({
-            callDesc: 'GetRevenuePostingCount',
+            callDesc: 'GetFailureRevenuePosting',
             host: Host.retailPOS,
             method: HttpMethod.Get
         });
