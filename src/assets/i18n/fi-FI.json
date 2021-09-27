@@ -1400,7 +1400,8 @@
     "connect": "Connect_fi",
     "savedCardDetail": "Save Card Details_fi",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._fi",
-    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_fi"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_fi",
+    "Refresh": "Refresh_fi"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fi",
@@ -3566,5 +3567,6 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_fi",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_fi",
   "RevenuePostingInfo": "Total {count} Records Found in revenue Posting_fi",
+  "FailedTransLogInfo": "Total {count} Records Found in revenue Posting_fi",
   "PaymentInfo": "Total {count} Records Found in Payment Logs_fi"
 }
