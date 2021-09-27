@@ -1400,7 +1400,8 @@
     "connect": "Connect_fr",
     "savedCardDetail": "Save Card Details_fr",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._fr",
-    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_fr"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_fr",
+    "Refresh": "Refresh_fr"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fr",
@@ -3566,5 +3567,6 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_fr",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_fr",
   "RevenuePostingInfo": "Total {count} Records Found in revenue Posting_fr",
+  "FailedTransLogInfo": "Total {count} Records Found in revenue Posting_fr",
   "PaymentInfo": "Total {count} Records Found in Payment Logs_fr"
 }

@@ -109,10 +109,10 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       }
       if (paymentresult && paymentresult.count > 0 && !this.notificationInfo.some(x => x.count === paymentresult.count
-        && x.id  === NotificationFailureType.revenuePostingFailure)) {
+        && x.id  === NotificationFailureType.paymentTransactionFailure)) {
         this.notificationInfo.push({
          id :  NotificationFailureType.paymentTransactionFailure,
-         message : this._localization.replacePlaceholders(this.captions.RevenuePostingInfo, ['count'], [ paymentresult.count]),
+         message : this._localization.replacePlaceholders(this.captions.FailedTransLogInfo, ['count'], [ paymentresult.count]),
          count :  paymentresult.count ,
        });
       }
