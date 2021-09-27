@@ -12,6 +12,7 @@ import { AlertType } from '../common/enums/shared-enums';
 import { RetailLocalization } from '../retail/common/localization/retail-localization';
 import { JWT_TOKEN, REMEMBER_INFO, USERS_SESSSIONS_INFO } from '../app-constants';
 import { Host } from '../retail/shared/globalsContant';
+import { NotificationFailureType } from '../shared/components/menu/menu.model';
 
 @Injectable({
     providedIn: 'root'
@@ -30,7 +31,7 @@ export class ManageSessionService implements OnDestroy {
     public timerSubscriptionForNotification: Subscription;
     public timerForNotification: Observable<number>;
     public timeoutExpiredForNotification: Subject<number> = new Subject<number>();
-    public transactionCount: BehaviorSubject<{ id: number, Count: number }[]> = new BehaviorSubject([]);
+    public transactionCount: BehaviorSubject<{ id: number, count: number }[]> = new BehaviorSubject([]);
 
     token = {
         refresh_token: 'refreshtokencode',
@@ -423,18 +424,12 @@ export class ManageSessionService implements OnDestroy {
     private timerCompleteForNotification(n: number) {
         this.timeoutExpiredForNotification.next(++this._count);
         this.getRevenuePostingCount().then(x => {
-            this.transactionCount.next(x=>  
-                {
-                    id 
-                });
-            this.startTimerForNotification(10);
+            this.transactionCount.next([{ id : NotificationFailureType.revenuePostingFailure, count : x }]);
         });
         this.getTransactionLogCount().then(s => {
-            this.transactionCount[1].next(s);
-            this.startTimerForNotification(10);
-        }
-
-        )
+            this.transactionCount.next([{ id : NotificationFailureType.paymentTransactionFailure, count : s }]);
+        });
+        this.startTimerForNotification(10);
     }
 
 
