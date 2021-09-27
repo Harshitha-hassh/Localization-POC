@@ -437,7 +437,8 @@ export class ManageSessionService implements OnDestroy {
         const response = await this.http.CallApiAsync<number>({
             callDesc: 'GetFailureRevenuePosting',
             host: Host.retailPOS,
-            method: HttpMethod.Get
+            method: HttpMethod.Get,
+            showError: true
         });
         return response.result;
     }
@@ -445,7 +446,8 @@ export class ManageSessionService implements OnDestroy {
         const response = await this.http.CallApiAsync<number>({
             callDesc: 'GetFailureDetails',
             host: Host.payment,
-            method: HttpMethod.Get
+            method: HttpMethod.Get,
+            showError: true
         });
         return response.result;
     }
