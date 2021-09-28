@@ -30,7 +30,6 @@ export class ManageSessionService implements OnDestroy {
     private timer: Observable<number>;
     public timerSubscriptionForNotification: Subscription;
     public timerForNotification: Observable<number>;
-    public timeoutExpiredForNotification: Subject<number> = new Subject<number>();
     public transactionCount: BehaviorSubject<{ id: number, count: number }[]> = new BehaviorSubject([]);
 
     token = {
@@ -58,11 +57,11 @@ export class ManageSessionService implements OnDestroy {
     private triggerTimeout: any;
 
     constructor(private router: Router
-        , public dialogRef: MatDialog
-        , public loginService: TenantManagementCommunication
-        , private utils: Utilities
-        , public http: HttpServiceCall,
-        private localize: RetailLocalization) {
+              , public dialogRef: MatDialog
+              , public loginService: TenantManagementCommunication
+              , private utils: Utilities
+              , public http: HttpServiceCall,
+                private localize: RetailLocalization) {
 
         this.timeoutExpired.subscribe(n => {
         });
@@ -422,13 +421,13 @@ export class ManageSessionService implements OnDestroy {
     }
 
     private timerCompleteForNotification(n: number) {
-        this.timeoutExpiredForNotification.next(++this._count);
         this.getRevenuePostingCount().then(x => {
             this.transactionCount.next([{ id : NotificationFailureType.revenuePostingFailure, count : x }]);
         });
         this.getTransactionLogCount().then(s => {
             this.transactionCount.next([{ id : NotificationFailureType.paymentTransactionFailure, count : s }]);
         });
+        // TODO
         this.startTimerForNotification(10);
     }
 
