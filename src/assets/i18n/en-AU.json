@@ -926,6 +926,7 @@
     "tbl_hdr_revenuePosttype": "Revenue Post Type_au",
     "tbl_hdr_user": "Sold By_au",
     "tbl_hdr_Action": "Action_au",
+    "lbl_transactionType": "Transaction Type_au",
     "retry": "RETRY_au",
     "cancel": "CANCEL_au",
     "search": "SEARCH_au",

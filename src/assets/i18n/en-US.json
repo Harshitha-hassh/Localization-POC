@@ -926,6 +926,7 @@
     "tbl_hdr_revenuePosttype":"Revenue Post Type",
     "tbl_hdr_user":"Sold By",
     "tbl_hdr_Action":"Action",
+    "lbl_transactionType":"Transaction Type",
     "retry":"RETRY",
     "cancel":"CANCEL",
     "search":"SEARCH",

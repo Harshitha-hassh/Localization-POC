@@ -369,7 +369,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
   routeTransc(id: number) {
     if (id === NotificationFailureType.revenuePostingFailure) {
-      this.router.navigate(['/shop/viewshop/retailtransactions/revenuePostingsLog']);
+      this.router.navigate(['/shop/viewshop/retailtransactions/revenuepostingslog']);
       this.removeRevenuePostInfo();
       this.notificationCount = this.notificationInfo?.length;
     }
