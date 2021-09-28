@@ -1402,7 +1402,13 @@
     "savedCardDetail": "Save Card Details_in",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._in",
     "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_in",
-    "Refresh": "Refresh_in"
+    "TransactionLogScreen": {
+      "Refresh": "Refresh_in",
+      "BatchInitSuccessMsg": "Batch Retry initiated Successfully_in",
+      "BatchInitFailureMsg": "Batch retry failed. Please try again._in",
+      "RetrySuccessMsg": "Retry Success_in",
+      "RetryFailureMsg": "Retry Failed_in"
+    }
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_in",

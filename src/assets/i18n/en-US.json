@@ -1402,7 +1402,13 @@
 		"savedCardDetail": "Save Card Details",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room.",
     "UnableToCloseTransaction" : "Unable to Close Transaction for ticket #{TicketNumber}",
-    "Refresh": "Refresh"
+    "TransactionLogScreen": {
+      "Refresh": "Refresh",
+      "BatchInitSuccessMsg": "Batch Retry initiated Successfully",
+      "BatchInitFailureMsg": "Batch retry failed. Please try again.",
+      "RetrySuccessMsg": "Retry Success",
+      "RetryFailureMsg": "Retry Failed"
+    }
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",

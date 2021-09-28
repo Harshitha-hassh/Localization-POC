@@ -1402,7 +1402,13 @@
     "savedCardDetail": "Save Card Details_au",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._au",
     "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_au",
-    "Refresh": "Refresh_au"
+    "TransactionLogScreen": {
+      "Refresh": "Refresh_au",
+      "BatchInitSuccessMsg": "Batch Retry initiated Successfully_au",
+      "BatchInitFailureMsg": "Batch retry failed. Please try again._au",
+      "RetrySuccessMsg": "Retry Success_au",
+      "RetryFailureMsg": "Retry Failed_au"
+    }
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_au",
