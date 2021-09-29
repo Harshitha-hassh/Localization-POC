@@ -1407,7 +1407,9 @@
       "BatchInitSuccessMsg": "Batch Retry initiated Successfully",
       "BatchInitFailureMsg": "Batch retry failed. Please try again.",
       "RetrySuccessMsg": "Retry Success",
-      "RetryFailureMsg": "Retry Failed"
+      "RetryFailureMsg": "Retry Failed",
+      "BatchInProgressBannerLbl": "Processing transactions in batch, please wait until the process is completed.",
+      "NoDataFoundLbl":"No Results Found."
     }
   },
   "breakpoint": {
