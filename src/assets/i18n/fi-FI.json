@@ -915,6 +915,22 @@
     "invalidCountryName": "Invalid country name_fi"
   },
   "shop": {
+    "tbl_hdr_ticketNumber": "Ticket #_fi",
+    "tbl_hdr_transactiontime": "Time_fi",
+    "tbl_hdr_transactionDate": "Date_fi",
+    "tbl_hdr_errorMessage": "Failure Message_fi",
+    "tbl_hdr_failedAmount": "Amount_fi",
+    "tbl_hdr_payment_type": "Payment Type_fi",
+    "tbl_hdr_transaction_type": "Transaction Type_fi",
+    "tbl_hdr_roomNumber": "Room Number_fi",
+    "tbl_hdr_revenuePosttype": "Revenue Post Type_fi",
+    "tbl_hdr_user": "Sold By_fi",
+    "tbl_hdr_Action": "Action_fi",
+    "lbl_transactionType": "Transaction Type_fi",
+    "retry": "RETRY_fi",
+    "cancel": "CANCEL_fi",
+    "search": "SEARCH_fi",
+    "reset": "RESET_fi",
     "lbl_payment_received": "Amount Received_fi",
     "AdvancedSearch": "Advanced Search_fi",
     "ClerkId": "Clerk ID_fi",
@@ -1089,6 +1105,7 @@
     "EditedDataWontBeSaved": "Edited data won't be saved_fi",
     "NonCommissionable": "Non Commissionable_fi",
     "SearchByTicketNumber": "Search by Ticket #_fi",
+    "FailedRecordSearch": "Search by Ticket #, Clerk ID, Amount_fi",
     "MissingReturnReason": "Missing Return Reason_fi",
     "SuccessfullyVoided": "Successfully Voided_fi",
     "CorrectionTransactionMsg": "Cancelling will void transaction entirely. Do you wish to proceed?_fi",
@@ -1384,7 +1401,16 @@
     "connect": "Connect_fi",
     "savedCardDetail": "Save Card Details_fi",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._fi",
-    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_fi"
+    "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_fi",
+    "TransactionLogScreen": {
+      "Refresh": "Refresh_fi",
+      "BatchInitSuccessMsg": "Batch Retry initiated Successfully_fi",
+      "BatchInitFailureMsg": "Batch retry failed. Please try again._fi",
+      "RetrySuccessMsg": "Retry Success_fi",
+      "RetryFailureMsg": "Retry Failed_fi",
+      "BatchInProgressBannerLbl": "Processing transactions in batch, please wait until the process is completed._fi",
+      "NoDataFoundLbl": "No Results Found._fi"
+    }
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fi",
@@ -3548,5 +3574,8 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?_fi",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_fi",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_fi",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?_fi"
+  "combineGuest_warning": "Are you sure you want to cancel the changes?_fi",
+  "RevenuePostingInfo": "Total {count} Records Found in revenue Posting_fi",
+  "FailedTransLogInfo": "Total {count} Records Found in revenue Posting_fi",
+  "PaymentInfo": "Total {count} Records Found in Payment Logs_fi"
 }

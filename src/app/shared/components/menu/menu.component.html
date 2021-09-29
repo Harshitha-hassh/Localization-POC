@@ -45,9 +45,10 @@
 
                         <!-- <app-ms-graph-auth></app-ms-graph-auth> -->
                         <!-- #46309 - Hide unused fields -->
-                         <!-- <button class="notifyClass buttonStyle cursor">
+                         <button class="notifyClass buttonStyle cursor custom-notify-relative" [popover]="notificationPopOver"  popoverPlacement="bottom" [popoverOnHover]="false" >
                             <i class="icon-notify icon-notification"></i>
-                        </button> -->
+                            <span *ngIf = "notificationCount > 0" class="count">{{notificationCount}}</span>
+                        </button>
                          <!-- --help--- -->
                         <button class="notifyClass buttonStyle cursor" [popover]="helpQuestionPopOver"
                             popoverPlacement="bottom" [popoverOnHover]="false" [matTooltip]="captions.helpQuestion">
@@ -236,5 +237,17 @@
     <hr />
     <div class="custom-popover textCenter">
         <a class="logout-style" (click)="helpQuestionPopOver.hide();openAboutDialog();">{{captions.about}}</a>
+    </div>
+</popover-content>
+
+<!-- ---notification-popover--- -->
+<popover-content #notificationPopOver placement="bottom" class="user-popover" [animation]="true"
+    [closeOnClickOutside]="true" id="logOutPopOverID">
+
+    <div class="custom-popover textCenter">
+        <div *ngFor="let n of notificationInfo">
+            <a class="logout-style" (click)="notificationPopOver.hide();routeTransc(n.id)">{{n.message}}</a>
+        </div>
+        
     </div>
 </popover-content>

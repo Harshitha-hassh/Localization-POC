@@ -914,7 +914,23 @@
 		"missingCountryName": "Missing country name",
 		"invalidCountryName": "Invalid country name"
   },
-  "shop": {
+  "shop": {    
+    "tbl_hdr_ticketNumber":"Ticket #",
+    "tbl_hdr_transactiontime":"Time",
+    "tbl_hdr_transactionDate":"Date",
+    "tbl_hdr_errorMessage":"Failure Message",
+    "tbl_hdr_failedAmount":"Amount",
+    "tbl_hdr_payment_type":"Payment Type",
+    "tbl_hdr_transaction_type":"Transaction Type",
+    "tbl_hdr_roomNumber":"Room Number",
+    "tbl_hdr_revenuePosttype":"Revenue Post Type",
+    "tbl_hdr_user":"Sold By",
+    "tbl_hdr_Action":"Action",
+    "lbl_transactionType":"Transaction Type",
+    "retry":"RETRY",
+    "cancel":"CANCEL",
+    "search":"SEARCH",
+    "reset":"RESET",
     "lbl_payment_received" : "Amount Received",
     "AdvancedSearch": "Advanced Search",
 		"ClerkId": "Clerk ID",
@@ -1089,6 +1105,7 @@
     "EditedDataWontBeSaved": "Edited data won't be saved",
     "NonCommissionable": "Non Commissionable",
     "SearchByTicketNumber": "Search by Ticket #",
+    "FailedRecordSearch": "Search by Ticket #, Clerk ID, Amount",
     "MissingReturnReason": "Missing Return Reason",
     "SuccessfullyVoided": "Successfully Voided",
     "CorrectionTransactionMsg": "Cancelling will void transaction entirely. Do you wish to proceed?",
@@ -1384,7 +1401,16 @@
 		"connect": "Connect",
 		"savedCardDetail": "Save Card Details",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room.",
-    "UnableToCloseTransaction" : "Unable to Close Transaction for ticket #{TicketNumber}"
+    "UnableToCloseTransaction" : "Unable to Close Transaction for ticket #{TicketNumber}",
+    "TransactionLogScreen": {
+      "Refresh": "Refresh",
+      "BatchInitSuccessMsg": "Batch Retry initiated Successfully",
+      "BatchInitFailureMsg": "Batch retry failed. Please try again.",
+      "RetrySuccessMsg": "Retry Success",
+      "RetryFailureMsg": "Retry Failed",
+      "BatchInProgressBannerLbl": "Processing transactions in batch, please wait until the process is completed.",
+      "NoDataFoundLbl":"No Results Found."
+    }
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",
@@ -3549,5 +3575,8 @@
   "combineGuest_Cancel_Msg": "Are you sure you want to cancel the changes?",
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?",  
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}",
-  "combineGuest_warning": "Are you sure you want to cancel the changes?"  
+  "combineGuest_warning": "Are you sure you want to cancel the changes?"  ,
+  "RevenuePostingInfo" : "Total {count} Records Found in revenue Posting",
+  "FailedTransLogInfo" : "Total {count} Records Found in revenue Posting",
+  "PaymentInfo" : "Total {count} Records Found in Payment Logs"  
 }
