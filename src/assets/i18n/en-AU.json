@@ -3576,6 +3576,5 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_au",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_au",
   "RevenuePostingInfo": "Total {count} Records Found in revenue Posting_au",
-  "FailedTransLogInfo": "Total {count} Records Found in revenue Posting_au",
-  "PaymentInfo": "Total {count} Records Found in Payment Logs_au"
+  "FailedTransLogInfo": "Total {count} Records Found in Payment Logs_au"
 }

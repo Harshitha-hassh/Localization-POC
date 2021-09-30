@@ -3577,6 +3577,5 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}",
   "combineGuest_warning": "Are you sure you want to cancel the changes?"  ,
   "RevenuePostingInfo" : "Total {count} Records Found in revenue Posting",
-  "FailedTransLogInfo" : "Total {count} Records Found in revenue Posting",
-  "PaymentInfo" : "Total {count} Records Found in Payment Logs"  
+  "FailedTransLogInfo" : "Total {count} Records Found in Payment Logs"  
 }
