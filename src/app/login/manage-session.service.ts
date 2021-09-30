@@ -82,6 +82,7 @@ export class ManageSessionService implements OnDestroy {
         if (this.tokenTimerSubscription) {
             this.tokenTimerSubscription.unsubscribe();
         }
+        this.stopTimerForNotification();
     }
 
     async logout() {
