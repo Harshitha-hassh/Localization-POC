@@ -317,6 +317,7 @@
     "emailsmsNotification": "Email / SMS Notification_uk",
     "newPlayer": "New Player_uk",
     "hotelReservation": "Hotel Reservation_uk",
+    "VoidNotAllowed": "Operation not allowed_uk",
     "member": "Member_uk",
     "player": "Player_uk",
     "searchByConfNoAndGuestName": "Search By GuestName , Conf #_uk",

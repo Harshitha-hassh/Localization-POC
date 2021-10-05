@@ -317,6 +317,7 @@
     "emailsmsNotification": "Email / SMS Notification_in",
     "newPlayer": "New Player_in",
     "hotelReservation": "Hotel Reservation_in",
+    "VoidNotAllowed": "Operation not allowed_in",
     "member": "Member_in",
     "player": "Player_in",
     "searchByConfNoAndGuestName": "Search By GuestName , Conf #_in",
