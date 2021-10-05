@@ -1998,7 +1998,7 @@
     "SearchByCategories": "Search By Category_au",
     "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_au",
     "NoPosting": "No Posting_au",
-    "NoAssigning": "No Assigning_au",
+    "NoAssigning": "Remove Assigned Vendor_au",
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_au",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_au",
     "tog_lbl_showInactive": "Show Inactive_au",

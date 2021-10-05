@@ -1998,7 +1998,7 @@
     "SearchByCategories": "Search By Category_da",
     "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_da",
     "NoPosting": "No Posting_da",
-    "NoAssigning": "No Assigning_da",
+    "NoAssigning": "Remove Assigned Vendor_da",
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_da",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_da",
     "tog_lbl_showInactive": "Show Inactive_da",
