@@ -943,7 +943,7 @@
     "RedeemRoundsHeader": "Membership Pin_au",
     "TicketDetails": "Ticket Details_au",
     "RetailItems": "RETAIL ITEMS_au",
-    "SearchBy": "Search by Brand, Price, Item #_au",
+    "SearchBy": "Search by Brand, Price, Item ,Vendor Name #_au",
     "SearchByBarCode": "Search by Barcode #_au",
     "NoItemstoShow": "No Items to Show_au",
     "ViewLess": "View Less_au",

@@ -943,7 +943,7 @@
     "RedeemRoundsHeader": "Membership Pin_in",
     "TicketDetails": "Ticket Details_in",
     "RetailItems": "RETAIL ITEMS_in",
-    "SearchBy": "Search by Brand, Price, Item #_in",
+    "SearchBy": "Search by Brand, Price, Item ,Vendor Name #_in",
     "SearchByBarCode": "Search by Barcode #_in",
     "NoItemstoShow": "No Items to Show_in",
     "ViewLess": "View Less_in",
