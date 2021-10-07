@@ -2000,6 +2000,7 @@
     "SearchByCategories": "Search By Category",
     "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS",
     "NoPosting": "No Posting",
+    "NoAssigning": "Remove Assigned Vendor",
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name",
     "tog_lbl_showInactive": "Show Inactive",

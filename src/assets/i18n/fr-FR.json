@@ -1999,6 +1999,7 @@
     "SearchByCategories": "Search By Category_fr",
     "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_fr",
     "NoPosting": "No Posting_fr",
+    "NoAssigning": "Remove Assigned Vendor_fr",
     "btn_CreditCardTerminal": "CREATE CREDIT CARD TERMINAL ID_fr",
     "lbl_searchCreditCardTerminalPlaceholder": "Search by Credit Card Terminal ID, Credit Card Terminal Name_fr",
     "tog_lbl_showInactive": "Show Inactive_fr",
