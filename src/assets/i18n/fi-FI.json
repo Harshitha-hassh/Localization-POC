@@ -317,6 +317,7 @@
     "emailsmsNotification": "Email / SMS Notification_fi",
     "newPlayer": "New Player_fi",
     "hotelReservation": "Hotel Reservation_fi",
+    "VoidNotAllowed": "Operation not allowed_fi",
     "member": "Member_fi",
     "player": "Player_fi",
     "searchByConfNoAndGuestName": "Search By GuestName , Conf #_fi",
