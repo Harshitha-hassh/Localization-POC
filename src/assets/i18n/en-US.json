@@ -1629,6 +1629,7 @@
     "CreateRetailSetup": "Create Retail Setup",
     "SyncItem": "Sync Item",
     "SearchByItemDescriptionCategory": "Search By Item #, Description, Category",
+    "searchByVendorIdName":"Search By Vendor ID, Vendor Name",
     "SearchByItemDescriptionCategoryRevenue": "Search by Item Number, Description, Category",
     "SelectOutlet": "Select Outlet",
     "GENERAL": "GENERAL",
