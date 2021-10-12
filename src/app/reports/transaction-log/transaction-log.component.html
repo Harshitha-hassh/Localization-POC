@@ -30,7 +30,7 @@
           <div>
             <mat-form-field class="w-100" appearance="legacy">
               <mat-label>{{commonCaptions.Date}}</mat-label>
-              <input matInput [matDatepicker]="picker1" placeholder="{{placeholderFormat}}" class="picker1"
+              <input matInput dateRestricter [matDatepicker]="picker1" placeholder="{{placeholderFormat}}" class="picker1"
                      formControlName="date" [max]="minDate">
               <mat-datepicker #picker1></mat-datepicker>
               <i class="icon-Calender customCalendar" (click)="picker1.open()"></i>
