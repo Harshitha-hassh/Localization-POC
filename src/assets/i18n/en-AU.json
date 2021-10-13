@@ -2742,6 +2742,7 @@
     "Outlet": "Outlet_au",
     "Outlets": "Outlet(s)_au",
     "UseLastCostMethod": "Use Last Cost Method_au",
+    "OrderBySupplierItem": "Order By Supplier Item_au",
     "CategoryView": "Category View_au",
     "SummaryView": "Summary View_au",
     "IncludeInactiveItems": "Include Inactive Items_au",
@@ -2845,7 +2846,10 @@
     "SalesMix": "Sales Mix Report_au",
     "InventoryReport": "InventoryReport_au",
     "InventoryPickupDelivery": "Inventory Pickup Delivery Report_au",
-    "ItemsExtract": "Items Extract_au"
+    "ItemsExtract": "Items Extract_au",
+    "VendorInventoryDetail": "Vendor Inventory Detail_au",
+    "VendorList": "Vendors_au",
+    "PleaseSelectVendor": "Please Select a Vendor_au"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_au",

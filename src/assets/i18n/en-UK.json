@@ -2742,6 +2742,7 @@
     "Outlet": "Outlet_uk",
     "Outlets": "Outlet(s)_uk",
     "UseLastCostMethod": "Use Last Cost Method_uk",
+    "OrderBySupplierItem": "Order By Supplier Item_uk",
     "CategoryView": "Category View_uk",
     "SummaryView": "Summary View_uk",
     "IncludeInactiveItems": "Include Inactive Items_uk",
@@ -2845,7 +2846,10 @@
     "SalesMix": "Sales Mix Report_uk",
     "InventoryReport": "InventoryReport_uk",
     "InventoryPickupDelivery": "Inventory Pickup Delivery Report_uk",
-    "ItemsExtract": "Items Extract_uk"
+    "ItemsExtract": "Items Extract_uk",
+    "VendorInventoryDetail": "Vendor Inventory Detail_uk",
+    "VendorList": "Vendors_uk",
+    "PleaseSelectVendor": "Please Select a Vendor_uk"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_uk",

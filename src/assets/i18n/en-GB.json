@@ -2742,6 +2742,7 @@
     "Outlet": "Outlet_gb",
     "Outlets": "Outlet(s)_gb",
     "UseLastCostMethod": "Use Last Cost Method_gb",
+    "OrderBySupplierItem": "Order By Supplier Item_gb",
     "CategoryView": "Category View_gb",
     "SummaryView": "Summary View_gb",
     "IncludeInactiveItems": "Include Inactive Items_gb",
@@ -2845,7 +2846,10 @@
     "SalesMix": "Sales Mix Report_gb",
     "InventoryReport": "InventoryReport_gb",
     "InventoryPickupDelivery": "Inventory Pickup Delivery Report_gb",
-    "ItemsExtract": "Items Extract_gb"
+    "ItemsExtract": "Items Extract_gb",
+    "VendorInventoryDetail": "Vendor Inventory Detail_gb",
+    "VendorList": "Vendors_gb",
+    "PleaseSelectVendor": "Please Select a Vendor_gb"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_gb",

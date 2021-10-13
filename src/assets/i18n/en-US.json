@@ -2743,6 +2743,7 @@
     "Outlet": "Outlet",
     "Outlets": "Outlet(s)",
     "UseLastCostMethod": "Use Last Cost Method",
+    "OrderBySupplierItem":"Order By Supplier Item",
     "CategoryView": "Category View",
     "SummaryView": "Summary View",
     "IncludeInactiveItems": "Include Inactive Items",
@@ -2846,7 +2847,10 @@
     "SalesMix": "Sales Mix Report",
     "InventoryReport": "InventoryReport",
 		"InventoryPickupDelivery": "Inventory Pickup Delivery Report",
-    "ItemsExtract":"Items Extract"
+    "ItemsExtract":"Items Extract",
+    "VendorInventoryDetail":"Vendor Inventory Detail",
+    "VendorList":"Vendors",    
+    "PleaseSelectVendor":"Please Select a Vendor"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",
