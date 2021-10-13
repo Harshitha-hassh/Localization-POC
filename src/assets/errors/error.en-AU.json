@@ -244,6 +244,7 @@
   "101911": "Duplicate Discount Reason_au",
   "101915": "Discount Reason in use, Inactive not allowed_au",
   "101916": "Discount Reason in use, Delete not allowed,_au",
+  "101917":"Day End cannot be processed for a future date._au",
   "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed._au",
   "-3": "New appointment duration will result in an overbook. Do you want to continue?_au",
   "-2": "An unexpected error has occurred, please try again later._au",
