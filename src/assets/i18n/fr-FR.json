@@ -2743,6 +2743,7 @@
     "Outlets": "Outlet(s)_fr",
     "Vendor":"Vendor_fr",
     "UseLastCostMethod": "Use Last Cost Method_fr",
+    "OrderBySupplierItem": "Order By Supplier Item_fr",
     "CategoryView": "Category View_fr",
     "SummaryView": "Summary View_fr",
     "IncludeInactiveItems": "Include Inactive Items_fr",
@@ -2849,7 +2850,10 @@
     "SalesMix": "Sales Mix Report_fr",
     "InventoryReport": "InventoryReport_fr",
     "InventoryPickupDelivery": "Inventory Pickup Delivery Report_fr",
-    "ItemsExtract": "Items Extract_fr"
+    "ItemsExtract": "Items Extract_fr",
+    "VendorInventoryDetail": "Vendor Inventory Detail_fr",
+    "VendorList": "Vendors_fr",
+    "PleaseSelectVendor": "Please Select a Vendor_fr"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fr",
