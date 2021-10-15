@@ -283,6 +283,7 @@
   "getTherapists": "therapists/list",
   "RemoveCommission": "CommissionSetup",
   "GetGuestSalesHistoryTransaction": "transaction/guest/{id}",
+  "GetSalesHistoryTransactionByGuestGuids":"transaction/GetSalesHistoryTransactionByGuestGuids",
   "GetAllCommissionByItem": "CommissionSetup/items/{itemId}/productId/{productId}/outlet/{outletId}",
   "CommissionTemplate": "commissiontemplates",
   "CommissionTemplateById": "commissiontemplates/{id}",

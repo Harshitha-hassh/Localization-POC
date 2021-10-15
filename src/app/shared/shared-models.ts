@@ -292,6 +292,7 @@ export interface TransactionDetail {
     outletId: number;
     propertyId: number;
     subPropertyId: number;
+    itemDescription:string;
 }
 
 

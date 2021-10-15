@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-import { GuestRetailTransactionHistory } from '../../../../shared/shared-models';
+import { GuestRetailTransactionHistory, Transaction } from '../../../../shared/shared-models';
 import { Subscription } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
@@ -37,12 +37,14 @@ export class TransactionHistoryComponent implements OnInit {
   clientWindowConvertion : Subscription;
   isFirstTime: boolean = true;
   clientId: number;
+  clientGuid: string;
 
   @Input('inputData')
   set formData(value) {
     if(value && value.data!='')
     {
       this.clientId = value.data.client.id;
+      this.clientGuid = value.data.client.guestId;
       if(this.clientId > 0){
         this.GetSalesHistory()
       }  
@@ -120,9 +122,9 @@ export class TransactionHistoryComponent implements OnInit {
       host: Host.retailPOS,
       success: this.successCallback.bind(this),
       error: this.errorCallback.bind(this),
-      callDesc: "GetGuestSalesHistoryTransaction",
-      uriParams: { id: this.clientId},
-      method: HttpMethod.Get,
+      callDesc: "GetSalesHistoryTransactionByGuestGuids",
+      body:[this.clientGuid],
+      method: HttpMethod.Put,
       showError: true,
       extraParams: []
     });
@@ -130,34 +132,34 @@ export class TransactionHistoryComponent implements OnInit {
 
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams?: any[]) {
     let appointments = [];
-    if (callDesc == "GetGuestSalesHistoryTransaction")
+    if (callDesc == "GetSalesHistoryTransactionByGuestGuids")
     {
       let res:any = result.result;
-      let responseResult: GuestRetailTransactionHistory = res;
+      let responseResult: Transaction[] = res;
       let transactionDetail:any;
       let items :any[]=[];
-      for (let index1 = 0; index1 < responseResult.transaction.length; index1++) {
-        let transactionNumber = this.PropertyInfo.UseRetailInterface ?responseResult.transaction[index1].transactionData.ticketNumber:responseResult.transaction[index1].transactionData.retailTicketNumber ;
-        let TransactionDate = responseResult.transaction[index1].transactionData.transactionDate ;
-        let TotalPrice = (responseResult.transaction[index1].transactionData.totalPrice).toFixed(2);
-        let TotalAmount = (responseResult.transaction[index1].transactionData.totalAmount).toFixed(2);
-        let totalGratuity = (responseResult.transaction[index1].transactionData.gratuity).toFixed(2);
-        let TotalTax = (responseResult.transaction[index1].transactionData.totalTax).toFixed(2);
+      for (let index1 = 0; index1 < responseResult.length; index1++) {
+        let transactionNumber = this.PropertyInfo.UseRetailInterface ?responseResult[index1].transactionData.ticketNumber:responseResult[index1].transactionData.retailTicketNumber ;
+        let TransactionDate = responseResult[index1].transactionData.transactionDate ;
+        let TotalPrice = (responseResult[index1].transactionData.totalPrice).toFixed(2);
+        let TotalAmount = (responseResult[index1].transactionData.totalAmount).toFixed(2);
+        let totalGratuity = (responseResult[index1].transactionData.gratuity).toFixed(2);
+        let TotalTax = (responseResult[index1].transactionData.totalTax).toFixed(2);
         let totalDiscount : number = 0.0;
          let itemDescription;
 
-        if(responseResult.transaction[index1].transactionDetails.length <= 0){
+        if(responseResult[index1].transactionDetails.length <= 0){
           transactionDetail = {
             items: []
           }
         }
 
-        for(let index2 = 0; index2 < responseResult.transaction[index1].transactionDetails.length;index2++)
+        for(let index2 = 0; index2 < responseResult[index1].transactionDetails.length;index2++)
         {
-         let QuantitySold = responseResult.transaction[index1].transactionDetails[index2].quantitySold;
-         let unitPrice = (responseResult.transaction[index1].transactionDetails[index2].unitPrice).toFixed(2);
-         let itemId = responseResult.transaction[index1].transactionDetails[index2].itemId;
-         itemDescription = responseResult.itemDescription[itemId];
+         let QuantitySold = responseResult[index1].transactionDetails[index2].quantitySold;
+         let unitPrice = (responseResult[index1].transactionDetails[index2].unitPrice).toFixed(2);
+         let itemId = responseResult[index1].transactionDetails[index2].itemId;
+         itemDescription = responseResult[index1].transactionDetails[index2].itemDescription;
           var indexOfItem = this.frequentlyPurchased.findIndex(i=> i.itemNumber == itemId);
          if(indexOfItem > -1)
          {
@@ -168,7 +170,7 @@ export class TransactionHistoryComponent implements OnInit {
           this.frequentlyPurchased.push({ "description": itemDescription, "quantity": QuantitySold, "itemNumber": itemId})
          }
         
-         let Discount :number= responseResult.transaction[index1].transactionDetails[index2].discount;
+         let Discount :number= responseResult[index1].transactionDetails[index2].discount;
          totalDiscount += Discount
          items.push({ "name": itemDescription, "quantity": QuantitySold, "price": unitPrice});
 

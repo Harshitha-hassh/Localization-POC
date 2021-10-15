@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, OnDestroy, AfterViewChecked } fro
 import * as _ from 'lodash'; // STORAGE THE BACK ARRAY
 import { BaseResponse } from '../../../common/shared/shared.modal';
 import { ManagementData } from '../../../shared/shared-models';
-import { GridData, PendingAction, AppointmentData, GridAction, NotifyDayEnd } from '../../AuditModals';
+import { GridData, PendingAction, AppointmentData, GridAction, NotifyDayEnd, ErrorCodes } from '../../AuditModals';
 import { AuditService } from '../../audit.service';
 import { Router } from '@angular/router';
 import { SubscriptionLike as ISubscription, ReplaySubject } from 'rxjs';
@@ -203,8 +203,16 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
             this.SendNewSystemDate();
           }    
         } else {
-          this.isProcessClicked = false;
+          if(result.errorCode.toString() == ErrorCodes.UNABLE_TO_ROLL_TO_FUTURE_DATE)
+          {
+            this.utils.ShowErrorPopup([result.errorCode]);
+
+          }
+          else{
+            this.isProcessClicked = false;
           this.utils.ShowError(this.localization.captions.common.Error, this.captions.ErrorInDayEnd, ButtonType.Ok);
+          }
+          
         }
         break;
       }
