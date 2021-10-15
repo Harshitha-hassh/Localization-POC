@@ -350,6 +350,8 @@
     "101911":"Duplicate Discount Reason",
     "101916":"Discount Reason in use, Delete not allowed,",
     "101915":"Discount Reason in use, Inactive not allowed",
+    "101917":"Day End cannot be processed for a future date.",
     "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed."
+  
   }
   
