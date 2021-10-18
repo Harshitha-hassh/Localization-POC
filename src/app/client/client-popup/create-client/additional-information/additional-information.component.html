@@ -11,7 +11,7 @@
                     <div class=" width_220"
                         [ngClass]="this.isClientViewOnly ? 'button_invalid' : ''">
                         <mat-form-field class="width_180px">
-                            <input matInput class="" [min]="minFromDate" [matDatepicker]="picker"
+                            <input matInput dateRestricter class="" [min]="minFromDate" [matDatepicker]="picker"
                                 [placeholder]="captions.ExpiryDate" [readonly]="true">
                             <mat-datepicker #picker></mat-datepicker>
                             <i matSuffix
