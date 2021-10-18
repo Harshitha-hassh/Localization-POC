@@ -44,9 +44,14 @@ export class CustomDateAdapter extends NativeDateAdapter {
   // }
   parse(value: any): Date | null {
     if(value){
+      if (!value.match(/[0-9-/.]/)) {
+        return null;
+      } else {
         const date = moment(value, this.localization.inputDateFormat);
         return date? date.toDate(): null;
-    }
+      }
+     
+  }
     return null;
   }
 }
