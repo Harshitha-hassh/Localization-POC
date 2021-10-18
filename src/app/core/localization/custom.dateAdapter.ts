@@ -50,7 +50,8 @@ export class CustomDateAdapter extends NativeDateAdapter {
         const date = moment(value, this.localization.inputDateFormat);
         return date? date.toDate(): null;
       }
+     
     }
-    return null;
+      return null;
+    }
   }
-}
