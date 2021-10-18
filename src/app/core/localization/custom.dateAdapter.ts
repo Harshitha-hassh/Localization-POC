@@ -51,7 +51,7 @@ export class CustomDateAdapter extends NativeDateAdapter {
         return date? date.toDate(): null;
       }
      
+    }
+      return null;
+    }
   }
-    return null;
-  }
-}
