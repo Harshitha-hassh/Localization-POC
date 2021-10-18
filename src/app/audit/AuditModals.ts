@@ -70,3 +70,6 @@ export enum PendingAction {
         Stay,
         LMS
   }
+  export class ErrorCodes{
+    static UNABLE_TO_ROLL_TO_FUTURE_DATE = '101917';
+  }

@@ -54,7 +54,7 @@
             <div><label class="date-label   form-label-normal">{{caption.setting.PasswordExpirationDate}}</label></div>
             <mat-form-field class="" appearance="legacy">
               <mat-label></mat-label>
-              <input matInput [matDatepicker]="picker" autocomplete="off"  [min]="minDateValue" [placeholder]="placeHolderFormat"
+              <input matInput dateRestricter [matDatepicker]="picker" autocomplete="off"  [min]="minDateValue" [placeholder]="placeHolderFormat"
                 formControlName="pwdexpirationdate" >
               <mat-datepicker [startAt]="userSettingsFormGrp.controls['pwdexpirationdate'].value == null ? minDateValue : userSettingsFormGrp.controls['pwdexpirationdate'].value" #picker></mat-datepicker>
               <mat-error *ngIf="userSettingsFormGrp.controls['pwdexpirationdate'].hasError('matDatepickerParse')">{{commonCaptions.dateFormat}}</mat-error>   
