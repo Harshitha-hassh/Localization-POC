@@ -1,4 +1,4 @@
-FROM docker-registry.bellevue.agilysys.com:5000/official/node:10-20190614-1310 AS build
+FROM docker-registry.bellevue.agilysys.com:5000/official/node:10-20210829-2038 AS build
 EXPOSE 80
 
 ## set work dir
@@ -21,7 +21,7 @@ COPY . /ui/
 RUN npm run appliance-build 
 ## RUN ls
 
-FROM docker-registry.bellevue.agilysys.com:5000/official/nginxbase:latest
+FROM docker-registry.bellevue.agilysys.com:5000/official/nginxbase:1.12.1-20210829-2059
 
 ## Remove default Nginx website
 RUN rm -rf /usr/share/nginx/html/*
