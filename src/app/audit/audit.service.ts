@@ -30,12 +30,14 @@ export class AuditService {
                 break;
             case PendingAction.OpenTransaction: {
                 header = [{ "title": this.captions.TicketNumber, "jsonkey": "TicketNumber", "alignType": "left" },
+                { "title": this.captions.TransactionType, "jsonkey": "retailTransactionType", "alignType": "left" },
                 { "title": this.captions.Date, "jsonkey": "Date", "alignType": "left" },
                 { "title": this.captions.ClerkID, "jsonkey": "ClerkID", "alignType": "right" },
                 { "title": this.captions.Outlet, "jsonkey": "Outlet", "alignType": "left" },
                 { "title": `${this.captions.Amount} (${this.localization.currencySymbol})`, "jsonkey": "Amount", "alignType": "right" },
                 { "title": this.captions.ClientName, "jsonkey": "ClientName", "alignType": "left" },
-                { "title": this.captions.MemberName, "jsonkey": "MemberName", "alignType": "left" }
+                { "title": this.captions.MemberName, "jsonkey": "MemberName", "alignType": "left" },
+                { "title": `${this.captions.PaymentReceived} (${this.localization.currencySymbol})`, "jsonkey": "paymentReceivedAmount", "alignType": "right" }
                 ];
             }
                 break;

@@ -3370,7 +3370,9 @@
     "CancelOpenTransaction": "Would you like to Cancel the Ticket?_de",
     "systemMovedTo": "System date moved to_de",
     "ErrorSyncOutlet": "The following outlet(s) are not synced properly : {OutletName}_de",
-    "OutletSyncWait": "Please wait while outlet(s) are syncing_de"
+    "OutletSyncWait": "Please wait while outlet(s) are syncing_de",
+    "TransactionType": "Transaction Type_de",
+    "PaymentReceived": "Received Amount_de"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role_de",
