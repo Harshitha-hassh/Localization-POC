@@ -3384,7 +3384,9 @@
     "CancelOpenTransaction": "Would you like to Cancel the Ticket?_au",
     "systemMovedTo": "System date moved to_au",
     "ErrorSyncOutlet": "The following outlet(s) are not synced properly : {OutletName}_au",
-    "OutletSyncWait": "Please wait while outlet(s) are syncing_au"
+    "OutletSyncWait": "Please wait while outlet(s) are syncing_au",
+    "TransactionType": "Transaction Type_au",
+    "PaymentReceived": "Received Amount_au"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role_au",

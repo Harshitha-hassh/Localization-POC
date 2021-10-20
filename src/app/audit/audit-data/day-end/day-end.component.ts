@@ -352,7 +352,9 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         ClientId: tran.guestId,
         MemberName: '',
         AppointmentNumber: '',
-        transactionInfo: tran
+        transactionInfo: tran,
+        retailTransactionType : tran.retailTransactionType,
+        paymentReceivedAmount : this.FormatCurrency(tran.paymentReceivedAmount)
       };
       transactions.push(transaction);
     }
