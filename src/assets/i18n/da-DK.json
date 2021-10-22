@@ -2033,7 +2033,9 @@
     "pg_title_PaymentMethod": "PAYMENT METHOD_da",
     "lbl_paymentMethodName": "Payment Method Name_da",
     "err_paymentMethodName": "Missing Payment Method Name_da",
-    "AutoPrintReceipts": "Auto Print Receipts_da"
+    "AutoPrintReceipts": "Auto Print Receipts_da",
+    "err_max": "Exceeds Maximum Value_da",
+    "err_min": "Precedes Minimum Value_da"
   },
   "setting": {
     "Title": "Title_da",

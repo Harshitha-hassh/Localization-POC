@@ -2033,7 +2033,9 @@
     "pg_title_PaymentMethod": "PAYMENT METHOD_fr",
     "lbl_paymentMethodName": "Payment Method Name_fr",
     "err_paymentMethodName": "Missing Payment Method Name_fr",
-    "AutoPrintReceipts": "Auto Print Receipts_fr"
+    "AutoPrintReceipts": "Auto Print Receipts_fr",
+    "err_max": "Exceeds Maximum Value_fr",
+    "err_min": "Precedes Minimum Value_fr"
   },
   "setting": {
     "Title": "Title_fr",

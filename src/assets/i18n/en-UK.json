@@ -2033,7 +2033,9 @@
     "pg_title_PaymentMethod": "PAYMENT METHOD_uk",
     "lbl_paymentMethodName": "Payment Method Name_uk",
     "err_paymentMethodName": "Missing Payment Method Name_uk",
-    "AutoPrintReceipts": "Auto Print Receipts_uk"
+    "AutoPrintReceipts": "Auto Print Receipts_uk",
+    "err_max": "Exceeds Maximum Value_uk",
+    "err_min": "Precedes Minimum Value_uk"
   },
   "setting": {
     "Title": "Title_uk",
