@@ -2035,8 +2035,8 @@
 		"lbl_paymentMethodName": "Payment Method Name",
 		"err_paymentMethodName": "Missing Payment Method Name",
 		"AutoPrintReceipts": "Auto Print Receipts",
-    "err_max": "Exceeds Maximum Value_fr",
-  	"err_min": "Precedes Minimum Value_fr"
+    "err_max": "Exceeds Maximum Value",
+  	"err_min": "Precedes Minimum Value"
   },
   "setting": {
     "Title": "Title",

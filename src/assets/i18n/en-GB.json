@@ -2034,8 +2034,8 @@
     "lbl_paymentMethodName": "Payment Method Name_gb",
     "err_paymentMethodName": "Missing Payment Method Name_gb",
     "AutoPrintReceipts": "Auto Print Receipts_gb",
-    "err_max": "Exceeds Maximum Value_fr_gb",
-    "err_min": "Precedes Minimum Value_fr_gb"
+    "err_max": "Exceeds Maximum Value_gb",
+    "err_min": "Precedes Minimum Value_gb"
   },
   "setting": {
     "Title": "Title_gb",
