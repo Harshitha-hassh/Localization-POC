@@ -2033,7 +2033,9 @@
     "pg_title_PaymentMethod": "PAYMENT METHOD_in",
     "lbl_paymentMethodName": "Payment Method Name_in",
     "err_paymentMethodName": "Missing Payment Method Name_in",
-    "AutoPrintReceipts": "Auto Print Receipts_in"
+    "AutoPrintReceipts": "Auto Print Receipts_in",
+    "err_max": "Exceeds Maximum Value_fr_in",
+    "err_min": "Precedes Minimum Value_fr_in"
   },
   "setting": {
     "Title": "Title_in",
