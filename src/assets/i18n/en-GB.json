@@ -2636,6 +2636,7 @@
     "proceed": "PROCEED_gb",
     "missingCountryName": "Missing country name_gb",
     "invalidCountryName": "Invalid country name_gb",
+    "AllowDateToFuture": "Allow Date Roll to Next Day_gb",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_gb",
       "CMS": "CMS_gb",
