@@ -5592,3 +5592,7 @@ a:hover {
   width: 1px; 
   height: 1px;
 }
+
+body .cdk-custom-wrapper .ag_table .table th {
+   font-weight: unset!important;
+}
