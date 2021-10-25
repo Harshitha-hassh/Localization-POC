@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpRequest, HttpInterceptor, HttpHandler, HttpEvent } from '@angular/common/http';
+import { HttpRequest, HttpInterceptor, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { ALLOWED_URL } from 'src/app/shared/enums/constants';
 import { tap, catchError } from 'rxjs/operators';
@@ -60,7 +60,7 @@ export class LoaderInterceptor implements HttpInterceptor {
                 }),            
             catchError(errs => {
               console.log("catchError -->", errs);
-              return observableThrowError(errs);
+              return throwError(errs);
             }),);       
             
           }
@@ -102,7 +102,3 @@ export class LoaderInterceptor implements HttpInterceptor {
     }
   }
 }
-function observableThrowError(errs: any): any {
-  throw new Error('Function not implemented.');
-}
-

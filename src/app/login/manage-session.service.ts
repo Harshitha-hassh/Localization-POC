@@ -2,15 +2,17 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
-import { Observable, Subject, Subscription, timer } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, Subscription, timer } from 'rxjs';
 import { Utilities } from '../core/utilities';
 import { TenantManagementCommunication } from '../shared/communication/services/tenantmanagement.service';
 import { RetailRoutes } from '../core/extensions/retail-route';
 import moment from 'moment';
-import { HttpServiceCall } from '../retail/shared/service/http-call.service';
+import { HttpMethod, HttpServiceCall } from '../retail/shared/service/http-call.service';
 import { AlertType } from '../common/enums/shared-enums';
 import { RetailLocalization } from '../retail/common/localization/retail-localization';
 import { JWT_TOKEN, REMEMBER_INFO, USERS_SESSSIONS_INFO } from '../app-constants';
+import { Host } from '../retail/shared/globalsContant';
+import { NotificationFailureType } from '../shared/components/menu/menu.model';
 
 @Injectable({
     providedIn: 'root'
@@ -26,6 +28,9 @@ export class ManageSessionService implements OnDestroy {
     private _timeoutSeconds: number;
     private timerSubscription: Subscription;
     private timer: Observable<number>;
+    public timerSubscriptionForNotification: Subscription;
+    public timerForNotification: Observable<number>;
+    public transactionCount: BehaviorSubject<{ id: number, count: number }[]> = new BehaviorSubject([]);
 
     token = {
         refresh_token: 'refreshtokencode',
@@ -52,16 +57,19 @@ export class ManageSessionService implements OnDestroy {
     private triggerTimeout: any;
 
     constructor(private router: Router
-        , public dialogRef: MatDialog
-        , public loginService: TenantManagementCommunication
-        , private utils: Utilities
-        , public http: HttpServiceCall,
-        private localize: RetailLocalization) {
+              , public dialogRef: MatDialog
+              , public loginService: TenantManagementCommunication
+              , private utils: Utilities
+              , public http: HttpServiceCall,
+                private localize: RetailLocalization) {
 
         this.timeoutExpired.subscribe(n => {
         });
         if (this.tokenTimerSubscription) {
             this.tokenTimerSubscription.unsubscribe();
+        }
+        if (this.timerSubscriptionForNotification) {
+            this.timerSubscriptionForNotification.unsubscribe();
         }
     }
 
@@ -74,11 +82,13 @@ export class ManageSessionService implements OnDestroy {
         if (this.tokenTimerSubscription) {
             this.tokenTimerSubscription.unsubscribe();
         }
+        this.stopTimerForNotification();
     }
 
     async logout() {
         clearTimeout(this.triggerTimeout);
         this.triggerTimeout = null;
+        this.stopTimerForNotification();
         this.doLogoutActivities();
         await this.updateSession();
         this.removeToken();
@@ -399,5 +409,52 @@ export class ManageSessionService implements OnDestroy {
                 };
             })
         };
+    }
+
+    public startTimerForNotification(notifyin: number) {
+        if (notifyin && notifyin > 0) {
+            this.stopTimerForNotification();
+            this.timerForNotification = timer(notifyin * 60 * 1000);
+            this.timerSubscriptionForNotification = this.timerForNotification.subscribe(n => {
+                this.timerCompleteForNotification(n);
+            });
+        }
+    }
+
+    private timerCompleteForNotification(n: number) {
+        this.getRevenuePostingCount().then(x => {
+            this.transactionCount.next([{ id : NotificationFailureType.revenuePostingFailure, count : x }]);
+        });
+        this.getTransactionLogCount().then(s => {
+            this.transactionCount.next([{ id : NotificationFailureType.paymentTransactionFailure, count : s }]);
+        });
+        // TODO
+        this.startTimerForNotification(10);
+    }
+
+
+    public async getRevenuePostingCount(): Promise<number> {
+        const response = await this.http.CallApiAsync<number>({
+            callDesc: 'GetFailureRevenuePosting',
+            host: Host.retailPOS,
+            method: HttpMethod.Get,
+            showError: true
+        });
+        return response.result;
+    }
+    public async getTransactionLogCount(): Promise<number> {
+        const response = await this.http.CallApiAsync<number>({
+            callDesc: 'GetFailureDetails',
+            host: Host.payment,
+            method: HttpMethod.Get,
+            showError: true
+        });
+        return response.result;
+    }
+
+    public stopTimerForNotification() {
+        if (this.timerSubscriptionForNotification) {
+            this.timerSubscriptionForNotification.unsubscribe();
+        }
     }
 }

@@ -30,12 +30,14 @@ export class AuditService {
                 break;
             case PendingAction.OpenTransaction: {
                 header = [{ "title": this.captions.TicketNumber, "jsonkey": "TicketNumber", "alignType": "left" },
+                { "title": this.captions.TransactionType, "jsonkey": "retailTransactionType", "alignType": "left" },
                 { "title": this.captions.Date, "jsonkey": "Date", "alignType": "left" },
                 { "title": this.captions.ClerkID, "jsonkey": "ClerkID", "alignType": "right" },
                 { "title": this.captions.Outlet, "jsonkey": "Outlet", "alignType": "left" },
                 { "title": `${this.captions.Amount} (${this.localization.currencySymbol})`, "jsonkey": "Amount", "alignType": "right" },
                 { "title": this.captions.ClientName, "jsonkey": "ClientName", "alignType": "left" },
-                { "title": this.captions.MemberName, "jsonkey": "MemberName", "alignType": "left" }
+                { "title": this.captions.MemberName, "jsonkey": "MemberName", "alignType": "left" },
+                { "title": `${this.captions.PaymentReceived} (${this.localization.currencySymbol})`, "jsonkey": "paymentReceivedAmount", "alignType": "right" }
                 ];
             }
                 break;
@@ -55,8 +57,9 @@ export class AuditService {
             case PendingAction.CheckOutWithoutTransaction:
                 actions = [{ 'label': this.captions.UndoCheckOut, 'action': GridAction.UndoCheckOut, 'redirectTo': '' }];
                 break;
-            case PendingAction.OpenTransaction:
-                actions = [{ 'label': this.captions.Settle, 'action': GridAction.Settle, 'redirectTo': '' }, { 'label': this.captions.Open, 'action': GridAction.ReOpen, 'redirectTo': '' },{ 'label': this.captions.Cancel, 'action': GridAction.CancelTransaction, 'redirectTo': '' }]
+             case PendingAction.OpenTransaction:
+                actions = [{ 'label': this.captions.Settle, 'action': GridAction.Settle, 'redirectTo': '' }, { 'label': this.captions.Open, 'action': GridAction.ReOpen, 'redirectTo': '' }
+                ,{ 'label': this.captions.Cancel, 'action': GridAction.CancelTransaction, 'redirectTo': '' },{ 'label': this.localization.captions.shop.Close, 'action': GridAction.Close, 'redirectTo': '' }]
                 break;
         }
         return actions;

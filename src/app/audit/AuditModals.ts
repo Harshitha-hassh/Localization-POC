@@ -16,7 +16,8 @@ export enum GridAction {
     Settle,
     ReOpen,
     UndoCheckOut,
-    CancelTransaction
+    CancelTransaction,
+    Close
 }
 
 export enum PendingAction {
@@ -68,4 +69,7 @@ export enum PendingAction {
     VisualOne = 1,
         Stay,
         LMS
+  }
+  export class ErrorCodes{
+    static UNABLE_TO_ROLL_TO_FUTURE_DATE = '101917';
   }
