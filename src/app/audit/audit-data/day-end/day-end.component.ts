@@ -413,7 +413,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   async PopupCallback(result: string, extraParams?: any) {
     if (result.toLowerCase() == "yes") {
       this.isProcessClicked = true;
-      let uriParam = { currentDate: this.currentDateForAPI, allowFutureDate: this.allowFutureDate };
+      let uriParam = { currentDate: this.currentDateForAPI, isAllowFutureDate: this.allowFutureDate };
       this.InvokeServiceCall("PerformDayEnd", Host.retailPOS, HttpMethod.Put, uriParam);
     }
   }
