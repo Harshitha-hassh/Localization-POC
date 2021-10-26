@@ -2033,7 +2033,9 @@
     "pg_title_PaymentMethod": "PAYMENT METHOD_au",
     "lbl_paymentMethodName": "Payment Method Name_au",
     "err_paymentMethodName": "Missing Payment Method Name_au",
-    "AutoPrintReceipts": "Auto Print Receipts_au"
+    "AutoPrintReceipts": "Auto Print Receipts_au",
+    "err_max": "Exceeds Maximum Value_au",
+    "err_min": "Precedes Minimum Value_au"
   },
   "setting": {
     "Title": "Title_au",
@@ -2634,6 +2636,7 @@
     "proceed": "PROCEED_au",
     "missingCountryName": "Missing country name_au",
     "invalidCountryName": "Invalid country name_au",
+    "AllowDateToFuture": "Allow Date Roll to Next Day_au",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_au",
       "CMS": "CMS_au",
@@ -3593,6 +3596,6 @@
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_au",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_au",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_au",
-  "RevenuePostingInfo": "Total {count} Records Found in revenue Posting_au",
-  "FailedTransLogInfo": "Total {count} Records Found in Payment Logs_au"
+  "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_au",
+  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_au"
 }

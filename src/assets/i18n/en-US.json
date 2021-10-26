@@ -2034,7 +2034,9 @@
 		"pg_title_PaymentMethod": "PAYMENT METHOD",
 		"lbl_paymentMethodName": "Payment Method Name",
 		"err_paymentMethodName": "Missing Payment Method Name",
-		"AutoPrintReceipts": "Auto Print Receipts"
+		"AutoPrintReceipts": "Auto Print Receipts",
+    "err_max": "Exceeds Maximum Value",
+  	"err_min": "Precedes Minimum Value"
   },
   "setting": {
     "Title": "Title",
@@ -2635,6 +2637,7 @@
     "proceed":"PROCEED",
 		"missingCountryName": "Missing country name",
 		"invalidCountryName": "Invalid country name",
+    "AllowDateToFuture": "Allow Date Roll to Next Day",
 		"RetailFeature": {
 			"ACES Membership": "Agilysys Engage",
 			"CMS": "CMS",
@@ -3594,6 +3597,6 @@
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?",  
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}",
   "combineGuest_warning": "Are you sure you want to cancel the changes?"  ,
-  "RevenuePostingInfo" : "Total {count} Records Found in revenue Posting",
-  "FailedTransLogInfo" : "Total {count} Records Found in Payment Logs"  
+  "RevenuePostingInfo" : "{count} Failed records found in Revenue Postings",
+  "FailedTransLogInfo" : "{count} Failed records round in Payment Logs"  
 }

@@ -355,7 +355,7 @@
   "GetTransactionStatus": "transaction/appointment/{id}",
   "GetAppointmentWithDeposit": "appointments/status/{status}/date/{appointmentDate}",
   "GetAppointmentWithoutTransaction": "appointments/notransaction/checkedout/date/{appointmentDate}",
-  "PerformDayEnd": "dayend/process/date/{currentDate}",
+  "PerformDayEnd": "dayend/process/date/{currentDate}/{isAllowFutureDate}",
   "GetManagementData": "Rules/ManagementData",
   "CheckOutAppointment": "appointments/checkout",
   "GetReport": "report",

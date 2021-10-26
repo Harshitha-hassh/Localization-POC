@@ -297,6 +297,9 @@ svg-icon {
   {
     position: relative;
     span.count {
+      min-width: 20px;
+      min-height: 20px;
+      font-weight: bold;
       position: absolute;
       left: 30px;
       background:$theme-base-color;
@@ -632,4 +635,13 @@ svg-icon {
   border-left: 5px solid;
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
+}
+
+.ct-color-transc-notification
+{
+  a{
+
+    color: $theme-base-color!important;
+
+  }
 }

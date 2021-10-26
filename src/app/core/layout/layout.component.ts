@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PropertyService } from 'src/app/common/services/property.service';
+import { ManageSessionService } from 'src/app/login/manage-session.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { menuTypes } from 'src/app/shared/enums/menu.constant';
 import { PropertyInformation } from '../services/property-information.service';
@@ -19,6 +20,7 @@ export class LayoutComponent implements OnInit {
   propertyDateTime: any;
 
   constructor(private routeDataService: RouteLoaderService,
+    private sessionService: ManageSessionService,
     private localization: RetailLocalization,
     private propertyInfo: PropertyInformation,
     private propertyService: PropertyService) {
@@ -36,6 +38,14 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
       this.applyTheme('blacktheme');
       this.loadGoogleMap();
+      this.triggerNotification();
+  }
+
+  triggerNotification(){
+    if (!this.propertyInfo.UseRetailInterface) {
+      // TODO
+      this.sessionService.startTimerForNotification(1);
+    }
   }
 
   private loadGoogleMap(){

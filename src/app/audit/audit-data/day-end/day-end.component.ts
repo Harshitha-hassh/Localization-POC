@@ -67,6 +67,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   hasAccess = false;
   subscriptions: ISubscription[] = [];
   propOutlets: SubPropertyModel[] = [];
+  allowFutureDate: boolean = false;
 
   constructor(public localization: RetailLocalization, private utils: RetailUtilities, private http: HttpServiceCall,
     private auditService: AuditService, public router: Router,
@@ -106,6 +107,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.GetGridData();
       // tslint:disable-next-line: max-line-length
       this.InvokeServiceCall('GetOutletsByProperty', Host.retailManagement, HttpMethod.Get, { PropertyId: Number(this.localization.GetPropertyInfo('PropertyId')) });
+      this.InvokeServiceCall('GetMiscConfigurationByPropertyId',Host.retailManagement,HttpMethod.Get,{PropertyId: Number(this.localization.GetPropertyInfo('PropertyId'))});
     }
     this.ResetServiceObject();
   }
@@ -230,6 +232,14 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         if (response) {
           this.propOutlets = response.filter(x => x.isActive);
           console.log(this.propOutlets);
+        }
+        break;
+      }
+      case 'GetMiscConfigurationByPropertyId':{
+        const response: any = result.result as any ? result.result : [];
+        if (response) {
+          this.allowFutureDate = response.find(x => x.switch=="ALLOW_DATE_FOR_FUTURE").value == "true" ? true : false;
+           
         }
       }
     }
@@ -403,7 +413,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   async PopupCallback(result: string, extraParams?: any) {
     if (result.toLowerCase() == "yes") {
       this.isProcessClicked = true;
-      let uriParam = { currentDate: this.currentDateForAPI };
+      let uriParam = { currentDate: this.currentDateForAPI, isAllowFutureDate: this.allowFutureDate };
       this.InvokeServiceCall("PerformDayEnd", Host.retailPOS, HttpMethod.Put, uriParam);
     }
   }
