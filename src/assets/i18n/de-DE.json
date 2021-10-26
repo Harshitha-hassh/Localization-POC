@@ -1499,7 +1499,7 @@
     "8140": "8140 - Sales Mix Report_de",
     "8150": "8150 - Items Extract_de",
     "8160": "8160 - Inventory Summary by Vendor_de",
-    "8165": "8165 - Inventory Detail by Vendor_de",
+    "8165": "8165 - Vendor Inventory Detail_de",
     "8170": "8170 - Sale by Vendor_de",
     "8700": "8700 - Update Qty on Hand_de",
     "8705": "8705 – Freeze Inventory_de",
@@ -3596,6 +3596,6 @@
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_de",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_de",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_de",
-  "RevenuePostingInfo": "Total {count} Records Found in revenue Posting_de",
-  "FailedTransLogInfo": "Total {count} Records Found in Payment Logs_de"
+  "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_de",
+  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_de"
 }
