@@ -1448,6 +1448,7 @@
     "5015": "5015 - Return - without Ticket_in",
     "5020": "5020 - Modify Posted Commission_in",
     "5025": "5025 - Reprint Ticket_in",
+    "5030": "5030 - Revenue Postings Log_in",
     "7000": "7000 - Outlet Setup_in",
     "7005": "7005 - Item Setup_in",
     "7010": "7010 - Quick Sale Keys_in",
