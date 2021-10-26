@@ -1320,6 +1320,7 @@
       },
       "popupHeader": "Gift Card Payment_fi",
       "LoadCardFailureMsg": " Top-up process failed while loading following card(s): <br/> <ul> {cardNumber} </ul>_fi",
+      "IssueCardFailureMsg": " Unable to issue the following card(s): <br/> <ul> {cardNumber} </ul>_fi",
       "ItemAlreadyAddedToCart": "Gift card with the same card number is already added to the cart. Please proceed with a different card number._fi",
       "CashbackAmount": "Cashback Amount_fi",
       "CardExpired": "Gift Card has been expired._fi",
