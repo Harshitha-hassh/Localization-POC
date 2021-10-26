@@ -62,7 +62,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   isEatecEnabled: boolean;
   transactionCountSubscription: Subscription;
   notificationCount: number = 0;
-  notificationInfo: {id: number , message: string, count: number }[] = [];
+  notificationInfo: {id: number , message: string }[] = [];
 
   @Input('menu')
   set MenuValue(value) {
@@ -100,21 +100,31 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.transactionCountSubscription = this._sessionService.transactionCount.subscribe(res => {
       const revenueresult = res && res.find(x => x.id === NotificationFailureType.revenuePostingFailure) ;
       const paymentresult = res && res.find(x => x.id === NotificationFailureType.paymentTransactionFailure) ;
-      if (revenueresult && revenueresult.count > 0 && !this.notificationInfo.some(x => x.count === revenueresult.count
-         && x.id  === NotificationFailureType.revenuePostingFailure)) {
-        this.notificationInfo.push({
-          id :  NotificationFailureType.revenuePostingFailure,
-          message : this._localization.replacePlaceholders(this.captions.RevenuePostingInfo, ['count'], [ revenueresult.count]),
-          count :  revenueresult.count ,
-        });
+      if (revenueresult && revenueresult.count > 0) {
+        if (this.notificationInfo && this.notificationInfo.length > 0 &&
+           this.notificationInfo.some(x => x.id === NotificationFailureType.revenuePostingFailure )) {
+            this.notificationInfo.find(x => x.id === NotificationFailureType.revenuePostingFailure ).message =
+            this._localization.replacePlaceholders(this.captions.RevenuePostingInfo, ['count'], [ revenueresult.count]);
+          }
+        else {
+          this.notificationInfo.push({
+            id :  NotificationFailureType.revenuePostingFailure,
+            message : this._localization.replacePlaceholders(this.captions.RevenuePostingInfo, ['count'], [ revenueresult.count])
+          });
+        }
       }
-      if (paymentresult && paymentresult.count > 0 && !this.notificationInfo.some(x => x.count === paymentresult.count
-        && x.id  === NotificationFailureType.paymentTransactionFailure)) {
-        this.notificationInfo.push({
-         id :  NotificationFailureType.paymentTransactionFailure,
-         message : this._localization.replacePlaceholders(this.captions.FailedTransLogInfo, ['count'], [ paymentresult.count]),
-         count :  paymentresult.count ,
-       });
+      if (paymentresult && paymentresult.count > 0) {
+        if (this.notificationInfo && this.notificationInfo.length > 0 &&
+          this.notificationInfo.some(x => x.id === NotificationFailureType.paymentTransactionFailure )) {
+           this.notificationInfo.find(x => x.id === NotificationFailureType.paymentTransactionFailure ).message =
+           this._localization.replacePlaceholders(this.captions.FailedTransLogInfo, ['count'], [ paymentresult.count]);
+         }
+       else {
+         this.notificationInfo.push({
+           id :  NotificationFailureType.paymentTransactionFailure,
+           message :  this._localization.replacePlaceholders(this.captions.FailedTransLogInfo, ['count'], [ paymentresult.count])
+         });
+       }
       }
       this.notificationCount = this.notificationInfo.length;
     });

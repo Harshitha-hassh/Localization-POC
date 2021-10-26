@@ -3596,6 +3596,6 @@
   "combineGuestWarn_Merge": "Are you sure you want to combine the details of the selected guest with {primaryName}?_gb",
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_gb",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_gb",
-  "RevenuePostingInfo": "Total {count} Records Found in revenue Posting_gb",
-  "FailedTransLogInfo": "Total {count} Records Found in Payment Logs_gb"
+  "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_gb",
+  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_gb"
 }
