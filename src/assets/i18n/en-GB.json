@@ -1114,6 +1114,8 @@
     "Apply": "APPLY_gb",
     "DiscountPercentage": "Discount (%)_gb",
     "DiscountType": "Discount Type_gb",
+    "ItemName": "Item Name_gb",
+    "ItemPrice": "Item Price_gb",
     "PercentageWithoutSymbol": "Percentage_gb",
     "NoDevicesFound": "No Devices Found. Please select any other payment method_gb",
     "NoRoomsFound": "No Rooms Found_gb",

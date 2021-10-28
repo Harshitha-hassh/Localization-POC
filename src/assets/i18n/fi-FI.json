@@ -1114,6 +1114,8 @@
     "Apply": "APPLY_fi",
     "DiscountPercentage": "Discount (%)_fi",
     "DiscountType": "Discount Type_fi",
+    "ItemName": "Item Name_fi",
+    "ItemPrice": "Item Price_fi",
     "PercentageWithoutSymbol": "Percentage_fi",
     "NoDevicesFound": "No Devices Found. Please select any other payment method_fi",
     "NoRoomsFound": "No Rooms Found_fi",
