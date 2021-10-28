@@ -1114,6 +1114,8 @@
     "Apply": "APPLY_fr",
     "DiscountPercentage": "Discount (%)_fr",
     "DiscountType": "Discount Type_fr",
+    "ItemName": "Item Name_fr",
+    "ItemPrice": "Item Price_fr",
     "PercentageWithoutSymbol": "Percentage_fr",
     "NoDevicesFound": "No Devices Found. Please select any other payment method_fr",
     "NoRoomsFound": "No Rooms Found_fr",

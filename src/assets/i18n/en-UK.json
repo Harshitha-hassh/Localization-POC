@@ -1114,6 +1114,8 @@
     "Apply": "APPLY_uk",
     "DiscountPercentage": "Discount (%)_uk",
     "DiscountType": "Discount Type_uk",
+    "ItemName": "Item Name_uk",
+    "ItemPrice": "Item Price_uk",
     "PercentageWithoutSymbol": "Percentage_uk",
     "NoDevicesFound": "No Devices Found. Please select any other payment method_uk",
     "NoRoomsFound": "No Rooms Found_uk",

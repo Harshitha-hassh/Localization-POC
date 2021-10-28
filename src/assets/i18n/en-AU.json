@@ -1114,6 +1114,8 @@
     "Apply": "APPLY_au",
     "DiscountPercentage": "Discount (%)_au",
     "DiscountType": "Discount Type_au",
+    "ItemName": "Item Name_au",
+    "ItemPrice": "Item Price_au",
     "PercentageWithoutSymbol": "Percentage_au",
     "NoDevicesFound": "No Devices Found. Please select any other payment method_au",
     "NoRoomsFound": "No Rooms Found_au",

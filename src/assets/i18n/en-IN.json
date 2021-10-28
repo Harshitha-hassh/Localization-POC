@@ -1114,6 +1114,8 @@
     "Apply": "APPLY_in",
     "DiscountPercentage": "Discount (%)_in",
     "DiscountType": "Discount Type_in",
+    "ItemName": "Item Name_in",
+    "ItemPrice": "Item Price_in",
     "PercentageWithoutSymbol": "Percentage_in",
     "NoDevicesFound": "No Devices Found. Please select any other payment method_in",
     "NoRoomsFound": "No Rooms Found_in",
