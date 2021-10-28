@@ -2622,6 +2622,7 @@
     "PMSProxyEndPoint": "PMS Proxy Endpoint_fi",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_fi",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_fi",
+    "EnableCheckZoom": "Enable CheckZoom_fi",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_fi",
     "DiscountReasonRequired": "Require Reason On Discount_fi",
     "DiscountCommentsRequired": "Require Comment On Discount_fi",

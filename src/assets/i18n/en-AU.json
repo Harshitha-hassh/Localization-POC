@@ -2622,6 +2622,7 @@
     "PMSProxyEndPoint": "PMS Proxy Endpoint_au",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_au",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_au",
+    "EnableCheckZoom": "Enable CheckZoom_au",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_au",
     "DiscountReasonRequired": "Require Reason On Discount_au",
     "DiscountCommentsRequired": "Require Comment On Discount_au",

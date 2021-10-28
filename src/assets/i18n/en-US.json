@@ -2623,6 +2623,7 @@
 		"PMSProxyEndPoint": "PMS Proxy Endpoint",
 		"ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity",
+    "EnableCheckZoom":"Enable CheckZoom",
     "Confirmationdialog": "Enable Retail Confirmation Dialog",
     "DiscountReasonRequired": "Require Reason On Discount",
     "DiscountCommentsRequired": "Require Comment On Discount",
