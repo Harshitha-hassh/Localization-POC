@@ -333,10 +333,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setMachineDetails();
       this.router.navigate(['/home']);      
       await this.retailFunc.getRetailFunctionality();
-      if (!this.propertyInfo.UseRetailInterface) {
-        // TODO
-        this.sessionService.startTimerForNotification(1);
-      }
     }
   }
 
