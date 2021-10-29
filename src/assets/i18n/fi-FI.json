@@ -916,6 +916,8 @@
     "invalidCountryName": "Invalid country name_fi"
   },
   "shop": {
+    "ItemName": "Item Name_fi",
+    "ItemPrice": "Item Price_fi",
     "tbl_hdr_ticketNumber": "Ticket #_fi",
     "tbl_hdr_transactiontime": "Time_fi",
     "tbl_hdr_transactionDate": "Date_fi",
