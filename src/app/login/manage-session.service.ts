@@ -13,6 +13,7 @@ import { RetailLocalization } from '../retail/common/localization/retail-localiz
 import { JWT_TOKEN, REMEMBER_INFO, USERS_SESSSIONS_INFO } from '../app-constants';
 import { Host } from '../retail/shared/globalsContant';
 import { NotificationFailureType } from '../shared/components/menu/menu.model';
+import { RetailPropertyInformation } from '../retail/common/services/retail-property-information.service';
 
 @Injectable({
     providedIn: 'root'
@@ -61,7 +62,8 @@ export class ManageSessionService implements OnDestroy {
               , public loginService: TenantManagementCommunication
               , private utils: Utilities
               , public http: HttpServiceCall,
-                private localize: RetailLocalization) {
+                private localize: RetailLocalization,
+                private propertyInformation: RetailPropertyInformation) {
 
         this.timeoutExpired.subscribe(n => {
         });
@@ -422,9 +424,11 @@ export class ManageSessionService implements OnDestroy {
     }
 
     private timerCompleteForNotification(n: number) {
-        this.getRevenuePostingCount().then(x => {
+        if (this.propertyInformation.HasRevenuePostingEnabled) {
+           this.getRevenuePostingCount().then(x => {
             this.transactionCount.next([{ id : NotificationFailureType.revenuePostingFailure, count : x }]);
-        });
+           });
+        }
         this.getTransactionLogCount().then(s => {
             this.transactionCount.next([{ id : NotificationFailureType.paymentTransactionFailure, count : s }]);
         });
