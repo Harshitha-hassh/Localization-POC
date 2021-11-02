@@ -916,6 +916,7 @@
 		"invalidCountryName": "Invalid country name"
   },
   "shop": {    
+    "creditBookBalance":"Credit Book",
     "ItemName": "Item Name",
    	"ItemPrice":"Item Price",
     "tbl_hdr_ticketNumber":"Ticket #",

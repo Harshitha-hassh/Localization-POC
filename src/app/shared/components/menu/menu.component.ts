@@ -173,6 +173,30 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
         this._propertyInfo.SetEatecRI(configValue)
       });
     }
+    if (!sessionStorage.getItem("memberConfiguration")) {
+      var configValue = "";
+      let featureNames = ["ACES Membership"];
+      this._propertyFeatureService.GetFeatureConfigurations(featureNames).then((featureconfigurations) => {
+      if (featureconfigurations != null) {
+        let uri = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.LoyaltyURI);
+        let loyaltyServiceURI = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.LoyaltyServiceURI);
+        let loyaltyTokenRequestInfo = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.LoyaltyTokenRequestInfo);
+        let enforceMemberPayment = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.EnforceMemberPayment);
+        let displayCreditBookBalance = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.DisplayCreditBookBalance);
+        let loyalty = {
+          loyaltyURI: uri && uri.configurationValue ? uri.configurationValue : "",
+          loyaltyServiceURI: loyaltyServiceURI && loyaltyServiceURI.configurationValue ? loyaltyServiceURI.configurationValue : "",
+          loyaltyTokenRequestInfo: loyaltyTokenRequestInfo && loyaltyTokenRequestInfo.configurationValue ? loyaltyTokenRequestInfo.configurationValue : "",
+          enforceMemberPayment: (enforceMemberPayment && enforceMemberPayment.configurationValue) || "false",
+          displayCreditBookBalance : (displayCreditBookBalance && displayCreditBookBalance.configurationValue) || "false"
+        }
+        this._propertyInfo.SetMemberConfiguration(loyalty)
+      }
+      else {
+        this._propertyInfo.SetMemberConfiguration("")
+      }
+    });
+  }
     this._propertyFeatureService.GetMiscConfig();
   }
 
