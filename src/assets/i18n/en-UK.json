@@ -1322,8 +1322,9 @@
         "5": "Agilysys_uk"
       },
       "popupHeader": "Gift Card Payment_uk",
-      "LoadCardFailureMsg": " Top-up process failed while loading following card(s): <br/> <ul> {cardNumber} </ul>_uk",
-      "IssueCardFailureMsg": " Unable to issue the following card(s): <br/> <ul> {cardNumber} </ul>_uk",
+      "LoadCardFailureMsg": " Top-up process failed while loading following card(s): <br/> <br>{cardNumber} _uk",
+      "IssueCardFailureMsg": " Unable to issue the following card(s): <br/> <br> {cardNumber} _uk",
+      "ProgressMsg": "Processing {currentIndex} of {overAllCount}_uk",
       "ItemAlreadyAddedToCart": "Gift card with the same card number is already added to the cart. Please proceed with a different card number._uk",
       "CashbackAmount": "Cashback Amount_uk",
       "CardExpired": "Gift Card has been expired._uk",
