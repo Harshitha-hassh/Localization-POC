@@ -1322,8 +1322,9 @@
         "5": "Agilysys_de"
       },
       "popupHeader": "Gift Card Payment_de",
-      "LoadCardFailureMsg": " Top-up process failed while loading following card(s): <br/> <ul> {cardNumber} </ul>_de",
-      "IssueCardFailureMsg": " Unable to issue the following card(s): <br/> <ul> {cardNumber} </ul>_de",
+      "LoadCardFailureMsg": " Top-up process failed while loading following card(s): <br/> <br>{cardNumber} _de",
+      "IssueCardFailureMsg": " Unable to issue the following card(s): <br/> <br> {cardNumber} _de",
+      "ProgressMsg": "Processing {currentIndex} of {overAllCount}_de",
       "ItemAlreadyAddedToCart": "Gift card with the same card number is already added to the cart. Please proceed with a different card number._de",
       "CashbackAmount": "Cashback Amount_de",
       "CardExpired": "Gift Card has been expired._de",
