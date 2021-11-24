@@ -2069,6 +2069,8 @@
     "More": "More_in",
     "Allow": "Allow_in",
     "View": "View_in",
+    "Allow_All": "Allow All_in",
+    "View_All": "View All_in",
     "ServicesOnly": "Services Only_in",
     "SelectedServices": "Selected Services_in",
     "RetailItems": "Retail Items_in",
