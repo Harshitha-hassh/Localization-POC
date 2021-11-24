@@ -36,6 +36,17 @@
         .mat-expansion-panel-header{
             border-bottom: 1px solid $color-form-bgColor;
             font-size: 14px;
+            .allow-view-all{
+                position: absolute;
+                right: 3rem;
+                display: flex;
+                .allow-all{
+                 padding: 0px 6px;
+                }
+            }
+            .allow-view-all-display {
+                display: block;
+            }
             .mat-content{
                 width: calc(100% - 10px);
                 .mat-expansion-panel-header-title{
