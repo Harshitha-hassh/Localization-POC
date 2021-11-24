@@ -7,13 +7,27 @@
     <mat-accordion id="ExapanedPanel" class="expansion-panel-section" *ngFor="let userDetails of userRoleGroup.get('userDetails')['controls'];let m = index;"
       formArrayName="userDetails">
       <!--Second Loop-->
-      <mat-expansion-panel *ngFor="let itemDetails of item.headerData.details;let k=index" [formGroupName]="m" id="formGroup-{{m}}">
+      <!-- <mat-expansion-panel *ngFor="let itemDetails of item.headerData.details;let k=index" [formGroupName]="m" id="formGroup-{{m}}"> -->
+        <mat-expansion-panel *ngFor="let itemDetails of item.headerData.details;let k=index" [formGroupName]="m" id="formGroup-{{m}}" 
+        (opened)="onOpenClick(itemDetails, k)" (closed)="itemDetails.isOpened=false">
         <mat-expansion-panel-header *ngIf="m == k">
           <mat-panel-title>
             {{this.localization.captions.breakpoint[itemDetails.description]}}
           </mat-panel-title>
           <mat-panel-description>
             {{selectedCount[k]}}/{{itemDetails.userClaims.length}}
+            <div class="allow-view-all" *ngIf="itemDetails.isOpened" (click)="onToggleClick($event)">
+              <div class="allow-all">
+                <span class="LW12 mb-2 mr-1 toggle-text">{{this.localization.captions.setting.Allow_All}}</span>
+                <app-toggle-switch [value]="allowAllToggle[k]" (changeToggleEvent)="allowAll(userDetails, itemDetails, $event, k)">
+                </app-toggle-switch>
+              </div>
+              <div>
+                <span class="LW12 mb-2 mr-1 toggle-text">{{this.localization.captions.setting.View_All}}</span>
+                <app-toggle-switch [value]="viewAllToggle[k]" (changeToggleEvent)="viewAll(userDetails, itemDetails, $event, k)">
+                </app-toggle-switch>
+              </div>
+            </div>
           </mat-panel-description>
         </mat-expansion-panel-header>
         <div class="accordian-section" *ngIf="m == k" id="sed_{{k}}">

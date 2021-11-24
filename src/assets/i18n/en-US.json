@@ -2072,6 +2072,8 @@
     "More": "More",
     "Allow": "Allow",
     "View": "View",
+    "Allow_All": "Allow All",
+		"View_All": "View All",
     "ServicesOnly": "Services Only",
     "SelectedServices": "Selected Services",
     "RetailItems": "Retail Items",

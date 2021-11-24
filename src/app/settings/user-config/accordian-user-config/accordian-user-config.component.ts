@@ -18,7 +18,9 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   selectedCount: any = [];
   userRoleGroup: FormGroup;
   userDetails: FormArray;
-  userClaims: FormArray;
+  userClaims: FormArray;  
+  allowAllToggle: boolean[] = [];
+  viewAllToggle: boolean[] = [];
 
   constructor(public _settingService: SettingsService, public localization: RetailStandaloneLocalization, private fb: FormBuilder) {
 
@@ -124,6 +126,59 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
     this.UpdateCount();
   }
 
+  onOpenClick(itemDetails, index) {
+    itemDetails.isOpened = true;
+    this.allowAllToggle[index] = (itemDetails.userClaims.length === itemDetails.userClaims.filter(x=>x.allow).length);
+    this.viewAllToggle[index] = (itemDetails.userClaims.filter(x=>x.viewOnlyAllowed).length === itemDetails.userClaims.filter(x=>x.viewOnlyAllowed && x.view).length);
+    console.log(itemDetails);
+  }
+
+  onToggleClick(event: Event) {
+    event.stopPropagation();
+  }
+
+  allowAll(userDetail: FormGroup, itemDetail, event, index) {
+    const userClaims = userDetail.controls.userClaims as FormArray;
+    itemDetail.userClaims.forEach(element => {
+      element.allow = event[0];
+      if(event[0] && element.viewOnlyAllowed) {
+        element.view = false;
+      }
+    });
+    for(let index in userClaims.controls) {
+      let userClaim = userClaims.controls[index] as FormGroup;
+      userClaim.controls['allow'].setValue(event[0]);
+      if(event[0] && userClaim.controls['viewOnlyAllowed'].value) {
+        userClaim.controls['view'].setValue(!event[0]);
+      }
+      this.updateSelectedData(userClaim);
+    }
+    this.updateAllowViewAllControls(itemDetail, index);
+  }
+
+  viewAll(userDetail, itemDetail, event, index) {
+    if(event[0]) {
+      itemDetail.userClaims.forEach(element => {
+        if(element.viewOnlyAllowed) {
+          element.allow = !event[0];
+        }
+      });
+    }
+    const userClaims = userDetail.controls.userClaims as FormArray;
+    for(let index in userClaims.controls) {
+      let userClaim = userClaims.controls[index] as FormGroup;
+      if(userClaim.controls['viewOnlyAllowed'].value) {
+        userClaim.controls['view'].setValue(event[0]);
+        if(event[0]) {
+          userClaim.controls['allow'].setValue(!event[0]);
+        }
+        this.updateSelectedData(userClaim);
+      }
+    }
+    this.updateAllowViewAllControls(itemDetail, index);
+  }
+
+
   addUserDetails() {
     this.userDetails = this.userRoleGroup.get('userDetails') as FormArray;
     this.userDetails.removeAt(0);
@@ -138,6 +193,8 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
         }))
       });
       _.forEach(this.inputData[0].headerData.details, (user, i) => {
+        this.allowAllToggle[i] = false;
+        this.viewAllToggle[i] = false;
         this.userClaims = this.userRoleGroup.get(['userDetails', i, 'userClaims']) as FormArray;
         _.forEach(user.userClaims, (claim, j) => {
           this.userClaims.push(this.addUserClaims(i, user.id, claim));
@@ -203,6 +260,23 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
         // this.ExapanedPanel[indexParent].firstElementChild.querySelectorAll('.first-column')[index].querySelectorAll('.msg-text')[0].style.width = "calc(100% - "+ toogleWidth +"px)";
       }
     }
+  }
+  
+  private updateAllowViewAllControls(itemDetails, index) {
+    this.allowAllToggle[index] = (itemDetails.userClaims.length === itemDetails.userClaims.filter(x=>x.allow).length);
+    this.viewAllToggle[index] = (itemDetails.userClaims.filter(x=>x.viewOnlyAllowed).length === itemDetails.userClaims.filter(x=>x.viewOnlyAllowed && x.view).length);
+  }
+
+  private updateSelectedData(data: FormGroup){
+    let selectedData = data.controls;
+    let idx = _.findIndex(this._settingService.changedBreakPoints, (x) => { return x["breakPointNumber"] == selectedData.breakPointNumber.value });
+    if (idx == -1) {
+      this.setBreakPoints(selectedData);
+    } else {
+      this._settingService.changedBreakPoints.splice(idx, 1);
+      this.setBreakPoints(selectedData);
+    }
+    this.findLength();
   }
 }
 
