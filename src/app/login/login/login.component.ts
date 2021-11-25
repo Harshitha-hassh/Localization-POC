@@ -29,6 +29,9 @@ import { RetailFunctionalityService } from 'src/app/retail/shared/service/retail
 import { UserMachineInfo } from 'src/app/common/shared/shared.modal';
 import { PropertySettingDataService as RetailPropertySettingDataService } from 'src/app/retail/sytem-config/property-setting.data.service';
 import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';
+import { ConfigKeys } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
+import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-config/payment-features-config/property-feature-config.service';
+import { FeatureName, RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 
 @Component({
   selector: 'app-login',
@@ -96,6 +99,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
     private userSessionConfig: UserMachineConfigurationService, 
     private retailSharedService: RetailSharedVariableService,
+    private propertyFeatureService: PropertyFeaturesConfigurationService,
+    private retailpropertyInfo: RetailPropertyInformation,
     private retailFunc: RetailFunctionalityBusiness,
     private payAgentService: PayAgentService
   ) {
@@ -328,6 +333,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       const usersessionId = await this.sessionService.createSession();
       sessionStorage.setItem(USER_SESSION, String(usersessionId));
       await this.setEatecToken();
+      this.setEatecConfig();
       this.setAutoLogOff();
       await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.setMachineDetails();
@@ -404,7 +410,23 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.commonLocalize.SetLocaleBasedProperties();
     this.UpdateUserRole(Selectedproperty.id);
   }
-
+  async setEatecConfig(){
+    let configValue = '';
+    this.propertyFeatureService.GetFeatureConfigurations([FeatureName.EnhancedInventory]).then((featureconfigurations) => {
+      if (featureconfigurations != null) {
+        sessionStorage.setItem('isEatecEnabled', 'true');
+        const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
+        const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
+        if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
+          configValue = uri.configurationValue;
+        }
+      }
+      else {
+        sessionStorage.setItem('isEatecEnabled', 'false');
+      }
+      this.retailpropertyInfo.SetEatecRI(configValue);
+    });
+  }
   async setEatecToken() {
     try {
       const serviceParams = {
