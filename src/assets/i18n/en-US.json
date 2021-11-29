@@ -1504,6 +1504,7 @@
     "8010": "8010 - Revenue Summary",
     "3045": "3045 - Settle to Cash",
     "3065": "3065 - Settle to Others",
+    "3070": "3070 - Apply Custom Discount",
     "7085": "7085 - User/Machine Configuration",
     "8000": "8000 - Shift Report",
 		"8090": "8090 - Transaction Log",
