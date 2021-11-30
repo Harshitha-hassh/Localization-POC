@@ -16,7 +16,7 @@
           </mat-panel-title>
           <mat-panel-description>
             {{selectedCount[k]}}/{{itemDetails.userClaims.length}}
-            <div class="allow-view-all" *ngIf="itemDetails.isOpened" (click)="onToggleClick($event)">
+            <div class="allow-view-all" *ngIf="itemDetails.isOpened" (click)="onToggleClick($event)" [ngClass]="{'button_invalid': IsReadOnly}">
               <div class="allow-all">
                 <span class="LW12 mb-2 mr-1 toggle-text">{{this.localization.captions.setting.Allow_All}}</span>
                 <app-toggle-switch [value]="allowAllToggle[k]" (changeToggleEvent)="allowAll(userDetails, itemDetails, $event, k)">
@@ -24,7 +24,7 @@
               </div>
               <div>
                 <span class="LW12 mb-2 mr-1 toggle-text">{{this.localization.captions.setting.View_All}}</span>
-                <app-toggle-switch [value]="viewAllToggle[k]" (changeToggleEvent)="viewAll(userDetails, itemDetails, $event, k)">
+                <app-toggle-switch [ngClass]="{'button_invalid': disableViewAllToogle[k]}" [value]="viewAllToggle[k]" (changeToggleEvent)="viewAll(userDetails, itemDetails, $event, k)">
                 </app-toggle-switch>
               </div>
             </div>
