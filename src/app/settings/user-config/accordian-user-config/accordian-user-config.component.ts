@@ -21,6 +21,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   userClaims: FormArray;  
   allowAllToggle: boolean[] = [];
   viewAllToggle: boolean[] = [];
+  disableViewAllToogle: boolean[] = [];
 
   constructor(public _settingService: SettingsService, public localization: RetailStandaloneLocalization, private fb: FormBuilder) {
 
@@ -76,24 +77,24 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
         data.controls.view.setValue(false);
         this.inputData[i].headerData.details[j].userClaims[k].view = false;
       }
-      const selectedData = data.controls;
-      const idx = _.findIndex(this._settingService.changedBreakPoints, (x) => x['breakPointNumber'] == selectedData.breakPointNumber.value);
+      let selectedData = data.controls;
+      let idx = _.findIndex(this._settingService.changedBreakPoints, (x) => { return x["breakPointNumber"] == selectedData.breakPointNumber.value });
       if (idx == -1) {
         this.setBreakPoints(selectedData);
       } else {
         this._settingService.changedBreakPoints.splice(idx, 1);
         this.setBreakPoints(selectedData);
       }
-    } else {
+    }
+    else {
       data.controls.view.value = $event[0];
-      const selectedData = data.controls;
+      let selectedData = data.controls;
       this.inputData[i].headerData.details[j].userClaims[k].view = data.controls.view.value;
       if (data.controls.view.value) {
         data.controls.allow.setValue(false);
         this.inputData[i].headerData.details[j].userClaims[k].allow = false;
       }
-      const idx = _.findIndex(this._settingService.changedBreakPoints,
-        (x) => x['breakPointNumber'] == selectedData.breakPointNumber.value);
+      let idx = _.findIndex(this._settingService.changedBreakPoints, (x) => { return x["breakPointNumber"] == selectedData.breakPointNumber.value });
       if (idx == -1) {
         this.setBreakPoints(selectedData);
       } else {
@@ -102,6 +103,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
       }
     }
     this.findLength();
+    this.updateAllowViewAllControls(this.inputData[i].headerData.details[j], j);
   }
 
   setBreakPoints(selectedData) {
@@ -118,8 +120,8 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   }
 
   findLength() {
-    _.forEach(this.inputData, (value) => {
-      _.forEach(value.details, (dataValue) => {
+    _.forEach(this.inputData, function (value) {
+      _.forEach(value.details, function (dataValue) {
         dataValue.count = _.filter(dataValue.userClaims, ['allow', true]).length + _.filter(dataValue.userClaims, ['view', true]).length;
       });
     });
@@ -129,8 +131,9 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   onOpenClick(itemDetails, index) {
     itemDetails.isOpened = true;
     this.allowAllToggle[index] = (itemDetails.userClaims.length === itemDetails.userClaims.filter(x=>x.allow).length);
-    this.viewAllToggle[index] = (itemDetails.userClaims.filter(x=>x.viewOnlyAllowed).length === itemDetails.userClaims.filter(x=>x.viewOnlyAllowed && x.view).length);
-    console.log(itemDetails);
+    this.disableViewAllToogle[index] = (itemDetails.userClaims.filter(x=>x.viewOnlyAllowed).length === 0);
+    const selectedView = itemDetails.userClaims.filter(x=>x.viewOnlyAllowed && x.view);
+    this.viewAllToggle[index] = (selectedView.length > 0 && itemDetails.userClaims.filter(x=>x.viewOnlyAllowed).length === selectedView.length);
   }
 
   onToggleClick(event: Event) {
@@ -159,19 +162,20 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   viewAll(userDetail, itemDetail, event, index) {
     if(event[0]) {
       itemDetail.userClaims.forEach(element => {
+        element.allow = !event[0];
         if(element.viewOnlyAllowed) {
-          element.allow = !event[0];
+          element.view = event[0];
         }
       });
     }
     const userClaims = userDetail.controls.userClaims as FormArray;
     for(let index in userClaims.controls) {
       let userClaim = userClaims.controls[index] as FormGroup;
+      if(event[0]) {
+        userClaim.controls['allow'].setValue(!event[0]);
+      }
       if(userClaim.controls['viewOnlyAllowed'].value) {
-        userClaim.controls['view'].setValue(event[0]);
-        if(event[0]) {
-          userClaim.controls['allow'].setValue(!event[0]);
-        }
+        userClaim.controls['view'].setValue(event[0]); 
         this.updateSelectedData(userClaim);
       }
     }
@@ -195,6 +199,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
       _.forEach(this.inputData[0].headerData.details, (user, i) => {
         this.allowAllToggle[i] = false;
         this.viewAllToggle[i] = false;
+        this.disableViewAllToogle[i] = false;
         this.userClaims = this.userRoleGroup.get(['userDetails', i, 'userClaims']) as FormArray;
         _.forEach(user.userClaims, (claim, j) => {
           this.userClaims.push(this.addUserClaims(i, user.id, claim));
@@ -224,9 +229,9 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
 
   UpdateCount() {
     if (this.inputData && this.inputData[0].headerData && this.inputData[0].headerData.details.length > 0) {
-      const userClaimLength = this.inputData[0].headerData.details.length;
+      let userClaimLength = this.inputData[0].headerData.details.length;
       for (let i = 0; i < userClaimLength; i++) {
-        let count = 0;
+        let count: number = 0;
         for (let j = 0; j < this.inputData[0].headerData.details[i].userClaims.length; j++) {
           if (this.inputData[0].headerData.details[i].userClaims[j].allow) {
             count = count + 1;
@@ -253,18 +258,14 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
     }
     const expanedPanel = this.ExapanedPanel.length;
     for (let indexParent = 0; indexParent < expanedPanel; indexParent++) {
-      const expandbodyLength = this.ExapanedPanel[indexParent].firstElementChild.querySelectorAll('.first-column').length;
-      for (let index = 0; index < expandbodyLength; index++) {
-        // let textWidth = this.ExapanedPanel[indexParent].firstElementChild.querySelectorAll('.first-column')[index].querySelectorAll('.msg-text')[0].offsetWidth;
-        // let toogleWidth = this.ExapanedPanel[indexParent].firstElementChild.querySelectorAll('.first-column')[index].querySelectorAll('.accordian-toogle')[0].offsetWidth
-        // this.ExapanedPanel[indexParent].firstElementChild.querySelectorAll('.first-column')[index].querySelectorAll('.msg-text')[0].style.width = "calc(100% - "+ toogleWidth +"px)";
-      }
+      this.ExapanedPanel[indexParent].firstElementChild.querySelectorAll('.first-column').length;
     }
   }
   
   private updateAllowViewAllControls(itemDetails, index) {
-    this.allowAllToggle[index] = (itemDetails.userClaims.length === itemDetails.userClaims.filter(x=>x.allow).length);
-    this.viewAllToggle[index] = (itemDetails.userClaims.filter(x=>x.viewOnlyAllowed).length === itemDetails.userClaims.filter(x=>x.viewOnlyAllowed && x.view).length);
+      this.allowAllToggle[index] = (itemDetails.userClaims.length === itemDetails.userClaims.filter(x=>x.allow).length);
+      const selectedView = itemDetails.userClaims.filter(x=>x.viewOnlyAllowed && x.view);
+      this.viewAllToggle[index] = (selectedView.length > 0 && itemDetails.userClaims.filter(x=>x.viewOnlyAllowed).length === selectedView.length);
   }
 
   private updateSelectedData(data: FormGroup){
