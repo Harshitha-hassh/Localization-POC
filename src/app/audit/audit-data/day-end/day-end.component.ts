@@ -38,8 +38,8 @@ import { FinancialBinHelper } from 'src/app/retail/shared/business/FinancialBin-
   templateUrl: './day-end.component.html',
   styleUrls: ['./day-end.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [AppModuleService, ShopBussinessService,FinancialBinHelper],
-  entryComponents:[VoidReasonComponent]
+  providers: [AppModuleService, ShopBussinessService, FinancialBinHelper],
+  entryComponents: [VoidReasonComponent]
 })
 export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
@@ -76,7 +76,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     private breakPoint: BreakPointAccess, public ams: AppModuleService,
     private retailSharedService: RetailSharedVariableService, private retailValidationService: RetailValidationService,
     private propertyInfo: RetailPropertyInformation, private retailTaxService: RetailTaxesDataService, private shopBusinessService: ShopBussinessService
-    ,public _shopservice: CommonVariablesService,public dialog: MatDialog) {
+    , public _shopservice: CommonVariablesService, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -107,7 +107,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.GetGridData();
       // tslint:disable-next-line: max-line-length
       this.InvokeServiceCall('GetOutletsByProperty', Host.retailManagement, HttpMethod.Get, { PropertyId: Number(this.localization.GetPropertyInfo('PropertyId')) });
-      this.InvokeServiceCall('GetMiscConfigurationByPropertyId',Host.retailManagement,HttpMethod.Get,{PropertyId: Number(this.localization.GetPropertyInfo('PropertyId'))});
+      this.InvokeServiceCall('GetMiscConfigurationByPropertyId', Host.retailManagement, HttpMethod.Get, { PropertyId: Number(this.localization.GetPropertyInfo('PropertyId')) });
     }
     this.ResetServiceObject();
   }
@@ -196,35 +196,41 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       }
       case 'PerformDayEnd': {
         const response = result.result as any;
-        if (response) {
+        if (response.isSuccess) {
           this.propertyInfo.SetPropertyDate(this.newSysDate);
-          this.UpdateInventoryAudit();          
-          this.ShowSuccessMessage();        
-          if(this.propertyInfo.HasRevenuePostingEnabled)
-          {
+          this.UpdateInventoryAudit();
+          this.ShowSuccessMessage();
+          if (this.propertyInfo.HasRevenuePostingEnabled) {
             this.SendNewSystemDate();
-          }    
+          }
         } else {
-          if(result.errorCode.toString() == ErrorCodes.UNABLE_TO_ROLL_TO_FUTURE_DATE)
-          {
+          if (result.errorCode.toString() == ErrorCodes.UNABLE_TO_ROLL_TO_FUTURE_DATE) {
             this.utils.ShowErrorPopup([result.errorCode]);
 
           }
-          else{
-            this.isProcessClicked = false;
-          this.utils.ShowError(this.localization.captions.common.Error, this.captions.ErrorInDayEnd, ButtonType.Ok);
+          else if (result.errorCode.toString() == ErrorCodes.NEWDATE_LESS_THAN_PROPERTYDATE) {
+            var errorMessage = this.localization.getError(result.errorCode);
+            errorMessage = this.localization.replacePlaceholders(errorMessage,
+              ['CurrentSystemDate', 'RollOverDate'],
+              [this.localization.LocalizeDate(response.currentSystemDate), this.localization.LocalizeDate(response.rollOverDate)]
+            );
+            this.utils.ShowError(this.localization.captions.common.Error, errorMessage, ButtonType.Ok);
+
           }
-          
+          else {
+            this.isProcessClicked = false;
+            this.utils.ShowError(this.localization.captions.common.Error, this.captions.ErrorInDayEnd, ButtonType.Ok);
+          }
+
         }
         break;
       }
       case "NotifyDayEnd":
         {
           var response = <any>result.result;
-          if(!response)
-          {
+          if (!response) {
             this.utils.ShowError(this.localization.captions.common.Error, this.captions.NotifyDayEnd, ButtonType.Ok);
-          }          
+          }
           break;
         }
       case 'GetOutletsByProperty': {
@@ -235,11 +241,11 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         }
         break;
       }
-      case 'GetMiscConfigurationByPropertyId':{
+      case 'GetMiscConfigurationByPropertyId': {
         const response: any = result.result as any ? result.result : [];
         if (response) {
-          this.allowFutureDate = response.find(x => x.switch=="ALLOW_DATE_FOR_FUTURE").value == "true" ? true : false;
-           
+          this.allowFutureDate = response.find(x => x.switch == "ALLOW_DATE_FOR_FUTURE").value == "true" ? true : false;
+
         }
       }
     }
@@ -251,13 +257,13 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   async SyncUpItemAndTaxes(prevDate) {
-    if (!this.propertyInfo.UseRetailInterface && this.propOutlets && this.propOutlets.length > 0) {      
+    if (!this.propertyInfo.UseRetailInterface && this.propOutlets && this.propOutlets.length > 0) {
       try {
         let taxes = await this.retailTaxService.getAllTaxConfiguration();
         this.utils.ToggleLoaderWithMessage(true, this.captions.OutletSyncWait);
         let failedOutlet = [];
         for (let i = 0; i < this.propOutlets.length; i++) {
-          if (taxes && taxes.length && taxes.find(x => 
+          if (taxes && taxes.length && taxes.find(x =>
             (this.propOutlets[i].subPropertyID == x.outletId || this.propertyInfo.IsVATEnabled) &&
             this.localization.getDateDifference(this.localization.getDate(x.endDate), prevDate) == 0)) {
             try {
@@ -279,7 +285,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
           }
         }
         if (failedOutlet.length) {
-          this.utils.showCommonAlert(this.localization.replacePlaceholders(this.captions.ErrorSyncOutlet,["OutletName"],['<ul class="text-left pt-1"><li>' + failedOutlet.join('</li><li>') + '</li></ul>']),  AlertType.Info, ButtonTypes.Ok);
+          this.utils.showCommonAlert(this.localization.replacePlaceholders(this.captions.ErrorSyncOutlet, ["OutletName"], ['<ul class="text-left pt-1"><li>' + failedOutlet.join('</li><li>') + '</li></ul>']), AlertType.Info, ButtonTypes.Ok);
         }
       }
       catch (ex) {
@@ -291,11 +297,10 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     }
   }
 
-  SendNewSystemDate()
-  { 
-    let obj: NotifyDayEnd = {DateTime:this.localization.convertDateObjToAPIdate(this.newSysDate)  }  
+  SendNewSystemDate() {
+    let obj: NotifyDayEnd = { DateTime: this.localization.convertDateObjToAPIdate(this.newSysDate) }
     this.InvokeServiceCall('NotifyDayEnd', Host.retailManagement, HttpMethod.Put, {},
-    obj,null,null,false); 
+      obj, null, null, false);
   }
 
   errorCallback<T>(error: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
@@ -324,7 +329,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
 
   private async BuildOpenTransactions(response) {
-    const gridData = this.GridData.find(r => r.status === PendingAction.OpenTransaction);    
+    const gridData = this.GridData.find(r => r.status === PendingAction.OpenTransaction);
     if (response && response.length > 0) {
       this.isProcessClicked = true;
       response = response.filter(r => {
@@ -363,8 +368,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         MemberName: '',
         AppointmentNumber: '',
         transactionInfo: tran,
-        retailTransactionType : tran.retailTransactionType,
-        paymentReceivedAmount : this.FormatCurrency(tran.paymentReceivedAmount)
+        retailTransactionType: tran.retailTransactionType,
+        paymentReceivedAmount: this.FormatCurrency(tran.paymentReceivedAmount)
       };
       transactions.push(transaction);
     }
@@ -423,7 +428,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     const message = `${this.captions.systemMovedTo} ${this.localization.LocalizeDate(this.newSysDate)}`;
     this.successFlag = true;
     this.canProcess = false;
-    this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue, x=>{
+    this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue, x => {
       this.SyncUpItemAndTaxes(this.currSysDate);
     });
   }
@@ -432,7 +437,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   // tslint:disable-next-line: max-line-length
-  InvokeServiceCall(route: string, domain: Host, callType: HttpMethod, uriParams?: any, body?: any, queryString?: KeyValuePair, extraParams?: any, 
+  InvokeServiceCall(route: string, domain: Host, callType: HttpMethod, uriParams?: any, body?: any, queryString?: KeyValuePair, extraParams?: any,
     showError: boolean = true) {
     this.http.CallApiWithCallback<any>({
       host: domain,
@@ -528,17 +533,17 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.InvokeServiceCall('UndoCheckInAppointment', Host.schedule, HttpMethod.Put, uriParam);
     } else if (option.action === GridAction.ReOpen) {
       if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Reopen)) { return; }
-      var paymentHistoryDetails:PaymentHistoryDetails = await this.shopBusinessService.GetPaymentHistoryDetails(data.Id);
+      var paymentHistoryDetails: PaymentHistoryDetails = await this.shopBusinessService.GetPaymentHistoryDetails(data.Id);
       if ((paymentHistoryDetails && (paymentHistoryDetails.paymentHistory.length > 0 || paymentHistoryDetails.isHavingPaymentHistory))) {
-          const confirmationMsgForReopen = this.localization.replacePlaceholders(
-            this.localization.captions.shop.ReOpenNotAllowed,
-            ['TicketNumber'],
-            [data.TicketNumber]
-          );
-          this.utils.ShowError(this.localization.captions.common.Error, confirmationMsgForReopen, ButtonType.Ok);
-          this._shopservice.destroy();
-          return;
-        }
+        const confirmationMsgForReopen = this.localization.replacePlaceholders(
+          this.localization.captions.shop.ReOpenNotAllowed,
+          ['TicketNumber'],
+          [data.TicketNumber]
+        );
+        this.utils.ShowError(this.localization.captions.common.Error, confirmationMsgForReopen, ButtonType.Ok);
+        this._shopservice.destroy();
+        return;
+      }
       this.retailSharedService.payeeId = data.ClientId;
       this.retailSharedService.settleOpenTransaction = false;
       this.retailSharedService.reOpenTransaction = true;
@@ -571,7 +576,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.retailSharedService.ticketNumber = data.TicketNumber;
       this.retailSharedService.transactionId = data.Id;
       // tslint:disable-next-line: max-line-length
-      var paymentHistoryDetails:PaymentHistoryDetails = await this.shopBusinessService.GetPaymentHistoryDetails(data.Id);
+      var paymentHistoryDetails: PaymentHistoryDetails = await this.shopBusinessService.GetPaymentHistoryDetails(data.Id);
       if ((paymentHistoryDetails && (paymentHistoryDetails.paymentHistory.length > 0 || paymentHistoryDetails.isHavingPaymentHistory))) {
         const confirmationMsgForCancel = this.localization.replacePlaceholders(
           this.localization.captions.shop.CancelNotAllowed,
@@ -590,14 +595,14 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.utils.ShowError(this.localization.captions.common.Warning, this.captions.CancelOpenTransaction, ButtonType.YesNo, this.CancelTransaction.bind(this));
     }
     else if (option.action === GridAction.Close) {
-      this.shopBusinessService.CheckIfcloseTransactionllowed(data.Id,data.TicketNumber)
-      .then(async x=>{       
-        await this.CommentsPopup(data.Id,data.TicketNumber)
-      }).catch()
+      this.shopBusinessService.CheckIfcloseTransactionllowed(data.Id, data.TicketNumber)
+        .then(async x => {
+          await this.CommentsPopup(data.Id, data.TicketNumber)
+        }).catch()
     }
   }
 
-  async CommentsPopup(transactionId:number,ticketNumber:string) {
+  async CommentsPopup(transactionId: number, ticketNumber: string) {
     const dialogRef = this.dialog.open(VoidReasonComponent, {
       height: 'auto',
       width: '40%',
@@ -608,13 +613,13 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     });
     dialogRef.afterClosed().pipe(takeUntil(this.$destroyed)).subscribe(resultData => {
       if (resultData.action.toLowerCase() === 'ok') {
-           this.shopBusinessService.closeTransaction(resultData.reason,transactionId,ticketNumber).then(
-             x => this.GetGridData()
-           )
+        this.shopBusinessService.closeTransaction(resultData.reason, transactionId, ticketNumber).then(
+          x => this.GetGridData()
+        )
       }
     });
   }
-  
+
   async TransactionLockCallback(result: string, extraparams) {
     if (result.toLowerCase() === ButtonOptions.Yes.toLowerCase()) {
       this.retailValidationService.LockTransaction(extraparams[0], true);
