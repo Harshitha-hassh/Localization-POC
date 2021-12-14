@@ -28,8 +28,8 @@ export class RouteLoaderService {
       setTimeout(() => {
         const router = this.injector.get(Router);
         console.log(router);
-        this.getProductMenus().then(
-          // this.getSettings().subscribe( // uncomment for hard coded menu
+        //this.getProductMenus().then(
+           this.getSettings().subscribe( // uncomment for hard coded menu
           response => {
             console.log('is Dynamic Menu available?:' + (!Array.isArray(response) || 0 == response.length) ? 'DM-No!' : 'DM-Yes!');
             this.currentSettings = response;
@@ -1067,6 +1067,47 @@ export class RouteLoaderService {
             menuAlignment: "Horizontal",
             externalLink: false,
             linkedElement: [
+              {
+                elementID: 4047,
+                tenantID: 0,
+                propertyID: 0,
+                productID: 2,
+                textID: 4047,
+                text: "Manager Utilities_UK",
+                routePath: "/settings/utilities/managerUtilities",
+                imgPath: "",
+                order: 1,
+                visibility: true,
+                disable: false,
+                parentID: 4046,
+                menuAlignment: 'Combo',
+                menuPosition: 'Secondary',
+                externalLink: false,
+                linkedElement: [
+                  {
+                    elementID: 4050,
+                    tenantID: 0,
+                    propertyID: 0,
+                    productID: 2,
+                    textID: 4050,
+                    text: "Printer Default Configurations_UK",
+                    routePath: "/settings/utilities/managerUtilities/printerDefaultConfiguration",
+                    imgPath: "",
+                    order: 1,
+                    visibility: true,
+                    disable: false,
+                    parentID: 4049,
+                    menuPosition: "Ternary",
+                    menuAlignment: "Vertical",
+                    externalLink: false,
+                    linkedElement: [
+
+                    ],
+                    breakPointNumber: 0
+                  },
+                ],
+                breakPointNumber: 7080
+              },
               {
                 elementID: 4047,
                 tenantID: 0,

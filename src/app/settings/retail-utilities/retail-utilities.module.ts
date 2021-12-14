@@ -9,9 +9,11 @@ import { ReceiptConfigurationComponent } from './receipt-configuration/receipt-c
 import { RetailTemplatesComponent } from './retail-templates/retail-templates.component';
 import { UserMachineConfigurationComponent } from './user-machine-configuration/user-machine-configuration.component';
 import { QuickidConfigComponent } from './quickid-config/quickid-config.component';
+import { ManagerUtilitiesComponent } from './manager-utilities/manager-utilities.component';
+import { PrinterDefaultConfigurationComponent } from './manager-utilities/printer-default-configuration/printer-default-configuration.component';
 
 @NgModule({
-  declarations: [RetailUtilitiesComponent,ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent],
+  declarations: [RetailUtilitiesComponent,ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent,ManagerUtilitiesComponent,PrinterDefaultConfigurationComponent],
   imports: [
     CommonModule,
     SharedModule,

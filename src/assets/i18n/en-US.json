@@ -2945,6 +2945,16 @@
     "revenue": "Revenue"
   },
   "utilities": {
+    	"PrinterDefaultConfiguration" : {
+				"0": "Receipt",
+				"1": "Cart Agreement",
+				"2": "Club Agreement",
+				"3": "Shoe Agreement",
+				"4": "Retail Sale Chit",
+				"5": "Caddy Shack",
+				"6": "Hanging Tickets",
+				"7": "Small Stickers"	
+			},
     "defaultOutlet": "Default Outlet",
     "defaultCourse": "Default Course",
     "defaultMachineName": "Machine Name",
