@@ -1495,7 +1495,6 @@
     "8055": "8055 - MultiPack Items_au",
     "8060": "8060 - Returned Items_au",
     "8065": "8065 - Inventory Summary_au",
-    "8736": "8736 - Inventory on Hand_au",
     "8070": "8070 - Inventory Detail_au",
     "8075": "8075 - Inventory Wash_au",
     "8080": "8080 - Inventory Transfer_au",
@@ -1523,6 +1522,7 @@
     "8733": "8733 - Physical Inventory_au",
     "8734": "8734 - Receiving_au",
     "8735": "8735 - PurchaseOrder_au",
+    "8736": "8736 - Inventory on Hand_au",
     "Appointment Actions": "Appointment Actions_au",
     "Appointment Grid": "Appointment Grid_au",
     "Client Profile": "Client Profile_au",
@@ -2942,6 +2942,8 @@
     "revenue": "Revenue_au"
   },
   "utilities": {
+    "composed": "View Composed_au",
+    "preview": "PREVIEW_au",
     "defaultOutlet": "Default Outlet_au",
     "defaultCourse": "Default Course_au",
     "defaultMachineName": "Machine Name_au",
@@ -3610,5 +3612,7 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_au",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_au",
   "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_au",
-  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_au"
+  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_au",
+  "composed": "View Composed_au",
+  "preview": "PREVIEW_au"
 }

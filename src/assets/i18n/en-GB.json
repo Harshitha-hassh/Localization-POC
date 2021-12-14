@@ -1495,7 +1495,6 @@
     "8055": "8055 - MultiPack Items_gb",
     "8060": "8060 - Returned Items_gb",
     "8065": "8065 - Inventory Summary_gb",
-    "8736": "8736 - Inventory on Hand_gb",
     "8070": "8070 - Inventory Detail_gb",
     "8075": "8075 - Inventory Wash_gb",
     "8080": "8080 - Inventory Transfer_gb",
@@ -1523,6 +1522,7 @@
     "8733": "8733 - Physical Inventory_gb",
     "8734": "8734 - Receiving_gb",
     "8735": "8735 - PurchaseOrder_gb",
+    "8736": "8736 - Inventory on Hand_gb",
     "Appointment Actions": "Appointment Actions_gb",
     "Appointment Grid": "Appointment Grid_gb",
     "Client Profile": "Client Profile_gb",
@@ -2942,6 +2942,8 @@
     "revenue": "Revenue_gb"
   },
   "utilities": {
+    "composed": "View Composed_gb",
+    "preview": "PREVIEW_gb",
     "defaultOutlet": "Default Outlet_gb",
     "defaultCourse": "Default Course_gb",
     "defaultMachineName": "Machine Name_gb",
@@ -3610,5 +3612,7 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_gb",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_gb",
   "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_gb",
-  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_gb"
+  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_gb",
+  "composed": "View Composed_gb",
+  "preview": "PREVIEW_gb"
 }

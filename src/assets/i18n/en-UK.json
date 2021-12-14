@@ -1495,7 +1495,6 @@
     "8055": "8055 - MultiPack Items_uk",
     "8060": "8060 - Returned Items_uk",
     "8065": "8065 - Inventory Summary_uk",
-    "8736": "8736 - Inventory on Hand_uk",
     "8070": "8070 - Inventory Detail_uk",
     "8075": "8075 - Inventory Wash_uk",
     "8080": "8080 - Inventory Transfer_uk",
@@ -1523,6 +1522,7 @@
     "8733": "8733 - Physical Inventory_uk",
     "8734": "8734 - Receiving_uk",
     "8735": "8735 - PurchaseOrder_uk",
+    "8736": "8736 - Inventory on Hand_uk",
     "Appointment Actions": "Appointment Actions_uk",
     "Appointment Grid": "Appointment Grid_uk",
     "Client Profile": "Client Profile_uk",
@@ -2942,6 +2942,8 @@
     "revenue": "Revenue_uk"
   },
   "utilities": {
+    "composed": "View Composed_uk",
+    "preview": "PREVIEW_uk",
     "defaultOutlet": "Default Outlet_uk",
     "defaultCourse": "Default Course_uk",
     "defaultMachineName": "Machine Name_uk",
@@ -3610,5 +3612,7 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_uk",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_uk",
   "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_uk",
-  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_uk"
+  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_uk",
+  "composed": "View Composed_uk",
+  "preview": "PREVIEW_uk"
 }

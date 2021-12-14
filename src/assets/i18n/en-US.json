@@ -2945,6 +2945,8 @@
     "revenue": "Revenue"
   },
   "utilities": {
+    "composed" : "View Composed",
+    "preview" : "PREVIEW",
     "defaultOutlet": "Default Outlet",
     "defaultCourse": "Default Course",
     "defaultMachineName": "Machine Name",
@@ -3613,5 +3615,7 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}",
   "combineGuest_warning": "Are you sure you want to cancel the changes?"  ,
   "RevenuePostingInfo" : "{count} Failed records found in Revenue Postings",
-  "FailedTransLogInfo" : "{count} Failed records round in Payment Logs"  
+  "FailedTransLogInfo" : "{count} Failed records round in Payment Logs"  ,
+  "composed" : "View Composed",
+  "preview" : "PREVIEW"
 }
