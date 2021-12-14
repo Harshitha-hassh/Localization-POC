@@ -1495,7 +1495,6 @@
     "8055": "8055 - MultiPack Items_fr",
     "8060": "8060 - Returned Items_fr",
     "8065": "8065 - Inventory Summary_fr",
-    "8736": "8736 - Inventory on Hand_fr",
     "8070": "8070 - Inventory Detail_fr",
     "8075": "8075 - Inventory Wash_fr",
     "8080": "8080 - Inventory Transfer_fr",
@@ -1523,6 +1522,7 @@
     "8733": "8733 - Physical Inventory_fr",
     "8734": "8734 - Receiving_fr",
     "8735": "8735 - PurchaseOrder_fr",
+    "8736": "8736 - Inventory on Hand_fr",
     "Appointment Actions": "Appointment Actions_fr",
     "Appointment Grid": "Appointment Grid_fr",
     "Client Profile": "Client Profile_fr",
@@ -2942,6 +2942,8 @@
     "revenue": "Revenue_fr"
   },
   "utilities": {
+    "composed": "View Composed_fr",
+    "preview": "PREVIEW_fr",
     "defaultOutlet": "Default Outlet_fr",
     "defaultCourse": "Default Course_fr",
     "defaultMachineName": "Machine Name_fr",
@@ -3610,5 +3612,7 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_fr",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_fr",
   "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_fr",
-  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_fr"
+  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_fr",
+  "composed": "View Composed_fr",
+  "preview": "PREVIEW_fr"
 }
