@@ -351,6 +351,7 @@
     "101916":"Discount Reason in use, Delete not allowed,",
     "101915":"Discount Reason in use, Inactive not allowed",
     "101917":"Date cannot be rolled over to the next day",
+    "101918":"Current system date {CurrentSystemDate} is greater than or equal to roll over date {RollOverDate}. Please Re Login",
     "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed."
   
   }

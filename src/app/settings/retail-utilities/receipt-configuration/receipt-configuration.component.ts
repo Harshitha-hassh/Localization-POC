@@ -66,6 +66,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       // { id: 6, Name: this.textCaptions.PackAppID, controlName: 'packAppId', enableToggle: false },
       { id: 7, Name: this.textCaptions.SurplusClerkID, controlName: 'surplusClientIdOnReceipt', enableToggle: true },
       // { id: 8, Name: this.textCaptions.PackItemStaffCode, controlName: 'packStaffCode', enableToggle: false },
+      { id: 9, Name: this.textCaptions.SurplusPrintedBy, controlName: 'surplusPrintedByOnReceipt', enableToggle: true },
     ];
     this.breakPoint.CheckForAccess([RetailBreakPoint.ReceiptConfiguration], false);
     if (this.breakPoint.IsViewOnly(RetailBreakPoint.ReceiptConfiguration)) {
@@ -101,7 +102,8 @@ export class ReceiptConfigurationComponent implements OnInit {
       packItemDesc: selectedValues[0].displayPackageDescription,
       packItemPrice: selectedValues[0].displayPackagePrice,
       packAppId: selectedValues[0].displayPackageAppointmentID,
-      packStaffCode: selectedValues[0].displayPackageStaffCode
+      packStaffCode: selectedValues[0].displayPackageStaffCode,
+      surplusPrintedByOnReceipt:  selectedValues[0].suppressPrintedBy
     };
 
     this.FormGrp.get('outlet').setValue(selectedValues[0].outletId);
@@ -130,8 +132,9 @@ export class ReceiptConfigurationComponent implements OnInit {
         this.printInfo[5].enableToggle = true;
         this.printInfo[7].enableToggle = true;
       }
-      // this.printInfo[1].enableToggle = true;
+      // this.printInfo[1].enableToggle = true;      
     }
+    
   }
 
   addPrintDetails(): FormGroup {
@@ -143,7 +146,9 @@ export class ReceiptConfigurationComponent implements OnInit {
       packItemDesc: '',
       packItemPrice: '',
       packAppId: '',
-      packStaffCode: ''
+      packStaffCode: '',
+      surplusPrintedByOnReceipt:''
+      
     });
   }
   savePrintDetails(data): FormGroup {
@@ -155,7 +160,8 @@ export class ReceiptConfigurationComponent implements OnInit {
       packItemDesc: data.packItemDesc,
       packItemPrice: data.packItemPrice,
       packAppId: data.packAppId,
-      packStaffCode: data.packStaffCode
+      packStaffCode: data.packStaffCode,
+      surplusPrintedByOnReceipt: data.surplusPrintedByOnReceipt
     });
   }
 
@@ -213,7 +219,8 @@ export class ReceiptConfigurationComponent implements OnInit {
       displayPackageStaffCode: data.printReceipt[0].packStaffCode ? true : false,
       serviceChargeGratuityDisplay: data.displayServiceCharge,
       gratuityLine: data.gratuityLine,
-      receiptNote: data.receiptNote
+      receiptNote: data.receiptNote,
+      suppressPrintedBy: data.printReceipt[0]. surplusPrintedByOnReceipt ? true : false,
     };
     this.OutletInfo = await this.data.createReceipt(receiptobj);
     const currOutlet = this.Outlet.filter(x => x.id == this.selectedOutletId);

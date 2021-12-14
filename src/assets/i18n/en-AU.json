@@ -3048,6 +3048,7 @@
     "AddSecondLine": "Add Second line_au",
     "PackItemOnReceipt": "Display Only Package Item Details on Receipt_au",
     "SurplusClerkID": "Suppress Clerk ID on Sales Receipt_au",
+    "SurplusPrintedBy": "Suppress Printed By on Sales Receipt_au",
     "DisplayPackageItemDesc": "Display Package Item Description_au",
     "PackItemPrice": "Display Package Item Price_au",
     "PackAppID": "Display Package Item Appointment ID_au",

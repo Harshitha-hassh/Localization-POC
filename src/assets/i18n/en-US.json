@@ -3051,6 +3051,7 @@
     "AddSecondLine": "Add Second line",
     "PackItemOnReceipt": "Display Only Package Item Details on Receipt",
     "SurplusClerkID": "Suppress Clerk ID on Sales Receipt",
+    "SurplusPrintedBy": "Suppress Printed By on Sales Receipt",
     "DisplayPackageItemDesc": "Display Package Item Description",
     "PackItemPrice": "Display Package Item Price",
     "PackAppID": "Display Package Item Appointment ID",

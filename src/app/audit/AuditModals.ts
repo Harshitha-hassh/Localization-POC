@@ -72,4 +72,5 @@ export enum PendingAction {
   }
   export class ErrorCodes{
     static UNABLE_TO_ROLL_TO_FUTURE_DATE = '101917';
+    static NEWDATE_LESS_THAN_PROPERTYDATE = '101918';
   }
