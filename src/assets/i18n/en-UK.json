@@ -2631,6 +2631,7 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_uk",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_uk",
     "EnableCheckZoom": "Enable CheckZoom_uk",
+    "ExpandPaymentMethods":"Expand Payment Methods by default_uk",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_uk",
     "DiscountReasonRequired": "Require Reason On Discount_uk",
     "DiscountCommentsRequired": "Require Comment On Discount_uk",

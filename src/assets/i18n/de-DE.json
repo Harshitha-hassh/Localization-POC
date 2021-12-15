@@ -2631,6 +2631,7 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_de",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_de",
     "EnableCheckZoom": "Enable CheckZoom_de",
+    "ExpandPaymentMethods":"Expand Payment Methods by default_de",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_de",
     "DiscountReasonRequired": "Require Reason On Discount_de",
     "DiscountCommentsRequired": "Require Comment On Discount_de",

@@ -2631,6 +2631,7 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_gb",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_gb",
     "EnableCheckZoom": "Enable CheckZoom_gb",
+    "ExpandPaymentMethods":"Expand Payment Methods by default_gb",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_gb",
     "DiscountReasonRequired": "Require Reason On Discount_gb",
     "DiscountCommentsRequired": "Require Comment On Discount_gb",

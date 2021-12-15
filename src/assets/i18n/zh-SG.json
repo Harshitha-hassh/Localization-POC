@@ -2474,6 +2474,7 @@
       "PMSProxyEndPoint": "PMS Proxy Endpoint_zh",
       "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_zh",
       "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_zh",
+      "ExpandPaymentMethods":"Expand Payment Methods by default_zh",
       "Confirmationdialog": "Enable Retail Confirmation Dialog_zh",
       "RetailFeature": {
         "ACES Membership": "Agilysys Engage_zh",
