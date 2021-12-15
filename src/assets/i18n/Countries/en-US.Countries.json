@@ -1653,6 +1653,13 @@
             "NumericCode": "581"
         },
         {
+            "CountryName": "United States",
+            "OfficialName": "The United States of America",
+            "Alpha2Code": "US",
+            "Alpha3Code": "USA",
+            "NumericCode": "840"
+        },
+        {
             "CountryName": "United States of America",
             "OfficialName": "The United States of America",
             "Alpha2Code": "US",
