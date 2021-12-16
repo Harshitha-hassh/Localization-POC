@@ -1190,6 +1190,7 @@
     "RoomNoRequired": "Missing Room Number_au",
     "RoomNo": "Room Number_au",
     "AddTax": "Please wait, the tax is being added._au",
+    "WaitForMoment": "Please wait for a moment_au",
     "AddDiscount": "Please wait, the discount is being added._au",
     "RemoveTax": "Please wait, the tax is being removed._au",
     "RemoveItemDiscount": "Please wait, the discount is being removed from the item._au",
@@ -1200,6 +1201,8 @@
     "AddCommissionGratuityServiceCharge": "Please wait, the commission/service charge/gratuity is being added to the item._au",
     "RemoveItemCommission": "Please wait, the commission is being removed from the item._au",
     "TransactionInprogressMsg": "Please wait, while your request is being processed_au",
+    "SearchLoaderMsgGiftCardSale": "Please wait while the gift card is being redemeed_au",
+    "SearchLoaderMsgGiftCardValidateSale": "Please wait while the gift card transaction is being validated_au",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved._au",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved._au",
     "RetrievePatronDetails": "Please wait, while the player details are being retrieved._au",
@@ -1302,6 +1305,7 @@
       "SwipeGiftCardMsg": "Please swipe the card_au",
       "NoDeviceForGCSwipe": "No Devices Found._au",
       "SearchLoaderMsg": "Please wait while the gift card details are being retrieved_au",
+      "SearchLoaderMsgGiftCardBalanceFetch": "Please wait while the gift card balance is being fetched_au",
       "TopUpInprogressMsg": "Please wait while the gift card top-up is in progress_au",
       "TopupSuccessMsg": "Top-up is successful_au",
       "CashBackInprogressMsg": "Please wait while we process your cashback request_au",
@@ -2635,6 +2639,7 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_au",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_au",
     "EnableCheckZoom": "Enable CheckZoom_au",
+    "ExpandPaymentMethods": "Expand Payment Methods by default_au",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_au",
     "DiscountReasonRequired": "Require Reason On Discount_au",
     "DiscountCommentsRequired": "Require Comment On Discount_au",
@@ -2956,6 +2961,8 @@
       "6": "Hanging Tickets_au",
       "7": "Small Stickers_au"
     },
+    "composed": "View Composed_au",
+    "preview": "PREVIEW_au",
     "defaultOutlet": "Default Outlet_au",
     "defaultCourse": "Default Course_au",
     "defaultMachineName": "Machine Name_au",
@@ -3624,5 +3631,7 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_au",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_au",
   "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_au",
-  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_au"
+  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_au",
+  "composed": "View Composed_au",
+  "preview": "PREVIEW_au"
 }

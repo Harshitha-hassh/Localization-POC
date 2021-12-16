@@ -245,7 +245,7 @@
   "101915": "Discount Reason in use, Inactive not allowed_gb",
   "101916": "Discount Reason in use, Delete not allowed,_gb",
   "101917": "Date cannot be rolled over to the next day_gb",
-  "101918":"Current system date {CurrentSystemDate} is greater than or equal to roll over date {RollOverDate}. Please Re Login_gb",
+  "101918": "Current system date {CurrentSystemDate} is greater than or equal to roll over date {RollOverDate}. Please Re Login_gb",
   "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed._gb",
   "-3": "New appointment duration will result in an overbook. Do you want to continue?_gb",
   "-2": "An unexpected error has occurred, please try again later._gb",

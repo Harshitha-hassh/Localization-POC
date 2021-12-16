@@ -1190,6 +1190,7 @@
     "RoomNoRequired": "Missing Room Number_fi",
     "RoomNo": "Room Number_fi",
     "AddTax": "Please wait, the tax is being added._fi",
+    "WaitForMoment": "Please wait for a moment_fi",
     "AddDiscount": "Please wait, the discount is being added._fi",
     "RemoveTax": "Please wait, the tax is being removed._fi",
     "RemoveItemDiscount": "Please wait, the discount is being removed from the item._fi",
@@ -1200,6 +1201,8 @@
     "AddCommissionGratuityServiceCharge": "Please wait, the commission/service charge/gratuity is being added to the item._fi",
     "RemoveItemCommission": "Please wait, the commission is being removed from the item._fi",
     "TransactionInprogressMsg": "Please wait, while your request is being processed_fi",
+    "SearchLoaderMsgGiftCardSale": "Please wait while the gift card is being redemeed_fi",
+    "SearchLoaderMsgGiftCardValidateSale": "Please wait while the gift card transaction is being validated_fi",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved._fi",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved._fi",
     "RetrievePatronDetails": "Please wait, while the player details are being retrieved._fi",
@@ -1302,6 +1305,7 @@
       "SwipeGiftCardMsg": "Please swipe the card_fi",
       "NoDeviceForGCSwipe": "No Devices Found._fi",
       "SearchLoaderMsg": "Please wait while the gift card details are being retrieved_fi",
+      "SearchLoaderMsgGiftCardBalanceFetch": "Please wait while the gift card balance is being fetched_fi",
       "TopUpInprogressMsg": "Please wait while the gift card top-up is in progress_fi",
       "TopupSuccessMsg": "Top-up is successful_fi",
       "CashBackInprogressMsg": "Please wait while we process your cashback request_fi",
@@ -2635,6 +2639,7 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_fi",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_fi",
     "EnableCheckZoom": "Enable CheckZoom_fi",
+    "ExpandPaymentMethods": "Expand Payment Methods by default_fi",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_fi",
     "DiscountReasonRequired": "Require Reason On Discount_fi",
     "DiscountCommentsRequired": "Require Comment On Discount_fi",
@@ -2956,6 +2961,8 @@
       "6": "Hanging Tickets_fi",
       "7": "Small Stickers_fi"
     },
+    "composed": "View Composed_fi",
+    "preview": "PREVIEW_fi",
     "defaultOutlet": "Default Outlet_fi",
     "defaultCourse": "Default Course_fi",
     "defaultMachineName": "Machine Name_fi",
@@ -3624,5 +3631,7 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_fi",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_fi",
   "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_fi",
-  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_fi"
+  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_fi",
+  "composed": "View Composed_fi",
+  "preview": "PREVIEW_fi"
 }

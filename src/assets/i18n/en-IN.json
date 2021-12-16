@@ -1190,6 +1190,7 @@
     "RoomNoRequired": "Missing Room Number_in",
     "RoomNo": "Room Number_in",
     "AddTax": "Please wait, the tax is being added._in",
+    "WaitForMoment": "Please wait for a moment_in",
     "AddDiscount": "Please wait, the discount is being added._in",
     "RemoveTax": "Please wait, the tax is being removed._in",
     "RemoveItemDiscount": "Please wait, the discount is being removed from the item._in",
@@ -1200,6 +1201,8 @@
     "AddCommissionGratuityServiceCharge": "Please wait, the commission/service charge/gratuity is being added to the item._in",
     "RemoveItemCommission": "Please wait, the commission is being removed from the item._in",
     "TransactionInprogressMsg": "Please wait, while your request is being processed_in",
+    "SearchLoaderMsgGiftCardSale": "Please wait while the gift card is being redemeed_in",
+    "SearchLoaderMsgGiftCardValidateSale": "Please wait while the gift card transaction is being validated_in",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved._in",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved._in",
     "RetrievePatronDetails": "Please wait, while the player details are being retrieved._in",
@@ -1302,6 +1305,7 @@
       "SwipeGiftCardMsg": "Please swipe the card_in",
       "NoDeviceForGCSwipe": "No Devices Found._in",
       "SearchLoaderMsg": "Please wait while the gift card details are being retrieved_in",
+      "SearchLoaderMsgGiftCardBalanceFetch": "Please wait while the gift card balance is being fetched_in",
       "TopUpInprogressMsg": "Please wait while the gift card top-up is in progress_in",
       "TopupSuccessMsg": "Top-up is successful_in",
       "CashBackInprogressMsg": "Please wait while we process your cashback request_in",
@@ -2635,6 +2639,7 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_in",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_in",
     "EnableCheckZoom": "Enable CheckZoom_in",
+    "ExpandPaymentMethods": "Expand Payment Methods by default_in",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_in",
     "DiscountReasonRequired": "Require Reason On Discount_in",
     "DiscountCommentsRequired": "Require Comment On Discount_in",
@@ -2956,6 +2961,8 @@
       "6": "Hanging Tickets_in",
       "7": "Small Stickers_in"
     },
+    "composed": "View Composed_in",
+    "preview": "PREVIEW_in",
     "defaultOutlet": "Default Outlet_in",
     "defaultCourse": "Default Course_in",
     "defaultMachineName": "Machine Name_in",
@@ -3624,5 +3631,7 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_in",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_in",
   "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_in",
-  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_in"
+  "FailedTransLogInfo": "{count} Failed records round in Payment Logs_in",
+  "composed": "View Composed_in",
+  "preview": "PREVIEW_in"
 }

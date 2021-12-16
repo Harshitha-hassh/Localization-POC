@@ -1192,6 +1192,7 @@
     "RoomNoRequired": "Missing Room Number",
     "RoomNo": "Room Number",
     "AddTax": "Please wait, the tax is being added.",
+		"WaitForMoment": "Please wait for a moment",
     "AddDiscount": "Please wait, the discount is being added.",
     "RemoveTax": "Please wait, the tax is being removed.",
     "RemoveItemDiscount": "Please wait, the discount is being removed from the item.",
@@ -1202,6 +1203,8 @@
     "AddCommissionGratuityServiceCharge": "Please wait, the commission/service charge/gratuity is being added to the item.",
     "RemoveItemCommission": "Please wait, the commission is being removed from the item.",
     "TransactionInprogressMsg": "Please wait, while your request is being processed",
+    "SearchLoaderMsgGiftCardSale": "Please wait while the gift card is being redemeed",
+		"SearchLoaderMsgGiftCardValidateSale": "Please wait while the gift card transaction is being validated",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved.",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved.",
     "RetrievePatronDetails": "Please wait, while the player details are being retrieved.",
@@ -1304,7 +1307,8 @@
       "SwipeGiftCardMsg": "Please swipe the card",
       "NoDeviceForGCSwipe": "No Devices Found.",
       "SearchLoaderMsg": "Please wait while the gift card details are being retrieved",
-      "TopUpInprogressMsg": "Please wait while the gift card top-up is in progress",
+      "SearchLoaderMsgGiftCardBalanceFetch": "Please wait while the gift card balance is being fetched",
+			"TopUpInprogressMsg": "Please wait while the gift card top-up is in progress",
       "TopupSuccessMsg": "Top-up is successful",
       "CashBackInprogressMsg": "Please wait while we process your cashback request",
       "IssueInprogressMsg": "Please wait while we process your giftcard issuance request",
@@ -2637,6 +2641,7 @@
 		"ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity",
     "EnableCheckZoom":"Enable CheckZoom",
+    "ExpandPaymentMethods":"Expand Payment Methods by default",
     "Confirmationdialog": "Enable Retail Confirmation Dialog",
     "DiscountReasonRequired": "Require Reason On Discount",
     "DiscountCommentsRequired": "Require Comment On Discount",
@@ -2958,6 +2963,8 @@
 				"6": "Hanging Tickets",
 				"7": "Small Stickers"	
 			},
+    "composed" : "View Composed",
+    "preview" : "PREVIEW",
     "defaultOutlet": "Default Outlet",
     "defaultCourse": "Default Course",
     "defaultMachineName": "Machine Name",
@@ -3626,5 +3633,7 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}",
   "combineGuest_warning": "Are you sure you want to cancel the changes?"  ,
   "RevenuePostingInfo" : "{count} Failed records found in Revenue Postings",
-  "FailedTransLogInfo" : "{count} Failed records round in Payment Logs"  
+  "FailedTransLogInfo" : "{count} Failed records round in Payment Logs"  ,
+  "composed" : "View Composed",
+  "preview" : "PREVIEW"
 }
