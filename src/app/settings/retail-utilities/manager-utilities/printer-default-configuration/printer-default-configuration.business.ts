@@ -7,7 +7,6 @@ import { MachineName } from 'src/app/common/shared/shared.modal';
 import { MachinePrinterConfigDataService } from 'src/app/common/dataservices/machine-printer-configuration.data-services';
 import { MachineNameDataService } from 'src/app/common/dataservices/machinename.data.service';
 import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
-import { SettingScreen } from 'src/app/retail/shared/shared.modal';
 import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.constants';
 export enum PrintInformationTypeProduct {
   Recepit=0,

@@ -33,15 +33,13 @@ export class PrinterDefaultConfigurationComponent implements OnInit {
     this.intializeData();
   }
   async intializeData() {
-    //this.utilities.ToggleLoader(true);
-    let printerManagerURI  = sessionStorage.getItem('PrinterManagerURI');
+    let printerManagerURI  = this.localization.GetPrinterManagerURI();
     if(printerManagerURI && printerManagerURI!='')
     this.printerDropdownOptions = await this.business.getPrinterOptions(printerManagerURI);
     else
     this.utilities.showCommonAlert(this.commonCaptions.MissingPrinterManagerURIConfig,AlertType.Error);
     this.masterData = await this.business.getData();
     this.data = this.mapMasterDatatoTemp(this.masterData);
-    //this.utilities.ToggleLoader(false);
   }
 
 
@@ -77,7 +75,7 @@ export class PrinterDefaultConfigurationComponent implements OnInit {
   }
 
   setMachinePropertyConfig(config: API.MachinePrinterConfiguration[]) {
-    this.utilities.setSession("MachinePrinterConfig", JSON.stringify(config));
+    this.localization.SetMachinePrinterConfig(config);
   }
   mapMasterDatatoTemp(masterdata: UI.MachinePrinterConfiguration[]) {
     let tempData : UI.MachinePrinterConfiguration[] = []; 
