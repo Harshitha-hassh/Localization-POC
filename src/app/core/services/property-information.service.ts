@@ -79,8 +79,8 @@ export class PropertyInformation {
         sessionStorage.setItem('paymentConfiguration', _.cloneDeep(JSON.stringify(this.paymentConfiguration)));
     }
 
-    public SetSupportedPMAgentVersion(supportedPMAgentVersion: string) {
-        sessionStorage.setItem('supportedPMAgentVersion', supportedPMAgentVersion);
+    public SetSupportedPMAgentVersion(supportedPMAgentVersion) {
+        sessionStorage.setItem('supportedPMAgentVersion', _.cloneDeep(JSON.stringify(supportedPMAgentVersion)));
     }
 
     public GetPaymentConfigValueByKey(configKey: string, outletId: number): string {
