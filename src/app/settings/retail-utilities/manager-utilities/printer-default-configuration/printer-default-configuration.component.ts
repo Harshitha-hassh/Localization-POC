@@ -34,7 +34,11 @@ export class PrinterDefaultConfigurationComponent implements OnInit {
   }
   async intializeData() {
     //this.utilities.ToggleLoader(true);
-    this.printerDropdownOptions = await this.business.getPrinterOptions();
+    let printerManagerURI  = sessionStorage.getItem('PrinterManagerURI');
+    if(printerManagerURI && printerManagerURI!='')
+    this.printerDropdownOptions = await this.business.getPrinterOptions(printerManagerURI);
+    else
+    this.utilities.showCommonAlert(this.commonCaptions.MissingPrinterManagerURIConfig,AlertType.Error);
     this.masterData = await this.business.getData();
     this.data = this.mapMasterDatatoTemp(this.masterData);
     //this.utilities.ToggleLoader(false);

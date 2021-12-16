@@ -14,25 +14,26 @@ import { AgCombineGuestRecordsComponent } from 'src/app/common/components/combin
 import { DeactivateGuard } from 'src/app/core/services/Route-Guards/deactivate.guard.service';
 import { ManagerUtilitiesComponent } from './manager-utilities/manager-utilities.component';
 import { PrinterDefaultConfigurationComponent } from './manager-utilities/printer-default-configuration/printer-default-configuration.component';
+import { UserAccessBreakPoints as CommonBreakPoint} from 'src/app/common/constants/useraccess.constants';
 
 
 const routes: Routes = [{
   path: '', component: RetailUtilitiesComponent,
-  // canActivate: [RouteGuardService],
-  //data: { breakPointNumber: UserAccessBreakPoints.SYSTEMSETUP, ShowPopup: true, isModule: true },
+   //canActivate: [RouteGuardService],
+  data: { breakPointNumber: UserAccessBreakPoints.SYSTEMSETUP, ShowPopup: true, isModule: true },
   children: [
     { path: '', redirectTo: 'receiptconfiguration', pathMatch: 'full' },
     {
         path:'receiptconfiguration',
         component: ReceiptConfigurationComponent,
-      //  canActivate: [RouteGuardService],
-     //   data: { breakPointNumber: BreakPoint.ReceiptConfiguration, redirectTo: 'usermachineconfiguration', syncAccess: true }
+        canActivate: [RouteGuardService],
+        data: { breakPointNumber: BreakPoint.ReceiptConfiguration, redirectTo: 'usermachineconfiguration', syncAccess: true }
       },
       {
         path: 'usermachineconfiguration',
         component: UserMachineConfigurationComponent,
-       // canActivate: [RouteGuardService],
-       // data: { breakPointNumber: BreakPoint.UserSessionConfiguration, redirectTo: 'templates', syncAccess: true }
+        canActivate: [RouteGuardService],
+        data: { breakPointNumber: BreakPoint.UserSessionConfiguration, redirectTo: 'templates', syncAccess: true }
       },
       {
         path:'templates',
@@ -62,20 +63,20 @@ const routes: Routes = [{
       {
         path: 'combineguest',
         component: AgCombineGuestRecordsComponent,
-       // canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
-      //  data: { breakPointNumber: BreakPoint.CombineGuestRecords, redirectTo: 'combineguest', syncAccess: true }
+        canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
+        data: { breakPointNumber: BreakPoint.CombineGuestRecords, redirectTo: 'combineguest', syncAccess: true }
       },
       {
         path: 'managerUtilities',
         component: ManagerUtilitiesComponent,
-       // canActivate: [RouteGuardService],
-       // data: { breakPointNumber: 0, redirectTo: '/settings/retailsetup', hasChild: true },
+        canActivate: [RouteGuardService],
+        data: { BreakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', ShowPopup: true  } ,
         children: [
           { path: '', redirectTo: 'printerDefaultConfiguration', pathMatch: 'full' },        
           { path: 'printerDefaultConfiguration', 
             component: PrinterDefaultConfigurationComponent,
-            canActivate: [RouteGuardService],
-            data: { BreakPointNumber: UserAccessBreakPoints.PRINTERDEFAULTCONFIGURATION, redirectTo: '' } 
+            canActivate: [RouteGuardService],canDeactivate: [DeactivateGuard],
+            data: { BreakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', ShowPopup: true  } 
           }
         ]
       }

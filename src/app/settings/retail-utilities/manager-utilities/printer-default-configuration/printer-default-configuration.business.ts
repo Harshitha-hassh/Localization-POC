@@ -14,10 +14,10 @@ export enum PrintInformationTypeProduct {
   // CartAgreement = 1,
   // ClubAgreement = 2 ,
   // ShoeAgreement = 3 ,
-  RetailSaleChit = 4,
+  //RetailSaleChit = 4,
  // CaddyShack = 5,
-  HangingTicket = 6 ,
-  SmallSticker = 7
+  //HangingTicket = 6 ,
+ // SmallSticker = 7
 }
 @Injectable()
 export class PrinterDefaultConfigurationBusiness {
@@ -40,10 +40,7 @@ export class PrinterDefaultConfigurationBusiness {
     this.captions = this.localization.captions.utilities;
   }
 
-  async getPrinterOptions(): Promise<Options[]> {
-   // const setting: setting.GolfSetting = JSON.parse(sessionStorage.getItem(SettingScreen.GolfSetting));
-   // let printerManagerURI = setting.printerManagerURI;
-   let printerManagerURI = 'http://localhost:5100';
+  async getPrinterOptions(printerManagerURI:string): Promise<Options[]> {
     let printers = await this.printManagerDataService.GetAllPrinters(printerManagerURI);
     this.printerDropdownOptions = printers.map(p => this.printDropdownMapper(p));
     return this.printerDropdownOptions;
@@ -63,7 +60,7 @@ export class PrinterDefaultConfigurationBusiness {
 
 
   async getMachineName(): Promise<MachineName[]> {
-    let machine = await this.machineNameDataService.GetMachineNames(1);
+    let machine = await this.machineNameDataService.GetMachineNames(Number(this.localization.GetPropertyInfo("PropertyId")));
     this.machineName = [...machine]
     return this.machineName;
   }
@@ -125,10 +122,10 @@ export class PrinterDefaultConfigurationBusiness {
     }
   }
   async validateBreakPoints(): Promise<boolean> {
-    // const result = await this._userAccessBusiness.getUserAccess(UserAccessBreakPoints.PRINTERDEFAULTCONFIGURATION, true);
-    // this.isViewOnly = result.isViewOnly;
-    // this.isAllow = result.isAllow;
-    return false;// result.isAllow;
+    const result = await this._userAccessBusiness.getUserAccess(UserAccessBreakPoints.PRINTERDEFAULTCONFIGURATION, true);
+    this.isViewOnly = result.isViewOnly;
+    this.isAllow = result.isAllow;
+    return result.isAllow;
   }
 
 }

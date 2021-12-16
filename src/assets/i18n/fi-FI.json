@@ -86,6 +86,8 @@
     "QUICKLOGIN": "QUICK LOGIN_fi"
   },
   "common": {
+    "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_fi",
+    "noOfCopies": "No Of Copies_fi",
     "AddPlayer": "Add Player_fi",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_fi",
     "PhoneFormat": "(999) 999-9999",
@@ -1495,7 +1497,6 @@
     "8055": "8055 - MultiPack Items_fi",
     "8060": "8060 - Returned Items_fi",
     "8065": "8065 - Inventory Summary_fi",
-    "8736": "8736 - Inventory on Hand_fi",
     "8070": "8070 - Inventory Detail_fi",
     "8075": "8075 - Inventory Wash_fi",
     "8080": "8080 - Inventory Transfer_fi",
@@ -1523,6 +1524,8 @@
     "8733": "8733 - Physical Inventory_fi",
     "8734": "8734 - Receiving_fi",
     "8735": "8735 - PurchaseOrder_fi",
+    "8736": "8736 - Inventory on Hand_fi",
+    "15065": "15065 - Print Default Configuration_fi",
     "Appointment Actions": "Appointment Actions_fi",
     "Appointment Grid": "Appointment Grid_fi",
     "Client Profile": "Client Profile_fi",
@@ -2079,6 +2082,7 @@
     "TotalPackagePrice": "Total Package Price_fi",
     "DefaultCancelPolicy": "Default Cancel Policy_fi",
     "InvalidEndDate": "Invalid End Date_fi",
+    "PrinterManagerURI": "Printer Manager URI_fi",
     "InvalidAvailableCount": "Invalid Available Count_fi",
     "EmailConfirmationType": "Email Confirmation Type_fi",
     "CustomField": "Custom Fields_fi",
@@ -2942,6 +2946,16 @@
     "revenue": "Revenue_fi"
   },
   "utilities": {
+    "PrinterDefaultConfiguration": {
+      "0": "Receipt_fi",
+      "1": "Cart Agreement_fi",
+      "2": "Club Agreement_fi",
+      "3": "Shoe Agreement_fi",
+      "4": "Retail Sale Chit_fi",
+      "5": "Caddy Shack_fi",
+      "6": "Hanging Tickets_fi",
+      "7": "Small Stickers_fi"
+    },
     "defaultOutlet": "Default Outlet_fi",
     "defaultCourse": "Default Course_fi",
     "defaultMachineName": "Machine Name_fi",

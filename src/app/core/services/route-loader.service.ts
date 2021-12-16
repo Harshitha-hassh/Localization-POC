@@ -28,8 +28,8 @@ export class RouteLoaderService {
       setTimeout(() => {
         const router = this.injector.get(Router);
         console.log(router);
-        //this.getProductMenus().then(
-           this.getSettings().subscribe( // uncomment for hard coded menu
+        this.getProductMenus().then(
+          // this.getSettings().subscribe( // uncomment for hard coded menu
           response => {
             console.log('is Dynamic Menu available?:' + (!Array.isArray(response) || 0 == response.length) ? 'DM-No!' : 'DM-Yes!');
             this.currentSettings = response;
