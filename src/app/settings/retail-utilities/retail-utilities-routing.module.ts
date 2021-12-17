@@ -12,11 +12,14 @@ import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
 import { QuickidConfigComponent } from './quickid-config/quickid-config.component';
 import { AgCombineGuestRecordsComponent } from 'src/app/common/components/combine-guest-records/combine-guest-records.component';
 import { DeactivateGuard } from 'src/app/core/services/Route-Guards/deactivate.guard.service';
+import { ManagerUtilitiesComponent } from './manager-utilities/manager-utilities.component';
+import { PrinterDefaultConfigurationComponent } from './manager-utilities/printer-default-configuration/printer-default-configuration.component';
+import { UserAccessBreakPoints as CommonBreakPoint} from 'src/app/common/constants/useraccess.constants';
 
 
 const routes: Routes = [{
   path: '', component: RetailUtilitiesComponent,
-  // canActivate: [RouteGuardService],
+   //canActivate: [RouteGuardService],
   data: { breakPointNumber: UserAccessBreakPoints.SYSTEMSETUP, ShowPopup: true, isModule: true },
   children: [
     { path: '', redirectTo: 'receiptconfiguration', pathMatch: 'full' },
@@ -62,6 +65,20 @@ const routes: Routes = [{
         component: AgCombineGuestRecordsComponent,
         canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
         data: { breakPointNumber: BreakPoint.CombineGuestRecords, redirectTo: 'combineguest', syncAccess: true }
+      },
+      {
+        path: 'managerUtilities',
+        component: ManagerUtilitiesComponent,
+        canActivate: [RouteGuardService],
+        data: { BreakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', ShowPopup: true  } ,
+        children: [
+          { path: '', redirectTo: 'printerDefaultConfiguration', pathMatch: 'full' },        
+          { path: 'printerDefaultConfiguration', 
+            component: PrinterDefaultConfigurationComponent,
+            canActivate: [RouteGuardService],canDeactivate: [DeactivateGuard],
+            data: { BreakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', ShowPopup: true  } 
+          }
+        ]
       }
   ]
 }];

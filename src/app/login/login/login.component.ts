@@ -32,6 +32,7 @@ import { PayAgentService } from 'src/app/retail/shared/service/payagent.service'
 import { ConfigKeys } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-config/payment-features-config/property-feature-config.service';
 import { FeatureName, RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
+import { PropertyService } from 'src/app/common/services/property.service';
 
 @Component({
   selector: 'app-login',
@@ -93,6 +94,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private loginService: LoginCommunicationService,
     private PropertySettingService: PropertySettingDataService,
     private propertyInfo: PropertyInformation,
+    private propertyServices : PropertyService,
     private userDefaultsService: UserdefaultsInformationService,
     private retailPropertySettingDataService: RetailPropertySettingDataService,
     private compiler: Compiler,
@@ -705,6 +707,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if(typeof(userMachine) == 'object') {
       this.localize.SetMachineId(userMachine.id);
       this.localize.SetMachineName(userMachine.name);
+      this.propertyServices.SetMachinePrinterConfigForMachine(userMachine.id);
     } else {
       this.localize.SetMachineId(0);
       this.localize.SetMachineName('');

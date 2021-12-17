@@ -86,6 +86,8 @@
     "QUICKLOGIN": "QUICK LOGIN"
   },
   "common": {
+    "MissingPrinterManagerURIConfig" : "Missing Printer Manager URI Configuration",
+		"noOfCopies": "No Of Copies",
     "AddPlayer": "Add Player",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters",
     "PhoneFormat": "(999) 999-9999",
@@ -1543,8 +1545,8 @@
     "8150": "8150 - Items Extract",
     "8160": "8160 - Inventory Summary by Vendor",
     "8165": "8165 - Vendor Inventory Detail",
-    "8170": "8170 - Sale by Vendor"
-
+    "8170": "8170 - Sale by Vendor",
+		"15065": "15065 - Print Default Configuration"
   },
   "userId": "User ID",
   "password": "Password",
@@ -2086,6 +2088,7 @@
     "TotalPackagePrice": "Total Package Price",
     "DefaultCancelPolicy": "Default Cancel Policy",
     "InvalidEndDate": "Invalid End Date",
+  	"PrinterManagerURI" : "Printer Manager URI",
     "InvalidAvailableCount": "Invalid Available Count",
     "EmailConfirmationType": "Email Confirmation Type",
     "CustomField": "Custom Fields",
@@ -2950,6 +2953,16 @@
     "revenue": "Revenue"
   },
   "utilities": {
+    	"PrinterDefaultConfiguration" : {
+				"0": "Receipt",
+				"1": "Cart Agreement",
+				"2": "Club Agreement",
+				"3": "Shoe Agreement",
+				"4": "Retail Sale Chit",
+				"5": "Caddy Shack",
+				"6": "Hanging Tickets",
+				"7": "Small Stickers"	
+			},
     "composed" : "View Composed",
     "preview" : "PREVIEW",
     "defaultOutlet": "Default Outlet",

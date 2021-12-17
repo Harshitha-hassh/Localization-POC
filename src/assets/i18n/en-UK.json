@@ -86,6 +86,8 @@
     "QUICKLOGIN": "QUICK LOGIN_uk"
   },
   "common": {
+    "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_uk",
+    "noOfCopies": "No Of Copies_uk",
     "AddPlayer": "Add Player_uk",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_uk",
     "PhoneFormat": "(0) 9999999999",
@@ -1527,6 +1529,7 @@
     "8734": "8734 - Receiving_uk",
     "8735": "8735 - PurchaseOrder_uk",
     "8736": "8736 - Inventory on Hand_uk",
+    "15065": "15065 - Print Default Configuration_uk",
     "Appointment Actions": "Appointment Actions_uk",
     "Appointment Grid": "Appointment Grid_uk",
     "Client Profile": "Client Profile_uk",
@@ -2083,6 +2086,7 @@
     "TotalPackagePrice": "Total Package Price_uk",
     "DefaultCancelPolicy": "Default Cancel Policy_uk",
     "InvalidEndDate": "Invalid End Date_uk",
+    "PrinterManagerURI": "Printer Manager URI_uk",
     "InvalidAvailableCount": "Invalid Available Count_uk",
     "EmailConfirmationType": "Email Confirmation Type_uk",
     "CustomField": "Custom Fields_uk",
@@ -2947,6 +2951,16 @@
     "revenue": "Revenue_uk"
   },
   "utilities": {
+    "PrinterDefaultConfiguration": {
+      "0": "Receipt_uk",
+      "1": "Cart Agreement_uk",
+      "2": "Club Agreement_uk",
+      "3": "Shoe Agreement_uk",
+      "4": "Retail Sale Chit_uk",
+      "5": "Caddy Shack_uk",
+      "6": "Hanging Tickets_uk",
+      "7": "Small Stickers_uk"
+    },
     "composed": "View Composed_uk",
     "preview": "PREVIEW_uk",
     "defaultOutlet": "Default Outlet_uk",

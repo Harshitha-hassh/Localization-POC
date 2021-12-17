@@ -86,6 +86,8 @@
     "QUICKLOGIN": "QUICK LOGIN_au"
   },
   "common": {
+    "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_au",
+    "noOfCopies": "No Of Copies_au",
     "AddPlayer": "Add Player_au",
     "CopyPasteNotAllowed": "Pasted data contains incorrect characters_au",
     "PhoneFormat": "(999) 999-9999",
@@ -1527,6 +1529,7 @@
     "8734": "8734 - Receiving_au",
     "8735": "8735 - PurchaseOrder_au",
     "8736": "8736 - Inventory on Hand_au",
+    "15065": "15065 - Print Default Configuration_au",
     "Appointment Actions": "Appointment Actions_au",
     "Appointment Grid": "Appointment Grid_au",
     "Client Profile": "Client Profile_au",
@@ -2083,6 +2086,7 @@
     "TotalPackagePrice": "Total Package Price_au",
     "DefaultCancelPolicy": "Default Cancel Policy_au",
     "InvalidEndDate": "Invalid End Date_au",
+    "PrinterManagerURI": "Printer Manager URI_au",
     "InvalidAvailableCount": "Invalid Available Count_au",
     "EmailConfirmationType": "Email Confirmation Type_au",
     "CustomField": "Custom Fields_au",
@@ -2947,6 +2951,16 @@
     "revenue": "Revenue_au"
   },
   "utilities": {
+    "PrinterDefaultConfiguration": {
+      "0": "Receipt_au",
+      "1": "Cart Agreement_au",
+      "2": "Club Agreement_au",
+      "3": "Shoe Agreement_au",
+      "4": "Retail Sale Chit_au",
+      "5": "Caddy Shack_au",
+      "6": "Hanging Tickets_au",
+      "7": "Small Stickers_au"
+    },
     "composed": "View Composed_au",
     "preview": "PREVIEW_au",
     "defaultOutlet": "Default Outlet_au",
