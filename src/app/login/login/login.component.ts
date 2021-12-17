@@ -339,6 +339,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setAutoLogOff();
       await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.setMachineDetails();
+      this.propertyServices.setPrinterManagerURIinSession();
       this.router.navigate(['/home']);      
       await this.retailFunc.getRetailFunctionality();
     }
