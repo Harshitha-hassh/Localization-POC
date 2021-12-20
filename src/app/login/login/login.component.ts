@@ -269,7 +269,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         id: x.propertyCode,
         name: x.propertyName
       }));
-      this.userMachineInfo = await this.retailPropertySettingDataService.GetMachineNamesAndConfigurationSetting(this.userInfo.userId,
+      this.userMachineInfo = await this.retailPropertySettingDataService.GetMachineNamesAndConfigurationSetting(this.userInfo.userId,Product.RETAIL,
         this.propertyValues.map(x=> x.propertyId));
       // Selecting property by default when there is only one property configured for tenant
       if (this.multipleProperties.length == 1) {    
@@ -339,7 +339,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setAutoLogOff();
       await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.setMachineDetails();
-      this.propertyServices.setPrinterManagerURIinSession();
       this.router.navigate(['/home']);      
       await this.retailFunc.getRetailFunctionality();
     }
@@ -661,16 +660,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   private async setMachineInfo(propertyId: number) {
     this.resetMachineNameInfo();
     const userMachinePropertyInfo = this.userMachineInfo.userPropertiesMachineInfo.find(x=>x.propertyId == propertyId);
-    const retailPropertyInfo = userMachinePropertyInfo.settings;
+    const miscConfiguration = userMachinePropertyInfo.miscConfiguration;
     // TRANSACTION_BY_MACHINENAME
-    const retailMachineConfig = retailPropertyInfo.find(x=> x.switch == TRANSACTION_BY_MACHINENAME);
-    if (retailMachineConfig) {
-      this.isMachineNameEnabled = retailMachineConfig.value == 'true';
-    }
+    this.isMachineNameEnabled = miscConfiguration.enableTransactionByMachineName;
     // SELECTION_ON_LOGIN
-    const retailPromptConfig = retailPropertyInfo.find(x=> x.switch == SELECTION_ON_LOGIN);
-    if (retailPromptConfig) {
-      this.isPromptOnLoginEnabled = retailPromptConfig.value == 'true';
+    this.isPromptOnLoginEnabled = miscConfiguration.promptOnLogin;
+    if (miscConfiguration.printerManagerURI)
+    {
+      this.localize.SetPrinterManagerURI(miscConfiguration.printerManagerURI);
     }
     if(this.isMachineNameEnabled) {
       this.defaultMachineId = userMachinePropertyInfo.defaultMachineId;    

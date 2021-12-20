@@ -75,7 +75,7 @@ const routes: Routes = [{
           { path: '', redirectTo: 'printerDefaultConfiguration', pathMatch: 'full' },        
           { path: 'printerDefaultConfiguration', 
             component: PrinterDefaultConfigurationComponent,
-            canActivate: [RouteGuardService],canDeactivate: [DeactivateGuard],
+            canActivate: [RouteGuardService],
             data: { breakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', ShowPopup: true  } 
           }
         ]
