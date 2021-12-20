@@ -70,13 +70,13 @@ const routes: Routes = [{
         path: 'managerUtilities',
         component: ManagerUtilitiesComponent,
         canActivate: [RouteGuardService],
-        data: { BreakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', ShowPopup: true  } ,
+        data: { breakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', ShowPopup: true  } ,
         children: [
           { path: '', redirectTo: 'printerDefaultConfiguration', pathMatch: 'full' },        
           { path: 'printerDefaultConfiguration', 
             component: PrinterDefaultConfigurationComponent,
             canActivate: [RouteGuardService],canDeactivate: [DeactivateGuard],
-            data: { BreakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', ShowPopup: true  } 
+            data: { breakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', ShowPopup: true  } 
           }
         ]
       }
