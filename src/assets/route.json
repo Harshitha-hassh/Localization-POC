@@ -659,7 +659,7 @@
   "CancelAllPayments": "transaction/{transactionId}/cancelpayments/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/terminalId/{terminalId}",
   "GetMiscConfiguration": "settings/AllSetting/Misc",
   "GetMiscConfigurationByPropertyId": "settings/AllSetting/{propertyId}/Misc",
-  "GetMachineNamesConfigurationInfo": "MachineName/GetMachineNames/ConfigInfo/{userId}",
+  "GetMachineNamesConfigurationInfo": "MachineName/GetMachineNames/ConfigInfo/{productId}/{userId}",
   "GetAggregateTransactionByIds": "Transaction/GetTransactionAggregateByIds",
   "GetPaymentTransaction": "Payment/GetPaymentTransaction",
   "RefundAllPayments": "Transaction/{transactionId}/returnpayments/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/terminalId/{terminalId}",
