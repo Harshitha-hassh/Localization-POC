@@ -35,14 +35,16 @@ export class LoaderInterceptor implements HttpInterceptor {
     
       const reqUrl = req.url.toLowerCase();
       const payAgentURI = JSON.parse(sessionStorage.getItem('paymentConfiguration'));
-      const v1GiftcardRGuestPayURL = sessionStorage.getItem('v1GiftcardRGuestPayURL')
+      const v1GiftcardRGuestPayURL = sessionStorage.getItem('v1GiftcardRGuestPayURL');
+      const v1GiftcardRGuestPayCardCaptureRoute = 'cardcapture';
+      const isRguestPayPooling = (req.urlWithParams.toString().includes(v1GiftcardRGuestPayCardCaptureRoute) && req.method == 'GET');
           let payURL:string ="";
           if(payAgentURI && payAgentURI.length > 0)
           {
               payURL = payAgentURI[0]?.configValue;
           }
       
-          if(payURL != "" &&  reqUrl.includes(payURL.toLowerCase()) || (v1GiftcardRGuestPayURL && reqUrl.includes(v1GiftcardRGuestPayURL.toLowerCase())))
+          if(payURL != "" &&  reqUrl.includes(payURL.toLowerCase()) || (v1GiftcardRGuestPayURL && reqUrl.includes(v1GiftcardRGuestPayURL.toLowerCase()) && !isRguestPayPooling))
           {        
             
             let correlationId = this.utils.generateGUID();
