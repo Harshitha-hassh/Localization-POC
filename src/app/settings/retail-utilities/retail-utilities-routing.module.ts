@@ -14,72 +14,73 @@ import { AgCombineGuestRecordsComponent } from 'src/app/common/components/combin
 import { DeactivateGuard } from 'src/app/core/services/Route-Guards/deactivate.guard.service';
 import { ManagerUtilitiesComponent } from './manager-utilities/manager-utilities.component';
 import { PrinterDefaultConfigurationComponent } from './manager-utilities/printer-default-configuration/printer-default-configuration.component';
-import { UserAccessBreakPoints as CommonBreakPoint} from 'src/app/common/constants/useraccess.constants';
+import { UserAccessBreakPoints as CommonBreakPoint } from 'src/app/common/constants/useraccess.constants';
 
 
 const routes: Routes = [{
   path: '', component: RetailUtilitiesComponent,
-   //canActivate: [RouteGuardService],
+  //canActivate: [RouteGuardService],
   data: { breakPointNumber: UserAccessBreakPoints.SYSTEMSETUP, ShowPopup: true, isModule: true },
   children: [
     { path: '', redirectTo: 'receiptconfiguration', pathMatch: 'full' },
     {
-        path:'receiptconfiguration',
-        component: ReceiptConfigurationComponent,
-        canActivate: [RouteGuardService],
-        data: { breakPointNumber: BreakPoint.ReceiptConfiguration, redirectTo: 'usermachineconfiguration', syncAccess: true }
-      },
-      {
-        path: 'usermachineconfiguration',
-        component: UserMachineConfigurationComponent,
-        canActivate: [RouteGuardService],
-        data: { breakPointNumber: BreakPoint.UserSessionConfiguration, redirectTo: 'templates', syncAccess: true }
-      },
-      {
-        path:'templates',
-        component: RetailTemplatesComponent,
-        children: [
-          { path: '', redirectTo: 'email', pathMatch: 'full' },
-          {
-            path:'email',
-            component: TemplatesComponent,
-            data: { templateID: 1}
-          },
-          {
-            path:'sms',
-            component: TemplatesComponent,
-            data: { templateID: 2}
-          }
-        ]
-      },
-      {
-        path: 'distributionlist',
-        component: DistributionListComponent
-      },
-      {
-        path: 'quickidconfig',
-        component: QuickidConfigComponent
-      },      
-      {
-        path: 'combineguest',
-        component: AgCombineGuestRecordsComponent,
-        canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
-        data: { breakPointNumber: BreakPoint.CombineGuestRecords, redirectTo: 'combineguest', syncAccess: true }
-      },
-      {
-        path: 'managerUtilities',
-        component: ManagerUtilitiesComponent,
-        canActivate: [RouteGuardService],
-        data: { breakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', ShowPopup: true  } ,
-        children: [
-          { path: '', redirectTo: 'printerDefaultConfiguration', pathMatch: 'full' },        
-          { path: 'printerDefaultConfiguration', 
-            component: PrinterDefaultConfigurationComponent,
-            canActivate: [RouteGuardService],
-            data: { breakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', ShowPopup: true  } 
-          }
-        ]
-      }
+      path: 'receiptconfiguration',
+      component: ReceiptConfigurationComponent,
+      canActivate: [RouteGuardService],
+      data: { breakPointNumber: BreakPoint.ReceiptConfiguration, redirectTo: 'usermachineconfiguration', syncAccess: true }
+    },
+    {
+      path: 'usermachineconfiguration',
+      component: UserMachineConfigurationComponent,
+      canActivate: [RouteGuardService],
+      data: { breakPointNumber: BreakPoint.UserSessionConfiguration, redirectTo: 'templates', syncAccess: true }
+    },
+    {
+      path: 'templates',
+      component: RetailTemplatesComponent,
+      children: [
+        { path: '', redirectTo: 'email', pathMatch: 'full' },
+        {
+          path: 'email',
+          component: TemplatesComponent,
+          data: { templateID: 1 }
+        },
+        {
+          path: 'sms',
+          component: TemplatesComponent,
+          data: { templateID: 2 }
+        }
+      ]
+    },
+    {
+      path: 'distributionlist',
+      component: DistributionListComponent
+    },
+    {
+      path: 'quickidconfig',
+      component: QuickidConfigComponent
+    },
+    {
+      path: 'combineguest',
+      component: AgCombineGuestRecordsComponent,
+      canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
+      data: { breakPointNumber: BreakPoint.CombineGuestRecords, redirectTo: 'combineguest', syncAccess: true }
+    },
+    {
+      path: 'managerUtilities',
+      component: ManagerUtilitiesComponent,
+      canActivate: [RouteGuardService],
+      data: { breakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', syncAccess: true },
+      children: [
+        { path: '', redirectTo: 'printerDefaultConfiguration', pathMatch: 'full' },
+        {
+          path: 'printerDefaultConfiguration',
+          component: PrinterDefaultConfigurationComponent,
+          canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
+          data: { breakPointNumber: CommonBreakPoint.PRINTERDEFAULTCONFIGURATION, redirectTo: '', syncAccess: true }
+        }
+      ]
+    }
   ]
 }];
 
