@@ -13,7 +13,8 @@ import { ManageSessionService } from '../manage-session.service';
 import { SetPasswordComponent } from '../set-password/set-password.component';
 import {
   JWT_TOKEN, USER_INFO,
-  USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, PROPERTY_CONFIGURATION_SETTINGS
+  USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, PROPERTY_CONFIGURATION_SETTINGS,
+  FULL_STORY_ORG_ID
 } from 'src/app/app-constants';
 import { LoginCommunicationService } from '../login-communication.service';
 import moment from 'moment';
@@ -33,6 +34,7 @@ import { ConfigKeys } from 'src/app/retail/shared/service/retail.feature.flag.in
 import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-config/payment-features-config/property-feature-config.service';
 import { FeatureName, RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { PropertyService } from 'src/app/common/services/property.service';
+import * as FullStory from '@fullstory/browser';
 
 @Component({
   selector: 'app-login',
@@ -524,7 +526,17 @@ export class LoginComponent implements OnInit, OnDestroy {
     } as API.PropertyConfigurationSettings<any>);
     if ((propertityConfig != null) && (Object.keys(propertityConfig.configValue).length > 0)) {
       this.propertyInfo.SetPropertyConfiguration(propertityConfig);
+      this.SetFullStory(propertityConfig);   
     }
+  }
+
+  SetFullStory(propertyConfig: any) {
+    if (propertyConfig.configValue != undefined && propertyConfig.configValue[FULL_STORY_ORG_ID] != undefined){
+      FullStory.init({ orgId: propertyConfig.configValue[FULL_STORY_ORG_ID] });
+      FullStory.setUserVars({
+        "displayName" : this.userInfo.userName
+       });
+    } 
   }
 
 
