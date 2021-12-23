@@ -957,6 +957,7 @@
     "ADD": "ADD_au",
     "Addwithoutcommission": "Add without commission_au",
     "Itemnotsynchronized": "Item not synched_au",
+    "ItemCategoryNotMapped": "Category not mapped_au",
     "ItemsAddedtoCart": "Items Added to Cart_au",
     "discount": "discount_au",
     "delete": "delete_au",

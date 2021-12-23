@@ -957,6 +957,7 @@
     "ADD": "ADD_gb",
     "Addwithoutcommission": "Add without commission_gb",
     "Itemnotsynchronized": "Item not synched_gb",
+    "ItemCategoryNotMapped": "Category not mapped_gb",
     "ItemsAddedtoCart": "Items Added to Cart_gb",
     "discount": "discount_gb",
     "delete": "delete_gb",

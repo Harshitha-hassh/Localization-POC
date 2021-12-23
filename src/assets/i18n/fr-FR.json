@@ -957,6 +957,7 @@
     "ADD": "ADD_fr",
     "Addwithoutcommission": "Add without commission_fr",
     "Itemnotsynchronized": "Item not synched_fr",
+    "ItemCategoryNotMapped": "Category not mapped_fr",
     "ItemsAddedtoCart": "Items Added to Cart_fr",
     "discount": "discount_fr",
     "delete": "delete_fr",

@@ -957,6 +957,7 @@
     "ADD": "ADD_fi",
     "Addwithoutcommission": "Add without commission_fi",
     "Itemnotsynchronized": "Item not synched_fi",
+    "ItemCategoryNotMapped": "Category not mapped_fi",
     "ItemsAddedtoCart": "Items Added to Cart_fi",
     "discount": "discount_fi",
     "delete": "delete_fi",

@@ -352,5 +352,6 @@
   "-1001": "Appointments exist out of date range, change not allowed_de",
   "-1002": "Expiration Days must be Greater than Zero_de",
   "-301": "Duplicate guest exists on the system_de",
-  "-302": "Guest information is out of date. Please refresh and try again_de"
+  "-302": "Guest information is out of date. Please refresh and try again_de",
+  "-4700": "The following items are not mapped with a category: _de"
 }

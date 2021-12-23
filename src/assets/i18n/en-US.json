@@ -957,6 +957,7 @@
     "ADD": "ADD",
     "Addwithoutcommission": "Add without commission",
     "Itemnotsynchronized": "Item not synched",
+    "ItemCategoryNotMapped": "Category not mapped",
     "ItemsAddedtoCart": "Items Added to Cart",
     "discount": "discount",
     "delete": "delete",
