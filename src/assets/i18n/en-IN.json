@@ -1575,7 +1575,10 @@
   "lbl_NoDataFound": "No Data Found_in",
   "lbl_userId": "User ID_in",
   "lbl_logout": "Log Out_in",
-  "retailsetup": {
+  "retailsetup": {   
+    "NumberOfReceipts": "Number of receipts_in",
+    "NumberOfReceiptsRequired": "Missing Number of receipts_in",
+    "RequireReceipts": "Require receipts_in",
     "LoaderWaitMsg": "Please wait while data is being uploaded_in",
     "ImportRetailStatus": "Retail Items Import Status_in",
     "ImportStatus": "Import Status_in",
