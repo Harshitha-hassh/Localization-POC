@@ -957,6 +957,7 @@
     "ADD": "ADD_da",
     "Addwithoutcommission": "Add without commission_da",
     "Itemnotsynchronized": "Item not synched_da",
+    "ItemCategoryNotMapped": "Category not mapped_da",
     "ItemsAddedtoCart": "Items Added to Cart_da",
     "discount": "discount_da",
     "delete": "delete_da",
