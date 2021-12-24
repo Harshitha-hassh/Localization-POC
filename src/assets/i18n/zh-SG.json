@@ -1472,7 +1472,10 @@
     "lbl_NoDataFound": "No Data Found_zh",
     "lbl_userId": "User ID_zh",
     "lbl_logout": "Log Out_zh",
-    "retailsetup": {
+    "retailsetup": {   
+      "NumberOfReceipts": "Number of receipts_zh",
+      "NumberOfReceiptsRequired": "Missing Number of receipts_zh",
+      "RequireReceipts": "Require receipts_zh",
       "InventoryType": "Inventory Type_zh",
       "ImportFailedItems": "Import Failed Items_zh",
       "level": "Level_zh",
