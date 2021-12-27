@@ -86,6 +86,7 @@
     "QUICKLOGIN": "QUICK LOGIN_au"
   },
   "common": {
+		"NoPrinterFound":"No Printer Found_au",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_au",
     "noOfCopies": "No Of Copies_au",
     "AddPlayer": "Add Player_au",

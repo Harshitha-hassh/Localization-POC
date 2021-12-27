@@ -86,6 +86,7 @@
     "QUICKLOGIN": "QUICK LOGIN_uk"
   },
   "common": {
+		"NoPrinterFound":"No Printer Found_uk",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_uk",
     "noOfCopies": "No Of Copies_uk",
     "AddPlayer": "Add Player_uk",

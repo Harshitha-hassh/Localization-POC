@@ -85,6 +85,7 @@
       "QUICKLOGIN": "QUICK LOGIN_zh"
     },
     "common": {
+      "NoPrinterFound":"No Printer Found_zh",
       "AddPlayer": "Add Player_zh",
       "CopyPasteNotAllowed": "Pasted data contains incorrect characters_zh",
       "PhoneFormat": "9999 9999",

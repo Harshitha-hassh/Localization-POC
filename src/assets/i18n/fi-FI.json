@@ -86,6 +86,7 @@
     "QUICKLOGIN": "QUICK LOGIN_fi"
   },
   "common": {
+		"NoPrinterFound":"No Printer Found_fi",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_fi",
     "noOfCopies": "No Of Copies_fi",
     "AddPlayer": "Add Player_fi",
