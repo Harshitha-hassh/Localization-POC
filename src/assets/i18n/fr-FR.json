@@ -86,7 +86,7 @@
     "QUICKLOGIN": "QUICK LOGIN_fr"
   },
   "common": {
-		"NoPrinterFound":"No Printer Found_fr",
+    "NoPrinterFound": "No Printer Found_fr",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_fr",
     "noOfCopies": "No Of Copies_fr",
     "AddPlayer": "Add Player_fr",
@@ -1380,6 +1380,7 @@
       "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_fr"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_fr",
+    "CanNotVoidAlreadyIssuedAsGiftcard": "Cannot void transaction as the return amount was credited to a gift card._fr",
     "SearchARAcctName": "Search by Account Name_fr",
     "SearchARAcctNumber": "Search by Account Number_fr",
     "ARAcctName": "Account Name_fr",
@@ -1577,10 +1578,7 @@
   "lbl_NoDataFound": "No Data Found_fr",
   "lbl_userId": "User ID_fr",
   "lbl_logout": "Log Out_fr",
-  "retailsetup": {   
-    "NumberOfReceipts": "Number of receipts_fr",
-    "NumberOfReceiptsRequired": "Missing Number of receipts_fr",
-    "RequireReceipts": "Require receipts_fr",
+  "retailsetup": {
     "LoaderWaitMsg": "Please wait while data is being uploaded_fr",
     "ImportRetailStatus": "Retail Items Import Status_fr",
     "ImportStatus": "Import Status_fr",
@@ -1694,6 +1692,7 @@
     "Miscellaneous": "Miscellaneous_fr",
     "RequireComments": "Require Comments_fr",
     "RequirePaymentComments": "Require Comment_fr",
+    "RequireReceipts": "Require receipts_fr",
     "RequestName": "Request Name_fr",
     "OpenItem": "Open Item_fr",
     "PMSPackageItem": "PMS Package Item_fr",
@@ -1757,6 +1756,8 @@
     "Search": "Search_fr",
     "QuickSaleCategory": "Quick Sale Category_fr",
     "ListOrder": "List Order_fr",
+    "NumberOfReceipts": "Number of receipts_fr",
+    "NumberOfReceiptsRequired": "Missing Number of receipts_fr",
     "MissingQuickSaleCategory": "Missing Quick Sale Category_fr",
     "AddQuickSaleItems": "ADD QUICK SALE ITEMS_fr",
     "AddQuickSale": "ADD TO QUICK SALE_fr",

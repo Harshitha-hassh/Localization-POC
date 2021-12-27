@@ -86,7 +86,7 @@
     "QUICKLOGIN": "QUICK LOGIN_gb"
   },
   "common": {
-		"NoPrinterFound":"No Printer Found_gb",
+    "NoPrinterFound": "No Printer Found_gb",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_gb",
     "noOfCopies": "No Of Copies_gb",
     "AddPlayer": "Add Player_gb",
@@ -1380,6 +1380,7 @@
       "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_gb"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_gb",
+    "CanNotVoidAlreadyIssuedAsGiftcard": "Cannot void transaction as the return amount was credited to a gift card._gb",
     "SearchARAcctName": "Search by Account Name_gb",
     "SearchARAcctNumber": "Search by Account Number_gb",
     "ARAcctName": "Account Name_gb",
@@ -1577,10 +1578,7 @@
   "lbl_NoDataFound": "No Data Found_gb",
   "lbl_userId": "User ID_gb",
   "lbl_logout": "Log Out_gb",
-  "retailsetup": {   
-    "NumberOfReceipts": "Number of receipts_gb",
-    "NumberOfReceiptsRequired": "Missing Number of receipts_gb",
-    "RequireReceipts": "Require receipts_gb",
+  "retailsetup": {
     "LoaderWaitMsg": "Please wait while data is being uploaded_gb",
     "ImportRetailStatus": "Retail Items Import Status_gb",
     "ImportStatus": "Import Status_gb",
@@ -1694,6 +1692,7 @@
     "Miscellaneous": "Miscellaneous_gb",
     "RequireComments": "Require Comments_gb",
     "RequirePaymentComments": "Require Comment_gb",
+    "RequireReceipts": "Require receipts_gb",
     "RequestName": "Request Name_gb",
     "OpenItem": "Open Item_gb",
     "PMSPackageItem": "PMS Package Item_gb",
@@ -1757,6 +1756,8 @@
     "Search": "Search_gb",
     "QuickSaleCategory": "Quick Sale Category_gb",
     "ListOrder": "List Order_gb",
+    "NumberOfReceipts": "Number of receipts_gb",
+    "NumberOfReceiptsRequired": "Missing Number of receipts_gb",
     "MissingQuickSaleCategory": "Missing Quick Sale Category_gb",
     "AddQuickSaleItems": "ADD QUICK SALE ITEMS_gb",
     "AddQuickSale": "ADD TO QUICK SALE_gb",

@@ -504,7 +504,7 @@
   "UpdateInventoryAuditOnDayEnd": "Inv/property/{propertyId}/dayend/audit",
   "TenderRetainedData": "transaction/{transactionId}/tenderRetainedData/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/terminalId/{terminalId}",
   "OldRefund": "transaction/{transactionId}/refund",
-  "PaymentHistory": "transaction/{transactionId}/payment/history",
+  "PaymentHistory": "transaction/{transactionId}/payment/history?getAll={getAll}",
   "PaymentHistoryDetails": "PointOfSaleService/GetPaymentHistoryDetails/{transactionId}/payment/history",
   "GetUserSessionConfiguration": "UserSessionConfiguration/user/{userId}",
   "CreateUserSessionConfiguration": "UserSessionConfiguration/create",

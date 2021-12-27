@@ -1382,6 +1382,7 @@
       "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction",
+    "CanNotVoidAlreadyIssuedAsGiftcard": "Cannot void transaction as the return amount was credited to a gift card.",
     "SearchARAcctName": "Search by Account Name",
     "SearchARAcctNumber": "Search by Account Number",
     "ARAcctName": "Account Name",

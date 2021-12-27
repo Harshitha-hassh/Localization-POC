@@ -86,7 +86,7 @@
     "QUICKLOGIN": "QUICK LOGIN_in"
   },
   "common": {
-		"NoPrinterFound":"No Printer Found_in",
+    "NoPrinterFound": "No Printer Found_in",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_in",
     "noOfCopies": "No Of Copies_in",
     "AddPlayer": "Add Player_in",
@@ -1380,6 +1380,7 @@
       "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_in"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_in",
+    "CanNotVoidAlreadyIssuedAsGiftcard": "Cannot void transaction as the return amount was credited to a gift card._in",
     "SearchARAcctName": "Search by Account Name_in",
     "SearchARAcctNumber": "Search by Account Number_in",
     "ARAcctName": "Account Name_in",
@@ -1577,10 +1578,7 @@
   "lbl_NoDataFound": "No Data Found_in",
   "lbl_userId": "User ID_in",
   "lbl_logout": "Log Out_in",
-  "retailsetup": {   
-    "NumberOfReceipts": "Number of receipts_in",
-    "NumberOfReceiptsRequired": "Missing Number of receipts_in",
-    "RequireReceipts": "Require receipts_in",
+  "retailsetup": {
     "LoaderWaitMsg": "Please wait while data is being uploaded_in",
     "ImportRetailStatus": "Retail Items Import Status_in",
     "ImportStatus": "Import Status_in",
@@ -1694,6 +1692,7 @@
     "Miscellaneous": "Miscellaneous_in",
     "RequireComments": "Require Comments_in",
     "RequirePaymentComments": "Require Comment_in",
+    "RequireReceipts": "Require receipts_in",
     "RequestName": "Request Name_in",
     "OpenItem": "Open Item_in",
     "PMSPackageItem": "PMS Package Item_in",
@@ -1757,6 +1756,8 @@
     "Search": "Search_in",
     "QuickSaleCategory": "Quick Sale Category_in",
     "ListOrder": "List Order_in",
+    "NumberOfReceipts": "Number of receipts_in",
+    "NumberOfReceiptsRequired": "Missing Number of receipts_in",
     "MissingQuickSaleCategory": "Missing Quick Sale Category_in",
     "AddQuickSaleItems": "ADD QUICK SALE ITEMS_in",
     "AddQuickSale": "ADD TO QUICK SALE_in",
