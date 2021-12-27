@@ -86,6 +86,7 @@
     "QUICKLOGIN": "QUICK LOGIN_fr"
   },
   "common": {
+		"NoPrinterFound":"No Printer Found_fr",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_fr",
     "noOfCopies": "No Of Copies_fr",
     "AddPlayer": "Add Player_fr",

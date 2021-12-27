@@ -35,15 +35,27 @@ export class PrinterDefaultConfigurationComponent implements OnInit {
   async intializeData() {
     let printerManagerURI = this.localization.GetPrinterManagerURI();
     if (printerManagerURI && printerManagerURI != '') {
-      this.printerDropdownOptions = await this.business.getPrinterOptions(printerManagerURI);
-      this.masterData = await this.business.getData();
-      this.data = this.mapMasterDatatoTemp(this.masterData);
+      this.business.getPrinterOptions(printerManagerURI).then(async res => {
+        if (res && res.length != 0) {
+          this.printerDropdownOptions = res;
+          this.masterData = await this.business.getData();
+          this.data = this.mapMasterDatatoTemp(this.masterData);
+          this.utilities.ToggleLoader(false);
+        }
+        else
+          this.showPrinterError(this.commonCaptions.NoPrinterFound);
+      }).catch(res => {
+        this.showPrinterError(this.commonCaptions.NoPrinterFound);
+      })
     }
-    else
-      this.utilities.showCommonAlert(this.commonCaptions.MissingPrinterManagerURIConfig, AlertType.Error);
+    else {
+      this.showPrinterError(this.commonCaptions.MissingPrinterManagerURIConfig);
+    }
   }
-
-
+  private showPrinterError(title: string) {
+    this.utilities.ToggleLoader(false);
+    this.utilities.showError(title);
+  }
   Onsave(data) {
     let apiModel: API.MachinePrinterConfiguration[] = this.business.APIMapper(data);
     this.business.CreateMachinePrinterConfiguration(apiModel).then(res => {
@@ -54,7 +66,7 @@ export class PrinterDefaultConfigurationComponent implements OnInit {
         this.intializeData();
       }
       else {
-        this.utilities.showAlert(this.commonCaptions.Error, AlertType.Error);
+        this.showPrinterError(this.commonCaptions.Error);
         this.data = this.mapMasterDatatoTemp(this.masterData);
       }
     })
