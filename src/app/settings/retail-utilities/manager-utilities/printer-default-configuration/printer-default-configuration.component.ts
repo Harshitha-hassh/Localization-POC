@@ -20,12 +20,12 @@ export class PrinterDefaultConfigurationComponent implements OnInit {
   viewOnly: boolean = false;
   selectedValue = 0;
   printerDropdownOptions: Options[];
-  defalutNoOfCopies : number;
+  defalutNoOfCopies: number;
   constructor(private fb: FormBuilder, private localization: Localization,
     private business: PrinterDefaultConfigurationBusiness, private utilities: RetailUtilities) {
     this.captions = this.localization.captions.settings.utilities;
     this.commonCaptions = this.localization.captions.common;
-    this.defalutNoOfCopies=this.business.defalutNoOfCopies;
+    this.defalutNoOfCopies = this.business.defalutNoOfCopies;
   }
 
   ngOnInit(): void {
@@ -33,13 +33,14 @@ export class PrinterDefaultConfigurationComponent implements OnInit {
     this.intializeData();
   }
   async intializeData() {
-    let printerManagerURI  = this.localization.GetPrinterManagerURI();
-    if(printerManagerURI && printerManagerURI!='')
-    this.printerDropdownOptions = await this.business.getPrinterOptions(printerManagerURI);
+    let printerManagerURI = this.localization.GetPrinterManagerURI();
+    if (printerManagerURI && printerManagerURI != '') {
+      this.printerDropdownOptions = await this.business.getPrinterOptions(printerManagerURI);
+      this.masterData = await this.business.getData();
+      this.data = this.mapMasterDatatoTemp(this.masterData);
+    }
     else
-    this.utilities.showCommonAlert(this.commonCaptions.MissingPrinterManagerURIConfig,AlertType.Error);
-    this.masterData = await this.business.getData();
-    this.data = this.mapMasterDatatoTemp(this.masterData);
+      this.utilities.showCommonAlert(this.commonCaptions.MissingPrinterManagerURIConfig, AlertType.Error);
   }
 
 
@@ -78,7 +79,7 @@ export class PrinterDefaultConfigurationComponent implements OnInit {
     this.localization.SetMachinePrinterConfig(config);
   }
   mapMasterDatatoTemp(masterdata: UI.MachinePrinterConfiguration[]) {
-    let tempData : UI.MachinePrinterConfiguration[] = []; 
+    let tempData: UI.MachinePrinterConfiguration[] = [];
     masterdata.forEach(val => {
       tempData.push({
         machineId: val.machineId,
@@ -91,7 +92,7 @@ export class PrinterDefaultConfigurationComponent implements OnInit {
             printInformationType: p.printInformationType,
             label: p.label,
             selectedValue: p.selectedValue,
-            defaultNoofCopies : p.defaultNoofCopies
+            defaultNoofCopies: p.defaultNoofCopies
           };
           return printerarr;
         })

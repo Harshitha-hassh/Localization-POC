@@ -9,14 +9,14 @@ import { MachineNameDataService } from 'src/app/common/dataservices/machinename.
 import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
 import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.constants';
 export enum PrintInformationTypeProduct {
-  Recepit=0,
+  Recepit = 0,
   // CartAgreement = 1,
   // ClubAgreement = 2 ,
   // ShoeAgreement = 3 ,
   //RetailSaleChit = 4,
- // CaddyShack = 5,
+  // CaddyShack = 5,
   //HangingTicket = 6 ,
- // SmallSticker = 7
+  // SmallSticker = 7
 }
 @Injectable()
 export class PrinterDefaultConfigurationBusiness {
@@ -26,7 +26,7 @@ export class PrinterDefaultConfigurationBusiness {
   PrintInfoTypes = PrintInformationType;
   isViewOnly: boolean = false;
   isAllow: boolean = false;
-  defalutNoOfCopies : number = 1;
+  defalutNoOfCopies: number = 1;
   /**
    * Class contains business logic and transformation between the UI and API model.
    * One or more data services can be injected to get the data for UI binding.
@@ -39,7 +39,7 @@ export class PrinterDefaultConfigurationBusiness {
     this.captions = this.localization.captions.utilities;
   }
 
-  async getPrinterOptions(printerManagerURI:string): Promise<Options[]> {
+  async getPrinterOptions(printerManagerURI: string): Promise<Options[]> {
     let printers = await this.printManagerDataService.GetAllPrinters(printerManagerURI);
     this.printerDropdownOptions = printers.map(p => this.printDropdownMapper(p));
     return this.printerDropdownOptions;
@@ -92,32 +92,32 @@ export class PrinterDefaultConfigurationBusiness {
           printInformationType: p.printInformationType,
           printerName: p.printerName,
           id: p.id,
-          defaultNoofCopies:p.defaultNoofCopies
+          defaultNoofCopies: p.defaultNoofCopies
         })
       })
     })
     return apiModel;
   }
   generatePrintInfoType(apiModel: API.MachinePrinterConfiguration[]): UI.PrintInfoType[] {
-    let printInfo: UI.PrintInfoType[] = [];  
-      for (const [propertyKey, propertyValue] of Object.entries(PrintInformationTypeProduct)) {
-        if (!Number.isNaN(Number(propertyKey))) {
-          continue;
-        }
-        let printer : API.MachinePrinterConfiguration = apiModel.length !=0 ?  apiModel.find(pt=>Number(pt.printInformationType)==propertyValue) : null;
-        printInfo.push(this.pushPrintInfo(Number(propertyValue), this.captions.PrinterDefaultConfiguration[propertyValue],printer));
-      }    
+    let printInfo: UI.PrintInfoType[] = [];
+    for (const [propertyKey, propertyValue] of Object.entries(PrintInformationTypeProduct)) {
+      if (!Number.isNaN(Number(propertyKey))) {
+        continue;
+      }
+      let printer: API.MachinePrinterConfiguration = apiModel.length != 0 ? apiModel.find(pt => Number(pt.printInformationType) == propertyValue) : null;
+      printInfo.push(this.pushPrintInfo(Number(propertyValue), this.captions.PrinterDefaultConfiguration[propertyValue], printer));
+    }
     return printInfo;
   }
 
-  pushPrintInfo(printInformationType:PrintInformationType, caption, p?: API.MachinePrinterConfiguration): UI.PrintInfoType {
+  pushPrintInfo(printInformationType: PrintInformationType, caption, p?: API.MachinePrinterConfiguration): UI.PrintInfoType {
     return {
       id: p ? p.id : 0,
       printInformationType: printInformationType,
       label: caption,
       printerName: p ? p.printerName : null,
-      selectedValue: p ? this.printerDropdownOptions.find(o => o.key == p.printerName) : null,
-      defaultNoofCopies:p ? p.defaultNoofCopies : this.defalutNoOfCopies
+      selectedValue: p && this.printerDropdownOptions ? this.printerDropdownOptions.find(o => o.key == p.printerName) : null,
+      defaultNoofCopies: p ? p.defaultNoofCopies : this.defalutNoOfCopies
     }
   }
   async validateBreakPoints(): Promise<boolean> {
