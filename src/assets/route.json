@@ -663,6 +663,7 @@
   "GetAggregateTransactionByIds": "Transaction/GetTransactionAggregateByIds",
   "GetPaymentTransaction": "Payment/GetPaymentTransaction",
   "RefundAllPayments": "Transaction/{transactionId}/returnpayments/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/terminalId/{terminalId}",
+  "RefundPartialPayments": "Transaction/{transactionId}/returnpartialpayments/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/terminalId/{terminalId}/amountToRefund/{amountToRefund}",
   "RetailFunctionalitiesByProduct": "RetailManagementService/RetailFunctionalities/product/{productId}",
   "GetTaxesV2": "RetailManagementService/Tax",
   "GetPaymentSettingByModuleAndScreen": "Setting/{module}/{screen}",
