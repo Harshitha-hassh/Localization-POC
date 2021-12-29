@@ -1192,6 +1192,7 @@
     "RoomNoRequired": "Missing Room Number_de",
     "RoomNo": "Room Number_de",
     "AddTax": "Please wait, the tax is being added._de",
+    "PartialRefundWithMultiplePaymentError": "Refund to original settlements is not allowed for transactions with multiple payments_de",
     "WaitForMoment": "Please wait for a moment_de",
     "AddDiscount": "Please wait, the discount is being added._de",
     "RemoveTax": "Please wait, the tax is being removed._de",
