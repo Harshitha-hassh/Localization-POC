@@ -533,9 +533,15 @@ export class LoginComponent implements OnInit, OnDestroy {
   SetFullStory(propertyConfig: any) {
     if (propertyConfig.configValue != undefined && propertyConfig.configValue[FULL_STORY_ORG_ID] != undefined){
       FullStory.init({ orgId: propertyConfig.configValue[FULL_STORY_ORG_ID] });
-      FullStory.setUserVars({
-        "displayName" : this.userInfo.userName
-       });
+      FullStory.identify('RETAIL-' + this.userInfo.userName, {
+        "displayName" : 'RETAIL-' + this.userInfo.userName,
+        "productId" : Product.RETAIL.toString(),
+        "productName" : "RETAIL",
+        "tenantId" : this.userInfo.tenantId.toString(),
+        "tenantCode" : this.userInfo.tenantCode.toString(),
+        "propertyId" : propertyConfig.propertyId.toString(),
+        "propertyName" : this.propertyInfo.GetPropertyInfoByKey('PropertyName')
+      });
     } 
   }
 
