@@ -707,5 +707,6 @@
   "GetFailureRevenuePosting": "POS/RevenuePosting",
   "RevenuePost": "POS/RevenuePosting/Post",
   "GetRevenuePostingLogs": "POS/RevenuePosting/GetRevenuePostingLogs",
-  "IsBatchProcessingPending": "POS/RevenuePosting/IsBatchProcessingPending"
+  "IsBatchProcessingPending": "POS/RevenuePosting/IsBatchProcessingPending",  
+  "MachineAssociatedWithTransaction":"Transaction/IsMachineNameAssociatedWithRetailTransaction/{machineNameId}"
 }
