@@ -537,9 +537,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         "displayName" : 'RETAIL-' + this.userInfo.userName,
         "productId" : Product.RETAIL.toString(),
         "productName" : "RETAIL",
-        "tenantId" : this.userInfo.tenantId.toString(),
-        "tenantCode" : this.userInfo.tenantCode.toString(),
-        "propertyId" : propertyConfig.propertyId.toString(),
+        "tenantId" : this.userInfo.tenantId?.toString() ?? "",
+        "tenantCode" : this.userInfo.tenantCode?.toString() ?? "",
+        "propertyId" : propertyConfig.propertyId?.toString() ?? "",
         "propertyName" : this.propertyInfo.GetPropertyInfoByKey('PropertyName')
       });
     } 
