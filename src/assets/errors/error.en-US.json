@@ -311,6 +311,7 @@
     "70606":"Do not enable both Scaled Item and Open,either one should be true",
     "70607": "Quantity cannot be a Decimal Value.",
     "70616": "Item Number cannot be a Decimal Value.",
+    "70618": "Vendor is not valid.",
     "70608": "Item Par cannot be a Decimal Value.",
     "70609": "Card number not valid",
     "70610": "Retail Item Type is not valid.",

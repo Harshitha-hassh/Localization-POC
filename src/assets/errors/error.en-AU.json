@@ -195,6 +195,7 @@
   "70614": "Giftcard is already Inactive_au",
   "70615": "Card expired_au",
   "70616": "Item Number cannot be a Decimal Value._au",
+  "70618": "Vendor is not valid._au",
   "75001": "Feature Configurations are not available_au",
   "75002": "Web Proxy URI is not available_au",
   "75003": "IG WebPosting Service URI is not available_au",

@@ -195,6 +195,7 @@
   "70614": "Giftcard is already Inactive_in",
   "70615": "Card expired_in",
   "70616": "Item Number cannot be a Decimal Value._in",
+  "70618": "Vendor is not valid._in",
   "75001": "Feature Configurations are not available_in",
   "75002": "Web Proxy URI is not available_in",
   "75003": "IG WebPosting Service URI is not available_in",

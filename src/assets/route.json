@@ -572,6 +572,7 @@
   "RecentClientInfo": "Clients/recent/{propertyDate}/search/{requestUid}",
   "SearchClientInfo": "Clients/search/{requestUid}",
   "GetVendors": "Vendor",
+  "GetVendorInfo": "RetailManagementService/Vendor/GetVendorDetails",
   "CreateVendor": "Vendor",
   "UpdateVendor": "Vendor",
   "DeleteVendor": "Vendor/{id}",
