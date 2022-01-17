@@ -206,6 +206,7 @@
   "75008": "Are you sure want to delete the '{VendorName}'?_fr",
   "75009": "Please enter minimum one phone number_fr",
   "75010": "Please enter minimum one Email ID_fr",
+  "75011": "Unable to fetch data for the selected filters as large volume of data exist. Refine the filters and try again_fr",
   "100000": "Current appointment has been locked by other User_fr",
   "100001": "Continuing with move will result in an overbook, continue?_fr",
   "100002": "Guest Information's are not available, Please create client profile on SPA for the mentioned guest {clientName}_fr",
