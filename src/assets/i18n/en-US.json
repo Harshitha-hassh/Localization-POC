@@ -1550,7 +1550,9 @@
     "8160": "8160 - Inventory Summary by Vendor",
     "8165": "8165 - Vendor Inventory Detail",
     "8170": "8170 - Sale by Vendor",
-    "15065": "15065 - Print Default Configuration"
+    "15065": "15065 - Print Default Configuration",
+    "3090": "3090 - Issue Visual One GiftCard",
+    "3095": "3090 - Issue External GiftCard"
   },
   "userId": "User ID",
   "password": "Password",
