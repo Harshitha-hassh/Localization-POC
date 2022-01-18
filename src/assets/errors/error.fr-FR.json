@@ -195,6 +195,7 @@
   "70614": "Giftcard is already Inactive_fr",
   "70615": "Card expired_fr",
   "70616": "Item Number cannot be a Decimal Value._fr",
+  "70618": "Vendor is not valid._fr",
   "75001": "Feature Configurations are not available_fr",
   "75002": "Web Proxy URI is not available_fr",
   "75003": "IG WebPosting Service URI is not available_fr",
@@ -205,6 +206,7 @@
   "75008": "Are you sure want to delete the '{VendorName}'?_fr",
   "75009": "Please enter minimum one phone number_fr",
   "75010": "Please enter minimum one Email ID_fr",
+  "75011": "Unable to fetch data for the selected filters as large volume of data exist. Refine the filters and try again_fr",
   "100000": "Current appointment has been locked by other User_fr",
   "100001": "Continuing with move will result in an overbook, continue?_fr",
   "100002": "Guest Information's are not available, Please create client profile on SPA for the mentioned guest {clientName}_fr",
@@ -353,5 +355,6 @@
   "-1002": "Expiration Days must be Greater than Zero_fr",
   "-301": "Duplicate guest exists on the system_fr",
   "-302": "Guest information is out of date. Please refresh and try again_fr",
-  "-4700": "The following items are not mapped with a category_fr:"
+  "-4700": "The following items are not mapped with a category_fr",
+  "-4701": "You are about to perform a transaction that is NOT on today’s system date. The day end has not been completed_fr"
 }

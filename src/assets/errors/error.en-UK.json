@@ -195,6 +195,7 @@
   "70614": "Giftcard is already Inactive_uk",
   "70615": "Card expired_uk",
   "70616": "Item Number cannot be a Decimal Value._uk",
+  "70618": "Vendor is not valid._uk",
   "75001": "Feature Configurations are not available_uk",
   "75002": "Web Proxy URI is not available_uk",
   "75003": "IG WebPosting Service URI is not available_uk",
@@ -205,6 +206,7 @@
   "75008": "Are you sure want to delete the '{VendorName}'?_uk",
   "75009": "Please enter minimum one phone number_uk",
   "75010": "Please enter minimum one Email ID_uk",
+  "75011": "Unable to fetch data for the selected filters as large volume of data exist. Refine the filters and try again_uk",
   "100000": "Current appointment has been locked by other User_uk",
   "100001": "Continuing with move will result in an overbook, continue?_uk",
   "100002": "Guest Information's are not available, Please create client profile on SPA for the mentioned guest {clientName}_uk",
@@ -353,5 +355,6 @@
   "-1002": "Expiration Days must be Greater than Zero_uk",
   "-301": "Duplicate guest exists on the system_uk",
   "-302": "Guest information is out of date. Please refresh and try again_uk",
-  "-4700": "The following items are not mapped with a category_uk:"
+  "-4700": "The following items are not mapped with a category_uk",
+  "-4701": "You are about to perform a transaction that is NOT on today’s system date. The day end has not been completed_uk"
 }
