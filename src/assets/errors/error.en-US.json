@@ -310,6 +310,7 @@
     "70605":"Do not enable both Multipack and Open Item,either one should be true",
     "70606":"Do not enable both Scaled Item and Open,either one should be true",
     "70607": "Quantity cannot be a Decimal Value.",
+    "75011": "Unable to fetch data for the selected filters as large volume of data exist. Refine the filters and try again",
     "70616": "Item Number cannot be a Decimal Value.",
     "70618": "Vendor is not valid.",
     "70608": "Item Par cannot be a Decimal Value.",
