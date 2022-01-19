@@ -356,5 +356,5 @@
   "-301": "Duplicate guest exists on the system_da",
   "-302": "Guest information is out of date. Please refresh and try again_da",
   "-4700": "The following items are not mapped with a category_da",
-  "-4701": "You are about to perform a transaction that is NOT on today’s system date. The day end has not been completed_da"
+  "-4701": "You are about to perform a transaction that is NOT on today’s system date. The day end has not been completed. Do you wish to proceed?_da"
 }

@@ -356,6 +356,6 @@
     "101918":"Current system date {CurrentSystemDate} is greater than or equal to roll over date {RollOverDate}. Please Re Login",
     "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed.",
     "-4700":"The following items are not mapped with a category",
-    "-4701":"You are about to perform a transaction that is NOT on today’s system date. The day end has not been completed"    
+    "-4701":"You are about to perform a transaction that is NOT on today’s system date. The day end has not been completed. Do you wish to proceed?"    
   }
   
