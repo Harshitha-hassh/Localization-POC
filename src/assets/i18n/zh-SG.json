@@ -1444,7 +1444,9 @@
       "Inventory Management": "Inventory Management_zh",
       "Retail Setup": "Retail Setup_zh",
       "Retail Reports": "Retail Reports_zh",
-      "241524202425": "Move Multiple Appointments_zh"
+      "241524202425": "Move Multiple Appointments_zh",
+      "3090": "3090 - Issue Visual One GiftCard_zh",
+      "3095": "3095 - Issue External GiftCard_zh"
     },
     "userId": "User ID_zh",
     "password": "Password_zh",
