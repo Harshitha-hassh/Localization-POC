@@ -1301,6 +1301,7 @@
       "Name": "Name_au",
       "GiftCardBalance": "Gift Card Balance_au",
       "AmountPaid": "Amount Paid_au",
+      "AmountRefunded": "Amount Refunded_au",
       "CashBack": "Cashback_au",
       "UpdatedGiftCardBalance": "Updated Gift Card Balance_au",
       "GiftCardOpenItem": "Open_au",
@@ -1460,6 +1461,8 @@
     "3055": "3055 - Settle to Room Charge_au",
     "3065": "3065 - Settle to Others_au",
     "3070": "3070 - Apply Custom Discount_au",
+    "3075": "3075 - Issue Visual One GiftCard_au",
+    "3080": "3080 - Issue External GiftCard_au",
     "5000": "5000 - Reopen Transaction_au",
     "5005": "5005 - Void Transaction_au",
     "5007": "5007 - Correct Transaction_au",
@@ -1551,9 +1554,7 @@
     "Inventory Management": "Inventory Management_au",
     "Retail Setup": "Retail Setup_au",
     "Retail Reports": "Retail Reports_au",
-    "241524202425": "Move Multiple Appointments_au",
-    "3075": "3075 - Issue Visual One GiftCard_au",
-    "3080": "3080 - Issue External GiftCard_au"
+    "241524202425": "Move Multiple Appointments_au"
   },
   "userId": "User ID_au",
   "password": "Password_au",

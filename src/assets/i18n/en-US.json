@@ -1303,6 +1303,7 @@
       "Name": "Name",
       "GiftCardBalance": "Gift Card Balance",
       "AmountPaid": "Amount Paid",
+      "AmountRefunded": "Amount Refunded",
       "CashBack": "Cashback",
       "UpdatedGiftCardBalance": "Updated Gift Card Balance",
       "GiftCardOpenItem": "Open",

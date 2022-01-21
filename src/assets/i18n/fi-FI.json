@@ -1301,6 +1301,7 @@
       "Name": "Name_fi",
       "GiftCardBalance": "Gift Card Balance_fi",
       "AmountPaid": "Amount Paid_fi",
+      "AmountRefunded": "Amount Refunded_fi",
       "CashBack": "Cashback_fi",
       "UpdatedGiftCardBalance": "Updated Gift Card Balance_fi",
       "GiftCardOpenItem": "Open_fi",
@@ -1460,6 +1461,8 @@
     "3055": "3055 - Settle to Room Charge_fi",
     "3065": "3065 - Settle to Others_fi",
     "3070": "3070 - Apply Custom Discount_fi",
+    "3075": "3075 - Issue Visual One GiftCard_fi",
+    "3080": "3080 - Issue External GiftCard_fi",
     "5000": "5000 - Reopen Transaction_fi",
     "5005": "5005 - Void Transaction_fi",
     "5007": "5007 - Correct Transaction_fi",
@@ -1551,9 +1554,7 @@
     "Inventory Management": "Inventory Management_fi",
     "Retail Setup": "Retail Setup_fi",
     "Retail Reports": "Retail Reports_fi",
-    "241524202425": "Move Multiple Appointments_fi",
-    "3075": "3075 - Issue Visual One GiftCard_fi",
-    "3080": "3080 - Issue External GiftCard_fi"
+    "241524202425": "Move Multiple Appointments_fi"
   },
   "userId": "User ID_fi",
   "password": "Password_fi",

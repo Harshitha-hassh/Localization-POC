@@ -1301,6 +1301,7 @@
       "Name": "Name_uk",
       "GiftCardBalance": "Gift Card Balance_uk",
       "AmountPaid": "Amount Paid_uk",
+      "AmountRefunded": "Amount Refunded_uk",
       "CashBack": "Cashback_uk",
       "UpdatedGiftCardBalance": "Updated Gift Card Balance_uk",
       "GiftCardOpenItem": "Open_uk",
@@ -1460,6 +1461,8 @@
     "3055": "3055 - Settle to Room Charge_uk",
     "3065": "3065 - Settle to Others_uk",
     "3070": "3070 - Apply Custom Discount_uk",
+    "3075": "3075 - Issue Visual One GiftCard_uk",
+    "3080": "3080 - Issue External GiftCard_uk",
     "5000": "5000 - Reopen Transaction_uk",
     "5005": "5005 - Void Transaction_uk",
     "5007": "5007 - Correct Transaction_uk",
@@ -1551,9 +1554,7 @@
     "Inventory Management": "Inventory Management_uk",
     "Retail Setup": "Retail Setup_uk",
     "Retail Reports": "Retail Reports_uk",
-    "241524202425": "Move Multiple Appointments_uk",
-    "3075": "3075 - Issue Visual One GiftCard_uk",
-    "3080": "3080 - Issue External GiftCard_uk"
+    "241524202425": "Move Multiple Appointments_uk"
   },
   "userId": "User ID_uk",
   "password": "Password_uk",
