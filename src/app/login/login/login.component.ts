@@ -688,7 +688,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.localize.SetPrinterManagerURI(miscConfiguration.printerManagerURI);
     }
     if(this.isMachineNameEnabled) {
-      this.defaultMachineId = userMachinePropertyInfo.defaultMachineId;    
+      this.defaultMachineId = userMachinePropertyInfo.userDefault.defaultMachineId;    
       this.machineNames = userMachinePropertyInfo.machineNames.map(x => {
         return {
           id: x.id,

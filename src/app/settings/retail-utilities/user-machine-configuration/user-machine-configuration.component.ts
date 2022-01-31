@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import * as myGlobals from 'src/app/common/shared/shared/globalsContant'; // CONSTANT FILE ADD ANY CONSTANT VALUE
-import { SubPropertyModel, ZebraPrinters } from '../../../retail/retail.modals';
+import { DefaultUserConfigurationTenant, DefaultUserConfigurationTenantModel, SubPropertyModel, ZebraPrinters } from '../../../retail/retail.modals';
 import { NextId } from '../../../retail/retail.modals';
 import { HttpResponseStatus } from '../../../retail/shared/service/payment/payment-business.model';
 import { ZebraPrintService } from '../../../retail/retail-print/zebra-print.service';
@@ -20,6 +20,8 @@ import { MachineName } from 'src/app/common/shared/shared.modal';
 import { MachineNameDataService } from 'src/app/common/dataservices/machinename.data.service';
 import { DropdownOptions } from 'src/app/common/Models/ag-models';
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
+import { cloneDeep } from 'lodash';
+import { DEFAULTCONFIGURATION } from 'src/app/common/constants';
 
 @Component({
   selector: 'app-user-machine-configuration',
@@ -59,6 +61,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
   testMode = false;
   showPaymentDevice: boolean;
   enableMachineTransaction: boolean = false;
+  TenantDefaultUserConfiguration : DefaultUserConfigurationTenant<DefaultUserConfigurationTenantModel>
 
   constructor(
     private fb: FormBuilder,
@@ -158,6 +161,8 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     } else {
       this.userOperationType = OperationType.Edit;
     }
+    let defaultMachineId = await this.GetTenantDefaultUserConfiguration(userId);
+    userSessionConfiguration.defaultMachineId = defaultMachineId.configValue ? defaultMachineId.configValue.defaultMachineId : defaultMachineId.defaultValue.defaultMachineId;
     this.displayUserSessionConfiguration(userSessionConfiguration);
   }
 
@@ -184,11 +189,13 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
   }
 
   private async createUserSessionConfiguration(body: UserSessionConfiguration): Promise<NextId> {
+    this.CreateTenantDefaultUserConfiguration(body);
     const result = await this.userMachineConfigurationService.createUserSessionConfiguration(body);
     return result;
   }
 
   private async updateUserSessionConfiguration(body: UserSessionConfiguration): Promise<UserSessionConfiguration> {
+    this.UpdateTenantDefaultUserConfiguration(body);
     const result = await this.userMachineConfigurationService.updateUserSessionConfiguration(body);
     return result;
   }
@@ -469,4 +476,29 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     userMachineNames.unshift({ id: 0,value: 0, viewValue: '' });
     return userMachineNames;
   }
+  public CreateTenantDefaultUserConfiguration(formvalue : UserSessionConfiguration) {
+    let defaultUservalue : DefaultUserConfigurationTenantModel = { defaultMachineId : formvalue.defaultMachineId };
+    let tenantDefaultUserConfiguration : any = cloneDeep( this.TenantDefaultUserConfiguration);
+    tenantDefaultUserConfiguration.configValue = JSON.stringify(defaultUservalue);
+    tenantDefaultUserConfiguration.defaultValue = JSON.stringify(tenantDefaultUserConfiguration.defaultValue);
+    tenantDefaultUserConfiguration.userId = this.localization.GetPropertyInfo("UserId");
+    return this.userMachineConfigurationService.CreateTenantDefaultUserConfiguration(tenantDefaultUserConfiguration);
+}
+
+public UpdateTenantDefaultUserConfiguration(formvalue  : UserSessionConfiguration) {
+    let defaultUservalue : DefaultUserConfigurationTenantModel = { defaultMachineId : formvalue.defaultMachineId };
+    let tenantDefaultUserConfiguration : any = cloneDeep( this.TenantDefaultUserConfiguration);
+    tenantDefaultUserConfiguration.configValue = JSON.stringify(defaultUservalue);
+    tenantDefaultUserConfiguration.defaultValue = JSON.stringify(tenantDefaultUserConfiguration.defaultValue);
+    tenantDefaultUserConfiguration.userId = this.localization.GetPropertyInfo("UserId");
+    return this.userMachineConfigurationService.UpdateTenantDefaultUserConfiguration(tenantDefaultUserConfiguration);
+}
+public async GetTenantDefaultUserConfiguration(userId) : Promise<DefaultUserConfigurationTenant<DefaultUserConfigurationTenantModel>> {
+    let configurationName = DEFAULTCONFIGURATION;
+    let propertyId = Number(this.localization.GetPropertyInfo("PropertyId"));
+    let productId = Number(this.localization.GetPropertyInfo("ProductId"));
+   let defaultvalue : DefaultUserConfigurationTenant<DefaultUserConfigurationTenantModel> = await this.userMachineConfigurationService.GetTenantDefaultUserConfiguration(configurationName,propertyId,productId,userId);
+   this.TenantDefaultUserConfiguration = defaultvalue;
+   return defaultvalue;
+}
 }
