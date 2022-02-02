@@ -27,8 +27,9 @@
       "ES2019"
     ]
   },
-  "angularCompilerOptions": {
+  "angularCompilerOptions": {    
     "enableIvy": false,
-    "fullTemplateTypeCheck": true
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
   }
 }
