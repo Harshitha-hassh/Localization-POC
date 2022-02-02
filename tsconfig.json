@@ -28,8 +28,8 @@
     ]
   },
   "angularCompilerOptions": {    
-    "enableIvy": false,
+    "strictMetadataEmit" : true,
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "preserveWhitespaces": true,
   }
 }
