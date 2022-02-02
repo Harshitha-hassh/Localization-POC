@@ -27,9 +27,7 @@
       "ES2019"
     ]
   },
-  "angularCompilerOptions": {    
-    "strictMetadataEmit" : true,
-    "fullTemplateTypeCheck": true,
-    "preserveWhitespaces": true,
+  "angularCompilerOptions": {
+    "enableIvy": false
   }
 }
