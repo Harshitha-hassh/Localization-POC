@@ -1394,6 +1394,8 @@
     "SearchByGuestName": "Search by Guest Last Name_au",
     "SearchByRoomNumber": "Search by Room Number_au",
     "SearchByRoomKey": "Search by  Room Key_au",
+    "SearchByGroupName": "Search by Group Name_au",
+    "SearchByGroupCode": "Search by Group Code_au",
     "GuestName": "Guest Last Name_au",
     "RoomNumber": "Room Number_au",
     "RoomKey": "Room Key_au",

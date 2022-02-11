@@ -1394,6 +1394,8 @@
     "SearchByGuestName": "Search by Guest Last Name_de",
     "SearchByRoomNumber": "Search by Room Number_de",
     "SearchByRoomKey": "Search by  Room Key_de",
+    "SearchByGroupName": "Search by Group Name_de",
+    "SearchByGroupCode": "Search by Group Code_de",
     "GuestName": "Guest Last Name_de",
     "RoomNumber": "Room Number_de",
     "RoomKey": "Room Key_de",
