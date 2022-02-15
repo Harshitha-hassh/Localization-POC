@@ -1463,6 +1463,7 @@
     "3070": "3070 - Apply Custom Discount_in",
     "3075": "3075 - Issue Visual One GiftCard_in",
     "3080": "3080 - Issue External GiftCard_in",
+    "3085": "3085 - Settle to Group Charge_in",
     "5000": "5000 - Reopen Transaction_in",
     "5005": "5005 - Void Transaction_in",
     "5007": "5007 - Correct Transaction_in",
