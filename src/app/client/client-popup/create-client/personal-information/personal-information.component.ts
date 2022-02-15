@@ -351,7 +351,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.contactTypePhone = this.getPhoneOptions();
     this.contactTypeEmail = this.getMailOptions();
     this.validateEmailType = this.localization.getError(-87);
-    this.validatePhoneType = this.localization.getError(-88);
+    //this.validatePhoneType = this.localization.getError(-88);
     this.makeGetCall('GetClientConfiguration');
   }
 
