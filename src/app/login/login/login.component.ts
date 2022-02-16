@@ -518,6 +518,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.payAgentService.ValidatePayAgentVersion();
   }
 
+  async getDefaultsSetting() {
+    return await this.userSessionConfig.getAllClientSetting();
+  }
+
   async SetPropertyApiConfiguration() {
     const propertityConfig = await this.PropertySettingService.GetAllPropertyConfigurationSettings({
       configurationName: PROPERTY_CONFIGURATION_SETTINGS,
@@ -565,6 +569,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       sessionStorage.setItem(this.userSessionConfig.userSessionConfigKey, JSON.stringify(userSessionConfig));
 
+      let defaultsSetting = await this.getDefaultsSetting();
+      sessionStorage.setItem('defaultSettings', JSON.stringify(defaultsSetting));
+      
       // Set Retail Shop service - outlet dropdown value
       this.retailSharedService.SelectedOutletId = userSessionConfig.defaultOutletId;
       this.retailSharedService.SelectedTerminalId = userSessionConfig.defaultTerminalId;
