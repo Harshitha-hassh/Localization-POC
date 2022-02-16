@@ -79,7 +79,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       propCode: '',
       requiredFields: [],
       DEFAULT_EMAIL_TYPE: '',
-      DEFAULT_COUNTRY_CODE: '',
+      DEFAULT_COUNTRY_CODE: ['', Validators.min(1)],
       DEFAULT_PHONE_TYPE: ''
     };
 
@@ -104,7 +104,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       propCode: ['', Validators.required],
       requiredFields: this.fb.array([]),
       DEFAULT_EMAIL_TYPE: '',
-      DEFAULT_COUNTRY_CODE: '',
+      DEFAULT_COUNTRY_CODE: ['', Validators.min(1)],
       DEFAULT_PHONE_TYPE: ''
     });
     this.phone = this.propertyInfo.get('phone') as FormArray;
@@ -564,6 +564,21 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.propertyInfo.controls.language.setValue(this.propertyInformation ? this.propertyInformation.languageCode : '');
     this.propertyInfo.controls.tenantId.setValue(this.propertyInformation ? this.propertyInformation.tenantId : '');
     this.propertyInfo.controls.propCode.setValue(this.propertyInformation ? this.propertyInformation.propertyCode : '');
+
+    //Set Default Configuration Switches
+    if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
+        const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
+        this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
+    }
+    if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
+        const defaultPhoneType   = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
+        this.propertyInfo.controls.DEFAULT_PHONE_TYPE.setValue(defaultPhoneType && Number(defaultPhoneType.value) > 0 ? Number(defaultPhoneType.value) : '');
+    }
+    if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
+        const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
+        this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
+    }
+
     this.clearFormArray(this.propertyInfo.get('address') as FormArray);
     for (let index = 0; index < address.length; index++) {
       if ((address[index] && address[index].trim() != '') || index == 0)
@@ -589,19 +604,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   }
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams?: any[]): void {
     if (callDesc == 'GetSettingByModule') {
-      this.settingInfo = <any>result.result;
-      
-      //Set Default Configuration Switches
-      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
-          this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch].value(this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch).value);
-      }
-      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
-          this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch].value(this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch).value);
-      }
-      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
-          this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch].value(this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch).value);
-      }
-
+      this.settingInfo = <any>result.result;      
       this.RequiredFieldsSetting();
       this.enableSave = false;
     } else if (callDesc == 'GetPropertyInfoByPropertyId') {
