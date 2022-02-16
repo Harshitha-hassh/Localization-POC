@@ -23,6 +23,7 @@ import { AppModuleService } from 'src/app/core/services/app.service';
 import { PlayerInformationService } from 'src/app/common/shared/shared/service/player.information.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
+import { DefaultSettings } from 'src/app/retail/shared/globalsContant';
 
 @Component({
   selector: 'app-personal-information',
@@ -91,6 +92,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   mailTypes = GuestProfileMailTypes;
   Address: any = [];
   personalInfo: any = [];
+  defaultSettings: DefaultSettings[] = [];
   placeHolderFormat: string;
   // receiptDate: any;
   maxReceiptDate: any;
@@ -134,6 +136,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.maxReceiptDate = new Date();
     // this.receiptDate = new FormControl("");
 
+    this.defaultSettings = JSON.parse(sessionStorage.getItem('defaultSettings'));
     this.captions = this.localization.captions.bookAppointment;
     this.commonCaptions = this.localization.captions.common;
     this.genderList = [{ text: this.captions['Male'], value: 'Male' }, { text: this.captions['Female'], value: 'Female' }];
@@ -212,6 +215,11 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   createEmailItem(arr: number, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): FormGroup {
 
+    if (!EmailLabel || EmailLabel == '') {
+      let emailLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_EMAIL_TYPE');
+      EmailLabel = emailLabel.value ? Number(emailLabel.value) : '';
+    }
+
     return this.Form.group({
       EmailLabel: [EmailLabel, this.emailRequired || EmailId ? [Validators.required, EmptyValueValidator] : ''],
       EmailId: [{value: EmailId, disabled: !EmailLabel}, this.emailRequired ? [Validators.required, Validators.email, EmptyValueValidator] : ''],
@@ -239,6 +247,16 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   createPhoneItem(arr: number, phoneNoLabel: any, countryCode: any, phoneNoDetails: any,
     phoneIsPrivate: any, phoneIsPrimary: any, extension?: any): FormGroup {
+
+    if (countryCode == '') {
+      let _countryCode = this.defaultSettings.find(x => x.switch == 'DEFAULT_COUNTRY_CODE');
+      countryCode = _countryCode.value ? _countryCode.value : '';
+    }
+    if (!phoneNoLabel || phoneNoLabel == '') {
+      let _phoneNoLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_PHONE_TYPE');
+      phoneNoLabel = _phoneNoLabel.value ? Number(_phoneNoLabel.value) : '';
+    }
+    
     return this.Form.group({
       PhoneNumberLabel: [phoneNoLabel, this.phoneRequired || phoneNoDetails ? [Validators.required, EmptyValueValidator] : ''],
       countryCode: [{value: countryCode, disabled: !phoneNoLabel}, this.setCountryCodeValidator(this.phoneRequired, phoneNoLabel)],
