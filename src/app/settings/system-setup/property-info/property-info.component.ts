@@ -269,7 +269,6 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   }
   
   GetAllSetting() {
-
     this.http.CallApiWithCallback<any>({
       host: Host.retailManagement,
       success: this.successCallback.bind(this),
@@ -280,9 +279,23 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       showError: false,
       extraParams: [{ Id: this.utils.GetPropertyInfo('PropertyId') }]
     });
-  
+    this.setClientDefaultSwitches();
   }
-
+  setClientDefaultSwitches(){
+      //Set Default Configuration Switches
+      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
+        const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
+        this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
+      }
+      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
+          const defaultPhoneType   = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
+          this.propertyInfo.controls.DEFAULT_PHONE_TYPE.setValue(defaultPhoneType && Number(defaultPhoneType.value) > 0 ? Number(defaultPhoneType.value) : '');
+      }
+      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
+          const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
+          this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
+      }
+  }
   GetPropertInfo() {
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
@@ -428,6 +441,26 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.UpdateSetting(bodySettingData);
     const bodyPropertyData: PropertyConfig = this.formPropertyData();
     this.UpdatePropertySetting(bodyPropertyData);
+    this.updateClientDefaultsInSession();
+  }
+  updateClientDefaultsInSession(){
+    const sessionDefaultSettings = sessionStorage.getItem('defaultSettings');
+    const parsedSessionDefaultSettings = JSON.parse(sessionDefaultSettings);
+
+    //Set Default Configuration Switches
+    if(parsedSessionDefaultSettings.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
+        const defaultEmailType = this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.value;
+        parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch).value = defaultEmailType;
+    }
+    if(parsedSessionDefaultSettings.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
+        const defaultPhoneType   = this.propertyInfo.controls.DEFAULT_PHONE_TYPE.value;
+        parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch).value = defaultPhoneType;
+    }
+    if(parsedSessionDefaultSettings.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
+        const defaultPhoneCode = this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.value;
+        parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch).value = defaultPhoneCode;
+    }
+    sessionStorage.setItem('defaultSettings', JSON.stringify(parsedSessionDefaultSettings));
   }
   UpdatePropertySetting(bodyPropertyData) {
     this.http.CallApiWithCallback<any>({
@@ -567,8 +600,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
 
     //Set Default Configuration Switches
     if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
-        const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
-        this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
+      const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
+      this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
     }
     if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
         const defaultPhoneType   = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
