@@ -604,7 +604,22 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   }
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams?: any[]): void {
     if (callDesc == 'GetSettingByModule') {
-      this.settingInfo = <any>result.result;      
+      this.settingInfo = <any>result.result;
+      
+      //Set Default Configuration Switches
+      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
+          const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
+          this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
+      }
+      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
+          const defaultPhoneType   = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
+          this.propertyInfo.controls.DEFAULT_PHONE_TYPE.setValue(defaultPhoneType && Number(defaultPhoneType.value) > 0 ? Number(defaultPhoneType.value) : '');
+      }
+      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
+          const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
+          this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
+      }
+
       this.RequiredFieldsSetting();
       this.enableSave = false;
     } else if (callDesc == 'GetPropertyInfoByPropertyId') {
