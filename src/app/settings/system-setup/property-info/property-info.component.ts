@@ -523,19 +523,19 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       id: this.settingInfo.find(setting => setting.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch).id,
       moduleId: this.settingInfo.find(s => s.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch).moduleId,
       switch: DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch,
-      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch].value
+      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch].value? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch].value : 0
     });
     _body.push({
       id: this.settingInfo.find(setting => setting.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch).id,
       moduleId: this.settingInfo.find(s => s.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch).moduleId,
       switch: DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch,
-      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch].value
+      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch].value? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch].value : 0
     });
     _body.push({
       id: this.settingInfo.find(setting => setting.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch).id,
       moduleId: this.settingInfo.find(s => s.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch).moduleId,
       switch: DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch,
-      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch].value
+      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch].value? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch].value: 0
     });
     return _body;
   }
