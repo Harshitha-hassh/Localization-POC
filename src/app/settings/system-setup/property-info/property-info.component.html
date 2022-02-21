@@ -129,7 +129,7 @@
                     </mat-select>
                   </mat-form-field>
     
-                  <mat-form-field class="state">
+                  <mat-form-field class="state default-feilds">
                     <mat-select [placeholder]="captions.DefaultPhoneType" id="PhoneNumberLabel" name="TSpdd" class="LW14"
                       formControlName="DEFAULT_PHONE_TYPE">
                       <mat-option></mat-option>
@@ -137,17 +137,12 @@
                         {{ct.description}}
                       </mat-option>
                     </mat-select>
-                  </mat-form-field>                
-                </div>
+                  </mat-form-field>
 
-                <div class="postal-details">                    
-                    <div class="defaultFieldConfiguration">
-                      <mat-form-field class="state">
-                        <input type="text" matInput [placeholder]="captions.DefaultCountryCode" formControlName="DEFAULT_COUNTRY_CODE"
-                          inputtype="onlynumber" [maxlength]="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
-                        
-                      </mat-form-field>
-                    </div>
+                  <mat-form-field class="state default-feilds">
+                    <input type="text" matInput [placeholder]="captions.DefaultCountryCode" formControlName="DEFAULT_COUNTRY_CODE"
+                      inputtype="onlynumber" [maxlength]="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>                    
+                  </mat-form-field>
                 </div>
             </div>
           </div>
