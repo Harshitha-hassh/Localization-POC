@@ -566,9 +566,9 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       const contactType = this.PhoneType.filter(res => res.description === ph);
       phone = {
         id: temp + 1,
-        number: phoneItem.phonenumber ? (phoneItem.phonenumber).replace(/\D/g, '') : '',
+        number: phoneItem && phoneItem.phonenumber ? (phoneItem.phonenumber).replace(/\D/g, '') : '',
         propertyId: _body.propertyId = this.localization.GetPropertyInfo('PropertyId'),
-        contactTypeId: (contactType ? contactType[0].id : 0).toString(),
+        contactTypeId: (contactType && contactType.length ? contactType[0].id : 0).toString(),
         clientId: 1
       };
       _body.propertyContacts.push(phone);
