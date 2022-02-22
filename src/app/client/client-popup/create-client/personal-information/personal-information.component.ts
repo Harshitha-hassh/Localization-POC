@@ -252,11 +252,14 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       let _countryCode = this.defaultSettings.find(x => x.switch == 'DEFAULT_COUNTRY_CODE');
       countryCode = _countryCode.value ? _countryCode.value : '';
     }
+    else{
+      countryCode = countryCode == -1 ? '' : countryCode;
+    }
+    
     if (!phoneNoLabel || phoneNoLabel == '') {
       let _phoneNoLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_PHONE_TYPE');
       phoneNoLabel = _phoneNoLabel.value ? Number(_phoneNoLabel.value) : '';
     }
-    
     return this.Form.group({
       PhoneNumberLabel: [phoneNoLabel, this.phoneRequired || phoneNoDetails ? [Validators.required, EmptyValueValidator] : ''],
       countryCode: [{value: countryCode, disabled: !phoneNoLabel}, this.setCountryCodeValidator(this.phoneRequired, phoneNoLabel)],
