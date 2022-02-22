@@ -160,7 +160,7 @@
               <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
                 (click)="removePhoneItem(i,'','');makeFormDirty()" *ngIf="i != 0"></span>
               <span class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
-                (click)="addPhoneItem(i, '', '', '', '');makeFormDirty()"
+                (click)="addPhoneItem(i, '0', '-1', '', '');makeFormDirty()"
                 *ngIf="last"></span>
             </div>
             <div>
@@ -222,7 +222,7 @@
             <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
               (click)="removeEmailItem(j,'','');makeFormDirty()" *ngIf="j != 0"></span>
             <span class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
-              (click)="addEmailItem(j,'','');makeFormDirty()" *ngIf="last"></span>
+              (click)="addEmailItem(j,'0','');makeFormDirty()" *ngIf="last"></span>
           </div>
           <div class="float-left contact-info-toggle" [formGroupName]="j">
             <div class="yes-col  float-left mr-5" (click)="togglePrimaryContact('Email', j, 'EmailPrimary')">
