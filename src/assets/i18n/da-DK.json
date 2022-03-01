@@ -1469,6 +1469,7 @@
     "3070": "3070 - Apply Custom Discount_da",
     "3075": "3075 - Issue Visual One GiftCard_da",
     "3080": "3080 - Issue External GiftCard_da",
+    "3085": "3085 - Settle to Group Charge_da",
     "5000": "5000 - Reopen Transaction_da",
     "5005": "5005 - Void Transaction_da",
     "5007": "5007 - Correct Transaction_da",
@@ -1560,8 +1561,7 @@
     "Inventory Management": "Inventory Management_da",
     "Retail Setup": "Retail Setup_da",
     "Retail Reports": "Retail Reports_da",
-    "241524202425": "Move Multiple Appointments_da",
-    "3085": "3085 - Settle to Group Charge_da"
+    "241524202425": "Move Multiple Appointments_da"
   },
   "userId": "User ID_da",
   "password": "Password_da",
@@ -2685,7 +2685,7 @@
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_da",
       "CMS": "CMS_da",
-      "Enhanced Inventory": "Enhanced Inventory_da",
+      "Enhanced Inventory": "Inventory Control_da",
       "External Gift Card": "External Gift Card_da",
       "ARAccountPosting": "City Ledger_da",
       "PMS Revenue Posting": "PMS Revenue Posting_da",
