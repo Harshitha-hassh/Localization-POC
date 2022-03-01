@@ -416,7 +416,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
   async setEatecConfig(){
     let configValue = '';
-    this.propertyFeatureService.GetFeatureConfigurations([FeatureName.EnhancedInventory]).then((featureconfigurations) => {
+    this.propertyFeatureService.GetFeatureConfigurations([FeatureName.EnhancedInventory]).then( async (featureconfigurations) => {
       if (featureconfigurations != null) {
         sessionStorage.setItem('isEatecEnabled', 'true');
         const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
@@ -424,7 +424,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
           configValue = uri.configurationValue;
         }
-        this.setEatecToken();
+        await this.setEatecToken();
       }
       else {
         sessionStorage.setItem('isEatecEnabled', 'false');
