@@ -417,7 +417,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   async setEatecConfig(){
     let configValue = '';
     this.propertyFeatureService.GetFeatureConfigurations([FeatureName.EnhancedInventory]).then( async (featureconfigurations) => {
-      if (featureconfigurations != null) {
+      if (featureconfigurations != null && featureconfigurations.length > 0) {
         sessionStorage.setItem('isEatecEnabled', 'true');
         const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
         const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);

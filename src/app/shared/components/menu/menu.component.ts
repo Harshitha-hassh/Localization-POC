@@ -155,20 +155,20 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     
     if (!sessionStorage.getItem("EatecURI")) {
       var configValue = "";
-      let featureNames = ["Enhanced Inventory"];
+      const featureNames = ["Enhanced Inventory"];
       this._propertyFeatureService.GetFeatureConfigurations(featureNames).then((featureconfigurations) => {
-        if (featureconfigurations != null) {
+        if (featureconfigurations != null && featureconfigurations.length > 0) {
           this.isEatecEnabled = true;
           sessionStorage.setItem('isEatecEnabled', 'true')
-          let eatecUser = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Eatec.EatecTenantUser);
-          let uri = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Eatec.EatecURI);
+          const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
+          const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
           if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
-            configValue = uri.configurationValue
+            configValue = uri.configurationValue;
           }
         }
         else {
           this.isEatecEnabled = false;
-          sessionStorage.setItem('isEatecEnabled', 'false')
+          sessionStorage.setItem('isEatecEnabled', 'false');
         }
         this._propertyInfo.SetEatecRI(configValue)
       });
