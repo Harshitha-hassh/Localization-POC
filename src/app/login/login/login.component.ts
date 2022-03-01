@@ -337,8 +337,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       // create session and store session id into data service
       const usersessionId = await this.sessionService.createSession();
       sessionStorage.setItem(USER_SESSION, String(usersessionId));
-      await this.setEatecToken();
-      this.setEatecConfig();
+      await this.setEatecConfig();
       this.setAutoLogOff();
       await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.setMachineDetails();
@@ -415,23 +414,33 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.commonLocalize.SetLocaleBasedProperties();
     this.UpdateUserRole(Selectedproperty.id);
   }
+
   async setEatecConfig(){
-    let configValue = '';
-    this.propertyFeatureService.GetFeatureConfigurations([FeatureName.EnhancedInventory]).then((featureconfigurations) => {
-      if (featureconfigurations != null) {
+    this.propertyFeatureService.getPropertyFeatures().then( async (feature) => {
+      const eatecFeature = feature.find(x => x.featureName === FeatureName.EnhancedInventory);
+      if (eatecFeature != null && eatecFeature.isActive) {
         sessionStorage.setItem('isEatecEnabled', 'true');
-        const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
-        const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
-        if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
-          configValue = uri.configurationValue;
-        }
-      }
-      else {
+        this.propertyFeatureService.getFeatureConfiguration(eatecFeature.id,eatecFeature.moduleId).then((featureconfigurations) => {
+          if (featureconfigurations != null && featureconfigurations.length > 0) {
+            const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
+            const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
+            if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
+              this.retailpropertyInfo.SetEatecRI(uri.configurationValue);
+            } else{
+              this.retailpropertyInfo.SetEatecRI('');
+            }
+          }else {
+            this.retailpropertyInfo.SetEatecRI('');
+          }
+        });
+        await this.setEatecToken();
+      } else {
         sessionStorage.setItem('isEatecEnabled', 'false');
+        this.retailpropertyInfo.SetEatecRI('');
       }
-      this.retailpropertyInfo.SetEatecRI(configValue);
     });
   }
+
   async setEatecToken() {
     try {
       const serviceParams = {
