@@ -153,11 +153,11 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this._featureFlagService.RefreshConfig();
     this._featureFlagService.propFeature.pipe(takeUntil(this.destroyed$)).subscribe((propertyFeatures) => {
-      if (!sessionStorage.getItem('EatecURI')) {
+      if (!sessionStorage.getItem('EIURI')) {
         const eatecFeature  = propertyFeatures && propertyFeatures.find(x => x.featureName === FeatureName.EnhancedInventory);
         if (eatecFeature != null && eatecFeature.isActive) {
           let eatecConfigValue = '';
-          this._propertyFeatureService.GetFeatureConfigurationsById([eatecFeature.id]).then((featureconfigurations) => {
+          this._propertyFeatureService.getFeatureConfiguration(eatecFeature.id, eatecFeature.moduleId).then((featureconfigurations) => {
             if (featureconfigurations != null && featureconfigurations.length > 0) {
               this.isEatecEnabled = true;
               sessionStorage.setItem('isEatecEnabled', 'true')
