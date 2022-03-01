@@ -419,21 +419,24 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.propertyFeatureService.getPropertyFeatures().then( async (feature) => {
       const eatecFeature = feature.find(x => x.featureName === FeatureName.EnhancedInventory);
       if (eatecFeature != null && eatecFeature.isActive) {
-        let configValue = '';
         sessionStorage.setItem('isEatecEnabled', 'true');
         this.propertyFeatureService.getFeatureConfiguration(eatecFeature.id,eatecFeature.moduleId).then((featureconfigurations) => {
           if (featureconfigurations != null && featureconfigurations.length > 0) {
             const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
             const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
             if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
-              configValue = uri.configurationValue;
+              this.retailpropertyInfo.SetEatecRI(uri.configurationValue);
+            } else{
+              this.retailpropertyInfo.SetEatecRI('');
             }
+          }else {
+            this.retailpropertyInfo.SetEatecRI('');
           }
-          this.retailpropertyInfo.SetEatecRI(configValue);
         });
         await this.setEatecToken();
       } else {
         sessionStorage.setItem('isEatecEnabled', 'false');
+        this.retailpropertyInfo.SetEatecRI('');
       }
     });
   }

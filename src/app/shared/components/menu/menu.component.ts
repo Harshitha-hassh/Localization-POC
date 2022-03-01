@@ -156,7 +156,6 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       if (!sessionStorage.getItem('EIURI')) {
         const eatecFeature  = propertyFeatures && propertyFeatures.find(x => x.featureName === FeatureName.EnhancedInventory);
         if (eatecFeature != null && eatecFeature.isActive) {
-          let eatecConfigValue = '';
           this._propertyFeatureService.getFeatureConfiguration(eatecFeature.id, eatecFeature.moduleId).then((featureconfigurations) => {
             if (featureconfigurations != null && featureconfigurations.length > 0) {
               this.isEatecEnabled = true;
@@ -164,14 +163,18 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
               const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
               const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
               if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
-                eatecConfigValue = uri.configurationValue;
+                this._propertyInfo.SetEatecRI( uri.configurationValue);
+              }else{
+                this._propertyInfo.SetEatecRI('');
               }
+            }else{
+              this._propertyInfo.SetEatecRI('');
             }
-            this._propertyInfo.SetEatecRI(eatecConfigValue);
           });
         } else {
           this.isEatecEnabled = false;
           sessionStorage.setItem('isEatecEnabled', 'false');
+          this._propertyInfo.SetEatecRI('');
         }
       }
     });
