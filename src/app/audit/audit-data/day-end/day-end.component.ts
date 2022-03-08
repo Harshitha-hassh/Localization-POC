@@ -71,9 +71,9 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   propOutlets: SubPropertyModel[] = [];
   allowFutureDate: boolean = false;
   revenuePostingUrl = ['/shop/viewshop/retailtransactions/revenuepostingslog'];
-  revenuepostingsFailedCount: number;
+  revenuepostingsFailedCount: number = 0;
   revenuepostingsFailedText: string;
-
+  showRevenuePostings: boolean =false;
   constructor(public localization: RetailLocalization, private utils: RetailUtilities, private http: HttpServiceCall,
     private auditService: AuditService, public router: Router,
     // tslint:disable-next-line: max-line-length
@@ -82,6 +82,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     private retailSharedService: RetailSharedVariableService, private retailValidationService: RetailValidationService,
     private propertyInfo: RetailPropertyInformation, private retailTaxService: RetailTaxesDataService, private shopBusinessService: ShopBussinessService
     , public _shopservice: CommonVariablesService, public dialog: MatDialog, public revenuePostingDataService: RevenuePostingDataService) {
+      this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
   }
 
   ngOnInit() {
@@ -109,7 +110,11 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       // this.newSysDate = this.newSysDate.setDate(this.newSysDate.getDate() + 1);
       this.newSysDate.setDate(this.currSysDate.getDate() + 1);
       this.InitializeGrid();
-      this.getRevenuePostings();
+      const pmsSystem = sessionStorage.getItem('pmsSystem');
+      if (this.showRevenuePostings && pmsSystem != null && pmsSystem.toLowerCase() === 'visualone'){
+        this.getRevenuePostings();
+      }
+
       this.GetGridData();
       // tslint:disable-next-line: max-line-length
       this.InvokeServiceCall('GetOutletsByProperty', Host.retailManagement, HttpMethod.Get, { PropertyId: Number(this.localization.GetPropertyInfo('PropertyId')) });
@@ -128,6 +133,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.revenuepostingsFailedCount = result.failedCount;
     this.revenuepostingsFailedText = ' (' + this.revenuepostingsFailedCount + ')';
   }
+
+  removeBtnCheck = () => ((this.revenuepostingsFailedCount > 0) || this.isProcessClicked);
 
   ngOnDestroy(): void {
     if (this.subscriptions) {
