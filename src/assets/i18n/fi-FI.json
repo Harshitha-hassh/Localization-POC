@@ -3403,6 +3403,7 @@
     }
   },
   "dayEnd": {
+    "revenuePostings": "Revenue Posting with Room/Group Charge_fi",
     "DAYEND": "DAY END_fi",
     "DayEndProcess": "Do you want to process day end?_fi",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit_fi",

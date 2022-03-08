@@ -3,7 +3,7 @@
     <div class="horizontal-stepper-class p-3 h-100">
       <div *ngFor="let coll of GridData; let i = index" class="pb-2 Dayend-Sectable dayEnd-{{i}}" >
         <!-- header Section -->
-        <div class="d-table" [ngClass]="{'hdrSection':coll.dataCount!=0}">
+        <div *ngIf="!coll.linkOptions" class="d-table" [ngClass]="{'hdrSection':coll.dataCount!=0}">
           <span class="d-table-cell V-Mid ">
             <i class="icon-success-icon blckClr mr-2 IC18"
               [ngClass]="(isProcessClicked) ? 'closedTextclr' : ''"></i>
@@ -11,6 +11,7 @@
           <span class=" d-table-cell hdrlblwdth V-Mid LWB16">{{coll.displayName}}</span>
 
         </div>
+
         <!-- Table Section -->
         <div class="w-100 tableSec" *ngIf="coll.tableOptions.TablebodyData.length > 0 || (coll.dataCount==0 && (!canProcess || !successFlag))">
           <ng-scrollbar [trackX]="true" [trackY]="true" [autoHide]="true">
@@ -42,7 +43,21 @@
           </table>
           </ng-scrollbar>
         </div>
+
+       <!-- Revenue Postings -->
+        <div *ngIf="coll.linkOptions" class="d-table" [ngClass]="{'hdrSection':coll.dataCount!=0}">
+          <span class="d-table-cell V-Mid ">
+            <i class="icon-success-icon blckClr mr-2 IC18"
+              [ngClass]="(revenuepostingsFailedCount > 0) ? 'closedTextclr' : ''"></i>
+          </span>
+         <a *ngIf ="revenuepostingsFailedCount > 0" class="ag_link" (click)="routeTolink()"  [routerLink]="revenuePostingUrl"> 
+            <span class=" d-table-cell hdrlblwdth V-Mid LWB16">{{coll.displayName}} {{revenuepostingsFailedText}} </span>
+          </a>
+          <span  *ngIf ="revenuepostingsFailedCount == 0" class=" d-table-cell hdrlblwdth V-Mid LWB16">{{coll.displayName}}</span>
+        </div>
+
       </div>
+      
       <!-- Final Section -->
       <div class="processSec">
         <div class="d-inline-block rghtBrder pr-4">

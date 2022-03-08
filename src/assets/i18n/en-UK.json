@@ -3403,6 +3403,7 @@
     }
   },
   "dayEnd": {
+    "revenuePostings": "Revenue Posting with Room/Group Charge_uk",
     "DAYEND": "DAY END_uk",
     "DayEndProcess": "Do you want to process day end?_uk",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit_uk",

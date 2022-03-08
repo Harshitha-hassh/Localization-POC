@@ -32,6 +32,8 @@ import { PaymentHistoryDetails } from 'src/app/retail/shared/service/payment/pay
 import { MatDialog } from '@angular/material/dialog';
 import { VoidReasonComponent } from 'src/app/retail/shop/view-categories/void-reason/void-reason.component';
 import { FinancialBinHelper } from 'src/app/retail/shared/business/FinancialBin-business';
+import { RevenuePostingDataService } from 'src/app/retail/sytem-config/data-service/revenue-posting.data.service';
+import { RoomRevenuePostingRequest } from 'src/app/retail/shop/view-categories/retail-revenue-posting-logs/revenue-posting';
 
 @Component({
   selector: 'app-day-end',
@@ -68,6 +70,9 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   subscriptions: ISubscription[] = [];
   propOutlets: SubPropertyModel[] = [];
   allowFutureDate: boolean = false;
+  revenuePostingUrl = ['/shop/viewshop/retailtransactions/revenuepostingslog'];
+  revenuepostingsFailedCount: number;
+  revenuepostingsFailedText: string;
 
   constructor(public localization: RetailLocalization, private utils: RetailUtilities, private http: HttpServiceCall,
     private auditService: AuditService, public router: Router,
@@ -76,7 +81,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     private breakPoint: BreakPointAccess, public ams: AppModuleService,
     private retailSharedService: RetailSharedVariableService, private retailValidationService: RetailValidationService,
     private propertyInfo: RetailPropertyInformation, private retailTaxService: RetailTaxesDataService, private shopBusinessService: ShopBussinessService
-    , public _shopservice: CommonVariablesService, public dialog: MatDialog) {
+    , public _shopservice: CommonVariablesService, public dialog: MatDialog, public revenuePostingDataService: RevenuePostingDataService) {
   }
 
   ngOnInit() {
@@ -104,12 +109,24 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       // this.newSysDate = this.newSysDate.setDate(this.newSysDate.getDate() + 1);
       this.newSysDate.setDate(this.currSysDate.getDate() + 1);
       this.InitializeGrid();
+      this.getRevenuePostings();
       this.GetGridData();
       // tslint:disable-next-line: max-line-length
       this.InvokeServiceCall('GetOutletsByProperty', Host.retailManagement, HttpMethod.Get, { PropertyId: Number(this.localization.GetPropertyInfo('PropertyId')) });
       this.InvokeServiceCall('GetMiscConfigurationByPropertyId', Host.retailManagement, HttpMethod.Get, { PropertyId: Number(this.localization.GetPropertyInfo('PropertyId')) });
     }
     this.ResetServiceObject();
+  }
+
+  async getRevenuePostings(){
+    const request: RoomRevenuePostingRequest = {
+      startDate: this.localization.convertDateObjToAPIdate(this.currSysDate),
+      endDate: this.localization.convertDateObjToAPIdate(this.currSysDate),
+      isFromDayEnd: false
+    };
+    const result = await this.revenuePostingDataService.getRoomRevenuePostingLogs(request);
+    this.revenuepostingsFailedCount = result.failedCount;
+    this.revenuepostingsFailedText = ' (' + this.revenuepostingsFailedCount + ')';
   }
 
   ngOnDestroy(): void {
@@ -147,7 +164,13 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     const gridItems: any[] = [
       {
         status: PendingAction.OpenTransaction,
-        displayName: this.captions.OpenTransactions
+        displayName: this.captions.OpenTransactions,
+        linkOptions: false
+      },
+      {
+        status: PendingAction.RevenuePosting,
+        displayName: this.captions.revenuePostings,
+        linkOptions: true
       }
     ];
 
@@ -163,7 +186,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
           },
           options: [],
           dataCount: 0,
-          isLoaded: false
+          isLoaded: false,
+          linkOptions: gridItems[i].linkOptions
         }
       );
     }
@@ -171,8 +195,11 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   GetGridData() {
     this.GetOpenTransactions();
+    
   }
-
+  routeTolink(){
+    this.retailSharedService.isFromAudit = true;
+  }
 
   private GetOpenTransactions() {
     this.InvokeServiceCall('GetAllTransactions', Host.retailPOS, HttpMethod.Get, { status: TransactionStatus.OPEN, outletId: 0 });
