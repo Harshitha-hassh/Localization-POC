@@ -113,6 +113,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       const pmsSystem = sessionStorage.getItem('pmsSystem');
       if (this.showRevenuePostings && pmsSystem != null && pmsSystem.toLowerCase() === 'visualone'){
         this.getRevenuePostings();
+      }else {
+        this.showRevenuePostings = false;
       }
 
       this.GetGridData();
