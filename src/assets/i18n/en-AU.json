@@ -2664,6 +2664,7 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_au",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_au",
     "EnableCheckZoom": "Enable CheckZoom_au",
+    "EnableRevenuePostingsOnDayEnd": "Restrict Day End on Revenue Failure_au",
     "ExpandPaymentMethods": "Expand Payment Methods by default_au",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_au",
     "DiscountReasonRequired": "Require Reason On Discount_au",
