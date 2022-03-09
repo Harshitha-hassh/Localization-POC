@@ -2664,6 +2664,7 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_gb",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_gb",
     "EnableCheckZoom": "Enable CheckZoom_gb",
+    "EnableRevenuePostingsOnDayEnd": "Restrict Day End on Revenue Failure_gb",
     "ExpandPaymentMethods": "Expand Payment Methods by default_gb",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_gb",
     "DiscountReasonRequired": "Require Reason On Discount_gb",
@@ -3403,6 +3404,7 @@
     }
   },
   "dayEnd": {
+    "revenuePostings": "Revenue Posting with Room/Group Charge_gb",
     "DAYEND": "DAY END_gb",
     "DayEndProcess": "Do you want to process day end?_gb",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit_gb",
