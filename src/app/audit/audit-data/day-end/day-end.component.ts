@@ -10,6 +10,7 @@ import { SubPropertyModel } from '../../../retail/retail.modals';
 import { takeUntil } from 'rxjs/operators';
 import { CommonVariablesService, TransactionStatus } from '../../../retail/shared/service/common-variables.service';
 import { RetailSharedVariableService } from '../../../retail/shared/retail.shared.variable.service';
+import { MiscellaneousSwitch } from '../../../retail/shared/globalsContant';
 import { RetailValidationService } from '../../../retail/shared/retail.validation.service';
 import {
   ButtonOptions, Product,
@@ -70,6 +71,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   subscriptions: ISubscription[] = [];
   propOutlets: SubPropertyModel[] = [];
   allowFutureDate: boolean = false;
+  allowDayEndOnRevenueFailure: boolean = false;
   revenuePostingUrl = ['/shop/viewshop/retailtransactions/revenuepostingslog'];
   revenuepostingsFailedCount: number = 0;
   revenuepostingsFailedText: string;
@@ -136,7 +138,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.revenuepostingsFailedText = ' (' + this.revenuepostingsFailedCount + ')';
   }
 
-  removeBtnCheck = () => ((this.revenuepostingsFailedCount > 0) || this.isProcessClicked);
+  removeBtnCheck = () => this.allowDayEndOnRevenueFailure ? ((this.revenuepostingsFailedCount > 0) || this.isProcessClicked) : this.isProcessClicked ;
 
   ngOnDestroy(): void {
     if (this.subscriptions) {
@@ -281,6 +283,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         const response: any = result.result as any ? result.result : [];
         if (response) {
           this.allowFutureDate = response.find(x => x.switch == "ALLOW_DATE_FOR_FUTURE").value == "true" ? true : false;
+          this.allowDayEndOnRevenueFailure = response.find(x => x.switch === 
+            MiscellaneousSwitch.RESTRICT_DAYENDPROCESSWITHFAILEDREVENUEPOSTINGS).value === 'true' ? true : false;
 
         }
       }
