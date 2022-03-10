@@ -355,6 +355,7 @@
     "drp_txt_cell": "Cell_da",
     "drp_txt_work": "Work_da",
     "contactAdministrator": "Please contact your administrator._da",
+    "tryAgain":"Please try again._da",
     "MaximumCharactersOnlyAllowed": "Maximum of {num} characters only allowed_da",
     "unexpectedError": "An unexpected error has occurred, on {date} at {time}._da",
     "pg_title_create": "CREATE_da",

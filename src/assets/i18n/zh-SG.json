@@ -347,6 +347,7 @@
       "drp_txt_cell": "Cell_zh",
       "drp_txt_work": "Work_zh",
       "contactAdministrator": "Please contact your administrator._zh",
+      "tryAgain":"Please try again._zh",
       "MaximumCharactersOnlyAllowed": "Maximum of {num} characters only allowed_zh",
       "unexpectedError": "An unexpected error has occurred, on {date} at {time}._zh"
     },
