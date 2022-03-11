@@ -355,7 +355,7 @@
     "drp_txt_cell": "Cell_fr",
     "drp_txt_work": "Work_fr",
     "contactAdministrator": "Please contact your administrator._fr",
-    "tryAgain":"Please try again._fr",
+    "tryAgain": "Please try again._fr",
     "MaximumCharactersOnlyAllowed": "Maximum of {num} characters only allowed_fr",
     "unexpectedError": "An unexpected error has occurred, on {date} at {time}._fr",
     "pg_title_create": "CREATE_fr",
@@ -938,6 +938,7 @@
     "tbl_hdr_user": "Sold By_fr",
     "tbl_hdr_Action": "Action_fr",
     "lbl_transactionType": "Transaction Type_fr",
+    "tbl_lbl_payment_type": "Payment Type(s) used in Transaction :_fr",
     "retry": "RETRY_fr",
     "cancel": "CANCEL_fr",
     "search": "SEARCH_fr",
@@ -3405,7 +3406,7 @@
     }
   },
   "dayEnd": {
-    "revenuePostings": "Revenue Posting with Room/Group Charge_fr",
+    "revenuePostings": "Revenue Posting with Room/Group Charge Failure(s)_fr",
     "DAYEND": "DAY END_fr",
     "DayEndProcess": "Do you want to process day end?_fr",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit_fr",

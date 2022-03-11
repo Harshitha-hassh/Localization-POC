@@ -47,7 +47,8 @@
        <!-- Revenue Postings -->
         <div *ngIf="coll.linkOptions && showRevenuePostings" class="d-table" [ngClass]="{'hdrSection':coll.dataCount!=0}">
           <span class="d-table-cell V-Mid ">
-            <i class="icon-success-icon blckClr mr-2 IC18"
+            <i *ngIf="!allowDayEndOnRevenueFailure" class="icon-information blckClr mr-2 IC18"></i>
+            <i *ngIf="allowDayEndOnRevenueFailure" class="icon-success-icon blckClr mr-2 IC18"
               [ngClass]="(revenuepostingsFailedCount > 0) ? 'closedTextclr' : ''"></i>
           </span>
          <a *ngIf ="revenuepostingsFailedCount > 0" (click)="routeTolink()"  [routerLink]="revenuePostingUrl"> 

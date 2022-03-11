@@ -938,6 +938,7 @@
     "tbl_hdr_user": "Sold By",
     "tbl_hdr_Action": "Action",
     "lbl_transactionType": "Transaction Type",
+    "tbl_lbl_payment_type": "Payment Type(s) used in Transaction :",
     "retry": "RETRY",
     "cancel": "CANCEL",
     "search": "SEARCH",
@@ -3407,7 +3408,7 @@
     }
   },
   "dayEnd": {
-    "revenuePostings": "Revenue Posting with Room/Group Charge",
+    "revenuePostings": "Revenue Posting with Room/Group Charge Failure(s)",
     "DAYEND": "DAY END",
     "DayEndProcess": "Do you want to process day end?",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit",

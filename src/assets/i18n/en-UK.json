@@ -355,7 +355,7 @@
     "drp_txt_cell": "Cell_uk",
     "drp_txt_work": "Work_uk",
     "contactAdministrator": "Please contact your administrator._uk",
-    "tryAgain":"Please try again._uk",
+    "tryAgain": "Please try again._uk",
     "MaximumCharactersOnlyAllowed": "Maximum of {num} characters only allowed_uk",
     "unexpectedError": "An unexpected error has occurred, on {date} at {time}._uk",
     "pg_title_create": "CREATE_uk",
@@ -938,6 +938,7 @@
     "tbl_hdr_user": "Sold By_uk",
     "tbl_hdr_Action": "Action_uk",
     "lbl_transactionType": "Transaction Type_uk",
+    "tbl_lbl_payment_type": "Payment Type(s) used in Transaction :_uk",
     "retry": "RETRY_uk",
     "cancel": "CANCEL_uk",
     "search": "SEARCH_uk",
@@ -3405,7 +3406,7 @@
     }
   },
   "dayEnd": {
-    "revenuePostings": "Revenue Posting with Room/Group Charge_uk",
+    "revenuePostings": "Revenue Posting with Room/Group Charge Failure(s)_uk",
     "DAYEND": "DAY END_uk",
     "DayEndProcess": "Do you want to process day end?_uk",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit_uk",
