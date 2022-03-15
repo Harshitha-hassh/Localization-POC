@@ -2664,6 +2664,7 @@
     "AllowReturnstoOriginalSettlement": "Allow Returns to Original Settlement Method Only_uk",
     "PMSProxyEndPoint": "PMS Proxy Endpoint_uk",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_uk",
+    "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_uk",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_uk",
     "EnableCheckZoom": "Enable CheckZoom_uk",
     "EnableRevenuePostingsOnDayEnd": "Restrict Day End on Revenue Failure_uk",

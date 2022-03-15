@@ -2664,6 +2664,7 @@
     "AllowReturnstoOriginalSettlement": "Allow Returns to Original Settlement Method Only_au",
     "PMSProxyEndPoint": "PMS Proxy Endpoint_au",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_au",
+    "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_au",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_au",
     "EnableCheckZoom": "Enable CheckZoom_au",
     "EnableRevenuePostingsOnDayEnd": "Restrict Day End on Revenue Failure_au",
