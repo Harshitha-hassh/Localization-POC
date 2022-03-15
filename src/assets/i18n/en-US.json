@@ -1405,6 +1405,7 @@
 		"SearchByGroupCode": "Search by Group Code",
     "GuestName": "Guest Last Name",
     "RoomNumber": "Room Number",
+    "GroupBookingId": "Booking ID_da",
     "RoomKey": "Room Key",
     "NoMatchesFound": "No matches found.",
     "SelectCommissionTemplate": "Select Commission Template",
