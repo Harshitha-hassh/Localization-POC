@@ -2664,6 +2664,7 @@
     "AllowReturnstoOriginalSettlement": "Allow Returns to Original Settlement Method Only_da",
     "PMSProxyEndPoint": "PMS Proxy Endpoint_da",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_da",
+    "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_da",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_da",
     "EnableCheckZoom": "Enable CheckZoom_da",
     "EnableRevenuePostingsOnDayEnd": "Restrict Day End on Revenue Failure_da",
