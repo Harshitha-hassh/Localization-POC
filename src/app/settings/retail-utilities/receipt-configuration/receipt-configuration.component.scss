@@ -27,7 +27,7 @@
                 width: 650px;
                 min-width:500px;
                 min-height: 235px;
-                height: 235px;
+                height: 300px;
                 border: 1px solid $linkWater;
                 margin-top: 22px;
 
@@ -40,10 +40,10 @@
 
                 .toggleSection{
                     height: calc(100% - 55px);
-
+                    overflow: auto;
                     .rightToggle,.leftToggle{
                         width:50%;
-                        height:82px;
+                        min-height:82px;
                         padding: 10px 0px !important;
                         box-sizing: border-box;
                         .icon-info-icon{
@@ -60,6 +60,14 @@
                     // }
                     .borderClass{
                         border-right: 1px solid $linkWater;
+                    }
+                    .radiovalue{
+                        width:50%;
+                        .mat-radio-label-content{ 
+                                overflow: hidden;
+                                padding-right: 5px;
+                                text-overflow: ellipsis;
+                        }
                     }
 
 
