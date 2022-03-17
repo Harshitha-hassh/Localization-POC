@@ -38,7 +38,7 @@
                                         <div class="pl-4 pt-3" *ngIf="(value.id==7 && isSuppressClerk)|| (value.id==9 && isSuppressPrint)">
                                           <mat-radio-group class="radio-class" aria-label="Select an option" formControlName = "{{value.controlName + 'byName'}}">
                                             
-                                            <mat-radio-button *ngFor="let UPV of userPrintValue" class="radiovalue" (click)="radioSelect(UPV.value, value.controlName)" [value]="UPV.value" title="USERID">{{UPV.Name}}</mat-radio-button>
+                                            <mat-radio-button *ngFor="let UPV of userPrintValue" class="radiovalue mat-radio-label" (click)="radioSelect(UPV.value, value.controlName)" [value]="UPV.value" title="USERID">{{UPV.Name}}</mat-radio-button>
                                           </mat-radio-group>
                                         </div>
                                     </div>                               

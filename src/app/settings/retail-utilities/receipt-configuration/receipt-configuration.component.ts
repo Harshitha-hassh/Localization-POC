@@ -118,7 +118,9 @@ export class ReceiptConfigurationComponent implements OnInit {
       packItemPrice: selectedValues[0].displayPackagePrice,
       packAppId: selectedValues[0].displayPackageAppointmentID,
       packStaffCode: selectedValues[0].displayPackageStaffCode,
-      surplusPrintedByOnReceipt:  selectedValues[0].suppressPrintedBy
+      surplusPrintedByOnReceipt:  selectedValues[0].suppressPrintedBy,
+      clerkIdPrintValue:  selectedValues[0].clerkIdPrintValue,
+      printedByPrintValue:  selectedValues[0].printedByPrintValue,
     };
 
     this.FormGrp.get('outlet').setValue(selectedValues[0].outletId);
@@ -189,8 +191,8 @@ export class ReceiptConfigurationComponent implements OnInit {
       packAppId: data.packAppId,
       packStaffCode: data.packStaffCode,
       surplusPrintedByOnReceipt: data.surplusPrintedByOnReceipt,
-      surplusClientIdOnReceiptbyName: '',
-      surplusPrintedByOnReceiptbyName: ''
+      surplusClientIdOnReceiptbyName: data.clerkIdPrintValue,
+      surplusPrintedByOnReceiptbyName: data.printedByPrintValue
     });
   }
 
@@ -279,8 +281,8 @@ export class ReceiptConfigurationComponent implements OnInit {
       gratuityLine: data.gratuityLine,
       receiptNote: data.receiptNote,
       suppressPrintedBy: data.printReceipt[0]. surplusPrintedByOnReceipt ? true : false,
-      ClerkIdPrintValue: data.printReceipt[0].surplusClientIdOnReceiptbyName,
-      PrintedByPrintValue: data.printReceipt[0].surplusPrintedByOnReceiptbyName
+      clerkIdPrintValue: data.printReceipt[0].surplusClientIdOnReceiptbyName,
+      printedByPrintValue: data.printReceipt[0].surplusPrintedByOnReceiptbyName
     };
     this.OutletInfo = await this.data.createReceipt(receiptobj);
     const currOutlet = this.Outlet.filter(x => x.id == this.selectedOutletId);
