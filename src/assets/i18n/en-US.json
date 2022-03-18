@@ -1252,7 +1252,7 @@
     "cashReceived": "Cash Received",
     "remainingChange": "Change Due",
     "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?",
-    "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?",
+    "TransactionLockWarning": "Transaction is locked by the user: ",
     "TransactionLock": "Transaction is locked, Please try after sometime.",
     "RoomChargeNumber": "Room",
     "paymentMethods": {
@@ -1405,6 +1405,7 @@
 		"SearchByGroupCode": "Search by Group Code",
     "GuestName": "Guest Last Name",
     "RoomNumber": "Room Number",
+    "GroupBookingId": "Booking ID_da",
     "RoomKey": "Room Key",
     "NoMatchesFound": "No matches found.",
     "SelectCommissionTemplate": "Select Commission Template",
