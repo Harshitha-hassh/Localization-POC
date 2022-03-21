@@ -2666,6 +2666,7 @@
     "PMSProxyEndPoint": "PMS Proxy Endpoint_fr",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_fr",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_fr",
+    "DoNotDisplayItemName": "Do Not Display Item name for Open Item_fr",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_fr",
     "EnableCheckZoom": "Enable CheckZoom_fr",
     "EnableRevenuePostingsOnDayEnd": "Restrict Day End on Revenue Failure_fr",
