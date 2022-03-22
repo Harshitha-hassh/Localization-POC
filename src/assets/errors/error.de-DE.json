@@ -31,7 +31,7 @@
   "617": "Link Multipack not allowed for package appointment_de",
   "675": "_de",
   "701": "Error in contacting POS server_de",
-  "711": "Return Not Available. Please refresh and try again._de",
+  "711": "Return transaction has already been initiated for this ticket._de",
   "801": "Appointment Detail Not Found_de",
   "901": "Service Id was not provided_de",
   "902": "Therapist Id was not provided_de",

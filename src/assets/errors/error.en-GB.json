@@ -31,7 +31,7 @@
   "617": "Link Multipack not allowed for package appointment_gb",
   "675": "_gb",
   "701": "Error in contacting POS server_gb",
-  "711": "Return Not Available. Please refresh and try again._gb",
+  "711": "Return transaction has already been initiated for this ticket._gb",
   "801": "Appointment Detail Not Found_gb",
   "901": "Service Id was not provided_gb",
   "902": "Therapist Id was not provided_gb",

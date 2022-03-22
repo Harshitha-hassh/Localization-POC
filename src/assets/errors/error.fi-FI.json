@@ -31,7 +31,7 @@
   "617": "Link Multipack not allowed for package appointment_fi",
   "675": "_fi",
   "701": "Error in contacting POS server_fi",
-  "711": "Return Not Available. Please refresh and try again._fi",
+  "711": "Return transaction has already been initiated for this ticket._fi",
   "801": "Appointment Detail Not Found_fi",
   "901": "Service Id was not provided_fi",
   "902": "Therapist Id was not provided_fi",
