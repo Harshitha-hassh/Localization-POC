@@ -31,6 +31,7 @@
   "617": "Link Multipack not allowed for package appointment_uk",
   "675": "_uk",
   "701": "Error in contacting POS server_uk",
+  "711": "Return transaction has already been initiated for this ticket._uk",
   "801": "Appointment Detail Not Found_uk",
   "901": "Service Id was not provided_uk",
   "902": "Therapist Id was not provided_uk",

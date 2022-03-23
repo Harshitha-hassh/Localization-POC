@@ -31,6 +31,7 @@
   "617": "Link Multipack not allowed for package appointment_au",
   "675": "_au",
   "701": "Error in contacting POS server_au",
+  "711": "Return transaction has already been initiated for this ticket._au",
   "801": "Appointment Detail Not Found_au",
   "901": "Service Id was not provided_au",
   "902": "Therapist Id was not provided_au",
