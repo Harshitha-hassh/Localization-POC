@@ -1401,6 +1401,8 @@
     "SearchByRoomKey": "Search by  Room Key_uk",
     "SearchByGroupName": "Search by Group Name_uk",
     "SearchByGroupCode": "Search by Group Code_uk",
+    "SearchByMeetingName": "Search by Group Name_uk",
+    "SearchByGroupNameCode": "Search by Group Name/Code_uk",
     "GuestName": "Guest Last Name_uk",
     "RoomNumber": "Room Number_uk",
     "GroupBookingId": "Booking ID_da_uk",

@@ -1401,6 +1401,8 @@
     "SearchByRoomKey": "Search by  Room Key_fi",
     "SearchByGroupName": "Search by Group Name_fi",
     "SearchByGroupCode": "Search by Group Code_fi",
+    "SearchByMeetingName": "Search by Group Name_fi",
+    "SearchByGroupNameCode": "Search by Group Name/Code_fi",
     "GuestName": "Guest Last Name_fi",
     "RoomNumber": "Room Number_fi",
     "GroupBookingId": "Booking ID_da_fi",
