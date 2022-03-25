@@ -223,7 +223,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       this.printInfo[5].enableToggle = false;
       this.printInfo[7].enableToggle = false;
     } 
-    else if ((controlName == 'surplusClientIdO  nReceipt') && event[0] == false) {
+    else if ((controlName == 'surplusClientIdOnReceipt') && event[0] == false) {
       this.isSuppressClerk = true;
     }
     else if ((controlName == 'surplusPrintedByOnReceipt') && event[0] == false) {
