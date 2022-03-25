@@ -223,7 +223,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       this.printInfo[5].enableToggle = false;
       this.printInfo[7].enableToggle = false;
     } 
-    else if ((controlName == 'surplusClientIdOnReceipt') && event[0] == false) {
+    else if ((controlName == 'surplusClientIdO  nReceipt') && event[0] == false) {
       this.isSuppressClerk = true;
     }
     else if ((controlName == 'surplusPrintedByOnReceipt') && event[0] == false) {
@@ -281,8 +281,8 @@ export class ReceiptConfigurationComponent implements OnInit {
       gratuityLine: data.gratuityLine,
       receiptNote: data.receiptNote,
       suppressPrintedBy: data.printReceipt[0]. surplusPrintedByOnReceipt ? true : false,
-      clerkIdPrintValue: data.printReceipt[0].surplusClientIdOnReceiptbyName,
-      printedByPrintValue: data.printReceipt[0].surplusPrintedByOnReceiptbyName
+      clerkIdPrintValue: data.printReceipt[0].surplusClientIdOnReceiptbyName ? data.printReceipt[0].surplusClientIdOnReceiptbyName : 0,
+      printedByPrintValue: data.printReceipt[0].surplusPrintedByOnReceiptbyName ? data.printReceipt[0].surplusPrintedByOnReceiptbyName :0
     };
     this.OutletInfo = await this.data.createReceipt(receiptobj);
     const currOutlet = this.Outlet.filter(x => x.id == this.selectedOutletId);
