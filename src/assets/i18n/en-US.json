@@ -1202,6 +1202,7 @@
     "AddTax": "Please wait, the tax is being added.",
     "PartialRefundWithMultiplePaymentError": "Refund to original settlements is not allowed for transactions with multiple payments",
     "WaitForMoment": "Please wait for a moment",
+    "Unabletoprintreceipt": "Unable to print receipt. Try reprinting the receipt later._da",
     "AddDiscount": "Please wait, the discount is being added.",
     "RemoveTax": "Please wait, the tax is being removed.",
     "RemoveItemDiscount": "Please wait, the discount is being removed from the item.",

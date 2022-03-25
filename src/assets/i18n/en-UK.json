@@ -1200,6 +1200,7 @@
     "AddTax": "Please wait, the tax is being added._uk",
     "PartialRefundWithMultiplePaymentError": "Refund to original settlements is not allowed for transactions with multiple payments_uk",
     "WaitForMoment": "Please wait for a moment_uk",
+    "Unabletoprintreceipt": "Unable to print receipt. Try reprinting the receipt later._da_uk",
     "AddDiscount": "Please wait, the discount is being added._uk",
     "RemoveTax": "Please wait, the tax is being removed._uk",
     "RemoveItemDiscount": "Please wait, the discount is being removed from the item._uk",
