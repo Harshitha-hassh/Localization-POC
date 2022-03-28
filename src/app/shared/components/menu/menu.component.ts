@@ -189,12 +189,14 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
         let loyaltyTokenRequestInfo = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.LoyaltyTokenRequestInfo);
         let enforceMemberPayment = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.EnforceMemberPayment);
         let displayCreditBookBalance = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.DisplayCreditBookBalance);
+        const allowTenderAmountOverrideForMember = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.AllowTenderAmountOverrideForMember);
         let loyalty = {
           loyaltyURI: uri && uri.configurationValue ? uri.configurationValue : "",
           loyaltyServiceURI: loyaltyServiceURI && loyaltyServiceURI.configurationValue ? loyaltyServiceURI.configurationValue : "",
           loyaltyTokenRequestInfo: loyaltyTokenRequestInfo && loyaltyTokenRequestInfo.configurationValue ? loyaltyTokenRequestInfo.configurationValue : "",
           enforceMemberPayment: (enforceMemberPayment && enforceMemberPayment.configurationValue) || "false",
-          displayCreditBookBalance : (displayCreditBookBalance && displayCreditBookBalance.configurationValue) || "false"
+          displayCreditBookBalance : (displayCreditBookBalance && displayCreditBookBalance.configurationValue) || "false",
+          allowTenderAmountOverrideForMember: (allowTenderAmountOverrideForMember?.configurationValue) || "false"
         }
         this._propertyInfo.SetMemberConfiguration(loyalty)
       }
