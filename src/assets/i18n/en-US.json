@@ -266,6 +266,7 @@
     "Price": "Price ($)",
     "Quantity": "QUANTITY",
     "ItemName": "Item Name",
+    "ItemNameRequiredMsg": "Missing Item Name",
     "Activate": "Activate",
     "Deactivate": "Deactivate",
     "TherapistInActiveNotAllowed": "Therapist has scheduled appointment, inactive not allowed",

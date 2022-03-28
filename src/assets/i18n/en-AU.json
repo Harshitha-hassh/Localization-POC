@@ -266,6 +266,7 @@
     "Price": "Price ($)_au",
     "Quantity": "QUANTITY_au",
     "ItemName": "Item Name_au",
+    "ItemNameRequiredMsg": "Missing Item Name_au",
     "Activate": "Activate_au",
     "Deactivate": "Deactivate_au",
     "TherapistInActiveNotAllowed": "Therapist has scheduled appointment, inactive not allowed_au",

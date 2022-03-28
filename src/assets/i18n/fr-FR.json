@@ -266,6 +266,7 @@
     "Price": "Price ($)_fr",
     "Quantity": "QUANTITY_fr",
     "ItemName": "Item Name_fr",
+    "ItemNameRequiredMsg": "Missing Item Name_fr",
     "Activate": "Activate_fr",
     "Deactivate": "Deactivate_fr",
     "TherapistInActiveNotAllowed": "Therapist has scheduled appointment, inactive not allowed_fr",

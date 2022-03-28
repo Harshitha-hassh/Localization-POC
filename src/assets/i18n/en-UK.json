@@ -266,6 +266,7 @@
     "Price": "Price ($)_uk",
     "Quantity": "QUANTITY_uk",
     "ItemName": "Item Name_uk",
+    "ItemNameRequiredMsg": "Missing Item Name_uk",
     "Activate": "Activate_uk",
     "Deactivate": "Deactivate_uk",
     "TherapistInActiveNotAllowed": "Therapist has scheduled appointment, inactive not allowed_uk",

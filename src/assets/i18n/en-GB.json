@@ -266,6 +266,7 @@
     "Price": "Price ($)_gb",
     "Quantity": "QUANTITY_gb",
     "ItemName": "Item Name_gb",
+    "ItemNameRequiredMsg": "Missing Item Name_gb",
     "Activate": "Activate_gb",
     "Deactivate": "Deactivate_gb",
     "TherapistInActiveNotAllowed": "Therapist has scheduled appointment, inactive not allowed_gb",
