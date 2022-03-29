@@ -12,7 +12,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ngcc",
-    "clean": "rmdir /s /q node_modules"
+    "clean": "rmdir /s /q node_modules",
+    "getlatestcode": "git pull -f && git submodule foreach git pull -f",
+    "stageretailsubmodule": "git pull -f && git submodule foreach git pull -f && git stage src/app/retail"
   },
   "private": true,
   "dependencies": {
