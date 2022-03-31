@@ -1252,7 +1252,7 @@
     "cashReceived": "Cash Received_fi",
     "remainingChange": "Change Due_fi",
     "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?_fi",
-    "TransactionLockWarning": "Transaction is locked by the user: _fi",
+    "TransactionLockWarning": "Transaction is locked by the user_fi",
     "TransactionLock": "Transaction is locked, Please try after sometime._fi",
     "RoomChargeNumber": "Room_fi",
     "paymentMethods": {
