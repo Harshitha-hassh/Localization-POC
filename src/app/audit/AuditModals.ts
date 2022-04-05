@@ -6,6 +6,7 @@ export interface GridData {
     options? : any;
     dataCount? : number;
     isLoaded : boolean;
+    linkOptions: boolean;
 }
 
 export enum GridAction {
@@ -24,7 +25,8 @@ export enum PendingAction {
     ScheduledWithDeposit = 1,
     CheckedInAppointment,
     CheckOutWithoutTransaction,
-    OpenTransaction
+    OpenTransaction,
+    RevenuePosting
   }
 
   export interface AppointmentData{

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { ComboOptions, SystemConfiguration } from 'src/app/common/shared/shared/business/view-settings.modals';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { SystemSetupBusinessService } from '../system-setup.business.service';
-import { SystemConfig, PropertyConfig, PhNumber, BaseResponse } from 'src/app/common/shared/shared/business/shared.modals';
+import { SystemConfig, PropertyConfig, PhNumber, BaseResponse, DefaultFieldConfigurationSwitches } from 'src/app/common/shared/shared/business/shared.modals';
 import { Observable, ReplaySubject, SubscriptionLike as ISubscription } from 'rxjs';
 import { SettingsService } from '../../settings.service';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
@@ -24,6 +24,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   settingInfo: SystemConfiguration[] = [];
   propertyInfo: FormGroup;
   contactPhoneType: ComboOptions[];
+  contactPhoneLabelType: any;
+  contactEmailType: any;
   RequiredFieldInfo: any;
   languageType: any[];
   textmaskFormat: string;
@@ -75,7 +77,10 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       language: '',
       tenantId: '',
       propCode: '',
-      requiredFields: []
+      requiredFields: [],
+      DEFAULT_EMAIL_TYPE: '',
+      DEFAULT_COUNTRY_CODE: ['', Validators.min(1)],
+      DEFAULT_PHONE_TYPE: ''
     };
 
     this.PhoneType = [
@@ -97,9 +102,39 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       language: '',
       tenantId: ['', Validators.required],
       propCode: ['', Validators.required],
-      requiredFields: this.fb.array([])
+      requiredFields: this.fb.array([]),
+      DEFAULT_EMAIL_TYPE: '',
+      DEFAULT_COUNTRY_CODE: ['', Validators.min(1)],
+      DEFAULT_PHONE_TYPE: ''
     });
     this.phone = this.propertyInfo.get('phone') as FormArray;
+
+    this.contactPhoneLabelType =  [
+        {
+          "id": 1,
+          "description": "Cell"
+        },
+        {
+          "id": 2,
+          "description": "Home"
+        },
+        {
+          "id": 3,
+          "description": "Work"
+        }
+      ];
+
+    this.contactEmailType = [
+      {
+        "id": 9,
+        "description": "Personal"
+      },
+      {
+        "id": 10,
+        "description": "Office"
+      }
+    ];
+
     this.contactPhoneType = [{ Id: 1, Description: this.commonCaptions.drp_txt_home,
        Type: 'Phone' },
         { Id: 2, Description: this.commonCaptions.drp_txt_office, Type: 'Phone' },
@@ -234,7 +269,6 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   }
   
   GetAllSetting() {
-
     this.http.CallApiWithCallback<any>({
       host: Host.retailManagement,
       success: this.successCallback.bind(this),
@@ -245,9 +279,23 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       showError: false,
       extraParams: [{ Id: this.utils.GetPropertyInfo('PropertyId') }]
     });
-  
+    this.setClientDefaultSwitches();
   }
-
+  setClientDefaultSwitches(){
+      //Set Default Configuration Switches
+      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
+        const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
+        this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
+      }
+      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
+          const defaultPhoneType   = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
+          this.propertyInfo.controls.DEFAULT_PHONE_TYPE.setValue(defaultPhoneType && Number(defaultPhoneType.value) > 0 ? Number(defaultPhoneType.value) : '');
+      }
+      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
+          const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
+          this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
+      }
+  }
   GetPropertInfo() {
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
@@ -393,6 +441,26 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.UpdateSetting(bodySettingData);
     const bodyPropertyData: PropertyConfig = this.formPropertyData();
     this.UpdatePropertySetting(bodyPropertyData);
+    this.updateClientDefaultsInSession();
+  }
+  updateClientDefaultsInSession(){
+    const sessionDefaultSettings = sessionStorage.getItem('defaultSettings');
+    const parsedSessionDefaultSettings = JSON.parse(sessionDefaultSettings);
+
+    //Set Default Configuration Switches
+    if(parsedSessionDefaultSettings.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
+        const defaultEmailType = this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.value;
+        parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch).value = defaultEmailType;
+    }
+    if(parsedSessionDefaultSettings.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
+        const defaultPhoneType   = this.propertyInfo.controls.DEFAULT_PHONE_TYPE.value;
+        parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch).value = defaultPhoneType;
+    }
+    if(parsedSessionDefaultSettings.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
+        const defaultPhoneCode = this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.value;
+        parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch).value = defaultPhoneCode;
+    }
+    sessionStorage.setItem('defaultSettings', JSON.stringify(parsedSessionDefaultSettings));
   }
   UpdatePropertySetting(bodyPropertyData) {
     this.http.CallApiWithCallback<any>({
@@ -449,6 +517,26 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
         _body.push(_systemConfig);
       }
     }
+    
+    //Default Configuration Switches
+    _body.push({
+      id: this.settingInfo.find(setting => setting.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch).id,
+      moduleId: this.settingInfo.find(s => s.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch).moduleId,
+      switch: DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch,
+      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch].value? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch].value : 0
+    });
+    _body.push({
+      id: this.settingInfo.find(setting => setting.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch).id,
+      moduleId: this.settingInfo.find(s => s.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch).moduleId,
+      switch: DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch,
+      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch].value? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch].value : 0
+    });
+    _body.push({
+      id: this.settingInfo.find(setting => setting.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch).id,
+      moduleId: this.settingInfo.find(s => s.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch).moduleId,
+      switch: DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch,
+      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch].value? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch].value: 0
+    });
     return _body;
   }
   formPropertyData(): PropertyConfig {
@@ -478,9 +566,9 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       const contactType = this.PhoneType.filter(res => res.description === ph);
       phone = {
         id: temp + 1,
-        number: phoneItem.phonenumber ? (phoneItem.phonenumber).replace(/\D/g, '') : '',
+        number: phoneItem && phoneItem.phonenumber ? (phoneItem.phonenumber).replace(/\D/g, '') : '',
         propertyId: _body.propertyId = this.localization.GetPropertyInfo('PropertyId'),
-        contactTypeId: (contactType ? contactType[0].id : 0).toString(),
+        contactTypeId: (contactType && contactType.length ? contactType[0].id : 0).toString(),
         clientId: 1
       };
       _body.propertyContacts.push(phone);
@@ -509,6 +597,21 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.propertyInfo.controls.language.setValue(this.propertyInformation ? this.propertyInformation.languageCode : '');
     this.propertyInfo.controls.tenantId.setValue(this.propertyInformation ? this.propertyInformation.tenantId : '');
     this.propertyInfo.controls.propCode.setValue(this.propertyInformation ? this.propertyInformation.propertyCode : '');
+
+    //Set Default Configuration Switches
+    if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
+      const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
+      this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
+    }
+    if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
+        const defaultPhoneType   = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
+        this.propertyInfo.controls.DEFAULT_PHONE_TYPE.setValue(defaultPhoneType && Number(defaultPhoneType.value) > 0 ? Number(defaultPhoneType.value) : '');
+    }
+    if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
+        const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
+        this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
+    }
+
     this.clearFormArray(this.propertyInfo.get('address') as FormArray);
     for (let index = 0; index < address.length; index++) {
       if ((address[index] && address[index].trim() != '') || index == 0)
@@ -535,6 +638,21 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams?: any[]): void {
     if (callDesc == 'GetSettingByModule') {
       this.settingInfo = <any>result.result;
+      
+      //Set Default Configuration Switches
+      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
+          const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
+          this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
+      }
+      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
+          const defaultPhoneType   = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
+          this.propertyInfo.controls.DEFAULT_PHONE_TYPE.setValue(defaultPhoneType && Number(defaultPhoneType.value) > 0 ? Number(defaultPhoneType.value) : '');
+      }
+      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
+          const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
+          this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
+      }
+
       this.RequiredFieldsSetting();
       this.enableSave = false;
     } else if (callDesc == 'GetPropertyInfoByPropertyId') {

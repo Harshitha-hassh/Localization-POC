@@ -310,7 +310,9 @@
     "70605":"Do not enable both Multipack and Open Item,either one should be true",
     "70606":"Do not enable both Scaled Item and Open,either one should be true",
     "70607": "Quantity cannot be a Decimal Value.",
+    "75011": "Unable to fetch data for the selected filters as large volume of data exist. Refine the filters and try again",
     "70616": "Item Number cannot be a Decimal Value.",
+    "70618": "Vendor is not valid.",
     "70608": "Item Par cannot be a Decimal Value.",
     "70609": "Card number not valid",
     "70610": "Retail Item Type is not valid.",
@@ -352,7 +354,9 @@
     "101915":"Discount Reason in use, Inactive not allowed",
     "101917":"Date cannot be rolled over to the next day",
     "101918":"Current system date {CurrentSystemDate} is greater than or equal to roll over date {RollOverDate}. Please Re Login",
-    "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed."
-  
+    "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed.",
+    "-4700":"The following items are not mapped with a category",
+    "-4701":"You are about to perform a transaction that is not on current property date, however, doing so will record the transaction on the current property date only. Do you wish to proceed?",
+    "711": "Return transaction has already been initiated for this ticket."  
   }
   

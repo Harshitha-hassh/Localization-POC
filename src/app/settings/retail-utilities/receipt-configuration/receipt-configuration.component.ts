@@ -28,6 +28,12 @@ export class ReceiptConfigurationComponent implements OnInit {
   IsViewOnly: boolean;
   isSaveDisabled: boolean;
   ServiceCharge: any;
+  userPrintValue:any;
+  userPrintControls:number[];
+  isSuppressClerk: boolean;
+  isSuppressPrint: boolean;
+  selctedClerkById: number;
+  selctedPrintById: number;
 
   constructor(private Form: FormBuilder,
               private breakPoint: BreakPointAccess,
@@ -68,6 +74,15 @@ export class ReceiptConfigurationComponent implements OnInit {
       // { id: 8, Name: this.textCaptions.PackItemStaffCode, controlName: 'packStaffCode', enableToggle: false },
       { id: 9, Name: this.textCaptions.SurplusPrintedBy, controlName: 'surplusPrintedByOnReceipt', enableToggle: true },
     ];
+
+    this.userPrintValue = [
+      {id:1, Name:this.textCaptions.userId, controlName: 'userId', value: 0},
+      {id:2, Name:this.textCaptions.fullName, controlName: 'fullName', value: 1},
+      {id:3, Name:this.textCaptions.firstName, controlName: 'firstName', value: 2},
+      {id:4, Name:this.textCaptions.lastName, controlName: 'lastName', value: 3}
+    ]
+      this.isSuppressClerk = true;
+    this.isSuppressPrint =true;
     this.breakPoint.CheckForAccess([RetailBreakPoint.ReceiptConfiguration], false);
     if (this.breakPoint.IsViewOnly(RetailBreakPoint.ReceiptConfiguration)) {
       this.IsViewOnly = true;
@@ -103,7 +118,9 @@ export class ReceiptConfigurationComponent implements OnInit {
       packItemPrice: selectedValues[0].displayPackagePrice,
       packAppId: selectedValues[0].displayPackageAppointmentID,
       packStaffCode: selectedValues[0].displayPackageStaffCode,
-      surplusPrintedByOnReceipt:  selectedValues[0].suppressPrintedBy
+      surplusPrintedByOnReceipt:  selectedValues[0].suppressPrintedBy,
+      clerkIdPrintValue:  selectedValues[0].clerkIdPrintValue,
+      printedByPrintValue:  selectedValues[0].printedByPrintValue,
     };
 
     this.FormGrp.get('outlet').setValue(selectedValues[0].outletId);
@@ -126,6 +143,10 @@ export class ReceiptConfigurationComponent implements OnInit {
       this.printInfo[5].enableToggle = false;
       this.printInfo[7].enableToggle = false;
     }
+    if (selectedValues[0].suppressClerkId == false || selectedValues[0].suppressPrintedBy == false) {
+      this.isSuppressClerk = true;
+      this.isSuppressPrint = true;
+    }
     if (selectedValues[0].displayOnlyPackageItem == false) {
       if (selectedValues[0].displayPackageDescription) {
         this.printInfo[3].enableToggle = true;
@@ -133,6 +154,12 @@ export class ReceiptConfigurationComponent implements OnInit {
         this.printInfo[7].enableToggle = true;
       }
       // this.printInfo[1].enableToggle = true;      
+    }
+    if (selectedValues[0].suppressClerkId == true) {
+      this.isSuppressClerk = false;
+    }
+    if ( selectedValues[0].suppressPrintedBy == true) {
+      this.isSuppressPrint = false;
     }
     
   }
@@ -147,7 +174,9 @@ export class ReceiptConfigurationComponent implements OnInit {
       packItemPrice: '',
       packAppId: '',
       packStaffCode: '',
-      surplusPrintedByOnReceipt:''
+      surplusPrintedByOnReceipt:'',
+      surplusClientIdOnReceiptbyName: '',
+      surplusPrintedByOnReceiptbyName: ''
       
     });
   }
@@ -161,8 +190,26 @@ export class ReceiptConfigurationComponent implements OnInit {
       packItemPrice: data.packItemPrice,
       packAppId: data.packAppId,
       packStaffCode: data.packStaffCode,
-      surplusPrintedByOnReceipt: data.surplusPrintedByOnReceipt
+      surplusPrintedByOnReceipt: data.surplusPrintedByOnReceipt,
+      surplusClientIdOnReceiptbyName: data.clerkIdPrintValue,
+      surplusPrintedByOnReceiptbyName: data.printedByPrintValue
     });
+  }
+
+  radioSelect(value, controlName) {
+    this.isSaveDisabled = false;
+    let controlname = ""
+    if(controlName == "surplusClientIdOnReceipt")
+    {
+      this.selctedClerkById =  value;
+      controlname = controlName + 'byName';
+    }
+    if(controlName == "surplusPrintedByOnReceipt")
+    {
+      this.selctedPrintById = value;
+      controlname = controlName + 'byName';
+    }
+    this.FormGrp.get('printReceipt')['controls'][0].get(controlname).setValue(value);
   }
 
   toggleChange(event, controlName) {
@@ -175,7 +222,20 @@ export class ReceiptConfigurationComponent implements OnInit {
       this.printInfo[3].enableToggle = false;
       this.printInfo[5].enableToggle = false;
       this.printInfo[7].enableToggle = false;
-    } else if (controlName == 'packageItemOnReceipt' && event[0]) {
+    } 
+    else if ((controlName == 'surplusClientIdOnReceipt') && event[0] == false) {
+      this.isSuppressClerk = true;
+    }
+    else if ((controlName == 'surplusPrintedByOnReceipt') && event[0] == false) {
+      this.isSuppressPrint = true;
+    }
+    else if ((controlName == 'surplusClientIdOnReceipt' ) && event[0] == true) {
+      this.isSuppressClerk = false;
+    }
+    else if ((controlName == 'surplusPrintedByOnReceipt') && event[0] == true) {
+      this.isSuppressPrint = false;
+    }
+    else if (controlName == 'packageItemOnReceipt' && event[0]) {
       this.printInfo[1].enableToggle = false;
       // this.FormGrp.controls[0].value.packItemDesc = false;
       // this.FormGrp.controls.printReceipt.value[0].packItemDesc = false;
@@ -221,6 +281,8 @@ export class ReceiptConfigurationComponent implements OnInit {
       gratuityLine: data.gratuityLine,
       receiptNote: data.receiptNote,
       suppressPrintedBy: data.printReceipt[0]. surplusPrintedByOnReceipt ? true : false,
+      clerkIdPrintValue: data.printReceipt[0].surplusClientIdOnReceiptbyName ? data.printReceipt[0].surplusClientIdOnReceiptbyName : 0,
+      printedByPrintValue: data.printReceipt[0].surplusPrintedByOnReceiptbyName ? data.printReceipt[0].surplusPrintedByOnReceiptbyName :0
     };
     this.OutletInfo = await this.data.createReceipt(receiptobj);
     const currOutlet = this.Outlet.filter(x => x.id == this.selectedOutletId);

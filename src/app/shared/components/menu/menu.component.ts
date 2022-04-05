@@ -10,7 +10,7 @@ import { menuTypes } from '../../enums/menu.constant';
 import { MatDialog } from '@angular/material/dialog';
 import { AboutComponent } from '../about/about.component';
 import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-config/payment-features-config/property-feature-config.service';
-import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
+import { FeatureName, RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { ConfigKeys, RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 import { RetailServiceRegistry } from 'src/app/retail/shared/service/base.service';
 import { SPAConfig } from 'src/app/retail/common/config/SPA-config';
@@ -152,27 +152,33 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       });
     }
     this._featureFlagService.RefreshConfig();
-    
-    if (!sessionStorage.getItem("EatecURI")) {
-      var configValue = "";
-      let featureNames = ["Enhanced Inventory"];
-      this._propertyFeatureService.GetFeatureConfigurations(featureNames).then((featureconfigurations) => {
-        if (featureconfigurations != null) {
-          this.isEatecEnabled = true;
-          sessionStorage.setItem('isEatecEnabled', 'true')
-          let eatecUser = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Eatec.EatecTenantUser);
-          let uri = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Eatec.EatecURI);
-          if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
-            configValue = uri.configurationValue
-          }
-        }
-        else {
+    this._featureFlagService.propFeature.pipe(takeUntil(this.destroyed$)).subscribe((propertyFeatures) => {
+      if (!sessionStorage.getItem('EIURI')) {
+        const eatecFeature  = propertyFeatures && propertyFeatures.find(x => x.featureName === FeatureName.EnhancedInventory);
+        if (eatecFeature != null && eatecFeature.isActive) {
+          sessionStorage.setItem('isEatecEnabled', 'true');
+          this._propertyFeatureService.getFeatureConfiguration(eatecFeature.id, eatecFeature.moduleId).then((featureconfigurations) => {
+            if (featureconfigurations != null && featureconfigurations.length > 0) {
+              this.isEatecEnabled = true;
+              const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
+              const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
+              if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
+                this._propertyInfo.SetEatecRI( uri.configurationValue);
+              }else{
+                this._propertyInfo.SetEatecRI('');
+              }
+            }else{
+              this._propertyInfo.SetEatecRI('');
+            }
+          });
+        } else {
           this.isEatecEnabled = false;
-          sessionStorage.setItem('isEatecEnabled', 'false')
+          sessionStorage.setItem('isEatecEnabled', 'false');
+          this._propertyInfo.SetEatecRI('');
         }
-        this._propertyInfo.SetEatecRI(configValue)
-      });
-    }
+      }
+    });
+  
     if (!sessionStorage.getItem("memberConfiguration")) {
       var configValue = "";
       let featureNames = ["ACES Membership"];
@@ -183,12 +189,14 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
         let loyaltyTokenRequestInfo = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.LoyaltyTokenRequestInfo);
         let enforceMemberPayment = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.EnforceMemberPayment);
         let displayCreditBookBalance = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.DisplayCreditBookBalance);
+        const allowTenderAmountOverrideForMember = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.AllowTenderAmountOverrideForMember);
         let loyalty = {
           loyaltyURI: uri && uri.configurationValue ? uri.configurationValue : "",
           loyaltyServiceURI: loyaltyServiceURI && loyaltyServiceURI.configurationValue ? loyaltyServiceURI.configurationValue : "",
           loyaltyTokenRequestInfo: loyaltyTokenRequestInfo && loyaltyTokenRequestInfo.configurationValue ? loyaltyTokenRequestInfo.configurationValue : "",
           enforceMemberPayment: (enforceMemberPayment && enforceMemberPayment.configurationValue) || "false",
-          displayCreditBookBalance : (displayCreditBookBalance && displayCreditBookBalance.configurationValue) || "false"
+          displayCreditBookBalance : (displayCreditBookBalance && displayCreditBookBalance.configurationValue) || "false",
+          allowTenderAmountOverrideForMember: (allowTenderAmountOverrideForMember?.configurationValue) || "false"
         }
         this._propertyInfo.SetMemberConfiguration(loyalty)
       }

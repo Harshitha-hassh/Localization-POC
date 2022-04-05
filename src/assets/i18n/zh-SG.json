@@ -85,6 +85,7 @@
       "QUICKLOGIN": "QUICK LOGIN_zh"
     },
     "common": {
+      "NoPrinterFound":"No Printer Found_zh",
       "AddPlayer": "Add Player_zh",
       "CopyPasteNotAllowed": "Pasted data contains incorrect characters_zh",
       "PhoneFormat": "9999 9999",
@@ -346,6 +347,7 @@
       "drp_txt_cell": "Cell_zh",
       "drp_txt_work": "Work_zh",
       "contactAdministrator": "Please contact your administrator._zh",
+      "tryAgain":"Please try again._zh",
       "MaximumCharactersOnlyAllowed": "Maximum of {num} characters only allowed_zh",
       "unexpectedError": "An unexpected error has occurred, on {date} at {time}._zh"
     },
@@ -1317,6 +1319,9 @@
       "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_zh",
       "SearchARAcctName": "Search by Account Name_zh",
       "SearchARAcctNumber": "Search by Account Number_zh",
+      "SearchARAcctNumberName": "Search by Account Name/Number_zh",
+      "ARAcctNameNumber": "Account Name/Number_zh",
+      "ARAccount": "Account_zh",
       "ARAcctName": "Account Name_zh",
       "ARAcctNumber": "Account Number_zh",
       "SearchByGuestName": "Search by Guest Last Name_zh",
@@ -1443,7 +1448,10 @@
       "Inventory Management": "Inventory Management_zh",
       "Retail Setup": "Retail Setup_zh",
       "Retail Reports": "Retail Reports_zh",
-      "241524202425": "Move Multiple Appointments_zh"
+      "241524202425": "Move Multiple Appointments_zh",
+      "3075": "3075 - Issue Visual One GiftCard_zh",
+      "3080": "3080 - Issue External GiftCard_zh",
+      "3085": "3085 - Settle to Group Charge_zh"
     },
     "userId": "User ID_zh",
     "password": "Password_zh",
@@ -1452,7 +1460,7 @@
     "missingUserID": "Missing User ID_zh",
     "missingPassword": "Missing Password_zh",
     "Login": "Login_zh",
-    "welcomeToRetail": "Please login to your account_zh",
+    "welcomeToRetail": "Please log in to your account_zh",
     "enter": "Enter_zh",
     "done": "Done_zh",
     "cancel": "Cancel_zh",
@@ -1472,7 +1480,10 @@
     "lbl_NoDataFound": "No Data Found_zh",
     "lbl_userId": "User ID_zh",
     "lbl_logout": "Log Out_zh",
-    "retailsetup": {
+    "retailsetup": {   
+      "NumberOfReceipts": "Number of receipts_zh",
+      "NumberOfReceiptsRequired": "Missing Number of receipts_zh",
+      "RequireReceipts": "Require receipts_zh",
       "InventoryType": "Inventory Type_zh",
       "ImportFailedItems": "Import Failed Items_zh",
       "level": "Level_zh",
@@ -2474,6 +2485,7 @@
       "PMSProxyEndPoint": "PMS Proxy Endpoint_zh",
       "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_zh",
       "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_zh",
+      "ExpandPaymentMethods":"Expand Payment Methods by default_zh",
       "Confirmationdialog": "Enable Retail Confirmation Dialog_zh",
       "RetailFeature": {
         "ACES Membership": "Agilysys Engage_zh",

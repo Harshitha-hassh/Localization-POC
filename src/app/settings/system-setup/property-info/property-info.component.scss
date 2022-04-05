@@ -58,6 +58,10 @@
         font-size: 28px;
       }
     }
+
+    .default-feilds{
+      padding-left: 10px;
+    }
     .mandatoryDetails {
       padding-top: 20px;
       .infoDetails {
@@ -84,6 +88,9 @@
           }
         }
       }
+    }
+    .defaultFieldConfiguration{
+      padding-top: 20px;
     }
   }
 }

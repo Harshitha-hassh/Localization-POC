@@ -113,6 +113,40 @@
               </div>
             </div>
           </div>
+
+          <hr />
+          <div class="mandatoryDetails">
+            <label class="form-label-primary">{{captions.defaultFieldsConfiguration | uppercase}}</label>
+            <div class="postal-details">              
+                <div class="defaultFieldConfiguration">
+                  <mat-form-field class="inputwidth10 mr-2">
+                    <mat-select [placeholder]="captions.DefaultEmailType" id="EmailLabel" name="TSedd"
+                      formControlName="DEFAULT_EMAIL_TYPE" class="LW14">
+                      <mat-option></mat-option>
+                      <mat-option *ngFor="let ct of contactEmailType" [value]="ct.id">
+                        {{ct.description}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+    
+                  <mat-form-field class="state default-feilds">
+                    <input type="text" matInput [placeholder]="captions.DefaultCountryCode" formControlName="DEFAULT_COUNTRY_CODE"
+                      inputtype="onlynumber" [maxlength]="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>                    
+                  </mat-form-field>
+                  
+                  <mat-form-field class="state default-feilds">
+                    <mat-select [placeholder]="captions.DefaultPhoneType" id="PhoneNumberLabel" name="TSpdd" class="LW14"
+                      formControlName="DEFAULT_PHONE_TYPE">
+                      <mat-option></mat-option>
+                      <mat-option *ngFor="let ct of contactPhoneLabelType" [value]="ct.id">
+                        {{ct.description}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                </div>
+            </div>
+          </div>
         </form>
   
     </div>

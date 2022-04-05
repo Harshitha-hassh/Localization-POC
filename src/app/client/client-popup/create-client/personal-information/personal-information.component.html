@@ -129,7 +129,7 @@
       <label class="form-label-primary">{{captions.Contact}}</label>
 
       <div class="w-100 float-left">
-        <div *ngFor="let item of FormGrp.get('Phone')['controls']; let i = index;" formArrayName="Phone"
+        <div *ngFor="let item of FormGrp.get('Phone')['controls']; let i = index;let last = last" formArrayName="Phone"
           class="clearfix ">
           <div class="phone-controls-wrapper float-left width-490px">
             <div>
@@ -144,8 +144,9 @@
               </mat-form-field>
 
               <mat-form-field class="width-20 mr-2 LW14 " [formGroupName]="i">
-                <input matInput name="TSpi" [required]="customRequired.phone"
-                  (input)=" setmandatory($event,'countryCode','PhoneNumber', 'PhoneNumberLabel', i)"
+                <span *ngIf="CountryCodeRef.value" class="position-absolute">+</span>
+                <input matInput name="TSpi" [ngClass]="{'countryCodeInput': CountryCodeRef.value}" #CountryCodeRef [required]="customRequired.phone" 
+                  (input)=" setmandatory($event,'countryCode','PhoneNumber', 'PhoneNumberLabel', i)" 
                   (blur)="phoneChange($event,'countryCode','PhoneNumber','PhoneNumberLabel',i)" [maxlength]="6"
                   formControlName="countryCode" [placeholder]="commonCaptions.CountryCode">
               </mat-form-field>
@@ -159,8 +160,8 @@
               <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
                 (click)="removePhoneItem(i,'','');makeFormDirty()" *ngIf="i != 0"></span>
               <span class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
-                (click)="addPhoneItem(i, '', '', '', '');makeFormDirty()"
-                *ngIf="(i == currentIndexPhone) || IsEdit"></span>
+                (click)="addPhoneItem(i, '0', '-1', '', '');makeFormDirty()"
+                *ngIf="last"></span>
             </div>
             <div>
               <mat-form-field class="d-block width-380px"
@@ -200,7 +201,7 @@
         </div>
       </div>
       <div class="float-left w-100">
-        <div *ngFor="let item of FormGrp.get('Email')['controls']; let j = index;" formArrayName="Email"
+        <div *ngFor="let item of FormGrp.get('Email')['controls']; let j = index;let last = last" formArrayName="Email"
           class="w-100 emailDiv">
           <div class="float-left width-490px" [formGroupName]="j">
             <mat-form-field class="inputwidth20 width-100px mr-3">
@@ -221,7 +222,7 @@
             <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
               (click)="removeEmailItem(j,'','');makeFormDirty()" *ngIf="j != 0"></span>
             <span class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
-              (click)="addEmailItem(j,'','');makeFormDirty()" *ngIf="(j == currentIndexemail) || IsEdit"></span>
+              (click)="addEmailItem(j,'0','');makeFormDirty()" *ngIf="last"></span>
           </div>
           <div class="float-left contact-info-toggle" [formGroupName]="j">
             <div class="yes-col  float-left mr-5" (click)="togglePrimaryContact('Email', j, 'EmailPrimary')">
@@ -252,7 +253,7 @@
       </div>
       <div><label class="form-label-primary">{{captions.CAddress}}</label></div>
       <div class=" w-100 position-relative float-left">
-        <div *ngFor="let item of FormGrp.get('Address')['controls']; let j = index;" formArrayName="Address"
+        <div *ngFor="let item of FormGrp.get('Address')['controls']; let j = index;let last=last" formArrayName="Address"
           class="clearfix">
           <div class="float-left width-490px">
             <mat-form-field class="width-380px" [formGroupName]="j">
@@ -267,7 +268,7 @@
             <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
               (click)="removeAddressItem(j);makeFormDirty()" *ngIf="(j != 0 && j<3)"></span>
             <span class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
-              (click)="addAddressItem(j);makeFormDirty()" *ngIf="(j == currentaddIndex && j != 2) || IsEdit"></span>
+              (click)="addAddressItem(j);makeFormDirty()" *ngIf="(last && j < 2) || IsEdit"></span>
             <mat-error class="width-380px d-inline-block"
               *ngIf="!FormGrp.controls['Address'].disabled && FormGrp.controls['Address'].touched && !FormGrp.controls['Address']['controls'][j].valid">
               {{captions.MissingAddress}}

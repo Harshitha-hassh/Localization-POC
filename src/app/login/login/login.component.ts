@@ -13,7 +13,8 @@ import { ManageSessionService } from '../manage-session.service';
 import { SetPasswordComponent } from '../set-password/set-password.component';
 import {
   JWT_TOKEN, USER_INFO,
-  USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, PROPERTY_CONFIGURATION_SETTINGS
+  USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, PROPERTY_CONFIGURATION_SETTINGS,
+  FULL_STORY_ORG_ID
 } from 'src/app/app-constants';
 import { LoginCommunicationService } from '../login-communication.service';
 import moment from 'moment';
@@ -32,6 +33,8 @@ import { PayAgentService } from 'src/app/retail/shared/service/payagent.service'
 import { ConfigKeys } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-config/payment-features-config/property-feature-config.service';
 import { FeatureName, RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
+import { PropertyService } from 'src/app/common/services/property.service';
+import * as FullStory from '@fullstory/browser';
 
 @Component({
   selector: 'app-login',
@@ -74,7 +77,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   userIdDir = 'capitalise,notallowspace,nospecailchar';
   tenantId: number;
   tenantIdFromParam: string;
-  currYear = '2020';
+  currYear = '2022';
+  prevYear='2020'
 
   //Machine Name
   isMachineNameEnabled: boolean;
@@ -93,6 +97,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private loginService: LoginCommunicationService,
     private PropertySettingService: PropertySettingDataService,
     private propertyInfo: PropertyInformation,
+    private propertyServices : PropertyService,
     private userDefaultsService: UserdefaultsInformationService,
     private retailPropertySettingDataService: RetailPropertySettingDataService,
     private compiler: Compiler,
@@ -267,7 +272,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         id: x.propertyCode,
         name: x.propertyName
       }));
-      this.userMachineInfo = await this.retailPropertySettingDataService.GetMachineNamesAndConfigurationSetting(this.userInfo.userId,
+      this.userMachineInfo = await this.retailPropertySettingDataService.GetMachineNamesAndConfigurationSetting(this.userInfo.userId,Product.RETAIL,
         this.propertyValues.map(x=> x.propertyId));
       // Selecting property by default when there is only one property configured for tenant
       if (this.multipleProperties.length == 1) {    
@@ -332,8 +337,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       // create session and store session id into data service
       const usersessionId = await this.sessionService.createSession();
       sessionStorage.setItem(USER_SESSION, String(usersessionId));
-      await this.setEatecToken();
-      this.setEatecConfig();
+      await this.setEatecConfig();
       this.setAutoLogOff();
       await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.setMachineDetails();
@@ -410,23 +414,33 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.commonLocalize.SetLocaleBasedProperties();
     this.UpdateUserRole(Selectedproperty.id);
   }
+
   async setEatecConfig(){
-    let configValue = '';
-    this.propertyFeatureService.GetFeatureConfigurations([FeatureName.EnhancedInventory]).then((featureconfigurations) => {
-      if (featureconfigurations != null) {
+    this.propertyFeatureService.getPropertyFeatures().then( async (feature) => {
+      const eatecFeature = feature.find(x => x.featureName === FeatureName.EnhancedInventory);
+      if (eatecFeature != null && eatecFeature.isActive) {
         sessionStorage.setItem('isEatecEnabled', 'true');
-        const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
-        const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
-        if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
-          configValue = uri.configurationValue;
-        }
-      }
-      else {
+        this.propertyFeatureService.getFeatureConfiguration(eatecFeature.id,eatecFeature.moduleId).then((featureconfigurations) => {
+          if (featureconfigurations != null && featureconfigurations.length > 0) {
+            const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
+            const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
+            if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
+              this.retailpropertyInfo.SetEatecRI(uri.configurationValue);
+            } else{
+              this.retailpropertyInfo.SetEatecRI('');
+            }
+          }else {
+            this.retailpropertyInfo.SetEatecRI('');
+          }
+        });
+        await this.setEatecToken();
+      } else {
         sessionStorage.setItem('isEatecEnabled', 'false');
+        this.retailpropertyInfo.SetEatecRI('');
       }
-      this.retailpropertyInfo.SetEatecRI(configValue);
     });
   }
+
   async setEatecToken() {
     try {
       const serviceParams = {
@@ -514,6 +528,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.payAgentService.ValidatePayAgentVersion();
   }
 
+  async getDefaultsSetting() {
+    return await this.userSessionConfig.getAllClientSetting();
+  }
+
   async SetPropertyApiConfiguration() {
     const propertityConfig = await this.PropertySettingService.GetAllPropertyConfigurationSettings({
       configurationName: PROPERTY_CONFIGURATION_SETTINGS,
@@ -522,7 +540,23 @@ export class LoginComponent implements OnInit, OnDestroy {
     } as API.PropertyConfigurationSettings<any>);
     if ((propertityConfig != null) && (Object.keys(propertityConfig.configValue).length > 0)) {
       this.propertyInfo.SetPropertyConfiguration(propertityConfig);
+      this.SetFullStory(propertityConfig);   
     }
+  }
+
+  SetFullStory(propertyConfig: any) {
+    if (propertyConfig.configValue != undefined && propertyConfig.configValue[FULL_STORY_ORG_ID] != undefined){
+      FullStory.init({ orgId: propertyConfig.configValue[FULL_STORY_ORG_ID] });
+      FullStory.identify('RETAIL-' + this.userInfo.userName, {
+        "displayName" : 'RETAIL-' + this.userInfo.userName,
+        "productId" : Product.RETAIL.toString(),
+        "productName" : "RETAIL",
+        "tenantId" : this.userInfo.tenantId?.toString() ?? "",
+        "tenantCode" : this.userInfo.tenantCode?.toString() ?? "",
+        "propertyId" : propertyConfig.propertyId?.toString() ?? "",
+        "propertyName" : this.propertyInfo.GetPropertyInfoByKey('PropertyName')
+      });
+    } 
   }
 
 
@@ -545,6 +579,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       sessionStorage.setItem(this.userSessionConfig.userSessionConfigKey, JSON.stringify(userSessionConfig));
 
+      let defaultsSetting = await this.getDefaultsSetting();
+      sessionStorage.setItem('defaultSettings', JSON.stringify(defaultsSetting));
+      
       // Set Retail Shop service - outlet dropdown value
       this.retailSharedService.SelectedOutletId = userSessionConfig.defaultOutletId;
       this.retailSharedService.SelectedTerminalId = userSessionConfig.defaultTerminalId;
@@ -658,19 +695,17 @@ export class LoginComponent implements OnInit, OnDestroy {
   private async setMachineInfo(propertyId: number) {
     this.resetMachineNameInfo();
     const userMachinePropertyInfo = this.userMachineInfo.userPropertiesMachineInfo.find(x=>x.propertyId == propertyId);
-    const retailPropertyInfo = userMachinePropertyInfo.settings;
+    const miscConfiguration = userMachinePropertyInfo.miscConfiguration;
     // TRANSACTION_BY_MACHINENAME
-    const retailMachineConfig = retailPropertyInfo.find(x=> x.switch == TRANSACTION_BY_MACHINENAME);
-    if (retailMachineConfig) {
-      this.isMachineNameEnabled = retailMachineConfig.value == 'true';
-    }
+    this.isMachineNameEnabled = miscConfiguration.enableTransactionByMachineName;
     // SELECTION_ON_LOGIN
-    const retailPromptConfig = retailPropertyInfo.find(x=> x.switch == SELECTION_ON_LOGIN);
-    if (retailPromptConfig) {
-      this.isPromptOnLoginEnabled = retailPromptConfig.value == 'true';
+    this.isPromptOnLoginEnabled = miscConfiguration.promptOnLogin;
+    if (miscConfiguration.printerManagerURI)
+    {
+      this.localize.SetPrinterManagerURI(miscConfiguration.printerManagerURI);
     }
     if(this.isMachineNameEnabled) {
-      this.defaultMachineId = userMachinePropertyInfo.defaultMachineId;    
+      this.defaultMachineId = userMachinePropertyInfo.userDefault.defaultMachineId;    
       this.machineNames = userMachinePropertyInfo.machineNames.map(x => {
         return {
           id: x.id,
@@ -705,6 +740,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if(typeof(userMachine) == 'object') {
       this.localize.SetMachineId(userMachine.id);
       this.localize.SetMachineName(userMachine.name);
+      this.propertyServices.SetMachinePrinterConfigForMachine(userMachine.id);
     } else {
       this.localize.SetMachineId(0);
       this.localize.SetMachineName('');

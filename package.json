@@ -12,7 +12,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "ngcc",
-    "clean": "rmdir /s /q node_modules"
+    "clean": "rmdir /s /q node_modules",
+    "getlatestcode": "git pull -f && git submodule foreach git pull -f",
+    "stageretailsubmodule": "git pull -f && git submodule foreach git pull -f && git stage src/app/retail"
   },
   "private": true,
   "dependencies": {
@@ -32,8 +34,11 @@
     "@ckeditor/ckeditor5-angular": "^2.0.0",
     "@ckeditor/ckeditor5-build-classic": "^28.0.0",
     "@ckeditor/ckeditor5-build-decoupled-document": "^28.0.0",
+    "@fullstory/browser": "^1.4.9",
     "@microsoft/microsoft-graph-client": "^2.0.0",
     "@ngx-translate/core": "^13.0.0",
+    "@tinkoff/ng-dompurify": "^3.0.0",
+    "dompurify": "^2.3.3",
     "angular-oauth2-oidc": "^10.0.3",
     "apexcharts": "^3.10.1",
     "bootstrap": "^4.6.0",
@@ -56,7 +61,7 @@
     "ngx-scrollbar": "2.1.0",
     "ngx-smart-popover": "^1.4.0",
     "ngx-swiper-wrapper": "^10.0.0",
-    "ngx-ui-switch": "^12.0.1",
+    "ngx-ui-switch": "12.0.1",
     "ngx-virtual-scroller": "^3.0.3",
     "popper.js": "^1.14.7",
     "pubsub-ts": "^0.2.0",
@@ -68,7 +73,7 @@
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^10.0.1",
-    "@angular-devkit/build-angular": "^13.0.2",
+    "@angular-devkit/build-angular": "~0.1002.3",
     "@angular/cli": "^10.2.3",
     "@angular/compiler-cli": "^10.2.4",
     "@angular/language-service": "^10.2.4",

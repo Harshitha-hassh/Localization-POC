@@ -31,6 +31,7 @@
   "617": "Link Multipack not allowed for package appointment_de",
   "675": "_de",
   "701": "Error in contacting POS server_de",
+  "711": "Return transaction has already been initiated for this ticket._de",
   "801": "Appointment Detail Not Found_de",
   "901": "Service Id was not provided_de",
   "902": "Therapist Id was not provided_de",
@@ -195,6 +196,7 @@
   "70614": "Giftcard is already Inactive_de",
   "70615": "Card expired_de",
   "70616": "Item Number cannot be a Decimal Value._de",
+  "70618": "Vendor is not valid._de",
   "75001": "Feature Configurations are not available_de",
   "75002": "Web Proxy URI is not available_de",
   "75003": "IG WebPosting Service URI is not available_de",
@@ -205,6 +207,7 @@
   "75008": "Are you sure want to delete the '{VendorName}'?_de",
   "75009": "Please enter minimum one phone number_de",
   "75010": "Please enter minimum one Email ID_de",
+  "75011": "Unable to fetch data for the selected filters as large volume of data exist. Refine the filters and try again_de",
   "100000": "Current appointment has been locked by other User_de",
   "100001": "Continuing with move will result in an overbook, continue?_de",
   "100002": "Guest Information's are not available, Please create client profile on SPA for the mentioned guest {clientName}_de",
@@ -245,7 +248,7 @@
   "101915": "Discount Reason in use, Inactive not allowed_de",
   "101916": "Discount Reason in use, Delete not allowed,_de",
   "101917": "Date cannot be rolled over to the next day_de",
-  "101918":"Current system date {CurrentSystemDate} is greater than or equal to roll over date {RollOverDate}. Please Re Login_de",
+  "101918": "Current system date {CurrentSystemDate} is greater than or equal to roll over date {RollOverDate}. Please Re Login_de",
   "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed._de",
   "-3": "New appointment duration will result in an overbook. Do you want to continue?_de",
   "-2": "An unexpected error has occurred, please try again later._de",
@@ -352,5 +355,7 @@
   "-1001": "Appointments exist out of date range, change not allowed_de",
   "-1002": "Expiration Days must be Greater than Zero_de",
   "-301": "Duplicate guest exists on the system_de",
-  "-302": "Guest information is out of date. Please refresh and try again_de"
+  "-302": "Guest information is out of date. Please refresh and try again_de",
+  "-4700": "The following items are not mapped with a category_de",
+  "-4701": "You are about to perform a transaction that is not on current property date, however, doing so will record the transaction on the current property date only. Do you wish to proceed?_de"
 }
