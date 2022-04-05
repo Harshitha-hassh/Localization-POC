@@ -18,7 +18,7 @@ export class LayoutComponent implements OnInit {
   menuList: any;
   propertyName: string;
   propertyDateTime: any;
-  logOutClicked: any;
+  logOutClicked=false;
 
   constructor(private routeDataService: RouteLoaderService,
     private sessionService: ManageSessionService,
