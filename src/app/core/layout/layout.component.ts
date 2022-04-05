@@ -18,6 +18,7 @@ export class LayoutComponent implements OnInit {
   menuList: any;
   propertyName: string;
   propertyDateTime: any;
+  logOutClicked=false;
 
   constructor(private routeDataService: RouteLoaderService,
     private sessionService: ManageSessionService,
@@ -39,6 +40,7 @@ export class LayoutComponent implements OnInit {
       this.applyTheme('blacktheme');
       this.loadGoogleMap();
       this.triggerNotification();
+      this.time();
   }
 
   triggerNotification(){
@@ -64,7 +66,19 @@ export class LayoutComponent implements OnInit {
       // if css need to change for popover, apply class to body
     }, 1);
     this.propertyName = this.localization.GetPropertyInfo('PropertyName');
-    this.propertyDateTime = this.localization.LocalizeDateTimeFormatSecondsDDMMMYYYY(this.propertyInfo.CurrentDate);
+   
+  }
+
+  time() {
+    if (!this.logOutClicked) {
+      this.propertyDateTime = this.localization.LocalizeDateTimeFormatSecondsDDMMMYYYYheader(this.propertyInfo.CurrentDate) ;
+    }
+  }
+
+  ngAfterViewInit() {
+    if (!this.logOutClicked) {
+      setInterval(() => this.time(), 500);
+    }
   }
 
 }
