@@ -189,7 +189,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
   }
 
   private async createUserSessionConfiguration(body: UserSessionConfiguration): Promise<NextId> {
-    this.CreateTenantDefaultUserConfiguration(body);
+    this.UpdateTenantDefaultUserConfiguration(body);
     const result = await this.userMachineConfigurationService.createUserSessionConfiguration(body);
     return result;
   }
@@ -476,14 +476,6 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     userMachineNames.unshift({ id: 0,value: 0, viewValue: '' });
     return userMachineNames;
   }
-  public CreateTenantDefaultUserConfiguration(formvalue : UserSessionConfiguration) {
-    let defaultUservalue : DefaultUserConfigurationTenantModel = { defaultMachineId : formvalue.defaultMachineId };
-    let tenantDefaultUserConfiguration : any = cloneDeep( this.TenantDefaultUserConfiguration);
-    tenantDefaultUserConfiguration.configValue = JSON.stringify(defaultUservalue);
-    tenantDefaultUserConfiguration.defaultValue = JSON.stringify(tenantDefaultUserConfiguration.defaultValue);
-    tenantDefaultUserConfiguration.userId = this.localization.GetPropertyInfo("UserId");
-    return this.userMachineConfigurationService.CreateTenantDefaultUserConfiguration(tenantDefaultUserConfiguration);
-}
 
 public UpdateTenantDefaultUserConfiguration(formvalue  : UserSessionConfiguration) {
     let defaultUservalue : DefaultUserConfigurationTenantModel = { defaultMachineId : formvalue.defaultMachineId };
