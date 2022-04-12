@@ -144,7 +144,7 @@ export class CreateClientBusiness {
           addressLine3: _line3 ? _line3 : '',
           state: this.personalDetailsControls.state ? this.personalDetailsControls.state  : '',
           city: this.personalDetailsControls.city  ? this.personalDetailsControls.city  : '',
-          country: this.personalDetailsControls.state  ? this.personalDetailsControls.state  : '',
+          country: this.personalDetailsControls.country  ? this.personalDetailsControls.country  : '',
           zip: this.personalDetailsControls.postal_code  ? this.personalDetailsControls.postal_code  : '',
           zipCode : this.personalDetailsControls.postal_code  ? this.personalDetailsControls.postal_code  : '',
           isPrivate: isPrivate
