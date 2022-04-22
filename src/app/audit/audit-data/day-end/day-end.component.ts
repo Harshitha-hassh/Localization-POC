@@ -468,9 +468,9 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     const message = `${this.captions.systemMovedTo} ${this.localization.LocalizeDate(this.newSysDate)}`;
     this.successFlag = true;
     this.canProcess = false;
-    this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue, x => {
-      this.SyncUpItemAndTaxes(this.currSysDate);
-    });
+    // this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue, x => {
+    //   this.SyncUpItemAndTaxes(this.currSysDate);
+    // });
   }
   trackByFn(index, cell) {
     return index;
