@@ -2675,6 +2675,7 @@
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_in",
     "EnableCheckZoom": "Enable CheckZoom_in",
     "EnableRevenuePostingsOnDayEnd": "Restrict Day End on Revenue Failure_in",
+    "DisplayImagesInShop": "Display Images in Shop_in",
     "ExpandPaymentMethods": "Expand Payment Methods by default_in",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_in",
     "DiscountReasonRequired": "Require Reason On Discount_in",
