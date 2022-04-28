@@ -1650,6 +1650,7 @@
     "discountType": "Discount Type",
     "discountTypes": "Discount Types",
     "CategoryName": "Category Name",
+    "RevenueCategoryId": "Revenue CategoryId",
     "carriers": "Carriers",
     "CategoryGroup": "Category Group",
     "paymentMethod": "Payment Method",
