@@ -1639,6 +1639,7 @@
     "transferqty": "Transfer Qty_au",
     "SpecialCharacterInCategoryName": "Special characters are not allowed_au",
     "MissingCategoryName": "Missing Category Name_au",
+    "RevenueCategoryIdExists": "Revenue CategoryId Already Exists_au",
     "advertisementTypes": "Advertisement Types_au",
     "subCategoryName": "Sub Category Name_au",
     "subCategoryLevels": "Sub Category Levels_au",

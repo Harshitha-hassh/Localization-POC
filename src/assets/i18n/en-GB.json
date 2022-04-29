@@ -1639,6 +1639,7 @@
     "transferqty": "Transfer Qty_gb",
     "SpecialCharacterInCategoryName": "Special characters are not allowed_gb",
     "MissingCategoryName": "Missing Category Name_gb",
+    "RevenueCategoryIdExists": "Revenue CategoryId Already Exists_gb",
     "advertisementTypes": "Advertisement Types_gb",
     "subCategoryName": "Sub Category Name_gb",
     "subCategoryLevels": "Sub Category Levels_gb",
