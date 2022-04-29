@@ -1508,6 +1508,7 @@
       "transferqty": "Transfer Qty_zh",
       "SpecialCharacterInCategoryName": "Special characters are not allowed_zh",
       "MissingCategoryName": "Missing Category Name_zh",
+      "RevenueCategoryIdExists": "Revenue CategoryId Already Exists_zh",
       "advertisementTypes": "Advertisement Types_zh",
       "subCategoryName": "Sub Category Name_zh",
       "subCategoryLevels": "Sub Category Levels_zh",
