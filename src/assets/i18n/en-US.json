@@ -1390,7 +1390,11 @@
       "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed",
       "CompSlipNotFound": "Comp Slip Not Found",
       "CompSlipSearch": "Enter Comp Slip Number",
-      "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system"
+      "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system",
+      "CmsPin": "Patron Pin",
+			"MissingCMSPinError": "Please enter the pin",
+			"CMSPinHeader": "Patron Pin",
+			"PlayerWorthGetDetailsBtn": "Get Point Details"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction",
     "CanNotVoidAlreadyIssuedAsGiftcard": "Cannot void transaction as the return amount was credited to a gift card.",
