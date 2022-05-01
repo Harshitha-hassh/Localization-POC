@@ -1388,7 +1388,11 @@
       "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_uk",
       "CompSlipNotFound": "Comp Slip Not Found_uk",
       "CompSlipSearch": "Enter Comp Slip Number_uk",
-      "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_uk"
+      "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_uk",
+      "CmsPin": "Patron Pin_uk",
+      "MissingCMSPinError": "Please enter the pin_uk",
+      "CMSPinHeader": "Patron Pin_uk",
+      "PlayerWorthGetDetailsBtn": "Get Point Details_uk"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_uk",
     "CanNotVoidAlreadyIssuedAsGiftcard": "Cannot void transaction as the return amount was credited to a gift card._uk",
@@ -1649,8 +1653,8 @@
     "discountType": "Discount Type_uk",
     "discountTypes": "Discount Types_uk",
     "CategoryName": "Category Name_uk",
-    "carriers": "Carriers_uk",
     "RevenueCategoryId": "Revenue CategoryId_uk",
+    "carriers": "Carriers_uk",
     "CategoryGroup": "Category Group_uk",
     "paymentMethod": "Payment Method_uk",
     "paymentMethods": "Payment Methods_uk",

@@ -1116,7 +1116,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
           guestData.addresses.city = playerDetail.address.city;
           guestData.addresses.state = playerDetail.address.state;
           guestData.addresses.zipCode = playerDetail.address.postalCode;
-          guestData.addresses.country = playerDetail.address.country;
+          guestData.addresses.country = playerDetail.address.countryName;
         }
         if (playerDetail.phone && playerDetail.phone.length > 0) {
           guestData.phoneNumbers = [];

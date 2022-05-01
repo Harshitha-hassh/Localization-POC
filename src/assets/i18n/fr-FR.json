@@ -1388,7 +1388,11 @@
       "CompRefundNotAllowed": "Refund cannot be done to Original Settlements as Comp cannot be Reversed_fr",
       "CompSlipNotFound": "Comp Slip Not Found_fr",
       "CompSlipSearch": "Enter Comp Slip Number_fr",
-      "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_fr"
+      "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system_fr",
+      "CmsPin": "Patron Pin_fr",
+      "MissingCMSPinError": "Please enter the pin_fr",
+      "CMSPinHeader": "Patron Pin_fr",
+      "PlayerWorthGetDetailsBtn": "Get Point Details_fr"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_fr",
     "CanNotVoidAlreadyIssuedAsGiftcard": "Cannot void transaction as the return amount was credited to a gift card._fr",
@@ -1649,8 +1653,8 @@
     "discountType": "Discount Type_fr",
     "discountTypes": "Discount Types_fr",
     "CategoryName": "Category Name_fr",
-    "carriers": "Carriers_fr",
     "RevenueCategoryId": "Revenue CategoryId_fr",
+    "carriers": "Carriers_fr",
     "CategoryGroup": "Category Group_fr",
     "paymentMethod": "Payment Method_fr",
     "paymentMethods": "Payment Methods_fr",

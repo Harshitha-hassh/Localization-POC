@@ -604,7 +604,7 @@
   "ARPaymentPost": "AccountsReceivable/PostPayment",
   "ARPaymentCredit": "AccountsReceivable/CreditPayment",
   "GetClientByPatronId": "Clients/getClientByPatronId/{patronId}",
-  "GetPatronInformation": "Payment/GetPlayerInformation/{patronId}",
+  "GetPatronInformation": "Payment/GetPlayerInformation",
   "RedeemVoucher": "Payment/RedeemVoucher/{patronId}",
   "GetTopicsByType": "Notifications/GetTopicsByNotificationType/{NotificationTypeId}",
   "GetTemplateDetailsByTopicId": "Notifications/GetTemplateDetailsByTopicId/{TopicId}",
