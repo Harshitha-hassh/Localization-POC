@@ -17,7 +17,7 @@ import { SPAConfig } from 'src/app/retail/common/config/SPA-config';
 import { HttpServiceCall } from 'src/app/retail/shared/service/http-call.service';
 import { QuickLoginUtilities } from 'src/app/common/shared/shared/utilities/quick-login-utilities';
 import { AgMenuTypes, NotificationFailureType } from './menu.model';
-
+import { DefaultBucketName } from 'src/app/retail/shared/globalsContant';
 
 @Component({
   selector: 'app-menu',
@@ -190,13 +190,17 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
         let enforceMemberPayment = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.EnforceMemberPayment);
         let displayCreditBookBalance = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.DisplayCreditBookBalance);
         const allowTenderAmountOverrideForMember = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.AllowTenderAmountOverrideForMember);
+        const memberBucketName = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.MemberBucketName);
+        const creditBookBucketName = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.CreditBookBucketName);
         let loyalty = {
           loyaltyURI: uri && uri.configurationValue ? uri.configurationValue : "",
           loyaltyServiceURI: loyaltyServiceURI && loyaltyServiceURI.configurationValue ? loyaltyServiceURI.configurationValue : "",
           loyaltyTokenRequestInfo: loyaltyTokenRequestInfo && loyaltyTokenRequestInfo.configurationValue ? loyaltyTokenRequestInfo.configurationValue : "",
           enforceMemberPayment: (enforceMemberPayment && enforceMemberPayment.configurationValue) || "false",
           displayCreditBookBalance : (displayCreditBookBalance && displayCreditBookBalance.configurationValue) || "false",
-          allowTenderAmountOverrideForMember: (allowTenderAmountOverrideForMember?.configurationValue) || "false"
+          allowTenderAmountOverrideForMember: (allowTenderAmountOverrideForMember?.configurationValue) || "false",
+          memberBucketName: (memberBucketName?.configurationValue?.trim()) || DefaultBucketName.memberBucketName,
+          creditBookBucketName: (creditBookBucketName?.configurationValue?.trim()) || DefaultBucketName.creditBookBucketName
         }
         this._propertyInfo.SetMemberConfiguration(loyalty)
       }
