@@ -1573,7 +1573,8 @@
     "Inventory Management": "Inventory Management_fr",
     "Retail Setup": "Retail Setup_fr",
     "Retail Reports": "Retail Reports_fr",
-    "241524202425": "Move Multiple Appointments_fr"
+    "241524202425": "Move Multiple Appointments_fr",
+    "8175": "8175 - Transaction Extract_fr"
   },
   "userId": "User ID_fr",
   "password": "Password_fr",
@@ -2925,7 +2926,8 @@
     "ItemsExtract": "Items Extract_fr",
     "VendorInventoryDetail": "Vendor Inventory Detail_fr",
     "VendorList": "Vendors_fr",
-    "PleaseSelectVendor": "Please Select a Vendor_fr"
+    "PleaseSelectVendor": "Please Select a Vendor_fr",
+		"TransactionExtract": "Transaction Extract_fr"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fr",

@@ -1451,7 +1451,8 @@
       "241524202425": "Move Multiple Appointments_zh",
       "3075": "3075 - Issue Visual One GiftCard_zh",
       "3080": "3080 - Issue External GiftCard_zh",
-      "3085": "3085 - Settle to Group Charge_zh"
+      "3085": "3085 - Settle to Group Charge_zh",
+      "8175": "8175 - Transaction Extract_zh"
     },
     "userId": "User ID_zh",
     "password": "Password_zh",
@@ -2690,7 +2691,8 @@
       "NotFullyApplied": "Not Fully Applied_zh",
       "missingCustomField": "Missing Custom Field_zh",
       "PaymentMethods": "Payment Method(s)_zh",
-      "IncludeZeroValue": "Include Zero Comm, SC, Gratuity_zh"
+      "IncludeZeroValue": "Include Zero Comm, SC, Gratuity_zh",
+      "TransactionExtract": "Transaction Extract_zh"
     },
     "receipt": {
       "SalesTicket": "Sales Ticket_zh",

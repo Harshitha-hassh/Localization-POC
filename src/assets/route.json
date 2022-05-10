@@ -711,5 +711,6 @@
   "GetRevenuePostingLogs": "POS/RevenuePosting/GetRevenuePostingLogs",
   "GetRoomRevenuePostingLogs": "POS/RevenuePosting/GetRoomRevenuePostingLogs",
   "IsBatchProcessingPending": "POS/RevenuePosting/IsBatchProcessingPending",  
-  "MachineAssociatedWithTransaction":"Transaction/IsMachineNameAssociatedWithRetailTransaction/{machineNameId}"
+  "MachineAssociatedWithTransaction":"Transaction/IsMachineNameAssociatedWithRetailTransaction/{machineNameId}",
+  "transactionExtract": "reports/TransactionExtract"
 }

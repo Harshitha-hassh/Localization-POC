@@ -1573,7 +1573,8 @@
     "Inventory Management": "Inventory Management_au",
     "Retail Setup": "Retail Setup_au",
     "Retail Reports": "Retail Reports_au",
-    "241524202425": "Move Multiple Appointments_au"
+    "241524202425": "Move Multiple Appointments_au",
+    "8175": "8175 - Transaction Extract_au"
   },
   "userId": "User ID_au",
   "password": "Password_au",
@@ -2925,7 +2926,8 @@
     "ItemsExtract": "Items Extract_au",
     "VendorInventoryDetail": "Vendor Inventory Detail_au",
     "VendorList": "Vendors_au",
-    "PleaseSelectVendor": "Please Select a Vendor_au"
+    "PleaseSelectVendor": "Please Select a Vendor_au",
+		"TransactionExtract": "Transaction Extract_au"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_au",

@@ -1573,7 +1573,8 @@
     "Inventory Management": "Inventory Management_gb",
     "Retail Setup": "Retail Setup_gb",
     "Retail Reports": "Retail Reports_gb",
-    "241524202425": "Move Multiple Appointments_gb"
+    "241524202425": "Move Multiple Appointments_gb",
+    "8175": "8175 - Transaction Extract_gb"
   },
   "userId": "User ID_gb",
   "password": "Password_gb",
@@ -2925,7 +2926,8 @@
     "ItemsExtract": "Items Extract_gb",
     "VendorInventoryDetail": "Vendor Inventory Detail_gb",
     "VendorList": "Vendors_gb",
-    "PleaseSelectVendor": "Please Select a Vendor_gb"
+    "PleaseSelectVendor": "Please Select a Vendor_gb",
+		"TransactionExtract": "Transaction Extract_gb"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_gb",
