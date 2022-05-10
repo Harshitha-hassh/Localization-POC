@@ -126,7 +126,6 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   }
 
   ngOnInit() {
-    // this.userId = Number(this._utilities.GetsessionStorageValue('_userInfo', 'userId'));
     this.propertyDateTime = this.propertyInformation.CurrentDate;
 
     this.propertyDate = this.utilities.resetTime(this.propertyDateTime);

@@ -469,7 +469,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.successFlag = true;
     this.canProcess = false;
     this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue, x => {
-      this.SyncUpItemAndTaxes(this.currSysDate);
+      //this.SyncUpItemAndTaxes(this.currSysDate);
     });
   }
   trackByFn(index, cell) {
