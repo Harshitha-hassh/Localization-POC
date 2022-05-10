@@ -24,6 +24,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-add-without-commission:before {
+  content: "\edb2";
+}
 .icon-shop-cart:before {
   content: "\edb1";
 }
