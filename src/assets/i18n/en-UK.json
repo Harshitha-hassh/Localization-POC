@@ -1543,6 +1543,7 @@
     "8160": "8160 - Inventory Summary by Vendor_uk",
     "8165": "8165 - Vendor Inventory Detail_uk",
     "8170": "8170 - Sale by Vendor_uk",
+    "8175": "8175 - Transaction Extract_uk",
     "8700": "8700 - Update Qty on Hand_uk",
     "8705": "8705 – Freeze Inventory_uk",
     "8710": "8710 - Release Inventory_uk",
@@ -1573,8 +1574,7 @@
     "Inventory Management": "Inventory Management_uk",
     "Retail Setup": "Retail Setup_uk",
     "Retail Reports": "Retail Reports_uk",
-    "241524202425": "Move Multiple Appointments_uk",
-    "8175": "8175 - Transaction Extract_uk"
+    "241524202425": "Move Multiple Appointments_uk"
   },
   "userId": "User ID_uk",
   "password": "Password_uk",
@@ -2023,7 +2023,9 @@
       "Open Items": "Open Items_uk",
       "Multipacks": "Multipacks_uk",
       "Gratuity": "Gratuity_uk",
-      "Service Charge": "Service Charge_uk",
+      "GratuityApprox": "Grautity Approx._uk",
+      "ServiceChargeApprox": "Service Charge Approx._uk",
+      "ServiceCharge": "Service Charge_uk",
       "Outlet Code": "Outlet Code_uk",
       "Quantity": "Quantity_uk",
       "Unit Cost": "Unit Cost_uk",
@@ -2927,7 +2929,7 @@
     "VendorInventoryDetail": "Vendor Inventory Detail_uk",
     "VendorList": "Vendors_uk",
     "PleaseSelectVendor": "Please Select a Vendor_uk",
-		"TransactionExtract": "Transaction Extract_uk"
+    "TransactionExtract": "Transaction Extract_uk"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_uk",
