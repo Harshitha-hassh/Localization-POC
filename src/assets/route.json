@@ -648,6 +648,7 @@
   "SyncInventory": "retailitems/syncinventory/outlets/{outletId}",
   "PosFullSync": "POSSync/SyncOutletItems/{outletId}",
   "GetRetailItemById": "RetailItems/{itemId}",
+  "GetRetailItemDetailsByIds":"RetailItems/query",
   "GetTransactionCountByPaymentMethod": "Transaction/paymentmethod/{paymentmethodId}/count",
   "GetAllPostTypes": "RevenuePosting/GetPostTypes",
   "CreateRevenuePostMapping": "RevenuePosting/AddPostTypeMappingDetails",
