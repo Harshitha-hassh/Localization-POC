@@ -1543,6 +1543,7 @@
     "8160": "8160 - Inventory Summary by Vendor_da",
     "8165": "8165 - Vendor Inventory Detail_da",
     "8170": "8170 - Sale by Vendor_da",
+    "8175": "8175 - Transaction Extract_da",
     "8700": "8700 - Update Qty on Hand_da",
     "8705": "8705 – Freeze Inventory_da",
     "8710": "8710 - Release Inventory_da",
@@ -1573,8 +1574,7 @@
     "Inventory Management": "Inventory Management_da",
     "Retail Setup": "Retail Setup_da",
     "Retail Reports": "Retail Reports_da",
-    "241524202425": "Move Multiple Appointments_da",
-    "8175": "8175 - Transaction Extract_da"
+    "241524202425": "Move Multiple Appointments_da"
   },
   "userId": "User ID_da",
   "password": "Password_da",
@@ -2023,7 +2023,9 @@
       "Open Items": "Open Items_da",
       "Multipacks": "Multipacks_da",
       "Gratuity": "Gratuity_da",
-      "Service Charge": "Service Charge_da",
+      "GratuityApprox": "Grautity Approx._da",
+      "ServiceChargeApprox": "Service Charge Approx._da",
+      "ServiceCharge": "Service Charge_da",
       "Outlet Code": "Outlet Code_da",
       "Quantity": "Quantity_da",
       "Unit Cost": "Unit Cost_da",
@@ -2927,7 +2929,7 @@
     "VendorInventoryDetail": "Vendor Inventory Detail_da",
     "VendorList": "Vendors_da",
     "PleaseSelectVendor": "Please Select a Vendor_da",
-		"TransactionExtract": "Transaction Extract_da"
+    "TransactionExtract": "Transaction Extract_da"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_da",

@@ -1543,6 +1543,7 @@
     "8160": "8160 - Inventory Summary by Vendor_in",
     "8165": "8165 - Vendor Inventory Detail_in",
     "8170": "8170 - Sale by Vendor_in",
+    "8175": "8175 - Transaction Extract_in",
     "8700": "8700 - Update Qty on Hand_in",
     "8705": "8705 – Freeze Inventory_in",
     "8710": "8710 - Release Inventory_in",
@@ -1573,8 +1574,7 @@
     "Inventory Management": "Inventory Management_in",
     "Retail Setup": "Retail Setup_in",
     "Retail Reports": "Retail Reports_in",
-    "241524202425": "Move Multiple Appointments_in",
-    "8175": "8175 - Transaction Extract_in"
+    "241524202425": "Move Multiple Appointments_in"
   },
   "userId": "User ID_in",
   "password": "Password_in",
@@ -2023,7 +2023,9 @@
       "Open Items": "Open Items_in",
       "Multipacks": "Multipacks_in",
       "Gratuity": "Gratuity_in",
-      "Service Charge": "Service Charge_in",
+      "GratuityApprox": "Grautity Approx._in",
+      "ServiceChargeApprox": "Service Charge Approx._in",
+      "ServiceCharge": "Service Charge_in",
       "Outlet Code": "Outlet Code_in",
       "Quantity": "Quantity_in",
       "Unit Cost": "Unit Cost_in",
@@ -2927,7 +2929,7 @@
     "VendorInventoryDetail": "Vendor Inventory Detail_in",
     "VendorList": "Vendors_in",
     "PleaseSelectVendor": "Please Select a Vendor_in",
-		"TransactionExtract": "Transaction Extract_in"
+    "TransactionExtract": "Transaction Extract_in"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_in",

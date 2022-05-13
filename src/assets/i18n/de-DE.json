@@ -1543,6 +1543,7 @@
     "8160": "8160 - Inventory Summary by Vendor_de",
     "8165": "8165 - Vendor Inventory Detail_de",
     "8170": "8170 - Sale by Vendor_de",
+    "8175": "8175 - Transaction Extract_de",
     "8700": "8700 - Update Qty on Hand_de",
     "8705": "8705 – Freeze Inventory_de",
     "8710": "8710 - Release Inventory_de",
@@ -1573,8 +1574,7 @@
     "Inventory Management": "Inventory Management_de",
     "Retail Setup": "Retail Setup_de",
     "Retail Reports": "Retail Reports_de",
-    "241524202425": "Move Multiple Appointments_de",
-    "8175": "8175 - Transaction Extract_de"
+    "241524202425": "Move Multiple Appointments_de"
   },
   "userId": "User ID_de",
   "password": "Password_de",
@@ -2023,7 +2023,9 @@
       "Open Items": "Open Items_de",
       "Multipacks": "Multipacks_de",
       "Gratuity": "Gratuity_de",
-      "Service Charge": "Service Charge_de",
+      "GratuityApprox": "Grautity Approx._de",
+      "ServiceChargeApprox": "Service Charge Approx._de",
+      "ServiceCharge": "Service Charge_de",
       "Outlet Code": "Outlet Code_de",
       "Quantity": "Quantity_de",
       "Unit Cost": "Unit Cost_de",
@@ -2927,7 +2929,7 @@
     "VendorInventoryDetail": "Vendor Inventory Detail_de",
     "VendorList": "Vendors_de",
     "PleaseSelectVendor": "Please Select a Vendor_de",
-		"TransactionExtract": "Transaction Extract_de"
+    "TransactionExtract": "Transaction Extract_de"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_de",

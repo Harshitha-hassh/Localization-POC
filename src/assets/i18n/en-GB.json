@@ -1543,6 +1543,7 @@
     "8160": "8160 - Inventory Summary by Vendor_gb",
     "8165": "8165 - Vendor Inventory Detail_gb",
     "8170": "8170 - Sale by Vendor_gb",
+    "8175": "8175 - Transaction Extract_gb",
     "8700": "8700 - Update Qty on Hand_gb",
     "8705": "8705 – Freeze Inventory_gb",
     "8710": "8710 - Release Inventory_gb",
@@ -1573,8 +1574,7 @@
     "Inventory Management": "Inventory Management_gb",
     "Retail Setup": "Retail Setup_gb",
     "Retail Reports": "Retail Reports_gb",
-    "241524202425": "Move Multiple Appointments_gb",
-    "8175": "8175 - Transaction Extract_gb"
+    "241524202425": "Move Multiple Appointments_gb"
   },
   "userId": "User ID_gb",
   "password": "Password_gb",
@@ -2023,7 +2023,9 @@
       "Open Items": "Open Items_gb",
       "Multipacks": "Multipacks_gb",
       "Gratuity": "Gratuity_gb",
-      "Service Charge": "Service Charge_gb",
+      "GratuityApprox": "Grautity Approx._gb",
+      "ServiceChargeApprox": "Service Charge Approx._gb",
+      "ServiceCharge": "Service Charge_gb",
       "Outlet Code": "Outlet Code_gb",
       "Quantity": "Quantity_gb",
       "Unit Cost": "Unit Cost_gb",
@@ -2927,7 +2929,7 @@
     "VendorInventoryDetail": "Vendor Inventory Detail_gb",
     "VendorList": "Vendors_gb",
     "PleaseSelectVendor": "Please Select a Vendor_gb",
-		"TransactionExtract": "Transaction Extract_gb"
+    "TransactionExtract": "Transaction Extract_gb"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_gb",

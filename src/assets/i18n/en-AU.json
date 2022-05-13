@@ -1543,6 +1543,7 @@
     "8160": "8160 - Inventory Summary by Vendor_au",
     "8165": "8165 - Vendor Inventory Detail_au",
     "8170": "8170 - Sale by Vendor_au",
+    "8175": "8175 - Transaction Extract_au",
     "8700": "8700 - Update Qty on Hand_au",
     "8705": "8705 – Freeze Inventory_au",
     "8710": "8710 - Release Inventory_au",
@@ -1573,8 +1574,7 @@
     "Inventory Management": "Inventory Management_au",
     "Retail Setup": "Retail Setup_au",
     "Retail Reports": "Retail Reports_au",
-    "241524202425": "Move Multiple Appointments_au",
-    "8175": "8175 - Transaction Extract_au"
+    "241524202425": "Move Multiple Appointments_au"
   },
   "userId": "User ID_au",
   "password": "Password_au",
@@ -2023,7 +2023,9 @@
       "Open Items": "Open Items_au",
       "Multipacks": "Multipacks_au",
       "Gratuity": "Gratuity_au",
-      "Service Charge": "Service Charge_au",
+      "GratuityApprox": "Grautity Approx._au",
+      "ServiceChargeApprox": "Service Charge Approx._au",
+      "ServiceCharge": "Service Charge_au",
       "Outlet Code": "Outlet Code_au",
       "Quantity": "Quantity_au",
       "Unit Cost": "Unit Cost_au",
@@ -2927,7 +2929,7 @@
     "VendorInventoryDetail": "Vendor Inventory Detail_au",
     "VendorList": "Vendors_au",
     "PleaseSelectVendor": "Please Select a Vendor_au",
-		"TransactionExtract": "Transaction Extract_au"
+    "TransactionExtract": "Transaction Extract_au"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_au",
