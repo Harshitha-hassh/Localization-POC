@@ -423,17 +423,22 @@ export class ManageSessionService implements OnDestroy {
         }
     }
 
-    private timerCompleteForNotification(n: number) {
-        if (this.propertyInformation.HasRevenuePostingEnabled) {
-           this.getRevenuePostingCount().then(x => {
-            this.transactionCount.next([{ id : NotificationFailureType.revenuePostingFailure, count : x }]);
-           });
+    private async timerCompleteForNotification(n: number) {
+        try {
+            if (this.propertyInformation.HasRevenuePostingEnabled) {
+                const revenuePostingFailures = await this.getRevenuePostingCount();
+                this.transactionCount.next([{ id : NotificationFailureType.revenuePostingFailure, count : revenuePostingFailures }]);
+            }
+            const paymenentFailures = await this.getTransactionLogCount();
+            this.transactionCount.next([{ id : NotificationFailureType.paymentTransactionFailure, count : paymenentFailures }]);
+            this.startTimerForNotification(10);
         }
-        this.getTransactionLogCount().then(s => {
-            this.transactionCount.next([{ id : NotificationFailureType.paymentTransactionFailure, count : s }]);
-        });
-        // TODO
-        this.startTimerForNotification(10);
+        catch(err){
+            if (err && err.status === 401) {
+                this.stopTimerForNotification();
+                return ;
+            }
+        }
     }
 
 
@@ -446,6 +451,7 @@ export class ManageSessionService implements OnDestroy {
         });
         return response.result;
     }
+
     public async getTransactionLogCount(): Promise<number> {
         const response = await this.http.CallApiAsync<number>({
             callDesc: 'GetFailureDetails',
@@ -454,6 +460,7 @@ export class ManageSessionService implements OnDestroy {
             showError: true
         });
         return response.result;
+        
     }
 
     public stopTimerForNotification() {
