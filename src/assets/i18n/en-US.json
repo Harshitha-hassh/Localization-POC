@@ -1394,7 +1394,7 @@
       "CompSlipSearch": "Enter Comp Slip Number",
       "OfferRefundNotSupported": "Offer payment cannot be reversed, since offer refund is not supported by the CMS system",
       "CmsPin": "Patron Pin",
-			"MissingCMSPinError": "Please enter the pin",
+			"MissingCMSPinError": "should be atleast 4 characters",
 			"CMSPinHeader": "Patron Pin",
 			"PlayerWorthGetDetailsBtn": "Get Point Details"
     },
