@@ -2681,6 +2681,8 @@
     "AllowReturnstoOriginalSettlement": "Allow Returns to Original Settlement Method Only",
     "PMSProxyEndPoint": "PMS Proxy Endpoint",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge",
+    "AllowTaxOnGratuity": "Allow Tax On Gratuity",
+		"AllowTaxOnServiceCharge": "Allow Tax On Service Charge",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup",
     "DoNotDisplayItemName": "Do Not Display Item name for Open Item",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity",
