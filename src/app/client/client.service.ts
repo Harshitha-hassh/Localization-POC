@@ -4,19 +4,23 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CommonAlertMessagePopupComponent } from '../common/shared/shared/alert-message-popup/alert-message-popup.component';
+import { RetailFeatureFlagInformationService } from '../retail/shared/service/retail.feature.flag.information.service';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class ClientCommonService {
   captions: any;
   commonCaptions: any;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   constructor(private dialog: MatDialog,
-    public localization: RetailStandaloneLocalization) {
+    public localization: RetailStandaloneLocalization
+    , private _featureInfo: RetailFeatureFlagInformationService
+  ) {
     this.captions = this.localization.captions.bookAppointment;
     this.commonCaptions = this.localization.captions.common;
   }
 
   openDialogPopup(data) {
+    const isCMSRequirePin = this._featureInfo?.CMSRequirePin;
     let dialogRef = this.dialog.open(CommonAlertMessagePopupComponent, {
       width: '350px',
       maxWidth: '1000px',
@@ -24,11 +28,15 @@ export class ClientCommonService {
       disableClose: true,
       hasBackdrop: true,
       panelClass: 'action-dialog-overlay',
-      data: { headername: this.captions.PlayerWorthDetails, closebool: true, type: 'PW', datarecord: data, buttonName: this.commonCaptions.OK },
-  });
-  dialogRef.afterClosed().pipe(takeUntil(this.destroyed$)).subscribe(res => {
+      data: {
+        headername: this.captions.PlayerWorthDetails, closebool: true, type: 'PW',
+        datarecord: { patronId: data, isCMSRequirePin: isCMSRequirePin },
+        buttonName: ''
+      },
+    });
+    dialogRef.afterClosed().pipe(takeUntil(this.destroyed$)).subscribe(res => {
 
-  });
+    });
   }
 
   ngOnDestroy(): void {
