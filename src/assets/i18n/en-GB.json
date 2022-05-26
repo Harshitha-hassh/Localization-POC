@@ -2682,6 +2682,7 @@
     "AllowTaxOnGratuity": "Allow Tax On Gratuity_gb",
     "AllowTaxOnServiceCharge": "Allow Tax On Service Charge_gb",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_gb",
+    "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs_gb",
     "DoNotDisplayItemName": "Do Not Display Item name for Open Item_gb",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_gb",
     "EnableCheckZoom": "Enable CheckZoom_gb",

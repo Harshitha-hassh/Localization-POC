@@ -2682,6 +2682,7 @@
     "AllowTaxOnGratuity": "Allow Tax On Gratuity_uk",
     "AllowTaxOnServiceCharge": "Allow Tax On Service Charge_uk",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_uk",
+    "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs_uk",
     "DoNotDisplayItemName": "Do Not Display Item name for Open Item_uk",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_uk",
     "EnableCheckZoom": "Enable CheckZoom_uk",
