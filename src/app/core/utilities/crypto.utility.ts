@@ -38,5 +38,25 @@ export class CryptoUtility {
             decryptedData = '';
         }
         return decryptedData;
-    }
+    }      
+    /**
+    * @function EncryptString
+    * @param plainString string
+    * @returns encryptedText string
+    */
+        public EncryptString(plainString: string,key : string, iv : string): string {
+           let encryptedText: string;
+           try {
+               var cryptoKey = crypto.enc.Utf8.parse(key);
+               var cryptoIv = crypto.enc.Utf8.parse(iv);
+               var encryptedData = crypto.AES.encrypt(crypto.enc.Utf8.parse(plainString), cryptoKey,
+               {
+                   iv: cryptoIv
+               }).toString();
+               return encryptedData;
+           } catch (error) {
+               encryptedText = "";
+           }
+           return encryptedText;
+       }
 }

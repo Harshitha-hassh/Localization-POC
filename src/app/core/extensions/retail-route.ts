@@ -83,7 +83,12 @@ export enum RetailRoutes {
    GetGuestInformation= "GuestCombine/guestsearch",
    CombineGuestInformation= "GuestCombine/{primaryGuestId}",  
    GetGuestInfoByGuid="GuestCombine/{id}",
-   UpdateGuestInformation= "GuestCombine/updateguest" 
+   UpdateGuestInformation= "GuestCombine/updateguest" ,
+   LoginEncrypted = 'Property/GetEncLoginDetails',
+   GetEncryptKey = 'Login/encValue',
+   CheckPasswordPut = 'User/CheckPasswordExists',
+   VerifyPasswordPut = 'User/VerifyPassword',
+   SavePasswordPost = 'User/SavePassword'
 }
 
 export enum MsGraphRoutes {
