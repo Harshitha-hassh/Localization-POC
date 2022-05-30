@@ -35,12 +35,13 @@ import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-confi
 import { FeatureName, RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { PropertyService } from 'src/app/common/services/property.service';
 import * as FullStory from '@fullstory/browser';
+import { CryptoUtility } from 'src/app/core/utilities/crypto.utility';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers:[UserMachineConfigurationService, RetailFunctionalityBusiness, RetailFunctionalityService],
+  providers:[UserMachineConfigurationService, RetailFunctionalityBusiness, RetailFunctionalityService,CryptoUtility],
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit, OnDestroy {
@@ -86,7 +87,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   defaultMachineId: number = 0;
   machineNames = [];
   userMachineInfo: UserMachineInfo;
-
+  key : string ;
+  iv : string;
   constructor(
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
@@ -107,7 +109,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private propertyFeatureService: PropertyFeaturesConfigurationService,
     private retailpropertyInfo: RetailPropertyInformation,
     private retailFunc: RetailFunctionalityBusiness,
-    private payAgentService: PayAgentService
+    private payAgentService: PayAgentService,
+    private crypto : CryptoUtility
   ) {
     this.initializeForm();
     this.captions = this.localize.captions;
@@ -125,6 +128,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.formGenerator();
     this.errorGenerator();
     this.getCustomerId();
+    this.setEncryptKey();
 
     this.loginButton = {
       type: 'primary',
@@ -308,6 +312,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     if (!this.loginSuccess) {
       // Validate credentials
+      if(this.key && this.iv)
+      {
+        serviceParams.body.Password = this.crypto.EncryptString(credentials.Password,this.key,this.iv);  
+        serviceParams.route = RetailRoutes.LoginEncrypted;
+      }
       const loginDetails = await this.loginService.makePostCall(serviceParams);
 
       if (loginDetails.successStatus) {
@@ -664,7 +673,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         componentDetails,
         setPassword: isSetPassword,
         userName: arg.userName,
-        tenantId: arg.tenantId
+        tenantId: arg.tenantId,
+        encKeyIv : { key : this.key , iv : this.iv}
       }
     });
     this.loginForms.get('password').setValue('');
@@ -745,5 +755,23 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.localize.SetMachineId(0);
       this.localize.SetMachineName('');
     }
+  }  
+  setEncryptKey()
+  {
+    let serviceParamsForKey = {
+      route: RetailRoutes.GetEncryptKey,
+      uriParams: '',
+      header: '',
+      body: '',
+      showError: false,
+      baseResponse: true
+    };
+    this.loginService.makeGetCall<any>(serviceParamsForKey,false).then(encryptKey =>{
+      if(encryptKey && encryptKey.result)
+      {
+        this.key = encryptKey.result.key;
+        this.iv = encryptKey.result.iv;
+      }
+    })
   }
 }
