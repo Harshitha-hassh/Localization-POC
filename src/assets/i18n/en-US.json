@@ -921,7 +921,16 @@
     "amount": "Amount",
     "PostTypeMapping": "Post Type Mapping",
     "missingCountryName": "Missing country name",
-    "invalidCountryName": "Invalid country name"
+    "invalidCountryName": "Invalid country name",
+    "multipack_details" : "Multipack Details",
+		"dateandTime": "Date & Time",
+		"multipack" : "Multipack",
+		"dateofsale" : "Date of Sale",
+		"redeemSession" : "Redeemed Sessions",
+		"remainingsession" : "Remaining Sessions",
+		"dateofexpiry" : "Date of Expiry",
+		"product" : "Product",
+		"expiredMultipacks" : "Show expired Multipacks"
   },
   "shop": {
     "creditBookBalance": "Credit Book",
