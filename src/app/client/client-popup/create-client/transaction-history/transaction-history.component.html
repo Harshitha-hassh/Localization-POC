@@ -1,6 +1,6 @@
 <div class="list-container h-100 p-4">
   <!--Start  Select Dropdropdown Container div -->
-      <div class="select-container hide-underline">
+      <div class="select-container hide-underline ag_display--flex align-items-baseline">
           <mat-form-field class="select-width select-class">
               <mat-select id="selectHistoryType" #selectSetup [(ngModel)]="historyType" (selectionChange)="changeType()" >
                   <mat-option *ngFor="let type of historyTypes" [value]="type.id" >
@@ -8,11 +8,15 @@
                   </mat-option>
               </mat-select>
           </mat-form-field>
+          <div class="yes-col ag_ml--auto ag_display--flex" *ngIf = "historyType == 3">
+            <label class="LW12 d-block form-label-normal ag_mr--2">{{captions.expiredMultipacks}}</label>
+            <app-toggle-switch (changeToggleEvent)="showExpiredMultipacks($event[0])"></app-toggle-switch>
+          </div>
       </div>
       <div class = "view-data mt-2" [ngClass] ="{'adjust-height':historyType == 2}">
         <label for="transaction" class="LW14 float-left label-table mt-2" *ngIf = "historyType == 2">{{captions.Transactions}}</label>
         <label for="transaction-details" class="LW14 float-left transaction-details-label mt-2" *ngIf = "historyType == 2">{{captions.TransactionDetails}}</label>
-        <div class="transaction-div h-100 grid-table">
+        <div class="transaction-div h-100 grid-table" [ngClass]="{'w-100' : historyType == 3}">
           <ng-scrollbar [trackX]="true" [autoHide]="true">
             <table id="table-{{historyType}}" class="">
               <thead>
