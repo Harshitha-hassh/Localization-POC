@@ -383,7 +383,6 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     }
     var allClientIds = response.filter(r => r.guestId > 0).map(r => r.guestId);
     // All item info will be required when Reopen/Settle transaction from dayend
-    this.InvokeServiceCall('GetShopItems', Host.retailManagement, HttpMethod.Get);
     let [clerkInfo, clients] = await Promise.all(
       [this.getClerkInfo(),
       this.getClients(allClientIds)]);
