@@ -183,7 +183,6 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 
       this.getTransactionCount();
 
-      this.InvokeServiceCall('GetShopItems', Host.retailManagement, HttpMethod.Get);
     }
     this.dashboardData();
   }
@@ -759,7 +758,6 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 }
 
   async BuildTransactionDetails(result, action: string) {
-    this.InvokeServiceCall('GetShopItems', Host.retailManagement, HttpMethod.Get);
     this.retailSharedService.selectedProducts = await this.retailValidationService.LoadSelectedProducts(result, this.allShopItems, action);
     this.retailSharedService.isFromRetailDashBoard = true;
     this.retailSharedService.TaxValue = _.cloneDeep(this.retailValidationService.TaxValue);

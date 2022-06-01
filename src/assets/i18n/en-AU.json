@@ -921,7 +921,16 @@
     "amount": "Amount_au",
     "PostTypeMapping": "Post Type Mapping_au",
     "missingCountryName": "Missing country name_au",
-    "invalidCountryName": "Invalid country name_au"
+    "invalidCountryName": "Invalid country name_au",
+    "multipack_details": "Multipack Details_au",
+    "dateandTime": "Date & Time_au",
+    "multipack": "Multipack_au",
+    "dateofsale": "Date of Sale_au",
+    "redeemSession": "Redeemed Sessions_au",
+    "remainingsession": "Remaining Sessions_au",
+    "dateofexpiry": "Date of Expiry_au",
+    "product": "Product_au",
+    "expiredMultipacks": "Show expired Multipacks_au"
   },
   "shop": {
     "creditBookBalance": "Credit Book_au",

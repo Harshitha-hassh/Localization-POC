@@ -56,7 +56,8 @@ export class TransactionHistoryComponent implements OnInit {
     public PropertyInfo: RetailPropertyInformation) {
     this.captions = this.localization.captions.bookAppointment;
     this.historyTypes = [{ "id": "1", "name": this.captions.FrequentlyPurchasedItems },
-    { "id": "2", "name": this.captions.SalesHistory }
+    { "id": "2", "name": this.captions.SalesHistory },
+    { "id": "3", "name": this.captions.multipack_details }
   ]
   }
 
@@ -83,6 +84,17 @@ export class TransactionHistoryComponent implements OnInit {
 
         this.tableDataArray = this.salesHistory;
         this.selectedRow(this.salesHistory[0]);
+        break;
+
+      case "3":
+        this.tableHeaderArray = [{ tableHeader: this.captions.dateandTime, keyValue: "date", alignType: "left" },
+        { tableHeader: this.captions.multipack, keyValue: "multipack", alignType: "left" },
+        { tableHeader: this.captions.dateofsale, keyValue: "dateofsale", alignType: "left" },
+        { tableHeader: this.captions.redeemSession, keyValue: "redeemSession", alignType: "left" },
+        { tableHeader: this.captions.remainingsession, keyValue: "remainingsession", alignType: "left" },
+        { tableHeader: this.captions.dateofexpiry, keyValue: "dateofexpiry", alignType: "left" },
+        { tableHeader: this.captions.product, keyValue: "product", alignType: "left" }];
+        // this.tableDataArray = this.salesHistory;
         break;
     }
 
@@ -227,5 +239,10 @@ export class TransactionHistoryComponent implements OnInit {
       this.clientWindowConvertion.unsubscribe()
     }
     this.isFirstTime = true;
+  }
+  showExpiredMultipacks(event){
+    if(event){
+
+    }
   }
 }
