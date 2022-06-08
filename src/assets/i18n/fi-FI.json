@@ -267,6 +267,7 @@
     "Quantity": "QUANTITY_fi",
     "ItemName": "Item Name_fi",
     "ItemNameRequiredMsg": "Missing Item Name_fi",
+    "MissingPrice": "Missing Price_fi",
     "Activate": "Activate_fi",
     "Deactivate": "Deactivate_fi",
     "TherapistInActiveNotAllowed": "Therapist has scheduled appointment, inactive not allowed_fi",

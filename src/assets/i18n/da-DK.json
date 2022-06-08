@@ -267,6 +267,7 @@
     "Quantity": "QUANTITY_da",
     "ItemName": "Item Name_da",
     "ItemNameRequiredMsg": "Missing Item Name_da",
+    "MissingPrice": "Missing Price_da",
     "Activate": "Activate_da",
     "Deactivate": "Deactivate_da",
     "TherapistInActiveNotAllowed": "Therapist has scheduled appointment, inactive not allowed_da",
