@@ -2693,6 +2693,7 @@
     "AllowTaxOnServiceCharge": "Allow Tax On Service Charge_da",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_da",
     "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs_da",
+    "AllowPaymentSurcharges": "Allow Surcharges_da",
     "DoNotDisplayItemName": "Do Not Display Item name for Open Item_da",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_da",
     "EnableCheckZoom": "Enable CheckZoom_da",

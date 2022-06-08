@@ -2693,6 +2693,7 @@
     "AllowTaxOnServiceCharge": "Allow Tax On Service Charge_au",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_au",
     "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs_au",
+    "AllowPaymentSurcharges": "Allow Surcharges_au",
     "DoNotDisplayItemName": "Do Not Display Item name for Open Item_au",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_au",
     "EnableCheckZoom": "Enable CheckZoom_au",
