@@ -250,7 +250,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
       } else {
         document.getElementById('scroll_' + i).querySelector('.ng-scrollbar-view ').classList.add('overflow-scroll')
       }
-      const toggleWdth = document.getElementById('sed_' + i).querySelector('.accordian-toggle-section').clientWidth + 1;
+      const toggleWdth = document.getElementById('sed_' + i).querySelector('.accordian-toggle-section').clientWidth + 5;
       const leftSec = document.getElementById('sed_' + i).querySelectorAll('.breakpoint-name');
       for (let j = 0; j < leftSec.length; j++) {
         leftSec[j]['style']['width'] = 'calc(100% - ' + toggleWdth + 'px)';
