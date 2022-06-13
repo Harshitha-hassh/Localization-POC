@@ -703,7 +703,7 @@
   "CreateTransLog": "CreateTransLog/transaction/{transactionId}/logtype/{logType}",
   "UpdateRetailTransactionData": "transaction/updatetransaction/{id}",
   "GetUserInfoByPropertyId": "User/GetUserInfoByPropertyId/{propertyId}/{productId}",
-  "GetFailedTransactions": "PaymentTransaction/GetFailedTransactions/{searchText}/{startDate}/{endDate}/{pageStart}",
+  "GetFailedTransactions": "PaymentTransaction/GetFailedTransactions",
   "BatchProcessFailedTransactions": "PaymentTransaction/BatchProcessFailedTransactions/{processAll}",
   "GetFailureDetails": "PaymentTransaction/GetFailureDetails",
   "GetActiveBatchStatus":"PaymentTransaction/GetActiveBatchProcess",
