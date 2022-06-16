@@ -537,7 +537,7 @@
   "AddAndRemoveTicketItems": "Transaction/addAndRemoveItems/outletId/{outletId}/terminalId/{terminalId}",
   "GetTicketDetail": "transaction/getTicketDetail/outlet/{outletId}/terminalId/{terminalId}",
   "GetStoreTerminal": "Outlets/GetStoreTerminal/{outletId}",
-  "SearchMembers": "Membership/SearchGuests/{pattern}/{searchType}",
+  "SearchMembers": "Membership/SearchGuests/{pattern}/{searchType}?isSearchNameOnly={isSearchNameOnly}",
   "GetMemberInfoByCardNo": "Membership/GetMemberByCardNo/{cardNo}/{scheduleDateTime}",
   "GetAllPaymentRecords": "Membership/GetAllPaymentRecords",
   "GetPaymentRecordsbyTransactionId": "Membership/GetPaymentRecord/{TransactionId}",
