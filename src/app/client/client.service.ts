@@ -30,7 +30,7 @@ export class ClientCommonService {
       panelClass: 'action-dialog-overlay',
       data: {
         headername: this.captions.PlayerWorthDetails, closebool: true, type: 'PW',
-        datarecord: { patronId: data, isCMSRequirePin: isCMSRequirePin },
+        datarecord: { patronId: data, isCMSRequirePin: isCMSRequirePin, isPlayerPointsView: true, isPlayerCompsView: true },
         buttonName: ''
       },
     });
