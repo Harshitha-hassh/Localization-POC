@@ -379,6 +379,7 @@
     "Saturday": "Saturday_fr"
   },
   "bookAppointment": {
+    "NotAvailable": "NA_fr",
     "PropertyInformation": "Property Information_fr",
     "Miscellaneous": "Miscellaneous_fr",
     "NoLocationAvailable": "No Location Available_fr",

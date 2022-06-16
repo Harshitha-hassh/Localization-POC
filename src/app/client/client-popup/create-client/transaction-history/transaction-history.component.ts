@@ -8,6 +8,7 @@ import { BaseResponse } from 'src/app/common/shared/shared.modal';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { MultipackAPIModel,MultipackUIModel,MultpackHistoryRequest } from './multipack.model';
 @Component({
   selector: 'app-transaction-history',
   templateUrl: './transaction-history.component.html',
@@ -38,6 +39,7 @@ export class TransactionHistoryComponent implements OnInit {
   isFirstTime: boolean = true;
   clientId: number;
   clientGuid: string;
+  showMultiPackExpiredFlag:boolean = false;
 
   @Input('inputData')
   set formData(value) {
@@ -46,10 +48,16 @@ export class TransactionHistoryComponent implements OnInit {
       this.clientId = value.data.client.id;
       this.clientGuid = value.data.client.guestId;
       if(this.clientId > 0){
-        this.GetSalesHistory()
+        this.GetSalesHistory();        
       }  
+
+      if(this.clientGuid){
+        this.getMultipackDetails(this.clientGuid);
+      }
     }
   }
+  guestMultipackAPIData: Array<MultipackAPIModel>;
+  guestMultipacks: Array<MultipackUIModel>;
 
   constructor(public localization: RetailLocalization, private http: HttpServiceCall, 
     private utilities: RetailUtilities,
@@ -87,14 +95,16 @@ export class TransactionHistoryComponent implements OnInit {
         break;
 
       case "3":
-        this.tableHeaderArray = [{ tableHeader: this.captions.dateandTime, keyValue: "date", alignType: "left" },
-        { tableHeader: this.captions.multipack, keyValue: "multipack", alignType: "left" },
-        { tableHeader: this.captions.dateofsale, keyValue: "dateofsale", alignType: "left" },
-        { tableHeader: this.captions.redeemSession, keyValue: "redeemSession", alignType: "left" },
-        { tableHeader: this.captions.remainingsession, keyValue: "remainingsession", alignType: "left" },
-        { tableHeader: this.captions.dateofexpiry, keyValue: "dateofexpiry", alignType: "left" },
-        { tableHeader: this.captions.product, keyValue: "product", alignType: "left" }];
-        // this.tableDataArray = this.salesHistory;
+        this.tableHeaderArray = [{ tableHeader: this.captions.dateandTime, keyValue: "DateRedeemed", alignType: "left" },
+        { tableHeader: this.captions.multipack, keyValue: "MultipackDescription", alignType: "left" },
+        { tableHeader: this.captions.dateofsale, keyValue: "DateOfSale", alignType: "left" },
+        { tableHeader: this.captions.redeemSession, keyValue: "RedeemedCount", alignType: "left" },
+        { tableHeader: this.captions.remainingsession, keyValue: "RemainingCount", alignType: "left" },
+        { tableHeader: this.captions.dateofexpiry, keyValue: "DateOfExpiry", alignType: "left" },
+        { tableHeader: this.captions.product, keyValue: "Product", alignType: "left" }];
+       if(this.guestMultipackAPIData){
+          this.tableDataArray =  this.mapMultipackToUI(this.guestMultipackAPIData); 
+        } 
         break;
     }
 
@@ -113,6 +123,8 @@ export class TransactionHistoryComponent implements OnInit {
     return this.tableDataArray.sort((a, b) => {
       if(a.hasOwnProperty('date')){
         return <any>this.utilities.getDate(b.date) - <any>this.utilities.getDate(a.date);
+      }else if(a.hasOwnProperty('DateRedeemed')){        
+        return <any>new Date(b.DateRedeemed).getTime() - <any>new Date(a.DateRedeemed).getTime();       
       }else{
         return true;
       }
@@ -208,6 +220,9 @@ export class TransactionHistoryComponent implements OnInit {
       this.frequentlyPurchased = this.frequentlyPurchased.sort(this.compareItem).reverse();
       this.salesHistory = appointments;
       this.changeType();
+    }else if(callDesc == "GetMultiPackRedeemHistoryDetails")
+    {
+      this.guestMultipackAPIData = <any>result.result;    
     }
   }
   errorCallback<T>(result: BaseResponse<T>): void { }
@@ -241,8 +256,54 @@ export class TransactionHistoryComponent implements OnInit {
     this.isFirstTime = true;
   }
   showExpiredMultipacks(event){
-    if(event){
+    this.showMultiPackExpiredFlag = event;
+    if(this.guestMultipackAPIData){
+      this.tableDataArray =  this.mapMultipackToUI(this.guestMultipackAPIData); 
+    }  
+  }
 
+  public getMultipackDetails(guestId: string){
+    const request =<MultpackHistoryRequest>{
+      "GuestGuid": guestId,
+      "IsIncludeExpiredMultipacks":true
+    }
+
+    this.http.CallApiWithCallback<any>({
+      host: Host.retailPOS,
+      success: this.successCallback.bind(this),
+      error: this.errorCallback.bind(this),
+      callDesc: "GetMultiPackRedeemHistoryDetails",
+      body: request,
+      method: HttpMethod.Put,
+      showError: true,
+      extraParams: []
+    });
+  }
+  
+  public mapMultipackToUI(multipacks: MultipackAPIModel[]): MultipackUIModel[]{
+    if(multipacks && multipacks.length > 0){
+      let result = multipacks.map(x=> {
+        return <MultipackUIModel>{
+          DateRedeemed: x.redeemedSessions == 0?this.localization.LocalizeShortDateTime(x.clientMultiPackSaleDateTime):
+           this.localization.LocalizeShortDateTime(x.clientMultiPackRedeemDateTime),
+          DateOfSale: this.localization.LocalizeShortDateTime(x.clientMultiPackSaleDateTime),
+          DateOfExpiry: this.localization.LocalizeShortDate(x.multipackExpirytDate),
+          MultipackDescription: x.multiPackName,
+          RedeemedCount: x.redeemedSessions.toString(),
+          RemainingCount: x.isUnlimitedMultipack == true?this.captions.NotAvailable:x.remainingSessions.toString(),
+          IsMultipackExpired: x.isMultiPackExpired,
+          Product: x.productName,
+        }
+      });
+   
+      if(!this.showMultiPackExpiredFlag){           
+        result = result.filter(x=>x.IsMultipackExpired == false);
+      }
+
+      return result;
+    }else
+    {
+      return new Array<MultipackUIModel>();
     }
   }
 }

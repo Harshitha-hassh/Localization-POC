@@ -713,5 +713,6 @@
   "GetRoomRevenuePostingLogs": "POS/RevenuePosting/GetRoomRevenuePostingLogs",
   "IsBatchProcessingPending": "POS/RevenuePosting/IsBatchProcessingPending",  
   "MachineAssociatedWithTransaction":"Transaction/IsMachineNameAssociatedWithRetailTransaction/{machineNameId}",
-  "transactionExtract": "reports/TransactionExtract"
+  "transactionExtract": "reports/TransactionExtract",
+  "GetMultiPackRedeemHistoryDetails":"MultiPack/GetMultiPackRedeemHistoryDetails"
 }

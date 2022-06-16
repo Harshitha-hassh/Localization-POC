@@ -379,6 +379,7 @@
     "Saturday": "Saturday_uk"
   },
   "bookAppointment": {
+    "NotAvailable": "NA_uk",
     "PropertyInformation": "Property Information_uk",
     "Miscellaneous": "Miscellaneous_uk",
     "NoLocationAvailable": "No Location Available_uk",

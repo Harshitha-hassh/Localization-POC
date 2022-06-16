@@ -379,6 +379,7 @@
     "Saturday": "Saturday_au"
   },
   "bookAppointment": {
+    "NotAvailable": "NA_au",
     "PropertyInformation": "Property Information_au",
     "Miscellaneous": "Miscellaneous_au",
     "NoLocationAvailable": "No Location Available_au",

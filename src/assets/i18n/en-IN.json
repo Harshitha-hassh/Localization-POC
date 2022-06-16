@@ -379,6 +379,7 @@
     "Saturday": "Saturday_in"
   },
   "bookAppointment": {
+    "NotAvailable": "NA_in",
     "PropertyInformation": "Property Information_in",
     "Miscellaneous": "Miscellaneous_in",
     "NoLocationAvailable": "No Location Available_in",
