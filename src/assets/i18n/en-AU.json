@@ -379,7 +379,6 @@
     "Saturday": "Saturday_au"
   },
   "bookAppointment": {
-    "NotAvailable": "NA_au",
     "PropertyInformation": "Property Information_au",
     "Miscellaneous": "Miscellaneous_au",
     "NoLocationAvailable": "No Location Available_au",
@@ -2649,6 +2648,7 @@
     "vatNumber": "VAT Number_au",
     "serviceCharge": "SERVICE CHARGE_au",
     "vat": "VAT_au",
+    "serviceChargeVat": "Service Charge VAT_au",
     "gratuity": "GRATUITY_au",
     "gross": "Gross_au",
     "net": "Net_au",

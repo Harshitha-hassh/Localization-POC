@@ -379,7 +379,6 @@
     "Saturday": "Saturday_fr"
   },
   "bookAppointment": {
-    "NotAvailable": "NA_fr",
     "PropertyInformation": "Property Information_fr",
     "Miscellaneous": "Miscellaneous_fr",
     "NoLocationAvailable": "No Location Available_fr",
@@ -2649,6 +2648,7 @@
     "vatNumber": "VAT Number_fr",
     "serviceCharge": "SERVICE CHARGE_fr",
     "vat": "VAT_fr",
+    "serviceChargeVat": "Service Charge VAT_fr",
     "gratuity": "GRATUITY_fr",
     "gross": "Gross_fr",
     "net": "Net_fr",

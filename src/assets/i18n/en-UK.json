@@ -379,7 +379,6 @@
     "Saturday": "Saturday_uk"
   },
   "bookAppointment": {
-    "NotAvailable": "NA_uk",
     "PropertyInformation": "Property Information_uk",
     "Miscellaneous": "Miscellaneous_uk",
     "NoLocationAvailable": "No Location Available_uk",
@@ -2649,6 +2648,7 @@
     "vatNumber": "VAT Number_uk",
     "serviceCharge": "SERVICE CHARGE_uk",
     "vat": "VAT_uk",
+    "serviceChargeVat": "Service Charge VAT_uk",
     "gratuity": "GRATUITY_uk",
     "gross": "Gross_uk",
     "net": "Net_uk",

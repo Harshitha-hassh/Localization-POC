@@ -379,7 +379,6 @@
     "Saturday": "Saturday_gb"
   },
   "bookAppointment": {
-    "NotAvailable": "NA_gb",
     "PropertyInformation": "Property Information_gb",
     "Miscellaneous": "Miscellaneous_gb",
     "NoLocationAvailable": "No Location Available_gb",
@@ -2649,6 +2648,7 @@
     "vatNumber": "VAT Number_gb",
     "serviceCharge": "SERVICE CHARGE_gb",
     "vat": "VAT_gb",
+    "serviceChargeVat": "Service Charge VAT_gb",
     "gratuity": "GRATUITY_gb",
     "gross": "Gross_gb",
     "net": "Net_gb",
