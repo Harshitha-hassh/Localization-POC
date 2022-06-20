@@ -1462,7 +1462,20 @@
       "RetryFailureMsg": "Retry Failed_da",
       "BatchInProgressBannerLbl": "Processing transactions in batch, please wait until the process is completed._da",
       "NoDataFoundLbl": "No Results Found._da"
-    }
+    },
+    "CC_IssuerTypes": {
+      "1": "Maestro_da",
+      "2": "Visa_da",
+      "3": "Master_da",
+      "4": "Amex_da",
+      "5": "Discover_da"
+    },
+    "lbl_SurchargeApplied": "Surcharge Applied_da",
+    "lbl_Surcharge": "Surcharge_da",
+    "lbl_ApplyingSurchargeLoaderMsg": "Applying Surcharge_da",
+    "lbl_RemovingSurchargeLoaderMsg": "Removing Surcharge_da",
+    "lbl_cardType": "Card Type_da",
+    "lbl_AmountTendered": "Amount Entered_da"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_da",
@@ -2736,6 +2749,20 @@
       "DataReadEndPosition": "End Position_da",
       "Track1": "Track1_da",
       "Track2": "Track2_da"
+    },
+    "SurchargeConfig": {
+      "lbl_config": "Surcharges Configuration_da",
+      "lbl_CardAssociation": "Card Association_da",
+      "lbl_PercOrAmount": "Percentage/Amount_da",
+      "IssuerType": {
+        "1": "Maestro Card_da",
+        "2": "Visa Card_da",
+        "3": "Master Card_da",
+        "4": "American Express Card_da",
+        "5": "Discover Card_da"
+      },
+      "SelectAll": "Select All_da",
+      "DeSelectAll": "DeSelect All_da"
     }
   },
   "retailInventory": {

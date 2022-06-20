@@ -1462,7 +1462,20 @@
       "RetryFailureMsg": "Retry Failed_uk",
       "BatchInProgressBannerLbl": "Processing transactions in batch, please wait until the process is completed._uk",
       "NoDataFoundLbl": "No Results Found._uk"
-    }
+    },
+    "CC_IssuerTypes": {
+      "1": "Maestro_uk",
+      "2": "Visa_uk",
+      "3": "Master_uk",
+      "4": "Amex_uk",
+      "5": "Discover_uk"
+    },
+    "lbl_SurchargeApplied": "Surcharge Applied_uk",
+    "lbl_Surcharge": "Surcharge_uk",
+    "lbl_ApplyingSurchargeLoaderMsg": "Applying Surcharge_uk",
+    "lbl_RemovingSurchargeLoaderMsg": "Removing Surcharge_uk",
+    "lbl_cardType": "Card Type_uk",
+    "lbl_AmountTendered": "Amount Entered_uk"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_uk",
@@ -2736,6 +2749,20 @@
       "DataReadEndPosition": "End Position_uk",
       "Track1": "Track1_uk",
       "Track2": "Track2_uk"
+    },
+    "SurchargeConfig": {
+      "lbl_config": "Surcharges Configuration_uk",
+      "lbl_CardAssociation": "Card Association_uk",
+      "lbl_PercOrAmount": "Percentage/Amount_uk",
+      "IssuerType": {
+        "1": "Maestro Card_uk",
+        "2": "Visa Card_uk",
+        "3": "Master Card_uk",
+        "4": "American Express Card_uk",
+        "5": "Discover Card_uk"
+      },
+      "SelectAll": "Select All_uk",
+      "DeSelectAll": "DeSelect All_uk"
     }
   },
   "retailInventory": {
