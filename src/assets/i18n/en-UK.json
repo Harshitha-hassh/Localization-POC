@@ -2693,6 +2693,8 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_uk",
     "AllowTaxOnGratuity": "Allow Tax On Gratuity_uk",
     "AllowTaxOnServiceCharge": "Allow Tax On Service Charge_uk",
+    "DefaultTaxToAllRetailItems": "Default to All Retail Item_uk",
+    "DefaultTaxAlreadyExistForVatProperty": "A default tax is already set for the selected date range ({TaxName}). User cannot proceed to perform this action._uk",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_uk",
     "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs_uk",
     "AllowPaymentSurcharges": "Allow Surcharges_uk",
