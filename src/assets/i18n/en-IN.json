@@ -2707,6 +2707,8 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_in",
     "AllowTaxOnGratuity": "Allow Tax On Gratuity_in",
     "AllowTaxOnServiceCharge": "Allow Tax On Service Charge_in",
+    "DefaultTaxToAllRetailItems": "Default to All Retail Item_in",
+    "DefaultTaxAlreadyExistForVatProperty": "A default tax is already set for the selected date range ({TaxName}). User cannot proceed to perform this action._in",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_in",
     "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs_in",
     "AllowPaymentSurcharges": "Allow Surcharges_in",
