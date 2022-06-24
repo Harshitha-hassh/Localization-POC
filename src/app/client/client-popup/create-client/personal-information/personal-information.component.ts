@@ -216,8 +216,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   createEmailItem(arr: number, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): FormGroup {
 
     if (!EmailLabel || EmailLabel == '') {
-      let emailLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_EMAIL_TYPE');
-      EmailLabel = emailLabel.value ? Number(emailLabel.value) : '';
+      const emailLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_EMAIL_TYPE');
+      EmailLabel = emailLabel && emailLabel.value ? Number(emailLabel.value) : '';
     }
 
     return this.Form.group({
@@ -250,7 +250,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
     if (countryCode == '') {
       let _countryCode = this.defaultSettings.find(x => x.switch == 'DEFAULT_COUNTRY_CODE');
-      countryCode = _countryCode.value ? _countryCode.value : '';
+      countryCode = _countryCode && _countryCode.value ? _countryCode.value : '';
     }
     else{
       countryCode = countryCode == -1 ? '' : countryCode;
@@ -258,7 +258,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     
     if (!phoneNoLabel || phoneNoLabel == '') {
       let _phoneNoLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_PHONE_TYPE');
-      phoneNoLabel = _phoneNoLabel.value ? Number(_phoneNoLabel.value) : '';
+      phoneNoLabel = _phoneNoLabel && _phoneNoLabel.value ? Number(_phoneNoLabel.value) : '';
     }
     return this.Form.group({
       PhoneNumberLabel: [phoneNoLabel, this.phoneRequired || phoneNoDetails ? [Validators.required, EmptyValueValidator] : ''],

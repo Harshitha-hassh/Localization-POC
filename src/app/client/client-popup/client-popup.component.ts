@@ -16,7 +16,7 @@ import { Utilities } from 'src/app/core/utilities';
   templateUrl: './client-popup.component.html',
   styleUrls: ['./client-popup.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  providers: [CreateClientBusiness,ClientDataService]
+  providers: [CreateClientBusiness, ClientDataService]
 })
 export class ClientPopupComponent implements OnInit {
 
