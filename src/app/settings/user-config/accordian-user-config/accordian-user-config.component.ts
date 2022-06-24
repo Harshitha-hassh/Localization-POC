@@ -160,10 +160,16 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   }
 
   viewAll(userDetail, itemDetail, event, index) {
-    if(event[0]) {
+    if (event[0]) {
       itemDetail.userClaims.forEach(element => {
         element.allow = !event[0];
-        if(element.viewOnlyAllowed) {
+        if (element.viewOnlyAllowed) {
+          element.view = event[0];
+        }
+      });
+    }else {
+      itemDetail.userClaims.forEach(element => {
+        if (element.viewOnlyAllowed) {
           element.view = event[0];
         }
       });
