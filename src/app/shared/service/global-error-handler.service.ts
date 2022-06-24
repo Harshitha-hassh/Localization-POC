@@ -7,5 +7,6 @@ export class GlobalErrorHandler  implements ErrorHandler {
     if (chunkFailedMessage.test(error.message)) {
       window.location.reload();
     }
+    console.error(error);
   }
 }
