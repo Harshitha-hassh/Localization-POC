@@ -192,6 +192,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
         const allowTenderAmountOverrideForMember = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.AllowTenderAmountOverrideForMember);
         const memberBucketName = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.MemberBucketName);
         const creditBookBucketName = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.CreditBookBucketName);
+        const requirePin = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.RequirePin);
         let loyalty = {
           loyaltyURI: uri && uri.configurationValue ? uri.configurationValue : "",
           loyaltyServiceURI: loyaltyServiceURI && loyaltyServiceURI.configurationValue ? loyaltyServiceURI.configurationValue : "",
@@ -200,7 +201,8 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
           displayCreditBookBalance : (displayCreditBookBalance && displayCreditBookBalance.configurationValue) || "false",
           allowTenderAmountOverrideForMember: (allowTenderAmountOverrideForMember?.configurationValue) || "false",
           memberBucketName: (memberBucketName?.configurationValue?.trim()) || DefaultBucketName.memberBucketName,
-          creditBookBucketName: (creditBookBucketName?.configurationValue?.trim()) || DefaultBucketName.creditBookBucketName
+          creditBookBucketName: (creditBookBucketName?.configurationValue?.trim()) || DefaultBucketName.creditBookBucketName,
+          requirePin: (requirePin?.configurationValue?.trim()) || "true"
         }
         this._propertyInfo.SetMemberConfiguration(loyalty)
       }
