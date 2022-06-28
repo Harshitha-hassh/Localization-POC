@@ -8,7 +8,7 @@ export class GlobalErrorHandler  implements ErrorHandler {
       window.location.reload();
     }
     else {
-      throw error;
+     console.error(error);
     }
-  }
+   }
 }
