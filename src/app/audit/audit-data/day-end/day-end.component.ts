@@ -595,7 +595,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       // tslint:disable-next-line: max-line-length
       this.InvokeServiceCall('GetTransactionDetails', Host.retailPOS, HttpMethod.Get, { transactionId: data.Id, productId: Product.SPA }, null, null, ['reopen']);
     } else if (option.action === GridAction.Settle) {
-      if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Settle)) { return; }
+      if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Settle, true)) { return; }
       this.retailSharedService.payeeId = data.ClientId;
       this.retailSharedService.reOpenTransaction = false;
       this.retailSharedService.settleOpenTransaction = true;
