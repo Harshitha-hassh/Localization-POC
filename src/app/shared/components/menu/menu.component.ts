@@ -202,7 +202,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
           allowTenderAmountOverrideForMember: (allowTenderAmountOverrideForMember?.configurationValue) || "false",
           memberBucketName: (memberBucketName?.configurationValue?.trim()) || DefaultBucketName.memberBucketName,
           creditBookBucketName: (creditBookBucketName?.configurationValue?.trim()) || DefaultBucketName.creditBookBucketName,
-          requirePin: (requirePin?.configurationValue?.trim()) || "true"
+          requirePin: (requirePin?.configurationValue?.trim()) || "false"
         }
         this._propertyInfo.SetMemberConfiguration(loyalty)
       }
