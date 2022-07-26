@@ -2808,6 +2808,7 @@
     "ReportName": "Report Name",
     "Machines": "Machine(s)",
     "IncludeInactiveUsers": "Include Inactive Users",
+    "includeReturnWOT": "Include Return Without Ticket Transactions",
     "PageBreak": "Page Break",
     "Generate": "GENERATE",
     "appointmentNumber": "Appointment #",
