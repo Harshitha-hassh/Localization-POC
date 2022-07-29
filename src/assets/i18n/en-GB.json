@@ -2806,7 +2806,7 @@
     "ReportName": "Report Name_gb",
     "Machines": "Machine(s)_gb",
     "IncludeInactiveUsers": "Include Inactive Users_gb",
-    "includeReturnWOT": "Include Return Without Ticket Transactions_gb",
+    "includeReturnWOT": "Include Returns_gb",
     "PageBreak": "Page Break_gb",
     "Generate": "GENERATE_gb",
     "appointmentNumber": "Appointment #_gb",

@@ -2806,7 +2806,7 @@
     "ReportName": "Report Name_au",
     "Machines": "Machine(s)_au",
     "IncludeInactiveUsers": "Include Inactive Users_au",
-    "includeReturnWOT": "Include Return Without Ticket Transactions_au",
+    "includeReturnWOT": "Include Returns_au",
     "PageBreak": "Page Break_au",
     "Generate": "GENERATE_au",
     "appointmentNumber": "Appointment #_au",
