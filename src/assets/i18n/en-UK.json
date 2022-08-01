@@ -2911,6 +2911,7 @@
     "ItemFilter": "Enter Item Numbers Desired, seperated by commas (Example: 2345, 2567)_uk",
     "DetailByOutlet": "Detail By Outlet_uk",
     "SummaryByOutlet": "Summary By Outlet_uk",
+    "IncludeNotMapped": "Include Categories Not Mapped to Category Group_uk",
     "DetailView": "Detail View_uk",
     "NewPageAfterEachOutlet": "New page after each outlet_uk",
     "StartingCash": "Starting Cash_uk",

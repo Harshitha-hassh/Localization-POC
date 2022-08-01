@@ -2911,6 +2911,7 @@
     "ItemFilter": "Enter Item Numbers Desired, seperated by commas (Example: 2345, 2567)_fr",
     "DetailByOutlet": "Detail By Outlet_fr",
     "SummaryByOutlet": "Summary By Outlet_fr",
+    "IncludeNotMapped": "Include Categories Not Mapped to Category Group_fr",
     "DetailView": "Detail View_fr",
     "NewPageAfterEachOutlet": "New page after each outlet_fr",
     "StartingCash": "Starting Cash_fr",
