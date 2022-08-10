@@ -2711,6 +2711,7 @@
     "DefaultTaxAlreadyExistForVatProperty": "A default tax is already set for the selected date range ({TaxName}). User cannot proceed to perform this action._da",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_da",
     "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs_da",
+    "EnableAutoCloseTransaction": "Auto Close Transaction_da",
     "AllowPaymentSurcharges": "Allow Surcharges_da",
     "DoNotDisplayItemName": "Do Not Display Item name for Open Item_da",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_da",
