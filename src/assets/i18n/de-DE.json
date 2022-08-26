@@ -1633,6 +1633,10 @@
   "lbl_userId": "User ID_de",
   "lbl_logout": "Log Out_de",
   "retailsetup": {
+    "FinancialLevelSplitUp": "Financial Level Split-up_de",
+    "GranularLevel": "Granular_de",
+    "ClassLevel": "Class_de",
+    "TransactionLevel": "Transaction_de",
     "LoaderWaitMsg": "Please wait while data is being uploaded_de",
     "ImportRetailStatus": "Retail Items Import Status_de",
     "ImportStatus": "Import Status_de",
