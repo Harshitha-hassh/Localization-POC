@@ -1,6 +1,8 @@
 <section class="receiptConfig h-100">
         <div class="mainData w-100">
-          <form [formGroup]="FormGrp" class="h-100">
+          <mat-tab-group class="h-100 " #tabGroup >
+            <mat-tab label="{{textCaptions.lbl_outletLevel}}">
+          <form [formGroup]="FormGrp" class="tab-height">
               <ng-scrollbar [autoHide]="true">
                   <div class="leftSection float-left ">
                       <div class="pt-4">
@@ -72,14 +74,33 @@
                     </div>
               </ng-scrollbar>
         </form>
+        <div class="bottomSection w-100">              
+          <button class="ml-30px" [ngClass]="{'spa-primary-default-save' : (FormGrp.valid && !isSaveDisabled && !IsViewOnly), 'spa-primary-disabled' : ( !FormGrp.valid || isSaveDisabled || IsViewOnly)}" mat-button (click)="saveReceipt(FormGrp.value)">{{textCaptions.save}}</button>            
+          <button class="spa-button-cancel" mat-button (click)="cancelClick()">{{textCaptions.cancel}}</button>
+      
         </div>
-
+      </mat-tab>
+      <mat-tab label="{{textCaptions.lbl_proprtyLevel}}"> 
+        <form [formGroup]="propertyForm" class="tab-height p-4">
+           <!-- formControlName="{{value.controlName}} -->
+           <div>
+            <label class="golf-form--label">{{textCaptions.lbl_authCodeonReceipts}}</label>
+            <ui-switch [checkedLabel]="textCaptions.checked" formControlName="displayAuthcode" 
+            [uncheckedLabel]="textCaptions.unchecked" (selectionChange)="changeSelectionAuthCodeToggle($event)" (change)="toggleAction($event)"></ui-switch>
+          </div>
+          
+          <mat-form-field class="ag_form-control--xs" >
+            <input matInput [placeholder]="textCaptions.lbl_authCodeonReceiptName" 
+                formControlName="authcodeName" [maxlength]="25" />
+          </mat-form-field>
+        <!-- <app-single-to-multiple *ngIf="selectedTabIndex === 1" [outlets]="this.outlets"></app-single-to-multiple> -->
+        </form>
         <div class="bottomSection w-100">
-                <!-- <button class="ml-3" [ngClass]="{'spa-primary-default-save' : (FormGrp.valid)}" mat-button [disabled]="(!FormGrp.valid) || (isSaveDisabled)" (click)="saveReceipt(FormGrp.value)">{{textCaptions.save}}{{FormGrp.valid}}{{isSaveDisabled}}</button> -->
-            <button class="ml-30px" [ngClass]="{'spa-primary-default-save' : (FormGrp.valid && !isSaveDisabled && !IsViewOnly), 'spa-primary-disabled' : ( !FormGrp.valid || isSaveDisabled || IsViewOnly)}" mat-button (click)="saveReceipt(FormGrp.value)">{{textCaptions.save}}</button>
-            <!-- <button class="ml-3" [ngClass]="(FormGrp.valid) ? 'spa-primary-default-save' : 'spa-primary-disabled'"mat-button [disabled]="(!FormGrp.valid) || (isSaveDisabled)" (click)="saveReceipt(FormGrp.value)">{{textCaptions.save}}</button> -->
-            <button class="spa-button-cancel" mat-button (click)="cancelClick()">{{textCaptions.cancel}}</button>
+          <button class="ml-30px" [ngClass]="{'spa-primary-default-save' : propertyForm.valid, 'spa-primary-disabled' : !propertyForm.valid}" mat-button (click)="saveReceiptProperty(propertyForm.value)">{{textCaptions.save}}</button>            
+          <button class="spa-button-cancel" mat-button (click)="cancelClick()">{{textCaptions.cancel}}</button>
         </div>
-
+      </mat-tab>
+    </mat-tab-group>
+    </div>
         </section>
 

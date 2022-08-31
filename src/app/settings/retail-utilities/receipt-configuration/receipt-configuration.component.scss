@@ -3,7 +3,7 @@
 {
     overflow: hidden;
     .mainData{
-        height:calc(100% - 64px);
+        height:100%;
         border-bottom: 1px solid $linkWater;
         overflow: auto;
 
@@ -88,7 +88,9 @@
             }
         }
     }
-
+    .tab-height{
+        height: calc(100% - 64px);
+    }
     .bottomSection{
         height:64px;
         padding: 12px 0px;

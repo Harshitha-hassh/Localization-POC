@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
-import { Outlet, ReceiptModel } from '../../../retail/retail.modals';
+import { Outlet, ReceiptModel,PropertyReceiptModel, PropertyConfigurationModel } from '../../../retail/retail.modals';
 import { ReceiptConfigurationDataService } from './receipt-configuration-data';
 import { RetailOutletsDataService } from '../../../retail/retail-code-setup/retail-outlets/retail-outlets-data.service';
 import { RetailBreakPoint, ButtonType } from 'src/app/common/shared/shared/globalsContant';
@@ -34,6 +34,9 @@ export class ReceiptConfigurationComponent implements OnInit {
   isSuppressPrint: boolean;
   selctedClerkById: number;
   selctedPrintById: number;
+  DisplayAuthCode:boolean;
+  AuthCodeConfiguration:PropertyReceiptModel[];
+  propertyId: number;
 
   constructor(private Form: FormBuilder,
               private breakPoint: BreakPointAccess,
@@ -51,10 +54,15 @@ export class ReceiptConfigurationComponent implements OnInit {
       receiptNote: [''],
       printReceipt: this.Form.array([this.addPrintDetails()])
     });
+    this.propertyForm = this.Form.group({
+      displayAuthcode: [''],
+      authcodeName: ['']
+    })
   }
 
   async ngOnInit() {
     this.textCaptions = this.localization.captions.utilities;
+    this.DisplayAuthCode=false;
     this.ServiceCharge = [
       { id: 1, value: this.textCaptions.Details },
       { id: 2, value: this.textCaptions.SummarySplit },
@@ -92,6 +100,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       this.printInfo.map(x => x.enableToggle = false);
     }
     this.isSaveDisabled = true;
+    this.getPropertyReceiptConfig();
   }
 
   changeSelection(e) {
@@ -261,6 +270,8 @@ export class ReceiptConfigurationComponent implements OnInit {
   cancelClick() {
     this.FormGrp.reset();
     this.FormGrp.get('displayServiceCharge').setValue(1);
+    this.propertyForm.reset();
+    this.getPropertyReceiptConfig();
   }
 
   async saveReceipt(data: any) {
@@ -292,5 +303,87 @@ export class ReceiptConfigurationComponent implements OnInit {
 
   resetData() {
     this.isSaveDisabled = true;
+  }
+  toggleAction(event) {
+    if (event==false) {
+      this.DisplayAuthCode=false;
+      this.propertyForm.controls["authcodeName"].setValidators(Validators.required);
+      this.propertyForm.controls["authcodeName"].updateValueAndValidity();
+    }
+    else {
+      this.DisplayAuthCode=true;
+      this.propertyForm.controls["authcodeName"].clearValidators();
+      this.propertyForm.controls["authcodeName"].updateValueAndValidity();
+    }
+    this.isSaveDisabled=false;
+  }
+async getPropertyReceiptConfig()
+{
+  this.PropertyReceiptInfo = await this.data.getPropertyReceiptConfig(); 
+  if(this.PropertyReceiptInfo && this.PropertyReceiptInfo.id)
+  {
+    let authCode = this.PropertyReceiptInfo.configValue.authCodeReceiptName != "" ? 
+     this.PropertyReceiptInfo.configValue.authCodeReceiptName : this.PropertyReceiptInfo.defaultValue.authCodeReceiptName;
+
+     let displayAuthCode = this.PropertyReceiptInfo.configValue.displayAuthCode != false ?  
+     this.PropertyReceiptInfo.configValue.displayAuthCode : this.PropertyReceiptInfo.defaultValue.displayAuthCode;
+     if(displayAuthCode == true)
+    {
+      this.DisplayAuthCode=true;
+      this.propertyForm.controls["authcodeName"].setValue(authCode);
+      this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
+    }
+    else
+    {
+      this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
+      this.propertyForm.controls["authcodeName"].setValue(authCode);
+    }
+  }
+}
+
+  async saveReceiptProperty(data: any) {
+    console.log(data);
+    if(this.PropertyReceiptInfo && this.PropertyReceiptInfo.id > 0)
+    {
+      let Propertyreceiptobj: PropertyReceiptModel = {
+        id: this.PropertyReceiptInfo.id,
+        screenName: "ReceiptConfiguration",//ScreenName.ReceiptConfiguration,
+        moduleName : "Utilities",//ModuleName.Utilities,
+        configValue: JSON.stringify(this.formConfigValue(data)),
+        defaultValue: JSON.stringify(this.formDefaultValue(data))
+      } 
+      //Update call
+      let result = await this.data.updatePropertyConfig(Propertyreceiptobj);
+    }
+    else{
+      let Propertyreceiptobj: PropertyReceiptModel = {
+        id: 0,
+        screenName: "ReceiptConfiguration",//ScreenName.ReceiptConfiguration,
+        moduleName : "Utilities",//ModuleName.Utilities,
+        configValue: JSON.stringify(this.formConfigValue(data)),
+      defaultValue: JSON.stringify(this.formDefaultValue(data))
+      }
+      this.PropertyReceiptInfo = await this.data.createPropertyConfig(Propertyreceiptobj);
+    } 
+    this.utils.ShowError(this.textCaptions.Success, this.textCaptions.AfterSaveMessage, ButtonType.Ok);
+   
+    this.resetData();
+  }
+
+  formConfigValue(data: any)
+  {
+    let configValue : PropertyConfigurationModel = {
+      displayAuthCode: data.displayAuthcode,
+      AuthCodeReceiptName: data.authcodeName
+    }
+    return configValue;
+  }
+  formDefaultValue(data: any)
+  {
+    let configValue : PropertyConfigurationModel = {
+      displayAuthCode: false,
+      AuthCodeReceiptName: "AuthCode"
+    }
+    return configValue;
   }
 }
