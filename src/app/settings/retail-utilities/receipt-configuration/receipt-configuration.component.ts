@@ -305,7 +305,7 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.isSaveDisabled = true;
   }
   toggleAction(event) {
-    if (event[0] == false) {
+    if (event == false) {
       this.DisplayAuthCode=false;
       this.propertyForm.controls["authcodeName"].setValidators(Validators.required);
       this.propertyForm.controls["authcodeName"].updateValueAndValidity();
