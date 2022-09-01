@@ -21,16 +21,16 @@ export class ReceiptConfigurationDataService {
         return receipts;
     }
     public async getPropertyReceiptConfig(): Promise<PropertyReceiptModel> {
-        const propertyReceipts: Promise<PropertyReceiptModel> = this.invokeServiceCall<PropertyReceiptModel>(Host.retailManagement, "GetPropertyReceiptConfiguration", HttpMethod.Get);
+        const propertyReceipts: Promise<PropertyReceiptModel> = this.invokeServiceCall<PropertyReceiptModel>(Host.retailManagement,  RetailRoutes.GetPropertyReceiptConfiguration, HttpMethod.Get);
         return propertyReceipts;
     }
   
       public async createPropertyConfig(objData): Promise<PropertyReceiptModel> {
-        const propertyReceipts: Promise<PropertyReceiptModel> =  this.invokeServiceCall<PropertyReceiptModel>(Host.retailManagement, "CreatePropertyReceiptConfiguration", HttpMethod.Post,objData);
+        const propertyReceipts: Promise<PropertyReceiptModel> =  this.invokeServiceCall<PropertyReceiptModel>(Host.retailManagement, RetailRoutes.CreatePropertyReceiptConfiguration, HttpMethod.Post,objData);
         return propertyReceipts;
     }
       public async updatePropertyConfig(objData): Promise<PropertyReceiptModel> {
-        const propertyReceipts: Promise<PropertyReceiptModel> = this.invokeServiceCall<PropertyReceiptModel>(Host.retailManagement, "UpdatePropertyReceiptConfiguration", HttpMethod.Put,objData);
+        const propertyReceipts: Promise<PropertyReceiptModel> = this.invokeServiceCall<PropertyReceiptModel>(Host.retailManagement, RetailRoutes.UpdatePropertyReceiptConfiguration, HttpMethod.Put,objData);
         return propertyReceipts;
     }
     private async invokeServiceCall<T>(hostName: Host, callDesc: string, methodType: HttpMethod, body?: any, uriParams?: any, extraParams?: any): Promise<T> {
