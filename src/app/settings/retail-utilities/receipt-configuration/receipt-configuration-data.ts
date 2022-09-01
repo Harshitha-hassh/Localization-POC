@@ -1,10 +1,11 @@
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
-import { ReceiptModel} from '../../../retail/retail.modals';
+import { PropertyReceiptModel, ReceiptModel } from "../../../retail/retail.modals";
 import { Injectable } from '@angular/core';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { BaseResponse } from 'src/app/common/shared/shared.modal';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { RetailRoutes } from "src/app/retail/retail-route";
 @Injectable()
 export class ReceiptConfigurationDataService {
     constructor(private http: HttpServiceCall, private utils: RetailUtilities, private localization: RetailStandaloneLocalization) { }
@@ -19,7 +20,19 @@ export class ReceiptConfigurationDataService {
         const receipts: Promise<ReceiptModel[]> = this.invokeServiceCall<ReceiptModel[]>(Host.retailManagement, 'createReceipt', HttpMethod.Post, objData);
         return receipts;
     }
-
+    public async getPropertyReceiptConfig(): Promise<PropertyReceiptModel> {
+        const propertyReceipts: Promise<PropertyReceiptModel> = this.invokeServiceCall<PropertyReceiptModel>(Host.retailManagement,  RetailRoutes.GetPropertyReceiptConfiguration, HttpMethod.Get);
+        return propertyReceipts;
+    }
+  
+      public async createPropertyConfig(objData): Promise<PropertyReceiptModel> {
+        const propertyReceipts: Promise<PropertyReceiptModel> =  this.invokeServiceCall<PropertyReceiptModel>(Host.retailManagement, RetailRoutes.CreatePropertyReceiptConfiguration, HttpMethod.Post,objData);
+        return propertyReceipts;
+    }
+      public async updatePropertyConfig(objData): Promise<PropertyReceiptModel> {
+        const propertyReceipts: Promise<PropertyReceiptModel> = this.invokeServiceCall<PropertyReceiptModel>(Host.retailManagement, RetailRoutes.UpdatePropertyReceiptConfiguration, HttpMethod.Put,objData);
+        return propertyReceipts;
+    }
     private async invokeServiceCall<T>(hostName: Host, callDesc: string, methodType: HttpMethod, body?: any, uriParams?: any, extraParams?: any): Promise<T> {
         const response: BaseResponse<T> = await this.http.CallApiAsync<T>({
             host: hostName,
