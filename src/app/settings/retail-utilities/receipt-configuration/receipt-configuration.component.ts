@@ -365,7 +365,7 @@ async getPropertyReceiptConfig()
       }
       this.PropertyReceiptInfo = await this.data.createPropertyConfig(Propertyreceiptobj);
     } 
-    this.utils.ShowError(this.textCaptions.Success, this.textCaptions.AfterSaveMessage, ButtonType.Ok);
+    this.utils.ShowError(this.textCaptions.Success, this.textCaptions.AfterSaveMessage + "Property", ButtonType.Ok);
    
     this.resetData();
   }
