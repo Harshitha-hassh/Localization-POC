@@ -431,7 +431,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       const eatecFeature = feature.find(x => x.featureName === FeatureName.EnhancedInventory);
       const pmsRevenuePosting = feature && feature.find(x => x.featureName === FeatureName.PMS_RevenuePosting && x.isActive);
 
-      if (eatecFeature) {
+      if (eatecFeature != null && eatecFeature.isActive) {
         sessionStorage.setItem('isEatecEnabled', 'true');
         propIds.push(eatecFeature.id);
         await this.setEatecToken();
