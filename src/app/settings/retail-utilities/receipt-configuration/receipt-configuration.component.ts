@@ -332,11 +332,13 @@ async getPropertyReceiptConfig()
       this.DisplayAuthCode=true;
       this.propertyForm.controls["authcodeName"].setValue(authCode);
       this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
+      this.propertyform.markAsPristine();
     }
     else
     {
       this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
       this.propertyForm.controls["authcodeName"].setValue(authCode);
+      this.propertyform.markAsPristine();
     }
   }
 }
@@ -365,7 +367,7 @@ async getPropertyReceiptConfig()
       }
       this.PropertyReceiptInfo = await this.data.createPropertyConfig(Propertyreceiptobj);
     } 
-    this.utils.ShowError(this.textCaptions.Success, this.textCaptions.AfterSaveMessage + "Property", ButtonType.Ok);
+    this.utils.ShowError(this.textCaptions.Success, this.textCaptions.AfterSaveMessage + "the Property", ButtonType.Ok);
    
     this.resetData();
   }
@@ -380,10 +382,10 @@ async getPropertyReceiptConfig()
   }
   formDefaultValue(data: any)
   {
-    let configValue : PropertyConfigurationModel = {
+    let defaultValue : PropertyConfigurationModel = {
       displayAuthCode: false,
-      AuthCodeReceiptName: "AuthCode"
+      AuthCodeReceiptName: "Auth Code"
     }
-    return configValue;
+    return defaultValue;
   }
 }
