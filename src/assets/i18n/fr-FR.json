@@ -1427,6 +1427,8 @@
     "GuestName": "Guest Last Name_fr",
     "RoomNumber": "Room Number_fr",
     "GroupBookingId": "Booking ID_fr",
+    "GroupName": "Group Name_fr",
+    "SearchByBookingId": "Search by Booking ID_fr",
     "RoomKey": "Room Key_fr",
     "NoMatchesFound": "No matches found._fr",
     "SelectCommissionTemplate": "Select Commission Template_fr",

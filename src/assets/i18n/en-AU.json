@@ -1427,6 +1427,8 @@
     "GuestName": "Guest Last Name_au",
     "RoomNumber": "Room Number_au",
     "GroupBookingId": "Booking ID_au",
+    "GroupName": "Group Name_au",
+    "SearchByBookingId": "Search by Booking ID_au",
     "RoomKey": "Room Key_au",
     "NoMatchesFound": "No matches found._au",
     "SelectCommissionTemplate": "Select Commission Template_au",

@@ -1429,6 +1429,8 @@
     "GuestName": "Guest Last Name",
     "RoomNumber": "Room Number",
     "GroupBookingId": "Booking ID",
+    "GroupName":"Group Name",
+		"SearchByBookingId": "Search by Booking ID",
     "RoomKey": "Room Key",
     "NoMatchesFound": "No matches found.",
     "SelectCommissionTemplate": "Select Commission Template",
