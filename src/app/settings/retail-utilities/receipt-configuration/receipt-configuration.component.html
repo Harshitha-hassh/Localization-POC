@@ -89,14 +89,14 @@
             [uncheckedLabel]="textCaptions.unchecked" (selectionChange)="changeSelectionAuthCodeToggle($event)" (change)="toggleAction($event)"></ui-switch>
           </div>
           
-          <mat-form-field class="ag_form-control--xs" *ngIf="this.DisplayAuthCode">
+          <mat-form-field class="ag_form-control--xs pt-3" *ngIf="this.DisplayAuthCode">
             <input matInput [placeholder]="textCaptions.lbl_authCodeonReceiptName" 
                 formControlName="authcodeName" [maxlength]="25" />
           </mat-form-field>
         <!-- <app-single-to-multiple *ngIf="selectedTabIndex === 1" [outlets]="this.outlets"></app-single-to-multiple> -->
         </form>
         <div class="bottomSection w-100">
-          <button class="ml-30px" [ngClass]="{'spa-primary-default-save' : propertyForm.touched, 'spa-primary-disabled' : !propertyForm.touched}" mat-button (click)="saveReceiptProperty(propertyForm.value)">{{textCaptions.save}}</button>            
+          <button class="ml-30px" [ngClass]="{'spa-primary-default-save' : propertyForm.dirty, 'spa-primary-disabled' : !propertyForm.touched}" mat-button (click)="saveReceiptProperty(propertyForm.value)">{{textCaptions.save}}</button>            
           <button class="spa-button-cancel" mat-button (click)="cancelClick()">{{textCaptions.cancel}}</button>
         </div>
       </mat-tab>

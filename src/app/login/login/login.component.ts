@@ -426,11 +426,27 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   async setEatecConfig(){
     this.propertyFeatureService.getPropertyFeatures().then( async (feature) => {
+      const propIds = [];
+
       const eatecFeature = feature.find(x => x.featureName === FeatureName.EnhancedInventory);
+      const pmsRevenuePosting = feature && feature.find(x => x.featureName === FeatureName.PMS_RevenuePosting && x.isActive);
+
       if (eatecFeature != null && eatecFeature.isActive) {
         sessionStorage.setItem('isEatecEnabled', 'true');
-        this.propertyFeatureService.getFeatureConfiguration(eatecFeature.id,eatecFeature.moduleId).then((featureconfigurations) => {
-          if (featureconfigurations != null && featureconfigurations.length > 0) {
+        propIds.push(eatecFeature.id);
+        await this.setEatecToken();
+      } else {
+        sessionStorage.setItem('isEatecEnabled', 'false');
+        this.retailpropertyInfo.SetEatecRI('');
+      }
+
+      if (pmsRevenuePosting) {
+        propIds.push(pmsRevenuePosting.id);
+      }
+
+      if (propIds.length > 0) {
+        this.propertyFeatureService.GetFeatureConfigurationsById(propIds).then((featureconfigurations) => {
+          if (eatecFeature && featureconfigurations != null && featureconfigurations.length > 0) {
             const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
             const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
             if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
@@ -441,12 +457,15 @@ export class LoginComponent implements OnInit, OnDestroy {
           }else {
             this.retailpropertyInfo.SetEatecRI('');
           }
+         
+          if (pmsRevenuePosting && featureconfigurations != null && featureconfigurations.length > 0) {
+            const pmsSystem = featureconfigurations.find(f => f.configurationKey === ConfigKeys.PMSRevenuePosting.PMSSystem)?.configurationValue;
+            if (pmsSystem && pmsSystem != null) {    
+              sessionStorage.setItem('pmsSystem', pmsSystem);
+          }
+        }
         });
-        await this.setEatecToken();
-      } else {
-        sessionStorage.setItem('isEatecEnabled', 'false');
-        this.retailpropertyInfo.SetEatecRI('');
-      }
+      }       
     });
   }
 
