@@ -338,7 +338,7 @@ async getPropertyReceiptConfig()
     {
       this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
       this.propertyForm.controls["authcodeName"].setValue(authCode);
-      this.propertyform.markAsPristine();
+      this.propertyForm.markAsPristine();
     }
   }
 }
