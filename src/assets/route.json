@@ -567,6 +567,7 @@
   "VoidCMSPayment": "Transaction/{transactionId}/VoidCMSPayments/patronId/{patronId}/redemptionType/{redemptionType}/paymentMethodType/{paymentMethodType}",
   "CheckIsTerminalInUse": "Transaction/IsOpenTransactionExistForTerminal/Outlet/{outletId}/Terminal/{terminalId}",
   "GetFeatureConfiguration": "GetFeatureConfiguration/propertyId/{propertyId}/productId/{productId}",
+  "GetFeatureConfigurationById": "GetFeatureConfigurationById/propertyId/{propertyId}/productId/{productId}",
   "GetRetailFeatureConfiguration": "GetRetailFeatureConfiguration/propertyId/{propertyId}/productId/{productId}",
   "GetCommissionableUsers": "users/commissionable/item/{itemId}/productId/{productId}/outlet/{outletId}",
   "RecentClientInfo": "Clients/recent/{propertyDate}/search/{requestUid}",
