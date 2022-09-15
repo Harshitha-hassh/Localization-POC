@@ -21,6 +21,7 @@ import { ServiceLocator } from './common/service.locator';
 import { AppModuleService } from './core/services/app.service';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { GlobalErrorHandler } from './shared/service/global-error-handler.service';
+import { ADB2CAuthConfiguration } from './login/auth.config';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
@@ -59,7 +60,8 @@ declare module "@angular/core" {
     RetailPropertyInformation,
     { provide: Localization, useExisting: RetailStandAloneLocalization },
     { provide: CommonPropertyInformation, useExisting: RetailPropertyInformation },
-    AppModuleService
+    AppModuleService,
+    ADB2CAuthConfiguration
   ],
   bootstrap: [AppComponent]
 })
