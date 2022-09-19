@@ -326,6 +326,8 @@
     "newPlayer": "New Player_de",
     "hotelReservation": "Hotel Reservation_de",
     "VoidNotAllowed": "Operation not allowed_de",
+    "VoidNotAllowedForReturn": "Void is not allowed for Return Without Ticket Transaction_de",
+    "CorrectNotAllowedForReturn": "Correct is not allowed for Return Without Ticket Transaction_de",
     "member": "Member_de",
     "player": "Player_de",
     "searchByConfNoAndGuestName": "Search By GuestName , Conf #_de",
