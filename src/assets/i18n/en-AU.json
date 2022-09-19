@@ -326,6 +326,8 @@
     "newPlayer": "New Player_au",
     "hotelReservation": "Hotel Reservation_au",
     "VoidNotAllowed": "Operation not allowed_au",
+    "VoidNotAllowedForReturn": "Void is not allowed for Return Without Ticket Transaction_au",
+    "CorrectNotAllowedForReturn": "Correct is not allowed for Return Without Ticket Transaction_au",
     "member": "Member_au",
     "player": "Player_au",
     "searchByConfNoAndGuestName": "Search By GuestName , Conf #_au",
