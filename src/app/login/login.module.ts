@@ -9,6 +9,8 @@ import { SharedModule } from '../shared/shared.module';
 import { PlatformModule } from '@angular/cdk/platform';
 import { PropertySettingDataService } from '../shared/data-services/authentication/propertysetting.data.service';
 import { LoaderInterceptor } from '../core/services/loader.interceptor.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LoaderInterceptor } from '../core/services/loader.interceptor.service';
     MaterialModule,
     ReactiveFormsModule,
     SharedModule,
-    PlatformModule
+    PlatformModule,
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [
     {
