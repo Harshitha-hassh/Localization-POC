@@ -339,11 +339,11 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   SendNewSystemDate() {
     const pmsSystem = sessionStorage.getItem('pmsSystem');
-      if (this.showRevenuePostings && pmsSystem != null && pmsSystem.toLowerCase() === 'visualone'){
-    let obj: NotifyDayEnd = { DateTime: this.localization.convertDateObjToAPIdate(this.newSysDate) }
-    this.InvokeServiceCall('NotifyDayEnd', Host.retailManagement, HttpMethod.Put, {},
-      obj, null, null, false);
-      }
+    if (this.showRevenuePostings && pmsSystem != null && pmsSystem.toLowerCase() === 'visualone') {
+      let obj: NotifyDayEnd = { DateTime: this.localization.convertDateObjToAPIdate(this.newSysDate) }
+      this.InvokeServiceCall('NotifyDayEnd', Host.retailManagement, HttpMethod.Put, {},
+        obj, null, null, false);
+    }
   }
 
   errorCallback<T>(error: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
