@@ -1607,7 +1607,10 @@
     "3075": "3075 - Issue Visual One GiftCard",
     "3080": "3080 - Issue External GiftCard",
     "3085": "3085 - Settle to Group Charge",
-    "8175": "8175 - Transaction Extract"
+    "8175": "8175 - Transaction Extract",
+    "8180": "8180 - Purchase Orders Report",
+		"8185": "8185 - Receiving Report",
+		"8190": "8190 - Inventory Variance Report"
   },
   "userId": "User ID",
   "password": "Password",
