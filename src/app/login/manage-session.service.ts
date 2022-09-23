@@ -14,6 +14,8 @@ import { JWT_TOKEN, REMEMBER_INFO, USERS_SESSSIONS_INFO } from '../app-constants
 import { Host } from '../retail/shared/globalsContant';
 import { NotificationFailureType } from '../shared/components/menu/menu.model';
 import { RetailPropertyInformation } from '../retail/common/services/retail-property-information.service';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
 
 @Injectable({
     providedIn: 'root'
@@ -63,7 +65,9 @@ export class ManageSessionService implements OnDestroy {
               , private utils: Utilities
               , public http: HttpServiceCall,
                 private localize: RetailLocalization,
-                private propertyInformation: RetailPropertyInformation) {
+                private propertyInformation: RetailPropertyInformation
+              , private oauthService: OAuthService
+              , private adb2cAuthConfiguration: ADB2CAuthConfiguration) {
 
         this.timeoutExpired.subscribe(n => {
         });
@@ -98,6 +102,11 @@ export class ManageSessionService implements OnDestroy {
         this.http.removeHelpUserSession();
         this.clearLocalStore();
         this.goToLogin();
+        if(this.adb2cAuthConfiguration.ADB2CAuthFeatureEnabled)
+        {
+            console.log('adb2c logout');
+            this.oauthService.logOut(); //ADB2C logout 
+        }
     }
 
     public GetPropertyInfo(name: string) {
@@ -274,20 +283,28 @@ export class ManageSessionService implements OnDestroy {
         return userSessions;
     }
 
-    public startTimer(logOffAfter: any, tokenExpiry?: number) {
+    public startTimer(logOffAfter: any, tokenExpiry: number) {
+   
         if (logOffAfter == 0) {
-            logOffAfter = this._logOffAfter;
-        }
-
-        if (this.timerSubscription) {
-            this.timerSubscription.unsubscribe();
-        }
-        this._timeoutSeconds = logOffAfter * 60;
-        this.timer = timer(this._timeoutSeconds * 1000);
-        this.timerSubscription = this.timer.subscribe(n => {
+          if (tokenExpiry > 122) {
+            tokenExpiry = tokenExpiry - 122; // buffer time for token expiry
+          }
+          this.tokenTimer = timer(tokenExpiry * 1000);
+          this.timerSubscription = this.tokenTimer.subscribe(n => {
             this.timerComplete(n, true);
-        });
-    }
+          });
+        }
+        else {
+          if (this.timerSubscription) {
+            this.timerSubscription.unsubscribe();
+          }
+          this._timeoutSeconds = logOffAfter * 60;
+          this.timer = timer(this._timeoutSeconds * 1000);
+          this.timerSubscription = this.timer.subscribe(n => {
+            this.timerComplete(n, false);
+          });
+        }
+      }
 
     public stopTimer() {
         if (this.timerSubscription) {

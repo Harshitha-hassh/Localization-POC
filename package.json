@@ -66,6 +66,7 @@
     "popper.js": "^1.14.7",
     "pubsub-ts": "^0.2.0",
     "rxjs": "^6.6.3",
+    "save":"^2.5.0",
     "tslib": "^2.4.0",
     "web-animations-js": "^2.3.2",
     "windows-iana": "^5.1.0",

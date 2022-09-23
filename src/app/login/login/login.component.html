@@ -1,5 +1,5 @@
 <section class="login">
-    <div class="login__formgroup">
+    <div class="login__formgroup" *ngIf="!hideLoginForm">
         <div class="login__page">
             <div class="login__img">
                 <img class="login__product-logo" src="./assets/images/logo.png">
@@ -43,7 +43,7 @@
                                         </div>
                                     </div>
                                     <div *ngIf="showCustomerID && custId">
-                                        <div>
+                                        <div *ngIf="!showCustomerID">
                                             <i class="icon-user ag_pr--2 "></i>
                                             <mat-form-field class="ag_w--50">
     
@@ -55,7 +55,7 @@
                                                 </mat-error>
                                             </mat-form-field>
                                         </div>
-                                        <div class="hide-view">
+                                        <div  *ngIf="!showCustomerID" class="hide-view">
                                             <i class="icon-password ag_pr--2 "></i>
                                             <mat-form-field class="ag_w--50">
     
