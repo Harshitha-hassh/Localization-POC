@@ -2689,7 +2689,7 @@
     "commission": "COMMISSION_gb",
     "item": "Item_gb",
     "revenue": "Revenue_gb",
-    "missingVatNumber": "Missing Vat Number_gb",
+    "missingVatNumber": "Missing VAT Number_gb",
     "ActivateGiftCard": "Activate Gift Card_gb",
     "AllowExpiration": "Allow Expiration_gb",
     "ExpireAfterDays": "Expire after (days)_gb",

@@ -2691,7 +2691,7 @@
     "commission": "COMMISSION",
     "item": "Item",
     "revenue": "Revenue",
-    "missingVatNumber": "Missing Vat Number",
+    "missingVatNumber": "Missing VAT Number",
     "ActivateGiftCard": "Activate Gift Card",
     "AllowExpiration": "Allow Expiration",
     "ExpireAfterDays": "Expire after (days)",

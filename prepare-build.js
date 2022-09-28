@@ -79,9 +79,19 @@ function applyLocalization(data, langSuffix) {
         if (data.hasOwnProperty(key) && !keysToBeExcluded.includes(key)) {
             const word = data[key];
             if (typeof word === 'object')
+            {    
                 data[key] = applyLocalization(data[key], langSuffix);
+            }
             else
-                data[key] = word + langSuffix;
+            {
+                if(langSuffix == '_au'){
+                    data[key] = String(word).replace("VAT", "GST");
+                }
+                else
+                {
+                    data[key] = word + langSuffix;
+                }
+            }
         }        
         else if(data.hasOwnProperty(key) && phoneFormate.includes(key)){
             if(langSuffix == '_uk' || langSuffix == '_gb'){
