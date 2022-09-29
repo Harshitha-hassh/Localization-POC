@@ -13,7 +13,9 @@ var routes: Routes = [{
     { path: 'commissiongratuity', loadChildren: () => import('../retail/retail-reports/reports.module').then(m => m.RetailReportModule), data: { type: 'commission' } },
     { path: 'transactionlog', component: TransactionLogComponent, canActivate: [RouteGuardService],
       data: { breakPointNumber: BreakPoint.TransactionLog, syncAccess: true } },
-    { path: 'giftcards', loadChildren: () => import('../retail/retail-reports/reports.module').then(m => m.RetailReportModule), data: { type: 'giftcards' } }
+    { path: 'giftcards', loadChildren: () => import('../retail/retail-reports/reports.module').then(m => m.RetailReportModule), data: { type: 'giftcards' } },
+    { path: 'inventorycontrol', loadChildren: () => import('../retail/retail-reports/reports.module').then(m => m.RetailReportModule), data: { type: 'inventorycontrol' } }
+    
   ]
 }];
 

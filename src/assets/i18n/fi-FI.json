@@ -2825,6 +2825,7 @@
     "Retail": "RETAIL_fi",
     "CommissionGraduityServicecharge": "COMMISSION/GRATUITY/SERVICE CHARGE_fi",
     "transactionLog": "TRANSACTION LOG_fi",
+    "inventoryControl": "INVENTORY CONTROL_fi",
     "ReportName": "Report Name_fi",
     "Machines": "Machine(s)_fi",
     "IncludeInactiveUsers": "Include Inactive Users_fi",
@@ -2999,7 +3000,10 @@
     "VendorInventoryDetail": "Vendor Inventory Detail_fi",
     "VendorList": "Vendors_fi",
     "PleaseSelectVendor": "Please Select a Vendor_fi",
-    "TransactionExtract": "Transaction Extract_fi"
+    "TransactionExtract": "Transaction Extract_fi",
+    "PurchaseOrders": "Purchase Orders_fi",
+    "Receiving": "Receiving Reports_fi",
+    "InventoryVariance": "Inventory Variance_fi"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fi",

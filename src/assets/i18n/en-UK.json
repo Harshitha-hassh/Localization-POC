@@ -2825,6 +2825,7 @@
     "Retail": "RETAIL_uk",
     "CommissionGraduityServicecharge": "COMMISSION/GRATUITY/SERVICE CHARGE_uk",
     "transactionLog": "TRANSACTION LOG_uk",
+    "inventoryControl": "INVENTORY CONTROL_uk",
     "ReportName": "Report Name_uk",
     "Machines": "Machine(s)_uk",
     "IncludeInactiveUsers": "Include Inactive Users_uk",
@@ -2999,7 +3000,10 @@
     "VendorInventoryDetail": "Vendor Inventory Detail_uk",
     "VendorList": "Vendors_uk",
     "PleaseSelectVendor": "Please Select a Vendor_uk",
-    "TransactionExtract": "Transaction Extract_uk"
+    "TransactionExtract": "Transaction Extract_uk",
+    "PurchaseOrders": "Purchase Orders_uk",
+    "Receiving": "Receiving Reports_uk",
+    "InventoryVariance": "Inventory Variance_uk"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_uk",
