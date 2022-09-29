@@ -2825,6 +2825,7 @@
     "Retail": "RETAIL_gb",
     "CommissionGraduityServicecharge": "COMMISSION/GRATUITY/SERVICE CHARGE_gb",
     "transactionLog": "TRANSACTION LOG_gb",
+    "inventoryControl": "INVENTORY CONTROL_gb",
     "ReportName": "Report Name_gb",
     "Machines": "Machine(s)_gb",
     "IncludeInactiveUsers": "Include Inactive Users_gb",
@@ -2999,7 +3000,10 @@
     "VendorInventoryDetail": "Vendor Inventory Detail_gb",
     "VendorList": "Vendors_gb",
     "PleaseSelectVendor": "Please Select a Vendor_gb",
-    "TransactionExtract": "Transaction Extract_gb"
+    "TransactionExtract": "Transaction Extract_gb",
+    "PurchaseOrders": "Purchase Orders_gb",
+    "Receiving": "Receiving Reports_gb",
+    "InventoryVariance": "Inventory Variance_gb"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_gb",
