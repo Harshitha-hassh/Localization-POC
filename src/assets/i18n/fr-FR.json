@@ -1480,7 +1480,22 @@
     "lbl_ApplyingSurchargeLoaderMsg": "Applying Surcharge_fr",
     "lbl_RemovingSurchargeLoaderMsg": "Removing Surcharge_fr",
     "lbl_cardType": "Card Type_fr",
-    "lbl_AmountTendered": "Amount Entered_fr"
+    "lbl_AmountTendered": "Amount Entered_fr",
+    "MemberSelectionPopup": {
+      "lbl_header": "MEMBER/GUEST MAPPING DETAILS_fr",
+      "searchPlaceHolder": "Search by Member Name, Member#_fr",
+      "lbl_subhdr": "Members_fr",
+      "searchProgressMsg": "Searching member details..._fr",
+      "maxMembersAddedMsg": "Maximum number of Members added. Please check the selection_fr",
+      "amountExceedOverallTotal": "Amount Exceeds Total_fr",
+      "fetchingMemberDetailsMsg": "Please wait while members details are being loaded..._fr",
+      "availableRounds": "Available Rounds_fr",
+      "noRoundsMsg": "No Rounds Avaialble!_fr",
+      "RetriveMemberInfo": "Retrieving Member Account Details..._fr",
+      "memberAlreadySelected": "Member already available_fr",
+      "Pin": "Pin_fr",
+      "Amount": "Amount_fr"
+    }
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fr",
