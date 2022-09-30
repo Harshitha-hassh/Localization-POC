@@ -61,6 +61,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
   testMode = false;
   showPaymentDevice: boolean;
   enableMachineTransaction: boolean = false;
+  floatLabel: string;
   TenantDefaultUserConfiguration : DefaultUserConfigurationTenant<DefaultUserConfigurationTenantModel>
 
   constructor(
@@ -74,6 +75,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     private payAgentService: PayAgentService,
     private zebra: ZebraPrintService,
     private featureFlagInfo: RetailFeatureFlagInformationService,) {
+      this.floatLabel = this.localization.setFloatLabel;
 
   }
 

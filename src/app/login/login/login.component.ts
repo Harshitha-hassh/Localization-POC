@@ -79,7 +79,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   tenantId: number;
   tenantIdFromParam: string;
   currYear = '2022';
-  prevYear='2020'
+  prevYear='2020';
+  floatLabel: string;
 
   //Machine Name
   isMachineNameEnabled: boolean;
@@ -114,6 +115,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {
     this.initializeForm();
     this.captions = this.localize.captions;
+    this.floatLabel = this.commonLocalize.setFloatLabel;
   }
 
   ngOnInit() {

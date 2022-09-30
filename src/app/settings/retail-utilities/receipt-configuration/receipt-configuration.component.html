@@ -7,7 +7,7 @@
                   <div class="leftSection float-left ">
                       <div class="pt-4">
                         <!-- Outlet Box -->
-                        <mat-form-field class="">
+                        <mat-form-field class="" [floatLabel]="floatLabel">
                             <mat-select placeholder="{{textCaptions.Outlet}}" (selectionChange)="changeSelection($event)" formControlName="outlet" class="LW14">
                                 <mat-option *ngFor="let data of Outlet" [value]="data.id" >
                                     {{data.outletName}}
@@ -63,11 +63,11 @@
                     <div class="rightSection h-100 float-right">
                       <!-- Comments -->
                       <div class="pt-3 pl-3">
-                        <mat-form-field (click)="viewChange($event)" class="textWidth mt-2 ">
+                        <mat-form-field (click)="viewChange($event)" class="textWidth mt-2 " [floatLabel]="floatLabel">
                             <textarea matInput placeholder="{{textCaptions.GratuityLine}}" formControlName="gratuityLine" [maxlength]="250"></textarea>
                         </mat-form-field>
 
-                        <mat-form-field (click)="viewChange($event)" class="textWidth mt-2 ">
+                        <mat-form-field (click)="viewChange($event)" class="textWidth mt-2 " [floatLabel]="floatLabel">
                             <textarea matInput placeholder="{{textCaptions.ReceiptNote}}" formControlName="receiptNote" [maxlength]="250"></textarea>
                         </mat-form-field>
                       </div>
@@ -89,7 +89,7 @@
             [uncheckedLabel]="textCaptions.unchecked" (selectionChange)="changeSelectionAuthCodeToggle($event)" (change)="toggleAction($event)"></ui-switch>
           </div>
           
-          <mat-form-field class="ag_form-control--xs pt-3" *ngIf="this.DisplayAuthCode">
+          <mat-form-field class="ag_form-control--xs pt-3" [floatLabel]="floatLabel" *ngIf="this.DisplayAuthCode">
             <input matInput [placeholder]="textCaptions.lbl_authCodeonReceiptName" 
                 formControlName="authcodeName" [maxlength]="25" />
           </mat-form-field>

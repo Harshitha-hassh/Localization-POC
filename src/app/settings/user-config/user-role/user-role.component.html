@@ -1,7 +1,7 @@
 <div *ngIf="hasAccess" class="user-role">
   <div class="control-section">
     <div class="select-container">
-      <mat-form-field class="select-width">
+      <mat-form-field class="select-width"  [floatLabel]="floatLabel">
         <mat-select id="selectSetup" #selectSetup [(ngModel)]="selectedOption" (ngModelChange)="LoadUserConfig()">
           <mat-option *ngFor="let option of availableOptions" [(value)]="option.id">
             {{option.description}}

@@ -6,6 +6,7 @@ import { menuTypes } from 'src/app/shared/enums/menu.constant';
 import { PropertyInformation } from '../services/property-information.service';
 import { RetailPropertyInformation } from '../services/retail-property-information.service';
 import { RouteLoaderService } from '../services/route-loader.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -24,7 +25,8 @@ export class LayoutComponent implements OnInit {
     private sessionService: ManageSessionService,
     private localization: RetailLocalization,
     private propertyInfo: PropertyInformation,
-    private propertyService: PropertyService) {
+    private propertyService: PropertyService,
+    private router: Router) {
     this.routeDataService.loadSettings().then(result => {
       if (result) {
         const value = this.routeDataService.GetChildMenu('/');
@@ -41,6 +43,7 @@ export class LayoutComponent implements OnInit {
       this.loadGoogleMap();
       this.triggerNotification();
       this.time();
+      this.toggleStyle();
   }
 
   triggerNotification(){
@@ -78,6 +81,25 @@ export class LayoutComponent implements OnInit {
   ngAfterViewInit() {
     if (!this.logOutClicked) {
       setInterval(() => this.time(), 500);
+    }
+  }
+
+
+  toggleStyle() {
+    this.localization.isNewStyle = true;
+    this.setView();
+  }
+
+  
+  setView() {
+    const bodyTag = document.getElementsByTagName('body')[0];
+    if (this.localization.isNewStyle) {
+      bodyTag.setAttribute("id", "new-mat-view");
+      this.localization.setFloatLabel = 'always';
+      this.localization.setFloatLabelNever = 'never';
+    } else {
+      bodyTag.removeAttribute("id");
+      this.localization.setFloatLabel = 'never';
     }
   }
 

@@ -1,7 +1,7 @@
 <div class="list-container h-100 p-4">
   <!--Start  Select Dropdropdown Container div -->
       <div class="select-container hide-underline ag_display--flex align-items-baseline">
-          <mat-form-field class="select-width select-class">
+          <mat-form-field class="select-width select-class" [floatLabel]="floatLabel">
               <mat-select id="selectHistoryType" #selectSetup [(ngModel)]="historyType" (selectionChange)="changeType()" >
                   <mat-option *ngFor="let type of historyTypes" [value]="type.id" >
                      {{ type.name }}

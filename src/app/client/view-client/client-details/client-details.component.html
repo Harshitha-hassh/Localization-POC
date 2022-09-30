@@ -1,6 +1,6 @@
 <div class="all-clients h-100">
     <div class="page-header d-flex flex-wrap" id="pageHeader">
-      <mat-form-field class="spa-searchbox searchpt pt23" floatLabel="never" id="searchInput">
+      <mat-form-field class="spa-searchbox searchpt pt23" [floatLabel]="floatLabelNever" id="searchInput">
         <input #tableInput matInput autocomplete="off" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
           type="text" placeholder="{{this.captions.SearchbyNamePhoneorEmail}}" value="" (ngModelChange)="clientSearch(searchText);viewCheckedFlag=false">
         <i [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor" (click)="searchdata(searchText='')"></i>

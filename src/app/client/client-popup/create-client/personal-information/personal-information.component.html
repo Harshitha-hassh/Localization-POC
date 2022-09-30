@@ -5,7 +5,7 @@
     </app-image-uploader>
     <div class="float-left sidesection ml-3">
       <div>
-        <mat-form-field class="">
+        <mat-form-field class="" [floatLabel]="floatLabel">
           <mat-select [placeholder]="captions.CTitle" formControlName="title" [required]="customRequired.title">
             <mat-option *ngFor="let title of titles" [value]="title.id">{{title.value}}</mat-option>
           </mat-select>
@@ -16,7 +16,7 @@
         </mat-form-field>
       </div>
       <div class="">
-        <mat-form-field class="">
+        <mat-form-field class="" [floatLabel]="floatLabel">
           <input matInput [placeholder]="captions.CFirstName" [maxlength]="1000" style="text-transform:capitalize"
             value={{personalDetails.firstName}} autocomplete="off" formControlName="firstName" required>
           <mat-error class=""
@@ -25,7 +25,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field class=" ml-3 mr-3">
+        <mat-form-field class=" ml-3 mr-3" [floatLabel]="floatLabel">
           <input matInput [placeholder]="captions.CLastName" [maxlength]="1000" style="text-transform:capitalize"
             value={{personalDetails.lastName}} formControlName="lastName" required>
           <mat-error class=""
@@ -34,7 +34,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="">
+        <mat-form-field class="" [floatLabel]="floatLabel">
           <input matInput [placeholder]="captions.Pronounced" [maxlength]="20" style="text-transform:capitalize"
             value={{personalDetails.pronounce}} formControlName="pronounced">
         </mat-form-field>
@@ -68,7 +68,7 @@
               <div class="dob-right">*</div>
             </div>
             <div class="d-inline-block">
-              <mat-form-field floatLabel="never" class="width_180px" appearance="legacy">
+              <mat-form-field [floatLabel]="floatLabel" class="width_180px date-picker-width" appearance="legacy">
                 <input [required]="customRequired.dob" dateRestricter [max]="maxDate" matInput [matDatepicker]="picker"
                   [placeholder]="placeHolderFormat" class="" formControlName="dob">
                 <mat-datepicker #picker></mat-datepicker>
@@ -93,7 +93,7 @@
       </div>
 
       <div class="patron-section">
-        <mat-form-field class="mr-3" [ngClass]="!isCMSConfigured || isPatronIdAvailable ? 'button_invalid' : ''">
+        <mat-form-field [floatLabel]="floatLabel" class="mr-3" [ngClass]="!isCMSConfigured || isPatronIdAvailable ? 'button_invalid' : ''">
           <input matInput [placeholder]="captions.PatronID" formControlName="patronid"
             [readonly]="!isCMSConfigured || isPatronIdAvailable" (focusout)="checkPatronValidation()">
           <mat-error class="" *ngIf="isCMSConfigured && !isPatronIdAvailable">
@@ -120,7 +120,7 @@
         </button>
       </div>
       <div>
-        <mat-form-field class="button_invalid">
+        <mat-form-field class="button_invalid" [floatLabel]="floatLabel">
           <input matInput [placeholder]="captions.Rank" readonly formControlName="rank">
         </mat-form-field>
       </div>
@@ -133,7 +133,7 @@
           class="clearfix ">
           <div class="phone-controls-wrapper float-left width-490px">
             <div>
-              <mat-form-field class="inputwidth20 width-100px mr-3" [formGroupName]="i">
+              <mat-form-field class="inputwidth20 width-100px mr-3" [floatLabel]="floatLabel" [formGroupName]="i">
                 <mat-select [required]="customRequired.phone" [placeholder]="captions.CPhone" ref-phonedropDown
                   id="PhoneNumberLabel" name="TSpdd" class="LW14" formControlName="PhoneNumberLabel"
                   (selectionChange)="setmandatory($event, 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', i ,item)">
@@ -143,7 +143,7 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field class="width-20 mr-2 LW14 " [formGroupName]="i">
+              <mat-form-field class="width-20 mr-2 LW14 " [floatLabel]="floatLabel" [formGroupName]="i">
                 <span *ngIf="CountryCodeRef.value" class="position-absolute">+</span>
                 <input matInput name="TSpi" [ngClass]="{'countryCodeInput': CountryCodeRef.value}" #CountryCodeRef [required]="customRequired.phone" 
                   (input)=" setmandatory($event,'countryCode','PhoneNumber', 'PhoneNumberLabel', i)" 
@@ -151,7 +151,7 @@
                   formControlName="countryCode" [placeholder]="commonCaptions.CountryCode">
               </mat-form-field>
 
-              <mat-form-field class=" LW14 " [formGroupName]="i">
+              <mat-form-field class=" LW14 " [floatLabel]="floatLabel" [formGroupName]="i">
                 <input matInput name="TSpi" [required]="customRequired.phone"
                   (input)=" setmandatory($event,'PhoneNumber','countryCode','PhoneNumberLabel', i)"
                   (blur)="phoneChange($event,'PhoneNumber','countryCode','PhoneNumberLabel',i)" [maxlength]="30"
@@ -164,7 +164,7 @@
                 *ngIf="last"></span>
             </div>
             <div>
-              <mat-form-field class="d-block width-380px"
+              <mat-form-field class="d-block width-380px" [floatLabel]="floatLabel"
                 *ngIf="item.get('PhoneNumberLabel').value === phoneTypes.office" [formGroupName]="i">
                 <input matInput [placeholder]="commonCaptions.lbl_extension" formControlName='Extension'
                   inputtype="onlynumber" maxlength="5">
@@ -204,7 +204,7 @@
         <div *ngFor="let item of FormGrp.get('Email')['controls']; let j = index;let last = last" formArrayName="Email"
           class="w-100 emailDiv">
           <div class="float-left width-490px" [formGroupName]="j">
-            <mat-form-field class="inputwidth20 width-100px mr-3">
+            <mat-form-field class="inputwidth20 width-100px mr-3" [floatLabel]="floatLabel">
               <mat-select (selectionChange)="onEmailChange($event, i ,item)" [required]="customRequired.email"
                 [placeholder]="captions.Email" (value)="selectedEmail" id="EmailSelect" name="TSedd" ref-emailDropdown
                 formControlName="EmailLabel" class="">
@@ -214,7 +214,7 @@
               </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="inputwidth70 width-287px">
+            <mat-form-field class="inputwidth70 width-287px" [floatLabel]="floatLabel">
               <input matInput name="TSei" (blur)="emailChange('EmailId','EmailLabel',j);" [maxlength]="75"
                 inputtype="email" id="EmailInput" formControlName="EmailId">
 
@@ -256,7 +256,7 @@
         <div *ngFor="let item of FormGrp.get('Address')['controls']; let j = index;let last=last" formArrayName="Address"
           class="clearfix">
           <div class="float-left width-490px">
-            <mat-form-field class="width-380px" [formGroupName]="j">
+            <mat-form-field class="width-380px" [formGroupName]="j" [floatLabel]="floatLabel">
               <input matInput [required]="customRequired.address" *ngIf="j==0" ngx-google-places-autocomplete
                 [options]='options' #placesRef="ngx-places" (onAddressChange)="bindAddressFromGoogle($event,true,j)"
                 name="TSei" [maxlength]="100" id="AddressInput{{j}}" formControlName="addressLine"
@@ -280,7 +280,7 @@
           </div>
         </div>
       </div>
-      <mat-form-field class="mr-3">
+      <mat-form-field class="mr-3" [floatLabel]="floatLabel">
         <input matInput [required]="customRequired.postalCode" [placeholder]="captions.PostalCode"
           (blur)="PostalCodeChanged($event,false)" formControlName="postal_code" [maxlength]="10">
         <mat-error class=""
@@ -288,7 +288,7 @@
           {{captions.MissingPostalCode}}
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="">
+      <mat-form-field class="" [floatLabel]="floatLabel">
         <input matInput [placeholder]="captions.City" formControlName="city" [required]="customRequired.city"
           [maxlength]="50">
         <mat-error class=""
@@ -297,14 +297,14 @@
         </mat-error>
       </mat-form-field>
       <div>
-        <mat-form-field class="mr-3">
+        <mat-form-field class="mr-3" [floatLabel]="floatLabel">
           <input matInput [placeholder]="captions.State" [required]="customRequired.state" formControlName="state">
           <mat-error class=""
             *ngIf="FormGrp.controls['state'].hasError('required') && FormGrp.controls['state'].touched && !FormGrp.controls['state'].valid">
             {{captions.MissingStateInformation}}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="">
+        <mat-form-field class="" [floatLabel]="floatLabel">
           <input matInput formControlName="country" [matAutocomplete]="auto" [required]="customRequired.country"
             [placeholder]="captions.Country" autocomplete="off" name="Country">
           <mat-error class=""

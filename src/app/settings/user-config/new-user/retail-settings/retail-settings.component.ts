@@ -26,9 +26,11 @@ export class RetailSettingsComponent implements OnInit {
   ActionButton: string;
   @Input() IsRoleSelected: any;
   isCommissionClassRequired = false;
+  floatLabel: string;
+
   constructor(public localization: RetailStandaloneLocalization, private utils: Utilities,
               public servicesetting: SettingsService, private http: HttpServiceCall) {
-
+                this.floatLabel = this.localization.setFloatLabel;
   }
 
   ngOnInit() {

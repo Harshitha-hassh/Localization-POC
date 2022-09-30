@@ -16,7 +16,7 @@
                                     <div *ngIf="!showCustomerID && custId">
                                         <div>
                                             <i class="icon-user ag_pr--2 "></i>
-                                            <mat-form-field class="ag_w--50">
+                                            <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
     
                                                 <input matInput type="text" [placeholder]="captions.lbl_userId"
                                                     class="ag_text--uppercase"
@@ -28,7 +28,7 @@
                                         </div>
                                         <div class="hide-view">
                                             <i class="icon-password ag_pr--2 "></i>
-                                            <mat-form-field class="ag_w--50">
+                                            <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
     
                                                 <input matInput [type]="hidePassword ? 'text' : 'password'"
                                                     [placeholder]="captions.password" formControlName="password"
@@ -45,7 +45,7 @@
                                     <div *ngIf="showCustomerID && custId">
                                         <div>
                                             <i class="icon-user ag_pr--2 "></i>
-                                            <mat-form-field class="ag_w--50">
+                                            <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
     
                                                 <input matInput type="text" [placeholder]="captions.lbl_userId"
                                                     class="ag_text--uppercase"
@@ -57,7 +57,7 @@
                                         </div>
                                         <div class="hide-view">
                                             <i class="icon-password ag_pr--2 "></i>
-                                            <mat-form-field class="ag_w--50">
+                                            <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
     
                                                 <input matInput [type]="hidePassword ? 'text' : 'password'"
                                                     [placeholder]="captions.password" formControlName="password"
@@ -72,7 +72,7 @@
                                         </div>
                                         <div>
                                             <i class="icon-guest ag_pr--2"></i>
-                                            <mat-form-field class="w-50">
+                                            <mat-form-field class="w-50" [floatLabel]="floatLabel">
                                                 <input matInput inputtype="nonnegative" type="number"
                                                     [placeholder]="captions.customerId" class="text-uppercase"
                                                     inputtype="capitalise,notallowspace,nospecailchar"
@@ -93,7 +93,7 @@
                                 </div>
                                 <div *ngIf="loginSuccess" class="overall_login_wrapper">
                                     <i class="icon-location-login ag_pr--2"></i>
-                                    <mat-form-field class="ag_w--50">
+                                    <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
                                         <mat-select formControlName="location" (click)="loadProperties()" [disabled] = "multipleProperties.length ==1" (selectionChange)="onPropertyChange($event)"
                                             [placeholder]="captions.lbl_location">
                                             <mat-option *ngFor="let location of multipleProperties" [value]="location">
@@ -105,7 +105,7 @@
                                         </mat-error>
 
                                     </mat-form-field>
-                                    <mat-form-field class="w-50 machine-name" *ngIf = "isPromptOnLoginEnabled && machineNames.length > 0">
+                                    <mat-form-field class="w-50 machine-name" *ngIf = "isPromptOnLoginEnabled && machineNames.length > 0" [floatLabel]="floatLabel">
                                         <mat-select formControlName="machineName" (click)="loadMachineNames()"
                                         [compareWith]="compareSelect"  placeholder="{{this.captions.Machine}}" required>
                                             <mat-option *ngFor="let machineName of machineNames"

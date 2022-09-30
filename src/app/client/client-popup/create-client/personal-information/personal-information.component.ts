@@ -110,6 +110,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     postalCode:false,
     dob:false
   };
+  floatLabel: string;
+  floatLabelNever: string;
   
   @Input('inputData')
   set formData(value) {
@@ -135,12 +137,14 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   ) {
     this.maxReceiptDate = new Date();
     // this.receiptDate = new FormControl("");
-
+    this.floatLabel = this.localization.setFloatLabel;
     this.defaultSettings = JSON.parse(sessionStorage.getItem('defaultSettings'));
     this.captions = this.localization.captions.bookAppointment;
     this.commonCaptions = this.localization.captions.common;
     this.genderList = [{ text: this.captions['Male'], value: 'Male' }, { text: this.captions['Female'], value: 'Female' }];
     this.placeHolderFormat = this.localization.inputDateFormat;
+    this.floatLabel = this.localization.setFloatLabel;
+    this.floatLabelNever = this.localization.setFloatLabelNever;
     this.FormGrp = this.Form.group({
       id: 0,
       guestId: DefaultGUID,
