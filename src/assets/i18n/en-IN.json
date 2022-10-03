@@ -2103,7 +2103,7 @@
     "lbl_bucketname": "Bucket Name_in",
     "lbl_applyForAllPaymentMethodsForTheSameOutlet": "Apply For All Payment Methods_in",
     "lbl_applyForOutletsForTheSamePaymentMethod": "Apply For All Outlets_in",
-    "SearchForMemberBucketMapping": "Search By Payment Method, Bucket Code or Bucket Name_in",
+    "SearchForMemberBucketMapping": "Search By Payment Method or Bucket Code_in",
     "SelectRevenuePostCode": "Select Revenue Post Code_in",
     "SearchPostCode": "Search By Post Code Number, Description, Department_in",
     "Sync": "Sync_in",
