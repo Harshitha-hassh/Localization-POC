@@ -26,6 +26,7 @@ export class MultiSelectComponent implements OnInit , OnChanges {
   ngOnInit() {
     this.more = this.localization.captions.common.More;
     this.valuesSelected = this.dropDownFilterData.slice(0, this.dropDownFilterData.length);
+    
   }
   ngOnChanges() {
     this.dropDownFrmGrp = new FormGroup({

@@ -68,7 +68,7 @@
               <div class="dob-right">*</div>
             </div>
             <div class="d-inline-block">
-              <mat-form-field [floatLabel]="floatLabel" class="width_180px date-picker-width" appearance="legacy">
+              <mat-form-field class="width_180px date-picker-width" appearance="legacy" [floatLabel]="floatLabelNever">
                 <input [required]="customRequired.dob" dateRestricter [max]="maxDate" matInput [matDatepicker]="picker"
                   [placeholder]="placeHolderFormat" class="" formControlName="dob">
                 <mat-datepicker #picker></mat-datepicker>

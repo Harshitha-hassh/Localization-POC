@@ -12,7 +12,7 @@
     <button [ngClass]="{'button_invalid': IsReadOnly }" mat-raised-button (click)="Save()" class="copy-btn body-bgcolor whitecolor text-uppercase">{{captions.save}}</button>
     <button [ngClass]="{'button_invalid': IsReadOnly }" mat-raised-button (click)="openDialog()" class="copy-btn body-bgcolor whitecolor text-uppercase">{{captions.copy}}</button>
   </div>
-  <div class="data-section">
+  <div class="data-section pt-4">
     <ng-scrollbar>
       <app-accordian-user-config [IsReadOnly]="IsReadOnly" [inputData]="arrayData"></app-accordian-user-config>
     </ng-scrollbar>

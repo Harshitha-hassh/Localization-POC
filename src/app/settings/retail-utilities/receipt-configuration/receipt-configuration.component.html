@@ -63,11 +63,11 @@
                     <div class="rightSection h-100 float-right">
                       <!-- Comments -->
                       <div class="pt-3 pl-3">
-                        <mat-form-field (click)="viewChange($event)" class="textWidth mt-2 " [floatLabel]="floatLabel">
+                        <mat-form-field (click)="viewChange($event)" class="textWidth mt-2 txt-area-height" [floatLabel]="floatLabel">
                             <textarea matInput placeholder="{{textCaptions.GratuityLine}}" formControlName="gratuityLine" [maxlength]="250"></textarea>
                         </mat-form-field>
 
-                        <mat-form-field (click)="viewChange($event)" class="textWidth mt-2 " [floatLabel]="floatLabel">
+                        <mat-form-field (click)="viewChange($event)" class="textWidth mt-2 txt-area-height" [floatLabel]="floatLabel">
                             <textarea matInput placeholder="{{textCaptions.ReceiptNote}}" formControlName="receiptNote" [maxlength]="250"></textarea>
                         </mat-form-field>
                       </div>

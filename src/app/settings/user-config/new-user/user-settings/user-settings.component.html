@@ -52,7 +52,7 @@
 
           <div class="d-inline-block pt-4">
             <div><label class="date-label   form-label-normal">{{caption.setting.PasswordExpirationDate}}</label></div>
-            <mat-form-field class="" appearance="legacy" [floatLabel]="floatLabel">
+            <mat-form-field class="date-picker-width" appearance="legacy" [floatLabel]="floatLabel">
               <mat-label></mat-label>
               <input matInput dateRestricter [matDatepicker]="picker" autocomplete="off"  [min]="minDateValue" [placeholder]="placeHolderFormat"
                 formControlName="pwdexpirationdate" >
