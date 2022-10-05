@@ -9,6 +9,7 @@ import { ClientDataService } from '../../data-services/client.data.service';
 import { NotificationDataService } from '../../data-services/notification.data.service';
 import { Client, ClientInfo } from 'src/app/client/client-popup/create-client/client.modal';
 import { DefaultGUID } from 'src/app/common/shared/shared/globalsContant';
+import { Localization } from 'src/app/common/localization/localization';
 
 @Component({
   selector: 'app-notify-popup',
@@ -35,17 +36,20 @@ export class NotifyPopupComponent implements OnInit {
   transactionId: number = 0;
   guestId: number =0;
   title: string ='';
-  disableEmailSMSToggle: boolean = false
+  disableEmailSMSToggle: boolean = false;
+  floatLabel: string;
 
   constructor(private localilzation: RetailLocalization, 
     private _fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) private data: any,
     private dialogRef: MatDialogRef<NotifyPopupComponent>,
     private clientDataService: ClientDataService,
-    private notificationDataService: NotificationDataService ) {
+    private notificationDataService: NotificationDataService,
+    private localization : Localization ) {
      this.selectedClientId = this.data.guestId;
      this.transactionId=  this.data.transactionId;
      this.title =this.data.title;
+     this.floatLabel = this.localization.setFloatLabel;
   }
 
 

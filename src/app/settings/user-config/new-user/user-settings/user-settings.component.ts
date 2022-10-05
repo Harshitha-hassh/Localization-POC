@@ -33,10 +33,11 @@ export class UserSettingsComponent implements OnInit {
   commonCaptions: any;
   placeHolderFormat: string;
   @Input() popConfig: any;
+  floatLabel: string;
 
   constructor(public localization: RetailStandaloneLocalization, public servicesetting: SettingsService,
               private http: HttpServiceCall, private utils: Utilities, private PropertyInfo: PropertyInformation) {
-
+                this.floatLabel = this.localization.setFloatLabel;
   }
 
   async ngOnInit() {

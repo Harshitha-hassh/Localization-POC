@@ -3,7 +3,7 @@
     <div class="settings-div h-100 d-flex">
       <div class="retail-settings-left pl-4">
         <ng-scrollbar [autoHide]="true">
-          <mat-form-field class=" pt-3 w250">
+          <mat-form-field class=" pt-3 w250" [floatLabel]="floatLabel">
             <mat-select formControlName="rolename" (selectionChange)="OnRoleChange($event)" placeholder="{{caption.setting.RoleName}}">
               <mat-option *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>
             </mat-select>
@@ -27,7 +27,7 @@
 
             <div class="logoff pl-3">
               <label class="logofflabel form-label-normal d-block">{{caption.setting.LogoffAfter}}</label>
-              <mat-form-field class="" floatLabel="never">
+              <mat-form-field class="" floatLabel="floatLabel">
                 <input matInput autocomplete="off" placeholder="{{caption.setting.InMinutes}}" [maxLength]="3"
                   inputtype="nonnegative,nodecimal" formControlName="logoffafter">
               </mat-form-field>
@@ -51,7 +51,7 @@
             </div>
 
             <div class="commission float-left pl-3">
-              <mat-form-field class="">
+              <mat-form-field class="" [floatLabel]="floatLabel">
                 <input matInput autocomplete="off" [required]="this.isCommissionClassRequired" placeholder="{{caption.setting.CommissionClass}}" [maxlength]="9"
                   inputtype="nonnegative,nodecimal" formControlName="commissionclass">
                 <mat-error class="" *ngIf="retailSettingsFormGrp.controls['commissionclass'].hasError('required') && !retailSettingsFormGrp.controls['commissionclass'].valid">

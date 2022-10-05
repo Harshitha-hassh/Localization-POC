@@ -46,6 +46,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   isClientViewOnly = false;
   additionalInfo :any;
   PaymentReferenceID = 0;
+  floatLabel: string;
   @Input('inputData')
   set formData(value) {
     if(value && value.data!='')
@@ -66,6 +67,8 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     private userMachineConfigurationService: UserMachineConfigurationService
     ) {
     this.captions = this.localization.captions.bookAppointment;
+    this.floatLabel = this.localization.setFloatLabel;
+
     this.FormGrp = this.Form.group({
       // pricetype: 0,
       device: 0,

@@ -6,14 +6,14 @@
     <div class= "prop-section" >
   
         <form [formGroup]="propertyInfo" autocomplete="off" [ngClass]="{'button_invalid': isViewOnly}">
-          <mat-form-field class="name">
+          <mat-form-field [floatLabel]="floatLabel"class="name">
             <input type="text" matInput placeholder="{{captions.name}}" name="Name" formControlName="name" [maxlength]="25">
           </mat-form-field>
           <!-- Address Details -->
           <div class="address-details">
             <div formArrayName="address" *ngFor="let addressDetail of propertyInfo.get('address')['controls']; let i = index;">
               <div class="address-group" [formGroupName]="i">
-                <mat-form-field class="address">
+                <mat-form-field [floatLabel]="floatLabel" class="address">
                   <input type="text" matInput placeholder="{{captions.address}}" name="Address" formControlName="addressDetails" [maxlength]="50">
                 </mat-form-field>
                 <!-- <button mat-mini-fab (click)="addAddress(i,'')" class="buttonCust1 m-md-2" type="button" *ngIf="i == 0 && addresslength != 3">
@@ -27,18 +27,18 @@
               </div>
             </div>
             <div class="postal-details">
-              <mat-form-field class="postalCode">
+              <mat-form-field [floatLabel]="floatLabel" class="postalCode">
                 <input type="text" matInput placeholder="{{captions.postalCode}}" name="PostalCode" formControlName="postalcode" [maxlength]="7" inputtype="nospecailchar">
               </mat-form-field>
-              <mat-form-field class="state">
+              <mat-form-field [floatLabel]="floatLabel" class="state">
                 <input type="text" matInput placeholder="{{captions.state}}" name="State" formControlName="state" [maxlength]="10">
               </mat-form-field>
             </div>
             <div class="country-details">
-              <mat-form-field class="city">
+              <mat-form-field [floatLabel]="floatLabel" class="city">
                 <input type="text" matInput placeholder="{{captions.city}}" name="City" formControlName="city" > <!-- bug fix [maxlength]="10" 4128-->
               </mat-form-field>
-              <mat-form-field class="country">
+              <mat-form-field [floatLabel]="floatLabel" class="country">
                 <input matInput type="text" formControlName="country" [matAutocomplete]="auto"
                   [placeholder]="captions.country" autocomplete="off" [maxlength]="10" name="Country">
                 <mat-autocomplete #auto="matAutocomplete">
@@ -59,7 +59,7 @@
           <div class="phone-info" *ngFor="let phone of propertyInfo.get('phone')['controls']; let i= index;" formArrayName="phone">
               <label class="form-label-primary blckClr mb-0">{{captions.phone}}</label>
             <div [formGroupName]="i">
-              <mat-form-field class="phone" floatLabel="never">
+              <mat-form-field class="phone" [floatLabel]="floatLabel">
                 <mat-select  (selectionChange)="onPhChange($event, i ,phone)" placeholder="{{captions.phone}}" name="Phone" id="phone{{i}}" formControlName="phonelabel" >
                   <mat-option></mat-option>
                   <mat-option *ngFor="let phonetype of contactPhoneType" [value]="phonetype.Description">
@@ -67,7 +67,7 @@
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-              <mat-form-field class="ph-no">
+              <mat-form-field class="ph-no" [floatLabel]="floatLabel">
                 <input matInput id="phone-number" [maxlength]="30" textmask="{{textmaskFormat}}" name="phoneNumber" formControlName="phonenumber" inputtype="onlynumber" [skipInputValidation]="skipPhoneNumberValidationonBlur" [maxlength]="10">
               </mat-form-field>
               <!-- <button mat-mini-fab (click)="addPhoneItem(i,'','')" class="buttonCust1 m-md-2" type="button" *ngIf="i == 0">
@@ -81,7 +81,7 @@
             </div>
           </div>
           <!-- Language Selection -->
-          <mat-form-field class="lang">
+          <mat-form-field class="lang" [floatLabel]="floatLabel">
             <mat-select placeholder="{{captions.language}}" name="Language" formControlName="language">
               <mat-option *ngFor="let langType of languageType" [value]="langType.code">
                 {{langType.value}}
@@ -89,11 +89,11 @@
             </mat-select>
           </mat-form-field>
           <!-- Tenant Id -->
-          <mat-form-field class="tenantId">
+          <mat-form-field class="tenantId" [floatLabel]="floatLabel">
             <input type="text" matInput placeholder="{{captions.tenantId}}" name="TenantId" formControlName="tenantId" inputtype="onlynumber" [maxlength]="10">
           </mat-form-field>
           <!-- Property Code -->
-          <mat-form-field class="propCode">
+          <mat-form-field class="propCode" [floatLabel]="floatLabel">
             <input type="text" matInput placeholder="{{captions.propertyCode}}" name="PropertyCode" formControlName="propCode" [maxlength]="10">
           </mat-form-field>
           <hr />
@@ -119,7 +119,7 @@
             <label class="form-label-primary">{{captions.defaultFieldsConfiguration | uppercase}}</label>
             <div class="postal-details">              
                 <div class="defaultFieldConfiguration">
-                  <mat-form-field class="inputwidth10 mr-2">
+                  <mat-form-field class="inputwidth10 mr-2" [floatLabel]="floatLabel">
                     <mat-select [placeholder]="captions.DefaultEmailType" id="EmailLabel" name="TSedd"
                       formControlName="DEFAULT_EMAIL_TYPE" class="LW14">
                       <mat-option></mat-option>
@@ -129,12 +129,12 @@
                     </mat-select>
                   </mat-form-field>
     
-                  <mat-form-field class="state default-feilds">
+                  <mat-form-field class="state default-feilds" [floatLabel]="floatLabel">
                     <input type="text" matInput [placeholder]="captions.DefaultCountryCode" formControlName="DEFAULT_COUNTRY_CODE"
                       inputtype="onlynumber" [maxlength]="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>                    
                   </mat-form-field>
                   
-                  <mat-form-field class="state default-feilds">
+                  <mat-form-field class="state default-feilds" [floatLabel]="floatLabel">
                     <mat-select [placeholder]="captions.DefaultPhoneType" id="PhoneNumberLabel" name="TSpdd" class="LW14"
                       formControlName="DEFAULT_PHONE_TYPE">
                       <mat-option></mat-option>

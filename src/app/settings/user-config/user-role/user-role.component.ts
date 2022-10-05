@@ -29,12 +29,13 @@ export class UserRoleComponent implements OnInit, OnDestroy {
   hasAccess = true;
   IsReadOnly: boolean;
   dialogSubscription: ISubscription;
+  floatLabel: string;
 
 
   constructor(public settingService: SettingsService, private http: HttpServiceCall, private dialog: MatDialog,
               private localization: RetailStandaloneLocalization,
               private BPoint: BreakPointAccess, private utils: Utilities, private PropInfo: PropertyInformation) {
-
+                this.floatLabel = this.localization.setFloatLabel;
   }
 
   ngOnInit() {

@@ -26,6 +26,7 @@ import { CommonAlertMessagePopupComponent } from 'src/app/common/shared/shared/a
   // changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges, AfterViewChecked {
+  floatLabelNever: string;
 
   constructor(public dialog: MatDialog, private userAlerts: UserAlerts,
               public el: ElementRef,
@@ -34,6 +35,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
               private cdRef: ChangeDetectorRef) {
     this.captions = this.localization.captions;
     this.customHeaderButton = this.localization.captions.setting.Add;
+    this.floatLabelNever = this.localization.setFloatLabelNever;
     for (let i = 1; i <= this.ArrayList.length; i++) {
       this.ArrayList.push(`item ${i}`);
     }

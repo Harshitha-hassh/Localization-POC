@@ -4,17 +4,17 @@
         <ng-scrollbar [autoHide]="true">
             <form autocomplete="off" [formGroup]="userSessionConfigForm">
                 <div class='config-values'>
-                    <mat-form-field class="mtop">
+                    <mat-form-field class="mtop" [floatLabel]="floatLabel">
                         <mat-select placeholder="{{captions.defaultOutlet}}" formControlName="defaultOutletId" (selectionChange)="outletChange($event)">
                             <mat-option *ngFor="let outlet of outlets" [value]="outlet.id">{{outlet.description}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field class="mtop" *ngIf= "PropertyInfo.UseRetailInterface">
+                    <mat-form-field class="mtop" [floatLabel]="floatLabel" *ngIf= "PropertyInfo.UseRetailInterface">
                         <mat-select placeholder="{{localization.captions.settings.DefaultTerminal}}" formControlName="defaultTerminalId">
                             <mat-option *ngFor="let terminal of outletTerminals" [value]="terminal.terminalId">{{terminal.terminalName}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field class="mtop" *ngIf = "enableMachineTransaction">
+                    <mat-form-field class="mtop" [floatLabel]="floatLabel" *ngIf = "enableMachineTransaction">
                         <mat-select placeholder="{{captions.defaultMachineName}}" formControlName="defaultMachineId">
                             <mat-option *ngFor="let obj of defaultMachineOptions" [value]="obj.value">
                                 {{obj.viewValue}}
@@ -29,18 +29,18 @@
                     </mat-form-field>
 -->
                 <ng-container *ngIf="!useRetailInterface">
-                    <mat-form-field>
+                    <mat-form-field [floatLabel]="floatLabel">
                         <mat-select placeholder="{{captions.paymentMethod}}" formControlName="defaultPaymentId">
                             <mat-option *ngFor="let payment of paymentMethods" [value]="payment.id">{{payment.paymentMethod}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                     <label class='LW14 label'>{{captions.rguestPayDevices}}</label>
-                    <mat-form-field>
+                    <mat-form-field [floatLabel]="floatLabel">
                         <mat-select placeholder="{{captions.paymentDevice}}" formControlName="defaultPaymentDevice" (selectionChange)="deviceChanged($event)">
                             <mat-option *ngFor="let device of paymentDevices" [value]="device.id">{{device.description}}</mat-option>
                         </mat-select>
                     </mat-form-field>
-                    <mat-form-field *ngIf="showPaymentDevice">
+                    <mat-form-field *ngIf="showPaymentDevice" [floatLabel]="floatLabel">
                         <mat-select placeholder="{{captions.deviceName}}" formControlName="defaultDeviceName" [disabled]="!enablePaymentDeviceSelect">
                             <mat-option *ngFor="let name of deviceNames" [value]="name.id">{{name.description}}</mat-option>
                         </mat-select>
@@ -51,13 +51,13 @@
                     </div>
                     <label class='LW14 label'>{{captions.PrinterSelection}}</label><br>
                     <label class='LW14 label'>{{captions.SmallStickers}}</label>
-                        <mat-form-field>
+                        <mat-form-field [floatLabel]="floatLabel">
                             <mat-select placeholder="{{captions.PrinterName}}" formControlName="smallStickersPrinter" [disabled]="!enablePrinterSelect">
                                 <mat-option *ngFor="let printer of printers" [value]="printer.id">{{printer.description}}</mat-option>
                             </mat-select>
                         </mat-form-field>
                     <label class='LW14 label'>{{captions.HangingTickets}}</label>
-                    <mat-form-field>
+                    <mat-form-field [floatLabel]="floatLabel">
                         <mat-select placeholder="{{captions.PrinterName}}" formControlName="hangingTicketsPrinter" [disabled]="!enablePrinterSelect">
                             <mat-option *ngFor="let printer of printers" [value]="printer.id">{{printer.description}}</mat-option>
                         </mat-select>
