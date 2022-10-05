@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material-module';
 import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
@@ -19,9 +18,10 @@ import { CommonUtilities } from './common/shared/shared/utilities/common-utiliti
 import { Utilities } from './core/utilities';
 import { ServiceLocator } from './common/service.locator';
 import { AppModuleService } from './core/services/app.service';
-import { OAuthModule } from 'angular-oauth2-oidc';
 import { GlobalErrorHandler } from './shared/service/global-error-handler.service';
-import { ADB2CAuthConfiguration } from './login/auth.config';
+import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
+import { HttpClientModule } from '@angular/common/http';
+import { OAuthModule, OAuthService, UrlHelperService } from 'angular-oauth2-oidc';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
@@ -61,6 +61,11 @@ declare module "@angular/core" {
     { provide: Localization, useExisting: RetailStandAloneLocalization },
     { provide: CommonPropertyInformation, useExisting: RetailPropertyInformation },
     AppModuleService,
+    {
+      provide: OAuthService,
+      useClass: OAuthService
+    },
+    UrlHelperService,
     ADB2CAuthConfiguration
   ],
   bootstrap: [AppComponent]

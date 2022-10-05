@@ -36,12 +36,17 @@ import { FeatureName, RetailPropertyInformation } from 'src/app/retail/common/se
 import { PropertyService } from 'src/app/common/services/property.service';
 import * as FullStory from '@fullstory/browser';
 import { CryptoUtility } from 'src/app/core/utilities/crypto.utility';
+import { OAuthService, NullValidationHandler, OAuthEvent } from 'angular-oauth2-oidc';
+import { AlertType } from 'src/app/shared/shared-models';
+import { ButtonType } from 'src/app/common/enums/shared-enums';
+import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
+import { LoginRoutes } from '../login.routes';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers:[UserMachineConfigurationService, RetailFunctionalityBusiness, RetailFunctionalityService,CryptoUtility],
+  providers: [UserMachineConfigurationService, RetailFunctionalityBusiness, RetailFunctionalityService, CryptoUtility],
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit, OnDestroy {
@@ -49,6 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginForms: FormGroup;
   loginError: boolean;
   loginSuccess = false;
+  hideLoginForm = false;
   loginButton: ButtonValue;
   hidePassword: boolean;
   userProperties: any = [];
@@ -79,8 +85,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   tenantId: number;
   tenantIdFromParam: string;
   currYear = '2022';
-  prevYear='2020';
-  floatLabel: string;
+  prevYear = '2020'
 
   //Machine Name
   isMachineNameEnabled: boolean;
@@ -88,8 +93,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   defaultMachineId: number = 0;
   machineNames = [];
   userMachineInfo: UserMachineInfo;
-  key : string ;
-  iv : string;
+  key: string;
+  iv: string;
+  ADB2CAuthenticationEnabled: boolean = false;
+
   constructor(
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
@@ -100,79 +107,83 @@ export class LoginComponent implements OnInit, OnDestroy {
     private loginService: LoginCommunicationService,
     private PropertySettingService: PropertySettingDataService,
     private propertyInfo: PropertyInformation,
-    private propertyServices : PropertyService,
+    private propertyServices: PropertyService,
     private userDefaultsService: UserdefaultsInformationService,
     private retailPropertySettingDataService: RetailPropertySettingDataService,
     private compiler: Compiler,
     private router: Router,
-    private userSessionConfig: UserMachineConfigurationService, 
+    private userSessionConfig: UserMachineConfigurationService,
     private retailSharedService: RetailSharedVariableService,
     private propertyFeatureService: PropertyFeaturesConfigurationService,
     private retailpropertyInfo: RetailPropertyInformation,
     private retailFunc: RetailFunctionalityBusiness,
     private payAgentService: PayAgentService,
-    private crypto : CryptoUtility
+    private crypto: CryptoUtility,
+    private oauthService: OAuthService,
+    private adb2cAuthConfiguration: ADB2CAuthConfiguration
   ) {
-    this.initializeForm();
-    this.captions = this.localize.captions;
-    this.floatLabel = this.commonLocalize.setFloatLabel;
+    // this.initializeForm();
+    // this.captions = this.localize.captions;
   }
 
-  ngOnInit() {
-    this.compiler.clearCache();
+  async ngOnInit() {
+    // this.compiler.clearCache();
 
-    const token = sessionStorage.getItem(JWT_TOKEN);
-    if (this.localize.validateString(token)) {
-      this.router.navigate(['/home']);
-    }
+    // const token = sessionStorage.getItem(JWT_TOKEN);
+    // if (this.localize.validateString(token)) {
+    //   this.router.navigate(['/home']);
+    // }
 
-    this.captionGenerator();
-    this.formGenerator();
-    this.errorGenerator();
-    this.getCustomerId();
-    this.setEncryptKey();
+    // this.captionGenerator();
+    // this.formGenerator();
+    // this.errorGenerator();
+    // this.getCustomerId();
+    // this.setEncryptKey();
 
-    this.loginButton = {
-      type: 'primary',
-      label: this.captions.Login,
-      customclass: 'w-307px'
-    };
-    this.buttonValueprimary1 = {
-      type: 'primary',
-      label: this.captions.setPassword,
-      customclass: 'w-307px'
-    };
-    this.buttonValueprimary2 = {
-      type: 'primary',
-      label: 'login.ChangePassword',
-      customclass: 'w-307px'
-    };
-    const getrememberresult = this.sessionService.GetRememberedUsers();
-    const rememberedUser = (getrememberresult.length > 0) ? getrememberresult[0].name : '';
-    this.loginForms.controls.userId.setValue(rememberedUser ? rememberedUser : '');
-    this.loginForms.controls.rememberme.setValue(rememberedUser ? true : false);
-    this.loginForms.controls.password.setValue('');
+    // this.loginButton = {
+    //   type: 'primary',
+    //   label: this.captions.Login,
+    //   customclass: 'w-307px'
+    // };
+    // this.buttonValueprimary1 = {
+    //   type: 'primary',
+    //   label: this.captions.setPassword,
+    //   customclass: 'w-307px'
+    // };
+    // this.buttonValueprimary2 = {
+    //   type: 'primary',
+    //   label: 'login.ChangePassword',
+    //   customclass: 'w-307px'
+    // };
+    // const getrememberresult = this.sessionService.GetRememberedUsers();
+    // const rememberedUser = (getrememberresult.length > 0) ? getrememberresult[0].name : '';
+    // this.loginForms.controls.userId.setValue(rememberedUser ? rememberedUser : '');
+    // this.loginForms.controls.rememberme.setValue(rememberedUser ? true : false);
+    // this.loginForms.controls.password.setValue('');
+    await this.initializeForm();
   }
 
   OnFormValueChanges(): any {
-    this.useridSubscribe = this.loginForms.get('userId').valueChanges.pipe(takeUntil(this.$destroyed)).subscribe(r => {
-      if (r.includes('@')) {
-        this.showCustomerID = false;
-        this.removeVal();
-      } else {
-        this.showCustomerID = true;
-        this.setVal();
-      }
-      this.loginError = false;
-      this.errResponse = '';
-    });
-    this.passwordSubscribe = this.loginForms.get('password').valueChanges.pipe(takeUntil(this.$destroyed)).subscribe(r => {
-      this.loginError = false;
-      this.errResponse = '';
-    });
+    if (!this.ADB2CAuthenticationEnabled) {
+      this.useridSubscribe = this.loginForms.get('userId').valueChanges.pipe(takeUntil(this.$destroyed)).subscribe(r => {
+        // if (r.includes('@')) {
+        //   this.showCustomerID = false;
+        //   this.removeVal();
+        // } else {
+        //   this.showCustomerID = true;
+        //   this.setVal();
+        // }
+        this.loginError = false;
+        this.errResponse = '';
+      });
+      this.passwordSubscribe = this.loginForms.get('password').valueChanges.pipe(takeUntil(this.$destroyed)).subscribe(r => {
+        this.loginError = false;
+        this.errResponse = '';
+      });
+    }
   }
 
-  getCustomerId() {
+  async getCustomerId() {
     const serviceParams = {
       route: RetailRoutes.EnvironmentConfig,
       uriParams: '',
@@ -181,9 +192,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       showError: true,
       baseResponse: true
     };
-    this.loginService.makeGetCall(serviceParams).then((res: any) => {
+    await this.loginService.makeGetCall(serviceParams).then((res: any) => {
       this.custId = res ? res.result : 0;
-      if (this.custId == '0') {
+      if (this.custId == '0' || this.ADB2CAuthenticationEnabled) {
         this.userIdDir = 'capitalise,notallowspace';
         this.showCustomerID = true;
         this.setVal();
@@ -194,6 +205,16 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.removeVal();
       }
     });
+
+    let tenantId = localStorage.getItem('TenantId');
+    let adb2cEnabled = localStorage.getItem('ADB2CAuthenticationEnabled');
+    if (adb2cEnabled != null && adb2cEnabled.toLowerCase() == "true") {
+      await this.configureAuth(tenantId);
+    }
+    //To load form for general authentication
+    if (adb2cEnabled == null || (adb2cEnabled != null && adb2cEnabled.toLowerCase() == "false")) {
+      this.hideLoginForm = false;
+    }
   }
 
   formGenerator() {
@@ -203,7 +224,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       customerId: [''],
       rememberme: false,
       location: ['Agilysys', Validators.required],
-      machineName:['0', Validators.required]
+      machineName: ['0', Validators.required]
     });
   }
 
@@ -226,7 +247,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  loadProperties() { }
+  loadProperties() {
+    if (!this.ADB2CAuthenticationEnabled) {
+      const customerId: any = (this.loginForms.controls.customerId.value !== '' && this.loginForms.controls.customerId.value !== undefined) ? this.loginForms.controls.customerId.value : this.custId;
+    }
+  }
 
   onPropertyChange(eve) {
     const propertyInfo = this.propertyValues.find(item => item.propertyCode === eve.value.id);
@@ -238,6 +263,31 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   async handleclick() {
+    if (!this.ADB2CAuthenticationEnabled) {
+      this.generalAuthLogin();
+    }
+  }
+
+  getADB2CEmailClaim(claims) {
+    let email = "";
+    if (claims != null && claims != undefined && claims['emails'] != null && claims['emails'].length > 0)
+      email = claims['emails'][0];
+    return email;
+  }
+
+  async adb2cAuthLogin() {
+    let tenantId = localStorage.getItem('TenantId');
+    this.loginForms.controls.customerId.setValue(tenantId);
+    let claims = this.adb2cClaims;
+    const credentials = {
+      email: this.getADB2CEmailClaim(claims),
+      tenantId: tenantId,
+      ProductId: Product.RETAIL
+    };
+    await this.validateAdb2cCredentials(credentials, claims, tenantId);
+  }
+
+  async generalAuthLogin() {
     if (this.loginForms.valid) {
       const credentials = {
         userName: this.loginForms.value.userId,
@@ -262,12 +312,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.userInfo = loginDetails.result.userLoginInfo;
     const id = loginDetails.result.userLoginInfo.tenantId;
     this.setUserInfo(loginDetails);
-    if (loginDetails.result.userLoginInfo.isNewUser === true) {
+    if (!this.ADB2CAuthenticationEnabled && loginDetails.result.userLoginInfo.isNewUser === true) {
       this.setPassword = true;
       this.tenantId = Number(id);
       const content = { title: 'SETUP PASSWORD', userName: this.userName, tenantId: this.tenantId };
       this.setUpPassword(content, true);
-    } else if (loginDetails.result.userLoginInfo.isPasswordExpired === true) {
+    } else if (!this.ADB2CAuthenticationEnabled && loginDetails.result.userLoginInfo.isPasswordExpired === true) {
       const content = { title: 'CHANGE PASSWORD', userName: this.userName, tenantId: this.tenantId };
       this.setUpPassword(content, false);
     } else {
@@ -278,13 +328,18 @@ export class LoginComponent implements OnInit, OnDestroy {
         id: x.propertyCode,
         name: x.propertyName
       }));
-      this.userMachineInfo = await this.retailPropertySettingDataService.GetMachineNamesAndConfigurationSetting(this.userInfo.userId,Product.RETAIL,
-        this.propertyValues.map(x=> x.propertyId));
+      this.userMachineInfo = await this.retailPropertySettingDataService.GetMachineNamesAndConfigurationSetting(this.userInfo.userId, Product.RETAIL,
+        this.propertyValues.map(x => x.propertyId));
       // Selecting property by default when there is only one property configured for tenant
-      if (this.multipleProperties.length == 1) {    
-        this.loginForms.controls.location.setValue(this.multipleProperties[0]);           
-        this.setMachineInfo(this.propertyValues[0].propertyId);        
+      if (this.multipleProperties.length == 1) {
+        this.loginForms.controls.location.setValue(this.multipleProperties[0]);
+        this.setMachineInfo(this.propertyValues[0].propertyId);
       }
+      // else //For AD B2C Auth flow - show login form property selection
+      // {
+      //   this.hideLoginForm = false;
+      // }
+      this.hideLoginForm = false;
     }
   }
 
@@ -302,6 +357,36 @@ export class LoginComponent implements OnInit, OnDestroy {
     sessionStorage.setItem(USER_INFO, userInfo);
   }
 
+  async GetADB2CAuthConfig(tenantId: string) {
+    const iTenantId: number = Number(tenantId);
+    const serviceParams = {
+      route: LoginRoutes.GetADB2CAuthConfig,
+      uriParams: { "tenantId": iTenantId, "productId": Product.RETAIL },
+      header: '',
+      body: '',
+      showError: true,
+      baseResponse: true
+    };
+    let adb2cConfig: any;
+    adb2cConfig = await this.loginService.makeGetCall(serviceParams);
+    this.adb2cAuthConfiguration.ADB2CAuthFeatureEnabled = adb2cConfig.result.adB2CAuthenticationEnabled;
+    this.adb2cAuthConfiguration.DiscoveryDocumentConfigUrl = adb2cConfig.result.discoveryDocumentUrl;
+    this.adb2cAuthConfiguration.authConfig = {
+      redirectUri: window.location.origin + '/Retail/login',
+      postLogoutRedirectUri: window.location.origin + '/Retail/login',
+      responseType: 'code',
+      issuer: adb2cConfig.result.issuer,
+      strictDiscoveryDocumentValidation: false,
+      tokenEndpoint: adb2cConfig.result.tokenEndPoint,
+      loginUrl: adb2cConfig.result.loginUrl,
+      clientId: adb2cConfig.result.clientId,
+      scope: 'openid',
+      skipIssuerCheck: true,
+      clearHashAfterLogin: true,
+      oidc: true
+    };
+  }
+
   async validateCredentials(credentials) {
     const serviceParams = {
       route: RetailRoutes.Login,
@@ -314,13 +399,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     if (!this.loginSuccess) {
       // Validate credentials
-      if(this.key && this.iv)
-      {
-        serviceParams.body.Password = this.crypto.EncryptString(credentials.Password,this.key,this.iv);  
+      if (this.key && this.iv) {
+        serviceParams.body.Password = this.crypto.EncryptString(credentials.Password, this.key, this.iv);
         serviceParams.route = RetailRoutes.LoginEncrypted;
       }
       const loginDetails = await this.loginService.makePostCall(serviceParams);
-
       if (loginDetails.successStatus) {
         this.userName = credentials.UserName;
         await this.successCallBack(loginDetails);
@@ -352,7 +435,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setAutoLogOff();
       await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.setMachineDetails();
-      this.router.navigate(['/home']);      
+      this.router.navigate(['/home']);
       await this.retailFunc.getRetailFunctionality();
     }
   }
@@ -365,7 +448,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.userInfo != null && this.userInfo.languageCode != ''
         ? this.userInfo.languageCode
         : result.languageCode;
-    let maxDecimalPlace = result["maximumDecimalPlaces"] ? result["maximumDecimalPlaces"] : 2;    
+    let maxDecimalPlace = result["maximumDecimalPlaces"] ? result["maximumDecimalPlaces"] : 2;
 
     const PropertyValues =
       'Language=' +
@@ -405,7 +488,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       ';LogOffAfter=' +
       result.logOffAfter +
       '; MaxDecimalPlaces=' +
-        maxDecimalPlace;
+      maxDecimalPlace;
     sessionStorage.setItem(PROPERTY_INFO, PropertyValues);
     sessionStorage.setItem(PROPERTY_DATE, result.propertyDate);
     /*TODO: Uncomment this once jwt token update implementation done */
@@ -426,8 +509,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.UpdateUserRole(Selectedproperty.id);
   }
 
-  async setEatecConfig(){
-    this.propertyFeatureService.getPropertyFeatures().then( async (feature) => {
+  async setEatecConfig() {
+    this.propertyFeatureService.getPropertyFeatures().then(async (feature) => {
       const propIds = [];
 
       const eatecFeature = feature.find(x => x.featureName === FeatureName.EnhancedInventory);
@@ -453,21 +536,21 @@ export class LoginComponent implements OnInit, OnDestroy {
             const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
             if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
               this.retailpropertyInfo.SetEatecRI(uri.configurationValue);
-            } else{
+            } else {
               this.retailpropertyInfo.SetEatecRI('');
             }
-          }else {
+          } else {
             this.retailpropertyInfo.SetEatecRI('');
           }
-         
+
           if (pmsRevenuePosting && featureconfigurations != null && featureconfigurations.length > 0) {
             const pmsSystem = featureconfigurations.find(f => f.configurationKey === ConfigKeys.PMSRevenuePosting.PMSSystem)?.configurationValue;
-            if (pmsSystem && pmsSystem != null) {    
+            if (pmsSystem && pmsSystem != null) {
               sessionStorage.setItem('pmsSystem', pmsSystem);
+            }
           }
-        }
         });
-      }       
+      }
     });
   }
 
@@ -527,7 +610,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     user = userInfoArr.join(';');
     sessionStorage.setItem('_userInfo', user);
   }
-    
+
 
   async SetPropertyInfo(result: any) {
     const propertyId: number = Number(result.propertyId);
@@ -570,23 +653,23 @@ export class LoginComponent implements OnInit, OnDestroy {
     } as API.PropertyConfigurationSettings<any>);
     if ((propertityConfig != null) && (Object.keys(propertityConfig.configValue).length > 0)) {
       this.propertyInfo.SetPropertyConfiguration(propertityConfig);
-      this.SetFullStory(propertityConfig);   
+      this.SetFullStory(propertityConfig);
     }
   }
 
   SetFullStory(propertyConfig: any) {
-    if (propertyConfig.configValue != undefined && propertyConfig.configValue[FULL_STORY_ORG_ID] != undefined){
+    if (propertyConfig.configValue != undefined && propertyConfig.configValue[FULL_STORY_ORG_ID] != undefined) {
       FullStory.init({ orgId: propertyConfig.configValue[FULL_STORY_ORG_ID] });
       FullStory.identify('RETAIL-' + this.userInfo.userName, {
-        "displayName" : 'RETAIL-' + this.userInfo.userName,
-        "productId" : Product.RETAIL.toString(),
-        "productName" : "RETAIL",
-        "tenantId" : this.userInfo.tenantId?.toString() ?? "",
-        "tenantCode" : this.userInfo.tenantCode?.toString() ?? "",
-        "propertyId" : propertyConfig.propertyId?.toString() ?? "",
-        "propertyName" : this.propertyInfo.GetPropertyInfoByKey('PropertyName')
+        "displayName": 'RETAIL-' + this.userInfo.userName,
+        "productId": Product.RETAIL.toString(),
+        "productName": "RETAIL",
+        "tenantId": this.userInfo.tenantId?.toString() ?? "",
+        "tenantCode": this.userInfo.tenantCode?.toString() ?? "",
+        "propertyId": propertyConfig.propertyId?.toString() ?? "",
+        "propertyName": this.propertyInfo.GetPropertyInfoByKey('PropertyName')
       });
-    } 
+    }
   }
 
 
@@ -594,24 +677,24 @@ export class LoginComponent implements OnInit, OnDestroy {
     let userSessionConfig = await this.userSessionConfig.getUserSessionConfiguration(userId);
 
     if (userSessionConfig) {
-    //   let userSessionConfigValues =
-    //     ` Id=${userSessionConfig.id};
-    //       UserId=${userSessionConfig.userId};
-    //       DefaultOutletId=${userSessionConfig.defaultOutletId};
-    //       DefaultTerminalId=${userSessionConfig.defaultTerminalId};
-    //       DefaultCourseId=${userSessionConfig.defaultCourseId};
-    //       DefaultPaymentDevice=${userSessionConfig.defaultPaymentDevice};
-    //       DefaultDeviceName=${userSessionConfig.defaultDeviceName};
-    //       IsIdtechSred=${userSessionConfig.isIdtechSred};
-    //       HangingTicketsPrinter=${userSessionConfig.hangingTicketsPrinter};
-    //       SmallStickersPrinter=${userSessionConfig.smallStickersPrinter};
-    // `;
+      //   let userSessionConfigValues =
+      //     ` Id=${userSessionConfig.id};
+      //       UserId=${userSessionConfig.userId};
+      //       DefaultOutletId=${userSessionConfig.defaultOutletId};
+      //       DefaultTerminalId=${userSessionConfig.defaultTerminalId};
+      //       DefaultCourseId=${userSessionConfig.defaultCourseId};
+      //       DefaultPaymentDevice=${userSessionConfig.defaultPaymentDevice};
+      //       DefaultDeviceName=${userSessionConfig.defaultDeviceName};
+      //       IsIdtechSred=${userSessionConfig.isIdtechSred};
+      //       HangingTicketsPrinter=${userSessionConfig.hangingTicketsPrinter};
+      //       SmallStickersPrinter=${userSessionConfig.smallStickersPrinter};
+      // `;
 
       sessionStorage.setItem(this.userSessionConfig.userSessionConfigKey, JSON.stringify(userSessionConfig));
 
       let defaultsSetting = await this.getDefaultsSetting();
       sessionStorage.setItem('defaultSettings', JSON.stringify(defaultsSetting));
-      
+
       // Set Retail Shop service - outlet dropdown value
       this.retailSharedService.SelectedOutletId = userSessionConfig.defaultOutletId;
       this.retailSharedService.SelectedTerminalId = userSessionConfig.defaultTerminalId;
@@ -620,10 +703,11 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   setAutoLogOff() {
     this.autoLogOff = this.utils.GetPropertyInfo('AutoLogOff');
+    const tokenDuration = parseInt(sessionStorage.getItem('loginDuration'));
     if (this.autoLogOff == 'true') {
       this.sessionService.resetOnTrigger = true;
       this.logOffAfter = +this.utils.GetPropertyInfo('LogOffAfter');
-      this.sessionService.startTimer(this.logOffAfter);
+      this.sessionService.startTimer(this.logOffAfter, tokenDuration);
     } else {
       this.sessionService.resetOnTrigger = false;
     }
@@ -635,12 +719,65 @@ export class LoginComponent implements OnInit, OnDestroy {
  * @param output <Nothing>
  * @description Get the return value of button emit
  */
-  getbuttonEmitvalue(e): void {
+  async getbuttonEmitvalue(e): Promise<void> {
+    if (this.showCustomerID) {
+      localStorage.setItem('TenantId', this.loginForms.get('customerId').value);
+      let tenantId = localStorage.getItem('TenantId');
+      await this.configureAuth(tenantId);
+      localStorage.setItem('ADB2CAuthenticationEnabled', this.ADB2CAuthenticationEnabled.toString());
+      this.loginForms.get('customerId').markAsTouched();
+      this.removeVal();
+      if (this.ADB2CAuthenticationEnabled) {
+        this.removeGeneralLoginVal();
+        await this.adb2cAuthValidation();
+      }
+      else {
+        this.showCustomerID = false;
+      }
+    }
+    else if (this.ADB2CAuthenticationEnabled) {
+      this.removeGeneralLoginVal();
+      await this.adb2cAuthValidation();
+    }
+    else {
+      this.loginForms.controls['userId'].markAsTouched();
+      this.loginForms.controls['password'].markAsTouched();
+      this.setGeneralLoginVal();
+      this.generalAuthValidation();
+    }
+  }
+
+  async adb2cAuthValidation() {
+    if (this.loginForms.valid) {
+      if (!this.loginSuccess) {//  && !this.enableLocation
+        localStorage.setItem('TenantId', this.loginForms.get('customerId').value);
+        this.adb2cLogin();
+      }
+      else {
+        let claims = this.adb2cClaims;
+        const credentials = {
+          Property: this.loginForms.get('location').value,
+          ProductId: Product.RETAIL
+        };
+        this.setpropertyvalues(credentials.Property);
+        const usersessionId = await this.sessionService.createSession();
+        sessionStorage.setItem(USER_SESSION, String(usersessionId));
+        await this.setEatecConfig();
+        this.setAutoLogOff();
+        await this.SetUserSessionConfiguration(this.userInfo.userId);
+        this.setMachineDetails();
+        this.router.navigate(['/home']);
+        await this.retailFunc.getRetailFunctionality();
+      }
+    }
+  }
+
+  generalAuthValidation() {
     if (this.loginForms.valid) {
       let muname = '';
       let tenantCode = '';
       const id: any = (this.loginForms.controls.customerId.value !== '' && this.loginForms.controls.customerId.value !== undefined) ?
-       this.loginForms.controls.customerId.value : this.custId;
+        this.loginForms.controls.customerId.value : this.custId;
       this.userName = this.loginForms.value.userId;
 
       if (this.userName.includes('@')) {
@@ -660,6 +797,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.loginForms.controls.userId.markAsTouched();
       this.loginForms.controls.password.markAsTouched();
       this.loginForms.controls['machineName'].markAsTouched();
+      if (this.showCustomerID) {
+        this.loginForms.get('customerId').markAsTouched();
+      }
     }
   }
 
@@ -675,6 +815,30 @@ export class LoginComponent implements OnInit, OnDestroy {
     customerIdCtrl.clearValidators();
     customerIdCtrl.updateValueAndValidity();
     customerIdCtrl.markAsDirty();
+  }
+
+  setGeneralLoginVal() {
+    const userIdCtrl = this.loginForms.get('userId');
+    userIdCtrl.setValidators([Validators.required]);
+    userIdCtrl.updateValueAndValidity();
+    userIdCtrl.markAsDirty();
+
+    const passwordCtrl = this.loginForms.get('password');
+    passwordCtrl.setValidators([Validators.required]);
+    passwordCtrl.updateValueAndValidity();
+    passwordCtrl.markAsDirty();
+  }
+
+  removeGeneralLoginVal() {
+    const userIdCtrl = this.loginForms.get('userId');
+    userIdCtrl.clearValidators();
+    userIdCtrl.updateValueAndValidity();
+    userIdCtrl.markAsDirty();
+
+    const passwordCtrl = this.loginForms.get('password');
+    passwordCtrl.clearValidators();
+    passwordCtrl.updateValueAndValidity();
+    passwordCtrl.markAsDirty();
   }
 
   private setUpPassword(arg, isSetPassword: boolean) {
@@ -695,7 +859,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         setPassword: isSetPassword,
         userName: arg.userName,
         tenantId: arg.tenantId,
-        encKeyIv : { key : this.key , iv : this.iv}
+        encKeyIv: { key: this.key, iv: this.iv }
       }
     });
     this.loginForms.get('password').setValue('');
@@ -708,7 +872,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.rememberMe) { this.sessionService.StoreUser(user); } else { this.sessionService.RemoveUser(user); }
   }
 
-  private initializeForm(): void {
+  private async initializeForm() {
+    this.hideLoginForm = true;
     this.loginForms = this.formBuilder.group({
       userId: ['', Validators.required],
       password: ['', Validators.required],
@@ -721,35 +886,181 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.loginError = false;
         this.errResponse = '';
       });
+
+    this.captions = this.localize.captions;
+
+    this.compiler.clearCache();
+    //this.enableLocation = false;
+    let _token = sessionStorage.getItem(JWT_TOKEN);
+    if (this.localize.validateString(_token)) {
+      this.router.navigate(['/home']);
+    }
+
+    this.captionGenerator();
+    this.formGenerator();
+    this.errorGenerator();
+    await this.getCustomerId();
+
+    this.loginButton = {
+      type: 'primary',
+      label: this.captions.lbl_login,
+      customclass: 'w-307px'
+    };
+    this.buttonValueprimary1 = {
+      type: 'primary',
+      label: this.captions.setPassword,
+      customclass: 'w-307px'
+    };
+    this.buttonValueprimary2 = {
+      type: 'primary',
+      label: 'login.ChangePassword',
+      customclass: 'w-307px'
+    };
+    if (!this.ADB2CAuthenticationEnabled) {
+      const getrememberresult = this.sessionService.GetRememberedUsers();
+      const rememberedUser = (getrememberresult.length > 0) ? getrememberresult[0].name : '';
+      this.loginForms.controls['userId'].setValue(rememberedUser ? rememberedUser : '');
+      this.loginForms.controls['rememberme'].setValue(rememberedUser ? true : false);
+      this.loginForms.controls['password'].setValue('');
+    }
+  }
+
+  // async isFeatureFlagEnabled(featureName:string) : Promise<boolean>
+  // {
+  //   const isEnabled = await this.PropertySettingService.IsFeatureEnabled(featureName);
+  //   return isEnabled;
+  // }
+
+  private async configureAuth(tenantId: string) {
+    await this.GetADB2CAuthConfig(tenantId);
+    this.ADB2CAuthenticationEnabled = this.adb2cAuthConfiguration.ADB2CAuthFeatureEnabled;
+    if (this.ADB2CAuthenticationEnabled) {
+      this.hideLoginForm = true;
+      this.oauthService.configure(this.adb2cAuthConfiguration.authConfig);
+      this.oauthService.customQueryParams = {
+        'customerId': tenantId,
+        'productId': Product.RETAIL
+      };
+      this.oauthService.tokenValidationHandler = new NullValidationHandler();
+      this.oauthService.setStorage(localStorage);
+      //Event Subscription
+      this.oauthService.events.subscribe(({ type }: OAuthEvent) => {
+        switch (type) {
+          case 'token_received':
+            console.log([this.oauthService.state]);
+            break;
+          default:
+            console.log([this.oauthService.state]);
+            break;
+        }
+      });
+
+      this.oauthService.loadDiscoveryDocument(this.adb2cAuthConfiguration.DiscoveryDocumentConfigUrl)
+        .then(async doc => {
+          console.log(doc);
+          this.oauthService.tryLogin().then(async res => {
+            if (this.oauthService.hasValidIdToken()) {
+              this.hideLoginForm = true;
+              await this.adb2cAuthLogin();
+              //this.setUserSessionInfo(this.claims,this.oauthService.getIdToken());
+            }
+            else {
+              this.hideLoginForm = false;
+            }
+            let _token = this.oauthService.getIdToken()
+            //let _token = sessionStorage.getItem(JWT_TOKEN);
+            console.log(_token);
+          });
+        });
+    }
+    else {
+      this.hideLoginForm = false;
+    }
+  }
+
+  public adb2cLogin() {
+    this.oauthService.initCodeFlow();
+  }
+
+  public adb2cLogout() {
+    this.oauthService.logOut();
+  }
+
+  public get adb2cClaims() {
+    let claims = this.oauthService.getIdentityClaims();
+    return claims;
+  }
+
+  async validateAdb2cCredentials(credentials, claims: any, strTenantId: string) {
+    const serviceParams = {
+      route: LoginRoutes.ADB2CLogin,
+      uriParams: '',
+      header: '',
+      body: credentials,
+      showError: true,
+      baseResponse: true
+    };
+    if (!this.loginSuccess) {//  && !this.enableLocation
+      // Validate credentials
+      let token = this.oauthService.getIdToken();
+      const tenantId = Number(strTenantId);
+      const loginDetails = await this.loginService.makePostCall(serviceParams);
+      if (loginDetails.successStatus) {
+        loginDetails.result.token = token;
+        this.userName = credentials.UserName;
+        const loginResponse: any = loginDetails;
+        if (loginResponse.result.loginDuration) {
+          sessionStorage.setItem('loginDuration', loginResponse.result.loginDuration);
+          localStorage.setItem('loginDuration', loginResponse.result.loginDuration);
+          const tokenDuration = parseInt(sessionStorage.getItem('loginDuration'));
+          this.sessionService.startTimer(0, tokenDuration);
+          let currentDateTime = new Date();
+          let jwtExpiryTime = new Date(currentDateTime.getTime() + tokenDuration * 1000);
+          sessionStorage.setItem('jwtExpiryTime', jwtExpiryTime.toString());
+          localStorage.setItem('jwtExpiryTime', jwtExpiryTime.toString());
+        }
+        await this.successCallBack(loginDetails);
+
+      } else {
+        if (loginDetails.errorCode == 5001) {
+          this.loginError = true;
+          this.loginButton.disabledproperty = false;
+          this.errResponse = loginDetails.errorDescription;
+          this.hideLoginForm = false;
+        }
+        this.utils.showAlert(loginDetails.errorDescription, AlertType.Error, null, async (res) => {
+          this.adb2cLogout();
+        });
+      }
+    }
   }
 
   private async setMachineInfo(propertyId: number) {
     this.resetMachineNameInfo();
-    const userMachinePropertyInfo = this.userMachineInfo.userPropertiesMachineInfo.find(x=>x.propertyId == propertyId);
+    const userMachinePropertyInfo = this.userMachineInfo.userPropertiesMachineInfo.find(x => x.propertyId == propertyId);
     const miscConfiguration = userMachinePropertyInfo.miscConfiguration;
     // TRANSACTION_BY_MACHINENAME
     this.isMachineNameEnabled = miscConfiguration.enableTransactionByMachineName;
     // SELECTION_ON_LOGIN
     this.isPromptOnLoginEnabled = miscConfiguration.promptOnLogin;
-    if (miscConfiguration.printerManagerURI)
-    {
+    if (miscConfiguration.printerManagerURI) {
       this.localize.SetPrinterManagerURI(miscConfiguration.printerManagerURI);
     }
-    if(this.isMachineNameEnabled) {
-      this.defaultMachineId = userMachinePropertyInfo.userDefault.defaultMachineId;    
+    if (this.isMachineNameEnabled) {
+      this.defaultMachineId = userMachinePropertyInfo.userDefault.defaultMachineId;
       this.machineNames = userMachinePropertyInfo.machineNames.map(x => {
         return {
           id: x.id,
           name: x.name
         }
       });
-      if(this.isPromptOnLoginEnabled && this.machineNames.length > 0) {
+      if (this.isPromptOnLoginEnabled && this.machineNames.length > 0) {
         this.loginForms.controls['machineName'].setValue('');
-      }     
+      }
     }
     const machineName = this.machineNames.find(x => x.id == this.defaultMachineId);
     this.defaultMachineId = machineName ? machineName.id : 0;
-    if(this.defaultMachineId) {
+    if (this.defaultMachineId) {
       this.loginForms.controls['machineName'].setValue(machineName);
     }
   }
@@ -763,12 +1074,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.isPromptOnLoginEnabled = false;
     this.defaultMachineId = 0;
     this.machineNames = [];
-    this.loginForms.controls['machineName'].setValue('0');  
+    this.loginForms.controls['machineName'].setValue('0');
   }
 
   private setMachineDetails() {
     const userMachine = this.loginForms.value.machineName;
-    if(typeof(userMachine) == 'object') {
+    if (typeof (userMachine) == 'object') {
       this.localize.SetMachineId(userMachine.id);
       this.localize.SetMachineName(userMachine.name);
       this.propertyServices.SetMachinePrinterConfigForMachine(userMachine.id);
@@ -776,9 +1087,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.localize.SetMachineId(0);
       this.localize.SetMachineName('');
     }
-  }  
-  setEncryptKey()
-  {
+  }
+  setEncryptKey() {
     let serviceParamsForKey = {
       route: RetailRoutes.GetEncryptKey,
       uriParams: '',
@@ -787,9 +1097,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       showError: false,
       baseResponse: true
     };
-    this.loginService.makeGetCall<any>(serviceParamsForKey,false).then(encryptKey =>{
-      if(encryptKey && encryptKey.result)
-      {
+    this.loginService.makeGetCall<any>(serviceParamsForKey, false).then(encryptKey => {
+      if (encryptKey && encryptKey.result) {
         this.key = encryptKey.result.key;
         this.iv = encryptKey.result.iv;
       }
