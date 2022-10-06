@@ -1480,7 +1480,22 @@
     "lbl_ApplyingSurchargeLoaderMsg": "Applying Surcharge_in",
     "lbl_RemovingSurchargeLoaderMsg": "Removing Surcharge_in",
     "lbl_cardType": "Card Type_in",
-    "lbl_AmountTendered": "Amount Entered_in"
+    "lbl_AmountTendered": "Amount Entered_in",
+    "MemberSelectionPopup": {
+      "lbl_header": "MEMBER/GUEST MAPPING DETAILS_in",
+      "searchPlaceHolder": "Search by Member Name, Member#_in",
+      "lbl_subhdr": "Members_in",
+      "searchProgressMsg": "Searching member details..._in",
+      "maxMembersAddedMsg": "Maximum number of Members added. Please check the selection_in",
+      "amountExceedOverallTotal": "Amount Exceeds Total_in",
+      "fetchingMemberDetailsMsg": "Please wait while members details are being loaded..._in",
+      "availableRounds": "Available Rounds_in",
+      "noRoundsMsg": "No Rounds Avaialble!_in",
+      "RetriveMemberInfo": "Retrieving Member Account Details..._in",
+      "memberAlreadySelected": "Member already available_in",
+      "Pin": "Pin_in",
+      "Amount": "Amount_in"
+    }
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_in",
@@ -2088,7 +2103,7 @@
     "lbl_bucketname": "Bucket Name_in",
     "lbl_applyForAllPaymentMethodsForTheSameOutlet": "Apply For All Payment Methods_in",
     "lbl_applyForOutletsForTheSamePaymentMethod": "Apply For All Outlets_in",
-    "SearchForMemberBucketMapping": "Search By Payment Method, Bucket Code or Bucket Name_in",
+    "SearchForMemberBucketMapping": "Search By Payment Method or Bucket Code_in",
     "SelectRevenuePostCode": "Select Revenue Post Code_in",
     "SearchPostCode": "Search By Post Code Number, Description, Department_in",
     "Sync": "Sync_in",

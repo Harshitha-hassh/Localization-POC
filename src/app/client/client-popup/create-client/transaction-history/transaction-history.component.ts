@@ -40,6 +40,7 @@ export class TransactionHistoryComponent implements OnInit {
   clientId: number;
   clientGuid: string;
   showMultiPackExpiredFlag:boolean = false;
+  floatLabel: string;
 
   @Input('inputData')
   set formData(value) {

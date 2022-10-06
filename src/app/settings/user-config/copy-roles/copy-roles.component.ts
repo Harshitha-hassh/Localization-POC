@@ -23,11 +23,13 @@ export class CopyRolesComponent implements OnInit {
   secondOptionsSet: any;
   sampleOptions: any = [{ id: 1, name: 'System Administrator' }, { id: 2, name: 'Advanced User' }];
   roleGrp: FormGroup;
+  floatLabel: string;
 
   constructor(private http: HttpServiceCall, public localization: RetailStandaloneLocalization, @Inject(MAT_DIALOG_DATA) public data,
     private fb: FormBuilder,
     // private _viewSetting: ViewSettingClientBusiness,
     private dialogRef: MatDialogRef<CopyRolesComponent>, private dialog: MatDialog, private utils: Utilities) {
+      this.floatLabel = this.localization.setFloatLabel;
 
   }
 

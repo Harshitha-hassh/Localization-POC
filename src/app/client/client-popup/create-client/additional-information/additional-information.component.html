@@ -10,7 +10,7 @@
                 <div class="" *ngIf="false">
                     <div class=" width_220"
                         [ngClass]="this.isClientViewOnly ? 'button_invalid' : ''">
-                        <mat-form-field class="width_180px">
+                        <mat-form-field class="width_180px" [floatLabel]="floatLabel">
                             <input matInput dateRestricter class="" [min]="minFromDate" [matDatepicker]="picker"
                                 [placeholder]="captions.ExpiryDate" [readonly]="true">
                             <mat-datepicker #picker></mat-datepicker>
@@ -84,7 +84,7 @@
                 </div> -->
             </div>
             <aside class="w-25 d-inline-block p-4">
-                <mat-form-field class="width_100">
+                <mat-form-field class="width_100 txt-area-height" [floatLabel]="floatLabel">
                     <textarea class="textarea-style" [maxlength]="250" matInput formControlName="comments"
                         [placeholder]="captions.GeneralComments"></textarea>
                 </mat-form-field>

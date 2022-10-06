@@ -35,7 +35,7 @@
                                   {{clientInfo.firstName}} {{clientInfo.lastName}}
                               </div>
                               <div class="d-inline-block w-60">
-                                  <mat-form-field class="Nw-30 mr-3">
+                                  <mat-form-field class="Nw-30 mr-3"  [floatLabel]="floatLabel">
                                       <input matInput inputtype="email" [placeholder]="captions.Email"
                                           formControlName="emailId" maxlength="100">
                                       <mat-error class=""
@@ -48,7 +48,7 @@
                                       </mat-error>
                                   </mat-form-field>
       
-                                  <mat-form-field class="Nw-20 mr-2">
+                                  <mat-form-field class="Nw-20 mr-2"  [floatLabel]="floatLabel">
                                       <input matInput name="countryCode" formControlName="countryCode" [placeholder]="captions.countryCode"
                                           [maxlength]="countryCodeLength" inputtype='nonnegative' >
                                           <mat-error class=""
@@ -56,7 +56,7 @@
                                           {{captions.Missing}} {{captions.countryCode}}
                                       </mat-error>
                                   </mat-form-field>
-                                  <mat-form-field class="Nw-40">
+                                  <mat-form-field class="Nw-40" [floatLabel]="floatLabel">
                                       <input matInput [placeholder]="captions.phoneNo" formControlName="phoneNo"
                                           [textmask]="textMaskPhone" maxlength="10">
                                           <mat-error class=""

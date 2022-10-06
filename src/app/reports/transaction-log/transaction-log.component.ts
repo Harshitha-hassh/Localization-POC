@@ -30,6 +30,7 @@ export class TransactionLogComponent implements OnInit {
   public minDate: Date = this.PropertyInfo.CurrentDate;
   showError: boolean = false;
   disableSearchBtn: boolean = false;
+  floatLabel: string;
   transactionHeader: any = [{ title: "Log Date", jsonkey: "logDate", alignType: "left" },
   { title: "Type", jsonkey: "type", alignType: "left" }, { title: "Description", jsonkey: "description", alignType: "left" },
   { title: "User ID", jsonkey: "userId", alignType: "left" }, { title: "Appointment #", jsonkey: "appointment", alignType: "left" },
@@ -38,6 +39,7 @@ export class TransactionLogComponent implements OnInit {
   constructor(private fb: FormBuilder, private http: HttpServiceCall, private utils: Utilities, private localization: RetailStandaloneLocalization,
     private PropertyInfo: PropertyInformation) {
     this.logType = translog;
+    this.floatLabel = this.localization.setFloatLabel;
   }
 
   async getTransactionData() {

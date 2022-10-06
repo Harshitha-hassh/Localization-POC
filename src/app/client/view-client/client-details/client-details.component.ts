@@ -111,10 +111,14 @@ export class ClientDetailsComponent implements OnInit {
     guidFromGlobalSearch: string = '';
     requestUid = '';
     timer = null;
+    floatLabel: string;
+    floatLabelNever: string;
     constructor(private dialog: MatDialog,
         private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
         , private userAccessBusiness: UserAccessBusiness) {
+            this.floatLabel = this.localization.setFloatLabel;
+            this.floatLabelNever = this.localization.setFloatLabelNever;
         route.params.subscribe(val => {
             if (this._as.isglobalSearch) {
                 this.clientService.selectedIndex = 0;

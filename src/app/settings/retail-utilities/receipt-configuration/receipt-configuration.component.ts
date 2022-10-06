@@ -37,6 +37,8 @@ export class ReceiptConfigurationComponent implements OnInit {
   DisplayAuthCode:boolean;
   AuthCodeConfiguration:PropertyReceiptModel[];
   propertyId: number;
+  floatLabel: string;
+
 
   constructor(private Form: FormBuilder,
               private breakPoint: BreakPointAccess,
@@ -44,6 +46,7 @@ export class ReceiptConfigurationComponent implements OnInit {
               private data: ReceiptConfigurationDataService,
               private outletData: RetailOutletsDataService, private utils: RetailUtilities) {
     this.textCaptions = this.localization.captions.utilities;
+    this.floatLabel = this.localization.setFloatLabel;
     this.FormGrp = this.Form.group({
       outlet: ['', Validators.required],
       // #46309 - Hide unused fields

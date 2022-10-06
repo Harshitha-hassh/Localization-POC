@@ -46,6 +46,8 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   doneDisabled: boolean;  
   key : string ;
   iv : string;
+  floatLabel: string;
+
   constructor(
     private formBuilder: FormBuilder, private loginService: LoginCommunicationService,
     public dialogRef: MatDialogRef<SetPasswordComponent>,
@@ -53,6 +55,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     @Inject(MAT_DIALOG_DATA) public data: any) {
     this.passwordSetUp = this.formBuilder.group({});
+    this.floatLabel = this.localization.setFloatLabel;
   }
 
   async ngOnInit() {

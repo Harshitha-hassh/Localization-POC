@@ -2,7 +2,7 @@
   <form class="w-100 h-100" [formGroup]="table">
     <div class="page-header" id="pageHeader" (window:resize)="calculateWidth()">
       <mat-form-field *ngIf="options ? options[0].Searchable : false" class="spa-searchbox searchpt custSearchbox"
-        floatLabel="never" id="searchInput">
+        [floatLabel]="floatLabelNever" id="searchInput">
         <input #tableInput matInput autocomplete="off" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
           type="text" placeholder="{{captions.common.SearchBy}} {{PlaceHoldertext}}" value="" (keypress)="currentPage=1"
           (ngModelChange)="viewCheckedFlag=false">

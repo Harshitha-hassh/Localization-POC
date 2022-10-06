@@ -52,6 +52,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   PhoneType: { id: number; description: any; }[];
   filteredCountries: Observable<any>;
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  floatLabel: string;
   constructor(private BP: BreakPointAccess,
               private systemConfig: SystemSetupBusinessService,
               private fb: FormBuilder,
@@ -63,6 +64,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     super(http);
     this.ss.tabLoaderEnable.next(true);
     this.commonCaptions = this.localization.captions.common;
+    this.floatLabel = this.localization.setFloatLabel;
     this.propertyConfigurationDetails = {
       name: '',
       address: [{ addressDetails: '' }, { addressDetails: '' }],
