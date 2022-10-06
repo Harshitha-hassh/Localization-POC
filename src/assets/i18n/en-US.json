@@ -2756,6 +2756,7 @@
     "EnableCheckZoom": "Enable CheckZoom",
     "EnableRevenuePostingsOnDayEnd": "Restrict Day End on Revenue Failure",
     "DisplayImagesInShop":"Display Images in Shop",
+    "PostRevenueOnPropertyDate": "Post Revenue on Property Date",
     "ExpandPaymentMethods": "Expand Payment Methods by default",
     "Confirmationdialog": "Enable Retail Confirmation Dialog",
     "DiscountReasonRequired": "Require Reason On Discount",

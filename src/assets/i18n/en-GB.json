@@ -2754,6 +2754,7 @@
     "EnableCheckZoom": "Enable CheckZoom_gb",
     "EnableRevenuePostingsOnDayEnd": "Restrict Day End on Revenue Failure_gb",
     "DisplayImagesInShop": "Display Images in Shop_gb",
+    "PostRevenueOnPropertyDate": "Post Revenue on Property Date_gb",
     "ExpandPaymentMethods": "Expand Payment Methods by default_gb",
     "Confirmationdialog": "Enable Retail Confirmation Dialog_gb",
     "DiscountReasonRequired": "Require Reason On Discount_gb",
