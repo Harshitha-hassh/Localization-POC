@@ -7,6 +7,7 @@ import { CommonControllersRoutes } from 'src/app/common/communication/common-rou
 import { AppService } from 'src/app/common/app-service';
 import { Observable, of } from 'rxjs';
 import { AgMenuTypes } from 'src/app/shared/components/menu/menu.model';
+import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 
 @Injectable()
 export class RouteLoaderService {
@@ -18,7 +19,8 @@ export class RouteLoaderService {
   constructor(
     private injector: Injector,
     private _appservice: AppService,
-    private _tenantMngmt: TenantManagementCommunication
+    private _tenantMngmt: TenantManagementCommunication,
+    private propertyInfo : RetailPropertyInformation 
   ) {
     this.ProductID = this._appservice.productId;
   }
@@ -88,7 +90,7 @@ export class RouteLoaderService {
       route: CommonControllersRoutes.GetMenus,
       uriParams: ""
     });
-
+    this.propertyInfo.setICRoutes(menus.find(x => x.routePath == '/settings')?.linkedElement);
     return menus.filter(x => x.productID == this.ProductID);
   }
 
