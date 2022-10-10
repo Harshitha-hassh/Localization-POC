@@ -1658,6 +1658,7 @@
   "lbl_logout": "Log Out_uk",
   "retailsetup": {
     "FinancialLevelSplitUp": "Financial Level Split-up_uk",
+    "CategoryLevel": "Category_uk",
     "GranularLevel": "Granular_uk",
     "ClassLevel": "Class_uk",
     "TransactionLevel": "Transaction_uk",

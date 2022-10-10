@@ -1660,6 +1660,7 @@
   "lbl_logout": "Log Out",
   "retailsetup": {
     "FinancialLevelSplitUp": "Financial Level Split-up",
+    "CategoryLevel": "Category",
 		"GranularLevel":"Granular",
 		"ClassLevel":"Class",
 		"TransactionLevel":"Transaction",
