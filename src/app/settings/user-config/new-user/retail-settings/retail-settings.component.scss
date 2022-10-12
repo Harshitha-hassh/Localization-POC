@@ -66,3 +66,11 @@
     }
   }
 }
+
+body#new-mat-view{
+  .mat-form-field.mat-form-field-can-float.mat-form-field-should-float.noMargin {
+    &.mat-form-field {
+        margin-top: 10px;
+    }
+  }
+}
