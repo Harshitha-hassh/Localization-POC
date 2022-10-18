@@ -3782,5 +3782,6 @@
   "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_fi",
   "FailedTransLogInfo": "{count} Failed records found in Payment Logs_fi",
   "composed": "View Composed_fi",
-  "preview": "PREVIEW_fi"
+  "preview": "PREVIEW_fi",
+  "lbl_processing": "Processing..._fi"
 }

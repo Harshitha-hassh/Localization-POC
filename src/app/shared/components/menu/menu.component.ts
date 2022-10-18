@@ -320,6 +320,8 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this._featureFlagService.reset();
     await this._sessionService.logout();
     this.retailServiceRegistry.resetAllServiceData();
+    const bodyTag = document.getElementsByTagName('body')[0];
+    bodyTag.removeAttribute("id");
   }
 
   logoutEatec() {

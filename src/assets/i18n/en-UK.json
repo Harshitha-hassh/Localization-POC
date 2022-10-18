@@ -3782,5 +3782,6 @@
   "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_uk",
   "FailedTransLogInfo": "{count} Failed records found in Payment Logs_uk",
   "composed": "View Composed_uk",
-  "preview": "PREVIEW_uk"
+  "preview": "PREVIEW_uk",
+  "lbl_processing": "Processing..._uk"
 }
