@@ -102,7 +102,8 @@ export class TransactionLogComponent implements OnInit {
               { "pUserId": ctl["userID"].value},
               { "pClientFirstName": ctl["firstName"].value},
               { "pClientLastName": ctl["lastName"].value},
-              { "pAppointmentNumber": ctl["appointmentNumber"].value}
+              { "pAppointmentNumber": ctl["appointmentNumber"].value},
+              { "pIncludeTempAppointment": ctl["includetempappointment"].value}
             ],
       URIParams: [{ "FirstName": ctl["firstName"].value }, { "LastName": ctl["lastName"].value },
       { "UserId": ctl["userID"].value }, { "TransactionId": ctl["transactionNumber"].value },
