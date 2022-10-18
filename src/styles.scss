@@ -4260,7 +4260,8 @@ i {
 /****** Loader Cover Spinner for Application Loader******************/
 #cover-spin,
 #custom-cover-spin,
-#setting-cover-spin {
+#setting-cover-spin,
+#cover-spin-retail {
   position: fixed;
   width: 100%;
   left: 0;
@@ -4271,6 +4272,9 @@ i {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
   display: none;
+}
+#cover-spin-retail {
+  display: block;
 }
 
 @-webkit-keyframes spin {
@@ -4335,8 +4339,9 @@ i {
 }
 
 #cover-spin::after,
-#custom-cover-spin:after,
-#setting-cover-spin::after {
+#custom-cover-spin::after,
+#setting-cover-spin::after,
+#cover-spin-retail::after {
   content: "";
   display: block;
   position: absolute;
@@ -4353,12 +4358,22 @@ i {
   animation: spin 0.8s linear infinite;
 }
 
-#custom-cover-message {
+#custom-cover-message,#default-message {
   position: absolute;
   top: calc(50% + 80px);
   left: calc(50% + 30px);
   color: #fff;
   transform: translate(-50%, -50%);
+}
+.customspinnerimg{
+  position: absolute;
+  left: calc(50% + 9px);
+  top:calc(50% + 9px);
+  width: 42px;
+  height: 46px;
+  img{
+    width: 100%;
+  }
 }
 .dynamic-scrollbar {
   .ng-scrollbar-thumb {
