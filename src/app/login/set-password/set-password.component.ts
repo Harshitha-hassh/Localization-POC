@@ -230,7 +230,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
 
     } else if (e === 4) {
       if (f) {
-        const exp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{10,}$/;
+        const exp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{4,}$/;
         const regexpValue = new RegExp(exp, 'g');
         returnType = regexpValue.test(d);
       } else {
