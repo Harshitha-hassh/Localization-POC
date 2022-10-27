@@ -64,6 +64,7 @@ export enum PendingAction {
     PostingRoomNumber?: string;
     DateTime : string;
     PMSSystem?  : PMSSystem;
+    NightAuditDateTime: string;
    
   }
 
