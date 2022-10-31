@@ -2101,7 +2101,7 @@
     },
     "SearchCategory": "Search Category",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details",
-    "memberaccuralmapping":"MEMBER ACCRUAL MAPPING",
+    "memberaccuralmapping":"MEMBER BUCKET MAPPING",
     "memberbucketdetails":"ENTER BUCKET DETAILS",
     "lbl_bucketcode":"Bucket Code",
 		"lbl_bucketname":"Bucket Name",
