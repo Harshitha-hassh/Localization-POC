@@ -138,7 +138,7 @@
                         </div>
                     </div>
 
-                    <div class="margintop--10" *ngIf="custId"><button mat-flat-button class="login__btn"
+                    <div class="margintop--10" *ngIf="custId"><button mat-flat-button class="login__btn" [ngClass]="{'ag_section--disable': !this.loginForms.controls.customerId.value}"
                             (click)="getbuttonEmitvalue($event)">{{loginSuccess?captions.enter:captions.Login}}</button>
                     </div>
                 </div>

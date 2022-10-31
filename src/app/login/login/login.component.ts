@@ -732,6 +732,10 @@ export class LoginComponent implements OnInit, OnDestroy {
  */
   async getbuttonEmitvalue(e): Promise<void> {
     this.commonLocalize.setLocalCookie('appRetailCustID',this.loginForms.get('customerId').value);
+    if(e) {
+      e.preventDefault();
+      this.loginForms.markAsUntouched();
+    }
     if (this.showCustomerID) {
       localStorage.setItem('TenantId', this.loginForms.get('customerId').value);
       let tenantId = localStorage.getItem('TenantId');
@@ -1124,9 +1128,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.commonLocalize.clearLocalCookie(idname);
     this.loginForms.controls['customerId'].setValue('');
     this.loginForms?.controls["customerId"].enable();
+    this.loginForms.markAsUntouched();
     this.showCustomerID = true;
     setTimeout(() => {
       this.fcs_custID.nativeElement.focus();
       }, 0);
+      this.setVal();
   }
 }
