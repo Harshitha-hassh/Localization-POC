@@ -1,4 +1,4 @@
-import { Compiler, Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Compiler, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -97,6 +97,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   iv: string;
   ADB2CAuthenticationEnabled: boolean = false;
 
+  @ViewChild('fcs_userID') fcs_userID: ElementRef;
+  @ViewChild('fcs_pwd') fcs_pwd: ElementRef;
+  @ViewChild('fcs_custID') fcs_custID: ElementRef;
+
   constructor(
     private dialog: MatDialog,
     private formBuilder: FormBuilder,
@@ -160,7 +164,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     // this.loginForms.controls.userId.setValue(rememberedUser ? rememberedUser : '');
     // this.loginForms.controls.rememberme.setValue(rememberedUser ? true : false);
     // this.loginForms.controls.password.setValue('');
+
     await this.initializeForm();
+    let custId= this.commonLocalize.getLocalCookie('appRetailCustID');
+    if(custId!=''){
+      this.loginForms.controls['customerId'].setValue(custId);
+    this.loginForms?.controls["customerId"].disable();
+      this.getbuttonEmitvalue('eve');
+    }
   }
 
   OnFormValueChanges(): any {
@@ -720,6 +731,7 @@ export class LoginComponent implements OnInit, OnDestroy {
  * @description Get the return value of button emit
  */
   async getbuttonEmitvalue(e): Promise<void> {
+    this.commonLocalize.setLocalCookie('appRetailCustID',this.loginForms.get('customerId').value);
     if (this.showCustomerID) {
       localStorage.setItem('TenantId', this.loginForms.get('customerId').value);
       let tenantId = localStorage.getItem('TenantId');
@@ -733,6 +745,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
       else {
         this.showCustomerID = false;
+        setTimeout(() => {
+          this.fcs_userID.nativeElement.focus();
+          }, 0);
       }
     }
     else if (this.ADB2CAuthenticationEnabled) {
@@ -1103,5 +1118,15 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.iv = encryptKey.result.iv;
       }
     })
+  }
+
+  clearLclCookie(idname){
+    this.commonLocalize.clearLocalCookie(idname);
+    this.loginForms.controls['customerId'].setValue('');
+    this.loginForms?.controls["customerId"].enable();
+    this.showCustomerID = true;
+    setTimeout(() => {
+      this.fcs_custID.nativeElement.focus();
+      }, 0);
   }
 }

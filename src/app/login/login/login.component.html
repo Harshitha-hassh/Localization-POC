@@ -18,7 +18,7 @@
                                             <i class="icon-user ag_pr--2 "></i>
                                             <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
     
-                                                <input matInput type="text" [placeholder]="captions.lbl_userId"
+                                                <input matInput type="text" #fcs_userID [placeholder]="captions.lbl_userId"
                                                     class="ag_text--uppercase"
                                                     formControlName="userId" (keydown.enter)="getbuttonEmitvalue($event)">
                                                 <mat-error *ngIf="loginForms.get('userId').hasError('required')">
@@ -30,7 +30,7 @@
                                             <i class="icon-password ag_pr--2 "></i>
                                             <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
     
-                                                <input matInput [type]="hidePassword ? 'text' : 'password'"
+                                                <input matInput #fcs_pwd [type]="hidePassword ? 'text' : 'password'"
                                                     [placeholder]="captions.password" formControlName="password"
                                                     (keydown.enter)="getbuttonEmitvalue($event)" autocomplete="new-password">
                                                 <i matSuffix class="IC18"
@@ -41,13 +41,29 @@
                                                 </mat-error>
                                             </mat-form-field>
                                         </div>
+                                        <div>
+                                            <i class="icon-guest ag_pr--2"></i>
+                                            <mat-form-field class="w-50 ag_section--disable" [floatLabel]="floatLabel">
+                                                <input matInput #fcs_custID inputtype="nonnegative" type="number"
+                                                    [placeholder]="captions.customerId" class="text-uppercase"
+                                                    inputtype="capitalise,notallowspace,nospecailchar"
+                                                    formControlName="customerId"
+                                                    (keydown.enter)="getbuttonEmitvalue($event)">
+                                                <mat-error *ngIf="loginForms.get('customerId').hasError('required')">
+                                                    {{errorMessage.customerId}}
+                                                </mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                        <div>
+                                            <a class="ml-4" (click)="clearLclCookie('appRetailCustID')"> {{ captions.changeCustomerID}}</a>
+                                        </div>
                                     </div>
                                     <div *ngIf="showCustomerID && custId">
                                         <div *ngIf="!showCustomerID">
                                             <i class="icon-user ag_pr--2 "></i>
                                             <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
     
-                                                <input matInput type="text" [placeholder]="captions.lbl_userId"
+                                                <input matInput #fcs_userID type="text" [placeholder]="captions.lbl_userId"
                                                     class="ag_text--uppercase"
                                                     formControlName="userId" (keydown.enter)="getbuttonEmitvalue($event)">
                                                 <mat-error *ngIf="loginForms.get('userId').hasError('required')">
@@ -59,7 +75,7 @@
                                             <i class="icon-password ag_pr--2 "></i>
                                             <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
     
-                                                <input matInput [type]="hidePassword ? 'text' : 'password'"
+                                                <input matInput #fcs_pwd [type]="hidePassword ? 'text' : 'password'"
                                                     [placeholder]="captions.password" formControlName="password"
                                                     (keydown.enter)="getbuttonEmitvalue($event)" autocomplete="new-password">
                                                 <i matSuffix class="IC18"
@@ -73,7 +89,7 @@
                                         <div>
                                             <i class="icon-guest ag_pr--2"></i>
                                             <mat-form-field class="w-50" [floatLabel]="floatLabel">
-                                                <input matInput inputtype="nonnegative" type="number"
+                                                <input matInput #fcs_custID inputtype="nonnegative" type="number"
                                                     [placeholder]="captions.customerId" class="text-uppercase"
                                                     inputtype="capitalise,notallowspace,nospecailchar"
                                                     formControlName="customerId"
