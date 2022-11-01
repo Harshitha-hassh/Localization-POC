@@ -1495,7 +1495,7 @@
       "memberAlreadySelected": "Member already available_gb",
       "Pin": "Pin_gb",
       "Amount": "Amount_gb",
-      "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s), </br>{{paidMembers}} Do you wish to proceed?_gb"
+      "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_gb"
     }
   },
   "breakpoint": {
