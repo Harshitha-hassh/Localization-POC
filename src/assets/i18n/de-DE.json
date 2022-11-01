@@ -1494,7 +1494,8 @@
       "RetriveMemberInfo": "Retrieving Member Account Details..._de",
       "memberAlreadySelected": "Member already available_de",
       "Pin": "Pin_de",
-      "Amount": "Amount_de"
+      "Amount": "Amount_de",
+      "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_de"
     }
   },
   "breakpoint": {
