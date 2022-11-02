@@ -103,6 +103,7 @@
   "5010": "User not having access to Property/ Invalid Property Requested",
   "5011": "Invalid Quick ID",
   "5012": "Password is not setup. Please create your password from the Login Screen",
+  "7006": "Email address of this user already used",
   "10100": "Invalid Outlet Name",
   "10101": "Outlet Not Found",
   "10110": "Unable to Create Retail Item, Invalid Request",

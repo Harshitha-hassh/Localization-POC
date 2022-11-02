@@ -103,6 +103,7 @@
   "5010": "User not having access to Property/ Invalid Property Requested_uk",
   "5011": "Invalid Quick ID_uk",
   "5012": "Password is not setup. Please create your password from the Login Screen_uk",
+  "7006": "Email address of this user already used_uk",
   "10100": "Invalid Outlet Name_uk",
   "10101": "Outlet Not Found_uk",
   "10110": "Unable to Create Retail Item, Invalid Request_uk",

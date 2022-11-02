@@ -41,6 +41,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
 
   FormGrp: FormGroup;
   searchValue = true;
+  isADB2CConfigEnabled:boolean=false;
 
   constructor(private Form: FormBuilder, public localization: RetailStandaloneLocalization, private dialog: MatDialog,
               private servicesetting: SettingsService,
@@ -89,6 +90,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     // this.GetServiceCall('GetOutlets', { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
     this.GetRetailServiceCall('GetOutlets', { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
     this.GetServiceCall('GetAllUsers', { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
+    this.GetServiceCall('GetADB2CEnableConfig',{ tenantId: Number(this.utils.GetPropertyInfo('TenantId')) })
     this.Categories = [
       {
         id: 1,
@@ -123,7 +125,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
         filtered: []
       }
     ];
-
+    
   }
 
   ngOnDestroy() {
@@ -172,7 +174,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(NewUserComponent, {
       height: '80%',
       width: '1000px',
-      data: { headername: Dialogtitle, closebool: true, templatename: DialogTemplate, datarecord: '', mode: type },
+      data: { headername: Dialogtitle, closebool: true, templatename: DialogTemplate, datarecord: '', mode: type, isADB2CConfigEnabled: this.isADB2CConfigEnabled },
       panelClass: 'small-popup',
       disableClose: true,
       hasBackdrop: true
@@ -408,6 +410,11 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     else if (callDesc == 'BlockUserProfile') {
       if (result.result) {
         this.GetServiceCall('GetAllUsers', { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
+      }
+    }
+    else if (callDesc == 'GetADB2CEnableConfig') {
+      if (result.result) {
+        this.isADB2CConfigEnabled =(Boolean)(result.result);
       }
     }
   }

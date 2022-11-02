@@ -33,7 +33,7 @@
           </mat-form-field>
 
           <mat-form-field class=" mt-2 w250" [floatLabel]="floatLabel">
-            <input matInput placeholder="{{caption.setting.EmailAddress}}" autocomplete="off" [maxlength]="75" formControlName="email" inputtype="email">
+            <input matInput placeholder="{{caption.setting.EmailAddress}}" autocomplete="off" [maxlength]="75" formControlName="email" inputtype="email" [readonly]="isEmailEditUser">
             <mat-error class="" *ngIf="userSettingsFormGrp.controls['email'].touched && !userSettingsFormGrp.controls['email'].valid">
               {{caption.common.InvalidEmailFormat}}
             </mat-error>

@@ -10,7 +10,7 @@
         <mat-tab-group class="h-100 " [(selectedIndex)]="this.selectedTabIndex"
           (selectedTabChange)="handleSelectedTabChange($event)">
           <mat-tab label="{{this.caption.userConfig.USERSETTINGS}}">
-            <app-user-settings [popConfig]="data" *ngIf="this.selectedTabIndex === 0"></app-user-settings>
+            <app-user-settings [popConfig]="data" [isADB2CConfigEnabled]="isADB2CConfigEnabled" *ngIf="this.selectedTabIndex === 0"></app-user-settings>
           </mat-tab>
           <mat-tab label="{{this.caption.userConfig.RETAILSETTINGS}}">
             <app-retail-settings [IsRoleSelected]="IsRetailRoleSelected" *ngIf="this.selectedTabIndex === 1">

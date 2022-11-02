@@ -718,5 +718,6 @@
   "IsBatchProcessingPending": "POS/RevenuePosting/IsBatchProcessingPending",  
   "MachineAssociatedWithTransaction":"Transaction/IsMachineNameAssociatedWithRetailTransaction/{machineNameId}",
   "transactionExtract": "reports/TransactionExtract",
-  "GetMultiPackRedeemHistoryDetails":"MultiPack/GetMultiPackRedeemHistoryDetails"
+  "GetMultiPackRedeemHistoryDetails":"MultiPack/GetMultiPackRedeemHistoryDetails",
+  "GetADB2CEnableConfig" : "Adb2CAuthentication/GetADB2CEnableConfig/{tenantId}"
 }
