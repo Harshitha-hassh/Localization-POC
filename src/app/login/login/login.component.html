@@ -41,9 +41,10 @@
                                                 </mat-error>
                                             </mat-form-field>
                                         </div>
+                                        <ng-container *ngIf="custId==0">
                                         <div>
                                             <i class="icon-guest ag_pr--2"></i>
-                                            <mat-form-field class="w-50 ag_section--disable" [floatLabel]="floatLabel">
+                                            <mat-form-field class="w-50 ag_section--disable" [floatLabel]="floatLabel" [ngClass]="{'ag_section--disable' : !showCustomerID}">
                                                 <input matInput #fcs_custID inputtype="nonnegative" type="number"
                                                     [placeholder]="captions.customerId" class="text-uppercase"
                                                     inputtype="capitalise,notallowspace,nospecailchar"
@@ -57,6 +58,7 @@
                                         <div>
                                             <a class="ml-4" (click)="clearLclCookie('appRetailCustID')"> {{ captions.changeCustomerID}}</a>
                                         </div>
+                                    </ng-container>
                                     </div>
                                     <div *ngIf="showCustomerID && custId">
                                         <div *ngIf="!showCustomerID">
@@ -138,7 +140,7 @@
                         </div>
                     </div>
 
-                    <div class="margintop--10" *ngIf="custId"><button mat-flat-button class="login__btn" [ngClass]="{'ag_section--disable': !this.loginForms.controls.customerId.value}"
+                    <div class="margintop--10" *ngIf="custId"><button mat-flat-button class="login__btn" [ngClass]="{'ag_section--disable': !this.loginForms.controls.customerId.value && showCustomerID}"
                             (click)="getbuttonEmitvalue($event)">{{loginSuccess?captions.enter:captions.Login}}</button>
                     </div>
                 </div>

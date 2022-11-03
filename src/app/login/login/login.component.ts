@@ -169,8 +169,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     let custId= this.commonLocalize.getLocalCookie('appRetailCustID');
     if(custId!=''){
       this.loginForms.controls['customerId'].setValue(custId);
-    this.loginForms?.controls["customerId"].disable();
-      this.getbuttonEmitvalue('eve');
+      this.loginForms?.controls["customerId"].disable();
+      this.getbuttonEmitvalue('');
     }
   }
 
