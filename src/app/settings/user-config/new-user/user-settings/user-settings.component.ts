@@ -33,7 +33,9 @@ export class UserSettingsComponent implements OnInit {
   commonCaptions: any;
   placeHolderFormat: string;
   @Input() popConfig: any;
+  @Input() isADB2CConfigEnabled: boolean;
   floatLabel: string;
+  isEmailEditUser : boolean = false;
 
   constructor(public localization: RetailStandaloneLocalization, public servicesetting: SettingsService,
               private http: HttpServiceCall, private utils: Utilities, private PropertyInfo: PropertyInformation) {
@@ -53,6 +55,7 @@ export class UserSettingsComponent implements OnInit {
     this.minDateValue = this.utils.getDate(this.PropertyInfo.CurrentDate);
     if(this.popConfig && this.popConfig.mode === 'Edit'){
       this.userSettingsFormGrp.controls['userid'].disable();
+      this.isEmailEditUser=(this.userSettingsFormGrp.controls['email'].value !=  "" && this.isADB2CConfigEnabled) ? true : false;
     } else {
       this.userSettingsFormGrp.controls['userid'].enable();
     }

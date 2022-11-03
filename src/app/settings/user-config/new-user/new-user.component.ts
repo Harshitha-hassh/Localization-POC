@@ -30,6 +30,7 @@ export class NewUserComponent implements OnInit {
   ActionButton: string;
   subPropertyAccess: any = [];
   saveDisabled = false;
+  isADB2CConfigEnabled:boolean=false;
 
   constructor(public localization: RetailStandaloneLocalization, public _servicesetting: SettingsService, @Inject(MAT_DIALOG_DATA) public data,
               private dialogRef: MatDialogRef<NewUserComponent>, private http: HttpServiceCall,
@@ -39,6 +40,7 @@ export class NewUserComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isADB2CConfigEnabled=this.data.isADB2CConfigEnabled;
     this.caption = this.localization.captions;
     this.ActionButton = this.caption.setting.save;
     // this.IsReadOnly = this._servicesetting.breakpoints.find(bp => bp.breakPointNumber == GlobalConst.SPAScheduleBreakPoint.UserSetup).view;

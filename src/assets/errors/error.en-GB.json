@@ -103,6 +103,7 @@
   "5010": "User not having access to Property/ Invalid Property Requested_gb",
   "5011": "Invalid Quick ID_gb",
   "5012": "Password is not setup. Please create your password from the Login Screen_gb",
+  "7006": "Email address of this user already used_gb",
   "10100": "Invalid Outlet Name_gb",
   "10101": "Outlet Not Found_gb",
   "10110": "Unable to Create Retail Item, Invalid Request_gb",
