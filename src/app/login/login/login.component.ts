@@ -169,8 +169,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     let custId= this.commonLocalize.getLocalCookie('appRetailCustID');
     if(custId!=''){
       this.loginForms.controls['customerId'].setValue(custId);
+      if (!this.ADB2CAuthenticationEnabled){
     this.loginForms?.controls["customerId"].disable();
       this.getbuttonEmitvalue('eve');
+      }
     }
   }
 
@@ -731,6 +733,7 @@ export class LoginComponent implements OnInit, OnDestroy {
  * @description Get the return value of button emit
  */
   async getbuttonEmitvalue(e): Promise<void> {
+    window.onbeforeunload = null;
     this.commonLocalize.setLocalCookie('appRetailCustID',this.loginForms.get('customerId').value);
     if(e) {
       e.preventDefault();
