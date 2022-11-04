@@ -1,7 +1,7 @@
 import { Compiler, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { RetailRoutes } from 'src/app/core/extensions/retail-route';
@@ -37,10 +37,10 @@ import { PropertyService } from 'src/app/common/services/property.service';
 import * as FullStory from '@fullstory/browser';
 import { CryptoUtility } from 'src/app/core/utilities/crypto.utility';
 import { OAuthService, NullValidationHandler, OAuthEvent } from 'angular-oauth2-oidc';
-import { AlertType } from 'src/app/shared/shared-models';
-import { ButtonType } from 'src/app/common/enums/shared-enums';
+import { AlertType, ButtonType } from 'src/app/shared/shared-models';
 import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
 import { LoginRoutes } from '../login.routes';
+
 
 @Component({
   selector: 'app-login',
@@ -96,6 +96,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   key: string;
   iv: string;
   ADB2CAuthenticationEnabled: boolean = false;
+  errorvalue : string;
+  errordescription : string;
 
   @ViewChild('fcs_userID') fcs_userID: ElementRef;
   @ViewChild('fcs_pwd') fcs_pwd: ElementRef;
@@ -124,6 +126,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private payAgentService: PayAgentService,
     private crypto: CryptoUtility,
     private oauthService: OAuthService,
+    private route: ActivatedRoute,
     private adb2cAuthConfiguration: ADB2CAuthConfiguration
   ) {
     // this.initializeForm();
@@ -131,47 +134,27 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
-    // this.compiler.clearCache();
-
-    // const token = sessionStorage.getItem(JWT_TOKEN);
-    // if (this.localize.validateString(token)) {
-    //   this.router.navigate(['/home']);
-    // }
-
-    // this.captionGenerator();
-    // this.formGenerator();
-    // this.errorGenerator();
-    // this.getCustomerId();
-    // this.setEncryptKey();
-
-    // this.loginButton = {
-    //   type: 'primary',
-    //   label: this.captions.Login,
-    //   customclass: 'w-307px'
-    // };
-    // this.buttonValueprimary1 = {
-    //   type: 'primary',
-    //   label: this.captions.setPassword,
-    //   customclass: 'w-307px'
-    // };
-    // this.buttonValueprimary2 = {
-    //   type: 'primary',
-    //   label: 'login.ChangePassword',
-    //   customclass: 'w-307px'
-    // };
-    // const getrememberresult = this.sessionService.GetRememberedUsers();
-    // const rememberedUser = (getrememberresult.length > 0) ? getrememberresult[0].name : '';
-    // this.loginForms.controls.userId.setValue(rememberedUser ? rememberedUser : '');
-    // this.loginForms.controls.rememberme.setValue(rememberedUser ? true : false);
-    // this.loginForms.controls.password.setValue('');
-
     await this.initializeForm();
-    let custId= this.commonLocalize.getLocalCookie('appRetailCustID');
-    if(custId!=''){
+    let custId = this.commonLocalize.getLocalCookie('appRetailCustID');
+    if (custId != '') {
       this.loginForms.controls['customerId'].setValue(custId);
-      this.loginForms?.controls["customerId"].disable();
-      this.getbuttonEmitvalue('');
+      if (!this.ADB2CAuthenticationEnabled) {
+        this.loginForms?.controls["customerId"].disable();
+        this.getbuttonEmitvalue('eve');
+      }
     }
+
+    this.route.queryParams.subscribe(params => {    
+      this.errorvalue = params.error;    
+      this.errordescription = params.error_description;
+      if(this.errorvalue != undefined && this.errordescription != undefined && this.errorvalue != '' && this.errordescription != '' )
+      {
+        this.utils.showAlert(this.errorvalue +"<br>"+ this.errordescription, AlertType.Info, ButtonType.Ok,(res=>{
+          window.location.href = window.location.origin + '/Retail/login';
+        }));     
+        return false;
+      }    
+    });
   }
 
   OnFormValueChanges(): any {
@@ -731,8 +714,9 @@ export class LoginComponent implements OnInit, OnDestroy {
  * @description Get the return value of button emit
  */
   async getbuttonEmitvalue(e): Promise<void> {
-    this.commonLocalize.setLocalCookie('appRetailCustID',this.loginForms.get('customerId').value);
-    if(e) {
+    window.onbeforeunload = null;
+    this.commonLocalize.setLocalCookie('appRetailCustID', this.loginForms.get('customerId').value);
+    if (e) {
       e.preventDefault();
       this.loginForms.markAsUntouched();
     }
@@ -751,7 +735,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.showCustomerID = false;
         setTimeout(() => {
           this.fcs_userID.nativeElement.focus();
-          }, 0);
+        }, 0);
       }
     }
     else if (this.ADB2CAuthenticationEnabled) {
@@ -1124,7 +1108,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     })
   }
 
-  clearLclCookie(idname){
+  clearLclCookie(idname) {
     this.commonLocalize.clearLocalCookie(idname);
     this.loginForms.controls['customerId'].setValue('');
     this.loginForms?.controls["customerId"].enable();
@@ -1132,7 +1116,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.showCustomerID = true;
     setTimeout(() => {
       this.fcs_custID.nativeElement.focus();
-      }, 0);
-      this.setVal();
+    }, 0);
+    this.setVal();
   }
 }
