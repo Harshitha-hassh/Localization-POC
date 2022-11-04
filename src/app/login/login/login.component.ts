@@ -140,7 +140,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.loginForms.controls['customerId'].setValue(custId);
       if (!this.ADB2CAuthenticationEnabled) {
         this.loginForms?.controls["customerId"].disable();
-        this.getbuttonEmitvalue('eve');
+        this.getbuttonEmitvalue('');
       }
     }
 
