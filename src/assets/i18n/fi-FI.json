@@ -1169,6 +1169,7 @@
     "selectTerminal": "Please select a Terminal_fi",
     "Terminal": "Terminal_fi",
     "SwipeCardMessage": "Please Swipe/Insert/Tap the card to pay_fi",
+    "DoNotCloseBrowserMsg": "Please do not close the browser_fi",
     "KeyInCardMessage": "Please Key-In the card to pay_fi",
     "SwipeCardCaptureMessage": "Please Swipe/Insert/Tap the card to save_fi",
     "KeyInCardCaptureMessage": "Please Key-In the card to save_fi",
