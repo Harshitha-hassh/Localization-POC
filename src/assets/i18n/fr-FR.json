@@ -1169,6 +1169,7 @@
     "selectTerminal": "Please select a Terminal_fr",
     "Terminal": "Terminal_fr",
     "SwipeCardMessage": "Please Swipe/Insert/Tap the card to pay_fr",
+    "DoNotCloseBrowserMsg": "Please do not close the browser_fr",
     "KeyInCardMessage": "Please Key-In the card to pay_fr",
     "SwipeCardCaptureMessage": "Please Swipe/Insert/Tap the card to save_fr",
     "KeyInCardCaptureMessage": "Please Key-In the card to save_fr",

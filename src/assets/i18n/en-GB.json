@@ -1169,6 +1169,7 @@
     "selectTerminal": "Please select a Terminal_gb",
     "Terminal": "Terminal_gb",
     "SwipeCardMessage": "Please Swipe/Insert/Tap the card to pay_gb",
+    "DoNotCloseBrowserMsg": "Please do not close the browser_gb",
     "KeyInCardMessage": "Please Key-In the card to pay_gb",
     "SwipeCardCaptureMessage": "Please Swipe/Insert/Tap the card to save_gb",
     "KeyInCardCaptureMessage": "Please Key-In the card to save_gb",
