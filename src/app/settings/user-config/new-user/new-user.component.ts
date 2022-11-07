@@ -127,6 +127,8 @@ export class NewUserComponent implements OnInit {
       } else if (serviceSettingControl.lname.value.trim() == '') {
         serviceSettingControl.lname.setValue('');
         serviceSettingControl.lname.markAsTouched();
+      } else if ((!serviceSettingControl.email.value  || serviceSettingControl.email.value.trim() == '') && this.isADB2CConfigEnabled) {
+        this.utils.showError(this.caption.setting.MissingEmail);
       } else {
         this.save();
       }
