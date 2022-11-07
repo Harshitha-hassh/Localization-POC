@@ -2190,6 +2190,7 @@
     "PrinterManagerURI": "Printer Manager URI_uk",
     "InvalidAvailableCount": "Invalid Available Count_uk",
     "EmailConfirmationType": "Email Confirmation Type_uk",
+    "MissingEmail": "Missing Email Address_uk",
     "CustomField": "Custom Fields_uk",
     "setupRibbon": "Setup_uk",
     "equipcode": "Equipment Code_uk",

@@ -2192,6 +2192,7 @@
     "PrinterManagerURI": "Printer Manager URI",
     "InvalidAvailableCount": "Invalid Available Count",
     "EmailConfirmationType": "Email Confirmation Type",
+    "MissingEmail":"Missing Email Address",
     "CustomField": "Custom Fields",
     "setupRibbon": "Setup",
     "equipcode": "Equipment Code",
