@@ -47,6 +47,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   key : string ;
   iv : string;
   floatLabel: string;
+  characterValidationMsg: any;
 
   constructor(
     private formBuilder: FormBuilder, private loginService: LoginCommunicationService,
@@ -281,6 +282,18 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     this.formatingType = passwordresult.formattingType;
     this.allowUserName = (passwordresult.allowUserName) ? true : false;
     this.allowSpecialCharacters = (passwordresult.allowSpecialCharacters) ? true : false;
+    if(this.formatingType == 2)
+    {
+      this.characterValidationMsg = this.allowSpecialCharacters ? this.captions.OneSpecialCharactersAndAlphabets : this.captions.OnlyAlphabets;
+    }
+    else if(this.formatingType == 3)
+    {
+      this.characterValidationMsg = this.allowSpecialCharacters ? this.captions.OneSpecialCharactersAndNumbers : this.captions.OnlyNumbers;
+    }
+    else if(this.formatingType == 4)
+    {
+      this.characterValidationMsg = this.allowSpecialCharacters ? this.captions.OneSpecialCharacterNumberAlphabet : this.captions.AlphabetsAndNumbers;
+    }
   }
   getReturnFormValue(event: any) {
     this.newPwd = event.confirmPwd[0].confirmPwd;
