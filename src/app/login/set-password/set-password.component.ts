@@ -211,7 +211,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       returnType = true;
     } else if (e === 2) {
       if (f) {
-        const exp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{10,}$/;
+        const exp = '(?=.*[A-Za-z])(?=.*[ !"#$%&\'()*+,-./:;<=>?@\\[\\]^_`{|}~\\\\])(?!.*[0-9])';
         const regexpValue = new RegExp(exp, 'g');
         returnType = regexpValue.test(d);
       } else {
@@ -220,7 +220,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       }
     } else if (e === 3) {
       if (f) {
-        const exp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~])[A-Za-z\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{10,}$/;
+        const exp = '(?=.*[0-9])(?=.*[ !"#$%&\'()*+,-./:;<=>?@\\[\\]^_`{|}~\\\\])(?!.*[A-Za-z])';
         const regexpValue = new RegExp(exp, 'g');
         returnType = regexpValue.test(d);
       } else {
