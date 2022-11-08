@@ -42,7 +42,7 @@
           <ng-template [ngSwitchCase]="'roleSetup'">
             <div class='outletsHeader d-flex flex-wrap'>
               <form [formGroup]="roleSetup">
-                <mat-form-field class="role-name">
+                <mat-form-field [floatLabel]="floatLabel" class="role-name">
                   <input matInput placeholder="{{captions.retailsetup.RoleName}}" (input)="UpdateValidation()"
                     formControlName="roleName" autofocus="false" autocomplete="off" [readonly]="isRoleSetUpReadOnly"
                     [maxlength]="250">

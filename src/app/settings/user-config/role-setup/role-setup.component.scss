@@ -36,7 +36,8 @@
         }
 
         .page-header{           
-            height: 75px;
+            height: 90px;
+            padding-bottom: 0.25rem!important;
             .custom-retail-inputs{
                 height: 100%;
                 .template-header{
@@ -45,7 +46,7 @@
             }
         }
         .fixed-table-container{
-            height: calc(100% - 75px);
+            height: calc(100% - 90px);
             // max-width: 1000px;
             float: left;
             // margin: 12px 30px;
