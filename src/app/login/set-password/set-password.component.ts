@@ -48,6 +48,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   iv : string;
   floatLabel: string;
   characterValidationMsg: any;
+  allowReuse: any;
 
   constructor(
     private formBuilder: FormBuilder, private loginService: LoginCommunicationService,
@@ -280,6 +281,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     this.minCharacter = passwordresult.minimumCharacters;
     this.maxCharacter = passwordresult.maximumCharacters;
     this.formatingType = passwordresult.formattingType;
+    this.allowReuse = passwordresult.allowReuse;
     this.allowUserName = (passwordresult.allowUserName) ? true : false;
     this.allowSpecialCharacters = (passwordresult.allowSpecialCharacters) ? true : false;
     if(this.formatingType == 2)
