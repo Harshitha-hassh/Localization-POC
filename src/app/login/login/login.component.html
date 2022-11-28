@@ -8,7 +8,7 @@
             <div class="login__area">
                 <div class="login__details">
                     <label class="login__label-style">{{captions.Login}}</label>
-                    <div class="login__message">{{ captions.welcomeToRetail}}</div>
+                    <div class="login__message">{{loginSuccess? this.captions.SelectYourLocation : captions.welcomeToRetail}}</div>
                     <div class="login__form-details">
                         <div class="login_form">
                             <form [formGroup]="loginForms" autocomplete="off">
