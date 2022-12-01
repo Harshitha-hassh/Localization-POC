@@ -1496,7 +1496,8 @@
       "memberAlreadySelected": "Member already available_uk",
       "Pin": "Pin_uk",
       "Amount": "Amount_uk",
-      "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_uk"
+      "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_uk",
+      "RemoveAll": "Remove All_uk"
     }
   },
   "breakpoint": {
