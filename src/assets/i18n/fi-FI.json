@@ -1496,7 +1496,8 @@
       "memberAlreadySelected": "Member already available_fi",
       "Pin": "Pin_fi",
       "Amount": "Amount_fi",
-      "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_fi"
+      "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_fi",
+      "RemoveAll": "Remove All_fi"
     }
   },
   "breakpoint": {
