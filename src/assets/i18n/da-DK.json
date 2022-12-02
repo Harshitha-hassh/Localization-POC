@@ -964,6 +964,7 @@
     "ClerkId": "Clerk ID_da",
     "Search": "Search_da",
     "WebProxyStatus": "Unable to reach PMS System for Revenue posting. Please check Web Communication proxy._da",
+ 		"RoomChargeWebProxyStatus": "Unable to reach PMS System for Charge posting. Please check Web Communication proxy._da",
     "BookingDetails": "Booking Details_da",
     "ContactDetails": "Contact details_da",
     "RedeemRounds": "RedeemRounds_da",

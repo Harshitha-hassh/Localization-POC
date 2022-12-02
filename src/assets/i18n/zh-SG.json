@@ -909,6 +909,7 @@
       "ClerkId": "Clerk ID_zh",
       "Search": "Search_zh",
       "WebProxyStatus": "Unable to reach PMS System for Revenue posting. Please check Web Communication proxy._zh",
+      "RoomChargeWebProxyStatus": "Unable to reach PMS System for Charge posting. Please check Web Communication proxy._zh",
       "BookingDetails": "Booking Details_zh",
       "ContactDetails": "Contact details_zh",
       "RedeemRounds": "RedeemRounds_zh",

@@ -964,6 +964,7 @@
     "ClerkId": "Clerk ID",
     "Search": "Search",
     "WebProxyStatus": "Unable to reach PMS System for Revenue posting. Please check Web Communication proxy.",
+    "RoomChargeWebProxyStatus": "Unable to reach PMS System for Charge posting. Please check Web Communication proxy.",
     "BookingDetails": "Booking Details",
     "ContactDetails": "Contact details",
     "RedeemRounds": "RedeemRounds",
