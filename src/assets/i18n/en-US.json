@@ -972,7 +972,7 @@
     "RedeemRoundsHeader": "Membership Pin",
     "TicketDetails": "Ticket Details",
     "RetailItems": "RETAIL ITEMS",
-    "SearchBy": "Search by Brand, Price, Item ,Vendor Name #",
+    "SearchBy": "Search by Item Name, Item #, Price, Vendor Name",
     "SearchByBarCode": "Search by Barcode #",
     "NoItemstoShow": "No Items to Show",
     "ViewLess": "View Less",
