@@ -531,6 +531,10 @@ export class LoginComponent implements OnInit, OnDestroy {
           if (eatecFeature && featureconfigurations != null && featureconfigurations.length > 0) {
             const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
             const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
+            const EIFeature = {
+              EISSOWaitPeriodInSecs: featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EISSOWaitPeriodInSecs)?.configurationValue,
+            };
+            this.retailpropertyInfo.SetEatecConfiguration(EIFeature);
             if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
               this.retailpropertyInfo.SetEatecRI(uri.configurationValue);
             } else {

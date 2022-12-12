@@ -86,6 +86,7 @@
     "QUICKLOGIN": "QUICK LOGIN_in"
   },
   "common": {
+    "IntegrationError": " An integration error has occurred, please try again._in",
     "NoPrinterFound": "No Printer Found_in",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_in",
     "noOfCopies": "No Of Copies_in",

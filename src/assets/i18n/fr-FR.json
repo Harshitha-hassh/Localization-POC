@@ -86,6 +86,7 @@
     "QUICKLOGIN": "QUICK LOGIN_fr"
   },
   "common": {
+    "IntegrationError": " An integration error has occurred, please try again._fr",
     "NoPrinterFound": "No Printer Found_fr",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_fr",
     "noOfCopies": "No Of Copies_fr",
