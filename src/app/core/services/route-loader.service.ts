@@ -31,7 +31,7 @@ export class RouteLoaderService {
         const router = this.injector.get(Router);
         console.log(router);
         this.getProductMenus().then(
-          // this.getSettings().subscribe( // uncomment for hard coded menu
+        //this.getSettings().subscribe( // uncomment for hard coded menu
           response => {
             console.log('is Dynamic Menu available?:' + (!Array.isArray(response) || 0 == response.length) ? 'DM-No!' : 'DM-Yes!');
             this.currentSettings = response;
@@ -1004,6 +1004,110 @@ export class RouteLoaderService {
                 externalLink: false,
                 linkedElement: [
 
+                ],
+                breakPointNumber: 0
+              },
+              {
+                elementID: 4043,
+                tenantID: 0,
+                propertyID: 0,
+                productID: 2,
+                textID: 4043,
+                text: "Payment Manager",
+                routePath: "/settings/retailsetup/paymentmanager",
+                imgPath: "",
+                order: 7,
+                visibility: true,
+                disable: false,
+                parentID: 4020,
+                menuAlignment: 'Combo',
+                menuPosition: 'Secondary',
+                externalLink: false,
+                linkedElement: [
+                  {
+                    elementID: 4022,
+                    tenantID: 0,
+                    propertyID: 0,
+                    productID: 2,
+                    textID: 4022,
+                    text: "Outlets",
+                    routePath: "/settings/retailsetup/paymentmanager/outlets",
+                    imgPath: "",
+                    order: 1,
+                    visibility: true,
+                    disable: false,
+                    parentID: 4021,
+                    menuPosition: "Ternary",
+                    menuAlignment: "Vertical",
+                    externalLink: false,
+                    linkedElement: [
+
+                    ],
+                    breakPointNumber: 7025
+                  },
+                  {
+                    elementID: 4022,
+                    tenantID: 0,
+                    propertyID: 0,
+                    productID: 2,
+                    textID: 4022,
+                    text: "Pay Agents",
+                    routePath: "/settings/retailsetup/paymentmanager/payagents",
+                    imgPath: "",
+                    order: 1,
+                    visibility: true,
+                    disable: false,
+                    parentID: 4021,
+                    menuPosition: "Ternary",
+                    menuAlignment: "Vertical",
+                    externalLink: false,
+                    linkedElement: [
+
+                    ],
+                    breakPointNumber: 7025
+                  },
+                  {
+                    elementID: 4022,
+                    tenantID: 0,
+                    propertyID: 0,
+                    productID: 2,
+                    textID: 4022,
+                    text: "Settlers",
+                    routePath: "/settings/retailsetup/paymentmanager/settlers",
+                    imgPath: "",
+                    order: 1,
+                    visibility: true,
+                    disable: false,
+                    parentID: 4021,
+                    menuPosition: "Ternary",
+                    menuAlignment: "Vertical",
+                    externalLink: false,
+                    linkedElement: [
+
+                    ],
+                    breakPointNumber: 7025
+                  },
+                  {
+                    elementID: 4022,
+                    tenantID: 0,
+                    propertyID: 0,
+                    productID: 2,
+                    textID: 4022,
+                    text: "History",
+                    routePath: "/settings/retailsetup/paymentmanager/history",
+                    imgPath: "",
+                    order: 1,
+                    visibility: true,
+                    disable: false,
+                    parentID: 4021,
+                    menuPosition: "Ternary",
+                    menuAlignment: "Vertical",
+                    externalLink: false,
+                    linkedElement: [
+
+                    ],
+                    breakPointNumber: 7025
+                  },
                 ],
                 breakPointNumber: 0
               }
