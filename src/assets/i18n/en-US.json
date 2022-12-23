@@ -3261,7 +3261,9 @@
     "NewDistributionList": "New Distribution List",
     "AllowQuickID": "Allow Quick ID",
     "ForRetailTransactions": "For Retail Transactions",
-    "paymentMethod": "Default Payment Method"
+    "paymentMethod": "Default Payment Method",
+    "lbl_vendor":"Vendor",
+    "lbl_ItemInventory":"Item/Inventory"
   },
   "settings": {
     "prices": "Price ({option})",

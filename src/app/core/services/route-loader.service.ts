@@ -1359,6 +1359,26 @@ export class RouteLoaderService {
 
                 ],
                 breakPointNumber: 0
+              },
+              {
+                elementID: 4082,
+                tenantID: 0,
+                propertyID: 0,
+                productID: 2,
+                textID: 4082,
+                text: "Enahanced Inventory Master Sync",
+                routePath: "/settings/utilities/enhancedinventorymastersync",
+                imgPath: "",
+                order: 5,
+                visibility: true,
+                disable: false,
+                parentID: 4046,
+                menuAlignment: 'Combo',
+                menuPosition: 'Secondary',
+                externalLink: false,
+                linkedElement: [
+                ],
+                breakPointNumber: 0
               }
             ],
             breakPointNumber: 0
