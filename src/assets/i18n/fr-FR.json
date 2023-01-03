@@ -1094,6 +1094,7 @@
     "Void": "Void_fr",
     "Correct": "Correct_fr",
     "TicketNumber": "Ticket #_fr",
+    "CardNumberSearch": "Card # (Last 4 digits)_fr",
     "Date": "Date_fr",
     "Time": "Time_fr",
     "ClerkID": "Clerk ID_fr",

@@ -1094,6 +1094,7 @@
     "Void": "Void_uk",
     "Correct": "Correct_uk",
     "TicketNumber": "Ticket #_uk",
+    "CardNumberSearch": "Card # (Last 4 digits)_uk",
     "Date": "Date_uk",
     "Time": "Time_uk",
     "ClerkID": "Clerk ID_uk",

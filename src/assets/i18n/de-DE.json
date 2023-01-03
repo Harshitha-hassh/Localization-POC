@@ -1094,6 +1094,7 @@
     "Void": "Void_de",
     "Correct": "Correct_de",
     "TicketNumber": "Ticket #_de",
+    "CardNumberSearch": "Card # (Last 4 digits)_de",
     "Date": "Date_de",
     "Time": "Time_de",
     "ClerkID": "Clerk ID_de",
@@ -3260,6 +3261,7 @@
     "AllowQuickID": "Allow Quick ID_de",
     "ForRetailTransactions": "For Retail Transactions_de",
     "paymentMethod": "Default Payment Method_de"
+
   },
   "settings": {
     "prices": "Price ({option})_de",

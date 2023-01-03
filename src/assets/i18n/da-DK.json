@@ -1094,6 +1094,7 @@
     "Void": "Void_da",
     "Correct": "Correct_da",
     "TicketNumber": "Ticket #_da",
+    "CardNumberSearch": "Card # (Last 4 digits)_da",
     "Date": "Date_da",
     "Time": "Time_da",
     "ClerkID": "Clerk ID_da",
