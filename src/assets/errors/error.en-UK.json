@@ -172,6 +172,7 @@
   "14103": "Terminal in Use, Delete not allowed_uk",
   "14104": "Terminal in Use, Inactive not allowed_uk",
   "14110": "Patron is not available in Casino System_uk",
+  "20100": "Outlet already exists_uk",
   "69001": "Ticket Could not be voided. Please try again later._uk",
   "69002": "Unable to perform Undo Checkout. Please try again later._uk",
   "69003": "Ticket is Closed. Please Sync Up._uk",
