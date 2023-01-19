@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { QuickidConfigComponent } from './quickid-config.component';
 
@@ -6,7 +6,7 @@ describe('QuickidConfigComponent', () => {
   let component: QuickidConfigComponent;
   let fixture: ComponentFixture<QuickidConfigComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ QuickidConfigComponent ]
     })

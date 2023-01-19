@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NoDataFoundComponent } from './no-data-found.component';
 
@@ -6,7 +6,7 @@ describe('NoDataFoundComponent', () => {
   let component: NoDataFoundComponent;
   let fixture: ComponentFixture<NoDataFoundComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NoDataFoundComponent ]
     })

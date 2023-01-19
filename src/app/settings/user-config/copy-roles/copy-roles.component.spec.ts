@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CopyRolesComponent } from './copy-roles.component';
 
@@ -6,7 +6,7 @@ describe('CopyRolesComponent', () => {
   let component: CopyRolesComponent;
   let fixture: ComponentFixture<CopyRolesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CopyRolesComponent ]
     })
