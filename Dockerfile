@@ -1,4 +1,4 @@
-FROM docker-registry.bellevue.agilysys.com:5000/official/node:10-20210829-2038 AS build
+FROM docker-registry.bellevue.agilysys.com:5000/official/node:12.9.1-20220210-0211 AS build
 EXPOSE 80
 
 ## set work dir
