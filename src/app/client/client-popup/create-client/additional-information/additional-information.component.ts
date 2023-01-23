@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input, ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { PropertyInformation } from '../../../../core/services/property-information.service';
 import { SubscriptionLike as ISubscription, Subscription } from 'rxjs';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
@@ -20,11 +20,11 @@ import { PayAgentService } from 'src/app/retail/shared/service/payagent.service'
   encapsulation:ViewEncapsulation.None
 })
 export class AdditionalInformationComponent implements OnInit, OnDestroy {
-  @Input() parentForm: FormGroup;
+  @Input() parentForm: UntypedFormGroup;
   cardConnectDialog: MatDialogRef<any, any>;
 
   additionalDetails: any = [];
-  FormGrp: FormGroup;
+  FormGrp: UntypedFormGroup;
   minFromDate: any;
   customFieldInfo: any = [];
   isTitleHidden: boolean = true;
@@ -57,7 +57,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     }
   }
   constructor(
-    private Form: FormBuilder, 
+    private Form: UntypedFormBuilder, 
     private http: HttpServiceCall,
     public localization: RetailLocalization, 
     public dialog: MatDialog, 

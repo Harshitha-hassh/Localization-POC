@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { UserAlerts } from 'src/app/common/shared/config/alerts-config';
 import { PromptType, ButtonOptions, DefaultGUID } from 'src/app/common/shared/shared/globalsContant';
 import { takeUntil } from 'rxjs/operators';
@@ -21,7 +21,7 @@ import { Utilities } from 'src/app/core/utilities';
 export class ClientPopupComponent implements OnInit {
 
   captions:any;
-  clientPopupForm:FormGroup;
+  clientPopupForm:UntypedFormGroup;
   clientInfo:any;
   patronId = '';
   IsClientScreenDirty:boolean;
@@ -31,7 +31,7 @@ export class ClientPopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public localization: RetailLocalization,
     private userAlert: UserAlerts,
-    public _fb: FormBuilder,
+    public _fb: UntypedFormBuilder,
      public _imageService: RetailImageService,
     private _createClientBusiness: CreateClientBusiness,
     private utils: Utilities) {

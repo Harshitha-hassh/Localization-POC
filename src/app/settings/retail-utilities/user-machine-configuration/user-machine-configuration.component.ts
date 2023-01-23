@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 import * as myGlobals from 'src/app/common/shared/shared/globalsContant'; // CONSTANT FILE ADD ANY CONSTANT VALUE
@@ -31,7 +31,7 @@ import { DEFAULTCONFIGURATION } from 'src/app/common/constants';
 })
 export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
 
-  userSessionConfigForm: FormGroup;
+  userSessionConfigForm: UntypedFormGroup;
   userSessionConfiguration = new UserSessionConfiguration();
 
   captions: any = this.localization.captions.utilities;
@@ -65,7 +65,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
   TenantDefaultUserConfiguration : DefaultUserConfigurationTenant<DefaultUserConfigurationTenantModel>
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     public machineNameDataService: MachineNameDataService,
     public localization: RetailStandaloneLocalization,
     public PropertyInfo: PropertyInformation,

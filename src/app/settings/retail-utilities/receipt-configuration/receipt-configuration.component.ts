@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { Outlet, ReceiptModel,PropertyReceiptModel, PropertyConfigurationModel } from '../../../retail/retail.modals';
 import { ReceiptConfigurationDataService } from './receipt-configuration-data';
@@ -19,7 +19,7 @@ export class ReceiptConfigurationComponent implements OnInit {
 
   [x: string]: any;
   printReceiptArray: any;
-  FormGrp: FormGroup;
+  FormGrp: UntypedFormGroup;
   textCaptions: any;
   printInfo: any;
   Outlet: Outlet[];
@@ -40,7 +40,7 @@ export class ReceiptConfigurationComponent implements OnInit {
   floatLabel: string;
 
 
-  constructor(private Form: FormBuilder,
+  constructor(private Form: UntypedFormBuilder,
               private breakPoint: BreakPointAccess,
               private localization: RetailStandaloneLocalization,
               private data: ReceiptConfigurationDataService,
@@ -140,7 +140,7 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.FormGrp.get('displayServiceCharge').setValue(selectedValues[0].serviceChargeGratuityDisplay);
     this.FormGrp.get('gratuityLine').setValue(selectedValues[0].gratuityLine);
     this.FormGrp.get('receiptNote').setValue(selectedValues[0].receiptNote);
-    this.printReceiptArray = this.FormGrp.get('printReceipt') as FormArray;
+    this.printReceiptArray = this.FormGrp.get('printReceipt') as UntypedFormArray;
     this.printReceiptArray.removeAt(0);
     const x = this.savePrintDetails(printReceiptCustom);
     this.printReceiptArray.push(x);
@@ -176,7 +176,7 @@ export class ReceiptConfigurationComponent implements OnInit {
     
   }
 
-  addPrintDetails(): FormGroup {
+  addPrintDetails(): UntypedFormGroup {
     return this.Form.group({
       discountOnReceipt: '',
       addSecondLine: '',
@@ -192,7 +192,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       
     });
   }
-  savePrintDetails(data): FormGroup {
+  savePrintDetails(data): UntypedFormGroup {
     return this.Form.group({
       discountOnReceipt: data.discountOnReceipt,
       addSecondLine: data.addSecondLine,

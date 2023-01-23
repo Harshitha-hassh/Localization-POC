@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 @Injectable()
 export class SystemSetupBusinessService {
 
-  public systemForm: FormGroup;
+  public systemForm: UntypedFormGroup;
   public systemConfigValues: any;
 
   constructor() { }

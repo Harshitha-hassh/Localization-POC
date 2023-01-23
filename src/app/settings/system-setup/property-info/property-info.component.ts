@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray, Validators } from '@angular/forms';
 import { ComboOptions, SystemConfiguration } from 'src/app/common/shared/shared/business/view-settings.modals';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { SystemSetupBusinessService } from '../system-setup.business.service';
@@ -22,16 +22,16 @@ import { debounceTime, distinctUntilChanged, map, startWith, takeUntil } from 'r
 export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDestroy {
   propertyInformation;
   settingInfo: SystemConfiguration[] = [];
-  propertyInfo: FormGroup;
+  propertyInfo: UntypedFormGroup;
   contactPhoneType: ComboOptions[];
   contactPhoneLabelType: any;
   contactEmailType: any;
   RequiredFieldInfo: any;
   languageType: any[];
   textmaskFormat: string;
-  phone: FormArray;
-  address: FormArray;
-  requiredFields: FormArray;
+  phone: UntypedFormArray;
+  address: UntypedFormArray;
+  requiredFields: UntypedFormArray;
   addresslength = 0;
   captions: any;
   requiredFieldsInfo: any;
@@ -55,7 +55,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   floatLabel: string;
   constructor(private BP: BreakPointAccess,
               private systemConfig: SystemSetupBusinessService,
-              private fb: FormBuilder,
+              private fb: UntypedFormBuilder,
               private localization: RetailStandaloneLocalization,
               private utilities: RetailUtilities,
               public http: HttpServiceCall,
@@ -109,7 +109,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       DEFAULT_COUNTRY_CODE: ['', Validators.min(1)],
       DEFAULT_PHONE_TYPE: ''
     });
-    this.phone = this.propertyInfo.get('phone') as FormArray;
+    this.phone = this.propertyInfo.get('phone') as UntypedFormArray;
 
     this.contactPhoneLabelType =  [
         {
@@ -145,7 +145,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
      { id: 2, value: 'Spanish', code: 'SPANISH' }, { id: 3, value: 'Chinese', code: 'Chinese' }];
     this.textmaskFormat =this.localization.propertyCaptions.common && this.localization.propertyCaptions.common.PhoneFormat != '' ?
      this.localization.propertyCaptions.common.PhoneFormat : '999999999999999999';
-    this.address = this.propertyInfo.get('address') as FormArray;
+    this.address = this.propertyInfo.get('address') as UntypedFormArray;
     this.addresslength = this.address.length;
     this.captions = this.localization.captions.setting;
     this.GetServiceCall('GetAllLanguages');
@@ -249,7 +249,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     //this.ValidateBreakPoint();
     this.GetPropertInfo();
     this.GetAllSetting();
-    this.requiredFields = this.propertyInfo.get('requiredFields') as FormArray;
+    this.requiredFields = this.propertyInfo.get('requiredFields') as UntypedFormArray;
     for (let i = 0; i < this.requiredFieldsInfo.length; i++) {
       switch (this.requiredFieldsInfo[i].name) {
         case this.captions.personalInformation:
@@ -356,7 +356,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     } catch (e) { }
   }
 
-  addPersonalDetails(): FormGroup {
+  addPersonalDetails(): UntypedFormGroup {
     return this.fb.group({
       CLIENT_TITLE: '',
     //  CLIENT_FIRST_NAME: '',
@@ -366,7 +366,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     });
   }
 
-  addContactDetails(): FormGroup {
+  addContactDetails(): UntypedFormGroup {
     return this.fb.group({
       CLIENT_ADDRESS_LINE_1: '',
       CLIENT_CITY: '',
@@ -378,7 +378,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     });
   }
 
-  addPaymentDetails(): FormGroup {
+  addPaymentDetails(): UntypedFormGroup {
     return this.fb.group({
       CLIENT_CREDIT_CARD: '',
       CUSTOM_FIELD_1: '',
@@ -402,7 +402,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     return phoneInfo;
   }
 
-  addPhoneArray(index, phoneLabel, phoneNumber): FormGroup {
+  addPhoneArray(index, phoneLabel, phoneNumber): UntypedFormGroup {
     return this.fb.group({
       phonetype: 'Phone',
       phonelabel: phoneLabel,
@@ -410,23 +410,23 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     });
   }
   addPhoneItem(index, phoneLabel: any, phoneNumber: any): void {
-    this.phone = this.propertyInfo.get('phone') as FormArray;
+    this.phone = this.propertyInfo.get('phone') as UntypedFormArray;
     this.phone.insert(1, this.addPhoneArray(index, phoneLabel, phoneNumber));
   }
 
   removePhoneItem(index: number): void {
-    this.phone = this.propertyInfo.get('phone') as FormArray;
+    this.phone = this.propertyInfo.get('phone') as UntypedFormArray;
     this.phone.removeAt(index);
   }
 
-  addAddressArray(index, addressDetails): FormGroup {
+  addAddressArray(index, addressDetails): UntypedFormGroup {
     return this.fb.group({
       addressDetails: addressDetails
     });
   }
 
   addAddress(index: number, addressDetails: any) {
-    this.address = this.propertyInfo.get('address') as FormArray;
+    this.address = this.propertyInfo.get('address') as UntypedFormArray;
     if (this.address.length < 3) {
       this.address.push(this.addAddressArray(index, addressDetails));
     }
@@ -505,7 +505,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     const con = allControls[0];
     let _body: SystemConfig[] = [];
     for (const systemControl of con) {
-      const formControl = systemControl as FormGroup;
+      const formControl = systemControl as UntypedFormGroup;
       const controls: string[] = Object.keys(formControl.controls);
       for (const control of controls) {
         const switchName = control;
@@ -614,12 +614,12 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
         this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
     }
 
-    this.clearFormArray(this.propertyInfo.get('address') as FormArray);
+    this.clearFormArray(this.propertyInfo.get('address') as UntypedFormArray);
     for (let index = 0; index < address.length; index++) {
       if ((address[index] && address[index].trim() != '') || index == 0)
         this.addAddress(index, address[index]);
     }
-    this.clearFormArray(this.propertyInfo.get('phone') as FormArray);
+    this.clearFormArray(this.propertyInfo.get('phone') as UntypedFormArray);
     if (phone != null && (!this.phone || this.phone.length != phone.length)) {
       for (let index = 0; index < phone.length; index++) {
         if ((phone[index].number && phone[index].number.toString().trim() != '') || index == 0) {
@@ -630,8 +630,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     } else {
       this.addPhoneItem(0, '', '');
     }
-    const phonenumbers = this.propertyInfo.get('phone') as FormArray;
-    phonenumbers.controls.forEach((obj: FormGroup) => {
+    const phonenumbers = this.propertyInfo.get('phone') as UntypedFormArray;
+    phonenumbers.controls.forEach((obj: UntypedFormGroup) => {
         if (!obj.value['phonelabel']) {
           obj.get('phonenumber').disable();
         }
@@ -712,7 +712,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     }
   }
 
-  clearFormArray(formArray: FormArray): void {
+  clearFormArray(formArray: UntypedFormArray): void {
     while (formArray.length !== 0) {
       formArray.removeAt(0);
     }

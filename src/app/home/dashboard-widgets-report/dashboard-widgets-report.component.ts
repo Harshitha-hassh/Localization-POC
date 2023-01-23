@@ -3,7 +3,7 @@ import { DashboardWidgetsReportService } from './dashboard-widgets-report.servic
 import { DashBoardBusiness } from './dashboard-business';
 import {  DonutCount } from './dashboard.modal';
 import { SubPropertyDataService } from 'src/app/retail/retail-code-setup/retail-outlets/subproperty-data.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { Utilities } from 'src/app/core/utilities';
 import { ChartBarComponent } from '../chart-bar/chart-bar.component';
@@ -31,7 +31,7 @@ import { RedirectToModules } from 'src/app/common/shared/shared/utilities/common
 })
 export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit , OnDestroy {
   captions: any;
-  dashBoardform: FormGroup;
+  dashBoardform: UntypedFormGroup;
   dashBoardWidget: any;  // dynamic template data
   widgetsData: any;  // dynamic template data
   manageArr: any = []; // dynamic template data
@@ -113,7 +113,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   constructor(private cdr: ChangeDetectorRef,
               public dashboardWidgetsReportService: DashboardWidgetsReportService,
               private dashBoardBusiness: DashBoardBusiness,
-              private fb: FormBuilder,
+              private fb: UntypedFormBuilder,
               private utilities: Utilities,
               private breakPoint: BreakPointAccess,
               private propertyInformation: PropertyInformation,

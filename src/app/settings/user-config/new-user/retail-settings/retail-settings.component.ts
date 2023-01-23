@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 // import { Utilities } from '../../../../shared/utilities/utilities';
 import { SettingsService } from '../../../settings.service';
@@ -22,7 +22,7 @@ export class RetailSettingsComponent implements OnInit {
   outlets: any[];
   caption: any;
   IsReadOnly: boolean;
-  retailSettingsFormGrp: FormGroup;
+  retailSettingsFormGrp: UntypedFormGroup;
   ActionButton: string;
   @Input() IsRoleSelected: any;
   isCommissionClassRequired = false;

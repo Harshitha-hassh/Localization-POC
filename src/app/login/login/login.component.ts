@@ -1,5 +1,5 @@
 import { Compiler, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReplaySubject } from 'rxjs';
@@ -51,7 +51,7 @@ import { LoginRoutes } from '../login.routes';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   captions: any;
-  loginForms: FormGroup;
+  loginForms: UntypedFormGroup;
   loginError: boolean;
   loginSuccess = false;
   hideLoginForm = false;
@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private dialog: MatDialog,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private localize: RetailStandaloneLocalization,
     private commonLocalize: Localization,
     private utils: Utilities,

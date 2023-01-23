@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 // import { HttpServiceCall, HttpMethod } from '../shared/service/http-call.service';
 // import { Host, SPAScheduleBreakPoint, Product } from '../shared/globalsContant';
 // import { Utilities, RecurringType } from '../shared/utilities/utilities';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 // import { BreakPointAccess } from '../shared/service/breakpoint.service';
 import { PropertyInformation } from '../core/services/property-information.service';
 import { BehaviorSubject } from 'rxjs';
@@ -109,7 +109,7 @@ export class SettingsService {
   constructor(
     // private http: HttpServiceCall
     private utils: Utilities,
-    private Form: FormBuilder,
+    private Form: UntypedFormBuilder,
     // , private breakpoint: BreakPointAccess,
     private localization: RetailLocalization,
     private PropertyInfo: PropertyInformation) {

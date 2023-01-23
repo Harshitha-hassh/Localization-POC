@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { ActivatedRoute } from '@angular/router';
@@ -19,8 +19,8 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
 
   captions: any;
   errorMessage: { oldPassword: string, newPassword: string; confirmPassword: string; };
-  setPasswordForms: FormGroup;
-  passwordSetUp: FormGroup;
+  setPasswordForms: UntypedFormGroup;
+  passwordSetUp: UntypedFormGroup;
   newPwd: string;
   confirmPwd: string;
   oldPassword: string;
@@ -51,7 +51,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   allowReuse: any;
 
   constructor(
-    private formBuilder: FormBuilder, private loginService: LoginCommunicationService,
+    private formBuilder: UntypedFormBuilder, private loginService: LoginCommunicationService,
     public dialogRef: MatDialogRef<SetPasswordComponent>,
     private localization: RetailStandaloneLocalization,  private crypto: CryptoUtility,
     private route: ActivatedRoute,

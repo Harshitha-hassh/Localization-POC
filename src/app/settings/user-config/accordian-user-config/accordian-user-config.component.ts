@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewEncapsulation, ViewChild, AfterViewInit, 
 import * as _ from 'lodash';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { SettingsService } from '../../settings.service';
-import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-accordian-user-config',
@@ -16,14 +16,14 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   @ViewChild('ExapanedPanel') ExapanedPanel;
   captions: any = this.localization.captions.userConfig;
   selectedCount: any = [];
-  userRoleGroup: FormGroup;
-  userDetails: FormArray;
-  userClaims: FormArray;  
+  userRoleGroup: UntypedFormGroup;
+  userDetails: UntypedFormArray;
+  userClaims: UntypedFormArray;  
   allowAllToggle: boolean[] = [];
   viewAllToggle: boolean[] = [];
   disableViewAllToogle: boolean[] = [];
 
-  constructor(public _settingService: SettingsService, public localization: RetailStandaloneLocalization, private fb: FormBuilder) {
+  constructor(public _settingService: SettingsService, public localization: RetailStandaloneLocalization, private fb: UntypedFormBuilder) {
 
   }
 
@@ -47,7 +47,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
 
   }
 
-  createUserDetails(i): FormGroup {
+  createUserDetails(i): UntypedFormGroup {
     return this.fb.group({
       count: '',
       description: '',
@@ -57,7 +57,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
     });
   }
 
-  createClaimDetails(i): FormGroup {
+  createClaimDetails(i): UntypedFormGroup {
     return this.fb.group({
       allow: '',
       breakPointNumber: '',
@@ -140,8 +140,8 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
     event.stopPropagation();
   }
 
-  allowAll(userDetail: FormGroup, itemDetail, event, index) {
-    const userClaims = userDetail.controls.userClaims as FormArray;
+  allowAll(userDetail: UntypedFormGroup, itemDetail, event, index) {
+    const userClaims = userDetail.controls.userClaims as UntypedFormArray;
     itemDetail.userClaims.forEach(element => {
       element.allow = event[0];
       if(event[0] && element.viewOnlyAllowed) {
@@ -149,7 +149,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
       }
     });
     for(let index in userClaims.controls) {
-      let userClaim = userClaims.controls[index] as FormGroup;
+      let userClaim = userClaims.controls[index] as UntypedFormGroup;
       userClaim.controls['allow'].setValue(event[0]);
       if(event[0] && userClaim.controls['viewOnlyAllowed'].value) {
         userClaim.controls['view'].setValue(!event[0]);
@@ -174,9 +174,9 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
         }
       });
     }
-    const userClaims = userDetail.controls.userClaims as FormArray;
+    const userClaims = userDetail.controls.userClaims as UntypedFormArray;
     for(let index in userClaims.controls) {
-      let userClaim = userClaims.controls[index] as FormGroup;
+      let userClaim = userClaims.controls[index] as UntypedFormGroup;
       if(event[0]) {
         userClaim.controls['allow'].setValue(!event[0]);
       }
@@ -190,7 +190,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
 
 
   addUserDetails() {
-    this.userDetails = this.userRoleGroup.get('userDetails') as FormArray;
+    this.userDetails = this.userRoleGroup.get('userDetails') as UntypedFormArray;
     this.userDetails.removeAt(0);
     if (this.inputData) {
       _.forEach(this.inputData[0].headerData.details, (user, i) => {
@@ -206,14 +206,14 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
         this.allowAllToggle[i] = false;
         this.viewAllToggle[i] = false;
         this.disableViewAllToogle[i] = false;
-        this.userClaims = this.userRoleGroup.get(['userDetails', i, 'userClaims']) as FormArray;
+        this.userClaims = this.userRoleGroup.get(['userDetails', i, 'userClaims']) as UntypedFormArray;
         _.forEach(user.userClaims, (claim, j) => {
           this.userClaims.push(this.addUserClaims(i, user.id, claim));
         })
       })
     }
   }
-  addUserClaims(i, id, claim): FormGroup {
+  addUserClaims(i, id, claim): UntypedFormGroup {
     return this.fb.group({
       id: id,
       allow: claim.allow,
@@ -274,7 +274,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
       this.viewAllToggle[index] = (selectedView.length > 0 && itemDetails.userClaims.filter(x=>x.viewOnlyAllowed).length === selectedView.length);
   }
 
-  private updateSelectedData(data: FormGroup){
+  private updateSelectedData(data: UntypedFormGroup){
     let selectedData = data.controls;
     let idx = _.findIndex(this._settingService.changedBreakPoints, (x) => { return x["breakPointNumber"] == selectedData.breakPointNumber.value });
     if (idx == -1) {

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, UntypedFormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Localization } from 'src/app/common/localization/localization';
 import { AlertType } from 'src/app/shared/shared-models';
 import { PrinterDefaultConfigurationBusiness } from './printer-default-configuration.business';
@@ -21,7 +21,7 @@ export class PrinterDefaultConfigurationComponent implements OnInit {
   selectedValue = 0;
   printerDropdownOptions: Options[];
   defalutNoOfCopies: number;
-  constructor(private fb: FormBuilder, private localization: Localization,
+  constructor(private fb: UntypedFormBuilder, private localization: Localization,
     private business: PrinterDefaultConfigurationBusiness, private utilities: RetailUtilities) {
     this.captions = this.localization.captions.settings.utilities;
     this.commonCaptions = this.localization.captions.common;

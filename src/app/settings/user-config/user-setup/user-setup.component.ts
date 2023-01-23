@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as _ from 'lodash';
 import { SubscriptionLike as ISubscription } from 'rxjs';
@@ -39,11 +39,11 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   hasAccess = true;
   dialogSubscription: ISubscription;
 
-  FormGrp: FormGroup;
+  FormGrp: UntypedFormGroup;
   searchValue = true;
   isADB2CConfigEnabled:boolean=false;
 
-  constructor(private Form: FormBuilder, public localization: RetailStandaloneLocalization, private dialog: MatDialog,
+  constructor(private Form: UntypedFormBuilder, public localization: RetailStandaloneLocalization, private dialog: MatDialog,
               private servicesetting: SettingsService,
               private http: HttpServiceCall,
               private utils: Utilities, private BPoint: BreakPointAccess,
