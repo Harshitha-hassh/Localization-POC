@@ -1637,7 +1637,8 @@
     "8175": "8175 - Transaction Extract",
     "8180": "8180 - Purchase Orders Report",
 		"8185": "8185 - Receiving Report",
-		"8190": "8190 - Inventory Variance Report"
+		"8190": "8190 - Inventory Variance Report",
+    "15170": "15170 - Inventory Sync"
   },
   "userId": "User ID",
   "password": "Password",
