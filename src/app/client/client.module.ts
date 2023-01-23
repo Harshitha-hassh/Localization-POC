@@ -19,34 +19,31 @@ import { NgDragDropModule } from 'ng-drag-drop';
 import { ClientService } from '../shared/service/client-service.service';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ClientRountingModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTableModule,
-    ScrollbarModule,
-    NgDragDropModule.forRoot()
-  ],
-  declarations: [
-    ClientComponent,
-    ViewCientComponenet,
-    AllClientsComponent,
-    RecentsComponent,
-    VipComponent,
-    SingleUserViewComponent,
-    ClientTableComponent,
-    ClientfilterpipePipe,
-    ClientDetailsComponent,
-    ClientsortpipePipe
-  ],
-  providers: [ClientService],
-  exports: [
-    ClientsortpipePipe
-  ],
-  entryComponents:[
-    // ClientPopupComponent
-  ]
+    imports: [
+        CommonModule,
+        ClientRountingModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTableModule,
+        ScrollbarModule,
+        NgDragDropModule.forRoot()
+    ],
+    declarations: [
+        ClientComponent,
+        ViewCientComponenet,
+        AllClientsComponent,
+        RecentsComponent,
+        VipComponent,
+        SingleUserViewComponent,
+        ClientTableComponent,
+        ClientfilterpipePipe,
+        ClientDetailsComponent,
+        ClientsortpipePipe
+    ],
+    providers: [ClientService],
+    exports: [
+        ClientsortpipePipe
+    ]
 })
 export class ClientModule { }

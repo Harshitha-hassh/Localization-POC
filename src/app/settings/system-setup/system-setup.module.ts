@@ -9,14 +9,13 @@ import { RetailModule } from 'src/app/retail/retail.module';
 import { PropertyInfoComponent } from './property-info/property-info.component';
 
 @NgModule({
-  declarations: [SystemSetupComponent, PropertyInfoComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    SystemSetupRoutingModule,
-    SystemConfigModule,
-    RetailModule
-  ],
-  entryComponents: []
+    declarations: [SystemSetupComponent, PropertyInfoComponent],
+    imports: [
+        CommonModule,
+        SharedModule,
+        SystemSetupRoutingModule,
+        SystemConfigModule,
+        RetailModule
+    ]
 })
 export class SystemSetupModule { }

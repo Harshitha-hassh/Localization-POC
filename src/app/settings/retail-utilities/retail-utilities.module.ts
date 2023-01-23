@@ -13,14 +13,13 @@ import { ManagerUtilitiesComponent } from './manager-utilities/manager-utilities
 import { PrinterDefaultConfigurationComponent } from './manager-utilities/printer-default-configuration/printer-default-configuration.component';
 
 @NgModule({
-  declarations: [RetailUtilitiesComponent,ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent,ManagerUtilitiesComponent,PrinterDefaultConfigurationComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    UtilitiesRoutingModule,
-    SystemConfigModule,
-    RetailModule
-  ],
-  entryComponents: []
+    declarations: [RetailUtilitiesComponent, ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent, ManagerUtilitiesComponent, PrinterDefaultConfigurationComponent],
+    imports: [
+        CommonModule,
+        SharedModule,
+        UtilitiesRoutingModule,
+        SystemConfigModule,
+        RetailModule
+    ]
 })
 export class UtilitiesModule { }

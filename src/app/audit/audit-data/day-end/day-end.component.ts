@@ -37,12 +37,11 @@ import { RevenuePostingDataService } from 'src/app/retail/sytem-config/data-serv
 import { RoomRevenuePostingRequest } from 'src/app/retail/shop/view-categories/retail-revenue-posting-logs/revenue-posting';
 
 @Component({
-  selector: 'app-day-end',
-  templateUrl: './day-end.component.html',
-  styleUrls: ['./day-end.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  providers: [AppModuleService, ShopBussinessService, FinancialBinHelper],
-  entryComponents: [VoidReasonComponent]
+    selector: 'app-day-end',
+    templateUrl: './day-end.component.html',
+    styleUrls: ['./day-end.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    providers: [AppModuleService, ShopBussinessService, FinancialBinHelper]
 })
 export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
