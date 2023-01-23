@@ -2202,7 +2202,7 @@ ui-switch {
 //SPA related style.scss
 
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~ngx-ui-switch/ui-switch.component.scss";
 @import "./assets/icons/style.css";
 
@@ -2210,8 +2210,8 @@ ui-switch {
 @import "./assets/sass/base/_typography";
 @import "./assets/sass/abstracts/_mixins";
 @import "./assets/sass/components/_buttons";
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import "~@angular/material/theming";
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "@angular/material/theming";
 @import "./assets/sass/abstracts/_variables.scss";
 
 // $custom-typography: mat-typography-config($font-family: 'LatoWeb');
