@@ -6,7 +6,6 @@ WORKDIR /ui
 
 ## install and copy depndencies
 COPY ./package.json /ui/
-RUN npm run clean 
 RUN npm install --force
 #RUN npm i adjust-sourcemap-loader
 #RUN npm audit fix
