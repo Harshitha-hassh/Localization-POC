@@ -6,8 +6,8 @@ WORKDIR /ui
 
 ## install and copy depndencies
 COPY ./package.json /ui/
-RUN npm install
-RUN npm install @types/lodash@4.14.182
+RUN npm run clean 
+RUN npm install --force
 #RUN npm i adjust-sourcemap-loader
 #RUN npm audit fix
 #RUN npm install moment@2.22.2
