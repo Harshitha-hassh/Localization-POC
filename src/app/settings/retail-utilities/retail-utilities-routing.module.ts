@@ -83,8 +83,10 @@ const routes: Routes = [{
       ]
     },
     {
-      path: 'enhancedinventorymastersync',
-      component: EnahancedInventoryMasterSyncComponent
+      path: 'inventorysync',
+      component: EnahancedInventoryMasterSyncComponent,
+      canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
+      data: { breakPointNumber: BreakPoint.InventorySync, redirectTo: 'inventorysync', syncAccess: true }
     }
   ]
 }];
