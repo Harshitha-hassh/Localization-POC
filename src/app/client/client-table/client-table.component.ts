@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ElementRef, ViewEncapsulation, Output, EventEmitter, ViewChild } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import * as myGlobals from 'src/app/common/shared/shared/globalsContant'; //CONSTANT FILE ADD ANY CONSTANT VALUE
 import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -100,7 +100,7 @@ export class ClientTableComponent implements OnInit {
   @Input() enableStickyColumn;
   selectedIndex : any = this.clientService.selectedIndex;
   isPlayerFound = false;
-  constructor(public dialog: MatDialog, private spaconfig: SPAConfig, public el: ElementRef, public fb: FormBuilder, public localization: RetailStandaloneLocalization, private clientService : ClientService, public utils: RetailUtilities, private clientCommonService: ClientCommonService) {
+  constructor(public dialog: MatDialog, private spaconfig: SPAConfig, public el: ElementRef, public fb: UntypedFormBuilder, public localization: RetailStandaloneLocalization, private clientService : ClientService, public utils: RetailUtilities, private clientCommonService: ClientCommonService) {
 
   }
 

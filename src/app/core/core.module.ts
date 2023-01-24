@@ -10,18 +10,17 @@ import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  declarations: [LayoutComponent],
-  imports: [
-    CommonModule,
-    CoreRoutingModule,
-    HttpClientModule,
-    SharedModule
-  ],
-  providers: [
-    RouteLoaderService,
-  ],
-  exports: [],
-  entryComponents: []
+    declarations: [LayoutComponent],
+    imports: [
+        CommonModule,
+        CoreRoutingModule,
+        HttpClientModule,
+        SharedModule
+    ],
+    providers: [
+        RouteLoaderService,
+    ],
+    exports: []
 })
 export class CoreModule { }
 

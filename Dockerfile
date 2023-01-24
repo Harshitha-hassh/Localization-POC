@@ -1,4 +1,4 @@
-FROM docker-registry.bellevue.agilysys.com:5000/official/node:12.22.10-20220310-2218 AS build
+FROM docker-registry.bellevue.agilysys.com:5000/official/node:16-20220316-2114 AS build
 EXPOSE 80
 
 ## set work dir
@@ -6,8 +6,7 @@ WORKDIR /ui
 
 ## install and copy depndencies
 COPY ./package.json /ui/
-RUN npm install
-RUN npm install @types/lodash@4.14.182
+RUN npm install --force
 #RUN npm i adjust-sourcemap-loader
 #RUN npm audit fix
 #RUN npm install moment@2.22.2

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, ViewEncapsulation, Input, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { searchtitleenum, GlobalSearchModel } from './global-search.model';
 import { Router } from '@angular/router';
 import { GlobalSearchBusiness } from './global-search.business';
@@ -23,7 +23,7 @@ export class RetailGlobalSearchComponent implements OnInit, AfterViewInit {
 
   filterData: any = []; // local filter array
   searchGroupOptions: Promise<{ isSearched: boolean, data: GlobalSearchModel[] }> = Promise.resolve({ isSearched: false, data: [] });
-  globalSearchForm: FormGroup;
+  globalSearchForm: UntypedFormGroup;
   @Input() open: boolean = false;
   @Output() onSearch = new EventEmitter();
   @Output() OnOptionSelected = new EventEmitter();
@@ -32,7 +32,7 @@ export class RetailGlobalSearchComponent implements OnInit, AfterViewInit {
   @ViewChild('searchText') searchText: ElementRef;
   captions: any;
 
-  constructor(private _formBuilder: FormBuilder,
+  constructor(private _formBuilder: UntypedFormBuilder,
     private _router: Router,
     private globalSearchBusiness: GlobalSearchBusiness,
     private localization: RetailStandaloneLocalization,

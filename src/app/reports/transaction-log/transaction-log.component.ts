@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ReportOptions, Users, TranslogType } from '../business/report.modals';
 import { translog } from '../business/translogTypes';
 import * as _ from "lodash";
@@ -22,7 +22,7 @@ export class TransactionLogComponent implements OnInit {
   public transactionData: any;
   public logType: TranslogType[];
   public users: Users[] = [];
-  public transactionForm: FormGroup;
+  public transactionForm: UntypedFormGroup;
   public captions: any;
   public commonCaptions: any;
   public navbarStatus: boolean = false;
@@ -36,7 +36,7 @@ export class TransactionLogComponent implements OnInit {
   { title: "User ID", jsonkey: "userId", alignType: "left" }, { title: "Appointment #", jsonkey: "appointment", alignType: "left" },
   { title: "Transaction #", jsonkey: "transaction", alignType: "left" }, { title: "Client Name", jsonkey: "clientName", alignType: "left" }];
   placeholderFormat: string;
-  constructor(private fb: FormBuilder, private http: HttpServiceCall, private utils: Utilities, private localization: RetailStandaloneLocalization,
+  constructor(private fb: UntypedFormBuilder, private http: HttpServiceCall, private utils: Utilities, private localization: RetailStandaloneLocalization,
     private PropertyInfo: PropertyInformation) {
     this.logType = translog;
     this.floatLabel = this.localization.setFloatLabel;

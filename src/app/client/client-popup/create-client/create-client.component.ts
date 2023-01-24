@@ -2,14 +2,14 @@ import { Component, OnInit, Inject, OnDestroy, Input, ViewChild } from '@angular
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTab, MatTabHeader, MatTabGroup } from '@angular/material/tabs';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 @Component({
   selector: 'app-create-client',
   templateUrl: './create-client.component.html',
   styleUrls: ['./create-client.component.scss']
 })
 export class CreateClientComponent implements OnInit, OnDestroy {
-  @Input() parentForm:FormGroup;
+  @Input() parentForm:UntypedFormGroup;
   @Input() patronId:any; 
   clientInfoInput:any;
   @ViewChild('clientTabGroup', { static: true }) tabGroup: MatTabGroup;

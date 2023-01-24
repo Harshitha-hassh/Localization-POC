@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, EventEmitter, Output, Input, OnDestroy, AfterViewChecked } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray } from '@angular/forms';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { Host, Module, DefaultGUID, ButtonType } from 'src/app/common/shared/shared/globalsContant';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
@@ -33,7 +33,7 @@ import { DefaultSettings } from 'src/app/retail/shared/globalsContant';
   providers: [CreateClientBusiness]
 })
 export class PersonalInformationComponent implements OnInit, OnDestroy, AfterViewChecked {
-  @Input() parentForm: FormGroup;
+  @Input() parentForm: UntypedFormGroup;
   @Output() imageUpdateEmit = new EventEmitter();
   thumbnailImg: any;
   commonCaptions: any;
@@ -44,9 +44,9 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   phoneCountArray: any = [{ id: 0, removeLine: false, addLine: true }];
   addressLineArray: any = [{ id: 0, addLine: true, removeLine: false }];
   personalDetails: any = [];
-  personalDetailsForm: FormGroup;
+  personalDetailsForm: UntypedFormGroup;
   maxDate = this.PropertyInfo.CurrentDate;
-  FormGrp: FormGroup;
+  FormGrp: UntypedFormGroup;
   contactTypeEmail: any = [];
   contactTypePhone: any = [];
   clientConfiguration: any = [];
@@ -122,7 +122,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     }
   }
   constructor(
-    private Form: FormBuilder,
+    private Form: UntypedFormBuilder,
     private http: HttpServiceCall,
     public localization: RetailStandaloneLocalization,
     private utils: RetailUtilities,
@@ -193,7 +193,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     });
 
   }
-  createAddressItem(address?: any, addressPrivate?: any): FormGroup {
+  createAddressItem(address?: any, addressPrivate?: any): UntypedFormGroup {
     return this.Form.group({
       addressLine: [address !== '' ? address : '', this.AddressRequired ? [Validators.required, EmptyValueValidator] : ''],
       privateAddress: addressPrivate
@@ -203,7 +203,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   addAddressItem(idx: any, addressLine?: any, addressPrivate?: any): void {
 
     this.currentaddIndex = idx + 1;
-    this.Address = this.FormGrp.get('Address') as FormArray;
+    this.Address = this.FormGrp.get('Address') as UntypedFormArray;
     if (this.Address.controls.length > 2) {
       return;
     }
@@ -217,7 +217,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
 
-  createEmailItem(arr: number, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): FormGroup {
+  createEmailItem(arr: number, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): UntypedFormGroup {
 
     if (!EmailLabel || EmailLabel == '') {
       const emailLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_EMAIL_TYPE');
@@ -235,7 +235,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   addEmailItem(i, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): void {
     this.currentIndexemail = i + 1;
-    this.Email = this.FormGrp.get('Email') as FormArray;
+    this.Email = this.FormGrp.get('Email') as UntypedFormArray;
     this.Email.push(this.createEmailItem(i, EmailLabel, EmailId, EmailIsPrivate, EmailIsPrimary));
   }
 
@@ -250,7 +250,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
   createPhoneItem(arr: number, phoneNoLabel: any, countryCode: any, phoneNoDetails: any,
-    phoneIsPrivate: any, phoneIsPrimary: any, extension?: any): FormGroup {
+    phoneIsPrivate: any, phoneIsPrimary: any, extension?: any): UntypedFormGroup {
 
     if (countryCode == '') {
       let _countryCode = this.defaultSettings.find(x => x.switch == 'DEFAULT_COUNTRY_CODE');
@@ -288,16 +288,16 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   addPhoneItem(i, phoneNoLabel: any, countryCode: any, phoneNoDetails: any,
     phoneIsPrivate: any, phoneIsPrimary: any, extension: any = ''): void {
-    this.Phone = this.FormGrp.get('Phone') as FormArray;
+    this.Phone = this.FormGrp.get('Phone') as UntypedFormArray;
     this.Phone.push(this.createPhoneItem(i, phoneNoLabel, countryCode, phoneNoDetails, phoneIsPrivate, phoneIsPrimary, extension));
     this.currentIndexPhone = i + 1;
   }
 
   togglePrimaryContact(formArrayName: string, formGroupName: any, formControlName: any) {
-    const arr = this.FormGrp.get(formArrayName) as FormArray;
+    const arr = this.FormGrp.get(formArrayName) as UntypedFormArray;
     const ctrls = arr.controls.filter((x, idx) => idx != formGroupName);
     ctrls.forEach(x => {
-      const grp = x as FormGroup;
+      const grp = x as UntypedFormGroup;
       grp.controls[formControlName].setValue(false);
     });
   }
@@ -305,7 +305,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   // enabling the extension only if the selected value is 'Office'
   enableExtension(index: number): boolean {
-    const phoneControlsArr: any = this.FormGrp.get('Phone') as FormArray;
+    const phoneControlsArr: any = this.FormGrp.get('Phone') as UntypedFormArray;
     const phoneNoSelectedValue: any = phoneControlsArr.at(index).get('PhoneNumberLabel').value;
     let officeDesc = '';
     if (phoneNoSelectedValue) {
@@ -466,10 +466,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.phoneRequired = clientConfiguration[0]['CLIENT_PHONE'];
     this.AddressRequired = clientConfiguration[0]['CLIENT_ADDRESS_LINE_1'];
 
-    const EmailArray = this.FormGrp.get('Email') as FormArray;
+    const EmailArray = this.FormGrp.get('Email') as UntypedFormArray;
     EmailArray.controls.forEach((control) => {
-      let EmailGroup: FormGroup;
-      EmailGroup = control as FormGroup;
+      let EmailGroup: UntypedFormGroup;
+      EmailGroup = control as UntypedFormGroup;
       EmailGroup.controls['EmailId'].clearValidators();
       EmailGroup.controls['EmailId'].setValidators(clientConfiguration[0]['CLIENT_EMAIL'] ?
         [Validators.required, EmptyValueValidator] : []);
@@ -477,11 +477,11 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       // if(clientConfiguration[0]['CLIENT_EMAIL'])
       // EmailGroup.markAllAsTouched();
     });
-    const PhoneArray = this.FormGrp.get('Phone') as FormArray;
+    const PhoneArray = this.FormGrp.get('Phone') as UntypedFormArray;
     const that = this;
     PhoneArray.controls.forEach((control, index) => {
-      let PhoneGroup: FormGroup;
-      PhoneGroup = control as FormGroup;
+      let PhoneGroup: UntypedFormGroup;
+      PhoneGroup = control as UntypedFormGroup;
 
       PhoneGroup.controls['countryCode'].clearValidators();
       PhoneGroup.controls['countryCode'].setValidators(clientConfiguration[0]['CLIENT_PHONE'] ?
@@ -497,10 +497,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       // PhoneGroup.markAllAsTouched();
     });
     
-    const AddresArray = this.FormGrp.get('Address') as FormArray;
+    const AddresArray = this.FormGrp.get('Address') as UntypedFormArray;
     AddresArray.controls.forEach(function (control) {
-      let AddressGroup: FormGroup;
-      AddressGroup = control as FormGroup;
+      let AddressGroup: UntypedFormGroup;
+      AddressGroup = control as UntypedFormGroup;
       AddressGroup.controls['addressLine'].clearValidators();
       AddressGroup.controls['addressLine'].setValidators(clientConfiguration[0]['CLIENT_ADDRESS_LINE_1'] ?
         [Validators.required, EmptyValueValidator] : []);
@@ -555,7 +555,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   googleAutoCompleteAddressLineBinding(index) {
     // google auto complete from search
-    const addressFormArr = this.FormGrp.get('Address') as FormArray;
+    const addressFormArr = this.FormGrp.get('Address') as UntypedFormArray;
     // populating auto completed value from text box(work around for angular issue)
     const addressCtl: any = document.getElementById('AddressInput' + index);
     const addressAutoPopulated: string = addressCtl.value;
@@ -570,7 +570,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     let city = '';
     let googlePostalCode: string;
     if (add) {
-      const addressFormArr = this.FormGrp.get('Address') as FormArray;
+      const addressFormArr = this.FormGrp.get('Address') as UntypedFormArray;
       addressFormArr.at(0).patchValue({
         'addressLine': ((add[0] && add[0].long_name) ? add[0].long_name.toString() : '')
           + ' ' + ((add[1] && add[1].long_name) ? add[1].long_name.toString() : '')
@@ -819,7 +819,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       let addressItem = clientInfo.addresses;
       if (addressItem.addressLine1) {
         this.addAddressItem(0, addressItem.addressLine1, addressItem.isPrivate)
-        this.Address = this.FormGrp.get('Address') as FormArray;
+        this.Address = this.FormGrp.get('Address') as UntypedFormArray;
         this.Address.removeAt(0);
       }
       if (addressItem.addressLine2) {
@@ -1219,11 +1219,11 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
   setPhoneAsMandatory() {
-    let PhoneArray = this.FormGrp.get('Phone') as FormArray;
+    let PhoneArray = this.FormGrp.get('Phone') as UntypedFormArray;
     let that = this;
     PhoneArray.controls.forEach(function (control, index) {
-      let PhoneGroup: FormGroup;
-      PhoneGroup = <FormGroup>control;
+      let PhoneGroup: UntypedFormGroup;
+      PhoneGroup = <UntypedFormGroup>control;
 
       PhoneGroup.controls['countryCode'].clearValidators();
       PhoneGroup.controls['countryCode'].setValidators([Validators.required, EmptyValueValidator]);

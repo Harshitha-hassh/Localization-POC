@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -18,7 +18,7 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 })
 export class QuickidConfigComponent implements OnInit {
 
-  toggleGroup: FormGroup;
+  toggleGroup: UntypedFormGroup;
   captions: any;
   $destroyed: ReplaySubject<any> = new ReplaySubject(1);
   quickIdConfigOrginialData: ConfigData[];
@@ -27,7 +27,7 @@ export class QuickidConfigComponent implements OnInit {
   quickIdConfig = QuickIdConfigSetting;
   public dialog: MatDialog;
   constructor(
-      private formBuilder: FormBuilder
+      private formBuilder: UntypedFormBuilder
     , private localization: RetailStandaloneLocalization
     , private quickidconfigBusiness:QuickIdConfigBusiness,
       ) {

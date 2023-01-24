@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { GuestRetailTransactionHistory, Transaction } from '../../../../shared/shared-models';
 import { Subscription } from 'rxjs';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { BaseResponse } from 'src/app/common/shared/shared.modal';
@@ -16,7 +16,7 @@ import { MultipackAPIModel,MultipackUIModel,MultpackHistoryRequest } from './mul
   encapsulation: ViewEncapsulation.None
 })
 export class TransactionHistoryComponent implements OnInit {
-  @Input() parentForm:FormGroup;
+  @Input() parentForm:UntypedFormGroup;
   historyTypes: any = [];
   selectedRowItem: any;
   historyType: any;

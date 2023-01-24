@@ -1,4 +1,4 @@
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { cloneDeep, map, isEqual, forEach, includes, differenceWith } from 'lodash';
 import { Injectable, OnDestroy } from '@angular/core';
@@ -166,7 +166,7 @@ export class Utilities extends CommonUtilities implements OnDestroy {
     }
 
 
-    public ShouldDisableSave(form: FormGroup, initialValue: any = undefined, otherValidations: boolean = true): boolean {
+    public ShouldDisableSave(form: UntypedFormGroup, initialValue: any = undefined, otherValidations: boolean = true): boolean {
         let validity: boolean;
 
         if (initialValue) {
@@ -510,7 +510,7 @@ export class Utilities extends CommonUtilities implements OnDestroy {
      * @param FormGroup Form Group with Valid Form Controls.
      * @param excludedControls Exceptional controls.
      */
-    disableControls(FormGroup: FormGroup, excludedControls?: string[]) {
+    disableControls(FormGroup: UntypedFormGroup, excludedControls?: string[]) {
         excludedControls = excludedControls ? excludedControls : [];
         let allControls: string[] = Object.keys(FormGroup.controls);
         for (let i = 0; i < allControls.length; i++) {
@@ -527,7 +527,7 @@ export class Utilities extends CommonUtilities implements OnDestroy {
      * @param FormGroup Form Group with Valid Form Controls.
      * @param excludedControls Exceptional controls.
      */
-    enableControls(FormGroup: FormGroup, excludedControls?: string[]) {
+    enableControls(FormGroup: UntypedFormGroup, excludedControls?: string[]) {
         excludedControls = excludedControls ? excludedControls : [];
         let allControls: string[] = Object.keys(FormGroup.controls);
         for (let i = 0; i < allControls.length; i++) {

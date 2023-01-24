@@ -7,7 +7,7 @@ import {
   Output, EventEmitter,
   ViewChild, AfterViewInit, ChangeDetectorRef, OnDestroy, HostListener, OnChanges, AfterViewChecked
 } from '@angular/core';
-import { Validators, FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { Validators, UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, UntypedFormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ReplaySubject } from 'rxjs';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -31,7 +31,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
 
   constructor(public dialog: MatDialog, private userAlerts: UserAlerts,
               public el: ElementRef,
-              public fb: FormBuilder,
+              public fb: UntypedFormBuilder,
               public localization: RetailStandaloneLocalization,
               private cdRef: ChangeDetectorRef) {
     this.captions = this.localization.captions;
@@ -49,8 +49,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
       roleName: ['', Validators.required],
       activetoggle: [false]
     });
-    this.inActiveTherapist = new FormControl(false);
-    this.inActiveService = new FormControl(false);
+    this.inActiveTherapist = new UntypedFormControl(false);
+    this.inActiveService = new UntypedFormControl(false);
   }
   RadiobuttonOption = false;
   sortableHeader: any;
@@ -68,8 +68,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
   SetColumnGridValue = false;
   CheckInnerBoolValue = false;
   enableRowCheck = false;
-  inActiveTherapist: FormControl;
-  inActiveService: FormControl;
+  inActiveTherapist: UntypedFormControl;
+  inActiveService: UntypedFormControl;
   public indeterminate: any;
   isDataLoading = false;
   @Input() options;
@@ -134,17 +134,17 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
   customHeader = false;
   pageTitle: string;
   customeHeaderOptions: any = [];
-  quicksale: FormGroup;
+  quicksale: UntypedFormGroup;
   customHeaderButton: string;
   dropdownOptions: any = [];
   captions: any = {};
   sticky = false;
-  table: FormGroup;
+  table: UntypedFormGroup;
   ArrayList = [];
   disableDelete: any;
   showToggle: any;
   toggleDisplayText: any;
-  roleSetup: FormGroup;
+  roleSetup: UntypedFormGroup;
   SearchKeyArr: any;
   DoneCancel = false;
   viewCheckedFlag = false;
@@ -189,7 +189,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
   }
 
   CreateTablerowFormGroup(optionsData) {
-    const bodyArr: any = this.table.get('tablebody') as FormArray;
+    const bodyArr: any = this.table.get('tablebody') as UntypedFormArray;
     bodyArr.controls = [];
     bodyArr.value = [];
     if (optionsData) {
@@ -209,7 +209,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
   }
 
   UpdateTableFormGroup(optionsData) {
-    const bodyArr: any = this.table.get('tablebody') as FormArray;
+    const bodyArr: any = this.table.get('tablebody') as UntypedFormArray;
     if (optionsData) {
       optionsData[0].TablebodyData.forEach(res => {
         const index = bodyArr.value.find(x => x.id == res.id);
@@ -526,8 +526,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
   }
 
   showInactiveRoles(event, rowData, index) {
-    const tablebody = this.table.get('tablebody') as FormArray;
-    const tableFormGroup = tablebody.controls[index] as FormGroup;
+    const tablebody = this.table.get('tablebody') as UntypedFormArray;
+    const tableFormGroup = tablebody.controls[index] as UntypedFormGroup;
     tableFormGroup.controls.activetoggle.setValue(rowData.active);
     this.editRecordsArray.push({ index, data: rowData });
     this.activeIndex = index;

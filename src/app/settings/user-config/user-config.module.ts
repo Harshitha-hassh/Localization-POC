@@ -36,7 +36,6 @@ import { NgDragDropModule } from 'ng-drag-drop';
         UserSetupRoutingModule,
         UiSwitchModule,
         NgDragDropModule
-    ],
-    entryComponents: [NewUserComponent, CopyRolesComponent]
+    ]
 })
 export class UserSetupModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 // import { AlertMessagePopupComponent } from '../../../shared/alert-message-popup/alert-message-popup.component';
 // import { ViewSettingClientBusiness } from '../../../shared/common-functionalities/business/view-settings.business';
@@ -22,11 +22,11 @@ export class CopyRolesComponent implements OnInit {
   sampleOptionsTemp: any;
   secondOptionsSet: any;
   sampleOptions: any = [{ id: 1, name: 'System Administrator' }, { id: 2, name: 'Advanced User' }];
-  roleGrp: FormGroup;
+  roleGrp: UntypedFormGroup;
   floatLabel: string;
 
   constructor(private http: HttpServiceCall, public localization: RetailStandaloneLocalization, @Inject(MAT_DIALOG_DATA) public data,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     // private _viewSetting: ViewSettingClientBusiness,
     private dialogRef: MatDialogRef<CopyRolesComponent>, private dialog: MatDialog, private utils: Utilities) {
       this.floatLabel = this.localization.setFloatLabel;

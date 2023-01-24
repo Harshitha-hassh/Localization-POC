@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 import { SettingsService } from '../../../settings.service';
 // import { HttpServiceCall, HttpMethod } from '../../../../shared/service/http-call.service';
@@ -27,7 +27,7 @@ export class UserSettingsComponent implements OnInit {
   selectedAccess: any[] = [];
   minDateValue: any;
   IsReadOnly: boolean;
-  userSettingsFormGrp: FormGroup;
+  userSettingsFormGrp: UntypedFormGroup;
   ActionButton: string;
   userIdPattern;
   commonCaptions: any;

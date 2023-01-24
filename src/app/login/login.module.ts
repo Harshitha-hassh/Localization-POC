@@ -13,28 +13,27 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    SetPasswordComponent
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    SharedModule,
-    PlatformModule,
-    BrowserModule,
-    HttpClientModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoaderInterceptor,
-      multi: true,
-    },
-    PropertySettingDataService
-  ],
-  exports:[LoginComponent],
-  entryComponents: [SetPasswordComponent]
+    declarations: [
+        LoginComponent,
+        SetPasswordComponent
+    ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        SharedModule,
+        PlatformModule,
+        BrowserModule,
+        HttpClientModule
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: LoaderInterceptor,
+            multi: true,
+        },
+        PropertySettingDataService
+    ],
+    exports: [LoginComponent]
 })
 export class LoginModule { }

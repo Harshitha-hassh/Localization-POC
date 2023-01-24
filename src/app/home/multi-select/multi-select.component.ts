@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, ViewEncapsulation, EventEmitter, OnChanges } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 
 @Component({
@@ -17,7 +17,7 @@ export class MultiSelectComponent implements OnInit , OnChanges {
   @Input() dropDownName: string;
   @Input() dropDownFilterData;
   @Input() defaultData: any = [];
-  dropDownFrmGrp: FormGroup;
+  dropDownFrmGrp: UntypedFormGroup;
   @Input() selectedData: any = [];
   @Output() dropDownFrmControl: EventEmitter<any> = new EventEmitter<any>();
   @Output() IsAnySelected: EventEmitter<any> = new EventEmitter<any>();
@@ -29,15 +29,15 @@ export class MultiSelectComponent implements OnInit , OnChanges {
     
   }
   ngOnChanges() {
-    this.dropDownFrmGrp = new FormGroup({
-      [this.dropDownControlname]: new FormControl([])
+    this.dropDownFrmGrp = new UntypedFormGroup({
+      [this.dropDownControlname]: new UntypedFormControl([])
     });
     let x = this.dropDownFilterData.filter(x=>(this.selectedData.indexOf(x.id) !=-1));
 
     this.dropDownFrmGrp.controls[this.dropDownControlname].setValue(x);
 
    // this.dropDownFrmGrp.controls[this.dropDownControlname].setValue(this.dropDownFilterData);
-    this.dropDownFrmControl.emit([this.dropDownControlname, <FormControl> this.dropDownFrmGrp.controls[this.dropDownControlname]]);
+    this.dropDownFrmControl.emit([this.dropDownControlname, <UntypedFormControl> this.dropDownFrmGrp.controls[this.dropDownControlname]]);
   }
 
   filterDropDownSelected(event: any, data: any, allData: any[], dropDownType) {

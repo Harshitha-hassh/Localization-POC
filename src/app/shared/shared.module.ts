@@ -45,89 +45,84 @@ import { AllowedSpecialCharacterDirective } from './directives/allowedSpecialCha
 import { RetailIntegrationLogService } from '../retail/shared/service/retail-integrationLog.service';
 
 @NgModule({
-  declarations: [
-    MenuComponent,
-    RetailGlobalSearchComponent,
-    AboutComponent,
-    MsGraphAuthComponent,
-    ImgThumbnailComponent,
-    ImageUploaderComponent,
-    ClientPopupComponent,
-    CreateClientComponent,
-    TransactionHistoryComponent,
-    PersonalInformationComponent,
-    AdditionalInformationComponent,
-    CardTypeComponent,
-    LocalizeDatePipe,
-    RedenderingOptionComponent,
-    ConvertObjPipe,
-    NotifyPopupComponent,
-    ImageValiation,
-    FormatTextPipe,
-    AllowedSpecialCharacterDirective    
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    RouterModule,
-    FormsModule,
-    PopoverModule,
-    ReactiveFormsModule,
-    TemplatesModule,
-    RetailSharedModule,
-    CommonSharedModule,
-    GooglePlaceModule,
-    NgxMaterialTimepickerModule,
-    RetailSharedModule
-  ],
-  providers: [
-    TenantManagementCommunication,
-    AuthenticationCommunication,
-    RetailManagementCommunication,
-    RetailPosCommunication,
-    RetailIntegrationLogService,
-    NotificationDataService,
-    {
-      provide: DateAdapter,
-      useClass: CustomDateAdapter,
-      deps: [RetailStandaloneLocalization,
-        Platform]
-    },
-    {
-      provide: MAT_DATE_FORMATS,
-      useValue: MY_DATE_FORMATS
-    },
-    NgxImageCompressService,
-    UserAccessDataService,
-    ClientDataService,    
-    UserAccessBusiness,
-    LocalizeDatePipe,
-    RetailItemDataService,
-    FormatTextPipe
-  ],
-  exports: [
-    FormsModule,
-    MaterialModule,
-    PopoverModule,
-    MenuComponent,
-    RetailGlobalSearchComponent,
-    ReactiveFormsModule,
-    CommonSharedModule,
-    ImgThumbnailComponent,
-    MsGraphAuthComponent,
-    ImageUploaderComponent,
-    CardTypeComponent,
-    LocalizeDatePipe,
-    RedenderingOptionComponent,
-    ConvertObjPipe,
-    ImageValiation,
-    FormatTextPipe,
-    AllowedSpecialCharacterDirective    
-  ],
-  entryComponents: [
-    AboutComponent,
-    ClientPopupComponent,
-    NotifyPopupComponent
-  ]
+    declarations: [
+        MenuComponent,
+        RetailGlobalSearchComponent,
+        AboutComponent,
+        MsGraphAuthComponent,
+        ImgThumbnailComponent,
+        ImageUploaderComponent,
+        ClientPopupComponent,
+        CreateClientComponent,
+        TransactionHistoryComponent,
+        PersonalInformationComponent,
+        AdditionalInformationComponent,
+        CardTypeComponent,
+        LocalizeDatePipe,
+        RedenderingOptionComponent,
+        ConvertObjPipe,
+        NotifyPopupComponent,
+        ImageValiation,
+        FormatTextPipe,
+        AllowedSpecialCharacterDirective
+    ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        RouterModule,
+        FormsModule,
+        PopoverModule,
+        ReactiveFormsModule,
+        TemplatesModule,
+        RetailSharedModule,
+        CommonSharedModule,
+        GooglePlaceModule,
+        NgxMaterialTimepickerModule,
+        RetailSharedModule
+    ],
+    providers: [
+        TenantManagementCommunication,
+        AuthenticationCommunication,
+        RetailManagementCommunication,
+        RetailPosCommunication,
+        RetailIntegrationLogService,
+        NotificationDataService,
+        {
+            provide: DateAdapter,
+            useClass: CustomDateAdapter,
+            deps: [RetailStandaloneLocalization,
+                Platform]
+        },
+        {
+            provide: MAT_DATE_FORMATS,
+            useValue: MY_DATE_FORMATS
+        },
+        NgxImageCompressService,
+        UserAccessDataService,
+        ClientDataService,
+        UserAccessBusiness,
+        LocalizeDatePipe,
+        RetailItemDataService,
+        FormatTextPipe
+    ],
+    exports: [
+        FormsModule,
+        MaterialModule,
+        PopoverModule,
+        MenuComponent,
+        RetailGlobalSearchComponent,
+        ReactiveFormsModule,
+        CommonSharedModule,
+        ImgThumbnailComponent,
+        MsGraphAuthComponent,
+        ImageUploaderComponent,
+        CardTypeComponent,
+        LocalizeDatePipe,
+        RedenderingOptionComponent,
+        ConvertObjPipe,
+        ImageValiation,
+        FormatTextPipe,
+        AllowedSpecialCharacterDirective
+    ]
 })
 export class SharedModule { }

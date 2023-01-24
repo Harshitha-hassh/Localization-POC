@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, Validators } from '@angular/forms';
 import { ReplaySubject } from 'rxjs';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
@@ -23,7 +23,7 @@ export class NotifyPopupComponent implements OnInit {
   captions: any = this.localilzation.captions.common;
   rowchecked:boolean = true;
   showNotificationSection: boolean;
-  notifydetails: FormGroup;
+  notifydetails: UntypedFormGroup;
   clientInfo: any;
   selectedClientId: any;
   isConfirmationRecapSearchScreen = false;
@@ -40,7 +40,7 @@ export class NotifyPopupComponent implements OnInit {
   floatLabel: string;
 
   constructor(private localilzation: RetailLocalization, 
-    private _fb: FormBuilder,
+    private _fb: UntypedFormBuilder,
     @Inject(MAT_DIALOG_DATA) private data: any,
     private dialogRef: MatDialogRef<NotifyPopupComponent>,
     private clientDataService: ClientDataService,
@@ -146,7 +146,7 @@ export class NotifyPopupComponent implements OnInit {
   }
 
   createdetailList(_name,_email,_countrycode,_phoneno,obj,id) {
-    const creds = this.notifydetails.controls.detailList as FormArray;
+    const creds = this.notifydetails.controls.detailList as UntypedFormArray;
     creds.push(this._fb.group({
       name: _name,
       emailId: _email,
