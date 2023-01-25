@@ -59,7 +59,9 @@ const routes: Routes = [{
     },
     {
       path: 'quickidconfig',
-      component: QuickidConfigComponent
+      component: QuickidConfigComponent,
+      canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
+      data: { breakPointNumber: CommonBreakPoint.QUICKIDCONFIG, redirectTo: 'combineguest', syncAccess: true }
     },
     {
       path: 'combineguest',

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ConfigData, QuickIdConfigSetting } from './quickid-config.model';
 import { QuickIdConfigService } from './quickid-config.service';
+import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
+import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.constants';
 
 @Injectable()
 
@@ -9,7 +11,9 @@ export class QuickIdConfigBusiness {
         QuickIdConfigSetting.retailtransactions
     ] as string[];
 
-    constructor(private quickIdConfigService: QuickIdConfigService) {    }
+    isViewOnly: boolean = false;
+    isAllow: boolean = false;
+    constructor(private quickIdConfigService: QuickIdConfigService, public _userAccessBusiness: UserAccessBusiness) {    }
 
     public async GetQuickIdConfiguration(): Promise<ConfigData[]> {    
         let result = await this.quickIdConfigService.GetQuickIdConfigSettings();
@@ -44,5 +48,11 @@ export class QuickIdConfigBusiness {
         });
         return result;
     }
-
+    async validateBreakPoints(): Promise<boolean> {
+        const result = await this._userAccessBusiness.getUserAccess(UserAccessBreakPoints.QUICKIDCONFIG, true);
+        this.isViewOnly = result.isViewOnly;
+        this.isAllow = result.isAllow;
+        return result.isAllow;
+      }
+    
 }

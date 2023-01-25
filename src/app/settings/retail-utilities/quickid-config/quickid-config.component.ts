@@ -24,6 +24,7 @@ export class QuickidConfigComponent implements OnInit {
   quickIdConfigOrginialData: ConfigData[];
   quickIdConfigFormValue: ConfigData[];
   enableSave: boolean;
+  viewOnly: boolean = false;
   quickIdConfig = QuickIdConfigSetting;
   public dialog: MatDialog;
   constructor(
@@ -35,6 +36,7 @@ export class QuickidConfigComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.validateUserAccess(); 
     this.toggleGroup = this.formBuilder.group({
       retailtransactions: false
     });
@@ -43,6 +45,16 @@ export class QuickidConfigComponent implements OnInit {
         this.enableSave = this.toggleGroup.valid ? true : false;
     });
     this.initialLoad();
+  }
+  private async validateUserAccess() {
+    await this.quickidconfigBusiness.validateBreakPoints()
+    this.disableControls();
+  }
+  private disableControls()
+  {
+    if (this.quickidconfigBusiness.isViewOnly) {
+      this.viewOnly = this.quickidconfigBusiness.isViewOnly;
+    }
   }
 
   async initialLoad() {
