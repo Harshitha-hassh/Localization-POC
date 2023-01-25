@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?18q7j');
-  src:  url('fonts/icomoon.eot?18q7j#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?18q7j') format('truetype'),
-    url('fonts/icomoon.woff?18q7j') format('woff'),
-    url('fonts/icomoon.svg?18q7j#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?b03rbd');
+  src:  url('fonts/icomoon.eot?b03rbd#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?b03rbd') format('truetype'),
+    url('fonts/icomoon.woff?b03rbd') format('woff'),
+    url('fonts/icomoon.svg?b03rbd#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -23,6 +23,19 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shop-commission:before {
+  content: "\edb5";
+  color: #435444;
+}
+.icon-shop-servicecharge:before {
+  content: "\edb6";
+  color: #435444;
+}
+.icon-shop-gratuity:before {
+  content: "\edb7";
+  color: #435444;
 }
 
 .icon-edit1:before {
