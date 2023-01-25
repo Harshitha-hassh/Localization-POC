@@ -3267,7 +3267,9 @@
     "ForRetailTransactions": "For Retail Transactions_fr",
     "paymentMethod": "Default Payment Method_fr",
     "lbl_vendor": "Vendor_fr",
-    "lbl_ItemInventory": "Item/Inventory_fr"
+    "lbl_ItemInventory": "Item/Inventory_fr",
+    "syncWarning": "Sync has been already initiated !_fr",
+    "syncSuccess": "Sync Initiated_fr"
   },
   "settings": {
     "prices": "Price ({option})_fr",

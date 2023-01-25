@@ -3269,7 +3269,9 @@
     "ForRetailTransactions": "For Retail Transactions",
     "paymentMethod": "Default Payment Method",
     "lbl_vendor":"Vendor",
-    "lbl_ItemInventory":"Item/Inventory"
+    "lbl_ItemInventory":"Item/Inventory",
+    "syncWarning":"Sync has been already initiated !",
+    "syncSuccess":"Sync Initiated"
   },
   "settings": {
     "prices": "Price ({option})",
