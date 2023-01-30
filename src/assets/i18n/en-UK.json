@@ -3047,7 +3047,8 @@
     "TransactionExtract": "Transaction Extract_uk",
     "PurchaseOrders": "Purchase Orders_uk",
     "Receiving": "Receiving Reports_uk",
-    "InventoryVariance": "Inventory Variance_uk"
+    "InventoryVariance": "Inventory Variance_uk",
+    "displayInSingleSheetToggle": "Combine Extracts_uk"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_uk",

@@ -3047,7 +3047,8 @@
     "TransactionExtract": "Transaction Extract_de",
     "PurchaseOrders": "Purchase Orders_de",
     "Receiving": "Receiving Reports_de",
-    "InventoryVariance": "Inventory Variance_de"
+    "InventoryVariance": "Inventory Variance_de",
+    "displayInSingleSheetToggle": "Combine Extracts_de"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_de",
