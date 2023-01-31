@@ -574,7 +574,7 @@ $popover-header-color: $white !default;
 $border_bottom_color_1: $gray-dark;
 $border_bottom_color_2: $black-lightest;
 $border_bottom_color_3: $white;
-$arrow-border-width: $popover-arrow-width / 2;
+$arrow-border-width: calc($popover-arrow-width / 2);
 /****************************************/
 $color-error-red: $lightest-red;
 $phone-wrapper-width: 460px;
