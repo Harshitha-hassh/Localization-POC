@@ -994,6 +994,7 @@
     "SENDFORPAYMENT": "SEND FOR PAYMENT_da",
     "Cancel": "CANCEL_da",
     "CancelTransaction": "Cancel_da",
+    "AdditionalCardsUsed": "Additional cards used :_da",
     "Close": "Close_da",
     "PaymentMethods": "Payment Methods_da",
     "PaymentDetails": "Payment Details_da",

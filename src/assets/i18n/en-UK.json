@@ -994,6 +994,7 @@
     "SENDFORPAYMENT": "SEND FOR PAYMENT_uk",
     "Cancel": "CANCEL_uk",
     "CancelTransaction": "Cancel_uk",
+    "AdditionalCardsUsed": "Additional cards used :_uk",
     "Close": "Close_uk",
     "PaymentMethods": "Payment Methods_uk",
     "PaymentDetails": "Payment Details_uk",

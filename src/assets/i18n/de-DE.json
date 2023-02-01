@@ -994,6 +994,7 @@
     "SENDFORPAYMENT": "SEND FOR PAYMENT_de",
     "Cancel": "CANCEL_de",
     "CancelTransaction": "Cancel_de",
+    "AdditionalCardsUsed": "Additional cards used :_de",
     "Close": "Close_de",
     "PaymentMethods": "Payment Methods_de",
     "PaymentDetails": "Payment Details_de",

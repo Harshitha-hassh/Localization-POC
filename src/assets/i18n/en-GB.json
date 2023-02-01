@@ -994,6 +994,7 @@
     "SENDFORPAYMENT": "SEND FOR PAYMENT_gb",
     "Cancel": "CANCEL_gb",
     "CancelTransaction": "Cancel_gb",
+    "AdditionalCardsUsed": "Additional cards used :_gb",
     "Close": "Close_gb",
     "PaymentMethods": "Payment Methods_gb",
     "PaymentDetails": "Payment Details_gb",
