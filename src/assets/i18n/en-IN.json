@@ -2777,6 +2777,7 @@
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_in",
     "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs_in",
     "EnableAutoCloseTransaction": "Auto Close Transaction_in",
+    "ValidatePayAgentAndSettlerOnRefund": "Validate Pay Agent & Settler On Refund_in",
     "AllowPaymentSurcharges": "Allow Surcharges_in",
     "DoNotDisplayItemName": "Do Not Display Item name for Open Item_in",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_in",

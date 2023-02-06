@@ -2777,6 +2777,7 @@
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_fr",
     "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs_fr",
     "EnableAutoCloseTransaction": "Auto Close Transaction_fr",
+    "ValidatePayAgentAndSettlerOnRefund": "Validate Pay Agent & Settler On Refund_fr",
     "AllowPaymentSurcharges": "Allow Surcharges_fr",
     "DoNotDisplayItemName": "Do Not Display Item name for Open Item_fr",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_fr",
