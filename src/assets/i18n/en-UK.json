@@ -1010,6 +1010,7 @@
     "Items": "Items_uk",
     "Services": "Services_uk",
     "APPLYDISCOUNT": "APPLY DISCOUNT_uk",
+    "pg_title_inventorySyncStatus": "INVENTORY SYNC STATUS_uk",
     "REMOVE": "REMOVE_uk",
     "SNo": "S.No_uk",
     "UnitPrice": "Unit Price_uk",
@@ -3925,6 +3926,10 @@
   "lbl_payagentsearchplaceholder": "Search Pay Agent by instance Name_uk",
   "lbl_settlersearchplaceholder": "Search Settlers by instance Name_uk",
   "lbl_Property": "Property_uk",
+  "lbl_lastSyncDate": "Last Sync Date_uk",
+  "lbl_syncStatus": "Sync Status_uk",
+  "lbl_lastSyncedBy": "Last Synced By_uk",
+  "lbl_errorMessageResponse": "Error Message/ Response_uk",
   "lbl_Tenant": "Tenant_uk",
   "lbl_Outlet": "Outlet_uk"
 }
