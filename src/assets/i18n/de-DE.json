@@ -1010,6 +1010,7 @@
     "Items": "Items_de",
     "Services": "Services_de",
     "APPLYDISCOUNT": "APPLY DISCOUNT_de",
+    "pg_title_inventorySyncStatus": "INVENTORY SYNC STATUS_de",
     "REMOVE": "REMOVE_de",
     "SNo": "S.No_de",
     "UnitPrice": "Unit Price_de",
@@ -3925,6 +3926,10 @@
   "lbl_payagentsearchplaceholder": "Search Pay Agent by instance Name_de",
   "lbl_settlersearchplaceholder": "Search Settlers by instance Name_de",
   "lbl_Property": "Property_de",
+  "lbl_lastSyncDate": "Last Sync Date_de",
+  "lbl_syncStatus": "Sync Status_de",
+  "lbl_lastSyncedBy": "Last Synced By_de",
+  "lbl_errorMessageResponse": "Error Message/ Response_de",
   "lbl_Tenant": "Tenant_de",
   "lbl_Outlet": "Outlet_de"
 }
