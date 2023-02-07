@@ -546,6 +546,7 @@
   "MemberPayment": "Membership/MemberPayment",
   "RedeemPoint": "Membership/RedeemPoint",
   "MemberSummary": "Membership/CreateACESPaymentSummary",
+  "ACESPaymentRecords":"Membership/GetACESPaymentsRecord",
   "GetMember": "transaction/GetPaymentById/{transactionId}",
   "GetOutletsByPropertyAndProduct": "Outlets/GetOutlets/property/{propertyId}/product/{productId}",
   "GetTherapistAppointments": "appointments/therapist/{therapistId}/from/{FromDate}/to/{ToDate}",
