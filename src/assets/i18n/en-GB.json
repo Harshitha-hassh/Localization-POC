@@ -167,6 +167,8 @@
     "EndDate": "End Date_gb",
     "Yes": "Yes_gb",
     "No": "No_gb",
+    "COPY_HEADER": "COPY_gb",
+    "Copy": "Copy_gb",
     "MissingFirstName": "Missing First Name_gb",
     "MissingLastName": "Missing Last Name_gb",
     "Male": "Male_gb",

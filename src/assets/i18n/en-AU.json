@@ -167,6 +167,8 @@
     "EndDate": "End Date",
     "Yes": "Yes",
     "No": "No",
+    "COPY_HEADER": "COPY",
+    "Copy": "Copy",
     "MissingFirstName": "Missing First Name",
     "MissingLastName": "Missing Last Name",
     "Male": "Male",
