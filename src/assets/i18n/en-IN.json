@@ -2836,7 +2836,9 @@
       },
       "SelectAll": "Select All_in",
       "DeSelectAll": "DeSelect All_in"
-    }
+    },
+    "defaultRoomCharge": "Default Room Charge_in",
+    "defaultGroupCharge": "Default Group Charge_in"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_in",

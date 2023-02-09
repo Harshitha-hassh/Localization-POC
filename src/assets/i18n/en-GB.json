@@ -2836,7 +2836,9 @@
       },
       "SelectAll": "Select All_gb",
       "DeSelectAll": "DeSelect All_gb"
-    }
+    },
+    "defaultRoomCharge": "Default Room Charge_gb",
+    "defaultGroupCharge": "Default Group Charge_gb"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_gb",

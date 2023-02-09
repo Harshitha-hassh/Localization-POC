@@ -46,6 +46,11 @@
             ]
           },
           "configurations": {
+            "development":{
+              "sourceMap": true,
+              "aot": false,
+              "buildOptimizer": false
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -80,6 +85,9 @@
             "browserTarget": "Retail-UI:build"
           },
           "configurations": {
+            "development": {
+              "browserTarget": "Retail-UI:build:development"
+            },
             "production": {
               "browserTarget": "Retail-UI:build:production"
             }

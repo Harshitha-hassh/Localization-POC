@@ -2836,7 +2836,9 @@
       },
       "SelectAll": "Select All_uk",
       "DeSelectAll": "DeSelect All_uk"
-    }
+    },
+    "defaultRoomCharge": "Default Room Charge_uk",
+    "defaultGroupCharge": "Default Group Charge_uk"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_uk",
