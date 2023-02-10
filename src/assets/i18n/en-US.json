@@ -3285,6 +3285,11 @@
     "lbl_ItemInventory":"Item/Inventory",
     "syncWarning":"Sync has been already initiated !",
     "syncSuccess":"Sync Initiated",
+    "lbl_tenant":"Tenant",
+		"lbl_outlets":"OUTLETS",
+		"lbl_inventory":"Inventory",
+		"lbl_property":"Property",
+		"lbl_syncStatus":"Sync Status",
     "sync": "SYNC"
   },
   "settings": {
