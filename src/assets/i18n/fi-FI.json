@@ -3191,6 +3191,7 @@
     "update": "UPDATE_fi",
     "save": "SAVE_fi",
     "cancel": "CANCEL_fi",
+    "sync": "SYNC_fi",
     "ConflictingAppointmentsatSelectedLocationCannotSave": "Conflicting Appointments at Selected Location. Cannot Save._fi",
     "ConflictingAppointmentsuseSelectedEquipmentCannotSave": "Conflicting Appointments use Selected Equipment. Cannot Save._fi",
     "z": "US_fi",

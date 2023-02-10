@@ -3284,7 +3284,8 @@
     "lbl_vendor":"Vendor",
     "lbl_ItemInventory":"Item/Inventory",
     "syncWarning":"Sync has been already initiated !",
-    "syncSuccess":"Sync Initiated"
+    "syncSuccess":"Sync Initiated",
+    "sync": "SYNC"
   },
   "settings": {
     "prices": "Price ({option})",

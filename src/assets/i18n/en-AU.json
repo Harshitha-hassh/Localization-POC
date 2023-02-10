@@ -3191,6 +3191,7 @@
     "update": "UPDATE",
     "save": "SAVE",
     "cancel": "CANCEL",
+    "sync": "SYNC",
     "ConflictingAppointmentsatSelectedLocationCannotSave": "Conflicting Appointments at Selected Location. Cannot Save.",
     "ConflictingAppointmentsuseSelectedEquipmentCannotSave": "Conflicting Appointments use Selected Equipment. Cannot Save.",
     "z": "US",

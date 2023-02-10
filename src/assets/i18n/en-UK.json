@@ -3191,6 +3191,7 @@
     "update": "UPDATE_uk",
     "save": "SAVE_uk",
     "cancel": "CANCEL_uk",
+    "sync": "SYNC_uk",
     "ConflictingAppointmentsatSelectedLocationCannotSave": "Conflicting Appointments at Selected Location. Cannot Save._uk",
     "ConflictingAppointmentsuseSelectedEquipmentCannotSave": "Conflicting Appointments use Selected Equipment. Cannot Save._uk",
     "z": "US_uk",

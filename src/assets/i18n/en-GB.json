@@ -3191,6 +3191,7 @@
     "update": "UPDATE_gb",
     "save": "SAVE_gb",
     "cancel": "CANCEL_gb",
+    "sync": "SYNC_gb",
     "ConflictingAppointmentsatSelectedLocationCannotSave": "Conflicting Appointments at Selected Location. Cannot Save._gb",
     "ConflictingAppointmentsuseSelectedEquipmentCannotSave": "Conflicting Appointments use Selected Equipment. Cannot Save._gb",
     "z": "US_gb",

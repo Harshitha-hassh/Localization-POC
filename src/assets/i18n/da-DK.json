@@ -3191,6 +3191,7 @@
     "update": "UPDATE_da",
     "save": "SAVE_da",
     "cancel": "CANCEL_da",
+    "sync": "SYNC_da",
     "ConflictingAppointmentsatSelectedLocationCannotSave": "Conflicting Appointments at Selected Location. Cannot Save._da",
     "ConflictingAppointmentsuseSelectedEquipmentCannotSave": "Conflicting Appointments use Selected Equipment. Cannot Save._da",
     "z": "US_da",
