@@ -1649,7 +1649,8 @@
 		"8185": "8185 - Receiving Report",
 		"8190": "8190 - Inventory Variance Report",
     "15170": "15170 - Inventory Sync",
-    "16020": "16020 - Quick ID Config"
+    "16020": "16020 - Quick ID Config",
+    "8195": "8195 - Surcharges Report"
   },
   "userId": "User ID",
   "password": "Password",
