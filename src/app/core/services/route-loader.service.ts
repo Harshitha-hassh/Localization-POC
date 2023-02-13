@@ -1906,7 +1906,7 @@ export class RouteLoaderService {
             propertyID: 0,
             productID: 2,
             textID: 4062,
-            text: "DAYEND_UK",
+            text: "MANUAL AUDIT_UK",
             routePath: "/audit/dayend",
             imgPath: "",
             order: 1,
@@ -1920,7 +1920,28 @@ export class RouteLoaderService {
 
             ],
             breakPointNumber: 2430
-          }
+          },
+          {
+            elementID: 4063,
+            tenantID: 0,
+            propertyID: 0,
+            productID: 2,
+            textID: 4062,
+            text: "NIGHT AUDIT_UK",
+            routePath: "/audit/nightaudit",
+            imgPath: "",
+            order: 1,
+            visibility: true,
+            disable: false,
+            parentID: 4062,
+            menuPosition: "Secondary",
+            menuAlignment: "Horizontal",
+            externalLink: false,
+            linkedElement: [
+
+            ],
+            breakPointNumber: 2430
+          },
         ],
         breakPointNumber: 0
       }

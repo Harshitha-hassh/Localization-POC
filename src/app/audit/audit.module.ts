@@ -10,6 +10,9 @@ import { AuditService } from './audit.service';
 import { ScrollbarModule } from 'ngx-scrollbar';
 import { RetailTaxesDataService } from '../retail/retail-code-setup/retail-taxes/retail-taxes-data.service';
 import { ShopModule } from '../retail/shop/shop.module';
+import { NightAuditComponent } from 'src/app/common/night-audit/night-audit.component';
+import { RetailToggleSwitchModule } from 'src/app/retail/retail-toggle-switch/retail-toggle-switch.module';
+import { ScheduleEmailComponent } from 'src/app/common/night-audit/schedule-email/schedule-email.component';
 // import { AppointmentActionModule } from '../shared/appointment-actions/appointment-action.module';
 // import { SlideInformationService } from '../shared/slide-information/slide-information.service';
 // import { AppointmentActionsDialogComponent } from '../appointment/appointment-actions-dialog/appointment-actions-dialog.component';
@@ -22,9 +25,10 @@ import { ShopModule } from '../retail/shop/shop.module';
     ScrollbarModule,
     ShopModule,
   // AppointmentActionModule,
-  SharedModule
+  SharedModule,
+  RetailToggleSwitchModule
   ],
-  declarations: [AuditComponent, AuditDataComponent, DayEndComponent],// , AppointmentActionsDialogComponent],
+  declarations: [AuditComponent, AuditDataComponent, DayEndComponent, NightAuditComponent, ScheduleEmailComponent],// , AppointmentActionsDialogComponent],
   providers: [ AuditService,
     RetailTaxesDataService
   //  SlideInformationService
