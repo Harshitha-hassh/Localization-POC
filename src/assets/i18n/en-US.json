@@ -1111,7 +1111,6 @@
     "AllOutlets": "All Outlets",
     "ClientName": "Client Name",
     "MemberName": "Member Name",
-    "Actions" : "Actions",
     "tooltip_reopen" : "Re Open",
     "tooltip_settle" : "Settle",
     "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name,Transaction Type, Member Name, Corrected/Voided By",
