@@ -37,7 +37,7 @@ export class AuditService {
                 { "title": `${this.captions.Amount} (${this.localization.currencySymbol})`, "jsonkey": "Amount", "alignType": "right" },
                 { "title": this.captions.ClientName, "jsonkey": "ClientName", "alignType": "left" },
                 { "title": this.captions.MemberName, "jsonkey": "MemberName", "alignType": "left" },
-                { "title": `${this.captions.PaymentReceived} (${this.localization.currencySymbol})`, "jsonkey": "paymentReceivedAmount", "alignType": "right" },
+                { "title": `${this.captions.PaymentReceived} (${this.localization.currencySymbol})`, "jsonkey": "paymentReceivedAmount", "alignType": "right" }
                 ];
             }
                 break;
