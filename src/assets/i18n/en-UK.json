@@ -1019,6 +1019,8 @@
     "UnitPrice": "Unit Price_uk",
     "Quantity": "Quantity_uk",
     "Subtotal": "Sub Total_uk",
+    "SubtotalToBePaid": "Subtotal To Be Paid_uk",
+    "SubtotalToBeRefunded": "Subtotal To Be Refunded_uk",
     "AssignCommissionGratuity": "ASSIGN COMMISSION/GRATUITY_uk",
     "StaffAssociatedOnTransaction": "Staff Associated on Transaction_uk",
     "ClerkForCommission": "Clerk for Commission_uk",

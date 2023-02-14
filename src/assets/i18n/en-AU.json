@@ -1019,6 +1019,8 @@
     "UnitPrice": "Unit Price",
     "Quantity": "Quantity",
     "Subtotal": "Sub Total",
+    "SubtotalToBePaid": "Subtotal To Be Paid",
+    "SubtotalToBeRefunded": "Subtotal To Be Refunded",
     "AssignCommissionGratuity": "ASSIGN COMMISSION/GRATUITY",
     "StaffAssociatedOnTransaction": "Staff Associated on Transaction",
     "ClerkForCommission": "Clerk for Commission",

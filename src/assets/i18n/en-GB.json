@@ -1019,6 +1019,8 @@
     "UnitPrice": "Unit Price_gb",
     "Quantity": "Quantity_gb",
     "Subtotal": "Sub Total_gb",
+    "SubtotalToBePaid": "Subtotal To Be Paid_gb",
+    "SubtotalToBeRefunded": "Subtotal To Be Refunded_gb",
     "AssignCommissionGratuity": "ASSIGN COMMISSION/GRATUITY_gb",
     "StaffAssociatedOnTransaction": "Staff Associated on Transaction_gb",
     "ClerkForCommission": "Clerk for Commission_gb",

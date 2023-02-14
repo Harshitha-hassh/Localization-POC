@@ -1019,6 +1019,8 @@
     "UnitPrice": "Unit Price_fr",
     "Quantity": "Quantity_fr",
     "Subtotal": "Sub Total_fr",
+    "SubtotalToBePaid": "Subtotal To Be Paid_fr",
+    "SubtotalToBeRefunded": "Subtotal To Be Refunded_fr",
     "AssignCommissionGratuity": "ASSIGN COMMISSION/GRATUITY_fr",
     "StaffAssociatedOnTransaction": "Staff Associated on Transaction_fr",
     "ClerkForCommission": "Clerk for Commission_fr",
