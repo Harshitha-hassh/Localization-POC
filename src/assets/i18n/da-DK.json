@@ -3997,5 +3997,7 @@
   "lbl_allFiledsAreMandatory": "All fields are mandatory_da",
   "lbl_scheduleEmailSettings": "Scheduled Email Settings_da",
   "lbl_sendTo": "Send to_da",
-  "btn_ok": "OK_da"
+  "btn_ok": "OK_da",
+  "lbl_enableSuccessStatusEmail": "Enable success status email_fr_da",
+  "lbl_enableFailureStatusEmail": "Enable Failure status email_fr_da"
 }
