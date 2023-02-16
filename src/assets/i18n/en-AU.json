@@ -3998,6 +3998,6 @@
   "lbl_scheduleEmailSettings": "Scheduled Email Settings",
   "lbl_sendTo": "Send to",
   "btn_ok": "OK",
-  "lbl_enableSuccessStatusEmail": "Enable success status email_fr",
-  "lbl_enableFailureStatusEmail": "Enable Failure status email_fr"
+  "lbl_enableSuccessStatusEmail": "Enable Success Status Email",
+  "lbl_enableFailureStatusEmail": "Enable Failure Status Email"
 }
