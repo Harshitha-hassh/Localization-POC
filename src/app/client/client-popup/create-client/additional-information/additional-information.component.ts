@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input, ViewEncapsulation } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { PropertyInformation } from '../../../../core/services/property-information.service';
-import { SubscriptionLike as ISubscription, Subscription } from 'rxjs';
+import { SubscriptionLike as ISubscription, Subscription, ReplaySubject } from 'rxjs';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { Module, Host } from 'src/app/common/shared/shared/globalsContant';
@@ -11,6 +11,10 @@ import { BaseResponse, ClientCreditCardInfo } from 'src/app/common/shared/shared
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';
+import { ExportSendComponent } from 'src/app/common/export-send/export-send.component';
+import { ConsentManagementComponent } from 'src/app/common/consent-management/consent-management.component';
+import { DataRetentionComponent} from 'src/app/common/data-retention/data-retention.component'
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-additional-information',
@@ -47,6 +51,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   additionalInfo :any;
   PaymentReferenceID = 0;
   floatLabel: string;
+  destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   @Input('inputData')
   set formData(value) {
     if(value && value.data!='')
@@ -234,5 +239,42 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     this.FormGrp.controls['customField5'].updateValueAndValidity();
 
   }  
+  consentManagement(){
+    this.dialog.open(ConsentManagementComponent, {
+      width: '80%',
+      height: '80%',
+      disableClose: true,
+      data: {
+        // guestId: this.createGuestBusiness.guestguid,
+        // policyValue: value,
+        // isPatch: this.isEdit
+      },
+    }).afterClosed().pipe(takeUntil(this.destroyed$)).subscribe(res => {
+      // action.enableCheck=false
+    });
+    }
+  exportSend(){
+    this.dialog.open(ExportSendComponent, {
+      width: '36%',
+      height: '65%',
+      disableClose: true,
+      data: {
+      }
+    });
+ }
+ retentionManagement(){
+  this.dialog.open(DataRetentionComponent, {
+    width: '30%',
+    height: '50%',
+    disableClose: true,
+    data: {
+      // guestguid: this.createGuestBusiness.guestguid,
+      // guestId: this.createGuestBusiness.guestId.guestId,
+      // dataGroups: value
+    }
+  }).afterClosed().pipe(takeUntil(this.destroyed$)).subscribe(res => {
+    
+  });
+  }
 }
 

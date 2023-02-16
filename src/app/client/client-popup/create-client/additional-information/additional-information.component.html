@@ -88,7 +88,22 @@
                     <textarea class="textarea-style" [maxlength]="250" matInput formControlName="comments"
                         [placeholder]="captions.GeneralComments"></textarea>
                 </mat-form-field>
-
+                <div class="gdpr-wrapper pt-3">
+                    <div class="ag_display--flex wrapper">
+                        <div (click)="consentManagement();" class="divider">
+                            <span class="boxed-icon"><i class="icon-policy"></i></span>
+                            <span class="span-label">{{captions.consentManagement}}</span>
+                        </div>
+                        <div (click)="retentionManagement();" class="divider">
+                            <span class="boxed-icon"><i class="icon-retention"></i></span>
+                            <span class="span-label">{{captions.retentionManagement}}</span>
+                        </div>
+                        <div (click)="exportSend();" class="divider border-right-0">
+                            <span class="boxed-icon"><i class="icon-export"></i></span>
+                            <span class="span-label">{{captions.exportSend}}</span>
+                        </div>
+                    </div>
+                </div>
             </aside>
         </ng-scrollbar>
     </form>
