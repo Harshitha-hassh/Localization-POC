@@ -12,22 +12,23 @@ export interface BreakPointResult {
     breakPointNumber?: number;
 }
 
-export enum BreakPoint{
+export enum BreakPoint {
     ShopScreen = 3000,
 
     //user module    
-  UserSetup = 2300,
-  UserRoleSetUp = 2305,
-  UserRoleConfiguration = 2310,
+    UserSetup = 2300,
+    UserRoleSetUp = 2305,
+    UserRoleConfiguration = 2310,
 
-  ReceiptConfiguration = 7080,
-  AddNewClientProfile = 600,
-  EditClientProfile = 605,
-  DayEnd = 2430,
-  UserSessionConfiguration = 7085,
-  TransactionLog = 8090,
-  CombineGuestRecords=2435,
-  InventorySync = 15170
+    ReceiptConfiguration = 7080,
+    AddNewClientProfile = 600,
+    EditClientProfile = 605,
+    DayEnd = 2430,
+    UserSessionConfiguration = 7085,
+    TransactionLog = 8090,
+    CombineGuestRecords = 2435,
+    InventorySync = 15170,
+    NightAudit = 16025
 }
 
 export const enum ReportBreakPoint {

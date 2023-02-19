@@ -34,7 +34,7 @@ const routes: Routes = [{
     },
     {
       path: 'nightaudit', component: NightAuditComponent, canActivate: [RouteGuardService],
-      // data: { BreakPointNumber: UserAccessBreakPoints.DAYEND, ShowPopup: true }
+      data: { BreakPointNumber: BreakPoint.NightAudit, ShowPopup: true }
     }
   ]
 }];
