@@ -1639,9 +1639,11 @@
     "8734": "8734 - Receiving_gb",
     "8735": "8735 - PurchaseOrder_gb",
     "8736": "8736 - Inventory on Hand_gb",
+    "11500": "11500 - Manual Audit_gb",
     "15065": "15065 - Print Default Configuration_gb",
     "15170": "15170 - Inventory Sync_gb",
     "16020": "16020 - Quick ID Config_gb",
+    "16025": "16025 - Auto Night Audit_gb",
     "Appointment Actions": "Appointment Actions_gb",
     "Appointment Grid": "Appointment Grid_gb",
     "Client Profile": "Client Profile_gb",
@@ -3449,7 +3451,10 @@
         "AppointmentUpdateSMS": "Appointment Update SMS_gb",
         "AppointmentCheckInSMS": "Appointment CheckIn SMS_gb",
         "AppointmentCheckOutSMS": "Appointment CheckOut SMS_gb",
-        "RetailReceiptsSMS": "Retail Receipts SMS_gb"
+        "RetailReceiptsSMS": "Retail Receipts SMS_gb",
+        "NightAuditReminder": "Night Audit Reminder_gb",
+        "NightAuditCompletion": "Night Audit Success_gb",
+        "NightAuditFailure": "Night Audit Failure_gb"
       },
       "distributionlist": {
         "createNew": "Create New_gb",
@@ -3529,7 +3534,10 @@
         "AppointmentCheckOut": "Appointment Check Out_gb",
         "SPARetailReceipts": "Retail Receipts_gb",
         "IntakeForm": "Intake Form_gb",
-        "RetailReceipts": "Retail Receipts_gb"
+        "RetailReceipts": "Retail Receipts_gb",
+        "RetailNightAuditReminder": "Night Audit Reminder_gb",
+        "RetailNightAuditCompletion": "Night Audit Success_gb",
+        "RetailNightAuditFailure": "Night Audit Failure_gb"
       }
     },
     "notificationsConfiguration": {

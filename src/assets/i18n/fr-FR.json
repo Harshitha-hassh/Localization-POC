@@ -1639,9 +1639,11 @@
     "8734": "8734 - Receiving_fr",
     "8735": "8735 - PurchaseOrder_fr",
     "8736": "8736 - Inventory on Hand_fr",
+    "11500": "11500 - Manual Audit_fr",
     "15065": "15065 - Print Default Configuration_fr",
     "15170": "15170 - Inventory Sync_fr",
     "16020": "16020 - Quick ID Config_fr",
+    "16025": "16025 - Auto Night Audit_fr",
     "Appointment Actions": "Appointment Actions_fr",
     "Appointment Grid": "Appointment Grid_fr",
     "Client Profile": "Client Profile_fr",
@@ -3449,7 +3451,10 @@
         "AppointmentUpdateSMS": "Appointment Update SMS_fr",
         "AppointmentCheckInSMS": "Appointment CheckIn SMS_fr",
         "AppointmentCheckOutSMS": "Appointment CheckOut SMS_fr",
-        "RetailReceiptsSMS": "Retail Receipts SMS_fr"
+        "RetailReceiptsSMS": "Retail Receipts SMS_fr",
+        "NightAuditReminder": "Night Audit Reminder_fr",
+        "NightAuditCompletion": "Night Audit Success_fr",
+        "NightAuditFailure": "Night Audit Failure_fr"
       },
       "distributionlist": {
         "createNew": "Create New_fr",
@@ -3529,7 +3534,10 @@
         "AppointmentCheckOut": "Appointment Check Out_fr",
         "SPARetailReceipts": "Retail Receipts_fr",
         "IntakeForm": "Intake Form_fr",
-        "RetailReceipts": "Retail Receipts_fr"
+        "RetailReceipts": "Retail Receipts_fr",
+        "RetailNightAuditReminder": "Night Audit Reminder_fr",
+        "RetailNightAuditCompletion": "Night Audit Success_fr",
+        "RetailNightAuditFailure": "Night Audit Failure_fr"
       }
     },
     "notificationsConfiguration": {
