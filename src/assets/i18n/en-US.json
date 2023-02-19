@@ -1658,7 +1658,9 @@
 		"8190": "8190 - Inventory Variance Report",
     "15170": "15170 - Inventory Sync",
     "16020": "16020 - Quick ID Config",
-    "8195": "8195 - Surcharges Report"
+    "8195": "8195 - Surcharges Report",
+    "11500": "11500 - Manual Audit",
+    "16025": "16025 - Auto Night Audit"
   },
   "userId": "User ID",
   "password": "Password",
