@@ -4030,5 +4030,6 @@
   "lbl_purgeOrAnonymize": "PURGE/ANONYMIZE",
   "lbl_message": "Message",
   "btn_send": "SEND",
-  "lbl_email": "Email"
+  "lbl_email": "Email",
+  "noConsentPolicySelected": "No Consent Policy Selected"
 }

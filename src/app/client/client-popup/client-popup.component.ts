@@ -10,7 +10,6 @@ import { ClientDataService } from 'src/app/shared/data-services/client.data.serv
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
 import { Utilities } from 'src/app/core/utilities';
-import { GuestDataPolicyDataService } from 'src/app/common/dataservices/guest-datapolicy.data.service';
 
 @Component({
   selector: 'app-client-popup',
