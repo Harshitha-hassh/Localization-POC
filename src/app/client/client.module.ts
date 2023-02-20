@@ -17,6 +17,7 @@ import { ClientsortpipePipe } from './client-table/clientsortpipe.pipe';
 import { ScrollbarModule } from 'ngx-scrollbar';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { ClientService } from '../shared/service/client-service.service';
+import { GuestPolicyWrapperComponent } from './client-popup/create-client/additional-information/guest-policy-wrapper/guest-policy-wrapper.component';
 
 @NgModule({
     imports: [
@@ -39,7 +40,8 @@ import { ClientService } from '../shared/service/client-service.service';
         ClientTableComponent,
         ClientfilterpipePipe,
         ClientDetailsComponent,
-        ClientsortpipePipe
+        ClientsortpipePipe,
+        GuestPolicyWrapperComponent
     ],
     providers: [ClientService],
     exports: [

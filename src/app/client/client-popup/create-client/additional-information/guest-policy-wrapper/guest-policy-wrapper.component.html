@@ -1,0 +1,11 @@
+<div [ngSwitch]="dialogData.popupType" class="h-100">
+	<app-consent-management *ngSwitchCase="'1'" [inputData]="guestPolicyDetail"
+		(onSaveEmit)="UpdatePolicyDetailsForGuestId($event)" (onCancelEmit)="onCancel($event)">
+	</app-consent-management>
+	<app-data-retention *ngSwitchCase="'2'" [inputData]="guestPolicyDetail"
+		(onSaveEmit)="ApplyDataPolicyPurgeForGuestId($event)" (onCancelEmit)="onCancel($event)">
+	</app-data-retention>
+	<app-export-send *ngSwitchCase="'3'" [inputData]="guestPolicyDetail" (onSaveEmit)="exportSendMail($event)"
+		(onCancelEmit)="onCancel($event)">
+	</app-export-send>
+</div>

@@ -74,6 +74,11 @@ export interface ClientInfo {
     loyaltyDetail: LoyaltyDetail[];
     memberId?: string;
     ClientCategoryId: number;
+    consent:Date;
+    consentExpiryDate:Date;
+    consentPolicyId:number;
+    isPurged:boolean;
+    policyComments : string
   }
 
   export interface LoyaltyDetail{

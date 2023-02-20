@@ -51,7 +51,12 @@ export class CreateClientBusiness {
         lastChangeId: isClientUpdate ?  details.personalDetailsFormGroup.lastChangeId: DefaultGUID,
         interfaceGuestId: isClientUpdate ?  details.personalDetailsFormGroup.interfaceGuestId : '',
         loyaltyDetail: loyaltyObj,
-        ClientCategoryId: 1
+        ClientCategoryId: 1,
+        consent : new Date(),
+        consentExpiryDate : new Date(),
+        consentPolicyId : 0,
+        isPurged : false,
+        policyComments: ""
       };
 
       let clientInfoObj: ClientInfo = {
