@@ -11,12 +11,10 @@ import { BaseResponse, ClientCreditCardInfo } from 'src/app/common/shared/shared
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';
-import { ExportSendComponent } from 'src/app/common/export-send/export-send.component';
-import { ConsentManagementComponent } from 'src/app/common/consent-management/consent-management.component';
-import { DataRetentionComponent} from 'src/app/common/data-retention/data-retention.component'
 import { takeUntil } from 'rxjs/operators';
 import { GuestPolicyWrapperComponent } from './guest-policy-wrapper/guest-policy-wrapper.component';
-import { ApplyPolicy, GuestPolicyDetail } from 'src/app/common/shared/shared.modal';
+import { GuestPolicyDetail } from 'src/app/common/shared/shared.modal';
+import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
 
 @Component({
   selector: 'app-additional-information',
@@ -244,7 +242,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   }  
   openGuestPolicyDialog(popupType) {
     let guestPolicyDetail : GuestPolicyDetail = {
-      Id: this.additionalInfo.guestId,
+      id: this.additionalInfo.guestId,
       consentDate : this.additionalInfo.client.consent,
       consentExpiryDate: this.additionalInfo.client.consentExpiryDate,
       consentPolicyId : this.additionalInfo.client.consentPolicyId,

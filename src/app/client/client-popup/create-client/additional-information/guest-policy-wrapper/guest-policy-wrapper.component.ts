@@ -2,11 +2,13 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AlertAction, AlertType, ButtonTypes } from 'src/app/common/enums/shared-enums';
 import { Localization } from 'src/app/common/shared/localization/Localization';
-import { ApplyPolicy, DataPurge, GuestPolicyDetail } from 'src/app/common/shared/shared.modal';
 import { Utilities } from 'src/app/core/utilities';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { Module, Host } from 'src/app/common/shared/shared/globalsContant';
 import { BaseResponse } from 'src/app/common/shared/shared/business/shared.modals';
+import { GuestPolicyDetail } from 'src/app/common/shared/shared.modal';
+import { DataPurge } from 'src/app/common/data-retention/data-retention.model';
+import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
 
 @Component({
   selector: 'app-guest-policy-wrapper',
