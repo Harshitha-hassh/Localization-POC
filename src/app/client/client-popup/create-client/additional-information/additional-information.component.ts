@@ -54,6 +54,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   PaymentReferenceID = 0;
   floatLabel: string;
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  @Input() IsGDPREnabled : boolean = false;
   @Input('inputData')
   set formData(value) {
     if(value && value.data!='')

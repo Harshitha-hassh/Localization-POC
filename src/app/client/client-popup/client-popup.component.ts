@@ -10,6 +10,7 @@ import { ClientDataService } from 'src/app/shared/data-services/client.data.serv
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
 import { Utilities } from 'src/app/core/utilities';
+import { GuestDataPolicyDataService } from 'src/app/common/dataservices/guest-datapolicy.data.service';
 
 @Component({
   selector: 'app-client-popup',
@@ -25,6 +26,7 @@ export class ClientPopupComponent implements OnInit {
   clientInfo:any;
   patronId = '';
   IsClientScreenDirty:boolean;
+  IsGDPREnabled : boolean = false;
   private $destroyed: ReplaySubject<boolean> = new ReplaySubject();
   constructor(private dialog: MatDialog,
     public dialogRef: MatDialogRef<any>,
@@ -52,6 +54,10 @@ export class ClientPopupComponent implements OnInit {
     if (this.data.isClientViewOnly) {
       this.utils.disableControls(this.clientPopupForm);
     }
+    this._createClientBusiness.getIsGdprConfiguredFlag().then(res=>
+      {
+    this.IsGDPREnabled = !!res;
+      })
   }
 
   ngOnDestroy() {
