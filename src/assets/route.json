@@ -722,7 +722,7 @@
   "GetMultiPackRedeemHistoryDetails": "MultiPack/GetMultiPackRedeemHistoryDetails",
   "GetADB2CEnableConfig": "Adb2CAuthentication/GetADB2CEnableConfig/{tenantId}",
   "NightAuditConfiguration": "PointOfSaleService/NightAuditConfig",
-  "DeleteNightAuditConfigurationById": "PointOfSaleService/NightAuditConfig/id}",
+  "DeleteNightAuditConfigurationById": "PointOfSaleService/NightAuditConfig/{id}",
   "NightAuditScheduleConfiguration": "PointOfSaleService/NightAuditScheduleConfig",
   "DeleteNightAuditScheduleConfigurationById": "PointOfSaleService/NightAuditScheduleConfig/{id}"
 }

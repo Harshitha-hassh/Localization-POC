@@ -3589,7 +3589,10 @@
       "AppointmentCheckOut": "Appointment Check Out_de",
       "SPARetailReceipts": "Retail Receipts_de",
       "IntakeForm": "Intake Form_de",
-      "RetailReceipts": "Retail Receipts_de"
+      "RetailReceipts": "Retail Receipts_de",
+      "RetailNightAuditReminder": "Night Audit Reminder_de",
+      "RetailNightAuditCompletion": "Night Audit Success_de",
+      "RetailNightAuditFailure": "Night Audit Failure_de"
     }
   },
   "dayEnd": {
