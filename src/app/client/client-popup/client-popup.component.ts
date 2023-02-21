@@ -53,10 +53,7 @@ export class ClientPopupComponent implements OnInit {
     if (this.data.isClientViewOnly) {
       this.utils.disableControls(this.clientPopupForm);
     }
-    this._createClientBusiness.getIsGdprConfiguredFlag().then(res=>
-      {
-    this.IsGDPREnabled = !!res;
-      })
+    this.setIsGdprConfiguredFlag();
   }
 
   ngOnDestroy() {
@@ -67,7 +64,13 @@ export class ClientPopupComponent implements OnInit {
   validateSave(){
     return this.IsClientScreenDirty;
   }
-
+  setIsGdprConfiguredFlag()
+  {
+    this._createClientBusiness.getIsGdprConfiguredFlag().then(res=>
+      {
+    this.IsGDPREnabled = !!res;
+      });
+  }
   async save(){
     this.IsClientScreenDirty = false;
     this.clientInfo = this.clientPopupForm.value;

@@ -96,10 +96,10 @@ export class GuestPolicyWrapperComponent implements OnInit {
       extraParams: []
     });
   }
-  async UpdatePolicyDetailsForGuestId(applyPolicy: ApplyPolicy) {
+  updatePolicyDetailsForGuestId(applyPolicy: ApplyPolicy) {
     this.makeHttpUpdatePolicyDetailsForGuestIdCall(applyPolicy);
   }
-  async ApplyDataPolicyPurgeForGuestId(dataPurge: DataPurge) {
+  applyDataPolicyPurgeForGuestId(dataPurge: DataPurge) {
     this._utils.showCommonAlert(this.captions.lbl_doYouWantToPurge, AlertType.CustomDefault, ButtonTypes.YesNo, async (res) => {
       if (res === AlertAction.YES) {
         this.makeHttpApplyDataPolicyPurgeForGuestIdCall(dataPurge);
@@ -107,7 +107,7 @@ export class GuestPolicyWrapperComponent implements OnInit {
       }
     })
   }
-  async exportSendMail(value) {
+  exportSendMail(value) {
 
   }
 }
