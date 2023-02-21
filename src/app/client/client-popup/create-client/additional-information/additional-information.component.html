@@ -104,7 +104,7 @@
                             </span>
                             <span class="span-label">{{captions.retentionManagement}}</span>
                         </div>
-                        <div (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="!IsGDPREnabled || guestGuidId == '' ? 'ag_link--disabled opacity-spa' : ''">
+                        <div (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="!IsGDPREnabled || additionalInfo.client.Id == '' ? 'ag_link--disabled opacity-spa' : ''">
                             <span class="boxed-icon">
                                 <i class="icon-export"></i>
                                 <!-- <i class="icon-dashboard-tick"></i> -->
