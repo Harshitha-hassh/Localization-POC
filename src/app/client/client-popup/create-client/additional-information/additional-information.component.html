@@ -90,16 +90,25 @@
                 </mat-form-field>
                 <div class="gdpr-wrapper pt-3">
                     <div class="ag_display--flex wrapper">
-                        <div (click)="consentManagement();" class="divider">
-                            <span class="boxed-icon"><i class="icon-policy"></i></span>
+                        <div (click)="openGuestPolicyDialog(1);" class="divider" [ngClass]=" !IsGDPREnabled || additionalInfo.client.Id == '' ? 'ag_link--disabled opacity-spa' : ''">
+                            <span class="boxed-icon" >
+                                <i class="icon-policy"></i>
+                                <i *ngIf="additionalInfo && additionalInfo.client.consentPolicyId != 0" class="icon-dashboard-tick"></i>
+                            </span>
                             <span class="span-label">{{captions.consentManagement}}</span>
                         </div>
-                        <div (click)="retentionManagement();" class="divider">
-                            <span class="boxed-icon"><i class="icon-retention"></i></span>
+                        <div (click)="openGuestPolicyDialog(2);" class="divider" [ngClass]="(additionalInfo.client && additionalInfo.client.isPurged == true) || additionalInfo.client.Id == '' || !IsGDPREnabled ? 'ag_link--disabled opacity-spa' : ''" >
+                            <span class="boxed-icon">
+                                <i class="icon-retention"></i>
+                                <i *ngIf="additionalInfo && additionalInfo.client.isPurged == true" class="icon-dashboard-tick"></i>
+                            </span>
                             <span class="span-label">{{captions.retentionManagement}}</span>
                         </div>
-                        <div (click)="exportSend();" class="divider border-right-0">
-                            <span class="boxed-icon"><i class="icon-export"></i></span>
+                        <div (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="!IsGDPREnabled || additionalInfo.client.Id == '' ? 'ag_link--disabled opacity-spa' : ''">
+                            <span class="boxed-icon">
+                                <i class="icon-export"></i>
+                                <!-- <i class="icon-dashboard-tick"></i> -->
+                            </span>
                             <span class="span-label">{{captions.exportSend}}</span>
                         </div>
                     </div>

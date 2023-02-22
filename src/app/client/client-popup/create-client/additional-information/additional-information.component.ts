@@ -11,10 +11,10 @@ import { BaseResponse, ClientCreditCardInfo } from 'src/app/common/shared/shared
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';
-import { ExportSendComponent } from 'src/app/common/export-send/export-send.component';
-import { ConsentManagementComponent } from 'src/app/common/consent-management/consent-management.component';
-import { DataRetentionComponent} from 'src/app/common/data-retention/data-retention.component'
 import { takeUntil } from 'rxjs/operators';
+import { GuestPolicyWrapperComponent } from './guest-policy-wrapper/guest-policy-wrapper.component';
+import { GuestPolicyDetail } from 'src/app/common/shared/shared.modal';
+import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
 
 @Component({
   selector: 'app-additional-information',
@@ -52,6 +52,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   PaymentReferenceID = 0;
   floatLabel: string;
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  @Input() IsGDPREnabled : boolean = false;
   @Input('inputData')
   set formData(value) {
     if(value && value.data!='')
@@ -239,42 +240,36 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     this.FormGrp.controls['customField5'].updateValueAndValidity();
 
   }  
-  consentManagement(){
-    this.dialog.open(ConsentManagementComponent, {
+  openGuestPolicyDialog(popupType) {
+    let guestPolicyDetail : GuestPolicyDetail = {
+      id: this.additionalInfo.guestId,
+      consentDate : this.additionalInfo.client.consent,
+      consentExpiryDate: this.additionalInfo.client.consentExpiryDate,
+      consentPolicyId : this.additionalInfo.client.consentPolicyId,
+      comments:"",
+      isPurged: this.additionalInfo.client.isPurged,
+      isGuest : true
+    } 
+    this.dialog.open(GuestPolicyWrapperComponent, {
       width: '80%',
       height: '80%',
       disableClose: true,
       data: {
-        // guestId: this.createGuestBusiness.guestguid,
-        // policyValue: value,
-        // isPatch: this.isEdit
+        guestPolicyDetail : guestPolicyDetail,
+        popupType: popupType
       },
     }).afterClosed().pipe(takeUntil(this.destroyed$)).subscribe(res => {
-      // action.enableCheck=false
-    });
-    }
-  exportSend(){
-    this.dialog.open(ExportSendComponent, {
-      width: '36%',
-      height: '65%',
-      disableClose: true,
-      data: {
+      if(res != undefined && popupType == 1)
+      {
+        let guestPolicyDetail : ApplyPolicy = res as ApplyPolicy
+        this.additionalInfo.client.consent = this.localization.convertDateTimeToAPIDateTimeSec(new Date(guestPolicyDetail.consentDate));
+        this.additionalInfo.client.consentExpiryDate = this.localization.convertDateTimeToAPIDateTimeSec(new Date(guestPolicyDetail.consentExpiryDate));
+        this.additionalInfo.client.consentPolicyId = guestPolicyDetail.policyId;
+      }
+      else if(res != undefined && popupType == 2 )
+      {
+        this.additionalInfo.client.isPurged = res ?  true : false;
       }
     });
- }
- retentionManagement(){
-  this.dialog.open(DataRetentionComponent, {
-    width: '30%',
-    height: '50%',
-    disableClose: true,
-    data: {
-      // guestguid: this.createGuestBusiness.guestguid,
-      // guestId: this.createGuestBusiness.guestId.guestId,
-      // dataGroups: value
-    }
-  }).afterClosed().pipe(takeUntil(this.destroyed$)).subscribe(res => {
-    
-  });
   }
 }
-

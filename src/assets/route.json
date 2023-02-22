@@ -724,5 +724,11 @@
   "NightAuditConfiguration": "PointOfSaleService/NightAuditConfig",
   "DeleteNightAuditConfigurationById": "PointOfSaleService/NightAuditConfig/{id}",
   "NightAuditScheduleConfiguration": "PointOfSaleService/NightAuditScheduleConfig",
-  "DeleteNightAuditScheduleConfigurationById": "PointOfSaleService/NightAuditScheduleConfig/{id}"
+  "DeleteNightAuditScheduleConfigurationById": "PointOfSaleService/NightAuditScheduleConfig/{id}",
+  "GetDataRetentionPolicyConfiguredFlag" : "PointOfSaleService/Policy/GetDataRetentionPolicyConfiguredFlag/{tenantId}",
+  "GetDataGroupsUsingPolicyId" : "PointOfSaleService/Policy/GetDataGroupsUsingPolicyId/{tenantId}/{policyId}",
+  "GetConsentPoliciesForProduct" : "PointOfSaleService/Policy/GetConsentPoliciesForProduct/{tenantId}/{productId}",
+  "UpdateConsentPolicyDetailsForGuestId" : "PointOfSaleService/GuestPolicy/UpdateConsentPolicyDetailsForGuestId",
+  "ApplyDataPolicyPurgeForGuestId" : "PointOfSaleService/GuestPolicy/ApplyDataPolicyPurgeForGuestId",
+  "GetPolicyTypeUsingPolicyId" : "PointOfSaleService/Policy/GetPolicyTypeUsingPolicyId/{policyId}"
 }

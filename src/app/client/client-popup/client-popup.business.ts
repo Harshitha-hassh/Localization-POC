@@ -4,6 +4,7 @@ import { ClientDataService } from 'src/app/shared/data-services/client.data.serv
 import { DefaultGUID } from 'src/app/retail/shared/globalsContant';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { GuestDataPolicyDataService } from 'src/app/common/dataservices/guest-datapolicy.data.service';
 
 @Injectable()
 export class CreateClientBusiness {
@@ -14,7 +15,8 @@ export class CreateClientBusiness {
 
     constructor(
         private Utilities: RetailUtilities,  public localization: RetailStandaloneLocalization,
-        private _clientDataService: ClientDataService
+        private _clientDataService: ClientDataService,
+        private _guestPolicyService : GuestDataPolicyDataService,
       ) {}
     
     async SubmitForm(details) {
@@ -51,7 +53,12 @@ export class CreateClientBusiness {
         lastChangeId: isClientUpdate ?  details.personalDetailsFormGroup.lastChangeId: DefaultGUID,
         interfaceGuestId: isClientUpdate ?  details.personalDetailsFormGroup.interfaceGuestId : '',
         loyaltyDetail: loyaltyObj,
-        ClientCategoryId: 1
+        ClientCategoryId: 1,
+        consent : new Date(),
+        consentExpiryDate : new Date(),
+        consentPolicyId : 0,
+        isPurged : false,
+        policyComments: ""
       };
 
       let clientInfoObj: ClientInfo = {
@@ -156,5 +163,9 @@ export class CreateClientBusiness {
        return await this._clientDataService.searchClientByPatron(patronId);
      }
 
-   
+     async getIsGdprConfiguredFlag(): Promise<boolean> {
+      var tenantId = Number(this.Utilities.GetPropertyInfo("TenantId"));
+      var isGdprConfigured = await this._guestPolicyService.GetDataRetentionPolicyConfiguredFlag(tenantId);
+      return isGdprConfigured;
+    }
 }

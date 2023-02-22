@@ -25,6 +25,7 @@ export class ClientPopupComponent implements OnInit {
   clientInfo:any;
   patronId = '';
   IsClientScreenDirty:boolean;
+  IsGDPREnabled : boolean = false;
   private $destroyed: ReplaySubject<boolean> = new ReplaySubject();
   constructor(private dialog: MatDialog,
     public dialogRef: MatDialogRef<any>,
@@ -52,6 +53,7 @@ export class ClientPopupComponent implements OnInit {
     if (this.data.isClientViewOnly) {
       this.utils.disableControls(this.clientPopupForm);
     }
+    this.setIsGdprConfiguredFlag();
   }
 
   ngOnDestroy() {
@@ -62,7 +64,13 @@ export class ClientPopupComponent implements OnInit {
   validateSave(){
     return this.IsClientScreenDirty;
   }
-
+  setIsGdprConfiguredFlag()
+  {
+    this._createClientBusiness.getIsGdprConfiguredFlag().then(res=>
+      {
+    this.IsGDPREnabled = !!res;
+      });
+  }
   async save(){
     this.IsClientScreenDirty = false;
     this.clientInfo = this.clientPopupForm.value;

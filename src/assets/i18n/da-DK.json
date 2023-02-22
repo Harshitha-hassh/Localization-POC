@@ -4033,5 +4033,6 @@
   "lbl_purgeOrAnonymize": "PURGE/ANONYMIZE_da",
   "lbl_message": "Message_da",
   "btn_send": "SEND_da",
-  "lbl_email": "Email_da"
+  "lbl_email": "Email_da",
+  "noConsentPolicySelected": "No Consent Policy Selected_da"
 }
