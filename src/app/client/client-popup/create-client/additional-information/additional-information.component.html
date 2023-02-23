@@ -93,7 +93,7 @@
                         <div (click)="openGuestPolicyDialog(1);" class="divider" [ngClass]=" !IsGDPREnabled || additionalInfo.client.Id == '' ? 'ag_link--disabled opacity-spa' : ''">
                             <span class="boxed-icon" >
                                 <i class="icon-policy"></i>
-                                <i *ngIf="additionalInfo && additionalInfo.client.consentPolicyId != 0" class="icon-dashboard-tick"></i>
+                                <i *ngIf="policyType == 2" class="icon-dashboard-tick"></i>
                             </span>
                             <span class="span-label">{{captions.consentManagement}}</span>
                         </div>

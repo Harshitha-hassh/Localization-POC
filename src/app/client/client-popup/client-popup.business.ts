@@ -168,4 +168,8 @@ export class CreateClientBusiness {
       var isGdprConfigured = await this._guestPolicyService.GetDataRetentionPolicyConfiguredFlag(tenantId);
       return isGdprConfigured;
     }
+    async getPolicyTypeUsingPolicyId(policyId : number): Promise<number> {
+      var policyType = await this._guestPolicyService.GetPolicyTypeUsingPolicyId(policyId);
+      return policyType;
+    }
 }

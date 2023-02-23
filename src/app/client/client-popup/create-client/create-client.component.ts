@@ -12,6 +12,7 @@ export class CreateClientComponent implements OnInit, OnDestroy {
   @Input() parentForm:UntypedFormGroup;
   @Input() patronId:any; 
   @Input() IsGDPREnabled : boolean = false;
+  @Input() policyType : number = 0;
   clientInfoInput:any;
   @ViewChild('clientTabGroup', { static: true }) tabGroup: MatTabGroup;
   captions: any = this.localization.captions.bookAppointment;
