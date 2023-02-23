@@ -1179,6 +1179,7 @@
     "Paymentmethods": "Payment methods_gb",
     "ConfirmationNo": "Confirmation #_gb",
     "Revert": "Revert_gb",
+    "NotAvailable": "N/A_gb",
     "FullOrMultiplePayment": "Full / Multiple Payment_gb",
     "InvalidAmount": "Invalid Amount_gb",
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount_gb",

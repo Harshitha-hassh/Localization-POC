@@ -1181,6 +1181,7 @@
     "Paymentmethods": "Payment methods",
     "ConfirmationNo": "Confirmation #",
     "Revert": "Revert",
+    "NotAvailable":"N/A",
     "FullOrMultiplePayment": "Full / Multiple Payment",
     "InvalidAmount": "Invalid Amount",
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount",
