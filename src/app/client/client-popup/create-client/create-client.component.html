@@ -4,7 +4,7 @@
      [inputData]="clientInfoInput" [patronId]="patronId"></app-personal-information>
   </mat-tab>
   <mat-tab label="{{captions.AdditionalInformation}}">
-    <app-additional-information [parentForm]="parentForm" [IsGDPREnabled] = 'IsGDPREnabled' [inputData]="clientInfoInput"></app-additional-information>
+    <app-additional-information [parentForm]="parentForm" [IsGDPREnabled] = 'IsGDPREnabled' [policyType] = 'policyType' [inputData]="clientInfoInput"></app-additional-information>
   </mat-tab>
   <mat-tab label="{{captions.History}}">
     <app-transaction-history [parentForm]="parentForm" [inputData]="clientInfoInput"></app-transaction-history>
