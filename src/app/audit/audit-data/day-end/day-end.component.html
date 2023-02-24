@@ -30,8 +30,8 @@
                  <span title="{{ cell[hdr.jsonkey] }}">{{ cell[hdr.jsonkey] }}</span>
                 </td>
                 <td class="fw100 LW14"  >
-                  <i class="icon-Settle cursor pr-1 blckClr" [matTooltip]="captions.tooltip_settle" ></i>
-                  <i class="icon-Reopen cursor blckClr" [matTooltip]="captions.tooltip_reopen" ></i>
+                  <i class="icon-Settle cursor pr-1 blckClr" [matTooltip]="captions.tooltip_settle" (click)="ActionClick(iconActions[0],cell)" ></i>
+                  <i class="icon-Reopen cursor blckClr" [matTooltip]="captions.tooltip_reopen" (click)="ActionClick(iconActions[1],cell)" ></i>
                   <div class="rotate90 ag_display--inflex"><i class="icon-More cursor blckClr" [matMenuTriggerFor]="menuOpt"></i></div>
                   <mat-menu #menuOpt="matMenu">
                     <button mat-menu-item class="custmenuBtn" *ngFor="let opt of coll.options;let k=index" (click)="ActionClick(opt,cell)">

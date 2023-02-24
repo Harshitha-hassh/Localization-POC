@@ -75,6 +75,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   revenuepostingsFailedCount: number = 0;
   revenuepostingsFailedText: string;
   showRevenuePostings: boolean =false;
+  iconActions:any;
   constructor(public localization: RetailLocalization, private utils: RetailUtilities, private http: HttpServiceCall,
     private auditService: AuditService, public router: Router,
     // tslint:disable-next-line: max-line-length
@@ -393,6 +394,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
     const gridHeader = this.auditService.GetDayEndGridHeader(PendingAction.OpenTransaction);
     const gridActions = this.auditService.GetDayEndGridAction(PendingAction.OpenTransaction);
+    this.iconActions = [{ 'label': this.captions.Settle, 'action': GridAction.Settle, 'redirectTo': '' }, { 'label': this.captions.Open, 'action': GridAction.ReOpen, 'redirectTo': '' }]
     const transactions: any[] = [];
     let transaction: any;
     // tslint:disable-next-line: prefer-for-of
