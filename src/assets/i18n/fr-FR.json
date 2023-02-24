@@ -944,6 +944,7 @@
     "expiredMultipacks": "Show expired Multipacks_fr"
   },
   "shop": {
+    "Btn_Refresh": "REFRESH_fr",
     "ServiceChargeTax": "Service Charge Tax_fr",
     "GratuityTax": "Gratuity Tax_fr",
     "creditBookBalance": "Credit Book_fr",

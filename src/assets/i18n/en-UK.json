@@ -944,6 +944,7 @@
     "expiredMultipacks": "Show expired Multipacks_uk"
   },
   "shop": {
+    "Btn_Refresh": "REFRESH_uk",
     "ServiceChargeTax": "Service Charge Tax_uk",
     "GratuityTax": "Gratuity Tax_uk",
     "creditBookBalance": "Credit Book_uk",
