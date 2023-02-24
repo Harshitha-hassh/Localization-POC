@@ -58,8 +58,7 @@ export class AuditService {
                 actions = [{ 'label': this.captions.UndoCheckOut, 'action': GridAction.UndoCheckOut, 'redirectTo': '' }];
                 break;
              case PendingAction.OpenTransaction:
-                actions = [{ 'label': this.captions.Settle, 'action': GridAction.Settle, 'redirectTo': '' }, { 'label': this.captions.Open, 'action': GridAction.ReOpen, 'redirectTo': '' }
-                ,{ 'label': this.captions.Cancel, 'action': GridAction.CancelTransaction, 'redirectTo': '' },{ 'label': this.localization.captions.shop.Close, 'action': GridAction.Close, 'redirectTo': '' }]
+                actions = [{ 'label': this.captions.Cancel, 'action': GridAction.CancelTransaction, 'redirectTo': '' },{ 'label': this.localization.captions.shop.Close, 'action': GridAction.Close, 'redirectTo': '' }]
                 break;
         }
         return actions;
