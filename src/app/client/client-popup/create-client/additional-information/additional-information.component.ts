@@ -266,6 +266,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
         this.additionalInfo.client.consent = this.localization.convertDateTimeToAPIDateTimeSec(new Date(guestPolicyDetail.consentDate));
         this.additionalInfo.client.consentExpiryDate = this.localization.convertDateTimeToAPIDateTimeSec(new Date(guestPolicyDetail.consentExpiryDate));
         this.additionalInfo.client.consentPolicyId = guestPolicyDetail.policyId;
+        this.policyType = 2;
       }
       else if(res != undefined && popupType == 2 )
       {
