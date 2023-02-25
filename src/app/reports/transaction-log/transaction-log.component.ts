@@ -28,6 +28,7 @@ export class TransactionLogComponent implements OnInit {
   public navbarStatus: boolean = false;
   public showIncludeTemp:boolean =false;
   public minDate: Date = this.PropertyInfo.CurrentDate;
+  public isAuditReport = false;
   showError: boolean = false;
   disableSearchBtn: boolean = false;
   floatLabel: string;
@@ -86,6 +87,16 @@ export class TransactionLogComponent implements OnInit {
     }
 
   }
+
+  selectionChange(evt: any) {
+    if (evt.value == 'AuditReport') {
+      this.isAuditReport = true;
+    }
+    else {
+      this.isAuditReport = false;
+    }
+  }
+  
   formReportParams(): ReportOptions {
     let ctl = this.transactionForm.controls;
     let toApi = this.localization.convertDateObjToAPIdate;
@@ -93,6 +104,20 @@ export class TransactionLogComponent implements OnInit {
     let _propertyName = this.localization.GetPropertyInfo("PropertyName");
     const userPreferredLang = this.localization.GetPropertyInfo('UserLanguage');
     const preferredLanguage = userPreferredLang !== '' ? userPreferredLang : this.localization.GetPropertyInfo('Language');
+    if (this.isAuditReport) {
+      return {
+        code: "AuditReport",
+        params: [{ "pPropertyName": _propertyName },
+        { "pDate": this.localization.ConvertDateToISODateTime(new Date()) },
+        { "pReportDate": _logDate }        
+        ],
+        URIParams: [{ "StartDate": _logDate }],
+        Filter: [],
+        pageBreak: false,
+        layout: "Portrait",
+        language: preferredLanguage
+      };
+    } else {
     let params: ReportOptions = {
       code: "RetailTransLog",
       params: [ {"pPropertyName":_propertyName},
@@ -114,9 +139,9 @@ export class TransactionLogComponent implements OnInit {
       pageBreak: false,
       layout: "Portrait",
       language: preferredLanguage
+      }
+    return params;  
     }
-
-    return params;
   }
 
   // private ctlValue(ctrl: string): string {
