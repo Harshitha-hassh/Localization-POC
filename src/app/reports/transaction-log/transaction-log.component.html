@@ -5,23 +5,23 @@
         <form [formGroup]="transactionForm" autocomplete="off">
           <div>
             <mat-form-field class="w-100" [floatLabel]="floatLabel">
-              <mat-select placeholder="{{captions.logType}}" name="reportNameChild" formControlName="logType">
+              <mat-select placeholder="{{captions.logType}}" name="reportNameChild" formControlName="logType" (selectionChange)="selectionChange($event)">
                 <mat-option *ngFor="let log of logType " [value]="log.code">{{log.logtype}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
-          <div>
+          <div *ngIf="!isAuditReport">
             <mat-form-field class="w-100" [floatLabel]="floatLabel">
               <input matInput placeholder="{{captions.transactionNumber}}" inputtype ="nodecimal,nonnegative" [maxlength]="8"   formControlName="transactionNumber">
             </mat-form-field>
           </div>
-          <div>
+          <div *ngIf="!isAuditReport">
             <mat-form-field class="w-100" [floatLabel]="floatLabel" >
               <input matInput placeholder="{{captions.ClientFirstName}}" formControlName="firstName"   [maxlength]="15" >
             </mat-form-field>
           </div>
-          <div>
+          <div *ngIf="!isAuditReport">
             <mat-form-field class="w-100" [floatLabel]="floatLabel" >
               <input matInput placeholder="{{captions.ClientLastName}}" formControlName="lastName"   [maxlength]="15">
             </mat-form-field>
@@ -42,12 +42,12 @@
 
 
           </div>
-          <div>
+          <div *ngIf="!isAuditReport">
             <mat-form-field class="w-100" [floatLabel]="floatLabel">
               <input matInput placeholder="{{captions.appointmentNumber}}"  inputtype ="nodecimal,nonnegative" [maxlength]="8"  formControlName="appointmentNumber">
             </mat-form-field>
           </div>
-          <div>
+          <div *ngIf="!isAuditReport">
             <mat-form-field class="w-100" [floatLabel]="floatLabel">
               <mat-select placeholder="{{captions.userID}}" name="userID" formControlName="userID">
                 <mat-option *ngFor="let user of users" [value]="user.userId">{{user.userName}}

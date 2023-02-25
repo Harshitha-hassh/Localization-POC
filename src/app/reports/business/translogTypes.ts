@@ -91,6 +91,12 @@ import { TranslogType } from "./report.modals";
         "code": "DayEnd",
         "description": "",
         "logtype": "Day End"
+    },
+    {
+        "id": 16,
+        "code": "AuditReport",
+        "description": "",
+        "logtype": "Auto Night Audit"
     }
 ]
 
