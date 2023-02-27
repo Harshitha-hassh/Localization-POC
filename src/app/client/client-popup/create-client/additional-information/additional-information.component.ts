@@ -13,7 +13,7 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
 import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';
 import { takeUntil } from 'rxjs/operators';
 import { GuestPolicyWrapperComponent } from './guest-policy-wrapper/guest-policy-wrapper.component';
-import { GuestPolicyDetail } from 'src/app/common/shared/shared.modal';
+import { GuestPolicyDetail, PolicyCategoryType } from 'src/app/common/shared/shared.modal';
 import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
 
 @Component({
@@ -249,7 +249,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       consentPolicyId : this.additionalInfo.client.consentPolicyId,
       comments:"",
       isPurged: this.additionalInfo.client.isPurged,
-      isGuest : true
+      policyCategoryType : PolicyCategoryType.Guest
     } 
     this.dialog.open(GuestPolicyWrapperComponent, {
       width: '80%',
