@@ -4006,6 +4006,8 @@
   "lbl_setAutoDateRollTime": "Set Auto Date Roll Time_in",
   "hdr_ScheduleEmail": "SCHEDULE EMAIL_in",
   "lbl_template": "Template_in",
+  "lbl_endDate": "End Date_in",
+  "lbl_startDate": "Start Date_in",
   "lbl_hours": "Hours_in",
   "lbl_minutes": "Minutes_in",
   "err_MissingStartDate": "Missing Start Date_in",
