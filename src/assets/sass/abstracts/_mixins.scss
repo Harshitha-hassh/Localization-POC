@@ -235,7 +235,6 @@ $themes: (
         color: $header-background !important;
       }
     }
-    .theme-color-wrapper,
     .mat-step-header .mat-step-icon-selected,.mat-flat-button.mat-primary {
       background: $header-background !important;
       border: 2px solid $header-background !important;
@@ -354,9 +353,9 @@ $themes: (
     .retail-gift-card .retail-form-section .header-container .icon-border-section {
       border: 1px solid $header-background !important;
     }
-    .border-left-color {
-      border-left-color: $color-text !important;
-    }
+    // .border-left-color {
+    //   border-left-color: $color-text !important;
+    // }
     #setting-cover-spin::after {
       border-color: $header-background !important;
     }
