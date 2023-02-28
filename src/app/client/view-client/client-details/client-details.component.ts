@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { FormatText } from 'src/app/common/shared/shared/pipes/formatText-pipe.pipe';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
-import { DefaultGUID } from 'src/app/retail/shared/globalsContant';
+import { DefaultGUID, clientSearchType } from 'src/app/retail/shared/globalsContant';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { ClientPopupComponent } from '../../client-popup/client-popup.component';
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
@@ -78,7 +78,7 @@ export class ClientDetailsComponent implements OnInit {
     filteredGender: any = [];
     filteredCity: any = [];
     innerfilterArray: any = [];
-
+    searchTextPlaceHolder: string;
     userData: clientInfoDisplay = {
         name: '',
         age: '',
@@ -113,6 +113,9 @@ export class ClientDetailsComponent implements OnInit {
     timer = null;
     floatLabel: string;
     floatLabelNever: string;
+    clientSearchTypes: any;
+    selectedClientSearchType: number;
+    enableSearch: boolean = false;
     constructor(private dialog: MatDialog,
         private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
@@ -125,13 +128,18 @@ export class ClientDetailsComponent implements OnInit {
                 this.guestNameFromGlobalSearch = this._as.selectedClient.name;
                 this.guidFromGlobalSearch = this._as.selectedClient.guestProfileId;
                 this.searchText = '';
-                this.SearchClientInformation(this._as.selectedClient.name, false, this._as.selectedClient.guestProfileId);
+                this.selectedClientSearchType = clientSearchType.firstName;
+                this.SearchClientInformation(this._as.selectedClient.name, false, this._as.selectedClient.guestProfileId, this.selectedClientSearchType);
             }
         });
+        this.clientSearchTypes = [{ id: 0, name: this.captions.firstName, checked: true }, { id: 1, name: this.captions.lastName, checked: false }, { id: 2, name: this.captions.phone, checked: false }, { id: 3, name: this.captions.email, checked: false }];
     }
     sampleData: any = [];
 
     ngOnInit() {
+        let clientswitchvalue = this.clientSearchTypes.find(t => t.checked == true);
+        this.setSearchText(clientswitchvalue?.id);
+        this.SetclientSearchTypeValue(clientswitchvalue?.id);
         if (this.route.snapshot.routeConfig.path == 'allclients') { this.clientService.selectedIndex = 0; }
         if (this.route.snapshot.routeConfig.path == 'recents') { this.clientService.selectedIndex = 1; }
         else if (this.route.snapshot.routeConfig.path == 'vip') { this.clientService.selectedIndex = 2; }
@@ -146,7 +154,7 @@ export class ClientDetailsComponent implements OnInit {
             element.values = [];
         });
         if (this.clientService.selectedIndex == 1) {
-            this.RecentClientInformation(this.searchText);
+            this.RecentClientInformation(this.searchText, this.selectedClientSearchType);
 
             this.selectedClient = [];
             this.clientService.isVip = false;
@@ -214,6 +222,68 @@ export class ClientDetailsComponent implements OnInit {
         //   }
     }
 
+    
+    setSearchText(clientswitchvalue) {
+        switch (clientswitchvalue) {
+          case clientSearchType.firstName:
+            this.searchTextPlaceHolder = this.captions.searchByFirstName;
+            break;
+          case clientSearchType.lastName:
+            this.searchTextPlaceHolder = this.captions.searchByLastName;
+            break;
+          case clientSearchType.phone:
+            this.searchTextPlaceHolder = this.captions.searchByPhoneNumber;
+            break;
+            case clientSearchType.email:
+            this.searchTextPlaceHolder = this.captions.searchByEmail;
+            break;
+          default:
+            this.searchTextPlaceHolder = this.captions.searchByFirstName;
+            break;
+        }
+      }
+
+      SetclientSearchTypeValue(clientswitchvalue) {
+        switch (clientswitchvalue) {
+          case clientSearchType.firstName:
+            this.clientSearchTypes[0].checked = true;
+            this.clientSearchTypes[1].checked = false;
+            this.clientSearchTypes[2].checked = false;
+            this.clientSearchTypes[3].checked = false;
+            this.selectedClientSearchType = clientSearchType.firstName;
+            this.searchTextPlaceHolder = this.captions.searchByFirstName;
+            break;
+          case clientSearchType.lastName:
+            this.clientSearchTypes[0].checked = false;
+            this.clientSearchTypes[1].checked = true;
+            this.clientSearchTypes[2].checked = false;
+            this.clientSearchTypes[3].checked = false;
+            this.selectedClientSearchType = clientSearchType.lastName;
+            this.searchTextPlaceHolder = this.captions.searchByLastName;
+            break;
+          case clientSearchType.phone:
+            this.clientSearchTypes[0].checked = false;
+            this.clientSearchTypes[1].checked = false;
+            this.clientSearchTypes[2].checked = true;
+            this.clientSearchTypes[3].checked = false;
+            this.selectedClientSearchType = clientSearchType.phone;
+            this.searchTextPlaceHolder = this.captions.searchByPhoneNumber;
+            break;
+          case clientSearchType.email:
+            this.clientSearchTypes[0].checked = false;
+            this.clientSearchTypes[1].checked = false;
+            this.clientSearchTypes[2].checked = false;
+            this.clientSearchTypes[3].checked = true;
+            this.selectedClientSearchType = clientSearchType.email;
+            this.searchTextPlaceHolder = this.captions.searchByEmail;   
+             break;    
+          default:
+            this.selectedClientSearchType = clientSearchType.firstName;
+            this.searchTextPlaceHolder = this.captions.searchByFirstName;
+            break;
+        }
+      }
+
     openAddActionDialog() {
         const dialogRef = this.dialog.open(ClientPopupComponent, {
             width: '95%',
@@ -226,7 +296,7 @@ export class ClientDetailsComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(result => {
             if (this.clientService.selectedIndex == 1) {
-                this.RecentClientInformation(this.searchText);
+                this.RecentClientInformation(this.searchText, this.selectedClientSearchType);
             } else {
                 this.searchdata(this.searchText);
             }
@@ -262,11 +332,21 @@ export class ClientDetailsComponent implements OnInit {
             this.isAddAppointment = false;
             this.singleUserView = false;
             if (this.clientService.selectedIndex == 1) {
-                this.RecentClientInformation(this.searchText);
+                this.RecentClientInformation(this.searchText, this.selectedClientSearchType);
             } else {
                 this.searchdata(this.searchText);
             }
         })
+    }
+
+    clientSearchTypeChange(id) {
+        this.clearSearchTextValue();
+        this.SetclientSearchTypeValue(id);
+        this.selectedClientSearchType = id;
+    }
+
+    clearSearchTextValue() {
+        this.searchText = '';
     }
 
     getClientsInfo(id: any) {
@@ -362,18 +442,38 @@ export class ClientDetailsComponent implements OnInit {
         this.timer = setTimeout(this.searchdata.bind(this), 1000, searchText);
     }
 
+    enableSearchButton()
+    {
+        if(this.searchText !=''){
+            this.enableSearch = true;
+        }
+        else
+        {
+            this.enableSearch = false;
+        }
+
+    }
+
+    onEnter()
+    {
+        if(this.searchText !='')
+        {
+            this.clientSearch(this.searchText)
+        }
+    }
+
     searchdata(searchText) {
         if (this.searchText.trim() == '' && this.guestNameFromGlobalSearch.trim() != '') {
-            this.SearchClientInformation(this.guestNameFromGlobalSearch.trim(), false, this.guidFromGlobalSearch);
+            this.SearchClientInformation(this.guestNameFromGlobalSearch.trim(), false, this.guidFromGlobalSearch, this.selectedClientSearchType);
             this.singleUserView = false;
         }
         else {
             if ((searchText.length == 0 || searchText.length > 2) && this.clientService.selectedIndex == 1) {
-                this.RecentClientInformation(this.searchText);
+                this.RecentClientInformation(this.searchText, this.selectedClientSearchType);
                 this.singleUserView = false;
             }
-            else if (searchText.length > 2 && this.clientService.selectedIndex != 1) {
-                this.SearchClientInformation(this.searchText, this.clientService.isVip);
+            else if (searchText.length > 0 && this.clientService.selectedIndex != 1) {
+                this.SearchClientInformation(this.searchText, this.clientService.isVip, undefined, this.selectedClientSearchType);
                 this.singleUserView = false;
             }
             else {
@@ -387,6 +487,11 @@ export class ClientDetailsComponent implements OnInit {
         }
     }
 
+    clearText()
+    {
+        this.searchText = '';
+        this.enableSearch = false;
+    }
     BindGrid() {
         this.formattedData = this.formatTableData(this.formattedData);
         this.tableoptions = [{
@@ -566,21 +671,21 @@ export class ClientDetailsComponent implements OnInit {
         this.top = posY;
     }
 
-    SearchClientInformation(pattern: any, isVip: any, clientGuid: any = "0") {
+    SearchClientInformation(pattern: any, isVip: any, clientGuid: any = "0", searchType: any) {
         this.http.CallApiWithCallback<number>({
             host: Host.retailPOS,
             success: this.successCallback.bind(this),
             error: this.errorCallback.bind(this),
             callDesc: "SearchClientInfo",
             method: HttpMethod.Put,
-            uriParams: { requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000) },
+            uriParams: { searchType:searchType, requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000) },
             body: pattern,
             showError: true,
             extraParams: []
         });
     }
 
-    RecentClientInformation(searchText: any) {
+    RecentClientInformation(searchText: any, searchType: any) {
         if (this.requestUid == '') {
             this.requestUid = Date.now() + "" + this.utils.getRandomDecimal() * 10000;
         }
@@ -591,7 +696,7 @@ export class ClientDetailsComponent implements OnInit {
             callDesc: "RecentClientInfo",
             method: HttpMethod.Put,
             body: searchText,
-            uriParams: { propertyDate: this.utils.convertDateFormat(this.PropertyInfo.CurrentDate), requestUid: this.requestUid },
+            uriParams: { propertyDate: this.utils.convertDateFormat(this.PropertyInfo.CurrentDate), searchType:searchType, requestUid: this.requestUid },
             showError: true,
             extraParams: []
         });

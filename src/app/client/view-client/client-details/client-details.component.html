@@ -1,59 +1,79 @@
 <div class="all-clients h-100">
-    <div class="page-header d-flex flex-wrap" id="pageHeader">
-      <mat-form-field class="spa-searchbox searchpt pt23" [floatLabel]="floatLabelNever" id="searchInput">
-        <input #tableInput matInput autocomplete="off" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
-          type="text" placeholder="{{this.captions.SearchbyNamePhoneorEmail}}" value="" (ngModelChange)="clientSearch(searchText);viewCheckedFlag=false">
-        <i [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor" (click)="searchdata(searchText='')"></i>
-      </mat-form-field>
-
-      <div class="pt23 ml-auto clientappointmentactions">
-          <button mat-button class="filterbutton cursor mr5">
-              <i class="icon-filter_filled IC20 text-color mr5" [popover]="filterpopover" [popoverOnHover]="false" [popoverCloseOnClickOutside]="true"
-                 [popoverCloseOnMouseOutside]="false" (click)="showFilterPopOver=true;setFilterPopover($event)"></i>
-
-          </button>
-          <popover-content #filterpopover placement="bottom" class="filter-popover position-absolute" [closeOnClickOutside]="true"
-                           [closeOnMouseOutside]="false" [style.top]="top + 'px'" [style.left]="left + 'px'">
-              <div>
-                  <div class="filter-popover-header  LW16 text-color">
-                      <span class="table-class">{{this.captions.ResetAll}}</span>
-                      <i class="icon-recurring table-class pl-4" (click)="refreshData()"></i>
-                  </div>
-                  <div class="filter-popover-body">
-                      <div class='popover-content-body'>
-                          <mat-accordion *ngFor="let FilterInner of innerfilterArray">
-                              <mat-expansion-panel>
-                                  <mat-expansion-panel-header>
-                                      <mat-panel-title class="LW16 text-capitalize">
-                                          <span>{{FilterInner.name}}</span>
-                                          <span class="count-view">{{FilterInner.selected}}</span>
-                                      </mat-panel-title>
-                                  </mat-expansion-panel-header>
-                                  <div class="pop-body pb-1 LW14" *ngFor="let data of FilterInner.values">
-                                      <mat-checkbox class="base-check-box pr-1 mt-1" labelPosition="before" [(ngModel)]="data.checked"
-                                                    (change)="selectFilter(FilterInner,data,'checkBox')"></mat-checkbox>
-                                      <span (click)="selectFilter(FilterInner,data,'name')">{{data.value}}</span>
-                                  </div>
-                              </mat-expansion-panel>
-                          </mat-accordion>
-                      </div>
-                  </div>
-              </div>
-          </popover-content>
-          <!-- <button mat-button class="btn-lnht" [ngClass]="isAddAppointment ? 'secondary-default-btn' : 'secondary-disabled'" [disabled]="!isAddAppointment" (click)="openActionDialog()">{{captions.ADDAPPOINTMENT}}</button> -->
-          <button mat-button class="body-bgcolor body-bordercolor whitecolor btn-lnht ml-2" [ngClass]="!isAddAppointment ? 'button_valid' : 'button_invalid'" [disabled]="isAddAppointment" (click)="addNewClient($event)">{{captions.ADDCLIENT}}</button>
+  <div class="page-header d-flex flex-wrap" id="pageHeader">
+    <div class="custom-wrap-sect  d-flex al-centre flex-wrap">
+      <div class="pl23 w-100">
+        <mat-radio-group class="radioGroup LW14 w-100" name="appointmentSearchByClient">
+          <mat-radio-button class="ag_form--radio-button" *ngFor="let item of clientSearchTypes" [value]="item.id"
+            [checked]="item.checked" [disabled]="" (change)="clientSearchTypeChange(item.id)">{{item.name}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="d-flex al-centre custom-aligns">
+        <mat-form-field class="spa-searchbox searchpt " [floatLabel]="floatLabelNever" id="searchInput">
+          <input #tableInput matInput autocomplete="off" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
+            type="text" [placeholder]="searchTextPlaceHolder" value="" (ngModelChange)="enableSearchButton()" (keyup.enter)= "onEnter()">
+          <i [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor" (click)="clearText()"></i>
+        </mat-form-field>
+        <button class="LW14 save" mat-button  class="body-bgcolor body-bordercolor whitecolor btn-lnht ml-2" [ngClass] = "enableSearch ? 'spa-primary-default-save' : 'spa-primary-disabled'"
+          (click)="clientSearch(searchText)">{{this.captions.Search}}</button>
+        <button mat-button class="body-bgcolor body-bordercolor ct-reset whitecolor btn-lnht ml-2" [disabled]="!enableSearch"
+          (click)="searchdata(searchText='')">{{this.captions.cReset}}</button>
       </div>
     </div>
-    <div class="d-flex clientactions">
-      <div class="w-100">
-        <app-client-table [options]="tableoptions" (editEvt)="EditRecords($event)"
-          (clientSelected)="clientSelected($event)"  (RowSelectEmitter)="RowSelected($event)" [enableStickyColumn] ="enableStickyColumn"></app-client-table>
-      </div>
-      <div class="show-user" [ngClass]="{'view-user':singleUserView}">
-        <div class="h-100 show-user-inner">
-        <app-single-user-view *ngIf="singleUserView" (editclient)="EditRecords($event)" [Appointments]="Appointments"
-          [userData]="userData" [showUser]="singleUserView" (sliderclose)="sliderclose($event)" [@enterAnimation]></app-single-user-view>
+
+
+    <div class=" d-flex al-centre ml-auto clientappointmentactions">
+      <button mat-button class="filterbutton cursor mr5">
+        <i class="icon-filter_filled IC20 text-color mr5" [popover]="filterpopover" [popoverOnHover]="false"
+          [popoverCloseOnClickOutside]="true" [popoverCloseOnMouseOutside]="false"
+          (click)="showFilterPopOver=true;setFilterPopover($event)"></i>
+      </button>
+      <popover-content #filterpopover placement="bottom" class="filter-popover position-absolute"
+        [closeOnClickOutside]="true" [closeOnMouseOutside]="false" [style.top]="top + 'px'" [style.left]="left + 'px'">
+        <div>
+          <div class="filter-popover-header  LW16 text-color">
+            <span class="table-class">{{this.captions.ResetAll}}</span>
+            <i class="icon-recurring table-class pl-4" (click)="refreshData()"></i>
+          </div>
+          <div class="filter-popover-body">
+            <div class='popover-content-body'>
+              <mat-accordion *ngFor="let FilterInner of innerfilterArray">
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title class="LW16 text-capitalize">
+                      <span>{{FilterInner.name}}</span>
+                      <span class="count-view">{{FilterInner.selected}}</span>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="pop-body pb-1 LW14" *ngFor="let data of FilterInner.values">
+                    <mat-checkbox class="base-check-box pr-1 mt-1" labelPosition="before" [(ngModel)]="data.checked"
+                      (change)="selectFilter(FilterInner,data,'checkBox')"></mat-checkbox>
+                    <span (click)="selectFilter(FilterInner,data,'name')">{{data.value}}</span>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+          </div>
         </div>
+      </popover-content>
+      <!-- <button mat-button class="btn-lnht" [ngClass]="isAddAppointment ? 'secondary-default-btn' : 'secondary-disabled'" [disabled]="!isAddAppointment" (click)="openActionDialog()">{{captions.ADDAPPOINTMENT}}</button> -->
+      <button mat-button class="body-bgcolor body-bordercolor whitecolor btn-lnht ml-2"
+        [ngClass]="!isAddAppointment ? 'button_valid' : 'button_invalid'" [disabled]="isAddAppointment"
+        (click)="addNewClient($event)">{{captions.ADDCLIENT}}</button>
+    </div>
+  </div>
+  <div class="d-flex clientactions">
+    <div class="w-100">
+      <app-client-table [options]="tableoptions" (editEvt)="EditRecords($event)"
+        (clientSelected)="clientSelected($event)" (RowSelectEmitter)="RowSelected($event)"
+        [enableStickyColumn]="enableStickyColumn"></app-client-table>
+    </div>
+    <div class="show-user" [ngClass]="{'view-user':singleUserView}">
+      <div class="h-100 show-user-inner">
+        <app-single-user-view *ngIf="singleUserView" (editclient)="EditRecords($event)" [Appointments]="Appointments"
+          [userData]="userData" [showUser]="singleUserView" (sliderclose)="sliderclose($event)"
+          [@enterAnimation]></app-single-user-view>
       </div>
     </div>
   </div>
+</div>

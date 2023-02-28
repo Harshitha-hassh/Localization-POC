@@ -3,6 +3,35 @@
 .all-clients {
   overflow: hidden;
 
+  .al-centre
+  {
+    align-items: center;
+  }
+
+  .spa-primary-disabled
+  {
+    background-color: #e1e1e1!important;
+    color: grey!important;
+  }
+
+  .body-bordercolor.ct-reset{
+    border: 1px solid black!important;
+    background: white!important;
+    color: black!important;
+  }
+
+
+
+  .custom-aligns{
+    .mat-form-field
+    {
+      width: 350px!important;
+    }
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+   }
+  }
+
   .tablewidth {
     width: calc(100% - 605px);
     transition: 1s;

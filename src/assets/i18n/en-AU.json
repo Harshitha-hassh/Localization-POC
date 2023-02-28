@@ -941,7 +941,17 @@
     "remainingsession": "Remaining Sessions",
     "dateofexpiry": "Date of Expiry",
     "product": "Product",
-    "expiredMultipacks": "Show expired Multipacks"
+    "expiredMultipacks": "Show expired Multipacks",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phone": "Phone",
+    "email": "Email",
+    "searchByFirstName": "Search by First Name",
+    "searchByLastName": "Search by Last Name",
+    "searchByPhoneNumber": "Search by Phone Number",
+    "searchByEmail": "Search by Email ID",
+    "Search": "SEARCH",
+    "cReset": "RESET"
   },
   "shop": {
     "Btn_Refresh": "REFRESH",
@@ -1171,6 +1181,7 @@
     "SelectDevice": "Select a Device",
     "SelectedDevice": "Selected Device",
     "SelectProperty": "Select a Property",
+    "SelectPropertyToLookUp": "Please select a property to perform lookup.",
     "CardType": "Card Type",
     "CardNumber": "Card Number",
     "Zipcode": "Zipcode",
