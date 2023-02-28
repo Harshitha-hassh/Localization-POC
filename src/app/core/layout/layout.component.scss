@@ -22,7 +22,7 @@
     .theme-color-wrapper{
       height: $theme-container-height;
       display: flex;
-      background: $menu-header-bg;
+      background:$menu-new-header-black !important;
       .theme-color-container{
           margin-left:auto;
           margin-right: 5px;
@@ -62,7 +62,7 @@
   .theme-color-wrapper{
     height: $theme-container-height;
     display: flex;
-    background: $primary-menu-header-bg;
+    background: $menu-new-header-black !important;
 
     .text-font{
       display: flex;
