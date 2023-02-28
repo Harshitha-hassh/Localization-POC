@@ -444,7 +444,7 @@ export class ClientDetailsComponent implements OnInit {
 
     enableSearchButton()
     {
-        if(this.searchText !=''){
+        if(this.searchText.length > 2){
             this.enableSearch = true;
         }
         else
@@ -456,7 +456,7 @@ export class ClientDetailsComponent implements OnInit {
 
     onEnter()
     {
-        if(this.searchText !='')
+        if(this.searchText.length > 2)
         {
             this.clientSearch(this.searchText)
         }
@@ -472,7 +472,7 @@ export class ClientDetailsComponent implements OnInit {
                 this.RecentClientInformation(this.searchText, this.selectedClientSearchType);
                 this.singleUserView = false;
             }
-            else if (searchText.length > 0 && this.clientService.selectedIndex != 1) {
+            else if (searchText.length > 2 && this.clientService.selectedIndex != 1) {
                 this.SearchClientInformation(this.searchText, this.clientService.isVip, undefined, this.selectedClientSearchType);
                 this.singleUserView = false;
             }
