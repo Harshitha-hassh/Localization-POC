@@ -52,8 +52,7 @@ export class LoaderInterceptor implements HttpInterceptor {
           const updatedReq = req.clone({
             body: isPMAgentCall ? this.loggerService.SetRequestIdAndTransactionType(req.body, integrationOpLogResponse?.result) : req.body,
           });
-          console.log(updatedReq);
-          return next.handle(updatedReq).pipe(tap((event: any) => {
+            return next.handle(updatedReq).pipe(tap((event: any) => {
             if (isPMAgentCall && event.status) {
               this.loggerService.sendLogData(req.urlWithParams.toString(), screenURL, JSON.stringify(req.body), JSON.stringify(event.body) + " Status:" + event.status, "UPDATE", correlationId);
             }

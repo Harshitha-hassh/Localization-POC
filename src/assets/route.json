@@ -730,5 +730,8 @@
   "GetConsentPoliciesForProduct" : "PointOfSaleService/Policy/GetConsentPoliciesForProduct/{tenantId}/{productId}",
   "UpdateConsentPolicyDetailsForGuestId" : "PointOfSaleService/GuestPolicy/UpdateConsentPolicyDetailsForGuestId",
   "ApplyDataPolicyPurgeForGuestId" : "PointOfSaleService/GuestPolicy/ApplyDataPolicyPurgeForGuestId",
-  "GetPolicyTypeUsingPolicyId" : "PointOfSaleService/Policy/GetPolicyTypeUsingPolicyId/{policyId}"
+  "GetPolicyTypeUsingPolicyId" : "PointOfSaleService/Policy/GetPolicyTypeUsingPolicyId/{policyId}",
+  "GetDataMagineConfiguration" : "RetailManagementService/DataMagine/GetDmConfig",
+  "CreateDataMagineConfiguration" : "RetailManagementService/DataMagine/CreateDmConfig",
+  "UpdateDataMagineConfiguration" : "RetailManagementService/DataMagine/UpdateDmConfig"
 }

@@ -44,6 +44,11 @@ const routes: Routes = [{
       data: { redirectTo: 'enhancedInventory', hasChild: true }
     },
     {
+      path: 'interfaces',
+      loadChildren: () => import('./interfaces/interfaces.module').then(m => m.InterfacesModule),
+      data: { redirectTo: 'dataMagine', hasChild: true }
+    },
+    {
       path: 'enhancedInventory',
       loadChildren: () => import('../retail/eatec/eatec.module').then(m => m.EatecModule),
       data: { redirectTo: '', hasChild: false }

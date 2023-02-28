@@ -13,9 +13,9 @@
 
 .ag_button--primary{
   @extend .ag_button;
-  background-color: $ag_button-primary-bc !important;
+  background-color:  $ag_black !important;
   color: $ag_button-primary-fc !important;
-  border: 2px solid $ag_button-primary-bc !important;
+  border: 2px solid  $ag_black !important;
   @include set-browser-prefix('border-radius', 5px);
   &[disabled] {
     @extend .ag_button--disabled;

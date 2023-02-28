@@ -7,6 +7,7 @@ import { CommonControllersRoutes } from 'src/app/common/communication/common-rou
 import { AppService } from 'src/app/common/app-service';
 import { Observable, of } from 'rxjs';
 import { AgMenuTypes } from 'src/app/shared/components/menu/menu.model';
+import { menuTypes as newMenuTypes } from 'src/app/common/components/menu/menu.constant';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 
 @Injectable()
@@ -48,7 +49,7 @@ export class RouteLoaderService {
     });
   }
 
-  public GetChildMenu(currentRoute, menuType?: menuTypes | AgMenuTypes) {
+  public GetChildMenu(currentRoute, menuType?: menuTypes | AgMenuTypes | newMenuTypes ) {
     const menuList = this.currentSettings;
 
     if (menuList) {
