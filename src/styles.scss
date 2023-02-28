@@ -5633,8 +5633,11 @@ body .cdk-custom-wrapper .ag_table .table th {
   .wrapper-container {
     .header-background{
       background: $menu-new-theme-header-backgorund !important;
+      font-family: $ag_poppins-medium;
+      font-size: 16px !important;
       .nav-section{
         .navItem ul li a{
+          font-size: 16px !important;
         &.active-link{
           color: $menu-primary-gold !important;
           box-shadow: 0px 2px 5px $menu-light-black !important;
@@ -5653,6 +5656,13 @@ body .cdk-custom-wrapper .ag_table .table th {
     }
     .header{
       background-color: $menu-secondary-gold !important;
+      nav{
+        .mat-tab-label, .mat-tab-link { 
+          // font-family: $ag_poppins-medium;
+          font-family: $ag_poppins-medium !important;
+         }
+      }
+      
     }
     .mat-tab-header{
       background: $menu-secondary-gold !important;
@@ -5676,11 +5686,19 @@ body .cdk-custom-wrapper .ag_table .table th {
     }
     .subnav-wrapper{
       background: $menu-light-blue;
+      mat-form-field{
+        .mat-select {
+          font-size: 18px !important;
+          font-family: $ag_sourcesans-semibold !important;
+        }
+      }
     }
     .vertical-header{
       .nav-section {
         .navItem ul li.text a{
             color: $menu-black !important;
+            font-size: 16px !important;
+            font-family: $ag_sourcesans-semibold;
             opacity: 1;
             &.active-link{
               background-color:$menu-ligter-gold !important;

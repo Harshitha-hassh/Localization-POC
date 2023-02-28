@@ -21,8 +21,8 @@ $router-width: calc(100% - 250px);
   .header-background {
     background: $header-bg;
     height: 60px;
-    font-family: "LatoRegular";
-    font-size: 14px;
+    font-family: $ag_poppins-medium;
+    font-size: 16px !important;
     display: flex;
     align-items: center;
 

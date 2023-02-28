@@ -5,7 +5,7 @@ $SelectionBgColor:rgb(244, 244, 245);;
 $color-base:rgb(244, 244, 245);
 $img-height-width: 32px;
 $font-size:16px;
-$font-family:$ag_lato-bold;
+$font-family:$ag_sourcesans-semibold;
 $global-search-header:$ag_primary-header-bc;
 
 .global-search{
@@ -27,6 +27,7 @@ $global-search-header:$ag_primary-header-bc;
     .globalSearch-input{     
       align-items: center;
       justify-content: center;
+      font-family: $ag_sourcesans-semibold !important;
       border:none;
       width: 100%; 
       outline:none;     
@@ -49,7 +50,7 @@ $global-search-header:$ag_primary-header-bc;
   .globalSearch-button{
     align-items: center;
     justify-content: center;
-    width:20%;
+   // width:20%;
     border: none;
     background:  $white-bg;
     color:$ag_base-color;
@@ -69,6 +70,7 @@ $global-search-header:$ag_primary-header-bc;
     height: 24px;
     background: $global-search-header;
     padding: 0 16px;
+    font-family: $ag_sourcesans-semibold !important;
     margin-bottom: 0px;
     color: $color-base;
   }
@@ -76,6 +78,8 @@ $global-search-header:$ag_primary-header-bc;
   .mat-option{
     padding-left: 16px !important;
     border-bottom: 1px solid $white-bg;
+    font-size: 16px !important;
+    font-family: $ag_sourcesans-semibold !important;
     &:first-child{
      border-top: 1px solid $white-bg;
     }
