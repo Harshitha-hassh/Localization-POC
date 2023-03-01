@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { RetailPosCommunication } from '../communication/services/retailpos.service';
 import { ClientInfo, ClientSearchModel, ClientGlobalSearchModel } from 'src/app/client/client-popup/create-client/client.modal';
+import { clientSearchType } from 'src/app/retail/shared/globalsContant';
 
 
 @Injectable()
@@ -39,11 +40,11 @@ export class ClientDataService {
         });
     }
 
-    public async searchClient(name: string, requestUid: string): Promise<ClientSearchModel[]> {
+    public async searchClient(name: string, requestUid: string, searchType = clientSearchType.All): Promise<ClientSearchModel[]> {
         return this._httpPos.putPromise({
             route: RetailApiRoute.SearchClientInfo,
             body: name,
-            uriParams: { requestUid: requestUid }
+            uriParams: { searchType: searchType, requestUid: requestUid }
         });
     }
 
