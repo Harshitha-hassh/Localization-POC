@@ -54,8 +54,8 @@ export enum RetailRoutes {
   //Client
   CreateClient = 'Clients' ,
   UpdateClient ='Clients',
-  RecentClientInfo ='Clients/recent/{propertyDate}/search/{requestUid}',
-  SearchClientInfo = 'Clients/search/{requestUid}',
+  RecentClientInfo ='Clients/recent/{propertyDate}/search/{searchType}/{requestUid}',
+  SearchClientInfo = 'Clients/search/{searchType}/{requestUid}',
   GlobalSearchClientInfo = 'Clients/searchByKey',
   GetClientByPatronId="Clients/getClientByPatronId/{patronId}",
   GetClientByIds = "Clients/query/{includeRelatedData}",
