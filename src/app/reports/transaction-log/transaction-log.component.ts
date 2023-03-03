@@ -27,7 +27,8 @@ export class TransactionLogComponent implements OnInit {
   public commonCaptions: any;
   public navbarStatus: boolean = false;
   public showIncludeTemp:boolean =false;
-  public minDate: Date = this.PropertyInfo.CurrentDate;
+  public minDate: Date = null;
+  public maxDate: Date = this.PropertyInfo.CurrentDate;
   public isAuditReport = false;
   showError: boolean = false;
   disableSearchBtn: boolean = false;
@@ -91,9 +92,13 @@ export class TransactionLogComponent implements OnInit {
   selectionChange(evt: any) {
     if (evt.value == 'AuditReport') {
       this.isAuditReport = true;
+      this.maxDate = null;
+      this.minDate = this.PropertyInfo.CurrentDate;
     }
     else {
       this.isAuditReport = false;
+      this.minDate = null;
+      this.maxDate = this.PropertyInfo.CurrentDate;
     }
   }
   
