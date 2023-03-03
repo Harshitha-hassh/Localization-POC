@@ -18,7 +18,8 @@ import { HttpServiceCall } from 'src/app/retail/shared/service/http-call.service
 import { QuickLoginUtilities } from 'src/app/common/shared/shared/utilities/quick-login-utilities';
 import { AgMenuTypes, NotificationFailureType } from './menu.model';
 import { DefaultBucketName } from 'src/app/retail/shared/globalsContant';
-
+import {TooltipPosition} from '@angular/material/tooltip';
+import { UntypedFormControl } from '@angular/forms';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -30,7 +31,8 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   menuList: any;
   menuItems: any;
   isMenu: boolean;
-  position: string;
+  positionOptions: TooltipPosition[] = ['right', 'above', 'left', 'below']; 
+  position = new UntypedFormControl(this.positionOptions[0]);
   moreTextName = 'More';
   moreListItem: any = [];
   isSubMenu = false;
