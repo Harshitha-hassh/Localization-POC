@@ -5712,3 +5712,15 @@ body .cdk-custom-wrapper .ag_table .table th {
 
   }
 }
+.cdk-overlay-container .cdk-overlay-pane .fontChange{
+  font-family: $ag_poppins-semibold !important;
+  font-size: 18px !important;
+}
+.cdk-overlay-container .cdk-overlay-pane .fontChange.mat-option.mat-selected{
+    background-color: $menu-secondary-gold !important;
+    .mat-option-text{
+      span{
+      color: $menu-lighter-link-gold !important;
+      }
+    }
+}

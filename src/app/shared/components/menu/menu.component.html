@@ -87,7 +87,7 @@
                         <mat-form-field class="ag_form-control--xs menu-field">
                             <mat-select (selectionChange)="navigateTo($event)" [(value)]="selectedItem"
                                 [compareWith]="compareSelect" [disableOptionCentering]="true">
-                                <mat-option *ngFor="let item of menuList.menu" [value]="item">
+                                <mat-option class="fontChange" *ngFor="let item of menuList.menu" [value]="item">
                                     <span *ngIf="item.visibility">{{ item.text }}</span>
                                 </mat-option>
                             </mat-select>
