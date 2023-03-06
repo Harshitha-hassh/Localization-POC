@@ -35,6 +35,7 @@ import { VoidReasonComponent } from 'src/app/retail/shop/view-categories/void-re
 import { FinancialBinHelper } from 'src/app/retail/shared/business/FinancialBin-business';
 import { RevenuePostingDataService } from 'src/app/retail/sytem-config/data-service/revenue-posting.data.service';
 import { RoomRevenuePostingRequest } from 'src/app/retail/shop/view-categories/retail-revenue-posting-logs/revenue-posting';
+import { Localization } from 'src/app/common/localization/localization';
 
 @Component({
     selector: 'app-day-end',
@@ -78,6 +79,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   iconActions:any;
   constructor(public localization: RetailLocalization, private utils: RetailUtilities, private http: HttpServiceCall,
     private auditService: AuditService, public router: Router,
+    private commonLocalization: Localization,
     // tslint:disable-next-line: max-line-length
     // private propertyInfo: PropertyInformation,
     private breakPoint: BreakPointAccess, public ams: AppModuleService,

@@ -63,11 +63,11 @@
       <!-- Final Section -->
       <div class="processSec">
         <div class="d-inline-block rghtBrder pr-4">
-          <div class="dteFnt pb-2">{{localization.LocalizeDate(currSysDate)}}</div>
+          <div class="dteFnt pb-2">{{commonLocalization.LocalizeDate(currSysDate)}}</div>
           <div class="subdteFnt LW16">{{this.captions.CurrentSystemDate}}</div>
         </div>
         <div class="d-inline-block pl-4">
-          <div class="dteFnt pb-2" [ngClass]="{'bold':canProcess || successFlag}">{{localization.LocalizeDate(newSysDate)}}</div>
+          <div class="dteFnt pb-2" [ngClass]="{'bold':canProcess || successFlag}">{{commonLocalization.LocalizeDate(newSysDate)}}</div>
           <div class="subdteFnt LW16">{{this.captions.NewSystemDate}}</div>
         </div>
       </div>
