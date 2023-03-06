@@ -72,7 +72,7 @@
     </div>
     <div class="right-contentreports">
       <ng-scrollbar [autoHide]="true">
-      <div class="report-section">
+      <div class="report-section" *ngIf="reportOption; else emptyReport">
         <!-- <app-table-report [options]="tableoptions"></app-table-report> -->
         <app-retail-report (disableGenerateEvtEmitter)="disableGenerateButtonEvent($event)" [options]="reportOption"></app-retail-report>
       </div>
@@ -80,3 +80,9 @@
     </div>
   </div>
 </div>
+<ng-template #emptyReport>
+  <div class="report--empty no-data-img">
+    <img src="./assets/images/SearchIllustration.png" alt="No Data">
+    <!-- <span>{{captions.NoRecordsToDisplay}}</span> -->
+  </div>
+</ng-template>

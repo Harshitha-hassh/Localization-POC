@@ -114,5 +114,11 @@
       background-color: $color-reports-bg;
     }
   }
+  .report--empty{
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
 
 }
