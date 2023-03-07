@@ -5,6 +5,7 @@ import { DefaultGUID } from 'src/app/retail/shared/globalsContant';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { GuestDataPolicyDataService } from 'src/app/common/dataservices/guest-datapolicy.data.service';
+import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
 
 @Injectable()
 export class CreateClientBusiness {
@@ -171,5 +172,9 @@ export class CreateClientBusiness {
     async getPolicyTypeUsingPolicyId(policyId : number): Promise<number> {
       var policyType = await this._guestPolicyService.GetPolicyTypeUsingPolicyId(policyId);
       return policyType;
+    }
+    async updatePolicyDetailsForGuestId(applyPolicy: ApplyPolicy): Promise<boolean> {
+      const result = await this._clientDataService.updatePolicyDetailsForGuestId(applyPolicy);
+      return result;
     }
 }
