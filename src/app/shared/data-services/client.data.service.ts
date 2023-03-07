@@ -3,6 +3,8 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import { RetailPosCommunication } from '../communication/services/retailpos.service';
 import { ClientInfo, ClientSearchModel, ClientGlobalSearchModel } from 'src/app/client/client-popup/create-client/client.modal';
 import { clientSearchType } from 'src/app/retail/shared/globalsContant';
+import { ApplyPolicy } from "src/app/common/consent-management/consent-management.model";
+import { CommonApiRoutes } from "src/app/common/common-route";
 
 
 @Injectable()
@@ -69,4 +71,9 @@ export class ClientDataService {
             uriParams: { clientId: guestId }
         });
     }
+    public async updatePolicyDetailsForGuestId(applyPolicy: ApplyPolicy): Promise<boolean> {
+        const result = await this._httpPos.postPromise<boolean>(
+          { route: CommonApiRoutes.UpdateConsentPolicyDetailsForGuestId, body: applyPolicy });
+        return result;
+      }
 }

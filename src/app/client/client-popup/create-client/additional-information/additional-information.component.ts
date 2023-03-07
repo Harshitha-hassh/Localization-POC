@@ -13,7 +13,7 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
 import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';
 import { takeUntil } from 'rxjs/operators';
 import { GuestPolicyWrapperComponent } from './guest-policy-wrapper/guest-policy-wrapper.component';
-import { GuestPolicyDetail, PolicyCategoryType } from 'src/app/common/shared/shared.modal';
+import { GuestPolicyDetail, PolicyCategoryType, PolicyType } from 'src/app/common/shared/shared.modal';
 import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
 
 @Component({
@@ -92,7 +92,11 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       comments: '',
       socialMedia: '',
       alergy: '',
-      clientCreditCardInfo : []
+      clientCreditCardInfo : [],
+      consentDate :'',
+      consentExpiryDate: '',
+      consentPolicyId : '',
+      isPurged: false,
     });
   }
 
@@ -242,15 +246,31 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
 
   }  
   openGuestPolicyDialog(popupType) {
-    let guestPolicyDetail : GuestPolicyDetail = {
-      id: this.additionalInfo.guestId,
-      consentDate : this.additionalInfo.client.consent,
-      consentExpiryDate: this.additionalInfo.client.consentExpiryDate,
-      consentPolicyId : this.additionalInfo.client.consentPolicyId,
-      comments:"",
-      isPurged: this.additionalInfo.client.isPurged,
-      policyCategoryType : PolicyCategoryType.Guest
-    } 
+    let guestPolicyDetail : GuestPolicyDetail;
+    if(this.additionalInfo && this.additionalInfo.client)
+    {
+      guestPolicyDetail = {
+        id: this.additionalInfo.guestId,
+        consentDate : this.additionalInfo.client.consent,
+        consentExpiryDate: this.additionalInfo.client.consentExpiryDate,
+        consentPolicyId : this.additionalInfo.client.consentPolicyId,
+        comments:"",
+        isPurged:  this.additionalInfo.client.isPurged,
+        policyCategoryType : PolicyCategoryType.Guest
+      } 
+    }
+    else{
+      guestPolicyDetail = {
+        id: '',
+        consentDate : this.FormGrp.value.consentDate,
+        consentExpiryDate: this.FormGrp.value.consentExpiryDate,
+        consentPolicyId : this.FormGrp.value.consentPolicyId,
+        comments:"",
+        isPurged:  this.FormGrp.value.isPurged,
+        policyCategoryType : PolicyCategoryType.Guest
+      } 
+    }
+
     this.dialog.open(GuestPolicyWrapperComponent, {
       width: '80%',
       height: '80%',
@@ -263,10 +283,18 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       if(res != undefined && popupType == 1)
       {
         let guestPolicyDetail : ApplyPolicy = res as ApplyPolicy
-        this.additionalInfo.client.consent = this.localization.convertDateTimeToAPIDateTimeSec(new Date(guestPolicyDetail.consentDate));
-        this.additionalInfo.client.consentExpiryDate = this.localization.convertDateTimeToAPIDateTimeSec(new Date(guestPolicyDetail.consentExpiryDate));
-        this.additionalInfo.client.consentPolicyId = guestPolicyDetail.policyId;
-        this.policyType = 2;
+        this.policyType = PolicyType.ConsentPolicy;
+        this.FormGrp.controls.device.markAsDirty();
+        this.FormGrp.controls.device.markAsTouched();
+        this.FormGrp.controls.consentDate.setValue(guestPolicyDetail.consentDate != '' && guestPolicyDetail.consentDate ?  this.localization.getDate(guestPolicyDetail.consentDate):null);
+        this.FormGrp.controls.consentExpiryDate.setValue(guestPolicyDetail.consentExpiryDate != '' && guestPolicyDetail.consentExpiryDate ? this.localization.getDate(guestPolicyDetail.consentExpiryDate) : null);
+        this.FormGrp.controls.consentPolicyId.setValue(guestPolicyDetail.policyId);
+        if(this.additionalInfo &&  this.additionalInfo.client){
+          this.additionalInfo.client.consent = this.localization.getDate(guestPolicyDetail.consentDate);
+          this.additionalInfo.client.consentExpiryDate = guestPolicyDetail.consentExpiryDate ? this.localization.getDate(guestPolicyDetail.consentExpiryDate) : null;
+          this.additionalInfo.client.consentPolicyId = guestPolicyDetail.policyId;
+          return;
+        }
       }
       else if(res != undefined && popupType == 2 )
       {

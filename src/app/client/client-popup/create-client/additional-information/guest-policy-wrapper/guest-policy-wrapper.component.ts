@@ -97,7 +97,18 @@ export class GuestPolicyWrapperComponent implements OnInit {
     });
   }
   updatePolicyDetailsForGuestId(applyPolicy: ApplyPolicy) {
-    this.makeHttpUpdatePolicyDetailsForGuestIdCall(applyPolicy);
+    let successMsg = this._localization.replacePlaceholders(this.captions.consentPolicyEnabled, ['consentPolicy'], ['']);
+    if(applyPolicy.guestId == '')  
+    {
+      this._utils.showCommonAlert(successMsg, AlertType.Done, ButtonTypes.Ok, async (res) => {
+        if (res === AlertAction.CONTINUE) {
+          this.dialogRef.close(applyPolicy);
+        }
+      });
+    }
+    else{
+      this.makeHttpUpdatePolicyDetailsForGuestIdCall(applyPolicy);
+    }
   }
   applyDataPolicyPurgeForGuestId(dataPurge: DataPurge) {
     this._utils.showCommonAlert(this.captions.lbl_doYouWantToPurge, AlertType.CustomDefault, ButtonTypes.YesNo, async (res) => {
