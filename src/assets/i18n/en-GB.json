@@ -2152,7 +2152,8 @@
       "unitOfMeasureId": "unitOfMeasureId_gb",
       "categoryId": "categoryId_gb",
       "id": "id_gb",
-      "Allow Earn": "Allow Earn_gb"
+      "Allow Earn": "Allow Earn_gb",
+      "Supplier Item #": "Supplier Item #_gb"
     },
     "SearchCategory": "Search Category_gb",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_gb",

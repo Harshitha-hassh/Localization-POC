@@ -2152,7 +2152,8 @@
       "unitOfMeasureId": "unitOfMeasureId_fi",
       "categoryId": "categoryId_fi",
       "id": "id_fi",
-      "Allow Earn": "Allow Earn_fi"
+      "Allow Earn": "Allow Earn_fi",
+      "Supplier Item #": "Supplier Item #_fi"
     },
     "SearchCategory": "Search Category_fi",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_fi",

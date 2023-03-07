@@ -199,6 +199,7 @@
   "70615": "Card expired",
   "70616": "Item Number cannot be a Decimal Value.",
   "70618": "Vendor is not valid.",
+  "70619": "Supplier Item # can't be associated as Vendor is not valid.",
   "75001": "Feature Configurations are not available",
   "75002": "Web Proxy URI is not available",
   "75003": "IG WebPosting Service URI is not available",

@@ -2152,7 +2152,8 @@
       "unitOfMeasureId": "unitOfMeasureId_in",
       "categoryId": "categoryId_in",
       "id": "id_in",
-      "Allow Earn": "Allow Earn_in"
+      "Allow Earn": "Allow Earn_in",
+      "Supplier Item #": "Supplier Item #_in"
     },
     "SearchCategory": "Search Category_in",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_in",
