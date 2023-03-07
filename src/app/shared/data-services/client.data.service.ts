@@ -73,7 +73,7 @@ export class ClientDataService {
     }
     public async updatePolicyDetailsForGuestId(applyPolicy: ApplyPolicy): Promise<boolean> {
         const result = await this._httpPos.postPromise<boolean>(
-          { route: CommonApiRoutes.UpdateConsentPolicyDetailsForGuestId, body: applyPolicy });
-        return result;
+            { route: RetailApiRoute.UpdateConsentPolicyDetailsForGuestId, body: applyPolicy });
+            return result;
       }
 }

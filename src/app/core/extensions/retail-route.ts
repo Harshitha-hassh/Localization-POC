@@ -88,7 +88,8 @@ export enum RetailRoutes {
    GetEncryptKey = 'Login/encValue',
    CheckPasswordPut = 'User/CheckPasswordExists',
    VerifyPasswordPut = 'User/VerifyPassword',
-   SavePasswordPost = 'User/SavePassword'
+   SavePasswordPost = 'User/SavePassword',
+   UpdateConsentPolicyDetailsForGuestId = 'PointOfSaleService/GuestPolicy/UpdateConsentPolicyDetailsForGuestId'
 }
 
 export enum MsGraphRoutes {
