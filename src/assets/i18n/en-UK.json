@@ -2152,7 +2152,8 @@
       "unitOfMeasureId": "unitOfMeasureId_uk",
       "categoryId": "categoryId_uk",
       "id": "id_uk",
-      "Allow Earn": "Allow Earn_uk"
+      "Allow Earn": "Allow Earn_uk",
+      "Supplier Item #": "Supplier Item #_uk"
     },
     "SearchCategory": "Search Category_uk",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_uk",
