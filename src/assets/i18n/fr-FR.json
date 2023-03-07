@@ -2152,7 +2152,8 @@
       "unitOfMeasureId": "unitOfMeasureId_fr",
       "categoryId": "categoryId_fr",
       "id": "id_fr",
-      "Allow Earn": "Allow Earn_fr"
+      "Allow Earn": "Allow Earn_fr",
+      "Supplier Item #": "Supplier Item #_fr"
     },
     "SearchCategory": "Search Category_fr",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_fr",
