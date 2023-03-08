@@ -200,6 +200,7 @@
   "70616": "Item Number cannot be a Decimal Value._in",
   "70618": "Vendor is not valid._in",
   "70619": "Supplier Item # can't be associated as Vendor is not valid._in",
+  "70620": "Supplier Item # should be alphabets and numbers._in",
   "75001": "Feature Configurations are not available_in",
   "75002": "Web Proxy URI is not available_in",
   "75003": "IG WebPosting Service URI is not available_in",
