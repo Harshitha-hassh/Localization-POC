@@ -10,6 +10,8 @@ import { ClientDataService } from 'src/app/shared/data-services/client.data.serv
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
 import { Utilities } from 'src/app/core/utilities';
+import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
+import { PolicyType } from 'src/app/common/shared/shared.modal';
 
 @Component({
   selector: 'app-client-popup',
@@ -54,7 +56,10 @@ export class ClientPopupComponent implements OnInit {
     if (this.data.isClientViewOnly) {
       this.utils.disableControls(this.clientPopupForm);
     }
-    this.setIsGdprConfiguredFlag(this.data.data.client.consentPolicyId);
+    if(this.data && this.data.data && this.data.data !='' && this.data.data.client){
+      this.getPolicyTypebyPolicyId(this.data.data.client.consentPolicyId);
+    }
+    this.setIsGdprConfiguredFlag();
   }
 
   ngOnDestroy() {
@@ -65,12 +70,15 @@ export class ClientPopupComponent implements OnInit {
   validateSave(){
     return this.IsClientScreenDirty;
   }
-  setIsGdprConfiguredFlag(consentPolicyId : number)
+  setIsGdprConfiguredFlag()
   {
     this._createClientBusiness.getIsGdprConfiguredFlag().then(res=>
       {
     this.IsGDPREnabled = !!res;
-      });
+      });   
+  }
+  getPolicyTypebyPolicyId(consentPolicyId : number)
+  {
     this._createClientBusiness.getPolicyTypeUsingPolicyId(consentPolicyId).then(
       res=>
       {
@@ -94,6 +102,17 @@ export class ClientPopupComponent implements OnInit {
     else if (this.clientInfo.personalDetailsFormGroup.base64textString) {
        var a = await this._imageService.saveImage(createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.base64textString,
         this.clientInfo.personalDetailsFormGroup.thumbnailImg);
+    }
+    if(this.IsGDPREnabled && this.clientInfo.additionalDetailsFormGroup.consentPolicyId != 0 && ( this.clientInfo.personalDetailsFormGroup.id == '' || this.clientInfo.personalDetailsFormGroup.guestId == '' || this.clientInfo.personalDetailsFormGroup.guestId == DefaultGUID))
+    {
+      let applyPolicy : ApplyPolicy = {
+        guestId: createPromise.guestId.toString(),
+        consentDate : this.clientInfo.additionalDetailsFormGroup.consentDate,
+        consentExpiryDate : this.clientInfo.additionalDetailsFormGroup.consentExpiryDate,
+        policyId : this.clientInfo.additionalDetailsFormGroup.consentPolicyId,
+        policyType: PolicyType.ConsentPolicy
+      }
+      this._createClientBusiness.updatePolicyDetailsForGuestId(applyPolicy);
     }
     this.closeDialog(createPromise);
     console.log("Client Form", this.clientPopupForm.value);
