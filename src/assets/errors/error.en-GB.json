@@ -200,6 +200,7 @@
   "70616": "Item Number cannot be a Decimal Value._gb",
   "70618": "Vendor is not valid._gb",
   "70619": "Supplier Item # can't be associated as Vendor is not valid._gb",
+  "70620": "Supplier Item # should be alphabets and numbers._gb",
   "75001": "Feature Configurations are not available_gb",
   "75002": "Web Proxy URI is not available_gb",
   "75003": "IG WebPosting Service URI is not available_gb",

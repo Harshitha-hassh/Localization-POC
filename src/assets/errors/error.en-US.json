@@ -314,6 +314,7 @@
     "70616": "Item Number cannot be a Decimal Value.",
     "70618": "Vendor is not valid.",
     "70619": "Supplier Item # can't be associated as Vendor is not valid.",
+    "70620": "Supplier Item # should be alphabets and numbers.",
     "70608": "Item Par cannot be a Decimal Value.",
     "70609": "Card number not valid",
     "70610": "Retail Item Type is not valid.",
