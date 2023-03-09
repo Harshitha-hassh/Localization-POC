@@ -152,9 +152,9 @@
                         class="path2"></span></span>
                   </ng-container>
                 </button>
-                <i class="icon-Edit cursor" *ngIf="editable" matTooltip={{this.captions.shop.Edit}} (click)="editRow($event,bodyCnt,'edit',options[0].ServiceId)"></i>
-                <i *ngIf="!disableDelete" class="icon-Delete cursor" matTooltip="Delete" (click)="DeleteRecords(bodyCnt)"></i>
-                <i class="icon-DragAndDrop movecursor draggable" *ngIf="blnDraggable" matTooltip="Drag"></i>
+                <i class="icon-Edit cursor" *ngIf="editable" title={{this.captions.shop.Edit}} (click)="editRow($event,bodyCnt,'edit',options[0].ServiceId)"></i>
+                <i *ngIf="!disableDelete" class="icon-Delete cursor" title="Delete" (click)="DeleteRecords(bodyCnt)"></i>
+                <i class="icon-DragAndDrop movecursor draggable" *ngIf="blnDraggable" title="Drag"></i>
               </td>
 
             </tr>

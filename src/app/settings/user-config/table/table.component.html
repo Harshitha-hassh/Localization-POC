@@ -299,26 +299,26 @@
                 <td *ngIf="!isRoleSetUpReadOnly && EnableActions && !(SelectedSettingId == GridType.password)"
                   [ngClass]="{'column-sticky': sticky,'minwidth177':DoneCancel}" class="noellipsis">
                   <!-- <i *ngIf="SelectedSettingId == GridType.retail" class="icon-print cursor" matTooltip="{{captions.common.Print}}" (click)="PrintRecord(bodyCnt)"></i> -->
-                  <i class="icon-SuccessDark cursor" matTooltip="" (click)="waitlist(bodyCnt)" *ngIf="waitlistIcon"
-                    matTooltip="{{captions.bookAppointment.ConfirmWaitlist}}"></i>
+                  <i class="icon-SuccessDark cursor"(click)="waitlist(bodyCnt)" *ngIf="waitlistIcon"
+                  title="{{captions.bookAppointment.ConfirmWaitlist}}"></i>
                   <i class="icon-Edit cursor"
                     [ngClass]="(IsViewOnly && IsRetailCodeSetup)||disableEditButton ? 'button_invalid' : ''"
-                    *ngIf="editable && !table.value.tablebody[bi].donecancel" matTooltip="{{captions.common.Edit}}"
+                    *ngIf="editable && !table.value.tablebody[bi].donecancel" title="{{captions.common.Edit}}"
                     (click)="editRow($event,bodyCnt,'edit',options[0].ServiceId)"></i>
                   <i class="ag_pr--2 ag_cursor--pointer" [ngClass]="{'restricted': bodyCnt.isRestrictuserBlock , 'icon-active-user' : !bodyCnt.blockedUser,  'icon-block-user' : bodyCnt.blockedUser , 'button_invalid': bodyCnt.isRestrictuserBlock}"
-                    (click)="emitBlockrowdata($event,bodyCnt)" [matTooltipClass]="'AgysMatCustTooltip'" [matTooltip]="bodyCnt.blockedUser ? this.captions.common.unBlock : this.captions.common.block"></i>
+                    (click)="emitBlockrowdata($event,bodyCnt)" [title]="bodyCnt.blockedUser ? this.captions.common.unBlock : this.captions.common.block"></i>
                   <i *ngIf="!disableDelete && !table.value.tablebody[bi].donecancel" class="icon-Delete cursor"
-                    [ngClass]="IsViewOnly ? 'button_invalid' : ''" matTooltip="{{captions.common.Delete}}"
+                    [ngClass]="IsViewOnly ? 'button_invalid' : ''" title="{{captions.common.Delete}}"
                     (click)="DeleteRecords(bodyCnt)"></i>
                   <i class="icon-DragAndDrop movecursor draggable" [ngClass]="IsViewOnly ? 'button_invalid' : ''"
                     *ngIf="blnDraggable && !table.value.tablebody[bi].donecancel"
-                    matTooltip="{{captions.common.Drag}}"></i>
+                    title="{{captions.common.Drag}}"></i>
 
                   <i class="icon-enabled-user cursor" (click)="changeUserAction($event,bodyCnt,options[0].ServiceId)"
-                    *ngIf="userAction && !bodyCnt.isActive" matTooltip="{{captions.common.Activate}}"></i>
+                    *ngIf="userAction && !bodyCnt.isActive" title="{{captions.common.Activate}}"></i>
 
                   <i class="icon-disabled-user cursor" (click)="changeUserAction($event,bodyCnt,options[0].ServiceId)"
-                    *ngIf="userAction && bodyCnt.isActive" matTooltip="{{captions.common.Deactivate}}"></i>
+                    *ngIf="userAction && bodyCnt.isActive" title="{{captions.common.Deactivate}}"></i>
 
                   <span *ngIf="table.value.tablebody[bi].donecancel" class="done" (click)="Done(bodyCnt, bi)">
                     <i class="icon-done"></i>{{captions.common.cDone}}</span>
@@ -331,13 +331,13 @@
                   <!-- myGlobals.GridType.commission - 8-->
                   <i class="icon-More cursor" [ngClass]="IsMoreOptionReadOnly ? 'button_invalid':''"
                     *ngIf="SelectedSettingId == GridType.commission || SelectedSettingId == RetailTransactions.opentransactions"
-                    matTooltip="{{captions.common.More}}" [matMenuTriggerFor]="menu"></i>
+                    title="{{captions.common.More}}" [matMenuTriggerFor]="menu"></i>
                   <!-- myGlobals.GridType.appointmentsearch - 9 -->
-                  <i class="icon-More cursor" *ngIf="SelectedSettingId == 9 " matTooltip="{{captions.common.More}}"
+                  <i class="icon-More cursor" *ngIf="SelectedSettingId == 9 " title="{{captions.common.More}}"
                     [matMenuTriggerFor]="menu2"></i>
                   <!-- myGlobals.GridType.password - 12 -->
                   <i class="icon-More cursor" *ngIf="SelectedSettingId == GridType.password "
-                    matTooltip="{{captions.common.More}}" [matMenuTriggerFor]="menuEditPasscode"></i>
+                  title="{{captions.common.More}}" [matMenuTriggerFor]="menuEditPasscode"></i>
                   <mat-menu #menu="matMenu" class="matMenu">
                     <button mat-menu-item (click)="editRow($event,bodyCnt,'new',options[0].ServiceId)">
                       <!-- <mat-icon>dialpad</mat-icon> -->

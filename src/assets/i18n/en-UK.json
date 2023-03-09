@@ -3984,6 +3984,7 @@
   "pg_tit_giftCardConfiguration": "Gift Card Configuration_uk",
   "TokenCopyToClipboardSuccess": "Token Copied To Clipboard._uk",
   "lbl_hdr_payagent": "Search by Name, HostName_uk",
+  "lbl_hdr_outlets": "Search by Property, Outlet_uk",
   "pg_tit_addPayagent": "ADD PAYAGENT_uk",
   "pg_tit_addSettler": "ADD SETTLER_uk",
   "pg_tit_editSettler": "UPDATE SETTLER_uk",
@@ -4076,5 +4077,6 @@
   "lbl_check_connection": "CHECK CONNECTION_uk",
   "noConsentPolicySelected": "No Consent Policy Selected_uk",
   "lbl_success_connection": "Connection established successfully_uk",
-  "lbl_failure_connection": "Connection failed_uk"
+  "lbl_failure_connection": "Connection failed_uk",
+  "warn_delete": "Are you sure want to delete '{{name}}' ?_uk"
 }

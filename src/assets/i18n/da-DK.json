@@ -3984,6 +3984,7 @@
   "pg_tit_giftCardConfiguration": "Gift Card Configuration_da",
   "TokenCopyToClipboardSuccess": "Token Copied To Clipboard._da",
   "lbl_hdr_payagent": "Search by Name, HostName_da",
+  "lbl_hdr_outlets": "Search by Property, Outlet_da",
   "pg_tit_addPayagent": "ADD PAYAGENT_da",
   "pg_tit_addSettler": "ADD SETTLER_da",
   "pg_tit_editSettler": "UPDATE SETTLER_da",
@@ -4076,5 +4077,6 @@
   "lbl_check_connection": "CHECK CONNECTION_da",
   "noConsentPolicySelected": "No Consent Policy Selected_da",
   "lbl_success_connection": "Connection established successfully_da",
-  "lbl_failure_connection": "Connection failed_da"
+  "lbl_failure_connection": "Connection failed_da",
+  "warn_delete": "Are you sure want to delete '{{name}}' ?_da"
 }
