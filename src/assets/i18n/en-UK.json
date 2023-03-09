@@ -1307,6 +1307,7 @@
     "CancelOpenTransaction": "Would you like to cancel the ticket  #{TicketNumber}?_uk",
     "TransactionLockWarning": "Transaction is locked by the user_uk",
     "TransactionLock": "Transaction is locked, Please try after sometime._uk",
+    "OverrideTransactionLock": "Transaction is locked by {lockedbyuser}, Would you like to Override ?_uk",
     "RoomChargeNumber": "Room_uk",
     "paymentMethods": {
       "1": "Cash_uk",
