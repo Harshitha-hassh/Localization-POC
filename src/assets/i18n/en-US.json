@@ -2019,6 +2019,7 @@
     "SelectAtleastOneSubCat": "Select at least one subcategory to proceed",
     "Atleast2charactersneedtobeentered": "At least 2 characters need to be entered",
     "QuantityonHand": "Quantity on Hand",
+    "weightedAverageCost": "Weighted Average Cost",
     "MTDQty": "MTD Qty",
     "YTDQty": "YTD Qty",
     "UpdatedQuantity": "Updated Quantity",
