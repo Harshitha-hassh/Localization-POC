@@ -29,9 +29,7 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -50,7 +48,7 @@
           "configurations": {
             "development":{
               "sourceMap": true,
-              "aot": true,
+              "aot": false,
               "buildOptimizer": false
             },
             "production": {
@@ -62,11 +60,11 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": true,
+              "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": true,
-              "buildOptimizer": false,
+              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
