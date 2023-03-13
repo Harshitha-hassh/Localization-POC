@@ -4080,6 +4080,11 @@
   "lbl_check_connection": "CHECK CONNECTION",
   "noConsentPolicySelected": "No Consent Policy Selected",
   "lbl_success_connection": "Connection established successfully",
-  "lbl_failure_connection": "Connection failed",
-  "warn_delete": "Are you sure want to delete '{{name}}' ?"
+  "lbl_failure_connection": "Connection failed",  
+  "err_sigCapEndpoint": "Unable to Call 'Signature Capture' Endpoint",
+  "initiate_SignatureCapture":"Initiating Signature Capture",
+  "success_SignatureCapture":"Successfully Captured Signature",
+  "warn_delete": "Are you sure want to delete '{{name}}' ?",
+  "err_sigCapGenericMessage": "Failed to capture Signature - '{{reason}}'",
+  "noResponse": "No response from Signature Capture device"
 }

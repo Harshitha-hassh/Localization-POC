@@ -4079,5 +4079,10 @@
   "noConsentPolicySelected": "No Consent Policy Selected_de",
   "lbl_success_connection": "Connection established successfully_de",
   "lbl_failure_connection": "Connection failed_de",
-  "warn_delete": "Are you sure want to delete '{{name}}' ?_de"
+  "err_sigCapEndpoint": "Unable to Call 'Signature Capture' Endpoint_de",
+  "initiate_SignatureCapture": "Initiating Signature Capture_de",
+  "success_SignatureCapture": "Successfully Captured Signature_de",
+  "warn_delete": "Are you sure want to delete '{{name}}' ?_de",
+  "err_sigCapGenericMessage": "Failed to capture Signature - '{{reason}}'_de",
+  "noResponse": "No response from Signature Capture device_de"
 }

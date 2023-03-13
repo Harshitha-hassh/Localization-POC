@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.constants';
 import { DataMagineConfigComponent } from 'src/app/common/data-magine/data-magine-config/data-magine-config.component';
 import { DataMagineComponent } from 'src/app/common/data-magine/data-magine/data-magine.component';
 import { RouteGuardService } from 'src/app/core/services/route.guard.service';
+import { UserAccessBreakPoints } from 'src/app/shared/enums/useraccess.constants';
 
 const routes: Routes = [{
   path: '',
@@ -14,8 +14,8 @@ const routes: Routes = [{
     { path: '', redirectTo: 'datamagineConfiguration', pathMatch: 'full' },
     {
       path: 'datamagineConfiguration', component: DataMagineConfigComponent,
-      // data: { breakPointNumber:2300   , isSubmodule: true, syncAccess: true, redirectTo: 'documentCodes'},
-      // canActivate: [RouteGuardService]
+      data: { breakPointNumber:UserAccessBreakPoints.DATAMAGINE_CONFIGURATION   , isSubmodule: true, ShowPopup: true, redirectTo: ''},
+      canActivate: [RouteGuardService]
     },
     {
       path: 'datamagineSettings', component: DataMagineConfigComponent,
