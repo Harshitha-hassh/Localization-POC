@@ -34,7 +34,8 @@ export class GuestPolicyWrapperComponent implements OnInit {
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
     if (callDesc == "ApplyDataPolicyPurgeForGuestId") {
       if (result) {
-        this._utils.showCommonAlert(this.captions.lbl_dataPurgingCompleted, AlertType.Done, ButtonTypes.Ok, async (res) => {
+        let dataPurgingCompleted = this._localization.replacePlaceholders(this.captions.lbl_dataPurgingCompleted, ['okay'], [this.captions.common.okay]);
+        this._utils.showCommonAlert(dataPurgingCompleted, AlertType.Done, ButtonTypes.Ok, async (res) => {
           if (res === AlertAction.CONTINUE) {
             this.dialogRef.close(true);
           }

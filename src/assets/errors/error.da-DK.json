@@ -254,6 +254,7 @@
   "101917": "Date cannot be rolled over to the next day_da",
   "101918": "Current system date {CurrentSystemDate} is greater than or equal to roll over date {RollOverDate}. Please Re Login_da",
   "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed._da",
+  "8834501": "Client has future booking, cannot purge/anonymize the data_da",
   "-3": "New appointment duration will result in an overbook. Do you want to continue?_da",
   "-2": "An unexpected error has occurred, please try again later._da",
   "-1": "Request therapist and location change._da",

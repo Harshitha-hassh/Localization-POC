@@ -4045,7 +4045,7 @@
   "consentPolicy": "Consent Policy",
   "consentPolicyEnabled": "Consent Policy {consentPolicy} enabled successfully",
   "btn_purge": "PURGE",
-  "lbl_dataPurgingCompleted": "Data Purging is successfully complete.<br> Please click 'OK' to refresh the screen",
+  "lbl_dataPurgingCompleted": "Data Purging is successfully completed.<br> Please click '{okay}' to refresh the screen",
   "lbl_doYouWantToPurge": " <b>PURGE/ANONYMIZE</b> <br> <br> Do you want to purge/anonymize the guest data?",
   "lbl_ErrWilePurging": "Error While Purging",
   "lbl_sections": "Sections",
