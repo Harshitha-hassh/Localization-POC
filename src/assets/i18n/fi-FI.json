@@ -4043,7 +4043,7 @@
   "consentPolicy": "Consent Policy_fi",
   "consentPolicyEnabled": "Consent Policy {consentPolicy} enabled successfully_fi",
   "btn_purge": "PURGE_fi",
-  "lbl_dataPurgingCompleted": "Data Purging is successfully complete.<br> Please click '{okay}' to refresh the screen_fi",
+  "lbl_dataPurgingCompleted": "Data Purging is successfully completed.<br> Please click '{okay}' to refresh the screen_fi",
   "lbl_doYouWantToPurge": " <b>PURGE/ANONYMIZE</b> <br> <br> Do you want to purge/anonymize the guest data?_fi",
   "lbl_ErrWilePurging": "Error While Purging_fi",
   "lbl_sections": "Sections_fi",

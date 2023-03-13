@@ -362,6 +362,6 @@
     "711": "Return transaction has already been initiated for this ticket.",
     "7006": "Email ID already in use.",
     "20100":"Outlet already exists",
-    "8834501":"Guest cannot be purged - There is a Future Activity for the Guest"
+    "8834501":"Client has future booking, cannot purge/anonymize the data"
   }
   
