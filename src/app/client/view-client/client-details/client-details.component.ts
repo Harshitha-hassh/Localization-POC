@@ -132,7 +132,13 @@ export class ClientDetailsComponent implements OnInit {
                 this.SearchClientInformation(this._as.selectedClient.name, false, this._as.selectedClient.guestProfileId, this.selectedClientSearchType);
             }
         });
-        this.clientSearchTypes = [{ id: 0, name: this.captions.firstName, checked: true }, { id: 1, name: this.captions.lastName, checked: false }, { id: 2, name: this.captions.phone, checked: false }, { id: 3, name: this.captions.email, checked: false }];
+        this.clientSearchTypes = [{ id: 0, name: this.captions.firstName, checked: true }, 
+                                  { id: 1, name: this.captions.lastName, checked: false },
+                                  { id: 2, name: this.captions.name, checked: false },
+                                  { id: 3, name: this.captions.phone, checked: false },
+                                  { id: 4, name: this.captions.email, checked: false },
+                                  { id: 5, name: this.captions.patronId, checked: false }
+                                ];
     }
     sampleData: any = [];
 
@@ -231,11 +237,17 @@ export class ClientDetailsComponent implements OnInit {
           case clientSearchType.lastName:
             this.searchTextPlaceHolder = this.captions.searchByLastName;
             break;
+           case clientSearchType.name:
+            this.searchTextPlaceHolder = this.captions.searchByFullName;
+            break;
           case clientSearchType.phone:
             this.searchTextPlaceHolder = this.captions.searchByPhoneNumber;
             break;
             case clientSearchType.email:
             this.searchTextPlaceHolder = this.captions.searchByEmail;
+            break;
+            case clientSearchType.patronId:
+            this.searchTextPlaceHolder = this.captions.searchByPatronId;
             break;
           default:
             this.searchTextPlaceHolder = this.captions.searchByFirstName;
@@ -250,6 +262,8 @@ export class ClientDetailsComponent implements OnInit {
             this.clientSearchTypes[1].checked = false;
             this.clientSearchTypes[2].checked = false;
             this.clientSearchTypes[3].checked = false;
+            this.clientSearchTypes[4].checked = false;
+            this.clientSearchTypes[5].checked = false;
             this.selectedClientSearchType = clientSearchType.firstName;
             this.searchTextPlaceHolder = this.captions.searchByFirstName;
             break;
@@ -258,14 +272,28 @@ export class ClientDetailsComponent implements OnInit {
             this.clientSearchTypes[1].checked = true;
             this.clientSearchTypes[2].checked = false;
             this.clientSearchTypes[3].checked = false;
+            this.clientSearchTypes[4].checked = false;
+            this.clientSearchTypes[5].checked = false;
             this.selectedClientSearchType = clientSearchType.lastName;
             this.searchTextPlaceHolder = this.captions.searchByLastName;
             break;
+            case clientSearchType.name:
+                this.clientSearchTypes[0].checked = false;
+                this.clientSearchTypes[1].checked = false;
+                this.clientSearchTypes[2].checked = true;
+                this.clientSearchTypes[3].checked = false;
+                this.clientSearchTypes[4].checked = false;
+                this.clientSearchTypes[5].checked = false;
+                this.selectedClientSearchType = clientSearchType.name;
+                this.searchTextPlaceHolder = this.captions.searchByFullName;
+                break;
           case clientSearchType.phone:
             this.clientSearchTypes[0].checked = false;
             this.clientSearchTypes[1].checked = false;
-            this.clientSearchTypes[2].checked = true;
-            this.clientSearchTypes[3].checked = false;
+            this.clientSearchTypes[2].checked = false;
+            this.clientSearchTypes[3].checked = true;
+            this.clientSearchTypes[4].checked = false;
+            this.clientSearchTypes[5].checked = false;
             this.selectedClientSearchType = clientSearchType.phone;
             this.searchTextPlaceHolder = this.captions.searchByPhoneNumber;
             break;
@@ -273,10 +301,22 @@ export class ClientDetailsComponent implements OnInit {
             this.clientSearchTypes[0].checked = false;
             this.clientSearchTypes[1].checked = false;
             this.clientSearchTypes[2].checked = false;
-            this.clientSearchTypes[3].checked = true;
+            this.clientSearchTypes[3].checked = false;
+            this.clientSearchTypes[4].checked = true;
+            this.clientSearchTypes[5].checked = false;
             this.selectedClientSearchType = clientSearchType.email;
             this.searchTextPlaceHolder = this.captions.searchByEmail;   
              break;    
+             case clientSearchType.patronId:
+                this.clientSearchTypes[0].checked = false;
+                this.clientSearchTypes[1].checked = false;
+                this.clientSearchTypes[2].checked = false;
+                this.clientSearchTypes[3].checked = false;
+                this.clientSearchTypes[4].checked = false;
+                this.clientSearchTypes[5].checked = true;
+                this.selectedClientSearchType = clientSearchType.patronId;
+                this.searchTextPlaceHolder = this.captions.searchByPatronId;   
+                 break;   
           default:
             this.selectedClientSearchType = clientSearchType.firstName;
             this.searchTextPlaceHolder = this.captions.searchByFirstName;
