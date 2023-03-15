@@ -27,7 +27,8 @@ export class ImgThumbnailComponent implements OnInit {
       // so the below line is changed to use thumbnail
       // let imageUrl = `data:${this.imageContent.contentType};base64,${this.thumbnail ? this.imageContent.thumbnailData : this.imageContent.data}`;
       let imageUrl = `data:${this.imageContent.contentType};base64,${this.imageContent.thumbnailData}`;
-      this.url = this.domSanitizer.sanitize(SecurityContext.URL, this.domSanitizer.bypassSecurityTrustUrl(imageUrl));
+      // this.url = this.domSanitizer.sanitize(SecurityContext.URL, this.domSanitizer.bypassSecurityTrustUrl(imageUrl));
+      this.url = imageUrl;
     } else {
       if (this.imageType === 'therapist') {
         this.url = 'assets/images/therapist.png';

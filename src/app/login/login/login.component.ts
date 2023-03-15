@@ -224,9 +224,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   errorGenerator() {
     this.errorMessage = {
-      userId: 'Please Enter the User ID',
-      password: 'Please Enter the Password',
-      customerId: 'Please Enter the Customer ID'
+      userId: this.captions.login.enterUserId,
+      password: this.captions.login.enterPassword,
+      customerId: this.captions.login.customerID
     };
   };
 
