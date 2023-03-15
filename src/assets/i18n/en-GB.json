@@ -4064,6 +4064,7 @@
   "lbl_server_url": "Server URL_gb",
   "lbl_userName": "Username_gb",
   "lbl_password": "Password_gb",
+  "lbl_all": "All_gb",
   "lbl_signature_capture": "Signature Capture_gb",
   "lbl_enable_signature_capture": "Enable Signature Capture_gb",
   "lbl_signature_endpoint": "Signature Capture Endpoint_gb",

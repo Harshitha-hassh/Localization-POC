@@ -97,14 +97,14 @@
                             </span>
                             <span class="span-label">{{captions.consentManagement}}</span>
                         </div>
-                        <div (click)="openGuestPolicyDialog(2);" class="divider" [ngClass]="(additionalInfo && additionalInfo.client && additionalInfo.client.isPurged == true) || !(additionalInfo && additionalInfo.client && additionalInfo.client.Id == '') ? 'ag_link--disabled opacity-spa' : ''" >
+                        <div (click)="openGuestPolicyDialog(2);" class="divider" [ngClass]="(actionType == 'EDIT' && additionalInfo && additionalInfo.client && additionalInfo.client.isPurged == true) || (actionType != 'EDIT') || (additionalInfo && additionalInfo.client && additionalInfo.client.Id == '') ? 'ag_link--disabled opacity-spa' : ''" >
                             <span class="boxed-icon">
                                 <i class="icon-retention"></i>
-                                <i *ngIf="additionalInfo && additionalInfo.client.isPurged == true" class="icon-dashboard-tick"></i>
+                                <i *ngIf="actionType == 'EDIT' && additionalInfo && additionalInfo.client.isPurged == true" class="icon-dashboard-tick"></i>
                             </span>
                             <span class="span-label">{{captions.retentionManagement}}</span>
                         </div>
-                        <div (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="!(additionalInfo && additionalInfo.client && additionalInfo.client.Id == '') ? 'ag_link--disabled opacity-spa' : ''">
+                        <div (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="actionType != 'EDIT' || (additionalInfo && additionalInfo.client && additionalInfo.client.Id == '') ? 'ag_link--disabled opacity-spa' : ''">
                             <span class="boxed-icon">
                                 <i class="icon-export"></i>
                                 <!-- <i class="icon-dashboard-tick"></i> -->
