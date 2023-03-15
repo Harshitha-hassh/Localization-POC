@@ -52,6 +52,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   PaymentReferenceID = 0;
   floatLabel: string;
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  actionType: string;
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
   @Input('inputData')
@@ -59,6 +60,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     if(value && value.data!='')
     {
       this.additionalInfo = value.data;
+      this.actionType = value.mode;
       this.SetEditValues(value.data);
       this.isClientViewOnly = value.isClientViewOnly ? value.isClientViewOnly : false;
     }
