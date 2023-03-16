@@ -22,6 +22,7 @@ import { GlobalErrorHandler } from './shared/service/global-error-handler.servic
 import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
 import { HttpClientModule } from '@angular/common/http';
 import { OAuthModule, OAuthService, UrlHelperService } from 'angular-oauth2-oidc';
+import { MatTooltipDefaultOptions, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
@@ -32,7 +33,12 @@ declare module "@angular/core" {
     providers?: Provider[];
   }
 }
-
+export const OtherOptions: MatTooltipDefaultOptions = {
+  showDelay: 0,
+  hideDelay: 0,
+  touchendHideDelay: 0,
+  disableTooltipInteractivity: true,
+}
 @NgModule({
   declarations: [
     AppComponent
@@ -65,6 +71,7 @@ declare module "@angular/core" {
       provide: OAuthService,
       useClass: OAuthService
     },
+    {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: OtherOptions},
     UrlHelperService,
     ADB2CAuthConfiguration
   ],
