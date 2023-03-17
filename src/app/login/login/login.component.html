@@ -45,10 +45,9 @@
                                         <div>
                                             <i class="icon-guest ag_pr--2"></i>
                                             <mat-form-field class="w-50 ag_section--disable" [floatLabel]="floatLabel" [ngClass]="{'ag_section--disable' : !showCustomerID}">
-                                                <input matInput #fcs_custID inputtype="nonnegative" type="number"
+                                                <input matInput #fcs_custID inputtype="nonnegative,nodecimal" 
                                                     [placeholder]="captions.customerId" class="text-uppercase"
-                                                    inputtype="capitalise,notallowspace,nospecailchar"
-                                                    formControlName="customerId"
+                                                    formControlName="customerId"  [maxlength]="maxLength"
                                                     (keydown.enter)="getbuttonEmitvalue($event)">
                                                 <mat-error *ngIf="loginForms.get('customerId').hasError('required')">
                                                     {{errorMessage.customerId}}
@@ -91,10 +90,9 @@
                                         <div>
                                             <i class="icon-guest ag_pr--2"></i>
                                             <mat-form-field class="w-50" [floatLabel]="floatLabel">
-                                                <input matInput #fcs_custID inputtype="nonnegative" type="number"
+                                                <input matInput #fcs_custID inputtype="nonnegative,nodecimal"
                                                     [placeholder]="captions.customerId" class="text-uppercase"
-                                                    inputtype="capitalise,notallowspace,nospecailchar"
-                                                    formControlName="customerId"
+                                                    formControlName="customerId"  [maxlength]="maxLength"
                                                     (keydown.enter)="getbuttonEmitvalue($event)">
                                                 <mat-error *ngIf="loginForms.get('customerId').hasError('required')">
                                                     {{errorMessage.customerId}}

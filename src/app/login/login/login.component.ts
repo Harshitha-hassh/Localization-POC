@@ -40,7 +40,7 @@ import { OAuthService, NullValidationHandler, OAuthEvent } from 'angular-oauth2-
 import { AlertType, ButtonType } from 'src/app/shared/shared-models';
 import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
 import { LoginRoutes } from '../login.routes';
-
+import * as CONSTANTS from 'src/app/common/constants';
 
 @Component({
   selector: 'app-login',
@@ -81,6 +81,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   private logOffAfter = 1;
   showCustomerID = false;
   custId: any;
+  maxLength: number = CONSTANTS.CUSTOMERID_LENGTH;
   userIdDir = 'capitalise,notallowspace,nospecailchar';
   tenantId: number;
   tenantIdFromParam: string;
