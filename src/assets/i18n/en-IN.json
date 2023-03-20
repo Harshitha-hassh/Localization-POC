@@ -77,6 +77,7 @@
     "enterUserId": "Please Enter the User ID_in",
     "enterPassword": "Please Enter the Password_in",
     "enterQuickId": "Please Enter the Quick ID_in",
+    "customerID": "'Please Enter the Customer ID_in",
     "invalidQuickId": "Invalid Quick ID_in",
     "invaliduserIdLogin": "Invalid User ID or Password_in",
     "userid": "User ID_in",
