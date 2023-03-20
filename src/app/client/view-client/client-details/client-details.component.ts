@@ -383,6 +383,7 @@ export class ClientDetailsComponent implements OnInit {
         this.clearSearchTextValue();
         this.SetclientSearchTypeValue(id);
         this.selectedClientSearchType = id;
+        this.enableSearch = false;
     }
 
     clearSearchTextValue() {
@@ -484,7 +485,7 @@ export class ClientDetailsComponent implements OnInit {
 
     enableSearchButton()
     {
-        if(this.searchText.length > 2){
+        if(this.searchText.length > 2 || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId)){
             this.enableSearch = true;
         }
         else
@@ -496,7 +497,7 @@ export class ClientDetailsComponent implements OnInit {
 
     onEnter()
     {
-        if(this.searchText.length > 2)
+        if(this.searchText.length > 2 || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId))
         {
             this.clientSearch(this.searchText)
         }
@@ -508,11 +509,11 @@ export class ClientDetailsComponent implements OnInit {
             this.singleUserView = false;
         }
         else {
-            if ((searchText.length == 0 || searchText.length > 2) && this.clientService.selectedIndex == 1) {
+            if ((searchText.length == 0 || searchText.length > 2 || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId))  && this.clientService.selectedIndex == 1) {
                 this.RecentClientInformation(this.searchText, this.selectedClientSearchType);
                 this.singleUserView = false;
             }
-            else if (searchText.length > 2 && this.clientService.selectedIndex != 1) {
+            else if ((searchText.length > 2 && this.clientService.selectedIndex != 1) || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId)) {
                 this.SearchClientInformation(this.searchText, this.clientService.isVip, undefined, this.selectedClientSearchType);
                 this.singleUserView = false;
             }
