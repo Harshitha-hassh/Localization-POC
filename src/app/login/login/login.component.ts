@@ -197,6 +197,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       } else {
         this.userIdDir = 'capitalise,notallowspace,nospecailchar';
         this.showCustomerID = false;
+        this.loginForms?.controls["customerId"].disable();
         this.removeVal();
       }
     });
@@ -742,6 +743,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
       else {
         this.showCustomerID = false;
+        this.loginForms?.controls["customerId"].disable();
         setTimeout(() => {
           this.fcs_userID.nativeElement.focus();
         }, 0);
