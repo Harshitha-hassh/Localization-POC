@@ -39,14 +39,12 @@
   content: "\edbc";
   color: #1d3faa;
 }
-
 .icon-Reopen:before {
   content: "\edb8";
 }
 .icon-Settle:before {
   content: "\edb9";
 }
-
 .icon-shop-commission:before {
   content: "\edb5";
   color: #435444;
@@ -59,15 +57,12 @@
   content: "\edb7";
   color: #435444;
 }
-
 .icon-edit1:before {
   content: "\edb4";
 }
-
 .icon-Download---Grid:before {
   content: "\edb3";
 }
-
 .icon-add-without-commission:before {
   content: "\edb2";
 }
