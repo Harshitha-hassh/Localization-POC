@@ -263,6 +263,7 @@
   "-87": "Please select an Email Type_in",
   "-88": "Please select a Phone Type_in",
   "-200": "Retail POS is down, please try again later_in",
+  "-202": "Tender Configurations Not Found_in",
   "-201": "Items have not been synced properly. Kindly, Sync from the Retail Item Setup._in",
   "-107": "Package associated with appointments, change not allowed_in",
   "-113": "Unable to schedule break due to a conflict in therapist schedule._in",
