@@ -1136,7 +1136,7 @@
     "AllOutlets": "All Outlets_gb",
     "ClientName": "Client Name_gb",
     "MemberName": "Member Name_gb",
-    "tooltip_reopen": "Re Open_gb",
+    "tooltip_reopen": "Reopen_gb",
     "tooltip_settle": "Settle_gb",
     "searchTextRetailTransaction": "Ticket #, Clerk ID, Amount, Client Name,Transaction Type, Member Name, Corrected/Voided By_gb",
     "searchTextOpenTransaction": "Ticket #, Clerk ID, Amount, Client Name,Transaction Type, Member Name, Amount Received_gb",
