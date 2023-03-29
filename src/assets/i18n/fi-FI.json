@@ -4093,10 +4093,10 @@
   "noConsentPolicySelected": "No Consent Policy Selected_fi",
   "lbl_success_connection": "Connection established successfully_fi",
   "lbl_failure_connection": "Connection failed_fi",
-  "err_sigCapEndpoint": "Unable to Call 'Signature Capture' Endpoint_fi",
+  "err_sigCapEndpoint": "Unable to reach the device for Signature. Signature will not be displayed in the receipt._fi",
   "initiate_SignatureCapture": "Initiating Signature Capture_fi",
   "success_SignatureCapture": "Successfully Captured Signature_fi",
   "warn_delete": "Are you sure want to delete '{{name}}' ?_fi",
   "err_sigCapGenericMessage": "Failed to capture Signature - '{{reason}}'_fi",
-  "noResponse": "No response from Signature Capture device_fi"
+  "noResponse": "No response received from the Signature Capture device. Signature will not be displayed in the receipt._fi"
 }
