@@ -4098,5 +4098,6 @@
   "success_SignatureCapture": "Successfully Captured Signature",
   "warn_delete": "Are you sure want to delete '{{name}}' ?",
   "err_sigCapGenericMessage": "Failed to capture Signature - '{{reason}}'",
-  "noResponse": "No response received from the Signature Capture device. Signature will not be displayed in the receipt."
+  "noResponse": "No response received from the Signature Capture device. Signature will not be displayed in the receipt.",
+  "lbl_industryTypeWarn": "Changing the Industry type will make the existing Cards On File for guests not work."
 }
