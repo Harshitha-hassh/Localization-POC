@@ -4066,6 +4066,7 @@
   "lbl_msgSentSuccessfully": "Message Sent Successfully_fi",
   "lbl_consentPolicy": "CONSENT POLICIES_fi",
   "lbl_purgeOrAnonymize": "PURGE/ANONYMIZE_fi",
+  "lbl_consentPolicyLabel": "Note: Guest has already given Consent. Policy Name: {consentPolicyName} and Consent Date : {consentDate}_fi",
   "lbl_message": "Message_fi",
   "btn_send": "SEND_fi",
   "lbl_email": "Email_fi",
