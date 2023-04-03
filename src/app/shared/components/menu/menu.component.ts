@@ -71,6 +71,17 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.menuList = value;
     this.levelMenu = value.menuType;
     // this.menuList.menu = this.sortPipe.transform(this.menuList.menu, 'order', 'aesc');
+     this.menuList.menu.map(res => { 
+        if (res) {
+          if ( this._propertyInfo.IsEatecEnabled) 
+        {
+            if (res.routePath === '/settings/inventorysetup') 
+            {
+                res.visibility = false;
+            } 
+        } 
+        }
+      });
     console.log("menulist", this.menuList);
   }
 
@@ -142,6 +153,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       this.userText = this.firstName.charAt(0).toUpperCase() + this.lastName.charAt(0).toUpperCase();
     }
     if (this.levelMenu === menuTypes.tertiary || this.levelMenu === AgMenuTypes.combo) {
+     
       this.selectedItem = this.menuList.menu.find(x => this.router.url.indexOf(x.routePath) > -1);
       this.router.events.pipe(takeUntil(this.destroyed$)).subscribe(x => {
         this.selectedItem = this.menuList.menu.find(menu => this.router.url.indexOf(menu.routePath) > -1);
