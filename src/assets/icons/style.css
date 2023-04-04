@@ -728,25 +728,13 @@
 .icon-Menu_search_icon:before {
   content: "\ed1b";
 }
-.icon-Player-worth_disabled .path1:before {
+.icon-Player-worth_disabled:before {
   content: "\ecc0";
-  color: rgb(98, 98, 98);
-  opacity: 0.34;
+  color: #626262;
 }
-.icon-Player-worth_disabled .path2:before {
-  content: "\ecc1";
-  margin-left: -1em;
-  color: rgb(255, 255, 255);
-  opacity: 0.34;
-}
-.icon-Player-worth_enabled .path1:before {
+.icon-Player-worth_enabled:before {
   content: "\ecc2";
-  color: rgb(194, 166, 83);
-}
-.icon-Player-worth_enabled .path2:before {
-  content: "\ecc3";
-  margin-left: -1em;
-  color: rgb(255, 255, 255);
+  color: #c2a653;
 }
 .icon-guest1:before {
   content: "\ed16";
