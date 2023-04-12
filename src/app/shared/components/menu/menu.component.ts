@@ -71,18 +71,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.menuList = value;
     this.levelMenu = value.menuType;
     // this.menuList.menu = this.sortPipe.transform(this.menuList.menu, 'order', 'aesc');
-     this.menuList.menu.map(res => { 
-        if (res) {
-          if ( this._propertyInfo.IsEatecEnabled) 
-        {
-            if (res.routePath === '/settings/inventorysetup') 
-            {
-                res.visibility = false;
-            } 
-        } 
-        }
-      });
-    console.log("menulist", this.menuList);
+     console.log("menulist", this.menuList);
   }
 
   constructor(public router: Router
