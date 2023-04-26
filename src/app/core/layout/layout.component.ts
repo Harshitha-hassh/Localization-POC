@@ -1,3 +1,4 @@
+import { OnDestroy } from '@angular/core';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PropertyService } from 'src/app/common/services/property.service';
 import { ManageSessionService } from 'src/app/login/manage-session.service';
@@ -7,6 +8,9 @@ import { PropertyInformation } from '../services/property-information.service';
 import { RetailPropertyInformation } from '../services/retail-property-information.service';
 import { RouteLoaderService } from '../services/route-loader.service';
 import { Router } from '@angular/router';
+import { ChangePropertySevice } from 'src/app/common/services/change-property.service';
+import { takeUntil } from 'rxjs/operators';
+import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'app-layout',
@@ -14,19 +18,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./layout.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit, OnDestroy {
 
   menuList: any;
   propertyName: string;
   propertyDateTime: any;
   logOutClicked=false;
-
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   constructor(private routeDataService: RouteLoaderService,
     private sessionService: ManageSessionService,
     private localization: RetailLocalization,
     private propertyInfo: PropertyInformation,
     private propertyService: PropertyService,
-    private router: Router) {
+    private router: Router,
+    private changePropertySevice: ChangePropertySevice) {
     this.routeDataService.loadSettings().then(result => {
       if (result) {
         const value = this.routeDataService.GetChildMenu('/');
@@ -40,10 +45,24 @@ export class LayoutComponent implements OnInit {
 
   ngOnInit() {
       this.applyTheme('blacktheme');
+      this.propertyName = this.localization.GetPropertyInfo('PropertyName');
+      this.propertyService.changeTitle();
       this.loadGoogleMap();
       this.triggerNotification();
       this.time();
       this.toggleStyle();
+      this.changePropertySevice.propertyName$.pipe(takeUntil(this.destroyed$)).subscribe(propertyName => {
+        if (propertyName && propertyName != null) {
+          this.propertyName = propertyName;
+        }
+      });
+  }
+
+  ngOnDestroy() {
+    if (this.destroyed$) {
+      this.destroyed$.next(true);
+      this.destroyed$.complete();
+    }
   }
 
   triggerNotification(){
@@ -68,7 +87,6 @@ export class LayoutComponent implements OnInit {
       document.querySelectorAll('body')[0].setAttribute('class', theme);
       // if css need to change for popover, apply class to body
     }, 1);
-    this.propertyName = this.localization.GetPropertyInfo('PropertyName');
    
   }
 

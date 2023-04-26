@@ -101,6 +101,7 @@ export class ManageSessionService implements OnDestroy {
         this.dialogRef.closeAll();
         this.http.removeHelpUserSession();
         this.clearLocalStore();
+        this.changeTitle();
         this.goToLogin();
         if(this.adb2cAuthConfiguration.ADB2CAuthFeatureEnabled)
         {
@@ -380,7 +381,8 @@ export class ManageSessionService implements OnDestroy {
     }
 
     private setUserSessionsInfoItem(key: string, value: string): void {
-        return localStorage.setItem(key, value);
+        localStorage.setItem(key, value);
+        return sessionStorage.setItem(key, value);
     }
 
     private mapLoginDetailsToLocalModel(loginDetails) {
