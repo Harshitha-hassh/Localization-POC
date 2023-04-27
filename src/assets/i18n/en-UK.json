@@ -3284,6 +3284,7 @@
     "lbl_outletLevel": "Outlet Level_uk",
     "lbl_proprtyLevel": "Property Level_uk",
     "lbl_authCodeonReceipts": "Display Auth Code on Receipts_uk",
+    "lbl_changeDue": "Display Change Due on Receipts_uk",
     "lbl_authCodeonReceiptName": "Auth Code Receipt Name_uk",
     "checked": "Yes_uk",
     "unchecked": "No_uk",

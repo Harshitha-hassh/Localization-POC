@@ -3284,6 +3284,7 @@
     "lbl_outletLevel": "Outlet Level_in",
     "lbl_proprtyLevel": "Property Level_in",
     "lbl_authCodeonReceipts": "Display Auth Code on Receipts_in",
+    "lbl_changeDue": "Display Change Due on Receipts_in",
     "lbl_authCodeonReceiptName": "Auth Code Receipt Name_in",
     "checked": "Yes_in",
     "unchecked": "No_in",

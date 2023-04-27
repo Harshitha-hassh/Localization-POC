@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { Outlet, ReceiptModel,PropertyReceiptModel, PropertyConfigurationModel } from '../../../retail/retail.modals';
@@ -12,7 +12,8 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
   selector: 'app-receipt-configuration',
   templateUrl: './receipt-configuration.component.html',
   providers: [ReceiptConfigurationDataService, RetailOutletsDataService],
-  styleUrls: ['./receipt-configuration.component.scss']
+  styleUrls: ['./receipt-configuration.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class ReceiptConfigurationComponent implements OnInit {
@@ -38,6 +39,7 @@ export class ReceiptConfigurationComponent implements OnInit {
   AuthCodeConfiguration:PropertyReceiptModel[];
   propertyId: number;
   floatLabel: string;
+  displayChangeDue: boolean;
 
 
   constructor(private Form: UntypedFormBuilder,
@@ -59,13 +61,15 @@ export class ReceiptConfigurationComponent implements OnInit {
     });
     this.propertyForm = this.Form.group({
       displayAuthcode: [''],
-      authcodeName: ['']
+      authcodeName: [''],
+      displayChangeDue: ['']
     })
   }
 
   async ngOnInit() {
     this.textCaptions = this.localization.captions.utilities;
     this.DisplayAuthCode=false;
+    this.displayChangeDue= false;
     this.ServiceCharge = [
       { id: 1, value: this.textCaptions.Details },
       { id: 2, value: this.textCaptions.SummarySplit },
@@ -320,6 +324,16 @@ export class ReceiptConfigurationComponent implements OnInit {
     }
     this.isSaveDisabled=false;
   }
+  toggleChangeDueAction(event) {
+    if (event == false) {
+      this.DisplayChangeDue=false;
+      
+    }
+    else {
+      this.DisplayChangeDue=true;
+      
+    }
+  }
 async getPropertyReceiptConfig()
 {
   this.PropertyReceiptInfo = await this.data.getPropertyReceiptConfig(); 
@@ -330,6 +344,8 @@ async getPropertyReceiptConfig()
 
      let displayAuthCode = this.PropertyReceiptInfo.configValue.displayAuthCode != false ?  
      this.PropertyReceiptInfo.configValue.displayAuthCode : this.PropertyReceiptInfo.defaultValue.displayAuthCode;
+     let displayChangeDue= this.PropertyReceiptInfo.configValue.displayChangeDue != false ?  
+     this.PropertyReceiptInfo.configValue.displayChangeDue : this.PropertyReceiptInfo.defaultValue.displayChangeDue;
      if(displayAuthCode == true)
     {
       this.DisplayAuthCode=true;
@@ -342,6 +358,14 @@ async getPropertyReceiptConfig()
       this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
       this.propertyForm.controls["authcodeName"].setValue(authCode);
       this.propertyForm.markAsPristine();
+    }
+    if (displayChangeDue == true)
+    {
+      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
+    }
+    else
+    {
+      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
     }
   }
 }
@@ -379,7 +403,8 @@ async getPropertyReceiptConfig()
   {
     let configValue : PropertyConfigurationModel = {
       displayAuthCode: data.displayAuthcode,
-      AuthCodeReceiptName: data.authcodeName
+      AuthCodeReceiptName: data.authcodeName,
+      displayChangeDue: data.displayChangeDue
     }
     return configValue;
   }
@@ -387,7 +412,8 @@ async getPropertyReceiptConfig()
   {
     let defaultValue : PropertyConfigurationModel = {
       displayAuthCode: false,
-      AuthCodeReceiptName: "Auth Code"
+      AuthCodeReceiptName: "Auth Code",
+      displayChangeDue: false
     }
     return defaultValue;
   }

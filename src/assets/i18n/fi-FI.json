@@ -3284,6 +3284,7 @@
     "lbl_outletLevel": "Outlet Level_fi",
     "lbl_proprtyLevel": "Property Level_fi",
     "lbl_authCodeonReceipts": "Display Auth Code on Receipts_fi",
+    "lbl_changeDue": "Display Change Due on Receipts_fi",
     "lbl_authCodeonReceiptName": "Auth Code Receipt Name_fi",
     "checked": "Yes_fi",
     "unchecked": "No_fi",
