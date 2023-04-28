@@ -346,6 +346,14 @@ async getPropertyReceiptConfig()
      this.PropertyReceiptInfo.configValue.displayAuthCode : this.PropertyReceiptInfo.defaultValue.displayAuthCode;
      let displayChangeDue= this.PropertyReceiptInfo.configValue.displayChangeDue != false ?  
      this.PropertyReceiptInfo.configValue.displayChangeDue : this.PropertyReceiptInfo.defaultValue.displayChangeDue;
+     if (displayChangeDue == true)
+    {
+      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
+    }
+    else
+    {
+      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
+    }
      if(displayAuthCode == true)
     {
       this.DisplayAuthCode=true;
@@ -358,14 +366,6 @@ async getPropertyReceiptConfig()
       this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
       this.propertyForm.controls["authcodeName"].setValue(authCode);
       this.propertyForm.markAsPristine();
-    }
-    if (displayChangeDue == true)
-    {
-      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
-    }
-    else
-    {
-      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
     }
   }
 }
