@@ -3947,6 +3947,7 @@
   "lbl_select": "Select_uk",
   "lbl_id": "Id_uk",
   "lbl_name": "Name_uk",
+  "lbl_otherGatewayName": "Other Gateway Name_uk",
   "lbl_type": "Type_uk",
   "lbl_adaptor": "Adaptor_uk",
   "btn_register": "REGISTER_uk",

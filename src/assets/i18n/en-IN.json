@@ -3947,6 +3947,7 @@
   "lbl_select": "Select_in",
   "lbl_id": "Id_in",
   "lbl_name": "Name_in",
+  "lbl_otherGatewayName": "Other Gateway Name_in",
   "lbl_type": "Type_in",
   "lbl_adaptor": "Adaptor_in",
   "btn_register": "REGISTER_in",

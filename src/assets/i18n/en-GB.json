@@ -3947,6 +3947,7 @@
   "lbl_select": "Select_gb",
   "lbl_id": "Id_gb",
   "lbl_name": "Name_gb",
+  "lbl_otherGatewayName": "Other Gateway Name_gb",
   "lbl_type": "Type_gb",
   "lbl_adaptor": "Adaptor_gb",
   "btn_register": "REGISTER_gb",
