@@ -3950,6 +3950,7 @@
   "lbl_select": "Select",
   "lbl_id": "Id",
   "lbl_name": "Name",
+  "lbl_otherGatewayName":"Other Gateway Name",
   "lbl_type": "Type",
   "lbl_adaptor": "Adaptor",
   "btn_register": "REGISTER",

@@ -3948,6 +3948,7 @@
   "lbl_select": "Select_fr",
   "lbl_id": "Id_fr",
   "lbl_name": "Name_fr",
+  "lbl_otherGatewayName": "Other Gateway Name_fr",
   "lbl_type": "Type_fr",
   "lbl_adaptor": "Adaptor_fr",
   "btn_register": "REGISTER_fr",

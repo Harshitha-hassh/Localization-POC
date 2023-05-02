@@ -3948,6 +3948,7 @@
   "lbl_select": "Select_fi",
   "lbl_id": "Id_fi",
   "lbl_name": "Name_fi",
+  "lbl_otherGatewayName": "Other Gateway Name_fi",
   "lbl_type": "Type_fi",
   "lbl_adaptor": "Adaptor_fi",
   "btn_register": "REGISTER_fi",
