@@ -28,7 +28,11 @@ export class LoaderInterceptor implements HttpInterceptor {
     if (payAgentURI && payAgentURI.length > 0) {
       payURL = payAgentURI[0]?.configValue;
     }
-    return (payURL != "" && reqUrl.includes(payURL.toLowerCase()) || (v1GiftcardRGuestPayURL && reqUrl.includes(v1GiftcardRGuestPayURL.toLowerCase()) && !isRguestPayPooling))
+    const rGuestPayURLs = [
+      v1GiftcardRGuestPayURL + "/device",
+      v1GiftcardRGuestPayURL + "/ondemand/cardcapture/device"
+    ]
+    return (payURL != "" && reqUrl.includes(payURL.toLowerCase()) || (v1GiftcardRGuestPayURL && rGuestPayURLs.some(r => reqUrl.includes(r.toLowerCase())) && !isRguestPayPooling))
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
