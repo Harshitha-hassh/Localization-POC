@@ -19,5 +19,5 @@
     "documentation": "/Help",
     "commonGateway": "/commongateway",
     "RetailGateway": "/VisualOne/retailgateway",
-    "JasperServerURL":"https://v1-jrs-dev.hospitalityrevolution.com/jasperserver-pro"
+    "JasperServerURL":"/jasperserver-pro"
 }
