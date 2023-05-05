@@ -608,6 +608,8 @@
   "GetClientByPatronId": "Clients/getClientByPatronId/{patronId}",
   "GetPatronInformation": "Payment/GetPlayerInformation",
   "RedeemVoucher": "Payment/RedeemVoucher/{patronId}",
+  "GetAccountInformation": "Payment/GetAccountInformation",
+  "RedeemPoints": "Payment/RedeemPoints",
   "GetTopicsByType": "Notifications/GetTopicsByNotificationType/{NotificationTypeId}",
   "GetTemplateDetailsByTopicId": "Notifications/GetTemplateDetailsByTopicId/{TopicId}",
   "CreateorUpdateTemplate": "Notifications/CreateorUpdateTemplate",
