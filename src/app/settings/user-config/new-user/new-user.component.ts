@@ -10,6 +10,9 @@ import { BaseResponse } from 'src/app/common/shared/shared.modal';
 import { Utilities } from 'src/app/core/utilities';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
+import { RetailRoutes } from 'src/app/core/extensions/retail-route';
+import { LoginCommunicationService } from 'src/app/login/login-communication.service';
+import { CryptoUtility } from 'src/app/core/utilities/crypto.utility';
 
 @Component({
   selector: 'app-new-user',
@@ -31,11 +34,12 @@ export class NewUserComponent implements OnInit {
   subPropertyAccess: any = [];
   saveDisabled = false;
   isADB2CConfigEnabled:boolean=false;
-
+  key: string;
+  iv: string;
   constructor(public localization: RetailStandaloneLocalization, public _servicesetting: SettingsService, @Inject(MAT_DIALOG_DATA) public data,
               private dialogRef: MatDialogRef<NewUserComponent>, private http: HttpServiceCall,
               private utils: Utilities, private PropertyInfo: PropertyInformation,
-              private _userOutletAccessDataService: UserOutletAccessDataService) {
+              private _userOutletAccessDataService: UserOutletAccessDataService,  private loginService: LoginCommunicationService, private crypto: CryptoUtility,) {
 
   }
 
@@ -73,6 +77,7 @@ export class NewUserComponent implements OnInit {
 
     this._servicesetting.selectedOutlets = this._servicesetting.selectedOutlets.map(x => x.id);
     this.GetAllUserbyTenantId();
+    this.setEncryptKey();
   }
   async GetAllUserbyTenantId() {
     const apiResponse: BaseResponse<any[]> = await this.InvokeServiceCallAsync('GetAllUsers', Host.authentication, HttpMethod.Get, { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
@@ -136,7 +141,23 @@ export class NewUserComponent implements OnInit {
       }
     }
   }
-
+  setEncryptKey() {
+    let serviceParamsForKey = {
+      route: RetailRoutes.GetEncryptKey,
+      uriParams: '',
+      header: '',
+      body: '',
+      showError: false,
+      baseResponse: true
+    };
+    
+    this.loginService.makeGetCall<any>(serviceParamsForKey, false).then(encryptKey => {
+      if (encryptKey && encryptKey.result) {
+        this.key = encryptKey.result.key;
+        this.iv = encryptKey.result.iv;
+      }
+    })
+  }
 
   save() {
     const serviceRetailControls = this._servicesetting.retailSettingsFormGrp.controls;
@@ -203,14 +224,18 @@ export class NewUserComponent implements OnInit {
     //   //lastaccessdate: "0001-01-01T00:00:00",
     //   userSubPropertyAccess: []
     // })
-
+    let userPassword:string=serviceUserControls.nPassword.value;
+    if(this.key && this.iv && userPassword.length > 0) 
+    {
+      userPassword = this.crypto.EncryptString(userPassword, this.key, this.iv);
+    }
 
     const userObj = {
       tenantId: Number(this.utils.GetPropertyInfo('TenantId')),
       userName: serviceUserControls.userid.value.toUpperCase(),
       firstName: this.utils.capitalizeFirstLetter(serviceUserControls.fname.value),
       lastName: this.utils.capitalizeFirstLetter(serviceUserControls.lname.value),
-      password: null,
+      password:  this.data && this.data.mode && this.data.mode == 'Edit' && userPassword.length > 0 ? null : userPassword,
       isActive: serviceUserControls.activeuser.value ? serviceUserControls.activeuser.value : false,
       isNewUser: serviceUserControls.newpassword.value ? serviceUserControls.newpassword.value : false,
       passwordexpiredate: serviceUserControls.pwdexpirationdate.value ? this.utils.convertDateFormat(serviceUserControls.pwdexpirationdate.value) : null,
@@ -238,6 +263,13 @@ export class NewUserComponent implements OnInit {
 }
 
   Edit() {
+    let userPassword:string="";
+    if(this.key && this.iv && this._servicesetting.userSettingsFormGrp.controls.newpassword.value) 
+    {
+      userPassword =this._servicesetting.userSettingsFormGrp.controls.nPassword.value;
+      userPassword = this.crypto.EncryptString(userPassword, this.key, this.iv);
+    }
+
     const editedInfo = _.cloneDeep(this._servicesetting.editUserInfo.clientInfo);
     const retailConf = _.cloneDeep(this._servicesetting.editUserInfo.retainInfo);
     editedInfo.userName = this._servicesetting.userSettingsFormGrp.controls.userid.value.toUpperCase();
@@ -250,8 +282,9 @@ export class NewUserComponent implements OnInit {
     editedInfo.languageId = this._servicesetting.userSettingsFormGrp.controls.language.value ? this._servicesetting.userSettingsFormGrp.controls.language.value : Number(0);
     editedInfo.email = this._servicesetting.userSettingsFormGrp.controls.email.value ? this._servicesetting.userSettingsFormGrp.controls.email.value : '';
     editedInfo.loggedUser = this.utils.GetPropertyInfo('userName');
+    editedInfo.password = userPassword.length > 0 ? userPassword : null
     // editedInfo.roleId = this._servicesetting.spaSettingsFormGrp.controls.rolename.value ? Number(this._servicesetting.spaSettingsFormGrp.controls.rolename.value) : Number(0);
-
+    
     const retailProdId = this._servicesetting.products.filter(x => x.productName.replace(/ /g, '').toUpperCase() == 'RETAIL')[0].id;
     // const spaProdId = this._servicesetting.products.filter(x => x.productName.replace(/ /g, '').toUpperCase() == 'SPA')[0].id;
     const retailRowIndex = editedInfo.userPropertyAccesses.findIndex(x => x.productId == retailProdId);

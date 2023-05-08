@@ -2884,7 +2884,12 @@
       "DeSelectAll": "DeSelect All"
     },
     "defaultRoomCharge": "Default Room Charge",
-    "defaultGroupCharge": "Default Group Charge"
+    "defaultGroupCharge": "Default Group Charge",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "err_confirmPassword": "Confirm Password should be same as new Password",
+    "MissingNewPassword": "Missing New Password",
+    "MissingConfirmPassword": "Missing Confirm Password"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description",

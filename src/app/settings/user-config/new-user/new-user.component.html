@@ -20,7 +20,7 @@
       </div>
       <mat-dialog-actions class="actions pl-4">
         <button mat-raised-button class="actionButton"
-          [ngClass]="!saveDisabled && (!IsReadOnly && (data.mode == 'New' && _servicesetting.userSettingsFormGrp.valid) || (data.mode == 'Edit' && (_servicesetting.userSettingsFormGrp.dirty || _servicesetting.retailSettingsFormGrp.dirty || _servicesetting.isRadioButtonsChange))) ? 'spa-primary-default' : 'spa-primary-disabled'"
+          [ngClass]="!saveDisabled && (!IsReadOnly && (data.mode == 'New' && _servicesetting.userSettingsFormGrp.valid) || ((data.mode == 'Edit' && _servicesetting.userSettingsFormGrp.valid ) && (_servicesetting.userSettingsFormGrp.dirty || _servicesetting.retailSettingsFormGrp.dirty || _servicesetting.isRadioButtonsChange))) ? 'spa-primary-default' : 'spa-primary-disabled'"
           (click)="SaveOrUpdate()">{{ActionButton}}</button>
         <button mat-raised-button (click)="cancel()">{{caption.setting.cancel}}</button>
       </mat-dialog-actions>

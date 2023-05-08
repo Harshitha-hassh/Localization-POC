@@ -2884,7 +2884,12 @@
       "DeSelectAll": "DeSelect All_uk"
     },
     "defaultRoomCharge": "Default Room Charge_uk",
-    "defaultGroupCharge": "Default Group Charge_uk"
+    "defaultGroupCharge": "Default Group Charge_uk",
+    "newPassword": "New Password_uk",
+    "confirmPassword": "Confirm Password_uk",
+    "err_confirmPassword": "Confirm Password should be same as new Password_uk",
+    "MissingNewPassword": "Missing New Password_uk",
+    "MissingConfirmPassword": "Missing Confirm Password_uk"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_uk",

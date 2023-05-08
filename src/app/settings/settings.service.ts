@@ -44,7 +44,9 @@ export class SettingsService {
     email: '',
     language: 0,
     newpassword: true,
-    pwdexpirationdate: this.utils.getDate(this.PropertyInfo.CurrentDate)
+    pwdexpirationdate: this.utils.getDate(this.PropertyInfo.CurrentDate),
+    nPassword: ['', Validators.required],
+    cPassword: ['', Validators.required]
   });
 
   // spaSettingsFormGrp = this.Form.group({

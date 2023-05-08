@@ -201,7 +201,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.removeVal();
       }
     });
-
+    this.setEncryptKey();
     let tenantId = localStorage.getItem('TenantId');
     let adb2cEnabled = localStorage.getItem('ADB2CAuthenticationEnabled');
     if (adb2cEnabled != null && adb2cEnabled.toLowerCase() == "true") {

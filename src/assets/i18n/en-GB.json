@@ -2884,7 +2884,12 @@
       "DeSelectAll": "DeSelect All_gb"
     },
     "defaultRoomCharge": "Default Room Charge_gb",
-    "defaultGroupCharge": "Default Group Charge_gb"
+    "defaultGroupCharge": "Default Group Charge_gb",
+    "newPassword": "New Password_gb",
+    "confirmPassword": "Confirm Password_gb",
+    "err_confirmPassword": "Confirm Password should be same as new Password_gb",
+    "MissingNewPassword": "Missing New Password_gb",
+    "MissingConfirmPassword": "Missing Confirm Password_gb"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_gb",

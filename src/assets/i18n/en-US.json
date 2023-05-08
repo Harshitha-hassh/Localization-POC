@@ -2886,7 +2886,12 @@
       "DeSelectAll": "DeSelect All"
     },
     "defaultRoomCharge": "Default Room Charge",
-    "defaultGroupCharge": "Default Group Charge"
+    "defaultGroupCharge": "Default Group Charge",
+    "newPassword":"New Password",
+    "confirmPassword": "Confirm Password",
+    "err_confirmPassword":"Confirm Password should be same as new Password",
+    "MissingNewPassword":"Missing New Password",
+    "MissingConfirmPassword":"Missing Confirm Password"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description",
@@ -4085,7 +4090,7 @@
   "lbl_message": "Message",
   "btn_send": "SEND",
   "lbl_email": "Email",
-  "lbl_enableDatamagine": "Enable Agilysys DataMagine",  
+  "lbl_enableDatamagine": "Enable Agilysys DataMagine",
   "lbl_server_url": "Server URL",
   "lbl_userName": "Username",
   "lbl_password": "Password",
@@ -4099,7 +4104,7 @@
   "lbl_enable_dm_link": "Enable DataMagine Link",
   "lbl_id_Scanner": "ID SCANNER",
   "lbl_enable_ID_Scanner": "Enable ID Scanner",
-  "lbl_scanner_url": "Scanner Endpoint",  
+  "lbl_scanner_url": "Scanner Endpoint",
   "lbl_signature_capture_check": "Capture signature during Check In",
   "lbl_showDuringCheckIn": "Show during Check In",
   "lbl_authenticationURL": "Authentication URL",
@@ -4108,7 +4113,7 @@
   "lbl_check_connection": "CHECK CONNECTION",
   "noConsentPolicySelected": "No Consent Policy Selected",
   "lbl_success_connection": "Connection established successfully",
-  "lbl_failure_connection": "Connection failed",  
+  "lbl_failure_connection": "Connection failed",
   "err_sigCapEndpoint": "Unable to reach the device for Signature. Signature will not be displayed in the receipt.",
   "initiate_SignatureCapture":"Initiating Signature Capture",
   "success_SignatureCapture":"Successfully Captured Signature",
