@@ -9,7 +9,8 @@
     "payment": "/VisualOne/retailgateway/",
     "common": "/VisualOne/retailgateway/Retail/Services/Notification",
     "documentation": "/Help/",
-    "commonGateway": "/commongateway/"
+    "commonGateway": "/commongateway/",
+    "signalrService": "/commongateway/NotificationService/SignalRService"
   },
   "Login": "Property/GetLoginDetails",
   "LogOut": "Property/LogOutByUserId/{Username}/{TenantId}/{PropertyId}",

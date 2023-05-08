@@ -16,6 +16,7 @@ import { NotificationFailureType } from '../shared/components/menu/menu.model';
 import { RetailPropertyInformation } from '../retail/common/services/retail-property-information.service';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
+import { SignalrService } from 'src/app/common/communication/signalR/signalr.service';
 
 @Injectable({
     providedIn: 'root'
@@ -67,7 +68,8 @@ export class ManageSessionService implements OnDestroy {
                 private localize: RetailLocalization,
                 private propertyInformation: RetailPropertyInformation
               , private oauthService: OAuthService
-              , private adb2cAuthConfiguration: ADB2CAuthConfiguration) {
+              , private adb2cAuthConfiguration: ADB2CAuthConfiguration,
+                private signalR: SignalrService) {
 
         this.timeoutExpired.subscribe(n => {
         });
@@ -92,6 +94,7 @@ export class ManageSessionService implements OnDestroy {
     }
 
     async logout() {
+        this.closeSignalRConnection();
         clearTimeout(this.triggerTimeout);
         this.triggerTimeout = null;
         this.stopTimerForNotification();
@@ -109,6 +112,10 @@ export class ManageSessionService implements OnDestroy {
             this.oauthService.logOut(); //ADB2C logout 
         }
     }
+    async closeSignalRConnection(){
+        this.signalR.stopConnection();
+      }  
+    
 
     public GetPropertyInfo(name: string) {
         return this.utils.GetPropertyInfo(name);

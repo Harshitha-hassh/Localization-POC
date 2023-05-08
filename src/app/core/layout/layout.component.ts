@@ -11,6 +11,15 @@ import { Router } from '@angular/router';
 import { ChangePropertySevice } from 'src/app/common/services/change-property.service';
 import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { CommonUtilities, Product, SignalRMessages } from 'src/app/common/shared/shared/utilities/common-utilities';
+import { SignalrService } from 'src/app/common/communication/signalR/signalr.service';
+import { NotificationModel, SignalRMessage, SignalRNotificationType, SystemDateChangeMessage } from 'src/app/common/communication/signalR/signalR.model';
+import { AlertType, SnackBarType } from 'src/app/common/shared/shared/enums/enums';
+import { PropertySettingDataService } from 'src/app/common/dataservices/authentication/propertysetting.data.service';
+import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
+import { MatSnackBar} from '@angular/material/snack-bar';
+import { ButtonType } from 'src/app/shared/shared-models';
 
 @Component({
   selector: 'app-layout',
@@ -31,6 +40,12 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private propertyInfo: PropertyInformation,
     private propertyService: PropertyService,
     private router: Router,
+    private signalR: SignalrService,
+    private PropertySettingService: PropertySettingDataService,
+    private retailFeatureInformationService: RetailFeatureFlagInformationService,
+    public dialog: MatDialog,
+    private utils: CommonUtilities,
+    private snackBar: MatSnackBar,
     private changePropertySevice: ChangePropertySevice) {
     this.routeDataService.loadSettings().then(result => {
       if (result) {
@@ -46,6 +61,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
   ngOnInit() {
       this.applyTheme('blacktheme');
       this.propertyName = this.localization.GetPropertyInfo('PropertyName');
+      let propConfig = JSON.parse(sessionStorage.getItem("propConfig")); 
+      let enableSignalR = propConfig?.EnableSignalR;
       this.propertyService.changeTitle();
       this.loadGoogleMap();
       this.triggerNotification();
@@ -56,6 +73,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
           this.propertyName = propertyName;
         }
       });
+      if(enableSignalR && enableSignalR.toLowerCase() == "true")
+    {
+      this.StartSignalrConnection();
+    }
   }
 
   ngOnDestroy() {
@@ -64,6 +85,73 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.destroyed$.complete();
     }
   }
+
+  private StartSignalrConnection() {
+    this.signalR.startConnection();
+    this.signalR.startedConnection.then(res => {
+      this.addPropertyListener();
+    });
+  }
+
+  private addPropertyListener() {
+    this.signalR.addPropertyListener(this, this.signalRPropertyListener)
+      .catch((err) => console.log('Failure error ' + err));
+
+    this.signalR.hubConnection.onreconnected((reconnect)=>{
+      const list=this.signalR.GetSignalREvents();
+      list.forEach(e=>{this.signalR.subscribeToEvent(e);});
+      });
+  }
+  
+  async signalRPropertyListener(message: SignalRMessage<NotificationModel>): Promise<void> {
+    if(message && message.content && message.content.notificationType==SignalRNotificationType.ToasterNotification)
+    {
+      const content =JSON.parse(message.content.notificationObjectString);
+      if (message.name == SignalRMessages.ChangeSystemDate) {
+        await this.UpdatePropertyDateCache(content);
+      }
+      else
+      {
+        this.utils.showToastMessage(content.message, SnackBarType.Success);
+      }
+    }
+  }
+
+  async UpdatePropertyDateCache(message: SystemDateChangeMessage): Promise<void> {
+    
+    let newSystemDate = await this.GetPropertyDate();
+    let localizedDate = this.localization.localizeDisplayDate(newSystemDate);
+    let productId = Number(this.utils.GetPropertyInfo("ProductId"));
+    if (newSystemDate != undefined && newSystemDate != null) {
+      if(productId == Product.SPA || productId == Product.Golf || productId == Product.RETAIL )
+      {
+        this.utils.showToastMessage(message.message , SnackBarType.Success, 15000);
+      }
+      else{
+        this.utils.showAlert(message.message + ' to ' + localizedDate, AlertType.Success, ButtonType.Ok, (res) => {
+          if (res) {
+            this.logoutHandler(true);
+          }
+        });
+      }     
+    }  
+}
+
+async GetPropertyDate() {
+  const propertityConfig = await this.PropertySettingService.getAllPropertySetting(Number(this.getPropertyId()));
+  return this.localization.getDate(propertityConfig.propertyDate);
+}
+private getPropertyId() {
+  return this.localization.GetsessionStorageValue('propertyInfo', 'PropertyId');
+}
+
+logoutHandler(arg) {
+  this.logOutClicked = true;
+  this.retailFeatureInformationService.reset();
+  this.sessionService.logout();
+  const bodyTag = document.getElementsByTagName('body')[0];
+  bodyTag.removeAttribute("id");
+}
 
   triggerNotification(){
     if (!this.propertyInfo.UseRetailInterface) {
