@@ -69,9 +69,11 @@
                                 <div class="arrow-icon cursor">
                                     <i class="material-icons">expand_more</i>
                                     <popover-content #logOutPopOver placement="bottom" class="user-popover"
-                                        [animation]="true" [closeOnClickOutside]="true" id="logOutPopOverID"
-                                        (click)="logOutPopOver.hide();logout();">
-                                        <div class="custom-popover-profile">
+                                        [animation]="true" [closeOnClickOutside]="true" id="logOutPopOverID">
+                                        <div class="custom-popover-profile" *ngIf="isChangePropertyEnabled" (click)="changeProperty($event)">
+                                            <a class="logout-style">{{captions.common.lbl_changeProperty}}</a>
+                                        </div>
+                                        <div class="custom-popover-profile" (click)="logOutPopOver.hide();logout();">
                                             <a class="logout-style">{{captions.lbl_logout}}</a>
                                         </div>
                                     </popover-content>

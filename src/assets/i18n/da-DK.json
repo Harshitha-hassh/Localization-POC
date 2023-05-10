@@ -86,7 +86,10 @@
     "Login": "Login_da",
     "QUICKLOGIN": "QUICK LOGIN_da"
   },
+  "app_title": "Agilysys Retail_da",
   "common": {
+    "NightAuditMessage": "The night audit has been processed_da",
+    "lbl_changeProperty": "Change Property_da",
     "IntegrationError": " An integration error has occurred, please try again._da",
     "NoPrinterFound": "No Printer Found_da",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_da",
@@ -1577,6 +1580,7 @@
     "3075": "3075 - Issue Visual One GiftCard_da",
     "3080": "3080 - Issue External GiftCard_da",
     "3085": "3085 - Settle to Group Charge_da",
+    "3090": "3090 - Restrict AR Payments_da",
     "5000": "5000 - Reopen Transaction_da",
     "5005": "5005 - Void Transaction_da",
     "5007": "5007 - Correct Transaction_da",
@@ -2881,7 +2885,12 @@
       "DeSelectAll": "DeSelect All_da"
     },
     "defaultRoomCharge": "Default Room Charge_da",
-    "defaultGroupCharge": "Default Group Charge_da"
+    "defaultGroupCharge": "Default Group Charge_da",
+    "newPassword": "New Password_da",
+    "confirmPassword": "Confirm Password_da",
+    "err_confirmPassword": "Confirm Password should be same as new Password_da",
+    "MissingNewPassword": "Missing New Password_da",
+    "MissingConfirmPassword": "Missing Confirm Password_da"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_da",
@@ -3282,6 +3291,7 @@
     "lbl_outletLevel": "Outlet Level_da",
     "lbl_proprtyLevel": "Property Level_da",
     "lbl_authCodeonReceipts": "Display Auth Code on Receipts_da",
+    "lbl_changeDue": "Display Change Due on Receipts_da",
     "lbl_authCodeonReceiptName": "Auth Code Receipt Name_da",
     "checked": "Yes_da",
     "unchecked": "No_da",
@@ -3944,6 +3954,7 @@
   "lbl_select": "Select_da",
   "lbl_id": "Id_da",
   "lbl_name": "Name_da",
+  "lbl_otherGatewayName": "Other Gateway Name_da",
   "lbl_type": "Type_da",
   "lbl_adaptor": "Adaptor_da",
   "btn_register": "REGISTER_da",
@@ -4030,6 +4041,14 @@
   "lbl_currentDate": "Current System Date_da",
   "lbl_systemDate": "New System Date_da",
   "lbl_enableAutoDateRoll": "Enable Auto Date Roll_da",
+  "pg_title_selectProperty": "SELECT PROPERTY_da",
+  "btn_proceed": "PROCEED_da",
+  "pg_title_property": "Property_da",
+  "lbl_changeProperty": "Change Property_da",
+  "lbl_anotherProperty": "Another Property_da",
+  "lbl_noPropertyAvailable": "No Properties Available_da",
+  "lbl_search_propertyName": "Search by Property Name_da",
+  "lbl_property": "Property_da",
   "btn_schedule": "SCHEDULE_da",
   "lbl_setAutoDateRollTime": "Set Auto Date Roll Time_da",
   "hdr_ScheduleEmail": "SCHEDULE EMAIL_da",

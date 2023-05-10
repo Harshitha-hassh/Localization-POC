@@ -90,6 +90,11 @@
     }
     .tab-height{
         height: calc(100% - 64px);
+        .authcodeName{
+            .mat-form-field-wrapper{
+                padding-bottom: 0px !important;
+            }
+        }
     }
     .bottomSection{
         height:64px;

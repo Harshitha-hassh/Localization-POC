@@ -21,6 +21,8 @@ export class SettingsComponent implements OnInit {
       let configsToRemove = ['/settings/enhancedInventory'];
       this.menu = this.menu.filter(r => !configsToRemove.includes(r.routePath));
     } else {
+      let configsToRemove = ['/settings/inventorysetup'];
+      this.menu = this.menu.filter(r => !configsToRemove.includes(r.routePath));
       this.propertyInfo.setICRoutes(this.menu);
     }
 

@@ -86,7 +86,10 @@
     "Login": "Login_uk",
     "QUICKLOGIN": "QUICK LOGIN_uk"
   },
+  "app_title": "Agilysys Retail_uk",
   "common": {
+    "NightAuditMessage": "The night audit has been processed_uk",
+    "lbl_changeProperty": "Change Property_uk",
     "IntegrationError": " An integration error has occurred, please try again._uk",
     "NoPrinterFound": "No Printer Found_uk",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_uk",
@@ -1577,6 +1580,7 @@
     "3075": "3075 - Issue Visual One GiftCard_uk",
     "3080": "3080 - Issue External GiftCard_uk",
     "3085": "3085 - Settle to Group Charge_uk",
+    "3090": "3090 - Restrict AR Payments_uk",
     "5000": "5000 - Reopen Transaction_uk",
     "5005": "5005 - Void Transaction_uk",
     "5007": "5007 - Correct Transaction_uk",
@@ -2881,7 +2885,12 @@
       "DeSelectAll": "DeSelect All_uk"
     },
     "defaultRoomCharge": "Default Room Charge_uk",
-    "defaultGroupCharge": "Default Group Charge_uk"
+    "defaultGroupCharge": "Default Group Charge_uk",
+    "newPassword": "New Password_uk",
+    "confirmPassword": "Confirm Password_uk",
+    "err_confirmPassword": "Confirm Password should be same as new Password_uk",
+    "MissingNewPassword": "Missing New Password_uk",
+    "MissingConfirmPassword": "Missing Confirm Password_uk"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_uk",
@@ -3282,6 +3291,7 @@
     "lbl_outletLevel": "Outlet Level_uk",
     "lbl_proprtyLevel": "Property Level_uk",
     "lbl_authCodeonReceipts": "Display Auth Code on Receipts_uk",
+    "lbl_changeDue": "Display Change Due on Receipts_uk",
     "lbl_authCodeonReceiptName": "Auth Code Receipt Name_uk",
     "checked": "Yes_uk",
     "unchecked": "No_uk",
@@ -3944,6 +3954,7 @@
   "lbl_select": "Select_uk",
   "lbl_id": "Id_uk",
   "lbl_name": "Name_uk",
+  "lbl_otherGatewayName": "Other Gateway Name_uk",
   "lbl_type": "Type_uk",
   "lbl_adaptor": "Adaptor_uk",
   "btn_register": "REGISTER_uk",
@@ -4030,6 +4041,14 @@
   "lbl_currentDate": "Current System Date_uk",
   "lbl_systemDate": "New System Date_uk",
   "lbl_enableAutoDateRoll": "Enable Auto Date Roll_uk",
+  "pg_title_selectProperty": "SELECT PROPERTY_uk",
+  "btn_proceed": "PROCEED_uk",
+  "pg_title_property": "Property_uk",
+  "lbl_changeProperty": "Change Property_uk",
+  "lbl_anotherProperty": "Another Property_uk",
+  "lbl_noPropertyAvailable": "No Properties Available_uk",
+  "lbl_search_propertyName": "Search by Property Name_uk",
+  "lbl_property": "Property_uk",
   "btn_schedule": "SCHEDULE_uk",
   "lbl_setAutoDateRollTime": "Set Auto Date Roll Time_uk",
   "hdr_ScheduleEmail": "SCHEDULE EMAIL_uk",

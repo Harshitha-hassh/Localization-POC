@@ -86,7 +86,10 @@
     "Login": "Login",
     "QUICKLOGIN": "QUICK LOGIN"
   },
+  "app_title": "Agilysys Retail",
   "common": {
+    "NightAuditMessage": "The night audit has been processed",
+    "lbl_changeProperty": "Change Property",
     "IntegrationError": " An integration error has occurred, please try again.",
     "NoPrinterFound": "No Printer Found",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration",
@@ -1577,6 +1580,7 @@
     "3075": "3075 - Issue Visual One GiftCard",
     "3080": "3080 - Issue External GiftCard",
     "3085": "3085 - Settle to Group Charge",
+    "3090": "3090 - Restrict AR Payments",
     "5000": "5000 - Reopen Transaction",
     "5005": "5005 - Void Transaction",
     "5007": "5007 - Correct Transaction",
@@ -2881,7 +2885,12 @@
       "DeSelectAll": "DeSelect All"
     },
     "defaultRoomCharge": "Default Room Charge",
-    "defaultGroupCharge": "Default Group Charge"
+    "defaultGroupCharge": "Default Group Charge",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "err_confirmPassword": "Confirm Password should be same as new Password",
+    "MissingNewPassword": "Missing New Password",
+    "MissingConfirmPassword": "Missing Confirm Password"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description",
@@ -3282,6 +3291,7 @@
     "lbl_outletLevel": "Outlet Level",
     "lbl_proprtyLevel": "Property Level",
     "lbl_authCodeonReceipts": "Display Auth Code on Receipts",
+    "lbl_changeDue": "Display Change Due on Receipts",
     "lbl_authCodeonReceiptName": "Auth Code Receipt Name",
     "checked": "Yes",
     "unchecked": "No",
@@ -3944,6 +3954,7 @@
   "lbl_select": "Select",
   "lbl_id": "Id",
   "lbl_name": "Name",
+  "lbl_otherGatewayName": "Other Gateway Name",
   "lbl_type": "Type",
   "lbl_adaptor": "Adaptor",
   "btn_register": "REGISTER",
@@ -4030,6 +4041,14 @@
   "lbl_currentDate": "Current System Date",
   "lbl_systemDate": "New System Date",
   "lbl_enableAutoDateRoll": "Enable Auto Date Roll",
+  "pg_title_selectProperty": "SELECT PROPERTY",
+  "btn_proceed": "PROCEED",
+  "pg_title_property": "Property",
+  "lbl_changeProperty": "Change Property",
+  "lbl_anotherProperty": "Another Property",
+  "lbl_noPropertyAvailable": "No Properties Available",
+  "lbl_search_propertyName": "Search by Property Name",
+  "lbl_property": "Property",
   "btn_schedule": "SCHEDULE",
   "lbl_setAutoDateRollTime": "Set Auto Date Roll Time",
   "hdr_ScheduleEmail": "SCHEDULE EMAIL",

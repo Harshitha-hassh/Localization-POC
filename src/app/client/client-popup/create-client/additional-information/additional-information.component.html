@@ -104,8 +104,10 @@
                             </span>
                             <span class="span-label">{{captions.retentionManagement}}</span>
                         </div>
-                        <div (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="actionType != 'EDIT' || (additionalInfo && additionalInfo.client && additionalInfo.client.Id == '') ? 'ag_link--disabled opacity-spa' : ''">
-                            <span class="boxed-icon">
+                        <!-- <div (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="actionType != 'EDIT' || (additionalInfo && additionalInfo.client && additionalInfo.client.Id == '') ? 'ag_link--disabled opacity-spa' : ''"> -->
+                            
+                            <div (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="'ag_link--disabled opacity-spa'">
+                                <span class="boxed-icon">
                                 <i class="icon-export"></i>
                                 <!-- <i class="icon-dashboard-tick"></i> -->
                             </span>

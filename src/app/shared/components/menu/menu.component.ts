@@ -10,16 +10,21 @@ import { menuTypes } from '../../enums/menu.constant';
 import { MatDialog } from '@angular/material/dialog';
 import { AboutComponent } from '../about/about.component';
 import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-config/payment-features-config/property-feature-config.service';
-import { FeatureName, RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
-import { ConfigKeys, RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
+import {  RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
+import {  RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 import { RetailServiceRegistry } from 'src/app/retail/shared/service/base.service';
 import { SPAConfig } from 'src/app/retail/common/config/SPA-config';
 import { HttpServiceCall } from 'src/app/retail/shared/service/http-call.service';
 import { QuickLoginUtilities } from 'src/app/common/shared/shared/utilities/quick-login-utilities';
 import { AgMenuTypes, NotificationFailureType } from './menu.model';
-import { DefaultBucketName } from 'src/app/retail/shared/globalsContant';
 import {TooltipPosition} from '@angular/material/tooltip';
 import { UntypedFormControl } from '@angular/forms';
+import { PropertyService } from 'src/app/common/services/property.service';
+import { ChangePropertyComponent } from 'src/app/common/components/change-property/change-property.component';
+import { ChangePropertySevice } from 'src/app/common/services/change-property.service';
+import { UserdefaultsInformationService } from 'src/app/core/services/UserdefaultsInformationService';
+import { UserMachineConfigurationService } from 'src/app/retail/common/services/user-machine-configuration.service';
+import { AuthenticationService } from 'src/app/common/shared/services/authentication.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -65,13 +70,13 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   transactionCountSubscription: Subscription;
   notificationCount: number = 0;
   notificationInfo: {id: number , message: string }[] = [];
-
+  isChangePropertyEnabled: boolean;
   @Input('menu')
   set MenuValue(value) {
     this.menuList = value;
     this.levelMenu = value.menuType;
     // this.menuList.menu = this.sortPipe.transform(this.menuList.menu, 'order', 'aesc');
-    console.log("menulist", this.menuList);
+     console.log("menulist", this.menuList);
   }
 
   constructor(public router: Router
@@ -87,7 +92,11 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     , private _headerService: SPAConfig
     , private _http: HttpServiceCall
     ,public quickLoginUtils: QuickLoginUtilities
-
+    , private propertyService: PropertyService
+    , private changePropertySevice: ChangePropertySevice
+    , private userDefaultsService: UserdefaultsInformationService
+    , private userSessionConfig: UserMachineConfigurationService
+    , private authentication: AuthenticationService
     ) {
     // this.sortPipe = new SortOrderPipe();
   }
@@ -131,10 +140,12 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       this.notificationCount = this.notificationInfo.length;
     });
 
-    this.quickLoginUtils.resetQuickIdDetails();
+    this.quickLoginUtils.resetQuickIdDetails(); 
     if (!sessionStorage.getItem("QuickIdConfig")) {
       this._propertyFeatureService.SetQuickIdConfigSettingForRetail("QuickIdConfig"); 
     }
+    this.isChangePropertyEnabled = this.propertyService.isChangePropertyEnabled();
+
     if (this.firstName == "undefined" || this.lastName == "undefined" || this.firstName == undefined || this.lastName == undefined) {
       this.userText = this.userName ? this.userName.charAt(0).toUpperCase() : '';
     }
@@ -142,80 +153,74 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       this.userText = this.firstName.charAt(0).toUpperCase() + this.lastName.charAt(0).toUpperCase();
     }
     if (this.levelMenu === menuTypes.tertiary || this.levelMenu === AgMenuTypes.combo) {
+     
       this.selectedItem = this.menuList.menu.find(x => this.router.url.indexOf(x.routePath) > -1);
       this.router.events.pipe(takeUntil(this.destroyed$)).subscribe(x => {
         this.selectedItem = this.menuList.menu.find(menu => this.router.url.indexOf(menu.routePath) > -1);
         this.selectedItem = { ...this.selectedItem };
       });
     }
-    if (!sessionStorage.getItem("giftCardConfiguration")) {
+    this.RefreshConfig();
+    if(!sessionStorage.getItem("enableMachineTransaction")) {
+      this._propertyFeatureService.GetMiscConfig();
+    }
+    // On Property Change 
+    this.changePropertySevice.propertyChanged$.pipe(takeUntil(this.destroyed$)).subscribe(propertyChanged => {
+      if (propertyChanged) {
+        console.log(propertyChanged);
+        this.userRole = this._localization.GetUserInfo("roleName");
+        this._featureFlagService.reset();
+        this.RefreshConfig(propertyChanged);
+        this.userDefaultsService.syncDefaultValues(Number(this._localization.GetUserInfo("userId")));
+        this.userSessionConfig.getAllClientSetting().then(defaultsSetting => {
+          sessionStorage.setItem('defaultSettings', JSON.stringify(defaultsSetting));
+        });
+        if (!this._propertyInfo.UseRetailInterface) {
+          this.notificationCount = 0;
+          this.notificationInfo = [];
+          this._sessionService.startTimerForNotification(1);
+        }
+        this.quickLoginUtils.resetQuickIdDetails(); 
+        this._propertyFeatureService.SetQuickIdConfigSettingForRetail("QuickIdConfig"); 
+        this._propertyFeatureService.GetMiscConfig();
+        // ths.setAcesToken(); For getting Member token 
+      }
+    });
+
+  }
+
+  RefreshConfig(isFromPropertyChangeEvent : boolean = false){
+    if (!sessionStorage.getItem("giftCardConfiguration") || isFromPropertyChangeEvent) {
       this._propertyFeatureService.GetGiftCardConfiguration().then((config) => {
         this._propertyInfo.SetGiftCardConfiguration(config);
       });
     }
     this._featureFlagService.RefreshConfig();
-    this._featureFlagService.propFeature.pipe(takeUntil(this.destroyed$)).subscribe((propertyFeatures) => {
-      if (!sessionStorage.getItem('EIURI')) {
-        const eatecFeature  = propertyFeatures && propertyFeatures.find(x => x.featureName === FeatureName.EnhancedInventory);
-        if (eatecFeature != null && eatecFeature.isActive) {
-          sessionStorage.setItem('isEatecEnabled', 'true');
-          this._propertyFeatureService.getFeatureConfiguration(eatecFeature.id, eatecFeature.moduleId).then((featureconfigurations) => {
-            if (featureconfigurations != null && featureconfigurations.length > 0) {
-              this.isEatecEnabled = true;
-              const eatecUser = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecTenantUser);
-              const uri = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Eatec.EatecURI);
-              if (eatecUser && eatecUser.configurationValue && uri && uri.configurationValue) {
-                this._propertyInfo.SetEatecRI( uri.configurationValue);
-              }else{
-                this._propertyInfo.SetEatecRI('');
-              }
-            }else{
-              this._propertyInfo.SetEatecRI('');
-            }
-          });
-        } else {
-          this.isEatecEnabled = false;
-          sessionStorage.setItem('isEatecEnabled', 'false');
-          this._propertyInfo.SetEatecRI('');
-        }
-      }
-    });
-  
-    if (!sessionStorage.getItem("memberConfiguration")) {
-      var configValue = "";
-      let featureNames = ["ACES Membership"];
-      this._propertyFeatureService.GetFeatureConfigurations(featureNames).then((featureconfigurations) => {
-      if (featureconfigurations != null) {
-        let uri = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.LoyaltyURI);
-        let loyaltyServiceURI = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.LoyaltyServiceURI);
-        let loyaltyTokenRequestInfo = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.LoyaltyTokenRequestInfo);
-        let enforceMemberPayment = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.EnforceMemberPayment);
-        let displayCreditBookBalance = featureconfigurations.find(f => f.configurationKey == ConfigKeys.Member.DisplayCreditBookBalance);
-        const allowTenderAmountOverrideForMember = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.AllowTenderAmountOverrideForMember);
-        const memberBucketName = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.MemberBucketName);
-        const creditBookBucketName = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.CreditBookBucketName);
-        const requirePin = featureconfigurations.find(f => f.configurationKey === ConfigKeys.Member.RequirePin);
-        let loyalty = {
-          loyaltyURI: uri && uri.configurationValue ? uri.configurationValue : "",
-          loyaltyServiceURI: loyaltyServiceURI && loyaltyServiceURI.configurationValue ? loyaltyServiceURI.configurationValue : "",
-          loyaltyTokenRequestInfo: loyaltyTokenRequestInfo && loyaltyTokenRequestInfo.configurationValue ? loyaltyTokenRequestInfo.configurationValue : "",
-          enforceMemberPayment: (enforceMemberPayment && enforceMemberPayment.configurationValue) || "false",
-          displayCreditBookBalance : (displayCreditBookBalance && displayCreditBookBalance.configurationValue) || "false",
-          allowTenderAmountOverrideForMember: (allowTenderAmountOverrideForMember?.configurationValue) || "false",
-          memberBucketName: (memberBucketName?.configurationValue?.trim()) || DefaultBucketName.memberBucketName,
-          creditBookBucketName: (creditBookBucketName?.configurationValue?.trim()) || DefaultBucketName.creditBookBucketName,
-          requirePin: (requirePin?.configurationValue?.trim()) || "false",
-          showCurrentRoundsOnReprint : featureconfigurations.find(f => f.configurationKey ===
-            ConfigKeys.Member.ShowCurrentRoundsOnReprint)?.configurationValue || 'false'
-        }
-        this._propertyInfo.SetMemberConfiguration(loyalty)
-      }
-      else {
-        this._propertyInfo.SetMemberConfiguration("")
-      }
-    });
   }
-    this._propertyFeatureService.GetMiscConfig();
+
+  changeProperty(e) {
+    const dialogRef = this.dialog.open(ChangePropertyComponent, {
+      width: '30%',
+      height: '35%',
+      disableClose: true,
+      hasBackdrop: true,
+      data: {}
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      console.log(res);
+    });
+    this.logOutPopOver.hide();
+    e.stopPropagation();
+
+  }
+
+  async setAcesToken() {
+    try {
+      const token = await this.authentication.getEngageToken();
+      sessionStorage.setItem('acesJwt', token.result);
+    } catch (ex) {
+      console.log(ex);
+    }
   }
 
   compareSelect = (val1, val2) => {

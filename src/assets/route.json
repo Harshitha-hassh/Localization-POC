@@ -9,7 +9,8 @@
     "payment": "/VisualOne/retailgateway/",
     "common": "/VisualOne/retailgateway/Retail/Services/Notification",
     "documentation": "/Help/",
-    "commonGateway": "/commongateway/"
+    "commonGateway": "/commongateway/",
+    "signalrService": "/commongateway/NotificationService/SignalRService"
   },
   "Login": "Property/GetLoginDetails",
   "LogOut": "Property/LogOutByUserId/{Username}/{TenantId}/{PropertyId}",
@@ -608,6 +609,8 @@
   "GetClientByPatronId": "Clients/getClientByPatronId/{patronId}",
   "GetPatronInformation": "Payment/GetPlayerInformation",
   "RedeemVoucher": "Payment/RedeemVoucher/{patronId}",
+  "GetAccountInformation": "Payment/GetAccountInformation",
+  "RedeemPoints": "Payment/RedeemPoints",
   "GetTopicsByType": "Notifications/GetTopicsByNotificationType/{NotificationTypeId}",
   "GetTemplateDetailsByTopicId": "Notifications/GetTemplateDetailsByTopicId/{TopicId}",
   "CreateorUpdateTemplate": "Notifications/CreateorUpdateTemplate",

@@ -86,7 +86,10 @@
     "Login": "Login_fr",
     "QUICKLOGIN": "QUICK LOGIN_fr"
   },
+  "app_title": "Agilysys Retail_fr",
   "common": {
+    "NightAuditMessage": "The night audit has been processed_fr",
+    "lbl_changeProperty": "Change Property_fr",
     "IntegrationError": " An integration error has occurred, please try again._fr",
     "NoPrinterFound": "No Printer Found_fr",
     "MissingPrinterManagerURIConfig": "Missing Printer Manager URI Configuration_fr",
@@ -1577,6 +1580,7 @@
     "3075": "3075 - Issue Visual One GiftCard_fr",
     "3080": "3080 - Issue External GiftCard_fr",
     "3085": "3085 - Settle to Group Charge_fr",
+    "3090": "3090 - Restrict AR Payments_fr",
     "5000": "5000 - Reopen Transaction_fr",
     "5005": "5005 - Void Transaction_fr",
     "5007": "5007 - Correct Transaction_fr",
@@ -2881,7 +2885,12 @@
       "DeSelectAll": "DeSelect All_fr"
     },
     "defaultRoomCharge": "Default Room Charge_fr",
-    "defaultGroupCharge": "Default Group Charge_fr"
+    "defaultGroupCharge": "Default Group Charge_fr",
+    "newPassword": "New Password_fr",
+    "confirmPassword": "Confirm Password_fr",
+    "err_confirmPassword": "Confirm Password should be same as new Password_fr",
+    "MissingNewPassword": "Missing New Password_fr",
+    "MissingConfirmPassword": "Missing Confirm Password_fr"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_fr",
@@ -3282,6 +3291,7 @@
     "lbl_outletLevel": "Outlet Level_fr",
     "lbl_proprtyLevel": "Property Level_fr",
     "lbl_authCodeonReceipts": "Display Auth Code on Receipts_fr",
+    "lbl_changeDue": "Display Change Due on Receipts_fr",
     "lbl_authCodeonReceiptName": "Auth Code Receipt Name_fr",
     "checked": "Yes_fr",
     "unchecked": "No_fr",
@@ -3944,6 +3954,7 @@
   "lbl_select": "Select_fr",
   "lbl_id": "Id_fr",
   "lbl_name": "Name_fr",
+  "lbl_otherGatewayName": "Other Gateway Name_fr",
   "lbl_type": "Type_fr",
   "lbl_adaptor": "Adaptor_fr",
   "btn_register": "REGISTER_fr",
@@ -4030,6 +4041,14 @@
   "lbl_currentDate": "Current System Date_fr",
   "lbl_systemDate": "New System Date_fr",
   "lbl_enableAutoDateRoll": "Enable Auto Date Roll_fr",
+  "pg_title_selectProperty": "SELECT PROPERTY_fr",
+  "btn_proceed": "PROCEED_fr",
+  "pg_title_property": "Property_fr",
+  "lbl_changeProperty": "Change Property_fr",
+  "lbl_anotherProperty": "Another Property_fr",
+  "lbl_noPropertyAvailable": "No Properties Available_fr",
+  "lbl_search_propertyName": "Search by Property Name_fr",
+  "lbl_property": "Property_fr",
   "btn_schedule": "SCHEDULE_fr",
   "lbl_setAutoDateRollTime": "Set Auto Date Roll Time_fr",
   "hdr_ScheduleEmail": "SCHEDULE EMAIL_fr",

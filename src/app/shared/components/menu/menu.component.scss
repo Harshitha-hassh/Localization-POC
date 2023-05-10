@@ -436,6 +436,15 @@ svg-icon {
 
     .custom-popover-profile {
       padding: 10px 20px !important;
+      &:hover {
+        background-color: $ag_grey-lightest;
+        a{
+        color: $ag_black !important;
+        }
+      }
+      &:first-child {
+        padding-top: 10px !important;
+      }
     }
   }
 }

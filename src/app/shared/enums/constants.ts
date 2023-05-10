@@ -289,3 +289,9 @@ export const PRICE_MAXVALUE = 999999999999;
 export const WASH_MAXVALUE = 100;
 export const WASH_MINVALUE = 0;
 export const BEO_SEARCH_MAX_LENGTH = 120
+
+export enum DialogCloseOption {
+    Success = 1,
+    Cancel,
+    Close
+  }

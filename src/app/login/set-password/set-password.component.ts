@@ -102,36 +102,31 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   async DoneClick(event: any) {
     const newpwd = this.setPasswordForms.controls.newpassword.value;
     const cfmpwd = this.setPasswordForms.controls.confirmpassword.value;
-    let savePwdResponse ;
+    const oldpwd: string = this.setPasswordForms.controls.oldpassword.value;
+    let isValidOldPassword: boolean = oldpwd != undefined && oldpwd.length > 0 ? true : false;
+    let newPasswordDetail: NewPasswordDetail = { userName: this.data.userName, newPassword: this.setPasswordForms.controls.newpassword.value, tenantId: Number(this.tenantId), propertyId: 1, oldPassword: oldpwd, isPasswordEncrypted: false };
+    let savePwdResponse;
+    let serviceParams;
     this.CheckPasswordExists(this.data.userName, newpwd, cfmpwd).then(async () => {
       if (!this.IsLastPassword) {
-        if(this.key && this.iv)
-        {     
-          let newPasswordDetail : NewPasswordDetail = { userName: this.data.userName, newPassword: this.setPasswordForms.controls.newpassword.value, tenantId: Number(this.tenantId),propertyId: 1  } ;
-          let serviceParams = {
-          route: RetailRoutes.SavePasswordPost,
-          header: '',
-          body:newPasswordDetail,
-          showError: true,
-          baseResponse: true
-          };
-          serviceParams.body.newPassword = this.crypto.EncryptString(this.setPasswordForms.controls.newpassword.value,this.key,this.iv);  
-          savePwdResponse = await this.loginService.makePostCall(serviceParams);
-        }
-        else
-        {
-        const serviceParams = {
-          route: RetailApiRoute.SavePassword,
-          uriParams: { UserId: this.data.userName,
-             NewPassword: encodeURIComponent(this.setPasswordForms.controls.newpassword.value), TenantId: this.tenantId, PropertyId: '1' },
-          header: '',
-          body: '',
-          showError: true,
-          baseResponse: true
-        };
-        savePwdResponse = await this.loginService.makePostCall(serviceParams);
+        if (this.key && this.iv) {
+          newPasswordDetail.isPasswordEncrypted = true;
 
-      }
+          if (isValidOldPassword) {
+            newPasswordDetail.oldPassword = this.crypto.EncryptString(this.setPasswordForms.controls.oldpassword.value, this.key, this.iv);
+          }
+          serviceParams = {
+            route: RetailRoutes.SavePasswordPost,
+            header: '',
+            body: newPasswordDetail,
+            showError: true,
+            baseResponse: true
+          };
+
+          serviceParams.body.newPassword = this.crypto.EncryptString(this.setPasswordForms.controls.newpassword.value, this.key, this.iv);
+
+        }
+        savePwdResponse = await this.loginService.makePostCall(serviceParams);
         if (savePwdResponse.successStatus) {
           this.dialogRef.close();
         } else {
@@ -252,7 +247,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     {
         if(this.key && this.iv)
         {   
-          let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId)  } ;
+          let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId) , oldPassword :"",isPasswordEncrypted:true  } ;
           let serviceParams = {
             route: RetailRoutes.CheckPasswordPut,
             header: '',
@@ -308,7 +303,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     let resp: any;
         if(this.key && this.iv)
         {
-          let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId)  } ;
+          let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId),oldPassword:"",isPasswordEncrypted:true  } ;
           let serviceParams = {
               route: RetailRoutes.VerifyPasswordPut,
               header: '',

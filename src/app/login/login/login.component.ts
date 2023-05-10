@@ -201,7 +201,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.removeVal();
       }
     });
-
+    this.setEncryptKey();
     let tenantId = localStorage.getItem('TenantId');
     let adb2cEnabled = localStorage.getItem('ADB2CAuthenticationEnabled');
     if (adb2cEnabled != null && adb2cEnabled.toLowerCase() == "true") {
@@ -317,6 +317,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       const content = { title: 'CHANGE PASSWORD', userName: this.userName, tenantId: this.tenantId };
       this.setUpPassword(content, false);
     } else {
+      this.sessionService.UpdateUserSessionsInfo(loginDetails.result);
       this.propertyValues = loginDetails.result.userProperties;
       this.captionGenerator();
       this.loginSuccess = !this.loginSuccess;
@@ -349,6 +350,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                       roleId=${this.userProperties ? this.userProperties[0].roleId : 1};
                       roleName=${this.userProperties ? this.userProperties[0].roleName : ''};
                       language=${language};
+                      changePropertyEnabled=${loginDetails.result.userLoginInfo.isPropertyChangeAllow};
                     `;
     sessionStorage.setItem(USER_INFO, userInfo);
   }

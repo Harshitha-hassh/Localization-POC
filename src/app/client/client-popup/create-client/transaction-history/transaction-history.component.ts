@@ -166,10 +166,10 @@ export class TransactionHistoryComponent implements OnInit {
       for (let index1 = 0; index1 < responseResult.length; index1++) {
         let transactionNumber = this.PropertyInfo.UseRetailInterface ?responseResult[index1].transactionData.ticketNumber:responseResult[index1].transactionData.retailTicketNumber ;
         let TransactionDate = responseResult[index1].transactionData.transactionDate ;
-        let TotalPrice = (responseResult[index1].transactionData.totalPrice).toFixed(2);
-        let TotalAmount = (responseResult[index1].transactionData.totalAmount).toFixed(2);
-        let totalGratuity = (responseResult[index1].transactionData.gratuity).toFixed(2);
-        let TotalTax = (responseResult[index1].transactionData.totalTax).toFixed(2);
+        let TotalPrice = (responseResult[index1].transactionData.totalPrice).customToFixed();
+        let TotalAmount = (responseResult[index1].transactionData.totalAmount).customToFixed();
+        let totalGratuity = (responseResult[index1].transactionData.gratuity).customToFixed();
+        let TotalTax = (responseResult[index1].transactionData.totalTax).customToFixed();
         let totalDiscount : number = 0.0;
          let itemDescription;
 
@@ -182,7 +182,7 @@ export class TransactionHistoryComponent implements OnInit {
         for(let index2 = 0; index2 < responseResult[index1].transactionDetails.length;index2++)
         {
          let QuantitySold = responseResult[index1].transactionDetails[index2].quantitySold;
-         let unitPrice = (responseResult[index1].transactionDetails[index2].unitPrice).toFixed(2);
+         let unitPrice = (responseResult[index1].transactionDetails[index2].unitPrice).customToFixed();
          let itemId = responseResult[index1].transactionDetails[index2].itemId;
          itemDescription = responseResult[index1].transactionDetails[index2].itemDescription;
           var indexOfItem = this.frequentlyPurchased.findIndex(i=> i.itemNumber == itemId);
@@ -211,7 +211,7 @@ export class TransactionHistoryComponent implements OnInit {
         "subTotal": this.localization.localizeCurrency(TotalAmount,false),
         "tax": this.localization.localizeCurrency(TotalTax,false),
         "gratuity":this.localization.localizeCurrency(totalGratuity,false),
-        "discount": this.localization.localizeCurrency(totalDiscount.toFixed(2),false),
+        "discount": this.localization.localizeCurrency(totalDiscount.customToFixed(),false),
         "transactionDetails":transactionDetail
        }
 
