@@ -88,6 +88,7 @@
   },
   "app_title": "Agilysys Retail_fi",
   "common": {
+    "NightAuditMessage": "The night audit has been processed_fi",
     "lbl_changeProperty": "Change Property_fi",
     "IntegrationError": " An integration error has occurred, please try again._fi",
     "NoPrinterFound": "No Printer Found_fi",

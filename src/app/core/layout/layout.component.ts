@@ -125,7 +125,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     if (newSystemDate != undefined && newSystemDate != null) {
       if(productId == Product.SPA || productId == Product.Golf || productId == Product.RETAIL )
       {
-        this.utils.showToastMessage(message.message , SnackBarType.Success, 15000);
+        this.utils.showToastMessage(this.localization.captions.common.NightAuditMessage + ' for ' + localizedDate, SnackBarType.Success, 15000);
       }
       else{
         this.utils.showAlert(message.message + ' to ' + localizedDate, AlertType.Success, ButtonType.Ok, (res) => {
