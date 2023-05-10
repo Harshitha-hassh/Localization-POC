@@ -254,7 +254,7 @@ export class DashBoardBusiness {
                 clientId : o.clientId,
                 outlet: outlets.find(x=> x.id== o.outletId).description,
                 ticketNumber: o.transactionNumber,
-                transactionAmount: `${this.localization.currencySymbol}` + o.amount,
+                transactionAmount: `${this.localization.currencySymbol}` + o.amount.customToFixed(),
                 action
             };
         }) : [];

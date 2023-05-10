@@ -14,7 +14,8 @@ import { SetPasswordComponent } from '../set-password/set-password.component';
 import {
   JWT_TOKEN, USER_INFO,
   USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, PROPERTY_CONFIGURATION_SETTINGS,
-  FULL_STORY_ORG_ID
+  FULL_STORY_ORG_ID,
+  NO_OF_DECIMAL_DIGITS
 } from 'src/app/app-constants';
 import { LoginCommunicationService } from '../login-communication.service';
 import moment from 'moment';
@@ -657,6 +658,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       propertyId: this.propertyInfo.PropertyId,
       productId: 0
     } as API.PropertyConfigurationSettings<any>);
+    this.SetNoOfDecimalDigits(propertityConfig); 
     if ((propertityConfig != null) && (Object.keys(propertityConfig.configValue).length > 0)) {
       this.propertyInfo.SetPropertyConfiguration(propertityConfig);
       this.SetFullStory(propertityConfig);
@@ -1132,4 +1134,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     }, 0);
     this.setVal();
   }
+
+  SetNoOfDecimalDigits(propertyConfig: any) {
+    var noOfDecimalDigits: string = '2';
+    if (propertyConfig != null && propertyConfig.configValue != undefined && propertyConfig.configValue[NO_OF_DECIMAL_DIGITS] != undefined) {
+      noOfDecimalDigits = propertyConfig.configValue[NO_OF_DECIMAL_DIGITS];
+    }
+    sessionStorage.setItem('noOfDecimalDigits', noOfDecimalDigits);
+  }
+
 }

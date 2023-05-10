@@ -135,7 +135,7 @@ export interface ReturnedItems {
 export interface OpenTickets {
     outletId: number;
     transactionNumber :string;
-    amount: string;   
+    amount: number;   
     clientId : number;
     id : number; 
 }

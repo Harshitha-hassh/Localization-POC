@@ -41,10 +41,10 @@ export class RetailStandaloneLocalization extends CommonLocalization{
     //Localization pending
     var exp, suffixes = ['K', 'M', 'B', 'T', 'Q'];
     if (value < 1000) {
-      return value.toString();
+      return value.customToFixed().toString();
     }
     exp = Math.floor(Math.log(value) / Math.log(1000));
-    return (value / Math.pow(1000, exp)).toFixed(args) + suffixes[exp - 1];   
+    return (value / Math.pow(1000, exp)).customToFixed(args) + suffixes[exp - 1];   
   }
 
 }
