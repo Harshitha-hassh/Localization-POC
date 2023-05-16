@@ -736,5 +736,6 @@
   "GetPolicyTypeUsingPolicyId" : "PointOfSaleService/Policy/GetPolicyTypeUsingPolicyId/{policyId}",
   "GetDataMagineConfiguration" : "RetailManagementService/DataMagine/GetDmConfig",
   "CreateDataMagineConfiguration" : "RetailManagementService/DataMagine/CreateDmConfig",
-  "UpdateDataMagineConfiguration" : "RetailManagementService/DataMagine/UpdateDmConfig"
+  "UpdateDataMagineConfiguration" : "RetailManagementService/DataMagine/UpdateDmConfig",
+  "GetWebCommunicationProxyVersion": "transaction/WebCommunicationProxy/VersionCheck"
 }
