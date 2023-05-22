@@ -10,7 +10,7 @@
     "common": "/VisualOne/retailgateway/Retail/Services/Notification",
     "documentation": "/Help/",
     "commonGateway": "/commongateway/",
-    "signalrService": "/commongateway/NotificationService/SignalRService"
+    "signalrService": "/commongateway/SignalRService"
   },
   "Login": "Property/GetLoginDetails",
   "LogOut": "Property/LogOutByUserId/{Username}/{TenantId}/{PropertyId}",

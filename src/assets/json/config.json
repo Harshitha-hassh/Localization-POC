@@ -20,5 +20,5 @@
     "commonGateway": "/commongateway",
     "RetailGateway": "/VisualOne/retailgateway",
     "JasperServerURL":"/jasperserver-pro",
-    "signalrService": "/commongateway/NotificationService/SignalRService"
+    "signalrService": "/commongateway/SignalRService"
 }
