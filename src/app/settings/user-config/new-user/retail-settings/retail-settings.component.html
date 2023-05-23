@@ -4,7 +4,7 @@
       <div class="retail-settings-left pl-4">
         <ng-scrollbar [autoHide]="true">
           <mat-form-field class=" pt-3 w250" [floatLabel]="floatLabel">
-            <mat-select formControlName="rolename" (selectionChange)="OnRoleChange($event)" placeholder="{{caption.setting.RoleName}}">
+            <mat-select [attr.automationId]="'Dd_retailSettings_roleName'" formControlName="rolename" (selectionChange)="OnRoleChange($event)" placeholder="{{caption.setting.RoleName}}">
               <mat-option *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -14,21 +14,21 @@
 
           <div class="">
             <label class="d-block pt-1 mb-2 form-label-normal">{{caption.setting.AccountBlocked}}</label>
-            <app-toggle-switch class="" formControlName="accountblocked" (changeToggleEvent)="sliderChange($event)"></app-toggle-switch>
+            <app-toggle-switch [attr.automationId]="'Txt_retailSettings_accountBlocked'" class="" formControlName="accountblocked" (changeToggleEvent)="sliderChange($event)"></app-toggle-switch>
           </div>
 
           <div class="pt-3 ag_display--flex">
             <div class=" pr-4 autologoff">
               <label class="d-block mt-3 form-label-normal mb-2 autologoff-label">{{caption.setting.AutoLogoff}}</label>
               <div class="mt-1 float-left">
-                <app-toggle-switch formControlName="autologoff" (changeToggleEvent)="sliderChange($event, 'ALO')"></app-toggle-switch>
+                <app-toggle-switch [attr.automationId]="'Txt_retailSettings_autoLogoff'" formControlName="autologoff" (changeToggleEvent)="sliderChange($event, 'ALO')"></app-toggle-switch>
               </div>
             </div>
 
             <div class="logoff pl-3">
               <label class="logofflabel form-label-normal d-block">{{caption.setting.LogoffAfter}} ({{caption.setting.InMinutes}})</label>
               <mat-form-field [floatLabel]="floatLabel"  class="noMargin">
-                <input matInput autocomplete="off" placeholder="" [maxLength]="3"
+                <input [attr.automationId]="'Txt_retailSettings_logOffAfter'" matInput autocomplete="off" placeholder="" [maxLength]="3"
                   inputtype="nonnegative,nodecimal" formControlName="logoffafter">
               </mat-form-field>
             </div>
@@ -36,23 +36,23 @@
 
           <div class="pr-4 mt-2">
             <label class="d-block  form-label-normal mb-2">{{caption.setting.AllowGratuity}}</label>
-            <app-toggle-switch formControlName="allowgratuity" (changeToggleEvent)="sliderChange($event)"></app-toggle-switch>
+            <app-toggle-switch [attr.automationId]="'Txt_retailSettings_allowGratuity'" formControlName="allowgratuity" (changeToggleEvent)="sliderChange($event)"></app-toggle-switch>
           </div>
 
           <div class=" pr-4 pt-4">
             <label class="d-block form-label-normal mb-2">{{caption.setting.AllowServiceCharge}}</label>
-            <app-toggle-switch formControlName="allowservicecharge" (changeToggleEvent)="sliderChange($event)"></app-toggle-switch>
+            <app-toggle-switch [attr.automationId]="'Txt_retailSettings_allowServiceCharge'" formControlName="allowservicecharge" (changeToggleEvent)="sliderChange($event)"></app-toggle-switch>
           </div>
 
           <div class="pt-4 d-inline-block">
             <div class="  float-left  allow-commission">
               <label class="d-block  form-label-normal mb-2">{{caption.setting.AllowCommission}}</label>
-              <app-toggle-switch formControlName="allowcommission" (changeToggleEvent)="sliderChange($event, 'AC')"></app-toggle-switch>
+              <app-toggle-switch [attr.automationId]="'Txt_retailSettings_allowCommission'" formControlName="allowcommission" (changeToggleEvent)="sliderChange($event, 'AC')"></app-toggle-switch>
             </div>
 
             <div class="commission float-left pl-3">
               <mat-form-field class="" [floatLabel]="floatLabel">
-                <input matInput autocomplete="off" [required]="this.isCommissionClassRequired" placeholder="{{caption.setting.CommissionClass}}" [maxlength]="9"
+                <input [attr.automationId]="'Txt_retailSettings_commissionClass'" matInput autocomplete="off" [required]="this.isCommissionClassRequired" placeholder="{{caption.setting.CommissionClass}}" [maxlength]="9"
                   inputtype="nonnegative,nodecimal" formControlName="commissionclass">
                 <mat-error class="" *ngIf="retailSettingsFormGrp.controls['commissionclass'].hasError('required') && !retailSettingsFormGrp.controls['commissionclass'].valid">
                   {{caption.setting.MissingCommissionClass}}

@@ -513,9 +513,9 @@ $selected-menu-bg-color: $theme-blue-selection;
 $color-li-selected: $theme-blue-lighttest;
 $color-border-gold: $ag_base-color  ;
 
-$mat-input-disabled-color: $black-opacity38; 
+$mat-input-disabled-color: $black-opacity38;
 
-$error-color: $ag_error-color; 
+$error-color: $ag_error-color;
 
 $menu-search-hover-theme:$theme-blue-lighttest;
 
@@ -614,3 +614,12 @@ $error-light-red: $light-red;
 $ag_table_hover_bg: $grey-lightest;
 $ag_expansion-hdr_border: $brown-dark;
 $ag_expansion-hdr_bc: $brown-light;
+
+
+
+//2.0 color changes
+
+$ag_retail_light_blue_bg: $aliceBlue;
+$theme-base-color: $retail-primary-100;
+$ag_retail_button_bg_color: $retail-primary-100;
+

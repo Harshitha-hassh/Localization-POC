@@ -1,0 +1,974 @@
+@import "src/assets/sass/abstracts/variables";
+.newVersionWrapper{
+  .box-style{
+    background-color: $ag_white !important;
+    border-radius: 6px;
+    border: 1px solid $color-light-gray;
+    box-shadow: 0px 1px 5px $color-light-gray;
+    width: auto !important;
+    margin: 15px 20px !important;
+  }
+  .box-shadow-style{
+    background-color: $ag_white !important;
+    border-radius: 6px;
+    border: 1px solid $color-light-gray;
+    box-shadow: 0px 1px 5px $color-light-gray;
+  }
+  .matTabWrap {
+    .mat-tab-header {
+        margin: 10px 15px 10px 15px !important;
+    }
+
+    .mat-tab-body-content {
+        border: unset !important;
+    }
+
+    .mat-tab-header,
+    .mat-tab-labels {
+        background-color: $ag_white !important;
+        border: 1px solid #DDDDDD;
+        border-radius: 6px;
+
+        .mat-tab-label {
+            color: #000000 !important;
+        }
+
+        .mat-tab-label.mat-tab-disabled {
+            cursor: default;
+            opacity: 0.5 !important;
+        }
+
+        .mat-tab-label.mat-tab-label-active {
+            background-color: #cfdaff !important;
+            color: #000000 !important;
+        }
+
+        .mat-tab-header-pagination-chevron {
+            border-color: #000000 !important;
+        }
+
+        .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+            border-color: grey !important;
+        }
+    }
+}
+
+.matButton {
+    mat-button-toggle-group {
+        border-radius: 6px !important;
+
+        .mat-button-toggle-checked {
+            background-color: #e6ebff;
+        }
+    }
+}
+
+.tab-styling-versiontwo {
+  background-color: $ag_retail_light_blue_bg;
+    .mat-tab-header,
+    .mat-tab-labels {
+        background-color: $retail-primary-40;
+        border: 1px solid $color-light-gray;
+        box-shadow: 0px 1px 5px $color-light-gray;
+        border-radius: 6px;
+
+
+        .mat-tab-label {
+            color: #000000 !important;
+        }
+
+        .mat-tab-label.mat-tab-disabled {
+            cursor: default;
+            opacity: 0.5 !important;
+        }
+
+        .mat-tab-label.mat-tab-label-active {
+            background-color: $retail-primary-60 !important;
+        }
+
+        .mat-tab-header-pagination-chevron {
+            border-color: #000000 !important;
+        }
+
+        .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+            border-color: grey !important;
+        }
+    }
+
+    .mat-tab-header{
+      margin: 20px !important;
+      margin-bottom: 0 !important;
+      }
+
+    .mat-tab-body-wrapper {
+      margin: 15px 20px !important;
+      margin-top: 0 !important;
+      border-radius: 6px;
+        .mat-tab-body {
+            background-color: $ag_white;
+            margin-top: 15px;
+            border: 1px solid $color-light-gray ;
+            border-radius: 6px;
+            width: 100px !important;
+
+            .mat-tab-body-content {
+                border: none !important;
+            }
+        }
+
+        .mat-tab-body:nth-child(3),
+        .mat-tab-body:nth-child(4),
+        .mat-tab-body:nth-child(5),
+        .mat-tab-body:nth-child(6),
+        .mat-tab-body:nth-child(7) {
+            //background-color: $Pms-lightBlue !important;
+            border-radius: 0px;
+            border: none;
+        }
+    }
+}
+// .prop-info[_ngcontent-wqp-c521] .prop-details[_ngcontent-wqp-c521] .prop-section[_ngcontent-wqp-c521]
+&.property-info-wrapper{
+  background-color: $ag-retail-background-grey;
+  .prop-details{
+    .prop-section{
+      padding: 0 !important;
+    }
+  }
+  .box-style{
+    @extend .box-shadow-style;
+    padding: 20px;
+  }
+}
+&.miscellaneous-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding: 15px 0;
+  .formMargin{
+    height: calc(100% - 65px) !important;
+  }
+  .box-style{
+    @extend .box-style;
+    margin: 0 20px !important;
+    padding: 20px;
+  }
+}
+&.notification-configuration-wrapper{
+  background-color: $ag-retail-background-grey;
+  .box-style-notification-config{
+    @extend .box-shadow-style;
+    margin: 15px 20px !important;
+    padding: 20px;
+  }
+}
+&.vat-configuration-wrapper{
+  background-color: $ag-retail-background-grey;
+  .form{
+    @extend .box-style;
+  }
+}
+&.clients-details-wrapper{
+  background-color: $ag-retail-background-grey;
+  #pageHeader{
+  &.page-header{
+    @extend .box-style;
+    padding: 20px;
+    height: fit-content;
+    .custom-aligns{
+    margin-top: 10px
+    }
+  }
+  }
+
+  .clientactions{
+    @extend .box-style;
+    height: calc(100% - 150px);
+      }
+}
+&.retail-items-wrapper{
+  background-color: $ag-retail-background-grey;
+  .search-div{
+    @extend .box-style;
+    padding: 20px;
+    height: fit-content;
+  }
+  .product-div{
+    @extend .box-style;
+    height: calc(100% - 200px) !important;
+    }
+    .shopping-items{
+      .shopping-cart.action-bar{
+        .retail-slider-toggler{
+          top: 0 !important;
+        }
+      }
+    }
+}
+&.retail-transaction-wrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 22px) !important;
+  .page-header{
+    @extend .box-style;
+    width: calc(100% - 40px) !important;
+  }
+  .advanced-search-section{
+    @extend .box-style;
+  }
+  .fixed-table-container{
+    @extend .box-style;
+    margin: 15px 21px 15px 20px !important;
+    height: calc(100% - 298px);
+    overflow: auto;
+    }
+  .item-search{
+      app-search-linked-retail-items{
+        .mat-form-field-infix{
+          border: 1px solid #ececec;
+        }
+        .mat-input-element::placeholder{
+          user-select: none;
+          transition: color 400ms 133.3333333333ms cubic-bezier(0.25, 0.8, 0.25, 1);
+          color: #0000006b !important;
+        }
+      }
+    }
+
+
+ .result-wrapper{
+      .result-grid{
+        .user-search{
+          @extend .box-style;
+
+        }
+        .retailCustomDataTable {
+          .page-header{
+            &.removeHeight{
+              display: none !important;
+            }
+          }
+          margin: 15px 14px;
+        }
+      }
+    }
+
+    .modify-commission{
+      .result-wrapper{
+        .filter{
+          @extend .box-style;
+        }
+      }
+    }
+}
+&.retail-transcations-log-wrapper{
+  background-color: $ag-retail-background-grey;
+  .header-filter-sect{
+    @extend .box-style;
+  }
+  .advanced-search-sect{
+    @extend .box-style;
+  }
+  .table-sect{
+    @extend .box-style;
+    height: calc(100% - 330px) !important;
+  }
+}
+
+&.retail-revenue-log-wrapper{
+  background-color: $ag-retail-background-grey;
+ .header-filter-sect{
+    @extend .box-style;
+  }
+  .advanced-search-sect{
+    @extend .box-style;
+  }
+  .table-sect{
+    @extend .box-style;
+    height: calc(100% - 320px) !important;
+  }
+}
+&.retail-gift-card-wrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 15px) !important;
+  padding-top: 15px !important;
+  .retail-form-section{
+    height: calc(100% - 20px) !important;
+    .header-container{
+      @extend .box-style;
+      height: fit-content !important;
+      margin-top: 0 !important;
+      padding: 10px;
+    }
+    .body-container{
+      height: calc(100% - 126px);
+    }
+  }
+
+}
+
+&.retail-revenue-log-wrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 30px ) !important;
+  .header-filter-sect{
+    @extend .box-style;
+  }
+  .advanced-search-sect{
+    @extend .box-style;
+   }
+ .table-sect{
+  &.custom-height-fix{
+    height: calc(100% - 220px) !important;
+  }
+   }
+}
+&.retailChildWrapper{
+ background-color: $ag-retail-background-grey;
+  .retail-header{
+    @extend .box-style;
+    padding: 15px;
+  }
+  .retail-select-container{
+    @extend .box-style;
+  }
+  .CustomTableGrid{
+    .retail-CustomDataTable{
+      .fixed-table-container{
+        @extend .box-style;
+      }
+    }
+  }
+
+}
+&.retail-credit-card-terminal-wrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 15px) !important;
+  .header-wrapper{
+    @extend .box-style;
+    padding: 15px;
+  }
+  &.retail-code-setup#creditcard{
+    .retailGrid{
+      @extend .box-style;
+    }
+  }
+}
+&.retail-outlets-wrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 134px) !important;
+  .header-wrapper{
+    @extend .box-style;
+    padding: 15px;
+  }
+  .retailGrid{
+    .retail-CustomDataTable {
+      .fixed-table-container{
+        @extend .box-style;
+      }
+    }
+  }
+}
+&.retailCategoryGroupWrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 15px) !important;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .box-style;
+       }
+       .custom-table-height{
+        @extend .box-style;
+
+      }
+    }
+  }
+}
+&.retailCategoryWrapper{
+  background-color: $ag-retail-background-grey;
+  header{
+    @extend .box-style;
+  }
+  .retailGrid{
+    width: 100%;
+    .retail-CustomDataTable{
+      .fixed-table-container{
+        @extend .box-style;
+      }
+    }
+  }
+
+}
+&.retail-sub-categories{
+  background-color: $ag-retail-background-grey;
+  .expand-section{
+    @extend .box-style;
+  }
+   .select-container-bg{
+    @extend .box-style;
+   }
+   .expand-section-data{
+    .expanded-data{
+     @extend .box-shadow-style;
+    }
+   }
+}
+&.retailUnitMeasureWrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 15px) !important;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .box-style;
+
+      }
+      .custom-table-height{
+        @extend .box-style;
+      }
+    }
+  }
+}
+&.retail-taxes-wrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 15px) !important;
+  padding-top: 15px !important;
+  .retail-CustomDataTable{
+    .page-header{
+      @extend .box-style;
+      margin-top: 0 !important
+    }
+    .fixed-table-container{
+      @extend .box-style;
+    }
+  }
+}
+&.machine-name-wrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 15px) !important;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .box-style;
+      }
+      .fixed-table-container{
+        @extend .box-style;
+      }
+    }
+  }
+
+}
+&.retail-discount-reason-wrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 15px) !important;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .box-style;
+      }
+      .fixed-table-container{
+        @extend .box-style;
+      }
+    }
+  }
+}
+&.retail-vendor-types-wrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 15px) !important;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .box-style;
+      }
+      .fixed-table-container{
+        @extend .box-style;
+      }
+    }
+  }
+}
+&.retail-quick-sale-categories-wrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 15px) !important;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .box-style;
+      }
+      .fixed-table-container{
+        @extend .box-style;
+      }
+    }
+  }
+}
+&.retail-payment-method-wrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 15px) !important;
+  .header-wrapper{
+    @extend .box-style;
+  }
+  &#paymentMethod{
+    .retailGrid{
+      @extend .box-style;
+    }
+  }
+}
+&.retail-discount-types{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 15px) !important;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .box-style;
+      }
+      .fixed-table-container{
+        @extend .box-style;
+      }
+    }
+  }
+}
+&.retailCommisionWrapper{
+  background-color: $ag-retail-background-grey;
+  .retail-CustomDataTable{
+    .page-header{
+      @extend .box-style;
+    }
+    .fixed-table-container{
+      @extend .box-style;
+    }
+  }
+}
+&.outlet-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding: 0 !important;
+  height: calc(100% - 40px) !important;
+    .custom-search-align{
+      @extend .box-style;
+      padding-top: 15px;
+      padding-bottom: 7px;
+    }
+    .table-container{
+      @extend .box-style;
+      margin: 0 20px !important;
+      padding: 0;
+    }
+}
+&.pay-agent-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding: 0 !important;
+  height: calc(100% - 40px) !important;
+  .custom-search-align{
+    @extend .box-style;
+    padding-top: 15px;
+    padding-bottom: 7px;  }
+  .table-container{
+    @extend .box-style;
+    margin: 0 20px !important;
+    padding: 0;
+  }
+}
+&.settler-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding: 0 !important;
+  height: calc(100% - 40px) !important;
+  .custom-search-align{
+    @extend .box-style;
+    padding-top: 15px;
+    padding-bottom: 7px;  }
+  .table-container{
+    @extend .box-style;
+    margin: 0 20px !important;
+    padding: 0;
+  }}
+
+  &.category-linking{
+    background-color: $ag-retail-background-grey;
+    height: calc(100% - 10px) !important;
+    .inner-section-row{
+      .category-col{
+        @extend .box-shadow-style;
+      }
+      .sub-category-col{
+        @extend .box-shadow-style;
+      }
+    }
+    .option-row{
+      .button-save.button-subcategory{
+        top: initial
+      }
+      @extend .box-style;
+      margin: 10px 0 !important;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-content: center;
+    }
+  }
+  &.retail-vendor-setup-wrapper{
+    background-color: $ag-retail-background-grey;
+    height: calc(100% - 15px) !important;
+    .vendor-filter{
+      @extend .box-style;
+      margin-right: 0 !important;
+      height: auto;
+    }
+    .createNewBtn{
+      margin-top: 30px !important;
+    }
+    .retail-CustomDataTable{
+      padding-top: 15px !important;
+      .page-header{
+        @extend .box-style;
+        margin-top: 0 !important;
+
+      }
+      .fixed-table-container{
+        @extend .box-style;
+      }
+    }
+  }
+  &.retailDiscountWrapper{
+    background-color: $ag-retail-background-grey;
+    .header{
+      @extend .box-style;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      flex-wrap: wrap;
+      height: fit-content !important;
+      .leftSection{
+        margin-top: 10px;
+      }
+      .rightSection{
+        float: initial;
+        width: initial;
+      }
+    }
+    .dataList{
+      @extend .box-style;
+      margin-right: 21px !important;
+      height: calc(100% - 140px) !important;
+      padding: 0 !important;
+    }
+  }
+
+  &.quickSale{
+    background-color: $ag-retail-background-grey;
+    .pageHeader{
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      flex-wrap: wrap;
+      height: fit-content !important;
+      padding: 15px;
+      @extend .box-style;
+      .btn-group{
+        float: initial !important;
+        margin-left: auto;
+        }
+    }
+
+    .items{
+      @extend .box-style;
+      height: calc(100% - 140px);
+    }
+
+  }
+
+  &.member-accrual-mapping-setup{
+    background-color: $ag-retail-background-grey;
+    height: calc(100% - 80px) !important;
+    .custom-retail-inputs{
+      &.page-header{
+        @extend .box-style;
+        padding-top: 10px;
+      }
+    }
+
+    .retail-CustomDataTable{
+      .fixed-table-container {
+        @extend .box-style;
+        height: calc(100% - 20px);
+      }
+    }
+  }
+
+  &.commissionSetupWrapper{
+    background-color: $ag-retail-background-grey;
+    &#commissionsetup{
+      .thirdSecCS{
+        background-color: $ag-retail-background-grey;
+      .commissionContent{
+          .commission{
+            .retail-search-container{
+              @extend .box-style;
+              margin: 0 20px !important;
+            }
+            .commissionValues{
+              .table-data{
+                .actionitems{
+                  @extend .box-style;
+                }
+                .CustomDataTable{
+                  .fixed-CommissionSetup-container{
+                    padding: 20px;
+                    @extend .box-style;
+
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+  &.inventory-wrapper{
+    background-color: $ag-retail-background-grey;
+    .search-bar{
+      @extend .box-style;
+    }
+    .AdvancedSearchDiv{
+      @extend .box-style;
+      margin-top: 0 !important;
+    }
+    .adv-wrapper{
+      height: calc(100% - 152px) !important;
+     .custom-inventory-table{
+        @extend .box-style;
+        margin: 15px 20px !important;
+        margin-top: 0 !important;
+        .inventory-list{
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  &.user-setup-wrapper{
+    background-color: $ag-retail-background-grey;
+    .filter{
+      @extend .box-style;
+    }
+    .user-search{
+      @extend .box-style;
+    }
+    .result-wrapper{
+      .result-grid{
+        .CustomDataTable{
+          .fixed-table-container{
+            @extend .box-style;
+            padding: 0 !important;
+            height: calc(100% - 65px) !important;
+          }
+        }
+      }
+    }
+  }
+
+  &.retail-role-setup-wrapper{
+    background-color: $ag-retail-background-grey;
+    padding: 15px 0;
+    .roleGrid{
+      .CustomDataTable{
+        .page-header{
+          @extend .box-style;
+          margin: 0 20px !important;
+          margin-bottom: 15px !important;
+        }
+        .fixed-table-container{
+          @extend .box-style;
+          margin-top: 0 !important;
+          padding: 0;
+          height: calc(100% - 155px) !important;
+        }
+      }
+    }
+  }
+
+  &.template-email-wrapper{
+    background-color: $ag-retail-background-grey;
+    height: calc(100% - 15px) !important;
+    .common-CustomDataTable{
+      .page-header{
+        @extend .box-style;
+      }
+      .fixed-table-container{
+        @extend .box-style;
+      }
+    }
+  }
+
+  &.template-sms-wrapper{
+    background-color: $ag-retail-background-grey;
+    height: calc(100% - 15px) !important;
+    .common-CustomDataTable{
+      .page-header {
+        @extend .box-style;
+      }
+      .fixed-table-container{
+        @extend .box-style;
+      }
+    }
+  }
+
+  &.distribution-list-wrapper{
+    background-color: $ag-retail-background-grey;
+    padding: 15px 0;
+    .common-CustomDataTable{
+      .page-header{
+        @extend .box-style;
+        margin: 0 20px !important;
+      }
+      .fixed-table-container{
+        @extend .box-style;
+      }
+    }
+  }
+
+  &.combine-guest-records-wrapper{
+    background-color: $ag-retail-background-grey;
+    height: calc(100% - 25px) !important;
+    .srchSec{
+      @extend .box-style;
+    }
+    .gridSec{
+      @extend .box-style;
+    }
+  }
+
+  &.night-audit-wrapper{
+    background-color: $ag-retail-background-grey;
+    padding-top: 15px;
+    .bg-color{
+      @extend .box-style;
+      margin-top: 0 !important;
+    }
+    .night-audit-container{
+      @extend .box-style;
+    }
+
+  }
+
+  &.day-end{
+    background-color: $ag-retail-background-grey;
+    .dayEnd-0{
+      @extend .box-shadow-style;
+      padding: 20px;
+    }
+
+    .processSection{
+      @extend .box-shadow-style;
+      .processSec{
+        padding: 2rem;
+      }
+      .process-btn{
+        padding-left: 30px;
+      }
+    }
+
+  }
+
+  &.giftcards-info{
+    padding: 15px 20px;
+    padding-bottom: 0;
+     .giftcards-details{
+   @extend .box-shadow-style;
+    }
+  }
+
+  &.creditCard-info-wrapper{
+    padding: 15px 20px;
+    padding-bottom: 0;
+        .creditcard-details{
+      @extend .box-shadow-style;
+    }
+  }
+
+  &.payment-feature-config{
+    .config-options{
+      @extend .box-shadow-style;
+    }
+    .creditcard-info{
+      padding: 15px 20px;
+      padding-bottom: 0;
+          .creditcard-details{
+        @extend .box-shadow-style;
+      }
+  }
+}
+
+&.crud-email-temp-wrapper{
+  .CRUD-email-Template-wrapper{
+    height: calc(100% - 85px);
+    @extend .box-style;
+  }
+}
+
+&.crud-sms-temp-wrapper{
+  .CRUD-sms-Template-wrapper{
+    height: calc(100% - 85px);
+    @extend .box-style;
+  }
+}
+&.crud-distribution-list-wrapper{
+  .CRUD-sms-Template-wrapper{
+    height: calc(100% - 146px);
+    @extend .box-style;
+  }
+}
+&.data-magine-config-wrapper{
+  .data-magine-wrapper{
+    @extend .box-style;
+}
+}
+&.create-retail-vendor-wrapper{
+  .retail-vendor-container{
+    @extend .box-style;
+    .phone-wrapper{
+      .ph-fixed-width--wrapper{
+        width: 408px !important;
+      }
+    }
+  }
+  .right-section{
+    @extend .box-style;
+  }
+}
+
+&.receiptConfig{
+  .mainData {
+    .leftSection{
+      @extend .box-style;
+      width: calc(100% - 380px) !important;
+      padding: 20px;
+      }
+    .rightSection{
+      @extend .box-shadow-style;
+      margin: 15px 20px;
+      padding: 20px;
+    }
+  }
+  .property-level-container{
+   @extend .box-style;
+   height: 100%;
+  }
+}
+
+&.user-machine-config{
+  padding: 15px 0;
+  .form-controls{
+    @extend .box-style;
+    margin: 0 20px !important;
+}
+}
+
+&.additional-information-wrapper{
+  .connect-btn{
+    color: $retail-primary-100 !important;
+    border: 1px solid $retail-primary-100 !important;
+  }
+  .gdpr-wrapper{
+    .wrapper {
+      overflow: auto !important;
+    }
+  }
+}
+
+}

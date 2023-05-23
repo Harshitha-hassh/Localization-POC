@@ -238,10 +238,15 @@ $themes: (
     .mat-step-header .mat-step-icon-selected,.mat-flat-button.mat-primary {
       background: $header-background !important;
       border: 2px solid $header-background !important;
+      background-color: $theme-base-color !important;
+      color: $golf-base-white-bg !important;
+      border: 1px solid $theme-base-color !important;
     }
     .mat-flat-button.mat-primary[disabled] {
       background-color: rgba(0, 0, 0, 0.12) !important;
-      border: none !important;
+      background-color: $theme-base-color !important;
+      color: $golf-base-white-bg !important;
+      border: 1px solid $theme-base-color !important;
     }
     .mat-flat-button.mat-primary.btnDisabled{
       opacity: 0.5;
@@ -257,7 +262,7 @@ $themes: (
     .mat-spinner circle {
       stroke: $header-background !important;;
     }
-    
+
     .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
       background-color: $menu-ligter-gold !important;
     }
@@ -274,6 +279,8 @@ $themes: (
     .mat-tab-group.mat-primary .mat-ink-bar,
     .mat-tab-nav-bar.mat-primary .mat-ink-bar {
       background-color: $header-background !important;
+      background-color: $retail-primary-100 !important;
+
     }
     .mat-option:hover,
     .mat-option:focus {
@@ -296,14 +303,17 @@ $themes: (
     .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
     .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
       background-color: $header-background !important;
+      background-color: $ag_retail_button_bg_color !important;
     }
 
     .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
       border-color: $header-background !important;
+      border-color: $ag_retail_button_bg_color !important;
     }
 
     ui-switch .switch.checked {
       background: $header-background !important;
+      background-color: $ag_retail_button_bg_color !important;
     }
 
     .setNotificationConfiguration .themecolor {
@@ -311,9 +321,11 @@ $themes: (
     }
     .spa-primary-default-save {
       background-color: $header-background !important;
+      background-color: $theme-base-color!important;
     }
     .spa-primary-default-save:hover {
       background-color: $header-background !important;
+      background-color: $theme-base-color !important;
     }
     .mat-button-wrapper {
       // color: $color-text !important;
@@ -349,6 +361,7 @@ $themes: (
     }
     .setNotificationConfiguration .expcollPosition {
       background: $header-background !important;
+      background: $theme-base-color !important;
     }
     .retail-gift-card .retail-form-section .header-container .icon-border-section {
       border: 1px solid $header-background !important;
@@ -361,6 +374,7 @@ $themes: (
     }
     .button--primary {
       background: $header-background !important;
+      background-color: $theme-base-color !important;
     }
     .circle-hover {
       background-color: $lightyellow !important; /*******NOTE: Change one theme Color base*******/
@@ -388,6 +402,7 @@ $themes: (
 
     .body-bgcolor {
       background-color: $colorbackground !important;
+      background-color: $ag_retail_button_bg_color !important;
     }
     .switch-toggle {
       .switch.checked {
@@ -452,9 +467,11 @@ $themes: (
 
     .spa-primary-btn-default {
       background-color: $header-background !important;
+      background-color: $theme-base-color !important;
     }
     .spa-primary-btn-default:hover {
       background-color: $header1_active-bg !important;
+      background-color: $theme-base-color !important;
     }
     .active-link {
       color: $color !important;
@@ -526,6 +543,8 @@ $themes: (
     .payment-feature-config .config-options ul li.selected {
       background-color: $header-background !important;
       color: $white !important;
+      background-color:$retail-primary-10 !important;
+      color: $retail-primary-110 !important;
     }
 
     .spa-filter-link {

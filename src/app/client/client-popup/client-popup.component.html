@@ -4,8 +4,8 @@
         <i class="icon-close inner-close ml-auto cursPointer" (click)="onNoClick()"></i>
     </div>
 
-    <mat-dialog-content class="p-0 pop-contents">
-        <div class="clientTabLayout h-100">
+    <mat-dialog-content class="p-0 pop-contents newVersionWrapper">
+        <div class="clientTabLayout tab-styling-versiontwo h-100">
             <app-create-client [parentForm]="clientPopupForm" [IsGDPREnabled] = 'IsGDPREnabled' [policyType] = 'policyType' [patronId]="patronId"></app-create-client>
         </div>
     </mat-dialog-content>

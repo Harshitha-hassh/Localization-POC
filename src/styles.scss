@@ -5607,9 +5607,9 @@ a:hover {
 }
 
 .hidden-submit {
-  position: absolute; 
-  left: -9999px; 
-  width: 1px; 
+  position: absolute;
+  left: -9999px;
+  width: 1px;
   height: 1px;
 }
 
@@ -5646,7 +5646,7 @@ body .cdk-custom-wrapper .ag_table .table th {
           i {
             color: $menu-primary-gold !important;
           }
-         
+
         }
       }
       }
@@ -5656,13 +5656,14 @@ body .cdk-custom-wrapper .ag_table .table th {
     }
     .header{
       background-color: $menu-secondary-gold !important;
-      nav{
-        .mat-tab-label, .mat-tab-link { 
+      background-color: $ag_white !important;
+    nav{
+        .mat-tab-label, .mat-tab-link {
           // font-family: $ag_poppins-medium;
           font-family: $ag_poppins-medium !important;
          }
       }
-      
+
     }
     .mat-tab-header{
       background: $menu-secondary-gold !important;
@@ -5681,7 +5682,7 @@ body .cdk-custom-wrapper .ag_table .table th {
         color: $menu-black !important;
         opacity: 1;
         background-color: $menu-primary-light-yellow !important;
-        
+
       }
     }
     .subnav-wrapper{
@@ -5723,6 +5724,45 @@ body .cdk-custom-wrapper .ag_table .table th {
       color: $menu-lighter-link-gold !important;
       }
     }
+}
+
+.tertiary-container{
+  background-color: $ag_retail_light_blue_bg;
+}
+.router-container{
+  background-color: $ag_retail_light_blue_bg;
+}
+
+.icon-calendar:before, .icon-Calender:before, .icon-Search:before, .icon-clock:before, .icon-Minus:before, .icon-Plus:before, .icon-profile, .icon-Edit:before, .icon-Delete:before, .icon-active-user:before, .icon-filter_filled:before, .icon-DragAndDrop::before, .icon-print:before, .icon-recurring:before {
+  color: $theme-base-color;
+}
+
+.icon-Down-Arrow:before {
+  color: $ag-white !important;
+}
+
+.mat-select-arrow{
+  color: $theme-base-color;
+}
+
+.mat-error{
+  color: $new_mat-error !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label{
+  color: $new_mat-error !important;
+}
+
+.mat-input-element{
+  height: auto;
+}
+
+.w-225px{
+  width: 225px !important;
+}
+
+.w-250px{
+  width: 250px !important;
 }
 #signature-loader {
   position:fixed;

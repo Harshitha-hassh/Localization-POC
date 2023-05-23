@@ -32,7 +32,7 @@
             }
             &.mat-form-field-invalid {
                 .mat-form-field-infix {
-                    border: 1px solid red;
+                  border: 1px solid $new_mat-error !important;
                 }
             }
         }
@@ -55,7 +55,7 @@
                 right: 4px;
             }
         }
-        
+
         //Date-Picker
         .mat-form-field.mat-form-field-can-float.mat-form-field-should-float.mat-form-field-appearance-legacy.date-picker-width {
             .mat-form-field-infix {
@@ -139,9 +139,9 @@
                       opacity: 0.6;
                   }
               }
-              .mat-form-field-underline {
-                  display: unset;
-              }
+              // .mat-form-field-underline {
+              //     display: unset;
+              // }
               &.mat-form-field-invalid {
                   .mat-form-field-infix {
                       border: unset;
@@ -149,7 +149,7 @@
               }
             }
           }
-    
+
         //Layout Changes
         @for $i from 1 through 4 {
             .ag_form-control--#{$i} {
@@ -186,7 +186,7 @@
         //     }
         // }
     }
-    
+
     @media only screen and (min-width: 1024px) {
         body.new-mat-view {
             //Layout Changes
@@ -227,4 +227,3 @@
             }
         }
     }
-    

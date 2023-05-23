@@ -16,6 +16,9 @@
   background-color:  $ag_black !important;
   color: $ag_button-primary-fc !important;
   border: 2px solid  $ag_black !important;
+  background-color: $theme-base-color !important;
+  color: $golf-base-white-bg !important;
+  border: 1px solid $theme-base-color !important;
   @include set-browser-prefix('border-radius', 5px);
   &[disabled] {
     @extend .ag_button--disabled;
@@ -29,6 +32,8 @@
   background-color: $ag_button-secondary-bc !important;
   border: 2px solid $ag_button-secondary1-fc !important;
   color: $ag_button-secondary1-fc !important;
+  border: 2px solid $theme-base-color !important;
+  color: $theme-base-color !important;
   font-weight: 600 !important;
   @include set-browser-prefix('border-radius', 5px);
   &[disabled] {
@@ -224,6 +229,7 @@ a,
   text-decoration: none;
   transition: color 200ms;
   cursor: pointer;
+  color: $ag_black;
 }
     $base-sec-height: $primary-btn-height;
     $base-lnheight: $spa-small-btn-height !default;
@@ -324,6 +330,7 @@ a,
     @include  base-secondary-btn();
     &:hover{
         background: $color-secondary-button-hover;
+        background: $retail-primary-60;
       }
       &:active{
         @extend .color-secondary-pressed;
