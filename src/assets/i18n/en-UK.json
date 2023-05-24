@@ -962,6 +962,12 @@
     "cReset": "RESET_uk"
   },
   "shop": {
+    "missingMail": "Missing Email_uk",
+    "invalidMail": "Invalid Email_uk",
+    "guestEmail_address": "Guest Email Address_uk",
+    "lbl_emailReceipt": "Email Receipt_uk",
+    "emailReceipt": "EMAIL RECEIPT_uk",
+    "emailreceipt": "emailreceipt_uk",
     "Btn_Refresh": "REFRESH_uk",
     "ServiceChargeTax": "Service Charge Tax_uk",
     "GratuityTax": "Gratuity Tax_uk",

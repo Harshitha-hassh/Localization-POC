@@ -13,8 +13,8 @@ export class NotificationDataService {
         , private localization: RetailStandaloneLocalization) {
     }
 
-    public async SendNotification(transactionId: number, isManual: boolean, emailId: string = '', phoneNumber: string ='',
-        canSendSMS: boolean=true, canSendemail: boolean=true, reportAPIOptions : ReportAPIModel = null): Promise<any> {
+    public async SendNotification(transactionId: number, isManual: boolean, emailId: any[] = [], phoneNumber: string ='',
+        canSendSMS: boolean=true, canSendemail: boolean=true, reportAPIOptions : ReportAPIModel = null,IsRetailNotification=false): Promise<any> {
 
         let bodyObj : NotificationModel;
         bodyObj = {
@@ -25,6 +25,7 @@ export class NotificationDataService {
             canSendSMS : canSendSMS ? canSendSMS : false,
             canSendemail : canSendemail ? canSendemail : false,
             isManual:  isManual,
+            isRetailNotification : IsRetailNotification,
             reportQuery : reportAPIOptions
         }
 

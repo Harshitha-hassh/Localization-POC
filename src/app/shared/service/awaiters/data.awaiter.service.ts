@@ -204,7 +204,8 @@ export class DataAwaiterService {
                     country: '',
                     city: '',
                     zip: '',
-                    cardInfo: []
+                    cardInfo: [],
+                    emailId: client.emails.find(x=> !x.isPrivate && x.isPrimary) ? client.emails.find(x=> !x.isPrivate && x.isPrimary).emailId : client.emails[0].emailId
                 });
             });
         }
@@ -225,7 +226,7 @@ export class DataAwaiterService {
         return this.userDefaultService.GetDefaultOutlet();
     }
 
-    async SendNotification(clientInfo :RetailClientInfo.ClientInfo) {
+    async SendNotification(clientInfo :RetailClientInfo.ClientInfo,emailId:any[]=[]) {
         const eventConfiguration: EventNotificationGroup[] = await this.notificationConfigurationService.GetEventNotificationGroupByProduct();
         const guesteventConfiguration = eventConfiguration.filter(x => x.groupName === "Guest");
         let canSendemail: boolean, canSendSMS: boolean ;
@@ -233,7 +234,7 @@ export class DataAwaiterService {
             canSendemail = guesteventConfiguration[0].sendMail;
             canSendSMS = guesteventConfiguration[0].sendSMS;
         }
-        this.notificationDataService.SendNotification(clientInfo.transactionId, false, '', '', canSendSMS,canSendemail,clientInfo.reportQuery);
+        this.notificationDataService.SendNotification(clientInfo.transactionId, false, emailId, '', canSendSMS,canSendemail,clientInfo.reportQuery,true);
     }
 
     OpenManualNotifyPopup(transactionId: number, guestId: number ) {

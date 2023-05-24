@@ -962,6 +962,12 @@
     "cReset": "RESET_da"
   },
   "shop": {
+    "missingMail": "Missing Email_da",
+    "invalidMail": "Invalid Email_da",
+    "guestEmail_address": "Guest Email Address_da",
+    "lbl_emailReceipt": "Email Receipt_da",
+    "emailReceipt": "EMAIL RECEIPT_da",
+    "emailreceipt": "emailreceipt_da",
     "Btn_Refresh": "REFRESH_da",
     "ServiceChargeTax": "Service Charge Tax_da",
     "GratuityTax": "Gratuity Tax_da",

@@ -224,8 +224,9 @@ export class NotifyPopupComponent implements OnInit {
     this.ReplacePhoneNumber(this.changedphoneId,phoneNodata); 
 
     let phoneNumber = this.notifydetails.controls['enableSendSMS'].value ? this.notifydetails.controls['detailList'].value[0].countryCode + phoneNo : "";
-
-    this.notificationDataService.SendNotification(this.transactionId, true,emailid, phoneNumber,
+    let emailIds=[]
+    emailIds[0]=emailid
+    this.notificationDataService.SendNotification(this.transactionId, true,emailIds, phoneNumber,
       this.notifydetails.controls['enableSendSMS'].value, this.notifydetails.controls['enableSendEmail'].value);
 
     if (this.notifydetails.controls['enableSaveEmail'].value) {

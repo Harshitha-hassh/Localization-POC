@@ -325,12 +325,13 @@ export interface Email {
 export interface NotificationModel {
     transactionId : number,
     action : string,
-    emailId : string,
+    emailId : any[],
     phoneNumber : string,
     canSendSMS : boolean,
     canSendemail : boolean,
     isManual: boolean,
     reportQuery : ReportAPIModel
+    isRetailNotification:boolean 
     }
 
 export interface TransactionData {
