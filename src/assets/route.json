@@ -737,5 +737,5 @@
   "GetDataMagineConfiguration" : "RetailManagementService/DataMagine/GetDmConfig",
   "CreateDataMagineConfiguration" : "RetailManagementService/DataMagine/CreateDmConfig",
   "UpdateDataMagineConfiguration" : "RetailManagementService/DataMagine/UpdateDmConfig",
-  "GetWebCommunicationProxyVersion": "transaction/WebCommunicationProxy/VersionCheck"
+  "GetWebCommunicationProxyVersion": "Payment/GetWebCommunicationProxyVersion"
 }
