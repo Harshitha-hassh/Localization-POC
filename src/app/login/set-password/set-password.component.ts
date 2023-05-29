@@ -43,12 +43,16 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   hiddenPassword = false;
   hideConfirmPassword = false;
   tenantId = '1';
-  doneDisabled: boolean;  
+  doneDisabled: boolean;
   key : string ;
   iv : string;
   floatLabel: string;
   characterValidationMsg: any;
   allowReuse: any;
+  hiddenPassword1 = false;
+  hiddenPassword2 = false;
+
+
 
   constructor(
     private formBuilder: UntypedFormBuilder, private loginService: LoginCommunicationService,
@@ -246,7 +250,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     if(password.length !=0)
     {
         if(this.key && this.iv)
-        {   
+        {
           let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId) , oldPassword :"",isPasswordEncrypted:true  } ;
           let serviceParams = {
             route: RetailRoutes.CheckPasswordPut,
@@ -255,7 +259,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
             showError: true,
             baseResponse: true
           };
-          serviceParams.body.newPassword = this.crypto.EncryptString(password,this.key,this.iv);  
+          serviceParams.body.newPassword = this.crypto.EncryptString(password,this.key,this.iv);
           resp = password.length !=0 ? await this.loginService.makePutCall(serviceParams) : null;
         }
         else{
@@ -311,7 +315,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
               showError: true,
               baseResponse: true
           };
-          serviceParams.body.newPassword = this.crypto.EncryptString(password,this.key,this.iv);  
+          serviceParams.body.newPassword = this.crypto.EncryptString(password,this.key,this.iv);
           resp = await this.loginService.makePutCall(serviceParams);
         }
         else{
