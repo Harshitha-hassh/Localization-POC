@@ -87,11 +87,14 @@
                 <div class="subnav-wrapper underline-hide">
                     <div class="ag_w--50">
                         <mat-form-field class="ag_form-control--xs menu-field">
-                            <mat-select (selectionChange)="navigateTo($event)" [(value)]="selectedItem"
+                            <mat-select  (selectionChange)="navigateTo($event)" [(value)]="selectedItem"
                                 [compareWith]="compareSelect" [disableOptionCentering]="true">
-                                <mat-option class="fontChange" *ngFor="let item of menuList.menu" [value]="item">
+                                <ng-container  *ngFor="let item of menuList.menu">
+                                    <mat-option class="fontChange" *ngIf="item.visibility"  [value]="item">
                                     <span *ngIf="item.visibility">{{ item.text }}</span>
                                 </mat-option>
+                                </ng-container>
+                                
                             </mat-select>
                         </mat-form-field>
                     </div>
