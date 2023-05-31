@@ -1750,6 +1750,7 @@
     "class": "Class_fr",
     "ImportItem": "Import Item_fr",
     "machineName": "Machine Name_fr",
+    "MachineGuid": "Machine GUID_fr",
     "MissingMachineName": "Missing Machine Name_fr",
     "ImportRetailSuccess": "Retail Items import succeeded_fr",
     "ImportRetailInitiate": "Retail Items Import Initiated Successfully_fr",

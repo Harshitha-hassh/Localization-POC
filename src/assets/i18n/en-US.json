@@ -1752,6 +1752,7 @@
     "class": "Class",
     "ImportItem": "Import Item",
     "machineName": "Machine Name",
+    "MachineGuid":"Machine GUID",
     "MissingMachineName": "Missing Machine Name",
     "ImportRetailSuccess": "Retail Items import succeeded",
     "ImportRetailInitiate": "Retail Items Import Initiated Successfully",

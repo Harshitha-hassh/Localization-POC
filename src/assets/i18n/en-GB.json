@@ -1750,6 +1750,7 @@
     "class": "Class_gb",
     "ImportItem": "Import Item_gb",
     "machineName": "Machine Name_gb",
+    "MachineGuid": "Machine GUID_gb",
     "MissingMachineName": "Missing Machine Name_gb",
     "ImportRetailSuccess": "Retail Items import succeeded_gb",
     "ImportRetailInitiate": "Retail Items Import Initiated Successfully_gb",

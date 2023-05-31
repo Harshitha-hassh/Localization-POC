@@ -1750,6 +1750,7 @@
     "class": "Class_uk",
     "ImportItem": "Import Item_uk",
     "machineName": "Machine Name_uk",
+    "MachineGuid": "Machine GUID_uk",
     "MissingMachineName": "Missing Machine Name_uk",
     "ImportRetailSuccess": "Retail Items import succeeded_uk",
     "ImportRetailInitiate": "Retail Items Import Initiated Successfully_uk",
