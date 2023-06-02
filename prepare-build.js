@@ -11,7 +11,9 @@ const defaultLocalizations = [
     { code: "en-UK", suffix: "_uk", name: "UK English" },
     { code: "fi-FI", suffix: "_fi", name: "Finnish" },
     { code: "fr-FR", suffix: "_fr", name: "French" },
-    { code: "en-IN", suffix: "_in", name: "Indian English" }];
+    { code: "en-IN", suffix: "_in", name: "Indian English" },
+    { code: "ko-KR", suffix: "_kr", name: "Korean" }
+];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
 const fileFormat = "json";
