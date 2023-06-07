@@ -3676,6 +3676,7 @@
     "CurrentSystemDate": "Current System Date_uk",
     "NewSystemDate": "New System Date_uk",
     "DayEndCompleted": "Day End Process for the day is complete. No actions required_uk",
+    "NightAuditScheduled": "The night audit has been scheduled at {time}. Cannot proceed with Manual audit_uk",
     "SystemMovedTo": "System date moved to_uk",
     "CONTINUE": "CONTINUE_uk",
     "Success": "Success_uk",
