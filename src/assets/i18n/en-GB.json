@@ -3676,6 +3676,7 @@
     "CurrentSystemDate": "Current System Date_gb",
     "NewSystemDate": "New System Date_gb",
     "DayEndCompleted": "Day End Process for the day is complete. No actions required_gb",
+    "NightAuditScheduled": "The night audit has been scheduled at {time}. Cannot proceed with Manual audit_gb",
     "SystemMovedTo": "System date moved to_gb",
     "CONTINUE": "CONTINUE_gb",
     "Success": "Success_gb",

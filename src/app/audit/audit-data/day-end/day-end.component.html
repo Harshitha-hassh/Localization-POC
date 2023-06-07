@@ -76,6 +76,12 @@
         <div class="process-btn mb-3">
           <button [attr.automationId]="'Btn_dayEnd_process'" type="button" mat-button class="body-bgcolor whitecolor text_capitalize LW14 gold-btn w165" [ngClass]="{'btn-disabled': removeBtnCheck()}" (click)="PerformDayend()">{{this.captions.PROCESS}}</button>
         </div>
+        <div class="w-100 mt-2" *ngIf="isManualNightAuditRestricted">
+          <span class="mx-1">
+            <i  aria-hidden="true" class="icon-information"></i>
+          </span>
+          <span>{{this.nightAuditRestricted}}</span>
+        </div>
       </div>
 
       <!-- Success Message -->
