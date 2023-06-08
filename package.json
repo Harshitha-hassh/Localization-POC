@@ -57,7 +57,7 @@
     "ngx-color": "^4.1.0",
     "ngx-google-places-autocomplete": "^2.0.5",
     "ngx-image-compress": "^8.0.3",
-    "ngx-material-timepicker": "^5.5.3",
+    "ngx-material-timepicker": "5.5.3",
     "ngx-scrollbar": "2.1.0",
     "ngx-smart-popover": "^1.5.0",
     "ngx-swiper-wrapper": "^10.0.0",
