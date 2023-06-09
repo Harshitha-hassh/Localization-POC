@@ -183,6 +183,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
         this.quickLoginUtils.resetQuickIdDetails(); 
         this._propertyFeatureService.SetQuickIdConfigSettingForRetail("QuickIdConfig"); 
         this._propertyFeatureService.GetMiscConfig();
+        this.changePropertySevice.UnSubscribePropertyChangedEvent();
         // ths.setAcesToken(); For getting Member token 
       }
     });

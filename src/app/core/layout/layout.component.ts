@@ -5,11 +5,8 @@ import { ManageSessionService } from 'src/app/login/manage-session.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 import { menuTypes } from 'src/app/shared/enums/menu.constant';
 import { PropertyInformation } from '../services/property-information.service';
-import { RetailPropertyInformation } from '../services/retail-property-information.service';
 import { RouteLoaderService } from '../services/route-loader.service';
 import { Router } from '@angular/router';
-import { ChangePropertySevice } from 'src/app/common/services/change-property.service';
-import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonUtilities, Product, SignalRMessages } from 'src/app/common/shared/shared/utilities/common-utilities';
@@ -46,8 +43,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private retailFeatureInformationService: RetailFeatureFlagInformationService,
     public dialog: MatDialog,
     private utils: CommonUtilities,
-    private snackBar: MatSnackBar,
-    private changePropertySevice: ChangePropertySevice) {
+    private snackBar: MatSnackBar) {
     this.routeDataService.loadSettings().then(result => {
       if (result) {
         const value = this.routeDataService.GetChildMenu('/');
@@ -69,11 +65,6 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.triggerNotification();
       this.time();
       this.toggleStyle();
-      this.changePropertySevice.propertyName$.pipe(takeUntil(this.destroyed$)).subscribe(propertyName => {
-        if (propertyName && propertyName != null) {
-          this.propertyName = propertyName;
-        }
-      });
       if(enableSignalR && enableSignalR.toLowerCase() == "true")
     {
       this.StartSignalrConnection();
