@@ -206,7 +206,7 @@ export class DataAwaiterService {
                     zip: '',
                     cardInfo: [],
                     guestId: client.id.toString(),
-                    emailId: client.emails.find(x=> !x.isPrivate && x.isPrimary) ? client.emails.find(x=> !x.isPrivate && x.isPrimary).emailId : client.emails[0].emailId
+                    emailId: client.emails.find(x=> !x.isPrivate && x.isPrimary) ? client.emails.find(x=> !x.isPrivate && x.isPrimary)?.emailId : client.emails[0]?.emailId
                 });
             });
         }
