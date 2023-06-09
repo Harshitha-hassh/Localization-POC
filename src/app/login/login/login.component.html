@@ -48,7 +48,7 @@
                                                 <input matInput #fcs_custID inputtype="nonnegative,nodecimal" 
                                                     [placeholder]="captions.customerId" class="text-uppercase"
                                                     formControlName="customerId"  [maxlength]="maxLength"
-                                                    (keydown.enter)="getbuttonEmitvalue($event)">
+                                                    (keydown.enter)="loginForms.controls.customerId.value != '' ? getbuttonEmitvalue($event) : '' ">
                                                 <mat-error *ngIf="loginForms.get('customerId').hasError('required')">
                                                     {{errorMessage.customerId}}
                                                 </mat-error>
@@ -93,7 +93,7 @@
                                                 <input matInput #fcs_custID inputtype="nonnegative,nodecimal"
                                                     [placeholder]="captions.customerId" class="text-uppercase"
                                                     formControlName="customerId"  [maxlength]="maxLength"
-                                                    (keydown.enter)="getbuttonEmitvalue($event)">
+                                                    (keydown.enter)="loginForms.controls.customerId.value != '' ? getbuttonEmitvalue($event) : '' ">
                                                 <mat-error *ngIf="loginForms.get('customerId').hasError('required')">
                                                     {{errorMessage.customerId}}
                                                 </mat-error>
