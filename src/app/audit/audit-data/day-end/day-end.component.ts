@@ -840,6 +840,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   async GetNightAuditConfig(){
     const result = await this.nightAuditBusiness.GetNightAuditConfig(Product.RETAIL);
     let configTime = this.localization.getDate(result.configTime);
+    let currentDate = this.localization.LocalizeCurrentDateTimeFormatDDMMMYYYY(this.propertyInfo.CurrentDate.toString());
     let currentTime = this.localization.getDate(this.localization.LocalizeDateTimeFormatSecondsDDMMMYYYYheader(configTime));
     const timeDiff = this.localization.getTimeDifference(this.localization.getTime(currentTime, 24), this.localization.getTime(configTime, 24), 'Min')
     this.isManualNightAuditRestricted = timeDiff <= 10 && timeDiff >= 0;
