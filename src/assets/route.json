@@ -83,6 +83,7 @@
   "deleteImagesByReference": "images/type/{referencetype}/{referenceid}",
   "updateImageById": "images/{id}",
   "GetAllImagesByIds": "images/type/{referencetype}/thumbnailonly/{isthumbnailonly}",
+  "GetImagesByGuid": "v2/images?guid={imageReferenceId}&isThumbnailOnly={isThumbnailOnly}",
   "v2saveImage": "v2/Images",
   "v2updateImage": "v2/Images",
   "v2DeleteImageByReference": "v2/images/{guid}",
