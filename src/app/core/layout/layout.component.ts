@@ -17,7 +17,7 @@ import { PropertySettingDataService } from 'src/app/common/dataservices/authenti
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 import { MatSnackBar} from '@angular/material/snack-bar';
 import { ButtonType } from 'src/app/shared/shared-models';
-import {RetailUtilities} from 'src/app/retail/shared/utilities/retail-utilities';
+import moment, { Moment } from 'moment';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -38,7 +38,6 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private propertyService: PropertyService,
     private router: Router,
     private signalR: SignalrService,
-    private retailUtilities:RetailUtilities,
     private PropertySettingService: PropertySettingDataService,
     private retailFeatureInformationService: RetailFeatureFlagInformationService,
     public dialog: MatDialog,
@@ -114,10 +113,12 @@ export class LayoutComponent implements OnInit, OnDestroy {
     let newSystemDate = await this.GetPropertyDate();
     let localizedDate = this.localization.localizeDisplayDate(newSystemDate);
     let productId = Number(this.utils.GetPropertyInfo("ProductId"));
+    let previousDate = moment(newSystemDate).subtract(1,"days");
+      let localizedPreviousDate = this.localization.localizeDisplayDate(previousDate.toDate());
     if (newSystemDate != undefined && newSystemDate != null) {
       if(productId == Product.SPA || productId == Product.Golf || productId == Product.RETAIL )
       {
-        this.retailUtilities.showToastMessage(this.localization.captions.common.NightAuditMessage + ' for ' + localizedDate, SnackBarType.Success, 15000);
+        this.utils.showToastMessage(this.localization.captions.NightAuditMessage + ' for ' + localizedPreviousDate, SnackBarType.Success, 15000);
       }
       else{
         this.utils.showAlert(message.message + ' to ' + localizedDate, AlertType.Success, ButtonType.Ok, (res) => {
