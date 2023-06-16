@@ -38,7 +38,7 @@
         .transaction-details{
             table{
                 th{
-                    background: #E4E5E8;
+                    background: $theme-table-header-bg-color;
                     color: #000;
                     font-size: 14px;
                 }
@@ -70,7 +70,8 @@
                     top:0;
                     width: 178px;
                     cursor: default;
-                    background: #E4E5E8;
+                    background: $theme-table-header-bg-color;
+
                     color: #000;
                     font-size: 14px;
                     // &:nth-child(1){
@@ -135,7 +136,7 @@
                 border-collapse: collapse;
                 border:1px solid $color-form-bgColor;
                 th{
-                    background: white;
+                    background: $theme-table-header-bg-color;
                     height: 43px;
                     padding-left: 0.5rem;
                     padding-right: 0.5rem;
@@ -175,7 +176,7 @@
             background: #e8dec0;
         }
         th {
-            background: #E4E5E8;
+            background: $theme-table-header-bg-color;
             color: #000;
             font-size: 14px;
             height: 43px;

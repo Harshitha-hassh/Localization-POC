@@ -86,7 +86,7 @@
             <div *ngSwitchCase="(levelMenu == menuType.tertiary) || (levelMenu == agMenuTypes.combo)">
                 <div class="subnav-wrapper underline-hide">
                     <div class="ag_w--50">
-                        <mat-form-field class="ag_form-control--xs menu-field">
+                        <mat-form-field class="menu-field">
                             <mat-select  (selectionChange)="navigateTo($event)" [(value)]="selectedItem"
                                 [compareWith]="compareSelect" [disableOptionCentering]="true">
                                 <ng-container  *ngFor="let item of menuList.menu">
@@ -94,7 +94,7 @@
                                     <span *ngIf="item.visibility">{{ item.text }}</span>
                                 </mat-option>
                                 </ng-container>
-                                
+
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -253,6 +253,6 @@
         <div class="pb-2 ct-color-transc-notification" *ngFor="let n of notificationInfo">
             <a class="logout-style" (click)="notificationPopOver.hide();routeTransc(n.id)">{{n.message}}</a>
         </div>
-        
+
     </div>
 </popover-content>

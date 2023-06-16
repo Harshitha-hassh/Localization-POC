@@ -39,7 +39,7 @@
         //Text Area
         .mat-form-field.mat-form-field-can-float.mat-form-field-should-float.mat-form-field-appearance-legacy.txt-area-height {
             .mat-form-field-infix {
-                height: 60px !important;
+                // height: 60px !important;
             }
         }
         //Datepicker
@@ -185,6 +185,35 @@
         //         padding-left: 60px !important;
         //     }
         // }
+
+           //Text Area
+    .txt-area-height {
+      border: 1px solid grey;
+      border-radius: 4px;
+      padding-right: 0;
+      &.mat-form-field-invalid{
+          border: 1px solid red !important;
+          .mat-form-field-wrapper{
+              padding-bottom: 6px !important;
+              .mat-form-field-flex{
+                  .mat-form-field-infix {
+                      border: none !important;
+                  }
+              }
+          }
+          .mat-error{
+              padding-top: 18px;
+          }
+      }
+      .mat-form-field-wrapper{
+          padding-bottom: 6px !important;
+          .mat-form-field-flex{
+              .mat-form-field-infix {
+                  border: none !important;
+              }
+          }
+      }
+  }
     }
 
     @media only screen and (min-width: 1024px) {

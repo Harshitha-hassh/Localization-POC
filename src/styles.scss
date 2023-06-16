@@ -5733,7 +5733,11 @@ body .cdk-custom-wrapper .ag_table .table th {
   background-color: $ag_retail_light_blue_bg;
 }
 
-.icon-calendar:before, .icon-Calender:before, .icon-Search:before, .icon-clock:before, .icon-Minus:before, .icon-Plus:before, .icon-profile, .icon-Edit:before, .icon-Delete:before, .icon-active-user:before, .icon-filter_filled:before, .icon-DragAndDrop::before, .icon-print:before, .icon-recurring:before {
+.icon-calendar:before, .icon-Calender:before, .icon-Search:before, .icon-clock:before,
+.icon-Minus:before, .icon-Plus:before, .icon-profile, .icon-Edit:before,
+.icon-Delete:before, .icon-active-user:before, .icon-filter_filled:before,
+.icon-DragAndDrop::before, .icon-print:before, .icon-recurring:before,
+.icon-Player-worth_disabled:before, .icon-copy:before, .icon-Success:before {
   color: $theme-base-color;
 }
 
@@ -5791,4 +5795,13 @@ body .cdk-custom-wrapper .ag_table .table th {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.cdk-custom-wrapper .ag_table .table th{
+  background-color: $theme-table-bg-color !important;
+}
+.cdk-custom-wrapper .ag_table{
+  background-color: $theme-table-bg-color !important;
+}
+.inventory .inventory-status{
+  background-color: #e4e5e8 !important;
 }

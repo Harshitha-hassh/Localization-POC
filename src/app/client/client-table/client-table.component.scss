@@ -251,6 +251,7 @@
   thead th:last-child {
     padding-right: 40px;
     background: #fff;
+    background-color: $theme-table-header-bg-color;
   }
 
   tbody {
@@ -269,6 +270,7 @@
       font-size: 14px;
       padding: 0 15px;
       font-family: "LatoWebMedium";
+      background-color: $theme-table-header-bg-color;
 
       //   &:last-child {
       //     position: sticky;
