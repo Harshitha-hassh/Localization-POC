@@ -441,7 +441,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setMachineDetails();
       this.router.navigate(['/home']);
       await this.retailFunc.getRetailFunctionality();
-    }
+      let userDetails = await this.sessionService.GetUserSessionsInfo();
+      console.log(userDetails)
+      const result = userDetails.userProperties.find(item => item.propertyId === selectedProperty.propertyId);
+      await this.propertyServices.setJasperAttributes(result?.roleId);
+    }  
   }
 
   async setpropertyvalues(Selectedproperty: any) {
