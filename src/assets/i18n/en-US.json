@@ -1571,6 +1571,7 @@
     "Inventory Management": "Inventory Management",
     "Retail Setup": "Retail Setup",
     "Retail Reports": "Retail Reports",
+    "Export/Import": "Export/Import",
     "600": "600 - Add New Client Profile",
     "605": "605 - Edit Client Profile",
     "800": "800 - Commission Class Setup",
@@ -1696,7 +1697,10 @@
     "11500": "11500 - Manual Audit",
     "16025": "16025 - Auto Night Audit",
 		"85160": "85160 - DataMagine Configuration",
-		"Interface": "Interfaces"
+		"Interface": "Interfaces",
+    "2315": "2315 - Jaspersoft Server",
+    "200410": "200410 - Export",
+    "200415": "200415 - Import"
   },
   "userId": "User ID",
   "password": "Password",
