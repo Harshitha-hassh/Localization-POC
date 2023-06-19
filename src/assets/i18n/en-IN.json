@@ -1727,6 +1727,7 @@
   "OneSpecialCharactersAndNumbers": "Your password must contain atleast one special character and numbers _in",
   "OnlyNumbers": "Your password must contain only numbers_in",
   "AlphabetsAndNumbers": "Your password must contain alphabets and numbers_in",
+  "NightAuditMessage": "The night audit has been processed_in",
   "changePassword": "Change Password_in",
   "setPassword": "Set Password_in",
   "passwordRequirements": "Password Requirements_in",

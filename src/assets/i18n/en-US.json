@@ -1729,6 +1729,7 @@
   "OneSpecialCharactersAndNumbers": "Your password must contain atleast one special character and numbers ",
   "OnlyNumbers": "Your password must contain only numbers",
   "AlphabetsAndNumbers": "Your password must contain alphabets and numbers",
+  "NightAuditMessage": "The night audit has been processed",
   "changePassword": "Change Password",
   "setPassword": "Set Password",
   "passwordRequirements": "Password Requirements",
@@ -1740,6 +1741,7 @@
   "lbl_NoDataFound": "No Data Found",
   "lbl_userId": "User ID",
   "lbl_logout": "Log Out",
+
   "retailsetup": {
     "FinancialLevelSplitUp": "Financial Level Split-up",
     "CategoryLevel": "Category",
