@@ -1449,6 +1449,12 @@
       background-color: $ag-retail-background-grey;
       width: calc(100% - 395px);
       padding-top: 10px;
+      .address-section-parent{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        margin-top: 0 !important;
+        width: auto;
+      }
       .client-details{
         @extend .bodyWrap;
         margin: 10px !important;
@@ -1459,13 +1465,20 @@
         height: calc(100% - 170px);
       }
     }
-    .order-section-container{
+    .table-wrapper{
       @extend .bodyWrap;
       margin: 10px !important;
       width: auto !important;
       height: calc(100% - 104px)!important;
       padding: 15px;
-    }
+
+  }
+  .order-present-table-view{
+    height: calc(100% - 175px)!important;
+  }
+  .order-present-table-wrapper{
+    height: calc(100% - 136px)!important;
+  }
     .shop-payment-summary-wrapper{
       @extend .bodyWrap;
       margin: 10px !important;
