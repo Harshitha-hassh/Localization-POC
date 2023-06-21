@@ -1,103 +1,106 @@
-<section class="prop-info">
+<section class="prop-info newVersionWrapper property-info-wrapper">
     <div class="prop-details">
-  
-  
+
+
       <ng-scrollbar [autoHide]="true">
     <div class= "prop-section" >
-  
+
         <form [formGroup]="propertyInfo" autocomplete="off" [ngClass]="{'button_invalid': isViewOnly}">
-          <mat-form-field [floatLabel]="floatLabel"class="name">
-            <input type="text" matInput placeholder="{{captions.name}}" name="Name" formControlName="name" [maxlength]="25">
-          </mat-form-field>
-          <!-- Address Details -->
-          <div class="address-details">
-            <div formArrayName="address" *ngFor="let addressDetail of propertyInfo.get('address')['controls']; let i = index;">
-              <div class="address-group" [formGroupName]="i">
-                <mat-form-field [floatLabel]="floatLabel" class="address">
-                  <input type="text" matInput placeholder="{{captions.address}}" name="Address" formControlName="addressDetails" [maxlength]="50">
+          <div class="box-style">
+            <mat-form-field [floatLabel]="floatLabel"class="name">
+              <input [attr.automationId]="'Txt_propertyInfo_name'" type="text" matInput placeholder="{{captions.name}}" name="Name" formControlName="name" [maxlength]="25">
+            </mat-form-field>
+            <!-- Address Details -->
+            <div class="address-details">
+              <div formArrayName="address" *ngFor="let addressDetail of propertyInfo.get('address')['controls']; let i = index;">
+                <div class="address-group" [formGroupName]="i">
+                  <mat-form-field [floatLabel]="floatLabel" class="address">
+                    <input [attr.automationId]="'Txt_propertyInfo_address'" type="text" matInput placeholder="{{captions.address}}" name="Address" formControlName="addressDetails" [maxlength]="50">
+                  </mat-form-field>
+                  <!-- <button mat-mini-fab (click)="addAddress(i,'')" class="buttonCust1 m-md-2" type="button" *ngIf="i == 0 && addresslength != 3">
+                    <span class="whitecolor">+</span>
+                  </button> -->
+                  <span class="icon-Plus" (click)="addAddress(i,'')"  *ngIf="i == 0 && addresslength != 3"></span>
+                  <!-- <button mat-mini-fab (click)="removeAddress(i)" class="buttonCust1 m-md-2" type="button" *ngIf="i != 0">
+                    <span class="whitecolor">-</span>
+                  </button> -->
+                  <span class="icon-Minus" (click)="removeAddress(i)" *ngIf="i != 0"></span>
+                </div>
+              </div>
+              <div class="postal-details">
+                <mat-form-field [floatLabel]="floatLabel" class="postalCode">
+                  <input [attr.automationId]="'Txt_propertyInfo_postalCode'" type="text" matInput placeholder="{{captions.postalCode}}" name="PostalCode" formControlName="postalcode" [maxlength]="7" inputtype="nospecailchar">
                 </mat-form-field>
-                <!-- <button mat-mini-fab (click)="addAddress(i,'')" class="buttonCust1 m-md-2" type="button" *ngIf="i == 0 && addresslength != 3">
-                  <span class="whitecolor">+</span>
-                </button> -->
-                <span class="icon-Plus" (click)="addAddress(i,'')"  *ngIf="i == 0 && addresslength != 3"></span>
-                <!-- <button mat-mini-fab (click)="removeAddress(i)" class="buttonCust1 m-md-2" type="button" *ngIf="i != 0">
-                  <span class="whitecolor">-</span>
-                </button> -->
-                <span class="icon-Minus" (click)="removeAddress(i)" *ngIf="i != 0"></span>
+                <mat-form-field [floatLabel]="floatLabel" class="state">
+                  <input [attr.automationId]="'Txt_propertyInfo_state'" type="text" matInput placeholder="{{captions.state}}" name="State" formControlName="state" [maxlength]="10">
+                </mat-form-field>
+              </div>
+              <div class="country-details">
+                <mat-form-field [floatLabel]="floatLabel" class="city">
+                  <input [attr.automationId]="'Txt_propertyInfo_city'" type="text" matInput placeholder="{{captions.city}}" name="City" formControlName="city" > <!-- bug fix [maxlength]="10" 4128-->
+                </mat-form-field>
+                <mat-form-field [floatLabel]="floatLabel" class="country">
+                  <input [attr.automationId]="'Txt_propertyInfo_country'" matInput type="text" formControlName="country" [matAutocomplete]="auto"
+                    [placeholder]="captions.country" autocomplete="off" [maxlength]="10" name="Country">
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let country of filteredCountries | async" [value]="country.CountryName" [matTooltip]="country.CountryName">
+                      <span>{{country.CountryName}}</span>
+                    </mat-option>
+                  </mat-autocomplete>
+                  <mat-error *ngIf="!propertyInfo.get('country').value && propertyInfo.get('country').hasError('required')">
+                    {{captions.missingCountryName}}
+                  </mat-error>
+                  <mat-error *ngIf="propertyInfo.get('country').value && propertyInfo.get('country').hasError('invalid')">
+                    {{captions.invalidCountryName}}
+                  </mat-error>
+                </mat-form-field>
               </div>
             </div>
-            <div class="postal-details">
-              <mat-form-field [floatLabel]="floatLabel" class="postalCode">
-                <input type="text" matInput placeholder="{{captions.postalCode}}" name="PostalCode" formControlName="postalcode" [maxlength]="7" inputtype="nospecailchar">
-              </mat-form-field>
-              <mat-form-field [floatLabel]="floatLabel" class="state">
-                <input type="text" matInput placeholder="{{captions.state}}" name="State" formControlName="state" [maxlength]="10">
-              </mat-form-field>
+            <!-- Phone Details -->
+            <div class="phone-info" *ngFor="let phone of propertyInfo.get('phone')['controls']; let i= index;" formArrayName="phone">
+                <label class="form-label-primary blckClr mb-0">{{captions.phone}}</label>
+              <div [formGroupName]="i">
+                <mat-form-field class="phone" [floatLabel]="floatLabel">
+                  <mat-select [attr.automationId]="'Dd_propertyInfo_phoneType'"  (selectionChange)="onPhChange($event, i ,phone)" placeholder="{{captions.phone}}" name="Phone" id="phone{{i}}" formControlName="phonelabel" >
+                    <mat-option></mat-option>
+                    <mat-option *ngFor="let phonetype of contactPhoneType" [value]="phonetype.Description">
+                      {{phonetype.Description}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="ph-no" [floatLabel]="floatLabel">
+                  <input [attr.automationId]="'Txt_propertyInfo_phNo'" matInput id="phone-number" [maxlength]="30" textmask="{{textmaskFormat}}" name="phoneNumber" formControlName="phonenumber" inputtype="onlynumber" [skipInputValidation]="skipPhoneNumberValidationonBlur" [maxlength]="10">
+                </mat-form-field>
+                <!-- <button mat-mini-fab (click)="addPhoneItem(i,'','')" class="buttonCust1 m-md-2" type="button" *ngIf="i == 0">
+                  <span class="whitecolor">+</span>
+                </button> -->
+                <span class="icon-Plus" (click)="addPhoneItem(i,'','')"  *ngIf="i == 0"></span>
+                <!-- <button mat-mini-fab (click)="removePhoneItem(i)" class="buttonCust1 m-md-2" type="button" *ngIf="i != 0">
+                  <span class="whitecolor">-</span>
+                </button> -->
+                <span class="icon-Minus" (click)="removePhoneItem(i)"  *ngIf="i != 0"></span>
+              </div>
             </div>
-            <div class="country-details">
-              <mat-form-field [floatLabel]="floatLabel" class="city">
-                <input type="text" matInput placeholder="{{captions.city}}" name="City" formControlName="city" > <!-- bug fix [maxlength]="10" 4128-->
-              </mat-form-field>
-              <mat-form-field [floatLabel]="floatLabel" class="country">
-                <input matInput type="text" formControlName="country" [matAutocomplete]="auto"
-                  [placeholder]="captions.country" autocomplete="off" [maxlength]="10" name="Country">
-                <mat-autocomplete #auto="matAutocomplete">
-                  <mat-option *ngFor="let country of filteredCountries | async" [value]="country.CountryName" [matTooltip]="country.CountryName">
-                    <span>{{country.CountryName}}</span>
-                  </mat-option>
-                </mat-autocomplete>
-                <mat-error *ngIf="!propertyInfo.get('country').value && propertyInfo.get('country').hasError('required')">
-                  {{captions.missingCountryName}}
-                </mat-error>
-                <mat-error *ngIf="propertyInfo.get('country').value && propertyInfo.get('country').hasError('invalid')">
-                  {{captions.invalidCountryName}}
-                </mat-error>
-              </mat-form-field>
-            </div>
+            <!-- Language Selection -->
+            <mat-form-field class="lang" [floatLabel]="floatLabel">
+              <mat-select [attr.automationId]="'Dd_propertyInfo_languageType'" placeholder="{{captions.language}}" name="Language" formControlName="language">
+                <mat-option *ngFor="let langType of languageType" [value]="langType.code">
+                  {{langType.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <!-- Tenant Id -->
+            <mat-form-field class="tenantId" [floatLabel]="floatLabel">
+              <input [attr.automationId]="'Txt_propertyInfo_tenantId'" type="text" matInput placeholder="{{captions.tenantId}}" name="TenantId" formControlName="tenantId" inputtype="onlynumber" [maxlength]="10">
+            </mat-form-field>
+            <!-- Property Code -->
+            <mat-form-field class="propCode" [floatLabel]="floatLabel">
+              <input [attr.automationId]="'Txt_propertyInfo_propertyCode'" type="text" matInput placeholder="{{captions.propertyCode}}" name="PropertyCode" formControlName="propCode" [maxlength]="10">
+            </mat-form-field>
           </div>
-          <!-- Phone Details -->
-          <div class="phone-info" *ngFor="let phone of propertyInfo.get('phone')['controls']; let i= index;" formArrayName="phone">
-              <label class="form-label-primary blckClr mb-0">{{captions.phone}}</label>
-            <div [formGroupName]="i">
-              <mat-form-field class="phone" [floatLabel]="floatLabel">
-                <mat-select  (selectionChange)="onPhChange($event, i ,phone)" placeholder="{{captions.phone}}" name="Phone" id="phone{{i}}" formControlName="phonelabel" >
-                  <mat-option></mat-option>
-                  <mat-option *ngFor="let phonetype of contactPhoneType" [value]="phonetype.Description">
-                    {{phonetype.Description}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-              <mat-form-field class="ph-no" [floatLabel]="floatLabel">
-                <input matInput id="phone-number" [maxlength]="30" textmask="{{textmaskFormat}}" name="phoneNumber" formControlName="phonenumber" inputtype="onlynumber" [skipInputValidation]="skipPhoneNumberValidationonBlur" [maxlength]="10">
-              </mat-form-field>
-              <!-- <button mat-mini-fab (click)="addPhoneItem(i,'','')" class="buttonCust1 m-md-2" type="button" *ngIf="i == 0">
-                <span class="whitecolor">+</span>
-              </button> -->
-              <span class="icon-Plus" (click)="addPhoneItem(i,'','')"  *ngIf="i == 0"></span>
-              <!-- <button mat-mini-fab (click)="removePhoneItem(i)" class="buttonCust1 m-md-2" type="button" *ngIf="i != 0">
-                <span class="whitecolor">-</span>
-              </button> -->
-              <span class="icon-Minus" (click)="removePhoneItem(i)"  *ngIf="i != 0"></span>
-            </div>
-          </div>
-          <!-- Language Selection -->
-          <mat-form-field class="lang" [floatLabel]="floatLabel">
-            <mat-select placeholder="{{captions.language}}" name="Language" formControlName="language">
-              <mat-option *ngFor="let langType of languageType" [value]="langType.code">
-                {{langType.value}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <!-- Tenant Id -->
-          <mat-form-field class="tenantId" [floatLabel]="floatLabel">
-            <input type="text" matInput placeholder="{{captions.tenantId}}" name="TenantId" formControlName="tenantId" inputtype="onlynumber" [maxlength]="10">
-          </mat-form-field>
-          <!-- Property Code -->
-          <mat-form-field class="propCode" [floatLabel]="floatLabel">
-            <input type="text" matInput placeholder="{{captions.propertyCode}}" name="PropertyCode" formControlName="propCode" [maxlength]="10">
-          </mat-form-field>
+
           <hr />
-          <div class="mandatoryDetails">
+          <div class="mandatoryDetails box-style">
             <label class="form-label-primary">{{captions.requiredFields | uppercase}}</label>
             <div class="infoDetails d-flex">
               <div *ngFor="let requiredInfo of propertyInfo.get('requiredFields')['controls']; let i =index;" formArrayName="requiredFields" class="personal-info" id="required-{{i}}">
@@ -106,7 +109,7 @@
                     <label class="textellipsis">{{requiredDetails.name}}</label>
                     <div *ngFor="let details of requiredDetails['requiredInfo']" class="toogle-switch-big-class LW14 d-table">
                       <span class="detailName d-table-cell" id="info-{{details.name}}">{{details.name}}</span>
-                      <app-toggle-switch  class="d-table-cell" formControlName="{{details.controlName}}" [ngClass]=" details.Disabled  ? 'button_invalid' : 'button_valid'"></app-toggle-switch>
+                      <app-toggle-switch [attr.automationId]="'Tog_propertyInfo_details'"  class="d-table-cell" formControlName="{{details.controlName}}" [ngClass]=" details.Disabled  ? 'button_invalid' : 'button_valid'"></app-toggle-switch>
                     </div>
                   </div>
                 </div>
@@ -115,12 +118,12 @@
           </div>
 
           <hr />
-          <div class="mandatoryDetails">
+          <div class="mandatoryDetails box-style">
             <label class="form-label-primary">{{captions.defaultFieldsConfiguration | uppercase}}</label>
-            <div class="postal-details">              
+            <div class="postal-details">
                 <div class="defaultFieldConfiguration">
                   <mat-form-field class="inputwidth10 mr-2" [floatLabel]="floatLabel">
-                    <mat-select [placeholder]="captions.DefaultEmailType" id="EmailLabel" name="TSedd"
+                    <mat-select [attr.automationId]="'Dd_propertyInfo_emailType'" [placeholder]="captions.DefaultEmailType" id="EmailLabel" name="TSedd"
                       formControlName="DEFAULT_EMAIL_TYPE" class="LW14">
                       <mat-option></mat-option>
                       <mat-option *ngFor="let ct of contactEmailType" [value]="ct.id">
@@ -128,14 +131,14 @@
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
-    
+
                   <mat-form-field class="state default-feilds" [floatLabel]="floatLabel">
-                    <input type="text" matInput [placeholder]="captions.DefaultCountryCode" formControlName="DEFAULT_COUNTRY_CODE"
-                      inputtype="onlynumber" [maxlength]="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>                    
+                    <input [attr.automationId]="'Txt_propertyInfo_defaultCountryCode'" type="text" matInput [placeholder]="captions.DefaultCountryCode" formControlName="DEFAULT_COUNTRY_CODE"
+                      inputtype="onlynumber" [maxlength]="3" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                   </mat-form-field>
-                  
+
                   <mat-form-field class="state default-feilds" [floatLabel]="floatLabel">
-                    <mat-select [placeholder]="captions.DefaultPhoneType" id="PhoneNumberLabel" name="TSpdd" class="LW14"
+                    <mat-select [attr.automationId]="'Dd_propertyInfo_defaultPhoneType'" [placeholder]="captions.DefaultPhoneType" id="PhoneNumberLabel" name="TSpdd" class="LW14"
                       formControlName="DEFAULT_PHONE_TYPE">
                       <mat-option></mat-option>
                       <mat-option *ngFor="let ct of contactPhoneLabelType" [value]="ct.id">
@@ -148,15 +151,14 @@
             </div>
           </div>
         </form>
-  
+
     </div>
   </ng-scrollbar>
   </div>
     <div class="prop-actions">
       <div>
-        <button class="LW14 save" mat-button (click)="save()" [ngClass]="enableSave ? 'spa-primary-default-save': 'spa-primary-disabled'">{{captions.save}}</button>
-        <a class="LW14" (click)="cancel()">{{captions.cancel}}</a>
+        <button [attr.automationId]="'Btn_propertyInfo_cancel'" class="LW14 save" mat-button (click)="save()" [ngClass]="enableSave ? 'spa-primary-default-save': 'spa-primary-disabled'">{{captions.save}}</button>
+        <a class="LW14 cancel-btn-color" (click)="cancel()">{{captions.cancel}}</a>
       </div>
     </div>
   </section>
-  

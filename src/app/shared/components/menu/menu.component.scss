@@ -292,7 +292,7 @@ svg-icon {
 .profile-section {
   // width: 390px; //285px;
   height: 100%;
-  
+
   .custom-notify-relative
   {
     position: relative;
@@ -436,6 +436,15 @@ svg-icon {
 
     .custom-popover-profile {
       padding: 10px 20px !important;
+      &:hover {
+        background-color: $ag_grey-lightest;
+        a{
+        color: $ag_black !important;
+        }
+      }
+      &:first-child {
+        padding-top: 10px !important;
+      }
     }
   }
 }
@@ -613,6 +622,10 @@ svg-icon {
   background: #f4f4f6;
   .mat-form-field-underline {
     display: none !important;
+  }
+
+  .mat-form-field-infix{
+    width: 100%;
   }
 }
 

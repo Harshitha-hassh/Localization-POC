@@ -424,7 +424,7 @@ $color-btn-hover: $lightyellow;
 $color-tertiary-btn-hover: $tertiarygold;
 $color-tertiary-btn-press: $tertiarygolddark;
 $color-reports-border: $black-opacity;
-$table-header-bg: $formBackGroundGray;
+// $table-header-bg: $formBackGroundGray;
 $color-blue-color:$warning-blue;
 $card-selection-bg-color: $Beige;
 $color-tick-green: $tick-color;
@@ -513,9 +513,9 @@ $selected-menu-bg-color: $theme-blue-selection;
 $color-li-selected: $theme-blue-lighttest;
 $color-border-gold: $ag_base-color  ;
 
-$mat-input-disabled-color: $black-opacity38; 
+$mat-input-disabled-color: $black-opacity38;
 
-$error-color: $ag_error-color; 
+$error-color: $ag_error-color;
 
 $menu-search-hover-theme:$theme-blue-lighttest;
 
@@ -614,3 +614,20 @@ $error-light-red: $light-red;
 $ag_table_hover_bg: $grey-lightest;
 $ag_expansion-hdr_border: $brown-dark;
 $ag_expansion-hdr_bc: $brown-light;
+
+
+
+//2.0 color changes
+
+$ag_retail_light_blue_bg: $aliceBlue;
+$theme-base-color: $retail-primary-100;
+$ag_box_border: $retail-primary-40;
+$theme-default-base-color: $retail-primary-100;
+$theme_default_active_bg: $retail-primary-60;
+$table-header-bg: $retail-primary-20;
+$theme-table-header-bg-color: $retail-primary-20;
+$theme-table-bg-color: $retail-primary-10;
+$color-form-bgColor:$theme-table-header-bg-color;
+
+
+

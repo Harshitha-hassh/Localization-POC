@@ -11,11 +11,13 @@ import { PropertySettingDataService } from '../shared/data-services/authenticati
 import { LoaderInterceptor } from '../core/services/loader.interceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { SetPropertyComponent } from './set-property/set-property.component';
 
 @NgModule({
     declarations: [
         LoginComponent,
-        SetPasswordComponent
+        SetPasswordComponent,
+        SetPropertyComponent
     ],
     imports: [
         CommonModule,

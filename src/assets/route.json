@@ -9,7 +9,8 @@
     "payment": "/VisualOne/retailgateway/",
     "common": "/VisualOne/retailgateway/Retail/Services/Notification",
     "documentation": "/Help/",
-    "commonGateway": "/commongateway/"
+    "commonGateway": "/commongateway/",
+    "signalrService": "/commongateway/SignalRService"
   },
   "Login": "Property/GetLoginDetails",
   "LogOut": "Property/LogOutByUserId/{Username}/{TenantId}/{PropertyId}",
@@ -82,6 +83,7 @@
   "deleteImagesByReference": "images/type/{referencetype}/{referenceid}",
   "updateImageById": "images/{id}",
   "GetAllImagesByIds": "images/type/{referencetype}/thumbnailonly/{isthumbnailonly}",
+  "GetImagesByGuid": "v2/images?guid={imageReferenceId}&isThumbnailOnly={isThumbnailOnly}",
   "v2saveImage": "v2/Images",
   "v2updateImage": "v2/Images",
   "v2DeleteImageByReference": "v2/images/{guid}",
@@ -608,6 +610,8 @@
   "GetClientByPatronId": "Clients/getClientByPatronId/{patronId}",
   "GetPatronInformation": "Payment/GetPlayerInformation",
   "RedeemVoucher": "Payment/RedeemVoucher/{patronId}",
+  "GetAccountInformation": "Payment/GetAccountInformation",
+  "RedeemPoints": "Payment/RedeemPoints",
   "GetTopicsByType": "Notifications/GetTopicsByNotificationType/{NotificationTypeId}",
   "GetTemplateDetailsByTopicId": "Notifications/GetTemplateDetailsByTopicId/{TopicId}",
   "CreateorUpdateTemplate": "Notifications/CreateorUpdateTemplate",
@@ -733,5 +737,6 @@
   "GetPolicyTypeUsingPolicyId" : "PointOfSaleService/Policy/GetPolicyTypeUsingPolicyId/{policyId}",
   "GetDataMagineConfiguration" : "RetailManagementService/DataMagine/GetDmConfig",
   "CreateDataMagineConfiguration" : "RetailManagementService/DataMagine/CreateDmConfig",
-  "UpdateDataMagineConfiguration" : "RetailManagementService/DataMagine/UpdateDmConfig"
+  "UpdateDataMagineConfiguration" : "RetailManagementService/DataMagine/UpdateDmConfig",
+  "GetWebCommunicationProxyVersion": "Payment/GetWebCommunicationProxyVersion"
 }

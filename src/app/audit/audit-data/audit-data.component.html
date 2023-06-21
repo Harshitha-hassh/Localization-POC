@@ -1,6 +1,6 @@
 <section id="setting" class="tab-view h-100">
     <!-- Sub Inner-header -->
-    <mat-tab-group class="h-100 " #tabGroup (selectedTabChange)="handleSelectedTabChange($event)"> 
+    <mat-tab-group  [attr.automationId]="'Mt_auditData_dayEnd'" class="h-100 " #tabGroup (selectedTabChange)="handleSelectedTabChange($event)">
       <mat-tab label="{{this.captions.DAYEND}}">
         <app-day-end ></app-day-end>
       </mat-tab>

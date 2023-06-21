@@ -1,9 +1,9 @@
-<section class="h-100">
+<section class="h-100 newVersionWrapper additional-information-wrapper">
     <form [formGroup]="FormGrp" autocomplete="off" class="h-100">
         <ng-scrollbar [trackX]="true" [autoHide]="true">
-            <div class="d-inline-block width_75 p-4 padding_container">                
-                <app-retail-capture-card 
-                    [PaymentReferenceID]="PaymentReferenceID" 
+            <div class="d-inline-block width_75 p-4 padding_container">
+                <app-retail-capture-card
+                    [PaymentReferenceID]="PaymentReferenceID"
                     [isShowPMAgentValidationMessage]="false"
                     (NewPaymentReferenceID)="SaveReferenceId($event)">
                 </app-retail-capture-card>
@@ -105,7 +105,7 @@
                             <span class="span-label">{{captions.retentionManagement}}</span>
                         </div>
                         <!-- <div (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="actionType != 'EDIT' || (additionalInfo && additionalInfo.client && additionalInfo.client.Id == '') ? 'ag_link--disabled opacity-spa' : ''"> -->
-                            
+
                             <div (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="'ag_link--disabled opacity-spa'">
                                 <span class="boxed-icon">
                                 <i class="icon-export"></i>

@@ -14,7 +14,8 @@ import { SetPasswordComponent } from '../set-password/set-password.component';
 import {
   JWT_TOKEN, USER_INFO,
   USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, PROPERTY_CONFIGURATION_SETTINGS,
-  FULL_STORY_ORG_ID
+  FULL_STORY_ORG_ID,
+  NO_OF_DECIMAL_DIGITS
 } from 'src/app/app-constants';
 import { LoginCommunicationService } from '../login-communication.service';
 import moment from 'moment';
@@ -201,7 +202,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.removeVal();
       }
     });
-
+    this.setEncryptKey();
     let tenantId = localStorage.getItem('TenantId');
     let adb2cEnabled = localStorage.getItem('ADB2CAuthenticationEnabled');
     if (adb2cEnabled != null && adb2cEnabled.toLowerCase() == "true") {
@@ -317,6 +318,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       const content = { title: 'CHANGE PASSWORD', userName: this.userName, tenantId: this.tenantId };
       this.setUpPassword(content, false);
     } else {
+      this.sessionService.UpdateUserSessionsInfo(loginDetails.result);
       this.propertyValues = loginDetails.result.userProperties;
       this.captionGenerator();
       this.loginSuccess = !this.loginSuccess;
@@ -349,6 +351,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                       roleId=${this.userProperties ? this.userProperties[0].roleId : 1};
                       roleName=${this.userProperties ? this.userProperties[0].roleName : ''};
                       language=${language};
+                      changePropertyEnabled=${loginDetails.result.userLoginInfo.isPropertyChangeAllow};
                     `;
     sessionStorage.setItem(USER_INFO, userInfo);
   }
@@ -438,7 +441,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setMachineDetails();
       this.router.navigate(['/home']);
       await this.retailFunc.getRetailFunctionality();
-    }
+      let userDetails = await this.sessionService.GetUserSessionsInfo();
+      console.log(userDetails)
+      const result = userDetails.userProperties.find(item => item.propertyId === selectedProperty.propertyId);
+      await this.propertyServices.setJasperAttributes(result?.roleId);
+    }  
   }
 
   async setpropertyvalues(Selectedproperty: any) {
@@ -637,12 +644,18 @@ export class LoginComponent implements OnInit, OnDestroy {
     const propertyPaymentConfig = await this.PropertySettingService.GetPaymentConfigurationByProperty(propertyId);
     this.propertyInfo.SetPaymentConfiguration(propertyPaymentConfig);
     this.GetSupportedPMAgentVersionByPropertyID(propertyId);
+    this.GetWebCommunicationProxyVersion();
   }
 
   async GetSupportedPMAgentVersionByPropertyID(propertyId: number) {
     const supportedPmAgentVersion = await this.PropertySettingService.GetSupportedPMAgentVersionByPropertyID(propertyId);
     this.propertyInfo.SetSupportedPMAgentVersion(supportedPmAgentVersion);
     this.payAgentService.ValidatePayAgentVersion();
+  }
+
+  async GetWebCommunicationProxyVersion(){
+    const WebProxyCheck = await this.retailPropertySettingDataService.GetWebCommunicationProxyVersion();
+    this.retailpropertyInfo.SetWebCommunicationProxyVersionCheck(WebProxyCheck)
   }
 
   async getDefaultsSetting() {
@@ -655,6 +668,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       propertyId: this.propertyInfo.PropertyId,
       productId: 0
     } as API.PropertyConfigurationSettings<any>);
+    this.SetNoOfDecimalDigits(propertityConfig); 
     if ((propertityConfig != null) && (Object.keys(propertityConfig.configValue).length > 0)) {
       this.propertyInfo.SetPropertyConfiguration(propertityConfig);
       this.SetFullStory(propertityConfig);
@@ -1130,4 +1144,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     }, 0);
     this.setVal();
   }
+
+  SetNoOfDecimalDigits(propertyConfig: any) {
+    var noOfDecimalDigits: string = '2';
+    if (propertyConfig != null && propertyConfig.configValue != undefined && propertyConfig.configValue[NO_OF_DECIMAL_DIGITS] != undefined) {
+      noOfDecimalDigits = propertyConfig.configValue[NO_OF_DECIMAL_DIGITS];
+    }
+    sessionStorage.setItem('noOfDecimalDigits', noOfDecimalDigits);
+  }
+
 }

@@ -15,3 +15,4 @@ export const VAT_ENABLED = 'VATEnabled';
 export const PROPERTY_CONFIGURATION_SETTINGS = 'PROPERTYCONFIGURATION';
 export const USERS_SESSSIONS_INFO = 'usersSessionsInfo';
 export const FULL_STORY_ORG_ID = 'FullStoryOrgId'
+export const NO_OF_DECIMAL_DIGITS = 'NoOfDecimalDigits';

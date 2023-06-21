@@ -26,8 +26,8 @@
     }
     border-right: 1px solid $color-reports-border;
     .customCalendar{
-      position: absolute; 
-      right: 0px;
+      position: absolute;
+      right: 10px;
       bottom: 0px;
     }
   }
@@ -35,9 +35,9 @@
     padding: 15px;
     background-color: $color-reports-background;
     #table_transactionLog{
-     td:nth-child(3){      
-       max-width: 350px;             
-       &.showMore{        
+     td:nth-child(3){
+       max-width: 350px;
+       &.showMore{
          white-space: unset;
          text-overflow: unset;
          overflow: hidden;
@@ -48,14 +48,14 @@
          .showText{
           position: absolute;
           right: 0px;
-          bottom: 1px;    
-                
+          bottom: 1px;
+
          }
-      
+
        }
        &.showLess{
-        white-space: nowrap; 
-        position: relative;      
+        white-space: nowrap;
+        position: relative;
         padding-right: 6%;
         .showText{
          position: absolute;
@@ -86,7 +86,7 @@
       height: 120px;
       border: none;
       border-radius: 0px 8px 8px 0px;
-      cursor: pointer;     
+      cursor: pointer;
       z-index: 1;
       .icon-left-arrow {
         color: $PureWhite;

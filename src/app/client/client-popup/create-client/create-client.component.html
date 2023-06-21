@@ -1,4 +1,4 @@
-<mat-tab-group [selectedIndex]="clientSelectedTab" #clientTabGroup>
+<mat-tab-group [selectedIndex]="clientSelectedTab" #clientTabGroupc class="tab-styling-versiontwo">
   <mat-tab label="{{captions.PersonalInformation}}">
     <app-personal-information [parentForm]="parentForm" [clientEditData]="this" (imageUpdateEmit)="onImageUpdates($event)"
      [inputData]="clientInfoInput" [patronId]="patronId"></app-personal-information>

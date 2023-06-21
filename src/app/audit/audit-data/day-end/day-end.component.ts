@@ -36,13 +36,14 @@ import { FinancialBinHelper } from 'src/app/retail/shared/business/FinancialBin-
 import { RevenuePostingDataService } from 'src/app/retail/sytem-config/data-service/revenue-posting.data.service';
 import { RoomRevenuePostingRequest } from 'src/app/retail/shop/view-categories/retail-revenue-posting-logs/revenue-posting';
 import { Localization } from 'src/app/common/localization/localization';
+import { NightAuditBusiness } from 'src/app/common/night-audit/night-audit.business';
 
 @Component({
     selector: 'app-day-end',
     templateUrl: './day-end.component.html',
     styleUrls: ['./day-end.component.scss'],
     encapsulation: ViewEncapsulation.None,
-    providers: [AppModuleService, ShopBussinessService, FinancialBinHelper]
+    providers: [AppModuleService, ShopBussinessService, FinancialBinHelper, NightAuditBusiness]
 })
 export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
@@ -77,6 +78,9 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   revenuepostingsFailedText: string;
   showRevenuePostings: boolean =false;
   iconActions:any;
+  isManualNightAuditRestricted = false;
+  nightAuditRestricted: string;
+
   constructor(public localization: RetailLocalization, private utils: RetailUtilities, private http: HttpServiceCall,
     private auditService: AuditService, public router: Router,
     private commonLocalization: Localization,
@@ -85,7 +89,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     private breakPoint: BreakPointAccess, public ams: AppModuleService,
     private retailSharedService: RetailSharedVariableService, private retailValidationService: RetailValidationService,
     private propertyInfo: RetailPropertyInformation, private retailTaxService: RetailTaxesDataService, private shopBusinessService: ShopBussinessService
-    , public _shopservice: CommonVariablesService, public dialog: MatDialog, public revenuePostingDataService: RevenuePostingDataService) {
+    , public _shopservice: CommonVariablesService, public dialog: MatDialog, public revenuePostingDataService: RevenuePostingDataService ,
+    private nightAuditBusiness: NightAuditBusiness) {
       this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
   }
 
@@ -109,6 +114,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.captionsBookApp = this.localization.captions.bookAppointment;
     // this.hasAccess = this.breakPoint.CheckForAccess([SPAManagementBreakPoint.DayEnd]);
     this.hasAccess = true;
+    this.GetNightAuditConfig();
     if (this.hasAccess) {
       this.currentDateForAPI = this.localization.convertDateObjToAPIdate(this.currSysDate);
       // this.newSysDate = this.newSysDate.setDate(this.newSysDate.getDate() + 1);
@@ -140,7 +146,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.revenuepostingsFailedText = ' (' + this.revenuepostingsFailedCount + ')';
   }
 
-  removeBtnCheck = () => this.allowDayEndOnRevenueFailure ? ((this.revenuepostingsFailedCount > 0) || this.isProcessClicked) : this.isProcessClicked ;
+  removeBtnCheck = () => this.allowDayEndOnRevenueFailure ? ((this.revenuepostingsFailedCount > 0) || this.isProcessClicked || this.isManualNightAuditRestricted) : (this.isProcessClicked || this.isManualNightAuditRestricted) ;
 
   ngOnDestroy(): void {
     if (this.subscriptions) {
@@ -831,4 +837,16 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     return clientName;
   }
 
+  async GetNightAuditConfig(){
+    const result = await this.nightAuditBusiness.GetNightAuditConfig(Product.RETAIL);
+    let configTime = this.localization.getDate(result.configTime);
+    let currentDate = this.localization.LocalizeCurrentDateTimeFormatDDMMMYYYY(this.propertyInfo.CurrentDate.toString());
+    let currentTime = this.localization.getDate(this.localization.LocalizeDateTimeFormatSecondsDDMMMYYYYheader(configTime));
+    const timeDiff = this.localization.getTimeDifference(this.localization.getTime(currentTime, 24), this.localization.getTime(configTime, 24), 'Min')
+    this.isManualNightAuditRestricted = timeDiff <= 10 && timeDiff >= 0;
+    if(this.isManualNightAuditRestricted){
+      const scheduledTime = this.localization.getTime(configTime, 12)
+      this.nightAuditRestricted = this.localization.replacePlaceholders(this.captions.NightAuditScheduled, ["time"], [scheduledTime]);
+    }
+  }
 }

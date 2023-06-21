@@ -41,10 +41,12 @@ export class SettingsService {
     lname: ['', Validators.required],
     userid: ['', Validators.required],
     quickid: '',
-    email: '',
+    email: ['', Validators.required],
     language: 0,
     newpassword: true,
-    pwdexpirationdate: this.utils.getDate(this.PropertyInfo.CurrentDate)
+    pwdexpirationdate: this.utils.getDate(this.PropertyInfo.CurrentDate),
+    nPassword: ['', Validators.required],
+    cPassword: ['', Validators.required]
   });
 
   // spaSettingsFormGrp = this.Form.group({

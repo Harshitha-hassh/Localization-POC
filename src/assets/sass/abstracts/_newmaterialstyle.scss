@@ -32,14 +32,14 @@
             }
             &.mat-form-field-invalid {
                 .mat-form-field-infix {
-                    border: 1px solid red;
+                  border: 1px solid $new_mat-error !important;
                 }
             }
         }
         //Text Area
         .mat-form-field.mat-form-field-can-float.mat-form-field-should-float.mat-form-field-appearance-legacy.txt-area-height {
             .mat-form-field-infix {
-                height: 60px !important;
+                // height: 60px !important;
             }
         }
         //Datepicker
@@ -55,7 +55,7 @@
                 right: 4px;
             }
         }
-        
+
         //Date-Picker
         .mat-form-field.mat-form-field-can-float.mat-form-field-should-float.mat-form-field-appearance-legacy.date-picker-width {
             .mat-form-field-infix {
@@ -139,9 +139,9 @@
                       opacity: 0.6;
                   }
               }
-              .mat-form-field-underline {
-                  display: unset;
-              }
+              // .mat-form-field-underline {
+              //     display: unset;
+              // }
               &.mat-form-field-invalid {
                   .mat-form-field-infix {
                       border: unset;
@@ -149,7 +149,7 @@
               }
             }
           }
-    
+
         //Layout Changes
         @for $i from 1 through 4 {
             .ag_form-control--#{$i} {
@@ -185,8 +185,37 @@
         //         padding-left: 60px !important;
         //     }
         // }
+
+           //Text Area
+    .txt-area-height {
+      border: 1px solid grey;
+      border-radius: 4px;
+      padding-right: 0;
+      &.mat-form-field-invalid{
+          border: 1px solid red !important;
+          .mat-form-field-wrapper{
+              padding-bottom: 6px !important;
+              .mat-form-field-flex{
+                  .mat-form-field-infix {
+                      border: none !important;
+                  }
+              }
+          }
+          .mat-error{
+              padding-top: 18px;
+          }
+      }
+      .mat-form-field-wrapper{
+          padding-bottom: 6px !important;
+          .mat-form-field-flex{
+              .mat-form-field-infix {
+                  border: none !important;
+              }
+          }
+      }
+  }
     }
-    
+
     @media only screen and (min-width: 1024px) {
         body.new-mat-view {
             //Layout Changes
@@ -227,4 +256,3 @@
             }
         }
     }
-    

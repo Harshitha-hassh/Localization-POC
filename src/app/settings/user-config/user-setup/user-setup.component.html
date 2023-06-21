@@ -1,4 +1,4 @@
-<section *ngIf="hasAccess" class="user-setup h-100">
+<section *ngIf="hasAccess" class="user-setup user-setup-wrapper  newVersionWrapper h-100">
   <form name="user-setup-form" [formGroup]="FormGrp" class="h-100" autocomplete="off">
     <div class="result-wrapper">
       <section class="filter">
@@ -7,12 +7,12 @@
       <section class="result-grid">
         <div class="user-search custSearchbox">
           <mat-form-field class="pr-3 d-inline-block spa-searchbox" floatLabel="never">
-            <input type="text" class="LW14" [placeholder]="captions.UserSearchText" matInput formControlName="searchtext"
+            <input [attr.automationId]="'Txt_userSetup_serach'" type="text" class="LW14" [placeholder]="captions.UserSearchText" matInput formControlName="searchtext"
               (input)="onChange()" autocomplete="off">
               <i [ngClass]="searchValue ? 'icon-Search' : 'icon-Cancel'" class="cursor" (click)="clearSearch()"></i>
           </mat-form-field>
 
-          <button type="button" [ngClass]="{'button_invalid': IsReadOnly}" mat-raised-button
+          <button [attr.automationId]="'Btn_userSetup_createUser'" type="button" [ngClass]="{'button_invalid': IsReadOnly}" mat-raised-button
             class="body-bgcolor whitecolor body-bordercolor text-capital" (click)="createUser('New')">{{captions.CreateUser}}
           </button>
         </div>
@@ -23,7 +23,7 @@
           <span class="status LW14 cursordefault">{{this.captions.Inactive}}</span>
         </div>
         <div class="table-container">
-          <app-table [options]="tableoptions" (editEvt)="EditRecords($event)"  (blockUserEdit)="BlockUserEdit($event)"></app-table>
+          <app-table [attr.automationId]="'Tbl_userSetup_userSetup'" [options]="tableoptions" (editEvt)="EditRecords($event)"  (blockUserEdit)="BlockUserEdit($event)"></app-table>
         </div>
       </section>
     </div>

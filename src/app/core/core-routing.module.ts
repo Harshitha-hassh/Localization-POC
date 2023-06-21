@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { LoginComponent } from '../login/login/login.component';
 import { AppCustomPreloader } from './custom-preloader-strategy';
+import { SetPropertyComponent } from '../login/set-property/set-property.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'setProperty',
+    component: SetPropertyComponent
   },
   {
     path: '',

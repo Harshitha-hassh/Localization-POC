@@ -112,7 +112,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   };
   floatLabel: string;
   floatLabelNever: string;
-  
+
   @Input('inputData')
   set formData(value) {
     if (value && value.data != '') {
@@ -144,7 +144,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.genderList = [{ text: this.captions['Male'], value: 'Male' }, { text: this.captions['Female'], value: 'Female' }];
     this.placeHolderFormat = this.localization.inputDateFormat;
     this.floatLabel = this.localization.setFloatLabel;
-    this.floatLabelNever = this.localization.setFloatLabelNever;
+    this.floatLabelNever = this.localization.setFloatLabel;
     this.FormGrp = this.Form.group({
       id: 0,
       guestId: DefaultGUID,
@@ -259,7 +259,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     else{
       countryCode = countryCode == -1 ? '' : countryCode;
     }
-    
+
     if (!phoneNoLabel || phoneNoLabel == '') {
       let _phoneNoLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_PHONE_TYPE');
       phoneNoLabel = _phoneNoLabel && _phoneNoLabel.value ? Number(_phoneNoLabel.value) : '';
@@ -401,7 +401,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       postalCode: clientConfiguration[0]['CLIENT_POSTAL_CODE'],
       dob: clientConfiguration[0]['CLIENT_BIRTHDAY']
     }
-    
+
     // this.FormGrp.controls['firstName'].clearValidators();
     // this.FormGrp.controls['firstName'].setValidators(clientConfiguration[0]['CLIENT_FIRST_NAME'] ?
     //   [Validators.required, EmptyValueValidator] : []);
@@ -417,7 +417,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['title'].updateValueAndValidity();
     // if(clientConfiguration[0]['CLIENT_TITLE'])
     // this.FormGrp.controls.title.markAsTouched();
-  
+
     this.FormGrp.controls['gender'].clearValidators();
     this.FormGrp.controls['gender'].setValidators(clientConfiguration[0]['CLIENT_GENDER'] ? [Validators.required] : []);
     this.FormGrp.controls['gender'].updateValueAndValidity();
@@ -457,8 +457,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       // this.FormGrp.controls['dob'].updateValueAndValidity();
       this.isDobRequired = true;
     }
-    
-    
+
+
     // if(clientConfiguration[0]['CLIENT_BIRTHDAY'])
     // this.FormGrp.controls.dob.markAsTouched();
 
@@ -496,7 +496,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       // if(clientConfiguration[0]['CLIENT_PHONE'])
       // PhoneGroup.markAllAsTouched();
     });
-    
+
     const AddresArray = this.FormGrp.get('Address') as UntypedFormArray;
     AddresArray.controls.forEach(function (control) {
       let AddressGroup: UntypedFormGroup;
@@ -896,7 +896,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['Email']['controls'][index].controls[emailLabel].updateValueAndValidity();
   }
 
-  
+
 
   setmandatory(eve, phoneNumber, altfield, phoneType, index , item) {
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
@@ -923,7 +923,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     }
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].updateValueAndValidity();
     this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].updateValueAndValidity();
-    
+
     //fordeselecting
     if(!eve.value && item)
     {
@@ -948,7 +948,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     item['controls']['EmailId'].enable();
     if(!$event.value)
    {
-    
+
     item['controls']['EmailId'].setValue('');
     item['controls']['EmailId'].disable();
     item['controls']['EmailPrimary'].setValue('');

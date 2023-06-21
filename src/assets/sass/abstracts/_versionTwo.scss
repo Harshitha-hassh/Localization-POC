@@ -1,0 +1,1511 @@
+@import "src/assets/sass/abstracts/variables";
+.newVersionWrapper{
+ .bodyWrap{
+    background-color: $ag_white !important;
+    border-radius: 6px;
+    border: 1px solid $ag_box_border;
+    box-shadow: 0px 1px 5px $ag_box_border;
+}
+ .matTabWrap {
+    .mat-tab-header {
+        margin: 10px !important;
+    }
+
+    .mat-tab-body-content {
+        border: unset !important;
+    }
+
+    .mat-tab-header,
+    .mat-tab-labels {
+        background-color: $ag_white !important;
+        border: 1px solid #DDDDDD;
+        border-radius: 6px;
+
+        .mat-tab-label {
+            color: #000000 !important;
+        }
+
+        .mat-tab-label.mat-tab-disabled {
+            cursor: default;
+            opacity: 0.5 !important;
+        }
+
+        .mat-tab-label.mat-tab-label-active {
+            background-color: #cfdaff !important;
+            color: #000000 !important;
+        }
+
+        .mat-tab-header-pagination-chevron {
+            border-color: #000000 !important;
+        }
+
+        .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+            border-color: grey !important;
+        }
+    }
+}
+
+.matButton {
+    mat-button-toggle-group {
+        border-radius: 6px !important;
+
+        .mat-button-toggle-checked {
+            background-color: #e6ebff;
+        }
+    }
+}
+
+.tab-styling-versiontwo {
+  background-color: $ag_retail_light_blue_bg;
+    .mat-tab-header,
+    .mat-tab-labels {
+        background-color: $retail-primary-40;
+        border: 1px solid $ag_box_border;
+        box-shadow: 0px 1px 5px $ag_box_border;
+        border-radius: 6px;
+
+
+        .mat-tab-label {
+            color: #000000 !important;
+        }
+
+        .mat-tab-label.mat-tab-disabled {
+            cursor: default;
+            opacity: 0.5 !important;
+        }
+
+        .mat-tab-label.mat-tab-label-active {
+            background-color: $retail-primary-60 !important;
+        }
+
+        .mat-tab-header-pagination-chevron {
+            border-color: #000000 !important;
+        }
+
+        .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+            border-color: grey !important;
+        }
+    }
+
+    .mat-tab-header{
+      margin: 10px !important;
+      margin-bottom: 0 !important;
+      }
+
+    .mat-tab-body-wrapper {
+      margin: 10x !important;
+      margin-top: 0 !important;
+      border-radius: 6px;
+        .mat-tab-body {
+            background-color: $ag_white;
+            margin: 10px;
+            border: 1px solid $ag_box_border ;
+            border-radius: 6px;
+            width: 100px !important;
+
+            .mat-tab-body-content {
+                border: none !important;
+            }
+        }
+
+        .mat-tab-body:nth-child(3),
+        .mat-tab-body:nth-child(4),
+        .mat-tab-body:nth-child(5),
+        .mat-tab-body:nth-child(6),
+        .mat-tab-body:nth-child(7) {
+            border-radius: 0px;
+            border: none;
+        }
+    }
+}
+// .prop-info[_ngcontent-wqp-c521] .prop-details[_ngcontent-wqp-c521] .prop-section[_ngcontent-wqp-c521]
+&.property-info-wrapper{
+  background-color: $ag-retail-background-grey;
+  .prop-details{
+    .prop-section{
+      padding: 0 !important;
+    }
+  }
+  .box-style{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto;
+    padding: 20px;
+  }
+}
+&.miscellaneous-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  .box-style{
+    @extend .bodyWrap;
+    margin:10px !important;
+    margin-top: 0 !important;
+    width: auto;
+    padding: 20px;
+    height: calc(100% - 90px) !important;
+  }
+}
+&.notification-configuration-wrapper{
+  background-color: $ag-retail-background-grey;
+  .box-style-notification-config{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    padding: 20px;
+  }
+}
+&.vat-configuration-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding: 10px 0;
+  .form{
+    @extend .bodyWrap;
+    margin:  0 10px !important;
+    width: auto !important;
+  }
+}
+&.clients-details-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  #pageHeader{
+  &.page-header{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    margin-top: 0 !important;
+    width: auto !important;
+    padding: 20px;
+    height: fit-content;
+    .custom-aligns{
+    margin-top: 10px
+    }
+  }
+  }
+.clientactions{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+    height: calc(100% - 121px);
+    .ClientCustomDataTable{
+      .fixed-table-container{
+        background-color: $theme-table-bg-color !important;
+        table.quicksale-setup-table{
+          background-color: $ag_white !important;
+        }
+
+      }
+    }
+    }
+}
+&.retail-items-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px !important;
+  .shopping-items{
+    padding-left: 10px;
+    .category-panel-collapse{
+      border: none;
+      box-shadow: none;
+     }
+     .categories{
+       .retail-category-toggler{
+         &.category-expand{
+           left: 188px;
+           top: 162px;
+         }
+       }
+       @extend .bodyWrap;
+       margin: 0 !important;
+       margin-bottom: 10px !important;
+       height: calc(100% - 11px) !important;
+
+     }
+    .retail-category-toggler{
+      &.category-collapse{
+        top: 10.1rem;
+        left: 3.5px;
+      }
+    }
+    .shopping-lists{
+      padding-left: 20px;
+      padding-right: 10px;
+      .products{
+        padding-right: 18px;
+        .search-div{
+          @extend .bodyWrap;
+          margin-top: 0 !important;
+          padding: 20px;
+          height: fit-content;
+        }
+        .product-div{
+          @extend .bodyWrap;
+          margin-top: 10px;
+          height: calc(100% - 175px)!important;
+          .details-div{
+            @extend .bodyWrap;
+            margin: 10px;
+          }
+        }
+      }
+       .shopping-cart.action-bar{
+        @extend .bodyWrap;
+        margin-top: 0 !important;
+        height: calc(100% - 11px) !important;
+        .retail-slider-toggler{
+          top: 0 !important;
+        }
+      }
+    }
+}
+
+}
+&.retail-transaction-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px !important;
+  .page-header{
+    .float-left{
+      float:unset !important
+    }
+    @extend .bodyWrap;
+    height:fit-content !important;
+    margin: 10px !important;
+    margin-top: 0 !important;
+    width: auto !important;
+    display: block !important;
+  }
+  .advanced-search-section{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+  }
+  .fixed-table-container{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+    height: calc(100% - 268px);
+    overflow: auto;
+    background-color: $theme-table-bg-color !important;
+    .fixed-table-container-inner{
+      #SPACustomTableShop{
+        background-color: $ag_white !important;
+      }
+    }
+    }
+  .item-search{
+      app-search-linked-retail-items{
+        .mat-form-field-infix{
+          border: 1px solid #ececec;
+        }
+        .mat-input-element::placeholder{
+          user-select: none;
+          transition: color 400ms 133.3333333333ms cubic-bezier(0.25, 0.8, 0.25, 1);
+          color: #0000006b !important;
+        }
+      }
+    }
+
+
+ .result-wrapper{
+      .result-grid{
+        .user-search{
+          @extend .bodyWrap;
+          margin: 0 10px 0 0 !important;
+          width: auto !important;
+        }
+        .retailCustomDataTable {
+          margin: 0 10px 0 0 !important;
+          width: auto !important;
+          height: calc(100% - 87px)  !important;
+          .page-header{
+            &.removeHeight{
+              display: none !important;
+            }
+          }
+          .fixed-table-container{
+            height: calc(100% - 11px) !important;
+            margin: 0 !important;
+            margin-top: 10px !important;
+            width: auto !important;
+            overflow: hidden;
+            background-color: $theme-table-bg-color !important;
+            table.quicksale-setup-table{
+              background-color: $ag_white !important;
+            }
+          }
+        }
+      }
+    }
+
+    .modify-commission{
+      .result-wrapper{
+        .filter{
+          @extend .bodyWrap;
+          margin: 10px !important;
+          margin-top: 0 !important;
+          width: auto !important;
+        }
+      }
+    }
+}
+&.retail-transcations-log-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px !important;
+  .header-filter-sect{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    margin-top: 0 !important;
+    width: auto !important;
+  }
+  .advanced-search-sect{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+  }
+  .table-sect{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+    height: calc(100% - 320px) !important;
+  }
+}
+
+&.retail-revenue-log-wrapper{
+  background-color: $ag-retail-background-grey;
+ .header-filter-sect{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+  }
+  .advanced-search-sect{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+  }
+  .table-sect{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+    height: calc(100% - 291px)!important;
+  }
+}
+&.retail-gift-card-wrapper{
+  background-color: $ag-retail-background-grey;
+  height: calc(100% - 15px) !important;
+  padding-top: 15px !important;
+  .retail-form-section{
+    height: calc(100% - 20px) !important;
+    .header-container{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+      height: fit-content !important;
+      margin-top: 0 !important;
+      padding: 10px;
+    }
+    .body-container{
+      height: calc(100% - 126px);
+    }
+  }
+
+}
+
+&.retail-revenue-log-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px !important;
+  .header-filter-sect{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    margin-top: 0 !important;
+    width: auto !important;
+  }
+  .advanced-search-sect{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+   }
+ .table-sect{
+  &.custom-height-fix{
+    height: calc(100% - 233px)!important;  }
+   }
+}
+&.retailChildWrapper{
+ background-color: $ag-retail-background-grey;
+ padding-top: 10px;
+  .retail-header{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    margin-top: 0 !important;
+    width: auto !important;
+    padding: 15px;
+  }
+  .retail-select-container{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+  }
+  .CustomTableGrid{
+    display: block;
+    height: calc(100% - 222px) !important;
+    .retail-CustomDataTable{
+      height: calc(100% - 10px);
+       min-height: unset;
+      .fixed-table-container{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        height: 100%;
+        background-color: $theme-table-bg-color !important;
+        table.inventory-setup-table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+
+}
+&.retail-credit-card-terminal-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  .header-wrapper{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    margin-top: 10px;
+    width: auto !important;
+    padding: 15px;
+  }
+  &.retail-code-setup#creditcard{
+    .retailGrid{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+      height: calc(100% - 134px) !important;
+      .retail-CustomDataTable{
+        .fixed-table-container{
+          background-color: $theme-table-bg-color !important;
+          table.quicksale-setup-table{
+            background-color: $ag_white !important;
+          }
+        }
+      }
+    }
+  }
+}
+&.retail-outlets-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  height: calc(100% - 115px) !important;
+  .header-wrapper{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    margin-top: 0  !important;
+    width: auto !important;
+    padding: 15px;
+  }
+  .retailGrid{
+    .retail-CustomDataTable {
+      .fixed-table-container{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        height: calc(100% - 10px)!important;
+        background-color: $theme-table-bg-color !important;
+        table.quicksale-setup-table{
+          background-color: $ag_white !important;
+        }      }
+    }
+  }
+}
+&.retailCategoryGroupWrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        margin-top: 0 !important;
+        width: auto !important;
+       }
+       .custom-table-height{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        height: calc(100% - 126px) !important;
+      }
+    }
+  }
+}
+&.retailCategoryWrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  display: block !important;
+  header{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    margin-top: 0 !important;
+    width: auto !important;
+  }
+  .retailGrid{
+    width: 100%;
+    height: calc(100% - 105px)!important;
+    .retail-CustomDataTable{
+      .fixed-table-container{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        margin-top: 0 !important;
+        width: auto !important;
+        height: calc(100% - 10px)!important;
+        background-color: $theme-table-bg-color !important;
+        table.quicksale-setup-table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+
+}
+&.retail-sub-categories{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  height: calc(100% - 40px) !important;
+  display: block !important;
+  .select-container-bg{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    margin-top: 0!important;
+    width: auto !important;
+   }
+   .expand-section{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+
+  }
+
+}
+&.retailUnitMeasureWrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  height: calc(100% - 58px) !important;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        margin-top: 10px !important;
+        width: auto !important;
+
+      }
+      .custom-table-height{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        height: calc(100% - 80px)!important;
+        background-color: $theme-table-bg-color !important;
+        table.quicksale-setup-table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+}
+&.retail-taxes-wrapper{
+  background-color: $ag-retail-background-grey;
+  display: block !important;
+  padding-top: 10px !important;
+  .retail-CustomDataTable{
+    .page-header{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+      margin-top: 0 !important;
+      padding-top: 5px!important;
+      padding-bottom: 5px !important;
+      .searchpt{
+        padding-top: 18px !important;
+      }
+        }
+    .fixed-table-container{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+      height: calc(100% - 97px)!important;
+      background-color: $theme-table-bg-color !important;
+      table.quicksale-setup-table{
+        background-color: $ag_white !important;
+      }
+    }
+  }
+}
+&.machine-name-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        margin-top: 0 !important;
+        width: auto !important;
+      }
+      .fixed-table-container{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        height: calc(100% - 127px) !important;
+        background-color: $theme-table-bg-color !important;
+        table.quicksale-setup-table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+
+}
+&.retail-discount-reason-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        margin-top: 0 !important;
+        width: auto !important;
+      }
+      .fixed-table-container{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        height: calc(100% - 127px) !important;
+        background-color: $theme-table-bg-color !important;
+        table.quicksale-setup-table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+}
+&.retail-vendor-types-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        margin-top: 0 !important;
+        width: auto !important;
+      }
+      .fixed-table-container{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        height: calc(100% - 128px) !important;
+        background-color: $theme-table-bg-color !important;
+        table.quicksale-setup-table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+}
+&.retail-quick-sale-categories-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        margin-top: 0 !important;
+        width: auto !important;
+      }
+      .fixed-table-container{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        height: calc(100% - 126px) !important;
+        background-color: $theme-table-bg-color !important;
+        table.quicksale-setup-table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+}
+&.retail-payment-method-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  .header-wrapper{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    margin-top: 0 !important;
+    width: auto !important;
+  }
+  &#paymentMethod{
+    .retailGrid{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+      height: calc(100% - 93px) !important;
+      .fixed-table-container{
+        background-color: $theme-table-bg-color !important;
+        table.quicksale-setup-table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+}
+&.retail-discount-types{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  .retailGrid{
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        margin-top:  0 !important;
+        width: auto !important;
+      }
+      .fixed-table-container{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        height: calc(100% - 126px) !important;
+        background-color: $theme-table-bg-color !important;
+        table.quicksale-setup-table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+}
+&.retailCommisionWrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  height: 100% !important;
+  .retail-CustomDataTable{
+    .page-header{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      margin-top: 0 !important;
+      width: auto !important;
+    }
+    .fixed-table-container{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+      height: calc(100% - 86px) !important;
+      background-color: $theme-table-bg-color !important;
+      table.quicksale-setup-table{
+        background-color: $ag_white !important;
+      }
+    }
+  }
+}
+&.outlet-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding: 0 !important;
+  height: calc(100% - 40px) !important;
+    .custom-search-align{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+      padding-top: 15px;
+      padding-bottom: 7px;
+    }
+    .table-container{
+      @extend .bodyWrap;
+      margin: 0 10px !important;
+      width: auto !important;
+      padding: 0;
+    }
+}
+&.pay-agent-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding: 0 !important;
+  height: calc(100% - 40px) !important;
+  .custom-search-align{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+    padding-top: 15px;
+    padding-bottom: 7px;  }
+  .table-container{
+    @extend .bodyWrap;
+    margin: 0 10px !important;
+    width: auto !important;
+    padding: 0;
+  }
+}
+&.settler-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding: 0 !important;
+  height: calc(100% - 40px) !important;
+  .custom-search-align{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+    padding-top: 15px;
+    padding-bottom: 7px;  }
+  .table-container{
+    @extend .bodyWrap;
+    margin: 0 10px !important;
+    width: auto !important;
+    padding: 0;
+  }}
+
+  &.category-linking{
+    background-color: $ag-retail-background-grey;
+    padding: 10px !important;
+    .option-row{
+      .button-save.button-subcategory{
+        top: initial
+      }
+      @extend .bodyWrap;
+      margin: 0 !important;
+      margin-bottom: 10px !important;
+      width: auto !important;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-content: center;
+    }
+    .inner-section-row{
+      height: calc(100% - 82px) !important;
+      &.inner-row-height-extend{
+        height: calc(100% - 132px) !important;
+      }
+      .category-col{
+        @extend .bodyWrap;
+        margin-right: 10px;
+      }
+      .sub-category-col{
+        @extend .bodyWrap;
+        width: 60%;
+      }
+    }
+
+  }
+  &.retail-vendor-setup-wrapper{
+    background-color: $ag-retail-background-grey;
+    padding-top: 10px !important;
+    .vendor-filter{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      margin-top: 0 !important;
+      width: auto !important;
+      height: auto;
+      margin-right: 0 !important;
+    }
+    .createNewBtn{
+      margin-top: 30px !important;
+    }
+    .retail-CustomDataTable{
+      .page-header{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        margin-top: 0 !important;
+        padding-bottom: 10px!important;
+        padding-top: 10px !important;
+        .searchpt{
+          padding-top: 18px !important;
+        }
+      }
+      .fixed-table-container{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        height: calc(100% - 108px)!important;
+        background-color: $theme-table-bg-color !important;
+        table.quicksale-setup-table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+  &.retailDiscountWrapper{
+    background-color: $ag-retail-background-grey;
+    padding-top: 10px;
+    .header{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      margin-top: 0 !important;
+      width: auto !important;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      flex-wrap: wrap;
+      height: fit-content !important;
+      .leftSection{
+        margin-top: 10px;
+      }
+      .rightSection{
+        float: initial;
+        width: initial;
+      }
+    }
+    .dataList{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+      height: calc(100% - 116px) !important;
+      padding: 0 !important;
+      .retailCustomDataTable{
+        background-color: $theme-table-bg-color !important;
+        .fixed-table-container{
+          background-color: $theme-table-bg-color !important;
+
+          margin: 0;
+          width: auto !important;
+         .table{
+          background-color: $ag_white !important;
+         }
+        }
+      }
+
+    }
+  }
+
+  &.quickSale{
+    background-color: $ag-retail-background-grey;
+    padding-top: 10px;
+    .pageHeader{
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
+      flex-wrap: wrap;
+      height: fit-content !important;
+      padding: 15px;
+      @extend .bodyWrap;
+      margin: 10px !important;
+      margin-top: 0 !important;
+      width: auto !important;
+      .btn-group{
+        float: initial !important;
+        margin-left: auto;
+        }
+    }
+
+    .items{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+      height: calc(100% - 90px);
+    }
+
+  }
+
+  &.member-accrual-mapping-setup{
+    background-color: $ag-retail-background-grey;
+    padding: 10px 0;
+    .custom-retail-inputs{
+      &.page-header{
+        @extend .bodyWrap;
+        margin: 0 10px !important;
+        width: auto !important;
+        padding-top: 10px;
+      }
+    }
+    .post-type-grid{
+      height: calc(100% - 60px);
+    }
+
+    .retail-CustomDataTable{
+      .fixed-table-container {
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        height: calc(100% - 20px);
+        background-color: $theme-table-bg-color !important;
+        table.quicksale-setup-table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+
+  &.commissionSetupWrapper{
+    background-color: $ag-retail-background-grey;
+    padding: 10px;
+    &#commissionsetup{
+      .thirdSecCS{
+        .commissionContent{
+          .commission{
+            .commissionValues{
+              .table-data{
+                background-color: $ag-retail-background-grey;
+                .actionitems{
+                  @extend .bodyWrap;
+                  margin-bottom: 10px !important;
+                  width: auto !important;
+                }
+                .adv-wrapper{
+                  padding: 0 !important;
+                  height: calc(100% - 171px)!important;
+                  .retail-search-container{
+                    @extend .bodyWrap;
+                    margin-bottom: 10px !important;
+                    width: auto !important;
+                  }
+                  .commission-table{
+                    .fixed-CommissionSetup-container{
+                      @extend .bodyWrap;
+                      margin-bottom: 10px !important;
+                      width: auto !important;
+                      padding: 0;
+                      background-color: $theme-table-bg-color !important;
+                      table.commission-setup-table{
+                        background-color: $ag_white !important;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.inventory-wrapper{
+    background-color: $ag-retail-background-grey;
+    padding-top: 10px;
+    .search-bar{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+    }
+    .AdvancedSearchDiv{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+      margin-top: 0 !important;
+    }
+    .adv-wrapper{
+      height: calc(100% - 144px)!important;
+      .custom-inventory-table{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        margin-top: 0 !important;
+        .inventory-list{
+          padding: 0;
+        }
+        .custom-table-height{
+          background-color: $theme-table-bg-color !important;
+          table.retail-setup-table{
+            background-color: $ag_white !important;
+          }
+        }
+      }
+    }
+  }
+
+  &.user-setup-wrapper{
+    background-color: $ag-retail-background-grey;
+    padding: 10px 0;
+    padding-right: 10px;
+
+    .result-wrapper{
+      .filter{
+        @extend .bodyWrap;
+        margin: 0 10px !important;
+        width: auto !important;
+      }
+
+      .result-grid{
+        .user-search{
+          @extend .bodyWrap;
+               }
+               .table-container{
+                margin-top: 10px !important;
+                height: calc(100% - 102px);
+               }
+        .CustomDataTable{
+          .fixed-table-container{
+            @extend .bodyWrap;
+            margin: 0 !important;
+            width: auto !important;
+            padding: 0 !important;
+            background-color: $theme-table-bg-color !important;
+            .table{
+              background-color: $ag_white !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.retail-role-setup-wrapper{
+    background-color: $ag-retail-background-grey;
+    padding-top: 10px;
+    .roleGrid{
+      .CustomDataTable{
+        .page-header{
+          @extend .bodyWrap;
+          margin: 10px !important;
+          margin-top: 0 !important;
+          width: auto !important;
+        }
+        .fixed-table-container{
+          @extend .bodyWrap;
+          margin: 10px !important;
+          width: auto !important;
+          margin-top: 0 !important;
+          padding: 0;
+          height: calc(100% - 110px) !important;
+          background-color: $theme-table-bg-color !important;
+          table.quicksale-setup-table{
+            background-color: $ag_white !important;
+          }
+        }
+      }
+    }
+  }
+
+  &.template-email-wrapper{
+    background-color: $ag-retail-background-grey;
+    padding: 10px;
+    .common-CustomDataTable{
+      .page-header{
+        @extend .bodyWrap;
+        margin-bottom: 10px !important;
+        width: auto !important;
+      }
+      .fixed-table-container{
+        @extend .bodyWrap;
+        margin: 0 !important;
+        width: auto !important;
+        height: calc(100% - 37px) !important;
+        background-color: $theme-table-bg-color !important;
+        table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+
+  &.template-sms-wrapper{
+    background-color: $ag-retail-background-grey;
+    padding: 10px;
+    .common-CustomDataTable{
+      .page-header {
+        @extend .bodyWrap;
+        margin-bottom: 10px !important;
+        width: auto !important;
+      }
+      .fixed-table-container{
+        @extend .bodyWrap;
+        margin: 0 !important;
+        width: auto !important;
+        height: calc(100% - 37px) !important;
+        background-color: $theme-table-bg-color !important;
+        table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+
+  &.distribution-list-wrapper{
+    background-color: $ag-retail-background-grey;
+    padding: 15px 0;
+    .common-CustomDataTable{
+      .page-header{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+      }
+      .fixed-table-container{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        background-color: $theme-table-bg-color !important;
+        height: calc(100% - 83px) !important;
+        .table{
+          background-color: $ag_white !important;
+        }
+      }
+    }
+  }
+
+  &.combine-guest-records-wrapper{
+    background-color: $ag-retail-background-grey;
+    height: calc(100% - 25px) !important;
+    .srchSec{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+    }
+    .gridSec{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+    }
+  }
+
+  &.night-audit-wrapper{
+    background-color: $ag-retail-background-grey;
+    padding-top: 10px;
+    .bg-color{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+      margin-top: 0 !important;
+    }
+    .night-audit-container{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+    }
+
+  }
+
+  &.day-end{
+    background-color: $ag-retail-background-grey;
+    padding-top: 10px;
+    .horizontal-stepper-class{
+      padding: 0 !important
+    }
+    .dayEnd-0{
+      @extend .bodyWrap;
+      padding: 20px;
+      margin: 10px !important;
+      margin-top: 0 !important;
+    }
+
+    .processSection{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      margin-top: 0 !important;
+      .processSec{
+        padding: 2rem;
+      }
+      .process-btn{
+        padding-left: 30px;
+      }
+    }
+
+  }
+
+  &.giftcards-info{
+    padding: 10px;
+    padding-bottom: 0;
+     .giftcards-details{
+      @extend .bodyWrap;
+    }
+  }
+
+  &.creditCard-info-wrapper{
+    padding: 15px 20px;
+    padding-bottom: 0;
+        .creditcard-details{
+      @extend .bodyWrap;
+    }
+  }
+
+  &.payment-feature-config{
+    .config-options{
+      @extend .bodyWrap;
+    }
+    .creditcard-info{
+      padding: 15px 20px;
+      padding-bottom: 0;
+          .creditcard-details{
+        @extend .bodyWrap;
+      }
+  }
+}
+
+&.crud-email-temp-wrapper{
+  .CRUD-email-Template-wrapper{
+    height: calc(100% - 85px);
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+  }
+}
+
+&.crud-sms-temp-wrapper{
+  .CRUD-sms-Template-wrapper{
+    height: calc(100% - 85px);
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+  }
+}
+&.crud-distribution-list-wrapper{
+  .CRUD-sms-Template-wrapper{
+    height: calc(100% - 146px);
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+  }
+}
+&.data-magine-config-wrapper{
+  .data-magine-wrapper{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+}
+}
+&.create-retail-vendor-wrapper{
+  .retail-vendor-container{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+    .phone-wrapper{
+      .ph-fixed-width--wrapper{
+        width: 408px !important;
+      }
+    }
+  }
+  .right-section{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+  }
+}
+
+&.receiptConfig{
+  .mainData {
+    .leftSection{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: calc(100% - 330px)!important;
+      margin-right: 0 !important;
+      padding: 20px;
+      float: initial;
+      }
+    .rightSection{
+      @extend .bodyWrap;
+      margin: 10px;
+      padding: 20px;
+      float: initial;
+      height: auto !important;
+    }
+  }
+  .property-level{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    margin-bottom: 0 !important;
+    width: auto !important;
+    height: calc(100% - 74px);
+
+  }
+ }
+
+&.user-machine-config{
+  padding: 15px 0;
+  .form-controls{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+}
+}
+
+&.additional-information-wrapper{
+  .connect-btn{
+    color: $retail-primary-100 !important;
+    border: 1px solid $retail-primary-100 !important;
+  }
+  .gdpr-wrapper{
+    .wrapper {
+      overflow: auto !important;
+    }
+  }
+}
+&.user-role{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px;
+  .control-section{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+    margin-top: 0 !important;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .data-section-container{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+    padding: 0 !important;
+    height: calc(100% - 108px);
+    .accord-section{
+     padding: 0 !important;
+    }
+  }
+}
+
+&.order-summary-wrapper{
+  background-color: $ag-retail-background-grey;
+  .row-details{
+    .client-inner{
+      background-color: $ag-retail-background-grey;
+      width: calc(100% - 395px);
+      padding-top: 10px;
+      .address-section-parent{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        margin-top: 0 !important;
+        width: auto;
+      }
+      .client-details{
+        @extend .bodyWrap;
+        margin: 10px !important;
+        margin-top: 0 !important;
+        width: auto !important;
+      }
+      .teble-view{
+        height: calc(100% - 170px);
+      }
+    }
+    .table-wrapper{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      width: auto !important;
+      height: calc(100% - 104px)!important;
+      padding: 15px;
+
+  }
+  .order-present-table-view{
+    height: calc(100% - 175px)!important;
+  }
+  .order-present-table-wrapper{
+    height: calc(100% - 136px)!important;
+  }
+    .shop-payment-summary-wrapper{
+      @extend .bodyWrap;
+      margin: 10px !important;
+      margin-left: 0 !important;
+      height: calc(100% - 22px)!important;
+      .shop-payment-summary{
+        .payment-details{
+          background-color: $ag_white !important;
+          margin: 0 !important;
+          padding-top: 10px;
+        }
+      }
+    }
+
+}
+}
+
+&.quickid-config{
+  height: 100% !important;
+  .quickid-config-container{
+    background-color: $ag-retail-background-grey;
+    .quick-bottomSection{
+      .quick-bottomSection-toggle-section{
+        @extend .bodyWrap;
+      }
+    }
+  }
+}
+
+}

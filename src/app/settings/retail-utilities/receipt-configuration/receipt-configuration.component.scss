@@ -67,7 +67,7 @@
                     }
                     .radiovalue{
                         width:50%;
-                        .mat-radio-label-content{ 
+                        .mat-radio-label-content{
                                 overflow: hidden;
                                 padding-right: 5px;
                                 text-overflow: ellipsis;
@@ -82,14 +82,19 @@
         .rightSection{
             width:300px;
 
-            .textWidth
-            {
-                width:80%;
-            }
+            // .textWidth
+            // {
+            //     width:80%;
+            // }
         }
     }
     .tab-height{
         height: calc(100% - 64px);
+        .authcodeName{
+            .mat-form-field-wrapper{
+                padding-bottom: 0px !important;
+            }
+        }
     }
     .bottomSection{
         height:64px;

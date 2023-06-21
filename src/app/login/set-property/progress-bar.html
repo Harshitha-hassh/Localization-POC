@@ -1,0 +1,14 @@
+<section class='progress-wrapper dialog-container'>
+    <h4 class='ag_p--4 ag_m--0 ag_display--flex title' mat-dialog-title>
+        {{this.captions.pg_title_property}}: {{this.data.propertyName}} 
+        <i  aria-hidden="true" class='icon-close ag_ml--auto' (click)="closeDialog(DialogCloseOptionEnum.Cancel)">&nbsp;</i>
+    </h4>
+    <div class='dialog-content ag_p--0 ag_m--0' mat-dialog-content>
+      <div id="cover-spin-retail">
+        <div class="customspinnerimg ">
+            <img src="./assets/images/agil_favicon.ico">
+        </div>
+        <div id="default-custom-cover-message">{{this.captions.lbl_processing}}</div>
+    </div>
+    </div>
+</section>

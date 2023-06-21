@@ -11,7 +11,9 @@ const defaultLocalizations = [
     { code: "en-UK", suffix: "_uk", name: "UK English" },
     { code: "fi-FI", suffix: "_fi", name: "Finnish" },
     { code: "fr-FR", suffix: "_fr", name: "French" },
-    { code: "en-IN", suffix: "_in", name: "Indian English" }];
+    { code: "en-IN", suffix: "_in", name: "Indian English" },
+    { code: "ko-KR", suffix: "_kr", name: "Korean" }
+];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
 const fileFormat = "json";
@@ -44,7 +46,7 @@ function createCaptions(defaultEnUsData) {
     for (const lang of defaultLocalizations) {
         let path = captionsPath + lang.code + '.' + fileFormat;
         const enUS = cloneJSON(defaultEnUsData);
-        let data = applyLocalization(enUS, lang.suffix);
+        let data = applyLocalization(enUS, lang.suffix, lang.code);
         createFile(data, path, lang);
     }
 }
@@ -53,7 +55,7 @@ function createErrorFiles(defaultEnUsData) {
     for (const lang of defaultLocalizations) {
         let path = errorsPath + 'error.' + lang.code + '.' + fileFormat;
         const enUS = { ...defaultEnUsData };
-        let data = applyLocalization(enUS, lang.suffix);
+        let data = applyLocalization(enUS, lang.suffix, lang.code);
         createFile(data, path, lang);
     }
 }
@@ -69,22 +71,22 @@ function generateCaptionsData(defaultCaptionJson, lang) {
     const moduleKeys = Object.keys(defaultCaptionJson);
     for (let i = 0; i < moduleKeys.length; i++) {
         let modules = moduleKeys[i];
-        modules = applyLocalization(defaultCaptionJson[modules], lang.suffix);
+        modules = applyLocalization(defaultCaptionJson[modules], lang.suffix, lang.code);
     }
     return defaultCaptionJson;
 }
 
-function applyLocalization(data, langSuffix) {
+function applyLocalization(data, langSuffix, langCode) {
     for (const key in data) {
         if (data.hasOwnProperty(key) && !keysToBeExcluded.includes(key)) {
             const word = data[key];
             if (typeof word === 'object')
             {    
-                data[key] = applyLocalization(data[key], langSuffix);
+                data[key] = applyLocalization(data[key], langSuffix, langCode);
             }
             else
             {
-                if(langSuffix == '_au'){
+                if(langCode === 'en-AU'){
                     data[key] = String(word).replace("VAT", "GST");
                 }
                 else
@@ -94,7 +96,7 @@ function applyLocalization(data, langSuffix) {
             }
         }        
         else if(data.hasOwnProperty(key) && phoneFormate.includes(key)){
-            if(langSuffix == '_uk' || langSuffix == '_gb'){
+            if(langCode == 'en-UK' || langCode == 'en-GB'){
                 if(key == 'PhoneFormat'){
                     data[key] = '(0) 9999999999'
                 }else if(key == 'ExtensionFormat'){

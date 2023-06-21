@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UntypedFormGroup } from '@angular/forms';
+import { UntypedFormGroup, Validators } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 import { SettingsService } from '../../../settings.service';
 // import { HttpServiceCall, HttpMethod } from '../../../../shared/service/http-call.service';
@@ -36,6 +36,7 @@ export class UserSettingsComponent implements OnInit {
   @Input() isADB2CConfigEnabled: boolean;
   floatLabel: string;
   isEmailEditUser : boolean = false;
+  isToggleDisable : boolean = true;
 
   constructor(public localization: RetailStandaloneLocalization, public servicesetting: SettingsService,
               private http: HttpServiceCall, private utils: Utilities, private PropertyInfo: PropertyInformation) {
@@ -54,8 +55,11 @@ export class UserSettingsComponent implements OnInit {
     // }
     this.minDateValue = this.utils.getDate(this.PropertyInfo.CurrentDate);
     if(this.popConfig && this.popConfig.mode === 'Edit'){
+      this.isToggleDisable = false;
       this.userSettingsFormGrp.controls['userid'].disable();
       this.isEmailEditUser=(this.userSettingsFormGrp.controls['email'].value !=  "" && this.isADB2CConfigEnabled) ? true : false;
+      this.userSettingsFormGrp.controls?.nPassword?.setValidators(null);
+      this.userSettingsFormGrp.controls?.cPassword?.setValidators(null);
     } else {
       this.userSettingsFormGrp.controls['userid'].enable();
     }
@@ -66,6 +70,7 @@ export class UserSettingsComponent implements OnInit {
     this.GetServiceCall('GetPropLanguages', { propertyId: this.utils.GetPropertyInfo('PropertyId') });
     this.GetServiceCall('GetStandAloneProducts');
     this.GetRetailServiceCall('GetSubPropertyAccessByUser', { userId: this.utils.GetPropertyInfo('UserId') });
+    this.toggleChange(this.userSettingsFormGrp.controls['newpassword'].value)
   }
 
   ButtonToggle(ga, gv) {
@@ -161,6 +166,28 @@ export class UserSettingsComponent implements OnInit {
         this.userIdPattern = '^[\\w'+tenantConfig.AllowedSpecialCharacter+']+$';
       }
     }
-  }     
+  }
+
+
+  toggleChange(eve) {
+    if(eve[0] == true) {
+      this.userSettingsFormGrp.controls?.nPassword?.setValidators([Validators.required]);
+      this.userSettingsFormGrp.controls?.cPassword?.setValidators([Validators.required]);
+    }
+    else {
+      this.userSettingsFormGrp.controls?.nPassword?.setValidators(null);
+      this.userSettingsFormGrp.controls?.cPassword?.setValidators(null);
+    }
+  }
+
+  passwordValidation(){
+    if(this.userSettingsFormGrp.controls['nPassword'].value != this.userSettingsFormGrp.controls['cPassword'].value){
+      this.userSettingsFormGrp.controls.cPassword.setErrors({ invalid: true });
+    } else {
+      this.userSettingsFormGrp.controls.cPassword.setErrors(null);
+    }
+    this.userSettingsFormGrp.updateValueAndValidity();
+  }
+
 
 }

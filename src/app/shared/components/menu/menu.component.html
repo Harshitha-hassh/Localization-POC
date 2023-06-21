@@ -69,9 +69,11 @@
                                 <div class="arrow-icon cursor">
                                     <i class="material-icons">expand_more</i>
                                     <popover-content #logOutPopOver placement="bottom" class="user-popover"
-                                        [animation]="true" [closeOnClickOutside]="true" id="logOutPopOverID"
-                                        (click)="logOutPopOver.hide();logout();">
-                                        <div class="custom-popover-profile">
+                                        [animation]="true" [closeOnClickOutside]="true" id="logOutPopOverID">
+                                        <div class="custom-popover-profile" *ngIf="isChangePropertyEnabled" (click)="changeProperty($event)">
+                                            <a class="logout-style">{{captions.common.lbl_changeProperty}}</a>
+                                        </div>
+                                        <div class="custom-popover-profile" (click)="logOutPopOver.hide();logout();">
                                             <a class="logout-style">{{captions.lbl_logout}}</a>
                                         </div>
                                     </popover-content>
@@ -84,8 +86,8 @@
             <div *ngSwitchCase="(levelMenu == menuType.tertiary) || (levelMenu == agMenuTypes.combo)">
                 <div class="subnav-wrapper underline-hide">
                     <div class="ag_w--50">
-                        <mat-form-field class="ag_form-control--xs menu-field">
-                            <mat-select (selectionChange)="navigateTo($event)" [(value)]="selectedItem"
+                        <mat-form-field class="menu-field">
+                            <mat-select  (selectionChange)="navigateTo($event)" [(value)]="selectedItem"
                                 [compareWith]="compareSelect" [disableOptionCentering]="true">
                                 <ng-container *ngFor="let item of menuList.menu">
                                 <mat-option class="fontChange"  [value]="item" *ngIf="item.visibility">
@@ -252,6 +254,6 @@
         <div class="pb-2 ct-color-transc-notification" *ngFor="let n of notificationInfo">
             <a class="logout-style" (click)="notificationPopOver.hide();routeTransc(n.id)">{{n.message}}</a>
         </div>
-        
+
     </div>
 </popover-content>

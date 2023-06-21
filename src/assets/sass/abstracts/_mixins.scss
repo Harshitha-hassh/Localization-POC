@@ -208,8 +208,11 @@ $themes: (
           }
         }
         .buttonStyle {
-          border: 1px solid $header-background !important;
-          background: unset !important;
+          // border: 1px solid $header-background !important;
+          // background: unset !important;
+          background: rgba(255,255,255,.08)!important;
+          border: none;
+          color: #fff;
         }
 
         .user-details {
@@ -238,10 +241,13 @@ $themes: (
     .mat-step-header .mat-step-icon-selected,.mat-flat-button.mat-primary {
       background: $header-background !important;
       border: 2px solid $header-background !important;
+      color: $golf-base-white-bg !important;
     }
     .mat-flat-button.mat-primary[disabled] {
       background-color: rgba(0, 0, 0, 0.12) !important;
-      border: none !important;
+      background-color: $theme-base-color !important;
+      color: $golf-base-white-bg !important;
+      border: 1px solid $theme-base-color !important;
     }
     .mat-flat-button.mat-primary.btnDisabled{
       opacity: 0.5;
@@ -257,7 +263,7 @@ $themes: (
     .mat-spinner circle {
       stroke: $header-background !important;;
     }
-    
+
     .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
       background-color: $menu-ligter-gold !important;
     }
@@ -274,6 +280,8 @@ $themes: (
     .mat-tab-group.mat-primary .mat-ink-bar,
     .mat-tab-nav-bar.mat-primary .mat-ink-bar {
       background-color: $header-background !important;
+      background-color: $retail-primary-100 !important;
+
     }
     .mat-option:hover,
     .mat-option:focus {
@@ -455,6 +463,7 @@ $themes: (
     }
     .spa-primary-btn-default:hover {
       background-color: $header1_active-bg !important;
+      background-color: $theme-base-color !important;
     }
     .active-link {
       color: $color !important;
@@ -526,6 +535,8 @@ $themes: (
     .payment-feature-config .config-options ul li.selected {
       background-color: $header-background !important;
       color: $white !important;
+      background-color:$retail-primary-10 !important;
+      color: $retail-primary-110 !important;
     }
 
     .spa-filter-link {
@@ -549,7 +560,8 @@ $themes: (
       color: $header-background !important;
     }
     .template-sms-container .CustomTableGrid .filter-btn .icon-filter_filled {
-      background: $header-background !important;
+      // background: $header-background !important;
+      background: unset !important;
       color: $color-text !important;
     }
     .icon-help_question:before {
@@ -608,12 +620,19 @@ $themes: (
     $header1_active-bg: $active_bg;
     $icon-bg: $icon_bg_color;
   } @else if $key == "blacktheme" {
-    $header-background: $theme_black_base_color;
+    // $header-background: $theme_black_base_color;
+    // $color-text: $ag_white;
+    // $colorborder: $theme_black_base_color;
+    // $header1_icon: $ag_white;
+    // $header1_active-bg: $theme_black_active_bg;
+    // $icon-bg: $theme_black_icon_bg_color;
+    $header-background: $theme-default-base-color;
     $color-text: $ag_white;
-    $colorborder: $theme_black_base_color;
+    $colorborder: $theme-default-base-color;
     $header1_icon: $ag_white;
-    $header1_active-bg: $theme_black_active_bg;
-    $icon-bg: $theme_black_icon_bg_color;
+    $header1_active-bg: $theme_default_active_bg;
+    $icon-bg: $theme-default-base-color;
+    $color-background: $theme-default-base-color;
   } @else if $key == "orangetheme" {
     $header-background: $theme_orange_base_color;
     $color-text: $theme_orange_text-color;

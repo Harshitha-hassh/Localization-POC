@@ -1,4 +1,4 @@
-<section id="day-end" class="day-end h-100" *ngIf = "hasAccess">
+<section id="day-end" class="day-end h-100 newVersionWrapper" *ngIf = "hasAccess">
   <ng-scrollbar [trackX]="true" [autoHide]="true">
     <div class="horizontal-stepper-class p-3 h-100">
       <div *ngFor="let coll of GridData; let i = index" class="pb-2 Dayend-Sectable dayEnd-{{i}}" >
@@ -15,7 +15,7 @@
         <!-- Table Section -->
         <div class="w-100 tableSec" *ngIf="coll.tableOptions.TablebodyData.length > 0 || (coll.dataCount==0 && (!canProcess || !successFlag))">
           <ng-scrollbar [trackX]="true" [trackY]="true" [autoHide]="true">
-          <table  class="w-100 DE_Table">
+          <table [attr.automationId]="'Tbl_dayEnd_dayEnd'"  class="w-100 DE_Table">
             <thead *ngIf="coll.tableOptions.TablebodyData.length > 0">
               <tr>
                 <th *ngFor="let hdr of coll.tableOptions.TableHdrData;let i=index" class="LW14"  [ngClass]="[hdr.alignType=='right' ? 'text-right' : hdr.alignType=='center' ? 'text-center':'']">{{ hdr.title }}</th>
@@ -53,28 +53,37 @@
             <i *ngIf="revenuepostingsFailedCount > 0" class="icon-error-icon blckClr mr-2 IC18"></i>
             <i *ngIf="revenuepostingsFailedCount == 0" class="icon-success-icon blckClr mr-2 IC18"></i>
           </span>
-         <a *ngIf ="revenuepostingsFailedCount > 0" (click)="routeTolink()"  [routerLink]="revenuePostingUrl"> 
+         <a *ngIf ="revenuepostingsFailedCount > 0" (click)="routeTolink()"  [routerLink]="revenuePostingUrl">
             <span class=" d-table-cell hdrlblwdth V-Mid LWB16">{{coll.displayName}} {{revenuepostingsFailedText}} </span>
           </a>
           <span  *ngIf ="revenuepostingsFailedCount == 0" class=" d-table-cell hdrlblwdth V-Mid LWB16">{{coll.displayName}}</span>
         </div>
 
       </div>
-      
+
       <!-- Final Section -->
-      <div class="processSec">
-        <div class="d-inline-block rghtBrder pr-4">
-          <div class="dteFnt pb-2">{{commonLocalization.LocalizeDate(currSysDate)}}</div>
-          <div class="subdteFnt LW16">{{this.captions.CurrentSystemDate}}</div>
+      <div class="processSection">
+        <div class="processSec">
+          <div class="d-inline-block rghtBrder pr-4">
+            <div class="dteFnt pb-2">{{commonLocalization.LocalizeDate(currSysDate)}}</div>
+            <div class="subdteFnt LW16">{{this.captions.CurrentSystemDate}}</div>
+          </div>
+          <div class="d-inline-block pl-4">
+            <div class="dteFnt pb-2" [ngClass]="{'bold':canProcess || successFlag}">{{commonLocalization.LocalizeDate(newSysDate)}}</div>
+            <div class="subdteFnt LW16">{{this.captions.NewSystemDate}}</div>
+          </div>
         </div>
-        <div class="d-inline-block pl-4">
-          <div class="dteFnt pb-2" [ngClass]="{'bold':canProcess || successFlag}">{{commonLocalization.LocalizeDate(newSysDate)}}</div>
-          <div class="subdteFnt LW16">{{this.captions.NewSystemDate}}</div>
+        <div class="process-btn mb-3">
+          <button [attr.automationId]="'Btn_dayEnd_process'" type="button" mat-button class="body-bgcolor whitecolor text_capitalize LW14 gold-btn w165" [ngClass]="{'btn-disabled': removeBtnCheck()}" (click)="PerformDayend()">{{this.captions.PROCESS}}</button>
+        </div>
+        <div class="w-100 mt-2" *ngIf="isManualNightAuditRestricted">
+          <span class="mx-1">
+            <i  aria-hidden="true" class="icon-information"></i>
+          </span>
+          <span>{{this.nightAuditRestricted}}</span>
         </div>
       </div>
-      <div class="pt-4 mb-3">
-        <button type="button" mat-button class="body-bgcolor whitecolor text_capitalize LW14 gold-btn w165" [ngClass]="{'btn-disabled': removeBtnCheck()}" (click)="PerformDayend()">{{this.captions.PROCESS}}</button>
-      </div>
+
       <!-- Success Message -->
       <div class="notificationBG d-table  mb-4" *ngIf="successFlag">
         <span class="d-table-cell V-Mid">
