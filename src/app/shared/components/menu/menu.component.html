@@ -89,12 +89,11 @@
                         <mat-form-field class="menu-field">
                             <mat-select  (selectionChange)="navigateTo($event)" [(value)]="selectedItem"
                                 [compareWith]="compareSelect" [disableOptionCentering]="true">
-                                <ng-container  *ngFor="let item of menuList.menu">
-                                    <mat-option class="fontChange" *ngIf="item.visibility"  [value]="item">
-                                    <span *ngIf="item.visibility">{{ item.text }}</span>
+                                <ng-container *ngFor="let item of menuList.menu">
+                                <mat-option class="fontChange"  [value]="item" *ngIf="item.visibility">
+                                    <span>{{ item.text }}</span>
                                 </mat-option>
-                                </ng-container>
-
+                            </ng-container>
                             </mat-select>
                         </mat-form-field>
                     </div>
@@ -148,14 +147,16 @@
                             [closeOnClickOutside]="true" id="HeaderPopover">
                             <div class="custom-popover" id="popover-class">
                                 <ul>
-                                    <li class="ag_text--uppercase" *ngFor="let menu of more">
-                                        <a *ngIf="menu.visibility" routerLinkActive="active-link"
+                                    <ng-container *ngFor="let menu of more">
+                                    <li class="ag_text--uppercase" *ngIf="menu.visibility">
+                                        <a routerLinkActive="active-link"
                                             routerLink="{{menu.routePath}}" [matTooltip]="menu.text"
                                             href="javascript:void(0)" (click)="headerPopover.hide()">
                                             <span class="icon-wrapper w25px"> <i class="{{menu.imgPath}}"> </i> </span>
                                             {{menu.text}}
                                         </a>
                                     </li>
+                                </ng-container>
                                 </ul>
                             </div>
                         </popover-content>
