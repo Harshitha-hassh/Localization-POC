@@ -73,22 +73,12 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     if (this.data.setPassword) {
       this.setPasswordForms.get('oldpassword').clearValidators();
     }
-    const serviceParams = {
-      route: RetailApiRoute.PasswordSetting,
-      uriParams: { TenantId: this.tenantId },
-      header: '',
-      body: '',
-      showError: true,
-      baseResponse: true
-    };
     if(this.data && this.data.encKeyIv && this.data.encKeyIv.key &&  this.data.encKeyIv.iv)
     {
       this.key = this.data.encKeyIv.key;
       this.iv = this.data.encKeyIv.iv;
     }
-    const resp: any = await this.loginService.makeGetCall(serviceParams);
-    this.confirmJson = resp;
-    this.validationMessage(this.confirmJson.result);
+    this.validationMessage(this.data.passwordSetting);
     this.OnFormValueChanges();
 
   }

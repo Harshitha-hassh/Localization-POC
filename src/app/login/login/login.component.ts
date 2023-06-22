@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   tenantIdFromParam: string;
   currYear = '2023';
   prevYear = '2020'
-
+  passwordSetting: any;
   //Machine Name
   isMachineNameEnabled: boolean;
   isPromptOnLoginEnabled: boolean;
@@ -315,7 +315,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       const content = { title: 'SETUP PASSWORD', userName: this.userName, tenantId: this.tenantId };
       this.setUpPassword(content, true);
     } else if (!this.ADB2CAuthenticationEnabled && loginDetails.result.userLoginInfo.isPasswordExpired === true) {
-      const content = { title: 'CHANGE PASSWORD', userName: this.userName, tenantId: this.tenantId };
+      this.passwordSetting = loginDetails.result.passwordSetting;
+      const content = { title: 'CHANGE PASSWORD', userName: this.userName, tenantId: this.tenantId, passwordSetting: this.passwordSetting };
       this.setUpPassword(content, false);
     } else {
       this.sessionService.UpdateUserSessionsInfo(loginDetails.result);
@@ -887,6 +888,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         setPassword: isSetPassword,
         userName: arg.userName,
         tenantId: arg.tenantId,
+        passwordSetting: arg.passwordSetting,
         encKeyIv: { key: this.key, iv: this.iv }
       }
     });
