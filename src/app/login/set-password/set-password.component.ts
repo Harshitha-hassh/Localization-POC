@@ -8,6 +8,8 @@ import { ButtonValue } from 'src/app/shared/shared-models';
 import { RetailRoutes } from 'src/app/core/extensions/retail-route';
 import { CryptoUtility } from 'src/app/core/utilities/crypto.utility';
 import { NewPasswordDetail } from 'src/app/common/Models/common.models';
+import { debounceTime } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-set-password',
@@ -51,6 +53,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   allowReuse: any;
   hiddenPassword1 = false;
   hiddenPassword2 = false;
+  debounceTime = 1500;
 
 
 
@@ -147,7 +150,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     this.dialogRef.close();
   }
   OnFormValueChanges(): any {
-    this.setPasswordForms.get('newpassword').valueChanges.subscribe(res => {
+    this.setPasswordForms.get('newpassword').valueChanges.pipe(debounceTime(this.debounceTime)).subscribe(res => {
       this.doneDisabled = true;
       this.IsLengthValid = (res.length >= this.minCharacter) && (res.length <= this.maxCharacter) ? true : false;
       const returnFormat = this.formatingTypeValidation(this.formatingType, res, this.allowSpecialCharacters);
@@ -170,7 +173,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
 
     });
 
-    this.setPasswordForms.get('confirmpassword').valueChanges.subscribe(res => {
+    this.setPasswordForms.get('confirmpassword').valueChanges.pipe(debounceTime(this.debounceTime)).subscribe(res => {
       this.doneDisabled = true;
       this.PasswordValidCheck();
       this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls.newpassword.value, this).then(() => {
@@ -183,7 +186,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
 
     });
     if (!this.data.setPassword) {
-      this.setPasswordForms.get('oldpassword').valueChanges.subscribe(async (res) => {
+      this.setPasswordForms.get('oldpassword').valueChanges.pipe(debounceTime(this.debounceTime)).subscribe(async (res) => {
         this.doneDisabled = true;
         this.PasswordValidCheck();
         if (this.setPasswordForms.controls.oldpassword.value && this.setPasswordForms.controls.oldpassword.value.length > 0) {
