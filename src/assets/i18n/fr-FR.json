@@ -3902,6 +3902,7 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_fr",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_fr",
   "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_fr",
+  "lbl_more": "MORE_fr",
   "FailedTransLogInfo": "{count} Failed records found in Payment Logs_fr",
   "composed": "View Composed_fr",
   "preview": "PREVIEW_fr",

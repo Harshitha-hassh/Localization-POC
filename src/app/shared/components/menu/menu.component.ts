@@ -38,7 +38,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   isMenu: boolean;
   positionOptions: TooltipPosition[] = ['right', 'above', 'left', 'below']; 
   position = new UntypedFormControl(this.positionOptions[0]);
-  moreTextName = 'More';
+  moreTextName = '';
   moreListItem: any = [];
   isSubMenu = false;
   searchOpen = false;
@@ -107,6 +107,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.firstName = this._localization.GetUserInfo("firstName");
     this.lastName = this._localization.GetUserInfo("lastName");
     this.userRole = this._localization.GetUserInfo("roleName");
+    this.moreTextName = this.captions.lbl_more;
 
     this.transactionCountSubscription = this._sessionService.transactionCount.subscribe(res => {
       const revenueresult = res && res.find(x => x.id === NotificationFailureType.revenuePostingFailure) ;
