@@ -72,6 +72,8 @@
                 width: 66%;
                 clip-path: polygon(0 0,58% 0,85% 65%,67% 101%,0 101%);
                 background: $white;
+                transform: translate3d(0, 0, 0);
+                -webkit-transform: translate3d(0, 0, 0);
 
                 #{ $self }__details {
                     position: relative;
