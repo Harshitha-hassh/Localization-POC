@@ -82,7 +82,11 @@ export class ManageSessionService implements OnDestroy {
     }
 
     goToLogin() {
-        this.router.navigate(['login']);
+      if(sessionStorage.getItem('supportUserMailId')){
+       this.router.navigate(["supportlogin"]);
+       } else {
+       this.router.navigate(["login"]);
+      }
     }
 
     ngOnDestroy() {
@@ -100,22 +104,22 @@ export class ManageSessionService implements OnDestroy {
         this.stopTimerForNotification();
         this.doLogoutActivities();
         await this.updateSession();
+        this.goToLogin();
         this.removeToken();
         this.dialogRef.closeAll();
         this.http.removeHelpUserSession();
         this.clearLocalStore();
         this.changeTitle();
-        this.goToLogin();
         if(this.adb2cAuthConfiguration.ADB2CAuthFeatureEnabled)
         {
             console.log('adb2c logout');
-            this.oauthService.logOut(); //ADB2C logout 
+            this.oauthService.logOut(); //ADB2C logout
         }
     }
     async closeSignalRConnection(){
         this.signalR.stopConnection();
-      }  
-    
+      }
+
 
     public GetPropertyInfo(name: string) {
         return this.utils.GetPropertyInfo(name);
@@ -292,7 +296,7 @@ export class ManageSessionService implements OnDestroy {
     }
 
     public startTimer(logOffAfter: any, tokenExpiry: number) {
-   
+
         if (logOffAfter == 0) {
           if (tokenExpiry > 122) {
             tokenExpiry = tokenExpiry - 122; // buffer time for token expiry
@@ -486,7 +490,7 @@ export class ManageSessionService implements OnDestroy {
             showError: true
         });
         return response.result;
-        
+
     }
 
     public stopTimerForNotification() {

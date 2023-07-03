@@ -17,7 +17,7 @@
                                         <div>
                                             <i class="icon-user ag_pr--2 "></i>
                                             <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
-    
+
                                                 <input matInput type="text" #fcs_userID [placeholder]="captions.lbl_userId"
                                                     class="ag_text--uppercase"
                                                     formControlName="userId" (keydown.enter)="getbuttonEmitvalue($event)">
@@ -29,7 +29,7 @@
                                         <div class="hide-view">
                                             <i class="icon-password ag_pr--2 "></i>
                                             <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
-    
+
                                                 <input matInput #fcs_pwd [type]="hidePassword ? 'text' : 'password'"
                                                     [placeholder]="captions.password" formControlName="password"
                                                     (keydown.enter)="getbuttonEmitvalue($event)" autocomplete="new-password">
@@ -45,7 +45,7 @@
                                         <div>
                                             <i class="icon-guest ag_pr--2"></i>
                                             <mat-form-field class="w-50 ag_section--disable" [floatLabel]="floatLabel" [ngClass]="{'ag_section--disable' : !showCustomerID}">
-                                                <input matInput #fcs_custID inputtype="nonnegative,nodecimal" 
+                                                <input matInput #fcs_custID inputtype="nonnegative,nodecimal"
                                                     [placeholder]="captions.customerId" class="text-uppercase"
                                                     formControlName="customerId"  [maxlength]="maxLength"
                                                     (keydown.enter)="loginForms.controls.customerId.value != '' ? getbuttonEmitvalue($event) : '' ">
@@ -63,7 +63,7 @@
                                         <div *ngIf="!showCustomerID">
                                             <i class="icon-user ag_pr--2 "></i>
                                             <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
-    
+
                                                 <input matInput #fcs_userID type="text" [placeholder]="captions.lbl_userId"
                                                     class="ag_text--uppercase"
                                                     formControlName="userId" (keydown.enter)="getbuttonEmitvalue($event)">
@@ -75,7 +75,7 @@
                                         <div  *ngIf="!showCustomerID" class="hide-view">
                                             <i class="icon-password ag_pr--2 "></i>
                                             <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
-    
+
                                                 <input matInput #fcs_pwd [type]="hidePassword ? 'text' : 'password'"
                                                     [placeholder]="captions.password" formControlName="password"
                                                     (keydown.enter)="getbuttonEmitvalue($event)" autocomplete="new-password">
@@ -100,7 +100,7 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
-                                    
+
                                     <div>
                                         <!-- <mat-checkbox formControlName="rememberme">{{captions.rememberMe}}
                                         </mat-checkbox> -->
@@ -108,8 +108,8 @@
                                     </div>
                                 </div>
                                 <div *ngIf="loginSuccess" class="overall_login_wrapper">
-                                    <i class="icon-location-login ag_pr--2"></i>
-                                    <mat-form-field class="ag_w--50" [floatLabel]="floatLabel">
+                                    <i class="icon-location-login ag_pr--2" *ngIf="!isSupportUser"></i>
+                                    <mat-form-field *ngIf="!isSupportUser" class="ag_w--50" [floatLabel]="floatLabel">
                                         <mat-select formControlName="location" (click)="loadProperties()" [disabled] = "multipleProperties.length ==1" (selectionChange)="onPropertyChange($event)"
                                             [placeholder]="captions.lbl_location">
                                             <mat-option *ngFor="let location of multipleProperties" [value]="location">
@@ -121,6 +121,36 @@
                                         </mat-error>
 
                                     </mat-form-field>
+                                    <div *ngIf="isSupportUser">
+                                      <div>
+                                          <i class="icon-guest ag_pr--2" aria-hidden="true"></i>
+                                          <mat-form-field class="ag_w--50" >
+                                              <mat-select formControlName="tenantId" (selectionChange)="onTenantIdChange($event)"
+                                                  [attr.placeholderId]="lbl_customer" [placeholder]="captions.lbl_customer">
+                                                  <mat-option *ngFor="let tenant of tenantIdList" [value]="tenant.id">
+                                                      {{tenant.viewValue}}
+                                                  </mat-option>
+                                              </mat-select>
+                                              <mat-error [attr.LiteralID]="'MissingTenantId'">
+                                                  {{captions.err_missingtenantId}}
+                                              </mat-error>
+                                          </mat-form-field>
+                                      </div>
+                                      <div>
+                                          <i class="icon-location-login ag_pr--2" aria-hidden="true"></i>
+                                          <mat-form-field class="ag_w--50" >
+                                              <mat-select formControlName="propertyId" (selectionChange)="onPropertyIdChange($event)"
+                                                  [attr.placeholderId]="lbl_propertyId" [placeholder]="captions.lbl_location">
+                                                  <mat-option *ngFor="let property of propertyIdListForATenant" [value]="property.id">
+                                                      {{property.viewValue}}
+                                                  </mat-option>
+                                              </mat-select>
+                                              <mat-error [attr.LiteralID]="'MissingpropertyId'">
+                                                  {{captions.err_propertyID}}
+                                              </mat-error>
+                                          </mat-form-field>
+                                      </div>
+                                  </div>
                                     <mat-form-field class="w-50 machine-name" *ngIf = "isPromptOnLoginEnabled && machineNames.length > 0" [floatLabel]="floatLabel">
                                         <mat-select formControlName="machineName" (click)="loadMachineNames()"
                                         [compareWith]="compareSelect"  placeholder="{{this.captions.Machine}}" required>
@@ -154,10 +184,10 @@
 
 
             </div>
-           
+
         </div>
 
-        
+
 
     </div>
 

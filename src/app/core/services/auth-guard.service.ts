@@ -8,16 +8,22 @@ export class AuthGuardService {
     constructor(private router: Router) { }
 
     canActivate(): boolean | Promise<boolean> {
-        
+
         let jwt = sessionStorage.getItem(JWT_TOKEN);
         let propertyDate = sessionStorage.getItem(PROPERTY_DATE);
-        
+
         if ( jwt != "null" && jwt != "undefined" && jwt != undefined && propertyDate != null) {
             return true;
         }
 
+        if(sessionStorage.getItem('supportUserMailId')){
+         this.router.navigate(["supportlogin"]);
+         return false
+       } else {
         this.router.navigate(['/login']);
         return false;
-    }
+      }
+       }
+
 
 }

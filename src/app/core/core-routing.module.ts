@@ -17,6 +17,10 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'supportlogin',
+    component: LoginComponent
+  },
+  {
     path: 'setProperty',
     component: SetPropertyComponent
   },

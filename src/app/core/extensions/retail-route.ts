@@ -81,15 +81,20 @@ export enum RetailRoutes {
 
    // Combine Guests
    GetGuestInformation= "GuestCombine/guestsearch",
-   CombineGuestInformation= "GuestCombine/{primaryGuestId}",  
+   CombineGuestInformation= "GuestCombine/{primaryGuestId}",
    GetGuestInfoByGuid="GuestCombine/{id}",
    UpdateGuestInformation= "GuestCombine/updateguest" ,
    LoginEncrypted = 'Property/GetEncLoginDetails',
    GetEncryptKey = 'Login/encValue',
    CheckPasswordPut = 'User/CheckPasswordExists',
    VerifyPasswordPut = 'User/VerifyPassword',
-   SavePasswordPost = 'User/SavePassword',  
-   UpdateConsentPolicyDetailsForGuestId = 'PointOfSaleService/GuestPolicy/UpdateConsentPolicyDetailsForGuestId'
+   SavePasswordPost = 'User/SavePassword',
+   UpdateConsentPolicyDetailsForGuestId = 'PointOfSaleService/GuestPolicy/UpdateConsentPolicyDetailsForGuestId',
+
+   // support user
+   GetUserByTenantId = 'User/GetUserByTenantId/{UserName}/{tenantId}',
+   GetTenantGroupDetailByProductId = 'TenantOrganization/GetTenantGroupDetailByProductId?productId={productId}',
+   GetPropertyDetailsByProductId = 'Property/GetPropertyDetailsByProductId?productId={productId}',
 }
 
 export enum MsGraphRoutes {

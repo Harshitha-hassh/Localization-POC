@@ -16,3 +16,7 @@ export const PROPERTY_CONFIGURATION_SETTINGS = 'PROPERTYCONFIGURATION';
 export const USERS_SESSSIONS_INFO = 'usersSessionsInfo';
 export const FULL_STORY_ORG_ID = 'FullStoryOrgId'
 export const NO_OF_DECIMAL_DIGITS = 'NoOfDecimalDigits';
+
+export const RETAIL_PRODUCT_ID = 2;
+export const SUPPORT_TENANT = 1001;
+export const SUPPORT_USERNAME = 'AGYSSUPPORT';
