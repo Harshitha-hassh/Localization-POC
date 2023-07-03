@@ -150,7 +150,7 @@
                                     <ng-container *ngFor="let menu of more">
                                     <li class="ag_text--uppercase" *ngIf="menu.visibility">
                                         <a routerLinkActive="active-link"
-                                            routerLink="{{menu.routePath}}" [matTooltip]="menu.text"
+                                            routerLink="{{menu.routePath}}" [matTooltip]="menu.text" [matTooltipPosition]="position.value"
                                             href="javascript:void(0)" (click)="headerPopover.hide()">
                                             <span class="icon-wrapper w25px"> <i class="{{menu.imgPath}}"> </i> </span>
                                             {{menu.text}}

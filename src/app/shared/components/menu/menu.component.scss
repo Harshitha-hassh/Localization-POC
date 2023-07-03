@@ -559,8 +559,27 @@ svg-icon {
 }
 
 .header-popover {
-  .popover-content {
-    padding: 0px 14px;
+  .popover-body {
+    // padding: 0px 14px;
+    font-family: $ag_poppins-medium !important;
+    padding: 0!important;
+    #popover-class{
+      ul{
+        li{
+          a{
+            width:100%;
+            padding: 15px!important; 
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+  .popover-content
+  {
+    padding: 0!important;
   }
 }
 
@@ -574,7 +593,7 @@ svg-icon {
     li {
       padding-right: 0rem;
       height: 36px;
-      width: 135px;
+      width: 100%;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
