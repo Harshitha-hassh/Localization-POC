@@ -115,7 +115,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('fcs_userID') fcs_userID: ElementRef;
   @ViewChild('fcs_pwd') fcs_pwd: ElementRef;
   @ViewChild('fcs_custID') fcs_custID: ElementRef;
-
+  muname: string;
+  tenantCode: string;
+  enablePropertySelection: boolean = false;
   constructor(
     private dialog: MatDialog,
     private formBuilder: UntypedFormBuilder,
@@ -147,6 +149,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
+    this.enablePropertySelection = false;
     await this.initializeForm();
     let custId = this.commonLocalize.getLocalCookie('appRetailCustID');
     if (custId != '') {
@@ -346,17 +349,27 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.sessionService.UpdateUserSessionsInfo(loginDetails.result);
       this.propertyValues = loginDetails.result.userProperties;
       this.captionGenerator();
-      this.loginSuccess = !this.loginSuccess;
+      // this.loginSuccess = !this.loginSuccess;
       this.multipleProperties = this.propertyValues.map(x => ({
         id: x.propertyCode,
         name: x.propertyName
       }));
       this.userMachineInfo = await this.retailPropertySettingDataService.GetMachineNamesAndConfigurationSetting(this.userInfo.userId, Product.RETAIL,
         this.propertyValues.map(x => x.propertyId));
+        if (this.propertyValues.length > 1 || this.propertyValues.length == 0) {
+          this.loginSuccess = !this.loginSuccess;
+        }
       // Selecting property by default when there is only one property configured for tenant
       if (this.multipleProperties.length == 1) {
-        this.loginForms.controls.location.setValue(this.multipleProperties[0]);
         this.setMachineInfo(this.propertyValues[0].propertyId);
+        this.loginSuccess = false;
+        this.enablePropertySelection = true;
+        if (this.isMachineNameEnabled && this.isPromptOnLoginEnabled && this.machineNames.length > 0) {
+          this.loginSuccess = true;
+          this.loginForms.controls.location.setValue(this.multipleProperties[0]);
+        } else {
+          this.validateCredentials({ UserName: this.muname, Password: this.loginForms.controls["password"].value, TenantId: this.tenantId != null ? this.tenantId : 0, Property: this.multipleProperties[0], ProductId: Product.RETAIL, TenantCode: this.tenantCode });
+        }
       }
       // else //For AD B2C Auth flow - show login form property selection
       // {
@@ -422,7 +435,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       baseResponse: true
     };
 
-    if (!this.loginSuccess) {
+    if (!this.loginSuccess && !this.enablePropertySelection) {
       // Validate credentials
       if (this.key && this.iv) {
         serviceParams.body.Password = this.crypto.EncryptString(credentials.Password, this.key, this.iv);
@@ -832,24 +845,24 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   generalAuthValidation() {
     if (this.loginForms.valid) {
-      let muname = '';
-      let tenantCode = '';
+      this.muname = '';
+      this.tenantCode = '';
       const id: any = (this.loginForms.controls.customerId.value !== '' && this.loginForms.controls.customerId.value !== undefined) ?
         this.loginForms.controls.customerId.value : this.custId;
       this.userName = this.loginForms.value.userId;
 
       if (this.userName.includes('@')) {
-        muname = this.userName.substring(0, this.userName.indexOf('@'));
-        tenantCode = this.userName.substring(this.userName.indexOf('@') + 1);
+        this.muname = this.userName.substring(0, this.userName.indexOf('@'));
+        this.tenantCode = this.userName.substring(this.userName.indexOf('@') + 1);
       } else {
-        muname = this.userName;
+        this.muname = this.userName;
       }
       this.tenantId = Number(id);
       this.validateCredentials({
-        UserName: muname,
+        UserName: this.muname,
         Password: this.loginForms.controls.password.value,
         TenantId: this.tenantId != null ? this.tenantId : 0,
-        Property: this.loginForms.controls.location.value, ProductId: Product.RETAIL, TenantCode: tenantCode
+        Property: this.loginForms.controls.location.value, ProductId: Product.RETAIL, TenantCode: this.tenantCode
       });
     } else {
       this.loginForms.controls.userId.markAsTouched();
