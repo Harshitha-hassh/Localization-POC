@@ -1340,6 +1340,21 @@ getTenantIdList(data: any[]){
   localStorage.setItem(JWT_TOKEN, token);
   this.localize.SetSupportUserMailId(email);
   this.commonLocalize.setLocalCookie('supportUserMailId',email);
+  const mailValidationParams = {
+    route: RetailRoutes.ValidateUserByTenantAndEmail,
+    uriParams: { tenantId : SUPPORT_TENANT, emailId: email},
+    header: '',
+    showError: true,
+    baseResponse: true
+  };
+
+  let isUserExistsInSupportTenant : any = await this.loginService.makePutCall(mailValidationParams, false);
+
+  if(!isUserExistsInSupportTenant?.result){
+    await this.utils.showAlert(this.captions.err_userAccess_Denied_message,AlertType.Error, ButtonType.Ok).afterClosed().toPromise();
+    this.sessionService.logout();
+    return;
+  }
   this.enableSupportUserInputElementsRequiredField(true);
   this.captionGenerator();
  // this.loginSuccessCaption = this.captions.SelectYourLoginDetails;

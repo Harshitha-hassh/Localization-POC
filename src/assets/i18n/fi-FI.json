@@ -4133,5 +4133,6 @@
   "warn_delete": "Are you sure want to delete '{{name}}' ?_fi",
   "err_sigCapGenericMessage": "Failed to capture Signature - '{{reason}}'_fi",
   "noResponse": "No response received from the Signature Capture device. Signature will not be displayed in the receipt._fi",
-  "lbl_industryTypeWarn": "Changing the Industry type will make the existing Cards On File for guests not work._fi"
+  "lbl_industryTypeWarn": "Changing the Industry type will make the existing Cards On File for guests not work._fi",
+  "err_userAccess_Denied_message": "User does not have access. Please contact System Administrator._fi"
 }

@@ -95,6 +95,7 @@ export enum RetailRoutes {
    GetUserByTenantId = 'User/GetUserByTenantId/{UserName}/{tenantId}',
    GetTenantGroupDetailByProductId = 'TenantOrganization/GetTenantGroupDetailByProductId?productId={productId}',
    GetPropertyDetailsByProductId = 'Property/GetPropertyDetailsByProductId?productId={productId}',
+   ValidateUserByTenantAndEmail = 'User/ValidateUserByTenantAndEmail?tenantId={tenantId}&emailId={emailId}'
 }
 
 export enum MsGraphRoutes {

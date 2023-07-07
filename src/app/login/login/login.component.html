@@ -140,7 +140,7 @@
                                           <i class="icon-location-login ag_pr--2" aria-hidden="true"></i>
                                           <mat-form-field class="ag_w--50" >
                                               <mat-select formControlName="propertyId" (selectionChange)="onPropertyIdChange($event)"
-                                                  [attr.placeholderId]="lbl_propertyId" [placeholder]="captions.lbl_location">
+                                                  [attr.placeholderId]="lbl_propertyId" [placeholder]="captions.lbl_Property">
                                                   <mat-option *ngFor="let property of propertyIdListForATenant" [value]="property.id">
                                                       {{property.viewValue}}
                                                   </mat-option>
