@@ -535,7 +535,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       ';LogOffAfter=' +
       result.logOffAfter +
       '; MaxDecimalPlaces=' +
-      maxDecimalPlace;
+      maxDecimalPlace  +
+      '; PropTimeFormat=' +
+      result.propTimeFormat +
+      ';';
     sessionStorage.setItem(PROPERTY_INFO, PropertyValues);
     sessionStorage.setItem(PROPERTY_DATE, result.propertyDate);
     /*TODO: Uncomment this once jwt token update implementation done */
