@@ -227,7 +227,7 @@ export class DataAwaiterService {
         return this.userDefaultService.GetDefaultOutlet();
     }
 
-    async SendNotification(clientInfo :RetailClientInfo.ClientInfo,emailId:any[]=[]) {
+    async SendNotification(clientInfo: RetailClientInfo.ClientInfo, emailId: any[] = [], isDistributionListRequired: boolean = true) {
         const eventConfiguration: EventNotificationGroup[] = await this.notificationConfigurationService.GetEventNotificationGroupByProduct();
         const guesteventConfiguration = eventConfiguration.filter(x => x.groupName === "Guest");
         let canSendemail: boolean, canSendSMS: boolean ;
@@ -235,7 +235,7 @@ export class DataAwaiterService {
             canSendemail = guesteventConfiguration[0].sendMail;
             canSendSMS = guesteventConfiguration[0].sendSMS;
         }
-        this.notificationDataService.SendNotification(clientInfo.transactionId, false, emailId, '', canSendSMS,canSendemail,clientInfo.reportQuery,true);
+        this.notificationDataService.SendNotification(clientInfo.transactionId, false, emailId, '', canSendSMS,canSendemail,clientInfo.reportQuery,true,isDistributionListRequired);
     }
 
     OpenManualNotifyPopup(transactionId: number, guestId: number ) {

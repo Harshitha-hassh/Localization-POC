@@ -331,7 +331,8 @@ export interface NotificationModel {
     canSendemail : boolean,
     isManual: boolean,
     reportQuery : ReportAPIModel
-    isRetailNotification:boolean 
+    isRetailNotification:boolean,
+    isDistributionListRequired:boolean
     }
 
 export interface TransactionData {

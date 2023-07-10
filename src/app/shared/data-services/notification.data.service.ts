@@ -14,7 +14,7 @@ export class NotificationDataService {
     }
 
     public async SendNotification(transactionId: number, isManual: boolean, emailId: any[] = [], phoneNumber: string ='',
-        canSendSMS: boolean=true, canSendemail: boolean=true, reportAPIOptions : ReportAPIModel = null,IsRetailNotification=false): Promise<any> {
+        canSendSMS: boolean = true, canSendemail: boolean = true, reportAPIOptions: ReportAPIModel = null, IsRetailNotification = false, isDistributionListRequired: boolean = true): Promise<any> {
 
         let bodyObj : NotificationModel;
         bodyObj = {
@@ -26,7 +26,8 @@ export class NotificationDataService {
             canSendemail : canSendemail ? canSendemail : false,
             isManual:  isManual,
             isRetailNotification : IsRetailNotification,
-            reportQuery : reportAPIOptions
+            reportQuery : reportAPIOptions,
+            isDistributionListRequired:isDistributionListRequired
         }
 
         return this._httpPos.putPromise({
