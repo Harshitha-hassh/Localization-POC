@@ -962,6 +962,7 @@
     "cReset": "RESET_kr"
   },
   "shop": {
+    "lbl_processing": "Processing..._kr",
     "missingMail": "Missing Email_kr",
     "invalidMail": "Invalid Email_kr",
     "guestEmail_address": "Guest Email Address_kr",
