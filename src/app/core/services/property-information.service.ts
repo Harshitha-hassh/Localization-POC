@@ -43,6 +43,7 @@ export class PropertyInformation extends CommonPropertyInformation {
         sessionStorage.setItem('VATEnabled', _.cloneDeep(this._VATEnabled).toString());
         sessionStorage.setItem('productVersion', settings['productVersion']);
         sessionStorage.setItem('userProductVersion', settings['userProductVersion']);
+        localStorage.setItem('userProductVersion', settings['userProductVersion']);
     }
 
     public SetDefaultDataOnLoad() {

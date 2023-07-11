@@ -9,7 +9,8 @@ if (environment.production) {
 }
 (async () => {
   console.time()
-  const response = await fetch('./assets/json/config.json');
+  let pv = localStorage.getItem('userProductVersion');
+  const response = await fetch('./assets/json/config.json?v='+pv);
   const json = await response.json();
   Object.entries(json).forEach(([key, value]) => {
     environment[key] = value;

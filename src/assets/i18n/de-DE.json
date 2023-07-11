@@ -962,6 +962,7 @@
     "cReset": "RESET_de"
   },
   "shop": {
+    "lbl_processing": "Processing..._de",
     "missingMail": "Missing Email_de",
     "invalidMail": "Invalid Email_de",
     "guestEmail_address": "Guest Email Address_de",

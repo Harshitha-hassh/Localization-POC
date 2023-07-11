@@ -479,6 +479,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.setMachineDetails();
       this.router.navigate(['/home']);
+      this.propertyServices.Checkfordeployment();
       await this.retailFunc.getRetailFunctionality();
       let userDetails = await this.sessionService.GetUserSessionsInfo();
       console.log(userDetails)
