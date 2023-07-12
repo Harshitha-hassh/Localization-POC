@@ -3361,6 +3361,7 @@
   "settings": {
     "prices": "Price ({option})_fr",
     "utilities": {
+      "warn_datalost": "Are you sure you want to cancel the changes?_fr",
       "configPrinter": "Configure Printer for_fr",
       "loginUser": "Login User_fr",
       "machine": "Machine_fr",

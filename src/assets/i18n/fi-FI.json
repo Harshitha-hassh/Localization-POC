@@ -3361,6 +3361,7 @@
   "settings": {
     "prices": "Price ({option})_fi",
     "utilities": {
+      "warn_datalost": "Are you sure you want to cancel the changes?_fi",
       "configPrinter": "Configure Printer for_fi",
       "loginUser": "Login User_fi",
       "machine": "Machine_fi",

@@ -3361,6 +3361,7 @@
   "settings": {
     "prices": "Price ({option})_in",
     "utilities": {
+      "warn_datalost": "Are you sure you want to cancel the changes?_in",
       "configPrinter": "Configure Printer for_in",
       "loginUser": "Login User_in",
       "machine": "Machine_in",
