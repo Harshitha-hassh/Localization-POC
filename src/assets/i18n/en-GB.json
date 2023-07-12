@@ -3361,6 +3361,7 @@
   "settings": {
     "prices": "Price ({option})_gb",
     "utilities": {
+      "warn_datalost": "Are you sure you want to cancel the changes?_gb",
       "configPrinter": "Configure Printer for_gb",
       "loginUser": "Login User_gb",
       "machine": "Machine_gb",
