@@ -1388,6 +1388,7 @@ getTenantIdList(data: any[]){
     this.allTenantDetails = responses[0].result;
     this.allPropertyDetails = responses[1].result;
     this.tenantIdList = this.getTenantIdList(this.allTenantDetails);
+    this.tenantIdList.sort((a, b) => a.viewValue.localeCompare(b.viewValue))
     this.initialTenantIdList = [...this.tenantIdList]
       if(!this.tenantIdList || this.tenantIdList.length <= 0){
       console.log('Empty tenant List to display');
