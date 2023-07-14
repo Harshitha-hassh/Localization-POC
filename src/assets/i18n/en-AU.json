@@ -84,7 +84,9 @@
     "quickId": "Quick ID",
     "password": "Password",
     "Login": "Login",
-    "QUICKLOGIN": "QUICK LOGIN"
+    "QUICKLOGIN": "QUICK LOGIN",
+    "SearchByCustomer": "Search by Customer",
+    "lbl_noDataFound": "No Data Found"
   },
   "app_title": "Agilysys Retail",
   "common": {

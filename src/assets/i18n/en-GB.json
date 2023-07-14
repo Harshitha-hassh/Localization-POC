@@ -84,7 +84,9 @@
     "quickId": "Quick ID_gb",
     "password": "Password_gb",
     "Login": "Login_gb",
-    "QUICKLOGIN": "QUICK LOGIN_gb"
+    "QUICKLOGIN": "QUICK LOGIN_gb",
+    "SearchByCustomer": "Search by Customer_gb",
+    "lbl_noDataFound": "No Data Found_gb"
   },
   "app_title": "Agilysys Retail_gb",
   "common": {

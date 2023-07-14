@@ -125,12 +125,22 @@
                                       <div>
                                           <i class="icon-guest ag_pr--2" aria-hidden="true"></i>
                                           <mat-form-field class="ag_w--50" >
-                                              <mat-select formControlName="tenantId" (selectionChange)="onTenantIdChange($event)"
-                                                  [attr.placeholderId]="lbl_customer" [placeholder]="captions.lbl_customer">
-                                                  <mat-option *ngFor="let tenant of tenantIdList" [value]="tenant.id">
-                                                      {{tenant.viewValue}}
-                                                  </mat-option>
-                                              </mat-select>
+                                              <mat-select formControlName="tenantId" (selectionChange)="onTenantIdChange($event)" (openedChange)="openedChange($event)"
+                                              [attr.placeholderId]="lbl_customer" [placeholder]="captions.login.lbl_customer">
+                                              <div class="dropdown-search">
+                                                <input #myInput [placeholder]="captions.login.SearchByCustomer"  [(ngModel)]="inputSearch" [ngModelOptions]="{standalone: true}" (input)='filterOptions($event)' (keydown)="$event.stopPropagation()">
+                                              </div>
+                                              <ng-container *ngIf="tenantIdList.length > 0 ; else noData">
+                                                <mat-option  matTooltip="{{tenant.id}} - {{tenant.viewValue}}" *ngFor="let tenant of tenantIdList" [value]="tenant.id">
+                                                  {{tenant?.id}} - {{tenant.viewValue}}
+                                               </mat-option>
+                                              </ng-container>
+                                              <ng-template #noData>
+                                                <mat-option>
+                                                  {{captions.login.lbl_noDataFound}}
+                                               </mat-option>
+                                              </ng-template>
+                                          </mat-select>
                                               <mat-error [attr.LiteralID]="'MissingTenantId'">
                                                   {{captions.err_missingtenantId}}
                                               </mat-error>

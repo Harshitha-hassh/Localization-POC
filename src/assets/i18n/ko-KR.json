@@ -84,7 +84,9 @@
     "quickId": "Quick ID_kr",
     "password": "Password_kr",
     "Login": "Login_kr",
-    "QUICKLOGIN": "QUICK LOGIN_kr"
+    "QUICKLOGIN": "QUICK LOGIN_kr",
+    "SearchByCustomer": "Search by Customer_kr",
+    "lbl_noDataFound": "No Data Found_kr"
   },
   "app_title": "Agilysys Retail_kr",
   "common": {

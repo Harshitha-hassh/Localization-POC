@@ -118,6 +118,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   muname: string;
   tenantCode: string;
   enablePropertySelection: boolean = false;
+  initialTenantIdList: any[] = [];
+  @ViewChild('myInput') myInput: ElementRef;
+  inputSearch;
+
   constructor(
     private dialog: MatDialog,
     private formBuilder: UntypedFormBuilder,
@@ -1384,6 +1388,7 @@ getTenantIdList(data: any[]){
     this.allTenantDetails = responses[0].result;
     this.allPropertyDetails = responses[1].result;
     this.tenantIdList = this.getTenantIdList(this.allTenantDetails);
+    this.initialTenantIdList = [...this.tenantIdList]
       if(!this.tenantIdList || this.tenantIdList.length <= 0){
       console.log('Empty tenant List to display');
           return;
@@ -1418,5 +1423,29 @@ enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
   }
 
   }
+
+  private _filter(value: string) {
+    if(value){
+      const filterValue = value.toLowerCase();
+      return this.tenantIdList = this.initialTenantIdList.filter(x => (x.viewValue.toLowerCase().includes(filterValue)) || (x.id.toString().toLowerCase().includes(filterValue)))
+    } else {
+      return this.tenantIdList = this.initialTenantIdList;
+    }
+
+  }
+
+  filterOptions(event) {
+    this._filter(event.target.value);
+  }
+
+  openedChange(opened: boolean) {
+    this.myInput.nativeElement.focus()
+      if (!opened) {
+      this.inputSearch = ''
+      this._filter("");
+
+    }
+  }
+
 
 }

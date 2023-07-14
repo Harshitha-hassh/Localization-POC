@@ -84,7 +84,9 @@
     "quickId": "Quick ID_uk",
     "password": "Password_uk",
     "Login": "Login_uk",
-    "QUICKLOGIN": "QUICK LOGIN_uk"
+    "QUICKLOGIN": "QUICK LOGIN_uk",
+    "SearchByCustomer": "Search by Customer_uk",
+    "lbl_noDataFound": "No Data Found_uk"
   },
   "app_title": "Agilysys Retail_uk",
   "common": {
