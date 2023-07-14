@@ -127,7 +127,7 @@
                                           <mat-form-field class="ag_w--50" >
                                               <mat-select formControlName="tenantId" (selectionChange)="onTenantIdChange($event)" (openedChange)="openedChange($event)"
                                               [attr.placeholderId]="lbl_customer" [placeholder]="captions.login.lbl_customer">
-                                              <div class="dropdown-search">
+                                              <div class="dropdown-search-tenant">
                                                 <input #myInput [placeholder]="captions.login.SearchByCustomer"  [(ngModel)]="inputSearch" [ngModelOptions]="{standalone: true}" (input)='filterOptions($event)' (keydown)="$event.stopPropagation()">
                                               </div>
                                               <ng-container *ngIf="tenantIdList.length > 0 ; else noData">
