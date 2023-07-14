@@ -84,7 +84,9 @@
     "quickId": "Quick ID_fi",
     "password": "Password_fi",
     "Login": "Login_fi",
-    "QUICKLOGIN": "QUICK LOGIN_fi"
+    "QUICKLOGIN": "QUICK LOGIN_fi",
+    "SearchByCustomer": "Search by Customer_fi",
+    "lbl_noDataFound": "No Data Found_fi"
   },
   "app_title": "Agilysys Retail_fi",
   "common": {
