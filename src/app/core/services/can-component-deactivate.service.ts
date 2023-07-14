@@ -27,7 +27,7 @@ export class CanDeactivateGuardService implements CanDeactivate<CanComponentDeac
         }
         else {
             for (const val in component) {
-                let allowPath = (this.shopPath==currentState.url && this.excludePaths.includes(nextState.url))
+                let allowPath = (currentState.url.includes(this.shopPath) && this.excludePaths.includes(nextState.url))
                 if ( (component[val]) && typeof (component[val]) === 'object' && !allowPath) {
                     if (component[val].hasOwnProperty('status') && component[val].hasOwnProperty('pristine') && ((component[val].value.hasOwnProperty('isSearch') && !component[val].value.isSearch) || !component[val].value.hasOwnProperty('isSearch'))) {
                         if (component[val].dirty) {
