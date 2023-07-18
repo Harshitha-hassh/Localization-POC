@@ -1592,7 +1592,7 @@
     "3025": "3025 - Edit Service Charge",
     "3030": "3030 - Edit Commission",
     "3035": "3035 - Apply Discount",
-    "3090": "3090 - Restrict AR Payments",
+    "3090": "3090 - Allow AR Payments",
     "5000": "5000 - Reopen Transaction",
     "5005": "5005 - Void Transaction",
     "5007": "5007 - Correct Transaction",
