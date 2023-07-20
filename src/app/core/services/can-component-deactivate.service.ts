@@ -20,7 +20,7 @@ export class CanDeactivateGuardService implements CanDeactivate<CanComponentDeac
         currentRoute: ActivatedRouteSnapshot,
         currentState: RouterStateSnapshot,
         nextState?: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        if (component.canDeactivate) {
+        if (component.canDeactivate && nextState.url != '/login') {
             return component.canDeactivate();
         }
         else {
