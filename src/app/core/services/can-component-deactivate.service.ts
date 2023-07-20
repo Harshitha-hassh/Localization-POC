@@ -14,23 +14,20 @@ export class CanDeactivateGuardService implements CanDeactivate<CanComponentDeac
     excludePaths= [];
     shopPath;
     constructor(private localization: Localization, private _Utilities: CommonUtilities) {
-        this.excludePaths= ["/shop/viewshop/order"];
-        this.shopPath= "/shop/viewshop/retailitems";
-    }
+     }
 
     canDeactivate(component: CanComponentDeactivate,
         currentRoute: ActivatedRouteSnapshot,
         currentState: RouterStateSnapshot,
         nextState?: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-        if (component.canDeactivate) {
+        if (component.canDeactivate && nextState.url != '/login') {
             return component.canDeactivate();
         }
         else {
             for (const val in component) {
-                let allowPath = (currentState.url.includes(this.shopPath) && this.excludePaths.includes(nextState.url))
-                if ( (component[val]) && typeof (component[val]) === 'object' && !allowPath) {
+                if ( (component[val]) && typeof (component[val]) === 'object') {
                     if (component[val].hasOwnProperty('status') && component[val].hasOwnProperty('pristine') && ((component[val].value.hasOwnProperty('isSearch') && !component[val].value.isSearch) || !component[val].value.hasOwnProperty('isSearch'))) {
-                        if (component[val].dirty) {
+                        if (component[val].dirty  && nextState.url != '/login') {
                             return new Promise((resolve, reject) => {
                                 this._Utilities.showAlert(this.localization.captions.settings.utilities.warn_datalost, AlertType.Warning, ButtonType.YesNo, (res) => {
                                     if (res === AlertAction.YES) {
