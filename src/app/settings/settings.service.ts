@@ -41,7 +41,7 @@ export class SettingsService {
     lname: ['', Validators.required],
     userid: ['', Validators.required],
     quickid: '',
-    email: ['', Validators.required],
+    email: '',
     language: 0,
     newpassword: true,
     pwdexpirationdate: this.utils.getDate(this.PropertyInfo.CurrentDate),
