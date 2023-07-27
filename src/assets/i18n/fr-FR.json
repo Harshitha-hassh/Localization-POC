@@ -2756,6 +2756,7 @@
     "Value": "Value_fr",
     "PartialPaymentAllowed": "Partial Payment Allowed_fr",
     "ActivateAVS": "Activate AVS_fr",
+    "RestrictCreditByToken": "Restrict Credit By Token_fr",
     "MissingrGuestPayGateway": "Missing Agilysys Pay Gateway_fr",
     "MissingKeyPairValue": "Missing Key Pair Value_fr",
     "ActivateRetailInterface": "Activate Retail Interface_fr",

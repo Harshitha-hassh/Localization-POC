@@ -2756,6 +2756,7 @@
     "Value": "Value_kr",
     "PartialPaymentAllowed": "Partial Payment Allowed_kr",
     "ActivateAVS": "Activate AVS_kr",
+    "RestrictCreditByToken": "Restrict Credit By Token_kr",
     "MissingrGuestPayGateway": "Missing Agilysys Pay Gateway_kr",
     "MissingKeyPairValue": "Missing Key Pair Value_kr",
     "ActivateRetailInterface": "Activate Retail Interface_kr",
