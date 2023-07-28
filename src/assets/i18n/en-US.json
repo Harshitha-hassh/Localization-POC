@@ -2759,7 +2759,7 @@
     "Value": "Value",
     "PartialPaymentAllowed": "Partial Payment Allowed",
     "ActivateAVS": "Activate AVS",
-    "RestrictCreditByToken": "Restrict Credit By Token",
+    "RestrictCreditByToken": "Restrict Credit To Guest",
     "MissingrGuestPayGateway": "Missing Agilysys Pay Gateway",
     "MissingKeyPairValue": "Missing Key Pair Value",
     "ActivateRetailInterface": "Activate Retail Interface",

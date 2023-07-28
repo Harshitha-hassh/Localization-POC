@@ -2756,7 +2756,7 @@
     "Value": "Value_uk",
     "PartialPaymentAllowed": "Partial Payment Allowed_uk",
     "ActivateAVS": "Activate AVS_uk",
-    "RestrictCreditByToken": "Restrict Credit By Token_uk",
+    "RestrictCreditByToken": "Restrict Credit To Guest_uk",
     "MissingrGuestPayGateway": "Missing Agilysys Pay Gateway_uk",
     "MissingKeyPairValue": "Missing Key Pair Value_uk",
     "ActivateRetailInterface": "Activate Retail Interface_uk",
