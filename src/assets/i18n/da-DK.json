@@ -1499,6 +1499,7 @@
     "ReversalInprogressMsg": "Please wait while the payment is being removed_da",
     "CancelAllPaymentInprogressMsg": "Please wait while the payments are being removed_da",
     "UnableToProcessReversalMsg": "Unable to process the reversal request._da",
+    "CreditToGuestNotAllowed": "Refund is not allowed through credit card/token Transactions._da",
     "CancelNotAllowedSettlementInProgress": "Settlement in progress. Cancel not allowed._da",
     "CancelNotAllowedReturnInProgress": "Return Operation already Initiated. Cancel not Allowed_da",
     "ReopenNotAllowedReturnInProgress": "Return Operation already Initiated. Reopen not Allowed_da",
