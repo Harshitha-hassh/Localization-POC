@@ -4140,5 +4140,6 @@
   "err_sigCapGenericMessage": "Failed to capture Signature - '{{reason}}'_da",
   "noResponse": "No response received from the Signature Capture device. Signature will not be displayed in the receipt._da",
   "lbl_industryTypeWarn": "Changing the Industry type will make the existing Cards On File for guests not work._da",
-  "err_userAccess_Denied_message": "User does not have access. Please contact System Administrator._da"
+  "err_userAccess_Denied_message": "User does not have access. Please contact System Administrator._da",
+  "lbl_idTech": "IdTech_da"
 }
