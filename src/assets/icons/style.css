@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?bv8qnu');
-  src:  url('fonts/icomoon.eot?bv8qnu#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?bv8qnu') format('truetype'),
-    url('fonts/icomoon.woff?bv8qnu') format('woff'),
-    url('fonts/icomoon.svg?bv8qnu#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?x4v2us');
+  src:  url('fonts/icomoon.eot?x4v2us#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?x4v2us') format('truetype'),
+    url('fonts/icomoon.woff?x4v2us') format('woff'),
+    url('fonts/icomoon.svg?x4v2us#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-everi-wallet:before {
+  content: "\ecc3";
+}
 .icon-Email:before {
   content: "\ecc1";
 }
