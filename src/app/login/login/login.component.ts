@@ -500,7 +500,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.userInfo != null && this.userInfo.languageCode != ''
         ? this.userInfo.languageCode
         : result.languageCode;
-    let maxDecimalPlace = result["maximumDecimalPlaces"] ? result["maximumDecimalPlaces"] : 2;
+    let maxDecimalPlace = result["maximumDecimalPlaces"] >= 0 ? result["maximumDecimalPlaces"] : 2;
 
     const PropertyValues =
       'Language=' +
