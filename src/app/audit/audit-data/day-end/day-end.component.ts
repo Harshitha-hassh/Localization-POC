@@ -774,7 +774,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.retailSharedService.TaxValue = _.cloneDeep(this.retailValidationService.TaxValue);
     this.retailValidationService.TaxValue = 0;
     this.retailSharedService.GoToRetailTransaction = false;
-    if (!this.retailSharedService.SelectedOutletId && result && result.length > 0) {
+    if (result && result.length > 0) {
       this.retailSharedService.SelectedOutletId = result[0].outletId;
     }
     this.retailSharedService.propertyDate = this.propertyInfo.CurrentDate;
