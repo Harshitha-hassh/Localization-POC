@@ -3128,7 +3128,8 @@
     "PurchaseOrders": "Purchase Orders_fi",
     "Receiving": "Receiving Reports_fi",
     "InventoryVariance": "Inventory Variance_fi",
-    "displayInSingleSheetToggle": "Combine Extracts_fi"
+    "displayInSingleSheetToggle": "Combine Extracts_fi",
+    "IncludeZeroVariance": "Include Zero Variance_fi"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fi",
