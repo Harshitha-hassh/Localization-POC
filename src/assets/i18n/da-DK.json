@@ -1331,6 +1331,8 @@
     "TransactionLock": "Transaction is locked, Please try after sometime._da",
     "OverrideTransactionLock": "Transaction is locked by {lockedbyuser}, Would you like to Override ?_da",
     "RoomChargeNumber": "Room_da",
+    "MissingWalletCardNumber": "Enter or Scan the wallet number_da",
+    "WalletNumber": "Wallet Number_da",
     "paymentMethods": {
       "1": "Cash_da",
       "2": "Card_da",
@@ -1353,6 +1355,7 @@
       "19": "Comp Slip Redemption_da",
       "20": "Group Charge_da",
       "22": "Card On File_da",
+      "24": "Wallet_da",
       "44": "Other_da"
     },
     "GiftCard": {
