@@ -1296,6 +1296,12 @@
         },
         "LoadReversalNotSupportedMsg": "Load reversal is not supported for Agilysys Engage gift cards._zh"
       },
+      "Wallet": {
+        "WalletSelectionDialog": {
+          "header": "Wallet Selection_zh",
+          "subheaderMsg": "Please select a wallet to proceed refund_zh"
+        }
+      },
       "CMS": {
         "searchPlaceHolder": "Patron Search_zh",
         "GuestName": "Guest Name_zh",

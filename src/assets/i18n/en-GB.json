@@ -1444,6 +1444,12 @@
       },
       "LoadReversalNotSupportedMsg": "Load reversal is not supported for {vendorName} gift cards._gb"
     },
+    "Wallet": {
+      "WalletSelectionDialog": {
+        "header": "Wallet Selection_gb",
+        "subheaderMsg": "Please select a wallet to proceed refund_gb"
+      }
+    },
     "CMS": {
       "searchPlaceHolder": "Patron Search_gb",
       "GuestName": "Guest Name_gb",
