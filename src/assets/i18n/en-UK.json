@@ -1332,7 +1332,7 @@
     "OverrideTransactionLock": "Transaction is locked by {lockedbyuser}, Would you like to Override ?_uk",
     "RoomChargeNumber": "Room_uk",
     "MissingWalletCardNumber": "Enter or Scan the wallet number_uk",
-		"WalletNumber": "Wallet Number_uk",
+    "WalletNumber": "Wallet Number_uk",
     "paymentMethods": {
       "1": "Cash_uk",
       "2": "Card_uk",

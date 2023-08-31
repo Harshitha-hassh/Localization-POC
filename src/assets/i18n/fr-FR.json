@@ -1332,7 +1332,7 @@
     "OverrideTransactionLock": "Transaction is locked by {lockedbyuser}, Would you like to Override ?_fr",
     "RoomChargeNumber": "Room_fr",
     "MissingWalletCardNumber": "Enter or Scan the wallet number_fr",
-		"WalletNumber": "Wallet Number_fr",
+    "WalletNumber": "Wallet Number_fr",
     "paymentMethods": {
       "1": "Cash_fr",
       "2": "Card_fr",

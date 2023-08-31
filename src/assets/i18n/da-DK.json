@@ -1446,7 +1446,7 @@
     },
     "Wallet": {
       "WalletSelectionDialog": {
-        "header": "Wallet Selection_ds",
+        "header": "Wallet Selection_da",
         "subheaderMsg": "Please select a wallet to proceed refund_da"
       }
     },
