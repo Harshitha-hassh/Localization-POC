@@ -977,6 +977,9 @@
     "creditBookBalance": "Credit Book",
     "ItemName": "Item Name",
     "ItemPrice": "Item Price",
+    "CostPlusDiscount": "Cost Plus Discount",
+    "costPrice": "Cost Price",
+    "costPriceButton": "Cost Price",
     "tbl_hdr_ticketNumber": "Ticket #",
     "tbl_hdr_transactiontime": "Time",
     "tbl_hdr_transactionDate": "Date",
@@ -1659,6 +1662,7 @@
     "3045": "3045 - Settle to Cash",
     "3065": "3065 - Settle to Others",
     "3070": "3070 - Apply Custom Discount",
+    "3110": "3110 - Apply Cost Plus Discount",
     "7085": "7085 - User/Machine Configuration",
     "8000": "8000 - Shift Report",
     "8090": "8090 - Transaction Log",
@@ -3140,7 +3144,8 @@
     "PurchaseOrders": "Purchase Orders",
     "Receiving": "Receiving Reports",
     "InventoryVariance": "Inventory Variance",
-    "displayInSingleSheetToggle": "Combine Extracts"
+    "displayInSingleSheetToggle": "Combine Extracts",
+    "IncludeZeroVariance": "Include Zero Variance"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",

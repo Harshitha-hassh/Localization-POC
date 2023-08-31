@@ -977,6 +977,9 @@
     "creditBookBalance": "Credit Book",
     "ItemName": "Item Name",
     "ItemPrice": "Item Price",
+    "CostPlusDiscount": "Cost Plus Discount",
+    "costPrice": "Cost Price",
+    "costPriceButton": "Cost Price",
     "tbl_hdr_ticketNumber": "Ticket #",
     "tbl_hdr_transactiontime": "Time",
     "tbl_hdr_transactionDate": "Date",
@@ -1602,6 +1605,7 @@
     "3080": "3080 - Issue External GiftCard",
     "3085": "3085 - Settle to Group Charge",
     "3090": "3090 - Allow AR Payments",
+    "3110": "3110 - Apply Cost Plus Discount",
     "5000": "5000 - Reopen Transaction",
     "5005": "5005 - Void Transaction",
     "5007": "5007 - Correct Transaction",
@@ -3137,7 +3141,8 @@
     "PurchaseOrders": "Purchase Orders",
     "Receiving": "Receiving Reports",
     "InventoryVariance": "Inventory Variance",
-    "displayInSingleSheetToggle": "Combine Extracts"
+    "displayInSingleSheetToggle": "Combine Extracts",
+    "IncludeZeroVariance": "Include Zero Variance"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",

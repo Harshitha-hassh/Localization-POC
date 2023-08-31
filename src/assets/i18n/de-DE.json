@@ -977,6 +977,9 @@
     "creditBookBalance": "Credit Book_de",
     "ItemName": "Item Name_de",
     "ItemPrice": "Item Price_de",
+    "CostPlusDiscount": "Cost Plus Discount_de",
+    "costPrice": "Cost Price_de",
+    "costPriceButton": "Cost Price_de",
     "tbl_hdr_ticketNumber": "Ticket #_de",
     "tbl_hdr_transactiontime": "Time_de",
     "tbl_hdr_transactionDate": "Date_de",
@@ -1602,6 +1605,7 @@
     "3080": "3080 - Issue External GiftCard_de",
     "3085": "3085 - Settle to Group Charge_de",
     "3090": "3090 - Allow AR Payments_de",
+    "3110": "3110 - Apply Cost Plus Discount_de",
     "5000": "5000 - Reopen Transaction_de",
     "5005": "5005 - Void Transaction_de",
     "5007": "5007 - Correct Transaction_de",
@@ -3137,7 +3141,8 @@
     "PurchaseOrders": "Purchase Orders_de",
     "Receiving": "Receiving Reports_de",
     "InventoryVariance": "Inventory Variance_de",
-    "displayInSingleSheetToggle": "Combine Extracts_de"
+    "displayInSingleSheetToggle": "Combine Extracts_de",
+    "IncludeZeroVariance": "Include Zero Variance_de"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_de",

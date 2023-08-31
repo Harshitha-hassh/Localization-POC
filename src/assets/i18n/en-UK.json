@@ -977,6 +977,9 @@
     "creditBookBalance": "Credit Book_uk",
     "ItemName": "Item Name_uk",
     "ItemPrice": "Item Price_uk",
+    "CostPlusDiscount": "Cost Plus Discount_uk",
+    "costPrice": "Cost Price_uk",
+    "costPriceButton": "Cost Price_uk",
     "tbl_hdr_ticketNumber": "Ticket #_uk",
     "tbl_hdr_transactiontime": "Time_uk",
     "tbl_hdr_transactionDate": "Date_uk",
@@ -1602,6 +1605,7 @@
     "3080": "3080 - Issue External GiftCard_uk",
     "3085": "3085 - Settle to Group Charge_uk",
     "3090": "3090 - Allow AR Payments_uk",
+    "3110": "3110 - Apply Cost Plus Discount_uk",
     "5000": "5000 - Reopen Transaction_uk",
     "5005": "5005 - Void Transaction_uk",
     "5007": "5007 - Correct Transaction_uk",
@@ -3137,7 +3141,8 @@
     "PurchaseOrders": "Purchase Orders_uk",
     "Receiving": "Receiving Reports_uk",
     "InventoryVariance": "Inventory Variance_uk",
-    "displayInSingleSheetToggle": "Combine Extracts_uk"
+    "displayInSingleSheetToggle": "Combine Extracts_uk",
+    "IncludeZeroVariance": "Include Zero Variance_uk"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_uk",
