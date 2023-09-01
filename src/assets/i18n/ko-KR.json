@@ -1986,6 +1986,7 @@
     "CreateNewTax": "Create New Tax_kr",
     "UserSearchText": "Outlet, Tax Name_kr",
     "TaxName": "Tax Name_kr",
+    "TaxOnTaxName": "Tax on Tax Name_kr",
     "TaxAmount": "Tax Amount_kr",
     "Outlet": "Outlet_kr",
     "NewTax": "New Tax_kr",
@@ -2250,6 +2251,7 @@
     "err_min": "Precedes Minimum Value_kr"
   },
   "setting": {
+    "taxOnTax": "Charge Tax on Tax_kr",
     "Title": "Title_kr",
     "First_Name": "First Name_kr",
     "Last_Name": "Last Name_kr",

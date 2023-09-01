@@ -1986,6 +1986,7 @@
     "CreateNewTax": "Create New Tax_uk",
     "UserSearchText": "Outlet, Tax Name_uk",
     "TaxName": "Tax Name_uk",
+    "TaxOnTaxName": "Tax on Tax Name_uk",
     "TaxAmount": "Tax Amount_uk",
     "Outlet": "Outlet_uk",
     "NewTax": "New Tax_uk",
@@ -2250,6 +2251,7 @@
     "err_min": "Precedes Minimum Value_uk"
   },
   "setting": {
+    "taxOnTax": "Charge Tax on Tax_uk",
     "Title": "Title_uk",
     "First_Name": "First Name_uk",
     "Last_Name": "Last Name_uk",

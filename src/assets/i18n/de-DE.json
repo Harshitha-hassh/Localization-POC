@@ -1986,6 +1986,7 @@
     "CreateNewTax": "Create New Tax_de",
     "UserSearchText": "Outlet, Tax Name_de",
     "TaxName": "Tax Name_de",
+    "TaxOnTaxName": "Tax on Tax Name_de",
     "TaxAmount": "Tax Amount_de",
     "Outlet": "Outlet_de",
     "NewTax": "New Tax_de",
@@ -2250,6 +2251,7 @@
     "err_min": "Precedes Minimum Value_de"
   },
   "setting": {
+    "taxOnTax": "Charge Tax on Tax_de",
     "Title": "Title_de",
     "First_Name": "First Name_de",
     "Last_Name": "Last Name_de",

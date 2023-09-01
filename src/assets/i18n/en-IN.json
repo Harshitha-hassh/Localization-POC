@@ -1986,6 +1986,7 @@
     "CreateNewTax": "Create New Tax_in",
     "UserSearchText": "Outlet, Tax Name_in",
     "TaxName": "Tax Name_in",
+    "TaxOnTaxName": "Tax on Tax Name_in",
     "TaxAmount": "Tax Amount_in",
     "Outlet": "Outlet_in",
     "NewTax": "New Tax_in",
@@ -2250,6 +2251,7 @@
     "err_min": "Precedes Minimum Value_in"
   },
   "setting": {
+    "taxOnTax": "Charge Tax on Tax_in",
     "Title": "Title_in",
     "First_Name": "First Name_in",
     "Last_Name": "Last Name_in",

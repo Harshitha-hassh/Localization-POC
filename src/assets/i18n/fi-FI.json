@@ -1986,6 +1986,7 @@
     "CreateNewTax": "Create New Tax_fi",
     "UserSearchText": "Outlet, Tax Name_fi",
     "TaxName": "Tax Name_fi",
+    "TaxOnTaxName": "Tax on Tax Name_fi",
     "TaxAmount": "Tax Amount_fi",
     "Outlet": "Outlet_fi",
     "NewTax": "New Tax_fi",
@@ -2250,6 +2251,7 @@
     "err_min": "Precedes Minimum Value_fi"
   },
   "setting": {
+    "taxOnTax": "Charge Tax on Tax_fi",
     "Title": "Title_fi",
     "First_Name": "First Name_fi",
     "Last_Name": "Last Name_fi",
