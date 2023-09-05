@@ -1560,7 +1560,8 @@
       "Amount": "Amount_uk",
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_uk",
       "RemoveAll": "Remove All_uk"
-    }
+    },
+    "TaxOnTax": "Tax On Tax Total_uk"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_uk",

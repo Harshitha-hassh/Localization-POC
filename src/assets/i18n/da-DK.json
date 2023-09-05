@@ -1560,7 +1560,8 @@
       "Amount": "Amount_da",
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_da",
       "RemoveAll": "Remove All_da"
-    }
+    },
+    "TaxOnTax": "Tax On Tax Total_da"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_da",

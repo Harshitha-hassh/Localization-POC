@@ -1560,7 +1560,8 @@
       "Amount": "Amount_fr",
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_fr",
       "RemoveAll": "Remove All_fr"
-    }
+    },
+    "TaxOnTax": "Tax On Tax Total_fr"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fr",
