@@ -53,7 +53,7 @@ const routes: Routes = [{
           path: 'sms',
           component: TemplatesComponent,
           canActivate: [RouteGuardService],
-          data: { templateID: 2, breakPointNumber:CommonBreakPoint.SMSTemplate , redirectTo: '' ,syncAccess: true}
+          data: { templateID: 2, breakPointNumber:CommonBreakPoint.SMSTemplate , redirectTo: '' ,syncAccess: true,ShowPopup: true}
         }
       ]
     },
