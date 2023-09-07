@@ -1563,7 +1563,7 @@
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?",
       "RemoveAll": "Remove All"
     },
-    "TaxOnTax":"Tax On Tax Total"
+    "TaxOnTax":"Tax On Tax"
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",
@@ -2259,6 +2259,8 @@
   },
   "setting": {
     "taxOnTax": "Charge Tax on Tax",
+    "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled",
+    "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled",
     "Title": "Title",
     "First_Name": "First Name",
     "Last_Name": "Last Name",

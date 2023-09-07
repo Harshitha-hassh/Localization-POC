@@ -1561,7 +1561,7 @@
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_kr",
       "RemoveAll": "Remove All_kr"
     },
-    "TaxOnTax": "Tax On Tax Total_kr"
+    "TaxOnTax": "Tax On Tax_kr"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_kr",
@@ -2256,6 +2256,8 @@
   },
   "setting": {
     "taxOnTax": "Charge Tax on Tax_kr",
+    "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled_kr",
+    "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled_kr",
     "Title": "Title_kr",
     "First_Name": "First Name_kr",
     "Last_Name": "Last Name_kr",
