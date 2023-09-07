@@ -1710,7 +1710,10 @@
 		"Interface": "Interfaces",
     "2315": "2315 - Jaspersoft Server",
     "200410": "200410 - Export",
-    "200415": "200415 - Import"
+    "200415": "200415 - Import",
+    "20040": "20040 - Email Templates",
+		"20045": "20045 - SMS Templates",
+		"20055": "20055 - Distribution List"
   },
   "userId": "User ID",
   "password": "Password",

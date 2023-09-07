@@ -39,23 +39,29 @@ const routes: Routes = [{
     {
       path: 'templates',
       component: RetailTemplatesComponent,
+      canActivate: [RouteGuardService],
+      data: { hasChild: true },
       children: [
         { path: '', redirectTo: 'email', pathMatch: 'full' },
         {
           path: 'email',
           component: TemplatesComponent,
-          data: { templateID: 1 }
+          canActivate: [RouteGuardService],
+          data: { templateID: 1 , breakPointNumber:CommonBreakPoint.EmailTemplate , redirectTo: 'sms',syncAccess: true}
         },
         {
           path: 'sms',
           component: TemplatesComponent,
-          data: { templateID: 2 }
+          canActivate: [RouteGuardService],
+          data: { templateID: 2, breakPointNumber:CommonBreakPoint.SMSTemplate , redirectTo: '' ,syncAccess: true}
         }
       ]
     },
     {
       path: 'distributionlist',
-      component: DistributionListComponent
+      component: DistributionListComponent,
+      canActivate: [RouteGuardService],
+      data: { breakPointNumber:CommonBreakPoint.DistributionList , redirectTo: 'quickidconfig' ,syncAccess: true}
     },
     {
       path: 'quickidconfig',
