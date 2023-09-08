@@ -1569,7 +1569,8 @@
       "Amount": "Amount_fi",
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_fi",
       "RemoveAll": "Remove All_fi"
-    }
+    },
+    "TaxOnTax": "Tax On Tax_fi"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fi",
@@ -1697,6 +1698,9 @@
     "15170": "15170 - Inventory Sync_fi",
     "16020": "16020 - Quick ID Config_fi",
     "16025": "16025 - Auto Night Audit_fi",
+    "20040": "20040 - Email Templates_fi",
+    "20045": "20045 - SMS Templates_fi",
+    "20055": "20055 - Distribution List_fi",
     "85160": "85160 - DataMagine Configuration_fi",
     "200410": "200410 - Export_fi",
     "200415": "200415 - Import_fi",
@@ -1995,6 +1999,7 @@
     "CreateNewTax": "Create New Tax_fi",
     "UserSearchText": "Outlet, Tax Name_fi",
     "TaxName": "Tax Name_fi",
+    "TaxOnTaxName": "Tax on Tax Name_fi",
     "TaxAmount": "Tax Amount_fi",
     "Outlet": "Outlet_fi",
     "NewTax": "New Tax_fi",
@@ -2259,6 +2264,9 @@
     "err_min": "Precedes Minimum Value_fi"
   },
   "setting": {
+    "taxOnTax": "Charge Tax on Tax_fi",
+    "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled_fi",
+    "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled_fi",
     "Title": "Title_fi",
     "First_Name": "First Name_fi",
     "Last_Name": "Last Name_fi",

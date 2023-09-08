@@ -1569,7 +1569,8 @@
       "Amount": "Amount_fr",
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_fr",
       "RemoveAll": "Remove All_fr"
-    }
+    },
+    "TaxOnTax": "Tax On Tax_fr"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fr",
@@ -1697,6 +1698,9 @@
     "15170": "15170 - Inventory Sync_fr",
     "16020": "16020 - Quick ID Config_fr",
     "16025": "16025 - Auto Night Audit_fr",
+    "20040": "20040 - Email Templates_fr",
+    "20045": "20045 - SMS Templates_fr",
+    "20055": "20055 - Distribution List_fr",
     "85160": "85160 - DataMagine Configuration_fr",
     "200410": "200410 - Export_fr",
     "200415": "200415 - Import_fr",
@@ -1995,6 +1999,7 @@
     "CreateNewTax": "Create New Tax_fr",
     "UserSearchText": "Outlet, Tax Name_fr",
     "TaxName": "Tax Name_fr",
+    "TaxOnTaxName": "Tax on Tax Name_fr",
     "TaxAmount": "Tax Amount_fr",
     "Outlet": "Outlet_fr",
     "NewTax": "New Tax_fr",
@@ -2259,6 +2264,9 @@
     "err_min": "Precedes Minimum Value_fr"
   },
   "setting": {
+    "taxOnTax": "Charge Tax on Tax_fr",
+    "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled_fr",
+    "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled_fr",
     "Title": "Title_fr",
     "First_Name": "First Name_fr",
     "Last_Name": "Last Name_fr",
