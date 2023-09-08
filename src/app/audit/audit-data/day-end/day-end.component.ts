@@ -221,7 +221,12 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   private GetOpenTransactions() {
-    this.InvokeServiceCall('GetAllTransactions', Host.retailPOS, HttpMethod.Get, { status: TransactionStatus.OPEN, outletId: 0 });
+    this.InvokeServiceCall('GetAllTransactions', Host.retailPOS, HttpMethod.Get,
+    {
+      status: TransactionStatus.OPEN,
+      outletId: 0,
+      transactionDate: this.localization.ConvertDateToISODateTime(this.propertyInfo.CurrentDate)
+    });
   }
 
   async successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): Promise<void> {
@@ -409,6 +414,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     for (let i = 0; i < response.length; i++) {
       const tran: any = response[i];
       const clerk = clerkInfo.filter(x => x.userId === tran.clerkId);
+      const payeeName = this.getClientName(clients, tran.guestId);
       transaction = {
         Id: tran.id,
         TicketNumber: tran.ticketNumber,
@@ -416,9 +422,9 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         ClerkID: (clerk && clerk.length > 0) ? clerk[0].userName : '',
         Outlet: tran.outletName,
         Amount: this.FormatCurrency(tran.totalAmount),
-        ClientName: this.getClientName(clients, tran.guestId),
+        ClientName: tran.memberId == "0" ? payeeName : "",
         ClientId: tran.guestId,
-        MemberName: '',
+        MemberName: tran.memberId != "0" ? payeeName : "",
         AppointmentNumber: '',
         transactionInfo: tran,
         retailTransactionType: tran.retailTransactionType,
