@@ -109,7 +109,7 @@ export class DataAwaiterService {
             country: client.addresses ? client.addresses.country : '',
             zip: client.addresses ? client.addresses.zipCode : '',
             city: client.addresses ? client.addresses.city : '',
-            guestProfileId: client.guestId,
+            guestProfileId: client.memberId ? client.memberId : client.guestId,
             cardInfo: client.clientCreditCardInfo ? client.clientCreditCardInfo : [],
             patronId: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].patronId : '',
             rank: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].rank : '',
