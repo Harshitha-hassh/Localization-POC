@@ -1349,8 +1349,8 @@ getTenantIdList(data: any[]){
   this.localize.SetSupportUserMailId(email);
   this.commonLocalize.setLocalCookie('supportUserMailId',email);
   const mailValidationParams = {
-    route: RetailRoutes.ValidateUserByTenantAndEmail,
-    uriParams: { tenantId : SUPPORT_TENANT, emailId: email},
+    route: RetailRoutes.ValidateUserByProductTenantAndEmail,
+    uriParams: { productId: Product.RETAIL,tenantId : SUPPORT_TENANT, emailId: email},
     header: '',
     showError: true,
     baseResponse: true
