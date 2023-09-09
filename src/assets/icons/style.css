@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?dd0z51');
-  src:  url('fonts/icomoon.eot?dd0z51#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?dd0z51') format('truetype'),
-    url('fonts/icomoon.woff?dd0z51') format('woff'),
-    url('fonts/icomoon.svg?dd0z51#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?rm09ar');
+  src:  url('fonts/icomoon.eot?rm09ar#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?rm09ar') format('truetype'),
+    url('fonts/icomoon.woff?rm09ar') format('woff'),
+    url('fonts/icomoon.svg?rm09ar#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,11 +25,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-jaspersoft:before {
-  content: "\edbe";
-}
 .icon-everi-wallet:before {
   content: "\ecc3";
+}
+.icon-jaspersoft:before {
+  content: "\edbe";
 }
 .icon-Email:before {
   content: "\ecc1";
