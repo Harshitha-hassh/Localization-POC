@@ -76,4 +76,12 @@ export class ClientDataService {
             { route: RetailApiRoute.UpdateConsentPolicyDetailsForGuestId, body: applyPolicy });
             return result;
       }
+
+      public async getMemberInfo(cardNo: string, scheduleDateTime: string): Promise<any> {
+        const result = await this._httpPos.getPromise({
+            route: RetailApiRoute.GetMemberInfoByCardNo,
+            uriParams : { cardNo: cardNo, scheduleDateTime: scheduleDateTime }}
+        );
+        return result;
+	}
 }

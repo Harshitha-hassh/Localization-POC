@@ -46,6 +46,7 @@ export class DataAwaiterService {
         RetailDataAwaiters.openAddPayeePopup = this.openAddGuestPopup.bind(this);
         RetailDataAwaiters.getPayeeDetails = this.getClientDetails.bind(this);
         RetailDataAwaiters.getPayeeInfo = this.getClientInfo.bind(this);
+        RetailDataAwaiters.getMemberInfo = this.getMemberInfo.bind(this);
         RetailDataAwaiters.GetDefaultOutlet = this.GetDefaultOutlet.bind(this);
         RetailDataAwaiters.SendNotification = this.SendNotification.bind(this);
         RetailDataAwaiters.OpenManualNotifyPopup = this.OpenManualNotifyPopup.bind(this);
@@ -105,15 +106,15 @@ export class DataAwaiterService {
         let payee: PayeeInfo = {
             id: client.id,
             name: client.firstName + ' ' + client.lastName,
-            address: client.addresses ? (client.addresses.addressLine1 + ' ' + client.addresses.state) : '',
-            country: client.addresses ? client.addresses.country : '',
-            zip: client.addresses ? client.addresses.zipCode : '',
-            city: client.addresses ? client.addresses.city : '',
+            address: client.addresses ? (client.addresses.addressLine1 ? client.addresses.addressLine1 : ''  + ' ' + client.addresses.state ? client.addresses.state : '') : '',
+            country: client.addresses ? client.addresses.country ? client.addresses.country : '' : '',
+            zip: client.addresses ? client.addresses.zipCode ? client.addresses.zipCode : '' : '',
+            city: client.addresses ? client.addresses.city ? client.addresses.city : '' : '',
             guestProfileId: client.memberId ? client.memberId : client.guestId,
             cardInfo: client.clientCreditCardInfo ? client.clientCreditCardInfo : [],
             patronId: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].patronId : '',
             rank: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].rank : '',
-            playerCategoryId: 1,
+            playerCategoryId: client.ClientCategoryId,
             emailId: emailId,
             phoneNumber: phoneNo,
             lastName: client.lastName
@@ -251,5 +252,9 @@ export class DataAwaiterService {
 
     private async getGuestStayDetails(guestId: string) {
         return await this.clientDataService.getGuestStayDetails(guestId);
+    }
+
+    private async getMemberInfo(cardNo: string, scheduleDateTime: string){
+        return await this.clientDataService.getMemberInfo(cardNo, scheduleDateTime);
     }
 }

@@ -738,5 +738,6 @@
   "GetDataMagineConfiguration" : "RetailManagementService/DataMagine/GetDmConfig",
   "CreateDataMagineConfiguration" : "RetailManagementService/DataMagine/CreateDmConfig",
   "UpdateDataMagineConfiguration" : "RetailManagementService/DataMagine/UpdateDmConfig",
-  "GetWebCommunicationProxyVersion": "Payment/GetWebCommunicationProxyVersion"
+  "GetWebCommunicationProxyVersion": "Payment/GetWebCommunicationProxyVersion",
+  "MembershipRefundPayment": "Transaction/{transactionId}/membershiprefund/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/tenderId/{tenderId}/terminalId/{terminalId}"
 }
