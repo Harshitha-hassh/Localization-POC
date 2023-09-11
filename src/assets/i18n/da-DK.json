@@ -2884,6 +2884,7 @@
     "missingCountryName": "Missing country name_da",
     "invalidCountryName": "Invalid country name_da",
     "AllowDateToFuture": "Allow Date Roll to Next Day_da",
+    "InvalidGuid": "Invalid Machine Guid_da",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_da",
       "CMS": "CMS_da",
