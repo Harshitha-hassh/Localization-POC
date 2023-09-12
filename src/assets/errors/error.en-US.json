@@ -300,6 +300,7 @@
     "100022": "Unable to move Break",
     "100023": "Break cannot be moved across Therapists",
     "100026": "Schedule overlaps with an Appointment, Edit not allowed",
+    "100028": "Wallet value applied on original transaction is greater than the refund amount. Please use other payment method to proceed further.",
     "14101": "Store Terminal Not Exists",
     "14102": "Duplicate Terminal Id",
     "14103": "Terminal in Use, Delete not allowed",

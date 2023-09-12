@@ -1334,6 +1334,8 @@
     "TransactionLock": "Transaction is locked, Please try after sometime._de",
     "OverrideTransactionLock": "Transaction is locked by {lockedbyuser}, Would you like to Override ?_de",
     "RoomChargeNumber": "Room_de",
+    "MissingWalletCardNumber": "Enter or Scan the wallet number_de",
+    "WalletNumber": "Wallet Number_de",
     "paymentMethods": {
       "1": "Cash_de",
       "2": "Card_de",
@@ -1356,6 +1358,7 @@
       "19": "Comp Slip Redemption_de",
       "20": "Group Charge_de",
       "22": "Card On File_de",
+      "24": "Wallet_de",
       "44": "Other_de"
     },
     "GiftCard": {
@@ -1443,6 +1446,12 @@
         "cardhasinsufficientbalanceforthetransaction": "Gift Card has insufficient balance for the transaction_de"
       },
       "LoadReversalNotSupportedMsg": "Load reversal is not supported for {vendorName} gift cards._de"
+    },
+    "Wallet": {
+      "WalletSelectionDialog": {
+        "header": "Wallet Selection_de",
+        "subheaderMsg": "Please select a wallet to proceed refund_de"
+      }
     },
     "CMS": {
       "searchPlaceHolder": "Patron Search_de",

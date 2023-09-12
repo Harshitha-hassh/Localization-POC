@@ -1189,6 +1189,8 @@
       "TransactionLockWarning": "Transaction is locked, Would you like to release and proceed further?_zh",
       "TransactionLock": "Transaction is locked, Please try after sometime._zh",
       "RoomChargeNumber": "Room_zh",
+      "MissingWalletCardNumber": "Enter or Scan the wallet number_zh",
+		"WalletNumber": "Wallet Number_zh",
       "paymentMethods": {
         "1": "Cash_zh",
         "2": "Card_zh",
@@ -1210,6 +1212,7 @@
         "18": "Agilysys Gift Card_zh",
         "19": "Comp Slip Redemption_zh",
         "22": "Card On File_zh",
+        "24": "Wallet_zh",
         "44": "Other_zh"
       },
       "GiftCard": {
@@ -1292,6 +1295,12 @@
           "cardhasinsufficientbalanceforthetransaction": "Gift Card has insufficient balance for the transaction_zh"
         },
         "LoadReversalNotSupportedMsg": "Load reversal is not supported for Agilysys Engage gift cards._zh"
+      },
+      "Wallet": {
+        "WalletSelectionDialog": {
+          "header": "Wallet Selection_zh",
+          "subheaderMsg": "Please select a wallet to proceed refund_zh"
+        }
       },
       "CMS": {
         "searchPlaceHolder": "Patron Search_zh",
