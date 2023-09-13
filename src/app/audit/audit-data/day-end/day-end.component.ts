@@ -604,6 +604,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         return;
       }
       this.retailSharedService.payeeId = data.ClientId;
+      this.retailSharedService.memberCardNumber = data.transactionInfo.memberId;
       this.retailSharedService.settleOpenTransaction = false;
       this.retailSharedService.reOpenTransaction = true;
       this.retailSharedService.isReopenViewOnly = this.breakPoint.IsViewOnly(RetailBreakPoint.ReOpenTransaction);
@@ -617,6 +618,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     } else if (option.action === GridAction.Settle) {
       if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Settle, true)) { return; }
       this.retailSharedService.payeeId = data.ClientId;
+      this.retailSharedService.memberCardNumber = data.transactionInfo.memberId;
       this.retailSharedService.reOpenTransaction = false;
       this.retailSharedService.settleOpenTransaction = true;
       this.retailSharedService.transactionId = data.Id;      
