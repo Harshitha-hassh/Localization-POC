@@ -54,7 +54,7 @@ export class CreateClientBusiness {
         lastChangeId: isClientUpdate ?  details.personalDetailsFormGroup.lastChangeId: DefaultGUID,
         interfaceGuestId: isClientUpdate ?  details.personalDetailsFormGroup.interfaceGuestId : '',
         loyaltyDetail: loyaltyObj,
-        ClientCategoryId: 1,
+        clientCategoryId: 1,
         consent : new Date(),
         consentExpiryDate : new Date(),
         consentPolicyId : 0,

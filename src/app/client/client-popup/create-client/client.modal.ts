@@ -73,7 +73,7 @@ export interface ClientInfo {
     interfaceGuestId: string;
     loyaltyDetail: LoyaltyDetail[];
     memberId?: string;
-    ClientCategoryId: number;
+    clientCategoryId: number;
     consent:Date;
     consentExpiryDate:Date;
     consentPolicyId:number;
