@@ -1678,6 +1678,8 @@
     "8185": "8185 - Receiving Report_gb",
     "8190": "8190 - Inventory Variance Report_gb",
     "8195": "8195 - Surcharges Report_gb",
+    "8200": "8200 - Inventory Value and Activity Report_gb",
+    "8205": "8205 - Inventory Valuation Report_gb",
     "8700": "8700 - Update Qty on Hand_gb",
     "8705": "8705 – Freeze Inventory_gb",
     "8710": "8710 - Release Inventory_gb",
@@ -3152,7 +3154,9 @@
     "InventoryVariance": "Inventory Variance_gb",
     "displayInSingleSheetToggle": "Combine Extracts_gb",
     "IncludeZeroVariance": "Include Zero Variance_gb",
-    "hideCorrectedValues": "Hide Corrected Values_gb"
+    "hideCorrectedValues": "Hide Corrected Values_gb",
+    "InventoryValuation": "Inventory Valuation_gb",
+    "InventoryValueandActivity": "Inventory Value and Activity_gb"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_gb",
