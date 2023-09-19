@@ -1999,7 +1999,7 @@
     "CreateNewTax": "Create New Tax_gb",
     "UserSearchText": "Outlet, Tax Name_gb",
     "TaxName": "Tax Name_gb",
-    "TaxOnTaxName": "Tax on Tax Name_gb",
+    "TaxOnTaxName": "Tax On Tax Name_gb",
     "TaxAmount": "Tax Amount_gb",
     "Outlet": "Outlet_gb",
     "NewTax": "New Tax_gb",
@@ -2264,7 +2264,7 @@
     "err_min": "Precedes Minimum Value_gb"
   },
   "setting": {
-    "taxOnTax": "Charge Tax on Tax_gb",
+    "taxOnTax": "Charge Tax On Tax_gb",
     "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled_gb",
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled_gb",
     "Title": "Title_gb",

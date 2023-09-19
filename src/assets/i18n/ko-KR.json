@@ -1999,7 +1999,7 @@
     "CreateNewTax": "Create New Tax_kr",
     "UserSearchText": "Outlet, Tax Name_kr",
     "TaxName": "Tax Name_kr",
-    "TaxOnTaxName": "Tax on Tax Name_kr",
+    "TaxOnTaxName": "Tax On Tax Name_kr",
     "TaxAmount": "Tax Amount_kr",
     "Outlet": "Outlet_kr",
     "NewTax": "New Tax_kr",
@@ -2264,7 +2264,7 @@
     "err_min": "Precedes Minimum Value_kr"
   },
   "setting": {
-    "taxOnTax": "Charge Tax on Tax_kr",
+    "taxOnTax": "Charge Tax On Tax_kr",
     "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled_kr",
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled_kr",
     "Title": "Title_kr",

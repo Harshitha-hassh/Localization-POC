@@ -1999,7 +1999,7 @@
     "CreateNewTax": "Create New Tax",
     "UserSearchText": "Outlet, Tax Name",
     "TaxName": "Tax Name",
-    "TaxOnTaxName": "Tax on Tax Name",
+    "TaxOnTaxName": "Tax On Tax Name",
     "TaxAmount": "Tax Amount",
     "Outlet": "Outlet",
     "NewTax": "New Tax",
@@ -2264,7 +2264,7 @@
     "err_min": "Precedes Minimum Value"
   },
   "setting": {
-    "taxOnTax": "Charge Tax on Tax",
+    "taxOnTax": "Charge Tax On Tax",
     "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled",
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled",
     "Title": "Title",
