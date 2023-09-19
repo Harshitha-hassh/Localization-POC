@@ -1678,6 +1678,8 @@
     "8185": "8185 - Receiving Report",
     "8190": "8190 - Inventory Variance Report",
     "8195": "8195 - Surcharges Report",
+    "8200": "8200 - Inventory Value and Activity Report",
+    "8205": "8205 - Inventory Valuation Report",
     "8700": "8700 - Update Qty on Hand",
     "8705": "8705 – Freeze Inventory",
     "8710": "8710 - Release Inventory",
@@ -3152,7 +3154,9 @@
     "InventoryVariance": "Inventory Variance",
     "displayInSingleSheetToggle": "Combine Extracts",
     "IncludeZeroVariance": "Include Zero Variance",
-    "hideCorrectedValues": "Hide Corrected Values"
+    "hideCorrectedValues": "Hide Corrected Values",
+    "InventoryValuation": "Inventory Valuation",
+    "InventoryValueandActivity": "Inventory Value and Activity"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",

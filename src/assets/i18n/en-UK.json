@@ -1678,6 +1678,8 @@
     "8185": "8185 - Receiving Report_uk",
     "8190": "8190 - Inventory Variance Report_uk",
     "8195": "8195 - Surcharges Report_uk",
+    "8200": "8200 - Inventory Value and Activity Report_uk",
+    "8205": "8205 - Inventory Valuation Report_uk",
     "8700": "8700 - Update Qty on Hand_uk",
     "8705": "8705 – Freeze Inventory_uk",
     "8710": "8710 - Release Inventory_uk",
@@ -3152,7 +3154,9 @@
     "InventoryVariance": "Inventory Variance_uk",
     "displayInSingleSheetToggle": "Combine Extracts_uk",
     "IncludeZeroVariance": "Include Zero Variance_uk",
-    "hideCorrectedValues": "Hide Corrected Values_uk"
+    "hideCorrectedValues": "Hide Corrected Values_uk",
+    "InventoryValuation": "Inventory Valuation_uk",
+    "InventoryValueandActivity": "Inventory Value and Activity_uk"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_uk",

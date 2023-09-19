@@ -1722,7 +1722,9 @@
     "200415": "200415 - Import",
     "20040": "20040 - Email Templates",
 		"20045": "20045 - SMS Templates",
-		"20055": "20055 - Distribution List"
+		"20055": "20055 - Distribution List",
+    "8200": "8200 - Inventory Value and Activity Report",
+    "8205": "8205 - Inventory Valuation Report"
   },
   "userId": "User ID",
   "password": "Password",
@@ -3155,7 +3157,9 @@
     "InventoryVariance": "Inventory Variance",
     "displayInSingleSheetToggle": "Combine Extracts",
     "IncludeZeroVariance": "Include Zero Variance",
-    "hideCorrectedValues": "Hide Corrected Values"
+    "hideCorrectedValues": "Hide Corrected Values",
+    "InventoryValuation": "Inventory Valuation",
+    "InventoryValueandActivity": "Inventory Value and Activity"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",
