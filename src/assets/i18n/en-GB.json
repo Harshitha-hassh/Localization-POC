@@ -1996,7 +1996,7 @@
     "addTransferInventory": "Add/Transfer Inventory_gb",
     "discountConfiguration": "Discount Configuration_gb",
     "Cancel": "CANCEL_gb",
-    "CreateTax": "Create Tax_gb",
+    "CreateNewTax": "Create Tax_gb",
     "UserSearchText": "Outlet, Tax Name_gb",
     "TaxName": "Tax Name_gb",
     "TaxOnTaxName": "Tax on Tax Name_gb",

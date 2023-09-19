@@ -1996,7 +1996,7 @@
     "addTransferInventory": "Add/Transfer Inventory_in",
     "discountConfiguration": "Discount Configuration_in",
     "Cancel": "CANCEL_in",
-    "CreateTax": "Create Tax_in",
+    "CreateNewTax": "Create Tax_in",
     "UserSearchText": "Outlet, Tax Name_in",
     "TaxName": "Tax Name_in",
     "TaxOnTaxName": "Tax on Tax Name_in",
