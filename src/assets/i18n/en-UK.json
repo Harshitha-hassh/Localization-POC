@@ -3151,7 +3151,8 @@
     "Receiving": "Receiving Reports_uk",
     "InventoryVariance": "Inventory Variance_uk",
     "displayInSingleSheetToggle": "Combine Extracts_uk",
-    "IncludeZeroVariance": "Include Zero Variance_uk"
+    "IncludeZeroVariance": "Include Zero Variance_uk",
+    "hideCorrectedValues": "Hide Corrected Values_uk"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_uk",

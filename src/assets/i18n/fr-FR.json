@@ -3151,7 +3151,8 @@
     "Receiving": "Receiving Reports_fr",
     "InventoryVariance": "Inventory Variance_fr",
     "displayInSingleSheetToggle": "Combine Extracts_fr",
-    "IncludeZeroVariance": "Include Zero Variance_fr"
+    "IncludeZeroVariance": "Include Zero Variance_fr",
+    "hideCorrectedValues": "Hide Corrected Values_fr"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fr",
