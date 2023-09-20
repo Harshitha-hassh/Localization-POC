@@ -964,6 +964,7 @@
     "cReset": "RESET_gb"
   },
   "shop": {
+    "COF_RemovalConfirmationMsg": "Removing the card will permanently delete the card from profile. Do you wish to proceed?_gb",
     "lbl_processing": "Processing..._gb",
     "missingMail": "Missing Email_gb",
     "invalidMail": "Invalid Email_gb",

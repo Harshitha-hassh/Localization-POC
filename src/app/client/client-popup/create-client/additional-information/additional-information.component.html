@@ -5,7 +5,8 @@
                 <app-retail-capture-card
                     [PaymentReferenceID]="PaymentReferenceID"
                     [isShowPMAgentValidationMessage]="false"
-                    (NewPaymentReferenceID)="SaveReferenceId($event)">
+                    (NewPaymentReferenceID)="SaveReferenceId($event)"
+                    (removeDetails)="removeCardReference()">
                 </app-retail-capture-card>
                 <div class="" *ngIf="false">
                     <div class=" width_220"

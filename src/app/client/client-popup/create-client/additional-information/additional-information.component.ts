@@ -158,6 +158,15 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     this.FormGrp.controls.clientCreditCardInfo.setValue(this.cardInfo);
   }
 
+  removeCardReference() {
+    this.FormGrp.markAsDirty();
+    this.FormGrp.markAsTouched();
+    this.parentForm.updateValueAndValidity();
+    this.PaymentReferenceID = 0;
+    this.cardInfo.forEach(c => c.isActive = false);
+    this.FormGrp.controls.clientCreditCardInfo.setValue(this.cardInfo);
+  }
+
   fetchCustomFieldInfo() {
     this.http.CallApiWithCallback<any>({
       host: Host.spaManagement,
