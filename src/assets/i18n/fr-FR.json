@@ -964,7 +964,7 @@
     "cReset": "RESET_fr"
   },
   "shop": {
-    "COF_RemovalConfirmationMsg": "Removing the card will permanently delete the card from profile. Do you wish to proceed?_fr",
+    "COF_RemovalConfirmationMsg": "Removing the card will delete the card from profile. Do you wish to proceed?_fr",
     "lbl_processing": "Processing..._fr",
     "missingMail": "Missing Email_fr",
     "invalidMail": "Invalid Email_fr",
@@ -1608,6 +1608,7 @@
     "3085": "3085 - Settle to Group Charge_fr",
     "3090": "3090 - Allow AR Payments_fr",
     "3110": "3110 - Apply Cost Plus Discount_fr",
+    "3115": "3115 - Remove Card on File_fr",
     "5000": "5000 - Reopen Transaction_fr",
     "5005": "5005 - Void Transaction_fr",
     "5007": "5007 - Correct Transaction_fr",
