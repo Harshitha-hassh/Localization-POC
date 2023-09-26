@@ -3098,6 +3098,7 @@
     "GiftCardIssued": "Gift Card Issued_gb",
     "CardNumber": "Card Number_gb",
     "inActiveClerk": "Include Inactive Clerks_gb",
+    "SplitByUser": "Split By User_gb",
     "users": "Users_gb",
     "RetailInterfacePayment": "Payment by Retail Interface_gb",
     "IncludeScheduleTimes": "Include Schedule Time(s)_gb",
