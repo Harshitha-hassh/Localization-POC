@@ -3119,6 +3119,7 @@
     "GiftCardIssued": "Gift Card Issued_uk",
     "CardNumber": "Card Number_uk",
     "inActiveClerk": "Include Inactive Clerks_uk",
+    "SplitByUser": "Split By User_uk",
     "users": "Users_uk",
     "RetailInterfacePayment": "Payment by Retail Interface_uk",
     "IncludeScheduleTimes": "Include Schedule Time(s)_uk",
