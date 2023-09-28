@@ -2868,6 +2868,7 @@
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_fi",
     "AllowTaxOnGratuity": "Allow Tax On Gratuity_fi",
     "AllowTaxOnServiceCharge": "Allow Tax On Service Charge_fi",
+    "AllowTaxOnGratuityServiceCharge": "Allow Tax On Service Charge & Gratuity_fi",
     "DefaultTaxToAllRetailItems": "Default to All Retail Item_fi",
     "DefaultTaxAlreadyExistForVatProperty": "A default tax is already set for the selected date range ({TaxName}). User cannot proceed to perform this action._fi",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_fi",
