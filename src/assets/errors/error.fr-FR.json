@@ -364,5 +364,6 @@
   "-301": "Duplicate guest exists on the system_fr",
   "-302": "Guest information is out of date. Please refresh and try again_fr",
   "-4700": "The following items are not mapped with a category_fr",
-  "-4701": "You are about to perform a transaction that is not on current property date, however, doing so will record the transaction on the current property date only. Do you wish to proceed?_fr"
+  "-4701": "You are about to perform a transaction that is not on current property date, however, doing so will record the transaction on the current property date only. Do you wish to proceed?_fr",
+  "-7890": "Enhanced Inventory configuration is incorrect. Kindly check the configuration._fr"
 }
