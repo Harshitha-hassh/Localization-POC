@@ -2977,6 +2977,7 @@
     "CommissionGraduityServicecharge": "COMMISSION/GRATUITY/SERVICE CHARGE_gb",
     "transactionLog": "TRANSACTION LOG_gb",
     "inventoryControl": "INVENTORY CONTROL_gb",
+    "lbl_processing": "Processing..._gb",
     "ReportName": "Report Name_gb",
     "Machines": "Machine(s)_gb",
     "IncludeInactiveUsers": "Include Inactive Users_gb",

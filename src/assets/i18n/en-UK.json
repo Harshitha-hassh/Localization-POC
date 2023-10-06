@@ -2977,6 +2977,7 @@
     "CommissionGraduityServicecharge": "COMMISSION/GRATUITY/SERVICE CHARGE_uk",
     "transactionLog": "TRANSACTION LOG_uk",
     "inventoryControl": "INVENTORY CONTROL_uk",
+    "lbl_processing": "Processing..._uk",
     "ReportName": "Report Name_uk",
     "Machines": "Machine(s)_uk",
     "IncludeInactiveUsers": "Include Inactive Users_uk",
