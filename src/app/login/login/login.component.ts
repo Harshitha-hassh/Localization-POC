@@ -292,10 +292,22 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  getADB2CEmailClaim(claims) {
+  getADB2CEmailClaim(claims)
+  {    
     let email = "";
-    if (claims != null && claims != undefined && claims['emails'] != null && claims['emails'].length > 0)
-      email = claims['emails'][0];
+
+    if(claims != null && claims != undefined)
+    {
+      if(claims['emails'] != null && claims['emails'].length > 0)
+      {
+        email = claims['emails'][0];
+      }
+      else if (claims['email'] != null)
+      {
+        email = claims['email'];
+      }
+    }   
+    
     return email;
   }
 
@@ -308,6 +320,13 @@ export class LoginComponent implements OnInit, OnDestroy {
       tenantId: tenantId,
       ProductId: Product.RETAIL
     };
+    if(!credentials.email)
+    {
+      this.utils.showAlert(this.captions.lbl_AzureTokenErrorMessage, AlertType.Error, ButtonType.Ok,(res=>{     
+        this.adb2cLogout();
+      }));  
+      return false;
+    }
     if(Number(tenantId) == SUPPORT_TENANT){
     await this.ProcessSupportUserLogin(credentials.email);
     } else{

@@ -4178,5 +4178,6 @@
   "noResponse": "No response received from the Signature Capture device. Signature will not be displayed in the receipt.",
   "lbl_industryTypeWarn": "Changing the Industry type will make the existing Cards On File for guests not work.",
   "err_userAccess_Denied_message": "User does not have access. Please contact System Administrator.",
-  "lbl_idTech": "IdTech"
+  "lbl_idTech": "IdTech",
+  "lbl_AzureTokenErrorMessage": "The email address received in the claims appears to have an incorrect format"
 }
