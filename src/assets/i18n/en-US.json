@@ -2170,6 +2170,7 @@
     "RemoveVendor": "REMOVE",
     "AddRetailVendor": "ADD VENDORS TO RETAIL ITEMS",
     "commission": "COMMISSION",
+    "CreateDiscount":"Create Discount Type",
     "importFail": {
       "Item Number": "Item Number",
       "Item Description": "Item Description",
@@ -4182,5 +4183,17 @@
   "lbl_industryTypeWarn":"Changing the Industry type will make the existing Cards On File for guests not work.",
   "err_userAccess_Denied_message":"User does not have access. Please contact System Administrator.",
   "lbl_idTech":"IdTech",
-  "lbl_AzureTokenErrorMessage" :"The email address received in the claims appears to have an incorrect format"
+  "lbl_AzureTokenErrorMessage" :"The email address received in the claims appears to have an incorrect format",
+  "lbl_addDiscountTimeframe": "ADD TIMEFRAME WINDOW",
+  "lbl_saveDiscount":"SAVE",
+  "lbl_updateDiscount":"UPDATE",
+  "hdr_CreateDiscountType": "CREATE DISCOUNT TYPE",
+  "hdr_EditDiscountType":"EDIT DISCOUNT TYPE",
+  "lbl_discountSave" : "{discountName} has been added successfully",
+  "lbl_discountUpdate" : "{discountName} has been updated successfully",
+  "lbl_applyForAllDays" : "Apply for All Days",
+  "lbl_applyRulesToHour_discount": "Apply rules to the hour",
+  "lbl_applyToWeek_discount":"Apply rules per day of the week",
+  "lbl_startTime" : "Start Time",
+  "lbl_endTime" : "End Time"
 }

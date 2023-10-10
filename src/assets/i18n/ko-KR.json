@@ -4179,5 +4179,14 @@
   "lbl_industryTypeWarn": "Changing the Industry type will make the existing Cards On File for guests not work._kr",
   "err_userAccess_Denied_message": "User does not have access. Please contact System Administrator._kr",
   "lbl_idTech": "IdTech_kr",
-  "lbl_AzureTokenErrorMessage": "The email address received in the claims appears to have an incorrect format_kr"
+  "lbl_AzureTokenErrorMessage": "The email address received in the claims appears to have an incorrect format_kr",
+  "lbl_addDiscountTimeframe": "ADD TIMEFRAME WINDOW_kr",
+  "lbl_saveDiscount": "SAVE_kr",
+  "lbl_updateDiscount": "UPDATE_kr",
+  "hdr_CreateDiscountType": "CREATE DISCOUNT TYPE_kr",
+  "hdr_EditDiscountType": "EDIT DISCOUNT TYPE_kr",
+  "lbl_discountSave": "{discountName} has been added successfully_kr",
+  "lbl_discountUpdate": "{discountName} has been updated successfully_kr",
+  "CreateDiscount": "Create Discount Type_kr",
+  "lbl_applyForAllDays": "Apply for All Days_kr"
 }
