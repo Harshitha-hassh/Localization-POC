@@ -1106,15 +1106,18 @@ export class LoginComponent implements OnInit, OnDestroy {
       const loginDetails = await this.loginService.makePostCall(serviceParams);
       if (loginDetails.successStatus) {
         loginDetails.result.token = token;
+        const jwtToken = JSON.parse(atob(token.split('.')[1]));
+        const jwtExpiryTime = new Date(jwtToken.exp * 1000);
+        const timeout = jwtExpiryTime.getTime() - Date.now();
+        const loginDuration = Math.round(timeout/1000);
         this.userName = credentials.UserName;
         const loginResponse: any = loginDetails;
         if (loginResponse.result.loginDuration) {
+          loginResponse.result.loginDuration = loginDuration;
           sessionStorage.setItem('loginDuration', loginResponse.result.loginDuration);
           localStorage.setItem('loginDuration', loginResponse.result.loginDuration);
           const tokenDuration = parseInt(sessionStorage.getItem('loginDuration'));
           this.sessionService.startTimer(0, tokenDuration);
-          let currentDateTime = new Date();
-          let jwtExpiryTime = new Date(currentDateTime.getTime() + tokenDuration * 1000);
           sessionStorage.setItem('jwtExpiryTime', jwtExpiryTime.toString());
           localStorage.setItem('jwtExpiryTime', jwtExpiryTime.toString());
         }
@@ -1243,15 +1246,19 @@ async validateAdb2cCredentialsForSupportUser(){
     };
    const loginDetails = await this.loginService.makePutCall(serviceParams, false);
    if (loginDetails.successStatus) {
-      loginDetails.result.token = localStorage.getItem(JWT_TOKEN);;
+      let token = this.oauthService.getIdToken();
+      loginDetails.result.token = token;
       const loginResponse: any = loginDetails;
+      const jwtToken = JSON.parse(atob(token.split('.')[1]));
+      const jwtExpiryTime = new Date(jwtToken.exp * 1000);
+      const timeout = jwtExpiryTime.getTime() - Date.now();
+      const loginDuration = Math.round(timeout/1000);
       if (loginResponse.result.loginDuration) {
+        loginResponse.result.loginDuration = loginDuration;
         sessionStorage.setItem('loginDuration', loginResponse.result.loginDuration);
         localStorage.setItem('loginDuration', loginResponse.result.loginDuration);
         const tokenDuration = parseInt(sessionStorage.getItem('loginDuration'));
         this.sessionService.startTimer(0, tokenDuration);
-        let currentDateTime = new Date();
-        let jwtExpiryTime = new Date(currentDateTime.getTime() + tokenDuration * 1000);
         sessionStorage.setItem('jwtExpiryTime', jwtExpiryTime.toString());
         localStorage.setItem('jwtExpiryTime', jwtExpiryTime.toString());
 
