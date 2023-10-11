@@ -739,5 +739,11 @@
   "CreateDataMagineConfiguration" : "RetailManagementService/DataMagine/CreateDmConfig",
   "UpdateDataMagineConfiguration" : "RetailManagementService/DataMagine/UpdateDmConfig",
   "GetWebCommunicationProxyVersion": "Payment/GetWebCommunicationProxyVersion",
-  "MembershipRefundPayment": "Transaction/{transactionId}/membershiprefund/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/tenderId/{tenderId}/terminalId/{terminalId}"
+  "MembershipRefundPayment": "Transaction/{transactionId}/membershiprefund/{ticketNumber}/outletId/{outletId}/checkHandle/{checkHandleGuid}/tenderId/{tenderId}/terminalId/{terminalId}",
+  "CreateDiscountTypeConfiguration" :"DiscountTypeConfiguration",
+  "UpdateDiscountTypeConfiguration" : "DiscountTypeConfiguration/update",
+  "DeleteDiscountTypeConfiguration" : "DiscountTypeConfiguration/{discountId}",
+  "GetDiscountTypeConfigurationById" : "DiscountTypeConfiguration/{DiscountTypeId}",
+  "GetDiscountConfigurationsByCategoryId" : "DiscountConfigurations/{categoryId}",
+  "DeleteDiscountTypeConfigurationByIds":"DiscountTypeConfiguration/DeleteDiscountTypeConfigurationByIds"
 }
