@@ -1507,5 +1507,12 @@
     }
   }
 }
-
+&.configure-date-time{
+  background-color: $ag-retail-background-grey !important;
+ .dateTime_Wrap{
+  @extend .bodyWrap;
+  margin: 0px 10px 10px 10px !important;
+  padding: 1rem 1rem 0rem 1rem !important;
+ }
+}
 }

@@ -1766,6 +1766,8 @@
   "lbl_userId": "User ID_da",
   "lbl_logout": "Log Out_da",
   "retailsetup": {
+    "err_minLength": "At least 3 characters need to be entered_da",
+    "srch_by_discountType": "Discount Type_da",
     "FinancialLevelSplitUp": "Financial Level Split-up_da",
     "CategoryLevel": "Category_da",
     "GranularLevel": "Granular_da",
@@ -2167,6 +2169,7 @@
     "RemoveVendor": "REMOVE_da",
     "AddRetailVendor": "ADD VENDORS TO RETAIL ITEMS_da",
     "commission": "COMMISSION_da",
+    "CreateDiscount": "Create Discount Type_da",
     "importFail": {
       "Item Number": "Item Number_da",
       "Item Description": "Item Description_da",
@@ -3553,7 +3556,7 @@
       "distributionlist": {
         "createNew": "Create New_da",
         "DistributionName": "Distribution Name_da",
-        "searchDistributionName": "Search by Distribution Name_da",
+        "searchDistributionName": "Search by Distribution List Name_da",
         "newDL": "New Distribution List_da",
         "DistributionListName": "Distribution List Name_da",
         "missingDistributionListName": "Mising Distribution List Name_da",
@@ -4187,6 +4190,22 @@
   "hdr_EditDiscountType": "EDIT DISCOUNT TYPE_da",
   "lbl_discountSave": "{discountName} has been added successfully_da",
   "lbl_discountUpdate": "{discountName} has been updated successfully_da",
-  "CreateDiscount": "Create Discount Type_da",
-  "lbl_applyForAllDays": "Apply for All Days_da"
+  "lbl_applyForAllDays": "Apply for All Days_da",
+  "lbl_applyRulesToHour_discount": "Apply rules to the hour_da",
+  "lbl_applyToWeek_discount": "Apply rules per day of the week_da",
+  "lbl_startTime": "Start Time_da",
+  "lbl_endTime": "End Time_da",
+  "lbl_rules": "Rules_da",
+  "lbl_Cancel_Msg": "Are you sure you want to cancel the changes?_da",
+  "lbl_clearAll": "CLEAR ALL_da",
+  "lbl_period": "Period_da",
+  "lbl_active": "ACTIVE_da",
+  "lbl_showclearMsg": "Are you sure you want to clear all? _da",
+  "checkedLable": "Yes_da",
+  "uncheckedLable": "No_da",
+  "err_rateoverlapDateRange": "Overlap Date Range_da",
+  "missingPeriod": "Missing Period_da",
+  "startTimeError": "Missing Start Time_da",
+  "endTimeError": "Missing End Time_da",
+  "lbl_overlapRule": "Overlap rule not allowed_da"
 }

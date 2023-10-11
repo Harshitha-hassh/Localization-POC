@@ -1769,6 +1769,8 @@
   "lbl_logout": "Log Out",
 
   "retailsetup": {
+    "err_minLength": "At least 3 characters need to be entered",
+    "srch_by_discountType" : "Discount Type",
     "FinancialLevelSplitUp": "Financial Level Split-up",
     "CategoryLevel": "Category",
     "GranularLevel": "Granular",
@@ -3557,7 +3559,7 @@
       "distributionlist": {
         "createNew": "Create New",
         "DistributionName": "Distribution Name",
-        "searchDistributionName": "Search by Distribution Name",
+        "searchDistributionName": "Search by Distribution List Name",
         "newDL": "New Distribution List",
         "DistributionListName": "Distribution List Name",
         "missingDistributionListName": "Mising Distribution List Name",
@@ -4195,5 +4197,18 @@
   "lbl_applyRulesToHour_discount": "Apply rules to the hour",
   "lbl_applyToWeek_discount":"Apply rules per day of the week",
   "lbl_startTime" : "Start Time",
-  "lbl_endTime" : "End Time"
+  "lbl_endTime" : "End Time",
+  "lbl_rules": "Rules",
+	"lbl_Cancel_Msg": "Are you sure you want to cancel the changes?",
+  "lbl_clearAll": "CLEAR ALL",
+  "lbl_period": "Period",
+  "lbl_active": "ACTIVE",
+  "lbl_showclearMsg" : "Are you sure you want to clear all? ",
+  "checkedLable": "Yes",
+  "uncheckedLable": "No",
+  "err_rateoverlapDateRange" : "Overlap Date Range",
+  "missingPeriod" : "Missing Period",
+  "startTimeError" : "Missing Start Time",
+  "endTimeError" : "Missing End Time",
+  "lbl_overlapRule" : "Overlap rule not allowed"
 }
