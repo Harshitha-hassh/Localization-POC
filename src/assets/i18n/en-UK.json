@@ -1766,6 +1766,8 @@
   "lbl_userId": "User ID_uk",
   "lbl_logout": "Log Out_uk",
   "retailsetup": {
+    "err_minLength": "At least 3 characters need to be entered_uk",
+    "srch_by_discountType": "Discount Type_uk",
     "FinancialLevelSplitUp": "Financial Level Split-up_uk",
     "CategoryLevel": "Category_uk",
     "GranularLevel": "Granular_uk",
@@ -2167,6 +2169,7 @@
     "RemoveVendor": "REMOVE_uk",
     "AddRetailVendor": "ADD VENDORS TO RETAIL ITEMS_uk",
     "commission": "COMMISSION_uk",
+    "CreateDiscount": "Create Discount Type_uk",
     "importFail": {
       "Item Number": "Item Number_uk",
       "Item Description": "Item Description_uk",
@@ -3553,7 +3556,7 @@
       "distributionlist": {
         "createNew": "Create New_uk",
         "DistributionName": "Distribution Name_uk",
-        "searchDistributionName": "Search by Distribution Name_uk",
+        "searchDistributionName": "Search by Distribution List Name_uk",
         "newDL": "New Distribution List_uk",
         "DistributionListName": "Distribution List Name_uk",
         "missingDistributionListName": "Mising Distribution List Name_uk",
@@ -4187,6 +4190,22 @@
   "hdr_EditDiscountType": "EDIT DISCOUNT TYPE_uk",
   "lbl_discountSave": "{discountName} has been added successfully_uk",
   "lbl_discountUpdate": "{discountName} has been updated successfully_uk",
-  "CreateDiscount": "Create Discount Type_uk",
-  "lbl_applyForAllDays": "Apply for All Days_uk"
+  "lbl_applyForAllDays": "Apply for All Days_uk",
+  "lbl_applyRulesToHour_discount": "Apply rules to the hour_uk",
+  "lbl_applyToWeek_discount": "Apply rules per day of the week_uk",
+  "lbl_startTime": "Start Time_uk",
+  "lbl_endTime": "End Time_uk",
+  "lbl_rules": "Rules_uk",
+  "lbl_Cancel_Msg": "Are you sure you want to cancel the changes?_uk",
+  "lbl_clearAll": "CLEAR ALL_uk",
+  "lbl_period": "Period_uk",
+  "lbl_active": "ACTIVE_uk",
+  "lbl_showclearMsg": "Are you sure you want to clear all? _uk",
+  "checkedLable": "Yes_uk",
+  "uncheckedLable": "No_uk",
+  "err_rateoverlapDateRange": "Overlap Date Range_uk",
+  "missingPeriod": "Missing Period_uk",
+  "startTimeError": "Missing Start Time_uk",
+  "endTimeError": "Missing End Time_uk",
+  "lbl_overlapRule": "Overlap rule not allowed_uk"
 }
