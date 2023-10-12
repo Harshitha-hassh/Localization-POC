@@ -4207,5 +4207,6 @@
   "missingPeriod": "Missing Period_gb",
   "startTimeError": "Missing Start Time_gb",
   "endTimeError": "Missing End Time_gb",
-  "lbl_overlapRule": "Overlap rule not allowed_gb"
+  "lbl_overlapRule": "Overlap rule not allowed_gb",
+  "lbl_enable_Rules": "Enable Timeframe for Discount_gb"
 }

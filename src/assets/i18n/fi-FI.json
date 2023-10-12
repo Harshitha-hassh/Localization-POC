@@ -4207,5 +4207,6 @@
   "missingPeriod": "Missing Period_fi",
   "startTimeError": "Missing Start Time_fi",
   "endTimeError": "Missing End Time_fi",
-  "lbl_overlapRule": "Overlap rule not allowed_fi"
+  "lbl_overlapRule": "Overlap rule not allowed_fi",
+  "lbl_enable_Rules": "Enable Timeframe for Discount_fi"
 }

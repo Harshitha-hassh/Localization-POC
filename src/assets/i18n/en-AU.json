@@ -4207,5 +4207,6 @@
   "missingPeriod": "Missing Period",
   "startTimeError": "Missing Start Time",
   "endTimeError": "Missing End Time",
-  "lbl_overlapRule": "Overlap rule not allowed"
+  "lbl_overlapRule": "Overlap rule not allowed",
+  "lbl_enable_Rules": "Enable Timeframe for Discount"
 }

@@ -4207,5 +4207,6 @@
   "missingPeriod": "Missing Period_uk",
   "startTimeError": "Missing Start Time_uk",
   "endTimeError": "Missing End Time_uk",
-  "lbl_overlapRule": "Overlap rule not allowed_uk"
+  "lbl_overlapRule": "Overlap rule not allowed_uk",
+  "lbl_enable_Rules": "Enable Timeframe for Discount_uk"
 }
