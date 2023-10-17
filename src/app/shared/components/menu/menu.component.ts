@@ -385,7 +385,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   navigateTo(option) {
-    if (option.value.routePath === '/settings/interfaces/admIntegration' || option.value.routePath === '/settings/interfaces/dataMagine' ) {
+    if (option.value.routePath === '/settings/interfaces/dataMagine' ) {
       this.router.navigate([option.value.routePath], { state: { ShowPopup: true, onSubmoduleChange: true } });
     } else {
       this.router.navigate([option.value.routePath], { state: { ShowPopup: !option.value.linkedElement?.length, onSubmoduleChange: true } });
