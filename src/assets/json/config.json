@@ -18,6 +18,7 @@
     "common": "/VisualOne/retailgateway/Retail/Services/Notification",
     "documentation": "/Help",
     "commonGateway": "/commongateway",
+    "CommonGateway": "/commongateway",
     "RetailGateway": "/VisualOne/retailgateway",
     "JasperServerURL":"/jasperserver-pro",
     "signalrService": "/commongateway/SignalRService",
