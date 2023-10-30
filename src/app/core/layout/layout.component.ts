@@ -117,7 +117,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     let previousDate = moment(newSystemDate).subtract(1,"days");
       let localizedPreviousDate = this.localization.localizeDisplayDate(previousDate.toDate());
     if (newSystemDate != undefined && newSystemDate != null) {
-      if(productId == Product.SPA || productId == Product.Golf || productId == Product.RETAIL )
+      if(productId == Product.SPA || productId == Product.GOLF || productId == Product.RETAIL )
       {
         this.utils.showToastMessage(this.localization.captions.NightAuditMessage+ ' for ' + localizedPreviousDate, SnackBarType.Success, 15000);
       }
