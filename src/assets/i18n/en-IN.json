@@ -2911,7 +2911,8 @@
       "External Gift Card": "External Gift Card_in",
       "ARAccountPosting": "City Ledger_in",
       "PMS Revenue Posting": "PMS Revenue Posting_in",
-      "Offer Management System": "Offer Management System_in"
+      "Offer Management System": "Offer Management System_in",
+      "Wallet": "Wallet_in"
     },
     "RoomKeySwipe": {
       "EnableRoomKeySwipe": "Enable Room Key Swipe_in",
