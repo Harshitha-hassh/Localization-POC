@@ -25,7 +25,39 @@
       "es2018",
       "dom",
       "ES2019"
-    ]
+    ],
+    "paths": {
+      "@shared/*": [ "src/app/eatecui/source/shared/*" ],
+      "@transaction/*": [ "src/app/eatecui/source/transaction/*" ],
+      "@coreModels/*": ["src/app/eatecui/source/core/*"],
+      "@ngrxStore/*": ["src/app/eatecui/source/store/*"],
+      "@scss/*": [ "src/app/eatecui/src/assets/sass/*" ],
+      "@assets/*": [ "src/app/eatecui/src/assets/*" ],
+      "grid": [
+        "dist/grid"
+      ],
+      "grid/*": [
+        "dist/grid/*"
+      ],
+      "AgilysysDynamicGrid": [
+        "dist/AgilysysDynamicGrid"
+      ],
+      "AgilysysDynamicGrid/*": [
+        "dist/AgilysysDynamicGrid/*"
+      ],
+      "agilysys-button": [
+        "dist/agilysys-button"
+      ],
+      "agilysys-button/*": [
+        "dist/agilysys-button/*"
+      ],
+      "agilysys-dynamicform": [
+        "dist/agilysys-dynamicform"
+      ],
+      "agilysys-dynamicform/*": [
+        "dist/agilysys-dynamicform/*"
+      ],
+    }
   },
   "angularCompilerOptions": {
     "enableIvy": false

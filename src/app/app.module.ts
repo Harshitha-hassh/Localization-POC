@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector, ErrorHandler } from '@angular/core';
+import { NgModule, Injector, ErrorHandler, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,12 +20,28 @@ import { ServiceLocator } from './common/service.locator';
 import { AppModuleService } from './core/services/app.service';
 import { GlobalErrorHandler } from './shared/service/global-error-handler.service';
 import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { OAuthModule, OAuthService, UrlHelperService } from 'angular-oauth2-oidc';
 import { MatTooltipDefaultOptions, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@angular/material/tooltip';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './eatecui/source/store/reducers/app.reducer';
+import { clearState } from './eatecui/source/store/reducers/login.reducer';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+// export function appInitializerFactory(translate: TranslateService) {
+//   return () => {
+//     translate.setDefaultLang('en');
+//     return translate.use('en').toPromise();
+//   };
+// }
 
 declare module "@angular/core" {
   interface ModuleWithProviders<T = any> {
@@ -53,7 +69,16 @@ export const OtherOptions: MatTooltipDefaultOptions = {
     MaterialModule,
     CoreModule,
     LoginModule,
-    OAuthModule.forRoot()
+    OAuthModule.forRoot(),
+    StoreModule.forRoot(appReducers, { metaReducers: [clearState] }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+    ToastrModule.forRoot()
   ],
   providers: [
     {
@@ -72,13 +97,21 @@ export const OtherOptions: MatTooltipDefaultOptions = {
       useClass: OAuthService
     },
     {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: OtherOptions},
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: appInitializerFactory,
+    //   deps: [TranslateService, Injector],
+    //   multi: true
+    // },
     UrlHelperService,
     ADB2CAuthConfiguration
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private injector: Injector) {
+  constructor(private injector: Injector, translate: TranslateService) {
     ServiceLocator.injector = this.injector;
+    translate.setDefaultLang('en');
+    translate.use('en');
   }
 }
