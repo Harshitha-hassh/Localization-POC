@@ -50,6 +50,7 @@
     "apexcharts": "^3.35.3",
     "bootstrap": "^4.6.1",
     "core-js": "^2.6.12",
+    "cron-editor": "^2.1.8",
     "crypto-js": "^4.0.0",
     "deep-object-diff": "^1.1.7",
     "dompurify": "2.3.8",

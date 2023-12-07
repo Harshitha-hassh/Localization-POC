@@ -34,28 +34,28 @@
       "@scss/*": [ "src/app/eatecui/src/assets/sass/*" ],
       "@assets/*": [ "src/app/eatecui/src/assets/*" ],
       "grid": [
-        "dist/grid"
+        "src/app/eatecui/dist/grid"
       ],
       "grid/*": [
-        "dist/grid/*"
+        "src/app/eatecui/dist/grid/*"
       ],
       "AgilysysDynamicGrid": [
-        "dist/AgilysysDynamicGrid"
+        "src/app/eatecui/dist/AgilysysDynamicGrid"
       ],
       "AgilysysDynamicGrid/*": [
-        "dist/AgilysysDynamicGrid/*"
+        "src/app/eatecui/dist/AgilysysDynamicGrid/*"
       ],
       "agilysys-button": [
-        "dist/agilysys-button"
+        "src/app/eatecui/dist/agilysys-button"
       ],
       "agilysys-button/*": [
-        "dist/agilysys-button/*"
+        "src/app/eatecui/dist/agilysys-button/*"
       ],
       "agilysys-dynamicform": [
-        "dist/agilysys-dynamicform"
+        "src/app/eatecui/dist/agilysys-dynamicform"
       ],
       "agilysys-dynamicform/*": [
-        "dist/agilysys-dynamicform/*"
+        "src/app/eatecui/dist/agilysys-dynamicform/*"
       ],
     }
   },
