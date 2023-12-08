@@ -2273,6 +2273,8 @@
     "err_min": "Precedes Minimum Value_in"
   },
   "setting": {
+    "taxRevenueToProperty": "Is Revenue to Property?_in",
+    "linkedTaxRevenueToProperty": "Is Revenue to Property?_in",
     "taxOnTax": "Charge Tax On Tax_in",
     "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled_in",
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled_in",

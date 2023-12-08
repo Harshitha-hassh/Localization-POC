@@ -2273,6 +2273,8 @@
     "err_min": "Precedes Minimum Value_gb"
   },
   "setting": {
+    "taxRevenueToProperty": "Is Revenue to Property?_gb",
+    "linkedTaxRevenueToProperty": "Is Revenue to Property?_gb",
     "taxOnTax": "Charge Tax On Tax_gb",
     "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled_gb",
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled_gb",
