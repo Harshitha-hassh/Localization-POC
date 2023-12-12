@@ -2273,8 +2273,8 @@
     "err_min": "Precedes Minimum Value_gb"
   },
   "setting": {
-    "lbl_inHouseGratuity": "In House Gratuity_da_gb",
-    "lbl_inHouseServiceCharge": "In House Service Charge_da_gb",
+    "lbl_inHouseGratuity": "In House Gratuity_gb",
+    "lbl_inHouseServiceCharge": "In House Service Charge_gb",
     "taxRevenueToProperty": "Is Revenue to Property?_gb",
     "linkedTaxRevenueToProperty": "Is Revenue to Property?_gb",
     "taxOnTax": "Charge Tax On Tax_gb",
@@ -3172,9 +3172,9 @@
     "hideCorrectedValues": "Hide Corrected Values_gb",
     "InventoryValuation": "Inventory Valuation_gb",
     "InventoryValueandActivity": "Inventory Value and Activity_gb",
-    "includeInhouseGratuitySC": "Include In House Gratuity/SC_da_gb",
-    "includeInhouseGratuity": "Include In House Gratuity_da_gb",
-    "includeInhouseSC": "Include In House SC_da_gb"
+    "includeInhouseGratuitySC": "Include In House Gratuity/SC_gb",
+    "includeInhouseGratuity": "Include In House Gratuity_gb",
+    "includeInhouseSC": "Include In House SC_gb"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_gb",
