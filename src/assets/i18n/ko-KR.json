@@ -2275,8 +2275,8 @@
   "setting": {
     "lbl_inHouseGratuity": "In House Gratuity_kr",
     "lbl_inHouseServiceCharge": "In House Service Charge_kr",
-    "taxRevenueToProperty": "Is Revenue to Property?_kr",
-    "linkedTaxRevenueToProperty": "Is Revenue to Property?_kr",
+    "taxRevenueToProperty": "Is Revenue To Property_kr",
+    "linkedTaxRevenueToProperty": "Is Revenue To Property_kr",
     "taxOnTax": "Charge Tax On Tax_kr",
     "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled_kr",
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled_kr",
