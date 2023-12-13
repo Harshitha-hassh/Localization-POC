@@ -2280,6 +2280,8 @@
     "taxOnTax": "Charge Tax On Tax",
     "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled",
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled",
+    "SC_GT_TaxRevenueToProperty_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Revenue To Property’ is enabled",
+    "TaxRevenueToPropertyValidationMsg": "Cannot enable ‘Revenue To Property’ when {toggleLabel}  is enabled",
     "Title": "Title",
     "First_Name": "First Name",
     "Last_Name": "Last Name",
