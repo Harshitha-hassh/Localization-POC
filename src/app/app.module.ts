@@ -29,6 +29,7 @@ import { clearState } from './eatecui/source/store/reducers/login.reducer';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
+import { EnvService } from './eatecui/source/config.service';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
@@ -97,6 +98,12 @@ export const OtherOptions: MatTooltipDefaultOptions = {
       useClass: OAuthService
     },
     {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: OtherOptions},
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (envService: EnvService) => () => envService.init(),
+      multi: true,
+      deps: [EnvService]
+    },
     // {
     //   provide: APP_INITIALIZER,
     //   useFactory: appInitializerFactory,
@@ -111,7 +118,7 @@ export const OtherOptions: MatTooltipDefaultOptions = {
 export class AppModule {
   constructor(private injector: Injector, translate: TranslateService) {
     ServiceLocator.injector = this.injector;
-    translate.setDefaultLang('en');
-    translate.use('en');
+    // translate.setDefaultLang('en');
+    // translate.use('en');
   }
 }
