@@ -58,7 +58,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   ngOnInit() {
       this.applyTheme('blacktheme');
       this.propertyName = this.localization.GetPropertyInfo('PropertyName');
-      let propConfig = JSON.parse(sessionStorage.getItem("propConfig")); 
+      let propConfig = JSON.parse(sessionStorage.getItem("propConfig"));
       let enableSignalR = propConfig?.EnableSignalR;
       this.propertyService.changeTitle();
       this.loadGoogleMap();
@@ -94,7 +94,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
       list.forEach(e=>{this.signalR.subscribeToEvent(e);});
       });
   }
-  
+
   async signalRPropertyListener(message: SignalRMessage<NotificationModel>): Promise<void> {
     if(message && message.content && message.content.notificationType==SignalRNotificationType.ToasterNotification)
     {
@@ -110,7 +110,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   }
 
   async UpdatePropertyDateCache(message: SystemDateChangeMessage): Promise<void> {
-    
+
     let newSystemDate = await this.GetPropertyDate();
     let localizedDate = this.localization.localizeDisplayDate(newSystemDate);
     let productId = Number(this.utils.GetPropertyInfo("ProductId"));
@@ -127,8 +127,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
             this.logoutHandler(true);
           }
         });
-      }     
-    }  
+      }
+    }
 }
 
 async GetPropertyDate() {
@@ -156,7 +156,7 @@ logoutHandler(arg) {
 
   private loadGoogleMap(){
     let propertyConfig = this.propertyInfo.GetPropertyConfiguration()
-    if (propertyConfig?.GoogleMapApiKey) { 
+    if (propertyConfig?.GoogleMapApiKey) {
       const language = this.localization.GetsessionStorageValue('_userInfo', 'language') || 'en-US';
       this.propertyService.generateGoogleMapApi(propertyConfig.GoogleMapApiKey, language);
   }
@@ -169,12 +169,14 @@ logoutHandler(arg) {
       document.querySelectorAll('body')[0].setAttribute('class', theme);
       // if css need to change for popover, apply class to body
     }, 1);
-   
+
   }
 
   time() {
     if (!this.logOutClicked) {
+      if(this.sessionService.GetPropertyInfo('TimeZone')){
       this.propertyDateTime = this.localization.LocalizeDateTimeFormatSecondsDDMMMYYYYheader(this.propertyInfo.CurrentDate) ;
+      }
     }
   }
 
@@ -190,7 +192,7 @@ logoutHandler(arg) {
     this.setView();
   }
 
-  
+
   setView() {
     const bodyTag = document.getElementsByTagName('body')[0];
     if (this.localization.isNewStyle) {
