@@ -1766,6 +1766,8 @@
   "lbl_userId": "User ID_fr",
   "lbl_logout": "Log Out_fr",
   "retailsetup": {
+    "includeSignatureLine": "Include Signature in Receipts_fr",
+    "warningEnableSigCap": "Cannot enable 'Require Signature Capture' when 'Include Signature in Receipts' is disabled_fr",
     "err_minLength": "At least 3 characters need to be entered_fr",
     "srch_by_discountType": "Discount Type_fr",
     "FinancialLevelSplitUp": "Financial Level Split-up_fr",
