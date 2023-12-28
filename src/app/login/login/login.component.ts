@@ -46,6 +46,7 @@ import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
 import { LoginRoutes } from '../login.routes';
 import * as CONSTANTS from 'src/app/common/constants';
 import { cloneDeep } from 'lodash';
+import { DMConfigDataService } from 'src/app/common/dataservices/datamagine-config.data.service';
 
 
 @Component({
@@ -149,7 +150,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private crypto: CryptoUtility,
     private oauthService: OAuthService,
     private route: ActivatedRoute,
-    private adb2cAuthConfiguration: ADB2CAuthConfiguration
+    private adb2cAuthConfiguration: ADB2CAuthConfiguration,
+    private dmConfigDataService: DMConfigDataService
   ) {
     // this.initializeForm();
     // this.captions = this.localize.captions;
@@ -508,6 +510,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.SetPropertyInfo(selectedProperty);
       this.userDefaultsService.syncDefaultValues(this.userInfo.userId);
       await this.setEatecConfig();
+      await this.dmConfigDataService.SetDataMagineConfig();
       this.setAutoLogOff();
       await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.setMachineDetails();
