@@ -4176,7 +4176,7 @@
   "lbl_enable_signature_capture": "Enable Signature Capture",
   "lbl_signature_endpoint": "Signature Capture Endpoint",
   "lbl_sigcap_enableindexing":"Post Receipt To DataMagine",
-	"lbl_sigcap_viewname":"Viewname",
+	"lbl_sigcap_viewname":"View Name",
   "hdr_eforms": "E-FORMS",
   "lbl_enable_eforms": "Enable E-Forms",
   "lbl_dm_link": "DATAMAGINE LINK",
