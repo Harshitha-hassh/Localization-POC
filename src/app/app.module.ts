@@ -30,6 +30,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
 import { EnvService } from './eatecui/source/config.service';
+import { environment } from 'src/environments/environment';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
@@ -100,7 +101,7 @@ export const OtherOptions: MatTooltipDefaultOptions = {
     {provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: OtherOptions},
     {
       provide: APP_INITIALIZER,
-      useFactory: (envService: EnvService) => () => envService.init(),
+      useFactory: (envService: EnvService) => () => envService.init(environment['EatecUi']),
       multi: true,
       deps: [EnvService]
     },
