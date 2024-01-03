@@ -500,7 +500,7 @@ export class ManageSessionService implements OnDestroy {
     public async getFailedDMPostingCount(): Promise<number> {
         const response = await this.http.CallApiAsync<number>({
           callDesc: 'FailedDMPostingCount',
-          host: Host.POS,
+          host: Host.retailPOS,
           method: HttpMethod.Get,
           showError: true
         });
