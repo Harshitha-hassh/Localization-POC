@@ -112,6 +112,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.transactionCountSubscription = this._sessionService.transactionCount.subscribe(res => {
       const revenueresult = res && res.find(x => x.id === NotificationFailureType.revenuePostingFailure) ;
       const paymentresult = res && res.find(x => x.id === NotificationFailureType.paymentTransactionFailure) ;
+      const dMPostingResult = res && res.find(x => x.id == NotificationFailureType.dMPostingFailure);
       if (revenueresult && revenueresult.count > 0) {
         if (this.notificationInfo && this.notificationInfo.length > 0 &&
            this.notificationInfo.some(x => x.id === NotificationFailureType.revenuePostingFailure )) {
@@ -137,6 +138,18 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
            message :  this._localization.replacePlaceholders(this.captions.FailedTransLogInfo, ['count'], [ paymentresult.count])
          });
        }
+      }
+      if (dMPostingResult && dMPostingResult.count > 0) {
+        if (this.notificationInfo && this.notificationInfo.length > 0 &&
+           this.notificationInfo.some(x => x.id === NotificationFailureType.dMPostingFailure )) {
+            this.notificationInfo.find(x => x.id === NotificationFailureType.dMPostingFailure ).message =
+            this._localization.replacePlaceholders(this.captions.DMPostingInfo, ['count'], [ dMPostingResult.count]);
+          } else {
+          this.notificationInfo.push({
+            id :  NotificationFailureType.dMPostingFailure,
+            message : this._localization.replacePlaceholders(this.captions.DMPostingInfo, ['count'], [ dMPostingResult.count])
+          });
+        }
       }
       this.notificationCount = this.notificationInfo.length;
     });
@@ -433,6 +446,10 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.paymentTransactionFailure);
   }
 
+  removeDMReceiptLogInfo(){
+    this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.dMPostingFailure);
+  }
+
   routeTransc(id: number) {
     if (id === NotificationFailureType.revenuePostingFailure) {
       this.router.navigate(['/shop/viewshop/retailtransactions/revenuepostingslog']);
@@ -441,6 +458,11 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     else if (id === NotificationFailureType.paymentTransactionFailure){
       this.router.navigate(['/shop/viewshop/retailtransactions/transactionslog']);
+      this.removePaymentFailureInfo();
+      this.notificationCount = this.notificationInfo?.length;
+    }
+    else if (id === NotificationFailureType.dMPostingFailure){
+      this.router.navigate(['/shop/viewshop/retailtransactions/datamaginereceiptlog']);
       this.removePaymentFailureInfo();
       this.notificationCount = this.notificationInfo?.length;
     }

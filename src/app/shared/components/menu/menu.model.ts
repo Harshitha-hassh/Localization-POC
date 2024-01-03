@@ -58,5 +58,6 @@ export enum AgMenuTypes {
 
 export enum NotificationFailureType {
   paymentTransactionFailure = 1,
-  revenuePostingFailure = 2
+  revenuePostingFailure = 2,
+  dMPostingFailure = 3
 }

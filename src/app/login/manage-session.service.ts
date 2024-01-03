@@ -461,6 +461,10 @@ export class ManageSessionService implements OnDestroy {
             }
             const paymenentFailures = await this.getTransactionLogCount();
             this.transactionCount.next([{ id : NotificationFailureType.paymentTransactionFailure, count : paymenentFailures }]);
+            if(this.propertyInformation.IsDMPostingEnabled){
+                const dMPostingFailure = await this.getFailedDMPostingCount();
+                this.transactionCount.next([{ id : NotificationFailureType.dMPostingFailure, count : dMPostingFailure }]);
+              }
             this.startTimerForNotification(10);
         }
         catch(err){
@@ -492,6 +496,17 @@ export class ManageSessionService implements OnDestroy {
         return response.result;
 
     }
+
+    public async getFailedDMPostingCount(): Promise<number> {
+        const response = await this.http.CallApiAsync<number>({
+          callDesc: 'FailedDMPostingCount',
+          host: Host.POS,
+          method: HttpMethod.Get,
+          showError: true
+        });
+        return response.result;
+      }
+    
 
     public stopTimerForNotification() {
         if (this.timerSubscriptionForNotification) {
