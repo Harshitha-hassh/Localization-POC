@@ -463,7 +463,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     else if (id === NotificationFailureType.dMPostingFailure){
       this.router.navigate(['/shop/viewshop/retailtransactions/datamaginereceiptlog']);
-      this.removePaymentFailureInfo();
+      this.removeDMReceiptLogInfo();
       this.notificationCount = this.notificationInfo?.length;
     }
     this.notificationPopOver.hide();
