@@ -5709,7 +5709,20 @@ body .cdk-custom-wrapper .ag_table .table th {
       }
 
     }
-
+    .master-setup .master-grid .inventory-details .inventory-sub-form-groups .mat-tab-group{
+      .mat-tab-header{
+          background: unset !important;
+          .mat-tab-label.mat-tab-label-active{
+            color: unset !important;
+          }
+          .mat-tab-labels{
+            background: unset !important;
+          }
+          .mat-ink-bar{
+            background: #2e67b7 !important;
+          }
+      }
+    }
 
   }
 }
@@ -5804,4 +5817,32 @@ body .cdk-custom-wrapper .ag_table .table th {
 }
 .inventory .inventory-status{
   background-color: #e4e5e8 !important;
+}
+app-transaction{
+  .transaction-container .trascation-header-container{
+    height: 60px !important;
+  }
+  .transaction-container .transaction-grid {
+    padding: 0px !important;
+  }
+  app-view-transaction{
+    .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple){
+      background-color: unset !important;
+    }
+    .mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
+      color: #2e67b7 !important;
+    }
+  }
+  lib-reorder-panel{
+    .reorder-box .mat-checkbox{
+      top: 0 !important;
+    }
+    .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background{
+      background-color: #2e67b7 !important;
+    }
+    .mat-checkbox-frame{
+      border-color: #2e67b7 !important;
+      border-radius: 0px !important;
+    }
+  }
 }
