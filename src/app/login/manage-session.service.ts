@@ -17,6 +17,7 @@ import { RetailPropertyInformation } from '../retail/common/services/retail-prop
 import { OAuthService } from 'angular-oauth2-oidc';
 import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
 import { SignalrService } from 'src/app/common/communication/signalR/signalr.service';
+import { RetailRoutes as RetailRoute }  from 'src/app/retail/retail-route';
 
 @Injectable({
     providedIn: 'root'
@@ -499,7 +500,7 @@ export class ManageSessionService implements OnDestroy {
 
     public async getFailedDMPostingCount(): Promise<number> {
         const response = await this.http.CallApiAsync<number>({
-          callDesc: 'FailedDMPostingCount',
+          callDesc: RetailRoute.FailedDMPostingCount,
           host: Host.retailPOS,
           method: HttpMethod.Get,
           showError: true

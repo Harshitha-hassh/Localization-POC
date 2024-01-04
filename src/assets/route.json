@@ -745,6 +745,5 @@
   "DeleteDiscountTypeConfiguration" : "DiscountTypeConfiguration/{discountId}",
   "GetDiscountTypeConfigurationById" : "DiscountTypeConfiguration/{DiscountTypeId}",
   "GetDiscountConfigurationsByCategoryId" : "DiscountConfigurations/{categoryId}",
-  "DeleteDiscountTypeConfigurationByIds":"DiscountTypeConfiguration/DeleteDiscountTypeConfigurationByIds",
-  "FailedDMPostingCount": "PointOfSaleService/DM/GetFailedDMPostingCount"
+  "DeleteDiscountTypeConfigurationByIds":"DiscountTypeConfiguration/DeleteDiscountTypeConfigurationByIds"
 }
