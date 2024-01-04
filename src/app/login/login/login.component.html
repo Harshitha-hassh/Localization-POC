@@ -178,8 +178,10 @@
                         </div>
                     </div>
 
-                    <div class="margintop--10" *ngIf="custId"><button mat-flat-button class="login__btn" [ngClass]="{'ag_section--disable': !this.loginForms.controls.customerId.value && showCustomerID}"
-                      (click)="!loginForms.controls.customerId.value  && showCustomerID ? '' : getbuttonEmitvalue($event)" >{{loginSuccess?captions.enter:captions.Login}}</button>
+                    <div class="margintop--10" *ngIf="custId"><button mat-flat-button class="login__btn" [ngClass]="{'ag_section--disable': !this.loginForms.controls.customerId.value && showCustomerID || showLoginloader}"
+                      (click)="!loginForms.controls.customerId.value  && showCustomerID ? '' : getbuttonEmitvalue($event)" >{{loginSuccess?captions.enter:captions.Login}}
+                      <div *ngIf="showLoginloader" class="loginloadingSpinner"></div>
+                    </button>
                     </div>
                 </div>
                 <div class="resolutionDiv">

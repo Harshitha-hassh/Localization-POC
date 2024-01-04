@@ -46,6 +46,7 @@ import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
 import { LoginRoutes } from '../login.routes';
 import * as CONSTANTS from 'src/app/common/constants';
 import { cloneDeep } from 'lodash';
+import { DMConfigDataService } from 'src/app/common/dataservices/datamagine-config.data.service';
 
 
 @Component({
@@ -121,6 +122,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   initialTenantIdList: any[] = [];
   @ViewChild('myInput') myInput: ElementRef;
   inputSearch;
+  showLoginloader:boolean=false;
+  private intervalId: any; // Type 'any' can be replaced with 'number'
+  private elapsedTime: number = 0;
 
   constructor(
     private dialog: MatDialog,
@@ -146,13 +150,16 @@ export class LoginComponent implements OnInit, OnDestroy {
     private crypto: CryptoUtility,
     private oauthService: OAuthService,
     private route: ActivatedRoute,
-    private adb2cAuthConfiguration: ADB2CAuthConfiguration
+    private adb2cAuthConfiguration: ADB2CAuthConfiguration,
+    private dmConfigDataService: DMConfigDataService
   ) {
     // this.initializeForm();
     // this.captions = this.localize.captions;
   }
 
   async ngOnInit() {
+    document.querySelectorAll('body')[0].setAttribute('id',"bodyId");
+    this.enableLoginloader(false);
     this.enablePropertySelection = false;
     await this.initializeForm();
     let custId = this.commonLocalize.getLocalCookie('appRetailCustID');
@@ -221,6 +228,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.setVal();
         this.OnFormValueChanges();
       } else {
+        this.enableLoginloader(false);
         this.userIdDir = 'capitalise,notallowspace,nospecailchar';
         this.showCustomerID = false;
         this.loginForms?.controls["customerId"].disable();
@@ -265,6 +273,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.stopInterval();
     if (this.$destroyed) {
       this.$destroyed.next(true);
       this.$destroyed.complete();
@@ -293,7 +302,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   getADB2CEmailClaim(claims)
-  {    
+  {
     let email = "";
 
     if(claims != null && claims != undefined)
@@ -306,8 +315,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       {
         email = claims['email'];
       }
-    }   
-    
+    }
+
     return email;
   }
 
@@ -322,9 +331,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     };
     if(!credentials.email)
     {
-      this.utils.showAlert(this.captions.lbl_AzureTokenErrorMessage, AlertType.Error, ButtonType.Ok,(res=>{     
+      this.utils.showAlert(this.captions.lbl_AzureTokenErrorMessage, AlertType.Error, ButtonType.Ok,(res=>{
         this.adb2cLogout();
-      }));  
+      }));
       return false;
     }
     if(Number(tenantId) == SUPPORT_TENANT){
@@ -382,12 +391,14 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (this.propertyValues.length > 1 || this.propertyValues.length == 0) {
           this.loginSuccess = !this.loginSuccess;
         }
+        this.enableLoginloader(false);
       // Selecting property by default when there is only one property configured for tenant
       if (this.multipleProperties.length == 1) {
         this.setMachineInfo(this.propertyValues[0].propertyId);
         this.loginSuccess = false;
         this.enablePropertySelection = true;
         if (this.isMachineNameEnabled && this.isPromptOnLoginEnabled && this.machineNames.length > 0) {
+          this.enableLoginloader(false);
           this.loginSuccess = true;
           this.loginForms.controls.location.setValue(this.multipleProperties[0]);
         } else {
@@ -472,6 +483,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       } else {
         if (loginDetails.errorCode == 5001) {
           this.loginError = true;
+          this.enableLoginloader(false);
           this.loginButton.disabledproperty = false;
           this.errResponse = loginDetails.errorDescription;
         } else {
@@ -498,6 +510,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.SetPropertyInfo(selectedProperty);
       this.userDefaultsService.syncDefaultValues(this.userInfo.userId);
       await this.setEatecConfig();
+      await this.dmConfigDataService.SetDataMagineConfig();
       this.setAutoLogOff();
       await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.setMachineDetails();
@@ -804,9 +817,13 @@ export class LoginComponent implements OnInit, OnDestroy {
  * @description Get the return value of button emit
  */
   async getbuttonEmitvalue(e): Promise<void> {
+    if(!this.showLoginloader){
+
     window.onbeforeunload = null;
     this.commonLocalize.setLocalCookie('appRetailCustID', this.loginForms.get('customerId').value);
     if (e) {
+      this.enableLoginloader(true);
+
       e.preventDefault();
       this.loginForms.markAsUntouched();
     }
@@ -822,6 +839,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         await this.adb2cAuthValidation();
       }
       else {
+        this.enableLoginloader(false);
         this.showCustomerID = false;
         this.loginForms?.controls["customerId"].disable();
         setTimeout(() => {
@@ -844,6 +862,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.generalAuthValidation();
     }
   }
+}
 
   async adb2cAuthValidation() {
     if (this.loginForms.valid) {
@@ -960,7 +979,9 @@ export class LoginComponent implements OnInit, OnDestroy {
         passwordSetting: arg.passwordSetting,
         encKeyIv: { key: this.key, iv: this.iv }
       }
-    });
+    }).afterClosed().subscribe(res => {
+      this.enableLoginloader(false);
+  });
     this.loginForms.get('password').setValue('');
     this.errResponse = '';
   }
@@ -1125,6 +1146,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       } else {
         if (loginDetails.errorCode == 5001) {
+          this.enableLoginloader(false);
           this.loginError = true;
           this.loginButton.disabledproperty = false;
           this.errResponse = loginDetails.errorDescription;
@@ -1267,6 +1289,7 @@ async validateAdb2cCredentialsForSupportUser(){
  } else {
    if (loginDetails.errorCode == 5001) {
       this.loginError = true;
+      this.enableLoginloader(false);
       this.loginButton.disabledproperty = false;
       this.errResponse = loginDetails.errorDescription;
       this.hideLoginForm = false;
@@ -1427,6 +1450,7 @@ getTenantIdList(data: any[]){
         }
     this.loginForms?.controls['tenantId']?.setValue(this.tenantIdList[0].id);
     this.loginForms?.controls['propertyId']?.setValue(this.propertyIdListForATenant[0].id);
+    this.enableLoginloader(false);
     this.showCustomerID = false;
     this.hideLoginForm = false;
     this.loginSuccess = true;
@@ -1471,6 +1495,38 @@ enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
       this.inputSearch = ''
       this._filter("");
 
+    }
+  }
+
+  enableLoginloader(val:boolean)
+  {
+    if(this.loginForms?.valid && val)
+    {
+      this.showLoginloader= val ? val : false;
+      this.startInterval();
+    }else{
+      this.showLoginloader=false;
+    }
+  }
+  startInterval() {
+      // Set up the interval to execute a function every 1000 milliseconds (1 second)
+      this.elapsedTime=0;
+      this.intervalId = setInterval(() => {
+      this.elapsedTime += 1000; // Increment elapsed time by 1 second
+      // Check if 30 seconds have passed
+      if ((document.getElementById("bodyId")?.getElementsByClassName("Errorpop-container-Golf").length > 0) ||
+      (document.getElementById("bodyId")?.getElementsByClassName("errorpop-container").length > 0) || (document.getElementById("bodyId")?.getElementsByClassName("Errorpop-container").length > 0) ) {
+      this.stopInterval(); // Clear the interval if the condition is met
+      }
+    if (this.elapsedTime >= 50000) {
+     this.stopInterval(); // Clear the interval if 50 seconds have passed
+    }}, 1000);
+  }
+  stopInterval() {
+    // Clear the interval when called
+    this.enableLoginloader(false);
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
     }
   }
 

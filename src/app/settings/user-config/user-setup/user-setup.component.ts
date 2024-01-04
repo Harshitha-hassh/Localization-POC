@@ -144,8 +144,8 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     { title: this.captions.Email, jsonkey: 'email', alignType: 'left' },
     { title: this.captions.ApplicationAllowed, jsonkey: 'applicationAllowed', alignType: 'left' },
     { title: this.captions.Roles, jsonkey: 'roles', alignType: 'left' },
-    { title: this.captions.CreatedOn, jsonkey: 'createdOn', alignType: 'left' },
-    { title: this.captions.LastAccessedOn, jsonkey: 'lastAccessedOn', alignType: 'left' }];
+    { title: this.captions.CreatedOn, jsonkey: 'createdOn', alignType: 'left', 'sortcolumn':'createdOn_Min' },
+    { title: this.captions.LastAccessedOn, jsonkey: 'lastAccessedOn', alignType: 'left','sortcolumn':'lastAccessedOn_Min' }];
     this.tableoptions = [{
       TableHdrData: header,
       TablebodyData: tableData,
@@ -386,6 +386,8 @@ export class UserSetupComponent implements OnInit, OnDestroy {
               isAccountBlocked: propertyAccess && propertyAccess.length > 0 ? propertyAccess[0].accountBlocked : false,
               createdOn: data[x].createdOnLocalTimeZone ? `${this.localization.LocalizeDate(this.utils.getDate(data[x].createdOnLocalTimeZone))} | ${this.localization.LocalizeTime(this.utils.getDate(data[x].createdOnLocalTimeZone))}` : '',
               lastAccessedOn: data[x].lastAccessDateLocalTimeZone ? `${this.localization.LocalizeDate(this.utils.getDate(data[x].lastAccessDateLocalTimeZone))} | ${this.localization.LocalizeTime(this.utils.getDate(data[x].lastAccessDateLocalTimeZone))}` : '',
+              createdOn_Min:data[x].createdOnLocalTimeZone ?new Date(this.localization.LocalizeDateTimeFormatDDMMMYYYY(this.utils.getDate(data[x].createdOnLocalTimeZone))).getTime():0,
+              lastAccessedOn_Min :data[x].lastAccessDateLocalTimeZone ?new Date(this.localization.LocalizeDateTimeFormatDDMMMYYYY(this.utils.getDate(data[x].lastAccessDateLocalTimeZone))).getTime():0,
               applicationAllowed: appAllowedNames,
               roles: roleNames,
               allowedAppId: appAllowedIds,
