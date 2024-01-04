@@ -34,7 +34,7 @@ export class ManageSessionService implements OnDestroy {
     private timer: Observable<number>;
     public timerSubscriptionForNotification: Subscription;
     public timerForNotification: Observable<number>;
-    public transactionCount: BehaviorSubject<{ id: number, count: number }[]> = new BehaviorSubject([]);
+    public transactionCount: BehaviorSubject<{ id: number, count: number, message?: string }[]> = new BehaviorSubject([]);
 
     token = {
         refresh_token: 'refreshtokencode',

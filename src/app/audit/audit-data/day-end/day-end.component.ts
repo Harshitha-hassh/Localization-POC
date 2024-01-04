@@ -609,6 +609,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.retailSharedService.reOpenTransaction = true;
       this.retailSharedService.isReopenViewOnly = this.breakPoint.IsViewOnly(RetailBreakPoint.ReOpenTransaction);
       this.retailSharedService.transactionId = data.Id;
+      this.retailSharedService.ticketNumber = data?.TicketNumber;
       if (! await this.retailValidationService.ValidateSettleReopenAction(data.Id, 'reopen', this.TransactionLockCallback.bind(this))) {
         return;
       }
@@ -622,6 +623,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.retailSharedService.reOpenTransaction = false;
       this.retailSharedService.settleOpenTransaction = true;
       this.retailSharedService.transactionId = data.Id;      
+      this.retailSharedService.ticketNumber = data?.TicketNumber;
       if (! await this.retailValidationService.ValidateSettleReopenAction(data.Id, 'settle', this.TransactionLockCallback.bind(this))) {
         return;
       }
