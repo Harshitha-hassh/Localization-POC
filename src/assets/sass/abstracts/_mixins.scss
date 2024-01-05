@@ -584,6 +584,24 @@ $themes: (
         background-color: $colorbackground !important;
       }
     }
+    lib-reorder-panel{
+      .reorder-box .mat-checkbox{
+        top: 0 !important;
+      }
+      .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background{
+        background-color: #2e67b7 !important;
+      }
+      .mat-checkbox-frame{
+        border-color: #2e67b7 !important;
+        border-radius: 0px !important;
+      }
+    }
+    // .filter-options .filter-vallues-menu .filter-options-value{
+    //   .mat-checkbox-frame{
+    //     border-color: #2e67b7 !important;
+    //     border-radius: 0px !important;
+    //   }
+    // }
   }
 }
 // Including themes
