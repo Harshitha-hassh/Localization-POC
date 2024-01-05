@@ -1642,7 +1642,7 @@
 .icon-comp-slip-redemption:before {
   content: "\edb0";
 }
-.icon-sync1:before {
+.icon-sync:before {
   content: "\edaf";
   color: #525962;
 }
@@ -1686,7 +1686,7 @@
 .icon-Others1:before {
   content: "\ed95";
 }
-.icon-mail1:before {
+.icon-mail:before {
   content: "\eaaf";
 }
 .icon-Cash1:before {
@@ -2292,7 +2292,7 @@
 .icon-arrow-pointing-to-right:before {
   content: "\ed8b";
 }
-.icon-add1:before {
+.icon-add:before {
   content: "\ed8c";
 }
 .icon-Menu_search_icon:before {
@@ -5010,7 +5010,7 @@
 .icon-right-dashboard-arrow:before {
   content: "\eb32";
 }
-.icon-plus1:before {
+.icon-plus:before {
   content: "\eb2d";
 }
 .icon-minus:before {
@@ -5025,7 +5025,7 @@
 .icon-location-login1:before {
   content: "\eb25";
 }
-.icon-search1:before {
+.icon-search:before {
   content: "\eb24";
 }
 .icon-phone:before {
@@ -5034,13 +5034,13 @@
 .icon-scheduled1:before {
   content: "\eb1e";
 }
-.icon-delete1:before {
+.icon-delete:before {
   content: "\eb19";
 }
 .icon-others:before {
   content: "\eb18";
 }
-.icon-mail11:before {
+.icon-mail1:before {
   content: "\eb14";
 }
 .icon-cash:before {
@@ -5067,7 +5067,7 @@
 .icon-coins:before {
   content: "\eb03";
 }
-.icon-edit2:before {
+.icon-edit:before {
   content: "\eb2a";
 }
 .icon-drag-drop:before {
@@ -5085,7 +5085,7 @@
 .icon-uparrow:before {
   content: "\eb1a";
 }
-.icon-more1:before {
+.icon-more:before {
   content: "\eb48";
 }
 .icon-mug1:before {
@@ -5115,7 +5115,7 @@
 .icon-lunch1:before {
   content: "\eb2c";
 }
-.icon-add11:before {
+.icon-add1:before {
   content: "\eb2b";
 }
 .icon-print1:before {
@@ -5178,7 +5178,7 @@
 .icon-transaction1:before {
   content: "\eaf1";
 }
-.icon-cancel11:before {
+.icon-cancel1:before {
   content: "\eaf2";
 }
 .icon-enforce-gender1:before {
@@ -5214,7 +5214,7 @@
 .icon-zoom-out2:before {
   content: "\eb41";
 }
-.icon-user11:before {
+.icon-user1:before {
   content: "\eb43";
 }
 .icon-sendmail1:before {
@@ -6620,7 +6620,7 @@
 .icon-Scheduled:before {
   content: "\ebae";
 }
-.icon-Delete2:before {
+.icon-Delete:before {
   content: "\ebaf";
 }
 .icon-Others:before {
@@ -6773,7 +6773,7 @@
 .icon-transaction:before {
   content: "\ebf5";
 }
-.icon-cancel2:before {
+.icon-cancel:before {
   content: "\ebf6";
 }
 .icon-enforce-gender:before {
@@ -6809,7 +6809,7 @@
 .icon-zoom-out:before {
   content: "\ec01";
 }
-.icon-user2:before {
+.icon-user:before {
   content: "\ec02";
 }
 .icon-Calender:before {
@@ -6842,7 +6842,7 @@
 .icon-clock:before {
   content: "\ec0c";
 }
-.icon-information2:before {
+.icon-information:before {
   content: "\ec0d";
 }
 .icon-deposit:before {
@@ -6874,7 +6874,7 @@
   content: "\ec16";
   color: #56a948;
 }
-.icon-password-hide2:before {
+.icon-password-hide:before {
   content: "\ec17";
 }
 .icon-profile:before {
@@ -6892,7 +6892,7 @@
 .icon-woman:before {
   content: "\ec1c";
 }
-.icon-Location1:before {
+.icon-Location:before {
   content: "\ec1d";
 }
 .icon-repeatclients:before {
@@ -6946,16 +6946,16 @@
 .icon-info-icon:before {
   content: "\ec2e";
 }
-.icon-filter1:before {
+.icon-filter:before {
   content: "\ec2f";
 }
-.icon-password-show2:before {
+.icon-password-show:before {
   content: "\ec30";
 }
 .icon-location:before {
   content: "\ec31";
 }
-.icon-password2:before {
+.icon-password:before {
   content: "\ec32";
 }
 .icon-userid:before {
@@ -6973,7 +6973,7 @@
 .icon-right-arrow-dashboard:before {
   content: "\ec37";
 }
-.icon-sortArrow1:before {
+.icon-sortArrow:before {
   content: "\ec38";
   color: #6b6b6b;
 }

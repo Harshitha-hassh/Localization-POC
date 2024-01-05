@@ -5725,6 +5725,17 @@ body .cdk-custom-wrapper .ag_table .table th {
     }
 
   }
+  .agilysys-dynamic-form .agilysys-form-fields .mat-form-field.mat-form-field-appearance-fill:not(.mat-form-field-invalid) .mat-form-field-label-wrapper .mat-form-field-label{
+    font-size: 12px !important;
+  }
+  .agilysys-dynamic-form .agilysys-form-fields .mat-form-field.mat-form-field-appearance-fill .mat-form-field-flex .mat-form-field-infix{
+    .mat-form-field-label-wrapper{
+      top: -0.84375em !important;
+    }
+  }
+  .agilysys-dropdown-search-field .mat-form-field,.agilysys-multiselectdropdown-search-field,.agilysys-dynamic-form .agilysys-form-fields .mat-form-field{
+    margin-top: 0px !important;
+  }
 }
 .cdk-overlay-container .cdk-overlay-pane .fontChange{
   font-family: $ag_poppins-semibold !important;
@@ -5831,18 +5842,6 @@ app-transaction{
     }
     .mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
       color: #2e67b7 !important;
-    }
-  }
-  lib-reorder-panel{
-    .reorder-box .mat-checkbox{
-      top: 0 !important;
-    }
-    .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background{
-      background-color: #2e67b7 !important;
-    }
-    .mat-checkbox-frame{
-      border-color: #2e67b7 !important;
-      border-radius: 0px !important;
     }
   }
 }
