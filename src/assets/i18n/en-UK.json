@@ -3963,6 +3963,7 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_uk",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_uk",
   "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_uk",
+  "DMPostingInfo": "{count} Failed records found in DataMagine Receipt Postings_uk",
   "lbl_more": "MORE_uk",
   "FailedTransLogInfo": "{count} Failed records found in Payment Logs_uk",
   "composed": "View Composed_uk",
