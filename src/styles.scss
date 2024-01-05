@@ -5658,3 +5658,7 @@ app-transaction{
     }
   }
 }
+.mat-tab-group .mat-tab-label{
+  height: 48px !important;
+  max-width: unset !important;
+}
