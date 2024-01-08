@@ -11,6 +11,8 @@ import { Utilities } from 'src/app/core/utilities';
 import { PropertySettingDataService } from 'src/app/shared/data-services/authentication/propertysetting.data.service';
 import { ManageSessionService } from '../manage-session.service';
 import { SetPasswordComponent } from '../set-password/set-password.component';
+import { SubPropertyDataService } from 'src/app/retail/retail-code-setup/retail-outlets/subproperty-data.service';
+
 import {
   JWT_TOKEN, USER_INFO,
   USER_SESSION, PROPERTY_INFO, PROPERTY_DATE, PROPERTY_CONFIGURATION_SETTINGS,
@@ -151,7 +153,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private oauthService: OAuthService,
     private route: ActivatedRoute,
     private adb2cAuthConfiguration: ADB2CAuthConfiguration,
-    private dmConfigDataService: DMConfigDataService
+    private dmConfigDataService: DMConfigDataService,
+    private _subPropertyDataService: SubPropertyDataService 
   ) {
     // this.initializeForm();
     // this.captions = this.localize.captions;
@@ -521,6 +524,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       console.log(userDetails)
       const result = userDetails.userProperties.find(item => item.propertyId === selectedProperty.propertyId);
       await this.propertyServices.setJasperAttributes(result?.roleId);
+      let outlets = await this._subPropertyDataService.getOutlets();
+      let OutletIdlist:any = outlets.map(x=>x.id);
+      sessionStorage.setItem('FromLocId', JSON.stringify((OutletIdlist ? OutletIdlist : '')));
     }
   }
 
