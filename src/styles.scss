@@ -4488,69 +4488,56 @@ a:hover {
 //icon default colors
 
 .icon-dashboard-cross:before {
-  content: "\ebd7";
   background: linear-gradient(-90deg, #fa9386, #de6758);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .icon-new-user:before {
-  content: "\ebdd";
   background: linear-gradient(-90deg, #a5adf8, #7481f1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .icon-swap1:before {
-  content: "\ebe0";
   background: linear-gradient(-90deg, #6ed6f8, #3bc2ee);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .icon-dashboard-tick:before {
-  content: "\ebe1";
   background: linear-gradient(-90deg, #73ecb4, #37df91);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .icon-cloudy .path1:before {
-  content: "\ea42";
   color: rgb(255, 216, 0);
 }
 .icon-cloudy .path2:before {
-  content: "\ea43";
   margin-left: -1.4111328125em;
   color: rgb(255, 255, 255);
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 .icon-thunder .path1:before {
-  content: "\ea44";
   color: rgb(255, 216, 59);
 }
 .icon-thunder .path2:before {
-  content: "\ea45";
   margin-left: -1.0595703125em;
   color: rgb(13, 145, 224);
 }
 .icon-thunder .path3:before {
-  content: "\ea46";
   margin-left: -1.0595703125em;
   color: rgb(13, 145, 224);
 }
 .icon-thunder .path4:before {
-  content: "\ea47";
   margin-left: -1.0595703125em;
   color: rgb(246, 246, 246);
 }
 .icon-light .path1:before {
-  content: "\ea48";
   color: rgb(255, 216, 59);
 }
 .icon-light .path2:before {
-  content: "\ea49";
   margin-left: -1.0595703125em;
   color: rgb(13, 145, 224);
 }
 .icon-light .path3:before {
-  content: "\ea4a";
   margin-left: -1.0595703125em;
   color: rgb(246, 246, 246);
 }
@@ -4574,938 +4561,764 @@ a:hover {
 }
 
 .icon-No-Search-Results-2 .path1:before {
-  content: "\e986";
   color: #ebf4eb;
 }
 .icon-No-Search-Results-2 .path2:before {
-  content: "\e987";
   color: #4d8af0;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path3:before {
-  content: "\e988";
   color: #fdd835;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path4:before {
-  content: "\e989";
   color: #47e6b1;
   opacity: 0.5;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path5:before {
-  content: "\e98a";
   color: #f55f44;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path6:before {
-  content: "\e98b";
   color: #d7d7d7;
   /* opacity: 0.5; */
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path7:before {
-  content: "\e98c";
   color: #fff;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path8:before {
-  content: "\e98d";
   color: #000;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path9:before {
-  content: "\e98e";
   color: #fff;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path10:before {
-  content: "\e98f";
   color: #bdbdbd;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path11:before {
-  content: "\e990";
   color: #e0e0e0;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path12:before {
-  content: "\e991";
   color: #2665c0;
   opacity: 0.9;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path13:before {
-  content: "\e992";
   color: #000;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path14:before {
-  content: "\e993";
   color: #fff;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path15:before {
-  content: "\e994";
   color: #bdbdbd;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path16:before {
-  content: "\e995";
   color: #e0e0e0;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path17:before {
-  content: "\e996";
   color: #2665c0;
   opacity: 0.9;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path18:before {
-  content: "\e997";
   color: #000;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path19:before {
-  content: "\e998";
   color: #fff;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path20:before {
-  content: "\e999";
   color: #bdbdbd;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path21:before {
-  content: "\e99a";
   color: #e0e0e0;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path22:before {
-  content: "\e99b";
   color: #e0e0e0;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path23:before {
-  content: "\e99c";
   color: #2665c0;
   opacity: 0.9;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path24:before {
-  content: "\e99d";
   color: #e0e0e0;
   margin-left: -1.404296875em;
 }
 .icon-No-Search-Results-2 .path25:before {
-  content: "\e99e";
   color: #2665c0;
   margin-left: -1.404296875em;
 }
 .icon-no-appointment-booked .path1:before {
-  content: "\ea4b";
   color: rgb(67, 160, 71);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path2:before {
-  content: "\ea4c";
   margin-left: -1.494140625em;
   color: rgb(108, 99, 255);
 }
 .icon-no-appointment-booked .path3:before {
-  content: "\ea4d";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path4:before {
-  content: "\ea4e";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path5:before {
-  content: "\ea4f";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path6:before {
-  content: "\ea50";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path7:before {
-  content: "\ea51";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path8:before {
-  content: "\ea52";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path9:before {
-  content: "\ea53";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path10:before {
-  content: "\ea54";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path11:before {
-  content: "\ea55";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path12:before {
-  content: "\ea56";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path13:before {
-  content: "\ea57";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path14:before {
-  content: "\ea58";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path15:before {
-  content: "\ea59";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path16:before {
-  content: "\ea5a";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path17:before {
-  content: "\ea5b";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path18:before {
-  content: "\ea5c";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path19:before {
-  content: "\ea5d";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path20:before {
-  content: "\eba1";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path21:before {
-  content: "\eba2";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path22:before {
-  content: "\eba3";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path23:before {
-  content: "\eba4";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path24:before {
-  content: "\eba5";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path25:before {
-  content: "\eba6";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path26:before {
-  content: "\eba7";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path27:before {
-  content: "\eba8";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path28:before {
-  content: "\eba9";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path29:before {
-  content: "\ebaa";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path30:before {
-  content: "\ebab";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path31:before {
-  content: "\ebac";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path32:before {
-  content: "\ebad";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path33:before {
-  content: "\ebae";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path34:before {
-  content: "\ebaf";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.354;
 }
 .icon-no-appointment-booked .path35:before {
-  content: "\ebb0";
   margin-left: -1.494140625em;
   color: rgb(68, 64, 83);
 }
 .icon-no-appointment-booked .path36:before {
-  content: "\ebb1";
   margin-left: -1.494140625em;
   color: rgb(68, 64, 83);
 }
 .icon-no-appointment-booked .path37:before {
-  content: "\ebb2";
   margin-left: -1.494140625em;
   color: rgb(68, 64, 83);
 }
 .icon-no-appointment-booked .path38:before {
-  content: "\ebb3";
   margin-left: -1.494140625em;
   color: rgb(67, 160, 71);
 }
 .icon-no-appointment-booked .path39:before {
-  content: "\ebb4";
   margin-left: -1.494140625em;
   color: rgb(63, 61, 86);
 }
 .icon-no-appointment-booked .path40:before {
-  content: "\ebb5";
   margin-left: -1.494140625em;
   color: rgb(63, 61, 86);
 }
 .icon-no-appointment-booked .path41:before {
-  content: "\ebb6";
   margin-left: -1.494140625em;
   color: rgb(63, 61, 86);
 }
 .icon-no-appointment-booked .path42:before {
-  content: "\ebb7";
   margin-left: -1.494140625em;
   color: rgb(63, 61, 86);
 }
 .icon-no-appointment-booked .path43:before {
-  content: "\ebb8";
   margin-left: -1.494140625em;
   color: rgb(63, 61, 86);
 }
 .icon-no-appointment-booked .path44:before {
-  content: "\ebb9";
   margin-left: -1.494140625em;
   color: rgb(63, 61, 86);
 }
 .icon-no-appointment-booked .path45:before {
-  content: "\ebba";
   margin-left: -1.494140625em;
   color: rgb(63, 61, 86);
 }
 .icon-no-appointment-booked .path46:before {
-  content: "\ebbb";
   margin-left: -1.494140625em;
   color: rgb(67, 160, 71);
 }
 .icon-no-appointment-booked .path47:before {
-  content: "\ebbc";
   margin-left: -1.494140625em;
   color: #2665c0;
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path48:before {
-  content: "\ebbd";
   margin-left: -1.494140625em;
   color: rgb(255, 255, 255);
 }
 .icon-no-appointment-booked .path49:before {
-  content: "\ebbe";
   margin-left: -1.494140625em;
   color: rgb(0, 0, 0);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path50:before {
-  content: "\ebbf";
   margin-left: -1.494140625em;
   color: rgb(0, 0, 0);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path51:before {
-  content: "\ebc0";
   margin-left: -1.494140625em;
   color: rgb(236, 235, 237);
   opacity: 0.343;
 }
 .icon-no-appointment-booked .path52:before {
-  content: "\ebc1";
   margin-left: -1.494140625em;
   color: rgb(68, 64, 83);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path53:before {
-  content: "\ebc2";
   margin-left: -1.494140625em;
   color: rgb(68, 64, 83);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path54:before {
-  content: "\ebc3";
   margin-left: -1.494140625em;
   color: rgb(68, 64, 83);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path55:before {
-  content: "\ebc4";
   margin-left: -1.494140625em;
   color: rgb(67, 160, 71);
 }
 .icon-no-appointment-booked .path56:before {
-  content: "\ebc5";
   margin-left: -1.494140625em;
   color: rgb(68, 64, 83);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path57:before {
-  content: "\ebc6";
   margin-left: -1.494140625em;
   color: rgb(68, 64, 83);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path58:before {
-  content: "\ebc7";
   margin-left: -1.494140625em;
   color: rgb(68, 64, 83);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path59:before {
-  content: "\ebc8";
   margin-left: -1.494140625em;
   color: rgb(67, 160, 71);
 }
 .icon-no-appointment-booked .path60:before {
-  content: "\ebc9";
   margin-left: -1.494140625em;
   color: rgb(0, 0, 0);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path61:before {
-  content: "\ebca";
   margin-left: -1.494140625em;
   color: rgb(0, 0, 0);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path62:before {
-  content: "\ebcb";
   margin-left: -1.494140625em;
   color: rgb(67, 160, 71);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path63:before {
-  content: "\ebcc";
   margin-left: -1.494140625em;
   color: rgb(67, 160, 71);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path64:before {
-  content: "\ebcd";
   margin-left: -1.494140625em;
   color: rgb(67, 160, 71);
   opacity: 0.1;
 }
 .icon-no-appointment-booked .path65:before {
-  content: "\ebce";
   margin-left: -1.494140625em;
   color: rgb(67, 160, 71);
   opacity: 0.1;
 }
 .icon-coins:before {
-  content: "\eb03";
   color: #26ebc0;
 }
 .icon-password-show1:before {
-  content: "\ea02";
   color: #2665c0;
 }
 .icon-No_records_found_aftersearch1 .path1:before {
-  content: "\eb49";
   color: #2665c0;
   opacity: 0.204;
 }
 .icon-No_records_found_aftersearch1 .path2:before {
-  content: "\eb60";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path3:before {
-  content: "\eb61";
   margin-left: -1.4921875em;
   color: rgb(108, 99, 255);
   opacity: 0.7;
 }
 .icon-No_records_found_aftersearch1 .path4:before {
-  content: "\eb62";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path5:before {
-  content: "\eb63";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path6:before {
-  content: "\eb64";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path7:before {
-  content: "\eb65";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path8:before {
-  content: "\eb66";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path9:before {
-  content: "\eb67";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path10:before {
-  content: "\eb68";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path11:before {
-  content: "\eb69";
   margin-left: -1.4921875em;
   color: rgb(0, 0, 0);
   opacity: 0.5;
 }
 .icon-No_records_found_aftersearch1 .path12:before {
-  content: "\eb6a";
   margin-left: -1.4921875em;
   color: rgb(245, 245, 245);
 }
 .icon-No_records_found_aftersearch1 .path13:before {
-  content: "\eb6b";
   margin-left: -1.4921875em;
   color: rgb(0, 0, 0);
   opacity: 0.5;
 }
 .icon-No_records_found_aftersearch1 .path14:before {
-  content: "\eb6c";
   margin-left: -1.4921875em;
   color: rgb(255, 255, 255);
 }
 .icon-No_records_found_aftersearch1 .path15:before {
-  content: "\eb6d";
   margin-left: -1.4921875em;
   color: rgb(108, 99, 255);
   opacity: 0.4;
 }
 .icon-No_records_found_aftersearch1 .path16:before {
-  content: "\eb6e";
   margin-left: -1.4921875em;
   color: rgb(108, 99, 255);
   opacity: 0.4;
 }
 .icon-No_records_found_aftersearch1 .path17:before {
-  content: "\eb6f";
   margin-left: -1.4921875em;
   color: rgb(0, 0, 0);
   opacity: 0.5;
 }
 .icon-No_records_found_aftersearch1 .path18:before {
-  content: "\eb70";
   margin-left: -1.4921875em;
   color: rgb(245, 245, 245);
 }
 .icon-No_records_found_aftersearch1 .path19:before {
-  content: "\eb71";
   margin-left: -1.4921875em;
   color: rgb(0, 0, 0);
   opacity: 0.5;
 }
 .icon-No_records_found_aftersearch1 .path20:before {
-  content: "\eb72";
   margin-left: -1.4921875em;
   color: rgb(255, 255, 255);
 }
 .icon-No_records_found_aftersearch1 .path21:before {
-  content: "\eb73";
   margin-left: -1.4921875em;
   color: rgb(189, 189, 189);
   opacity: 0.4;
 }
 .icon-No_records_found_aftersearch1 .path22:before {
-  content: "\eb74";
   margin-left: -1.4921875em;
   color: rgb(189, 189, 189);
   opacity: 0.4;
 }
 .icon-No_records_found_aftersearch1 .path23:before {
-  content: "\eb75";
   margin-left: -1.4921875em;
   color: rgb(0, 0, 0);
   opacity: 0.5;
 }
 .icon-No_records_found_aftersearch1 .path24:before {
-  content: "\eb76";
   margin-left: -1.4921875em;
   color: rgb(0, 0, 0);
   opacity: 0.5;
 }
 .icon-No_records_found_aftersearch1 .path25:before {
-  content: "\eb77";
   margin-left: -1.4921875em;
   color: rgb(255, 255, 255);
 }
 .icon-No_records_found_aftersearch1 .path26:before {
-  content: "\eb78";
   margin-left: -1.4921875em;
   color: rgb(255, 255, 255);
 }
 .icon-No_records_found_aftersearch1 .path27:before {
-  content: "\eb79";
   margin-left: -1.4921875em;
   color: rgb(0, 0, 0);
 }
 .icon-No_records_found_aftersearch1 .path28:before {
-  content: "\eb7a";
   margin-left: -1.4921875em;
   color: rgb(0, 0, 0);
 }
 .icon-No_records_found_aftersearch1 .path29:before {
-  content: "\eb7b";
   margin-left: -1.4921875em;
   color: rgb(255, 255, 255);
 }
 .icon-No_records_found_aftersearch1 .path30:before {
-  content: "\eb7c";
   margin-left: -1.4921875em;
   color: rgb(189, 189, 189);
 }
 .icon-No_records_found_aftersearch1 .path31:before {
-  content: "\eb7d";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path32:before {
-  content: "\eb7e";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path33:before {
-  content: "\eb7f";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path34:before {
-  content: "\eb80";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path35:before {
-  content: "\eb81";
   margin-left: -1.4921875em;
   color: #2665c0;
   opacity: 0.9;
 }
 .icon-No_records_found_aftersearch1 .path36:before {
-  content: "\eb82";
   margin-left: -1.4921875em;
   color: rgb(0, 0, 0);
 }
 .icon-No_records_found_aftersearch1 .path37:before {
-  content: "\eb83";
   margin-left: -1.4921875em;
   color: rgb(255, 255, 255);
 }
 .icon-No_records_found_aftersearch1 .path38:before {
-  content: "\eb84";
   margin-left: -1.4921875em;
   color: rgb(189, 189, 189);
 }
 .icon-No_records_found_aftersearch1 .path39:before {
-  content: "\eb85";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path40:before {
-  content: "\eb86";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path41:before {
-  content: "\eb87";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path42:before {
-  content: "\eb88";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path43:before {
-  content: "\eb89";
   margin-left: -1.4921875em;
   color: #2665c0;
   opacity: 0.9;
 }
 .icon-No_records_found_aftersearch1 .path44:before {
-  content: "\eb8a";
   margin-left: -1.4921875em;
   color: rgb(0, 0, 0);
 }
 .icon-No_records_found_aftersearch1 .path45:before {
-  content: "\eb8b";
   margin-left: -1.4921875em;
   color: rgb(255, 255, 255);
 }
 .icon-No_records_found_aftersearch1 .path46:before {
-  content: "\eb8c";
   margin-left: -1.4921875em;
   color: rgb(189, 189, 189);
 }
 .icon-No_records_found_aftersearch1 .path47:before {
-  content: "\eb8d";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path48:before {
-  content: "\eb8e";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path49:before {
-  content: "\eb8f";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path50:before {
-  content: "\eb90";
   margin-left: -1.4921875em;
   color: rgb(224, 224, 224);
 }
 .icon-No_records_found_aftersearch1 .path51:before {
-  content: "\eb91";
   margin-left: -1.4921875em;
   color: #2665c0;
   opacity: 0.9;
 }
 .icon-No_records_found_aftersearch1 .path52:before {
-  content: "\eb92";
   margin-left: -1.4921875em;
   color: rgb(0, 0, 0);
 }
 .icon-No_records_found_aftersearch1 .path53:before {
-  content: "\eb93";
   margin-left: -1.4921875em;
   color: rgb(0, 0, 0);
 }
 .icon-No_records_found_aftersearch1 .path54:before {
-  content: "\eb94";
   margin-left: -1.4921875em;
   color: #2665c0;
 }
 .icon-No_records_found_aftersearch1 .path55:before {
-  content: "\eb95";
   margin-left: -1.4921875em;
   color: #2665c0;
 }
 .icon-No_records_found_aftersearch1 .path56:before {
-  content: "\eb96";
   margin-left: -1.4921875em;
   color: #2665c0;
 }
 .icon-No_records_found_aftersearch1 .path57:before {
-  content: "\eb97";
   margin-left: -1.4921875em;
   color: rgb(71, 230, 177);
 }
 .icon-No_records_found_aftersearch1 .path58:before {
-  content: "\eb98";
   margin-left: -1.4921875em;
   color: rgb(71, 230, 177);
 }
 .icon-No_records_found_aftersearch1 .path59:before {
-  content: "\eb99";
   margin-left: -1.4921875em;
   color: rgb(77, 138, 240);
 }
 .icon-No_records_found_aftersearch1 .path60:before {
-  content: "\eb9a";
   margin-left: -1.4921875em;
   color: rgb(253, 216, 53);
 }
 .icon-No_records_found_aftersearch1 .path61:before {
-  content: "\eb9b";
   margin-left: -1.4921875em;
   color: rgb(253, 216, 53);
 }
 .icon-No_records_found_aftersearch1 .path62:before {
-  content: "\eb9c";
   margin-left: -1.4921875em;
   color: rgb(245, 95, 68);
 }
 .icon-No_records_found_aftersearch1 .path63:before {
-  content: "\eb9d";
   margin-left: -1.4921875em;
   color: rgb(245, 95, 68);
 }
 .icon-No_records_found_aftersearch1 .path64:before {
-  content: "\eb9e";
   margin-left: -1.4921875em;
   color: rgb(77, 138, 240);
 }
 .icon-No_records_found_aftersearch1 .path65:before {
-  content: "\eb9f";
   margin-left: -1.4921875em;
   color: rgb(71, 230, 177);
   opacity: 0.5;
 }
 .icon-No_records_found_aftersearch1 .path66:before {
-  content: "\eba0";
   margin-left: -1.4921875em;
   color: rgb(77, 138, 240);
 }
 .icon-No-Search-Results .path1:before {
-  content: "\e979";
   color: rgb(232, 239, 248);
   opacity: 1;
 }
 .icon-No-Search-Results .path2:before {
-  content: "\e97a";
   margin-left: -1.37890625em;
   color: rgb(224, 224, 224);
 }
 .icon-No-Search-Results .path3:before {
-  content: "\e97b";
   margin-left: -1.37890625em;
   color: rgb(255, 255, 255);
 }
 .icon-No-Search-Results .path4:before {
-  content: "\e97c";
   margin-left: -1.37890625em;
   color: rgb(38, 101, 192);
 }
 .icon-No-Search-Results .path5:before {
-  content: "\e97d";
   margin-left: -1.37890625em;
   color: rgb(96, 142, 209);
 }
 .icon-No-Search-Results .path6:before {
-  content: "\e97e";
   margin-left: -1.37890625em;
   color: rgb(224, 224, 224);
 }
 .icon-No-Search-Results .path7:before {
-  content: "\e97f";
   margin-left: -1.37890625em;
   color: rgb(255, 255, 255);
 }
 .icon-No-Search-Results .path8:before {
-  content: "\e980";
   margin-left: -1.37890625em;
   color: rgb(38, 101, 192);
 }
 .icon-No-Search-Results .path9:before {
-  content: "\e981";
   margin-left: -1.37890625em;
   color: rgb(96, 142, 209);
 }
 .icon-No-Search-Results .path10:before {
-  content: "\e982";
   margin-left: -1.37890625em;
   color: rgb(71, 230, 177);
 }
 .icon-No-Search-Results .path11:before {
-  content: "\e983";
   margin-left: -1.37890625em;
   color: rgb(165, 203, 247);
 }
 .icon-No-Search-Results .path12:before {
-  content: "\e984";
   margin-left: -1.37890625em;
   color: rgb(245, 95, 68);
   opacity: 0.5;
 }
 .icon-No-Search-Results .path13:before {
-  content: "\ea27";
   margin-left: -1.37890625em;
   color: rgb(165, 196, 247);
 }
 .icon-No-Search-Results .path14:before {
-  content: "\ea28";
   margin-left: -1.37890625em;
   color: rgb(162, 242, 216);
 }
 
 .icon-Player-worth_enabled .path1:before {
-  content: "\ecc2";
   color: $theme-base-color;
 }
 .icon-Player-worth_enabled .path2:before {
-  content: "\ecc3";
   margin-left: -1em;
   color: rgb(255, 255, 255);
 }
@@ -5725,6 +5538,17 @@ body .cdk-custom-wrapper .ag_table .table th {
     }
 
   }
+  .agilysys-dynamic-form .agilysys-form-fields .mat-form-field.mat-form-field-appearance-fill:not(.mat-form-field-invalid) .mat-form-field-label-wrapper .mat-form-field-label{
+    font-size: 12px !important;
+  }
+  .agilysys-dynamic-form .agilysys-form-fields .mat-form-field.mat-form-field-appearance-fill .mat-form-field-flex .mat-form-field-infix{
+    .mat-form-field-label-wrapper{
+      top: -0.84375em !important;
+    }
+  }
+  .agilysys-dropdown-search-field .mat-form-field,.agilysys-multiselectdropdown-search-field,.agilysys-dynamic-form .agilysys-form-fields .mat-form-field{
+    margin-top: 0px !important;
+  }
 }
 .cdk-overlay-container .cdk-overlay-pane .fontChange{
   font-family: $ag_poppins-semibold !important;
@@ -5833,16 +5657,8 @@ app-transaction{
       color: #2e67b7 !important;
     }
   }
-  lib-reorder-panel{
-    .reorder-box .mat-checkbox{
-      top: 0 !important;
-    }
-    .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background{
-      background-color: #2e67b7 !important;
-    }
-    .mat-checkbox-frame{
-      border-color: #2e67b7 !important;
-      border-radius: 0px !important;
-    }
-  }
+}
+.mat-tab-group .mat-tab-label{
+  height: 48px !important;
+  max-width: unset !important;
 }
