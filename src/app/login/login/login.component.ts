@@ -524,9 +524,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       console.log(userDetails)
       const result = userDetails.userProperties.find(item => item.propertyId === selectedProperty.propertyId);
       await this.propertyServices.setJasperAttributes(result?.roleId);
-      let outlets = await this._subPropertyDataService.getOutlets();
-      let OutletIdlist:any = outlets.map(x=>x.id);
-      sessionStorage.setItem('FromLocId', JSON.stringify((OutletIdlist ? OutletIdlist : '')));
     }
   }
 
@@ -609,8 +606,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
       if (eatecFeature != null && eatecFeature.isActive) {
         sessionStorage.setItem('isEatecEnabled', 'true');
+        sessionStorage.setItem('LoggedInSiteId', JSON.stringify((this.propertyInfo.PropertyId ? this.propertyInfo.PropertyId : '0')));
         propIds.push(eatecFeature.id);
         await this.setEatecToken();
+      let outlets = await this._subPropertyDataService.getOutlets();
+      let OutletIdlist:any = outlets.map(x=>x.id);
+      sessionStorage.setItem('FromLocId', JSON.stringify((OutletIdlist ? OutletIdlist : '')));
+      sessionStorage.setItem('IniDateFieldFormat', this.localize.inputDateFormat);
+      sessionStorage.setItem('LocalCurrencyCode', this.localize.currencyCode);
       } else {
         sessionStorage.setItem('isEatecEnabled', 'false');
         this.retailpropertyInfo.SetEatecRI('');
