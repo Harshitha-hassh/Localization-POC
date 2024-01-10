@@ -1572,7 +1572,8 @@
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_gb",
       "RemoveAll": "Remove All_gb"
     },
-    "TaxOnTax": "Tax On Tax_gb"
+    "TaxOnTax": "Tax On Tax_gb",
+    "OpenItemValidationforGiftCard": "Gift card item should be configured as an open item_gb"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_gb",
