@@ -36,14 +36,14 @@ let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLoc
 };
 
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, 'app/eatecui/assets/i18n/', '.json');
 }
-// export function appInitializerFactory(translate: TranslateService) {
-//   return () => {
-//     translate.setDefaultLang('en');
-//     return translate.use('en').toPromise();
-//   };
-// }
+export function appInitializerFactory(translate: TranslateService) {
+  return () => {
+    translate.setDefaultLang('en');
+    return translate.use('en').toPromise();
+  };
+}
 
 declare module "@angular/core" {
   interface ModuleWithProviders<T = any> {
@@ -105,12 +105,12 @@ export const OtherOptions: MatTooltipDefaultOptions = {
       multi: true,
       deps: [EnvService]
     },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: appInitializerFactory,
-    //   deps: [TranslateService, Injector],
-    //   multi: true
-    // },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializerFactory,
+      deps: [TranslateService, Injector],
+      multi: true
+    },
     UrlHelperService,
     ADB2CAuthConfiguration
   ],
@@ -119,7 +119,7 @@ export const OtherOptions: MatTooltipDefaultOptions = {
 export class AppModule {
   constructor(private injector: Injector, translate: TranslateService) {
     ServiceLocator.injector = this.injector;
-    // translate.setDefaultLang('en');
-    // translate.use('en');
+    translate.setDefaultLang('en');
+    translate.use('en');
   }
 }
