@@ -5536,6 +5536,18 @@ body .cdk-custom-wrapper .ag_table .table th {
           }
       }
     }
+    .create-transaction .create-transaction-tab .mat-tab-header{
+      background-color: unset !important;
+      .mat-tab-label.mat-tab-label-active{
+        color: unset !important;
+      }
+      .mat-tab-labels{
+        background: unset !important;
+      }
+      .mat-ink-bar{
+        background: #2e67b7 !important;
+      }
+    }
 
   }
   .agilysys-dynamic-form .agilysys-form-fields .mat-form-field.mat-form-field-appearance-fill:not(.mat-form-field-invalid) .mat-form-field-label-wrapper .mat-form-field-label{
@@ -5547,6 +5559,12 @@ body .cdk-custom-wrapper .ag_table .table th {
     }
   }
   .agilysys-dropdown-search-field .mat-form-field,.agilysys-multiselectdropdown-search-field,.agilysys-dynamic-form .agilysys-form-fields .mat-form-field{
+    margin-top: 0px !important;
+  }
+  .actions-section .no-filter-action .action-item-list .action-buttons .grid-search{
+    margin-top: 0px !important;
+  }
+  .agilysys-post-po-popup .post-po-popup .supplier-header .grouping-search{
     margin-top: 0px !important;
   }
 }
@@ -5661,4 +5679,15 @@ app-transaction{
 .mat-tab-group .mat-tab-label{
   height: 48px !important;
   max-width: unset !important;
+}
+.agilysys-post-po-popup .post-po-popup .table {
+.mat-checkbox{
+  top: 0px !important;
+  .mat-checkbox-frame{
+      border-color: #000000 !important;
+  }
+}
+  .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background{
+      background-color: #2e67b7 !important;
+  }
 }

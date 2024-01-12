@@ -596,12 +596,29 @@ $themes: (
         border-radius: 0px !important;
       }
     }
-    // .filter-options .filter-vallues-menu .filter-options-value{
-    //   .mat-checkbox-frame{
-    //     border-color: #2e67b7 !important;
-    //     border-radius: 0px !important;
-    //   }
-    // }
+    lib-agilysys-dynamicform{
+      .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
+        background-color: #2e67b7 !important;
+      }
+      .mat-checkbox-frame{
+        border-color: #21242c !important;
+      }
+      .mat-form-field.mat-focused .mat-form-field-label {
+        color: #747885 !important;
+      }
+      .mat-form-field.mat-focused.mat-primary .mat-select-arrow{
+        color: #2e67b7 !important;
+      }
+      .mat-select-arrow {
+        color: #0000008a;
+      }
+      .mat-radio-button.mat-accent .mat-radio-inner-circle{
+        background-color: #2e67b7 !important;
+      }
+      .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+        border-color: unset !important;
+      }
+    }
   }
 }
 // Including themes
