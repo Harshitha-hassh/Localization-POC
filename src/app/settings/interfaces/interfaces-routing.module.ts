@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RouteGuardService } from 'src/app/core/services/route.guard.service';
 import { InterfacesComponent } from './interfaces.component';
+import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.constants';
 
 const routes: Routes = [{
   path: '',
@@ -14,6 +15,10 @@ const routes: Routes = [{
     {
       path: 'dataMagine',
       loadChildren: () => import('./datamagine/datamagine.module').then(m => m.DatamagineModule)
+    },
+    {
+        path: 'pmsIntegration', loadChildren: () => import('./pms-integration/pms-integration.module').then(m => m.PMSIntegrationModule),
+        canActivate: [RouteGuardService]
     }
   ]
 }];
