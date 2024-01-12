@@ -4227,5 +4227,6 @@
   "startTimeError": "Missing Start Time_uk",
   "endTimeError": "Missing End Time_uk",
   "lbl_overlapRule": "Overlap rule not allowed_uk",
-  "lbl_enable_Rules": "Enable Timeframe for Discount_uk"
+  "lbl_enable_Rules": "Enable Timeframe for Discount_uk",
+  "Error_PMSCommunication_Not_Configured": "PMS Communication Receiver Not Configured_uk"
 }

@@ -4227,5 +4227,6 @@
   "startTimeError": "Missing Start Time_gb",
   "endTimeError": "Missing End Time_gb",
   "lbl_overlapRule": "Overlap rule not allowed_gb",
-  "lbl_enable_Rules": "Enable Timeframe for Discount_gb"
+  "lbl_enable_Rules": "Enable Timeframe for Discount_gb",
+  "Error_PMSCommunication_Not_Configured": "PMS Communication Receiver Not Configured_gb"
 }
