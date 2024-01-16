@@ -1572,7 +1572,8 @@
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_fi",
       "RemoveAll": "Remove All_fi"
     },
-    "TaxOnTax": "Tax On Tax_fi"
+    "TaxOnTax": "Tax On Tax_fi",
+    "OpenItemValidationforGiftCard": "Gift card item should be configured as an open item_fi"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fi",
@@ -3963,6 +3964,7 @@
   "combineGuestSuccess_Merge": "Successfully combined the records from the Selected Guests to {primaryGuestFirstName} {primaryGuestLastName}_fi",
   "combineGuest_warning": "Are you sure you want to cancel the changes?_fi",
   "RevenuePostingInfo": "{count} Failed records found in Revenue Postings_fi",
+  "DMPostingInfo": "{count} Failed records found in DataMagine Receipt Postings_fi",
   "lbl_more": "MORE_fi",
   "FailedTransLogInfo": "{count} Failed records found in Payment Logs_fi",
   "composed": "View Composed_fi",
