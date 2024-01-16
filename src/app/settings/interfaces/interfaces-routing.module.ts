@@ -17,7 +17,7 @@ const routes: Routes = [{
       loadChildren: () => import('./datamagine/datamagine.module').then(m => m.DatamagineModule)
     },
     {
-        path: 'pmsIntegration', loadChildren: () => import('./pms-integration/pms-integration.module').then(m => m.PMSIntegrationModule),
+        path: 'pmsIntegration', loadChildren: () => import('../../common/components/pmsintegration/pms-integration.module').then(m => m.PMSIntegrationModule),
         canActivate: [RouteGuardService]
     }
   ]
