@@ -1,0 +1,47 @@
+<div id="eatec-wrapper">
+    <div class="subnav-wrapper underline-hide">
+        <div class="ag_w--50">
+            <mat-form-field class="float-label-box">
+                <mat-select (selectionChange)="change($event)" [(value)]="selectedItem" [compareWith]="compareSelect"
+                    [disableOptionCentering]="true">
+                    <ng-container *ngFor="let item of menuList.menu">
+                        <mat-option *ngIf="item.visibility" [value]="item">
+                            <span>{{ item.text }}</span>
+                        </mat-option>
+                    </ng-container>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div *ngIf="isEnable" class="vertical-header">
+        <aside class="nav-section">
+            <ng-container>
+                <nav class="navItem">
+                    <ul class="nav" #navBar id="navBar">
+                        <ng-container *ngFor="let menu of verticalList;let i=index">
+                            <li class="text" *ngIf="menu.visibility">
+                                <a class="ag_text-overflow--hidden" href="javascript:void(0)" *ngIf="menu.visibility"
+                                    (click)="showSidecontainer($event,menu,i)"
+                                    [ngClass]="{'menuHide' : menu.disable,'active-link':isPrimaryHighlight==i}">
+                                    <i  aria-hidden="true" *ngIf="menu.imgPath" class="{{menu.imgPath}}"></i>
+                                    <div [ngClass]="{'arrow-section':isPrimaryHighlight==i}">
+                                    </div>
+                                    <span class="ag_pl--3" [matTooltipPosition]="position.value"
+                                        [matTooltip]="menu.text">{{menu.text}}</span>
+                                </a>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </nav>
+            </ng-container>
+        </aside>
+        <div *ngIf="isShow" class="side-container">
+            <ng-container *ngIf="!EnableRetailIC">
+                <embed type="text/html" [src]="src" width="100%" height="100%" #embed>
+            </ng-container>
+            <ng-container *ngIf="EnableRetailIC">
+                <router-outlet></router-outlet>
+            </ng-container>
+        </div>
+    </div>
+</div>
