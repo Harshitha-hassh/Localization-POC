@@ -1729,7 +1729,8 @@
 		"20045": "20045 - SMS Templates",
 		"20055": "20055 - Distribution List",
     "8200": "8200 - Inventory Value and Activity Report",
-    "8205": "8205 - Inventory Valuation Report"
+    "8205": "8205 - Inventory Valuation Report",
+    "7160": "7160 - Custom Fee"
   },
   "userId": "User ID",
   "password": "Password",
