@@ -43,7 +43,6 @@ import { NotifyPopupComponent } from './components/notify-popup/notify-popup.com
 import { NotificationDataService } from './data-services/notification.data.service';
 import { AllowedSpecialCharacterDirective } from './directives/allowedSpecialCharacter.directive';
 import { RetailIntegrationLogService } from '../retail/shared/service/retail-integrationLog.service';
-
 @NgModule({
     declarations: [
         MenuComponent,

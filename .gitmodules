@@ -4,3 +4,6 @@
 [submodule "src/app/retail"]
 	path = src/app/retail
 	url = https://AGYS-VisualOne@dev.azure.com/AGYS-VisualOne/Common/_git/RetailUI
+[submodule "src/app/eatecui"]
+	path = src/app/eatecui
+	url = https://AGYS-VisualOne@dev.azure.com/AGYS-VisualOne/Common/_git/EatecUI

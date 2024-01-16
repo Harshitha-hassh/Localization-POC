@@ -22,6 +22,7 @@
     "RetailGateway": "/VisualOne/retailgateway",
     "JasperServerURL":"/jasperserver-pro",
     "signalrService": "/commongateway/SignalRService",
-    "JasperReport":"/VisualOne/retailgateway"
+    "JasperReport":"/VisualOne/retailgateway",
+    "EatecUi": "/VisualOne/retailgateway"
 
 }
