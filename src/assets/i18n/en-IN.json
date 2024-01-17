@@ -1502,6 +1502,7 @@
     "SearchByGroupNameCode": "Search by Group Name/Code_in",
     "GuestName": "Guest Last Name_in",
     "RoomNumber": "Room Number_in",
+    "PhoneNumber": "Phone Number_in",
     "GroupBookingId": "Booking ID_in",
     "GroupName": "Group Name_in",
     "SearchByBookingId": "Search by Booking ID_in",
