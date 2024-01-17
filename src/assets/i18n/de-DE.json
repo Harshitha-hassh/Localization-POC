@@ -4228,5 +4228,6 @@
   "startTimeError": "Missing Start Time_de",
   "endTimeError": "Missing End Time_de",
   "lbl_overlapRule": "Overlap rule not allowed_de",
-  "lbl_enable_Rules": "Enable Timeframe for Discount_de"
+  "lbl_enable_Rules": "Enable Timeframe for Discount_de",
+  "Error_PMSCommunication_Not_Configured": "PMS Communication Receiver Not Configured_de"
 }

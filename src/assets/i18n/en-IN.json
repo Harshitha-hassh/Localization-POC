@@ -4228,5 +4228,6 @@
   "startTimeError": "Missing Start Time_in",
   "endTimeError": "Missing End Time_in",
   "lbl_overlapRule": "Overlap rule not allowed_in",
-  "lbl_enable_Rules": "Enable Timeframe for Discount_in"
+  "lbl_enable_Rules": "Enable Timeframe for Discount_in",
+  "Error_PMSCommunication_Not_Configured": "PMS Communication Receiver Not Configured_in"
 }
