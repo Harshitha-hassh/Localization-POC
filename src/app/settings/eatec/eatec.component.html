@@ -21,7 +21,7 @@
                         <ng-container *ngFor="let menu of verticalList;let i=index">
                             <li class="text" *ngIf="menu.visibility">
                                 <a class="ag_text-overflow--hidden" href="javascript:void(0)" *ngIf="menu.visibility"
-                                    (click)="showSidecontainer($event,menu,i)"
+                                    (click)="showSidecontainer(menu,i)"
                                     [ngClass]="{'menuHide' : menu.disable,'active-link':isPrimaryHighlight==i}">
                                     <i  aria-hidden="true" *ngIf="menu.imgPath" class="{{menu.imgPath}}"></i>
                                     <div [ngClass]="{'arrow-section':isPrimaryHighlight==i}">
