@@ -115,6 +115,36 @@ export class EatecComponent implements OnInit, OnDestroy {
     if(this.stateData?.data == null){
       this.initialLoad();
     }
+    this.redirectToSelectedMenu();
+    console.log("route", this.router.url)
+  }
+
+  redirectToSelectedMenu(){
+    if(this.EnableRetailIC){
+      if(this.router.url.includes("inventorylist")){
+        this.navigateToMenu("/settings/enhancedInventory/inventory","inventorylist");
+      }
+      else if(this.router.url.includes("physicalinventory")){
+        this.navigateToMenu("/settings/enhancedInventory/inventory","physicalinventory");
+      }
+      else if(this.router.url.includes("receiving")){
+        this.navigateToMenu("/settings/enhancedInventory/procurement", "receiving");
+      }
+      else if( this.router.url.includes("purchaseorder")){
+        this.navigateToMenu("/settings/enhancedInventory/procurement", "purchaseorder");
+      }
+    }
+  }
+
+  navigateToMenu(menuRoute,verticalMenuRoute){
+    this.menuList.menu.find(menu=>{
+      if(menu.routePath == menuRoute){
+        this.selectedItem = menu;
+        this.verticalList = menu.linkedElement.filter(x => x.visibility);
+        let index = this.verticalList.findIndex(x => x.routePath.includes(verticalMenuRoute))
+        this.showSidecontainer(this.verticalList[index],index);
+      }
+     })
   }
 
   navigateFunc(data){
@@ -140,7 +170,7 @@ export class EatecComponent implements OnInit, OnDestroy {
       });
       this.changeElements( this.selectedItem);
       this.verticalList.forEach((x,yindex)=>{
-        if(x.elementID == this.stateData.data.id){
+        if(x.text == this.stateData.data.text){
           this.isPrimaryHighlight = yindex;
         }
       });
@@ -308,7 +338,7 @@ export class EatecComponent implements OnInit, OnDestroy {
     this.isShow = true;
   }
 
-  showSidecontainer(e, data, idx) {
+  showSidecontainer(data, idx) {
     this.isShow = true;
     this.selectedBreakPoint = data.breakPointNumber;
     this.selectedRoutePath = data.routePath;
@@ -329,13 +359,13 @@ export class EatecComponent implements OnInit, OnDestroy {
 
   routeToURL(data){
     if(this.EnableRetailIC){
-      if(data.text === "Inventory"){
+      if(data.routePath === "/settings/enhancedInventory/masterlist/inventorylist"){
         this.router.navigate(['/settings/enhancedInventory/masterlist/inventorylist']);
-      } else if(data.text === "Physical Inventory"){
+      } else if(data.routePath === "/settings/enhancedInventory/transaction/view-physicalinventory"){
         this.router.navigate(['/settings/enhancedInventory/transaction/view-physicalinventory']);
-      } else if(data.text === "Receiving"){
+      } else if(data.routePath === "/settings/enhancedInventory/transaction/view-receiving"){
         this.router.navigate(['/settings/enhancedInventory/transaction/view-receiving']);
-      } else if(data.text === "Purchase Order"){
+      } else if(data.routePath === "/settings/enhancedInventory/transaction/view-purchaseorder"){
         this.router.navigate(['/settings/enhancedInventory/transaction/view-purchaseorder']);
       }
     }
