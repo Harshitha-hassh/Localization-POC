@@ -1,3 +1,4 @@
+import { routeJSON } from 'src/app/routeJson';
 import { RetailRoutes, RetailApiHosts, MsalConfiguration } from './retail-route';
 
 declare let $: any;
@@ -13,7 +14,7 @@ declare global {
         RetailApiRoute: typeof RetailRoutes;
         RetailMenus: typeof Array;
         MsalConfig: MsalConfiguration;
-        RouteJsonConfig : typeof Object;
+        RouteJsonConfig : any;
     }
 
 }
@@ -92,17 +93,17 @@ function loadMsalConfig() {
     return msalConfig;
 }
 function loadRouteJson() {
-    let routes;
-    $.ajax({
-        url: './assets/route.json',
-        async: false,
-        success: function (result) {
-            routes = result;
-        },
-        error: function(result){
-            console.error(result);
-        }
-    });
+    let routes = routeJSON;
+    // $.ajax({
+    //     url: './assets/route.json',
+    //     async: false,
+    //     success: function (result) {
+    //         routes = result;
+    //     },
+    //     error: function(result){
+    //         console.error(result);
+    //     }
+    // });
     return routes;
 }
 /* Register Routes and API */
