@@ -746,5 +746,5 @@
   "GetDiscountTypeConfigurationById" : "DiscountTypeConfiguration/{DiscountTypeId}",
   "GetDiscountConfigurationsByCategoryId" : "DiscountConfigurations/{categoryId}",
   "DeleteDiscountTypeConfigurationByIds":"DiscountTypeConfiguration/DeleteDiscountTypeConfigurationByIds",
-  "GetMappingDetailsForGeneralLedger" : "RevenuePosting/GetGeneralLedgerMappingDetails"
+  "GetMappingDetailsForGeneralLedger" : "GeneralLedger/GetGeneralLedgerMappingDetails"
 }
