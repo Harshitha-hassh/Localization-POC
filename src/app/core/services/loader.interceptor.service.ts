@@ -24,6 +24,7 @@ export class LoaderInterceptor implements HttpInterceptor {
     const v1GiftcardRGuestPayURL = sessionStorage.getItem('v1GiftcardRGuestPayURL');
     const v1GiftcardRGuestPayCardCaptureRoute = 'cardcapture';
     const isRguestPayPooling = (req.urlWithParams.toString().includes(v1GiftcardRGuestPayCardCaptureRoute) && req.method == 'GET');
+    const isSkipPMAgentCall = req.urlWithParams.toString().includes("skipLog");
     let payURL: string = "";
     if (payAgentURI && payAgentURI.length > 0) {
       payURL = payAgentURI[0]?.configValue;
@@ -32,7 +33,7 @@ export class LoaderInterceptor implements HttpInterceptor {
       v1GiftcardRGuestPayURL + "/device",
       v1GiftcardRGuestPayURL + "/ondemand/cardcapture/device"
     ]
-    return (payURL != "" && reqUrl.includes(payURL.toLowerCase()) || (v1GiftcardRGuestPayURL && rGuestPayURLs.some(r => reqUrl.includes(r.toLowerCase())) && !isRguestPayPooling))
+    return (payURL != "" && reqUrl.includes(payURL.toLowerCase()) || (v1GiftcardRGuestPayURL && rGuestPayURLs.some(r => reqUrl.includes(r.toLowerCase())) && !isRguestPayPooling && !isSkipPMAgentCall))
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
