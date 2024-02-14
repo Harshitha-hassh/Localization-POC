@@ -1731,7 +1731,8 @@
 		"20055": "20055 - Distribution List",
     "8200": "8200 - Inventory Value and Activity Report",
     "8205": "8205 - Inventory Valuation Report",
-    "7160": "7160 - Custom Fee"
+    "7160": "7160 - Custom Fee",
+    "7165": "7165 - General Ledger Mapping"
   },
   "userId": "User ID",
   "password": "Password",
