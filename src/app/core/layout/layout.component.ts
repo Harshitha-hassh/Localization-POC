@@ -19,6 +19,8 @@ import { MatSnackBar} from '@angular/material/snack-bar';
 import { ButtonType } from 'src/app/retail/shared/globalsContant';
 import moment, { Moment } from 'moment';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { HttpCacheService } from 'src/app/common/services/cache/http-cache.service';
+
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -31,6 +33,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   propertyName: string;
   propertyDateTime: any;
   logOutClicked=false;
+  entityName:string;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   constructor(private routeDataService: RouteLoaderService,
     private sessionService: ManageSessionService,
@@ -43,7 +46,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private retailFeatureInformationService: RetailFeatureFlagInformationService,
     public dialog: MatDialog,
     private utils: RetailUtilities,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+    private httpCacheService: HttpCacheService) {
     this.routeDataService.loadSettings().then(result => {
       if (result) {
         const value = this.routeDataService.GetChildMenu('/');
@@ -82,6 +86,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.signalR.startConnection();
     this.signalR.startedConnection.then(res => {
       this.addPropertyListener();
+      this.addCacheListener();
     });
   }
 
@@ -95,6 +100,17 @@ export class LayoutComponent implements OnInit, OnDestroy {
       });
   }
 
+  private addCacheListener(){
+    this.signalR.addCacheListener(this, this.signalRCacheListener)
+    .catch((err) => console.log('Failure error ' + err));
+ 
+  this.signalR.hubConnection.onreconnected((reconnect)=>{
+    const list=this.signalR.GetSignalREvents();
+    list.forEach(e=>{this.signalR.subscribeToEvent(e);});
+    });
+ 
+  }
+
   async signalRPropertyListener(message: SignalRMessage<NotificationModel>): Promise<void> {
     if(message && message.content && message.content.notificationType==SignalRNotificationType.ToasterNotification)
     {
@@ -105,6 +121,18 @@ export class LayoutComponent implements OnInit, OnDestroy {
       else
       {
         this.utils.showToastMessage(content.message, SnackBarType.Success);
+      }
+    }
+  }
+
+  async signalRCacheListener(message: SignalRMessage<NotificationModel>):Promise<void>{
+    if (message.name == "Clear Cache") {
+      if (message.content.notificationObjectString != null) {
+        this.entityName = message.content.notificationObjectString;
+          if (this.entityName != null) {
+            this.httpCacheService.cacheDelete(this.entityName);
+          }
+        return null;
       }
     }
   }

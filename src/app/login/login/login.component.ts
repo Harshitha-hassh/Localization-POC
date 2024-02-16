@@ -523,7 +523,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       let userDetails = await this.sessionService.GetUserSessionsInfo();
       console.log(userDetails)
       const result = userDetails.userProperties.find(item => item.propertyId === selectedProperty.propertyId);
-      await this.propertyServices.setJasperAttributes(result?.roleId);
+      await this.propertyServices.setJasperAttributes(result?.roleId);     
     }
   }
 
@@ -595,6 +595,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.localize.SetLocaleBasedProperties();
     this.commonLocalize.SetLocaleBasedProperties();
     this.UpdateUserRole(Selectedproperty.id);
+    await this.propertyServices.readUICacheJsonData().then((result)=>{
+      this.localize.uiCacheData = result;
+    });
   }
 
   async setEatecConfig() {
@@ -893,7 +896,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         await this.SetUserSessionConfiguration(this.userInfo.userId);
         this.setMachineDetails();
         this.router.navigate(['/home']);
-        await this.retailFunc.getRetailFunctionality();
+        await this.retailFunc.getRetailFunctionality(); 
       }
     }
   }
@@ -1022,7 +1025,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     //this.enableLocation = false;
     let _token = sessionStorage.getItem(JWT_TOKEN);
     if (this.localize.validateString(_token)) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home']);     
     }
 
     this.captionGenerator();
@@ -1342,7 +1345,7 @@ async validateAdb2cCredentialsForSupportUser(){
   await this.SetUserSessionConfiguration(this.userInfo.userId);
   this.setMachineDetails();
   this.router.navigate(['/home']);
-  await this.retailFunc.getRetailFunctionality();
+  await this.retailFunc.getRetailFunctionality(); 
   }
 
 
