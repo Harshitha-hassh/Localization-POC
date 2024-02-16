@@ -4240,5 +4240,9 @@
   "endTimeError": "Missing End Time_fr",
   "lbl_overlapRule": "Overlap rule not allowed_fr",
   "lbl_enable_Rules": "Enable Timeframe for Discount_fr",
-  "Error_PMSCommunication_Not_Configured": "PMS Communication Receiver Not Configured_fr"
+  "Error_PMSCommunication_Not_Configured": "PMS Communication Receiver Not Configured_fr",
+  "btn_add_host": "Add Host_fr",
+  "lbl_list_view": "List View_fr",
+  "lbl_tab_view": "Tab View_fr",
+  "lbl_close": "Close_fr"
 }
