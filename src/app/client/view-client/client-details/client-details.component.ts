@@ -116,6 +116,7 @@ export class ClientDetailsComponent implements OnInit {
     clientSearchTypes: any;
     selectedClientSearchType: number;
     enableSearch: boolean = false;
+    isCopyClient = false;
     constructor(private dialog: MatDialog,
         private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
@@ -363,8 +364,14 @@ export class ClientDetailsComponent implements OnInit {
             disableClose: true,
             hasBackdrop: true,
             data: {
-                mode: 'EDIT', title: this.captions.EditClient, type: this.captions.Update, id: id,
-                data: clientDetail, closebool: true, isClientViewOnly: this.isClientViewOnly
+                mode: 'EDIT', 
+                title: this.isCopyClient ? this.captions.NewClient : this.captions.EditClient, 
+                type: this.isCopyClient ? this.captions.save : this.captions.Update, 
+                id: id,
+                data: clientDetail, 
+                closebool: true, 
+                isClientViewOnly: this.isClientViewOnly,
+                isCopyClient: this.isCopyClient
             },
             panelClass: 'small-popup'
         });
@@ -466,6 +473,7 @@ export class ClientDetailsComponent implements OnInit {
         if (response.isAllow || response.isViewOnly) {
             if (event.length > 0) {
                 this.guestId = event[0].client.guestId;
+                this.isCopyClient = event[2] == 'copy';
             }
             else {
                 this.guestId = event.client.guestId;

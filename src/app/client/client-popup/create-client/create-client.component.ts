@@ -18,11 +18,13 @@ export class CreateClientComponent implements OnInit, OnDestroy {
   captions: any = this.localization.captions.bookAppointment;
   clientSelectedTab: number;
   guestId: any;
+  isCopyClient = false;
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
     public localization: RetailStandaloneLocalization) { }
 
   ngOnInit() {
+    this.isCopyClient = this.data.isCopyClient;
     if(this.data && this.data.data){
       this.guestId =  this.data.data.guestId;
     }

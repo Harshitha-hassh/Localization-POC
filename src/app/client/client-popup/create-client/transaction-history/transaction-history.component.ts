@@ -44,7 +44,7 @@ export class TransactionHistoryComponent implements OnInit {
 
   @Input('inputData')
   set formData(value) {
-    if(value && value.data!='')
+    if(value && value.data!='' && !value.isCopyClient)
     {
       this.clientId = value.data.client.id;
       this.clientGuid = value.data.client.guestId;
