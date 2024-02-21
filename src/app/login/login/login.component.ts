@@ -595,9 +595,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.localize.SetLocaleBasedProperties();
     this.commonLocalize.SetLocaleBasedProperties();
     this.UpdateUserRole(Selectedproperty.id);
-    await this.propertyServices.readUICacheJsonData().then((result)=>{
-      this.localize.uiCacheData = result;
-    });
   }
 
   async setEatecConfig() {
