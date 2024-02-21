@@ -20,6 +20,7 @@ import { ButtonType } from 'src/app/retail/shared/globalsContant';
 import moment, { Moment } from 'moment';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { HttpCacheService } from 'src/app/common/services/cache/http-cache.service';
+import { Localization } from 'src/app/common/localization/localization';
 
 @Component({
   selector: 'app-layout',
@@ -47,7 +48,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     private utils: RetailUtilities,
     private snackBar: MatSnackBar,
-    private httpCacheService: HttpCacheService) {
+    private httpCacheService: HttpCacheService,
+    private commonLocalization : Localization) {
     this.routeDataService.loadSettings().then(result => {
       if (result) {
         const value = this.routeDataService.GetChildMenu('/');
@@ -64,6 +66,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.propertyName = this.localization.GetPropertyInfo('PropertyName');
       let propConfig = JSON.parse(sessionStorage.getItem("propConfig"));
       let enableSignalR = propConfig?.EnableSignalR;
+      let enableUICache = propConfig?.UICacheEnabled;     
       this.propertyService.changeTitle();
       this.loadGoogleMap();
       this.triggerNotification();
@@ -73,8 +76,16 @@ export class LayoutComponent implements OnInit, OnDestroy {
     {
       this.StartSignalrConnection();
     }
+    if (enableUICache && enableUICache.toLowerCase() == "true") {
+      this.setUICache();
+    }
   }
 
+  async setUICache() {
+    await this.propertyService.readUICacheJsonData().then((result) => {
+      this.commonLocalization.uiCacheData = result;
+    });
+  }
   ngOnDestroy() {
     if (this.destroyed$) {
       this.destroyed$.next(true);
