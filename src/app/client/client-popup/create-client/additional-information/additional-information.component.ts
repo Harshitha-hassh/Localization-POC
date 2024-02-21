@@ -53,6 +53,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   floatLabel: string;
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   actionType: string;
+  isCopyClient = false;
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
   @Input('inputData')
@@ -61,6 +62,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     {
       this.additionalInfo = value.data;
       this.actionType = value.mode;
+      this.isCopyClient = value.isCopyClient;
       this.SetEditValues(value.data);
       this.isClientViewOnly = value.isClientViewOnly ? value.isClientViewOnly : false;
     }
@@ -123,19 +125,26 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
 
   async SetEditValues(clientInfo) {
     this.FormGrp.controls.comments.setValue(clientInfo.client.comments && clientInfo.client.comments !=null ? clientInfo.client.comments : '');
-    this.FormGrp.controls.clientCreditCardInfo.setValue(clientInfo.client.clientCreditCardInfo && clientInfo.client.clientCreditCardInfo != null ? clientInfo.client.clientCreditCardInfo : []);
     this.cardInfo = clientInfo.client.clientCreditCardInfo && clientInfo.client.clientCreditCardInfo != null ? clientInfo.client.clientCreditCardInfo : [];
-      if (this.cardInfo && this.cardInfo.length > 0) {
-        const activeCard = this.cardInfo.filter(x => x.isActive);
-        if (activeCard && activeCard.length > 0) {
-          this.PaymentReferenceID = activeCard[0].tokenTransId;
+    if (this.cardInfo && this.cardInfo.length > 0) {
+      if(this.isCopyClient) {
+        this.cardInfo.forEach(x => {
+          x.id = 0;
+          x.clientId = 0;
+          x.createdTime = this.PropertyInfo.CurrentDTTM;
+        });
+      }
+      const activeCard = this.cardInfo.filter(x => x.isActive);
+      if (activeCard && activeCard.length > 0) {
+        this.PaymentReferenceID = activeCard[0].tokenTransId;
           // let newCardInfo: CardInfo = await this.getCardInfo(activeCard[0].tokenTransId)
           // if (newCardInfo !== null) {
           //   this.displayCardInfo = newCardInfo;
           //   this.displayCardInfo.cardNumber = this.payAgentService.MaskCreditCardNumber(newCardInfo.cardNumber);
           // }
-        }
       }
+    }
+    this.FormGrp.controls.clientCreditCardInfo.setValue(this.cardInfo);
   }
 
   SaveReferenceId(event: number) {

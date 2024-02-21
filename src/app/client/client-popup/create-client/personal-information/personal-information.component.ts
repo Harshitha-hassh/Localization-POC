@@ -112,11 +112,13 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   };
   floatLabel: string;
   floatLabelNever: string;
+  isCopyClient = false;
 
   @Input('inputData')
   set formData(value) {
     if (value && value.data != '') {
       this.personalInfo = value.data;
+      this.isCopyClient = value.isCopyClient;
       this.SetEditValues(value.data);
       this.isClientViewOnly = value.isClientViewOnly ? value.isClientViewOnly : false;
     }
@@ -763,7 +765,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls.id.setValue(clientInfo.client.id);
     this.FormGrp.controls.guestId.setValue(clientInfo.client.guestId);
     this.FormGrp.controls.title.setValue(this.utils.GetGuestIdbyTitle(clientInfo.client.title));
-    this.FormGrp.controls.firstName.setValue(clientInfo.client.firstName);
+    this.FormGrp.controls.firstName.setValue(this.isCopyClient ? '' : clientInfo.client.firstName);
     this.FormGrp.controls.lastName.setValue(clientInfo.client.lastName);
     this.FormGrp.controls.pronounced.setValue(clientInfo.client.pronounce);
     this.FormGrp.controls.gender.setValue(clientInfo.client.gender);

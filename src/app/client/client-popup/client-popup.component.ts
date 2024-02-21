@@ -53,7 +53,7 @@ export class ClientPopupComponent implements OnInit {
       this.patronId = this.data.patronId;
     }
 
-    if (this.data.isClientViewOnly) {
+    if (this.data.isClientViewOnly && !this.data.isCopyClient) {
       this.utils.disableControls(this.clientPopupForm);
     }
     if(this.data && this.data.data && this.data.data !='' && this.data.data.client){
@@ -90,6 +90,10 @@ export class ClientPopupComponent implements OnInit {
     this.IsClientScreenDirty = false;
     this.clientInfo = this.clientPopupForm.value;
     this.clientInfo.personalDetailsFormGroup.imageReferenceId = DefaultGUID ;
+    if(this.data.isCopyClient){
+      this.clientInfo.personalDetailsFormGroup.id = 0;
+      this.clientInfo.personalDetailsFormGroup.guestId = DefaultGUID;
+    }
     var createPromise = await this._createClientBusiness.SubmitForm(this.clientInfo);
     if (this.clientInfo && this.clientInfo.personalDetailsFormGroup.id && this.clientInfo.personalDetailsFormGroup.imgReferenceId &&
       this.clientInfo.personalDetailsFormGroup.imgReferenceId != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID
