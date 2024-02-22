@@ -4244,5 +4244,9 @@
   "btn_add_host": "Add Host_fi",
   "lbl_list_view": "List View_fi",
   "lbl_tab_view": "Tab View_fi",
-  "lbl_close": "Close_fi"
+  "lbl_close": "Close_fi",
+  "idleAutologoffWarn": "You are about to be logged out in_fi",
+  "idleCompleteYourAction": "minutes. Please complete your action._fi",
+  "btn_continueSession": "CONTINUE SESSION_fi",
+  "btn_logout": "LOGOUT_fi"
 }
