@@ -1,16 +1,16 @@
 export const routeJSON = {
     "host": {
-      "image": "/VisualOne/retailgateway/",
-    "retailManagement": "/VisualOne/retailgateway/",
-    "retailPOS": "/VisualOne/retailgateway/",
-    "authentication": "/commongateway/",
-    "report": "/VisualOne/retailgateway/",
-    "commission": "/VisualOne/retailgateway/",
-    "payment": "/VisualOne/retailgateway/",
-    "common": "/VisualOne/retailgateway/Retail/Services/Notification",
-    "documentation": "/Help/",
-    "commonGateway": "/commongateway/",
-    "signalrService": "/commongateway/SignalRService"
+      "image": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
+      "retailManagement": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
+      "retailPOS": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
+      "authentication": "https://aks-v1-dev.hospitalityrevolution.com/commongateway",
+      "report": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
+      "commission": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
+      "payment": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
+      "common": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway/Retail/Services/Notification",
+      "documentation": "/Help/",
+      "commonGateway": "https://aks-v1-dev.hospitalityrevolution.com/commongateway",
+      "signalrService": "https://aks-v1-dev.hospitalityrevolution.com/commongateway/SignalRService"
     },
     "Login": "Property/GetLoginDetails",
     "LogOut": "Property/LogOutByUserId/{Username}/{TenantId}/{PropertyId}",

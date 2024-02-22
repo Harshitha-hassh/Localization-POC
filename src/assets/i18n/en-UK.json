@@ -1708,6 +1708,7 @@
     "15170": "15170 - Inventory Sync_uk",
     "16020": "16020 - Quick ID Config_uk",
     "16025": "16025 - Auto Night Audit_uk",
+    "18015": "18015 - Config Validation_uk",
     "20040": "20040 - Email Templates_uk",
     "20045": "20045 - SMS Templates_uk",
     "20055": "20055 - Distribution List_uk",
@@ -3428,7 +3429,8 @@
     "lbl_inventory": "Inventory_uk",
     "lbl_property": "Property_uk",
     "lbl_syncStatus": "Sync Status_uk",
-    "sync": "SYNC_uk"
+    "sync": "SYNC_uk",
+    "ConfigValidation": "Config Validation_uk"
   },
   "settings": {
     "prices": "Price ({option})_uk",

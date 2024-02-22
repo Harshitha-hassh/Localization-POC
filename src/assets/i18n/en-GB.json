@@ -1708,6 +1708,7 @@
     "15170": "15170 - Inventory Sync_gb",
     "16020": "16020 - Quick ID Config_gb",
     "16025": "16025 - Auto Night Audit_gb",
+    "18015": "18015 - Config Validation_gb",
     "20040": "20040 - Email Templates_gb",
     "20045": "20045 - SMS Templates_gb",
     "20055": "20055 - Distribution List_gb",
@@ -3428,7 +3429,8 @@
     "lbl_inventory": "Inventory_gb",
     "lbl_property": "Property_gb",
     "lbl_syncStatus": "Sync Status_gb",
-    "sync": "SYNC_gb"
+    "sync": "SYNC_gb",
+    "ConfigValidation": "Config Validation_gb"
   },
   "settings": {
     "prices": "Price ({option})_gb",

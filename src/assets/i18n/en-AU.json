@@ -1708,6 +1708,7 @@
     "15170": "15170 - Inventory Sync",
     "16020": "16020 - Quick ID Config",
     "16025": "16025 - Auto Night Audit",
+    "18015": "18015 - Config Validation",
     "20040": "20040 - Email Templates",
     "20045": "20045 - SMS Templates",
     "20055": "20055 - Distribution List",
@@ -3428,7 +3429,8 @@
     "lbl_inventory": "Inventory",
     "lbl_property": "Property",
     "lbl_syncStatus": "Sync Status",
-    "sync": "SYNC"
+    "sync": "SYNC",
+    "ConfigValidation": "Config Validation"
   },
   "settings": {
     "prices": "Price ({option})",

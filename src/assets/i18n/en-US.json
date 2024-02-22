@@ -1732,7 +1732,8 @@
     "8200": "8200 - Inventory Value and Activity Report",
     "8205": "8205 - Inventory Valuation Report",
     "7160": "7160 - Custom Fee",
-    "7165": "7165 - General Ledger Mapping"
+    "7165": "7165 - General Ledger Mapping",
+    "18015": "18015 - Config Validation"
   },
   "userId": "User ID",
   "password": "Password",
@@ -3431,7 +3432,8 @@
     "lbl_inventory": "Inventory",
     "lbl_property": "Property",
     "lbl_syncStatus": "Sync Status",
-    "sync": "SYNC"
+    "sync": "SYNC",
+    "ConfigValidation": "Config Validation"
   },
   "settings": {
     "prices": "Price ({option})",

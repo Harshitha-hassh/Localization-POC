@@ -11,9 +11,10 @@ import { UserMachineConfigurationComponent } from './user-machine-configuration/
 import { QuickidConfigComponent } from './quickid-config/quickid-config.component';
 import { ManagerUtilitiesComponent } from './manager-utilities/manager-utilities.component';
 import { PrinterDefaultConfigurationComponent } from './manager-utilities/printer-default-configuration/printer-default-configuration.component';
+import { ConfigValidationComponent } from './config-validation/config-validation.component';
 
 @NgModule({
-    declarations: [RetailUtilitiesComponent, ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent, ManagerUtilitiesComponent, PrinterDefaultConfigurationComponent],
+    declarations: [RetailUtilitiesComponent, ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent, ManagerUtilitiesComponent, PrinterDefaultConfigurationComponent, ConfigValidationComponent],
     imports: [
         CommonModule,
         SharedModule,
