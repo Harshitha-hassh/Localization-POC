@@ -1,7 +1,7 @@
 export const routeJSON = {
     "host": {
       "image": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
-      "retailManagement": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
+      "retailManagement": "http://localhost:44335/VisualOne/RetailManagementService",
       "retailPOS": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
       "authentication": "https://aks-v1-dev.hospitalityrevolution.com/commongateway",
       "report": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
@@ -745,5 +745,6 @@ export const routeJSON = {
     "DeleteDiscountTypeConfiguration" : "DiscountTypeConfiguration/{discountId}",
     "GetDiscountTypeConfigurationById" : "DiscountTypeConfiguration/{DiscountTypeId}",
     "GetDiscountConfigurationsByCategoryId" : "DiscountConfigurations/{categoryId}",
-    "DeleteDiscountTypeConfigurationByIds":"DiscountTypeConfiguration/DeleteDiscountTypeConfigurationByIds"
+    "DeleteDiscountTypeConfigurationByIds":"DiscountTypeConfiguration/DeleteDiscountTypeConfigurationByIds",
+    "GetMasterConfigJson":"Config/GetMasterConfigJson"
   }

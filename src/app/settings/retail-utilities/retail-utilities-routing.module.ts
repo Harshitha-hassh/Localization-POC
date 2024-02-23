@@ -16,7 +16,7 @@ import { ManagerUtilitiesComponent } from './manager-utilities/manager-utilities
 import { PrinterDefaultConfigurationComponent } from './manager-utilities/printer-default-configuration/printer-default-configuration.component';
 import { UserAccessBreakPoints as CommonBreakPoint } from 'src/app/common/constants/useraccess.constants';
 import { EnahancedInventoryMasterSyncComponent } from '../../retail/enahanced-inventory-master-sync/enahanced-inventory-master-sync.component';
-import { ConfigValidationComponent } from './config-validation/config-validation.component';
+import { ConfigValidationComponent } from 'src/app/common/config-validation/config-validation/config-validation.component';
 
 
 const routes: Routes = [{
