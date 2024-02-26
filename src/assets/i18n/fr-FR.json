@@ -427,6 +427,7 @@
     "NewAppointment": "NEW APPOINTMENT_fr",
     "NewClient": "NEW CLIENT_fr",
     "EditClient": "EDIT CLIENT_fr",
+    "CopyClient": "COPY CLIENT_fr",
     "AppointmentDetails": "Appointment Details_fr",
     "ClientInformation": "CLIENT INFORMATION_fr",
     "PersonalInformation": "PERSONAL INFORMATION_fr",
@@ -1579,6 +1580,7 @@
   "breakpoint": {
     "600": "600 - Add New Client Profile_fr",
     "605": "605 - Edit Client Profile_fr",
+    "675": "675 - Copy Client Profile_fr",
     "800": "800 - Commission Class Setup_fr",
     "805": "805 - Staff Commission Setup_fr",
     "1240": "1240 - Staff Member Summary Report_fr",

@@ -427,6 +427,7 @@
     "NewAppointment": "NEW APPOINTMENT_uk",
     "NewClient": "NEW CLIENT_uk",
     "EditClient": "EDIT CLIENT_uk",
+    "CopyClient": "COPY CLIENT_uk",
     "AppointmentDetails": "Appointment Details_uk",
     "ClientInformation": "CLIENT INFORMATION_uk",
     "PersonalInformation": "PERSONAL INFORMATION_uk",
@@ -1579,6 +1580,7 @@
   "breakpoint": {
     "600": "600 - Add New Client Profile_uk",
     "605": "605 - Edit Client Profile_uk",
+    "675": "675 - Copy Client Profile_uk",
     "800": "800 - Commission Class Setup_uk",
     "805": "805 - Staff Commission Setup_uk",
     "1240": "1240 - Staff Member Summary Report_uk",
