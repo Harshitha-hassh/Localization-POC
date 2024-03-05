@@ -4247,5 +4247,9 @@
   "btn_add_host": "Add Host_uk",
   "lbl_list_view": "List View_uk",
   "lbl_tab_view": "Tab View_uk",
-  "lbl_close": "Close_uk"
+  "lbl_close": "Close_uk",
+  "idleAutologoffWarn": "You are about to be logged out in_uk",
+  "idleCompleteYourAction": "minutes. Please complete your action._uk",
+  "btn_continueSession": "CONTINUE SESSION_uk",
+  "btn_logout": "LOGOUT_uk"
 }

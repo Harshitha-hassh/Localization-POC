@@ -4247,5 +4247,9 @@
   "btn_add_host": "Add Host",
   "lbl_list_view": "List View",
   "lbl_tab_view": "Tab View",
-  "lbl_close": "Close"
+  "lbl_close": "Close",
+  "idleAutologoffWarn": "You are about to be logged out in",
+  "idleCompleteYourAction": "minutes. Please complete your action.",
+  "btn_continueSession": "CONTINUE SESSION",
+  "btn_logout": "LOGOUT"
 }

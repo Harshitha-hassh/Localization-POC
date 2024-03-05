@@ -4247,5 +4247,9 @@
   "btn_add_host": "Add Host_fr",
   "lbl_list_view": "List View_fr",
   "lbl_tab_view": "Tab View_fr",
-  "lbl_close": "Close_fr"
+  "lbl_close": "Close_fr",
+  "idleAutologoffWarn": "You are about to be logged out in_fr",
+  "idleCompleteYourAction": "minutes. Please complete your action._fr",
+  "btn_continueSession": "CONTINUE SESSION_fr",
+  "btn_logout": "LOGOUT_fr"
 }
