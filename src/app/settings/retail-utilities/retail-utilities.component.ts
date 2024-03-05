@@ -13,12 +13,15 @@ export class RetailUtilitiesComponent implements OnInit {
   menuList: any;
   menuType = menuTypes;
   codeRoute: any;
+  EnableRetailIC:boolean;
   constructor(private routeDataService: RouteLoaderService,
     private propertyInfo: RetailPropertyInformation) {
     this.codeRoute = this.routeDataService.GetChildMenu('/settings/utilities', 3);
+    let propConfig = sessionStorage.getItem('propConfig') ? JSON.parse(sessionStorage.getItem('propConfig')) : null;
+    this.EnableRetailIC = propConfig?.EnableRetailIC?.toLowerCase() == 'true'? true: false;
     this.codeRoute.linkedElement.map(res => {
       if (res) {
-        if(!this.propertyInfo.IsEatecEnabled)
+        if(!this.propertyInfo.IsEatecEnabled || this.EnableRetailIC)
         {
           if(res.routePath === '/settings/utilities/inventorysync') 
           {
