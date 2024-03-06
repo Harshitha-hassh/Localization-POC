@@ -397,6 +397,7 @@
       "NewAppointment": "NEW APPOINTMENT_zh",
       "NewClient": "NEW CLIENT_zh",
       "EditClient": "EDIT CLIENT_zh",
+      "CopyClient": "COPY CLIENT_zh",
       "AppointmentDetails": "Appointment Details_zh",
       "ClientInformation": "CLIENT INFORMATION_zh",
       "PersonalInformation": "PERSONAL INFORMATION_zh",
@@ -1360,6 +1361,7 @@
     "breakpoint": {
       "600": "600 - Add New Client Profile_zh",
       "605": "605 - Edit Client Profile_zh",
+      "675": "675 - Copy Client Profile_zh",
       "800": "800 - Commission Class Setup_zh",
       "805": "805 - Staff Commission Setup_zh",
       "1240": "1240 - Staff Member Summary Report_zh",

@@ -125,15 +125,8 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
 
   async SetEditValues(clientInfo) {
     this.FormGrp.controls.comments.setValue(clientInfo.client.comments && clientInfo.client.comments !=null ? clientInfo.client.comments : '');
-    this.cardInfo = clientInfo.client.clientCreditCardInfo && clientInfo.client.clientCreditCardInfo != null ? clientInfo.client.clientCreditCardInfo : [];
+    this.cardInfo = this.isCopyClient ? [] : clientInfo.client.clientCreditCardInfo && clientInfo.client.clientCreditCardInfo != null ? clientInfo.client.clientCreditCardInfo : [];
     if (this.cardInfo && this.cardInfo.length > 0) {
-      if(this.isCopyClient) {
-        this.cardInfo.forEach(x => {
-          x.id = 0;
-          x.clientId = 0;
-          x.createdTime = this.PropertyInfo.CurrentDTTM;
-        });
-      }
       const activeCard = this.cardInfo.filter(x => x.isActive);
       if (activeCard && activeCard.length > 0) {
         this.PaymentReferenceID = activeCard[0].tokenTransId;

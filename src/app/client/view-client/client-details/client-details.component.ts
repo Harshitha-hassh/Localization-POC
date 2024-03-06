@@ -468,7 +468,8 @@ export class ClientDetailsComponent implements OnInit {
      */
     async EditRecords(event) {
         // To Do: Edit Client Info mapping.
-        let response = await this.userAccessBusiness.getUserAccess(BreakPoint.EditClientProfile);
+        let response = event[2] == 'edit' ? await this.userAccessBusiness.getUserAccess(BreakPoint.EditClientProfile) : 
+                                    await this.userAccessBusiness.getUserAccess(BreakPoint.CopyClientProfile);
         this.isClientViewOnly = response.isViewOnly;
         if (response.isAllow || response.isViewOnly) {
             if (event.length > 0) {

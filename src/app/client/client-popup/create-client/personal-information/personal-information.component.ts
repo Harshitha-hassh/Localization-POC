@@ -760,23 +760,22 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.isPatronIdAvailable = false;
     }
     this.personalDetails = clientInfo.client;
-    this.FormGrp.controls.lastChangeId.setValue(clientInfo.client.lastChangeId);
-    this.FormGrp.controls.interfaceGuestId.setValue(clientInfo.client.interfaceGuestId);
-    this.FormGrp.controls.id.setValue(clientInfo.client.id);
-    this.FormGrp.controls.guestId.setValue(clientInfo.client.guestId);
-    this.FormGrp.controls.title.setValue(this.utils.GetGuestIdbyTitle(clientInfo.client.title));
-    this.FormGrp.controls.firstName.setValue(this.isCopyClient ? '' : clientInfo.client.firstName);
     this.FormGrp.controls.lastName.setValue(clientInfo.client.lastName);
-    this.FormGrp.controls.pronounced.setValue(clientInfo.client.pronounce);
-    this.FormGrp.controls.gender.setValue(clientInfo.client.gender);
-    this.FormGrp.controls.dob.setValue(
-      clientInfo.client.dateOfBirth ?
-        this.utils.getDate(clientInfo.client.dateOfBirth)
-        : ""
-    );
-
-    this.FormGrp.controls.patronid.setValue(loyalty ? loyalty.patronId : '');
-    this.FormGrp.controls.rank.setValue(loyalty ? loyalty.rank : '');
+    if(!this.isCopyClient) {
+      this.FormGrp.controls.lastChangeId.setValue(clientInfo.client.lastChangeId);
+      this.FormGrp.controls.interfaceGuestId.setValue(clientInfo.client.interfaceGuestId);
+      this.FormGrp.controls.id.setValue(clientInfo.client.id);
+      this.FormGrp.controls.guestId.setValue(clientInfo.client.guestId);
+      this.FormGrp.controls.title.setValue(this.utils.GetGuestIdbyTitle(clientInfo.client.title));
+      this.FormGrp.controls.firstName.setValue(clientInfo.client.firstName);
+      this.FormGrp.controls.pronounced.setValue(clientInfo.client.pronounce);
+      this.FormGrp.controls.gender.setValue(clientInfo.client.gender);
+      this.FormGrp.controls.dob.setValue(
+        clientInfo.client.dateOfBirth ? this.utils.getDate(clientInfo.client.dateOfBirth) : ""
+      );
+      this.FormGrp.controls.patronid.setValue(loyalty ? loyalty.patronId : '');
+      this.FormGrp.controls.rank.setValue(loyalty ? loyalty.rank : '');
+    }  
     if (clientInfo.addresses && clientInfo.addresses != null) {
       this.FormGrp.controls.postal_code.setValue(clientInfo.addresses.zipCode);
       this.FormGrp.controls.state.setValue(clientInfo.addresses.state);
@@ -833,7 +832,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
     }
     var imageData: Imagedata;
-    if (clientInfo.client.guestId && clientInfo.client.guestId != DefaultGUID) {
+    if (clientInfo.client.guestId && clientInfo.client.guestId != DefaultGUID && !this.isCopyClient) {
       imageData = await this._imageService.getImageForClient(clientInfo.client.guestId, true);
     }
     var url = `${imageData && imageData[0] ? imageData[0].contentType : ''},${imageData && imageData[0] ? imageData[0].thumbnailData : ''}`

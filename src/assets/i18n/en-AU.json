@@ -427,6 +427,7 @@
     "NewAppointment": "NEW APPOINTMENT",
     "NewClient": "NEW CLIENT",
     "EditClient": "EDIT CLIENT",
+    "CopyClient": "COPY CLIENT",
     "AppointmentDetails": "Appointment Details",
     "ClientInformation": "CLIENT INFORMATION",
     "PersonalInformation": "PERSONAL INFORMATION",
@@ -1579,6 +1580,7 @@
   "breakpoint": {
     "600": "600 - Add New Client Profile",
     "605": "605 - Edit Client Profile",
+    "675": "675 - Copy Client Profile",
     "800": "800 - Commission Class Setup",
     "805": "805 - Staff Commission Setup",
     "1240": "1240 - Staff Member Summary Report",
@@ -1622,6 +1624,7 @@
     "5030": "5030 - Revenue Postings Log",
     "5035": "5035 - Unsettled Payments",
     "5040": "5040 - DataMagine Receipt Log",
+    "5045": "5045 - Refund Failures",
     "7000": "7000 - Outlet Setup",
     "7005": "7005 - Item Setup",
     "7010": "7010 - Quick Sale Keys",
@@ -4246,5 +4249,9 @@
   "btn_add_host": "Add Host",
   "lbl_list_view": "List View",
   "lbl_tab_view": "Tab View",
-  "lbl_close": "Close"
+  "lbl_close": "Close",
+  "idleAutologoffWarn": "You are about to be logged out in",
+  "idleCompleteYourAction": "minutes. Please complete your action.",
+  "btn_continueSession": "CONTINUE SESSION",
+  "btn_logout": "LOGOUT"
 }

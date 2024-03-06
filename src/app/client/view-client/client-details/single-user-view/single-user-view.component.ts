@@ -64,7 +64,7 @@ export class SingleUserViewComponent implements OnInit, OnDestroy {
   }
 
   EditRecords(event, data, type, id) {
-    this.editclient.emit(data);
+    this.editclient.emit([data, event, type]);
   }
 
   playerWorthDetails() {
