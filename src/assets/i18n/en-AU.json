@@ -4251,5 +4251,19 @@
   "idleAutologoffWarn": "You are about to be logged out in",
   "idleCompleteYourAction": "minutes. Please complete your action.",
   "btn_continueSession": "CONTINUE SESSION",
-  "btn_logout": "LOGOUT"
+  "btn_logout": "LOGOUT",
+  "lbl_advanceSearch": "Advanced Search",
+  "lbl_outlet": "Outlet",
+  "lbl_firstName": "First Name",
+  "lbl_lastName": "Last Name",
+  "lbl_emailId": "Email ID",
+  "lbl_countryCode": "Country Code",
+  "lbl_cancel": "CANCEL",
+  "lbl_apply": "APPLY",
+  "lbl_sNo": "S.No",
+  "lbl_giftCardNumber": "Gift Card Number",
+  "lbl_soldDate": "Sold Date",
+  "lbl_user": "User",
+  "lbl_availableBalance": "Available Balance($)",
+  "lbl_search": "Search"
 }
