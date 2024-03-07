@@ -2289,7 +2289,9 @@
     "err_paymentMethodName": "Missing Payment Method Name_uk",
     "AutoPrintReceipts": "Auto Print Receipts_uk",
     "err_max": "Exceeds Maximum Value_uk",
-    "err_min": "Precedes Minimum Value_uk"
+    "err_min": "Precedes Minimum Value_uk",
+    "lbl_EligibleForInhouseGratuity": "Eligible for in house gratuity_uk",
+    "lbl_EligibleForInhouseServiceCharge": "Eligible for in house service charge_uk"
   },
   "setting": {
     "lbl_inHouseGratuity": "In House Gratuity_uk",
@@ -3078,6 +3080,11 @@
     "IncludeNonInventoryItems": "Include Non-inventory Items_uk",
     "SuppressZeroQtyItems": "Suppress Zero Qty Items_uk",
     "AllActiveitems": "All Active Items_uk",
+    "InHouseBoth": "Both_uk",
+    "InHouseStaffOnly": "Staff only_uk",
+    "InHouseGratuityOnly": "In house Gratuity only_uk",
+    "InHouseSCOnly": "In house SC only_uk",
+    "InHouseGratuitySCOnly": "In house Gratuity/SC only_uk",
     "AllMultipacks": "All Multipacks_uk",
     "ExpirationDateRange": "Expiration Date Range_uk",
     "SoldDate": "Sold Date_uk",
