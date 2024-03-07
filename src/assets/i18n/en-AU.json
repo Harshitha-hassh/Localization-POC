@@ -2289,7 +2289,9 @@
     "err_paymentMethodName": "Missing Payment Method Name",
     "AutoPrintReceipts": "Auto Print Receipts",
     "err_max": "Exceeds Maximum Value",
-    "err_min": "Precedes Minimum Value"
+    "err_min": "Precedes Minimum Value",
+    "lbl_EligibleForInhouseGratuity": "Eligible for in house gratuity",
+    "lbl_EligibleForInhouseServiceCharge": "Eligible for in house service charge"
   },
   "setting": {
     "lbl_inHouseGratuity": "In House Gratuity",
@@ -3078,6 +3080,11 @@
     "IncludeNonInventoryItems": "Include Non-inventory Items",
     "SuppressZeroQtyItems": "Suppress Zero Qty Items",
     "AllActiveitems": "All Active Items",
+    "InHouseBoth": "Both",
+    "InHouseStaffOnly": "Staff only",
+    "InHouseGratuityOnly": "In house Gratuity only",
+    "InHouseSCOnly": "In house SC only",
+    "InHouseGratuitySCOnly": "In house Gratuity/SC only",
     "AllMultipacks": "All Multipacks",
     "ExpirationDateRange": "Expiration Date Range",
     "SoldDate": "Sold Date",
