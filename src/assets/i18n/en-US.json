@@ -1735,7 +1735,8 @@
     "8200": "8200 - Inventory Value and Activity Report",
     "8205": "8205 - Inventory Valuation Report",
     "7160": "7160 - Custom Fee",
-    "7165": "7165 - General Ledger Mapping"
+    "7165": "7165 - General Ledger Mapping",
+    "12091": "12091 - PMS Integration Setup"
   },
   "userId": "User ID",
   "password": "Password",
