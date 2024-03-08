@@ -1776,6 +1776,7 @@
   "lbl_logout": "Log Out_uk",
   "retailsetup": {
     "includeSignatureLine": "Include Signature in Receipts_uk",
+    "isAutoRemoveTax": "Auto Remove Tax_uk",
     "warningEnableSigCap": "Cannot enable 'Require Signature Capture' when 'Include Signature in Receipts' is disabled_uk",
     "warningDisableIncludeSign": "Cannot disable 'Include Signature in Receipts' when 'Require Signature Capture' is enabled_uk",
     "err_minLength": "At least 3 characters need to be entered_uk",
@@ -2303,6 +2304,7 @@
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled_uk",
     "SC_GT_TaxRevenueToProperty_ValidationMsg": "Cannot enable ‘{toggleLabel}’ when ‘Is Revenue To Property’ is enabled_uk",
     "TaxRevenueToPropertyValidationMsg": "Cannot enable ‘Is Revenue To Property’ when ‘{toggleLabel}’ is enabled_uk",
+    "allowRemovalForPaymentMethodTaxOnTax": "Allow Removal For Payment Method_uk",
     "Title": "Title_uk",
     "First_Name": "First Name_uk",
     "Last_Name": "Last Name_uk",
@@ -2902,6 +2904,7 @@
     "AllowTaxOnServiceCharge": "Allow Tax On Service Charge_uk",
     "AllowTaxOnGratuityServiceCharge": "Allow Tax On Service Charge & Gratuity_uk",
     "DefaultTaxToAllRetailItems": "Default to All Retail Item_uk",
+    "AllowRemovalForPaymentMethod": "Allow Removal For Payment Method_uk",
     "DefaultTaxAlreadyExistForVatProperty": "A default tax is already set for the selected date range ({TaxName}). User cannot proceed to perform this action._uk",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup_uk",
     "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs_uk",

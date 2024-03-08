@@ -1776,6 +1776,7 @@
   "lbl_logout": "Log Out",
   "retailsetup": {
     "includeSignatureLine": "Include Signature in Receipts",
+    "isAutoRemoveTax": "Auto Remove Tax",
     "warningEnableSigCap": "Cannot enable 'Require Signature Capture' when 'Include Signature in Receipts' is disabled",
     "warningDisableIncludeSign": "Cannot disable 'Include Signature in Receipts' when 'Require Signature Capture' is enabled",
     "err_minLength": "At least 3 characters need to be entered",
@@ -2303,6 +2304,7 @@
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled",
     "SC_GT_TaxRevenueToProperty_ValidationMsg": "Cannot enable ‘{toggleLabel}’ when ‘Is Revenue To Property’ is enabled",
     "TaxRevenueToPropertyValidationMsg": "Cannot enable ‘Is Revenue To Property’ when ‘{toggleLabel}’ is enabled",
+    "allowRemovalForPaymentMethodTaxOnTax": "Allow Removal For Payment Method",
     "Title": "Title",
     "First_Name": "First Name",
     "Last_Name": "Last Name",
@@ -2902,6 +2904,7 @@
     "AllowTaxOnServiceCharge": "Allow Tax On Service Charge",
     "AllowTaxOnGratuityServiceCharge": "Allow Tax On Service Charge & Gratuity",
     "DefaultTaxToAllRetailItems": "Default to All Retail Item",
+    "AllowRemovalForPaymentMethod": "Allow Removal For Payment Method",
     "DefaultTaxAlreadyExistForVatProperty": "A default tax is already set for the selected date range ({TaxName}). User cannot proceed to perform this action.",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup",
     "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs",
