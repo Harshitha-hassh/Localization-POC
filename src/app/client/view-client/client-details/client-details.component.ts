@@ -192,56 +192,53 @@ export class ClientDetailsComponent implements OnInit {
             // this.appointmentservice.ImgTempHolder = {};
             // this.appointmentservice.popupTitle = this.captions.NewClient;
             let firstName = "";
-    let lastName = "";
-    let email : Email[]= [];
-      let phone : PhoneNumber[] = [];
-      this.clientSearchValue = this.searchText;
-    if (this.clientSearchValue)
-    {
+        let lastName = "";
+        let email : Email[]= [];
+        let phone : PhoneNumber[] = [];
+        this.clientSearchValue = this.searchText;
+        if (this.clientSearchValue)
+            {
      
-      switch(this.selectedClientSearchType)
-      {
-        case clientSearchType.firstName:
-          firstName = this.clientSearchValue;
-        break;
-        case clientSearchType.lastName:
-          lastName = this.clientSearchValue;
-          break;
-          case clientSearchType.email:
-            let emailsearch : Email = {
-              id: 0,
-              emailId : this.clientSearchValue,
-              contactTypeId: 9,
-              clientId: 0,
-              isPrimary: false,
-              isPrivate: false,
-              propertyId: 0,
-              subPropertyId: 0,
-              //platformContactUuid: '',
-            };
-            email.push(emailsearch);
-            break;
-            case clientSearchType.phone:
-              let phoneSearch : any = {
-                clientId : 0,
-                contactTypeId : 1,
-                extension : null,
-                id : 0,
-                isPrimary: false,
-                isPrivate :false,
-                number: this.clientSearchValue,
-                platformContactUuid : "00000000-0000-0000-0000-000000000000"
-              };
-              phone.push(phoneSearch);
-            break;
-
-      }    
-      this.clientNameInfo.firstName = firstName;
-     this.clientNameInfo.lastName = lastName;
-     this.clientNameInfo.email = email;
-      this.clientNameInfo.phone = phone;
-    
-    }
+            switch(this.selectedClientSearchType)
+            {
+                case clientSearchType.firstName:
+                firstName = this.clientSearchValue;
+                break;
+                case clientSearchType.lastName:
+                lastName = this.clientSearchValue;
+                break;
+                case clientSearchType.email:
+                    let emailsearch : Email = {
+                    id: 0,
+                    emailId : this.clientSearchValue,
+                    contactTypeId: 9,
+                    clientId: 0,
+                    isPrimary: false,
+                    isPrivate: false,
+                    propertyId: 0,
+                    subPropertyId: 0,
+                    };
+                    email.push(emailsearch);
+                    break;
+                    case clientSearchType.phone:
+                    let phoneSearch : any = {
+                        clientId : 0,
+                        contactTypeId : 1,
+                        extension : null,
+                        id : 0,
+                        isPrimary: false,
+                        isPrivate :false,
+                        number: this.clientSearchValue,
+                        platformContactUuid : "00000000-0000-0000-0000-000000000000"
+                    };
+                    phone.push(phoneSearch);
+                    break;
+                }    
+                    this.clientNameInfo.firstName = firstName;
+                    this.clientNameInfo.lastName = lastName;
+                    this.clientNameInfo.email = email;
+                    this.clientNameInfo.phone = phone;
+            }
             this.openAddActionDialog();
         }
     }

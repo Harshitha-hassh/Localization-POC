@@ -421,14 +421,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         this.addPhoneItem(i, element.contactTypeId, _countryCode, this.utils.appendFormat(element.number, this.localization.captions.common.PhoneFormat), element.isPrivate, element.isPrimary, _extension);
       });
       this.Phone.removeAt(0);
-     // this.phoneInfo = this.clientInfoData.phone;
     }
     if (this.clientInfoData.email && this.clientInfoData.email.length > 0) {
       this.clientInfoData.email.forEach((element, i) => {
         this.addEmailItem(i, element.contactTypeId, element.emailId, element.isPrivate, element.isPrimary);
       });
       this.Email.removeAt(0);
-      //this.mailInfo = this.clientInfoData.email;
     }
     
     }
