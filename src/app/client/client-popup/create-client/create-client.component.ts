@@ -22,8 +22,7 @@ export class CreateClientComponent implements OnInit, OnDestroy {
   isCopyClient = false;
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
-    public localization: RetailStandaloneLocalization) {
-     }
+    public localization: RetailStandaloneLocalization) { }
 
   ngOnInit() {
     this.isCopyClient = this.data.isCopyClient;
