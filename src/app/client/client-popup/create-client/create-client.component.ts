@@ -13,6 +13,7 @@ export class CreateClientComponent implements OnInit, OnDestroy {
   @Input() patronId:any; 
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
+  @Input() clientInfoData : any;
   clientInfoInput:any;
   @ViewChild('clientTabGroup', { static: true }) tabGroup: MatTabGroup;
   captions: any = this.localization.captions.bookAppointment;
@@ -21,7 +22,8 @@ export class CreateClientComponent implements OnInit, OnDestroy {
   isCopyClient = false;
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
-    public localization: RetailStandaloneLocalization) { }
+    public localization: RetailStandaloneLocalization) {
+     }
 
   ngOnInit() {
     this.isCopyClient = this.data.isCopyClient;
@@ -29,7 +31,7 @@ export class CreateClientComponent implements OnInit, OnDestroy {
       this.guestId =  this.data.data.guestId;
     }
     this.bindApiData();
-    this.tabGroup._handleClick = this.handleTabChange.bind(this);
+    this.tabGroup._handleClick = this.handleTabChange.bind(this);    
   }
 
   ngOnDestroy() {

@@ -35,6 +35,7 @@ import { DefaultSettings } from 'src/app/retail/shared/globalsContant';
 export class PersonalInformationComponent implements OnInit, OnDestroy, AfterViewChecked {
   @Input() parentForm: UntypedFormGroup;
   @Output() imageUpdateEmit = new EventEmitter();
+  @Input() clientInfoData: any;
   thumbnailImg: any;
   commonCaptions: any;
   isClientViewOnly = false;
@@ -57,6 +58,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   selectedPhone:any;
   validateEmailType: string;
   validatePhoneType: string;
+  clientInfo :any;
   titles = [{ id: 1, value: 'Dr.' }, { id: 2, value: 'Fr.' }, { id: 3, value: 'Miss' },
   { id: 4, value: 'Mr.' }, { id: 5, value: 'Mrs.' }, { id: 6, value: 'Ms.' },
   { id: 7, value: 'Prof.' }, { id: 8, value: 'Rev.' }];
@@ -221,9 +223,13 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   createEmailItem(arr: number, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): UntypedFormGroup {
 
-    if (!EmailLabel || EmailLabel == '') {
-      const emailLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_EMAIL_TYPE');
+    const emailLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_EMAIL_TYPE');
+    if(emailLabel && emailLabel.value != "0")
+    {
       EmailLabel = emailLabel && emailLabel.value ? Number(emailLabel.value) : '';
+    }
+    else if (!emailLabel || emailLabel.value == '0' && this.clientInfoData.phone.email > 0) {
+      EmailLabel = emailLabel && emailLabel.value ? Number(emailLabel.value) : EmailLabel;
     }
 
     return this.Form.group({
@@ -261,10 +267,13 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     else{
       countryCode = countryCode == -1 ? '' : countryCode;
     }
-
-    if (!phoneNoLabel || phoneNoLabel == '') {
-      let _phoneNoLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_PHONE_TYPE');
+    let _phoneNoLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_PHONE_TYPE');
+    if(_phoneNoLabel && _phoneNoLabel.value != "0")
+    {
       phoneNoLabel = _phoneNoLabel && _phoneNoLabel.value ? Number(_phoneNoLabel.value) : '';
+    }
+    else if (!_phoneNoLabel || _phoneNoLabel.value == '0' && this.clientInfoData.phone.length > 0) {
+      phoneNoLabel = _phoneNoLabel && _phoneNoLabel.value ? Number(_phoneNoLabel.value) : phoneNoLabel;
     }
     return this.Form.group({
       PhoneNumberLabel: [phoneNoLabel, this.phoneRequired || phoneNoDetails ? [Validators.required, EmptyValueValidator] : ''],
@@ -380,6 +389,50 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.validateEmailType = this.localization.getError(-87);
     //this.validatePhoneType = this.localization.getError(-88);
     this.makeGetCall('GetClientConfiguration');
+    this.clientInfo = this.clientInfoData;
+    if(this.clientInfoData)
+    {
+      this.FormGrp.controls['firstName'].setValue(this.clientInfoData?.firstName);
+      this.FormGrp.controls['lastName'].setValue(this.clientInfoData?.lastName);
+      // Phone number mapping
+    if(this.clientInfoData.phone && this.clientInfoData.phone.length > 0)
+    {
+      this.clientInfoData.phone.forEach((element, i) => {
+        let _extension = element.extension ? element.extension : ''
+        let _countryCode = element.countryCode ? element.countryCode : ''
+        let _platformContactUuid = element.platformContactUuid ? element.platformContactUuid : ''
+        if (element.number != '') {
+          if (element.contactTypeId === 3) { //Added For Extension when contact type is work
+            if (element.number.indexOf(':') !== -1) {
+              const arr = element.number.split(':');
+              element.number = arr.length > 1 ? arr[1] : element.number;
+              _extension = arr[0] ? arr[0] : '';
+            } else {
+              _extension = '';
+            }
+          }
+    
+          if (element.number.indexOf('|') !== -1) {
+            const phonenum = element.number.split('|');
+            element.number = phonenum[1] && phonenum[1] !== "undefined" ? phonenum[1] : '';
+            _countryCode = phonenum[0] && phonenum[0] !== "undefined" ? phonenum[0] : '';
+          }
+        }
+        this.addPhoneItem(i, element.contactTypeId, _countryCode, this.utils.appendFormat(element.number, this.localization.captions.common.PhoneFormat), element.isPrivate, element.isPrimary, _extension);
+      });
+      this.Phone.removeAt(0);
+     // this.phoneInfo = this.clientInfoData.phone;
+    }
+    if (this.clientInfoData.email && this.clientInfoData.email.length > 0) {
+      this.clientInfoData.email.forEach((element, i) => {
+        this.addEmailItem(i, element.contactTypeId, element.emailId, element.isPrivate, element.isPrimary);
+      });
+      this.Email.removeAt(0);
+      //this.mailInfo = this.clientInfoData.email;
+    }
+    
+    }
+
   }
 
   ngOnDestroy(): void {

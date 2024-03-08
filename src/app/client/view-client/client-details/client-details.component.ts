@@ -4,7 +4,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 import { MatDialog } from '@angular/material/dialog';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import * as _ from 'lodash';
-import { BaseResponse, KeyValuePair, clientInfoDisplay, ClientLabel, Imagedata } from '../../../shared/shared-models';
+import { BaseResponse, KeyValuePair, clientInfoDisplay, ClientLabel, Imagedata, Email, PhoneNumber } from '../../../shared/shared-models';
 import { ClientService } from '../../../shared/service/client-service.service';
 import { PropertyInformation } from '../../../core/services/property-information.service';
 import { ActivatedRoute } from '@angular/router';
@@ -117,6 +117,8 @@ export class ClientDetailsComponent implements OnInit {
     selectedClientSearchType: number;
     enableSearch: boolean = false;
     isCopyClient = false;
+    clientSearchValue: string;
+    clientNameInfo:any = {};
     constructor(private dialog: MatDialog,
         private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
@@ -189,6 +191,57 @@ export class ClientDetailsComponent implements OnInit {
             // this.appointmentservice.IsAddClientFromSPA = true;
             // this.appointmentservice.ImgTempHolder = {};
             // this.appointmentservice.popupTitle = this.captions.NewClient;
+            let firstName = "";
+    let lastName = "";
+    let email : Email[]= [];
+      let phone : PhoneNumber[] = [];
+      this.clientSearchValue = this.searchText;
+    if (this.clientSearchValue)
+    {
+     
+      switch(this.selectedClientSearchType)
+      {
+        case clientSearchType.firstName:
+          firstName = this.clientSearchValue;
+        break;
+        case clientSearchType.lastName:
+          lastName = this.clientSearchValue;
+          break;
+          case clientSearchType.email:
+            let emailsearch : Email = {
+              id: 0,
+              emailId : this.clientSearchValue,
+              contactTypeId: 9,
+              clientId: 0,
+              isPrimary: false,
+              isPrivate: false,
+              propertyId: 0,
+              subPropertyId: 0,
+              //platformContactUuid: '',
+            };
+            email.push(emailsearch);
+            break;
+            case clientSearchType.phone:
+              let phoneSearch : any = {
+                clientId : 0,
+                contactTypeId : 1,
+                extension : null,
+                id : 0,
+                isPrimary: false,
+                isPrivate :false,
+                number: this.clientSearchValue,
+                platformContactUuid : "00000000-0000-0000-0000-000000000000"
+              };
+              phone.push(phoneSearch);
+            break;
+
+      }    
+      this.clientNameInfo.firstName = firstName;
+     this.clientNameInfo.lastName = lastName;
+     this.clientNameInfo.email = email;
+      this.clientNameInfo.phone = phone;
+    
+    }
             this.openAddActionDialog();
         }
     }
@@ -332,7 +385,7 @@ export class ClientDetailsComponent implements OnInit {
             maxWidth: '95%',
             disableClose: true,
             hasBackdrop: true,
-            data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
+            data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true, clientInfo : this.clientNameInfo },
             panelClass: 'small-popup'
         });
         dialogRef.afterClosed().subscribe(result => {
