@@ -191,7 +191,7 @@ export class ClientDetailsComponent implements OnInit {
             // this.appointmentservice.IsAddClientFromSPA = true;
             // this.appointmentservice.ImgTempHolder = {};
             // this.appointmentservice.popupTitle = this.captions.NewClient;
-            let firstName = "";
+        let firstName = "";
         let lastName = "";
         let email : Email[]= [];
         let phone : PhoneNumber[] = [];
