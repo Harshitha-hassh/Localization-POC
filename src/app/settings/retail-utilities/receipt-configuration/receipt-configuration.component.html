@@ -9,7 +9,7 @@
                     <div class="pt-4">
                       <!-- Outlet Box -->
                       <mat-form-field class="" [floatLabel]="floatLabel">
-                          <mat-select placeholder="{{textCaptions.Outlet}}" (selectionChange)="changeSelection($event)" formControlName="outlet" class="LW14">
+                          <mat-select placeholder="{{textCaptions.Outlet}}" [attr.automationId]="'Icn_ReceiptConfiguration_Outlets'" (selectionChange)="changeSelection($event)" formControlName="outlet" class="LW14">
                               <mat-option *ngFor="let data of Outlet" [value]="data.id" >
                                   {{data.outletName}}
                               </mat-option>
@@ -36,10 +36,10 @@
                               <div  class="rightToggle float-left" [ngClass]="j%2 == 0 ? 'borderClass' : '' ">
                                       <label class="pt-2 pl-4 LW12" >{{value.Name}}</label>
                                       <i *ngIf="value.id==2" class="pl-2 icon-information cursor" [popover]="infoPopOver" [popoverOnHover]="true" popoverPlacement="bottom"></i>
-                                      <app-toggle-switch  class="d-table-cell pl-4" (changeToggleEvent)="toggleChange($event,value.controlName)" formControlName="{{value.controlName}}"
+                                      <app-toggle-switch  [automationId]="'receiptConfig'" class="d-table-cell pl-4" (changeToggleEvent)="toggleChange($event,value.controlName)" formControlName="{{value.controlName}}"
                                       [ngClass]="value.enableToggle ? 'button_valid' : 'button_invalid'" ></app-toggle-switch>
                                       <div class="pl-4 pt-3" *ngIf="(value.id==7 && isSuppressClerk)|| (value.id==9 && isSuppressPrint)">
-                                        <mat-radio-group class="radio-class" aria-label="Select an option" formControlName = "{{value.controlName + 'byName'}}">
+                                        <mat-radio-group attr.automationId='Rdo_ReceiptConfiguration_{{value.controlName}}' class="radio-class" aria-label="Select an option" formControlName = "{{value.controlName + 'byName'}}">
 
                                           <mat-radio-button *ngFor="let UPV of userPrintValue" class="radiovalue mat-radio-label" (click)="radioSelect(UPV.value, value.controlName)" [value]="UPV.value" title="USERID">{{UPV.Name}}</mat-radio-button>
                                         </mat-radio-group>
@@ -56,7 +56,7 @@
                     <!-- Radio Group -->
                     <div class="mt-4">
                       <label class="float-left LW12">{{textCaptions.Display}} </label>
-                      <mat-radio-group [disabled] = "IsViewOnly"  class="radio-class  float-left level-selector mt-2 mr-2 mb-2 clear-both" (change)="viewChange($event)" formControlName="displayServiceCharge">
+                      <mat-radio-group attr.automationId='Rdo_ReceiptConfiguration_displayServiceCharge' [disabled] = "IsViewOnly"  class="radio-class  float-left level-selector mt-2 mr-2 mb-2 clear-both" (change)="viewChange($event)" formControlName="displayServiceCharge">
                         <mat-radio-button class="mr-3 value-color" *ngFor="let value of ServiceCharge" [value]="value.id" >{{value.value}}</mat-radio-button>
                       </mat-radio-group>
                     </div>
@@ -66,14 +66,14 @@
                     <div class="pt-3 pl-3">
                       <div class="mt-2">
                         <mat-form-field (click)="viewChange($event)" class="textWidth  txt-area-height" [floatLabel]="floatLabel">
-                          <textarea matInput placeholder="{{textCaptions.GratuityLine}}" formControlName="gratuityLine" [maxlength]="250"></textarea>
+                          <textarea [attr.automationId]="'Ta_ReceiptConfiguration_gratuityLine'" matInput placeholder="{{textCaptions.GratuityLine}}" formControlName="gratuityLine" [maxlength]="250"></textarea>
                       </mat-form-field>
                       </div>
 
                       <div class="mt-2">
 
                         <mat-form-field (click)="viewChange($event)" class="textWidth txt-area-height" [floatLabel]="floatLabel">
-                          <textarea matInput placeholder="{{textCaptions.ReceiptNote}}" formControlName="receiptNote" [maxlength]="250"></textarea>
+                          <textarea [attr.automationId]="'Ta_ReceiptConfiguration_receiptNote'" matInput placeholder="{{textCaptions.ReceiptNote}}" formControlName="receiptNote" [maxlength]="250"></textarea>
                       </mat-form-field>
                       </div>
 
@@ -84,8 +84,8 @@
         </ng-scrollbar>
         </form>
         <div class="bottomSection w-100">
-          <button class="ml-30px" [ngClass]="{'spa-primary-default-save' : (FormGrp.valid && !isSaveDisabled && !IsViewOnly), 'spa-primary-disabled' : ( !FormGrp.valid || isSaveDisabled || IsViewOnly)}" mat-button (click)="saveReceipt(FormGrp.value)">{{textCaptions.save}}</button>
-          <button class="spa-button-cancel" mat-button (click)="cancelClick()">{{textCaptions.cancel}}</button>
+          <button class="ml-30px" [attr.automationId]="'Btn_ReceiptConfiguration_save'" [ngClass]="{'spa-primary-default-save' : (FormGrp.valid && !isSaveDisabled && !IsViewOnly), 'spa-primary-disabled' : ( !FormGrp.valid || isSaveDisabled || IsViewOnly)}" mat-button (click)="saveReceipt(FormGrp.value)">{{textCaptions.save}}</button>
+          <button class="spa-button-cancel" [attr.automationId]="'Btn_ReceiptConfiguration_cancel'" mat-button (click)="cancelClick()">{{textCaptions.cancel}}</button>
 
         </div>
       </mat-tab>
@@ -94,24 +94,24 @@
            <!-- formControlName="{{value.controlName}} -->
            <div>
             <label class="golf-form--label">{{textCaptions.lbl_authCodeonReceipts}}</label>
-            <ui-switch [checkedLabel]="textCaptions.checked" formControlName="displayAuthcode"
+            <ui-switch [attr.automationId]="'Tog_ReceiptConfiguration_displayAuthcode'" [checkedLabel]="textCaptions.checked" formControlName="displayAuthcode"
             [uncheckedLabel]="textCaptions.unchecked" (selectionChange)="changeSelectionAuthCodeToggle($event)" (change)="toggleAction($event)"></ui-switch>
           </div>
 
           <mat-form-field class="ag_form-control--xs pt-3 authcodeName" [floatLabel]="floatLabel" *ngIf="this.DisplayAuthCode">
             <input matInput [placeholder]="textCaptions.lbl_authCodeonReceiptName"
-                formControlName="authcodeName" [maxlength]="25" />
+            [attr.automationId]="'Txt_ReceiptConfiguration_authcodeName'"  formControlName="authcodeName" [maxlength]="25" />
           </mat-form-field>
             <div class="pt-3">
               <label class="golf-form--label">{{textCaptions.lbl_changeDue}}</label>
-              <ui-switch [checkedLabel]="textCaptions.checked" formControlName="displayChangeDue"
+              <ui-switch [checkedLabel]="textCaptions.checked" [attr.automationId]="'Txt_ReceiptConfiguration_displayChangeDue'" formControlName="displayChangeDue"
               [uncheckedLabel]="textCaptions.unchecked" (change)="toggleChangeDueAction($event)"></ui-switch>
             </div>
         <!-- <app-single-to-multiple *ngIf="selectedTabIndex === 1" [outlets]="this.outlets"></app-single-to-multiple> -->
         </form>
         <div class="bottomSection w-100">
-          <button class="ml-30px" [ngClass]="{'spa-primary-default-save' : propertyForm.dirty, 'spa-primary-disabled' : !propertyForm.dirty}" mat-button (click)="saveReceiptProperty(propertyForm.value)">{{textCaptions.save}}</button>
-          <button class="spa-button-cancel" mat-button (click)="cancelClick()">{{textCaptions.cancel}}</button>
+          <button class="ml-30px" [attr.automationId]="'Btn_ReceiptConfiguration_save'" [ngClass]="{'spa-primary-default-save' : propertyForm.dirty, 'spa-primary-disabled' : !propertyForm.dirty}" mat-button (click)="saveReceiptProperty(propertyForm.value)">{{textCaptions.save}}</button>
+          <button class="spa-button-cancel" [attr.automationId]="'Btn_ReceiptConfiguration_cancel'" mat-button (click)="cancelClick()">{{textCaptions.cancel}}</button>
         </div>
       </mat-tab>
     </mat-tab-group>
