@@ -385,7 +385,6 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.contactTypePhone = this.getPhoneOptions();
     this.contactTypeEmail = this.getMailOptions();
     this.validateEmailType = this.localization.getError(-87);
-    //this.validatePhoneType = this.localization.getError(-88);
     this.makeGetCall('GetClientConfiguration');
     this.clientInfo = this.clientInfoData;
     if (this.clientInfoData) {
@@ -396,7 +395,6 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         this.clientInfoData.phone.forEach((element, i) => {
           let _extension = element.extension ? element.extension : ''
           let _countryCode = element.countryCode ? element.countryCode : ''
-          let _platformContactUuid = element.platformContactUuid ? element.platformContactUuid : ''
           if (element.number != '') {
             if (element.contactTypeId === 3) { //Added For Extension when contact type is work
               if (element.number.indexOf(':') !== -1) {
