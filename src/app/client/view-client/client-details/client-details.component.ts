@@ -207,9 +207,15 @@ export class ClientDetailsComponent implements OnInit {
                         break;
                     case clientSearchType.name:
                         let name  =  this.clientSearchValue.split(" ");
-                        lastName = name[name.length -1];
-                        name.splice(-1, 1);
-                        firstName = name.join(' ');
+                        if(name.length > 1)
+                        {
+                            lastName = name[name.length -1];
+                            name.splice(-1, 1);
+                            firstName = name.join(' ');
+                        }
+                        else{
+                            firstName = name[0]; 
+                        }                                              
                         break;
                     case clientSearchType.email:
                         let emailsearch: Email = {
