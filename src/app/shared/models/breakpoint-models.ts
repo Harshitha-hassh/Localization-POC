@@ -23,6 +23,7 @@ export enum BreakPoint {
     ReceiptConfiguration = 7080,
     AddNewClientProfile = 600,
     EditClientProfile = 605,
+    CopyClientProfile = 675,
     DayEnd = 2430,
     UserSessionConfiguration = 7085,
     TransactionLog = 8090,

@@ -19,6 +19,8 @@
       </button>
         <i [matTooltip]="captions.bookAppointment.EditClient" class="icon-Edit edit-icon pl-2 cursor"
           (click)="EditRecords($event,userData,'edit',ServiceId)"></i>
+        <i [matTooltip]="captions.bookAppointment.CopyClient" class="icon-copy edit-icon pl-2 cursor"
+          (click)="EditRecords($event,userData,'copy',ServiceId)"></i>
         </div>
       <div *ngIf= "userData.age != '' && userData.gender != '' " class="LW14 age-details">{{userData.age}} , {{userData.gender}}</div>
       <div *ngIf= "userData.age == '' && userData.gender != '' " class="LW14 age-details">{{userData.gender}}</div>

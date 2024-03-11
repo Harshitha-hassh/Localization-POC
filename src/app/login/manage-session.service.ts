@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
-import { BehaviorSubject, Observable, Subject, Subscription, timer } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject, Subject, Subscription, timer } from 'rxjs';
 import { Utilities } from '../core/utilities';
 import { TenantManagementCommunication } from '../shared/communication/services/tenantmanagement.service';
 import { RetailRoutes } from '../core/extensions/retail-route';
@@ -18,6 +18,8 @@ import { OAuthService } from 'angular-oauth2-oidc';
 import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
 import { SignalrService } from 'src/app/common/communication/signalR/signalr.service';
 import { RetailRoutes as RetailRoute }  from 'src/app/retail/retail-route';
+import { AutologoffTimerService } from '../common/shared/shared/autologoff-timer-service';
+import { AlertPopupWithTimerComponent } from '../common/shared/shared/alert-popup-with-timer/alert-popup-with-timer.component';
 
 @Injectable({
     providedIn: 'root'
@@ -60,6 +62,11 @@ export class ManageSessionService implements OnDestroy {
     tokenTimerSubscription: Subscription;
     private tokenTimer: Observable<number>;
     private triggerTimeout: any;
+    subject = new ReplaySubject<number>(2);
+    _subscription : Subscription;
+    idealTime:boolean = false;
+    autoLogoffTimer:any;
+    isIdealDialogOpen:boolean = false;
 
     constructor(private router: Router
               , public dialogRef: MatDialog
@@ -70,7 +77,8 @@ export class ManageSessionService implements OnDestroy {
                 private propertyInformation: RetailPropertyInformation
               , private oauthService: OAuthService
               , private adb2cAuthConfiguration: ADB2CAuthConfiguration,
-                private signalR: SignalrService) {
+                private signalR: SignalrService
+              , private autoLogOfftimerService: AutologoffTimerService) {
 
         this.timeoutExpired.subscribe(n => {
         });
@@ -314,7 +322,8 @@ export class ManageSessionService implements OnDestroy {
           this._timeoutSeconds = logOffAfter * 60;
           this.timer = timer(this._timeoutSeconds * 1000);
           this.timerSubscription = this.timer.subscribe(n => {
-            this.timerComplete(n, false);
+            this.idealTime = true;
+            this.IdealtimerComplete();
           });
         }
       }
@@ -335,8 +344,49 @@ export class ManageSessionService implements OnDestroy {
 
         this.timer = timer(this._timeoutSeconds * 1000);
         this.timerSubscription = this.timer.subscribe(async n => {
-            await this.timerComplete(n, false);
+            !this.idealTime? await this.timerComplete(n, false) : this.IdealtimerComplete();
         });
+    }
+
+    private IdealtimerComplete() {
+    let dialogref;
+    if(!this.isIdealDialogOpen) {
+      this.isIdealDialogOpen = true;
+      this.resetOnTrigger = false;
+      dialogref = this.dialogRef.open(AlertPopupWithTimerComponent, {
+      height: 'auto',
+      width: 'auto',
+      panelClass: 'small-popup',
+      disableClose: true,
+    });
+    }
+    dialogref.afterClosed().subscribe(res => {
+        this.isIdealDialogOpen = false;
+        clearTimeout(this.autoLogoffTimer);
+          if (res.from == 'logout') {
+            this.timeoutExpired.next(++this._count);
+            this.stopTimer();
+            sessionStorage.setItem('popupEnabled','true');
+            this.logout();
+          } else {
+            this.resetOnTrigger = true;
+          }
+      
+      });
+      dialogref.afterOpened().subscribe(_ => {
+        this.isIdealDialogOpen = false;
+        this.autoLogoffTimer = setTimeout(() => {
+          this.autoLogOfftimerService.buttonDisabled.next(true);
+          this.timeoutExpired.next(++this._count);
+          this.stopTimer();
+          sessionStorage.setItem('popupEnabled','true');
+          this.logout();
+        }, this.logOutWaitingtime)
+      })
+    }
+
+    getTimer(){
+        return this.subject.asObservable();
     }
 
     public forceLogOff() {

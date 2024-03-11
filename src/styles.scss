@@ -5691,3 +5691,10 @@ app-transaction{
       background-color: #2e67b7 !important;
   }
 }
+.cdk-overlay-container:has(.Overlay-Alerts) {
+  z-index: 1150;
+  .Overlay-Alerts {
+      opacity: 0.5 !important;
+      background-color: rgb(6, 6, 6);
+   }
+}

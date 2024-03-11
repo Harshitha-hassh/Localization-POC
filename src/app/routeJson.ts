@@ -746,6 +746,7 @@ export const routeJSON = {
     "GetDiscountTypeConfigurationById" : "DiscountTypeConfiguration/{DiscountTypeId}",
     "GetDiscountConfigurationsByCategoryId" : "DiscountConfigurations/{categoryId}",
     "DeleteDiscountTypeConfigurationByIds":"DiscountTypeConfiguration/DeleteDiscountTypeConfigurationByIds",
+    "GetBreakpointforRoleAsync":"user/GetUserClaimsForRoleAsync/",
     "GetMasterConfigJson":"Config/GetMasterConfigJson",
     "GetHealthStatusFromUri": "FeaturesConfiguration/GetHealthStatusFromUri/{uri}"
   }
