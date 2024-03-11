@@ -4,7 +4,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 import { MatDialog } from '@angular/material/dialog';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import * as _ from 'lodash';
-import { BaseResponse, KeyValuePair, clientInfoDisplay, ClientLabel, Imagedata } from '../../../shared/shared-models';
+import { BaseResponse, KeyValuePair, clientInfoDisplay, ClientLabel, Imagedata, Email, PhoneNumber } from '../../../shared/shared-models';
 import { ClientService } from '../../../shared/service/client-service.service';
 import { PropertyInformation } from '../../../core/services/property-information.service';
 import { ActivatedRoute } from '@angular/router';
@@ -117,12 +117,14 @@ export class ClientDetailsComponent implements OnInit {
     selectedClientSearchType: number;
     enableSearch: boolean = false;
     isCopyClient = false;
+    clientSearchValue: string;
+    clientNameInfo: any = {};
     constructor(private dialog: MatDialog,
         private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
         , private userAccessBusiness: UserAccessBusiness) {
-            this.floatLabel = this.localization.setFloatLabel;
-            this.floatLabelNever = this.localization.setFloatLabelNever;
+        this.floatLabel = this.localization.setFloatLabel;
+        this.floatLabelNever = this.localization.setFloatLabelNever;
         route.params.subscribe(val => {
             if (this._as.isglobalSearch) {
                 this.clientService.selectedIndex = 0;
@@ -133,13 +135,13 @@ export class ClientDetailsComponent implements OnInit {
                 this.SearchClientInformation(this._as.selectedClient.name, false, this._as.selectedClient.guestProfileId, this.selectedClientSearchType);
             }
         });
-        this.clientSearchTypes = [{ id: 0, name: this.captions.firstName, checked: true }, 
-                                  { id: 1, name: this.captions.lastName, checked: false },
-                                  { id: 2, name: this.captions.name, checked: false },
-                                  { id: 3, name: this.captions.phone, checked: false },
-                                  { id: 4, name: this.captions.email, checked: false },
-                                  { id: 5, name: this.captions.patronId, checked: false }
-                                ];
+        this.clientSearchTypes = [{ id: 0, name: this.captions.firstName, checked: true },
+        { id: 1, name: this.captions.lastName, checked: false },
+        { id: 2, name: this.captions.name, checked: false },
+        { id: 3, name: this.captions.phone, checked: false },
+        { id: 4, name: this.captions.email, checked: false },
+        { id: 5, name: this.captions.patronId, checked: false }
+        ];
     }
     sampleData: any = [];
 
@@ -189,6 +191,52 @@ export class ClientDetailsComponent implements OnInit {
             // this.appointmentservice.IsAddClientFromSPA = true;
             // this.appointmentservice.ImgTempHolder = {};
             // this.appointmentservice.popupTitle = this.captions.NewClient;
+            let firstName = "";
+            let lastName = "";
+            let email: Email[] = [];
+            let phone: PhoneNumber[] = [];
+            this.clientSearchValue = this.searchText;
+            if (this.clientSearchValue) {
+
+                switch (this.selectedClientSearchType) {
+                    case clientSearchType.firstName:
+                        firstName = this.clientSearchValue;
+                        break;
+                    case clientSearchType.lastName:
+                        lastName = this.clientSearchValue;
+                        break;
+                    case clientSearchType.email:
+                        let emailsearch: Email = {
+                            id: 0,
+                            emailId: this.clientSearchValue,
+                            contactTypeId: 9,
+                            clientId: 0,
+                            isPrimary: false,
+                            isPrivate: false,
+                            propertyId: 0,
+                            subPropertyId: 0,
+                        };
+                        email.push(emailsearch);
+                        break;
+                    case clientSearchType.phone:
+                        let phoneSearch: any = {
+                            clientId: 0,
+                            contactTypeId: 1,
+                            extension: null,
+                            id: 0,
+                            isPrimary: false,
+                            isPrivate: false,
+                            number: this.clientSearchValue,
+                            platformContactUuid: "00000000-0000-0000-0000-000000000000"
+                        };
+                        phone.push(phoneSearch);
+                        break;
+                }
+                this.clientNameInfo.firstName = firstName;
+                this.clientNameInfo.lastName = lastName;
+                this.clientNameInfo.email = email;
+                this.clientNameInfo.phone = phone;
+            }
             this.openAddActionDialog();
         }
     }
@@ -229,55 +277,55 @@ export class ClientDetailsComponent implements OnInit {
         //   }
     }
 
-    
+
     setSearchText(clientswitchvalue) {
         switch (clientswitchvalue) {
-          case clientSearchType.firstName:
-            this.searchTextPlaceHolder = this.captions.searchByFirstName;
-            break;
-          case clientSearchType.lastName:
-            this.searchTextPlaceHolder = this.captions.searchByLastName;
-            break;
-           case clientSearchType.name:
-            this.searchTextPlaceHolder = this.captions.searchByFullName;
-            break;
-          case clientSearchType.phone:
-            this.searchTextPlaceHolder = this.captions.searchByPhoneNumber;
-            break;
+            case clientSearchType.firstName:
+                this.searchTextPlaceHolder = this.captions.searchByFirstName;
+                break;
+            case clientSearchType.lastName:
+                this.searchTextPlaceHolder = this.captions.searchByLastName;
+                break;
+            case clientSearchType.name:
+                this.searchTextPlaceHolder = this.captions.searchByFullName;
+                break;
+            case clientSearchType.phone:
+                this.searchTextPlaceHolder = this.captions.searchByPhoneNumber;
+                break;
             case clientSearchType.email:
-            this.searchTextPlaceHolder = this.captions.searchByEmail;
-            break;
+                this.searchTextPlaceHolder = this.captions.searchByEmail;
+                break;
             case clientSearchType.patronId:
-            this.searchTextPlaceHolder = this.captions.searchByPatronId;
-            break;
-          default:
-            this.searchTextPlaceHolder = this.captions.searchByFirstName;
-            break;
+                this.searchTextPlaceHolder = this.captions.searchByPatronId;
+                break;
+            default:
+                this.searchTextPlaceHolder = this.captions.searchByFirstName;
+                break;
         }
-      }
+    }
 
-      SetclientSearchTypeValue(clientswitchvalue) {
+    SetclientSearchTypeValue(clientswitchvalue) {
         switch (clientswitchvalue) {
-          case clientSearchType.firstName:
-            this.clientSearchTypes[0].checked = true;
-            this.clientSearchTypes[1].checked = false;
-            this.clientSearchTypes[2].checked = false;
-            this.clientSearchTypes[3].checked = false;
-            this.clientSearchTypes[4].checked = false;
-            this.clientSearchTypes[5].checked = false;
-            this.selectedClientSearchType = clientSearchType.firstName;
-            this.searchTextPlaceHolder = this.captions.searchByFirstName;
-            break;
-          case clientSearchType.lastName:
-            this.clientSearchTypes[0].checked = false;
-            this.clientSearchTypes[1].checked = true;
-            this.clientSearchTypes[2].checked = false;
-            this.clientSearchTypes[3].checked = false;
-            this.clientSearchTypes[4].checked = false;
-            this.clientSearchTypes[5].checked = false;
-            this.selectedClientSearchType = clientSearchType.lastName;
-            this.searchTextPlaceHolder = this.captions.searchByLastName;
-            break;
+            case clientSearchType.firstName:
+                this.clientSearchTypes[0].checked = true;
+                this.clientSearchTypes[1].checked = false;
+                this.clientSearchTypes[2].checked = false;
+                this.clientSearchTypes[3].checked = false;
+                this.clientSearchTypes[4].checked = false;
+                this.clientSearchTypes[5].checked = false;
+                this.selectedClientSearchType = clientSearchType.firstName;
+                this.searchTextPlaceHolder = this.captions.searchByFirstName;
+                break;
+            case clientSearchType.lastName:
+                this.clientSearchTypes[0].checked = false;
+                this.clientSearchTypes[1].checked = true;
+                this.clientSearchTypes[2].checked = false;
+                this.clientSearchTypes[3].checked = false;
+                this.clientSearchTypes[4].checked = false;
+                this.clientSearchTypes[5].checked = false;
+                this.selectedClientSearchType = clientSearchType.lastName;
+                this.searchTextPlaceHolder = this.captions.searchByLastName;
+                break;
             case clientSearchType.name:
                 this.clientSearchTypes[0].checked = false;
                 this.clientSearchTypes[1].checked = false;
@@ -288,27 +336,27 @@ export class ClientDetailsComponent implements OnInit {
                 this.selectedClientSearchType = clientSearchType.name;
                 this.searchTextPlaceHolder = this.captions.searchByFullName;
                 break;
-          case clientSearchType.phone:
-            this.clientSearchTypes[0].checked = false;
-            this.clientSearchTypes[1].checked = false;
-            this.clientSearchTypes[2].checked = false;
-            this.clientSearchTypes[3].checked = true;
-            this.clientSearchTypes[4].checked = false;
-            this.clientSearchTypes[5].checked = false;
-            this.selectedClientSearchType = clientSearchType.phone;
-            this.searchTextPlaceHolder = this.captions.searchByPhoneNumber;
-            break;
-          case clientSearchType.email:
-            this.clientSearchTypes[0].checked = false;
-            this.clientSearchTypes[1].checked = false;
-            this.clientSearchTypes[2].checked = false;
-            this.clientSearchTypes[3].checked = false;
-            this.clientSearchTypes[4].checked = true;
-            this.clientSearchTypes[5].checked = false;
-            this.selectedClientSearchType = clientSearchType.email;
-            this.searchTextPlaceHolder = this.captions.searchByEmail;   
-             break;    
-             case clientSearchType.patronId:
+            case clientSearchType.phone:
+                this.clientSearchTypes[0].checked = false;
+                this.clientSearchTypes[1].checked = false;
+                this.clientSearchTypes[2].checked = false;
+                this.clientSearchTypes[3].checked = true;
+                this.clientSearchTypes[4].checked = false;
+                this.clientSearchTypes[5].checked = false;
+                this.selectedClientSearchType = clientSearchType.phone;
+                this.searchTextPlaceHolder = this.captions.searchByPhoneNumber;
+                break;
+            case clientSearchType.email:
+                this.clientSearchTypes[0].checked = false;
+                this.clientSearchTypes[1].checked = false;
+                this.clientSearchTypes[2].checked = false;
+                this.clientSearchTypes[3].checked = false;
+                this.clientSearchTypes[4].checked = true;
+                this.clientSearchTypes[5].checked = false;
+                this.selectedClientSearchType = clientSearchType.email;
+                this.searchTextPlaceHolder = this.captions.searchByEmail;
+                break;
+            case clientSearchType.patronId:
                 this.clientSearchTypes[0].checked = false;
                 this.clientSearchTypes[1].checked = false;
                 this.clientSearchTypes[2].checked = false;
@@ -316,14 +364,14 @@ export class ClientDetailsComponent implements OnInit {
                 this.clientSearchTypes[4].checked = false;
                 this.clientSearchTypes[5].checked = true;
                 this.selectedClientSearchType = clientSearchType.patronId;
-                this.searchTextPlaceHolder = this.captions.searchByPatronId;   
-                 break;   
-          default:
-            this.selectedClientSearchType = clientSearchType.firstName;
-            this.searchTextPlaceHolder = this.captions.searchByFirstName;
-            break;
+                this.searchTextPlaceHolder = this.captions.searchByPatronId;
+                break;
+            default:
+                this.selectedClientSearchType = clientSearchType.firstName;
+                this.searchTextPlaceHolder = this.captions.searchByFirstName;
+                break;
         }
-      }
+    }
 
     openAddActionDialog() {
         const dialogRef = this.dialog.open(ClientPopupComponent, {
@@ -332,7 +380,7 @@ export class ClientDetailsComponent implements OnInit {
             maxWidth: '95%',
             disableClose: true,
             hasBackdrop: true,
-            data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true },
+            data: { mode: 'CREATE', title: this.captions.NewClient, type: this.captions.save, data: '', closebool: true, clientInfo: this.clientNameInfo },
             panelClass: 'small-popup'
         });
         dialogRef.afterClosed().subscribe(result => {
@@ -364,12 +412,12 @@ export class ClientDetailsComponent implements OnInit {
             disableClose: true,
             hasBackdrop: true,
             data: {
-                mode: 'EDIT', 
-                title: this.isCopyClient ? this.captions.NewClient : this.captions.EditClient, 
-                type: this.isCopyClient ? this.captions.save : this.captions.Update, 
+                mode: 'EDIT',
+                title: this.isCopyClient ? this.captions.NewClient : this.captions.EditClient,
+                type: this.isCopyClient ? this.captions.save : this.captions.Update,
                 id: id,
-                data: clientDetail, 
-                closebool: true, 
+                data: clientDetail,
+                closebool: true,
                 isClientViewOnly: this.isClientViewOnly,
                 isCopyClient: this.isCopyClient
             },
@@ -468,8 +516,8 @@ export class ClientDetailsComponent implements OnInit {
      */
     async EditRecords(event) {
         // To Do: Edit Client Info mapping.
-        let response = event[2] == 'edit' ? await this.userAccessBusiness.getUserAccess(BreakPoint.EditClientProfile) : 
-                                    await this.userAccessBusiness.getUserAccess(BreakPoint.CopyClientProfile);
+        let response = event[2] == 'edit' ? await this.userAccessBusiness.getUserAccess(BreakPoint.EditClientProfile) :
+            await this.userAccessBusiness.getUserAccess(BreakPoint.CopyClientProfile);
         this.isClientViewOnly = response.isViewOnly;
         if (response.isAllow || response.isViewOnly) {
             if (event.length > 0) {
@@ -492,22 +540,18 @@ export class ClientDetailsComponent implements OnInit {
         this.timer = setTimeout(this.searchdata.bind(this), 1000, searchText);
     }
 
-    enableSearchButton()
-    {
-        if(this.searchText.length > 2 || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId)){
+    enableSearchButton() {
+        if (this.searchText.length > 2 || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId)) {
             this.enableSearch = true;
         }
-        else
-        {
+        else {
             this.enableSearch = false;
         }
 
     }
 
-    onEnter()
-    {
-        if(this.searchText.length > 2 || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId))
-        {
+    onEnter() {
+        if (this.searchText.length > 2 || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId)) {
             this.clientSearch(this.searchText)
         }
     }
@@ -518,7 +562,7 @@ export class ClientDetailsComponent implements OnInit {
             this.singleUserView = false;
         }
         else {
-            if ((searchText.length == 0 || searchText.length > 2 || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId))  && this.clientService.selectedIndex == 1) {
+            if ((searchText.length == 0 || searchText.length > 2 || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId)) && this.clientService.selectedIndex == 1) {
                 this.RecentClientInformation(this.searchText, this.selectedClientSearchType);
                 this.singleUserView = false;
             }
@@ -537,8 +581,7 @@ export class ClientDetailsComponent implements OnInit {
         }
     }
 
-    clearText()
-    {
+    clearText() {
         this.searchText = '';
         this.enableSearch = false;
     }
@@ -728,7 +771,7 @@ export class ClientDetailsComponent implements OnInit {
             error: this.errorCallback.bind(this),
             callDesc: "SearchClientInfo",
             method: HttpMethod.Put,
-            uriParams: { searchType:searchType, requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000) },
+            uriParams: { searchType: searchType, requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000) },
             body: pattern,
             showError: true,
             extraParams: []
@@ -746,7 +789,7 @@ export class ClientDetailsComponent implements OnInit {
             callDesc: "RecentClientInfo",
             method: HttpMethod.Put,
             body: searchText,
-            uriParams: { propertyDate: this.utils.convertDateFormat(this.PropertyInfo.CurrentDate), searchType:searchType, requestUid: this.requestUid },
+            uriParams: { propertyDate: this.utils.convertDateFormat(this.PropertyInfo.CurrentDate), searchType: searchType, requestUid: this.requestUid },
             showError: true,
             extraParams: []
         });
