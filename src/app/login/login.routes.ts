@@ -10,4 +10,5 @@ export enum LoginRoutes {
     VerifyPassword = "User/VerifyPassword/{UserId}/{NewPassword}/{TenantId}",
     PasswordSetting = "Property/GetPasswordSettings/{TenantId}",
     SupportUserLogin = 'Adb2CAuthentication/GetSupportUserLoginDetails',
+    AuditSupportUser = 'Adb2CAuthentication/AuditSupportUser',
 }

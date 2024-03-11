@@ -20,6 +20,7 @@ import { SignalrService } from 'src/app/common/communication/signalR/signalr.ser
 import { RetailRoutes as RetailRoute }  from 'src/app/retail/retail-route';
 import { AutologoffTimerService } from '../common/shared/shared/autologoff-timer-service';
 import { AlertPopupWithTimerComponent } from '../common/shared/shared/alert-popup-with-timer/alert-popup-with-timer.component';
+import { LoginRoutes } from './login.routes';
 
 @Injectable({
     providedIn: 'root'
@@ -259,7 +260,33 @@ export class ManageSessionService implements OnDestroy {
             baseResponse: true
         };
 
-        return this.loginService.postPromise<number>(serviceParams);
+        let sessionPromise = this.loginService.postPromise<number>(serviceParams);
+        let sessionId = 0;
+        sessionPromise.then((num)=>{
+            sessionId = num
+        });
+        try {
+            if(this.localize.GetSupportUserMailId()){
+                let data = {
+                    userEmail : this.localize.GetSupportUserMailId(),
+                    sessionId : sessionId
+                  };
+                  const auditParams = {
+                    route: LoginRoutes.AuditSupportUser,
+                    uriParams: '',
+                    header: '',
+                    body: data,
+                    showError: true,
+                    baseResponse: true
+                  };
+              
+                  this.loginService.putPromise(auditParams, false);
+            }
+            
+        } catch (error) {
+            console.log("Error in auditing support user")
+        }
+        return sessionPromise;
     }
 
     async updateSession() {
