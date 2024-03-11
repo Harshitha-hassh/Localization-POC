@@ -1194,6 +1194,7 @@
     "FailedRecordSearch": "Search by Ticket #, Clerk ID, Amount_kr",
     "MissingReturnReason": "Missing Return Reason_kr",
     "SuccessfullyVoided": "Successfully Voided_kr",
+    "PartialVoidFailure": "Please check 'Refund Failures' screen to refund the failed payment_kr",
     "CorrectionTransactionMsg": "Cancelling will void transaction entirely. Do you wish to proceed?_kr",
     "FlatAmount": "Flat Amount_kr",
     "Apply": "APPLY_kr",

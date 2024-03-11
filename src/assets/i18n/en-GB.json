@@ -1194,6 +1194,7 @@
     "FailedRecordSearch": "Search by Ticket #, Clerk ID, Amount_gb",
     "MissingReturnReason": "Missing Return Reason_gb",
     "SuccessfullyVoided": "Successfully Voided_gb",
+    "PartialVoidFailure": "Please check 'Refund Failures' screen to refund the failed payment_gb",
     "CorrectionTransactionMsg": "Cancelling will void transaction entirely. Do you wish to proceed?_gb",
     "FlatAmount": "Flat Amount_gb",
     "Apply": "APPLY_gb",
