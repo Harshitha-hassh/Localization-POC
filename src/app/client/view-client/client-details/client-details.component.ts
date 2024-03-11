@@ -205,6 +205,18 @@ export class ClientDetailsComponent implements OnInit {
                     case clientSearchType.lastName:
                         lastName = this.clientSearchValue;
                         break;
+                    case clientSearchType.name:
+                        let name  =  this.clientSearchValue.split(" ");
+                        if(name.length > 1)
+                        {
+                            lastName = name[name.length -1];
+                            name.splice(-1, 1);
+                            firstName = name.join(' ');
+                        }
+                        else{
+                            firstName = name[0]; 
+                        }                                              
+                        break;
                     case clientSearchType.email:
                         let emailsearch: Email = {
                             id: 0,
@@ -219,6 +231,7 @@ export class ClientDetailsComponent implements OnInit {
                         email.push(emailsearch);
                         break;
                     case clientSearchType.phone:
+                        let number = Number(this.clientSearchValue);
                         let phoneSearch: any = {
                             clientId: 0,
                             contactTypeId: 1,
@@ -226,7 +239,7 @@ export class ClientDetailsComponent implements OnInit {
                             id: 0,
                             isPrimary: false,
                             isPrivate: false,
-                            number: this.clientSearchValue,
+                            number:  isNaN(number) ? "" : this.clientSearchValue,
                             platformContactUuid: "00000000-0000-0000-0000-000000000000"
                         };
                         phone.push(phoneSearch);
