@@ -157,8 +157,8 @@
   </div>
     <div class="prop-actions">
       <div>
-        <button [attr.automationId]="'Btn_propertyInfo_cancel'" class="LW14 save" mat-button (click)="save()" [ngClass]="enableSave ? 'spa-primary-default-save': 'spa-primary-disabled'">{{captions.save}}</button>
-        <a class="LW14 cancel-btn-color" (click)="cancel()">{{captions.cancel}}</a>
+        <button [attr.automationId]="'Btn_propertyInfo_save'" class="LW14 save" mat-button (click)="save()" [ngClass]="enableSave ? 'spa-primary-default-save': 'spa-primary-disabled'">{{captions.save}}</button>
+        <a [attr.automationId]="'Lbl_propertyInfo_cancel'" class="LW14 cancel-btn-color" (click)="cancel()">{{captions.cancel}}</a>
       </div>
     </div>
   </section>
