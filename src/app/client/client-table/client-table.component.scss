@@ -136,7 +136,7 @@
     border: 1px solid #ECECEC;
     background: #ffff;
     color: #000;
-    font-family: "LatoWeb";
+    font-family: $ag_lato-regular;
   }
 
   .search-container {
@@ -234,7 +234,7 @@
     z-index: 1;
     font-weight: 100;
     // font-weight: 600;
-    font-family: "LatoWebMedium" !important;
+    font-family: $ag_lato-medium !important;
     cursor: pointer;
     padding: 0 10px;
     vertical-align: middle;
@@ -269,7 +269,7 @@
     th {
       font-size: 14px;
       padding: 0 15px;
-      font-family: "LatoWebMedium";
+      font-family: $ag_lato-medium;
       background-color: $theme-table-header-bg-color;
 
       //   &:last-child {
@@ -285,7 +285,7 @@
     tbody {
 
       span {
-        font-family: "LatoWebMedium";
+        font-family: $ag_lato-medium;
       }
 
       tr {
@@ -320,7 +320,7 @@
         td {
           margin-right: 15px;
           font-size: 14px;
-          font-family: "LatoWebMedium";
+          font-family: $ag_lato-medium;
           padding: 10px;
           border-top: none;
           text-align: left;

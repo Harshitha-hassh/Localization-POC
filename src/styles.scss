@@ -2827,32 +2827,32 @@ mat-calendar {
 }
 
 .LWB11 {
-  font-family: "LatoWebBold";
+  font-family: $ag_lato-bold;
   font-size: 11px !important;
 }
 
 .LWB12 {
-  font-family: "LatoWebBold";
+  font-family: $ag_lato-bold;
   font-size: 12px !important;
 }
 
 .LWB14 {
-  font-family: "LatoWebBold";
+  font-family: $ag_lato-bold;
   font-size: 14px !important;
 }
 
 .LWB16 {
-  font-family: "LatoWebBold";
+  font-family: $ag_lato-bold;
   font-size: 16px !important;
 }
 
 .LWB18 {
-  font-family: "LatoWebBold";
+  font-family: $ag_lato-bold;
   font-size: 18px !important;
 }
 
 .LWB20 {
-  font-family: "LatoWebBold";
+  font-family: $ag_lato-bold;
   font-size: 20px !important;
 }
 
@@ -3484,7 +3484,7 @@ mat-color-picker-selector {
       position: relative;
       display: block;
       height: inherit;
-      font-family: "LatoWebBold";
+      font-family: $ag_lato-bold;
       font-size: 11px !important;
       text-transform: capitalize;
       background: #c6c6c6;
@@ -4120,7 +4120,7 @@ label.switch {
 }
 /** Filter styles*/
 .spa-filter-title {
-  font-family: "LatoWebBold";
+  font-family: $ag_lato-bold;
   text-transform: uppercase;
   font-size: 14px;
 }
