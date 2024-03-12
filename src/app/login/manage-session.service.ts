@@ -20,7 +20,6 @@ import { SignalrService } from 'src/app/common/communication/signalR/signalr.ser
 import { RetailRoutes as RetailRoute }  from 'src/app/retail/retail-route';
 import { AutologoffTimerService } from '../common/shared/shared/autologoff-timer-service';
 import { AlertPopupWithTimerComponent } from '../common/shared/shared/alert-popup-with-timer/alert-popup-with-timer.component';
-import { LoginRoutes } from './login.routes';
 
 @Injectable({
     providedIn: 'root'
