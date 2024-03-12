@@ -1449,7 +1449,27 @@
         "couponisalreadyonholdorsold": "Gift Card is on hold /  Gift Card is already sold_da",
         "cardhasinsufficientbalanceforthetransaction": "Gift Card has insufficient balance for the transaction_da"
       },
-      "LoadReversalNotSupportedMsg": "Load reversal is not supported for {vendorName} gift cards._da"
+      "LoadReversalNotSupportedMsg": "Load reversal is not supported for {vendorName} gift cards._da",
+      "EmailPhoneNoRequiredDisclaimer": "Either Email ID or Phone Number is Mandatory_da",
+      "GiftcardAdvancedSearchPopup": {
+        "lbl_advanceSearch": "Advanced Search_da",
+        "lbl_outlet": "Outlet_da",
+        "lbl_firstName": "First Name_da",
+        "lbl_lastName": "Last Name_da",
+        "lbl_emailId": "Email ID_da",
+        "lbl_countryCode": "Country Code_da",
+        "lbl_phoneNumber": "Phone Number_da",
+        "btn_search": "SEARCH_da",
+        "lbl_cancel": "CANCEL_da",
+        "lbl_apply": "APPLY_da",
+        "lbl_sNo": "S.No_da",
+        "lbl_giftCardNumber": "Gift Card Number_da",
+        "lbl_soldDate": "Sold Date_da",
+        "lbl_user": "User_da",
+        "lbl_availableBalance": "Available Balance($)_da",
+        "lbl_search": "Search_da",
+        "lbl_status": "Status_da"
+      }
     },
     "Wallet": {
       "WalletSelectionDialog": {
@@ -2866,6 +2886,7 @@
     "missingVatNumber": "Missing VAT Number_da",
     "ActivateGiftCard": "Activate Gift Card_da",
     "AllowExpiration": "Allow Expiration_da",
+    "AllowSearchByGuestName": "Allow Search by Guest Name_da",
     "ExpireAfterDays": "Expire after (days)_da",
     "GiftCardType": "Gift Card Type_da",
     "V1": "Visual One_da",
@@ -4263,19 +4284,5 @@
   "idleAutologoffWarn": "You are about to be logged out in_da",
   "idleCompleteYourAction": "minutes. Please complete your action._da",
   "btn_continueSession": "CONTINUE SESSION_da",
-  "btn_logout": "LOGOUT_da",
-  "lbl_advanceSearch": "Advanced Search_da",
-  "lbl_outlet": "Outlet_da",
-  "lbl_firstName": "First Name_da",
-  "lbl_lastName": "Last Name_da",
-  "lbl_emailId": "Email ID_da",
-  "lbl_countryCode": "Country Code_da",
-  "lbl_cancel": "CANCEL_da",
-  "lbl_apply": "APPLY_da",
-  "lbl_sNo": "S.No_da",
-  "lbl_giftCardNumber": "Gift Card Number_da",
-  "lbl_soldDate": "Sold Date_da",
-  "lbl_user": "User_da",
-  "lbl_availableBalance": "Available Balance($)_da",
-  "lbl_search": "Search_da"
+  "btn_logout": "LOGOUT_da"
 }

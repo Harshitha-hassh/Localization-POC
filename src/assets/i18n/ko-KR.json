@@ -1449,7 +1449,27 @@
         "couponisalreadyonholdorsold": "Gift Card is on hold /  Gift Card is already sold_kr",
         "cardhasinsufficientbalanceforthetransaction": "Gift Card has insufficient balance for the transaction_kr"
       },
-      "LoadReversalNotSupportedMsg": "Load reversal is not supported for {vendorName} gift cards._kr"
+      "LoadReversalNotSupportedMsg": "Load reversal is not supported for {vendorName} gift cards._kr",
+      "EmailPhoneNoRequiredDisclaimer": "Either Email ID or Phone Number is Mandatory_kr",
+      "GiftcardAdvancedSearchPopup": {
+        "lbl_advanceSearch": "Advanced Search_kr",
+        "lbl_outlet": "Outlet_kr",
+        "lbl_firstName": "First Name_kr",
+        "lbl_lastName": "Last Name_kr",
+        "lbl_emailId": "Email ID_kr",
+        "lbl_countryCode": "Country Code_kr",
+        "lbl_phoneNumber": "Phone Number_kr",
+        "btn_search": "SEARCH_kr",
+        "lbl_cancel": "CANCEL_kr",
+        "lbl_apply": "APPLY_kr",
+        "lbl_sNo": "S.No_kr",
+        "lbl_giftCardNumber": "Gift Card Number_kr",
+        "lbl_soldDate": "Sold Date_kr",
+        "lbl_user": "User_kr",
+        "lbl_availableBalance": "Available Balance($)_kr",
+        "lbl_search": "Search_kr",
+        "lbl_status": "Status_kr"
+      }
     },
     "Wallet": {
       "WalletSelectionDialog": {
@@ -2866,6 +2886,7 @@
     "missingVatNumber": "Missing VAT Number_kr",
     "ActivateGiftCard": "Activate Gift Card_kr",
     "AllowExpiration": "Allow Expiration_kr",
+    "AllowSearchByGuestName": "Allow Search by Guest Name_kr",
     "ExpireAfterDays": "Expire after (days)_kr",
     "GiftCardType": "Gift Card Type_kr",
     "V1": "Visual One_kr",
@@ -4263,19 +4284,5 @@
   "idleAutologoffWarn": "You are about to be logged out in_kr",
   "idleCompleteYourAction": "minutes. Please complete your action._kr",
   "btn_continueSession": "CONTINUE SESSION_kr",
-  "btn_logout": "LOGOUT_kr",
-  "lbl_advanceSearch": "Advanced Search_kr",
-  "lbl_outlet": "Outlet_kr",
-  "lbl_firstName": "First Name_kr",
-  "lbl_lastName": "Last Name_kr",
-  "lbl_emailId": "Email ID_kr",
-  "lbl_countryCode": "Country Code_kr",
-  "lbl_cancel": "CANCEL_kr",
-  "lbl_apply": "APPLY_kr",
-  "lbl_sNo": "S.No_kr",
-  "lbl_giftCardNumber": "Gift Card Number_kr",
-  "lbl_soldDate": "Sold Date_kr",
-  "lbl_user": "User_kr",
-  "lbl_availableBalance": "Available Balance($)_kr",
-  "lbl_search": "Search_kr"
+  "btn_logout": "LOGOUT_kr"
 }

@@ -1451,7 +1451,27 @@
         "couponisalreadyonholdorsold": "Gift Card is on hold /  Gift Card is already sold",
         "cardhasinsufficientbalanceforthetransaction": "Gift Card has insufficient balance for the transaction"
       },
-      "LoadReversalNotSupportedMsg": "Load reversal is not supported for {vendorName} gift cards."
+      "LoadReversalNotSupportedMsg": "Load reversal is not supported for {vendorName} gift cards.",
+      "EmailPhoneNoRequiredDisclaimer": "Either Email ID or Phone Number is Mandatory",
+      "GiftcardAdvancedSearchPopup": {
+        "lbl_advanceSearch": "Advanced Search",
+        "lbl_outlet": "Outlet",
+        "lbl_firstName": "First Name",
+        "lbl_lastName": "Last Name",
+        "lbl_emailId": "Email ID",
+        "lbl_countryCode": "Country Code",
+        "lbl_phoneNumber": "Phone Number",
+        "btn_search": "SEARCH",
+        "lbl_cancel": "CANCEL",
+        "lbl_apply": "APPLY",
+        "lbl_sNo": "S.No",
+        "lbl_giftCardNumber": "Gift Card Number",
+        "lbl_soldDate": "Sold Date",
+        "lbl_user": "User",
+        "lbl_availableBalance": "Available Balance($)",
+        "lbl_search": "Search",
+        "lbl_status": "Status"
+      }
     },
     "Wallet": {
       "WalletSelectionDialog": {
@@ -1578,7 +1598,7 @@
       "RemoveAll": "Remove All"
     },
     "TaxOnTax":"Tax On Tax",
-    "OpenItemValidationforGiftCard":"Gift card item should be configured as an open item"
+    "OpenItemValidationforGiftCard":"Gift card item should be configured as an open item"    
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",
@@ -2869,6 +2889,7 @@
     "missingVatNumber": "Missing VAT Number",
     "ActivateGiftCard": "Activate Gift Card",
     "AllowExpiration": "Allow Expiration",
+    "AllowSearchByGuestName": "Allow Search by Guest Name",
     "ExpireAfterDays": "Expire after (days)",
     "GiftCardType": "Gift Card Type",
     "V1": "Visual One",
@@ -4266,21 +4287,5 @@
   "idleAutologoffWarn" : "You are about to be logged out in",
   "idleCompleteYourAction" : "minutes. Please complete your action.",
   "btn_continueSession" : "CONTINUE SESSION",
-  "btn_logout" : "LOGOUT",
-  "lbl_advanceSearch" : "Advanced Search",
-  "lbl_outlet" : "Outlet",
-  "lbl_firstName" : "First Name",
-  "lbl_lastName" : "Last Name",
-  "lbl_emailId" : "Email ID",
-  "lbl_countryCode" : "Country Code",
-  "lbl_phoneNumber" : "Phone Number",
-  "btn_search" : "SEARCH",
-  "lbl_cancel" : "CANCEL",
-  "lbl_apply" : "APPLY",
-  "lbl_sNo" : "S.No",
-  "lbl_giftCardNumber" : "Gift Card Number",
-  "lbl_soldDate" : "Sold Date",
-  "lbl_user" : "User",
-  "lbl_availableBalance" : "Available Balance($)",
-  "lbl_search" : "Search"
+  "btn_logout" : "LOGOUT"  
 }
