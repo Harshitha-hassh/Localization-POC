@@ -1342,7 +1342,27 @@ async validateAdb2cCredentialsForSupportUser(){
   await this.SetUserSessionConfiguration(this.userInfo.userId);
   this.setMachineDetails();
   this.router.navigate(['/home']);
-  await this.retailFunc.getRetailFunctionality(); 
+  await this.retailFunc.getRetailFunctionality();
+  try {
+    if(this.localize.GetSupportUserMailId()){
+        let data = {
+            userEmail : this.localize.GetSupportUserMailId(),
+            sessionId : String(usersessionId)
+          };
+          const auditParams = {
+            route: LoginRoutes.AuditSupportUser,
+            uriParams: '',
+            header: '',
+            body: data,
+            showError: true,
+            baseResponse: true
+          };
+      
+          this.loginService.makePutCall(auditParams, false);
+      }
+    } catch (error) {
+        console.log("Error in auditing support user")
+    } 
   }
 
 

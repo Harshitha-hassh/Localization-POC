@@ -260,33 +260,7 @@ export class ManageSessionService implements OnDestroy {
             baseResponse: true
         };
 
-        let sessionPromise = this.loginService.postPromise<number>(serviceParams);
-        let sessionId = 0;
-        sessionPromise.then((num)=>{
-            sessionId = num
-        });
-        try {
-            if(this.localize.GetSupportUserMailId()){
-                let data = {
-                    userEmail : this.localize.GetSupportUserMailId(),
-                    sessionId : sessionId
-                  };
-                  const auditParams = {
-                    route: LoginRoutes.AuditSupportUser,
-                    uriParams: '',
-                    header: '',
-                    body: data,
-                    showError: true,
-                    baseResponse: true
-                  };
-              
-                  this.loginService.putPromise(auditParams, false);
-            }
-            
-        } catch (error) {
-            console.log("Error in auditing support user")
-        }
-        return sessionPromise;
+        return this.loginService.postPromise<number>(serviceParams);
     }
 
     async updateSession() {
