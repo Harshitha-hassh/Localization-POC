@@ -67,7 +67,8 @@
 
 .ag_button--singleselect{
   @extend .ag_button;
-  @extend .ag_LatoRegular-12;
+  font-size: 12px;
+  font-family: $ag_lato-regular;
   background-color: $ag_black-light !important;
   border: 1px solid $ag_black-light !important;
   &[disabled] {
@@ -160,7 +161,8 @@ $golfsecondary--button: (secondarygreen, $golf-secondary-button-border-green), (
 
 .button--singleselect{
   @extend .button;
-  @extend .golf-LatoRegular-12;
+  font-size: 12px;
+  font-family: $ag_lato-regular;
   background-color: $button_background !important;
   border: 1px solid $button_background !important;
   &[disabled] {

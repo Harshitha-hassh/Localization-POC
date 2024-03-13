@@ -2045,16 +2045,19 @@ ui-switch {
 }
 
 .golf-title {
-  @extend .golf-LatoWebBold-16;
+  font-size: 16px;
+  font-family: $ag_lato-regular;
 }
 
 .golf-caption {
-  @extend .golf-LatoRegular-12;
+  font-size: 12px;
+  font-family: $ag_lato-regular;
   color: $caption-color;
 }
 
 .golf-body-1 {
-  @extend .golf-LatoRegular-16;
+  font-size: 16px;
+  font-family: $ag_lato-regular;
 }
 
 // Text aligment
@@ -2094,7 +2097,8 @@ ui-switch {
 }
 
 .more-link {
-  @extend .golf-LatoRegular-12;
+  font-size: 12px;
+  font-family: $ag_lato-regular;
   align-self: center;
 }
 
@@ -2176,7 +2180,8 @@ ui-switch {
 }
 
 .external-control-error {
-  @extend .golf-LatoRegular-12;
+  font-size: 12px;
+  font-family: $ag_lato-regular;
 }
 
 .switch.disabled {
