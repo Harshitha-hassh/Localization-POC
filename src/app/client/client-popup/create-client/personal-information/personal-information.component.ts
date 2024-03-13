@@ -224,10 +224,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   createEmailItem(arr: number, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): UntypedFormGroup {
 
     const emailLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_EMAIL_TYPE');
-    if (emailLabel && emailLabel.value != "0") {
+    if (emailLabel && emailLabel.value != "0" && (EmailLabel == 0 || EmailLabel == "")) {
       EmailLabel = emailLabel && emailLabel.value ? Number(emailLabel.value) : '';
     }
-    else if (!emailLabel || emailLabel.value == '0' && this.clientInfoData.phone.email > 0) {
+    else if (!emailLabel || emailLabel.value == '0' && this.clientInfoData?.phone?.email > 0) {
       EmailLabel = emailLabel && emailLabel.value ? Number(emailLabel.value) : EmailLabel;
     }
 
@@ -267,10 +267,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       countryCode = countryCode == -1 ? '' : countryCode;
     }
     let _phoneNoLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_PHONE_TYPE');
-    if (_phoneNoLabel && _phoneNoLabel.value != "0") {
+    if (_phoneNoLabel && _phoneNoLabel.value != "0" && (phoneNoLabel == 0 || phoneNoLabel == "")) {
       phoneNoLabel = _phoneNoLabel && _phoneNoLabel.value ? Number(_phoneNoLabel.value) : '';
     }
-    else if (!_phoneNoLabel || _phoneNoLabel.value == '0' && this.clientInfoData.phone.length > 0) {
+    else if (!_phoneNoLabel || _phoneNoLabel.value == '0' && this.clientInfoData?.phone?.length > 0) {
       phoneNoLabel = _phoneNoLabel && _phoneNoLabel.value ? Number(_phoneNoLabel.value) : phoneNoLabel;
     }
     return this.Form.group({
