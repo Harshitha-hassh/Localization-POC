@@ -1,10 +1,12 @@
 @import "../abstracts/color";
 
 /****************************************ont variables**********************************************************/
-$ag_lato-regular: "LatoRegular";
-$ag_lato-medium: "LatoWebMedium";
-$ag_lato-bold: "LatoWebBold";
-
+// $ag_lato-regular: "LatoRegular";
+// $ag_lato-medium: "LatoWebMedium";
+// $ag_lato-bold: "LatoWebBold";
+$ag_lato-regular: "SourceSansProRegular";
+$ag_lato-medium: "SourceSansProSemiBold";
+$ag_lato-bold: "SourceSansProBold";
 // New Fonts 2.0
 $ag_sourcesans-regular: "SourceSansProRegular";
 $ag_sourcesans-semibold: "SourceSansProSemiBold";
@@ -246,9 +248,12 @@ $golf-spilt-action-border: $gray-light;
 $golf-spilt-button-border: $white;
 $table-light-bg: $gray-lightest;
 /****************************************************************************Golf font variables******************************************************/
-$golf-lato-regular: "LatoRegular";
-$golf-lato-medium: "LatoWebMedium";
-$golf-lato-bold: "LatoWebBold";
+// $golf-lato-regular: "LatoRegular";
+// $golf-lato-medium: "LatoWebMedium";
+// $golf-lato-bold: "LatoWebBold";
+$golf-lato-regular: "SourceSansProRegular";
+$golf-lato-medium: "SourceSansProSemiBold";
+$golf-lato-bold: "SourceSansProBold";
 
 /*********************************Media query breakpoint values************************************************/
 $medium-min-width: 480px;
@@ -477,10 +482,12 @@ $spa-savebtn-min-width: 88px;
 //****************Font family*****************//
 
 
-$lato-web-web: "LatoWeb";
-$lato-web-medium: "LatoWebMedium";
-$lato-web-bold: "LatoWebBold";
-
+// $lato-web-web: "LatoWeb";
+// $lato-web-medium: "LatoWebMedium";
+// $lato-web-bold: "LatoWebBold";
+$lato-web-web: "SourceSansProRegular";
+$lato-web-medium: "SourceSansProSemiBold";
+$lato-web-bold: "SourceSansProBold";
 
 
 //********Form - Field Configuration***************//
