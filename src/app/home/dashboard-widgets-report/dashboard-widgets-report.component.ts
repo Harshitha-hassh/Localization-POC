@@ -170,8 +170,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
       this.getAverageTransaction();
       this.getAvgUnitPerCustomer();
       this.getVendorsCount();
-      this.getTransactionSaleDetail(this.outletIds);
-      this.getRevenueByOutletDetail(this.outletIds);
+      this.getTransactionSaleAndRevenueByOutlet(this.outletIds);
       this.getReturned_ItemsDetail(this.outletIds);
 
       this.getTop5ItemSaleDetail('day_0', this.outletIds);
@@ -260,8 +259,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     this.outletIds = e.map(x => x.id);
     this.selectedChildOutlet =  _.clone(this.outletIds) ;
     this.assignOutletsToChildWidgets();
-    this.getTransactionSaleDetail(this.outletIds);
-    this.getReturned_ItemsDetail(this.outletIds);
+    this.getTransactionSaleAndRevenueByOutlet(this.outletIds);
     this.getOpenTicketsData(this.outletIds);
     this.getOutofStockOnData(this.outletIds);
     this.getRevenueByOutletDetail(this.outletIds);
@@ -521,12 +519,22 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     };
   }
 
+  async getTransactionSaleAndRevenueByOutlet(outletIds: number[]){
+    const result = await this.dashBoardBusiness.getRevenueByOutletDetail(this.dataFormat,
+      this.startDate, outletIds);
+    this.Sales_SalesRevenue_data = this.Revenue_By_Outlet_data = result;
+    this.mapTransactionSaleDetail();
+    this.mapRevenueDetail();
+  }
+
 
   async getTransactionSaleDetail(outletIds: number[]) {
-
     this.Sales_SalesRevenue_data = await this.dashBoardBusiness.getTransactionSaleDetail(this.dataFormat,
        this.startDate, outletIds);
+    this.mapTransactionSaleDetail();
+  }
 
+  mapTransactionSaleDetail(){
     if (this.Sales_SalesRevenue_data.length > 0) {
       const templateHeight = (this.widgetsData[0].widget[0].config.height - 90); // (60 - template title, 30 - chart needs)
       let barData, x_categories, columnWidth;
@@ -561,9 +569,11 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 
   async getRevenueByOutletDetail(outletIds: number[]) {
     this.Revenue_By_Outlet_data = await this.dashBoardBusiness.getRevenueByOutletDetail(this.dataFormat, this.startDate, outletIds);
+    this.mapRevenueDetail();
+  }
 
+  mapRevenueDetail(){
     if (this.Revenue_By_Outlet_data.length > 0) {
-
       const templateHeight = (this.widgetsData[0].widget[0].config.height - 90); // (60 - template title, 30 - chart needs)
       let barData, xcategories, columnWidth;
       barData = this.Revenue_By_Outlet_data;
@@ -597,7 +607,6 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
       };
     }
   }
-
 
   async getReturned_ItemsDetail(outletIds: number[]) {
     this.Returned_Items_data = await this.dashBoardBusiness.getReturned_ItemsDetail(this.propertyDate, this.dataFormat, outletIds);

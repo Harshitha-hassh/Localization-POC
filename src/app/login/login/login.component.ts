@@ -511,7 +511,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         item => item.propertyCode === credentials.Property.id
       );
       this.SetPropertyInfo(selectedProperty);
-      this.userDefaultsService.syncDefaultValues(this.userInfo.userId);
+      this.userDefaultsService.setOutlets();
       await this.setEatecConfig();
       await this.dmConfigDataService.SetDataMagineConfig();
       this.setAutoLogOff();
