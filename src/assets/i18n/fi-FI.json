@@ -1635,6 +1635,7 @@
     "3090": "3090 - Allow AR Payments_fi",
     "3110": "3110 - Apply Cost Plus Discount_fi",
     "3115": "3115 - Remove Card on File_fi",
+    "3125": "3125 - Search Gift Card by Guest Name_fi",
     "5000": "5000 - Reopen Transaction_fi",
     "5005": "5005 - Void Transaction_fi",
     "5007": "5007 - Correct Transaction_fi",
