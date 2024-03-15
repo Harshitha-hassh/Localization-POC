@@ -82,14 +82,21 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   nightAuditRestricted: string;
 
   constructor(public localization: RetailLocalization, private utils: RetailUtilities, private http: HttpServiceCall,
-    private auditService: AuditService, public router: Router,
+    private auditService: AuditService, 
+    public router: Router,
     private commonLocalization: Localization,
     // tslint:disable-next-line: max-line-length
     // private propertyInfo: PropertyInformation,
-    private breakPoint: BreakPointAccess, public ams: AppModuleService,
-    private retailSharedService: RetailSharedVariableService, private retailValidationService: RetailValidationService,
-    private propertyInfo: RetailPropertyInformation, private retailTaxService: RetailTaxesDataService, private shopBusinessService: ShopBussinessService
-    , public _shopservice: CommonVariablesService, public dialog: MatDialog, public revenuePostingDataService: RevenuePostingDataService ,
+    private breakPoint: BreakPointAccess, 
+    public ams: AppModuleService,
+    private retailSharedService: RetailSharedVariableService, 
+    private retailValidationService: RetailValidationService,
+    private propertyInfo: RetailPropertyInformation, 
+    private retailTaxService: RetailTaxesDataService, 
+    private shopBusinessService: ShopBussinessService,
+    public _shopservice: CommonVariablesService, 
+    public dialog: MatDialog, 
+    public revenuePostingDataService: RevenuePostingDataService,
     private nightAuditBusiness: NightAuditBusiness) {
       this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
   }
@@ -609,21 +616,27 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.retailSharedService.reOpenTransaction = true;
       this.retailSharedService.isReopenViewOnly = this.breakPoint.IsViewOnly(RetailBreakPoint.ReOpenTransaction);
       this.retailSharedService.transactionId = data.Id;
-      this.retailSharedService.ticketNumber = data?.TicketNumber;
+      this.retailSharedService.ticketNumber = data?.TicketNumber;      
       if (! await this.retailValidationService.ValidateSettleReopenAction(data.Id, 'reopen', this.TransactionLockCallback.bind(this))) {
         return;
       }
       this.retailValidationService.LockTransaction(data.Id);
       // tslint:disable-next-line: max-line-length
       this.InvokeServiceCall('GetTransactionDetails', Host.retailPOS, HttpMethod.Get, { transactionId: data.Id, productId: Product.SPA }, null, null, ['reopen']);
-    } else if (option.action === GridAction.Settle) {
-      if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Settle, true)) { return; }
+    } else if (option.action === GridAction.Settle) {                  
+      if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Settle)) {
+        this.retailSharedService.selectedRetailItem = data?.transactionInfo;
+        this.retailSharedService.isFromDayEnd = true;
+        this.retailSharedService.settleOpenTransaction = true;        
+        this.router.navigate(["/shop/viewshop/shopItemDetails"]);
+        return;
+      }
       this.retailSharedService.payeeId = data.ClientId;
       this.retailSharedService.memberCardNumber = data.transactionInfo.memberId;
       this.retailSharedService.reOpenTransaction = false;
       this.retailSharedService.settleOpenTransaction = true;
       this.retailSharedService.transactionId = data.Id;      
-      this.retailSharedService.ticketNumber = data?.TicketNumber;
+      this.retailSharedService.ticketNumber = data?.TicketNumber;      
       if (! await this.retailValidationService.ValidateSettleReopenAction(data.Id, 'settle', this.TransactionLockCallback.bind(this))) {
         return;
       }
