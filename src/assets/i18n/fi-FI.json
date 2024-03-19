@@ -1574,6 +1574,7 @@
     },
     "lbl_SurchargeApplied": "Surcharge Applied_fi",
     "lbl_Surcharge": "Surcharge_fi",
+    "lbl_TaxExemptByPaymentMethod": "Tax Removed_fi",
     "lbl_ApplyingSurchargeLoaderMsg": "Applying Surcharge_fi",
     "lbl_RemovingSurchargeLoaderMsg": "Removing Surcharge_fi",
     "lbl_cardType": "Card Type_fi",

@@ -1574,6 +1574,7 @@
     },
     "lbl_SurchargeApplied": "Surcharge Applied_gb",
     "lbl_Surcharge": "Surcharge_gb",
+    "lbl_TaxExemptByPaymentMethod": "Tax Removed_gb",
     "lbl_ApplyingSurchargeLoaderMsg": "Applying Surcharge_gb",
     "lbl_RemovingSurchargeLoaderMsg": "Removing Surcharge_gb",
     "lbl_cardType": "Card Type_gb",
