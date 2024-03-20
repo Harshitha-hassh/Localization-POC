@@ -14,6 +14,7 @@ export class DashboardTableComponent implements OnInit {
   @Input() headerOption: HeaderOptionInteface[] = [];
   @Input() bodyContentdata: any[] = [];
   @Input() footerClassName;
+  @Input() automationId : string = '';
   @Output() rowEmitter = new EventEmitter();
   constructor() { }
 

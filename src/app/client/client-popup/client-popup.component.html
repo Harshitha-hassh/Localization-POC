@@ -1,7 +1,7 @@
 <div class="client-popup h-100">
     <div class="pop-head row m-0 align-items-center">
         <span class="inner-header pl-4 LW20">{{data?.title}}</span>
-        <i class="icon-close inner-close ml-auto cursPointer" (click)="onNoClick()"></i>
+        <i [attr.automationId]="'Icn_client_close'" class="icon-close inner-close ml-auto cursPointer" (click)="onNoClick()"></i>
     </div>
 
     <mat-dialog-content class="p-0 pop-contents newVersionWrapper">
@@ -12,10 +12,10 @@
 
     <mat-dialog-actions class="dialog_actions_style">
         <div class="pop-button">
-            <button mat-button class="ml-4" [disabled]="!validateSave()"
+            <button [attr.automationId]="'Btn_client_save'" mat-button class="ml-4" [disabled]="!validateSave()"
                 [ngClass]="validateSave() ? 'spa-primary-btn-default' : 'spa-primary-disabled'"
                 (click)="save()">{{data?.type}}</button>
-            <button mat-button class="spa-button-cancel ml-2"
+            <button [attr.automationId]="'Btn_client_cancel'" mat-button class="spa-button-cancel ml-2"
                 (click)="promptUserForUnsavedChanges()">{{captions.common.Cancel}}</button>
         </div>
     </mat-dialog-actions>

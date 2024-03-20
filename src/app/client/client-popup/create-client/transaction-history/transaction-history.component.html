@@ -2,7 +2,7 @@
   <!--Start  Select Dropdropdown Container div -->
       <div class="select-container hide-underline ag_display--flex align-items-baseline">
           <mat-form-field class="select-width select-class float-label-box" [floatLabel]="floatLabel">
-              <mat-select id="selectHistoryType" #selectSetup [(ngModel)]="historyType" (selectionChange)="changeType()" >
+              <mat-select [attr.automationId]="'Dd_transactionHistory_historyType'" id="selectHistoryType" #selectSetup [(ngModel)]="historyType" (selectionChange)="changeType()" >
                   <mat-option *ngFor="let type of historyTypes" [value]="type.id" >
                      {{ type.name }}
                   </mat-option>
@@ -10,7 +10,7 @@
           </mat-form-field>
           <div class="yes-col ag_ml--auto ag_display--flex" *ngIf = "historyType == 3">
             <label class="LW12 d-block form-label-normal ag_mr--2">{{captions.expiredMultipacks}}</label>
-            <app-toggle-switch (changeToggleEvent)="showExpiredMultipacks($event[0])"></app-toggle-switch>
+            <app-toggle-switch [attr.automationId]="'Tog_transactionHistory_expiredMultipacks'" (changeToggleEvent)="showExpiredMultipacks($event[0])"></app-toggle-switch>
           </div>
       </div>
       <div class = "view-data mt-2" [ngClass] ="{'adjust-height':historyType == 2}">
