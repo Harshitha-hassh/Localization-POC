@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?n3gy3h');
-  src:  url('fonts/icomoon.eot?n3gy3h#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?n3gy3h') format('truetype'),
-    url('fonts/icomoon.woff?n3gy3h') format('woff'),
-    url('fonts/icomoon.svg?n3gy3h#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?mc4dpz');
+  src:  url('fonts/icomoon.eot?mc4dpz#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?mc4dpz') format('truetype'),
+    url('fonts/icomoon.woff?mc4dpz') format('woff'),
+    url('fonts/icomoon.svg?mc4dpz#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-discount:before {
+  content: "\ef71";
+}
 .icon-Customer-Activity-eatec:before {
   content: "\eab7";
   color: #788090;
