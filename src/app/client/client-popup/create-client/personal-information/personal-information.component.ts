@@ -35,6 +35,7 @@ import { DefaultSettings } from 'src/app/retail/shared/globalsContant';
 export class PersonalInformationComponent implements OnInit, OnDestroy, AfterViewChecked {
   @Input() parentForm: UntypedFormGroup;
   @Output() imageUpdateEmit = new EventEmitter();
+  @Input() clientInfoData: any;
   thumbnailImg: any;
   commonCaptions: any;
   isClientViewOnly = false;
@@ -54,9 +55,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   currentIndexemail: any = 0;
   currentIndexPhone: any = 0;
   selectedEmail: any;
-  selectedPhone:any;
+  selectedPhone: any;
   validateEmailType: string;
   validatePhoneType: string;
+  clientInfo: any;
   titles = [{ id: 1, value: 'Dr.' }, { id: 2, value: 'Fr.' }, { id: 3, value: 'Miss' },
   { id: 4, value: 'Mr.' }, { id: 5, value: 'Mrs.' }, { id: 6, value: 'Ms.' },
   { id: 7, value: 'Prof.' }, { id: 8, value: 'Rev.' }];
@@ -81,12 +83,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   textmaskFormat: string;
   emailRequired: boolean;
   phoneRequired: boolean = true;
-  phoneErrorRequired:boolean=false;
+  phoneErrorRequired: boolean = false;
   AddressRequired: boolean;
   isPatronIdAvailable = false;
   showLoader = false;
-  titleRequired : boolean =false;
-  genderRequired : boolean =false;
+  titleRequired: boolean = false;
+  genderRequired: boolean = false;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   isCMSConfigured = false;
   mailTypes = GuestProfileMailTypes;
@@ -107,8 +109,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     city: false,
     state: false,
     country: false,
-    postalCode:false,
-    dob:false
+    postalCode: false,
+    dob: false
   };
   floatLabel: string;
   floatLabelNever: string;
@@ -175,7 +177,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         base64textString: '',
         thumbnailImg: ''
       }),
-      imgReferenceId :'',
+      imgReferenceId: '',
       receiptDate: ''
     });
     this.isCMSConfigured = this.featureSwitch.IsCMSConfigured;
@@ -221,14 +223,17 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   createEmailItem(arr: number, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): UntypedFormGroup {
 
-    if (!EmailLabel || EmailLabel == '') {
-      const emailLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_EMAIL_TYPE');
+    const emailLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_EMAIL_TYPE');
+    if (emailLabel && emailLabel.value != "0" && (EmailLabel == 0 || EmailLabel == "")) {
       EmailLabel = emailLabel && emailLabel.value ? Number(emailLabel.value) : '';
+    }
+    else if (!emailLabel || emailLabel.value == '0' && this.clientInfoData?.phone?.email > 0) {
+      EmailLabel = emailLabel && emailLabel.value ? Number(emailLabel.value) : EmailLabel;
     }
 
     return this.Form.group({
       EmailLabel: [EmailLabel, this.emailRequired || EmailId ? [Validators.required, EmptyValueValidator] : ''],
-      EmailId: [{value: EmailId, disabled: !EmailLabel}, this.emailRequired ? [Validators.required, Validators.email, EmptyValueValidator] : ''],
+      EmailId: [{ value: EmailId, disabled: !EmailLabel }, this.emailRequired ? [Validators.required, Validators.email, EmptyValueValidator] : ''],
       EmailPrimary: EmailIsPrimary,
       EmailPrivate: EmailIsPrivate
     });
@@ -258,18 +263,20 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       let _countryCode = this.defaultSettings.find(x => x.switch == 'DEFAULT_COUNTRY_CODE');
       countryCode = _countryCode && _countryCode.value ? _countryCode.value : '';
     }
-    else{
+    else {
       countryCode = countryCode == -1 ? '' : countryCode;
     }
-
-    if (!phoneNoLabel || phoneNoLabel == '') {
-      let _phoneNoLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_PHONE_TYPE');
+    let _phoneNoLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_PHONE_TYPE');
+    if (_phoneNoLabel && _phoneNoLabel.value != "0" && (phoneNoLabel == 0 || phoneNoLabel == "")) {
       phoneNoLabel = _phoneNoLabel && _phoneNoLabel.value ? Number(_phoneNoLabel.value) : '';
+    }
+    else if (!_phoneNoLabel || _phoneNoLabel.value == '0' && this.clientInfoData?.phone?.length > 0) {
+      phoneNoLabel = _phoneNoLabel && _phoneNoLabel.value ? Number(_phoneNoLabel.value) : phoneNoLabel;
     }
     return this.Form.group({
       PhoneNumberLabel: [phoneNoLabel, this.phoneRequired || phoneNoDetails ? [Validators.required, EmptyValueValidator] : ''],
-      countryCode: [{value: countryCode, disabled: !phoneNoLabel}, this.setCountryCodeValidator(this.phoneRequired, phoneNoLabel)],
-      PhoneNumber: [{value: phoneNoDetails, disabled: !phoneNoLabel}, this.phoneRequired ? [Validators.required, EmptyValueValidator] : ''],
+      countryCode: [{ value: countryCode, disabled: !phoneNoLabel }, this.setCountryCodeValidator(this.phoneRequired, phoneNoLabel)],
+      PhoneNumber: [{ value: phoneNoDetails, disabled: !phoneNoLabel }, this.phoneRequired ? [Validators.required, EmptyValueValidator] : ''],
       PhonePrivate: phoneIsPrivate,
       PhonePrimary: phoneIsPrimary,
       Extension: extension
@@ -341,45 +348,83 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.searchPatron();
     }
 
-    if(this.isClientViewOnly) {
+    if (this.isClientViewOnly) {
       this.utils.disableControls(this.FormGrp);
     }
     //this.setPhoneAsMandatory();
     this.utils.geCountriesJSON().then(res => {
-    this.filteredCountries = this.FormGrp.controls.country.valueChanges.pipe(
-      startWith(''),
-      debounceTime(100),
-      distinctUntilChanged(),
-      map((country: string) => country ? this.utils.FilterCountry(country, this.utils.countryDetails) : [])
-    );
-    this.FormGrp.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe(res => {
-      if (this.FormGrp.controls['city'].value) {
-        this.FormGrp.controls.country.setErrors({ required: true });
-      } else {
-        this.FormGrp.controls.country.setErrors(null);
-      }
-      if (this.FormGrp.controls['country'].value &&
-        !this.utils.FilterCountryValueFromData(this.FormGrp.controls['country'].value)) {
-        this.FormGrp.controls.country.setErrors({ invalid: true });
-      } else if ((this.FormGrp.controls['city'].value &&
-        this.utils.FilterCountryValueFromData(this.FormGrp.controls['country'].value) &&
-        this.FormGrp.controls['country'].value) || (!this.FormGrp.controls['city'].value &&
-          !this.FormGrp.controls['country'].value)) {
-        this.FormGrp.controls.country.setErrors(null);
-      }
-      this.FormGrp.controls['country'].markAsTouched();
+      this.filteredCountries = this.FormGrp.controls.country.valueChanges.pipe(
+        startWith(''),
+        debounceTime(100),
+        distinctUntilChanged(),
+        map((country: string) => country ? this.utils.FilterCountry(country, this.utils.countryDetails) : [])
+      );
+      this.FormGrp.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe(res => {
+        if (this.FormGrp.controls['city'].value) {
+          this.FormGrp.controls.country.setErrors({ required: true });
+        } else {
+          this.FormGrp.controls.country.setErrors(null);
+        }
+        if (this.FormGrp.controls['country'].value &&
+          !this.utils.FilterCountryValueFromData(this.FormGrp.controls['country'].value)) {
+          this.FormGrp.controls.country.setErrors({ invalid: true });
+        } else if ((this.FormGrp.controls['city'].value &&
+          this.utils.FilterCountryValueFromData(this.FormGrp.controls['country'].value) &&
+          this.FormGrp.controls['country'].value) || (!this.FormGrp.controls['city'].value &&
+            !this.FormGrp.controls['country'].value)) {
+          this.FormGrp.controls.country.setErrors(null);
+        }
+        this.FormGrp.controls['country'].markAsTouched();
+      });
     });
-  });
   }
 
   initializeFormData() {
     this.textmaskFormat = this.localization.captions.common.PhoneFormat != '' ?
-    this.localization.captions.common.PhoneFormat : '999999999999999999'
+      this.localization.captions.common.PhoneFormat : '999999999999999999'
     this.contactTypePhone = this.getPhoneOptions();
     this.contactTypeEmail = this.getMailOptions();
     this.validateEmailType = this.localization.getError(-87);
-    //this.validatePhoneType = this.localization.getError(-88);
     this.makeGetCall('GetClientConfiguration');
+    this.clientInfo = this.clientInfoData;
+    if (this.clientInfoData) {
+      this.FormGrp.controls['firstName'].setValue(this.clientInfoData?.firstName);
+      this.FormGrp.controls['lastName'].setValue(this.clientInfoData?.lastName);
+      // Phone number mapping
+      if (this.clientInfoData.phone && this.clientInfoData.phone.length > 0) {
+        this.clientInfoData.phone.forEach((element, i) => {
+          let _extension = element.extension ? element.extension : ''
+          let _countryCode = element.countryCode ? element.countryCode : ''
+          if (element.number != '') {
+            if (element.contactTypeId === 3) { //Added For Extension when contact type is work
+              if (element.number.indexOf(':') !== -1) {
+                const arr = element.number.split(':');
+                element.number = arr.length > 1 ? arr[1] : element.number;
+                _extension = arr[0] ? arr[0] : '';
+              } else {
+                _extension = '';
+              }
+            }
+
+            if (element.number.indexOf('|') !== -1) {
+              const phonenum = element.number.split('|');
+              element.number = phonenum[1] && phonenum[1] !== "undefined" ? phonenum[1] : '';
+              _countryCode = phonenum[0] && phonenum[0] !== "undefined" ? phonenum[0] : '';
+            }
+          }
+          this.addPhoneItem(i, element.contactTypeId, _countryCode, this.utils.appendFormat(element.number, this.localization.captions.common.PhoneFormat), element.isPrivate, element.isPrimary, _extension);
+        });
+        this.Phone.removeAt(0);
+      }
+      if (this.clientInfoData.email && this.clientInfoData.email.length > 0) {
+        this.clientInfoData.email.forEach((element, i) => {
+          this.addEmailItem(i, element.contactTypeId, element.emailId, element.isPrivate, element.isPrimary);
+        });
+        this.Email.removeAt(0);
+      }
+
+    }
+
   }
 
   ngOnDestroy(): void {
@@ -453,7 +498,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     // this.FormGrp.controls.postal_code.markAsTouched();
 
     // this.FormGrp.controls['dob'].clearValidators();
-    if(clientConfiguration[0]['CLIENT_BIRTHDAY']){
+    if (clientConfiguration[0]['CLIENT_BIRTHDAY']) {
       // this.FormGrp.controls['dob'].clearValidators();
       // this.FormGrp.controls['dob'].setValidators([Validators.required]);
       // this.FormGrp.controls['dob'].updateValueAndValidity();
@@ -761,7 +806,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     }
     this.personalDetails = clientInfo.client;
     this.FormGrp.controls.lastName.setValue(clientInfo.client.lastName);
-    if(!this.isCopyClient) {
+    if (!this.isCopyClient) {
       this.FormGrp.controls.lastChangeId.setValue(clientInfo.client.lastChangeId);
       this.FormGrp.controls.interfaceGuestId.setValue(clientInfo.client.interfaceGuestId);
       this.FormGrp.controls.id.setValue(clientInfo.client.id);
@@ -775,7 +820,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       );
       this.FormGrp.controls.patronid.setValue(loyalty ? loyalty.patronId : '');
       this.FormGrp.controls.rank.setValue(loyalty ? loyalty.rank : '');
-    }  
+    }
     if (clientInfo.addresses && clientInfo.addresses != null) {
       this.FormGrp.controls.postal_code.setValue(clientInfo.addresses.zipCode);
       this.FormGrp.controls.state.setValue(clientInfo.addresses.state);
@@ -875,7 +920,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       base64textString: data['orgImg'],
       thumbnailImg: data['tmbImg']
     });
-  //  this.FormGrp.controls.imgReferenceId.setValue(this.thumbnailImg);
+    //  this.FormGrp.controls.imgReferenceId.setValue(this.thumbnailImg);
   }
 
   fileSizeExceeded() {
@@ -899,7 +944,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
 
 
-  setmandatory(eve, phoneNumber, altfield, phoneType, index , item) {
+  setmandatory(eve, phoneNumber, altfield, phoneType, index, item) {
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
     this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].clearValidators();
     if (eve && eve.target && eve.target.value) {
@@ -908,59 +953,56 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     if (phoneNumber == 'PhoneNumber') {
       if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value &&
         this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value === 1) {
-        this.phoneErrorRequired =true;
+        this.phoneErrorRequired = true;
         this.FormGrp.controls['Phone']['controls'][index].controls[altfield].setValidators(Validators.required);
         this.FormGrp.controls['Phone']['controls'][index].controls[altfield].markAsTouched();
         this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].markAsTouched();
       } else {
-        this.phoneErrorRequired =false;
+        this.phoneErrorRequired = false;
         this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
         this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].clearValidators();
       }
     }
     if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value) {
-    this.FormGrp.controls['Phone']['controls'][index].controls[altfield].enable();
-    this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumber].enable();
+      this.FormGrp.controls['Phone']['controls'][index].controls[altfield].enable();
+      this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumber].enable();
     }
     this.FormGrp.controls['Phone']['controls'][index].controls[altfield].updateValueAndValidity();
     this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].updateValueAndValidity();
 
     //fordeselecting
-    if(!eve.value && item)
-    {
-     item['controls']['PhoneNumber'].setValue('');
-     item['controls']['countryCode'].setValue('');
-     item['controls']['PhoneNumber'].disable();
-     item['controls']['countryCode'].disable();
-     item['controls']['Extension'].setValue('');
-     item['controls']['PhonePrimary'].setValue('');
-     item['controls']['PhonePrivate'].setValue('');
-     item['controls']['PhoneNumber'].clearValidators();
-     item['controls']['countryCode'].clearValidators();
-     item['controls']['Extension'].clearValidators();
-     item['controls']['PhoneNumberLabel'].clearValidators();
-     item.markAsDirty();
+    if (!eve.value && item) {
+      item['controls']['PhoneNumber'].setValue('');
+      item['controls']['countryCode'].setValue('');
+      item['controls']['PhoneNumber'].disable();
+      item['controls']['countryCode'].disable();
+      item['controls']['Extension'].setValue('');
+      item['controls']['PhonePrimary'].setValue('');
+      item['controls']['PhonePrivate'].setValue('');
+      item['controls']['PhoneNumber'].clearValidators();
+      item['controls']['countryCode'].clearValidators();
+      item['controls']['Extension'].clearValidators();
+      item['controls']['PhoneNumberLabel'].clearValidators();
+      item.markAsDirty();
     }
 
   }
 
-  onEmailChange($event,i,item)
-  {
+  onEmailChange($event, i, item) {
     item['controls']['EmailId'].enable();
-    if(!$event.value)
-   {
+    if (!$event.value) {
 
-    item['controls']['EmailId'].setValue('');
-    item['controls']['EmailId'].disable();
-    item['controls']['EmailPrimary'].setValue('');
-    item['controls']['EmailPrivate'].setValue('');
-    item['controls']['EmailLabel'].clearValidators();
-    item.markAsDirty();
-   }
+      item['controls']['EmailId'].setValue('');
+      item['controls']['EmailId'].disable();
+      item['controls']['EmailPrimary'].setValue('');
+      item['controls']['EmailPrivate'].setValue('');
+      item['controls']['EmailLabel'].clearValidators();
+      item.markAsDirty();
+    }
   }
 
   phoneChange(eve, phoneNumber, altfield, phoneNumberLabel, index) {
-    this.setmandatory(eve, phoneNumber, altfield, phoneNumberLabel, index,'');
+    this.setmandatory(eve, phoneNumber, altfield, phoneNumberLabel, index, '');
     if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumber].value &&
       !this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumberLabel].value) {
       this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumberLabel].setValidators(Validators.required);
@@ -1228,7 +1270,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
       PhoneGroup.controls['countryCode'].clearValidators();
       PhoneGroup.controls['countryCode'].setValidators([Validators.required, EmptyValueValidator]);
-      that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index,'');
+      that.setmandatory('event', 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', index, '');
       PhoneGroup.controls['countryCode'].updateValueAndValidity();
 
       PhoneGroup.controls['PhoneNumber'].clearValidators();

@@ -42,7 +42,7 @@ export class UserdefaultsInformationService {
       sessionStorage.setItem("userSessionConfigInfo", JSON.stringify(d));
     });
   }
-  private setOutlets() {
+  public setOutlets() {
     this.fetchOutlets().then((o) => {
       this.outlets = o;
       sessionStorage.setItem("outlets", JSON.stringify(o));

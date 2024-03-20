@@ -151,7 +151,6 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.GetServiceCall('GetAllLanguages');
    // this.ValidateBreakPoint();
     this.RequiredFieldsSetting();
-    this.GetPropertInfo();
     this.RequiredfieldsBind();
     this.utilities.geCountriesJSON().then(res => {
     this.filteredCountries = this.propertyInfo.controls.country.valueChanges.pipe(
@@ -247,7 +246,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       // }
     ];
     //this.ValidateBreakPoint();
-    this.GetPropertInfo();
+    this.GetPropertyInfo();
     this.GetAllSetting();
     this.requiredFields = this.propertyInfo.get('requiredFields') as UntypedFormArray;
     for (let i = 0; i < this.requiredFieldsInfo.length; i++) {
@@ -298,7 +297,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
           this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
       }
   }
-  GetPropertInfo() {
+  GetPropertyInfo() {
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
       success: this.successCallback.bind(this),
@@ -662,7 +661,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       this.PropertSetting();
       this.enableSave = false;
     } else if (callDesc == 'UpdatePropertyInfoByPropertyId') {
-      this.GetPropertInfo();
+      this.GetPropertyInfo();
       this.enableSave = false;
     } else if (callDesc == 'UpdateSetting') {
       this.GetAllSetting();

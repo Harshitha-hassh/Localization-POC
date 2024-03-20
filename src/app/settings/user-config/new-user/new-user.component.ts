@@ -453,8 +453,10 @@ export class NewUserComponent implements OnInit {
         if (result.result) {
           extraParams[0].userId = Number(result.result);        
           this.CreateUser(extraParams[0], Host.retailManagement, 'CreateUserRetailConfig', []);
-          this.subPropertyAccess.forEach(x => x.userID = extraParams[0].userId);
-          await this._userOutletAccessDataService.CreateUserOutletAccess(this.subPropertyAccess);
+          if (this.subPropertyAccess && this.subPropertyAccess.length > 0) {
+            this.subPropertyAccess.forEach(x => x.userID = extraParams[0].userId);
+            await this._userOutletAccessDataService.CreateUserOutletAccess(this.subPropertyAccess);
+          }
           this.dialogRef.close('saved');
         }
       } else if (callDesc === 'UpdateUser') {

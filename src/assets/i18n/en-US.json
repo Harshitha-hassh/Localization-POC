@@ -1194,6 +1194,7 @@
     "FailedRecordSearch": "Search by Ticket #, Clerk ID, Amount",
     "MissingReturnReason": "Missing Return Reason",
     "SuccessfullyVoided": "Successfully Voided",
+    "PartialVoidFailure":"Please check 'Refund Failures' screen to refund the failed payment",
     "CorrectionTransactionMsg": "Cancelling will void transaction entirely. Do you wish to proceed?",
     "FlatAmount": "Flat Amount",
     "Apply": "APPLY",
@@ -1450,7 +1451,27 @@
         "couponisalreadyonholdorsold": "Gift Card is on hold /  Gift Card is already sold",
         "cardhasinsufficientbalanceforthetransaction": "Gift Card has insufficient balance for the transaction"
       },
-      "LoadReversalNotSupportedMsg": "Load reversal is not supported for {vendorName} gift cards."
+      "LoadReversalNotSupportedMsg": "Load reversal is not supported for {vendorName} gift cards.",
+      "EmailPhoneNoRequiredDisclaimer": "Either Email ID or Phone Number is Mandatory",
+      "GiftcardAdvancedSearchPopup": {
+        "lbl_advanceSearch": "Advanced Search",
+        "lbl_outlet": "Outlet",
+        "lbl_firstName": "First Name",
+        "lbl_lastName": "Last Name",
+        "lbl_emailId": "Email ID",
+        "lbl_countryCode": "Country Code",
+        "lbl_phoneNumber": "Phone Number",
+        "btn_search": "SEARCH",
+        "lbl_cancel": "CANCEL",
+        "lbl_apply": "APPLY",
+        "lbl_sNo": "S.No",
+        "lbl_giftCardNumber": "Gift Card Number",
+        "lbl_soldDate": "Sold Date",
+        "lbl_user": "User Name",
+				"lbl_availableBalance": "Available Balance({currencySymbol})",
+        "lbl_search": "Search",
+        "lbl_status": "Status"
+      }
     },
     "Wallet": {
       "WalletSelectionDialog": {
@@ -1555,6 +1576,7 @@
     },
     "lbl_SurchargeApplied": "Surcharge Applied",
     "lbl_Surcharge": "Surcharge",
+    "lbl_TaxExemptByPaymentMethod": "Tax Removed",
     "lbl_ApplyingSurchargeLoaderMsg": "Applying Surcharge",
     "lbl_RemovingSurchargeLoaderMsg": "Removing Surcharge",
     "lbl_cardType": "Card Type",
@@ -1577,7 +1599,7 @@
       "RemoveAll": "Remove All"
     },
     "TaxOnTax":"Tax On Tax",
-    "OpenItemValidationforGiftCard":"Gift card item should be configured as an open item"
+    "OpenItemValidationforGiftCard":"Gift card item should be configured as an open item"    
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",
@@ -1615,6 +1637,7 @@
     "3035": "3035 - Apply Discount",
     "3090": "3090 - Allow AR Payments",
     "3115": "3115 - Remove Card on File",
+    "3125": "3125 - Search Gift Card by Guest Name",
     "5000": "5000 - Reopen Transaction",
     "5005": "5005 - Void Transaction",
     "5007": "5007 - Correct Transaction",
@@ -1736,6 +1759,7 @@
     "8205": "8205 - Inventory Valuation Report",
     "7160": "7160 - Custom Fee",
     "7165": "7165 - General Ledger Mapping",
+    "12091": "12091 - PMS Integration Setup",
     "18015": "18015 - Config Validation"
   },
   "userId": "User ID",
@@ -1780,6 +1804,7 @@
 
   "retailsetup": {
     "includeSignatureLine": "Include Signature in Receipts",
+    "isAutoRemoveTax": "Auto Remove Tax",
     "warningEnableSigCap": "Cannot enable 'Require Signature Capture' when 'Include Signature in Receipts' is disabled",
     "warningDisableIncludeSign": "Cannot disable 'Include Signature in Receipts' when 'Require Signature Capture' is enabled",
     "err_minLength": "At least 3 characters need to be entered",
@@ -2293,7 +2318,9 @@
     "err_paymentMethodName": "Missing Payment Method Name",
     "AutoPrintReceipts": "Auto Print Receipts",
     "err_max": "Exceeds Maximum Value",
-    "err_min": "Precedes Minimum Value"
+    "err_min": "Precedes Minimum Value",
+    "lbl_EligibleForInhouseGratuity":"Eligible for in house gratuity",
+    "lbl_EligibleForInhouseServiceCharge":"Eligible for in house service charge"
   },
   "setting": {
     "lbl_inHouseGratuity": "In House Gratuity",
@@ -2305,6 +2332,7 @@
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled",
 		"SC_GT_TaxRevenueToProperty_ValidationMsg": "Cannot enable ‘{toggleLabel}’ when ‘Is Revenue To Property’ is enabled",
 		"TaxRevenueToPropertyValidationMsg": "Cannot enable ‘Is Revenue To Property’ when ‘{toggleLabel}’ is enabled",
+    "allowRemovalForPaymentMethodTaxOnTax" : "Allow Removal For Payment Method",
     "Title": "Title",
     "First_Name": "First Name",
     "Last_Name": "Last Name",
@@ -2864,6 +2892,7 @@
     "missingVatNumber": "Missing VAT Number",
     "ActivateGiftCard": "Activate Gift Card",
     "AllowExpiration": "Allow Expiration",
+    "AllowSearchByGuestName": "Allow Search by Guest Name",
     "ExpireAfterDays": "Expire after (days)",
     "GiftCardType": "Gift Card Type",
     "V1": "Visual One",
@@ -2904,6 +2933,7 @@
     "AllowTaxOnServiceCharge": "Allow Tax On Service Charge",
     "AllowTaxOnGratuityServiceCharge": "Allow Tax On Service Charge & Gratuity",
     "DefaultTaxToAllRetailItems": "Default to All Retail Item",
+    "AllowRemovalForPaymentMethod": "Allow Removal For Payment Method",
     "DefaultTaxAlreadyExistForVatProperty": "A default tax is already set for the selected date range ({TaxName}). User cannot proceed to perform this action.",
     "CashPopUpZeroDollar": "Prefill Zero on Cash Popup",
     "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs",
@@ -3082,6 +3112,11 @@
     "IncludeNonInventoryItems": "Include Non-inventory Items",
     "SuppressZeroQtyItems": "Suppress Zero Qty Items",
     "AllActiveitems": "All Active Items",
+    "InHouseBoth": "Both",
+		"InHouseStaffOnly": "Staff only",
+		"InHouseGratuityOnly": "In house Gratuity only",
+		"InHouseSCOnly": "In house SC only",
+		"InHouseGratuitySCOnly": "In house Gratuity/SC only",
     "AllMultipacks": "All Multipacks",
     "ExpirationDateRange": "Expiration Date Range",
     "SoldDate": "Sold Date",
@@ -4256,5 +4291,5 @@
   "idleAutologoffWarn" : "You are about to be logged out in",
   "idleCompleteYourAction" : "minutes. Please complete your action.",
   "btn_continueSession" : "CONTINUE SESSION",
-  "btn_logout" : "LOGOUT"
+  "btn_logout" : "LOGOUT"  
 }
