@@ -1465,8 +1465,8 @@
         "lbl_sNo": "S.No_uk",
         "lbl_giftCardNumber": "Gift Card Number_uk",
         "lbl_soldDate": "Sold Date_uk",
-        "lbl_user": "User_uk",
-        "lbl_availableBalance": "Available Balance($)_uk",
+        "lbl_user": "User Name_uk",
+        "lbl_availableBalance": "Available Balance({currencySymbol})_uk",
         "lbl_search": "Search_uk",
         "lbl_status": "Status_uk"
       }

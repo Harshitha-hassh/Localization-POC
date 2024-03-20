@@ -1465,8 +1465,8 @@
         "lbl_sNo": "S.No_da",
         "lbl_giftCardNumber": "Gift Card Number_da",
         "lbl_soldDate": "Sold Date_da",
-        "lbl_user": "User_da",
-        "lbl_availableBalance": "Available Balance($)_da",
+        "lbl_user": "User Name_da",
+        "lbl_availableBalance": "Available Balance({currencySymbol})_da",
         "lbl_search": "Search_da",
         "lbl_status": "Status_da"
       }
