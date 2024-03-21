@@ -3032,6 +3032,7 @@
     "CopyMessage": "Copy from Frozen Inventory_uk"
   },
   "reports": {
+    "includePaymentTaxExempt": "Include Tax Exempt Against Payment Method_uk",
     "Appointment": "APPOINTMENT_uk",
     "Client": "CLIENT_uk",
     "Retail": "RETAIL_uk",

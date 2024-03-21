@@ -3032,6 +3032,7 @@
     "CopyMessage": "Copy from Frozen Inventory_gb"
   },
   "reports": {
+    "includePaymentTaxExempt": "Include Tax Exempt Against Payment Method_gb",
     "Appointment": "APPOINTMENT_gb",
     "Client": "CLIENT_gb",
     "Retail": "RETAIL_gb",
