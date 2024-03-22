@@ -365,6 +365,7 @@
     "7006": "Email ID already in use.",
     "20100":"Outlet already exists",
     "8834501":"Client has future booking, cannot purge/anonymize the data",
+    "110060": "Credit Limit Exceeded",
     "-7890":"Enhanced Inventory configuration is incorrect. Kindly check the configuration."
   }
   
