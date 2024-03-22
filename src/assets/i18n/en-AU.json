@@ -3953,6 +3953,8 @@
   "lbl_reset": "RESET ALL",
   "lbl_searchByOutlet": "Search by Outlet",
   "lbl_More": "More",
+  "err_max": "Exceeds Maximum Value",
+  "err_min": "Precedes Minimum Value",
   "header": {
     "SignInToMicrosoft": "Sign In To Microsoft Outlook",
     "SignInAs": "Signed in as",
