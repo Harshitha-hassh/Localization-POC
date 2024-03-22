@@ -916,6 +916,7 @@
     "DepartureDate": "Departure Date",
     "ConfirmationNo": "Confirmation#",
     "RoomNumber": "Room Number",
+    "HotelCompNumber": "Account Number",
     "ClientStatus": "Status",
     "Reserved": "Reserved",
     "Unknown": "Unknown",
@@ -1257,6 +1258,7 @@
     "MissingRefundAmount": "Enter the Amount to be Refunded",
     "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully",
     "AddedToGroupChrgSuccessMsg": "{amount} added to Group {roomNumber} successfully",
+    "AddedToHotelCompSuccessMsg": "{amount} Posted to Hotel Comp #{roomNumber} successfully",
     "TicketCreationSuccess": "Ticket {checkNumber} is successfully generated",
     "RefundSuccessMsg": "Refund Successful",
     "PaymentComplete": "Transaction Completed",
@@ -1365,6 +1367,7 @@
       "20": "Group Charge",
       "22": "Card On File",
       "24": "Wallet",
+      "25": "Hotel Comp",
       "44": "Other"
     },
     "GiftCard": {
@@ -1557,6 +1560,7 @@
     "connect": "Connect",
     "savedCardDetail": "Save Card Details",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room.",
+    "HotelCompPostingNotAllowed": "Hotel Comp Posting is restricted to this Account Number.",
     "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}",
     "TransactionLogScreen": {
       "Refresh": "REFRESH",
@@ -1599,7 +1603,10 @@
       "RemoveAll": "Remove All"
     },
     "TaxOnTax":"Tax On Tax",
-    "OpenItemValidationforGiftCard":"Gift card item should be configured as an open item"    
+    "OpenItemValidationforGiftCard":"Gift card item should be configured as an open item",
+    "HotelCompNumber": "Account Number",
+    "HotelCompAuthorizedAmount": "Authorized Amount",
+    "lbl_HotelCompName": "Account Name"
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",
@@ -1759,7 +1766,8 @@
     "8205": "8205 - Inventory Valuation Report",
     "7160": "7160 - Custom Fee",
     "7165": "7165 - General Ledger Mapping",
-    "12091": "12091 - PMS Integration Setup"
+    "12091": "12091 - PMS Integration Setup",
+    "3130": "3130 - Settle to Hotel Comp"
   },
   "userId": "User ID",
   "password": "Password",
@@ -2998,6 +3006,7 @@
     },
     "defaultRoomCharge": "Default Room Charge",
     "defaultGroupCharge": "Default Group Charge",
+    "defaultHotelComp": "Default Hotel Comp",
     "newPassword":"New Password",
     "confirmPassword": "Confirm Password",
     "err_confirmPassword":"Confirm Password should be same as new Password",
@@ -4293,5 +4302,5 @@
   "idleAutologoffWarn" : "You are about to be logged out in",
   "idleCompleteYourAction" : "minutes. Please complete your action.",
   "btn_continueSession" : "CONTINUE SESSION",
-  "btn_logout" : "LOGOUT"  
+  "btn_logout" : "LOGOUT"
 }

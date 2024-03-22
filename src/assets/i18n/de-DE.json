@@ -916,6 +916,7 @@
     "DepartureDate": "Departure Date_de",
     "ConfirmationNo": "Confirmation#_de",
     "RoomNumber": "Room Number_de",
+    "HotelCompNumber": "Account Number_de",
     "ClientStatus": "Status_de",
     "Reserved": "Reserved_de",
     "Unknown": "Unknown_de",
@@ -1255,6 +1256,7 @@
     "MissingRefundAmount": "Enter the Amount to be Refunded_de",
     "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully_de",
     "AddedToGroupChrgSuccessMsg": "{amount} added to Group {roomNumber} successfully_de",
+    "AddedToHotelCompSuccessMsg": "{amount} Posted to Hotel Comp #{roomNumber} successfully_de",
     "TicketCreationSuccess": "Ticket {checkNumber} is successfully generated_de",
     "RefundSuccessMsg": "Refund Successful_de",
     "PaymentComplete": "Transaction Completed_de",
@@ -1363,6 +1365,7 @@
       "20": "Group Charge_de",
       "22": "Card On File_de",
       "24": "Wallet_de",
+      "25": "Hotel Comp_de",
       "44": "Other_de"
     },
     "GiftCard": {
@@ -1555,6 +1558,7 @@
     "connect": "Connect_de",
     "savedCardDetail": "Save Card Details_de",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._de",
+    "HotelCompPostingNotAllowed": "Hotel Comp Posting is restricted to this Account Number._de",
     "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_de",
     "TransactionLogScreen": {
       "Refresh": "REFRESH_de",
@@ -1597,7 +1601,10 @@
       "RemoveAll": "Remove All_de"
     },
     "TaxOnTax": "Tax On Tax_de",
-    "OpenItemValidationforGiftCard": "Gift card item should be configured as an open item_de"
+    "OpenItemValidationforGiftCard": "Gift card item should be configured as an open item_de",
+    "HotelCompNumber": "Account Number_de",
+    "HotelCompAuthorizedAmount": "Authorized Amount_de",
+    "lbl_HotelCompName": "Account Name_de"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_de",
@@ -1637,6 +1644,7 @@
     "3110": "3110 - Apply Cost Plus Discount_de",
     "3115": "3115 - Remove Card on File_de",
     "3125": "3125 - Search Gift Card by Guest Name_de",
+    "3130": "3130 - Settle to Hotel Comp_de",
     "5000": "5000 - Reopen Transaction_de",
     "5005": "5005 - Void Transaction_de",
     "5007": "5007 - Correct Transaction_de",
@@ -2995,6 +3003,7 @@
     },
     "defaultRoomCharge": "Default Room Charge_de",
     "defaultGroupCharge": "Default Group Charge_de",
+    "defaultHotelComp": "Default Hotel Comp_de",
     "newPassword": "New Password_de",
     "confirmPassword": "Confirm Password_de",
     "err_confirmPassword": "Confirm Password should be same as new Password_de",

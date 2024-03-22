@@ -916,6 +916,7 @@
     "DepartureDate": "Departure Date_uk",
     "ConfirmationNo": "Confirmation#_uk",
     "RoomNumber": "Room Number_uk",
+    "HotelCompNumber": "Account Number_uk",
     "ClientStatus": "Status_uk",
     "Reserved": "Reserved_uk",
     "Unknown": "Unknown_uk",
@@ -1255,6 +1256,7 @@
     "MissingRefundAmount": "Enter the Amount to be Refunded_uk",
     "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully_uk",
     "AddedToGroupChrgSuccessMsg": "{amount} added to Group {roomNumber} successfully_uk",
+    "AddedToHotelCompSuccessMsg": "{amount} Posted to Hotel Comp #{roomNumber} successfully_uk",
     "TicketCreationSuccess": "Ticket {checkNumber} is successfully generated_uk",
     "RefundSuccessMsg": "Refund Successful_uk",
     "PaymentComplete": "Transaction Completed_uk",
@@ -1363,6 +1365,7 @@
       "20": "Group Charge_uk",
       "22": "Card On File_uk",
       "24": "Wallet_uk",
+      "25": "Hotel Comp_uk",
       "44": "Other_uk"
     },
     "GiftCard": {
@@ -1555,6 +1558,7 @@
     "connect": "Connect_uk",
     "savedCardDetail": "Save Card Details_uk",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._uk",
+    "HotelCompPostingNotAllowed": "Hotel Comp Posting is restricted to this Account Number._uk",
     "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_uk",
     "TransactionLogScreen": {
       "Refresh": "REFRESH_uk",
@@ -1597,7 +1601,10 @@
       "RemoveAll": "Remove All_uk"
     },
     "TaxOnTax": "Tax On Tax_uk",
-    "OpenItemValidationforGiftCard": "Gift card item should be configured as an open item_uk"
+    "OpenItemValidationforGiftCard": "Gift card item should be configured as an open item_uk",
+    "HotelCompNumber": "Account Number_uk",
+    "HotelCompAuthorizedAmount": "Authorized Amount_uk",
+    "lbl_HotelCompName": "Account Name_uk"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_uk",
@@ -1637,6 +1644,7 @@
     "3110": "3110 - Apply Cost Plus Discount_uk",
     "3115": "3115 - Remove Card on File_uk",
     "3125": "3125 - Search Gift Card by Guest Name_uk",
+    "3130": "3130 - Settle to Hotel Comp_uk",
     "5000": "5000 - Reopen Transaction_uk",
     "5005": "5005 - Void Transaction_uk",
     "5007": "5007 - Correct Transaction_uk",
@@ -2995,6 +3003,7 @@
     },
     "defaultRoomCharge": "Default Room Charge_uk",
     "defaultGroupCharge": "Default Group Charge_uk",
+    "defaultHotelComp": "Default Hotel Comp_uk",
     "newPassword": "New Password_uk",
     "confirmPassword": "Confirm Password_uk",
     "err_confirmPassword": "Confirm Password should be same as new Password_uk",
