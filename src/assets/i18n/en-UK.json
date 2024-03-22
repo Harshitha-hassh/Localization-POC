@@ -3953,6 +3953,8 @@
   "lbl_reset": "RESET ALL_uk",
   "lbl_searchByOutlet": "Search by Outlet_uk",
   "lbl_More": "More_uk",
+  "err_max": "Exceeds Maximum Value_uk",
+  "err_min": "Precedes Minimum Value_uk",
   "header": {
     "SignInToMicrosoft": "Sign In To Microsoft Outlook_uk",
     "SignInAs": "Signed in as_uk",
