@@ -46,8 +46,8 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   hideConfirmPassword = false;
   tenantId = '1';
   doneDisabled: boolean;
-  key : string ;
-  iv : string;
+  uTempDataPrimary : string ;
+  uTempDataSecondary : string;
   floatLabel: string;
   characterValidationMsg: any;
   allowReuse: any;
@@ -76,10 +76,10 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     if (this.data.setPassword) {
       this.setPasswordForms.get('oldpassword').clearValidators();
     }
-    if(this.data && this.data.encKeyIv && this.data.encKeyIv.key &&  this.data.encKeyIv.iv)
+    if(this.data && this.data.uTempData && this.data.uTempData.uTempPri &&  this.data.uTempData.uTempSec)
     {
-      this.key = this.data.encKeyIv.key;
-      this.iv = this.data.encKeyIv.iv;
+      this.uTempDataPrimary = this.data.uTempData.uTempPri;
+      this.uTempDataSecondary = this.data.uTempData.uTempSec;
     }
     this.validationMessage(this.data.passwordSetting);
     this.OnFormValueChanges();
@@ -106,11 +106,11 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     let serviceParams;
     this.CheckPasswordExists(this.data.userName, newpwd, cfmpwd).then(async () => {
       if (!this.IsLastPassword) {
-        if (this.key && this.iv) {
+        if (this.uTempDataPrimary && this.uTempDataSecondary) {
           newPasswordDetail.isPasswordEncrypted = true;
 
           if (isValidOldPassword) {
-            newPasswordDetail.oldPassword = this.crypto.EncryptString(this.setPasswordForms.controls.oldpassword.value, this.key, this.iv);
+            newPasswordDetail.oldPassword = this.crypto.EncryptString(this.setPasswordForms.controls.oldpassword.value, this.uTempDataPrimary, this.uTempDataSecondary);
           }
           serviceParams = {
             route: RetailRoutes.SavePasswordPost,
@@ -120,7 +120,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
             baseResponse: true
           };
 
-          serviceParams.body.newPassword = this.crypto.EncryptString(this.setPasswordForms.controls.newpassword.value, this.key, this.iv);
+          serviceParams.body.newPassword = this.crypto.EncryptString(this.setPasswordForms.controls.newpassword.value, this.uTempDataPrimary, this.uTempDataSecondary);
 
         }
         savePwdResponse = await this.loginService.makePostCall(serviceParams);
@@ -242,7 +242,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     let resp: any;
     if(password.length !=0)
     {
-        if(this.key && this.iv)
+        if(this.uTempDataPrimary && this.uTempDataSecondary)
         {
           let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId) , oldPassword :"",isPasswordEncrypted:true  } ;
           let serviceParams = {
@@ -252,7 +252,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
             showError: true,
             baseResponse: true
           };
-          serviceParams.body.newPassword = this.crypto.EncryptString(password,this.key,this.iv);
+          serviceParams.body.newPassword = this.crypto.EncryptString(password,this.uTempDataPrimary,this.uTempDataSecondary);
           resp = password.length !=0 ? await this.loginService.makePutCall(serviceParams) : null;
         }
         else{
@@ -298,7 +298,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   }
   async VerifyPassword(userName, password) {
     let resp: any;
-        if(this.key && this.iv)
+        if(this.uTempDataPrimary && this.uTempDataSecondary)
         {
           let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId),oldPassword:"",isPasswordEncrypted:true  } ;
           let serviceParams = {
@@ -308,7 +308,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
               showError: true,
               baseResponse: true
           };
-          serviceParams.body.newPassword = this.crypto.EncryptString(password,this.key,this.iv);
+          serviceParams.body.newPassword = this.crypto.EncryptString(password,this.uTempDataPrimary,this.uTempDataSecondary);
           resp = await this.loginService.makePutCall(serviceParams);
         }
         else{

@@ -49,6 +49,7 @@ import { LoginRoutes } from '../login.routes';
 import * as CONSTANTS from 'src/app/common/constants';
 import { cloneDeep } from 'lodash';
 import { DMConfigDataService } from 'src/app/common/dataservices/datamagine-config.data.service';
+import { UTempDataUtilities } from 'src/app/common/shared/shared/utilities/utempdata-utilities';
 
 
 @Component({
@@ -103,8 +104,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   defaultMachineId: number = 0;
   machineNames = [];
   userMachineInfo: UserMachineInfo;
-  key: string;
-  iv: string;
+  uTempDataPrimary: string;
+  uTempDataSecondary: string;
   ADB2CAuthenticationEnabled: boolean = false;
   errorvalue : string;
   errordescription : string;
@@ -154,7 +155,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private adb2cAuthConfiguration: ADB2CAuthConfiguration,
     private dmConfigDataService: DMConfigDataService,
-    private _subPropertyDataService: SubPropertyDataService 
+    private _subPropertyDataService: SubPropertyDataService,
+    private utempdatautils: UTempDataUtilities 
   ) {
     // this.initializeForm();
     // this.captions = this.localize.captions;
@@ -238,7 +240,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.removeVal();
       }
     });
-    this.setEncryptKey();
+    this.setValues();
     let tenantId = localStorage.getItem('TenantId');
     let adb2cEnabled = localStorage.getItem('ADB2CAuthenticationEnabled');
     if (adb2cEnabled != null && adb2cEnabled.toLowerCase() == "true") {
@@ -474,8 +476,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     if (!this.loginSuccess && !this.enablePropertySelection) {
       // Validate credentials
-      if (this.key && this.iv) {
-        serviceParams.body.Password = this.crypto.EncryptString(credentials.Password, this.key, this.iv);
+      if (this.uTempDataPrimary && this.uTempDataSecondary) {
+        serviceParams.body.Password = this.crypto.EncryptString(credentials.Password, this.uTempDataPrimary, this.uTempDataSecondary);
         serviceParams.route = RetailRoutes.LoginEncrypted;
       }
       const loginDetails = await this.loginService.makePostCall(serviceParams);
@@ -986,7 +988,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         userName: arg.userName,
         tenantId: arg.tenantId,
         passwordSetting: arg.passwordSetting,
-        encKeyIv: { key: this.key, iv: this.iv }
+        uTempData: { uTempPri: this.uTempDataPrimary, uTempSec: this.uTempDataSecondary }
       }
     }).afterClosed().subscribe(res => {
       this.enableLoginloader(false);
@@ -1221,21 +1223,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.localize.SetMachineName('');
     }
   }
-  setEncryptKey() {
-    let serviceParamsForKey = {
-      route: RetailRoutes.GetEncryptKey,
-      uriParams: '',
-      header: '',
-      body: '',
-      showError: false,
-      baseResponse: true
-    };
-    this.loginService.makeGetCall<any>(serviceParamsForKey, false).then(encryptKey => {
-      if (encryptKey && encryptKey.result) {
-        this.key = encryptKey.result.key;
-        this.iv = encryptKey.result.iv;
-      }
-    })
+  setValues() {
+    this.uTempDataPrimary = this.utempdatautils.GetUTempData(3);
+    this.uTempDataSecondary = this.utempdatautils.GetUTempData(1);
   }
 
   clearLclCookie(idname) {
