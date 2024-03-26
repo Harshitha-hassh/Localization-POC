@@ -1605,7 +1605,7 @@
     "OpenItemValidationforGiftCard": "Gift card item should be configured as an open item_de",
     "HotelCompNumber": "Account Number_de",
     "HotelCompAuthorizedAmount": "Authorized Amount_de",
-    "lbl_HotelCompName": "Account Name_de"
+    "lbl_HotelCompName": "Compor Name_de"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_de",
