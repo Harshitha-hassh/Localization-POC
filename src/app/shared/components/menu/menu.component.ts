@@ -25,6 +25,7 @@ import { ChangePropertySevice } from 'src/app/common/services/change-property.se
 import { UserdefaultsInformationService } from 'src/app/core/services/UserdefaultsInformationService';
 import { UserMachineConfigurationService } from 'src/app/retail/common/services/user-machine-configuration.service';
 import { AuthenticationService } from 'src/app/common/shared/services/authentication.service';
+import { DMConfigDataService } from 'src/app/common/dataservices/datamagine-config.data.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -97,6 +98,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     , private userDefaultsService: UserdefaultsInformationService
     , private userSessionConfig: UserMachineConfigurationService
     , private authentication: AuthenticationService
+    , private _dmConfigDataService:DMConfigDataService
     ) {
     // this.sortPipe = new SortOrderPipe();
   }
@@ -175,6 +177,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       });
     }
     this.RefreshConfig();
+    this._dmConfigDataService.SetDataMagineConfig();
     if(!sessionStorage.getItem("enableMachineTransaction")) {
       this._propertyFeatureService.GetMiscConfig();
     }
