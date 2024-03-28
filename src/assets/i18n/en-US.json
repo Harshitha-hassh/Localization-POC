@@ -4303,5 +4303,7 @@
   "idleAutologoffWarn" : "You are about to be logged out in",
   "idleCompleteYourAction" : "minutes. Please complete your action.",
   "btn_continueSession" : "CONTINUE SESSION",
-  "btn_logout" : "LOGOUT"
+  "btn_logout" : "LOGOUT",
+  "ExpectedFormat12": "Format: HH:mm AM|PM",
+  "ExpectedFormat24": "Format: HH:mm"
 }

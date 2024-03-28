@@ -4300,5 +4300,7 @@
   "idleAutologoffWarn": "You are about to be logged out in_gb",
   "idleCompleteYourAction": "minutes. Please complete your action._gb",
   "btn_continueSession": "CONTINUE SESSION_gb",
-  "btn_logout": "LOGOUT_gb"
+  "btn_logout": "LOGOUT_gb",
+  "ExpectedFormat12": "Format: HH:mm AM|PM_gb",
+  "ExpectedFormat24": "Format: HH:mm_gb"
 }

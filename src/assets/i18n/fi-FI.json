@@ -4300,5 +4300,7 @@
   "idleAutologoffWarn": "You are about to be logged out in_fi",
   "idleCompleteYourAction": "minutes. Please complete your action._fi",
   "btn_continueSession": "CONTINUE SESSION_fi",
-  "btn_logout": "LOGOUT_fi"
+  "btn_logout": "LOGOUT_fi",
+  "ExpectedFormat12": "Format: HH:mm AM|PM_fi",
+  "ExpectedFormat24": "Format: HH:mm_fi"
 }
