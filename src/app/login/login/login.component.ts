@@ -738,6 +738,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   async GetSupportedPMAgentVersionByPropertyID(propertyId: number) {
+    if (this.propertyInfo.SkipPMAgent) return; //No need to Validate the PMAgent version if SkipPMAgent is enabled
     const supportedPmAgentVersion = await this.PropertySettingService.GetSupportedPMAgentVersionByPropertyID(propertyId);
     this.propertyInfo.SetSupportedPMAgentVersion(supportedPmAgentVersion);
     this.payAgentService.ValidatePayAgentVersion();
