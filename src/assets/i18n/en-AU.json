@@ -1041,6 +1041,7 @@
     "CancelTransaction": "Cancel",
     "AdditionalCardsUsed": "Additional cards used :",
     "Close": "CLOSE",
+    "close": "Close",
     "PaymentMethods": "Payment Methods",
     "PaymentDetails": "Payment Details",
     "TransactionDetails": "Transaction Details",

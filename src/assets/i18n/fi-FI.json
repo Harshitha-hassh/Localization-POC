@@ -1041,6 +1041,7 @@
     "CancelTransaction": "Cancel_fi",
     "AdditionalCardsUsed": "Additional cards used :_fi",
     "Close": "CLOSE_fi",
+    "close": "Close_fi",
     "PaymentMethods": "Payment Methods_fi",
     "PaymentDetails": "Payment Details_fi",
     "TransactionDetails": "Transaction Details_fi",
