@@ -1298,6 +1298,7 @@
     "SearchLoaderMsgGiftCardValidateSale": "Please wait while the gift card transaction is being validated",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved.",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved.",
+    "HotelCompAuthorizeLoaderMsg": "Please wait, while Authorizing Account Number.",
     "RetrievePatronDetails": "Please wait, while the player details are being retrieved.",
     "RefundInProgress": "Please wait, while your request is being processed.",
     "SelectGuest": "Select a Guest",
