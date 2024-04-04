@@ -1041,6 +1041,7 @@
     "CancelTransaction": "Cancel_uk",
     "AdditionalCardsUsed": "Additional cards used :_uk",
     "Close": "CLOSE_uk",
+    "close": "Close_uk",
     "PaymentMethods": "Payment Methods_uk",
     "PaymentDetails": "Payment Details_uk",
     "TransactionDetails": "Transaction Details_uk",

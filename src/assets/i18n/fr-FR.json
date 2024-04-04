@@ -1041,6 +1041,7 @@
     "CancelTransaction": "Cancel_fr",
     "AdditionalCardsUsed": "Additional cards used :_fr",
     "Close": "CLOSE_fr",
+    "close": "Close_fr",
     "PaymentMethods": "Payment Methods_fr",
     "PaymentDetails": "Payment Details_fr",
     "TransactionDetails": "Transaction Details_fr",

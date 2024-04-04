@@ -1041,6 +1041,7 @@
     "CancelTransaction": "Cancel_in",
     "AdditionalCardsUsed": "Additional cards used :_in",
     "Close": "CLOSE_in",
+    "close": "Close_in",
     "PaymentMethods": "Payment Methods_in",
     "PaymentDetails": "Payment Details_in",
     "TransactionDetails": "Transaction Details_in",

@@ -1041,6 +1041,7 @@
     "CancelTransaction": "Cancel_da",
     "AdditionalCardsUsed": "Additional cards used :_da",
     "Close": "CLOSE_da",
+    "close": "Close_da",
     "PaymentMethods": "Payment Methods_da",
     "PaymentDetails": "Payment Details_da",
     "TransactionDetails": "Transaction Details_da",

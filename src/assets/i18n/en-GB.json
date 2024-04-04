@@ -1041,6 +1041,7 @@
     "CancelTransaction": "Cancel_gb",
     "AdditionalCardsUsed": "Additional cards used :_gb",
     "Close": "CLOSE_gb",
+    "close": "Close_gb",
     "PaymentMethods": "Payment Methods_gb",
     "PaymentDetails": "Payment Details_gb",
     "TransactionDetails": "Transaction Details_gb",
