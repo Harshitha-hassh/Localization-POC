@@ -39,9 +39,7 @@
             <ng-container *ngIf="!EnableRetailIC">
                 <embed [src]="src" width="100%" height="100%" #embed>
             </ng-container>
-            <ng-container *ngIf="EnableRetailIC">
-                <router-outlet></router-outlet>
-            </ng-container>
+            <router-outlet [ngClass]="{'ag_display--none': !EnableRetailIC}"></router-outlet>
         </div>
     </div>
 </div>
