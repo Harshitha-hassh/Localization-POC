@@ -114,7 +114,7 @@ export class DataAwaiterService {
             cardInfo: client.clientCreditCardInfo ? client.clientCreditCardInfo : [],
             patronId: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].patronId : '',
             rank: client.loyaltyDetail && client.loyaltyDetail[0] ? client.loyaltyDetail[0].rank : '',
-            playerCategoryId: client.clientCategoryId,
+            playerCategoryId: client.clientCategoryId != 0 ? client.clientCategoryId : 1,
             emailId: emailId,
             phoneNumber: phoneNo,
             lastName: client.lastName
