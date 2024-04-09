@@ -2274,10 +2274,15 @@
     "showInputValidateMessage": "Please fill out the missing fields_gb",
     "memberaccuralmapping": "MEMBER BUCKET MAPPING_gb",
     "memberbucketdetails": "ENTER BUCKET DETAILS_gb",
+    "externalPMSDetails": "ENTER EXTERNAL PMS DETAILS_gb",
     "lbl_bucketcode": "Bucket Code_gb",
     "lbl_bucketname": "Bucket Name_gb",
+    "lbl_transactioncode": "Transaction Code_gb",
     "lbl_applyForAllPaymentMethodsForTheSameOutlet": "Apply For All Payment Methods_gb",
     "lbl_applyForOutletsForTheSamePaymentMethod": "Apply For All Outlets_gb",
+    "lbl_applyToAllRetailCategories": "Apply For All Retail Categories_gb",
+    "lbl_applyToAllTaxes": "Apply For All Taxes_gb",
+    "lbl_applyToAllSurCharges": "Apply For All Surcharges_gb",
     "SearchForMemberBucketMapping": "Search By Payment Method or Bucket Code_gb",
     "SelectRevenuePostCode": "Select Revenue Post Code_gb",
     "SearchPostCode": "Search By Post Code Number, Description, Department_gb",
@@ -4304,5 +4309,8 @@
   "btn_continueSession": "CONTINUE SESSION_gb",
   "btn_logout": "LOGOUT_gb",
   "ExpectedFormat12": "Format: HH:mm AM|PM_gb",
-  "ExpectedFormat24": "Format: HH:mm_gb"
+  "ExpectedFormat24": "Format: HH:mm_gb",
+  "lbl_integrationSetup": "Integration Setup_gb",
+  "lbl_internalorExternal": "Internal/External_gb",
+  "lbl_PostTypeMappingScreen": "Open Post Type Mapping_gb"
 }
