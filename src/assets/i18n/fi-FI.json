@@ -1601,7 +1601,9 @@
       "Pin": "Pin_fi",
       "Amount": "Amount_fi",
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_fi",
-      "RemoveAll": "Remove All_fi"
+      "RemoveAll": "Remove All_fi",
+      "selectAll": "Select All_fi",
+      "deselectAll": "Deselect All_fi"
     },
     "TaxOnTax": "Tax On Tax_fi",
     "OpenItemValidationforGiftCard": "Gift card item should be configured as an open item_fi",

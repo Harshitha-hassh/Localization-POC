@@ -1601,7 +1601,9 @@
       "Pin": "Pin_da",
       "Amount": "Amount_da",
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_da",
-      "RemoveAll": "Remove All_da"
+      "RemoveAll": "Remove All_da",
+      "selectAll": "Select All_da",
+      "deselectAll": "Deselect All_da"
     },
     "TaxOnTax": "Tax On Tax_da",
     "OpenItemValidationforGiftCard": "Gift card item should be configured as an open item_da",
