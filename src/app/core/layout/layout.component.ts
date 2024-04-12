@@ -21,6 +21,8 @@ import moment, { Moment } from 'moment';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { HttpCacheService } from 'src/app/common/services/cache/http-cache.service';
 import { Localization } from 'src/app/common/localization/localization';
+import * as FullStory from '@fullstory/browser';
+import { FULL_STORY_ORG_ID } from 'src/app/app-constants';
 
 @Component({
   selector: 'app-layout',
@@ -36,6 +38,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
   logOutClicked=false;
   entityName:string;
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+  private autoLogOff: any = false;
+  private logOffAfter: number = 1;
   constructor(private routeDataService: RouteLoaderService,
     private sessionService: ManageSessionService,
     private localization: RetailLocalization,
@@ -72,6 +76,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.triggerNotification();
       this.time();
       this.toggleStyle();
+      this.setAutoLogoff();
+      if(!FullStory){
+        this.setFullStory();
+      }
       if(enableSignalR && enableSignalR.toLowerCase() == "true")
     {
       this.StartSignalrConnection();
@@ -241,6 +249,35 @@ logoutHandler(arg) {
     } else {
       bodyTag.removeAttribute("id");
       this.localization.setFloatLabel = 'never';
+    }
+  }
+
+  setFullStory(){
+    let propertyConfig = JSON.parse(sessionStorage.getItem('propConfig'));
+    let userInfo = JSON.parse(sessionStorage.getItem('userInformation'));
+    if (propertyConfig.configValue != undefined && propertyConfig.configValue[FULL_STORY_ORG_ID] != undefined) {
+      FullStory.init({ orgId: propertyConfig.configValue[FULL_STORY_ORG_ID] });
+      FullStory.identify('RETAIL-' + userInfo.userName, {
+        "displayName": 'RETAIL-' + userInfo.userName,
+        "productId": Product.RETAIL.toString(),
+        "productName": "RETAIL",
+        "tenantId": userInfo.tenantId?.toString() ?? "",
+        "tenantCode": userInfo.tenantCode?.toString() ?? "",
+        "propertyId": propertyConfig.propertyId?.toString() ?? "",
+        "propertyName": this.propertyInfo.GetPropertyInfoByKey('PropertyName')
+      });
+    }
+  }
+
+  setAutoLogoff() {
+    this.autoLogOff = this.utils.GetPropertyInfo('AutoLogOff');
+    const tokenDuration = parseInt(sessionStorage.getItem('loginDuration'));
+    if (this.autoLogOff == 'true') {
+      this.sessionService.resetOnTrigger = true;
+      this.logOffAfter = +this.utils.GetPropertyInfo('LogOffAfter');
+      this.sessionService.startTimer(this.logOffAfter, tokenDuration);
+    } else {
+      this.sessionService.resetOnTrigger = false;
     }
   }
 
