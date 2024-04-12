@@ -80,6 +80,13 @@ export class NewUserComponent implements OnInit {
     this.GetAllUserbyTenantId();
     this.setValues();
   }
+  //check userId already exist by tenantId
+  async IsUserIdDuplicate()
+  {
+    const apiResponse: BaseResponse<any[]> = await this.InvokeServiceCallAsync('GetDuplicateUserByName', Host.authentication, HttpMethod.Get, {userId:0, tenantId: Number(this.utils.GetPropertyInfo('TenantId')),userName: this._servicesetting.userSettingsFormGrp.controls.userid.value.toUpperCase() });
+    return apiResponse.result;
+
+  }
   async GetAllUserbyTenantId() {
     const apiResponse: BaseResponse<any[]> = await this.InvokeServiceCallAsync('GetAllUsers', Host.authentication, HttpMethod.Get, { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
     if (apiResponse && apiResponse.result) {
@@ -106,7 +113,7 @@ export class NewUserComponent implements OnInit {
     this.selectedTabIndex = event.index;
   }
 
-  SaveOrUpdate() {
+  async SaveOrUpdate() {
     const serviceSettingControl = this._servicesetting.userSettingsFormGrp.controls;
     if (this.data && this.data.mode && this.data.mode == 'Edit') {
       if (this.existingUserId.includes(serviceSettingControl.userid.value.toUpperCase())) {
@@ -125,9 +132,11 @@ export class NewUserComponent implements OnInit {
         this.Edit();
       }
     } else {
-      if (this._servicesetting.existingUserIds.includes(serviceSettingControl.userid.value.toUpperCase())) {
-        this.utils.showError(this.caption.setting.DuplicateUserID);
-      } else if (this._servicesetting.existingQuickIds.includes(serviceSettingControl.quickid.value)) {
+      if(await this.IsUserIdDuplicate())
+      {
+      this.utils.showError(this.caption.setting.DuplicateUserID);   
+      }
+      else if (this._servicesetting.existingQuickIds.includes(serviceSettingControl.quickid.value)) {
         this.utils.showError(this.caption.setting.DuplicateQuickID);
       } else if (serviceSettingControl.fname.value.trim() == '') {
         serviceSettingControl.fname.setValue('');
