@@ -2333,12 +2333,12 @@
     "AutoPrintReceipts": "Auto Print Receipts_de",
     "err_max": "Exceeds Maximum Value_de",
     "err_min": "Precedes Minimum Value_de",
-    "lbl_EligibleForInhouseGratuity": "Eligible for in house gratuity_de",
-    "lbl_EligibleForInhouseServiceCharge": "Eligible for in house service charge_de"
+    "lbl_EligibleForInhouseGratuity": "Eligible for In-House Gratuity_de",
+    "lbl_EligibleForInhouseServiceCharge": "Eligible for In-House Service Charge_de"
   },
   "setting": {
-    "lbl_inHouseGratuity": "In House Gratuity_de",
-    "lbl_inHouseServiceCharge": "In House Service Charge_de",
+    "lbl_inHouseGratuity": "In-House Gratuity_de",
+    "lbl_inHouseServiceCharge": "In-House Service Charge_de",
     "taxRevenueToProperty": "Is Revenue To Property_de",
     "linkedTaxRevenueToProperty": "Is Revenue To Property_de",
     "taxOnTax": "Charge Tax On Tax_de",
@@ -3130,9 +3130,9 @@
     "AllActiveitems": "All Active Items_de",
     "InHouseBoth": "Both_de",
     "InHouseStaffOnly": "Staff only_de",
-    "InHouseGratuityOnly": "In house Gratuity only_de",
-    "InHouseSCOnly": "In house SC only_de",
-    "InHouseGratuitySCOnly": "In house Gratuity/SC only_de",
+    "InHouseGratuityOnly": "In-House Gratuity only_de",
+    "InHouseSCOnly": "In-House SC only_de",
+    "InHouseGratuitySCOnly": "In-House Gratuity/SC only_de",
     "AllMultipacks": "All Multipacks_de",
     "ExpirationDateRange": "Expiration Date Range_de",
     "SoldDate": "Sold Date_de",
@@ -3251,9 +3251,9 @@
     "hideCorrectedValues": "Hide Corrected Values_de",
     "InventoryValuation": "Inventory Valuation_de",
     "InventoryValueandActivity": "Inventory Value and Activity_de",
-    "includeInhouseGratuitySC": "Include In House Gratuity/SC_de",
-    "includeInhouseGratuity": "Include In House Gratuity_de",
-    "includeInhouseSC": "Include In House SC_de"
+    "includeInhouseGratuitySC": "Include In-House Gratuity/SC_de",
+    "includeInhouseGratuity": "Include In-House Gratuity_de",
+    "includeInhouseSC": "Include In-House SC_de"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_de",
