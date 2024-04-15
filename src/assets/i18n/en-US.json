@@ -2336,12 +2336,12 @@
     "AutoPrintReceipts": "Auto Print Receipts",
     "err_max": "Exceeds Maximum Value",
     "err_min": "Precedes Minimum Value",
-    "lbl_EligibleForInhouseGratuity":"Eligible for in house gratuity",
-    "lbl_EligibleForInhouseServiceCharge":"Eligible for in house service charge"
+    "lbl_EligibleForInhouseGratuity":"Eligible for In-House Gratuity",
+    "lbl_EligibleForInhouseServiceCharge":"Eligible for In-House Service Charge"
   },
   "setting": {
-    "lbl_inHouseGratuity": "In House Gratuity",
-    "lbl_inHouseServiceCharge": "In House Service Charge",
+    "lbl_inHouseGratuity": "In-House Gratuity",
+    "lbl_inHouseServiceCharge": "In-House Service Charge",
     "taxRevenueToProperty": "Is Revenue To Property",
     "linkedTaxRevenueToProperty": "Is Revenue To Property",
     "taxOnTax": "Charge Tax On Tax",
@@ -3133,9 +3133,9 @@
     "AllActiveitems": "All Active Items",
     "InHouseBoth": "Both",
 		"InHouseStaffOnly": "Staff only",
-		"InHouseGratuityOnly": "In house Gratuity only",
-		"InHouseSCOnly": "In house SC only",
-		"InHouseGratuitySCOnly": "In house Gratuity/SC only",
+		"InHouseGratuityOnly": "In-House Gratuity only",
+		"InHouseSCOnly": "In-House SC only",
+		"InHouseGratuitySCOnly": "In-House Gratuity/SC only",
     "AllMultipacks": "All Multipacks",
     "ExpirationDateRange": "Expiration Date Range",
     "SoldDate": "Sold Date",
@@ -3254,9 +3254,9 @@
     "hideCorrectedValues": "Hide Corrected Values",
     "InventoryValuation": "Inventory Valuation",
     "InventoryValueandActivity": "Inventory Value and Activity",
-    "includeInhouseGratuitySC": "Include In House Gratuity/SC",
-    "includeInhouseGratuity": "Include In House Gratuity",
-    "includeInhouseSC": "Include In House SC"
+    "includeInhouseGratuitySC": "Include In-House Gratuity/SC",
+    "includeInhouseGratuity": "Include In-House Gratuity",
+    "includeInhouseSC": "Include In-House SC"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",
