@@ -1603,7 +1603,8 @@
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_fr",
       "RemoveAll": "Remove All_fr",
       "selectAll": "Select All_fr",
-      "deselectAll": "Deselect All_fr"
+      "deselectAll": "Deselect All_fr",
+      "RetailItems": "Retail Items_fr"
     },
     "TaxOnTax": "Tax On Tax_fr",
     "OpenItemValidationforGiftCard": "Gift card item should be configured as an open item_fr",
