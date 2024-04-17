@@ -5703,3 +5703,11 @@ app-transaction{
       background-color: rgb(6, 6, 6);
    }
 }
+
+#member-selection-popup .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color : $theme-base-color !important;
+}
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
