@@ -4315,5 +4315,6 @@
   "ExpectedFormat24": "Format: HH:mm_fr",
   "lbl_integrationSetup": "Integration Setup_fr",
   "lbl_internalorExternal": "Internal/External_fr",
-  "lbl_PostTypeMappingScreen": "Open Post Type Mapping_fr"
+  "lbl_PostTypeMappingScreen": "Open Post Type Mapping_fr",
+  "warn_datalostChanges": "Are you sure you want to cancel the changes?_fr"
 }
