@@ -28,6 +28,9 @@
 .icon-Member-new:before {
   content: "\ef72";
 }
+.icon-discount:before {
+  content: "\ef71";
+}
 .icon-Customer-Activity-eatec:before {
   content: "\eab7";
   color: #788090;
