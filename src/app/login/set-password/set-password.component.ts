@@ -20,7 +20,7 @@ import { debounceTime } from 'rxjs/operators';
 export class SetPasswordComponent implements OnInit, OnDestroy {
 
   captions: any;
-  errorMessage: { oldPassword: string, newPassword: string; confirmPassword: string; };
+  errorMessage: { oldPassword: string, newPassword: string; confirmPassword: string; allowSpecialCharecters: string; };
   setPasswordForms: UntypedFormGroup;
   passwordSetUp: UntypedFormGroup;
   newPwd: string;
@@ -54,6 +54,9 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   hiddenPassword1 = false;
   hiddenPassword2 = false;
   debounceTime = 1500;
+  isDoneValid:boolean = true;
+  isConfirmPassword = false;
+  isSpecialChar = false;
 
 
 
@@ -144,6 +147,10 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       this.doneDisabled = true;
       this.IsLengthValid = (res.length >= this.minCharacter) && (res.length <= this.maxCharacter) ? true : false;
       const returnFormat = this.formatingTypeValidation(this.formatingType, res, this.allowSpecialCharacters);
+      if(this.setPasswordForms.controls.confirmpassword.value == res && res != ''){
+        this.isDoneValid = !(this.containsSpecialCharacters(res) && !this.allowSpecialCharacters);
+        this.isSpecialChar = !this.containsSpecialCharacters(res) && !this.allowSpecialCharacters;
+      }
       this.IsHavingAllTypes = returnFormat ? true : false;
       this.IsSameAsUserName = res !== '' ? this.data.userName.toLowerCase() !== res.toLowerCase() : false;
       this.PasswordValidCheck();
@@ -164,7 +171,12 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     });
 
     this.setPasswordForms.get('confirmpassword').valueChanges.pipe(debounceTime(this.debounceTime)).subscribe(res => {
+      this.isConfirmPassword = true;
       this.doneDisabled = true;
+      if(this.setPasswordForms.controls.newpassword.value == res && res != ''){
+        this.isDoneValid = !(this.containsSpecialCharacters(res) && !this.allowSpecialCharacters);
+        this.isSpecialChar = !this.containsSpecialCharacters(res) && !this.allowSpecialCharacters;
+      }
       this.PasswordValidCheck();
       this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls.newpassword.value, this).then(() => {
         if (!this.IsLastPassword) {
@@ -194,7 +206,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   doneButtonChangeState() {
     this.doneDisabled = true;
     if (this.IsPasswordValid && this.IsLengthValid
-       && this.IsHavingAllTypes && !this.IsLastPassword && this.IsSameAsUserName && this.IsOldPassword) {
+       && this.IsHavingAllTypes && !this.IsLastPassword && this.IsSameAsUserName && this.IsOldPassword && this.isDoneValid) {
       this.doneDisabled = !this.IsConfirmed;
     }
   }
@@ -326,5 +338,9 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
 
+  }
+  containsSpecialCharacters(text: string): boolean {
+    const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    return regex.test(text);
   }
 }

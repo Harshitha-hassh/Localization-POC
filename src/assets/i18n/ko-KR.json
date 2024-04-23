@@ -1812,6 +1812,8 @@
   "lbl_NoDataFound": "No Data Found_kr",
   "lbl_userId": "User ID_kr",
   "lbl_logout": "Log Out_kr",
+  "noSpecialCharacters": "No special characters_kr",
+  "confirmPasswordSame": "New password and confirm password must be same_kr",
   "retailsetup": {
     "includeSignatureLine": "Include Signature in Receipts_kr",
     "isAutoRemoveTax": "Auto Remove Tax_kr",

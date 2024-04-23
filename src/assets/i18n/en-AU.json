@@ -1812,6 +1812,8 @@
   "lbl_NoDataFound": "No Data Found",
   "lbl_userId": "User ID",
   "lbl_logout": "Log Out",
+  "noSpecialCharacters": "No special characters",
+  "confirmPasswordSame": "New password and confirm password must be same",
   "retailsetup": {
     "includeSignatureLine": "Include Signature in Receipts",
     "isAutoRemoveTax": "Auto Remove Tax",
