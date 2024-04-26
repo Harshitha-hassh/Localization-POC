@@ -147,9 +147,14 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       this.doneDisabled = true;
       this.IsLengthValid = (res.length >= this.minCharacter) && (res.length <= this.maxCharacter) ? true : false;
       const returnFormat = this.formatingTypeValidation(this.formatingType, res, this.allowSpecialCharacters);
+      if(this.setPasswordForms.controls.newpassword.value == res && res != ''){
+        this.isSpecialChar =  !this.containsSpecialCharacters(res) && !this.allowSpecialCharacters && !this.containsSpecialCharacters(this.setPasswordForms.controls.confirmpassword.value);
+      }
+      else{
+        this.isSpecialChar = false;
+      }
       if(this.setPasswordForms.controls.confirmpassword.value == res && res != ''){
         this.isDoneValid = !(this.containsSpecialCharacters(res) && !this.allowSpecialCharacters);
-        this.isSpecialChar = !this.containsSpecialCharacters(res) && !this.allowSpecialCharacters;
       }
       this.IsHavingAllTypes = returnFormat ? true : false;
       this.IsSameAsUserName = res !== '' ? this.data.userName.toLowerCase() !== res.toLowerCase() : false;
@@ -171,11 +176,16 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     });
 
     this.setPasswordForms.get('confirmpassword').valueChanges.pipe(debounceTime(this.debounceTime)).subscribe(res => {
-      this.isConfirmPassword = true;
+      this.isConfirmPassword = (res != '') ? true : false;
       this.doneDisabled = true;
+      if(this.setPasswordForms.controls.confirmpassword.value == res && res != ''){
+        this.isSpecialChar =  !this.containsSpecialCharacters(res) && !this.allowSpecialCharacters && !this.containsSpecialCharacters(this.setPasswordForms.controls.newpassword.value);
+      }
+      else{
+        this.isSpecialChar = false;
+      }
       if(this.setPasswordForms.controls.newpassword.value == res && res != ''){
         this.isDoneValid = !(this.containsSpecialCharacters(res) && !this.allowSpecialCharacters);
-        this.isSpecialChar = !this.containsSpecialCharacters(res) && !this.allowSpecialCharacters;
       }
       this.PasswordValidCheck();
       this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls.newpassword.value, this).then(() => {
