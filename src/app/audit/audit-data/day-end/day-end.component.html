@@ -48,7 +48,7 @@
         </div>
 
        <!-- Revenue Postings -->
-        <div *ngIf="coll.linkOptions && showRevenuePostings" class="d-table" [ngClass]="{'hdrSection':coll.dataCount!=0}">
+        <div *ngIf="coll.linkOptions && showRevenuePostings" class="d-table revenue" [ngClass]="{'hdrSection':coll.dataCount!=0}">
           <span class="d-table-cell V-Mid ">
             <i *ngIf="revenuepostingsFailedCount > 0" class="icon-error-icon blckClr mr-2 IC18"></i>
             <i *ngIf="revenuepostingsFailedCount == 0" class="icon-success-icon blckClr mr-2 IC18"></i>

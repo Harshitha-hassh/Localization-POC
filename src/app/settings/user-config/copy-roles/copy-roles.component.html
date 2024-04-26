@@ -5,9 +5,9 @@
       (click)="Cancel()">close</i>
   </div>
   <div class="pop-contents">
-    <div class="copy-roles-section  pt-4">
+    <div class="copy-roles-section  pt-2">
       <form [formGroup]="roleGrp" class="form-section">
-        <div class="content-section pl-4 pr-4">
+        <div class="content-section pl-4 pr-4 ag_display--flex pb-1">
           <mat-form-field class="d-block mr-4 text-capitalize copy-from" [floatLabel]="floatLabel">
             <mat-select formControlName="copyFrom" [placeholder]="captions.copyFrom"
               (selectionChange)="configChanged($event)">
@@ -25,7 +25,7 @@
           </mat-form-field>
         </div>
         <div mat-dialog-actions class=" dialog-section pl-4 pr-4">
-          <div class="pop-button ">
+          <div class="pop-button pt-2">
             <button [ngClass]="this.roleGrp.valid && this.roleGrp.dirty ? 'button_valid': 'button_invalid'" mat-button
               class="LW14 body-bgcolor text-uppercase  whitecolor"
               (click)="SaveCopyRoles() ">{{captions.update}}</button>
