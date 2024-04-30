@@ -421,9 +421,10 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     let _applicationVersion = productVersion.replace(dotRegEx, '_');
     let url = hostUrl + _applicationVersion + '/' + help_page;
     const jwt = sessionStorage.getItem('_jwt');
-    const isAuthorized = await this._http.createHelpUserSession(jwt);
+    const session = sessionStorage.getItem('userSession');
+    const isAuthorized = await this._http.createHelpUserSession();
     if (isAuthorized && jwt) {
-      url = url + '?jwt=' + jwt
+      url = url + '?doc_id=' + session;
       setTimeout(() => { window.open(url, '_blank') }, 1000)
     }
   }

@@ -599,7 +599,7 @@ export const routeJSON = {
     "UpdateGiftCardIssueSuccess": "Transaction/updateGiftCardIssueSuccess/giftcardTransactionItemId/{giftcardTransactionItemId}/paymentReferenceId/{paymentReferenceId}",
     "GetGiftcardItems": "Transaction/getGiftCardTransactionItems/{transactionId}",
     "ValidateGiftCardCashback": "Payment/ValidateGiftCardCashback/outletId/{outletId}",
-    "CreateHelpSession": "Login/?product={product}&session={sessionid}",
+    "CreateHelpSession": "Login/?product={product}",
     "GetInstalledPMAgentVersion": "admin/configuration/getPMAgentVersion",
     "RemoveHelpSession": "Logout/?product={product}",
     "GetClosedTransactionByDate": "Transaction/closeddate/{closedDate}",
