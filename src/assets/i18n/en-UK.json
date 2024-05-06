@@ -1812,7 +1812,7 @@
   "lbl_NoDataFound": "No Data Found_uk",
   "lbl_userId": "User ID_uk",
   "lbl_logout": "Log Out_uk",
-  "noSpecialCharacters": "No special characters_uk",
+  "noSpecialCharacters": "No special characters must be allowed_uk",
   "confirmPasswordSame": "New password and confirm password must be same_uk",
   "retailsetup": {
     "includeSignatureLine": "Include Signature in Receipts_uk",

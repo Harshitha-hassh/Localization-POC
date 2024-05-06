@@ -1812,7 +1812,7 @@
   "lbl_NoDataFound": "No Data Found_fr",
   "lbl_userId": "User ID_fr",
   "lbl_logout": "Log Out_fr",
-  "noSpecialCharacters": "No special characters_fr",
+  "noSpecialCharacters": "No special characters must be allowed_fr",
   "confirmPasswordSame": "New password and confirm password must be same_fr",
   "retailsetup": {
     "includeSignatureLine": "Include Signature in Receipts_fr",
