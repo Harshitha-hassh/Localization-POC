@@ -31,6 +31,8 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { ToastrModule } from 'ngx-toastr';
 import { EnvService } from './eatecui/source/config.service';
 import { environment } from 'src/environments/environment';
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomReuseStrategy } from '@shared/services/reuse-strategy';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
@@ -112,7 +114,11 @@ export const OtherOptions: MatTooltipDefaultOptions = {
       multi: true
     },
     UrlHelperService,
-    ADB2CAuthConfiguration
+    ADB2CAuthConfiguration,
+    {
+      provide: RouteReuseStrategy,
+      useClass: CustomReuseStrategy
+    }
   ],
   bootstrap: [AppComponent]
 })
