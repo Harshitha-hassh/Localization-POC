@@ -1817,6 +1817,7 @@
   "retailsetup": {
     "includeSignatureLine": "Include Signature in Receipts_fr",
     "isAutoRemoveTax": "Auto Remove Tax_fr",
+    "PostToPMS": "Post To PMS_fr",
     "warningEnableSigCap": "Cannot enable 'Require Signature Capture' when 'Include Signature in Receipts' is disabled_fr",
     "warningDisableIncludeSign": "Cannot disable 'Include Signature in Receipts' when 'Require Signature Capture' is enabled_fr",
     "err_minLength": "At least 3 characters need to be entered_fr",
