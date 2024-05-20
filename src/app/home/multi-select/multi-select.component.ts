@@ -17,6 +17,7 @@ export class MultiSelectComponent implements OnInit , OnChanges {
   @Input() dropDownName: string;
   @Input() dropDownFilterData;
   @Input() defaultData: any = [];
+  @Input() automationId : string = '';
   dropDownFrmGrp: UntypedFormGroup;
   @Input() selectedData: any = [];
   @Output() dropDownFrmControl: EventEmitter<any> = new EventEmitter<any>();

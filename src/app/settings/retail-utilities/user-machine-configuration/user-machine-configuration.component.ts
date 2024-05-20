@@ -15,13 +15,13 @@ import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/servic
 import { UserMachineConfigurationService } from 'src/app/retail/common/services/user-machine-configuration.service';
 import { UserSessionConfiguration } from 'src/app/common/shared/core.model';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
-import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';
 import { MachineName } from 'src/app/common/shared/shared.modal';
 import { MachineNameDataService } from 'src/app/common/dataservices/machinename.data.service';
 import { DropdownOptions } from 'src/app/common/Models/ag-models';
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 import { cloneDeep } from 'lodash';
 import { DEFAULTCONFIGURATION } from 'src/app/common/constants';
+import { PMAgentServiceProvider } from 'src/app/retail/payment/PMAgentServiceProvider';
 
 @Component({
   selector: 'app-user-machine-configuration',
@@ -29,7 +29,7 @@ import { DEFAULTCONFIGURATION } from 'src/app/common/constants';
   styleUrls: ['./user-machine-configuration.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
+export class UserMachineConfigurationComponent implements OnInit, OnDestroy {
 
   userSessionConfigForm: UntypedFormGroup;
   userSessionConfiguration = new UserSessionConfiguration();
@@ -62,7 +62,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
   showPaymentDevice: boolean;
   enableMachineTransaction: boolean = false;
   floatLabel: string;
-  TenantDefaultUserConfiguration : DefaultUserConfigurationTenant<DefaultUserConfigurationTenantModel>
+  TenantDefaultUserConfiguration: DefaultUserConfigurationTenant<DefaultUserConfigurationTenantModel>
 
   constructor(
     private fb: UntypedFormBuilder,
@@ -71,11 +71,11 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     public PropertyInfo: PropertyInformation,
     private userMachineConfigurationService: UserMachineConfigurationService,
     private http: HttpServiceCall,
-    private utils: RetailUtilities, 
-    private payAgentService: PayAgentService,
+    private utils: RetailUtilities,
+    private payAgentService: PMAgentServiceProvider,
     private zebra: ZebraPrintService,
     private featureFlagInfo: RetailFeatureFlagInformationService,) {
-      this.floatLabel = this.localization.setFloatLabel;
+    this.floatLabel = this.localization.setFloatLabel;
 
   }
 
@@ -99,7 +99,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
       }
     });
     await this.onPageLoad();
-    if(this.utils.GetEnablemachineTransaction() == 'true') {
+    if (this.utils.GetEnablemachineTransaction() == 'true') {
       this.enableMachineTransaction = true;
     }
     this.GetMachineNames();
@@ -129,11 +129,11 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
   paymentMethods: any[] = [];
   private async GetPaymentMethodsAsync() {
     var _paymentMethods = await this.userMachineConfigurationService.GetPaymentMethods();
-    if(Array.isArray(_paymentMethods) && _paymentMethods.length){
+    if (Array.isArray(_paymentMethods) && _paymentMethods.length) {
       this.paymentMethods = _paymentMethods;
       const PaymentsToBeSkipped = [PaymentMethods.IDTECH, PaymentMethods.V1GiftCardIdTech, PaymentMethods.ExternalGiftCardIdTech, PaymentMethods.AgilysysGiftCardIdTech, PaymentMethods.PendingSettlement];
-      this.paymentMethods = this.paymentMethods.filter(x => !PaymentsToBeSkipped.includes(x.paymentTypeId)); 
-       
+      this.paymentMethods = this.paymentMethods.filter(x => !PaymentsToBeSkipped.includes(x.paymentTypeId));
+
       this.paymentMethods.forEach((method) => {
         if (this.localization.captions.shop.paymentMethods[method.paymentTypeId]) {
           method.paymentMethod = this.localization.captions.shop.paymentMethods[method.paymentTypeId];
@@ -141,7 +141,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
           method.paymentMethod = method.paymentMethod;
         }
       });
- 
+
       let giftcardMethod = this.paymentMethods.find(x => x.paymentTypeId == PaymentMethods.ExternalGiftCard);
       if (giftcardMethod && this.featureFlagInfo.GatewayType) {
         const paymentMethod = this.localization.replacePlaceholders(this.localization.captions.shop.paymentMethods[giftcardMethod.paymentTypeId], ["Third Party"], [this.featureFlagInfo.GatewayType]);
@@ -153,8 +153,8 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
 
   // User Session Configuration
   private async getUserSessionConfiguration(userId) {
-    const userSessionConfiguration: UserSessionConfiguration = 
-    await this.userMachineConfigurationService.getUserSessionConfiguration(userId);
+    const userSessionConfiguration: UserSessionConfiguration =
+      await this.userMachineConfigurationService.getUserSessionConfiguration(userId);
     if (userSessionConfiguration.defaultOutletId) {
       await this.GetStoreTerminals(userSessionConfiguration.defaultOutletId);
     }
@@ -212,8 +212,10 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
       host: myGlobals.Host.retailManagement,
       callDesc: 'GetOutletsByPropertyAndProduct',
       method: HttpMethod.Get,
-      uriParams: { propertyId: Number(this.localization.GetPropertyInfo('PropertyId')),
-       productId: Number(this.localization.GetPropertyInfo('ProductId')) }
+      uriParams: {
+        propertyId: Number(this.localization.GetPropertyInfo('PropertyId')),
+        productId: Number(this.localization.GetPropertyInfo('ProductId'))
+      }
     });
     let outlets: SubPropertyModel[] = result.result ? result.result : [];
     // console.dir(outlets);
@@ -242,7 +244,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     const propertyId: number = Number(this.localization.GetPropertyInfo("PropertyId"));
     if (propertyId) {
       const machineNames = await this.machineNameDataService.GetMachineNames(propertyId);
-      this.defaultMachineOptions = this.mapMachineOptions(machineNames);      
+      this.defaultMachineOptions = this.mapMachineOptions(machineNames);
     }
   }
 
@@ -302,8 +304,7 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     const body: HandleRequest = {
       tenderId: PaymentMethods.CreditCard.toString()
     };
-    const handleResponse: Promise<HandleResponse> = this.payAgentService.GetHandlesWithTimeout(body);
-
+    const handleResponse: Promise<HandleResponse> = this.payAgentService.PaymentProcessor.GetHandles(body, 0);
     handleResponse.then(response => {
       if (response.status.toLocaleLowerCase() == HttpResponseStatus.Success) {
         this.deviceNames = response.paymentHandle.map(x => x.name);
@@ -466,33 +467,33 @@ export class UserMachineConfigurationComponent implements OnInit , OnDestroy {
     }
   }
 
-  private mapMachineOptions(machineNames : MachineName[]):DropdownOptions[]{
+  private mapMachineOptions(machineNames: MachineName[]): DropdownOptions[] {
     let userMachineNames = [] as DropdownOptions[];
     userMachineNames = machineNames.map(machineName => {
       return {
         id: machineName.id,
         value: machineName.id,
         viewValue: machineName.name
-      } as DropdownOptions       
+      } as DropdownOptions
     });
-    userMachineNames.unshift({ id: 0,value: 0, viewValue: '' });
+    userMachineNames.unshift({ id: 0, value: 0, viewValue: '' });
     return userMachineNames;
   }
 
-public UpdateTenantDefaultUserConfiguration(formvalue  : UserSessionConfiguration) {
-    let defaultUservalue : DefaultUserConfigurationTenantModel = { defaultMachineId : formvalue.defaultMachineId };
-    let tenantDefaultUserConfiguration : any = cloneDeep( this.TenantDefaultUserConfiguration);
+  public UpdateTenantDefaultUserConfiguration(formvalue: UserSessionConfiguration) {
+    let defaultUservalue: DefaultUserConfigurationTenantModel = { defaultMachineId: formvalue.defaultMachineId };
+    let tenantDefaultUserConfiguration: any = cloneDeep(this.TenantDefaultUserConfiguration);
     tenantDefaultUserConfiguration.configValue = JSON.stringify(defaultUservalue);
     tenantDefaultUserConfiguration.defaultValue = JSON.stringify(tenantDefaultUserConfiguration.defaultValue);
     tenantDefaultUserConfiguration.userId = this.localization.GetPropertyInfo("UserId");
     return this.userMachineConfigurationService.UpdateTenantDefaultUserConfiguration(tenantDefaultUserConfiguration);
-}
-public async GetTenantDefaultUserConfiguration(userId) : Promise<DefaultUserConfigurationTenant<DefaultUserConfigurationTenantModel>> {
+  }
+  public async GetTenantDefaultUserConfiguration(userId): Promise<DefaultUserConfigurationTenant<DefaultUserConfigurationTenantModel>> {
     let configurationName = DEFAULTCONFIGURATION;
     let propertyId = Number(this.localization.GetPropertyInfo("PropertyId"));
     let productId = Number(this.localization.GetPropertyInfo("ProductId"));
-   let defaultvalue : DefaultUserConfigurationTenant<DefaultUserConfigurationTenantModel> = await this.userMachineConfigurationService.GetTenantDefaultUserConfiguration(configurationName,propertyId,productId,userId);
-   this.TenantDefaultUserConfiguration = defaultvalue;
-   return defaultvalue;
-}
+    let defaultvalue: DefaultUserConfigurationTenant<DefaultUserConfigurationTenantModel> = await this.userMachineConfigurationService.GetTenantDefaultUserConfiguration(configurationName, propertyId, productId, userId);
+    this.TenantDefaultUserConfiguration = defaultvalue;
+    return defaultvalue;
+  }
 }

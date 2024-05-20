@@ -599,7 +599,7 @@ export const routeJSON = {
     "UpdateGiftCardIssueSuccess": "Transaction/updateGiftCardIssueSuccess/giftcardTransactionItemId/{giftcardTransactionItemId}/paymentReferenceId/{paymentReferenceId}",
     "GetGiftcardItems": "Transaction/getGiftCardTransactionItems/{transactionId}",
     "ValidateGiftCardCashback": "Payment/ValidateGiftCardCashback/outletId/{outletId}",
-    "CreateHelpSession": "Login/?product={product}&session={sessionid}",
+    "CreateHelpSession": "Login/?product={product}",
     "GetInstalledPMAgentVersion": "admin/configuration/getPMAgentVersion",
     "RemoveHelpSession": "Logout/?product={product}",
     "GetClosedTransactionByDate": "Transaction/closeddate/{closedDate}",
@@ -747,6 +747,7 @@ export const routeJSON = {
     "GetDiscountConfigurationsByCategoryId" : "DiscountConfigurations/{categoryId}",
     "DeleteDiscountTypeConfigurationByIds":"DiscountTypeConfiguration/DeleteDiscountTypeConfigurationByIds",
     "GetBreakpointforRoleAsync":"user/GetUserClaimsForRoleAsync/",
+    "GetDuplicateUserByName": "user/GetDuplicateUserByName/{userId}?tenantId={tenantId}&userName={userName}",
     "GetMasterConfigJson":"Config/GetMasterConfigJson",
     "GetHealthStatusFromUri": "FeaturesConfiguration/GetHealthStatusFromUri/{uri}"
   }

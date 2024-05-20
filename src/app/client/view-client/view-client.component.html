@@ -1,5 +1,5 @@
 <section id="client" class="client-view">
-  <mat-tab-group class="h-100 " #tabGroup (selectedTabChange)="handleSelectedTabChange($event)" [selectedIndex]="this._cs.selectedIndex">
+  <mat-tab-group [attr.automationId]="'Mt_viewclient_selectClient'" class="h-100 " #tabGroup (selectedTabChange)="handleSelectedTabChange($event)" [selectedIndex]="this._cs.selectedIndex">
     <mat-tab label={{this.captions.ALLCLIENTS}}>
       <app-all-clients *ngIf="this._cs.selectedIndex === 0"></app-all-clients>
     </mat-tab>

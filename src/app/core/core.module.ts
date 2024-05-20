@@ -8,7 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CanDeactivateGuardService } from './services/can-component-deactivate.service';
 import { HttpCacheService } from '../common/services/cache/http-cache.service';
 import { CacheInterceptor } from '../common/services/cache/cache-interceptor';
-
+import { ErrorInterceptor } from '@coreModels/interceptors/error.interceptor';
 
 
 
@@ -29,6 +29,7 @@ import { CacheInterceptor } from '../common/services/cache/cache-interceptor';
             useClass: CacheInterceptor,
             multi: true,
         },  
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
     ],
     exports: []
 })

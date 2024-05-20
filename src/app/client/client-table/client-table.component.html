@@ -1,9 +1,9 @@
 <div class="ClientCustomDataTable" id="table_{{SelectedSettingId}}">
   <div class="page-header" *ngIf="options ? options[0].Searchable : false">
     <div class="p10 d-flex align-items-center">
-      <input matInput autocomplete="off" style="width:90%;" [(ngModel)]="searchText" type="text" placeholder="{{captions.common.SearchBy}} {{PlaceHoldertext}}"
+      <input [attr.automationId]="'Txt_clientTable_searchBox'" matInput autocomplete="off" style="width:90%;" [(ngModel)]="searchText" type="text" placeholder="{{captions.common.SearchBy}} {{PlaceHoldertext}}"
         value="" (keypress)="currentPage=1" class="searchbox">
-      <i [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" (click)="searchText='';"></i>
+      <i [attr.automationId]="'Icn_clientTable_searchBox'" [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" (click)="searchText='';"></i>
     </div>
   </div>
   <div class="fixed-table-container" id="fixed-table-container" [ngClass]="{'noSort': bodyArray.length < 1}">
@@ -19,7 +19,7 @@
             <tr id="SPAHeaderRow">
               <th *ngIf="EditMoreOption && SelectRow" class="pr-3 table-checkbox">
                 <div class="th-inner">
-                  <mat-checkbox [disabled]="(bodyArray | clientfilterpipe: searchText : hdrkeyArray).length <= 0"
+                  <mat-checkbox [attr.automationId]="'Chk_clientTable_SPAHeaderRow'" [disabled]="(bodyArray | clientfilterpipe: searchText : hdrkeyArray).length <= 0"
                     (change)="RowSelect($event,bodyArray,'All')" (click)="$event.stopPropagation()" [(ngModel)]="IsCheckAll"></mat-checkbox>
                 </div>
               </th>
@@ -51,13 +51,13 @@
             </tr>
           </thead>
           <tbody class=" h-100" flex>
-            <tr draggable [dragEnabled]="blnDraggable" [dropEnabled]="blnDraggable" [dragData]="bodyCnt" [dragHandle]="'.draggable'" droppable (OnDragOver)="onDragOver($event,bodyCnt,bodyArray)"
+            <tr draggable attr.automationId='Tr_clientTable_clientRow{{bi}}' [dragEnabled]="blnDraggable" [dropEnabled]="blnDraggable" [dragData]="bodyCnt" [dragHandle]="'.draggable'" droppable (OnDragOver)="onDragOver($event,bodyCnt,bodyArray)"
               (click)="highlightrow($event, bodyCnt)" (onDrop)="onItemDrop($event,bodyCnt,bodyArray)" [ngClass]="((NewerData[0] === bodyCnt) || (SelectedData === bodyCnt)) ? 'highlight' : ''"
               id="{{bodyCnt.id}}" class="cursor" *ngFor="let bodyCnt of (bodyArray | clientsortpipe : orderType : selectedDefaultHeader : overriddenSortColumn : sortColumnDataType);let bi=index">
 
 
               <td *ngIf="EditMoreOption && SelectRow && GridType.quickSale != SelectedSettingId" class="pr-3 table-checkbox">
-                <mat-checkbox (change)="RowSelect($event,bodyCnt,'Single')" (click)="$event.stopPropagation()" [checked]="SelectedData.indexOf(bodyCnt)!=-1"
+                <mat-checkbox attr.automationId='Chk_clientTable_clientRow{{bi}}' (change)="RowSelect($event,bodyCnt,'Single')" (click)="$event.stopPropagation()" [checked]="SelectedData.indexOf(bodyCnt)!=-1"
                   [disabled]="bodyCnt.checkbox"></mat-checkbox>
               </td>
               <td *ngFor="let hdrCnt of hdrArray;let hi=index" [ngClass]="[hdrCnt.alignType=='right' ? 'text-right pr26' : 'hello',hdrCnt.alignType=='center' ? 'text-center' : '']">
@@ -66,7 +66,7 @@
                   matTooltip="{{bodyCnt[hdrCnt.jsonkey]}}" matTooltipClass="tooltipClass" class="textellipsis content d-inline-block" id="content">
                   <div class="toogle-switch-big d-inline-flex ml-2" *ngIf="hdrCnt.jsonkey == 'inactive' || hdrCnt.jsonkey == 'active'">
                     <label class="switch">
-                      <input class="switch-input" type="checkbox" [name]="toggleDisplayText" (change)="sliderChange(bodyCnt[hdrCnt.jsonkey],bodyCnt)"
+                      <input attr.automationId='Txt_clientTable_toggleDisplayText{{bi}}' class="switch-input" type="checkbox" [name]="toggleDisplayText" (change)="sliderChange(bodyCnt[hdrCnt.jsonkey],bodyCnt)"
                         [ngModel]="bodyCnt[hdrCnt.jsonkey]" />
                       <span class="switch-label " [attr.data-on]="localization.captions.common.Yes" [attr.data-off]="localization.captions.common.No"></span>
                       <span class="switch-handle"></span>
@@ -141,7 +141,7 @@
               </td>
               <td style="width: 25px" *ngIf="SelectedSettingId != GridType.retail"></td>
               <td *ngIf="EnableActions" class="noellipsis" [ngClass]="enableStickyColumn ? 'stickycolumn':''">
-                  <button mat-button class="player-worth cursor"
+                  <button attr.automationId='Btn_clientTable_playerWorth{{bi}}' mat-button class="player-worth cursor"
                   [ngClass]="!bodyCnt.patronId ? 'button_invalid' : ''" matTooltip="{{captions.bookAppointment.PlayerWorth}}">
                   <ng-container *ngIf="bodyCnt.patronId">
                     <span class="icon-Player-worth_enabled" (click)="playerWorthDetails($event, bodyCnt.patronId)" ><span class="path1"></span><span
@@ -152,10 +152,10 @@
                         class="path2"></span></span>
                   </ng-container>
                 </button>
-                <i class="icon-Edit cursor" *ngIf="editable" title={{this.captions.shop.Edit}} (click)="editRow($event,bodyCnt,'edit',options[0].ServiceId)"></i>
-                <i *ngIf="!disableDelete" class="icon-Delete cursor" title="Delete" (click)="DeleteRecords(bodyCnt)"></i>
+                <i attr.automationId='Icn_clientTable_editRow{{bi}}' class="icon-Edit cursor" *ngIf="editable" title={{this.captions.shop.Edit}} (click)="editRow($event,bodyCnt,'edit',options[0].ServiceId)"></i>
+                <i attr.automationId='Icn_clientTable_deleteRow{{bi}}' *ngIf="!disableDelete" class="icon-Delete cursor" title="Delete" (click)="DeleteRecords(bodyCnt)"></i>
                 <i class="icon-DragAndDrop movecursor draggable" *ngIf="blnDraggable" title="Drag"></i>
-                <i class="icon-copy cursor pl-3" title={{this.captions.bookAppointment.Copy}} (click)="editRow($event,bodyCnt,'copy',options[0].ServiceId)"></i>
+                <i attr.automationId='Icn_clientTable_copyRow{{bi}}' class="icon-copy cursor pl-3" title={{this.captions.bookAppointment.Copy}} (click)="editRow($event,bodyCnt,'copy',options[0].ServiceId)"></i>
               </td>
 
             </tr>

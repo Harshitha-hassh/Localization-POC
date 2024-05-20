@@ -1347,12 +1347,14 @@
     width: auto !important;
   }
 }
-&.data-magine-config-wrapper{
-  .data-magine-wrapper{
+&.data-magine-config-wrapper {
+  .data-magine-wrapper {
     @extend .bodyWrap;
     margin: 10px !important;
     width: auto !important;
-}
+    overflow: auto;
+    height: calc(100% - 22px) !important;
+  }
 }
 &.create-retail-vendor-wrapper{
   .retail-vendor-container{

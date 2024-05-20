@@ -12,6 +12,7 @@ export class ImageUploaderComponent implements OnInit {
 
   @Input() readOnly: boolean;
   @Input() emptyImgCaption: string;
+  @Input() automationId : string = '';
   @Input('imgData')
   set ImageData(value) {
     if (value) {

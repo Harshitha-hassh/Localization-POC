@@ -916,6 +916,7 @@
     "DepartureDate": "Departure Date",
     "ConfirmationNo": "Confirmation#",
     "RoomNumber": "Room Number",
+    "HotelCompNumber": "Account Number",
     "ClientStatus": "Status",
     "Reserved": "Reserved",
     "Unknown": "Unknown",
@@ -970,6 +971,7 @@
     "missingMail" : "Missing Email",
 		"invalidMail" : "Invalid Email",
 		"guestEmail_address" : "Guest Email Address",
+    "lbl_creditlimit": "Credit Limit",
 		"lbl_emailReceipt" : "Email Receipt",
 		"emailReceipt" : "EMAIL RECEIPT",
     "emailreceipt":"emailreceipt",
@@ -1039,6 +1041,7 @@
     "CancelTransaction": "Cancel",
     "AdditionalCardsUsed": "Additional cards used :",
     "Close": "CLOSE",
+    "close": "Close",
     "PaymentMethods": "Payment Methods",
     "PaymentDetails": "Payment Details",
     "TransactionDetails": "Transaction Details",
@@ -1257,6 +1260,7 @@
     "MissingRefundAmount": "Enter the Amount to be Refunded",
     "AddedToRoomChrgSuccessMsg": "{amount} added to Room {roomNumber} successfully",
     "AddedToGroupChrgSuccessMsg": "{amount} added to Group {roomNumber} successfully",
+    "AddedToHotelCompSuccessMsg": "{amount} Posted to Hotel Comp #{roomNumber} successfully",
     "TicketCreationSuccess": "Ticket {checkNumber} is successfully generated",
     "RefundSuccessMsg": "Refund Successful",
     "PaymentComplete": "Transaction Completed",
@@ -1297,7 +1301,8 @@
     "SearchLoaderMsgGiftCardValidateSale": "Please wait while the gift card transaction is being validated",
     "RetrieveDeviceList": "Please wait, while the available devices are being retrieved.",
     "RetrieveRoomDetails": "Please wait, while the room details are being retrieved.",
-    "RetrievePatronDetails": "Please wait, while the player details are being retrieved.",
+    "HotelCompAuthorizeLoaderMsg": "Please wait, while Authorizing Account Number.",
+		"RetrievePatronDetails": "Please wait, while the player details are being retrieved.",
     "RefundInProgress": "Please wait, while your request is being processed.",
     "SelectGuest": "Select a Guest",
     "SelectedGuest": "Selected Guest",
@@ -1365,6 +1370,7 @@
       "20": "Group Charge",
       "22": "Card On File",
       "24": "Wallet",
+      "25": "Hotel Comp",
       "44": "Other"
     },
     "GiftCard": {
@@ -1557,6 +1563,7 @@
     "connect": "Connect",
     "savedCardDetail": "Save Card Details",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room.",
+    "HotelCompPostingNotAllowed": "Hotel Comp Posting is restricted to this Account Number.",
     "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}",
     "TransactionLogScreen": {
       "Refresh": "REFRESH",
@@ -1596,10 +1603,16 @@
       "Pin": "Pin",
       "Amount": "Amount",
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?",
-      "RemoveAll": "Remove All"
+      "RemoveAll": "Remove All",
+      "selectAll": "Select All",
+      "deselectAll": "Deselect All",
+      "RetailItems": "Retail Items"
     },
     "TaxOnTax":"Tax On Tax",
-    "OpenItemValidationforGiftCard":"Gift card item should be configured as an open item"    
+    "OpenItemValidationforGiftCard":"Gift card item should be configured as an open item",
+    "HotelCompNumber": "Account Number",
+    "HotelCompAuthorizedAmount": "Authorized Amount",
+    "lbl_HotelCompName": "Compor Name"
   },
   "breakpoint": {
     "Appointment Actions": "Appointment Actions",
@@ -1760,6 +1773,7 @@
     "7160": "7160 - Custom Fee",
     "7165": "7165 - General Ledger Mapping",
     "12091": "12091 - PMS Integration Setup",
+    "3130": "3130 - Settle to Hotel Comp",
     "18015": "18015 - Config Validation"
   },
   "userId": "User ID",
@@ -1801,10 +1815,13 @@
   "lbl_NoDataFound": "No Data Found",
   "lbl_userId": "User ID",
   "lbl_logout": "Log Out",
+  "noSpecialCharacters": "No special characters must be allowed",
+  "confirmPasswordSame": "New password and confirm password must be same",
 
   "retailsetup": {
     "includeSignatureLine": "Include Signature in Receipts",
     "isAutoRemoveTax": "Auto Remove Tax",
+    "PostToPMS": "Post To PMS",
     "warningEnableSigCap": "Cannot enable 'Require Signature Capture' when 'Include Signature in Receipts' is disabled",
     "warningDisableIncludeSign": "Cannot disable 'Include Signature in Receipts' when 'Require Signature Capture' is enabled",
     "err_minLength": "At least 3 characters need to be entered",
@@ -2267,10 +2284,15 @@
     "showInputValidateMessage":"Please fill out the missing fields",
     "memberaccuralmapping": "MEMBER BUCKET MAPPING",
     "memberbucketdetails": "ENTER BUCKET DETAILS",
+    "externalPMSDetails": "ENTER EXTERNAL PMS DETAILS",
     "lbl_bucketcode": "Bucket Code",
     "lbl_bucketname": "Bucket Name",
+    "lbl_transactioncode":"Transaction Code",
     "lbl_applyForAllPaymentMethodsForTheSameOutlet": "Apply For All Payment Methods",
     "lbl_applyForOutletsForTheSamePaymentMethod": "Apply For All Outlets",
+    "lbl_applyToAllRetailCategories": "Apply For All Retail Categories",
+    "lbl_applyToAllTaxes": "Apply For All Taxes",
+    "lbl_applyToAllSurCharges":"Apply For All Surcharges",
     "SearchForMemberBucketMapping": "Search By Payment Method or Bucket Code",
     "SelectRevenuePostCode": "Select Revenue Post Code",
     "SearchPostCode": "Search By Post Code Number, Description, Department",
@@ -2319,12 +2341,12 @@
     "AutoPrintReceipts": "Auto Print Receipts",
     "err_max": "Exceeds Maximum Value",
     "err_min": "Precedes Minimum Value",
-    "lbl_EligibleForInhouseGratuity":"Eligible for in house gratuity",
-    "lbl_EligibleForInhouseServiceCharge":"Eligible for in house service charge"
+    "lbl_EligibleForInhouseGratuity":"Eligible for In-House Gratuity",
+    "lbl_EligibleForInhouseServiceCharge":"Eligible for In-House Service Charge"
   },
   "setting": {
-    "lbl_inHouseGratuity": "In House Gratuity",
-    "lbl_inHouseServiceCharge": "In House Service Charge",
+    "lbl_inHouseGratuity": "In-House Gratuity",
+    "lbl_inHouseServiceCharge": "In-House Service Charge",
     "taxRevenueToProperty": "Is Revenue To Property",
     "linkedTaxRevenueToProperty": "Is Revenue To Property",
     "taxOnTax": "Charge Tax On Tax",
@@ -2466,8 +2488,8 @@
     "z": "US",
     "commissionDescription": "Description",
     "Location": "Location",
-    "Threshold": "Threshold ",
-    "FlatAmount": "Flat Amount ",
+    "Threshold": "Threshold",
+    "FlatAmount": "Flat Amount",
     "Percentage": "Percentage",
     "CommissionOn": "Commission On",
     "AfterDiscount": "After Discount",
@@ -2999,6 +3021,7 @@
     },
     "defaultRoomCharge": "Default Room Charge",
     "defaultGroupCharge": "Default Group Charge",
+    "defaultHotelComp": "Default Hotel Comp",
     "newPassword":"New Password",
     "confirmPassword": "Confirm Password",
     "err_confirmPassword":"Confirm Password should be same as new Password",
@@ -3036,6 +3059,7 @@
     "CopyMessage": "Copy from Frozen Inventory"
   },
   "reports": {
+    "includePaymentTaxExempt": "Include Tax Exempt Against Payment Method",
     "Appointment": "APPOINTMENT",
     "Client": "CLIENT",
     "Retail": "RETAIL",
@@ -3114,9 +3138,9 @@
     "AllActiveitems": "All Active Items",
     "InHouseBoth": "Both",
 		"InHouseStaffOnly": "Staff only",
-		"InHouseGratuityOnly": "In house Gratuity only",
-		"InHouseSCOnly": "In house SC only",
-		"InHouseGratuitySCOnly": "In house Gratuity/SC only",
+		"InHouseGratuityOnly": "In-House Gratuity only",
+		"InHouseSCOnly": "In-House SC only",
+		"InHouseGratuitySCOnly": "In-House Gratuity/SC only",
     "AllMultipacks": "All Multipacks",
     "ExpirationDateRange": "Expiration Date Range",
     "SoldDate": "Sold Date",
@@ -3161,6 +3185,7 @@
     "IncludeNotMapped": "Include Categories Not Mapped to Category Group",
     "DetailView": "Detail View",
     "NewPageAfterEachOutlet": "New page after each outlet",
+    "ReportType": "Report Type",
     "StartingCash": "Starting Cash",
     "userName": "User Name",
     "ClientFirstName": "Client First Name",
@@ -3234,9 +3259,9 @@
     "hideCorrectedValues": "Hide Corrected Values",
     "InventoryValuation": "Inventory Valuation",
     "InventoryValueandActivity": "Inventory Value and Activity",
-    "includeInhouseGratuitySC": "Include In House Gratuity/SC",
-    "includeInhouseGratuity": "Include In House Gratuity",
-    "includeInhouseSC": "Include In House SC"
+    "includeInhouseGratuitySC": "Include In-House Gratuity/SC",
+    "includeInhouseGratuity": "Include In-House Gratuity",
+    "includeInhouseSC": "Include In-House SC"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",
@@ -3956,6 +3981,8 @@
   "lbl_reset": "RESET ALL",
   "lbl_searchByOutlet": "Search by Outlet",
   "lbl_More": "More",
+  "err_max": "Exceeds Maximum Value",
+  "err_min": "Precedes Minimum Value",
   "header": {
     "SignInToMicrosoft": "Sign In To Microsoft Outlook",
     "SignInAs": "Signed in as",
@@ -4291,5 +4318,11 @@
   "idleAutologoffWarn" : "You are about to be logged out in",
   "idleCompleteYourAction" : "minutes. Please complete your action.",
   "btn_continueSession" : "CONTINUE SESSION",
-  "btn_logout" : "LOGOUT"  
+  "btn_logout" : "LOGOUT",
+  "ExpectedFormat12": "Format: HH:mm AM|PM",
+  "ExpectedFormat24": "Format: HH:mm",
+  "lbl_integrationSetup":"Integration Setup",
+  "lbl_internalorExternal":"Internal/External",
+  "lbl_PostTypeMappingScreen":"Open Post Type Mapping",
+  "warn_datalostChanges":"Are you sure you want to cancel the changes?"
 }

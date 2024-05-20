@@ -12,7 +12,7 @@
         <mat-form-field class="spa-searchbox searchpt " [floatLabel]="floatLabelNever" id="searchInput">
           <input [attr.automationId]="'Txt_clientDetails_search'" #tableInput matInput autocomplete="off" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
             type="text" [placeholder]="searchTextPlaceHolder" value="" (ngModelChange)="enableSearchButton()" (keyup.enter)= "onEnter()">
-          <i [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor" (click)="clearText()"></i>
+          <i [attr.automationId]="'Icn_clientDetails_cancel'" [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor" (click)="clearText()"></i>
         </mat-form-field>
         <button [attr.automationId]="'Btn_clientDetails_search'" class="LW14 save" mat-button  class="body-bgcolor body-bordercolor whitecolor btn-lnht ml-2" [ngClass] = "enableSearch ? 'spa-primary-default-save' : 'spa-primary-disabled'"
           (click)="clientSearch(searchText)">{{this.captions.Search}}</button>
@@ -24,7 +24,7 @@
 
     <div class=" d-flex al-centre ml-auto clientappointmentactions">
       <button [attr.automationId]="'btn_clientDetails_filter'" mat-button class="filterbutton cursor mr5">
-        <i class="icon-filter_filled IC20 text-color mr5" [popover]="filterpopover" [popoverOnHover]="false"
+        <i [attr.automationId]="'Icn_clientDetails_filter'" class="icon-filter_filled IC20 text-color mr5" [popover]="filterpopover" [popoverOnHover]="false"
           [popoverCloseOnClickOutside]="true" [popoverCloseOnMouseOutside]="false"
           (click)="showFilterPopOver=true;setFilterPopover($event)"></i>
       </button>
@@ -45,8 +45,8 @@
                       <span class="count-view">{{FilterInner.selected}}</span>
                     </mat-panel-title>
                   </mat-expansion-panel-header>
-                  <div class="pop-body pb-1 LW14" *ngFor="let data of FilterInner.values">
-                    <mat-checkbox class="base-check-box pr-1 mt-1" labelPosition="before" [(ngModel)]="data.checked"
+                  <div class="pop-body pb-1 LW14" *ngFor="let data of FilterInner.values; let i=index">
+                    <mat-checkbox attr.automationId='Chk_clientDetails_selectFilter{{i}}' class="base-check-box pr-1 mt-1" labelPosition="before" [(ngModel)]="data.checked"
                       (change)="selectFilter(FilterInner,data,'checkBox')"></mat-checkbox>
                     <span (click)="selectFilter(FilterInner,data,'name')">{{data.value}}</span>
                   </div>

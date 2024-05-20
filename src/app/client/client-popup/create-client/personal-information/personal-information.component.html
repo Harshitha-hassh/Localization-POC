@@ -1,6 +1,6 @@
 <form class="personal_container  p-4 h-100" [formGroup]="FormGrp" autocomplete="off">
   <ng-scrollbar [autoHide]="true">
-    <app-image-uploader [readOnly]="isClientViewOnly" [emptyImgCaption]="captions.UploadyourPhoto" [imgData]="url"
+    <app-image-uploader [automationId]="'personalInformation'" [readOnly]="isClientViewOnly" [emptyImgCaption]="captions.UploadyourPhoto" [imgData]="url"
       (fileDeleted)="fileDeleted()" (fileUploaded)="fileUploaded($event)" (fileSizeExceeded)="fileSizeExceeded()">
     </app-image-uploader>
     <div class="float-left sidesection ml-3">
@@ -157,9 +157,9 @@
                   (blur)="phoneChange($event,'PhoneNumber','countryCode','PhoneNumberLabel',i)" [maxlength]="30"
                   textmask="{{textmaskFormat}}" id="PhoneNumber" formControlName="PhoneNumber">
               </mat-form-field>
-              <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
+              <span [attr.automationId]="'Lbl_personalInformation_removePhoneNo'" class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
                 (click)="removePhoneItem(i,'','');makeFormDirty()" *ngIf="i != 0"></span>
-              <span class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
+              <span [attr.automationId]="'Lbl_personalInformation_addPhoneNo'" class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
                 (click)="addPhoneItem(i, '0', '-1', '', '');makeFormDirty()"
                 *ngIf="last"></span>
             </div>
@@ -172,7 +172,7 @@
             </div>
           </div>
           <div class="float-left contact-info-toggle">
-            <div class="yes-col float-left mr-5" [formGroupName]="i"
+            <div [attr.automationId]="'Lbl_personalInformation_phonePrimary'" class="yes-col float-left mr-5" [formGroupName]="i"
               (click)="togglePrimaryContact('Phone', i, 'PhonePrimary')">
               <label class="LW12 d-block form-label-normal">{{captions.PrimaryPhone}}</label>
               <app-toggle-switch [attr.automationId]="'Tog_personalInformation_phonePrimary'" formControlName="PhonePrimary"></app-toggle-switch>
@@ -219,13 +219,13 @@
                 inputtype="email" id="EmailInput" formControlName="EmailId">
 
             </mat-form-field>
-            <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
+            <span [attr.automationId]="'Lbl_personalInformation_removeEmailItem'" class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
               (click)="removeEmailItem(j,'','');makeFormDirty()" *ngIf="j != 0"></span>
-            <span class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
+            <span [attr.automationId]="'Lbl_personalInformation_addEmailItem'" class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
               (click)="addEmailItem(j,'0','');makeFormDirty()" *ngIf="last"></span>
           </div>
           <div class="float-left contact-info-toggle" [formGroupName]="j">
-            <div class="yes-col  float-left mr-5" (click)="togglePrimaryContact('Email', j, 'EmailPrimary')">
+            <div [attr.automationId]="'Lbl_personalInformation_emailPrimary'" class="yes-col  float-left mr-5" (click)="togglePrimaryContact('Email', j, 'EmailPrimary')">
               <label class="LW12 d-block form-label-normal">{{captions.PrimaryEmail}}</label>
               <app-toggle-switch [attr.automationId]="'Tog_personalInformation_emailPrimary'" formControlName="EmailPrimary"></app-toggle-switch>
             </div>
@@ -265,9 +265,9 @@
                 (onAddressChange)="bindAddressFromGoogle($event,true,j)" name="TSei" [maxlength]="100"
                 id="AddressInput{{j}}" formControlName="addressLine" placeholder="{{captions.CAddress}}">
             </mat-form-field>
-            <span class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
+            <span [attr.automationId]="'Lbl_personalInformation_removeAddressItem'" class="icon-Minus" [ngClass]="{'button_invalid': isClientViewOnly }"
               (click)="removeAddressItem(j);makeFormDirty()" *ngIf="(j != 0 && j<3)"></span>
-            <span class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
+            <span [attr.automationId]="'Lbl_personalInformation_addAddressItem'" class="icon-Plus" [ngClass]="{'button_invalid': isClientViewOnly }"
               (click)="addAddressItem(j);makeFormDirty()" *ngIf="(last && j < 2) || IsEdit"></span>
             <mat-error class="width-380px d-inline-block"
               *ngIf="!FormGrp.controls['Address'].disabled && FormGrp.controls['Address'].touched && !FormGrp.controls['Address']['controls'][j].valid">

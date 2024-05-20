@@ -624,6 +624,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       // tslint:disable-next-line: max-line-length
       this.InvokeServiceCall('GetTransactionDetails', Host.retailPOS, HttpMethod.Get, { transactionId: data.Id, productId: Product.SPA }, null, null, ['reopen']);
     } else if (option.action === GridAction.Settle) {                  
+      this.retailSharedService.payeeId = data.ClientId;
+      this.retailSharedService.memberCardNumber = data.transactionInfo.memberId;
       if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Settle)) {
         this.retailSharedService.selectedRetailItem = data?.transactionInfo;
         this.retailSharedService.isFromDayEnd = true;
@@ -631,8 +633,6 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         this.router.navigate(["/shop/viewshop/shopItemDetails"]);
         return;
       }
-      this.retailSharedService.payeeId = data.ClientId;
-      this.retailSharedService.memberCardNumber = data.transactionInfo.memberId;
       this.retailSharedService.reOpenTransaction = false;
       this.retailSharedService.settleOpenTransaction = true;
       this.retailSharedService.transactionId = data.Id;      

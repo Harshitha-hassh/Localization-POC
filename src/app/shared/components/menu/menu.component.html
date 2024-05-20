@@ -90,7 +90,7 @@
                             <mat-select  (selectionChange)="navigateTo($event)" [(value)]="selectedItem"
                                 [compareWith]="compareSelect" [disableOptionCentering]="true">
                                 <ng-container *ngFor="let item of menuList.menu">
-                                <mat-option class="fontChange"  [value]="item" *ngIf="item.visibility">
+                                <mat-option class="fontChange" [matTooltip]="item.text"  [value]="item" *ngIf="item.visibility">
                                     <span>{{ item.text }}</span>
                                 </mat-option>
                             </ng-container>

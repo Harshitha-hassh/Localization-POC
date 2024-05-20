@@ -146,7 +146,7 @@ $router-width: calc(100% - 250px);
       ul {
         display: block;
         li {
-          display: inline-block;
+          // display: inline-block;
           &.text {
             border-bottom: 1px solid #ddd;
             cursor: pointer;
@@ -396,6 +396,10 @@ svg-icon {
   .user-details {
     width: 165px;
     height: 100%;
+
+    .popover.popover-content.bs-popover-bottom-left{
+      transform: translate(3rem, 1.3rem) !important;
+    }
 
     .initial-box {
       border-radius: 20%;

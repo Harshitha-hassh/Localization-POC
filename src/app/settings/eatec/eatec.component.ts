@@ -138,7 +138,7 @@ export class EatecComponent implements OnInit, OnDestroy {
 
   navigateToMenu(menuRoute,verticalMenuRoute){
     this.menuList.menu.find(menu=>{
-      if(menu.routePath == menuRoute){
+      if(menu.routePath == menuRoute || menu.routePathIC == menuRoute){
         this.selectedItem = menu;
         this.verticalList = menu.linkedElement.filter(x => x.visibility);
         let index = this.verticalList.findIndex(x => x.routePath.includes(verticalMenuRoute))

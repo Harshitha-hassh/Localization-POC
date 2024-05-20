@@ -1525,13 +1525,15 @@ h4 {
 ui-switch {
   cursor: pointer;
   .switch.checked.checked small {
-    right: 6px;
+    right: 7px;
   }
-
+  .switch.switch-medium small{
+    right: calc(100% - 20px);
+  }
   small {
     width: 12px !important;
     height: 12px !important;
-    top: 3.6px !important;
+    top: 3.7px !important;
   }
 
   .switch.checked {
@@ -1555,7 +1557,7 @@ ui-switch {
     height: 20px;
   }
   .switch.switch-medium > .switch-pane > span {
-    line-height: 20px;
+    line-height: 19px;
   }
 }
 
@@ -2318,7 +2320,7 @@ a {
   color: $color-tabText-gray !important;
   height: 25px !important;
   width: 24px !important;
-  top: 15px !important;
+  top: 12px !important;
   margin-top: 0px !important;
 }
 
@@ -2725,12 +2727,11 @@ mat-calendar {
     // color: #000;
     right: 6px;
     position: absolute;
-    top:6px;
+    top:9px;
   }
-
   .icon-Cancel {
     font-size: 10px;
-    // bottom: 6px;
+    bottom: 7px !important;
   }
 
   &.mat-form-field {
@@ -4255,7 +4256,7 @@ i {
 }
 
 .mat-error {
-  font-size: $font-size12;
+  font-size: $font-size11;
 }
 
 .custMB8 {
@@ -5702,4 +5703,15 @@ app-transaction{
       opacity: 0.5 !important;
       background-color: rgb(6, 6, 6);
    }
+}
+.time-picker-dial{
+  top: 6px !important;
+}
+
+#member-selection-popup .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color : $theme-base-color !important;
+}
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
 }
