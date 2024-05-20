@@ -52,7 +52,9 @@
                 .mat-expansion-panel-header-title{
                     display: inline-block;
                     width: 50%;
-                    //margin-right: 8px;
+                    flex-basis : unset;
+                    flex-grow: unset;
+                    margin-right: 0px;
                 }
                 .mat-expansion-panel-header-description{
                     width: 50%;

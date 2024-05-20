@@ -132,7 +132,8 @@ export class HttpCallService {
         for (var queryParam of queryParams) {
             var paramName = queryParam.split(':')[0];
             paramName = paramName ? paramName : '';
-            paramName = paramName.replace('{', '');
+            // paramName = paramName.replace('{', '');
+            paramName = paramName.replace(/\{/g, '');
             var qParamValue = params.uriParams[paramName];
             var qParamString = '';
             if (typeof qParamValue == 'object' && qParamValue && qParamValue.length > 0) {

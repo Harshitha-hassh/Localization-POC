@@ -254,6 +254,7 @@
   "101916": "Discount Reason in use, Delete not allowed,_de",
   "101917": "Date cannot be rolled over to the next day_de",
   "101918": "Current system date {CurrentSystemDate} is greater than or equal to roll over date {RollOverDate}. Please Re Login_de",
+  "110060": "Credit Limit Exceeded_de",
   "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed._de",
   "8834501": "Client has future booking, cannot purge/anonymize the data_de",
   "-3": "New appointment duration will result in an overbook. Do you want to continue?_de",

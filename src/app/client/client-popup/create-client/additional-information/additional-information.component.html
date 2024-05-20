@@ -12,10 +12,10 @@
                     <div class=" width_220"
                         [ngClass]="this.isClientViewOnly ? 'button_invalid' : ''">
                         <mat-form-field class="width_180px" [floatLabel]="floatLabel">
-                            <input matInput dateRestricter class="" [min]="minFromDate" [matDatepicker]="picker"
+                            <input [attr.automationId]="'Txt_additionalinformation_expiryDate'" matInput dateRestricter class="" [min]="minFromDate" [matDatepicker]="picker"
                                 [placeholder]="captions.ExpiryDate" [readonly]="true">
                             <mat-datepicker #picker></mat-datepicker>
-                            <i matSuffix
+                            <i [attr.automationId]="'Icn_additionalinformation_pickerOpen'" matSuffix
                                 class="icon-Calender cursor fs-xlarge position-relative d-inline-block customCalendar"
                                 (click)="picker.open()"></i>
                         </mat-form-field>
@@ -86,19 +86,19 @@
             </div>
             <aside class="w-25 d-inline-block p-4">
                 <mat-form-field class="width_100 txt-area-height" [floatLabel]="floatLabel">
-                    <textarea class="textarea-style" [maxlength]="250" matInput formControlName="comments"
+                    <textarea [attr.automationId]="'Ta_additionalinformation_comments'" class="textarea-style" [maxlength]="250" matInput formControlName="comments"
                         [placeholder]="captions.GeneralComments"></textarea>
                 </mat-form-field>
                 <div class="gdpr-wrapper pt-3"   *ngIf="IsGDPREnabled">
                     <div class="ag_display--flex wrapper">
-                        <div (click)="openGuestPolicyDialog(1);" class="divider" >
+                        <div [attr.automationId]="'Lbl_additionalinformation_guestPolicyDialog1'" (click)="openGuestPolicyDialog(1);" class="divider" >
                             <span class="boxed-icon" >
                                 <i class="icon-policy"></i>
                                 <i *ngIf="policyType == 2" class="icon-dashboard-tick"></i>
                             </span>
                             <span class="span-label">{{captions.consentManagement}}</span>
                         </div>
-                        <div (click)="openGuestPolicyDialog(2);" class="divider" [ngClass]="(actionType == 'EDIT' && additionalInfo && additionalInfo.client && additionalInfo.client.isPurged == true) || (actionType != 'EDIT') || (additionalInfo && additionalInfo.client && additionalInfo.client.Id == '') ? 'ag_link--disabled opacity-spa' : ''" >
+                        <div [attr.automationId]="'Lbl_additionalinformation_guestPolicyDialog2'" (click)="openGuestPolicyDialog(2);" class="divider" [ngClass]="(actionType == 'EDIT' && additionalInfo && additionalInfo.client && additionalInfo.client.isPurged == true) || (actionType != 'EDIT') || (additionalInfo && additionalInfo.client && additionalInfo.client.Id == '') ? 'ag_link--disabled opacity-spa' : ''" >
                             <span class="boxed-icon">
                                 <i class="icon-retention"></i>
                                 <i *ngIf="actionType == 'EDIT' && additionalInfo && additionalInfo.client.isPurged == true" class="icon-dashboard-tick"></i>
@@ -107,7 +107,7 @@
                         </div>
                         <!-- <div (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="actionType != 'EDIT' || (additionalInfo && additionalInfo.client && additionalInfo.client.Id == '') ? 'ag_link--disabled opacity-spa' : ''"> -->
 
-                            <div (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="'ag_link--disabled opacity-spa'">
+                            <div [attr.automationId]="'Lbl_additionalinformation_guestPolicyDialog3'" (click)="openGuestPolicyDialog(3);" class="divider border-right-0" [ngClass]="'ag_link--disabled opacity-spa'">
                                 <span class="boxed-icon">
                                 <i class="icon-export"></i>
                                 <!-- <i class="icon-dashboard-tick"></i> -->

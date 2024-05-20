@@ -20,7 +20,7 @@ import { debounceTime } from 'rxjs/operators';
 export class SetPasswordComponent implements OnInit, OnDestroy {
 
   captions: any;
-  errorMessage: { oldPassword: string, newPassword: string; confirmPassword: string; };
+  errorMessage: { oldPassword: string, newPassword: string; confirmPassword: string; allowSpecialCharecters: string; };
   setPasswordForms: UntypedFormGroup;
   passwordSetUp: UntypedFormGroup;
   newPwd: string;
@@ -46,14 +46,17 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   hideConfirmPassword = false;
   tenantId = '1';
   doneDisabled: boolean;
-  key : string ;
-  iv : string;
+  uTempDataPrimary : string ;
+  uTempDataSecondary : string;
   floatLabel: string;
   characterValidationMsg: any;
   allowReuse: any;
   hiddenPassword1 = false;
   hiddenPassword2 = false;
   debounceTime = 1500;
+  isDoneValid:boolean = true;
+  isConfirmPassword = false;
+  isSpecialChar = false;
 
 
 
@@ -76,10 +79,10 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     if (this.data.setPassword) {
       this.setPasswordForms.get('oldpassword').clearValidators();
     }
-    if(this.data && this.data.encKeyIv && this.data.encKeyIv.key &&  this.data.encKeyIv.iv)
+    if(this.data && this.data.uTempData && this.data.uTempData.uTempPri &&  this.data.uTempData.uTempSec)
     {
-      this.key = this.data.encKeyIv.key;
-      this.iv = this.data.encKeyIv.iv;
+      this.uTempDataPrimary = this.data.uTempData.uTempPri;
+      this.uTempDataSecondary = this.data.uTempData.uTempSec;
     }
     this.validationMessage(this.data.passwordSetting);
     this.OnFormValueChanges();
@@ -106,11 +109,11 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     let serviceParams;
     this.CheckPasswordExists(this.data.userName, newpwd, cfmpwd).then(async () => {
       if (!this.IsLastPassword) {
-        if (this.key && this.iv) {
+        if (this.uTempDataPrimary && this.uTempDataSecondary) {
           newPasswordDetail.isPasswordEncrypted = true;
 
           if (isValidOldPassword) {
-            newPasswordDetail.oldPassword = this.crypto.EncryptString(this.setPasswordForms.controls.oldpassword.value, this.key, this.iv);
+            newPasswordDetail.oldPassword = this.crypto.EncryptString(this.setPasswordForms.controls.oldpassword.value, this.uTempDataPrimary, this.uTempDataSecondary);
           }
           serviceParams = {
             route: RetailRoutes.SavePasswordPost,
@@ -120,7 +123,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
             baseResponse: true
           };
 
-          serviceParams.body.newPassword = this.crypto.EncryptString(this.setPasswordForms.controls.newpassword.value, this.key, this.iv);
+          serviceParams.body.newPassword = this.crypto.EncryptString(this.setPasswordForms.controls.newpassword.value, this.uTempDataPrimary, this.uTempDataSecondary);
 
         }
         savePwdResponse = await this.loginService.makePostCall(serviceParams);
@@ -144,6 +147,15 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       this.doneDisabled = true;
       this.IsLengthValid = (res.length >= this.minCharacter) && (res.length <= this.maxCharacter) ? true : false;
       const returnFormat = this.formatingTypeValidation(this.formatingType, res, this.allowSpecialCharacters);
+      if(this.setPasswordForms.controls.newpassword.value == res && res != ''){
+        this.isSpecialChar =  !this.containsSpecialCharacters(res) && !this.allowSpecialCharacters && !this.containsSpecialCharacters(this.setPasswordForms.controls.confirmpassword.value);
+      }
+      else{
+        this.isSpecialChar = false;
+      }
+      if(this.setPasswordForms.controls.confirmpassword.value == res && res != ''){
+        this.isDoneValid = !(this.containsSpecialCharacters(res) && !this.allowSpecialCharacters);
+      }
       this.IsHavingAllTypes = returnFormat ? true : false;
       this.IsSameAsUserName = res !== '' ? this.data.userName.toLowerCase() !== res.toLowerCase() : false;
       this.PasswordValidCheck();
@@ -164,7 +176,17 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     });
 
     this.setPasswordForms.get('confirmpassword').valueChanges.pipe(debounceTime(this.debounceTime)).subscribe(res => {
+      this.isConfirmPassword = (res != '') ? true : false;
       this.doneDisabled = true;
+      if(this.setPasswordForms.controls.confirmpassword.value == res && res != ''){
+        this.isSpecialChar =  !this.containsSpecialCharacters(res) && !this.allowSpecialCharacters && !this.containsSpecialCharacters(this.setPasswordForms.controls.newpassword.value);
+      }
+      else{
+        this.isSpecialChar = false;
+      }
+      if(this.setPasswordForms.controls.newpassword.value == res && res != ''){
+        this.isDoneValid = !(this.containsSpecialCharacters(res) && !this.allowSpecialCharacters);
+      }
       this.PasswordValidCheck();
       this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls.newpassword.value, this).then(() => {
         if (!this.IsLastPassword) {
@@ -194,7 +216,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   doneButtonChangeState() {
     this.doneDisabled = true;
     if (this.IsPasswordValid && this.IsLengthValid
-       && this.IsHavingAllTypes && !this.IsLastPassword && this.IsSameAsUserName && this.IsOldPassword) {
+       && this.IsHavingAllTypes && !this.IsLastPassword && this.IsSameAsUserName && this.IsOldPassword && this.isDoneValid) {
       this.doneDisabled = !this.IsConfirmed;
     }
   }
@@ -242,7 +264,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     let resp: any;
     if(password.length !=0)
     {
-        if(this.key && this.iv)
+        if(this.uTempDataPrimary && this.uTempDataSecondary)
         {
           let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId) , oldPassword :"",isPasswordEncrypted:true  } ;
           let serviceParams = {
@@ -252,7 +274,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
             showError: true,
             baseResponse: true
           };
-          serviceParams.body.newPassword = this.crypto.EncryptString(password,this.key,this.iv);
+          serviceParams.body.newPassword = this.crypto.EncryptString(password,this.uTempDataPrimary,this.uTempDataSecondary);
           resp = password.length !=0 ? await this.loginService.makePutCall(serviceParams) : null;
         }
         else{
@@ -298,7 +320,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   }
   async VerifyPassword(userName, password) {
     let resp: any;
-        if(this.key && this.iv)
+        if(this.uTempDataPrimary && this.uTempDataSecondary)
         {
           let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId),oldPassword:"",isPasswordEncrypted:true  } ;
           let serviceParams = {
@@ -308,7 +330,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
               showError: true,
               baseResponse: true
           };
-          serviceParams.body.newPassword = this.crypto.EncryptString(password,this.key,this.iv);
+          serviceParams.body.newPassword = this.crypto.EncryptString(password,this.uTempDataPrimary,this.uTempDataSecondary);
           resp = await this.loginService.makePutCall(serviceParams);
         }
         else{
@@ -326,5 +348,9 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
 
+  }
+  containsSpecialCharacters(text: string): boolean {
+    const regex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    return regex.test(text);
   }
 }

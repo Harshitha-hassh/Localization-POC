@@ -16,7 +16,8 @@
           (dropDownFrmControl)="dashBoardDropDownFrmControl($event)" (IsAnySelected)="dashBoardIsAnySelected($event)"
           [defaultData]="widgetData.widgetWrapper.dropDown.defaultData"
           [floatLabel]="widgetData.widgetWrapper.dropDown.floatLabel"
-          [selectedData]= "selecteddashboardOutlet" ></app-multi-select>
+          [selectedData]= "selecteddashboardOutlet"
+          automationId='homeDashboard{{widgetsData_Index}}' ></app-multi-select>
       </div>
       <!-- looping Dashboard widgets container -->
       <div class="widget_group_wrapper">
@@ -78,8 +79,8 @@
           (dropDownFrmControl)="headerDropDownChange(widgetData.widgetWrapper.dropDown.dropDownControlname,$event)"
           (IsAnySelected)="widgetIsAnySelected(widgetData.widgetWrapper.dropDown.dropDownControlname,$event)"
           [defaultData]="widgetData.widgetWrapper.dropDown.defaultData"
-          [floatLabel]="widgetData.widgetWrapper.dropDown.floatLabel" [selectedData]= "selectedSalesOutlet"></app-multi-select>
-        <div class="widget_group_manage" *ngIf="widgetData.widgetWrapper.manage.show"
+          [floatLabel]="widgetData.widgetWrapper.dropDown.floatLabel" [selectedData]= "selectedSalesOutlet" automationId='salesOutlet{{widgetsData_Index}}'></app-multi-select>
+        <div attr.automationId='Lbl_dashboardWidgets_manage{{widgetsData_Index}}' class="widget_group_manage" *ngIf="widgetData.widgetWrapper.manage.show"
           (click)="manage(widgetsData_Index)">
           <i [ngClass]="widgetData.widgetWrapper.icon.show ? widgetData.widgetWrapper.icon.path : ''"></i>
           <div class="title">{{widgetData.widgetWrapper.manage.title}}</div>
@@ -109,10 +110,11 @@
                     [dropDownControlname]="loopWidget.title.dropDown.dropDownControlname"
                     (dropDownFrmControl)="loopWidgetDropDownFrmControl($event,loopWidget,loopWidget_Index)"
                     (IsAnySelected)="loopWidgetIsAnySelected($event,loopWidget,loopWidget_Index)"
-                    [selectedData]= "selectedChildOutlet"></app-multi-select>
+                    [selectedData]= "selectedChildOutlet"
+                    automationId='childOutlet{{widgetsData_Index}}'></app-multi-select>
                   <div class="widget_header_inputs">
                     <div class="multi-select" *ngIf="loopWidget.title.multiSelect.show">
-                      <button mat-button
+                      <button attr.automationId='Btn_dashboardWidgets_multiselectWidget_{{widgetsData_Index}}{{loopWidget_Index}}' mat-button
                         *ngFor="let button of loopWidget.title.multiSelect.multiSelectData;let loopWidget_multiSelectData_Index =index"
                         class="multiSelectButton"
                         [ngClass]="[ button.selected ? 'button--primary' : 'button--singleselect']"
@@ -126,7 +128,7 @@
                   <ng-container [ngTemplateOutlet]="this[loopWidget.template.name]"></ng-container>
                 </div>
                 <div class="widget_footer" *ngIf="loopWidget.footer.show">
-                  <button class="widget_footer__button"
+                  <button attr.automationId='Btn_dashboardWidgets_widgetView_{{widgetsData_Index}}{{loopWidget_Index}}' class="widget_footer__button"
                     (click)="widgetView(widgetsData_Index,loopWidget.template.name,loopWidget.footer.routingPath)">
                     {{loopWidget.footer.title}}
                     <i class="widget_footer_button_icon"
@@ -146,7 +148,7 @@
             <p class="manage-list-text">{{loopManage.templateName}}</p>
             <div class="dashBoardCheckbox">
               <label class="dashBoardCheckboxContainer">
-                <input type="checkbox" class="dashBoardCheckboxInput" [checked]="loopManage.checked"
+                <input attr.automationId='Txt_dashboardWidgets_templateName_{{widgetsData_Index}}{{loopManage_Index}}' type="checkbox" class="dashBoardCheckboxInput" [checked]="loopManage.checked"
                   (change)="dashBoardCheckboxChange(widgetsData_Index,loopManage_Index,$event,'event')">
                 <span class="checkbox-material"><span class="check"></span></span>
               </label>
@@ -168,7 +170,7 @@
 
   <ng-template #Out_of_StockItems>
     <ng-container *ngIf="Out_of_StockItems_data;else noData">
-      <app-dashboard-table class="h-100" [isEnableHeader]="Out_of_StockItems_data.headerEnable"
+      <app-dashboard-table [automationId]="'stockItems'" class="h-100" [isEnableHeader]="Out_of_StockItems_data.headerEnable"
         [headerOption]="Out_of_StockItems_data.headerData" [bodyContentdata]="Out_of_StockItems_data.data">
       </app-dashboard-table>
     </ng-container>
@@ -181,14 +183,14 @@
   </ng-template>
   <ng-template #Sales_Top5Items>
     <ng-container *ngIf="Sales_Top5Items_data;else noData">
-      <app-dashboard-table class="h-100" [isEnableHeader]="Sales_Top5Items_data.headerEnable"
+      <app-dashboard-table [automationId]="'salesTop5Items'" class="h-100" [isEnableHeader]="Sales_Top5Items_data.headerEnable"
         [headerOption]="Sales_Top5Items_data.headerData" [bodyContentdata]="Sales_Top5Items_data.data"
         [footerClassName]="Sales_Top5Items_data.footerClassName"></app-dashboard-table>
     </ng-container>
   </ng-template>
   <ng-template #Sales_Top5Categories>
     <ng-container *ngIf="Sales_Top5Categories_data;else noData">
-      <app-dashboard-table class="h-100" [isEnableHeader]="Sales_Top5Categories_data.headerEnable"
+      <app-dashboard-table [automationId]="'salesTop5Categories'" class="h-100" [isEnableHeader]="Sales_Top5Categories_data.headerEnable"
         [headerOption]="Sales_Top5Categories_data.headerData" [bodyContentdata]="Sales_Top5Categories_data.data"
         [footerClassName]="Sales_Top5Categories_data.footerClassName"></app-dashboard-table>
     </ng-container>
@@ -197,7 +199,7 @@
   <ng-template #Purchase_Order>
 
     <ng-container *ngIf="Purchase_Order_data;else noData">
-      <app-dashboard-table class="h-100" [isEnableHeader]="Purchase_Order_data.headerEnable"
+      <app-dashboard-table [automationId]="'purchaseOrder'" class="h-100" [isEnableHeader]="Purchase_Order_data.headerEnable"
         [headerOption]="Purchase_Order_data.headerData" [bodyContentdata]="Purchase_Order_data.data">
       </app-dashboard-table>
     </ng-container>
@@ -205,7 +207,7 @@
   <ng-template #Open_Tickets>
 
     <ng-container *ngIf="Open_Tickets_data;else noData">
-      <app-dashboard-table class="h-100" [isEnableHeader]="Open_Tickets_data.headerEnable"
+      <app-dashboard-table [automationId]="'openTickets'" class="h-100" [isEnableHeader]="Open_Tickets_data.headerEnable"
         [headerOption]="Open_Tickets_data.headerData" [bodyContentdata]="Open_Tickets_data.data" 
         (rowEmitter)="Open_Tickets_data_rowEmitter($event)">
       </app-dashboard-table>

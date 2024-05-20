@@ -14,13 +14,14 @@ import { PrinterDefaultConfigurationComponent } from './manager-utilities/printe
 import { ConfigValidationComponent } from 'src/app/common/config-validation/config-validation/config-validation.component';
 
 @NgModule({
-    declarations: [RetailUtilitiesComponent, ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent, ManagerUtilitiesComponent, PrinterDefaultConfigurationComponent, ConfigValidationComponent],
+    declarations: [RetailUtilitiesComponent, ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent, ManagerUtilitiesComponent, PrinterDefaultConfigurationComponent],
     imports: [
         CommonModule,
         SharedModule,
         UtilitiesRoutingModule,
         SystemConfigModule,
-        RetailModule
+        RetailModule,
+        // ConfigValidationComponent
     ]
 })
 export class UtilitiesModule { }

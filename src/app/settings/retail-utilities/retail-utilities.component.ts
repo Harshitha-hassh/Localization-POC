@@ -21,13 +21,14 @@ export class RetailUtilitiesComponent implements OnInit {
     this.EnableRetailIC = propConfig?.EnableRetailIC?.toLowerCase() == 'true'? true: false;
     this.codeRoute.linkedElement.map(res => {
       if (res) {
-        if(!this.propertyInfo.IsEatecEnabled || this.EnableRetailIC)
-        {
-          if(res.routePath === '/settings/utilities/inventorysync') 
+        if(res.routePath === '/settings/utilities/inventorysync') 
           {
               res.visibility = false;
-          }
-        }
+              if(this.propertyInfo.IsEatecEnabled || this.EnableRetailIC)
+                {
+                  res.visibility = true;
+                }
+          }   
       }
     });
     this.menuList = {

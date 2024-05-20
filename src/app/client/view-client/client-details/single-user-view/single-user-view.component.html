@@ -6,7 +6,7 @@
     <!-- <app-img-thumbnail class="profile-pic" ></app-img-thumbnail> -->
     <div class="user-data">
       <div class="LW18">{{userData.client.name}}
-        <button mat-button (click)="playerWorthDetails()" class="player-worth cursor"
+        <button [attr.automationId]="'Btn_singleUserView_playerWorth'" mat-button (click)="playerWorthDetails()" class="player-worth cursor"
         [ngClass]="!this.userData.patronId  ? 'button_invalid' : ''" matTooltip="{{captions.bookAppointment.PlayerWorth}}">
         <ng-container *ngIf="this.userData.patronId ">
           <span class="icon-Player-worth_enabled"><span class="path1"></span><span
@@ -17,16 +17,16 @@
               class="path2"></span></span>
         </ng-container>
       </button>
-        <i [matTooltip]="captions.bookAppointment.EditClient" class="icon-Edit edit-icon pl-2 cursor"
+        <i [attr.automationId]="'Icn_singleUserView_editClient'" [matTooltip]="captions.bookAppointment.EditClient" class="icon-Edit edit-icon pl-2 cursor"
           (click)="EditRecords($event,userData,'edit',ServiceId)"></i>
-        <i [matTooltip]="captions.bookAppointment.CopyClient" class="icon-copy edit-icon pl-2 cursor"
+        <i [attr.automationId]="'Icn_singleUserView_copyClient'" [matTooltip]="captions.bookAppointment.CopyClient" class="icon-copy edit-icon pl-2 cursor"
           (click)="EditRecords($event,userData,'copy',ServiceId)"></i>
         </div>
       <div *ngIf= "userData.age != '' && userData.gender != '' " class="LW14 age-details">{{userData.age}} , {{userData.gender}}</div>
       <div *ngIf= "userData.age == '' && userData.gender != '' " class="LW14 age-details">{{userData.gender}}</div>
       <div *ngIf= "userData.age != '' && userData.gender == '' " class="LW14 age-details">{{userData.age}}</div>
     </div>
-    <i class="icon-close close-icon cursor-pointer ml-auto align-self-baseline" [matTooltip]="captions.common.Close" (click)="sliderClose($event)"></i>
+    <i [attr.automationId]="'Icn_singleUserView_sliderClose'" class="icon-close close-icon cursor-pointer ml-auto align-self-baseline" [matTooltip]="captions.common.Close" (click)="sliderClose($event)"></i>
     <!-- <button mat-button class="edit-client-btn LW14 body-bordercolor ml-auto">{{captions.bookAppointment.EditClient}}
 
   </button> -->

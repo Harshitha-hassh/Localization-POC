@@ -16,9 +16,9 @@
       <tbody #container class="TBodydataList">
         <tr *ngFor="let _bodyContentData of  bodyContentdata;let i=index">
           <td *ngFor="let headerdata of  headerOption" [ngClass]="headerdata.alignment">
-            <span *ngIf="!headerdata.templatecontainer" [matTooltip]="_bodyContentData[ headerdata.key]"
+            <span attr.automationId='Lbl_{{automationId}}_action{{i}}' *ngIf="!headerdata.templatecontainer" [matTooltip]="_bodyContentData[ headerdata.key]"
               [ngClass]="headerdata.customClass" (click)='actionClick([_bodyContentData,i])'>{{_bodyContentData[headerdata.key]}}</span>
-            <i class='icon-right-arrow i_arrow' *ngIf="headerdata.showArrow"
+            <i attr.automationId='Icn_{{automationId}}_showArrow{{i}}' class='icon-right-arrow i_arrow' *ngIf="headerdata.showArrow"
               (click)='arrowClick([_bodyContentData,i])'>&nbsp;</i>
           </td>
         </tr>

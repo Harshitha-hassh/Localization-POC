@@ -178,7 +178,7 @@
                         </div>
                     </div>
 
-                    <div class="margintop--10" *ngIf="custId"><button mat-flat-button class="login__btn" [ngClass]="{'ag_section--disable': !this.loginForms.controls.customerId.value && showCustomerID || showLoginloader || (!showCustomerID && (!loginForms.controls.userId.value || !loginForms.controls.password.value || (!isSupportUser && loginSuccess && !loginForms.controls.location.value?.id) || (!isSupportUser && loginSuccess && !loginForms.controls.machineName.value)))}"
+                    <div class="margintop--10" *ngIf="custId"><button mat-flat-button class="login__btn" [ngClass]="{'ag_section--disable': !this.loginForms.controls.customerId.value && showCustomerID || showLoginloader || (!isSupportUser && !showCustomerID && (!loginForms.controls.userId.value || !loginForms.controls.password.value)) || (!isSupportUser && loginSuccess && !loginForms.controls.location.value?.id) || (!isSupportUser && loginSuccess && !loginForms.controls.machineName.value)}"
                       (click)="!loginForms.controls.customerId.value  && showCustomerID ? '' : getbuttonEmitvalue($event)" >{{loginSuccess?captions.enter:captions.Login}}
                       <div *ngIf="showLoginloader" class="loginloadingSpinner"></div>
                     </button>

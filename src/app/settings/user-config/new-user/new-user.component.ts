@@ -13,6 +13,7 @@ import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { RetailRoutes } from 'src/app/core/extensions/retail-route';
 import { LoginCommunicationService } from 'src/app/login/login-communication.service';
 import { CryptoUtility } from 'src/app/core/utilities/crypto.utility';
+import { UTempDataUtilities } from 'src/app/common/shared/shared/utilities/utempdata-utilities';
 
 @Component({
   selector: 'app-new-user',
@@ -34,12 +35,12 @@ export class NewUserComponent implements OnInit {
   subPropertyAccess: any = [];
   saveDisabled = false;
   isADB2CConfigEnabled:boolean=false;
-  key: string;
-  iv: string;
+  uTempDataPrimary: string;
+  uTempDataSecondary: string;
   constructor(public localization: RetailStandaloneLocalization, public _servicesetting: SettingsService, @Inject(MAT_DIALOG_DATA) public data,
               private dialogRef: MatDialogRef<NewUserComponent>, private http: HttpServiceCall,
               private utils: Utilities, private PropertyInfo: PropertyInformation,
-              private _userOutletAccessDataService: UserOutletAccessDataService,  private loginService: LoginCommunicationService, private crypto: CryptoUtility,) {
+              private _userOutletAccessDataService: UserOutletAccessDataService,  private loginService: LoginCommunicationService, private crypto: CryptoUtility,private utempdatautils: UTempDataUtilities) {
 
   }
 
@@ -77,7 +78,14 @@ export class NewUserComponent implements OnInit {
 
     this._servicesetting.selectedOutlets = this._servicesetting.selectedOutlets.map(x => x.id);
     this.GetAllUserbyTenantId();
-    this.setEncryptKey();
+    this.setValues();
+  }
+  //check userId already exist by tenantId
+  async IsUserIdDuplicate()
+  {
+    const apiResponse: BaseResponse<any[]> = await this.InvokeServiceCallAsync('GetDuplicateUserByName', Host.authentication, HttpMethod.Get, {userId:0, tenantId: Number(this.utils.GetPropertyInfo('TenantId')),userName: this._servicesetting.userSettingsFormGrp.controls.userid.value.toUpperCase() });
+    return apiResponse.result;
+
   }
   async GetAllUserbyTenantId() {
     const apiResponse: BaseResponse<any[]> = await this.InvokeServiceCallAsync('GetAllUsers', Host.authentication, HttpMethod.Get, { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
@@ -105,7 +113,7 @@ export class NewUserComponent implements OnInit {
     this.selectedTabIndex = event.index;
   }
 
-  SaveOrUpdate() {
+  async SaveOrUpdate() {
     const serviceSettingControl = this._servicesetting.userSettingsFormGrp.controls;
     if (this.data && this.data.mode && this.data.mode == 'Edit') {
       if (this.existingUserId.includes(serviceSettingControl.userid.value.toUpperCase())) {
@@ -124,9 +132,11 @@ export class NewUserComponent implements OnInit {
         this.Edit();
       }
     } else {
-      if (this._servicesetting.existingUserIds.includes(serviceSettingControl.userid.value.toUpperCase())) {
-        this.utils.showError(this.caption.setting.DuplicateUserID);
-      } else if (this._servicesetting.existingQuickIds.includes(serviceSettingControl.quickid.value)) {
+      if(await this.IsUserIdDuplicate())
+      {
+      this.utils.showError(this.caption.setting.DuplicateUserID);   
+      }
+      else if (this._servicesetting.existingQuickIds.includes(serviceSettingControl.quickid.value)) {
         this.utils.showError(this.caption.setting.DuplicateQuickID);
       } else if (serviceSettingControl.fname.value.trim() == '') {
         serviceSettingControl.fname.setValue('');
@@ -141,22 +151,9 @@ export class NewUserComponent implements OnInit {
       }
     }
   }
-  setEncryptKey() {
-    let serviceParamsForKey = {
-      route: RetailRoutes.GetEncryptKey,
-      uriParams: '',
-      header: '',
-      body: '',
-      showError: false,
-      baseResponse: true
-    };
-    
-    this.loginService.makeGetCall<any>(serviceParamsForKey, false).then(encryptKey => {
-      if (encryptKey && encryptKey.result) {
-        this.key = encryptKey.result.key;
-        this.iv = encryptKey.result.iv;
-      }
-    })
+  setValues() {
+    this.uTempDataPrimary = this.utempdatautils.GetUTempData(3);
+    this.uTempDataSecondary = this.utempdatautils.GetUTempData(1);
   }
 
   save() {
@@ -225,9 +222,9 @@ export class NewUserComponent implements OnInit {
     //   userSubPropertyAccess: []
     // })
     let userPassword:string=serviceUserControls.nPassword.value;
-    if(this.key && this.iv && userPassword.length > 0) 
+    if(this.uTempDataPrimary && this.uTempDataSecondary && userPassword.length > 0) 
     {
-      userPassword = this.crypto.EncryptString(userPassword, this.key, this.iv);
+      userPassword = this.crypto.EncryptString(userPassword, this.uTempDataPrimary, this.uTempDataSecondary);
     }
 
     const userObj = {
@@ -264,10 +261,10 @@ export class NewUserComponent implements OnInit {
 
   Edit() {
     let userPassword:string="";
-    if(this.key && this.iv && this._servicesetting.userSettingsFormGrp.controls.newpassword.value) 
+    if(this.uTempDataPrimary && this.uTempDataSecondary && this._servicesetting.userSettingsFormGrp.controls.newpassword.value) 
     {
       userPassword =this._servicesetting.userSettingsFormGrp.controls.nPassword.value;
-      userPassword = this.crypto.EncryptString(userPassword, this.key, this.iv);
+      userPassword = this.crypto.EncryptString(userPassword, this.uTempDataPrimary, this.uTempDataSecondary);
     }
 
     const editedInfo = _.cloneDeep(this._servicesetting.editUserInfo.clientInfo);

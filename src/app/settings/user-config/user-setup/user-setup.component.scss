@@ -13,7 +13,6 @@
         }
         button {
             margin-left: auto;
-            height: 30px;
             line-height: 30px !important;
             //padding: 0 40px;
         }
@@ -25,6 +24,9 @@
         .filter{
             margin-top: 12px;
             width: 200px;
+            .swiper-button-next,.swiper-button-prev {
+                top: 8px !important;
+            }
         }
         .result-grid{
             // width: calc(100% - 200px);

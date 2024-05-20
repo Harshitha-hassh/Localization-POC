@@ -7,16 +7,13 @@
         height: 100%;;
     }
     .content-section{
-        height: calc(100% - 64px);
+        height: calc(100% - 70px);
     .copy-from,.copy-to{
         float: left;
     }
 }
 
 .dialog-section{
-    height: 4rem;
-    width: 100%;
-    display: inline-block;
     border-top: 1px solid $color-shop-border;   
   }
 }
