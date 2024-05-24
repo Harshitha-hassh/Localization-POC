@@ -379,7 +379,8 @@
     "maximum": "Invalid Maximum_gb",
     "block": "Block_gb",
     "unBlock": "UnBlock_gb",
-    "InputDateFormat": "MM/DD/YYYY_gb"
+    "InputDateFormat": "MM/DD/YYYY_gb",
+    "lbl_OpenJasperSoft": "Open JasperSoft Server_gb"
   },
   "calendar": {
     "Sunday": "Sunday_gb",

@@ -379,7 +379,8 @@
     "maximum": "Invalid Maximum",
     "block": "Block",
     "unBlock": "UnBlock",
-    "InputDateFormat": "MM/DD/YYYY"
+    "InputDateFormat": "MM/DD/YYYY",
+    "lbl_OpenJasperSoft": "Open JasperSoft Server"
   },
   "calendar": {
     "Sunday": "Sunday",
