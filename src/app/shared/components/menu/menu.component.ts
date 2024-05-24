@@ -26,6 +26,9 @@ import { UserdefaultsInformationService } from 'src/app/core/services/Userdefaul
 import { UserMachineConfigurationService } from 'src/app/retail/common/services/user-machine-configuration.service';
 import { AuthenticationService } from 'src/app/common/shared/services/authentication.service';
 import { DMConfigDataService } from 'src/app/common/dataservices/datamagine-config.data.service';
+import { JasperServerCommonDataService } from 'src/app/common/dataservices/jasperServerCommon.data.service';
+import { PropertySettingDataService } from 'src/app/common/dataservices/authentication/propertysetting.data.service';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -72,6 +75,8 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   notificationCount: number = 0;
   notificationInfo: {id: number , message: string }[] = [];
   isChangePropertyEnabled: boolean;
+  showJasperSoftServerMenu: boolean = false;
+  openJaspersoftServer: string = "";
   @Input('menu')
   set MenuValue(value) {
     this.menuList = value;
@@ -99,6 +104,8 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     , private userSessionConfig: UserMachineConfigurationService
     , private authentication: AuthenticationService
     , private _dmConfigDataService:DMConfigDataService
+    , private jasperServerCommon: JasperServerCommonDataService
+    , private PropertySettingService: PropertySettingDataService
     ) {
     // this.sortPipe = new SortOrderPipe();
   }
@@ -110,6 +117,8 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.lastName = this._localization.GetUserInfo("lastName");
     this.userRole = this._localization.GetUserInfo("roleName");
     this.moreTextName = this.captions.lbl_more;
+    this.openJaspersoftServer = this.captions.common.lbl_OpenJasperSoft;
+    this.handleShowAndHideJasperSoftStudioMenu();
 
     this.transactionCountSubscription = this._sessionService.transactionCount.subscribe(res => {
       const revenueresult = res && res.find(x => x.id === NotificationFailureType.revenuePostingFailure) ;
@@ -230,6 +239,36 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.logOutPopOver.hide();
     e.stopPropagation();
 
+  }
+
+  handleShowAndHideJasperSoftStudioMenu() {
+    let sessionValueofJasperStudio = sessionStorage.getItem('showJasperSoftServerMenu');
+    if (sessionValueofJasperStudio != null) {
+      this.showJasperSoftServerMenu = sessionValueofJasperStudio == 'true';
+    } else {
+      this.showJasperSoftServerMenu = true;
+    }
+  }
+
+  async openJasperSoftServerLink() {
+    let jasperServerURL: string = await this.jasperServerCommon.GetJasperServerBaseURL();    
+    await this.PropertySettingService.UpdateRoleAndAttributeToUser();
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        var url = jasperServerURL + "/flow.html?_flowId=homeFlow";
+        let jaspersoftNavigationUri = url;
+        window.open(jaspersoftNavigationUri, '_blank');
+      }
+    });
+    var _authtokenprovider = localStorage.getItem('authtokenProvider');
+    var data = "";
+    xhr.open("GET", jasperServerURL + "/rest_v2/serverInfo");
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("pp", sessionStorage.getItem("_jwt"));
+    xhr.setRequestHeader("tokenProvider",_authtokenprovider);
+    xhr.send(data);
   }
 
   async setAcesToken() {

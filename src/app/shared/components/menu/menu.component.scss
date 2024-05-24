@@ -322,6 +322,23 @@ svg-icon {
       color: rgba(255, 255, 255, 0.6) !important;
       font-size: 35px;
     }
+    .icon-Circle {
+      font-size: 36px;
+      color: rgba(255, 255, 255);
+      &.dark {
+        color: $ag_base-text-black ;
+      }
+      &:before {
+        color: unset;
+      }
+    }
+    .icon-Jaspersoft {
+      color: #000000;
+      font-size: 20px;
+      position: absolute;
+      right: 18px;
+      top: 18px;
+    }
 
     .icon-search-class {
       .icon-Searchbar {
