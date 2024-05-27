@@ -1697,6 +1697,8 @@
     "7150": "7150 - Payment Manager - PMSettlers_da",
     "7160": "7160 - Custom Fee_da",
     "7165": "7165 - General Ledger Mapping_da",
+    "7170": "7170 - Item Mapping_da",
+    "7175": "7175 - Sale Depletion Log_da",
     "8000": "8000 - Shift Report_da",
     "8005": "8005 - Transaction Report_da",
     "8010": "8010 - Revenue Summary_da",
@@ -2269,6 +2271,11 @@
       "id": "id_da",
       "Allow Earn": "Allow Earn_da",
       "Supplier Item #": "Supplier Item #_da"
+    },
+    "InventoryItemMap": {
+      "lbl_mapall": "MAP ALL_da",
+      "lbl_mapInventoryToRetail": "MAP INVENTORY TO RETAIL_da",
+      "lbl_map": "Map_da"
     },
     "SearchCategory": "Search Category_da",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_da",
@@ -4320,5 +4327,8 @@
   "lbl_integrationSetup": "Integration Setup_da",
   "lbl_internalorExternal": "Internal/External_da",
   "lbl_PostTypeMappingScreen": "Open Post Type Mapping_da",
-  "warn_datalostChanges": "Are you sure you want to cancel the changes?_da"
+  "warn_datalostChanges": "Are you sure you want to cancel the changes?_da",
+  "lbl_mapall": "MAP ALL_da",
+  "lbl_mapInventoryToRetail": "MAP INVENTORY TO RETAIL_da",
+  "warn_deleteChanges": "Do you want to delete the selected item(s)_da"
 }

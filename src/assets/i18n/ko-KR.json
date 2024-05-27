@@ -1697,6 +1697,8 @@
     "7150": "7150 - Payment Manager - PMSettlers_kr",
     "7160": "7160 - Custom Fee_kr",
     "7165": "7165 - General Ledger Mapping_kr",
+    "7170": "7170 - Item Mapping_kr",
+    "7175": "7175 - Sale Depletion Log_kr",
     "8000": "8000 - Shift Report_kr",
     "8005": "8005 - Transaction Report_kr",
     "8010": "8010 - Revenue Summary_kr",
@@ -2269,6 +2271,11 @@
       "id": "id_kr",
       "Allow Earn": "Allow Earn_kr",
       "Supplier Item #": "Supplier Item #_kr"
+    },
+    "InventoryItemMap": {
+      "lbl_mapall": "MAP ALL_kr",
+      "lbl_mapInventoryToRetail": "MAP INVENTORY TO RETAIL_kr",
+      "lbl_map": "Map_kr"
     },
     "SearchCategory": "Search Category_kr",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_kr",
@@ -4320,5 +4327,8 @@
   "lbl_integrationSetup": "Integration Setup_kr",
   "lbl_internalorExternal": "Internal/External_kr",
   "lbl_PostTypeMappingScreen": "Open Post Type Mapping_kr",
-  "warn_datalostChanges": "Are you sure you want to cancel the changes?_kr"
+  "warn_datalostChanges": "Are you sure you want to cancel the changes?_kr",
+  "lbl_mapall": "MAP ALL_kr",
+  "lbl_mapInventoryToRetail": "MAP INVENTORY TO RETAIL_kr",
+  "warn_deleteChanges": "Do you want to delete the selected item(s)_kr"
 }

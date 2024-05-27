@@ -1697,6 +1697,8 @@
     "7150": "7150 - Payment Manager - PMSettlers_uk",
     "7160": "7160 - Custom Fee_uk",
     "7165": "7165 - General Ledger Mapping_uk",
+    "7170": "7170 - Item Mapping_uk",
+    "7175": "7175 - Sale Depletion Log_uk",
     "8000": "8000 - Shift Report_uk",
     "8005": "8005 - Transaction Report_uk",
     "8010": "8010 - Revenue Summary_uk",
@@ -2269,6 +2271,11 @@
       "id": "id_uk",
       "Allow Earn": "Allow Earn_uk",
       "Supplier Item #": "Supplier Item #_uk"
+    },
+    "InventoryItemMap": {
+      "lbl_mapall": "MAP ALL_uk",
+      "lbl_mapInventoryToRetail": "MAP INVENTORY TO RETAIL_uk",
+      "lbl_map": "Map_uk"
     },
     "SearchCategory": "Search Category_uk",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_uk",
@@ -4320,5 +4327,8 @@
   "lbl_integrationSetup": "Integration Setup_uk",
   "lbl_internalorExternal": "Internal/External_uk",
   "lbl_PostTypeMappingScreen": "Open Post Type Mapping_uk",
-  "warn_datalostChanges": "Are you sure you want to cancel the changes?_uk"
+  "warn_datalostChanges": "Are you sure you want to cancel the changes?_uk",
+  "lbl_mapall": "MAP ALL_uk",
+  "lbl_mapInventoryToRetail": "MAP INVENTORY TO RETAIL_uk",
+  "warn_deleteChanges": "Do you want to delete the selected item(s)_uk"
 }
