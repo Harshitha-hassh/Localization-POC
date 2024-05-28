@@ -111,6 +111,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.setauthTokenProvider();
     this.captions = this._localization.captions;
     this.userName = this._localization.GetUserInfo("userName");
     this.firstName = this._localization.GetUserInfo("firstName");
@@ -278,6 +279,13 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     } catch (ex) {
       console.log(ex);
     }
+  }
+
+  async setauthTokenProvider() {
+    let tenantId = Number(this._localization.GetPropertyInfo('TenantId'));
+    let productId = Number(this._localization.GetPropertyInfo('ProductId'));
+    let productADB2CConfig = await this.PropertySettingService.GetProductADB2CConfiguration(tenantId,productId);
+    localStorage.setItem("authtokenProvider",productADB2CConfig.tokenProvider);
   }
 
   compareSelect = (val1, val2) => {
