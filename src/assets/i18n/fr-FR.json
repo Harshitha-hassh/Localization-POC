@@ -3679,7 +3679,10 @@
         "NoReceipients": "No Recipients Are Added_fr",
         "Users": "Users_fr",
         "invalidemailFormat": "Invalid Email Format_fr",
-        "updateDl": "UPDATE DISTRIBUTION LIST_fr"
+        "updateDl": "UPDATE DISTRIBUTION LIST_fr",
+        "lbl_sendTo": "Send To_fr",
+        "lbl_emailWillSendTo": "Email Will be Sent To_fr",
+        "lbl_clearAll": "CLEAR ALL_fr"
       },
       "notificationsConfiguration": {
         "NOTIFICATIONCONFIGURATION": "NOTIFICATION CONFIGURATION_fr",

@@ -3679,7 +3679,10 @@
         "NoReceipients": "No Recipients Are Added_gb",
         "Users": "Users_gb",
         "invalidemailFormat": "Invalid Email Format_gb",
-        "updateDl": "UPDATE DISTRIBUTION LIST_gb"
+        "updateDl": "UPDATE DISTRIBUTION LIST_gb",
+        "lbl_sendTo": "Send To_gb",
+        "lbl_emailWillSendTo": "Email Will be Sent To_gb",
+        "lbl_clearAll": "CLEAR ALL_gb"
       },
       "notificationsConfiguration": {
         "NOTIFICATIONCONFIGURATION": "NOTIFICATION CONFIGURATION_gb",

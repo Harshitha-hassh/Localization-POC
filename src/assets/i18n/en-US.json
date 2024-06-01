@@ -3682,7 +3682,10 @@
         "NoReceipients": "No Recipients Are Added",
         "Users": "Users",
         "invalidemailFormat": "Invalid Email Format",
-        "updateDl": "UPDATE DISTRIBUTION LIST"
+        "updateDl": "UPDATE DISTRIBUTION LIST",
+        "lbl_sendTo":"Send To",
+				"lbl_emailWillSendTo":"Email Will be Sent To",
+				"lbl_clearAll":"CLEAR ALL"
       },
       "notificationsConfiguration": {
         "NOTIFICATIONCONFIGURATION": "NOTIFICATION CONFIGURATION",
