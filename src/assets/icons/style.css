@@ -24,7 +24,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.icon-Combine-Records:before {
+  content: "\ef73";
+}
 .icon-Member-new:before {
   content: "\ef72";
 }

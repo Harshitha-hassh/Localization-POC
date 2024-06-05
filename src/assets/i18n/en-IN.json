@@ -4330,5 +4330,6 @@
   "warn_datalostChanges": "Are you sure you want to cancel the changes?_in",
   "lbl_mapall": "MAP ALL_in",
   "lbl_mapInventoryToRetail": "MAP INVENTORY TO RETAIL_in",
-  "warn_deleteChanges": "Do you want to delete the selected item(s)_in"
+  "warn_deleteChanges": "Do you want to delete the selected item(s)_in",
+  "btn_deleteAll": "DELETE ALL_in"
 }
