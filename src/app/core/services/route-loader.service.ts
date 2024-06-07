@@ -878,7 +878,26 @@ export class RouteLoaderService {
 
                     ],
                     breakPointNumber: 0
-                  }
+                  },
+                  {
+                    elementID: 1072,
+                    tenantID: 0,
+                    propertyID: 0,
+                    productID: 1,
+                    textID: 1051,
+                    text: "Tier Level",
+                    routePath: "/settings/retailsetup/codesetup/tierLevel",
+                    imgPath: "",
+                    order: 17,
+                    visibility: true,
+                    disable: false,
+                    parentID: 1063,
+                    menuPosition: "Ternary",
+                    menuAlignment: "Vertical",
+                    externalLink: false,
+                    linkedElement: [],
+                    breakPointNumber: 7060
+                },
                 ],
                 breakPointNumber: 0
               },
@@ -1380,7 +1399,26 @@ export class RouteLoaderService {
                 linkedElement: [
                 ],
                 breakPointNumber: 0
-              }
+              },
+              {
+                elementID: 1099,
+                tenantID: 0,
+                propertyID: 0,
+                productID: 1,
+                textID: 1124,
+                text: "Player Type/ Discount Type",
+                routePath: "/settings/utilities/playerTypeDiscountType",
+                imgPath: "",
+                order: 10,
+                visibility: true,
+                disable: false,
+                parentID: 1051,
+                menuPosition: "Ternary",
+                menuAlignment: "Vertical",
+                externalLink: false,
+                linkedElement: [],
+                breakPointNumber: 0
+            },
             ],
             breakPointNumber: 0
           },
