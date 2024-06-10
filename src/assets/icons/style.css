@@ -24,7 +24,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.icon-inventory_item_eatec:before {
+  content: "\ef75";
+}
 .icon-Flat-Rate:before {
   content: "\ef74";
 }
