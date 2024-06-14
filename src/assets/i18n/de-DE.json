@@ -967,8 +967,8 @@
     "cReset": "RESET_de"
   },
   "shop": {
-    "err_noCommision": "Commission is not configured for the selected user(s)/therapist(s). Please check._da_de",
-    "err_selectTherapistUser": "Please select the required user(s)/therapist(s) to apply commission._da_de",
+    "err_noCommision": "Commission is not configured for the selected user(s)/therapist(s). Please check._de",
+    "err_selectTherapistUser": "Please select the required user(s)/therapist(s) to apply commission._de",
     "COF_RemovalConfirmationMsg": "Removing the card will delete the card from profile. Do you wish to proceed?_de",
     "lbl_processing": "Processing..._de",
     "missingMail": "Missing Email_de",
