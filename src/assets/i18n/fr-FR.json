@@ -967,6 +967,8 @@
     "cReset": "RESET_fr"
   },
   "shop": {
+    "err_noCommision": "Commission for Item or Commission class for User(s) is not configured._fr",
+    "err_selectTherapistUser": "Please select the required User(s) to apply commission._fr",
     "COF_RemovalConfirmationMsg": "Removing the card will delete the card from profile. Do you wish to proceed?_fr",
     "lbl_processing": "Processing..._fr",
     "missingMail": "Missing Email_fr",
