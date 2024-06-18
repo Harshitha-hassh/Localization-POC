@@ -2991,6 +2991,7 @@
     "invalidCountryName": "Invalid country name_fi",
     "AllowDateToFuture": "Allow Date Roll to Next Day_fi",
     "InvalidGuid": "Invalid Machine Guid_fi",
+    "RequireReturnReason": "Require Return Reason_fi",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_fi",
       "CMS": "CMS_fi",

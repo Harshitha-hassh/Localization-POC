@@ -2991,6 +2991,7 @@
     "invalidCountryName": "Invalid country name_uk",
     "AllowDateToFuture": "Allow Date Roll to Next Day_uk",
     "InvalidGuid": "Invalid Machine Guid_uk",
+    "RequireReturnReason": "Require Return Reason_uk",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_uk",
       "CMS": "CMS_uk",
