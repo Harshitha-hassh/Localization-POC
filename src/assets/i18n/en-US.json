@@ -3006,6 +3006,7 @@
     "invalidCountryName": "Invalid country name",
     "AllowDateToFuture": "Allow Date Roll to Next Day",
     "InvalidGuid": "Invalid Machine Guid",
+    "RequireReturnReason": "Require Return Reason",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage",
       "CMS": "CMS",
