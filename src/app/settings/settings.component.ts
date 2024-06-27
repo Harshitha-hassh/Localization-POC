@@ -23,8 +23,10 @@ export class SettingsComponent implements OnInit {
     } else if(this.propertyInfo.IsEatecEnabled) {
       const configsToRemove = ['/settings/inventorysetup'];
       this.menu = this.menu.filter(r => !configsToRemove.includes(r.routePath));
-      if(this.propertyInfo.IsEatecEnabled)
       this.propertyInfo.setICRoutes(this.menu);
+    } else if(!this.propertyInfo.IsEatecEnabled){
+      const configsToRemove = ['/settings/enhancedInventory'];
+      this.menu = this.menu.filter(r => !configsToRemove.includes(r.routePath));
     }
 
     this.menuList = {
