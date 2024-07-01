@@ -4388,5 +4388,6 @@
 	"tierLevel" : "Tier Level",
   "tog_lbl_showInactive": "Include Inactive",
   "lbl_selectAll" : "Select All",
-  "lbl_Active" : "Active"
+  "lbl_Active" : "Active",
+  "lbl_properties":"Properties"
 }
