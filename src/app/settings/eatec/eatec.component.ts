@@ -52,7 +52,7 @@ export class EatecComponent implements OnInit, OnDestroy {
   positionOptions: TooltipPosition[] = ['right', 'above', 'left', 'below'];
   position = new UntypedFormControl(this.positionOptions[0]);
   EnableRetailIC: boolean;
-
+  HasAccess: boolean;
   
   constructor(private routeDataService: RouteLoaderService
     , public router: Router,public localization: RetailLocalization
@@ -411,6 +411,7 @@ export class EatecComponent implements OnInit, OnDestroy {
     if(bkPoint != RetailBreakPoint.EatecInventory) {
     isAllow = this.eatecSetupBreakPoints.find(x => x.breakPointNumber == bkPoint) && this.eatecSetupBreakPoints.find(x => x.breakPointNumber == bkPoint).allow;
     }
+    this.HasAccess = isAllow;
     return isAllow;
   }
 

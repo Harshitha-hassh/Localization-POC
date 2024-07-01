@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?hag1m7');
-  src:  url('fonts/icomoon.eot?hag1m7#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?hag1m7') format('truetype'),
-    url('fonts/icomoon.woff?hag1m7') format('woff'),
-    url('fonts/icomoon.svg?hag1m7#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?enmxqy');
+  src:  url('fonts/icomoon.eot?enmxqy#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?enmxqy') format('truetype'),
+    url('fonts/icomoon.woff?enmxqy') format('woff'),
+    url('fonts/icomoon.svg?enmxqy#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -24,7 +24,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.icon-inventory_item_eatec:before {
+  content: "\ef75";
+}
+.icon-Flat-Rate:before {
+  content: "\ef74";
+}
+.icon-Combine-Records:before {
+  content: "\ef73";
+}
 .icon-Member-new:before {
   content: "\ef72";
 }
