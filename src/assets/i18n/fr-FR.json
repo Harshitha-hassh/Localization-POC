@@ -4294,6 +4294,7 @@
   "initiate_SignatureCapture": "Initiating Signature Capture_fr",
   "success_SignatureCapture": "Successfully Captured Signature_fr",
   "warn_delete": "Are you sure want to delete '{{name}}' ?_fr",
+  "warn_delete_properties": "Are you sure want to delete '{{name}}' for properties {{propertyIds}} ?_fr",
   "err_sigCapGenericMessage": "Failed to capture Signature - '{{reason}}'_fr",
   "noResponse": "No response received from the Signature Capture device. Signature will not be displayed in the receipt._fr",
   "lbl_industryTypeWarn": "Changing the Industry type will make the existing Cards On File for guests not work._fr",
