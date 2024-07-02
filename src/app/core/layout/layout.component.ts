@@ -160,22 +160,14 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
     let newSystemDate = await this.GetPropertyDate();
     let localizedDate = this.localization.localizeDisplayDate(newSystemDate);
-    let productId = Number(this.utils.GetPropertyInfo("ProductId"));
-    let previousDate = moment(newSystemDate).subtract(1,"days");
-      let localizedPreviousDate = this.localization.localizeDisplayDate(previousDate.toDate());
-    if (newSystemDate != undefined && newSystemDate != null) {
-      if(productId == Product.SPA || productId == Product.GOLF || productId == Product.RETAIL )
-      {
-        this.utils.showToastMessage(this.localization.captions.NightAuditMessage+ ' for ' + localizedPreviousDate, SnackBarType.Success, 15000);
-      }
-      else{
+    if (newSystemDate != undefined && newSystemDate != null) {    
         this.utils.showAlert(message.message + ' to ' + localizedDate, AlertType.Success, ButtonType.Ok, (res) => {
           if (res) {
             this.logoutHandler(true);
           }
         });
       }
-    }
+    
 }
 
 async GetPropertyDate() {
