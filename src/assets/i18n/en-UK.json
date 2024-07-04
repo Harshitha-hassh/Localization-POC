@@ -3692,7 +3692,10 @@
         "NoReceipients": "No Recipients Are Added_uk",
         "Users": "Users_uk",
         "invalidemailFormat": "Invalid Email Format_uk",
-        "updateDl": "UPDATE DISTRIBUTION LIST_uk"
+        "updateDl": "UPDATE DISTRIBUTION LIST_uk",
+        "lbl_sendTo": "Send To_uk",
+        "lbl_emailWillSendTo": "Email Will be Sent To_uk",
+        "lbl_clearAll": "CLEAR ALL_uk"
       },
       "notificationsConfiguration": {
         "NOTIFICATIONCONFIGURATION": "NOTIFICATION CONFIGURATION_uk",
