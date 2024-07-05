@@ -4390,5 +4390,7 @@
   "tog_lbl_showInactive": "Include Inactive_in",
   "lbl_selectAll": "Select All_in",
   "lbl_Active": "Active_in",
-  "lbl_properties": "Properties_in"
+  "lbl_properties": "Properties_in",
+  "lbl_searchMenu": "Search Menu_in",
+  "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_in"
 }

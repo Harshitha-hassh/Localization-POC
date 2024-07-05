@@ -4390,5 +4390,7 @@
   "tog_lbl_showInactive": "Include Inactive_kr",
   "lbl_selectAll": "Select All_kr",
   "lbl_Active": "Active_kr",
-  "lbl_properties": "Properties_kr"
+  "lbl_properties": "Properties_kr",
+  "lbl_searchMenu": "Search Menu_kr",
+  "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_kr"
 }

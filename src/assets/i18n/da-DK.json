@@ -4390,5 +4390,7 @@
   "tog_lbl_showInactive": "Include Inactive_da",
   "lbl_selectAll": "Select All_da",
   "lbl_Active": "Active_da",
-  "lbl_properties": "Properties_da"
+  "lbl_properties": "Properties_da",
+  "lbl_searchMenu": "Search Menu_da",
+  "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_da"
 }

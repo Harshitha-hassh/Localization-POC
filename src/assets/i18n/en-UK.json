@@ -4390,5 +4390,7 @@
   "tog_lbl_showInactive": "Include Inactive_uk",
   "lbl_selectAll": "Select All_uk",
   "lbl_Active": "Active_uk",
-  "lbl_properties": "Properties_uk"
+  "lbl_properties": "Properties_uk",
+  "lbl_searchMenu": "Search Menu_uk",
+  "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_uk"
 }

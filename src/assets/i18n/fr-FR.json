@@ -4390,5 +4390,7 @@
   "tog_lbl_showInactive": "Include Inactive_fr",
   "lbl_selectAll": "Select All_fr",
   "lbl_Active": "Active_fr",
-  "lbl_properties": "Properties_fr"
+  "lbl_properties": "Properties_fr",
+  "lbl_searchMenu": "Search Menu_fr",
+  "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_fr"
 }
