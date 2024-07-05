@@ -67,6 +67,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
       this.applyTheme('blacktheme');
+      this.setauthTokenProvider();
       this.propertyName = this.localization.GetPropertyInfo('PropertyName');
       let propConfig = JSON.parse(sessionStorage.getItem("propConfig"));
       let enableSignalR = propConfig?.EnableSignalR;
@@ -260,6 +261,14 @@ logoutHandler(arg) {
       });
     }
   }
+
+  async setauthTokenProvider() {
+    let tenantId = Number(this.localization.GetPropertyInfo('TenantId'));
+    let productId = Number(this.localization.GetPropertyInfo('ProductId'));
+    let productADB2CConfig = await this.PropertySettingService.GetProductADB2CConfiguration(tenantId,productId);
+    localStorage.setItem("authtokenProvider",productADB2CConfig.tokenProvider);
+  }
+
 
   setAutoLogoff() {
     this.autoLogOff = this.utils.GetPropertyInfo('AutoLogOff');
