@@ -1780,7 +1780,9 @@
     "12091": "12091 - PMS Integration Setup",
     "3130": "3130 - Settle to Hotel Comp",
     "7170": "7170 - Item Mapping",
-		"7175": "7175 - Sale Depletion Log"
+		"7175": "7175 - Sale Depletion Log",
+    "7180": "7180 - Non Integrated Credit Cards",
+    "3135": "3135 - Settle to Non Integrated Credit Cards"
   },
   "userId": "User ID",
   "password": "Password",
@@ -2880,6 +2882,7 @@
     "TerminalID": "Terminal ID",
     "MissingTerminalID": "Missing Terminal ID",
     "ActivateInterface": "Activate Interface",
+    "EnableIdTechForNonIntegratedCreditCard":"Enable Id Tech",
     "rGuestPayAgentURL": "Agilysys Pay Agent URL",
     "rGuestPayGatewayID": "Agilysys Pay Gateway ID",
     "GatewayValues": "GATEWAY VALUES",
