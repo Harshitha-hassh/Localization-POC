@@ -4304,6 +4304,7 @@
   "err_userAccess_Denied_message": "User does not have access. Please contact System Administrator._de",
   "lbl_idTech": "IdTech_de",
   "lbl_AzureTokenErrorMessage": "The email address received in the claims appears to have an incorrect format_de",
+  "lbl_UserTokenErrorMessage": "User identification failed, could not extract user details from token_de",
   "lbl_addDiscountTimeframe": "ADD TIMEFRAME WINDOW_de",
   "lbl_saveDiscount": "SAVE_de",
   "lbl_updateDiscount": "UPDATE_de",

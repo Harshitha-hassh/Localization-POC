@@ -308,9 +308,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  getADB2CEmailClaim(claims)
+  async getADB2CEmailClaim(claims,tenantId)
   {
     let email = "";
+    let user;
+    let userName = claims['name'];
 
     if(claims != null && claims != undefined)
     {
@@ -322,6 +324,25 @@ export class LoginComponent implements OnInit, OnDestroy {
       {
         email = claims['email'];
       }
+      else if (userName != null) {
+        const serviceParams = {
+          route: RetailRoutes.GetUserByTenantId,
+          uriParams: { "UserName": userName, "tenantId": tenantId },
+          header: '',
+          body: '',
+          showError: true,
+          baseResponse: true
+        };
+        let token = localStorage.getItem('id_token');
+        sessionStorage.setItem('_jwt', token);
+        user = await this.loginService.makeGetCall(serviceParams);
+        email = user.result.email;
+      }
+      else{
+        this.utils.showAlert(this.captions.lbl_UserTokenErrorMessage, AlertType.Error, ButtonType.Ok, (res => {
+          this.adb2cLogout();
+        }));
+      }
     }
 
     return email;
@@ -332,7 +353,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginForms.controls.customerId.setValue(tenantId);
     let claims = this.adb2cClaims;
     const credentials = {
-      email: this.getADB2CEmailClaim(claims),
+      email: await this.getADB2CEmailClaim(claims,tenantId),
       tenantId: tenantId,
       ProductId: Product.RETAIL
     };
