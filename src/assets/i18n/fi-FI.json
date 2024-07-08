@@ -967,6 +967,7 @@
     "cReset": "RESET_fi"
   },
   "shop": {
+    "ticketDiscount": "Ticket Discount_fi",
     "err_noCommision": "Commission for Item or Commission class for User(s) is not configured._fi",
     "err_selectTherapistUser": "Please select the required User(s) to apply commission._fi",
     "COF_RemovalConfirmationMsg": "Removing the card will delete the card from profile. Do you wish to proceed?_fi",
@@ -1059,6 +1060,7 @@
     "Items": "Items_fi",
     "Services": "Services_fi",
     "APPLYDISCOUNT": "APPLY DISCOUNT_fi",
+    "APPLYTICKETDISCOUNT": "APPLY TICKET DISCOUNT_fi",
     "pg_title_inventorySyncStatus": "INVENTORY SYNC STATUS_fi",
     "REMOVE": "REMOVE_fi",
     "SNo": "S.No_fi",
@@ -1820,7 +1822,7 @@
   "noSpecialCharacters": "No special characters must be allowed_fi",
   "confirmPasswordSame": "New password and confirm password must be same_fi",
   "retailsetup": {
-    "maximumDiscountvalue": "Maximum discount value for {discountName} is {maxValue}%. Please enter value that is lesser than or equal to {maxValue}%._fi",
+    "maximumDiscountvalue": "Maximum discount value for {discountName} is {maxValue}. Please enter value that is lesser than or equal to {maxValue}._fi",
     "lbl_filters": "Filters_fi",
     "enterValue": "Enter Value_fi",
     "bulkEdit": "Bulk Edit_fi",
@@ -4357,14 +4359,17 @@
   "lbl_excludeDiscountOnService": "Exclude Discount on Service Charge_fi",
   "lbl_excludeDiscountOnGratuity": "Exclude Discount on Gratuity_fi",
   "lbl_discountConfig": "Discount Configuration_fi",
-  "categoryLevel": "Category Level_fi",
-  "tickLevel": "Tick Level_fi",
+  "itemLevel": "Item Level_fi",
+  "ticketLevel": "Ticket Level_fi",
   "lbl_discountLevel": "Discount Level_fi",
   "lbl_pricing": "Pricing_fi",
   "openPricing": "Open Pricing_fi",
   "fixedPricing": "Fixed Pricing_fi",
   "maximumPercent": "Maximum Percentage_fi",
+  "maximumAmount": "Maximum Amount_fi",
   "minimumAmount": "Minimum Amount in Cart_fi",
+  "lbl_percentage": "Percenatge_fi",
+  "lbl_amount": "Amount_fi",
   "lbl_tenderReducesDiscount": "Tender Reduces Discount_fi",
   "lbl_discountIsExclusive": "Discount is Exclusive_fi",
   "lbl_allowAdditionalFlatDiscount": "Allow Additional Flat Discount_fi",
@@ -4391,5 +4396,6 @@
   "tog_lbl_showInactive": "Include Inactive_fi",
   "lbl_selectAll": "Select All_fi",
   "lbl_Active": "Active_fi",
-  "lbl_properties": "Properties_fi"
+  "lbl_properties": "Properties_fi",
+  "deleteConfirmation": "Are you sure want to delete the record(s)_fi"
 }

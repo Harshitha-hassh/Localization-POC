@@ -967,6 +967,7 @@
     "cReset": "RESET_uk"
   },
   "shop": {
+    "ticketDiscount": "Ticket Discount_uk",
     "err_noCommision": "Commission for Item or Commission class for User(s) is not configured._uk",
     "err_selectTherapistUser": "Please select the required User(s) to apply commission._uk",
     "COF_RemovalConfirmationMsg": "Removing the card will delete the card from profile. Do you wish to proceed?_uk",
@@ -1059,6 +1060,7 @@
     "Items": "Items_uk",
     "Services": "Services_uk",
     "APPLYDISCOUNT": "APPLY DISCOUNT_uk",
+    "APPLYTICKETDISCOUNT": "APPLY TICKET DISCOUNT_uk",
     "pg_title_inventorySyncStatus": "INVENTORY SYNC STATUS_uk",
     "REMOVE": "REMOVE_uk",
     "SNo": "S.No_uk",
@@ -1820,7 +1822,7 @@
   "noSpecialCharacters": "No special characters must be allowed_uk",
   "confirmPasswordSame": "New password and confirm password must be same_uk",
   "retailsetup": {
-    "maximumDiscountvalue": "Maximum discount value for {discountName} is {maxValue}%. Please enter value that is lesser than or equal to {maxValue}%._uk",
+    "maximumDiscountvalue": "Maximum discount value for {discountName} is {maxValue}. Please enter value that is lesser than or equal to {maxValue}._uk",
     "lbl_filters": "Filters_uk",
     "enterValue": "Enter Value_uk",
     "bulkEdit": "Bulk Edit_uk",
@@ -4357,14 +4359,17 @@
   "lbl_excludeDiscountOnService": "Exclude Discount on Service Charge_uk",
   "lbl_excludeDiscountOnGratuity": "Exclude Discount on Gratuity_uk",
   "lbl_discountConfig": "Discount Configuration_uk",
-  "categoryLevel": "Category Level_uk",
-  "tickLevel": "Tick Level_uk",
+  "itemLevel": "Item Level_uk",
+  "ticketLevel": "Ticket Level_uk",
   "lbl_discountLevel": "Discount Level_uk",
   "lbl_pricing": "Pricing_uk",
   "openPricing": "Open Pricing_uk",
   "fixedPricing": "Fixed Pricing_uk",
   "maximumPercent": "Maximum Percentage_uk",
+  "maximumAmount": "Maximum Amount_uk",
   "minimumAmount": "Minimum Amount in Cart_uk",
+  "lbl_percentage": "Percenatge_uk",
+  "lbl_amount": "Amount_uk",
   "lbl_tenderReducesDiscount": "Tender Reduces Discount_uk",
   "lbl_discountIsExclusive": "Discount is Exclusive_uk",
   "lbl_allowAdditionalFlatDiscount": "Allow Additional Flat Discount_uk",
@@ -4391,5 +4396,6 @@
   "tog_lbl_showInactive": "Include Inactive_uk",
   "lbl_selectAll": "Select All_uk",
   "lbl_Active": "Active_uk",
-  "lbl_properties": "Properties_uk"
+  "lbl_properties": "Properties_uk",
+  "deleteConfirmation": "Are you sure want to delete the record(s)_uk"
 }

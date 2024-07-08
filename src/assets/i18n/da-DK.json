@@ -967,6 +967,7 @@
     "cReset": "RESET_da"
   },
   "shop": {
+    "ticketDiscount": "Ticket Discount_da",
     "err_noCommision": "Commission for Item or Commission class for User(s) is not configured._da",
     "err_selectTherapistUser": "Please select the required User(s) to apply commission._da",
     "COF_RemovalConfirmationMsg": "Removing the card will delete the card from profile. Do you wish to proceed?_da",
@@ -1059,6 +1060,7 @@
     "Items": "Items_da",
     "Services": "Services_da",
     "APPLYDISCOUNT": "APPLY DISCOUNT_da",
+    "APPLYTICKETDISCOUNT": "APPLY TICKET DISCOUNT_da",
     "pg_title_inventorySyncStatus": "INVENTORY SYNC STATUS_da",
     "REMOVE": "REMOVE_da",
     "SNo": "S.No_da",
@@ -1820,7 +1822,7 @@
   "noSpecialCharacters": "No special characters must be allowed_da",
   "confirmPasswordSame": "New password and confirm password must be same_da",
   "retailsetup": {
-    "maximumDiscountvalue": "Maximum discount value for {discountName} is {maxValue}%. Please enter value that is lesser than or equal to {maxValue}%._da",
+    "maximumDiscountvalue": "Maximum discount value for {discountName} is {maxValue}. Please enter value that is lesser than or equal to {maxValue}._da",
     "lbl_filters": "Filters_da",
     "enterValue": "Enter Value_da",
     "bulkEdit": "Bulk Edit_da",
@@ -4357,14 +4359,17 @@
   "lbl_excludeDiscountOnService": "Exclude Discount on Service Charge_da",
   "lbl_excludeDiscountOnGratuity": "Exclude Discount on Gratuity_da",
   "lbl_discountConfig": "Discount Configuration_da",
-  "categoryLevel": "Category Level_da",
-  "tickLevel": "Tick Level_da",
+  "itemLevel": "Item Level_da",
+  "ticketLevel": "Ticket Level_da",
   "lbl_discountLevel": "Discount Level_da",
   "lbl_pricing": "Pricing_da",
   "openPricing": "Open Pricing_da",
   "fixedPricing": "Fixed Pricing_da",
   "maximumPercent": "Maximum Percentage_da",
+  "maximumAmount": "Maximum Amount_da",
   "minimumAmount": "Minimum Amount in Cart_da",
+  "lbl_percentage": "Percenatge_da",
+  "lbl_amount": "Amount_da",
   "lbl_tenderReducesDiscount": "Tender Reduces Discount_da",
   "lbl_discountIsExclusive": "Discount is Exclusive_da",
   "lbl_allowAdditionalFlatDiscount": "Allow Additional Flat Discount_da",
@@ -4391,5 +4396,6 @@
   "tog_lbl_showInactive": "Include Inactive_da",
   "lbl_selectAll": "Select All_da",
   "lbl_Active": "Active_da",
-  "lbl_properties": "Properties_da"
+  "lbl_properties": "Properties_da",
+  "deleteConfirmation": "Are you sure want to delete the record(s)_da"
 }

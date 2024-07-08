@@ -967,6 +967,7 @@
     "cReset": "RESET_kr"
   },
   "shop": {
+    "ticketDiscount": "Ticket Discount_kr",
     "err_noCommision": "Commission for Item or Commission class for User(s) is not configured._kr",
     "err_selectTherapistUser": "Please select the required User(s) to apply commission._kr",
     "COF_RemovalConfirmationMsg": "Removing the card will delete the card from profile. Do you wish to proceed?_kr",
@@ -1059,6 +1060,7 @@
     "Items": "Items_kr",
     "Services": "Services_kr",
     "APPLYDISCOUNT": "APPLY DISCOUNT_kr",
+    "APPLYTICKETDISCOUNT": "APPLY TICKET DISCOUNT_kr",
     "pg_title_inventorySyncStatus": "INVENTORY SYNC STATUS_kr",
     "REMOVE": "REMOVE_kr",
     "SNo": "S.No_kr",
@@ -1820,7 +1822,7 @@
   "noSpecialCharacters": "No special characters must be allowed_kr",
   "confirmPasswordSame": "New password and confirm password must be same_kr",
   "retailsetup": {
-    "maximumDiscountvalue": "Maximum discount value for {discountName} is {maxValue}%. Please enter value that is lesser than or equal to {maxValue}%._kr",
+    "maximumDiscountvalue": "Maximum discount value for {discountName} is {maxValue}. Please enter value that is lesser than or equal to {maxValue}._kr",
     "lbl_filters": "Filters_kr",
     "enterValue": "Enter Value_kr",
     "bulkEdit": "Bulk Edit_kr",
@@ -4357,14 +4359,17 @@
   "lbl_excludeDiscountOnService": "Exclude Discount on Service Charge_kr",
   "lbl_excludeDiscountOnGratuity": "Exclude Discount on Gratuity_kr",
   "lbl_discountConfig": "Discount Configuration_kr",
-  "categoryLevel": "Category Level_kr",
-  "tickLevel": "Tick Level_kr",
+  "itemLevel": "Item Level_kr",
+  "ticketLevel": "Ticket Level_kr",
   "lbl_discountLevel": "Discount Level_kr",
   "lbl_pricing": "Pricing_kr",
   "openPricing": "Open Pricing_kr",
   "fixedPricing": "Fixed Pricing_kr",
   "maximumPercent": "Maximum Percentage_kr",
+  "maximumAmount": "Maximum Amount_kr",
   "minimumAmount": "Minimum Amount in Cart_kr",
+  "lbl_percentage": "Percenatge_kr",
+  "lbl_amount": "Amount_kr",
   "lbl_tenderReducesDiscount": "Tender Reduces Discount_kr",
   "lbl_discountIsExclusive": "Discount is Exclusive_kr",
   "lbl_allowAdditionalFlatDiscount": "Allow Additional Flat Discount_kr",
@@ -4391,5 +4396,6 @@
   "tog_lbl_showInactive": "Include Inactive_kr",
   "lbl_selectAll": "Select All_kr",
   "lbl_Active": "Active_kr",
-  "lbl_properties": "Properties_kr"
+  "lbl_properties": "Properties_kr",
+  "deleteConfirmation": "Are you sure want to delete the record(s)_kr"
 }
