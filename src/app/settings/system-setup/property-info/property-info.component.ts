@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray, Validators } from '@angular/forms';
 import { ComboOptions, SystemConfiguration } from 'src/app/common/shared/shared/business/view-settings.modals';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
@@ -12,12 +12,14 @@ import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/servic
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { debounceTime, distinctUntilChanged, map, startWith, takeUntil } from 'rxjs/operators';
+import { defaultThemeColorSwitch } from 'src/app/shared/enums/constants';
 
 @Component({
   selector: 'app-property-info',
   templateUrl: './property-info.component.html',
   styleUrls: ['./property-info.component.scss'],
-  providers: [SystemSetupBusinessService]
+  providers: [SystemSetupBusinessService],
+  encapsulation: ViewEncapsulation.None
 })
 export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDestroy {
   propertyInformation;
@@ -82,7 +84,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       requiredFields: [],
       DEFAULT_EMAIL_TYPE: '',
       DEFAULT_COUNTRY_CODE: ['', Validators.min(1)],
-      DEFAULT_PHONE_TYPE: ''
+      DEFAULT_PHONE_TYPE: '',
+      THEME_COLOR: '',
     };
 
     this.PhoneType = [
@@ -107,7 +110,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       requiredFields: this.fb.array([]),
       DEFAULT_EMAIL_TYPE: '',
       DEFAULT_COUNTRY_CODE: ['', Validators.min(1)],
-      DEFAULT_PHONE_TYPE: ''
+      DEFAULT_PHONE_TYPE: '',
+      THEME_COLOR: ''
     });
     this.phone = this.propertyInfo.get('phone') as UntypedFormArray;
 
@@ -461,6 +465,10 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
         const defaultPhoneCode = this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.value;
         parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch).value = defaultPhoneCode;
     }
+    if(parsedSessionDefaultSettings.some(f => f.switch == defaultThemeColorSwitch)){
+      const defaultThemeColor = this.propertyInfo.controls.THEME_COLOR.value;
+      parsedSessionDefaultSettings.find(f => f.switch == defaultThemeColorSwitch).value = defaultThemeColor;
+  }
     sessionStorage.setItem('defaultSettings', JSON.stringify(parsedSessionDefaultSettings));
   }
   UpdatePropertySetting(bodyPropertyData) {
@@ -538,6 +546,12 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       switch: DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch,
       value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch].value? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch].value: 0
     });
+    _body.push({
+      id: this.settingInfo.find(setting => setting.switch == defaultThemeColorSwitch).id,
+      moduleId: this.settingInfo.find(s => s.switch == defaultThemeColorSwitch).moduleId,
+      switch: defaultThemeColorSwitch,
+      value: this.propertyInfo.controls[defaultThemeColorSwitch].value? this.propertyInfo.controls[defaultThemeColorSwitch].value: 0
+    });
     return _body;
   }
   formPropertyData(): PropertyConfig {
@@ -612,6 +626,10 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
         const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
         this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
     }
+    if(this.settingInfo.some(f => f.switch == defaultThemeColorSwitch)){
+      const defaultThemeColor = this.settingInfo.find(f => f.switch == defaultThemeColorSwitch);
+      this.propertyInfo.controls.THEME_COLOR.setValue(defaultThemeColor ? defaultThemeColor.value : '');
+  }
 
     this.clearFormArray(this.propertyInfo.get('address') as UntypedFormArray);
     for (let index = 0; index < address.length; index++) {
@@ -665,6 +683,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       this.enableSave = false;
     } else if (callDesc == 'UpdateSetting') {
       this.GetAllSetting();
+      this.reloadSession();
       this.enableSave = false;
     } 
     else if (callDesc == 'GetAllLanguages') {
@@ -674,6 +693,12 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
         this.languageType = data.map(x => { return { id: x.languageID, value: x.languageName, code: x.languageCode }; });
       }
     }
+  }
+  async reloadSession() {
+    setTimeout(function () {
+      let getThemeColor: any  = document.getElementsByClassName('theme-color-wrapper')[0];
+      getThemeColor.style.setProperty("background-color", JSON.parse(sessionStorage.getItem('defaultSettings'))?.find(x=>x.switch == "THEME_COLOR").value, "important")
+    }, 500);
   }
   cancel() {
     this.PropertSetting();
@@ -729,4 +754,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     }
   
    }
+   changeColor($event:any){
+    this.propertyInfo.controls['THEME_COLOR'].setValue($event.color.hex);
+    this.enableSave = true;
+  }
 }
