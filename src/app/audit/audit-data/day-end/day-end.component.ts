@@ -257,7 +257,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         if (response.isSuccess) {
           this.propertyInfo.SetPropertyDate(this.newSysDate);
           this.UpdateInventoryAudit();
-          this.ShowSuccessMessage();
+          //this.ShowSuccessMessage();
           if (this.propertyInfo.HasRevenuePostingEnabled) {
             this.SendNewSystemDate();
           }
@@ -803,9 +803,9 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.retailSharedService.propertyDate = this.propertyInfo.CurrentDate;
     this.retailSharedService.useRetailInterface = this.propertyInfo.UseRetailInterface;
     if (this.retailSharedService.settleOpenTransaction) {
-      this.utils.RedirectTo(RedirectToModules.order);
+     this.utils.RedirectTo(RedirectToModules.order);
     } else if (this.retailSharedService.reOpenTransaction) {
-      this.utils.RedirectTo(RedirectToModules.retail);
+     this.utils.RedirectTo(RedirectToModules.retail);
     }
   }
 
