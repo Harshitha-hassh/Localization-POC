@@ -1,5 +1,5 @@
 @import '../../../../assets/sass/abstracts/variables';
-.prop-info {
+.prop-information-customized{
   height: 100%;
   .prop-details {
     height: calc(100% - 80px);
@@ -91,6 +91,38 @@
     }
     .defaultFieldConfiguration{
       padding-top: 20px;
+    }
+    .position--relative {
+      position: relative;
+    }
+    .themeColor {
+      .color-grid {
+        display: inline-grid;
+        width: 200px;
+        // flex: 1 0 16%;
+        .color-name {
+          text-transform: capitalize;
+          color: $color-form-field;
+        }
+
+        .color-display {
+          width: 25px;
+          height: 25px;
+          border: 1px solid $color-shop-border;
+        }
+        .position--relative {
+          position: relative;
+
+          .ag-color-sketch {
+            width: 220px;
+            top: 40px;
+            left: 0;
+            border: 1px solid $color-text-color;
+            background-color: $color-base;
+            z-index: 9;
+          }
+        }
+      }
     }
   }
 }

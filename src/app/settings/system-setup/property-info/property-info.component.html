@@ -1,7 +1,5 @@
-<section class="prop-info newVersionWrapper property-info-wrapper">
+<section class="prop-information-customized newVersionWrapper property-info-wrapper">
     <div class="prop-details">
-
-
       <ng-scrollbar [autoHide]="true">
     <div class= "prop-section" >
 
@@ -146,6 +144,24 @@
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
+
+                  <div class="themeColor">
+                    <div class="color-grid pb-4">
+                      <label class="color-name form-label-primary mb-2">{{captions.DefalutThemeColor}}</label>
+                      <div class="position--relative">
+                        <input type="button" class=" color-display"
+                          [ngStyle]="{'background-color':propertyInfo.controls['THEME_COLOR'].value}" [popover]="colorPickerPopOver"
+                          [popoverOnHover]="false" />
+                        <popover-content #colorPickerPopOver class="user-popover" [animation]="true" [closeOnClickOutside]="true"
+                          placement="auto right">
+                          <div class="ag-color-sketch">
+                            <color-sketch [color]="propertyInfo.controls['THEME_COLOR'].value"
+                              (onChangeComplete)="changeColor($event)"></color-sketch>
+                          </div>
+                        </popover-content>
+                      </div>
+                    </div>
+                  </div>
 
                 </div>
             </div>

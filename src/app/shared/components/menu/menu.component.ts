@@ -200,6 +200,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
         this.userDefaultsService.syncDefaultValues(Number(this._localization.GetUserInfo("userId")));
         this.userSessionConfig.getAllClientSetting().then(defaultsSetting => {
           sessionStorage.setItem('defaultSettings', JSON.stringify(defaultsSetting));
+          this.reloadSession();
         });
         if (!this._propertyInfo.UseRetailInterface) {
           this.notificationCount = 0;
@@ -215,7 +216,12 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
   }
-
+  reloadSession() {
+    setTimeout(function () {
+      let getThemeColor: any  = document.getElementsByClassName('theme-color-wrapper')[0];
+      getThemeColor.style.setProperty("background-color", JSON.parse(sessionStorage.getItem('defaultSettings'))?.find(x=>x.switch == "THEME_COLOR").value, "important")
+    }, 500);
+  }
   RefreshConfig(isFromPropertyChangeEvent : boolean = false){
     if (!sessionStorage.getItem("giftCardConfiguration") || isFromPropertyChangeEvent) {
       this._propertyFeatureService.GetGiftCardConfiguration().then((config) => {

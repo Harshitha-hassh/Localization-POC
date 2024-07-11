@@ -31,7 +31,7 @@ import { FULL_STORY_ORG_ID } from 'src/app/app-constants';
   encapsulation: ViewEncapsulation.None
 })
 export class LayoutComponent implements OnInit, OnDestroy {
-
+ 
   menuList: any;
   propertyName: string;
   propertyDateTime: any;
@@ -40,6 +40,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   private autoLogOff: any = false;
   private logOffAfter: number = 1;
+  getThemeColor: string = '';
   constructor(private routeDataService: RouteLoaderService,
     private sessionService: ManageSessionService,
     private localization: RetailLocalization,
@@ -68,6 +69,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   ngOnInit() {
       this.applyTheme('blacktheme');
       this.setauthTokenProvider();
+      this.addThemeColor();
       this.propertyName = this.localization.GetPropertyInfo('PropertyName');
       let propConfig = JSON.parse(sessionStorage.getItem("propConfig"));
       let enableSignalR = propConfig?.EnableSignalR;
@@ -89,6 +91,11 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.setUICache();
     }
   }
+  addThemeColor(){
+    const defaultsettings =JSON.parse(sessionStorage.getItem("defaultSettings"));
+    const themeColorSetting = defaultsettings?.find( x=>x.switch == 'THEME_COLOR');
+    this.getThemeColor = themeColorSetting ? themeColorSetting?.value: '';
+  };
 
   async setUICache() {
     await this.propertyService.readUICacheJsonData().then((result) => {

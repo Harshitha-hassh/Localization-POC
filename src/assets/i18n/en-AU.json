@@ -2965,6 +2965,7 @@
     "DefaultCountryCode": "Default Country Code",
     "DefaultPhoneType": "Default Phone Type",
     "DefaultEmailType": "Default Email Type",
+    "DefalutThemeColor": "Property Differentiator Color",
     "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero",
     "AllowReturnstoOriginalSettlement": "Allow Returns to Original Payment Method Only",
     "DefaultRefundToOriginalSettlement": "Default Refund To Original Settlement",
