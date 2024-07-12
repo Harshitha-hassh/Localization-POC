@@ -256,8 +256,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         const response = result.result as any;
         if (response.isSuccess) {
           this.propertyInfo.SetPropertyDate(this.newSysDate);
-          this.UpdateInventoryAudit();
-          //this.ShowSuccessMessage();
+          this.UpdateInventoryAudit();          
           if (this.propertyInfo.HasRevenuePostingEnabled) {
             this.SendNewSystemDate();
           }
@@ -488,16 +487,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.InvokeServiceCall("PerformDayEnd", Host.retailPOS, HttpMethod.Put, uriParam);
     }
   }
-
-  ShowSuccessMessage() {
-    // tslint:disable-next-line: max-line-length
-    const message = `${this.captions.systemMovedTo} ${this.localization.LocalizeDate(this.newSysDate)}`;
-    this.successFlag = true;
-    this.canProcess = false;
-    this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue, x => {
-      //this.SyncUpItemAndTaxes(this.currSysDate);
-    });
-  }
+  
   trackByFn(index, cell) {
     return index;
   }
