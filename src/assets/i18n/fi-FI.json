@@ -1964,6 +1964,7 @@
     "RequirePaymentComments": "Require Comment_fi",
     "RequireReceipts": "Require receipts_fi",
     "RequireSignatureCapture": "Require Signature Capture_fi",
+    "lbl_tenderReducesDiscount": "Tender Reduces Discount_fi",
     "RequestName": "Request Name_fi",
     "OpenItem": "Open Item_fi",
     "PMSPackageItem": "PMS Package Item_fi",
@@ -3013,6 +3014,7 @@
     "AllowDateToFuture": "Allow Date Roll to Next Day_fi",
     "InvalidGuid": "Invalid Machine Guid_fi",
     "RequireReturnReason": "Require Return Reason_fi",
+    "lbl_excludeDiscountOnTax": "Exclude Discount On Tax_fi",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_fi",
       "CMS": "CMS_fi",
@@ -4201,6 +4203,8 @@
   "pg_tit_editSettler": "UPDATE PMSETTLER_fi",
   "btn_update": "UPDATE_fi",
   "btn_save": "SAVE_fi",
+  "btn_apply": "APPLY_fi",
+  "btn_reset": "RESET_fi",
   "btn_cancel": "CANCEL_fi",
   "lbl_device": "Device_fi",
   "lbl_configuration": "Configuration_fi",
@@ -4375,8 +4379,8 @@
   "maximumPercent": "Maximum Percentage_fi",
   "maximumAmount": "Maximum Amount_fi",
   "minimumAmount": "Minimum Amount in Cart_fi",
-  "lbl_percentage": "Percenatge_fi",
-  "lbl_amount": "Amount_fi",
+  "lbl_Percentage": "Percentage_fi",
+  "lbl_Amount": "Amount_fi",
   "lbl_tenderReducesDiscount": "Tender Reduces Discount_fi",
   "lbl_discountIsExclusive": "Discount is Exclusive_fi",
   "lbl_allowAdditionalFlatDiscount": "Allow Additional Flat Discount_fi",
@@ -4404,5 +4408,5 @@
   "lbl_selectAll": "Select All_fi",
   "lbl_Active": "Active_fi",
   "lbl_properties": "Properties_fi",
-  "deleteConfirmation": "Are you sure want to delete the record(s)_fi"
+  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_fi"
 }

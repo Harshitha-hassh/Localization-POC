@@ -1964,6 +1964,7 @@
     "RequirePaymentComments": "Require Comment_in",
     "RequireReceipts": "Require receipts_in",
     "RequireSignatureCapture": "Require Signature Capture_in",
+    "lbl_tenderReducesDiscount": "Tender Reduces Discount_in",
     "RequestName": "Request Name_in",
     "OpenItem": "Open Item_in",
     "PMSPackageItem": "PMS Package Item_in",
@@ -3013,6 +3014,7 @@
     "AllowDateToFuture": "Allow Date Roll to Next Day_in",
     "InvalidGuid": "Invalid Machine Guid_in",
     "RequireReturnReason": "Require Return Reason_in",
+    "lbl_excludeDiscountOnTax": "Exclude Discount On Tax_in",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_in",
       "CMS": "CMS_in",
@@ -4201,6 +4203,8 @@
   "pg_tit_editSettler": "UPDATE PMSETTLER_in",
   "btn_update": "UPDATE_in",
   "btn_save": "SAVE_in",
+  "btn_apply": "APPLY_in",
+  "btn_reset": "RESET_in",
   "btn_cancel": "CANCEL_in",
   "lbl_device": "Device_in",
   "lbl_configuration": "Configuration_in",
@@ -4375,8 +4379,8 @@
   "maximumPercent": "Maximum Percentage_in",
   "maximumAmount": "Maximum Amount_in",
   "minimumAmount": "Minimum Amount in Cart_in",
-  "lbl_percentage": "Percenatge_in",
-  "lbl_amount": "Amount_in",
+  "lbl_Percentage": "Percentage_in",
+  "lbl_Amount": "Amount_in",
   "lbl_tenderReducesDiscount": "Tender Reduces Discount_in",
   "lbl_discountIsExclusive": "Discount is Exclusive_in",
   "lbl_allowAdditionalFlatDiscount": "Allow Additional Flat Discount_in",
@@ -4404,5 +4408,5 @@
   "lbl_selectAll": "Select All_in",
   "lbl_Active": "Active_in",
   "lbl_properties": "Properties_in",
-  "deleteConfirmation": "Are you sure want to delete the record(s)_in"
+  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_in"
 }

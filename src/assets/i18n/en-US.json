@@ -1967,6 +1967,7 @@
     "RequirePaymentComments": "Require Comment",
     "RequireReceipts": "Require receipts",
     "RequireSignatureCapture": "Require Signature Capture",
+    "lbl_tenderReducesDiscount" : "Tender Reduces Discount",
     "RequestName": "Request Name",
     "OpenItem": "Open Item",
     "PMSPackageItem": "PMS Package Item",
@@ -3016,6 +3017,7 @@
     "AllowDateToFuture": "Allow Date Roll to Next Day",
     "InvalidGuid": "Invalid Machine Guid",
     "RequireReturnReason": "Require Return Reason",
+    "lbl_excludeDiscountOnTax": "Exclude Discount On Tax",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage",
       "CMS": "CMS",
@@ -4204,6 +4206,8 @@
   "pg_tit_editSettler": "UPDATE PMSETTLER",
   "btn_update": "UPDATE",
   "btn_save": "SAVE",
+  "btn_apply": "APPLY",
+  "btn_reset": "RESET",
   "btn_cancel": "CANCEL",
   "lbl_device": "Device",
   "lbl_configuration": "Configuration",
@@ -4378,8 +4382,8 @@
 	"maximumPercent" : "Maximum Percentage",
   "maximumAmount": "Maximum Amount",
 	"minimumAmount" : "Minimum Amount in Cart",
-  "lbl_percentage": "Percenatge",
-  "lbl_amount": "Amount",
+  "lbl_Percentage": "Percentage",
+  "lbl_Amount": "Amount",
 	"lbl_tenderReducesDiscount" : "Tender Reduces Discount",
 	"lbl_discountIsExclusive" : "Discount is Exclusive",
 	"lbl_allowAdditionalFlatDiscount" : "Allow Additional Flat Discount",
@@ -4407,5 +4411,5 @@
   "lbl_selectAll" : "Select All",
   "lbl_Active" : "Active",
   "lbl_properties":"Properties",
-  "deleteConfirmation": "Are you sure want to delete the record(s)"
+  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?"
 }
