@@ -23,6 +23,7 @@ import { HttpCacheService } from 'src/app/common/services/cache/http-cache.servi
 import { Localization } from 'src/app/common/localization/localization';
 import * as FullStory from '@fullstory/browser';
 import { FULL_STORY_ORG_ID } from 'src/app/app-constants';
+import { JasperServerCommonDataService } from 'src/app/common/dataservices/jasperServerCommon.data.service';
 
 @Component({
   selector: 'app-layout',
@@ -54,7 +55,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private utils: RetailUtilities,
     private snackBar: MatSnackBar,
     private httpCacheService: HttpCacheService,
-    private commonLocalization : Localization) {
+    private commonLocalization : Localization,
+    private jasperServerCommonDataService:JasperServerCommonDataService) {
     this.routeDataService.loadSettings().then(result => {
       if (result) {
         const value = this.routeDataService.GetChildMenu('/');
@@ -68,7 +70,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
       this.applyTheme('blacktheme');
-      this.setauthTokenProvider();
+      this.jasperServerCommonDataService.setauthTokenProvider();
       this.addThemeColor();
       this.propertyName = this.localization.GetPropertyInfo('PropertyName');
       let propConfig = JSON.parse(sessionStorage.getItem("propConfig"));
@@ -267,14 +269,7 @@ logoutHandler(arg) {
         "propertyName": this.propertyInfo.GetPropertyInfoByKey('PropertyName')
       });
     }
-  }
-
-  async setauthTokenProvider() {
-    let tenantId = Number(this.localization.GetPropertyInfo('TenantId'));
-    let productId = Number(this.localization.GetPropertyInfo('ProductId'));
-    let productADB2CConfig = await this.PropertySettingService.GetProductADB2CConfiguration(tenantId,productId);
-    localStorage.setItem("authtokenProvider",productADB2CConfig.tokenProvider);
-  }
+  } 
 
 
   setAutoLogoff() {
