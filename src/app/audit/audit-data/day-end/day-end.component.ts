@@ -57,7 +57,6 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   newSysDate: Date = this.propertyInfo.CurrentDate;
   canProcess = false;
   isProcessClicked = true;
-  successFlag = false;
   success: any;
   GridData: GridData[] = [];
   AppointmentStatus: any;
@@ -256,8 +255,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         const response = result.result as any;
         if (response.isSuccess) {
           this.propertyInfo.SetPropertyDate(this.newSysDate);
-          this.UpdateInventoryAudit();
-          this.ShowSuccessMessage();
+          this.UpdateInventoryAudit();          
           if (this.propertyInfo.HasRevenuePostingEnabled) {
             this.SendNewSystemDate();
           }
@@ -488,16 +486,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.InvokeServiceCall("PerformDayEnd", Host.retailPOS, HttpMethod.Put, uriParam);
     }
   }
-
-  ShowSuccessMessage() {
-    // tslint:disable-next-line: max-line-length
-    const message = `${this.captions.systemMovedTo} ${this.localization.LocalizeDate(this.newSysDate)}`;
-    this.successFlag = true;
-    this.canProcess = false;
-    this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue, x => {
-      //this.SyncUpItemAndTaxes(this.currSysDate);
-    });
-  }
+  
   trackByFn(index, cell) {
     return index;
   }
@@ -803,9 +792,9 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.retailSharedService.propertyDate = this.propertyInfo.CurrentDate;
     this.retailSharedService.useRetailInterface = this.propertyInfo.UseRetailInterface;
     if (this.retailSharedService.settleOpenTransaction) {
-      this.utils.RedirectTo(RedirectToModules.order);
+     this.utils.RedirectTo(RedirectToModules.order);
     } else if (this.retailSharedService.reOpenTransaction) {
-      this.utils.RedirectTo(RedirectToModules.retail);
+     this.utils.RedirectTo(RedirectToModules.retail);
     }
   }
 
