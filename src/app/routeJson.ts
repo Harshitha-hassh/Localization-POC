@@ -408,7 +408,7 @@ export const routeJSON = {
     "GetAllSubCategories": "SubCategories",
     "CreateSubCategory": "SubCategories",
     "EditSubCategory": "SubCategories/{id}",
-    "DeleteSubCategory": "SubCategories/{id}/{levelId}",
+    "DeleteSubCategory": "SubCategories/{id}/{levelId}?forceDelete={forceDelete}",
     "SubCategoryDragDrop": "SubCategories/listorder",
     "LinkCategoryAndSubCategory": "SubCategories/{level}/{parentId}",
     "GetCategoryAndSubCategoryLink": "SubCategories/categorySubCategoryLink",
