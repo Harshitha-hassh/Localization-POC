@@ -32,7 +32,7 @@ export class RouteLoaderService {
         const router = this.injector.get(Router);
         console.log(router);
         this.getProductMenus().then(
-        // this.getSettings().subscribe( // uncomment for hard coded menu
+        //this.getSettings().subscribe( // uncomment for hard coded menu
           response => {
             console.log('is Dynamic Menu available?:' + (!Array.isArray(response) || 0 == response.length) ? 'DM-No!' : 'DM-Yes!');
             this.currentSettings = response;
@@ -1397,6 +1397,27 @@ export class RouteLoaderService {
                 menuPosition: 'Secondary',
                 externalLink: false,
                 linkedElement: [
+                ],
+                breakPointNumber: 0
+              },
+              {
+                elementID: 4082,
+                tenantID: 0,
+                propertyID: 0,
+                productID: 2,
+                textID: 4082,
+                text: "CGPS FAILED PROFILE",
+                routePath: "/settings/utilities/cgpsFailedProfile",
+                imgPath: "",
+                order: 5,
+                visibility: true,
+                disable: false,
+                parentID: 4046,
+                menuAlignment: 'Combo',
+                menuPosition: 'Secondary',
+                externalLink: false,
+                linkedElement: [
+
                 ],
                 breakPointNumber: 0
               },

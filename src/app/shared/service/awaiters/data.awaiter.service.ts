@@ -43,6 +43,7 @@ export class DataAwaiterService {
         RetailDataAwaiters.searchPayee = this.searchClient.bind(this);
         RetailDataAwaiters.searchTransactionGuest = this.searchClient.bind(this);
         RetailDataAwaiters.CreatePlayer = this.createClient.bind(this);
+        RetailDataAwaiters.GetGuestByPlatformGuestGuid = this.GetGuestByPlatformGuestGuid.bind(this);
         RetailDataAwaiters.openAddPayeePopup = this.openAddGuestPopup.bind(this);
         RetailDataAwaiters.getPayeeDetails = this.getClientDetails.bind(this);
         RetailDataAwaiters.getPayeeInfo = this.getClientInfo.bind(this);
@@ -69,8 +70,8 @@ export class DataAwaiterService {
         return client;
     }
 
-    private async searchClient(name: string, requestUid: string): Promise<[ClientSearchModel[], PayeeInfo[]]> {
-        let response: any = await this.clientDataService.searchClient(name, requestUid);
+    private async searchClient(name: string, type: number, requestUid: string, isPlatformGuestSearch:any): Promise<[ClientSearchModel[], PayeeInfo[]]> {
+        let response: any = await this.clientDataService.searchClient(name, requestUid, isPlatformGuestSearch);
 
         let clientDetails: PayeeInfo[] = [];
         let responseUid = "";
@@ -117,11 +118,46 @@ export class DataAwaiterService {
             playerCategoryId: client.clientCategoryId != 0 ? client.clientCategoryId : 1,
             emailId: emailId,
             phoneNumber: phoneNo,
-            lastName: client.lastName
+            lastName: client.lastName,
+            platformGuestUuid: client.platformGuestUuid
         };
         return payee;
     }
+    private BuildPayeeDataFromClientInfo(client: ClientInfo): PayeeInfo {
+        let emailId = '';
+        let phoneNo = '';
+        let emailObj = client.emails;
+        let phoneObj = client.phoneNumbers;
 
+        if (emailObj && emailObj.length) {
+            emailObj = emailObj.sort((a, b) => a.contactTypeId < b.contactTypeId ? -1 : a.contactTypeId > b.contactTypeId ? 1 : 0);
+            emailId = emailObj.find(x => !x.isPrivate && x.isPrimary) ? emailObj.find(x => !x.isPrivate && x.isPrimary).emailId : emailObj[0].emailId;
+        }
+
+        if (phoneObj && phoneObj.length) {
+            phoneObj = phoneObj.sort((a, b) => a.contactTypeId < b.contactTypeId ? -1 : a.contactTypeId > b.contactTypeId ? 1 : 0);
+            phoneNo = phoneObj.find(x => !x.isPrivate && x.isPrimary) ? phoneObj.find(x => !x.isPrivate && x.isPrimary).number : phoneObj[0].number;
+        }
+
+        let payee: PayeeInfo = {
+            id: client.id,
+            name: client.client.firstName + ' ' + client.client.lastName,
+            address: client.addresses ? (client.addresses.addressLine1 ? client.addresses.addressLine1 : '' + ' ' + client.addresses.state ? client.addresses.state : '') : '',
+            country: client.addresses ? client.addresses.country ? client.addresses.country : '' : '',
+            zip: client.addresses ? client.addresses.zipCode ? client.addresses.zipCode : '' : '',
+            city: client.addresses ? client.addresses.city ? client.addresses.city : '' : '',
+            guestProfileId: client.client.memberId ? client.client.memberId : client.client.guestId,
+            cardInfo: client.clientCreditCardInfo ? client.clientCreditCardInfo : [],
+            patronId: client.client.loyaltyDetail && client.client.loyaltyDetail[0] ? client.client.loyaltyDetail[0].patronId : '',
+            rank: client.client.loyaltyDetail && client.client.loyaltyDetail[0] ? client.client.loyaltyDetail[0].rank : '',
+            playerCategoryId: client.client.clientCategoryId,
+            emailId: emailId,
+            phoneNumber: phoneNo,
+            lastName: client.client.lastName,
+            platformGuestUuid: client.client.platformGuestUuid
+        };
+        return payee;
+    }
     private async createClient(clientobj, callback): Promise<any> {
         const response = await this.clientDataService.CreateClientDetails(this.MapToClientInfoObj(clientobj));
         callback(response.id);
@@ -153,7 +189,7 @@ export class DataAwaiterService {
         } as ClientInfo;
     }
 
-    async openAddGuestPopup(e, callback: Function, id?, guestId?,  modifyLineItemsCallback?: Function, patronId?) {
+    async openAddGuestPopup(e, callback: Function, id?, guestId?,  modifyLineItemsCallback?: Function,platformGuestUuid?: any, patronId?) {
         let dialogRef = null;
         if (e.toLowerCase() == "ordersummary" ) {
             var result = await this.userAccessBusiness.getUserAccess(BreakPoint.AddNewClientProfile);
@@ -171,6 +207,10 @@ export class DataAwaiterService {
         } else if(e.toLowerCase() == "ordersummaryedit") {
             var result = await this.userAccessBusiness.getUserAccess(BreakPoint.EditClientProfile);
             if (result.isAllow || result.isViewOnly) {
+                if ((guestId == '' || guestId == DefaultGUID) && (platformGuestUuid && platformGuestUuid != '' && platformGuestUuid != DefaultGUID)){
+                    var clientInfo = await this.clientDataService.getClientbyPlatformId(platformGuestUuid);
+                }
+                else
                 var clientInfo = await this.clientDataService.getClientbyGuestId(guestId);
                 dialogRef = this.dialog.open(ClientPopupComponent, {
                     width: '95%',
@@ -223,7 +263,10 @@ export class DataAwaiterService {
         }
         return clientDetails;
     }
-
+    public async GetGuestByPlatformGuestGuid(platformGuestGuid: string) {
+        var response = await this.clientDataService.GetGuestByPlatformGuestGuid(platformGuestGuid);
+        return this.BuildPayeeDataFromClientInfo(response);
+    }
     GetDefaultOutlet() {
         return this.userDefaultService.GetDefaultOutlet();
     }

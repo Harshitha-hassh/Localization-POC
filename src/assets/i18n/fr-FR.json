@@ -964,7 +964,8 @@
     "searchByFullName": "Search by Full Name_fr",
     "searchByPatronId": "Search by Patron Id_fr",
     "Search": "SEARCH_fr",
-    "cReset": "RESET_fr"
+    "cReset": "RESET_fr",
+    "platformGuestSearch": "Extended Profile Search_fr"
   },
   "shop": {
     "ticketDiscount": "Ticket Discount_fr",
@@ -4344,6 +4345,12 @@
   "endTimeError": "Missing End Time_fr",
   "lbl_overlapRule": "Overlap rule not allowed_fr",
   "lbl_enable_Rules": "Enable Timeframe for Discount_fr",
+  "platformGuestSearch": "Extended Profile Search_fr",
+  "lbl_Sync": "Sync_fr",
+  "lbl_SearchCGPS": "Search by Description_fr",
+  "lbl_retryCount": "Retry Count_fr",
+  "lbl_processInitiated": "Process Initiated_fr",
+  "tooltip_refresh": "Refresh_fr",
   "Error_PMSCommunication_Not_Configured": "PMS Communication Receiver Not Configured_fr",
   "btn_add_host": "Add Host_fr",
   "lbl_list_view": "List View_fr",

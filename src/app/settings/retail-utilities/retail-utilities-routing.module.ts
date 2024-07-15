@@ -16,6 +16,7 @@ import { ManagerUtilitiesComponent } from './manager-utilities/manager-utilities
 import { PrinterDefaultConfigurationComponent } from './manager-utilities/printer-default-configuration/printer-default-configuration.component';
 import { UserAccessBreakPoints as CommonBreakPoint } from 'src/app/common/constants/useraccess.constants';
 import { EnahancedInventoryMasterSyncComponent } from '../../retail/enahanced-inventory-master-sync/enahanced-inventory-master-sync.component';
+import { CgpsLoggingProfileSyncWrapperComponent } from './cgps-logging-profile-sync-wrapper/cgps-logging-profile-sync-wrapper.component';
 // import { PlayerDiscountTypeComponent } from 'src/app/common/components/player-discount-type/player-discount-type.component';
 
 
@@ -96,6 +97,12 @@ const routes: Routes = [{
       component: EnahancedInventoryMasterSyncComponent,
       canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
       data: { breakPointNumber: BreakPoint.InventorySync, redirectTo: 'inventorysync', syncAccess: true }
+    },
+    {
+      path: 'cgpsFailedProfile', 
+      component: CgpsLoggingProfileSyncWrapperComponent,
+      canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
+      data: { showtableRecords: true },
     },
     // {
     //   path: 'playerTypeDiscountType', component: PlayerDiscountTypeComponent,

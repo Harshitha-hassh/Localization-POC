@@ -48,8 +48,8 @@ import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
 import { LoginRoutes } from '../login.routes';
 import * as CONSTANTS from 'src/app/common/constants';
 import { cloneDeep } from 'lodash';
-import { DMConfigDataService } from 'src/app/common/dataservices/datamagine-config.data.service';
 import { UTempDataUtilities } from 'src/app/common/shared/shared/utilities/utempdata-utilities';
+import { DMConfigDataService } from 'src/app/common/dataservices/datamagine-config.data.service';
 import { TenantConfigurationDataService } from 'src/app/retail/shared/service/data- services/tenantConfiguration.data.service';
 
 
@@ -603,6 +603,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       maxDecimalPlace  +
       '; PropTimeFormat=' +
       result.propTimeFormat +
+      '; PlatFormExtendedSearchRequired=' +
+      result.platFormExtendedSearchRequired +
       ';';
     sessionStorage.setItem(PROPERTY_INFO, PropertyValues);
     sessionStorage.setItem(PROPERTY_DATE, result.propertyDate);

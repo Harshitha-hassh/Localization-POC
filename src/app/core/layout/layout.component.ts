@@ -19,6 +19,7 @@ import { MatSnackBar} from '@angular/material/snack-bar';
 import { ButtonType } from 'src/app/retail/shared/globalsContant';
 import moment, { Moment } from 'moment';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { NotificationFailureType } from 'src/app/shared/components/menu/menu.model';
 import { HttpCacheService } from 'src/app/common/services/cache/http-cache.service';
 import { Localization } from 'src/app/common/localization/localization';
 import * as FullStory from '@fullstory/browser';
@@ -115,6 +116,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.signalR.startConnection();
     this.signalR.startedConnection.then(res => {
       this.addPropertyListener();
+      this.addTenantUserListener();
       this.addCacheListener();
     });
   }
@@ -251,6 +253,24 @@ logoutHandler(arg) {
     } else {
       bodyTag.removeAttribute("id");
       this.localization.setFloatLabel = 'never';
+    }
+  }
+  private addTenantUserListener(){
+    this.signalR.addUserListener(this, this.signalRTenantUserListener)
+      .catch((err) => console.log('Failure error ' + err));
+ 
+      this.signalR.hubConnection.onreconnected((reconnect)=>{
+        const list=this.signalR.GetSignalREvents();
+        list.forEach(e=>{this.signalR.subscribeToEvent(e);});
+        });
+  }
+ 
+  async signalRTenantUserListener(message: SignalRMessage<NotificationModel>): Promise<void> {
+    if(message && message.content && message.content.notificationType==SignalRNotificationType.NotificationIcon) {
+      const content =JSON.parse(message.content.notificationObjectString);
+      if(message.name == SignalRMessages.PlatformSyncFailed){  
+        this.sessionService.transactionCount.next([{ id : NotificationFailureType.cgpsLog, count : 0, message: content.message }]);
+      }
     }
   }
 

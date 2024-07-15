@@ -964,7 +964,8 @@
     "searchByFullName": "Search by Full Name_in",
     "searchByPatronId": "Search by Patron Id_in",
     "Search": "SEARCH_in",
-    "cReset": "RESET_in"
+    "cReset": "RESET_in",
+    "platformGuestSearch": "Extended Profile Search_in"
   },
   "shop": {
     "ticketDiscount": "Ticket Discount_in",
@@ -4408,5 +4409,11 @@
   "lbl_selectAll": "Select All_in",
   "lbl_Active": "Active_in",
   "lbl_properties": "Properties_in",
-  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_in"
+  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_in",
+  "platformGuestSearch": "Extended Profile Search_in",
+  "lbl_Sync": "Sync_in",
+  "lbl_SearchCGPS": "Search by Description_in",
+  "lbl_retryCount": "Retry Count_in",
+  "lbl_processInitiated": "Process Initiated_in",
+  "tooltip_refresh": "Refresh_in"
 }

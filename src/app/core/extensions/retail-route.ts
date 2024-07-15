@@ -55,7 +55,7 @@ export enum RetailRoutes {
   CreateClient = 'Clients' ,
   UpdateClient ='Clients',
   RecentClientInfo ='Clients/recent/{propertyDate}/search/{searchType}/{requestUid}',
-  SearchClientInfo = 'Clients/search/{searchType}/{requestUid}',
+  SearchClientInfo = 'Clients/search/{searchType}/{requestUid}?isPlatformGuestSearch={isPlatformGuestSearch}',
   GlobalSearchClientInfo = 'Clients/searchByKey',
   GetClientByPatronId="Clients/getClientByPatronId/{patronId}",
   GetClientByIds = "Clients/query/{includeRelatedData}",
@@ -96,7 +96,12 @@ export enum RetailRoutes {
    GetUserByTenantId = 'User/GetUserByTenantId/{UserName}/{tenantId}',
    GetTenantGroupDetailByProductId = 'TenantOrganization/GetTenantGroupDetailByProductId?productId={productId}',
    GetPropertyDetailsByProductId = 'Property/GetPropertyDetailsByProductId?productId={productId}',
-   ValidateUserByProductTenantAndEmail = 'User/ValidateUserByProductTenantAndEmail?productId={productId}&tenantId={tenantId}&emailId={emailId}'
+  ValidateUserByProductTenantAndEmail = 'User/ValidateUserByProductTenantAndEmail?productId={productId}&tenantId={tenantId}&emailId={emailId}',
+  GetClientByPlatformGuestUuid = "Clients/platformGuid/{platformGuid}",
+
+   //CGPSFailedProfile
+    GetAllFailedGuestProfile = 'GuestPolicy/GetAllFailedGuestProfile',
+    ProfileSyncManaulTrigger = 'GuestPolicy/ProfileSyncManualTrigger',
 }
 
 export enum MsGraphRoutes {

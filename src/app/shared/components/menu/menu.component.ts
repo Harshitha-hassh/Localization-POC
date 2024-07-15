@@ -123,6 +123,21 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.transactionCountSubscription = this._sessionService.transactionCount.subscribe(res => {
       const revenueresult = res && res.find(x => x.id === NotificationFailureType.revenuePostingFailure) ;
       const paymentresult = res && res.find(x => x.id === NotificationFailureType.paymentTransactionFailure) ;
+      const cgpsLogResult = res && res.find(x => x.id === NotificationFailureType.cgpsLog);
+      if(cgpsLogResult){
+        if(this.notificationInfo && this.notificationInfo.length && (!this.notificationInfo.some(x => x.id === NotificationFailureType.cgpsLog))){
+          this.notificationInfo.push({
+            id: NotificationFailureType.cgpsLog,
+            message: cgpsLogResult.message
+          });
+        }
+        else{
+          this.notificationInfo.push({
+            id: NotificationFailureType.cgpsLog,
+            message: cgpsLogResult.message
+          });
+        }
+      }
       const dMPostingResult = res && res.find(x => x.id == NotificationFailureType.dMPostingFailure);
       if (revenueresult && revenueresult.count > 0) {
         if (this.notificationInfo && this.notificationInfo.length > 0 &&
@@ -494,6 +509,10 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   removePaymentFailureInfo(){
     this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.paymentTransactionFailure);
   }
+  removeCgpsFailureInfo(){
+    this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.cgpsLog);
+  }
+
 
   removeDMReceiptLogInfo(){
     this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.dMPostingFailure);
@@ -510,6 +529,12 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       this.removePaymentFailureInfo();
       this.notificationCount = this.notificationInfo?.length;
     }
+    else if (id === NotificationFailureType.cgpsLog){
+      this.router.navigate(['/settings/utilities/cgpsFailedProfile']);
+      this.removeCgpsFailureInfo();
+      this.notificationCount = this.notificationInfo?.length;
+    }
+    
     else if (id === NotificationFailureType.dMPostingFailure){
       this.router.navigate(['/shop/viewshop/retailtransactions/datamaginereceiptlog']);
       this.removeDMReceiptLogInfo();
