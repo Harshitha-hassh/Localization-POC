@@ -4416,5 +4416,7 @@
   "lbl_selectAll": "Select All_fi",
   "lbl_Active": "Active_fi",
   "lbl_properties": "Properties_fi",
+  "lbl_searchMenu": "Search Menu_fi",
+  "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_fi",
   "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_fi"
 }

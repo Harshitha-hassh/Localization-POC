@@ -2004,7 +2004,49 @@ export class RouteLoaderService {
           },
         ],
         breakPointNumber: 0
-      }
+      },
+      {
+        elementID: 4001,
+        tenantID: 0,
+        propertyID: 0,
+        productID: 2,
+        textID: 4001,
+        text: "All",
+        routePath: "/all",
+        imgPath: "icon-all-menu",
+        order: 1,
+        visibility: true,
+        disable: false,
+        parentID: 0,
+        menuPosition: "Primary",
+        menuAlignment: "Horizontal",
+        externalLink: false,
+        linkedElement: [
+
+        ],
+        breakPointNumber: 0
+      },
+      {
+        elementID: 4001,
+        tenantID: 0,
+        propertyID: 0,
+        productID: 2,
+        textID: 4001,
+        text: "Search Report",
+        routePath: "/allReport",
+        imgPath: "icon-Search-Reports",
+        order: 1,
+        visibility: true,
+        disable: false,
+        parentID: 0,
+        menuPosition: "Primary",
+        menuAlignment: "Horizontal",
+        externalLink: false,
+        linkedElement: [
+
+        ],
+        breakPointNumber: 0
+      },
     ]
     return of(menuList);
   }

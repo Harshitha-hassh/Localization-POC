@@ -4416,5 +4416,7 @@
   "lbl_selectAll": "Select All_kr",
   "lbl_Active": "Active_kr",
   "lbl_properties": "Properties_kr",
+  "lbl_searchMenu": "Search Menu_kr",
+  "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_kr",
   "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_kr"
 }

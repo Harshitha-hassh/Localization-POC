@@ -52,7 +52,15 @@ const routes: Routes = [
       {
         path: 'audit',
         loadChildren: () => import('../audit/audit.module').then(m => m.AuditModule),
-      }
+      },
+      {
+        path: 'all',
+        loadChildren: () => import('src/app/common/all/all.module').then(m => m.AllModule)
+      },
+      {
+        path: 'allReport',
+        loadChildren: () => import('src/app/common/report-menu/report-menu.module').then(m => m.reportMenuModule)
+      },
     ]
   },
   {path:'**', redirectTo:'/home'}
