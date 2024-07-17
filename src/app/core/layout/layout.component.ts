@@ -19,10 +19,12 @@ import { MatSnackBar} from '@angular/material/snack-bar';
 import { ButtonType } from 'src/app/retail/shared/globalsContant';
 import moment, { Moment } from 'moment';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { NotificationFailureType } from 'src/app/shared/components/menu/menu.model';
 import { HttpCacheService } from 'src/app/common/services/cache/http-cache.service';
 import { Localization } from 'src/app/common/localization/localization';
 import * as FullStory from '@fullstory/browser';
 import { FULL_STORY_ORG_ID } from 'src/app/app-constants';
+import { JasperServerCommonDataService } from 'src/app/common/dataservices/jasperServerCommon.data.service';
 
 @Component({
   selector: 'app-layout',
@@ -31,7 +33,7 @@ import { FULL_STORY_ORG_ID } from 'src/app/app-constants';
   encapsulation: ViewEncapsulation.None
 })
 export class LayoutComponent implements OnInit, OnDestroy {
-
+ 
   menuList: any;
   propertyName: string;
   propertyDateTime: any;
@@ -40,6 +42,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   private autoLogOff: any = false;
   private logOffAfter: number = 1;
+  getThemeColor: string = '';
   constructor(private routeDataService: RouteLoaderService,
     private sessionService: ManageSessionService,
     private localization: RetailLocalization,
@@ -53,7 +56,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private utils: RetailUtilities,
     private snackBar: MatSnackBar,
     private httpCacheService: HttpCacheService,
-    private commonLocalization : Localization) {
+    private commonLocalization : Localization,
+    private jasperServerCommonDataService:JasperServerCommonDataService) {
     this.routeDataService.loadSettings().then(result => {
       if (result) {
         const value = this.routeDataService.GetChildMenu('/');
@@ -67,6 +71,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
       this.applyTheme('blacktheme');
+      this.jasperServerCommonDataService.setauthTokenProvider();
+      this.addThemeColor();
       this.propertyName = this.localization.GetPropertyInfo('PropertyName');
       let propConfig = JSON.parse(sessionStorage.getItem("propConfig"));
       let enableSignalR = propConfig?.EnableSignalR;
@@ -88,6 +94,11 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.setUICache();
     }
   }
+  addThemeColor(){
+    const defaultsettings =JSON.parse(sessionStorage.getItem("defaultSettings"));
+    const themeColorSetting = defaultsettings?.find( x=>x.switch == 'THEME_COLOR');
+    this.getThemeColor = themeColorSetting ? themeColorSetting?.value: '';
+  };
 
   async setUICache() {
     await this.propertyService.readUICacheJsonData().then((result) => {
@@ -105,6 +116,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.signalR.startConnection();
     this.signalR.startedConnection.then(res => {
       this.addPropertyListener();
+      this.addTenantUserListener();
       this.addCacheListener();
     });
   }
@@ -243,6 +255,24 @@ logoutHandler(arg) {
       this.localization.setFloatLabel = 'never';
     }
   }
+  private addTenantUserListener(){
+    this.signalR.addUserListener(this, this.signalRTenantUserListener)
+      .catch((err) => console.log('Failure error ' + err));
+ 
+      this.signalR.hubConnection.onreconnected((reconnect)=>{
+        const list=this.signalR.GetSignalREvents();
+        list.forEach(e=>{this.signalR.subscribeToEvent(e);});
+        });
+  }
+ 
+  async signalRTenantUserListener(message: SignalRMessage<NotificationModel>): Promise<void> {
+    if(message && message.content && message.content.notificationType==SignalRNotificationType.NotificationIcon) {
+      const content =JSON.parse(message.content.notificationObjectString);
+      if(message.name == SignalRMessages.PlatformSyncFailed){  
+        this.sessionService.transactionCount.next([{ id : NotificationFailureType.cgpsLog, count : 0, message: content.message }]);
+      }
+    }
+  }
 
   setFullStory(){
     let propertyConfig = JSON.parse(sessionStorage.getItem('propConfig'));
@@ -259,7 +289,8 @@ logoutHandler(arg) {
         "propertyName": this.propertyInfo.GetPropertyInfoByKey('PropertyName')
       });
     }
-  }
+  } 
+
 
   setAutoLogoff() {
     this.autoLogOff = this.utils.GetPropertyInfo('AutoLogOff');

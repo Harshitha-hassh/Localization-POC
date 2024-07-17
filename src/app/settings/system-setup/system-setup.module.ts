@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { SystemConfigModule } from 'src/app/retail/sytem-config/system-config.module';
 import { RetailModule } from 'src/app/retail/retail.module';
 import { PropertyInfoComponent } from './property-info/property-info.component';
+import { ColorSketchModule } from 'ngx-color/sketch';
 
 @NgModule({
     declarations: [SystemSetupComponent, PropertyInfoComponent],
@@ -15,7 +16,8 @@ import { PropertyInfoComponent } from './property-info/property-info.component';
         SharedModule,
         SystemSetupRoutingModule,
         SystemConfigModule,
-        RetailModule
+        RetailModule,
+        ColorSketchModule
     ]
 })
 export class SystemSetupModule { }

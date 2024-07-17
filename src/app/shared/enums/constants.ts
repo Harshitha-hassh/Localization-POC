@@ -295,3 +295,4 @@ export enum DialogCloseOption {
     Cancel,
     Close
   }
+export const defaultThemeColorSwitch = 'THEME_COLOR';

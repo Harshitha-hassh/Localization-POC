@@ -374,7 +374,7 @@ export const routeJSON = {
     "GlobalSearchClients": "clients/searchByKey",
     "GlobalSearchTherapist": "therapists/search/name",
     "GlobalSearchAppointments": "services/search/appointments",
-    "SearchClientInformation": "Clients/search/{isVip}/{clientGuid}/{requestUid}",
+  "SearchClientInformation": "Clients/search/{isVip}/{clientGuid}/{requestUid}",
     "RecentClientInformation": "Clients/recent/{propertyDate}/search/{requestUid}",
     "IsTherapistServiceInUse": "appointments/validate/inuse/therapist/{therapistId}/Service/{serviceId}",
     "IsTherapistAddonInUse": "appointments/validate/inuse/therapist/{therapistId}/addon/{addonId}",
@@ -408,7 +408,7 @@ export const routeJSON = {
     "GetAllSubCategories": "SubCategories",
     "CreateSubCategory": "SubCategories",
     "EditSubCategory": "SubCategories/{id}",
-    "DeleteSubCategory": "SubCategories/{id}/{levelId}",
+    "DeleteSubCategory": "SubCategories/{id}/{levelId}?forceDelete={forceDelete}",
     "SubCategoryDragDrop": "SubCategories/listorder",
     "LinkCategoryAndSubCategory": "SubCategories/{level}/{parentId}",
     "GetCategoryAndSubCategoryLink": "SubCategories/categorySubCategoryLink",
@@ -574,7 +574,7 @@ export const routeJSON = {
     "GetRetailFeatureConfiguration": "GetRetailFeatureConfiguration/propertyId/{propertyId}/productId/{productId}",
     "GetCommissionableUsers": "users/commissionable/item/{itemId}/productId/{productId}/outlet/{outletId}",
     "RecentClientInfo": "Clients/recent/{propertyDate}/search/{searchType}/{requestUid}",
-    "SearchClientInfo": "Clients/search/{searchType}/{requestUid}",
+  "SearchClientInfo": "Clients/search/{searchType}/{requestUid}?isPlatformGuestSearch={isPlatformGuestSearch}",
     "GetVendors": "Vendor",
     "GetVendorInfo": "RetailManagementService/Vendor/GetVendorDetails",
     "CreateVendor": "Vendor",
@@ -747,5 +747,6 @@ export const routeJSON = {
     "GetDiscountConfigurationsByCategoryId" : "DiscountConfigurations/{categoryId}",
     "DeleteDiscountTypeConfigurationByIds":"DiscountTypeConfiguration/DeleteDiscountTypeConfigurationByIds",
     "GetBreakpointforRoleAsync":"user/GetUserClaimsForRoleAsync/",
-    "GetDuplicateUserByName": "user/GetDuplicateUserByName/{userId}?tenantId={tenantId}&userName={userName}"
+  "GetDuplicateUserByName": "user/GetDuplicateUserByName/{userId}?tenantId={tenantId}&userName={userName}",
+  "GetClientByPlatformGuestUuid" : "Clients/platformGuid/{platformGuid}"
   }

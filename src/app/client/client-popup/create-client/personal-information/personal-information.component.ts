@@ -177,8 +177,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         base64textString: '',
         thumbnailImg: ''
       }),
-      imgReferenceId: '',
-      receiptDate: ''
+      imgReferenceId :'',
+      receiptDate: '',
+      platformBussinessCardRevUuid: '',
+      platformBussinessCardUuid: '',
+      platformGuestUuid: '',
+      platformRevUuid: '',
     });
     this.isCMSConfigured = this.featureSwitch.IsCMSConfigured;
   }
@@ -820,6 +824,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       );
       this.FormGrp.controls.patronid.setValue(loyalty ? loyalty.patronId : '');
       this.FormGrp.controls.rank.setValue(loyalty ? loyalty.rank : '');
+      this.FormGrp.controls.platformBussinessCardRevUuid.setValue(clientInfo.client.platformBussinessCardRevUuid);
+      this.FormGrp.controls.platformBussinessCardUuid.setValue(clientInfo.client.platformBussinessCardUuid);
+      this.FormGrp.controls.platformGuestUuid.setValue(clientInfo.client.platformGuestUuid);
+      this.FormGrp.controls.platformRevUuid.setValue(clientInfo.client.platformRevUuid);
     }
     if (clientInfo.addresses && clientInfo.addresses != null) {
       this.FormGrp.controls.postal_code.setValue(clientInfo.addresses.zipCode);

@@ -19,6 +19,7 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
 import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
 import { UserAccessDataService } from 'src/app/common/dataservices/authentication/useraccess.data.service';
 import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 
 @Component({
@@ -116,10 +117,13 @@ export class ClientDetailsComponent implements OnInit {
     clientSearchTypes: any;
     selectedClientSearchType: number;
     enableSearch: boolean = false;
+    isPlatformGuestSearch: boolean = false;
+    platFormExtendedSearchRequired: boolean = false;
+    ClientSearchForm: UntypedFormGroup;
     isCopyClient = false;
     clientSearchValue: string;
     clientNameInfo: any = {};
-    constructor(private dialog: MatDialog,
+    constructor(private dialog: MatDialog, private fb: UntypedFormBuilder,
         private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
         , private userAccessBusiness: UserAccessBusiness) {
@@ -146,6 +150,10 @@ export class ClientDetailsComponent implements OnInit {
     sampleData: any = [];
 
     ngOnInit() {
+        this.platFormExtendedSearchRequired = this.localization.IsPlatformGuestSearchConfigured();
+        this.ClientSearchForm = this.fb.group({
+            platformGuestSearch: this.isPlatformGuestSearch,
+          })
         let clientswitchvalue = this.clientSearchTypes.find(t => t.checked == true);
         this.setSearchText(clientswitchvalue?.id);
         this.SetclientSearchTypeValue(clientswitchvalue?.id);
@@ -437,6 +445,10 @@ export class ClientDetailsComponent implements OnInit {
             panelClass: 'small-popup'
         });
         dialogRef.afterClosed().subscribe(result => {
+            if (result && result.length && result[0] == 'ReloadClient') {
+                this.getClientDataByGuid(result[1]);
+                return;
+            }
             this.isAddAppointment = false;
             this.singleUserView = false;
             if (this.clientService.selectedIndex == 1) {
@@ -498,6 +510,18 @@ export class ClientDetailsComponent implements OnInit {
             extraParams: ['FromClientSearch']
         });
     }
+    getPlatformGuestData(platformGuestId : any){
+        this.http.CallApiWithCallback({
+          host: Host.retailPOS,
+          success: this.successCallback.bind(this),
+          error: this.errorCallback.bind(this),
+            callDesc: "GetClientByPlatformGuestUuid",
+          method: HttpMethod.Get,
+          showError: true,
+          uriParams: { platformGuid: platformGuestId },
+          extraParams: []
+        });
+      }
 
     getClientData(clientId: number) {
         this.http.CallApiWithCallback({
@@ -532,15 +556,22 @@ export class ClientDetailsComponent implements OnInit {
         let response = event[2] == 'edit' ? await this.userAccessBusiness.getUserAccess(BreakPoint.EditClientProfile) :
             await this.userAccessBusiness.getUserAccess(BreakPoint.CopyClientProfile);
         this.isClientViewOnly = response.isViewOnly;
+        let platformGuestId;
         if (response.isAllow || response.isViewOnly) {
             if (event.length > 0) {
                 this.guestId = event[0].client.guestId;
+                platformGuestId = event[0].client.platformGuestUuid
                 this.isCopyClient = event[2] == 'copy';
             }
             else {
                 this.guestId = event.client.guestId;
+                platformGuestId = event.client.platformGuestUuid
             }
-            this.getClientDataByGuid(this.guestId);
+            if ((this.guestId == '' || this.guestId == DefaultGUID) && platformGuestId && platformGuestId != '' && platformGuestId != DefaultGUID) {
+                this.getPlatformGuestData(platformGuestId);
+            } else {
+                this.getClientDataByGuid(this.guestId); 
+            }
         }
     }
 
@@ -784,7 +815,7 @@ export class ClientDetailsComponent implements OnInit {
             error: this.errorCallback.bind(this),
             callDesc: "SearchClientInfo",
             method: HttpMethod.Put,
-            uriParams: { searchType: searchType, requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000) },
+            uriParams: { searchType:searchType, requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000), isPlatformGuestSearch: this.isPlatformGuestSearch },
             body: pattern,
             showError: true,
             extraParams: []
@@ -955,7 +986,11 @@ export class ClientDetailsComponent implements OnInit {
                         name: this.formattedData[i].firstName + " " + this.formattedData[i].lastName,
                         email: this.formattedData[i].emails && this.formattedData[i].emails.length > 0 ? this.formattedEmail : '',
                         emails: this.formattedData[i].emails && this.formattedData[i].emails.length > 0 ? this.formattedEmails : '',
-                        image: img ? img : null
+                        image: img ? img : null,
+                        platformBussinessCardRevUuid: this.formattedData[i].platformBussinessCardRevUuid,
+                        platformBussinessCardUuid: this.formattedData[i].platformBussinessCardUuid,
+                        platformGuestUuid: this.formattedData[i].platformGuestUuid,
+                        platformRevUuid: this.formattedData[i].platformRevUuid
                     }),
                         this.clientData.push({
                             client: client[0],
@@ -1025,7 +1060,7 @@ export class ClientDetailsComponent implements OnInit {
             // this.imageprocessorservice.GetImagesByReference(this.appointmentservice.guestId, GlobalConst.ImgRefType.client, this.successCallback.bind(this), this.errorCallback.bind(this), [], true);
             // this.openEditDialog(this.appointmentservice.clientId, clientDetail);
         }
-        else if (callDesc == "getClientInfoByGuid") {
+        else if (callDesc == "getClientInfoByGuid" || callDesc == "GetClientByPlatformGuestUuid") {
             let clientInfo = <any>result.result;
             this.openEditDialog(clientInfo.client.id, clientInfo);
             // this.CreateClientByGuid(clientInfo);
@@ -1043,4 +1078,8 @@ export class ClientDetailsComponent implements OnInit {
     }
     errorCallback<T>(error: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
     }
+
+    isPlatformGuestSearchChanged(e){
+        this.isPlatformGuestSearch = Boolean(e[0]);
+      }
 }

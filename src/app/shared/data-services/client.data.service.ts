@@ -2,30 +2,31 @@ import { Injectable } from "@angular/core";
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { RetailPosCommunication } from '../communication/services/retailpos.service';
 import { ClientInfo, ClientSearchModel, ClientGlobalSearchModel } from 'src/app/client/client-popup/create-client/client.modal';
-import { clientSearchType } from 'src/app/retail/shared/globalsContant';
+import { ButtonType, clientSearchType } from 'src/app/retail/shared/globalsContant';
 import { ApplyPolicy } from "src/app/common/consent-management/consent-management.model";
 import { CommonApiRoutes } from "src/app/common/common-route";
+import { RetailUtilities } from "src/app/retail/shared/utilities/retail-utilities";
 
 
 @Injectable()
 export class ClientDataService {
 
     constructor(private _httpPos: RetailPosCommunication
-        , private localization: RetailStandaloneLocalization) {
+        , private localization: RetailStandaloneLocalization,private utils: RetailUtilities) {
     }    
 
-    public async CreateClientDetails(requestBody:ClientInfo): Promise<any> {
+    public async CreateClientDetails(requestBody: ClientInfo, handlerError: boolean = true): Promise<any> {
         return this._httpPos.postPromise({
             route: RetailApiRoute.CreateClient,
             body: requestBody
-        });
+        },handlerError);
     }
 
-    public async UpdateClientDetails(requestBody: ClientInfo): Promise<any> {
+    public async UpdateClientDetails(requestBody: ClientInfo,handlerError : boolean = true): Promise<any> {
         return this._httpPos.putPromise({
             route: RetailApiRoute.UpdateClient,
             body: requestBody
-        });
+        }, handlerError);
     }
 
     public async searchClientByPatron(patronId: string): Promise<ClientInfo> {
@@ -36,17 +37,24 @@ export class ClientDataService {
     }
 
     public async getClientbyGuestId(guestId : string) : Promise<ClientInfo>{
-        return this._httpPos.getPromise({
-            route: RetailApiRoute.GetClientByGuestId,
-            uriParams: { guid : guestId }
-        });
+            return this._httpPos.getPromise({
+                route: RetailApiRoute.GetClientByGuestId,
+                uriParams: { guid : guestId }
+            });
+        }
+
+    public async getClientbyPlatformId(platformGuestId : string) : Promise<ClientInfo>{
+            return this._httpPos.getPromise({
+                route: RetailApiRoute.GetClientByGuestId,
+                uriParams: { platformGuestId : platformGuestId }
+            });
     }
 
-    public async searchClient(name: string, requestUid: string, searchType = clientSearchType.All): Promise<ClientSearchModel[]> {
+    public async searchClient(name: string, requestUid: string,isPlatformGuestSearch: any, searchType = clientSearchType.All): Promise<ClientSearchModel[]> {
         return this._httpPos.putPromise({
             route: RetailApiRoute.SearchClientInfo,
             body: name,
-            uriParams: { searchType: searchType, requestUid: requestUid }
+            uriParams: { searchType: searchType, requestUid: requestUid, isPlatformGuestSearch: isPlatformGuestSearch }
         });
     }
 
@@ -64,7 +72,14 @@ export class ClientDataService {
             uriParams: { includeRelatedData: false }
         });
     }
-
+    public async GetGuestByPlatformGuestGuid(platformGuestGuid: string):Promise<ClientInfo> {
+        var response: any = await this._httpPos.getPromise({
+            route: RetailApiRoute.GetClientByPlatformGuestUuid,
+            showError: true,
+            uriParams: { platformGuid: platformGuestGuid }
+        });
+        return response;
+    }
     public async getGuestStayDetails(guestId: string): Promise<any[]> {
         return this._httpPos.getPromise({
             route: RetailApiRoute.GetClientStayDetails,

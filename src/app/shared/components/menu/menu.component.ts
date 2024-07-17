@@ -111,7 +111,6 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.setauthTokenProvider();
     this.captions = this._localization.captions;
     this.userName = this._localization.GetUserInfo("userName");
     this.firstName = this._localization.GetUserInfo("firstName");
@@ -124,6 +123,21 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.transactionCountSubscription = this._sessionService.transactionCount.subscribe(res => {
       const revenueresult = res && res.find(x => x.id === NotificationFailureType.revenuePostingFailure) ;
       const paymentresult = res && res.find(x => x.id === NotificationFailureType.paymentTransactionFailure) ;
+      const cgpsLogResult = res && res.find(x => x.id === NotificationFailureType.cgpsLog);
+      if(cgpsLogResult){
+        if(this.notificationInfo && this.notificationInfo.length && (!this.notificationInfo.some(x => x.id === NotificationFailureType.cgpsLog))){
+          this.notificationInfo.push({
+            id: NotificationFailureType.cgpsLog,
+            message: cgpsLogResult.message
+          });
+        }
+        else{
+          this.notificationInfo.push({
+            id: NotificationFailureType.cgpsLog,
+            message: cgpsLogResult.message
+          });
+        }
+      }
       const dMPostingResult = res && res.find(x => x.id == NotificationFailureType.dMPostingFailure);
       if (revenueresult && revenueresult.count > 0) {
         if (this.notificationInfo && this.notificationInfo.length > 0 &&
@@ -201,6 +215,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
         this.userDefaultsService.syncDefaultValues(Number(this._localization.GetUserInfo("userId")));
         this.userSessionConfig.getAllClientSetting().then(defaultsSetting => {
           sessionStorage.setItem('defaultSettings', JSON.stringify(defaultsSetting));
+          this.reloadSession();
         });
         if (!this._propertyInfo.UseRetailInterface) {
           this.notificationCount = 0;
@@ -216,7 +231,12 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
   }
-
+  reloadSession() {
+    setTimeout(function () {
+      let getThemeColor: any  = document.getElementsByClassName('theme-color-wrapper')[0];
+      getThemeColor.style.setProperty("background-color", JSON.parse(sessionStorage.getItem('defaultSettings'))?.find(x=>x.switch == "THEME_COLOR").value, "important")
+    }, 500);
+  }
   RefreshConfig(isFromPropertyChangeEvent : boolean = false){
     if (!sessionStorage.getItem("giftCardConfiguration") || isFromPropertyChangeEvent) {
       this._propertyFeatureService.GetGiftCardConfiguration().then((config) => {
@@ -280,14 +300,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       console.log(ex);
     }
   }
-
-  async setauthTokenProvider() {
-    let tenantId = Number(this._localization.GetPropertyInfo('TenantId'));
-    let productId = Number(this._localization.GetPropertyInfo('ProductId'));
-    let productADB2CConfig = await this.PropertySettingService.GetProductADB2CConfiguration(tenantId,productId);
-    localStorage.setItem("authtokenProvider",productADB2CConfig.tokenProvider);
-  }
-
+ 
   compareSelect = (val1, val2) => {
     return val1 && val2 && val1.text === val2.text;
   }
@@ -496,6 +509,10 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   removePaymentFailureInfo(){
     this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.paymentTransactionFailure);
   }
+  removeCgpsFailureInfo(){
+    this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.cgpsLog);
+  }
+
 
   removeDMReceiptLogInfo(){
     this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.dMPostingFailure);
@@ -512,6 +529,12 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       this.removePaymentFailureInfo();
       this.notificationCount = this.notificationInfo?.length;
     }
+    else if (id === NotificationFailureType.cgpsLog){
+      this.router.navigate(['/settings/utilities/cgpsFailedProfile']);
+      this.removeCgpsFailureInfo();
+      this.notificationCount = this.notificationInfo?.length;
+    }
+    
     else if (id === NotificationFailureType.dMPostingFailure){
       this.router.navigate(['/shop/viewshop/retailtransactions/datamaginereceiptlog']);
       this.removeDMReceiptLogInfo();

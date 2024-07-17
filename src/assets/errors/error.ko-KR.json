@@ -254,6 +254,8 @@
   "101916": "Discount Reason in use, Delete not allowed,_kr",
   "101917": "Date cannot be rolled over to the next day_kr",
   "101918": "Current system date {CurrentSystemDate} is greater than or equal to roll over date {RollOverDate}. Please Re Login_kr",
+  "310001": "Duplicate Guest exists on the system_kr",
+  "310002": "Guest information is out of date. Please refresh and try again_kr",
   "110060": "Credit Limit Exceeded_kr",
   "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed._kr",
   "8834501": "Client has future booking, cannot purge/anonymize the data_kr",

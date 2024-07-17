@@ -48,8 +48,8 @@ import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
 import { LoginRoutes } from '../login.routes';
 import * as CONSTANTS from 'src/app/common/constants';
 import { cloneDeep } from 'lodash';
-import { DMConfigDataService } from 'src/app/common/dataservices/datamagine-config.data.service';
 import { UTempDataUtilities } from 'src/app/common/shared/shared/utilities/utempdata-utilities';
+import { DMConfigDataService } from 'src/app/common/dataservices/datamagine-config.data.service';
 import { TenantConfigurationDataService } from 'src/app/retail/shared/service/data- services/tenantConfiguration.data.service';
 
 
@@ -308,9 +308,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  getADB2CEmailClaim(claims)
+  async getADB2CEmailClaim(claims,tenantId)
   {
     let email = "";
+    let user;
+    let userName = claims['name'];
 
     if(claims != null && claims != undefined)
     {
@@ -322,6 +324,25 @@ export class LoginComponent implements OnInit, OnDestroy {
       {
         email = claims['email'];
       }
+      else if (userName != null) {
+        const serviceParams = {
+          route: RetailRoutes.GetUserByTenantId,
+          uriParams: { "UserName": userName, "tenantId": tenantId },
+          header: '',
+          body: '',
+          showError: true,
+          baseResponse: true
+        };
+        let token = localStorage.getItem('id_token');
+        sessionStorage.setItem('_jwt', token);
+        user = await this.loginService.makeGetCall(serviceParams);
+        email = user.result.email;
+      }
+      else{
+        this.utils.showAlert(this.captions.lbl_UserTokenErrorMessage, AlertType.Error, ButtonType.Ok, (res => {
+          this.adb2cLogout();
+        }));
+      }
     }
 
     return email;
@@ -332,7 +353,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginForms.controls.customerId.setValue(tenantId);
     let claims = this.adb2cClaims;
     const credentials = {
-      email: this.getADB2CEmailClaim(claims),
+      email: await this.getADB2CEmailClaim(claims,tenantId),
       tenantId: tenantId,
       ProductId: Product.RETAIL
     };
@@ -582,6 +603,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       maxDecimalPlace  +
       '; PropTimeFormat=' +
       result.propTimeFormat +
+      '; PlatFormExtendedSearchRequired=' +
+      result.platFormExtendedSearchRequired +
       ';';
     sessionStorage.setItem(PROPERTY_INFO, PropertyValues);
     sessionStorage.setItem(PROPERTY_DATE, result.propertyDate);

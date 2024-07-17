@@ -20,13 +20,13 @@ export class CreateClientBusiness {
         private _guestPolicyService : GuestDataPolicyDataService,
       ) {}
     
-    async SubmitForm(details) {
+  async SubmitForm(details, handlerError: boolean) {
         this.isClientUpdate = details.personalDetailsFormGroup.guestId != DefaultGUID;
         var clientDetail = this.CreateUpdateClient(details , this.isClientUpdate)
         if (details.personalDetailsFormGroup.guestId != DefaultGUID)
-          return  this._clientDataService.UpdateClientDetails(clientDetail);
+          return  this._clientDataService.UpdateClientDetails(clientDetail,handlerError);
         else
-          return this._clientDataService.CreateClientDetails(clientDetail);
+          return this._clientDataService.CreateClientDetails(clientDetail,handlerError);
       }
     
       CreateUpdateClient(details :any ,isClientUpdate: boolean){
@@ -59,7 +59,11 @@ export class CreateClientBusiness {
         consentExpiryDate : new Date(),
         consentPolicyId : 0,
         isPurged : false,
-        policyComments: ""
+        policyComments: "",
+        platformBussinessCardRevUuid: isClientUpdate ?  details.personalDetailsFormGroup.platformBussinessCardRevUuid : '',
+        platformBussinessCardUuid: isClientUpdate ?  details.personalDetailsFormGroup.platformBussinessCardUuid : '',
+        platformGuestUuid: isClientUpdate ?  details.personalDetailsFormGroup.platformGuestUuid : '',
+        platformRevUuid: isClientUpdate ?  details.personalDetailsFormGroup.platformRevUuid : '',
       };
 
       let clientInfoObj: ClientInfo = {
