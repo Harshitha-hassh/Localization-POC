@@ -20,6 +20,7 @@ import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/u
 import { UserAccessDataService } from 'src/app/common/dataservices/authentication/useraccess.data.service';
 import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { PropertySettingDataService } from 'src/app/retail/sytem-config/property-setting.data.service';
 
 
 @Component({
@@ -126,7 +127,7 @@ export class ClientDetailsComponent implements OnInit {
     constructor(private dialog: MatDialog, private fb: UntypedFormBuilder,
         private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
-        , private userAccessBusiness: UserAccessBusiness) {
+        , private userAccessBusiness: UserAccessBusiness , private propertySettingService : PropertySettingDataService) {
         this.floatLabel = this.localization.setFloatLabel;
         this.floatLabelNever = this.localization.setFloatLabelNever;
         route.params.subscribe(val => {
@@ -153,7 +154,8 @@ export class ClientDetailsComponent implements OnInit {
         this.platFormExtendedSearchRequired = this.localization.IsPlatformGuestSearchConfigured();
         this.ClientSearchForm = this.fb.group({
             platformGuestSearch: this.isPlatformGuestSearch,
-          })
+        })
+        this.setPlatformGuestSearch();
         let clientswitchvalue = this.clientSearchTypes.find(t => t.checked == true);
         this.setSearchText(clientswitchvalue?.id);
         this.SetclientSearchTypeValue(clientswitchvalue?.id);
@@ -1081,5 +1083,13 @@ export class ClientDetailsComponent implements OnInit {
 
     isPlatformGuestSearchChanged(e){
         this.isPlatformGuestSearch = Boolean(e[0]);
-      }
+    }
+    async setPlatformGuestSearch()
+    {
+        let platformGuestSearch = await this.propertySettingService.GetEnableExtendedProfileSearchByDefaultSetting();
+        this.isPlatformGuestSearch = platformGuestSearch && platformGuestSearch.value.toString().toLowerCase() === 'true' ? true : false;
+        this.ClientSearchForm.setValue({
+            platformGuestSearch: this.isPlatformGuestSearch
+        });
+    }
 }

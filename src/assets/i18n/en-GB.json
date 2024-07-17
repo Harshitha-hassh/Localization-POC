@@ -2988,6 +2988,7 @@
     "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs_gb",
     "EnableAutoCloseTransaction": "Auto Close Transaction_gb",
     "ValidatePayAgentAndSettlerOnRefund": "Validate Pay Agent & Settler On Refund_gb",
+    "platformGuestSearch": "Extended Profile Search_gb",
     "AllowPaymentSurcharges": "Allow Surcharges_gb",
     "DoNotDisplayItemName": "Do Not Display Item name for Open Item_gb",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_gb",
