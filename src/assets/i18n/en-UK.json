@@ -2988,6 +2988,7 @@
     "EnableAutoRetailTransactionLogs": "Enable Auto Retail Transaction Logs_uk",
     "EnableAutoCloseTransaction": "Auto Close Transaction_uk",
     "ValidatePayAgentAndSettlerOnRefund": "Validate Pay Agent & Settler On Refund_uk",
+    "platformGuestSearch": "Extended Profile Search_uk",
     "AllowPaymentSurcharges": "Allow Surcharges_uk",
     "DoNotDisplayItemName": "Do Not Display Item name for Open Item_uk",
     "ExcludeDiscountOnGratuity": "Exclude Discount On Gratuity_uk",

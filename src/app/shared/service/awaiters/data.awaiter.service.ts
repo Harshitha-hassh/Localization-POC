@@ -17,6 +17,7 @@ import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/u
 import * as RetailClientInfo from 'src/app/retail/shared/shared.modal';
 import { NotificationConfigurationService } from "src/app/common/templates/notification-configuration/notification-configuration.service";
 import { EventNotificationGroup } from "src/app/common/templates/notification-configuration/notification-configuration.model";
+import { PropertySettingDataService } from "src/app/retail/sytem-config/property-setting.data.service";
 
 @Injectable({
     providedIn: "root"
@@ -33,7 +34,8 @@ export class DataAwaiterService {
         private userDefaultService: UserdefaultsInformationService,
         private notificationDataService: NotificationDataService,
         private userAccessBusiness : UserAccessBusiness,
-        private notificationConfigurationService: NotificationConfigurationService
+        private notificationConfigurationService: NotificationConfigurationService,
+        private propertySettingDataService: PropertySettingDataService
     ) {
         this.setAwaiters();
     }
@@ -55,6 +57,7 @@ export class DataAwaiterService {
 
         RetailDataAwaiters.GetExistingPlayer = this.getExistingPlayer.bind(this);
         RetailDataAwaiters.openGuestPatronPopup = this.openGuestPatronPopup.bind(this);
+        RetailDataAwaiters.GetExtendedProfileSearchConfig = this.GetExtendedProfileSearchConfig.bind(this);
     }
 
     getChildMenu(url, menutype?) {
@@ -299,5 +302,10 @@ export class DataAwaiterService {
 
     private async getMemberInfo(cardNo: string, scheduleDateTime: string){
         return await this.clientDataService.getMemberInfo(cardNo, scheduleDateTime);
+    }
+    private async GetExtendedProfileSearchConfig() : Promise<boolean>
+    {
+        let platformGuestSearch = await this.propertySettingDataService.GetEnableExtendedProfileSearchByDefaultSetting();
+        return platformGuestSearch && platformGuestSearch.value === 'true' ? true : false;
     }
 }
