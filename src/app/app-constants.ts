@@ -20,3 +20,4 @@ export const NO_OF_DECIMAL_DIGITS = 'NoOfDecimalDigits';
 export const RETAIL_PRODUCT_ID = 2;
 export const SUPPORT_TENANT = 1001;
 export const SUPPORT_USERNAME = 'AGYSSUPPORT';
+export const PAYMENT_CONFIGURATION = "PAYMENT_CONFIGURATION";
