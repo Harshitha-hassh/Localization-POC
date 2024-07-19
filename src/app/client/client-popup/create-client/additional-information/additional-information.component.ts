@@ -15,6 +15,7 @@ import { takeUntil } from 'rxjs/operators';
 import { GuestPolicyWrapperComponent } from './guest-policy-wrapper/guest-policy-wrapper.component';
 import { GuestPolicyDetail, PolicyCategoryType, PolicyType } from 'src/app/common/shared/shared.modal';
 import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
+import { RetailRoutes } from 'src/app/retail/retail-route';
 
 @Component({
   selector: 'app-additional-information',
@@ -147,11 +148,11 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   async getAllVipTypes() {
     await this.http.CallApiAsync<any>({
       host: Host.retailPOS,
-      callDesc: "GetAllVipType",
+      callDesc: RetailRoutes.GetAllVipType,
       method: HttpMethod.Get,
       showError: false,
-      uriParams: { isIncludeInactive : false},
-    }).then( x => 
+      uriParams: { isIncludeInactive: false },
+    }).then(x =>
       this.vipTypes = x.result
     );
   }
