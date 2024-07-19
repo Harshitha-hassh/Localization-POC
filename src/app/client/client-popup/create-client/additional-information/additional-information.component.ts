@@ -53,6 +53,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   floatLabel: string;
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   actionType: string;
+  vipTypes: any;
   isCopyClient = false;
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
@@ -87,6 +88,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       card_name: '',
       expiry_date: this.PropertyInfo.CurrentDate,
       card_cvv: '',
+      vip:'',
       // client_scheduling: false,
       customField1: '',
       customField2: '',
@@ -111,6 +113,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     if (this.isClientViewOnly) {
       this.utils.disableControls(this.FormGrp);
     }
+    this.getAllVipTypes();
   }  
 
   ngOnDestroy() {
@@ -138,6 +141,19 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       }
     }
     this.FormGrp.controls.clientCreditCardInfo.setValue(this.cardInfo);
+    this.FormGrp.controls.vip.setValue(clientInfo.client.vip);
+  }
+
+  async getAllVipTypes() {
+    await this.http.CallApiAsync<any>({
+      host: Host.retailPOS,
+      callDesc: "GetAllVipType",
+      method: HttpMethod.Get,
+      showError: false,
+      uriParams: { isIncludeInactive : false},
+    }).then( x => 
+      this.vipTypes = x.result
+    );
   }
 
   SaveReferenceId(event: number) {

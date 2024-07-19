@@ -18,6 +18,8 @@ import * as RetailClientInfo from 'src/app/retail/shared/shared.modal';
 import { NotificationConfigurationService } from "src/app/common/templates/notification-configuration/notification-configuration.service";
 import { EventNotificationGroup } from "src/app/common/templates/notification-configuration/notification-configuration.model";
 import { PropertySettingDataService } from "src/app/retail/sytem-config/property-setting.data.service";
+import { CommonDataAwaiters } from "src/app/common/shared/events/awaiters/common.data.awaiters";
+import { VipTypBusiness } from "src/app/retail/shared/service/vip-type.service";
 
 @Injectable({
     providedIn: "root"
@@ -35,7 +37,8 @@ export class DataAwaiterService {
         private notificationDataService: NotificationDataService,
         private userAccessBusiness : UserAccessBusiness,
         private notificationConfigurationService: NotificationConfigurationService,
-        private propertySettingDataService: PropertySettingDataService
+        private propertySettingDataService: PropertySettingDataService,
+        private vipTypeBusiness: VipTypBusiness
     ) {
         this.setAwaiters();
     }
@@ -58,6 +61,14 @@ export class DataAwaiterService {
         RetailDataAwaiters.GetExistingPlayer = this.getExistingPlayer.bind(this);
         RetailDataAwaiters.openGuestPatronPopup = this.openGuestPatronPopup.bind(this);
         RetailDataAwaiters.GetExtendedProfileSearchConfig = this.GetExtendedProfileSearchConfig.bind(this);
+
+        //VipType
+        CommonDataAwaiters.GetAllVipType = this.getAllVipType.bind(this);
+        CommonDataAwaiters.CreateVipType = this.createVipType.bind(this);
+        CommonDataAwaiters.UpdateVipType = this.updateVipType.bind(this);
+        CommonDataAwaiters.DeleteVipType = this.deleteVipType.bind(this);
+        CommonDataAwaiters.GetNextListOrderofVipType = this.getNextListOrderofVipType.bind(this);
+        CommonDataAwaiters.DragDropVipType = this.dragDropVipType.bind(this);
     }
 
     getChildMenu(url, menutype?) {
@@ -122,7 +133,8 @@ export class DataAwaiterService {
             emailId: emailId,
             phoneNumber: phoneNo,
             lastName: client.lastName,
-            platformGuestUuid: client.platformGuestUuid
+            platformGuestUuid: client.platformGuestUuid,
+            vip: client.vip
         };
         return payee;
     }
@@ -307,5 +319,28 @@ export class DataAwaiterService {
     {
         let platformGuestSearch = await this.propertySettingDataService.GetEnableExtendedProfileSearchByDefaultSetting();
         return platformGuestSearch && platformGuestSearch.value === 'true' ? true : false;
+    }
+    private async getAllVipType(includeInactive) {
+        return this.vipTypeBusiness.getAllVipType(includeInactive);
+    }
+
+    private async createVipType(vipType) {
+        return this.vipTypeBusiness.createVipType(vipType);
+    }
+
+    private async updateVipType(vipType, id) {
+        return this.vipTypeBusiness.updateVipType(vipType, id);
+    }
+
+    private async deleteVipType(id){
+        return this.vipTypeBusiness.deleteVipType(id);
+    }
+
+    private async getNextListOrderofVipType(){
+        return this.vipTypeBusiness.getNextListOrderofVipType();
+    }
+
+    private async dragDropVipType(fromOrder, toOrder, includeInactive){
+        return this.vipTypeBusiness.dragDropVipType(fromOrder, toOrder, includeInactive);
     }
 }

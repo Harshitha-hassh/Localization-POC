@@ -989,6 +989,7 @@ export class ClientDetailsComponent implements OnInit {
                         email: this.formattedData[i].emails && this.formattedData[i].emails.length > 0 ? this.formattedEmail : '',
                         emails: this.formattedData[i].emails && this.formattedData[i].emails.length > 0 ? this.formattedEmails : '',
                         image: img ? img : null,
+                        vip: this.formattedData[i].vip,
                         platformBussinessCardRevUuid: this.formattedData[i].platformBussinessCardRevUuid,
                         platformBussinessCardUuid: this.formattedData[i].platformBussinessCardUuid,
                         platformGuestUuid: this.formattedData[i].platformGuestUuid,

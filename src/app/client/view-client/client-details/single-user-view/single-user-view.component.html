@@ -5,7 +5,7 @@
     <!-- <img src="assets/images/resolutionImage.png" alt="Resolution Logo" class="resolution-img"/> -->
     <!-- <app-img-thumbnail class="profile-pic" ></app-img-thumbnail> -->
     <div class="user-data">
-      <div class="LW18">{{userData.client.name}}
+      <div class="LW18 mr-2">{{userData.client.name}} <span *ngIf="userData.client.vip" class="icon-vip"></span>
         <button [attr.automationId]="'Btn_singleUserView_playerWorth'" mat-button (click)="playerWorthDetails()" class="player-worth cursor"
         [ngClass]="!this.userData.patronId  ? 'button_invalid' : ''" matTooltip="{{captions.bookAppointment.PlayerWorth}}">
         <ng-container *ngIf="this.userData.patronId ">

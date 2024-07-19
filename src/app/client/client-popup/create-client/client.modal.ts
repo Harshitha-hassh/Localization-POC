@@ -79,6 +79,7 @@ export interface ClientInfo {
     consentPolicyId:number;
     isPurged:boolean;
     policyComments : string;
+    vip?:string;
     platformBussinessCardRevUuid?: string;
     platformBussinessCardUuid?: string;
     platformGuestUuid?: string;

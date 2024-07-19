@@ -60,6 +60,7 @@ export class CreateClientBusiness {
         consentPolicyId : 0,
         isPurged : false,
         policyComments: "",
+        vip: this.additionalDetailsFormGroup.vip ? this.additionalDetailsFormGroup.vip : '',
         platformBussinessCardRevUuid: isClientUpdate ?  details.personalDetailsFormGroup.platformBussinessCardRevUuid : '',
         platformBussinessCardUuid: isClientUpdate ?  details.personalDetailsFormGroup.platformBussinessCardUuid : '',
         platformGuestUuid: isClientUpdate ?  details.personalDetailsFormGroup.platformGuestUuid : '',
