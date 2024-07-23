@@ -970,6 +970,19 @@
     "platformGuestSearch": "Extended Profile Search_in"
   },
   "shop": {
+    "MultiPackRedeemPopup": {
+      "lbl_RedeemMultiPack": "REDEEM MULTIPACK_in",
+      "Redeem": "REDEEM_in",
+      "lbl_multipacksNotAvailableToRedeem": "No MultiPack available_in",
+      "lbl_multiPackAvailable": "AVAILABLE MULTIPACK_in",
+      "lbl_soldTo": "Sold To_in",
+      "lbl_soldOn": "Sold On_in",
+      "lbl_validUpto": "Valid Upto_in",
+      "lbl_remainingSessions": "Remaining Sessions_in",
+      "lbl_showExpired": "Show Expired Multipacks_in",
+      "lbl_searchingGuest": "Searching Guest details..._in",
+      "lbl_searchingMultiPacks": "Retrieving multipack details..._in"
+    },
     "ticketDiscount": "Ticket Discount_in",
     "err_noCommision": "Commission for Item or Commission class for User(s) is not configured._in",
     "err_selectTherapistUser": "Please select the required User(s) to apply commission._in",
@@ -4446,11 +4459,5 @@
   "lbl_properties": "Properties_in",
   "lbl_searchMenu": "Search Menu_in",
   "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_in",
-  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_in",
-  "platformGuestSearch": "Extended Profile Search_in",
-  "lbl_Sync": "Sync_in",
-  "lbl_SearchCGPS": "Search by Description_in",
-  "lbl_retryCount": "Retry Count_in",
-  "lbl_processInitiated": "Process Initiated_in",
-  "tooltip_refresh": "Refresh_in"
+  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_in"
 }

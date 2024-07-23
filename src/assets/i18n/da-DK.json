@@ -970,6 +970,19 @@
     "platformGuestSearch": "Extended Profile Search_da"
   },
   "shop": {
+    "MultiPackRedeemPopup": {
+      "lbl_RedeemMultiPack": "REDEEM MULTIPACK_da",
+      "Redeem": "REDEEM_da",
+      "lbl_multipacksNotAvailableToRedeem": "No MultiPack available_da",
+      "lbl_multiPackAvailable": "AVAILABLE MULTIPACK_da",
+      "lbl_soldTo": "Sold To_da",
+      "lbl_soldOn": "Sold On_da",
+      "lbl_validUpto": "Valid Upto_da",
+      "lbl_remainingSessions": "Remaining Sessions_da",
+      "lbl_showExpired": "Show Expired Multipacks_da",
+      "lbl_searchingGuest": "Searching Guest details..._da",
+      "lbl_searchingMultiPacks": "Retrieving multipack details..._da"
+    },
     "ticketDiscount": "Ticket Discount_da",
     "err_noCommision": "Commission for Item or Commission class for User(s) is not configured._da",
     "err_selectTherapistUser": "Please select the required User(s) to apply commission._da",
@@ -4096,6 +4109,7 @@
   "btn_createVIPType": "CREATE_da",
   "btn_updateVIPType": "UPDATE_da",
   "lbl_editVIPTypeTitle": "Edit VIP Type_da",
+  "VIPTypeInUse": "is tagged with Notification,Delete/Inactive Not Allowed_da",
   "lbl_searchVIPTypePlaceholder": "Search by VIP  Code, VIP Name_da",
   "lbl_copyText": "You are copying \"{code}\" item_da",
   "Search": "Search_da",

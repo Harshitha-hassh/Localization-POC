@@ -970,6 +970,19 @@
     "platformGuestSearch": "Extended Profile Search"
   },
   "shop": {
+    "MultiPackRedeemPopup": {
+      "lbl_RedeemMultiPack": "REDEEM MULTIPACK",
+      "Redeem": "REDEEM",
+      "lbl_multipacksNotAvailableToRedeem": "No MultiPack available",
+      "lbl_multiPackAvailable": "AVAILABLE MULTIPACK",
+      "lbl_soldTo": "Sold To",
+      "lbl_soldOn": "Sold On",
+      "lbl_validUpto": "Valid Upto",
+      "lbl_remainingSessions": "Remaining Sessions",
+      "lbl_showExpired": "Show Expired Multipacks",
+      "lbl_searchingGuest": "Searching Guest details...",
+      "lbl_searchingMultiPacks": "Retrieving multipack details..."
+    },
     "ticketDiscount": "Ticket Discount",
     "err_noCommision": "Commission for Item or Commission class for User(s) is not configured.",
     "err_selectTherapistUser": "Please select the required User(s) to apply commission.",
