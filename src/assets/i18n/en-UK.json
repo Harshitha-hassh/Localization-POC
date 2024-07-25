@@ -1332,7 +1332,8 @@
     "DiscountComment": "Discount Comment_uk",
     "DiscountReason": "Discount Reason_uk",
     "Discount": "Discount_uk",
-    "RemoveItemDeletionConfirmmsg": "Are you sure want to delete _uk",
+    "RemoveItemDeletionConfirmmsg": "Are you sure you want to delete _uk",
+    "RemoveAllItemsFromCart": "Are you sure you want to delete all the items from the Cart _uk",
     "SubTotaltobePaid": "Subtotal To Be Paid_uk",
     "ExtraChargesMayApply": "Extra charges may apply_uk",
     "unpaidPlayers": {

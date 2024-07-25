@@ -1332,7 +1332,8 @@
     "DiscountComment": "Discount Comment_kr",
     "DiscountReason": "Discount Reason_kr",
     "Discount": "Discount_kr",
-    "RemoveItemDeletionConfirmmsg": "Are you sure want to delete _kr",
+    "RemoveItemDeletionConfirmmsg": "Are you sure you want to delete _kr",
+    "RemoveAllItemsFromCart": "Are you sure you want to delete all the items from the Cart _kr",
     "SubTotaltobePaid": "Subtotal To Be Paid_kr",
     "ExtraChargesMayApply": "Extra charges may apply_kr",
     "unpaidPlayers": {

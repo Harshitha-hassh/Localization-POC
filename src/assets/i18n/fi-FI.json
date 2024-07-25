@@ -1332,7 +1332,8 @@
     "DiscountComment": "Discount Comment_fi",
     "DiscountReason": "Discount Reason_fi",
     "Discount": "Discount_fi",
-    "RemoveItemDeletionConfirmmsg": "Are you sure want to delete _fi",
+    "RemoveItemDeletionConfirmmsg": "Are you sure you want to delete _fi",
+    "RemoveAllItemsFromCart": "Are you sure you want to delete all the items from the Cart _fi",
     "SubTotaltobePaid": "Subtotal To Be Paid_fi",
     "ExtraChargesMayApply": "Extra charges may apply_fi",
     "unpaidPlayers": {
