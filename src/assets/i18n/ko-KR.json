@@ -1291,6 +1291,7 @@
     "ProceedRefund": "PROCEED REFUND_kr",
     "Add": "ADD_kr",
     "SelectGuestForRoomCharge": "Select a guest in order to continue with room charge payment_kr",
+    "SelectGuestForMultiPack": "Select a guest in order to continue with Multipack Item Payment_kr",
     "ReOpenNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Reopen not allowed. Use the Settle option to clear the unsettled amount._kr",
     "CancelNotAllowed": "Ticket #{TicketNumber} has unsettled payments. Cancellation not allowed. Use the Settle option to clear the unsettled amount._kr",
     "ProceedWithCardOnFile": "Do you want to proceed with Card on File?_kr",
