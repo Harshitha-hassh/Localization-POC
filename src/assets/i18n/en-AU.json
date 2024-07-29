@@ -1109,6 +1109,8 @@
     "SelectStaff": "Select Staff",
     "PresetPrecentage": "Preset Values",
     "CustomValues": "Custom Values",
+    "lbl_AdditionalServicecharges": "Additional Service charges",
+    "lbl_AdditionalGratuity": "Additional Gratuity",
     "Percentage": "Percentage %",
     "Amount": "Amount",
     "AmounttobePaid": "Amount Due",
