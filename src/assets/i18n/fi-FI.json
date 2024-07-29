@@ -4462,5 +4462,6 @@
   "lbl_properties": "Properties_fi",
   "lbl_searchMenu": "Search Menu_fi",
   "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_fi",
-  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_fi"
+  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_fi",
+  "lbl_deSelectAll": "Deselect All_fi"
 }

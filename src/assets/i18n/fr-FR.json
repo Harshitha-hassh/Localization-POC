@@ -4462,5 +4462,6 @@
   "lbl_properties": "Properties_fr",
   "lbl_searchMenu": "Search Menu_fr",
   "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_fr",
-  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_fr"
+  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_fr",
+  "lbl_deSelectAll": "Deselect All_fr"
 }

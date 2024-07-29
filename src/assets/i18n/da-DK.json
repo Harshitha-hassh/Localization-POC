@@ -4462,5 +4462,6 @@
   "lbl_properties": "Properties_da",
   "lbl_searchMenu": "Search Menu_da",
   "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_da",
-  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_da"
+  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_da",
+  "lbl_deSelectAll": "Deselect All_da"
 }

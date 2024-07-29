@@ -4462,5 +4462,6 @@
   "lbl_properties": "Properties_uk",
   "lbl_searchMenu": "Search Menu_uk",
   "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_uk",
-  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_uk"
+  "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_uk",
+  "lbl_deSelectAll": "Deselect All_uk"
 }
