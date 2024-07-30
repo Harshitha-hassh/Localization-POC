@@ -983,6 +983,7 @@
       "lbl_searchingGuest": "Searching Guest details..._in",
       "lbl_searchingMultiPacks": "Retrieving multipack details..._in"
     },
+    "MultiPackRedemptionCorrectVoidReturnNotAllowed": "{transactionType} not allowed for transactions with Multipack Redemption_in",
     "ticketDiscount": "Ticket Discount_in",
     "err_noCommision": "Commission for Item or Commission class for User(s) is not configured._in",
     "err_selectTherapistUser": "Please select the required User(s) to apply commission._in",
