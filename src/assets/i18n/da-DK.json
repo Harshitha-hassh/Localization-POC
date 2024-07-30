@@ -1395,6 +1395,7 @@
       "22": "Card On File_da",
       "24": "Wallet_da",
       "25": "Hotel Comp_da",
+      "26": "Non Integrated Credit Card_da",
       "44": "Other_da"
     },
     "GiftCard": {
@@ -1581,11 +1582,14 @@
       "SubHeader": "Following payments will be refunded_da"
     },
     "paymentInfoHeader": "PAYMENT INFORMATION_da",
+    "GetCardDetail": "Get Card Details_da",
+    "NonIntegratedCreditCardMessage": "The card details entered here are added in a token vault_da",
     "preferredInputModeSelectedBanner": "Preferred Card Capture Mode is selected as {preferredMethod}._da",
     "clickHere": "Click Here_da",
     "ToChange": "to change_da",
     "connect": "Connect_da",
-    "savedCardDetail": "Save Card Details_da",
+    "EnterCardDetails": "Enter Card Details_da",
+    "savedCardDetail": "Saved Card Details_da",
     "RoomChargePostingNotAllowed": "Posting is restricted to this Room._da",
     "HotelCompPostingNotAllowed": "Hotel Comp Posting is restricted to this Account Number._da",
     "UnableToCloseTransaction": "Unable to Close Transaction for ticket #{TicketNumber}_da",
@@ -1691,6 +1695,7 @@
     "5035": "5035 - Unsettled Payments_da",
     "5040": "5040 - DataMagine Receipt Log_da",
     "5045": "5045 - Refund Failures_da",
+    "5050": "5050 - Non Integrated Payment Log_da",
     "7000": "7000 - Outlet Setup_da",
     "7005": "7005 - Item Setup_da",
     "7010": "7010 - Quick Sale Keys_da",

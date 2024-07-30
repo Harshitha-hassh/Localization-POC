@@ -1412,7 +1412,7 @@
 }
 
 &.additional-information-wrapper{
-  .connect-btn{
+  .connect-btn, .custom-btn-style{
     color: $retail-primary-100 !important;
     border: 1px solid $retail-primary-100 !important;
   }

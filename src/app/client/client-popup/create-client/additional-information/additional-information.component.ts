@@ -107,7 +107,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {    
+   ngOnInit() {
     if(this.parentForm){
       this.parentForm.addControl('additionalDetailsFormGroup', this.FormGrp);
     }
@@ -126,7 +126,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     }
     this.isFirstTime = true;
   }
-
+  
   async SetEditValues(clientInfo) {
     this.FormGrp.controls.comments.setValue(clientInfo.client.comments && clientInfo.client.comments !=null ? clientInfo.client.comments : '');
     this.cardInfo = this.isCopyClient ? [] : clientInfo.client.clientCreditCardInfo && clientInfo.client.clientCreditCardInfo != null ? clientInfo.client.clientCreditCardInfo : [];
