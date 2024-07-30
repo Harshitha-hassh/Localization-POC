@@ -4381,6 +4381,7 @@
   "lbl_endTime": "End Time_fi",
   "lbl_rules": "Rules_fi",
   "lbl_Cancel_Msg": "Are you sure you want to cancel the changes?_fi",
+  "lbl_discountConfigReset_Msg": " Any changes made in the Pricing section will clear the configured discount values in Discount Configuration page. Do you wish to proceed?_fi",
   "lbl_clearAll": "CLEAR ALL_fi",
   "lbl_period": "Period_fi",
   "lbl_active": "ACTIVE_fi",
