@@ -4463,5 +4463,6 @@
   "lbl_searchMenu": "Search Menu_kr",
   "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_kr",
   "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_kr",
-  "lbl_deSelectAll": "Deselect All_kr"
+  "lbl_deSelectAll": "Deselect All_kr",
+  "AutologoffWarning": "You are about to be logged out in 2 minutes. Please complete your action._kr"
 }
