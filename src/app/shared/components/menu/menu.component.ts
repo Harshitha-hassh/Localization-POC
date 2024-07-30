@@ -272,23 +272,29 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   async openJasperSoftServerLink() {
-    let jasperServerURL: string = await this.jasperServerCommon.GetJasperServerBaseURL();    
-    await this.PropertySettingService.UpdateRoleAndAttributeToUser();
+    const [userattributeupdate,jasperServerURL,headers] = await  Promise.all([
+      this.PropertySettingService.UpdateRoleAndAttributeToUser(),
+      this.jasperServerCommon.GetJasperServerBaseURL(), 
+      this.jasperServerCommon.GetJasperServerHeader()
+   ]);
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
     xhr.addEventListener("readystatechange", function () {
       if (this.readyState === 4) {
         var url = jasperServerURL + "/flow.html?_flowId=homeFlow";
         let jaspersoftNavigationUri = url;
-        window.open(jaspersoftNavigationUri, '_blank');
+        window.open(jaspersoftNavigationUri, "_blank");
       }
     });
-    var _authtokenprovider = localStorage.getItem('authtokenProvider');
-    var data = "";
+    let data = "";
     xhr.open("GET", jasperServerURL + "/rest_v2/serverInfo");
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.setRequestHeader("pp", sessionStorage.getItem("_jwt"));
-    xhr.setRequestHeader("tokenProvider",_authtokenprovider);
+    if(headers){
+      Object.keys(headers).forEach(key => {
+        if (headers[key] !== null) {
+            xhr.setRequestHeader(key, headers[key]);
+        }
+    });
+    }
     xhr.send(data);
   }
 
