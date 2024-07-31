@@ -3079,6 +3079,8 @@
     "defaultRoomCharge": "Default Room Charge_kr",
     "defaultGroupCharge": "Default Group Charge_kr",
     "defaultHotelComp": "Default Hotel Comp_kr",
+    "defaultCityLedger": "Default City Ledger_kr",
+    "defaultRevenuePosting": "Default Revenue Posting_kr",
     "newPassword": "New Password_kr",
     "confirmPassword": "Confirm Password_kr",
     "err_confirmPassword": "Confirm Password should be same as new Password_kr",

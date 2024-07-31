@@ -3079,6 +3079,8 @@
     "defaultRoomCharge": "Default Room Charge_uk",
     "defaultGroupCharge": "Default Group Charge_uk",
     "defaultHotelComp": "Default Hotel Comp_uk",
+    "defaultCityLedger": "Default City Ledger_uk",
+    "defaultRevenuePosting": "Default Revenue Posting_uk",
     "newPassword": "New Password_uk",
     "confirmPassword": "Confirm Password_uk",
     "err_confirmPassword": "Confirm Password should be same as new Password_uk",

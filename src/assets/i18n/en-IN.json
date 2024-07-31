@@ -3079,6 +3079,8 @@
     "defaultRoomCharge": "Default Room Charge_in",
     "defaultGroupCharge": "Default Group Charge_in",
     "defaultHotelComp": "Default Hotel Comp_in",
+    "defaultCityLedger": "Default City Ledger_in",
+    "defaultRevenuePosting": "Default Revenue Posting_in",
     "newPassword": "New Password_in",
     "confirmPassword": "Confirm Password_in",
     "err_confirmPassword": "Confirm Password should be same as new Password_in",
