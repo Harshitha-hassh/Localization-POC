@@ -3079,6 +3079,8 @@
     "defaultRoomCharge": "Default Room Charge_de",
     "defaultGroupCharge": "Default Group Charge_de",
     "defaultHotelComp": "Default Hotel Comp_de",
+    "defaultCityLedger": "Default City Ledger_de",
+    "defaultRevenuePosting": "Default Revenue Posting_de",
     "newPassword": "New Password_de",
     "confirmPassword": "Confirm Password_de",
     "err_confirmPassword": "Confirm Password should be same as new Password_de",
