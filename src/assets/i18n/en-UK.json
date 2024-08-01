@@ -1624,6 +1624,7 @@
       "maxMembersAddedMsg": "Maximum number of Members added. Please check the selection_uk",
       "amountExceedOverallTotal": "Amount Exceeds Total_uk",
       "fetchingMemberDetailsMsg": "Please wait while members details are being loaded..._uk",
+      "fetchingSingleMemberDetailsMsg": "Please wait while member details are being loaded..._uk",
       "availableRounds": "Available Rounds_uk",
       "noRoundsMsg": "No Rounds Avaialble!_uk",
       "RetriveMemberInfo": "Retrieving Member Account Details..._uk",

@@ -1624,6 +1624,7 @@
       "maxMembersAddedMsg": "Maximum number of Members added. Please check the selection_fr",
       "amountExceedOverallTotal": "Amount Exceeds Total_fr",
       "fetchingMemberDetailsMsg": "Please wait while members details are being loaded..._fr",
+      "fetchingSingleMemberDetailsMsg": "Please wait while member details are being loaded..._fr",
       "availableRounds": "Available Rounds_fr",
       "noRoundsMsg": "No Rounds Avaialble!_fr",
       "RetriveMemberInfo": "Retrieving Member Account Details..._fr",
