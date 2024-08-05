@@ -1043,6 +1043,7 @@
     "RetailItems": "RETAIL ITEMS_de",
     "SearchBy": "Search by Item Name, Item #, Price, Vendor Name_de",
     "SearchByBarCode": "Search by Barcode #_de",
+    "SearchBySKU": "Search by SKU #_de",
     "NoItemstoShow": "No Items to Show_de",
     "ViewLess": "View Less_de",
     "Collapse": "Collapse_de",

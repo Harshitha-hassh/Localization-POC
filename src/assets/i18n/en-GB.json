@@ -1043,6 +1043,7 @@
     "RetailItems": "RETAIL ITEMS_gb",
     "SearchBy": "Search by Item Name, Item #, Price, Vendor Name_gb",
     "SearchByBarCode": "Search by Barcode #_gb",
+    "SearchBySKU": "Search by SKU #_gb",
     "NoItemstoShow": "No Items to Show_gb",
     "ViewLess": "View Less_gb",
     "Collapse": "Collapse_gb",

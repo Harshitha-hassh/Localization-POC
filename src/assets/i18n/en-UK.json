@@ -1043,6 +1043,7 @@
     "RetailItems": "RETAIL ITEMS_uk",
     "SearchBy": "Search by Item Name, Item #, Price, Vendor Name_uk",
     "SearchByBarCode": "Search by Barcode #_uk",
+    "SearchBySKU": "Search by SKU #_uk",
     "NoItemstoShow": "No Items to Show_uk",
     "ViewLess": "View Less_uk",
     "Collapse": "Collapse_uk",
