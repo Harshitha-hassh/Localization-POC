@@ -970,6 +970,8 @@
     "platformGuestSearch": "Extended Profile Search_de"
   },
   "shop": {
+    "MissingValue": "Missing Value_de",
+    "MaximumError": "Exceeds Maximum Value_de",
     "MultiPackRedeemPopup": {
       "lbl_RedeemMultiPack": "REDEEM MULTIPACK_de",
       "Redeem": "REDEEM_de",
@@ -1078,6 +1080,8 @@
     "Services": "Services_de",
     "APPLYDISCOUNT": "APPLY DISCOUNT_de",
     "APPLYTICKETDISCOUNT": "APPLY TICKET DISCOUNT_de",
+    "REMOVETICKETDISCOUNT": "REMOVE TICKET DISCOUNT_de",
+    "MOREACTIONS": "MORE ACTIONS_de",
     "pg_title_inventorySyncStatus": "INVENTORY SYNC STATUS_de",
     "REMOVE": "REMOVE_de",
     "SNo": "S.No_de",
@@ -1685,6 +1689,7 @@
     "3130": "3130 - Settle to Hotel Comp_de",
     "3135": "3135 - Settle to Non Integrated Credit Cards_de",
     "3150": "3150 - Redeem Retail Multipack_de",
+    "3155": "3155 - Apply Ticket Discount_de",
     "5000": "5000 - Reopen Transaction_de",
     "5005": "5005 - Void Transaction_de",
     "5007": "5007 - Correct Transaction_de",
@@ -4475,6 +4480,7 @@
   "lbl_searchMenu": "Search Menu_de",
   "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_de",
   "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_de",
+  "lbl_resetDiscConfirmation": "Are you sure you want to reset the record(s)?_de",
   "lbl_deSelectAll": "Deselect All_de",
   "AutologoffWarning": "You are about to be logged out in 2 minutes. Please complete your action._de"
 }
