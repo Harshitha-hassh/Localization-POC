@@ -125,6 +125,7 @@
   "10403": "Unit of Measure in use, delete not allowed_kr",
   "10502": "Duplicate Discount Type_kr",
   "10503": "Discount Type in use, delete not allowed_kr",
+  "10504": "Duplicate SKU_kr",
   "10506": "Unable to change active to inactive if already associated with any retail transaction_kr",
   "10700": "Invalid Payment Method name_kr",
   "10701": "Payment Method Not Found_kr",

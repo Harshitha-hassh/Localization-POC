@@ -970,6 +970,8 @@
     "platformGuestSearch": "Extended Profile Search"
   },
   "shop": {
+    "MissingValue": "Missing Value",
+    "MaximumError": "Exceeds Maximum Value",
     "MultiPackRedeemPopup": {
       "lbl_RedeemMultiPack": "REDEEM MULTIPACK",
       "Redeem": "REDEEM",
@@ -1041,6 +1043,7 @@
     "RetailItems": "RETAIL ITEMS",
     "SearchBy": "Search by Item Name, Item #, Price, Vendor Name",
     "SearchByBarCode": "Search by Barcode #",
+    "SearchBySKU": "Search by SKU #",
     "NoItemstoShow": "No Items to Show",
     "ViewLess": "View Less",
     "Collapse": "Collapse",
@@ -1078,6 +1081,8 @@
     "Services": "Services",
     "APPLYDISCOUNT": "APPLY DISCOUNT",
     "APPLYTICKETDISCOUNT": "APPLY TICKET DISCOUNT",
+    "REMOVETICKETDISCOUNT": "REMOVE TICKET DISCOUNT",
+    "MOREACTIONS": "MORE ACTIONS",
     "pg_title_inventorySyncStatus": "INVENTORY SYNC STATUS",
     "REMOVE": "REMOVE",
     "SNo": "S.No",
@@ -1680,6 +1685,7 @@
     "3025": "3025 - Edit Service Charge",
     "3030": "3030 - Edit Commission",
     "3035": "3035 - Apply Discount",
+    "3155" : "3155 - Apply Ticket Discount",
     "3090": "3090 - Allow AR Payments",
     "3115": "3115 - Remove Card on File",
     "3125": "3125 - Search Gift Card by Guest Name",
@@ -4478,6 +4484,7 @@
   "lbl_searchMenu": "Search Menu",
   "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL",
   "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?",
+  "lbl_resetDiscConfirmation": "Are you sure you want to reset the record(s)?",
   "lbl_deSelectAll": "Deselect All",
   "AutologoffWarning": "You are about to be logged out in 2 minutes. Please complete your action."
 }

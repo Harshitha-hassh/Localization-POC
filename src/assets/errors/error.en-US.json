@@ -261,6 +261,7 @@
     "11301": "Duplicate Sub Category Name",
     "10402": "Duplicate Unit of Measure",
     "10403": "Unit of Measure in use, delete not allowed",
+    "10504": "Duplicate SKU",
     "10502": "Duplicate Discount Type",
     "10503": "Discount Type in use, delete not allowed",
     "10506": "Unable to change active to inactive if already associated with any retail transaction",

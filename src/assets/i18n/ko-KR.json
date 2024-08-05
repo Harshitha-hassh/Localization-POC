@@ -970,6 +970,8 @@
     "platformGuestSearch": "Extended Profile Search_kr"
   },
   "shop": {
+    "MissingValue": "Missing Value_kr",
+    "MaximumError": "Exceeds Maximum Value_kr",
     "MultiPackRedeemPopup": {
       "lbl_RedeemMultiPack": "REDEEM MULTIPACK_kr",
       "Redeem": "REDEEM_kr",
@@ -1041,6 +1043,7 @@
     "RetailItems": "RETAIL ITEMS_kr",
     "SearchBy": "Search by Item Name, Item #, Price, Vendor Name_kr",
     "SearchByBarCode": "Search by Barcode #_kr",
+    "SearchBySKU": "Search by SKU #_kr",
     "NoItemstoShow": "No Items to Show_kr",
     "ViewLess": "View Less_kr",
     "Collapse": "Collapse_kr",
@@ -1078,6 +1081,8 @@
     "Services": "Services_kr",
     "APPLYDISCOUNT": "APPLY DISCOUNT_kr",
     "APPLYTICKETDISCOUNT": "APPLY TICKET DISCOUNT_kr",
+    "REMOVETICKETDISCOUNT": "REMOVE TICKET DISCOUNT_kr",
+    "MOREACTIONS": "MORE ACTIONS_kr",
     "pg_title_inventorySyncStatus": "INVENTORY SYNC STATUS_kr",
     "REMOVE": "REMOVE_kr",
     "SNo": "S.No_kr",
@@ -1685,6 +1690,7 @@
     "3130": "3130 - Settle to Hotel Comp_kr",
     "3135": "3135 - Settle to Non Integrated Credit Cards_kr",
     "3150": "3150 - Redeem Retail Multipack_kr",
+    "3155": "3155 - Apply Ticket Discount_kr",
     "5000": "5000 - Reopen Transaction_kr",
     "5005": "5005 - Void Transaction_kr",
     "5007": "5007 - Correct Transaction_kr",
@@ -4475,6 +4481,7 @@
   "lbl_searchMenu": "Search Menu_kr",
   "lnk_expandAllCollapseAll": "EXPAND ALL / COLLAPSE ALL_kr",
   "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_kr",
+  "lbl_resetDiscConfirmation": "Are you sure you want to reset the record(s)?_kr",
   "lbl_deSelectAll": "Deselect All_kr",
   "AutologoffWarning": "You are about to be logged out in 2 minutes. Please complete your action._kr"
 }
