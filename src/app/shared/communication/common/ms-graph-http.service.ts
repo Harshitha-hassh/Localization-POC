@@ -186,7 +186,9 @@ export class MsGraphHttpService {
         this.loggedInUser.next(this.captions.mail_signInToMicrosoft);
         return this.clientAuthenticated;
     }
-
+    escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
     private formURL(params: GraphServiceParams): string {
         this.validate(params);
         let url: string = '';
@@ -194,7 +196,8 @@ export class MsGraphHttpService {
             let route: string = params.route;
             let keys: string[] = Object.keys(params.uriParams);
             for (let i = 0; i < keys.length; i++) {
-                var regEx = new RegExp('{' + keys[i] + '}', 'ig');
+                const escapedKey = this.escapeRegExp(keys[i]);
+                var regEx = new RegExp('{' + escapedKey + '}', 'ig');
                 route = route.replace(regEx, params.uriParams[keys[i]]);
             }
             url += route;
