@@ -31,6 +31,7 @@
                 <ng-container *ngIf="!useRetailInterface">
                     <mat-form-field [floatLabel]="floatLabel">
                         <mat-select [attr.automationId]="'Dd_userMachineConfiguration_paymentMethod'" placeholder="{{captions.paymentMethod}}" formControlName="defaultPaymentId">
+                            <mat-option></mat-option>
                             <mat-option *ngFor="let payment of paymentMethods" [value]="payment.id">{{payment.paymentMethod}}</mat-option>
                         </mat-select>
                     </mat-form-field>
