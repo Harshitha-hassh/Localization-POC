@@ -1365,6 +1365,25 @@
       "confirmationMessage": "All current data will be lost",
       "courseUserAccess": "You don t have access for this course"
     },
+    "nonIntegratedPaymentScreen":{
+
+      "lbl_amount_paid": "Amount Paid",
+      "lbl_ticket_no": "Ticket #",
+      "lbl_transactionDTM": "Transaction Date",
+      "lbl_clientName": "Client Name",
+      "lbl_memberName":"Member Name",
+      "lbl_cardNumber": "Card#",
+      "lbl_cardType": "Card Type",
+      "lbl_action": "Action",
+      "lbl_status": "Status",
+      "lbl_paymentComment": "Comments",
+      "lbl_updatedBy": "Updated By",
+      "lbl_outlet": "Outlet",
+      "lbl_soldBy": "Sold By",
+      "lbl_cardDetails": "Card Detail Link",
+      "lbl_issuerType": "Issuer Type",
+      "lbl_updatedDateTime":"Updated Date"
+  },
     "fullPayment": "Full Payment",
     "multiPayment": "Multiple Payment",
     "amountToBePaid": "Amount Due",

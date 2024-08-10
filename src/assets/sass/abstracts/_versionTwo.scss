@@ -1520,4 +1520,92 @@
   padding: 1rem 1rem 0rem 1rem !important;
  }
 }
+&.view-non-integarted-payments-wrapper{
+  background-color: $ag-retail-background-grey;
+  padding-top: 10px !important;
+  .page-header{
+    .float-left{
+      float:unset !important
+    }
+    @extend .bodyWrap;
+    height:fit-content !important;
+    margin: 10px !important;
+    margin-top: 0 !important;
+    width: auto !important;
+    display: block !important;
+  }
+  .advanced-search-section{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+  }
+  .fixed-table-container{
+    @extend .bodyWrap;
+    margin: 10px !important;
+    width: auto !important;
+    height: calc(100% - 300px);
+    overflow: auto;
+    background-color: $theme-table-bg-color !important;
+    .fixed-table-container-inner{
+      #SPACustomTableShop{
+        background-color: $ag_white !important;
+      }
+    }
+    }
+  .item-search{
+      app-search-linked-retail-items{
+        .mat-form-field-infix{
+          border: 1px solid #ececec;
+        }
+        .mat-input-element::placeholder{
+          user-select: none;
+          transition: color 400ms 133.3333333333ms cubic-bezier(0.25, 0.8, 0.25, 1);
+          color: #0000006b !important;
+        }
+      }
+    }
+
+
+ .result-wrapper{
+      .result-grid{
+        .user-search{
+          @extend .bodyWrap;
+          margin: 0 10px 0 0 !important;
+          width: auto !important;
+        }
+        .retailCustomDataTable {
+          margin: 0 10px 0 0 !important;
+          width: auto !important;
+          height: calc(100% - 87px)  !important;
+          .page-header{
+            &.removeHeight{
+              display: none !important;
+            }
+          }
+          .fixed-table-container{
+            height: calc(100% - 11px) !important;
+            margin: 0 !important;
+            margin-top: 10px !important;
+            width: auto !important;
+            overflow: hidden;
+            background-color: $theme-table-bg-color !important;
+            table.quicksale-setup-table{
+              background-color: $ag_white !important;
+            }
+          }
+        }
+      }
+    }
+
+    .modify-commission{
+      .result-wrapper{
+        .filter{
+          @extend .bodyWrap;
+          margin: 10px !important;
+          margin-top: 0 !important;
+          width: auto !important;
+        }
+      }
+    }
+}
 }
