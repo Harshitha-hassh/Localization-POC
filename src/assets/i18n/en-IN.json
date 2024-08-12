@@ -1880,9 +1880,9 @@
   "noSpecialCharacters": "No special characters must be allowed_in",
   "confirmPasswordSame": "New password and confirm password must be same_in",
   "retailsetup": {
-    "State": "State_in",
+    "state": "State_in",
     "Postal_Code": "Postal Code_in",
-    "City": "City_in",
+    "city": "City_in",
     "country": "Country_in",
     "includeOutletAddressInReceipt": "Include Outlet Address in Receipt_in",
     "maximumDiscountvalue": "Maximum discount value for {discountName} is {maxValue}. Please enter value that is lesser than or equal to {maxValue}._in",
