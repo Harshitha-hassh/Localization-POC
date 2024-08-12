@@ -1381,7 +1381,8 @@
       "lbl_soldBy": "Sold By_in",
       "lbl_cardDetails": "Card Detail Link_in",
       "lbl_issuerType": "Issuer Type_in",
-      "lbl_updatedDateTime": "Updated Date_in"
+      "lbl_updatedDateTime": "Updated Date_in",
+      "returnNoteMessage": "Note - This is a return transaction._in"
     },
     "fullPayment": "Full Payment_in",
     "multiPayment": "Multiple Payment_in",

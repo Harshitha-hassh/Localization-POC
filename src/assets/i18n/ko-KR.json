@@ -1381,7 +1381,8 @@
       "lbl_soldBy": "Sold By_kr",
       "lbl_cardDetails": "Card Detail Link_kr",
       "lbl_issuerType": "Issuer Type_kr",
-      "lbl_updatedDateTime": "Updated Date_kr"
+      "lbl_updatedDateTime": "Updated Date_kr",
+      "returnNoteMessage": "Note - This is a return transaction._kr"
     },
     "fullPayment": "Full Payment_kr",
     "multiPayment": "Multiple Payment_kr",

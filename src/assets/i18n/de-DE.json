@@ -1381,7 +1381,8 @@
       "lbl_soldBy": "Sold By_de",
       "lbl_cardDetails": "Card Detail Link_de",
       "lbl_issuerType": "Issuer Type_de",
-      "lbl_updatedDateTime": "Updated Date_de"
+      "lbl_updatedDateTime": "Updated Date_de",
+      "returnNoteMessage": "Note - This is a return transaction._de"
     },
     "fullPayment": "Full Payment_de",
     "multiPayment": "Multiple Payment_de",

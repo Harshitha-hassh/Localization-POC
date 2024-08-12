@@ -1381,7 +1381,8 @@
       "lbl_soldBy": "Sold By_uk",
       "lbl_cardDetails": "Card Detail Link_uk",
       "lbl_issuerType": "Issuer Type_uk",
-      "lbl_updatedDateTime": "Updated Date_uk"
+      "lbl_updatedDateTime": "Updated Date_uk",
+      "returnNoteMessage": "Note - This is a return transaction._uk"
     },
     "fullPayment": "Full Payment_uk",
     "multiPayment": "Multiple Payment_uk",

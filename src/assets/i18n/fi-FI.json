@@ -1381,7 +1381,8 @@
       "lbl_soldBy": "Sold By_fi",
       "lbl_cardDetails": "Card Detail Link_fi",
       "lbl_issuerType": "Issuer Type_fi",
-      "lbl_updatedDateTime": "Updated Date_fi"
+      "lbl_updatedDateTime": "Updated Date_fi",
+      "returnNoteMessage": "Note - This is a return transaction._fi"
     },
     "fullPayment": "Full Payment_fi",
     "multiPayment": "Multiple Payment_fi",
