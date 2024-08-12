@@ -90,6 +90,7 @@
   },
   "app_title": "Agilysys Retail_uk",
   "common": {
+    "drp_txt_others": "Others_uk",
     "NightAuditMessage": "The night audit has been processed_uk",
     "lbl_changeProperty": "Change Property_uk",
     "IntegrationError": " An integration error has occurred, please try again._uk",
@@ -1878,6 +1879,11 @@
   "noSpecialCharacters": "No special characters must be allowed_uk",
   "confirmPasswordSame": "New password and confirm password must be same_uk",
   "retailsetup": {
+    "State": "State_uk",
+    "Postal_Code": "Postal Code_uk",
+    "City": "City_uk",
+    "country": "Country_uk",
+    "includeOutletAddressInReceipt": "Include Outlet Address in Receipt_uk",
     "maximumDiscountvalue": "Maximum discount value for {discountName} is {maxValue}. Please enter value that is lesser than or equal to {maxValue}._uk",
     "lbl_filters": "Filters_uk",
     "enterValue": "Enter Value_uk",

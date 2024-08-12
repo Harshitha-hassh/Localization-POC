@@ -90,6 +90,7 @@
   },
   "app_title": "Agilysys Retail_fi",
   "common": {
+    "drp_txt_others": "Others_fi",
     "NightAuditMessage": "The night audit has been processed_fi",
     "lbl_changeProperty": "Change Property_fi",
     "IntegrationError": " An integration error has occurred, please try again._fi",
@@ -1878,6 +1879,11 @@
   "noSpecialCharacters": "No special characters must be allowed_fi",
   "confirmPasswordSame": "New password and confirm password must be same_fi",
   "retailsetup": {
+    "State": "State_fi",
+    "Postal_Code": "Postal Code_fi",
+    "City": "City_fi",
+    "country": "Country_fi",
+    "includeOutletAddressInReceipt": "Include Outlet Address in Receipt_fi",
     "maximumDiscountvalue": "Maximum discount value for {discountName} is {maxValue}. Please enter value that is lesser than or equal to {maxValue}._fi",
     "lbl_filters": "Filters_fi",
     "enterValue": "Enter Value_fi",
