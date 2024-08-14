@@ -24,7 +24,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.icon-Collapse-All-1:before {
+  content: "\ef78";
+}
+.icon-Expand-All-1:before {
+  content: "\ef79";
+}
 .icon-Search-Reports:before {
   content: "\ef76";
 }
