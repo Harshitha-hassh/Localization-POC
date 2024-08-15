@@ -218,12 +218,17 @@ export class EatecComponent implements OnInit, OnDestroy {
     ); 
   }
 
-  eventListener(){
-    window.addEventListener('message', function (e) {
+  eventListener() {
+  const eatecuri = sessionStorage.getItem('EIURI');    
+  let result = eatecuri.split('/#')[0];
+  window.addEventListener('message', function (e) {          
+    if (e.origin === result) {
       console.log("SSOMessage", e.data);
-      sessionStorage.setItem('SSOMessage', e.data);
-    });
-  }
+      console.log(result);
+    sessionStorage.setItem('SSOMessage', e.data);
+   }     
+  });
+}
   
   stopAutoEIRefresher(){
     this.utils.ToggleLoader(false);
