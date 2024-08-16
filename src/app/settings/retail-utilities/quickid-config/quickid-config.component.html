@@ -6,8 +6,13 @@
           <div class="toggle-section-div">
             <label class="toggle-section-label w-70">{{captions.ForRetailTransactions}}</label>
             <div class="toggle-section-switch">
-              <app-toggle-switch  class="d-table-cell pl-4" (changeToggleEvent)="toggleChange($event,quickIdConfig.retailtransactions)" formControlName="retailtransactions"
-                ></app-toggle-switch>
+              <app-toggle-switch  class="d-table-cell pl-4" (changeToggleEvent)="toggleChange($event,quickIdConfig.retailtransactions)" formControlName="retailtransactions"></app-toggle-switch>
+            </div>
+          </div>
+          <div class="toggle-section-div">
+            <label class="toggle-section-label w-70">{{captions.updateRemoveDiscount}}</label>
+            <div class="toggle-section-switch">
+              <app-toggle-switch  class="d-table-cell pl-4" (changeToggleEvent)="toggleChange($event,quickIdConfig.discountUpdateRemove)" formControlName="discountUpdateRemove"></app-toggle-switch>
             </div>
           </div>
         </section>
