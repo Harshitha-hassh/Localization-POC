@@ -369,6 +369,7 @@
     "Clients": "Clients_fi",
     "drp_txt_cell": "Cell_fi",
     "drp_txt_work": "Work_fi",
+    "drp_txt_business": "Business_fi",
     "contactAdministrator": "Please contact your administrator._fi",
     "tryAgain": "Please try again._fi",
     "MaximumCharactersOnlyAllowed": "Maximum of {num} characters only allowed_fi",

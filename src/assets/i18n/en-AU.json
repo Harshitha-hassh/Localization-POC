@@ -369,6 +369,7 @@
     "Clients": "Clients",
     "drp_txt_cell": "Cell",
     "drp_txt_work": "Work",
+    "drp_txt_business": "Business",
     "contactAdministrator": "Please contact your administrator.",
     "tryAgain": "Please try again.",
     "MaximumCharactersOnlyAllowed": "Maximum of {num} characters only allowed",
