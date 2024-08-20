@@ -1644,6 +1644,7 @@
     "lbl_RemovingSurchargeLoaderMsg": "Removing Surcharge_gb",
     "lbl_cardType": "Card Type_gb",
     "lbl_AmountTendered": "Amount Entered_gb",
+    "fetchingGuestsDetailsMsg": "Please wait while guest(s) details are being loaded..._gb",
     "MemberSelectionPopup": {
       "lbl_header": "MEMBER/GUEST MAPPING DETAILS_gb",
       "searchPlaceHolder": "Search by Member Name, Member#_gb",

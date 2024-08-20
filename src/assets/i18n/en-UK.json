@@ -1644,6 +1644,7 @@
     "lbl_RemovingSurchargeLoaderMsg": "Removing Surcharge_uk",
     "lbl_cardType": "Card Type_uk",
     "lbl_AmountTendered": "Amount Entered_uk",
+    "fetchingGuestsDetailsMsg": "Please wait while guest(s) details are being loaded..._uk",
     "MemberSelectionPopup": {
       "lbl_header": "MEMBER/GUEST MAPPING DETAILS_uk",
       "searchPlaceHolder": "Search by Member Name, Member#_uk",
