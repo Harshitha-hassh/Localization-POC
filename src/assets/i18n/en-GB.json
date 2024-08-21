@@ -1369,7 +1369,7 @@
     "nonIntegratedPaymentScreen": {
       "lbl_amount_paid": "Amount Paid_gb",
       "lbl_ticket_no": "Ticket #_gb",
-      "lbl_transactionDTM": "Transaction Date_gb",
+      "lbl_transactionDTM": "Transaction DateTime_gb",
       "lbl_clientName": "Client Name_gb",
       "lbl_memberName": "Member Name_gb",
       "lbl_cardNumber": "Card#_gb",
@@ -1382,7 +1382,7 @@
       "lbl_soldBy": "Sold By_gb",
       "lbl_cardDetails": "Card Detail Link_gb",
       "lbl_issuerType": "Issuer Type_gb",
-      "lbl_updatedDateTime": "Updated Date_gb",
+      "lbl_updatedDateTime": "Updated DateTime_gb",
       "returnNoteMessage": "Note - This is a return transaction._gb"
     },
     "fullPayment": "Full Payment_gb",

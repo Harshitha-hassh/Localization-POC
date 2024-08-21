@@ -9,7 +9,7 @@
   }
   
   #agisFrame label {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     display: inline-block;
   }
@@ -54,7 +54,7 @@
     text-transform: uppercase;
     margin: 0;
     margin-top: 10px;
-    margin-left: 0px;
+    margin-left: 30px;
     opacity: 1;
     cursor: pointer;
     border-radius: 0;
@@ -110,7 +110,7 @@
   
   #agisFrame #postalCode {
     left: -4px;
-    width: 95px;
+    width: 115px;
     top: -16px;
     clear: none;
     display: inline-block;
@@ -231,3 +231,6 @@
     top: 16px;
     position: relative;
   }
+  #addresslabel {
+      margin: 0px 55px 5px 0px;
+    }
