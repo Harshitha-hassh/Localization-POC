@@ -1,7 +1,7 @@
 <section class="ag__container showApp">
     <div class="ag__wrapper showApp">
         <div class="theme-color-wrapper" [style.background-color]="getThemeColor+ ' !important'" *ngIf="menuList?.menu">
-            <div class="text-font">{{propertyName}} | {{propertyDateTime}}</div>
+            <div class="text-font" [ngClass]="[(getThemeColor | colorPickerModifier)? 'light-text-color': 'dark-text-color']">{{propertyName}} | {{propertyDateTime}}</div>
         </div>
         <div class="menu-wrapper">
             <app-menu [menu]="menuList" *ngIf="menuList"></app-menu>

@@ -13,12 +13,13 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { debounceTime, distinctUntilChanged, map, startWith, takeUntil } from 'rxjs/operators';
 import { defaultThemeColorSwitch } from 'src/app/shared/enums/constants';
+import { colorPickerModifier } from 'src/app/common/pipes/colorPickerModifier.pipe';
 
 @Component({
   selector: 'app-property-info',
   templateUrl: './property-info.component.html',
   styleUrls: ['./property-info.component.scss'],
-  providers: [SystemSetupBusinessService],
+  providers: [SystemSetupBusinessService,colorPickerModifier],
   encapsulation: ViewEncapsulation.None
 })
 export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDestroy {
@@ -62,7 +63,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     private utilities: RetailUtilities,
     public http: HttpServiceCall,
     private utils: RetailUtilities,
-    private ss: SettingsService) {
+    private ss: SettingsService,
+    private colorPickerModifier: colorPickerModifier) {
     super(http);
     this.ss.tabLoaderEnable.next(true);
     this.commonCaptions = this.localization.captions.common;
@@ -714,9 +716,12 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     }
   }
   async reloadSession() {
-    setTimeout(function () {
+    setTimeout(() => {
       let getThemeColor: any = document.getElementsByClassName('theme-color-wrapper')[0];
-      getThemeColor.style.setProperty("background-color", JSON.parse(sessionStorage.getItem('defaultSettings'))?.find(x => x.switch == "THEME_COLOR").value, "important")
+      let textColor: any = document.getElementsByClassName('theme-color-wrapper')[0].children[0];
+      textColor.style.color = "",
+      getThemeColor.style.setProperty("background-color", JSON.parse(sessionStorage.getItem('defaultSettings'))?.find(x => x.switch == "THEME_COLOR").value, "important");
+      textColor.style.setProperty("color", this.colorPickerModifier.transform(JSON.parse(sessionStorage.getItem('defaultSettings'))?.find(x=>x.switch == "THEME_COLOR").value) ? '#fff' : '#000' , "important");
     }, 500);
   }
   cancel() {
