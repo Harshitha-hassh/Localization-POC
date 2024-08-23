@@ -9,7 +9,7 @@ import { PropertyInformation } from 'src/app/core/services/property-information.
 import { BaseResponse } from 'src/app/retail/shared/shared.modal';
 import { Host } from 'src/app/retail/shared/globalsContant';
 import { HttpMethod, HttpServiceCall } from 'src/app/retail/shared/service/http-call.service';
-
+import { routingMenuService } from 'src/app/common/components/menu/menu.service';
 @Component({
   selector: 'app-transaction-log',
   templateUrl: './transaction-log.component.html',
@@ -39,7 +39,7 @@ export class TransactionLogComponent implements OnInit {
   { title: "Transaction #", jsonkey: "transaction", alignType: "left" }, { title: "Client Name", jsonkey: "clientName", alignType: "left" }];
   placeholderFormat: string;
   constructor(private fb: UntypedFormBuilder, private http: HttpServiceCall, private utils: Utilities, private localization: RetailStandaloneLocalization,
-    private PropertyInfo: PropertyInformation) {
+    private PropertyInfo: PropertyInformation,private _routingMenuService:routingMenuService) {
     this.logType = translog;
     this.floatLabel = this.localization.setFloatLabel;
   }
@@ -153,7 +153,7 @@ export class TransactionLogComponent implements OnInit {
   //   return this.transactionForm.controls[ctrl].value
   // }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.placeholderFormat = this.localization.inputDateFormat;
     let currentDate = this.PropertyInfo.CurrentDate;
     this.transactionForm = this.fb.group({
@@ -171,22 +171,34 @@ export class TransactionLogComponent implements OnInit {
     this.captions = this.localization.captions.reports;
     this.commonCaptions = this.localization.captions.common;
     this.getTransactionData();
-    this.GetServiceCall('GetAllUsers', { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
-    this.transactionForm.valueChanges.subscribe( a => this.validateEntries());
-    this.transactionForm.controls.logType.setValue(this.logType[0].code);
+    this.users=await this.GetAllUsers();  
+    let selectedMenuTxt = this._routingMenuService.selectedRoutingMenu?.text;
+    let selectedLogType;
+    if(selectedMenuTxt){
+      selectedLogType = this.logType.find(x => x.logtype == selectedMenuTxt)?this.logType.find(x => x.logtype == selectedMenuTxt):this.logType[0];
+      this.transactionForm.valueChanges.subscribe(a => this.validateEntries());
+      this.transactionForm.controls.logType.setValue(selectedLogType.code);     
+      const logSelection = { value: selectedLogType.code };      
+      await this.selectionChange(logSelection);
+    }
+    else{
+       this.transactionForm.valueChanges.subscribe(a => this.validateEntries());
+       this.transactionForm.controls.logType.setValue(this.logType[0].code);
+    }    
+    
   }
 
-  GetServiceCall(Route:any, Uri?:any):void {
-    this.http.CallApiWithCallback<any>({
-      host: Host.authentication,
-      success: this.successCallback.bind(this),
-      error: this.errorCallback.bind(this),
-      callDesc: Route,
-      uriParams: Uri,
+  
+
+  async GetAllUsers(): Promise<Users[]> {
+    const result = await this.http.CallApiAsync({
+      callDesc: 'GetAllUsers',
       method: HttpMethod.Get,
-      showError: true,
-      extraParams: []
+      host: Host.authentication,
+      uriParams:{ tenantId: Number(this.utils.GetPropertyInfo('TenantId')) }
     });
+    const response: any = result && result.result ? result.result : [];
+   return this.users= _.orderBy(response, [response => response.userName.toLowerCase()], 'asc');   
   }
 
   private validateEntries(): boolean {
@@ -206,13 +218,6 @@ export class TransactionLogComponent implements OnInit {
     }
   }
 
-
-  successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
-    if (callDesc == "GetAllUsers") {
-      this.users = <any>result.result;
-      this.users =  _.orderBy(this.users, [user => user.userName.toLowerCase()], 'asc');
-    }
-  }
 
   errorCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams: any[]): void { }
   reportOption: ReportOptions;
