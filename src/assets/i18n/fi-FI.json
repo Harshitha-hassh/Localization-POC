@@ -1257,6 +1257,7 @@
     "FullOrMultiplePayment": "Full / Multiple Payment_fi",
     "InvalidAmount": "Invalid Amount_fi",
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount_fi",
+    "TicketDiscountAmountGreaterThanActual": "Ticket discount amount is greater than the ticket total_fi",
     "DiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for discount_fi",
     "PackagedItemDiscountWarning": "You are applying discount for the packaged items, this may contain items that are not eligible for discount_fi",
     "PleaseSelectDefaultOutlet": "Please select a default outlet_fi",
