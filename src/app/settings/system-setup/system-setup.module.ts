@@ -9,9 +9,10 @@ import { RetailModule } from 'src/app/retail/retail.module';
 import { PropertyInfoComponent } from './property-info/property-info.component';
 import { ColorSketchModule } from 'ngx-color/sketch';
 import { CommonSharedModule } from 'src/app/common/shared/shared/shared.module';
+import { HomeDashboardConfigurationComponent } from './home-dashboard-configuration/home-dashboard-configuration.component';
 
 @NgModule({
-    declarations: [SystemSetupComponent, PropertyInfoComponent],
+    declarations: [SystemSetupComponent, PropertyInfoComponent, HomeDashboardConfigurationComponent],
     imports: [
         CommonModule,
         CommonSharedModule,

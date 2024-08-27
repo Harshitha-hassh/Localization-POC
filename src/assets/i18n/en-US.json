@@ -1843,7 +1843,9 @@
     "7170": "7170 - Item Mapping",
 		"7175": "7175 - Sale Depletion Log",
     "7180": "7180 - Non Integrated Credit Cards",
-    "3135": "3135 - Settle to Non Integrated Credit Cards"
+    "3135": "3135 - Settle to Non Integrated Credit Cards",
+    "2320": "2320 - Customizable Home Dashboard",
+    "2325": "2325 - Configurable Home Dashboard"
   },
   "userId": "User ID",
   "password": "Password",
@@ -4518,5 +4520,17 @@
   "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?",
   "lbl_resetDiscConfirmation": "Are you sure you want to reset the record(s)?",
   "lbl_deSelectAll": "Deselect All",
-  "AutologoffWarning": "You are about to be logged out in 2 minutes. Please complete your action."
+  "AutologoffWarning": "You are about to be logged out in 2 minutes. Please complete your action.",
+  "lbl_dashboardViews": "Dashboard Views_in",
+  "lbl_ClearAll": "RESET ALL_in",
+  "lbl_dashboardName": "Dashboard Name_in",
+  "lbl_dashboardUrl": "Dashboard URL_in",
+  "lbl_Clear_DashboardConfig": "Clear Dashboard Configuration Setting_in",
+  "lbl_set_Propdefault_dashboard": "Set Property Default Configuration_in",
+  "lbl_title_ResetDashboard": "Reset Dashboard Configuration_in",
+  "lbl_Customizable_Dashboard": "Customizable Dashboard Configuration_in",
+  "lbl_Dasboard1": "Dashboard 1_in",
+  "lbl_Dasboard2": "Dashboard 2_in",
+  "lbl_Dasboard3": "Dashboard 3_in",
+  "btn_add": "ADD"
 }

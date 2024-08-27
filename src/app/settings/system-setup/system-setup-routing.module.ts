@@ -5,6 +5,7 @@ import { PropertyInfoComponent } from './property-info/property-info.component';
 import { UserAccessBreakPoints } from 'src/app/retail/shared/constants/useraccess.constants';
 import { MiscellaneousComponent } from 'src/app/retail/sytem-config/miscellaneous/miscellaneous.component';
 import { NotificationConfigurationComponent } from 'src/app/common/templates/notification-configuration/notification-configuration.component';
+import { HomeDashboardConfigurationComponent } from './home-dashboard-configuration/home-dashboard-configuration.component';
 
 
 const routes: Routes = [{
@@ -21,7 +22,12 @@ const routes: Routes = [{
     },
     {
       path: 'notifications', component: NotificationConfigurationComponent,
-    }
+    },
+    { path: 'dashboardConfiguration', 
+      component: HomeDashboardConfigurationComponent, 
+      data: { BreakPointNumber: UserAccessBreakPoints.SYSTEMSETUP, 
+      ShowPopup: true,
+      isSubmodule: true } }
   ]
 }];
 

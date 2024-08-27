@@ -1689,6 +1689,8 @@
     "2305": "2305 - User Role Setup_in",
     "2310": "2310 - User Role Configuration_in",
     "2315": "2315 - Jaspersoft Server_in",
+    "2320": "2320 - Customizable Home Dashboard_in",
+    "2325": "2325 - Configurable Home Dashboard_in",
     "2430": "2430 - Day End_in",
     "2435": "2435 - Combine Guest Records_in",
     "3000": "3000 - Create Transaction_in",
@@ -4514,5 +4516,17 @@
   "lbl_deleteConfirmation": "Are you sure you want to delete the record(s)?_in",
   "lbl_resetDiscConfirmation": "Are you sure you want to reset the record(s)?_in",
   "lbl_deSelectAll": "Deselect All_in",
-  "AutologoffWarning": "You are about to be logged out in 2 minutes. Please complete your action._in"
+  "AutologoffWarning": "You are about to be logged out in 2 minutes. Please complete your action._in",
+  "lbl_dashboardViews": "Dashboard Views_in_in",
+  "lbl_ClearAll": "RESET ALL_in_in",
+  "lbl_dashboardName": "Dashboard Name_in_in",
+  "lbl_dashboardUrl": "Dashboard URL_in_in",
+  "lbl_Clear_DashboardConfig": "Clear Dashboard Configuration Setting_in_in",
+  "lbl_set_Propdefault_dashboard": "Set Property Default Configuration_in_in",
+  "lbl_title_ResetDashboard": "Reset Dashboard Configuration_in_in",
+  "lbl_Customizable_Dashboard": "Customizable Dashboard Configuration_in_in",
+  "lbl_Dasboard1": "Dashboard 1_in_in",
+  "lbl_Dasboard2": "Dashboard 2_in_in",
+  "lbl_Dasboard3": "Dashboard 3_in_in",
+  "btn_add": "ADD_in"
 }
