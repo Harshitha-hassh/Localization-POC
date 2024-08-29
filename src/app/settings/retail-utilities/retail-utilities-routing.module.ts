@@ -105,7 +105,10 @@ const routes: Routes = [{
       data: { showtableRecords: true },
     },
     {
-      path: 'discountMapping', component: DiscountMappingComponent,
+      path: 'discountMapping',
+      component: DiscountMappingComponent,
+      canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
+      data: { breakPointNumber: CommonBreakPoint.ADDEDITDISCOUNTMAPPING, redirectTo: '', syncAccess: true }
     },
   ]
 }];
