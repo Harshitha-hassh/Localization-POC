@@ -4529,5 +4529,6 @@
   "lbl_Dasboard1": "Dashboard 1_in_gb",
   "lbl_Dasboard2": "Dashboard 2_in_gb",
   "lbl_Dasboard3": "Dashboard 3_in_gb",
-  "btn_add": "ADD_gb"
+  "btn_add": "ADD_gb",
+  "lbl_searchReports": "Search Reports_gb"
 }
