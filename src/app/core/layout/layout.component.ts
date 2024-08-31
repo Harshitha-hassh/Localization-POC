@@ -70,6 +70,15 @@ export class LayoutComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
+    window.onbeforeunload = (ev) => {
+      if(sessionStorage.getItem('isChangesMade') == 'true'){
+        let dialogText = this.localization.captions.common.RefreshMessage;
+        ev.returnValue = dialogText;
+        return dialogText;
+      } else {
+        return null;
+      }
+    };
       this.applyTheme('blacktheme');
       this.jasperServerCommonDataService.setauthTokenProvider();
       this.addThemeColor();
