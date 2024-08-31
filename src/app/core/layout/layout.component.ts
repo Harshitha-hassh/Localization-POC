@@ -25,6 +25,7 @@ import { Localization } from 'src/app/common/localization/localization';
 import * as FullStory from '@fullstory/browser';
 import { FULL_STORY_ORG_ID } from 'src/app/app-constants';
 import { JasperServerCommonDataService } from 'src/app/common/dataservices/jasperServerCommon.data.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-layout',
@@ -66,6 +67,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
           menu: value
         };
       }
+    });
+    this.router.events.pipe(takeUntil(this.destroyed$)).subscribe(x => {
+      sessionStorage.setItem('isChangesMade', 'false');
     });
    }
 
