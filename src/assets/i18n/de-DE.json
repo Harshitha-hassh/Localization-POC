@@ -1890,6 +1890,9 @@
   "noSpecialCharacters": "No special characters must be allowed_de",
   "confirmPasswordSame": "New password and confirm password must be same_de",
   "retailsetup": {
+    "discountLevel": "Discount Level_de",
+    "TicketLevel": "Ticket_de",
+    "ItemLevel": "Item_de",
     "state": "State_de",
     "Postal_Code": "Postal Code_de",
     "city": "City_de",

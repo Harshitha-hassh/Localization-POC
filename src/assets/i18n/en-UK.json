@@ -1890,6 +1890,9 @@
   "noSpecialCharacters": "No special characters must be allowed_uk",
   "confirmPasswordSame": "New password and confirm password must be same_uk",
   "retailsetup": {
+    "discountLevel": "Discount Level_uk",
+    "TicketLevel": "Ticket_uk",
+    "ItemLevel": "Item_uk",
     "state": "State_uk",
     "Postal_Code": "Postal Code_uk",
     "city": "City_uk",
