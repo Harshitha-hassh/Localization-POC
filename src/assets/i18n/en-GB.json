@@ -4536,5 +4536,6 @@
   "lbl_Dasboard2": "Dashboard 2_gb",
   "lbl_Dasboard3": "Dashboard 3_gb",
   "btn_add": "ADD_gb",
-  "lbl_searchReports": "Search Reports_gb"
+  "lbl_searchReports": "Search Reports_gb",
+  "lbl_systemDateChange": "System Date has been Changed to _gb"
 }

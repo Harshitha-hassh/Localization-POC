@@ -4536,5 +4536,6 @@
   "lbl_Dasboard2": "Dashboard 2_uk",
   "lbl_Dasboard3": "Dashboard 3_uk",
   "btn_add": "ADD_uk",
-  "lbl_searchReports": "Search Reports_uk"
+  "lbl_searchReports": "Search Reports_uk",
+  "lbl_systemDateChange": "System Date has been Changed to _uk"
 }

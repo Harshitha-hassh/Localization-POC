@@ -44,6 +44,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   private autoLogOff: any = false;
   private logOffAfter: number = 1;
   getThemeColor: string = '';
+  captions: any;
   constructor(private routeDataService: RouteLoaderService,
     private sessionService: ManageSessionService,
     private localization: RetailLocalization,
@@ -86,6 +87,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.applyTheme('blacktheme');
       this.jasperServerCommonDataService.setauthTokenProvider();
       this.addThemeColor();
+      this.captions = this.localization.captions;
       this.propertyName = this.localization.GetPropertyInfo('PropertyName');
       let propConfig = JSON.parse(sessionStorage.getItem("propConfig"));
       let enableSignalR = propConfig?.EnableSignalR;
@@ -106,6 +108,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     if (enableUICache && enableUICache.toLowerCase() == "true") {
       this.setUICache();
     }
+    this.checkPropertyDate();
   }
   addThemeColor(){
     const defaultsettings =JSON.parse(sessionStorage.getItem("defaultSettings"));
@@ -201,6 +204,20 @@ async GetPropertyDate() {
 }
 private getPropertyId() {
   return this.localization.GetsessionStorageValue('propertyInfo', 'PropertyId');
+}
+
+checkPropertyDate(){
+  const newDate=this.localization.getDate(sessionStorage.getItem("newDate"));
+  const localizeNewDate= new Date(this.localization.getformattedDateMMDDYYYY(newDate));
+  const localizeCurrentDate = new Date(this.localization.getformattedDateMMDDYYYY(this.propertyInfo.CurrentDate));
+  if(localizeNewDate>localizeCurrentDate)
+  {
+    this.utils.showAlert(this.captions.lbl_systemDateChange+this.localization.localizeDisplayDate(localizeNewDate),AlertType.Success,ButtonType.Ok,(res) => {
+      if (res) {
+        this.logoutHandler(true);
+      }
+    });
+    }    
 }
 
 logoutHandler(arg) {

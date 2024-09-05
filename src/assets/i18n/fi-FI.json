@@ -4536,5 +4536,6 @@
   "lbl_Dasboard2": "Dashboard 2_fi",
   "lbl_Dasboard3": "Dashboard 3_fi",
   "btn_add": "ADD_fi",
-  "lbl_searchReports": "Search Reports_fi"
+  "lbl_searchReports": "Search Reports_fi",
+  "lbl_systemDateChange": "System Date has been Changed to _fi"
 }

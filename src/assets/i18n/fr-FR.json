@@ -4536,5 +4536,6 @@
   "lbl_Dasboard2": "Dashboard 2_fr",
   "lbl_Dasboard3": "Dashboard 3_fr",
   "btn_add": "ADD_fr",
-  "lbl_searchReports": "Search Reports_fr"
+  "lbl_searchReports": "Search Reports_fr",
+  "lbl_systemDateChange": "System Date has been Changed to _fr"
 }

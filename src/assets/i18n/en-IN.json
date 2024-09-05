@@ -4536,5 +4536,6 @@
   "lbl_Dasboard2": "Dashboard 2_in",
   "lbl_Dasboard3": "Dashboard 3_in",
   "btn_add": "ADD_in",
-  "lbl_searchReports": "Search Reports_in"
+  "lbl_searchReports": "Search Reports_in",
+  "lbl_systemDateChange": "System Date has been Changed to _in"
 }
