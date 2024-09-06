@@ -108,7 +108,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
     if (enableUICache && enableUICache.toLowerCase() == "true") {
       this.setUICache();
     }
-    this.checkPropertyDate();
+    setTimeout(() => {
+      this.checkPropertyDate();
+    }, 5000);
   }
   addThemeColor(){
     const defaultsettings =JSON.parse(sessionStorage.getItem("defaultSettings"));
@@ -206,8 +208,9 @@ private getPropertyId() {
   return this.localization.GetsessionStorageValue('propertyInfo', 'PropertyId');
 }
 
-checkPropertyDate(){
-  const newDate=this.localization.getDate(sessionStorage.getItem("newDate"));
+async checkPropertyDate(){
+  const propertityConfig = await this.PropertySettingService.getAllPropertySetting(Number(this.getPropertyId()));
+  const newDate=this.localization.getDate(propertityConfig.propertyDate);
   const localizeNewDate= new Date(this.localization.getformattedDateMMDDYYYY(newDate));
   const localizeCurrentDate = new Date(this.localization.getformattedDateMMDDYYYY(this.propertyInfo.CurrentDate));
   if(localizeNewDate>localizeCurrentDate)
