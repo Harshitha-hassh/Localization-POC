@@ -3572,6 +3572,7 @@
     "Display": "Display Service Charge/Gratuity on Receipt_in",
     "GratuityLine": "Gratuity Line_in",
     "ReceiptNote": "Receipt Note_in",
+    "ReceiptFooterNote": "Receipt Footer Note_in",
     "SelectOutlet": "Select Outlet_in",
     "Details": "Detail_in",
     "SummarySplit": "Summary Split_in",

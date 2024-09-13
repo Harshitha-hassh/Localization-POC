@@ -62,7 +62,8 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.propertyForm = this.Form.group({
       displayAuthcode: [''],
       authcodeName: [''],
-      displayChangeDue: ['']
+      displayChangeDue: [''],
+      receiptFooterNote: ['']
     })
   }
 
@@ -341,12 +342,14 @@ async getPropertyReceiptConfig()
   {
     let authCode = this.PropertyReceiptInfo.configValue.authCodeReceiptName != "" ? 
      this.PropertyReceiptInfo.configValue.authCodeReceiptName : this.PropertyReceiptInfo.defaultValue.authCodeReceiptName;
-
+     let receiptFooterNote = this.PropertyReceiptInfo.configValue.receiptFooterNote != "" ? 
+     this.PropertyReceiptInfo.configValue.receiptFooterNote : "";
      let displayAuthCode = this.PropertyReceiptInfo.configValue.displayAuthCode != false ?  
      this.PropertyReceiptInfo.configValue.displayAuthCode : this.PropertyReceiptInfo.defaultValue.displayAuthCode;
      let displayChangeDue= this.PropertyReceiptInfo.configValue.displayChangeDue != false ?  
      this.PropertyReceiptInfo.configValue.displayChangeDue : this.PropertyReceiptInfo.defaultValue.displayChangeDue;
      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
+     this.propertyForm.controls["receiptFooterNote"].setValue(receiptFooterNote);
    
      if(displayAuthCode == true)
     {
@@ -398,7 +401,8 @@ async getPropertyReceiptConfig()
     let configValue : PropertyConfigurationModel = {
       displayAuthCode: data.displayAuthcode,
       AuthCodeReceiptName: data.authcodeName,
-      displayChangeDue: data.displayChangeDue
+      displayChangeDue: data.displayChangeDue,
+      receiptFooterNote: data.receiptFooterNote
     }
     return configValue;
   }
@@ -407,7 +411,8 @@ async getPropertyReceiptConfig()
     let defaultValue : PropertyConfigurationModel = {
       displayAuthCode: false,
       AuthCodeReceiptName: "Auth Code",
-      displayChangeDue: false
+      displayChangeDue: false,
+      receiptFooterNote: ""
     }
     return defaultValue;
   }

@@ -233,6 +233,13 @@
   .pop-contents{
     line-height: 18px;
   }
+  //common text label
+  .text-label-new{
+    transform: translateY(-0.1em) perspective(100px) translateZ(.001px) !important;
+    font-size: 14px !important;
+    color: #000000de !important;
+}
+
     }
 
     @media only screen and (min-width: 1024px) {

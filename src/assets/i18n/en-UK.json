@@ -3572,6 +3572,7 @@
     "Display": "Display Service Charge/Gratuity on Receipt_uk",
     "GratuityLine": "Gratuity Line_uk",
     "ReceiptNote": "Receipt Note_uk",
+    "ReceiptFooterNote": "Receipt Footer Note_uk",
     "SelectOutlet": "Select Outlet_uk",
     "Details": "Detail_uk",
     "SummarySplit": "Summary Split_uk",
