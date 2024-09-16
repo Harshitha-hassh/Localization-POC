@@ -90,6 +90,9 @@
   },
   "app_title": "Agilysys Retail_uk",
   "common": {
+    "country": "Country_uk",
+    "missingCountryName": "Missing country name_uk",
+    "invalidCountryName": "Invalid country name_uk",
     "drp_txt_others": "Others_uk",
     "NightAuditMessage": "The night audit has been processed_uk",
     "lbl_changeProperty": "Change Property_uk",
@@ -4537,5 +4540,8 @@
   "lbl_Dasboard3": "Dashboard 3_uk",
   "btn_add": "ADD_uk",
   "lbl_searchReports": "Search Reports_uk",
-  "lbl_systemDateChange": "System Date has been Changed to _uk"
+  "lbl_systemDateChange": "System Date has been Changed to _uk",
+  "err_missing_dashboardName": "Missing Dashboard Name_uk",
+  "err_missing_dashboardUrl": "Missing Dashboard URL_uk",
+  "err_Invalid_dashboardUrl": "Invalid Dashboard URL_uk"
 }
