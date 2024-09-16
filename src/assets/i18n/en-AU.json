@@ -4543,5 +4543,7 @@
   "lbl_systemDateChange": "System Date has been Changed to ",
   "err_missing_dashboardName": "Missing Dashboard Name",
   "err_missing_dashboardUrl": "Missing Dashboard URL",
-  "err_Invalid_dashboardUrl": "Invalid Dashboard URL"
+  "err_Invalid_dashboardUrl": "Invalid Dashboard URL",
+  "lbl_configure": "Configure",
+  "warn_datalost": "Are you sure you want to cancel the changes?"
 }

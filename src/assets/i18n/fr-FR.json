@@ -4543,5 +4543,7 @@
   "lbl_systemDateChange": "System Date has been Changed to _fr",
   "err_missing_dashboardName": "Missing Dashboard Name_fr",
   "err_missing_dashboardUrl": "Missing Dashboard URL_fr",
-  "err_Invalid_dashboardUrl": "Invalid Dashboard URL_fr"
+  "err_Invalid_dashboardUrl": "Invalid Dashboard URL_fr",
+  "lbl_configure": "Configure_fr",
+  "warn_datalost": "Are you sure you want to cancel the changes?_fr"
 }
