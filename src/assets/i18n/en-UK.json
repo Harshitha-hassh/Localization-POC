@@ -1035,6 +1035,8 @@
     "search": "SEARCH_uk",
     "reset": "RESET_uk",
     "lbl_payment_received": "Amount Received_uk",
+    "MultiPackReturnConfirmation": "Guest has already redeemed items for the portion of multipack in the amount of {Amount}. Deduct this amount from the price of returned item?_uk",
+    "MultiPackReturnConfirmationFullRedeem": "Guest has already redeemed multipack fully amount of {Amount}, Only complete Return allowed, Do you want to Continue? _uk",
     "AdvancedSearch": "Advanced Search_uk",
     "ClerkId": "Clerk ID_uk",
     "Search": "Search_uk",

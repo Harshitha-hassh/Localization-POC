@@ -1035,6 +1035,8 @@
     "search": "SEARCH_kr",
     "reset": "RESET_kr",
     "lbl_payment_received": "Amount Received_kr",
+    "MultiPackReturnConfirmation": "Guest has already redeemed items for the portion of multipack in the amount of {Amount}. Deduct this amount from the price of returned item?_kr",
+    "MultiPackReturnConfirmationFullRedeem": "Guest has already redeemed multipack fully amount of {Amount}, Only complete Return allowed, Do you want to Continue? _kr",
     "AdvancedSearch": "Advanced Search_kr",
     "ClerkId": "Clerk ID_kr",
     "Search": "Search_kr",

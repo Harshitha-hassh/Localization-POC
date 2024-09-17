@@ -20,6 +20,8 @@ import { EventNotificationGroup } from "src/app/common/templates/notification-co
 import { PropertySettingDataService } from "src/app/retail/sytem-config/property-setting.data.service";
 import { CommonDataAwaiters } from "src/app/common/shared/events/awaiters/common.data.awaiters";
 import { VipTypBusiness } from "src/app/retail/shared/service/vip-type.service";
+import { ClientMultipack, MultiPackReturn } from "src/app/retail/retail.modals";
+import { TransactionService } from "src/app/retail/shared/service/transaction-service/transaction.dataservice";
 
 @Injectable({
     providedIn: "root"
@@ -38,7 +40,8 @@ export class DataAwaiterService {
         private userAccessBusiness : UserAccessBusiness,
         private notificationConfigurationService: NotificationConfigurationService,
         private propertySettingDataService: PropertySettingDataService,
-        private vipTypeBusiness: VipTypBusiness
+        private vipTypeBusiness: VipTypBusiness,
+        private transactionService: TransactionService
     ) {
         this.setAwaiters();
     }
@@ -69,6 +72,10 @@ export class DataAwaiterService {
         CommonDataAwaiters.DeleteVipType = this.deleteVipType.bind(this);
         CommonDataAwaiters.GetNextListOrderofVipType = this.getNextListOrderofVipType.bind(this);
         CommonDataAwaiters.DragDropVipType = this.dragDropVipType.bind(this);
+
+        //Client Multipack
+        RetailDataAwaiters.GetClientMultiPack = this.getClientMultiPacksBytransactionId.bind(this);
+        RetailDataAwaiters.UpdateMultiPack = this.updateMultiPack.bind(this);
     }
 
     getChildMenu(url, menutype?) {
@@ -82,6 +89,15 @@ export class DataAwaiterService {
     private async getExistingPlayer(patronId) {
         let client = await this.clientDataService.searchClientByPatron(patronId);
         return client;
+    }
+
+    async getClientMultiPacksBytransactionId(transactionId: number): Promise<ClientMultipack[]> {
+        return await this.transactionService.getClientMultiPacksBytransactionId(transactionId);
+    }
+
+    async updateMultiPack(multipackreturn: MultiPackReturn) {
+        const response = await this.transactionService.updateMultiPack(multipackreturn);
+        return response;
     }
 
     private async searchClient(name: string, type: number, requestUid: string, isPlatformGuestSearch:any): Promise<[ClientSearchModel[], PayeeInfo[]]> {
