@@ -90,6 +90,9 @@
   },
   "app_title": "Agilysys Retail_in",
   "common": {
+    "country": "Country_in",
+    "missingCountryName": "Missing country name_in",
+    "invalidCountryName": "Invalid country name_in",
     "drp_txt_others": "Others_in",
     "NightAuditMessage": "The night audit has been processed_in",
     "lbl_changeProperty": "Change Property_in",
@@ -1032,6 +1035,8 @@
     "search": "SEARCH_in",
     "reset": "RESET_in",
     "lbl_payment_received": "Amount Received_in",
+    "MultiPackReturnConfirmation": "Guest has already redeemed items for the portion of multipack in the amount of {Amount}. Deduct this amount from the price of returned item?_in",
+    "MultiPackReturnConfirmationFullRedeem": "Guest has already redeemed multipack fully amount of {Amount}, Only complete Return allowed, Do you want to Continue? _in",
     "AdvancedSearch": "Advanced Search_in",
     "ClerkId": "Clerk ID_in",
     "Search": "Search_in",
@@ -4538,5 +4543,10 @@
   "lbl_Dasboard3": "Dashboard 3_in",
   "btn_add": "ADD_in",
   "lbl_searchReports": "Search Reports_in",
-  "lbl_systemDateChange": "System Date has been Changed to _in"
+  "lbl_systemDateChange": "System Date has been Changed to _in",
+  "err_missing_dashboardName": "Missing Dashboard Name_in",
+  "err_missing_dashboardUrl": "Missing Dashboard URL_in",
+  "err_Invalid_dashboardUrl": "Invalid Dashboard URL_in",
+  "lbl_configure": "Configure_in",
+  "warn_datalost": "Are you sure you want to cancel the changes?_in"
 }
