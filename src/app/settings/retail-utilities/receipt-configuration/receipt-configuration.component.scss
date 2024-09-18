@@ -95,6 +95,13 @@
                 padding-bottom: 0px !important;
             }
         }
+        .receiptNote{
+            .mat-form-field-label{
+                transform: translateY(-1.5em) perspective(100px) translateZ(0.001px);
+                font-size: 14px !important;
+                color: rgba(0, 0, 0, 0.8705882353)
+            }
+        }
     }
     .bottomSection{
         height:64px;

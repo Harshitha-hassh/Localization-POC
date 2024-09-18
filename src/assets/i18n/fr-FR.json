@@ -3577,6 +3577,7 @@
     "Display": "Display Service Charge/Gratuity on Receipt_fr",
     "GratuityLine": "Gratuity Line_fr",
     "ReceiptNote": "Receipt Note_fr",
+    "ReceiptFooterNote": "Receipt Footer Note_fr",
     "SelectOutlet": "Select Outlet_fr",
     "Details": "Detail_fr",
     "SummarySplit": "Summary Split_fr",

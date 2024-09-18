@@ -3577,6 +3577,7 @@
     "Display": "Display Service Charge/Gratuity on Receipt_gb",
     "GratuityLine": "Gratuity Line_gb",
     "ReceiptNote": "Receipt Note_gb",
+    "ReceiptFooterNote": "Receipt Footer Note_gb",
     "SelectOutlet": "Select Outlet_gb",
     "Details": "Detail_gb",
     "SummarySplit": "Summary Split_gb",

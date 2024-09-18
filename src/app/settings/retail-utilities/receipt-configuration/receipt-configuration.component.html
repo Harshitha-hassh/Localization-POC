@@ -93,7 +93,7 @@
         <form [formGroup]="propertyForm" class="tab-height property-level p-4">
            <!-- formControlName="{{value.controlName}} -->
            <div>
-            <label class="golf-form--label">{{textCaptions.lbl_authCodeonReceipts}}</label>
+            <label class="golf-form--label text-label-new">{{textCaptions.lbl_authCodeonReceipts}}</label>
             <ui-switch [attr.automationId]="'Tog_ReceiptConfiguration_displayAuthcode'" [checkedLabel]="textCaptions.checked" formControlName="displayAuthcode"
             [uncheckedLabel]="textCaptions.unchecked" (selectionChange)="changeSelectionAuthCodeToggle($event)" (change)="toggleAction($event)"></ui-switch>
           </div>
@@ -103,10 +103,13 @@
             [attr.automationId]="'Txt_ReceiptConfiguration_authcodeName'"  formControlName="authcodeName" [maxlength]="25" />
           </mat-form-field>
             <div class="pt-3">
-              <label class="golf-form--label">{{textCaptions.lbl_changeDue}}</label>
+              <label class="golf-form--label text-label-new">{{textCaptions.lbl_changeDue}}</label>
               <ui-switch [checkedLabel]="textCaptions.checked" [attr.automationId]="'Txt_ReceiptConfiguration_displayChangeDue'" formControlName="displayChangeDue"
               [uncheckedLabel]="textCaptions.unchecked" (change)="toggleChangeDueAction($event)"></ui-switch>
             </div>
+            <mat-form-field (click)="viewChange($event)" class="mt-5 ag_form-control--xs receiptNote textWidth txt-area-height" [floatLabel]="floatLabel">
+                <textarea [attr.automationId]="'Ta_ReceiptConfiguration_receiptFooterNote'" matInput placeholder="{{textCaptions.ReceiptFooterNote}}" formControlName="receiptFooterNote" [maxlength]="250"></textarea>
+            </mat-form-field>
         <!-- <app-single-to-multiple *ngIf="selectedTabIndex === 1" [outlets]="this.outlets"></app-single-to-multiple> -->
         </form>
         <div class="bottomSection w-100">
