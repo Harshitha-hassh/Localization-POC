@@ -356,7 +356,7 @@ async getPropertyReceiptConfig()
       this.DisplayAuthCode=true;
       this.propertyForm.controls["authcodeName"].setValue(authCode);
       this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
-      this.propertyform.markAsPristine();
+      this.propertyForm.markAsPristine();
     }
     else
     {
