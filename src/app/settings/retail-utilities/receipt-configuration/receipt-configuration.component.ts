@@ -311,6 +311,7 @@ export class ReceiptConfigurationComponent implements OnInit {
 
   resetData() {
     this.isSaveDisabled = true;
+    this.propertyForm.markAsPristine();
   }
   toggleAction(event) {
     if (event == false) {
