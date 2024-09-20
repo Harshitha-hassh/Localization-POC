@@ -90,7 +90,6 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.captions = this.localization.captions;
       this.propertyName = this.localization.GetPropertyInfo('PropertyName');
       let propConfig = JSON.parse(sessionStorage.getItem("propConfig"));
-      let enableSignalR = propConfig?.EnableSignalR;
       let enableUICache = propConfig?.UICacheEnabled;     
       this.propertyService.changeTitle();
       this.loadGoogleMap();
@@ -100,11 +99,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.setAutoLogoff();
       if(!FullStory){
         this.setFullStory();
-      }
-      if(enableSignalR && enableSignalR.toLowerCase() == "true")
-    {
-      this.StartSignalrConnection();
-    }
+      }      
+      this.StartSignalrConnection();    
     if (enableUICache && enableUICache.toLowerCase() == "true") {
       this.setUICache();
     }
