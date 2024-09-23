@@ -274,6 +274,13 @@ export interface Transaction {
     transactionPayments: any[];
 }
 
+export interface TransactionWithItemNumber {
+    id: number;
+    transactionData: TransactionData;
+    transactionDetails: TransactionDetailWithItemNumber[];
+    transactionPayments: any[];
+}
+
 export interface TransactionDetail {
     id: number;
     transactionId: number;
@@ -293,6 +300,28 @@ export interface TransactionDetail {
     propertyId: number;
     subPropertyId: number;
     itemDescription:string;
+}
+
+export interface TransactionDetailWithItemNumber {
+    id: number;
+    transactionId: number;
+    lineNumber: number;
+    itemId: number;
+    serviceId: number;
+    staffId: number;
+    staffType?: any;
+    quantitySold: number;
+    unitPrice: number;
+    discount: number;
+    commission?: any;
+    serviceChargeGratuity?: any;
+    tax: number;
+    totalAmount: number;
+    outletId: number;
+    propertyId: number;
+    subPropertyId: number;
+    itemDescription:string;
+    itemNumber?:string;
 }
 
 
