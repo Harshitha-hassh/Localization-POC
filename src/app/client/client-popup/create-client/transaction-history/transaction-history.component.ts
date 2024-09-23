@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-import { GuestRetailTransactionHistory, Transaction , TransactionWithItemNumber} from '../../../../shared/shared-models';
+import { GuestRetailTransactionHistory, Transaction} from '../../../../shared/shared-models';
 import { Subscription } from 'rxjs';
 import { UntypedFormGroup } from '@angular/forms';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
@@ -9,6 +9,7 @@ import { RetailLocalization } from 'src/app/retail/common/localization/retail-lo
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { MultipackAPIModel,MultipackUIModel,MultpackHistoryRequest } from './multipack.model';
+import { TransactionWithItemNumber } from 'src/app/retail/shared/business/shared.modals'; 
 @Component({
   selector: 'app-transaction-history',
   templateUrl: './transaction-history.component.html',
