@@ -3994,7 +3994,8 @@
     "EditUser": "Edit User_uk",
     "USERSETTINGS": "USER SETTINGS_uk",
     "RETAILSETTINGS": "RETAIL SETTINGS_uk",
-    "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_uk"
+    "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_uk",
+    "UserRole": "User Role_uk"
   },
   "vendors": {
     "lbl_vendorCode": "Vendor Code_uk",

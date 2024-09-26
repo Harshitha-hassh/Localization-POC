@@ -3994,7 +3994,8 @@
     "EditUser": "Edit User_fi",
     "USERSETTINGS": "USER SETTINGS_fi",
     "RETAILSETTINGS": "RETAIL SETTINGS_fi",
-    "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_fi"
+    "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_fi",
+    "UserRole": "User Role_fi"
   },
   "vendors": {
     "lbl_vendorCode": "Vendor Code_fi",

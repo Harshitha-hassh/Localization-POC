@@ -3994,7 +3994,8 @@
     "EditUser": "Edit User_fr",
     "USERSETTINGS": "USER SETTINGS_fr",
     "RETAILSETTINGS": "RETAIL SETTINGS_fr",
-    "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_fr"
+    "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_fr",
+    "UserRole": "User Role_fr"
   },
   "vendors": {
     "lbl_vendorCode": "Vendor Code_fr",

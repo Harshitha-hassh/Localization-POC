@@ -3994,7 +3994,8 @@
     "EditUser": "Edit User_gb",
     "USERSETTINGS": "USER SETTINGS_gb",
     "RETAILSETTINGS": "RETAIL SETTINGS_gb",
-    "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_gb"
+    "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_gb",
+    "UserRole": "User Role_gb"
   },
   "vendors": {
     "lbl_vendorCode": "Vendor Code_gb",
