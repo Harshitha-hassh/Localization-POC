@@ -1518,6 +1518,7 @@
         "cardhasinsufficientbalanceforthetransaction": "Gift Card has insufficient balance for the transaction_da"
       },
       "LoadReversalNotSupportedMsg": "Load reversal is not supported for {vendorName} gift cards._da",
+      "IssueReversalNotSupportedMsg": "Issue reversal is not supported for {vendorName} gift cards._da",
       "EmailPhoneNoRequiredDisclaimer": "Either Email ID or Phone Number is Mandatory_da",
       "GiftcardAdvancedSearchPopup": {
         "lbl_advanceSearch": "Advanced Search_da",
