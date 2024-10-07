@@ -4000,7 +4000,8 @@
     "EditUser": "Edit User_de",
     "USERSETTINGS": "USER SETTINGS_de",
     "RETAILSETTINGS": "RETAIL SETTINGS_de",
-    "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_de"
+    "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_de",
+    "UserRole": "User Role_de"
   },
   "vendors": {
     "lbl_vendorCode": "Vendor Code_de",
