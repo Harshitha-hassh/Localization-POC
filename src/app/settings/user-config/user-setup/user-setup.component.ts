@@ -93,18 +93,24 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     this.filterGroups = [
       {
         id: 1,
-        name: 'outlet',
-        title: this.captions.Outlet,
-        filters: []
-      },
-      {
-        id: 2,
         name: 'application',
         title: this.captions.Application,
         filters: []
       },
       {
+        id: 2,
+        name: 'userRole',
+        title: this.captions.UserRole,
+        filters: []
+      },
+      {
         id: 3,
+        name: 'outlet',
+        title: this.captions.Outlet,
+        filters: []
+      },
+      {
+        id: 4,
         name: 'blockStatus',
         title: this.captions.BlockStatus,
         filters: [
@@ -113,18 +119,13 @@ export class UserSetupComponent implements OnInit, OnDestroy {
         ]
       },
       {
-        id: 4,
+        id: 5,
         name: 'activeStatus',
         title: this.captions.ActiveStatus,
         filters: [
           { id: 1, name: this.captions.Active },
           { id: 2, name: this.captions.Inactive }
         ]
-      },
-      {
-        id: 5, name: 'userRole',
-        title: this.captions.UserRole,
-        filters: []
       },
     ];
     
@@ -206,8 +207,23 @@ export class UserSetupComponent implements OnInit, OnDestroy {
 
   filterChange(filterGroup?: FilterGroup) {
     let tableData = _.clone(this.tableData);
+
+    // application filter
+    var applicationFilter = this.filterGroups[0].filtered ? this.filterGroups[0].filtered : [];
+    let names: string[] = applicationFilter.map(x => x.name);
+    tableData = tableData.filter(x => {
+      return names.length == 0 || names.some(a => x.applicationAllowed.indexOf(a) >= 0)
+    });
+
+    // userRole filter
+    var userRoleFilter = this.filterGroups[1].filtered ? this.filterGroups[1].filtered : []
+    let filteredRoles: string[] = userRoleFilter.map(x => x.name);
+    tableData = tableData.filter(x => {
+      return filteredRoles.length == 0 || filteredRoles.some(a => x.roles.indexOf(a) >= 0)
+    });
+
     // outlet filter
-    var outletFilter = this.filterGroups[0].filtered ? this.filterGroups[0].filtered : [];
+    var outletFilter = this.filterGroups[2].filtered ? this.filterGroups[2].filtered : [];
     if (outletFilter.length > 0) {
       tableData = tableData.filter(x => {
         return _.some(x.allowedOutId, item => {
@@ -215,32 +231,17 @@ export class UserSetupComponent implements OnInit, OnDestroy {
         });
       });
     }
-    // application filter
-    var applicationFilter = this.filterGroups[1].filtered ? this.filterGroups[1].filtered : [];
-    let names: string[] = applicationFilter.map(x => x.name);
-    tableData = tableData.filter(x => {
-      return names.length == 0 || names.some(a => x.applicationAllowed.indexOf(a) >= 0)
-    });
-
     // blockStatus filter
-    var blockStatusFilter = this.filterGroups[2].filtered ? this.filterGroups[2].filtered : [];
+    var blockStatusFilter = this.filterGroups[3].filtered ? this.filterGroups[3].filtered : [];
     let blockStatus: boolean[] = blockStatusFilter.map(x => x.id == 1 ? true : false);
     tableData = tableData.filter(data => {
       return blockStatus.length == 0 || blockStatus.includes(data.isAccountBlocked);
     });
 
     //activeStatus filter
-    var activeStatusFilter = this.filterGroups[3].filtered ? this.filterGroups[3].filtered : []
+    var activeStatusFilter = this.filterGroups[4].filtered ? this.filterGroups[4].filtered : []
     let activeStatus: boolean[] = activeStatusFilter.map(x => x.id == 1 ? true : false);
     tableData = tableData.filter(x => activeStatus.length == 0 || activeStatus.includes(x.isActive));
-
-
-    // userRole filter
-    var userRoleFilter = this.filterGroups[4].filtered ? this.filterGroups[4].filtered : []
-    let filteredRoles: string[] = userRoleFilter.map(x => x.name);
-    tableData = tableData.filter(x => {
-      return filteredRoles.length == 0 || filteredRoles.some(a => x.roles.indexOf(a) >= 0)
-    });
 
     this.bindTable(tableData);
   }
@@ -340,12 +341,12 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     if (callDesc == 'GetProductsByPropertyId') {
       if (result.result) {
         this.products = result.result;
-        this.filterGroups[1].filters = this.products.map(x => ({ id: x.id, name: x.productName, value: false }));
+        this.filterGroups[0].filters = this.products.map(x => ({ id: x.id, name: x.productName, value: false }));
       }
     } else if (callDesc == 'GetOutlets') {
       if (result.result) {
         this.servicesetting.propOutlets = result.result;
-        this.filterGroups[0].filters = this.servicesetting.propOutlets.map(x =>
+        this.filterGroups[2].filters = this.servicesetting.propOutlets.map(x =>
            ({ id: x.subPropertyID, name: x.subPropertyName}));
       }
     } else if (callDesc == 'GetActiveUserRolesByPropertyId') {
@@ -353,7 +354,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
         this.roles = this.rolelst = result.result;
         this.servicesetting.userRoles = this.roles;
         this.roles = this.roles.filter(x => x.productId.includes(Number(this.utils.GetPropertyInfo('ProductId'))));
-        this.filterGroups[4].filters = this.servicesetting.userRoles.map(x =>
+        this.filterGroups[1].filters = this.servicesetting.userRoles.map(x =>
           ({ id: x.id, name: x.description}));
       }
     } else if (callDesc == 'GetAllUsers') {
