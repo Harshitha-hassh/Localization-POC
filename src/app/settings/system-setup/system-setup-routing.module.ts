@@ -6,16 +6,19 @@ import { UserAccessBreakPoints } from 'src/app/retail/shared/constants/useracces
 import { MiscellaneousComponent } from 'src/app/retail/sytem-config/miscellaneous/miscellaneous.component';
 import { NotificationConfigurationComponent } from 'src/app/common/templates/notification-configuration/notification-configuration.component';
 import { HomeDashboardConfigurationComponent } from './home-dashboard-configuration/home-dashboard-configuration.component';
+import { RouteGuardService } from 'src/app/core/services/route.guard.service';
 
 
 const routes: Routes = [{
   path: '', component: SystemSetupComponent,
-  // canActivate: [RouteGuardService],
-  data: { breakPointNumber: UserAccessBreakPoints.SYSTEMSETUP, ShowPopup: true, isModule: true },
+  canActivateChild: [RouteGuardService],
+  canActivate: [RouteGuardService],
+  data: {checkAllSiblings: true,lastBreakPointNumber: UserAccessBreakPoints.RETAILSYSTEMSETUP, isModule: true},
   children: [
     { path: '', redirectTo: 'propertyinfo', pathMatch: 'full' },
     {
       path: 'propertyinfo', component: PropertyInfoComponent,
+      data: { breakPointNumber: UserAccessBreakPoints.RETAILSYSTEMSETUP, ShowPopup: true, isSubmodule: true }
     },
     {
       path: 'miscellaneous', component: MiscellaneousComponent,
@@ -25,9 +28,8 @@ const routes: Routes = [{
     },
     { path: 'dashboardConfiguration', 
       component: HomeDashboardConfigurationComponent, 
-      data: { BreakPointNumber: UserAccessBreakPoints.SYSTEMSETUP, 
-      ShowPopup: true,
-      isSubmodule: true } }
+      data: { breakPointNumber: UserAccessBreakPoints.RETAILSYSTEMSETUP, ShowPopup: true, isSubmodule: true }
+    }
   ]
 }];
 
