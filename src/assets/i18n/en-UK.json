@@ -3796,7 +3796,8 @@
         "updateDl": "UPDATE DISTRIBUTION LIST_uk",
         "lbl_sendTo": "Send To_uk",
         "lbl_emailWillSendTo": "Email Will be Sent To_uk",
-        "lbl_clearAll": "CLEAR ALL_uk"
+        "lbl_clearAll": "CLEAR ALL_uk",
+        "lbl_fromName": "From Name_uk"
       },
       "notificationsConfiguration": {
         "NOTIFICATIONCONFIGURATION": "NOTIFICATION CONFIGURATION_uk",
@@ -3890,7 +3891,8 @@
       "MissingMinutes": "Missing Minutes_uk",
       "MissingSeconds": "Missing Seconds_uk",
       "DuplicateReminder": "Duplicate Reminder Time_uk",
-      "IntakeForm": "Intake Form_uk"
+      "IntakeForm": "Intake Form_uk",
+      "emailSubject": "Email Subject_uk"
     },
     "events": {
       "AppointmentConfirmation": "Appointment Confirmation_uk",
