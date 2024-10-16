@@ -3798,7 +3798,8 @@
         "updateDl": "UPDATE DISTRIBUTION LIST_da",
         "lbl_sendTo": "Send To_da",
         "lbl_emailWillSendTo": "Email Will be Sent To_da",
-        "lbl_clearAll": "CLEAR ALL_da"
+        "lbl_clearAll": "CLEAR ALL_da",
+        "lbl_fromName": "From Name_da"
       },
       "notificationsConfiguration": {
         "NOTIFICATIONCONFIGURATION": "NOTIFICATION CONFIGURATION_da",
@@ -3892,7 +3893,8 @@
       "MissingMinutes": "Missing Minutes_da",
       "MissingSeconds": "Missing Seconds_da",
       "DuplicateReminder": "Duplicate Reminder Time_da",
-      "IntakeForm": "Intake Form_da"
+      "IntakeForm": "Intake Form_da",
+      "emailSubject": "Email Subject_da"
     },
     "events": {
       "AppointmentConfirmation": "Appointment Confirmation_da",
