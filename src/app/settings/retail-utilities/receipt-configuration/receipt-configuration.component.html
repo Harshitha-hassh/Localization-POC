@@ -91,7 +91,12 @@
       </mat-tab>
       <mat-tab label="{{textCaptions.lbl_proprtyLevel}}">
         <form [formGroup]="propertyForm" class="tab-height property-level p-4">
-           <!-- formControlName="{{value.controlName}} -->
+          <!-- formControlName="{{value.controlName}} -->
+          <div class="pb-3">
+            <label class="golf-form--label">{{textCaptions.lbl_printGiftReceipt}}</label>
+            <ui-switch [attr.automationId]="'Tog_ReceiptConfiguration_printGiftReceipt'" [checkedLabel]="textCaptions.checked"
+              formControlName="printGiftReceipt" [uncheckedLabel]="textCaptions.unchecked"></ui-switch>
+          </div>
            <div>
             <label class="golf-form--label text-label-new">{{textCaptions.lbl_authCodeonReceipts}}</label>
             <ui-switch [attr.automationId]="'Tog_ReceiptConfiguration_displayAuthcode'" [checkedLabel]="textCaptions.checked" formControlName="displayAuthcode"

@@ -60,6 +60,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       printReceipt: this.Form.array([this.addPrintDetails()])
     });
     this.propertyForm = this.Form.group({
+      printGiftReceipt:[''],
       displayAuthcode: [''],
       authcodeName: [''],
       displayChangeDue: [''],
@@ -349,9 +350,10 @@ async getPropertyReceiptConfig()
      this.PropertyReceiptInfo.configValue.displayAuthCode : this.PropertyReceiptInfo.defaultValue.displayAuthCode;
      let displayChangeDue= this.PropertyReceiptInfo.configValue.displayChangeDue != false ?  
      this.PropertyReceiptInfo.configValue.displayChangeDue : this.PropertyReceiptInfo.defaultValue.displayChangeDue;
+     let printGiftReceipt = this.PropertyReceiptInfo.configValue.printGiftReceipt != null ? this.PropertyReceiptInfo.configValue.printGiftReceipt : false;
      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
      this.propertyForm.controls["receiptFooterNote"].setValue(receiptFooterNote);
-   
+     this.propertyForm.controls["printGiftReceipt"].setValue(printGiftReceipt);
      if(displayAuthCode == true)
     {
       this.DisplayAuthCode=true;
@@ -370,6 +372,7 @@ async getPropertyReceiptConfig()
 
   async saveReceiptProperty(data: any) {
     console.log(data);
+    sessionStorage.removeItem("propertyReceiptConfiguration");
     if(this.PropertyReceiptInfo && this.PropertyReceiptInfo.id > 0)
     {
       let Propertyreceiptobj: PropertyReceiptModel = {
@@ -380,7 +383,9 @@ async getPropertyReceiptConfig()
         defaultValue: JSON.stringify(this.formDefaultValue(data))
       } 
       //Update call
-      let result = await this.data.updatePropertyConfig(Propertyreceiptobj);
+      let propertyReceiptConfig = await this.data.updatePropertyConfig(Propertyreceiptobj);
+      propertyReceiptConfig = this.utils.parsePropertyReceiptConfig(propertyReceiptConfig);
+      sessionStorage.setItem("propertyReceiptConfiguration",JSON.stringify(propertyReceiptConfig));
     }
     else{
       let Propertyreceiptobj: PropertyReceiptModel = {
@@ -391,6 +396,8 @@ async getPropertyReceiptConfig()
       defaultValue: JSON.stringify(this.formDefaultValue(data))
       }
       this.PropertyReceiptInfo = await this.data.createPropertyConfig(Propertyreceiptobj);
+      this.PropertyReceiptInfo  = this.utils.parsePropertyReceiptConfig(this.PropertyReceiptInfo );
+      sessionStorage.setItem("propertyReceiptConfiguration",JSON.stringify( this.PropertyReceiptInfo));
     } 
     this.utils.ShowError(this.textCaptions.Success, this.textCaptions.AfterSaveMessage + "the Property", ButtonType.Ok);
    
@@ -403,7 +410,8 @@ async getPropertyReceiptConfig()
       displayAuthCode: data.displayAuthcode,
       AuthCodeReceiptName: data.authcodeName,
       displayChangeDue: data.displayChangeDue,
-      receiptFooterNote: data.receiptFooterNote
+      receiptFooterNote: data.receiptFooterNote,
+      printGiftReceipt: data.printGiftReceipt
     }
     return configValue;
   }
@@ -413,7 +421,8 @@ async getPropertyReceiptConfig()
       displayAuthCode: false,
       AuthCodeReceiptName: "Auth Code",
       displayChangeDue: false,
-      receiptFooterNote: ""
+      receiptFooterNote: "",
+      printGiftReceipt: false
     }
     return defaultValue;
   }
