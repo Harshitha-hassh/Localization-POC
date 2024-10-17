@@ -259,6 +259,8 @@
   "310001": "Duplicate Guest exists on the system",
   "310002": "Guest information is out of date. Please refresh and try again",
   "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed.",
+  "5001012": "Gift Receipt cannot be printed for voided transaction",
+  "5001013": "Gift Receipt cannot be printed as no retail items are attached with the transaction",
   "8834501": "Client has future booking, cannot purge/anonymize the data",
   "-3": "New appointment duration will result in an overbook. Do you want to continue?",
   "-2": "An unexpected error has occurred, please try again later.",
