@@ -976,6 +976,9 @@
     "platformGuestSearch": "Extended Profile Search_kr"
   },
   "shop": {
+    "lbl_costDiscount": "Cost_kr",
+    "lbl_costPlusDiscount": "Cost Plus_kr",
+    "lbl_costPrice": "Cost Price_kr",
     "MissingValue": "Missing Value_kr",
     "MaximumError": "Exceeds Maximum Value_kr",
     "MultiPackRedeemPopup": {
