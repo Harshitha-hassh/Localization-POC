@@ -42,6 +42,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   searchValue = true;
   isADB2CConfigEnabled:boolean=false;
   filterGroups: FilterGroup[];
+  tableDataCopy: any = [];
   constructor(private Form: UntypedFormBuilder, public localization: RetailStandaloneLocalization, private dialog: MatDialog,
               private servicesetting: SettingsService,
               private http: HttpServiceCall,
@@ -206,7 +207,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   }
 
   filterChange(filterGroup?: FilterGroup) {
-    let tableData = _.clone(this.tableData);
+    let tableData = _.clone(this.tableDataCopy);
 
     // application filter
     var applicationFilter = this.filterGroups[0].filtered ? this.filterGroups[0].filtered : [];
@@ -242,7 +243,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     var activeStatusFilter = this.filterGroups[4].filtered ? this.filterGroups[4].filtered : []
     let activeStatus: boolean[] = activeStatusFilter.map(x => x.id == 1 ? true : false);
     tableData = tableData.filter(x => activeStatus.length == 0 || activeStatus.includes(x.isActive));
-
+    this.tableData = tableData ;
     this.bindTable(tableData);
   }
   async EditRecords(event) {
@@ -414,11 +415,13 @@ export class UserSetupComponent implements OnInit, OnDestroy {
             };
 
             this.tableData.push(userInfo);
+            this.tableDataCopy = [...this.tableData];
             this.servicesetting.existingUserIds.push((data[x].userName ? data[x].userName : '').toUpperCase());
             if (data[x].quickId) {this.servicesetting.existingQuickIds.push(data[x].quickId); }
           }
         }
         this.bindTable(this.tableData);
+        this.filterChange();
       }
     } else if (callDesc == 'GetAllServiceGrp') {
       if (result.result) {
