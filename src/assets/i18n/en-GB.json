@@ -1271,6 +1271,8 @@
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount_gb",
     "TicketDiscountAmountGreaterThanActual": "Ticket discount amount is greater than the ticket total_gb",
     "DiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for discount_gb",
+    "CostDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost discount_gb",
+    "CostPlusDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost Plus discount_gb",
     "PackagedItemDiscountWarning": "You are applying discount for the packaged items, this may contain items that are not eligible for discount_gb",
     "PleaseSelectDefaultOutlet": "Please select a default outlet_gb",
     "selectTerminal": "Please select a Terminal_gb",

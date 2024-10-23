@@ -1271,6 +1271,8 @@
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount_kr",
     "TicketDiscountAmountGreaterThanActual": "Ticket discount amount is greater than the ticket total_kr",
     "DiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for discount_kr",
+    "CostDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost discount_kr",
+    "CostPlusDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost Plus discount_kr",
     "PackagedItemDiscountWarning": "You are applying discount for the packaged items, this may contain items that are not eligible for discount_kr",
     "PleaseSelectDefaultOutlet": "Please select a default outlet_kr",
     "selectTerminal": "Please select a Terminal_kr",

@@ -1273,6 +1273,8 @@
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount",
     "TicketDiscountAmountGreaterThanActual": "Ticket discount amount is greater than the ticket total",
     "DiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for discount",
+    "CostDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost discount",
+    "CostPlusDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost Plus discount",
     "PackagedItemDiscountWarning": "You are applying discount for the packaged items, this may contain items that are not eligible for discount",
     "PleaseSelectDefaultOutlet": "Please select a default outlet",
     "selectTerminal": "Please select a Terminal",
