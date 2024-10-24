@@ -2459,6 +2459,7 @@
     "AutoPrintReceipts": "Auto Print Receipts_de",
     "err_max": "Exceeds Maximum Value_de",
     "err_min": "Precedes Minimum Value_de",
+    "lbl_invalidStartPosition": "Invalid Start Position_de",
     "lbl_EligibleForInhouseGratuity": "Eligible for In-House Gratuity_de",
     "lbl_EligibleForInhouseServiceCharge": "Eligible for In-House Service Charge_de"
   },
