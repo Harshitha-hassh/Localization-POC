@@ -201,6 +201,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   clearSearch() {
     this.FormGrp.controls.searchtext.setValue('');
     this.searchValue = true;
+    this.onChange();
   }
   resetFilter() {
     this.filterChange();
