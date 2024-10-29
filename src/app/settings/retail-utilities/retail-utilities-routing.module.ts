@@ -18,6 +18,10 @@ import { UserAccessBreakPoints as CommonBreakPoint } from 'src/app/common/consta
 import { EnahancedInventoryMasterSyncComponent } from '../../retail/enahanced-inventory-master-sync/enahanced-inventory-master-sync.component';
 import { CgpsLoggingProfileSyncWrapperComponent } from './cgps-logging-profile-sync-wrapper/cgps-logging-profile-sync-wrapper.component';
 import { DiscountMappingComponent } from 'src/app/retail/discount-mapping/discount-mapping.component';
+import { JobSchedulerComponent } from './job-scheduler/job-scheduler.component';
+import { SftpLandingComponent } from 'src/app/common/sftp/sftp-landing/sftp-landing.component';
+import { EventSchedulerConfigurationComponent } from 'src/app/common/shared/shared/event-scheduler-configuration/event-scheduler-configuration.component';
+import { ReportSchedularWrapperComponent } from './report-scheduler-wrapper/report-schedular-wrapper.component';
 
 
 const routes: Routes = [{
@@ -109,6 +113,32 @@ const routes: Routes = [{
       component: DiscountMappingComponent,
       canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
       data: { breakPointNumber: CommonBreakPoint.ADDEDITDISCOUNTMAPPING, redirectTo: '', syncAccess: true }
+    }, {
+      path: 'jobScheduler',
+      component: JobSchedulerComponent,
+      canActivate: [RouteGuardService],
+      data: {redirectTo: '', syncAccess: true },
+      children: [
+        { path: '', redirectTo: 'sftp', pathMatch: 'full' },
+        {
+          path: 'sftp',
+          component: SftpLandingComponent,
+          canActivate: [RouteGuardService],
+          data: { breakPointNumber: CommonBreakPoint.SFTP, redirectTo: '', syncAccess: true,ShowPopup: true }
+        },
+        {
+          path: 'jobSchedulerConfig',
+          component: EventSchedulerConfigurationComponent,
+          canActivate: [RouteGuardService],
+          data: { breakPointNumber: CommonBreakPoint.JOBSCHEDULERCONFIG, redirectTo: '', syncAccess: true,ShowPopup: true }
+        },
+        {
+          path: 'eventScheduler',
+          component: ReportSchedularWrapperComponent,
+          canActivate: [RouteGuardService],
+          data: { breakPointNumber: CommonBreakPoint.EVENTSCHEDULER, redirectTo: '', syncAccess: true,ShowPopup: true }
+        }
+      ]
     },
   ]
 }];

@@ -1,0 +1,20 @@
+<app-slide-action [ngClass]="[showSlide ? 'show':'hide']" id="slider" (closeSlide)="closeSlide()" [header]="header">
+    <div class="h-100 custom-eventdetail-report-wrapper" *ngIf="showSlide">
+        <div class="ag_pt--5 ag_pr--5 ag_pl--5 ag_w--100">
+            <app-ag-dropdown [inputs]="reportSourceConfig" (selectChange)='displayReportConfiguration($event)'>
+            </app-ag-dropdown>
+        </div>
+         <div *ngIf = "!isRetailReport" class="reportWrapper">
+            <app-report-wrapper [editValues]="patchReportValues" [reportGroupConfig]="reportSelector" [formData]="allDatas" [edit]="fromEdit"
+                [hideSaveBtn]="hideReportConfigSaveBtn" (clickSave)="saveReportConfig($event)">
+            </app-report-wrapper>
+            <!-- <app-reportcontrols [reportGroup]="reportSelector" [editValues]="patchReportValues" (clickSave)="saveReportConfig($event)"
+            [hideSaveBtn]="hideReportConfigSaveBtn"></app-reportcontrols> -->
+        </div>
+        <div class="ag_retail-report--wrapper" *ngIf = "isRetailReport">
+            <view-retail-reports [reportGroupName] = "reportSelector" (clickSave)="saveReportConfig($event)"
+            [editValues]="patchReportValues" [edit]="fromEdit">
+            </view-retail-reports>
+         </div>
+   </div>
+</app-slide-action>

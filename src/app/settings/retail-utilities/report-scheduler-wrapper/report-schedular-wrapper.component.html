@@ -1,0 +1,8 @@
+<app-shared-event-scheduler [callEdit]="editObject" [report]="report" (editEventEmit)="editEventEmit($event)"
+ (slideEmit)="slideSelector($event)" (retailReportEmitter)="retailReportEmitter($event)"
+ (emitReportSelector)="emitReportSelector($event)" (editSlider)="edittedValues($event)" 
+ [displayReportConfiguration]="displayReportConfiguration" [saveReportConfig]="saveReportConfig">
+</app-shared-event-scheduler>
+<app-event-slider [reportSelector]="reportSelector"  [inputs]="inputs" [isRetailReportVal]="isRetailReport" (closeSlideEmit)="slideSelector($event)" [showSlide]="showSlide" 
+(dropdownConfig)="dropdownConfig($event)" (saveReport)="saveReport($event)">
+</app-event-slider>
