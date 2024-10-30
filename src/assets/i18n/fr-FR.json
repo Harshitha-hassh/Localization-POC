@@ -979,7 +979,7 @@
     "lbl_costDiscount": "Cost_fr",
     "lbl_costPlusDiscount": "Cost Plus_fr",
     "lbl_costPrice": "Cost Price_fr",
-    "costPlusNotApplicable": "Cost/Cost Plus discount can not be applied as item cost value is greater than the sales price_fr",
+    "costPlusNotApplicable": "Cost/Cost Plus discount cannot be applied as item cost value is greater than the sales price_fr",
     "MissingValue": "Missing Value_fr",
     "MaximumError": "Exceeds Maximum Value_fr",
     "MultiPackRedeemPopup": {
@@ -1273,7 +1273,7 @@
     "TicketDiscountAmountGreaterThanActual": "Ticket discount amount is greater than the ticket total_fr",
     "DiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for discount_fr",
     "CostDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost/Cost Plus discount_fr",
-    "CostPlusDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost Plus discount as item cost value is greater than the sales price_fr",
+    "CostPlusDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost/Cost Plus discount as item cost value is greater than the sales price_fr",
     "TicketDiscountCannotBeApplied": "Ticket discount applied will be removed on applying Cost/Cost Plus discount. Do you wish to proceed?_fr",
     "CostDiscountCannotBeApplied": "Cost/Cost Plus discount applied will be removed on applying Ticket discount. Do you wish to proceed?_fr",
     "PackagedItemDiscountWarning": "You are applying discount for the packaged items, this may contain items that are not eligible for discount_fr",
