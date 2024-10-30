@@ -111,6 +111,7 @@
   "10112": "Duplicate BarCode_in",
   "10113": "Duplicate Secondary BarCode_in",
   "10114": "Unable to Update Retail Item, Invalid Request_in",
+  "10117": "Item Number Change Not Allowed_in",
   "10200": "Invalid Category name_in",
   "10201": "Category Not Found_in",
   "10300": "Invalid Template Code_in",
