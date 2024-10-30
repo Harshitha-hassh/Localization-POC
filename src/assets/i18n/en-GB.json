@@ -1946,6 +1946,7 @@
     "level": "Level_gb",
     "class": "Class_gb",
     "ImportItem": "Import Item_gb",
+    "ExportItem": "Export Item_gb",
     "machineName": "Machine Name_gb",
     "MachineGuid": "Machine GUID_gb",
     "MissingMachineName": "Missing Machine Name_gb",

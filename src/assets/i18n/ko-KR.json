@@ -1946,6 +1946,7 @@
     "level": "Level_kr",
     "class": "Class_kr",
     "ImportItem": "Import Item_kr",
+    "ExportItem": "Export Item_kr",
     "machineName": "Machine Name_kr",
     "MachineGuid": "Machine GUID_kr",
     "MissingMachineName": "Missing Machine Name_kr",

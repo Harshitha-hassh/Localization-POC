@@ -1946,6 +1946,7 @@
     "level": "Level_uk",
     "class": "Class_uk",
     "ImportItem": "Import Item_uk",
+    "ExportItem": "Export Item_uk",
     "machineName": "Machine Name_uk",
     "MachineGuid": "Machine GUID_uk",
     "MissingMachineName": "Missing Machine Name_uk",

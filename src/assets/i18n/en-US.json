@@ -1950,6 +1950,7 @@
     "level": "Level",
     "class": "Class",
     "ImportItem": "Import Item",
+    "ExportItem": "Export Item",
     "machineName": "Machine Name",
     "MachineGuid": "Machine GUID",
     "MissingMachineName": "Missing Machine Name",

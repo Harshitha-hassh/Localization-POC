@@ -1946,6 +1946,7 @@
     "level": "Level_in",
     "class": "Class_in",
     "ImportItem": "Import Item_in",
+    "ExportItem": "Export Item_in",
     "machineName": "Machine Name_in",
     "MachineGuid": "Machine GUID_in",
     "MissingMachineName": "Missing Machine Name_in",

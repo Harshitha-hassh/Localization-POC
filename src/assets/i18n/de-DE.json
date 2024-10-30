@@ -1946,6 +1946,7 @@
     "level": "Level_de",
     "class": "Class_de",
     "ImportItem": "Import Item_de",
+    "ExportItem": "Export Item_de",
     "machineName": "Machine Name_de",
     "MachineGuid": "Machine GUID_de",
     "MissingMachineName": "Missing Machine Name_de",
