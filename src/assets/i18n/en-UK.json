@@ -1845,6 +1845,9 @@
     "20055": "20055 - Distribution List_uk",
     "42709": "42709 - Add/Edit Discount Mapping_uk",
     "85160": "85160 - DataMagine Configuration_uk",
+    "85255": "85255 - SFTP_uk",
+    "100775": "100775 - Event Scheduler_uk",
+    "100776": "100776 - Job Scheduler Configuration_uk",
     "200410": "200410 - Export_uk",
     "200415": "200415 - Import_uk",
     "Appointment Actions": "Appointment Actions_uk",
@@ -3631,6 +3634,7 @@
     "sync": "SYNC_uk"
   },
   "ReportSchedular": {
+    "tbl_hdr_RetryReference": "Retry Reference_uk",
     "lbl_OperationSchedule": "API_uk",
     "lbl_extractMonitor": "EXTRACT MONITOR LOGS_uk",
     "lbl_reports": "Reports_uk",
@@ -3723,7 +3727,8 @@
     "warn_deleteWithName": "Are you sure you want to delete \"{name}\" ?_uk",
     "serviceUserWarning": "The service user session must be active for this action. Please reach out to your supervisor._uk",
     "lbl_ScheduleState": "Status_uk",
-    "lbl_hdr_NotifyIcon": "Email/Ftp_uk"
+    "lbl_hdr_NotifyIcon": "Email/Ftp_uk",
+    "pg_title_scheduleEventHistory": "Schedule Event History_uk"
   },
   "settings": {
     "prices": "Price ({option})_uk",
@@ -4688,5 +4693,20 @@
   "tog_lbl_showInactive": "Include Inactive_uk",
   "grid_hdr_IsActive": "Active_uk",
   "tbl_hdr_actions": "Actions_uk",
-  "lbl_enableisEnabled": "Active_uk"
+  "lbl_enableisEnabled": "Active_uk",
+  "btn_create": "CREATE_uk",
+  "lbl_scheduleEventHistorySearch": "Search by Reference Id, Job Type, Job Name, Status_uk",
+  "lbl_jobType": "Job Type_uk",
+  "tbl_JobStatus": "Job Status_uk",
+  "lbl_JobRanBetween": "Job Ran Between_uk",
+  "tbl_hdr_JobType": "Job Type_uk",
+  "tbl_hdr_ReferenceID": "Reference Id_uk",
+  "tbl_hdr_JobName": "Job Name_uk",
+  "tbl_hdr_JobRanAt": "Job Ran At_uk",
+  "tbl_hdr_EmailSendTo": "Email Send to (Distribution List)_uk",
+  "tbl_hdr_EmailSendStatus": "Email Send Status_uk",
+  "tbl_hdr_EmailSendAt": "Email Send At_uk",
+  "tbl_hdr_SFTPFolderPath": "SFTP Folder Path_uk",
+  "tbl_hdr_JobStatus": "Job Status_uk",
+  "tbl_hdr_jobErrorMessage": "Error Message_uk"
 }

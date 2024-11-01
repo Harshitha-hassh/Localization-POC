@@ -5720,3 +5720,39 @@ input[type="password"]::-ms-clear {
 .icon-No-Search-Results .path8:before, .icon-No-Search-Results .path9:before{
 color: $retail-primary-100 !important;
 }
+
+
+.boxed-icon{
+  border: 1px solid $theme-base-color;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  i::before{
+    color: $theme-base-color;
+    font-size: 20px;
+  }
+}
+.cdk-custom-wrapper .mat-row td .icon-edit1:before,
+.cdk-custom-wrapper .mat-row td .icon-delete:before,
+.cdk-custom-wrapper .mat-row td .icon-more:before{
+  color: $theme-base-color !important;
+}
+#extract-monitor-wrapper .header-extract-monitor{
+  background: $theme-base-color !important;
+}
+.mat-paginator-container {
+  justify-content: center!important;
+}
+ .event-scheduler-wrapper .icon-Settings:before,
+ .event-scheduler-wrapper .ag_link{
+  color: $theme-base-color !important;
+}
+.event-scheduler-wrapper .table-container .cdk-custom-wrapper .mat-row td .icon-Email:before{
+  color: unset;
+}
+.event-scheduler-wrapper .table-container .cdk-custom-wrapper .mat-row td .icon-file_upload:before{
+  color: #2665c0;
+}

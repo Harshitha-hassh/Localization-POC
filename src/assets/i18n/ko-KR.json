@@ -1845,6 +1845,9 @@
     "20055": "20055 - Distribution List_kr",
     "42709": "42709 - Add/Edit Discount Mapping_kr",
     "85160": "85160 - DataMagine Configuration_kr",
+    "85255": "85255 - SFTP_kr",
+    "100775": "100775 - Event Scheduler_kr",
+    "100776": "100776 - Job Scheduler Configuration_kr",
     "200410": "200410 - Export_kr",
     "200415": "200415 - Import_kr",
     "Appointment Actions": "Appointment Actions_kr",
@@ -3631,6 +3634,7 @@
     "sync": "SYNC_kr"
   },
   "ReportSchedular": {
+    "tbl_hdr_RetryReference": "Retry Reference_kr",
     "lbl_OperationSchedule": "API_kr",
     "lbl_extractMonitor": "EXTRACT MONITOR LOGS_kr",
     "lbl_reports": "Reports_kr",
@@ -3723,7 +3727,8 @@
     "warn_deleteWithName": "Are you sure you want to delete \"{name}\" ?_kr",
     "serviceUserWarning": "The service user session must be active for this action. Please reach out to your supervisor._kr",
     "lbl_ScheduleState": "Status_kr",
-    "lbl_hdr_NotifyIcon": "Email/Ftp_kr"
+    "lbl_hdr_NotifyIcon": "Email/Ftp_kr",
+    "pg_title_scheduleEventHistory": "Schedule Event History_kr"
   },
   "settings": {
     "prices": "Price ({option})_kr",
@@ -4688,5 +4693,20 @@
   "tog_lbl_showInactive": "Include Inactive_kr",
   "grid_hdr_IsActive": "Active_kr",
   "tbl_hdr_actions": "Actions_kr",
-  "lbl_enableisEnabled": "Active_kr"
+  "lbl_enableisEnabled": "Active_kr",
+  "btn_create": "CREATE_kr",
+  "lbl_scheduleEventHistorySearch": "Search by Reference Id, Job Type, Job Name, Status_kr",
+  "lbl_jobType": "Job Type_kr",
+  "tbl_JobStatus": "Job Status_kr",
+  "lbl_JobRanBetween": "Job Ran Between_kr",
+  "tbl_hdr_JobType": "Job Type_kr",
+  "tbl_hdr_ReferenceID": "Reference Id_kr",
+  "tbl_hdr_JobName": "Job Name_kr",
+  "tbl_hdr_JobRanAt": "Job Ran At_kr",
+  "tbl_hdr_EmailSendTo": "Email Send to (Distribution List)_kr",
+  "tbl_hdr_EmailSendStatus": "Email Send Status_kr",
+  "tbl_hdr_EmailSendAt": "Email Send At_kr",
+  "tbl_hdr_SFTPFolderPath": "SFTP Folder Path_kr",
+  "tbl_hdr_JobStatus": "Job Status_kr",
+  "tbl_hdr_jobErrorMessage": "Error Message_kr"
 }

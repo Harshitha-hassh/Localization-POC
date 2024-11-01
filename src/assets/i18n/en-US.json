@@ -1866,7 +1866,10 @@
     "2320": "2320 - Customizable Home Dashboard",
     "2325": "2325 - Configurable Home Dashboard",
     "2340": "2340 - JasperSoft Dashboard",
-    "7185": "7185 - System Setup"
+    "7185": "7185 - System Setup",
+    "85255": "85255 - SFTP",
+    "100775": "100775 - Event Scheduler",
+    "100776": "100776 - Job Scheduler Configuration"
   },
   "userId": "User ID",
   "password": "Password",
@@ -3635,6 +3638,7 @@
     "sync": "SYNC"
   },
   "ReportSchedular": {
+    "tbl_hdr_RetryReference": "Retry Reference",
     "lbl_OperationSchedule": "API",
     "lbl_extractMonitor": "EXTRACT MONITOR LOGS",
     "lbl_reports": "Reports",
@@ -3727,7 +3731,8 @@
     "warn_deleteWithName": "Are you sure you want to delete \"{name}\" ?",
     "serviceUserWarning": "The service user session must be active for this action. Please reach out to your supervisor.",
     "lbl_ScheduleState": "Status",
-    "lbl_hdr_NotifyIcon": "Email/Ftp"
+    "lbl_hdr_NotifyIcon": "Email/Ftp",
+    "pg_title_scheduleEventHistory": "Schedule Event History"
   },
   "settings": {
     "prices": "Price ({option})",
@@ -4692,5 +4697,19 @@
   "tog_lbl_showInactive": "Include Inactive",
   "grid_hdr_IsActive": "Active",
   "tbl_hdr_actions": "Actions",
-  "lbl_enableisEnabled": "Active"
+  "lbl_enableisEnabled": "Active",
+  "btn_create": "CREATE","lbl_scheduleEventHistorySearch": "Search by Reference Id, Job Type, Job Name, Status",
+  "lbl_jobType": "Job Type",
+  "tbl_JobStatus": "Job Status",
+  "lbl_JobRanBetween": "Job Ran Between",
+  "tbl_hdr_JobType": "Job Type",
+  "tbl_hdr_ReferenceID": "Reference Id",
+  "tbl_hdr_JobName": "Job Name",
+  "tbl_hdr_JobRanAt": "Job Ran At",
+  "tbl_hdr_EmailSendTo": "Email Send to (Distribution List)",
+  "tbl_hdr_EmailSendStatus": "Email Send Status",
+  "tbl_hdr_EmailSendAt": "Email Send At",
+  "tbl_hdr_SFTPFolderPath": "SFTP Folder Path",
+  "tbl_hdr_JobStatus": "Job Status",
+  "tbl_hdr_jobErrorMessage": "Error Message"
 }

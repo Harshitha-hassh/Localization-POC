@@ -1845,6 +1845,9 @@
     "20055": "20055 - Distribution List_gb",
     "42709": "42709 - Add/Edit Discount Mapping_gb",
     "85160": "85160 - DataMagine Configuration_gb",
+    "85255": "85255 - SFTP_gb",
+    "100775": "100775 - Event Scheduler_gb",
+    "100776": "100776 - Job Scheduler Configuration_gb",
     "200410": "200410 - Export_gb",
     "200415": "200415 - Import_gb",
     "Appointment Actions": "Appointment Actions_gb",
@@ -3631,6 +3634,7 @@
     "sync": "SYNC_gb"
   },
   "ReportSchedular": {
+    "tbl_hdr_RetryReference": "Retry Reference_gb",
     "lbl_OperationSchedule": "API_gb",
     "lbl_extractMonitor": "EXTRACT MONITOR LOGS_gb",
     "lbl_reports": "Reports_gb",
@@ -3723,7 +3727,8 @@
     "warn_deleteWithName": "Are you sure you want to delete \"{name}\" ?_gb",
     "serviceUserWarning": "The service user session must be active for this action. Please reach out to your supervisor._gb",
     "lbl_ScheduleState": "Status_gb",
-    "lbl_hdr_NotifyIcon": "Email/Ftp_gb"
+    "lbl_hdr_NotifyIcon": "Email/Ftp_gb",
+    "pg_title_scheduleEventHistory": "Schedule Event History_gb"
   },
   "settings": {
     "prices": "Price ({option})_gb",
@@ -4688,5 +4693,20 @@
   "tog_lbl_showInactive": "Include Inactive_gb",
   "grid_hdr_IsActive": "Active_gb",
   "tbl_hdr_actions": "Actions_gb",
-  "lbl_enableisEnabled": "Active_gb"
+  "lbl_enableisEnabled": "Active_gb",
+  "btn_create": "CREATE_gb",
+  "lbl_scheduleEventHistorySearch": "Search by Reference Id, Job Type, Job Name, Status_gb",
+  "lbl_jobType": "Job Type_gb",
+  "tbl_JobStatus": "Job Status_gb",
+  "lbl_JobRanBetween": "Job Ran Between_gb",
+  "tbl_hdr_JobType": "Job Type_gb",
+  "tbl_hdr_ReferenceID": "Reference Id_gb",
+  "tbl_hdr_JobName": "Job Name_gb",
+  "tbl_hdr_JobRanAt": "Job Ran At_gb",
+  "tbl_hdr_EmailSendTo": "Email Send to (Distribution List)_gb",
+  "tbl_hdr_EmailSendStatus": "Email Send Status_gb",
+  "tbl_hdr_EmailSendAt": "Email Send At_gb",
+  "tbl_hdr_SFTPFolderPath": "SFTP Folder Path_gb",
+  "tbl_hdr_JobStatus": "Job Status_gb",
+  "tbl_hdr_jobErrorMessage": "Error Message_gb"
 }

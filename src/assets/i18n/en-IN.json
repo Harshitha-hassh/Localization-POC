@@ -1845,6 +1845,9 @@
     "20055": "20055 - Distribution List_in",
     "42709": "42709 - Add/Edit Discount Mapping_in",
     "85160": "85160 - DataMagine Configuration_in",
+    "85255": "85255 - SFTP_in",
+    "100775": "100775 - Event Scheduler_in",
+    "100776": "100776 - Job Scheduler Configuration_in",
     "200410": "200410 - Export_in",
     "200415": "200415 - Import_in",
     "Appointment Actions": "Appointment Actions_in",
@@ -3631,6 +3634,7 @@
     "sync": "SYNC_in"
   },
   "ReportSchedular": {
+    "tbl_hdr_RetryReference": "Retry Reference_in",
     "lbl_OperationSchedule": "API_in",
     "lbl_extractMonitor": "EXTRACT MONITOR LOGS_in",
     "lbl_reports": "Reports_in",
@@ -3723,7 +3727,8 @@
     "warn_deleteWithName": "Are you sure you want to delete \"{name}\" ?_in",
     "serviceUserWarning": "The service user session must be active for this action. Please reach out to your supervisor._in",
     "lbl_ScheduleState": "Status_in",
-    "lbl_hdr_NotifyIcon": "Email/Ftp_in"
+    "lbl_hdr_NotifyIcon": "Email/Ftp_in",
+    "pg_title_scheduleEventHistory": "Schedule Event History_in"
   },
   "settings": {
     "prices": "Price ({option})_in",
@@ -4688,5 +4693,20 @@
   "tog_lbl_showInactive": "Include Inactive_in",
   "grid_hdr_IsActive": "Active_in",
   "tbl_hdr_actions": "Actions_in",
-  "lbl_enableisEnabled": "Active_in"
+  "lbl_enableisEnabled": "Active_in",
+  "btn_create": "CREATE_in",
+  "lbl_scheduleEventHistorySearch": "Search by Reference Id, Job Type, Job Name, Status_in",
+  "lbl_jobType": "Job Type_in",
+  "tbl_JobStatus": "Job Status_in",
+  "lbl_JobRanBetween": "Job Ran Between_in",
+  "tbl_hdr_JobType": "Job Type_in",
+  "tbl_hdr_ReferenceID": "Reference Id_in",
+  "tbl_hdr_JobName": "Job Name_in",
+  "tbl_hdr_JobRanAt": "Job Ran At_in",
+  "tbl_hdr_EmailSendTo": "Email Send to (Distribution List)_in",
+  "tbl_hdr_EmailSendStatus": "Email Send Status_in",
+  "tbl_hdr_EmailSendAt": "Email Send At_in",
+  "tbl_hdr_SFTPFolderPath": "SFTP Folder Path_in",
+  "tbl_hdr_JobStatus": "Job Status_in",
+  "tbl_hdr_jobErrorMessage": "Error Message_in"
 }
