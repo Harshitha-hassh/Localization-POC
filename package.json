@@ -65,7 +65,6 @@
     "moment": "^2.29.3",
     "msal": "^1.4.16",
     "ng-drag-drop": "^5.0.0",
-    "ngx-barcode": "^0.2.4",
     "ngx-bootstrap": "^6.2.0",
     "ngx-color": "^4.1.0",
     "ngx-doc-viewer": "^15.0.1",
