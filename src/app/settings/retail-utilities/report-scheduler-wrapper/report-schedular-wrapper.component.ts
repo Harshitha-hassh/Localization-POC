@@ -13,7 +13,7 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
 import { CommonUtilities } from 'src/app/common/shared/shared/utilities/common-utilities';
 import { ReportAPIOptions, ReportSelector_ } from 'src/app/reports/report.model';
 import { ReportSelectorBuilder } from 'src/app/reports/common/report.selector';
-import { ReportGroup as ReportTypes } from 'src/app/reports/common/report.constants';
+import { ReportTypes } from 'src/app/reports/common/report.constants';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
@@ -318,26 +318,24 @@ export class ReportSchedularWrapperComponent implements OnInit {
 
 
 
-  reportNameMapper(reportConfiguration: string, report): string {
-    const reportConfig = reportConfiguration  ? JSON.parse(reportConfiguration) : '';
-    if(!reportConfig) return '';
-    let reportSelector: any;
-    if (reportConfig.reportGroup == report.Retail ||
-      reportConfig.reportGroup == report.GiftCards ||
-      reportConfig.reportGroup == report.Commissiongratuity) {
-      const retailSelector = new ReportControlBuilder(this.localization, this.retailUtils, this.retailFeature, this.propertyInfo);
-      reportSelector = retailSelector.reportSelector;
-      return reportSelector.find(o => o.code === reportConfig.reportAPIOptions.code)?.value;
-      }
-    else {
-      // const selector = new ReportSelectorBuilder(this.localization, this.reportDataService);
-      // selector.getReportSelections(reportConfig.reportGroup);
-      // selector.reportList.pipe(takeUntil(this.destroyed)).subscribe(res => {
-      //   this.reportSelector = res;
-      // });
-     return this.reportSelector.find(o => o.code === reportConfig.reportAPIOptions.code)?.value;
+  reportNameMapper(reportConfiguration: string,report): string{
+    const reportConfig = reportConfiguration ? JSON.parse(reportConfiguration) : '';
+    let reportSelector : any;
+    if(reportConfig.reportGroup == report.Retail ||
+        reportConfig.reportGroup == report.GiftCards ||
+        reportConfig.reportGroup == report.Commissiongratuity)
+    {
+        const retailSelector = new ReportControlBuilder(this.localization, this.retailUtils, this.retailFeature, this.propertyInfo);
+        reportSelector = retailSelector.reportSelector;
     }
-
+    else{
+    const selector = new ReportSelectorBuilder(this.localization);
+    reportSelector = selector.getReportSelections;
+    }
+    if (!reportConfig){
+        return '';
+    }
+    return reportSelector.find(o => o.code === reportConfig.reportAPIOptions.code)?.value;
   }
   reportCardMapper(reportConfiguration: string, report): UI.ReportCard {
     const reportCard: UI.ReportCard = {

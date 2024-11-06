@@ -3192,6 +3192,7 @@
     "CopyMessage": "Copy from Frozen Inventory_fr"
   },
   "reports": {
+    "lbl_saveReportConfig": "SAVE_fr",
     "includePaymentTaxExempt": "Include Tax Exempt Against Payment Method_fr",
     "Appointment": "APPOINTMENT_fr",
     "Client": "CLIENT_fr",
@@ -3731,6 +3732,33 @@
     "pg_title_scheduleEventHistory": "Schedule Event History_fr"
   },
   "settings": {
+    "schedulerJobs": {
+      "ReportExecutionDate": "Report Execution Date_fr",
+      "StartOfCurrentYear": "Start Of Current Year_fr",
+      "StartOfCurrentQuarter": "Start Of Current Quarter_fr",
+      "StartOfCurrentMonth": "Start Of Current Month_fr",
+      "StartOfCurrentWeek": "Start Of Current Week_fr",
+      "StartOfPreviousYear": "Start Of Previous Year_fr",
+      "StartOfPreviousQuarter": "Start Of Previous Quarter_fr",
+      "StartOfPreviousMonth": "Start Of Previous Month_fr",
+      "StartofPreviousWeek": "Start of Previous Week_fr",
+      "StartOfNextYear": "Start Of Next Year_fr",
+      "StartOfNextQuarter": "Start Of Next Quarter_fr",
+      "StartOfNextMonth": "Start Of Next Month_fr",
+      "StartOfNextWeek": "Start Of Next Week_fr",
+      "EndOfCurrentYear": "End Of Current Year_fr",
+      "EndOfCurrentQuarter": "End Of Current Quarter_fr",
+      "EndOfCurrentMonth": "End Of Current Month_fr",
+      "EndOfCurrentWeek": "End Of Current Week_fr",
+      "EndOfPreviousYear": "End Of Previous Year_fr",
+      "EndOfPreviousQuarter": "End Of Previous Quarter_fr",
+      "EndOfPreviousMonth": "End Of Previous Month_fr",
+      "EndofPreviousWeek": "End of Previous Week_fr",
+      "EndOfNextYear": "End Of Next Year_fr",
+      "EndOfNextQuarter": "End Of Next Quarter_fr",
+      "EndOfNextMonth": "End Of Next Month_fr",
+      "EndOfNextWeek": "End Of Next Week_fr"
+    },
     "prices": "Price ({option})_fr",
     "utilities": {
       "warn_datalost": "Are you sure you want to cancel the changes?_fr",
@@ -4694,6 +4722,7 @@
   "grid_hdr_IsActive": "Active_fr",
   "tbl_hdr_actions": "Actions_fr",
   "lbl_enableisEnabled": "Active_fr",
+  "btn_create": "CREATE_fr",
   "lbl_scheduleEventHistorySearch": "Search by Reference Id, Job Type, Job Name, Status_fr",
   "lbl_jobType": "Job Type_fr",
   "tbl_JobStatus": "Job Status_fr",
@@ -4707,6 +4736,5 @@
   "tbl_hdr_EmailSendAt": "Email Send At_fr",
   "tbl_hdr_SFTPFolderPath": "SFTP Folder Path_fr",
   "tbl_hdr_JobStatus": "Job Status_fr",
-  "tbl_hdr_jobErrorMessage": "Error Message_fr",
-  "btn_create": "CREATE_fr"
+  "tbl_hdr_jobErrorMessage": "Error Message_fr"
 }

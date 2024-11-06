@@ -3192,6 +3192,7 @@
     "CopyMessage": "Copy from Frozen Inventory"
   },
   "reports": {
+    "lbl_saveReportConfig": "SAVE",
     "includePaymentTaxExempt": "Include Tax Exempt Against Payment Method",
     "Appointment": "APPOINTMENT",
     "Client": "CLIENT",
@@ -3731,6 +3732,33 @@
     "pg_title_scheduleEventHistory": "Schedule Event History"
   },
   "settings": {
+    "schedulerJobs": {
+      "ReportExecutionDate": "Report Execution Date",
+      "StartOfCurrentYear": "Start Of Current Year",
+      "StartOfCurrentQuarter": "Start Of Current Quarter",
+      "StartOfCurrentMonth": "Start Of Current Month",
+      "StartOfCurrentWeek": "Start Of Current Week",
+      "StartOfPreviousYear": "Start Of Previous Year",
+      "StartOfPreviousQuarter": "Start Of Previous Quarter",
+      "StartOfPreviousMonth": "Start Of Previous Month",
+      "StartofPreviousWeek": "Start of Previous Week",
+      "StartOfNextYear": "Start Of Next Year",
+      "StartOfNextQuarter": "Start Of Next Quarter",
+      "StartOfNextMonth": "Start Of Next Month",
+      "StartOfNextWeek": "Start Of Next Week",
+      "EndOfCurrentYear": "End Of Current Year",
+      "EndOfCurrentQuarter": "End Of Current Quarter",
+      "EndOfCurrentMonth": "End Of Current Month",
+      "EndOfCurrentWeek": "End Of Current Week",
+      "EndOfPreviousYear": "End Of Previous Year",
+      "EndOfPreviousQuarter": "End Of Previous Quarter",
+      "EndOfPreviousMonth": "End Of Previous Month",
+      "EndofPreviousWeek": "End of Previous Week",
+      "EndOfNextYear": "End Of Next Year",
+      "EndOfNextQuarter": "End Of Next Quarter",
+      "EndOfNextMonth": "End Of Next Month",
+      "EndOfNextWeek": "End Of Next Week"
+    },
     "prices": "Price ({option})",
     "utilities": {
       "warn_datalost": "Are you sure you want to cancel the changes?",

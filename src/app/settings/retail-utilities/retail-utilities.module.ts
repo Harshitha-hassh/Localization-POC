@@ -16,6 +16,7 @@ import { JobSchedulerComponent } from './job-scheduler/job-scheduler.component';
 import { EventSchedulerConfigurationComponent } from 'src/app/common/shared/shared/event-scheduler-configuration/event-scheduler-configuration.component';
 import { ReportSchedularWrapperComponent } from './report-scheduler-wrapper/report-schedular-wrapper.component';
 import { EventSliderComponent } from './report-scheduler-wrapper/event-slider/event-slider.component';
+import { RetailReportModule } from 'src/app/retail/retail-reports/reports.module';
 @NgModule({
     declarations: [RetailUtilitiesComponent, ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent, ManagerUtilitiesComponent
         , PrinterDefaultConfigurationComponent, CgpsLoggingProfileSyncWrapperComponent, 
@@ -25,7 +26,8 @@ import { EventSliderComponent } from './report-scheduler-wrapper/event-slider/ev
         SharedModule,
         UtilitiesRoutingModule,
         SystemConfigModule,
-        RetailModule
+        RetailModule,
+        RetailReportModule
     ]
 })
 export class UtilitiesModule { }

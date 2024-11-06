@@ -3192,6 +3192,7 @@
     "CopyMessage": "Copy from Frozen Inventory_fi"
   },
   "reports": {
+    "lbl_saveReportConfig": "SAVE_fi",
     "includePaymentTaxExempt": "Include Tax Exempt Against Payment Method_fi",
     "Appointment": "APPOINTMENT_fi",
     "Client": "CLIENT_fi",
@@ -3731,6 +3732,33 @@
     "pg_title_scheduleEventHistory": "Schedule Event History_fi"
   },
   "settings": {
+    "schedulerJobs": {
+      "ReportExecutionDate": "Report Execution Date_fi",
+      "StartOfCurrentYear": "Start Of Current Year_fi",
+      "StartOfCurrentQuarter": "Start Of Current Quarter_fi",
+      "StartOfCurrentMonth": "Start Of Current Month_fi",
+      "StartOfCurrentWeek": "Start Of Current Week_fi",
+      "StartOfPreviousYear": "Start Of Previous Year_fi",
+      "StartOfPreviousQuarter": "Start Of Previous Quarter_fi",
+      "StartOfPreviousMonth": "Start Of Previous Month_fi",
+      "StartofPreviousWeek": "Start of Previous Week_fi",
+      "StartOfNextYear": "Start Of Next Year_fi",
+      "StartOfNextQuarter": "Start Of Next Quarter_fi",
+      "StartOfNextMonth": "Start Of Next Month_fi",
+      "StartOfNextWeek": "Start Of Next Week_fi",
+      "EndOfCurrentYear": "End Of Current Year_fi",
+      "EndOfCurrentQuarter": "End Of Current Quarter_fi",
+      "EndOfCurrentMonth": "End Of Current Month_fi",
+      "EndOfCurrentWeek": "End Of Current Week_fi",
+      "EndOfPreviousYear": "End Of Previous Year_fi",
+      "EndOfPreviousQuarter": "End Of Previous Quarter_fi",
+      "EndOfPreviousMonth": "End Of Previous Month_fi",
+      "EndofPreviousWeek": "End of Previous Week_fi",
+      "EndOfNextYear": "End Of Next Year_fi",
+      "EndOfNextQuarter": "End Of Next Quarter_fi",
+      "EndOfNextMonth": "End Of Next Month_fi",
+      "EndOfNextWeek": "End Of Next Week_fi"
+    },
     "prices": "Price ({option})_fi",
     "utilities": {
       "warn_datalost": "Are you sure you want to cancel the changes?_fi",
@@ -4694,6 +4722,7 @@
   "grid_hdr_IsActive": "Active_fi",
   "tbl_hdr_actions": "Actions_fi",
   "lbl_enableisEnabled": "Active_fi",
+  "btn_create": "CREATE_fi",
   "lbl_scheduleEventHistorySearch": "Search by Reference Id, Job Type, Job Name, Status_fi",
   "lbl_jobType": "Job Type_fi",
   "tbl_JobStatus": "Job Status_fi",
@@ -4707,6 +4736,5 @@
   "tbl_hdr_EmailSendAt": "Email Send At_fi",
   "tbl_hdr_SFTPFolderPath": "SFTP Folder Path_fi",
   "tbl_hdr_JobStatus": "Job Status_fi",
-  "tbl_hdr_jobErrorMessage": "Error Message_fi",
-  "btn_create": "CREATE_fi"
+  "tbl_hdr_jobErrorMessage": "Error Message_fi"
 }
