@@ -115,6 +115,11 @@
             <mat-form-field (click)="viewChange($event)" class="mt-5 ag_form-control--xs receiptNote textWidth txt-area-height" [floatLabel]="floatLabel">
                 <textarea [attr.automationId]="'Ta_ReceiptConfiguration_receiptFooterNote'" matInput placeholder="{{textCaptions.ReceiptFooterNote}}" formControlName="receiptFooterNote" [maxlength]="250"></textarea>
             </mat-form-field>
+            <div class="pb-3 pt-4">
+              <label class="golf-form--label text-label-new">Print Receipt for Pending Settlement</label>
+              <ui-switch [attr.automationId]="'Tog_ReceiptConfiguration_printPendingSettlementReceipt'" [checkedLabel]="textCaptions.checked"
+                formControlName="printPendingSettlementReceipt" [uncheckedLabel]="textCaptions.unchecked"></ui-switch>
+            </div>
         <!-- <app-single-to-multiple *ngIf="selectedTabIndex === 1" [outlets]="this.outlets"></app-single-to-multiple> -->
         </form>
         <div class="bottomSection w-100">

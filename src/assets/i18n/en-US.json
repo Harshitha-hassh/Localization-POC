@@ -4272,6 +4272,7 @@
     "FromDate": "From Date",
     "ToDate": "To Date"
   },
+  "PreSettlementConfirmation": "Do you want to generate a pre-settlement receipt for this transaction?",
   "lbl_Guest": "Guest",
   "btn_selectFieldsToFilter": "SELECT FIELDS TO FILTER",
   "lbl_company": "Company",

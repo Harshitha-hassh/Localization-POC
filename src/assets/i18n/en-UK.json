@@ -4268,6 +4268,7 @@
     "FromDate": "From Date_uk",
     "ToDate": "To Date_uk"
   },
+  "PreSettlementConfirmation": "Do you want to generate a pre-settlement receipt for this transaction?_uk",
   "lbl_Guest": "Guest_uk",
   "btn_selectFieldsToFilter": "SELECT FIELDS TO FILTER_uk",
   "lbl_company": "Company_uk",

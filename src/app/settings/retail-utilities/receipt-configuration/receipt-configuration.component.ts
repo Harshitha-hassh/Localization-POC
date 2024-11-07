@@ -64,7 +64,8 @@ export class ReceiptConfigurationComponent implements OnInit {
       displayAuthcode: [''],
       authcodeName: [''],
       displayChangeDue: [''],
-      receiptFooterNote: ['']
+      receiptFooterNote: [''],
+      printPendingSettlementReceipt: ['']
     })
   }
 
@@ -351,9 +352,11 @@ async getPropertyReceiptConfig()
      let displayChangeDue= this.PropertyReceiptInfo.configValue.displayChangeDue != false ?  
      this.PropertyReceiptInfo.configValue.displayChangeDue : this.PropertyReceiptInfo.defaultValue.displayChangeDue;
      let printGiftReceipt = this.PropertyReceiptInfo.configValue.printGiftReceipt != null ? this.PropertyReceiptInfo.configValue.printGiftReceipt : false;
+     let printPendingSettlementReceipt = this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt != null ? this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt : false;
      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
      this.propertyForm.controls["receiptFooterNote"].setValue(receiptFooterNote);
      this.propertyForm.controls["printGiftReceipt"].setValue(printGiftReceipt);
+     this.propertyForm.controls["printPendingSettlementReceipt"].setValue(printPendingSettlementReceipt);
      if(displayAuthCode == true)
     {
       this.DisplayAuthCode=true;
@@ -411,7 +414,8 @@ async getPropertyReceiptConfig()
       AuthCodeReceiptName: data.authcodeName,
       displayChangeDue: data.displayChangeDue,
       receiptFooterNote: data.receiptFooterNote,
-      printGiftReceipt: data.printGiftReceipt
+      printGiftReceipt: data.printGiftReceipt,
+      printPendingSettlementReceipt: data.printPendingSettlementReceipt
     }
     return configValue;
   }
@@ -422,7 +426,8 @@ async getPropertyReceiptConfig()
       AuthCodeReceiptName: "Auth Code",
       displayChangeDue: false,
       receiptFooterNote: "",
-      printGiftReceipt: false
+      printGiftReceipt: false,
+      printPendingSettlementReceipt: false
     }
     return defaultValue;
   }
