@@ -3159,7 +3159,8 @@
     "confirmPassword": "Confirm Password_uk",
     "err_confirmPassword": "Confirm Password should be same as new Password_uk",
     "MissingNewPassword": "Missing New Password_uk",
-    "MissingConfirmPassword": "Missing Confirm Password_uk"
+    "MissingConfirmPassword": "Missing Confirm Password_uk",
+    "RequestPresettlementReceiptOnPendingSettlement": "Request Pre-settlement Receipts for Pending Settlements_uk"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_uk",

@@ -3159,7 +3159,8 @@
     "confirmPassword": "Confirm Password_de",
     "err_confirmPassword": "Confirm Password should be same as new Password_de",
     "MissingNewPassword": "Missing New Password_de",
-    "MissingConfirmPassword": "Missing Confirm Password_de"
+    "MissingConfirmPassword": "Missing Confirm Password_de",
+    "RequestPresettlementReceiptOnPendingSettlement": "Request Pre-settlement Receipts for Pending Settlements_de"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_de",

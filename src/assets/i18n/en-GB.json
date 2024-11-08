@@ -3159,7 +3159,8 @@
     "confirmPassword": "Confirm Password_gb",
     "err_confirmPassword": "Confirm Password should be same as new Password_gb",
     "MissingNewPassword": "Missing New Password_gb",
-    "MissingConfirmPassword": "Missing Confirm Password_gb"
+    "MissingConfirmPassword": "Missing Confirm Password_gb",
+    "RequestPresettlementReceiptOnPendingSettlement": "Request Pre-settlement Receipts for Pending Settlements_gb"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_gb",

@@ -44,7 +44,7 @@ export class ReceiptConfigurationComponent implements OnInit {
 
   constructor(private Form: UntypedFormBuilder,
               private breakPoint: BreakPointAccess,
-              private localization: RetailStandaloneLocalization,
+              public localization: RetailStandaloneLocalization,
               private data: ReceiptConfigurationDataService,
               private outletData: RetailOutletsDataService, private utils: RetailUtilities) {
     this.textCaptions = this.localization.captions.utilities;
