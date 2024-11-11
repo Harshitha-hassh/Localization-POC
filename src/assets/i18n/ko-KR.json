@@ -1012,6 +1012,8 @@
     "ServiceChargeTax": "Service Charge Tax_kr",
     "GratuityTax": "Gratuity Tax_kr",
     "creditBookBalance": "Credit Book_kr",
+    "membershipType": "Membership Type_kr",
+    "discountType": "Discount Type_kr",
     "ItemName": "Item Name_kr",
     "ItemPrice": "Item Price_kr",
     "CostPlusDiscount": "Cost Plus Discount_kr",

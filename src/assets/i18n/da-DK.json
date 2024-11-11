@@ -1012,6 +1012,8 @@
     "ServiceChargeTax": "Service Charge Tax_da",
     "GratuityTax": "Gratuity Tax_da",
     "creditBookBalance": "Credit Book_da",
+    "membershipType": "Membership Type_da",
+    "discountType": "Discount Type_da",
     "ItemName": "Item Name_da",
     "ItemPrice": "Item Price_da",
     "CostPlusDiscount": "Cost Plus Discount_da",

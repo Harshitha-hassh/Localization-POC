@@ -1012,6 +1012,8 @@
     "ServiceChargeTax": "Service Charge Tax_uk",
     "GratuityTax": "Gratuity Tax_uk",
     "creditBookBalance": "Credit Book_uk",
+    "membershipType": "Membership Type_uk",
+    "discountType": "Discount Type_uk",
     "ItemName": "Item Name_uk",
     "ItemPrice": "Item Price_uk",
     "CostPlusDiscount": "Cost Plus Discount_uk",
