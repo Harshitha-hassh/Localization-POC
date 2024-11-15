@@ -37,6 +37,7 @@ import { RevenuePostingDataService } from 'src/app/retail/sytem-config/data-serv
 import { RoomRevenuePostingRequest } from 'src/app/retail/shop/view-categories/retail-revenue-posting-logs/revenue-posting';
 import { Localization } from 'src/app/common/localization/localization';
 import { NightAuditBusiness } from 'src/app/common/night-audit/night-audit.business';
+import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 
 @Component({
     selector: 'app-day-end',
@@ -96,6 +97,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     public _shopservice: CommonVariablesService, 
     public dialog: MatDialog, 
     public revenuePostingDataService: RevenuePostingDataService,
+    private _featureFlagService: RetailFeatureFlagInformationService,
     private nightAuditBusiness: NightAuditBusiness) {
       this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
   }
@@ -114,7 +116,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         }
       }
     });
-
+    this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
     this.captions = this.localization.captions.dayEnd;
     this.AppointmentStatus = this.localization.captions.appointmentSearch;
     this.captionsBookApp = this.localization.captions.bookAppointment;
@@ -139,8 +141,17 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.InvokeServiceCall('GetMiscConfigurationByPropertyId', Host.retailManagement, HttpMethod.Get, { PropertyId: Number(this.localization.GetPropertyInfo('PropertyId')) });
     }
     this.ResetServiceObject();
+    this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
+    this.RefreshConfig();
   }
 
+  RefreshConfig(){
+    const revenuePosting = sessionStorage.getItem("RevenuePosting_PostViaPMSCommunicationReceiver");
+    const pmsSystem = sessionStorage.getItem("pmsSystem");
+    if (!revenuePosting || !pmsSystem) {
+      this._featureFlagService.RefreshConfig();
+    }
+  } 
   async getRevenuePostings(){
     const request: RoomRevenuePostingRequest = {
       startDate: this.localization.convertDateObjToAPIdate(this.currSysDate),
@@ -357,13 +368,22 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   SendNewSystemDate() {
     const pmsSystem = sessionStorage.getItem('pmsSystem');
-    if (this.showRevenuePostings && pmsSystem != null && pmsSystem.toLowerCase() === 'visualone') {
-      let obj: NotifyDayEnd = { DateTime: this.localization.convertDateObjToAPIdate(this.newSysDate)
-        , NightAuditDateTime : this.localization.convertDateObjToAPIdate(this.currSysDate ) 
-         }
-      this.InvokeServiceCall('NotifyDayEnd', Host.retailManagement, HttpMethod.Put, {},
-        obj, null, null, false);
+    let PMSSystemValue = "";
+    const PostViaPMSCommunicationReceiver = JSON.parse(sessionStorage.getItem("RevenuePosting_PostViaPMSCommunicationReceiver"));
+    if(PostViaPMSCommunicationReceiver){
+      const jsonPropConfig = sessionStorage.getItem('propConfig');
+      PMSSystemValue = jsonPropConfig ? JSON.parse(jsonPropConfig)?.PMSSystem : null;
     }
+    if (this.showRevenuePostings && 
+      (( pmsSystem != null && pmsSystem.toLowerCase() === 'visualone') || 
+      (PostViaPMSCommunicationReceiver && PMSSystemValue != undefined && PMSSystemValue != null && 
+      ( PMSSystemValue.toLowerCase() === 'visualone' || PMSSystemValue.toLowerCase() === 'v1' || PMSSystemValue.toLowerCase()== 'versa')))) {
+        let obj: NotifyDayEnd = { DateTime: this.localization.convertDateObjToAPIdate(this.newSysDate)
+          , NightAuditDateTime : this.localization.convertDateObjToAPIdate(this.currSysDate ) 
+           }
+        this.InvokeServiceCall('NotifyDayEnd', Host.retailManagement, HttpMethod.Put, {},
+          obj, null, null, false);
+      }  
   }
 
   errorCallback<T>(error: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
