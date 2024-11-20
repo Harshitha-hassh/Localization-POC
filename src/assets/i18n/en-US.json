@@ -4001,7 +4001,8 @@
         "RetailReceipts": "Retail Receipts",
         "RetailNightAuditReminder": "Night Audit Reminder",
         "RetailNightAuditCompletion": "Night Audit Success",
-        "RetailNightAuditFailure": "Night Audit Failure"
+        "RetailNightAuditFailure": "Night Audit Failure",
+        "AuthorizePaymentRetail": "Authorize Payment"
       }
     },
     "notificationsConfiguration": {
@@ -4057,7 +4058,8 @@
       "RetailReceipts": "Retail Receipts",
       "RetailNightAuditReminder": "Night Audit Reminder",
       "RetailNightAuditCompletion": "Night Audit Success",
-      "RetailNightAuditFailure": "Night Audit Failure"
+      "RetailNightAuditFailure": "Night Audit Failure",
+      "AuthorizePaymentRetail": "Authorize Payment"
     }
   },
   "dayEnd": {

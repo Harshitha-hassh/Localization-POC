@@ -3997,7 +3997,8 @@
         "RetailReceipts": "Retail Receipts_fr",
         "RetailNightAuditReminder": "Night Audit Reminder_fr",
         "RetailNightAuditCompletion": "Night Audit Success_fr",
-        "RetailNightAuditFailure": "Night Audit Failure_fr"
+        "RetailNightAuditFailure": "Night Audit Failure_fr",
+        "AuthorizePaymentRetail": "Authorize Payment_fr"
       }
     },
     "notificationsConfiguration": {
@@ -4053,7 +4054,8 @@
       "RetailReceipts": "Retail Receipts_fr",
       "RetailNightAuditReminder": "Night Audit Reminder_fr",
       "RetailNightAuditCompletion": "Night Audit Success_fr",
-      "RetailNightAuditFailure": "Night Audit Failure_fr"
+      "RetailNightAuditFailure": "Night Audit Failure_fr",
+      "AuthorizePaymentRetail": "Authorize Payment_fr"
     }
   },
   "dayEnd": {
