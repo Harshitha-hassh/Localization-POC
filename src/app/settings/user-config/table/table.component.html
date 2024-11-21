@@ -31,9 +31,7 @@
           <span class="switch-label " [attr.data-on]="localization.captions.common.Yes" [attr.data-off]="localization.captions.common.No"></span>
           <span class="switch-handle "></span>
         </label> -->
-        <ui-switch class="LW14 switch-toggle" size="small" checkedLabel={{localization.captions.common.Yes}}
-          uncheckedLabel={{localization.captions.common.No}} (change)="sliderChange($event)" >
-        </ui-switch>
+        <app-ag-toggle [toggleInputs]="customToggle" (valueChange)="sliderChange($event)"></app-ag-toggle>
       </div>
 
       <div *ngIf="customHeader" class="custom-retail-inputs">
@@ -54,10 +52,7 @@
                 <div *ngIf="enableToggleButton" class="d-inline">
                   <div class="align-toggle d-inline-block" *ngIf="enableToggleButton">
                     <span class="role-setup-toggle-label LW12 pr-2 d-block">{{captions.setting.Active}}</span>
-                    <ui-switch class="LW14 switch-toggle" formControlName="activetoggle" size="small"
-                      checkedLabel={{localization.captions.common.Yes}}
-                      uncheckedLabel={{localization.captions.common.No}} (change)="UpdateValidation()"
-                      ></ui-switch>
+                    <app-ag-toggle [toggleInputs]="activeToggleInputs" (valueChange)="UpdateValidation()"></app-ag-toggle>
                   </div>
                 </div>
                 <button mat-raised-button type="button" class="p-2 search_button_width LW14 ml-2"
@@ -77,9 +72,7 @@
                     <span class="switch-label " [attr.data-on]="localization.captions.common.Yes" [attr.data-off]="localization.captions.common.No"></span>
                     <span class="switch-handle "></span>
                   </label> -->
-                  <ui-switch class="LW14 switch-toggle" size="small" checkedLabel={{localization.captions.common.Yes}}
-                    uncheckedLabel={{localization.captions.common.No}} (change)="sliderChange($event)"
-                    ></ui-switch>
+                  <app-ag-toggle [toggleInputs]="showInactiveToggleInputs" (valueChange)="sliderChange($event)"></app-ag-toggle>
                 </div>
                 <mat-form-field class="searchArea spa-searchbox custSearchbox" floatLabel="never"
                   [ngClass]="enableToggleButton ? 'searchWidth': ''">
@@ -207,12 +200,8 @@
                         <span class="switch-label " [attr.data-on]="localization.captions.common.Yes" [attr.data-off]="localization.captions.common.No"></span>
                         <span class="switch-handle"></span>
                       </label> -->
-                      <ui-switch class="LW14 switch-toggle" [(ngModel)]="bodyCnt[hdrCnt.jsonkey]"
-                        [ngModelOptions]="{standalone: true}" size="small"
-                        checkedLabel={{localization.captions.common.Yes}}
-                        uncheckedLabel={{localization.captions.common.No}}
-                        (change)="showInactiveRoles(bodyCnt[hdrCnt.jsonkey], bodyCnt, bi)" [name]="toggleDisplayText">
-                      </ui-switch>
+                      <mat-slide-toggle [disabled]="hdrCnt.isDisabled" class="" name="toggleDisplayText" [(ngModel)]="bodyCnt[hdrCnt.jsonkey]" disableRipple="true" 
+                      [ngModelOptions]="{standalone: true}" (change)="showInactiveRoles(bodyCnt[hdrCnt.jsonkey], bodyCnt, bi)" attr.automationId='Tog_table_showInactiveRoles{{bi}}'></mat-slide-toggle>
                     </div>
                     <!-- <span *ngIf="hdrCnt.jsonkey == 'services'">
                                     <span *ngFor="let service of bodyCnt[hdrCnt.jsonkey]; let isLast=index">

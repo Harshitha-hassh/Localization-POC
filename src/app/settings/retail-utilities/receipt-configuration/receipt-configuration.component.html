@@ -94,13 +94,11 @@
           <!-- formControlName="{{value.controlName}} -->
           <div class="pb-3">
             <label class="golf-form--label">{{textCaptions.lbl_printGiftReceipt}}</label>
-            <ui-switch [attr.automationId]="'Tog_ReceiptConfiguration_printGiftReceipt'" [checkedLabel]="textCaptions.checked"
-              formControlName="printGiftReceipt" [uncheckedLabel]="textCaptions.unchecked"></ui-switch>
+            <app-ag-toggle [toggleInputs]="printGiftToggleInputs"></app-ag-toggle>
           </div>
            <div>
             <label class="golf-form--label text-label-new">{{textCaptions.lbl_authCodeonReceipts}}</label>
-            <ui-switch [attr.automationId]="'Tog_ReceiptConfiguration_displayAuthcode'" [checkedLabel]="textCaptions.checked" formControlName="displayAuthcode"
-            [uncheckedLabel]="textCaptions.unchecked" (selectionChange)="changeSelectionAuthCodeToggle($event)" (change)="toggleAction($event)"></ui-switch>
+            <app-ag-toggle [toggleInputs]="authCodeToggleInputs" (valueChange)="toggleAction($event)"></app-ag-toggle>
           </div>
 
           <mat-form-field class="ag_form-control--xs pt-3 authcodeName" [floatLabel]="floatLabel" *ngIf="this.DisplayAuthCode">
@@ -109,16 +107,14 @@
           </mat-form-field>
             <div class="pt-3">
               <label class="golf-form--label text-label-new">{{textCaptions.lbl_changeDue}}</label>
-              <ui-switch [checkedLabel]="textCaptions.checked" [attr.automationId]="'Txt_ReceiptConfiguration_displayChangeDue'" formControlName="displayChangeDue"
-              [uncheckedLabel]="textCaptions.unchecked" (change)="toggleChangeDueAction($event)"></ui-switch>
+              <app-ag-toggle [toggleInputs]="changeDueToggleInputs" (valueChange)="toggleChangeDueAction($event)"></app-ag-toggle>
             </div>
             <mat-form-field (click)="viewChange($event)" class="mt-5 ag_form-control--xs receiptNote textWidth txt-area-height" [floatLabel]="floatLabel">
                 <textarea [attr.automationId]="'Ta_ReceiptConfiguration_receiptFooterNote'" matInput placeholder="{{textCaptions.ReceiptFooterNote}}" formControlName="receiptFooterNote" [maxlength]="250"></textarea>
             </mat-form-field>
             <div class="pb-3 pt-4">
               <label class="golf-form--label text-label-new">{{localization.captions.setting.RequestPresettlementReceiptOnPendingSettlement}}</label>
-              <ui-switch [attr.automationId]="'Tog_ReceiptConfiguration_printPendingSettlementReceipt'" [checkedLabel]="textCaptions.checked"
-                formControlName="printPendingSettlementReceipt" [uncheckedLabel]="textCaptions.unchecked"></ui-switch>
+              <app-ag-toggle [toggleInputs]="settlementReceiptToggleInputs"></app-ag-toggle>
             </div>
         <!-- <app-single-to-multiple *ngIf="selectedTabIndex === 1" [outlets]="this.outlets"></app-single-to-multiple> -->
         </form>

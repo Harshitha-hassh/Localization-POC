@@ -7,6 +7,7 @@ import { RetailOutletsDataService } from '../../../retail/retail-code-setup/reta
 import { RetailBreakPoint, ButtonType } from 'src/app/common/shared/shared/globalsContant';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { AgToggleConfig } from 'src/app/common/Models/ag-models';
 
 @Component({
   selector: 'app-receipt-configuration',
@@ -40,6 +41,10 @@ export class ReceiptConfigurationComponent implements OnInit {
   propertyId: number;
   floatLabel: string;
   displayChangeDue: boolean;
+  printGiftToggleInputs: AgToggleConfig;
+  authCodeToggleInputs: AgToggleConfig;
+  changeDueToggleInputs: AgToggleConfig;
+  settlementReceiptToggleInputs: AgToggleConfig;
 
 
   constructor(private Form: UntypedFormBuilder,
@@ -78,6 +83,26 @@ export class ReceiptConfigurationComponent implements OnInit {
       { id: 2, value: this.textCaptions.SummarySplit },
       { id: 3, value: this.textCaptions.SummaryCombine }
     ];
+    this.printGiftToggleInputs = {
+      group: this.propertyForm,
+      formControlName: 'printGiftReceipt',
+      automationId:"'Tog_ReceiptConfiguration_printGiftReceipt'"
+    }
+    this.authCodeToggleInputs = {
+      group: this.propertyForm,
+      formControlName: 'displayAuthcode',
+      automationId:"'Tog_ReceiptConfiguration_displayAuthcode'"
+    }
+    this.changeDueToggleInputs = {
+      group: this.propertyForm,
+      formControlName: 'displayChangeDue',
+      automationId:"'Tog_ReceiptConfiguration_displayChangeDue'"
+    }
+    this.settlementReceiptToggleInputs = {
+      group: this.propertyForm,
+      formControlName: 'printPendingSettlementReceipt',
+      automationId:"'Tog_ReceiptConfiguration_printPendingSettlementReceipt'"
+    }
     this.Outlet = await this.outletData.getOutlets();
     this.Outlet = this.Outlet.filter(x => x.isActive == true);
     this.OutletInfo = await this.data.getOutletInfo();
@@ -316,7 +341,7 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.propertyForm.markAsPristine();
   }
   toggleAction(event) {
-    if (event == false) {
+    if (event.checked == false) {
       this.DisplayAuthCode=false;
       this.propertyForm.controls["authcodeName"].setValidators(Validators.required);
       this.propertyForm.controls["authcodeName"].updateValueAndValidity();
@@ -329,7 +354,7 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.isSaveDisabled=false;
   }
   toggleChangeDueAction(event) {
-    if (event == false) {
+    if (event.checked == false) {
       this.DisplayChangeDue=false;
       
     }
