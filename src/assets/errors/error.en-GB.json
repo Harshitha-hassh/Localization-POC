@@ -112,6 +112,7 @@
   "10113": "Duplicate Secondary BarCode_gb",
   "10114": "Unable to Update Retail Item, Invalid Request_gb",
   "10117": "Item Number Change Not Allowed_gb",
+  "10118": "No Retail Item Found to Export_gb",
   "10200": "Invalid Category name_gb",
   "10201": "Category Not Found_gb",
   "10300": "Invalid Template Code_gb",
