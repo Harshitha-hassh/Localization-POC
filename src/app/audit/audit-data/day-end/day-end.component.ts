@@ -38,6 +38,7 @@ import { RoomRevenuePostingRequest } from 'src/app/retail/shop/view-categories/r
 import { Localization } from 'src/app/common/localization/localization';
 import { NightAuditBusiness } from 'src/app/common/night-audit/night-audit.business';
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
+import { SettleRefundTransactionBusiness } from 'src/app/retail/shared/business/Settle-Refund-Transaction-business.service';
 
 @Component({
     selector: 'app-day-end',
@@ -98,7 +99,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     public dialog: MatDialog, 
     public revenuePostingDataService: RevenuePostingDataService,
     private _featureFlagService: RetailFeatureFlagInformationService,
-    private nightAuditBusiness: NightAuditBusiness) {
+    private nightAuditBusiness: NightAuditBusiness,
+    private _settleRefundTransBusiness: SettleRefundTransactionBusiness,) {
       this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
   }
 
@@ -654,7 +656,16 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.retailSharedService.selectedTransaction = data?.transactionInfo;
       this.InvokeServiceCall('GetTransactionDetails', Host.retailPOS, HttpMethod.Get, { transactionId: data.Id, productId: Product.SPA }, null, null, ['settle']);
     } else if (option.action === GridAction.CancelTransaction) {
-      if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Cancel)) { return; }
+      let isReturn = data?.transactionInfo?.transactionLinkId > 0
+      let settlementHistory;
+      let isRefundPaymentInitiated = false;
+      if (isReturn) {
+        settlementHistory = await this._settleRefundTransBusiness.getSettlementHistory(data?.transactionInfo);
+        isRefundPaymentInitiated = settlementHistory.some(x => !x.isReversed);
+      }
+      if (isRefundPaymentInitiated || !isReturn) {
+        if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Cancel)) { return; }
+      }
       if (await this.retailValidationService.IsTransactionLocked(data.Id)) {
         this.utils.ShowError(this.localization.captions.common.Error, this.localization.captions.shop.TransactionLock, ButtonType.Ok);
         return;
@@ -663,7 +674,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.retailSharedService.transactionId = data.Id;
       // tslint:disable-next-line: max-line-length
       var paymentHistoryDetails: PaymentHistoryDetails = await this.shopBusinessService.GetPaymentHistoryDetails(data.Id);
-      if ((paymentHistoryDetails && (paymentHistoryDetails.paymentHistory.length > 0 || paymentHistoryDetails.isHavingPaymentHistory))) {
+      if ((paymentHistoryDetails && (paymentHistoryDetails?.paymentHistory?.length > 0 || paymentHistoryDetails?.isHavingPaymentHistory))) {
         const confirmationMsgForCancel = this.localization.replacePlaceholders(
           this.localization.captions.shop.CancelNotAllowed,
           ['TicketNumber'],
