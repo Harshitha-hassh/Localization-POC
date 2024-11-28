@@ -250,9 +250,7 @@ export class EatecComponent implements OnInit, OnDestroy {
       else {
         this.eatecSignOn = true;
         sessionStorage.setItem('eatecSignOn', this.eatecSignOn.toString());
-        if(this.selectedBreakPoint != RetailBreakPoint.EatecInventory){
-          this.setRoute(this.selectedRoutePath);
-        }
+        this.setRoute(this.selectedRoutePath);
       }
     } else {
       this.setRoute(this.selectedRoutePath);
@@ -268,7 +266,7 @@ export class EatecComponent implements OnInit, OnDestroy {
         else{
           element.linkedElement.filter(x => x.visibility).forEach((item,index) => {
             if(!this.initialRoute){
-              item['IsAllow'] = item.breakPointNumber ==  RetailBreakPoint.EatecInventory ? true :this.eatecSetupBreakPoints.find(x => x.breakPointNumber == item.breakPointNumber).allow;
+              item['IsAllow'] = this.eatecSetupBreakPoints.find(x => x.breakPointNumber == item.breakPointNumber) && this.eatecSetupBreakPoints.find(x => x.breakPointNumber == item.breakPointNumber).allow;
               if(item['IsAllow']){
                 this.initialRoute=item.routePath;
                 this.initialBreakPoint=item.breakPointNumber;
@@ -417,9 +415,7 @@ export class EatecComponent implements OnInit, OnDestroy {
   
   IsAuthorizedEatecMenu(bkPoint: number){
     var isAllow = true;
-    if(bkPoint != RetailBreakPoint.EatecInventory) {
     isAllow = this.eatecSetupBreakPoints.find(x => x.breakPointNumber == bkPoint) && this.eatecSetupBreakPoints.find(x => x.breakPointNumber == bkPoint).allow;
-    }
     this.HasAccess = isAllow;
     return isAllow;
   }
