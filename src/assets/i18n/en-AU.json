@@ -2496,6 +2496,7 @@
     "Phone": "Phone #",
     "Email": "Email",
     "Credit_Card": "Credit Card",
+    "DefaultGuestCategory": "Default Guest Category in Shop",
     "CUSTOM_FIELD_1": "Custom Field 1",
     "CUSTOM_FIELD_2": "Custom Field 2",
     "CUSTOM_FIELD_3": "Custom Field 3",
