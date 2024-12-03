@@ -665,6 +665,17 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       }
       if (isRefundPaymentInitiated || !isReturn) {
         if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Cancel)) { return; }
+        var paymentHistoryDetails: PaymentHistoryDetails = await this.shopBusinessService.GetPaymentHistoryDetails(data.Id);
+        if ((paymentHistoryDetails && (paymentHistoryDetails?.paymentHistory?.length > 0 || paymentHistoryDetails?.isHavingPaymentHistory))) {
+          const confirmationMsgForCancel = this.localization.replacePlaceholders(
+            this.localization.captions.shop.CancelNotAllowed,
+            ['TicketNumber'],
+            [this.retailSharedService.ticketNumber]
+          );
+          this.utils.ShowError(this.localization.captions.common.Error, confirmationMsgForCancel, ButtonType.Ok);
+          this._shopservice.destroy();
+          return;
+        }
       }
       if (await this.retailValidationService.IsTransactionLocked(data.Id)) {
         this.utils.ShowError(this.localization.captions.common.Error, this.localization.captions.shop.TransactionLock, ButtonType.Ok);
@@ -673,17 +684,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.retailSharedService.ticketNumber = data.TicketNumber;
       this.retailSharedService.transactionId = data.Id;
       // tslint:disable-next-line: max-line-length
-      var paymentHistoryDetails: PaymentHistoryDetails = await this.shopBusinessService.GetPaymentHistoryDetails(data.Id);
-      if ((paymentHistoryDetails && (paymentHistoryDetails?.paymentHistory?.length > 0 || paymentHistoryDetails?.isHavingPaymentHistory))) {
-        const confirmationMsgForCancel = this.localization.replacePlaceholders(
-          this.localization.captions.shop.CancelNotAllowed,
-          ['TicketNumber'],
-          [this.retailSharedService.ticketNumber]
-        );
-        this.utils.ShowError(this.localization.captions.common.Error, confirmationMsgForCancel, ButtonType.Ok);
-        this._shopservice.destroy();
-        return;
-      }
+     
       const confirmationMsg = this.localization.replacePlaceholders(
         this.captions.CancelOpenTransaction,
         ['TicketNumber'],
