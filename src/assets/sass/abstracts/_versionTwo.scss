@@ -443,7 +443,7 @@
     display: block;
     height: calc(100% - 222px) !important;
     .retail-CustomDataTable{
-      height: calc(100% - 10px);
+      height: calc(100% - 10px) !important;
        min-height: unset;
       .fixed-table-container{
         @extend .bodyWrap;
