@@ -162,6 +162,7 @@
   "11102": "Template in use, delete not allowed_uk",
   "11103": "Duplicate Category Name_uk",
   "11104": "Category in use, delete not allowed_uk",
+  "11105": "The External Category ID is already mapped with category <b>{categoryName}</b>_uk",
   "11202": "Duplicate Category Group_uk",
   "11203": "Category Group in use, delete not allowed_uk",
   "11300": "Distribution list in use, delete not allowed_uk",
