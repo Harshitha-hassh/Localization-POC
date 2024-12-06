@@ -32,7 +32,7 @@ export class RouteLoaderService {
         const router = this.injector.get(Router);
         console.log(router);
         this.getProductMenus().then(
-        // this.getSettings().subscribe( // uncomment for hard coded menu
+        //this.getSettings().subscribe( // uncomment for hard coded menu
           response => {
             console.log('is Dynamic Menu available?:' + (!Array.isArray(response) || 0 == response.length) ? 'DM-No!' : 'DM-Yes!');
             this.currentSettings = response;
@@ -878,7 +878,26 @@ export class RouteLoaderService {
 
                     ],
                     breakPointNumber: 0
-                  }
+                  },
+                  {
+                    elementID: 1072,
+                    tenantID: 0,
+                    propertyID: 0,
+                    productID: 1,
+                    textID: 1051,
+                    text: "Tier Level",
+                    routePath: "/settings/retailsetup/codesetup/tierLevel",
+                    imgPath: "",
+                    order: 17,
+                    visibility: true,
+                    disable: false,
+                    parentID: 1063,
+                    menuPosition: "Ternary",
+                    menuAlignment: "Vertical",
+                    externalLink: false,
+                    linkedElement: [],
+                    breakPointNumber: 7060
+                },
                 ],
                 breakPointNumber: 0
               },
@@ -1400,7 +1419,47 @@ export class RouteLoaderService {
                 linkedElement: [
                 ],
                 breakPointNumber: 0
-              }
+              },
+              {
+                elementID: 4082,
+                tenantID: 0,
+                propertyID: 0,
+                productID: 2,
+                textID: 4082,
+                text: "CGPS FAILED PROFILE",
+                routePath: "/settings/utilities/cgpsFailedProfile",
+                imgPath: "",
+                order: 5,
+                visibility: true,
+                disable: false,
+                parentID: 4046,
+                menuAlignment: 'Combo',
+                menuPosition: 'Secondary',
+                externalLink: false,
+                linkedElement: [
+
+                ],
+                breakPointNumber: 0
+              },
+              {
+                "elementID": 1099,
+                "tenantID": 0,
+                "propertyID": 0,
+                "productID": 1,
+                "textID": 1124,
+                "text": "Other Components/ Discount Mapping",
+                "routePath": "/settings/utilities/discountMapping",
+                "imgPath": "",
+                "order": 10,
+                "visibility": true,
+                "disable": false,
+                "parentID": 1051,
+                "menuPosition": "Ternary",
+                "menuAlignment": "Vertical",
+                "externalLink": false,
+                "linkedElement": [],
+                "breakPointNumber": 0
+            },
             ],
             breakPointNumber: 0
           },
@@ -1965,7 +2024,49 @@ export class RouteLoaderService {
           },
         ],
         breakPointNumber: 0
-      }
+      },
+      {
+        elementID: 4001,
+        tenantID: 0,
+        propertyID: 0,
+        productID: 2,
+        textID: 4001,
+        text: "All",
+        routePath: "/all",
+        imgPath: "icon-all-menu",
+        order: 1,
+        visibility: true,
+        disable: false,
+        parentID: 0,
+        menuPosition: "Primary",
+        menuAlignment: "Horizontal",
+        externalLink: false,
+        linkedElement: [
+
+        ],
+        breakPointNumber: 0
+      },
+      {
+        elementID: 4001,
+        tenantID: 0,
+        propertyID: 0,
+        productID: 2,
+        textID: 4001,
+        text: "Search Report",
+        routePath: "/allReport",
+        imgPath: "icon-Search-Reports",
+        order: 1,
+        visibility: true,
+        disable: false,
+        parentID: 0,
+        menuPosition: "Primary",
+        menuAlignment: "Horizontal",
+        externalLink: false,
+        linkedElement: [
+
+        ],
+        breakPointNumber: 0
+      },
     ]
     return of(menuList);
   }

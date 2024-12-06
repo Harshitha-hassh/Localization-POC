@@ -8,16 +8,21 @@ import { SystemConfigModule } from 'src/app/retail/sytem-config/system-config.mo
 import { RetailModule } from 'src/app/retail/retail.module';
 import { PropertyInfoComponent } from './property-info/property-info.component';
 import { ConfigValidationComponent } from 'src/app/common/config-validation/config-validation/config-validation.component';
+import { ColorSketchModule } from 'ngx-color/sketch';
+import { CommonSharedModule } from 'src/app/common/shared/shared/shared.module';
+import { HomeDashboardConfigurationComponent } from './home-dashboard-configuration/home-dashboard-configuration.component';
 
 @NgModule({
-    declarations: [SystemSetupComponent, PropertyInfoComponent],
+    declarations: [SystemSetupComponent, PropertyInfoComponent, HomeDashboardConfigurationComponent],
     imports: [
         CommonModule,
+        CommonSharedModule,
         SharedModule,
         SystemSetupRoutingModule,
         SystemConfigModule,
         RetailModule,
-        // ConfigValidationComponent
+        // ConfigValidationComponent,
+        ColorSketchModule
     ]
 })
 export class SystemSetupModule { }

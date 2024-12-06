@@ -2210,7 +2210,6 @@ ui-switch {
 
 /* You can add global styles to this file, and also import other style files */
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
-@import "~ngx-ui-switch/ui-switch.component.scss";
 @import "./assets/icons/style.css";
 
 @import "./assets/sass/base/_reset";
@@ -2311,6 +2310,7 @@ a {
   top: 0;
   // font-family: "LatoWeb";
   font-weight: unset;
+  margin-left: 20px;
   text-shadow: none;
 }
 
@@ -5714,4 +5714,44 @@ app-transaction{
 input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
   display: none;
+}
+.icon-No-Search-Results .path1:before, .icon-No-Search-Results .path4:before, .icon-No-Search-Results .path5:before,
+.icon-No-Search-Results .path8:before, .icon-No-Search-Results .path9:before{
+color: $retail-primary-100 !important;
+}
+
+
+.boxed-icon{
+  border: 1px solid $theme-base-color;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  i::before{
+    color: $theme-base-color;
+    font-size: 20px;
+  }
+}
+.cdk-custom-wrapper .mat-row td .icon-edit1:before,
+.cdk-custom-wrapper .mat-row td .icon-delete:before,
+.cdk-custom-wrapper .mat-row td .icon-more:before{
+  color: $theme-base-color !important;
+}
+#extract-monitor-wrapper .header-extract-monitor{
+  background: $theme-base-color !important;
+}
+.mat-paginator-container {
+  justify-content: center!important;
+}
+ .event-scheduler-wrapper .icon-Settings:before,
+ .event-scheduler-wrapper .ag_link{
+  color: $theme-base-color !important;
+}
+.event-scheduler-wrapper .table-container .cdk-custom-wrapper .mat-row td .icon-Email:before{
+  color: unset;
+}
+.event-scheduler-wrapper .table-container .cdk-custom-wrapper .mat-row td .icon-file_upload:before{
+  color: #2665c0;
 }

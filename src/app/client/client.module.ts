@@ -18,6 +18,7 @@ import { ScrollbarModule } from 'ngx-scrollbar';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { ClientService } from '../shared/service/client-service.service';
 import { GuestPolicyWrapperComponent } from './client-popup/create-client/additional-information/guest-policy-wrapper/guest-policy-wrapper.component';
+import { RetailToggleSwitchModule } from '../retail/retail-toggle-switch/retail-toggle-switch.module';
 
 @NgModule({
     imports: [
@@ -28,6 +29,7 @@ import { GuestPolicyWrapperComponent } from './client-popup/create-client/additi
         ReactiveFormsModule,
         MatTableModule,
         ScrollbarModule,
+        RetailToggleSwitchModule,
         NgDragDropModule.forRoot()
     ],
     declarations: [

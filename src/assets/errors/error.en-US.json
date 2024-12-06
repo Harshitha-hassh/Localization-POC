@@ -10,6 +10,9 @@
     "-200": "Retail POS is down, please try again later", 
     "-202": "Tender Configurations Not Found",
     "-201": "Items have not been synced properly. Kindly, Sync from the Retail Item Setup.",
+    "-320": "Duplicate VIP Code exists",
+    "-323": "VIP Type is already mapped to a guest profile. Delete not allowed.",
+    "-324": "VIP Type is already mapped to a guest profile. Inactive not allowed.",
     "330":  "Missing Item Number.",
     "331":  "Missing Item Description.",
     "332":  "Missing Retail Category.",
@@ -254,10 +257,12 @@
     "11203": "Category Group in use, delete not allowed",
     "11103": "Duplicate Category Name",
     "11104": "Category in use, delete not allowed",
+    "11105": "The External Category ID is already mapped with category <b>{categoryName}</b>",
     "11303": "Sub Category in use, delete not allowed",
     "11301": "Duplicate Sub Category Name",
     "10402": "Duplicate Unit of Measure",
     "10403": "Unit of Measure in use, delete not allowed",
+    "10507": "Duplicate SKU",
     "10502": "Duplicate Discount Type",
     "10503": "Discount Type in use, delete not allowed",
     "10506": "Unable to change active to inactive if already associated with any retail transaction",
@@ -365,7 +370,13 @@
     "7006": "Email ID already in use.",
     "20100":"Outlet already exists",
     "8834501":"Client has future booking, cannot purge/anonymize the data",
+    "-7890":"Enhanced Inventory configuration is incorrect. Kindly check the configuration.",
+    "310001": "Duplicate Guest exists on the system",
+    "310002": "Guest information is out of date. Please refresh and try again",
     "110060": "Credit Limit Exceeded",
-    "-7890":"Enhanced Inventory configuration is incorrect. Kindly check the configuration."
+    "5001012":"Gift Receipt cannot be printed for voided transaction",
+    "5001013":"Gift Receipt cannot be printed as no retail items are attached with the transaction",
+    "10117": "Item Number Change Not Allowed",
+    "10118": "No Retail Item Found to Export"
   }
   

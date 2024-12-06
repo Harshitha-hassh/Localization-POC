@@ -12,16 +12,24 @@ import { QuickidConfigComponent } from './quickid-config/quickid-config.componen
 import { ManagerUtilitiesComponent } from './manager-utilities/manager-utilities.component';
 import { PrinterDefaultConfigurationComponent } from './manager-utilities/printer-default-configuration/printer-default-configuration.component';
 import { ConfigValidationComponent } from 'src/app/common/config-validation/config-validation/config-validation.component';
-
+import { CgpsLoggingProfileSyncWrapperComponent } from './cgps-logging-profile-sync-wrapper/cgps-logging-profile-sync-wrapper.component';
+import { JobSchedulerComponent } from './job-scheduler/job-scheduler.component';
+import { EventSchedulerConfigurationComponent } from 'src/app/common/shared/shared/event-scheduler-configuration/event-scheduler-configuration.component';
+import { ReportSchedularWrapperComponent } from './report-scheduler-wrapper/report-schedular-wrapper.component';
+import { EventSliderComponent } from './report-scheduler-wrapper/event-slider/event-slider.component';
+import { RetailReportModule } from 'src/app/retail/retail-reports/reports.module';
 @NgModule({
-    declarations: [RetailUtilitiesComponent, ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent, ManagerUtilitiesComponent, PrinterDefaultConfigurationComponent],
+    declarations: [RetailUtilitiesComponent, ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent, ManagerUtilitiesComponent
+        , PrinterDefaultConfigurationComponent, CgpsLoggingProfileSyncWrapperComponent, 
+        JobSchedulerComponent, EventSchedulerConfigurationComponent, ReportSchedularWrapperComponent, EventSliderComponent],
     imports: [
         CommonModule,
         SharedModule,
         UtilitiesRoutingModule,
         SystemConfigModule,
         RetailModule,
-        // ConfigValidationComponent
+        // ConfigValidationComponent,
+        RetailReportModule
     ]
 })
 export class UtilitiesModule { }

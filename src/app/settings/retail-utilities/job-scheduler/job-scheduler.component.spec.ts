@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { JobSchedulerComponent } from './job-scheduler.component';
+
+describe('JobSchedulerComponent', () => {
+  let component: JobSchedulerComponent;
+  let fixture: ComponentFixture<JobSchedulerComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ JobSchedulerComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(JobSchedulerComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

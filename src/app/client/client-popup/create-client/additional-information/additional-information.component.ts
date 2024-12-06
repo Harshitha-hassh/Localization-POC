@@ -15,6 +15,7 @@ import { takeUntil } from 'rxjs/operators';
 import { GuestPolicyWrapperComponent } from './guest-policy-wrapper/guest-policy-wrapper.component';
 import { GuestPolicyDetail, PolicyCategoryType, PolicyType } from 'src/app/common/shared/shared.modal';
 import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
+import { RetailRoutes } from 'src/app/retail/retail-route';
 
 @Component({
   selector: 'app-additional-information',
@@ -53,6 +54,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   floatLabel: string;
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   actionType: string;
+  vipTypes: any;
   isCopyClient = false;
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
@@ -87,6 +89,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       card_name: '',
       expiry_date: this.PropertyInfo.CurrentDate,
       card_cvv: '',
+      vip:'',
       // client_scheduling: false,
       customField1: '',
       customField2: '',
@@ -104,13 +107,14 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {    
+   ngOnInit() {
     if(this.parentForm){
       this.parentForm.addControl('additionalDetailsFormGroup', this.FormGrp);
     }
     if (this.isClientViewOnly) {
       this.utils.disableControls(this.FormGrp);
     }
+    this.getAllVipTypes();
   }  
 
   ngOnDestroy() {
@@ -122,7 +126,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     }
     this.isFirstTime = true;
   }
-
+  
   async SetEditValues(clientInfo) {
     this.FormGrp.controls.comments.setValue(clientInfo.client.comments && clientInfo.client.comments !=null ? clientInfo.client.comments : '');
     this.cardInfo = this.isCopyClient ? [] : clientInfo.client.clientCreditCardInfo && clientInfo.client.clientCreditCardInfo != null ? clientInfo.client.clientCreditCardInfo : [];
@@ -138,6 +142,19 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       }
     }
     this.FormGrp.controls.clientCreditCardInfo.setValue(this.cardInfo);
+    this.FormGrp.controls.vip.setValue(clientInfo.client.vip);
+  }
+
+  async getAllVipTypes() {
+    await this.http.CallApiAsync<any>({
+      host: Host.retailPOS,
+      callDesc: RetailRoutes.GetAllVipType,
+      method: HttpMethod.Get,
+      showError: false,
+      uriParams: { isIncludeInactive: false },
+    }).then(x =>
+      this.vipTypes = x.result
+    );
   }
 
   SaveReferenceId(event: number) {

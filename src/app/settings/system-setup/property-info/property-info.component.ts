@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray, Validators } from '@angular/forms';
 import { ComboOptions, SystemConfiguration } from 'src/app/common/shared/shared/business/view-settings.modals';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
@@ -12,12 +12,15 @@ import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/servic
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { debounceTime, distinctUntilChanged, map, startWith, takeUntil } from 'rxjs/operators';
+import { defaultThemeColorSwitch } from 'src/app/shared/enums/constants';
+import { colorPickerModifier } from 'src/app/common/pipes/colorPickerModifier.pipe';
 
 @Component({
   selector: 'app-property-info',
   templateUrl: './property-info.component.html',
   styleUrls: ['./property-info.component.scss'],
-  providers: [SystemSetupBusinessService]
+  providers: [SystemSetupBusinessService,colorPickerModifier],
+  encapsulation: ViewEncapsulation.None
 })
 export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDestroy {
   propertyInformation;
@@ -54,13 +57,14 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   floatLabel: string;
   constructor(private BP: BreakPointAccess,
-              private systemConfig: SystemSetupBusinessService,
-              private fb: UntypedFormBuilder,
-              private localization: RetailStandaloneLocalization,
-              private utilities: RetailUtilities,
-              public http: HttpServiceCall,
-              private utils: RetailUtilities,
-              private ss: SettingsService) {
+    private systemConfig: SystemSetupBusinessService,
+    private fb: UntypedFormBuilder,
+    private localization: RetailStandaloneLocalization,
+    private utilities: RetailUtilities,
+    public http: HttpServiceCall,
+    private utils: RetailUtilities,
+    private ss: SettingsService,
+    private colorPickerModifier: colorPickerModifier) {
     super(http);
     this.ss.tabLoaderEnable.next(true);
     this.commonCaptions = this.localization.captions.common;
@@ -72,9 +76,11 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       state: '',
       city: '',
       country: '',
-      phone: [{ phonetype: 'Phone',
-       phonelabel: this.commonCaptions.drp_txt_home,
-        phonenumber: '' }, { phonetype: 'Phone', phonelabel: this.commonCaptions.drp_txt_office, phonenumber: '' },
+      phone: [{
+        phonetype: 'Phone',
+        phonelabel: this.commonCaptions.drp_txt_home,
+        phonenumber: ''
+      }, { phonetype: 'Phone', phonelabel: this.commonCaptions.drp_txt_office, phonenumber: '' },
       { phonetype: 'Phone', phonelabel: this.commonCaptions.drp_txt_mobile, phonenumber: '' }],
       language: '',
       tenantId: '',
@@ -82,7 +88,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       requiredFields: [],
       DEFAULT_EMAIL_TYPE: '',
       DEFAULT_COUNTRY_CODE: ['', Validators.min(1)],
-      DEFAULT_PHONE_TYPE: ''
+      DEFAULT_PHONE_TYPE: '',
+      THEME_COLOR: '',
     };
 
     this.PhoneType = [
@@ -107,24 +114,33 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       requiredFields: this.fb.array([]),
       DEFAULT_EMAIL_TYPE: '',
       DEFAULT_COUNTRY_CODE: ['', Validators.min(1)],
-      DEFAULT_PHONE_TYPE: ''
+      DEFAULT_PHONE_TYPE: '',
+      THEME_COLOR: ''
     });
     this.phone = this.propertyInfo.get('phone') as UntypedFormArray;
 
-    this.contactPhoneLabelType =  [
-        {
-          "id": 1,
-          "description": "Cell"
-        },
-        {
-          "id": 2,
-          "description": "Home"
-        },
-        {
-          "id": 3,
-          "description": "Work"
-        }
-      ];
+    this.contactPhoneLabelType = [
+      {
+        "id": 1,
+        "description": "Cell"
+      },
+      {
+        "id": 2,
+        "description": "Home"
+      },
+      {
+        "id": 3,
+        "description": "Office"
+      },
+      {
+        "id": 12,
+        "description": "Business"
+      },
+      {
+        "id": 13,
+        "description": "Work"
+      }
+    ];
 
     this.contactEmailType = [
       {
@@ -134,49 +150,58 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       {
         "id": 10,
         "description": "Office"
+      },
+      {
+        "id": 14,
+        "description": "Home"
+      },
+      {
+        "id": 15,
+        "description": "Business"
       }
     ];
 
-    this.contactPhoneType = [{ Id: 1, Description: this.commonCaptions.drp_txt_home,
-       Type: 'Phone' },
-        { Id: 2, Description: this.commonCaptions.drp_txt_office, Type: 'Phone' },
-         { Id: 3, Description: this.commonCaptions.drp_txt_mobile, Type: 'Phone' }];
+    this.contactPhoneType = [{ Id: 1, Description: this.commonCaptions.drp_txt_cell, Type: 'Phone' },
+    { Id: 2, Description: this.commonCaptions.drp_txt_home, Type: 'Phone' },
+    { Id: 3, Description: this.commonCaptions.drp_txt_office, Type: 'Phone' },
+    { Id: 12, Description: this.commonCaptions.drp_txt_business, Type: 'Phone' },
+    { Id: 13, Description: this.commonCaptions.drp_txt_work, Type: 'Phone' }];
     this.languageType = [{ id: 1, value: 'English', code: 'en-US' },
-     { id: 2, value: 'Spanish', code: 'SPANISH' }, { id: 3, value: 'Chinese', code: 'Chinese' }];
-    this.textmaskFormat =this.localization.propertyCaptions.common && this.localization.propertyCaptions.common.PhoneFormat != '' ?
-     this.localization.propertyCaptions.common.PhoneFormat : '999999999999999999';
+    { id: 2, value: 'Spanish', code: 'SPANISH' }, { id: 3, value: 'Chinese', code: 'Chinese' }];
+    this.textmaskFormat = this.localization.propertyCaptions.common && this.localization.propertyCaptions.common.PhoneFormat != '' ?
+      this.localization.propertyCaptions.common.PhoneFormat : '999999999999999999';
     this.address = this.propertyInfo.get('address') as UntypedFormArray;
     this.addresslength = this.address.length;
     this.captions = this.localization.captions.setting;
     this.GetServiceCall('GetAllLanguages');
-   // this.ValidateBreakPoint();
+    // this.ValidateBreakPoint();
     this.RequiredFieldsSetting();
     this.RequiredfieldsBind();
     this.utilities.geCountriesJSON().then(res => {
-    this.filteredCountries = this.propertyInfo.controls.country.valueChanges.pipe(
-      startWith(''),
-      debounceTime(100),
-      distinctUntilChanged(),
-      map((country: string) => country ? this.utilities.FilterCountry(country, this.utilities.countryDetails) : [])
-    );
-    this.propertyInfo.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe(res => {
-      if (this.propertyInfo.controls['city'].value) {
-        this.propertyInfo.controls.country.setErrors({ required: true });
-      } else {
-        this.propertyInfo.controls.country.setErrors(null);
-      }
-      if (this.propertyInfo.controls['country'].value &&
-        !this.utilities.FilterCountryValueFromData(this.propertyInfo.controls['country'].value)) {
-        this.propertyInfo.controls.country.setErrors({ invalid: true });
-      } else if ((this.propertyInfo.controls['city'].value &&
-        this.utilities.FilterCountryValueFromData(this.propertyInfo.controls['country'].value) &&
-        this.propertyInfo.controls['country'].value) || (!this.propertyInfo.controls['city'].value &&
-          !this.propertyInfo.controls['country'].value)) {
-        this.propertyInfo.controls.country.setErrors(null);
-      }
-      this.propertyInfo.controls['country'].markAsTouched();
+      this.filteredCountries = this.propertyInfo.controls.country.valueChanges.pipe(
+        startWith(''),
+        debounceTime(100),
+        distinctUntilChanged(),
+        map((country: string) => country ? this.utilities.FilterCountry(country, this.utilities.countryDetails) : [])
+      );
+      this.propertyInfo.valueChanges.pipe(takeUntil(this.destroyed$)).subscribe(res => {
+        if (this.propertyInfo.controls['city'].value) {
+          this.propertyInfo.controls.country.setErrors({ required: true });
+        } else {
+          this.propertyInfo.controls.country.setErrors(null);
+        }
+        if (this.propertyInfo.controls['country'].value &&
+          !this.utilities.FilterCountryValueFromData(this.propertyInfo.controls['country'].value)) {
+          this.propertyInfo.controls.country.setErrors({ invalid: true });
+        } else if ((this.propertyInfo.controls['city'].value &&
+          this.utilities.FilterCountryValueFromData(this.propertyInfo.controls['country'].value) &&
+          this.propertyInfo.controls['country'].value) || (!this.propertyInfo.controls['city'].value &&
+            !this.propertyInfo.controls['country'].value)) {
+          this.propertyInfo.controls.country.setErrors(null);
+        }
+        this.propertyInfo.controls['country'].markAsTouched();
+      });
     });
-  });
   }
 
   ValidateBreakPoint(): void {
@@ -211,11 +236,11 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.enableSave = false;
   }
 
-  RequiredfieldsBind(){
+  RequiredfieldsBind() {
     const personalInfo = [
       { id: 1, name: this.captions.Title, controlName: "CLIENT_TITLE" },
-     // { id: 2, name: this.captions.First_Name, controlName: "CLIENT_FIRST_NAME" },
-     // { id: 3, name: this.captions.Last_Name, controlName: "CLIENT_LAST_NAME" },
+      // { id: 2, name: this.captions.First_Name, controlName: "CLIENT_FIRST_NAME" },
+      // { id: 3, name: this.captions.Last_Name, controlName: "CLIENT_LAST_NAME" },
       { id: 4, name: this.captions.Birthday, controlName: "CLIENT_BIRTHDAY" },
       { id: 5, name: this.captions.Gender, controlName: "CLIENT_GENDER" },
     ];
@@ -266,9 +291,9 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.propertyInfoSubscription = this.propertyInfo.valueChanges.subscribe(() => {
       this.enableSave = true;
     });
-  
+
   }
-  
+
   GetAllSetting() {
     this.http.CallApiWithCallback<any>({
       host: Host.retailManagement,
@@ -282,20 +307,20 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     });
     this.setClientDefaultSwitches();
   }
-  setClientDefaultSwitches(){
-      //Set Default Configuration Switches
-      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
-        const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
-        this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
-      }
-      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
-          const defaultPhoneType   = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
-          this.propertyInfo.controls.DEFAULT_PHONE_TYPE.setValue(defaultPhoneType && Number(defaultPhoneType.value) > 0 ? Number(defaultPhoneType.value) : '');
-      }
-      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
-          const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
-          this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
-      }
+  setClientDefaultSwitches() {
+    //Set Default Configuration Switches
+    if (this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)) {
+      const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
+      this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
+    }
+    if (this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)) {
+      const defaultPhoneType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
+      this.propertyInfo.controls.DEFAULT_PHONE_TYPE.setValue(defaultPhoneType && Number(defaultPhoneType.value) > 0 ? Number(defaultPhoneType.value) : '');
+    }
+    if (this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)) {
+      const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
+      this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
+    }
   }
   GetPropertyInfo() {
     this.http.CallApiWithCallback<any>({
@@ -358,8 +383,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   addPersonalDetails(): UntypedFormGroup {
     return this.fb.group({
       CLIENT_TITLE: '',
-    //  CLIENT_FIRST_NAME: '',
-    //  CLIENT_LAST_NAME: '',
+      //  CLIENT_FIRST_NAME: '',
+      //  CLIENT_LAST_NAME: '',
       CLIENT_BIRTHDAY: '',
       CLIENT_GENDER: ''
     });
@@ -405,7 +430,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     return this.fb.group({
       phonetype: 'Phone',
       phonelabel: phoneLabel,
-      phonenumber: {value: this.utilities.appendFormat(phoneNumber, this.localization.propertyCaptions.common.PhoneFormat), disabled: !phoneLabel}
+      phonenumber: { value: this.utilities.appendFormat(phoneNumber, this.localization.propertyCaptions.common.PhoneFormat), disabled: !phoneLabel }
     });
   }
   addPhoneItem(index, phoneLabel: any, phoneNumber: any): void {
@@ -444,22 +469,26 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.UpdatePropertySetting(bodyPropertyData);
     this.updateClientDefaultsInSession();
   }
-  updateClientDefaultsInSession(){
+  updateClientDefaultsInSession() {
     const sessionDefaultSettings = sessionStorage.getItem('defaultSettings');
     const parsedSessionDefaultSettings = JSON.parse(sessionDefaultSettings);
 
     //Set Default Configuration Switches
-    if(parsedSessionDefaultSettings.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
-        const defaultEmailType = this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.value;
-        parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch).value = defaultEmailType;
+    if (parsedSessionDefaultSettings.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)) {
+      const defaultEmailType = this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.value;
+      parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch).value = defaultEmailType;
     }
-    if(parsedSessionDefaultSettings.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
-        const defaultPhoneType   = this.propertyInfo.controls.DEFAULT_PHONE_TYPE.value;
-        parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch).value = defaultPhoneType;
+    if (parsedSessionDefaultSettings.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)) {
+      const defaultPhoneType = this.propertyInfo.controls.DEFAULT_PHONE_TYPE.value;
+      parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch).value = defaultPhoneType;
     }
-    if(parsedSessionDefaultSettings.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
-        const defaultPhoneCode = this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.value;
-        parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch).value = defaultPhoneCode;
+    if (parsedSessionDefaultSettings.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)) {
+      const defaultPhoneCode = this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.value;
+      parsedSessionDefaultSettings.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch).value = defaultPhoneCode;
+    }
+    if (parsedSessionDefaultSettings.some(f => f.switch == defaultThemeColorSwitch)) {
+      const defaultThemeColor = this.propertyInfo.controls.THEME_COLOR.value;
+      parsedSessionDefaultSettings.find(f => f.switch == defaultThemeColorSwitch).value = defaultThemeColor;
     }
     sessionStorage.setItem('defaultSettings', JSON.stringify(parsedSessionDefaultSettings));
   }
@@ -518,25 +547,31 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
         _body.push(_systemConfig);
       }
     }
-    
+
     //Default Configuration Switches
     _body.push({
       id: this.settingInfo.find(setting => setting.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch).id,
       moduleId: this.settingInfo.find(s => s.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch).moduleId,
       switch: DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch,
-      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch].value? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch].value : 0
+      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch].value ? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch].value : 0
     });
     _body.push({
       id: this.settingInfo.find(setting => setting.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch).id,
       moduleId: this.settingInfo.find(s => s.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch).moduleId,
       switch: DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch,
-      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch].value? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch].value : 0
+      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch].value ? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch].value : 0
     });
     _body.push({
       id: this.settingInfo.find(setting => setting.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch).id,
       moduleId: this.settingInfo.find(s => s.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch).moduleId,
       switch: DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch,
-      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch].value? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch].value: 0
+      value: this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch].value ? this.propertyInfo.controls[DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch].value : 0
+    });
+    _body.push({
+      id: this.settingInfo.find(setting => setting.switch == defaultThemeColorSwitch).id,
+      moduleId: this.settingInfo.find(s => s.switch == defaultThemeColorSwitch).moduleId,
+      switch: defaultThemeColorSwitch,
+      value: this.propertyInfo.controls[defaultThemeColorSwitch].value ? this.propertyInfo.controls[defaultThemeColorSwitch].value : 0
     });
     return _body;
   }
@@ -556,24 +591,24 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     _body.propertyId = parseInt(this.localization.GetPropertyInfo('PropertyId'));
     _body.address1 = this.propertyInfo.controls.address.value[0].addressDetails;
     _body.address2 = (aa.length < 2) ? '' :
-     (this.propertyInfo.controls.address.value[1].addressDetails) == null ? '' : this.propertyInfo.controls.address.value[1].addressDetails;
+      (this.propertyInfo.controls.address.value[1].addressDetails) == null ? '' : this.propertyInfo.controls.address.value[1].addressDetails;
     _body.address3 = (aa.length < 3) ? '' :
-     (this.propertyInfo.controls.address.value[2].addressDetails) == null ? '' : this.propertyInfo.controls.address.value[2].addressDetails;
+      (this.propertyInfo.controls.address.value[2].addressDetails) == null ? '' : this.propertyInfo.controls.address.value[2].addressDetails;
     for (let temp = 0; temp < _phone.length; temp++) {
       const phoneItem = _phone[temp];
       if (phoneItem.phonetype != null) {
-      const ph = phoneItem.phonelabel == null ? this.PhoneType[1] : phoneItem.phonelabel;
-      let phone: PhNumber;
-      const contactType = this.PhoneType.filter(res => res.description === ph);
-      phone = {
-        id: temp + 1,
-        number: phoneItem && phoneItem.phonenumber ? (phoneItem.phonenumber).replace(/\D/g, '') : '',
-        propertyId: _body.propertyId = this.localization.GetPropertyInfo('PropertyId'),
-        contactTypeId: (contactType && contactType.length ? contactType[0].id : 0).toString(),
-        clientId: 1
-      };
-      _body.propertyContacts.push(phone);
-    }
+        const ph = phoneItem.phonelabel == null ? this.PhoneType[1] : phoneItem.phonelabel;
+        let phone: PhNumber;
+        const contactType = this.PhoneType.filter(res => res.description === ph);
+        phone = {
+          id: temp + 1,
+          number: phoneItem && phoneItem.phonenumber ? (phoneItem.phonenumber).replace(/\D/g, '') : '',
+          propertyId: _body.propertyId = this.localization.GetPropertyInfo('PropertyId'),
+          contactTypeId: (contactType && contactType.length ? contactType[0].id : 0).toString(),
+          clientId: 1
+        };
+        _body.propertyContacts.push(phone);
+      }
     }
     return _body;
   }
@@ -581,7 +616,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   validateProperty(): boolean {
     return (this.propertyInfo.valid && this.propertyInfo.dirty) && this.propertyInfo.touched;
   }
-  
+
   PropertSetting() {
     let address: any;
     if (this.propertyInformation) {
@@ -600,17 +635,21 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     this.propertyInfo.controls.propCode.setValue(this.propertyInformation ? this.propertyInformation.propertyCode : '');
 
     //Set Default Configuration Switches
-    if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
+    if (this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)) {
       const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
       this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
     }
-    if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
-        const defaultPhoneType   = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
-        this.propertyInfo.controls.DEFAULT_PHONE_TYPE.setValue(defaultPhoneType && Number(defaultPhoneType.value) > 0 ? Number(defaultPhoneType.value) : '');
+    if (this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)) {
+      const defaultPhoneType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
+      this.propertyInfo.controls.DEFAULT_PHONE_TYPE.setValue(defaultPhoneType && Number(defaultPhoneType.value) > 0 ? Number(defaultPhoneType.value) : '');
     }
-    if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
-        const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
-        this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
+    if (this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)) {
+      const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
+      this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
+    }
+    if (this.settingInfo.some(f => f.switch == defaultThemeColorSwitch)) {
+      const defaultThemeColor = this.settingInfo.find(f => f.switch == defaultThemeColorSwitch);
+      this.propertyInfo.controls.THEME_COLOR.setValue(defaultThemeColor ? defaultThemeColor.value : '');
     }
 
     this.clearFormArray(this.propertyInfo.get('address') as UntypedFormArray);
@@ -631,27 +670,27 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     }
     const phonenumbers = this.propertyInfo.get('phone') as UntypedFormArray;
     phonenumbers.controls.forEach((obj: UntypedFormGroup) => {
-        if (!obj.value['phonelabel']) {
-          obj.get('phonenumber').disable();
-        }
-      });
+      if (!obj.value['phonelabel']) {
+        obj.get('phonenumber').disable();
+      }
+    });
   }
   successCallback<T>(result: BaseResponse<T>, callDesc: string, extraParams?: any[]): void {
     if (callDesc == 'GetSettingByModule') {
       this.settingInfo = <any>result.result;
-      
+
       //Set Default Configuration Switches
-      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)){
-          const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
-          this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
+      if (this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch)) {
+        const defaultEmailType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultEmailTypeSwitch);
+        this.propertyInfo.controls.DEFAULT_EMAIL_TYPE.setValue(defaultEmailType && Number(defaultEmailType.value) > 0 ? Number(defaultEmailType.value) : '');
       }
-      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)){
-          const defaultPhoneType   = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
-          this.propertyInfo.controls.DEFAULT_PHONE_TYPE.setValue(defaultPhoneType && Number(defaultPhoneType.value) > 0 ? Number(defaultPhoneType.value) : '');
+      if (this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch)) {
+        const defaultPhoneType = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultPhoneTypeSwitch);
+        this.propertyInfo.controls.DEFAULT_PHONE_TYPE.setValue(defaultPhoneType && Number(defaultPhoneType.value) > 0 ? Number(defaultPhoneType.value) : '');
       }
-      if(this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)){
-          const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
-          this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
+      if (this.settingInfo.some(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch)) {
+        const defaultPhoneCode = this.settingInfo.find(f => f.switch == DefaultFieldConfigurationSwitches.defaultCountryPhoneCodeSwitch);
+        this.propertyInfo.controls.DEFAULT_COUNTRY_CODE.setValue(defaultPhoneCode && Number(defaultPhoneCode.value) > 0 ? Number(defaultPhoneCode.value) : '');
       }
 
       this.RequiredFieldsSetting();
@@ -665,8 +704,9 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       this.enableSave = false;
     } else if (callDesc == 'UpdateSetting') {
       this.GetAllSetting();
+      this.reloadSession();
       this.enableSave = false;
-    } 
+    }
     else if (callDesc == 'GetAllLanguages') {
       [this.initialLoads, this.callCounter] = this.ss.updateInitalLoads(true, this.initialLoads, this.callCounter);
       if (result.result) {
@@ -674,6 +714,15 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
         this.languageType = data.map(x => { return { id: x.languageID, value: x.languageName, code: x.languageCode }; });
       }
     }
+  }
+  async reloadSession() {
+    setTimeout(() => {
+      let getThemeColor: any = document.getElementsByClassName('theme-color-wrapper')[0];
+      let textColor: any = document.getElementsByClassName('theme-color-wrapper')[0].children[0];
+      textColor.style.color = "",
+      getThemeColor.style.setProperty("background-color", JSON.parse(sessionStorage.getItem('defaultSettings'))?.find(x => x.switch == "THEME_COLOR").value, "important");
+      textColor.style.setProperty("color", this.colorPickerModifier.transform(JSON.parse(sessionStorage.getItem('defaultSettings'))?.find(x=>x.switch == "THEME_COLOR").value) ? '#fff' : '#000' , "important");
+    }, 500);
   }
   cancel() {
     this.PropertSetting();
@@ -717,16 +766,19 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
     }
   }
 
-  onPhChange($event, i , item) {
+  onPhChange($event, i, item) {
 
     item['controls']['phonenumber'].enable();
     //settingEmptyvalues 
-    if(!$event.value)
-    {
-     item.reset();
-     item['controls']['phonenumber'].disable();
-     item.markAsDirty();
+    if (!$event.value) {
+      item.reset();
+      item['controls']['phonenumber'].disable();
+      item.markAsDirty();
     }
-  
-   }
+
+  }
+  changeColor($event: any) {
+    this.propertyInfo.controls['THEME_COLOR'].setValue($event.color.hex);
+    this.enableSave = true;
+  }
 }

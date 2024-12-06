@@ -2,6 +2,18 @@
     <form [formGroup]="FormGrp" autocomplete="off" class="h-100">
         <ng-scrollbar [trackX]="true" [autoHide]="true">
             <div class="d-inline-block width_75 p-4 padding_container">
+                <div>
+                    <label class="form-label-primary">{{captions.VipTypeInformation}}</label>
+                    <div>
+                        <mat-form-field class="mt-4" [floatLabel]="floatLabel" >
+                            <mat-select [attr.automationId]="'Dd_AdditionalInformation_viptype'" [placeholder]="captions.VipType"
+                                formControlName="vip">
+                                <mat-option value=""></mat-option>
+                                <mat-option [value]="type.code" *ngFor="let type of vipTypes">{{type.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div> 
                 <app-retail-capture-card
                     [PaymentReferenceID]="PaymentReferenceID"
                     [isShowPMAgentValidationMessage]="false"

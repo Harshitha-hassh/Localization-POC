@@ -59,9 +59,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   validateEmailType: string;
   validatePhoneType: string;
   clientInfo: any;
-  titles = [{ id: 1, value: 'Dr.' }, { id: 2, value: 'Fr.' }, { id: 3, value: 'Miss' },
-  { id: 4, value: 'Mr.' }, { id: 5, value: 'Mrs.' }, { id: 6, value: 'Ms.' },
-  { id: 7, value: 'Prof.' }, { id: 8, value: 'Rev.' }];
+  titledropdownInput: { form: UntypedFormGroup; formControlName: string; isdisabled: boolean; placeholderName: string; className: string; };
+  titles = [{ id: 1, value: 'Dr', viewValue: 'Dr' }, { id: 2, value: 'Fr', viewValue: 'Fr' }, { id: 3, value: 'Miss', viewValue: 'Miss' },
+  { id: 4, value: 'Mr', viewValue: 'Mr' }, { id: 5, value: 'Mrs', viewValue: 'Mrs' }, { id: 6, value: 'Ms', viewValue: 'Ms' },
+  { id: 7, value: 'Prof', viewValue: 'Prof' }, { id: 8, value: 'Rev', viewValue: 'Rev' }, { id: 9, value: 'Mx', viewValue: 'Mx' }];
   placeNotfound: boolean;
   Phone: any = [];
   options = {
@@ -178,9 +179,22 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         thumbnailImg: ''
       }),
       imgReferenceId: '',
-      receiptDate: ''
+      receiptDate: '',
+      platformBussinessCardRevUuid: '',
+      platformBussinessCardUuid: '',
+      platformGuestUuid: '',
+      platformRevUuid: '',
     });
     this.isCMSConfigured = this.featureSwitch.IsCMSConfigured;
+    this.titledropdownInput = {
+      form: this.FormGrp,
+      formControlName: 'title',
+      isdisabled: false,
+      placeholderName: this.captions.CTitle,
+      className: 'ag_w--15 ag_ml--1'
+    }
+    this.ChangePrimaryToggle('Phone', 'PhonePrimary');
+    this.ChangePrimaryToggle('Email', 'EmailPrimary');
   }
 
   ngAfterViewChecked(): void {
@@ -244,16 +258,19 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.currentIndexemail = i + 1;
     this.Email = this.FormGrp.get('Email') as UntypedFormArray;
     this.Email.push(this.createEmailItem(i, EmailLabel, EmailId, EmailIsPrivate, EmailIsPrimary));
+    this.ChangePrimaryToggle('Email', 'EmailPrimary');
   }
 
   removeEmailItem(i: any, d?: any, f?: any) {
     this.Email.removeAt(i);
     this.currentIndexemail = i - 1;
+    this.ChangePrimaryToggle('Email', 'EmailPrimary');
   }
 
   removePhoneItem(i: any, e?: any, d?: any) {
     this.Phone.removeAt(i);
     this.currentIndexPhone = i - 1;
+    this.ChangePrimaryToggle('Phone', 'PhonePrimary');
   }
 
   createPhoneItem(arr: number, phoneNoLabel: any, countryCode: any, phoneNoDetails: any,
@@ -300,14 +317,39 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.Phone = this.FormGrp.get('Phone') as UntypedFormArray;
     this.Phone.push(this.createPhoneItem(i, phoneNoLabel, countryCode, phoneNoDetails, phoneIsPrivate, phoneIsPrimary, extension));
     this.currentIndexPhone = i + 1;
+    this.ChangePrimaryToggle('Phone', 'PhonePrimary');
+  }
+
+  ChangePrimaryToggle(formArrayName: string, formControlName: any) {
+    let contactArray = this.FormGrp.get(formArrayName) as UntypedFormArray;
+    if (contactArray?.value?.length > 0) {
+      let isPrimaryAvailable = false;
+      contactArray.controls.forEach(x => {
+        const grp = x as UntypedFormGroup;
+        if (grp.controls[formControlName].value) {
+          isPrimaryAvailable = true;
+          grp.controls[formControlName].disable();
+        }
+      });
+      if (!isPrimaryAvailable) {
+        const ctrl = contactArray.controls[0] as UntypedFormGroup;
+        ctrl.controls[formControlName].setValue(true);
+        ctrl.controls[formControlName].disable();
+      }
+    }
   }
 
   togglePrimaryContact(formArrayName: string, formGroupName: any, formControlName: any) {
     const arr = this.FormGrp.get(formArrayName) as UntypedFormArray;
+    const selectedctrl = arr.controls.filter((x, idx) => idx == formGroupName)?.[0];
+    if (selectedctrl) {
+      (selectedctrl as UntypedFormGroup).controls[formControlName].disable();
+    }
     const ctrls = arr.controls.filter((x, idx) => idx != formGroupName);
     ctrls.forEach(x => {
       const grp = x as UntypedFormGroup;
       grp.controls[formControlName].setValue(false);
+      grp.controls[formControlName].enable();
     });
   }
 
@@ -424,7 +466,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       }
 
     }
-
+    this.ChangePrimaryToggle('Phone', 'PhonePrimary');
+    this.ChangePrimaryToggle('Email', 'EmailPrimary');
   }
 
   ngOnDestroy(): void {
@@ -811,7 +854,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.FormGrp.controls.interfaceGuestId.setValue(clientInfo.client.interfaceGuestId);
       this.FormGrp.controls.id.setValue(clientInfo.client.id);
       this.FormGrp.controls.guestId.setValue(clientInfo.client.guestId);
-      this.FormGrp.controls.title.setValue(this.utils.GetGuestIdbyTitle(clientInfo.client.title));
+      this.FormGrp.controls.title.setValue(clientInfo.client.title);
       this.FormGrp.controls.firstName.setValue(clientInfo.client.firstName);
       this.FormGrp.controls.pronounced.setValue(clientInfo.client.pronounce);
       this.FormGrp.controls.gender.setValue(clientInfo.client.gender);
@@ -820,6 +863,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       );
       this.FormGrp.controls.patronid.setValue(loyalty ? loyalty.patronId : '');
       this.FormGrp.controls.rank.setValue(loyalty ? loyalty.rank : '');
+      this.FormGrp.controls.platformBussinessCardRevUuid.setValue(clientInfo.client.platformBussinessCardRevUuid);
+      this.FormGrp.controls.platformBussinessCardUuid.setValue(clientInfo.client.platformBussinessCardUuid);
+      this.FormGrp.controls.platformGuestUuid.setValue(clientInfo.client.platformGuestUuid);
+      this.FormGrp.controls.platformRevUuid.setValue(clientInfo.client.platformRevUuid);
     }
     if (clientInfo.addresses && clientInfo.addresses != null) {
       this.FormGrp.controls.postal_code.setValue(clientInfo.addresses.zipCode);
@@ -986,12 +1033,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       item.markAsDirty();
     }
 
+    this.ChangePrimaryToggle('Phone', 'PhonePrimary');
   }
 
   onEmailChange($event, i, item) {
     item['controls']['EmailId'].enable();
     if (!$event.value) {
-
       item['controls']['EmailId'].setValue('');
       item['controls']['EmailId'].disable();
       item['controls']['EmailPrimary'].setValue('');
@@ -999,6 +1046,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       item['controls']['EmailLabel'].clearValidators();
       item.markAsDirty();
     }
+
+    this.ChangePrimaryToggle('Email', 'EmailPrimary');
   }
 
   phoneChange(eve, phoneNumber, altfield, phoneNumberLabel, index) {
@@ -1130,14 +1179,18 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     return [
       { id: this.phoneTypes.mobile, description: this.localization.captions.common.drp_txt_cell, type: ContactType.phone },
       { id: this.phoneTypes.home, description: this.localization.captions.common.drp_txt_home, type: ContactType.phone },
-      { id: this.phoneTypes.office, description: this.localization.captions.common.drp_txt_work, type: ContactType.phone }
+      { id: this.phoneTypes.office, description: this.localization.captions.common.drp_txt_office, type: ContactType.phone },
+      { id: this.phoneTypes.business, description: this.localization.captions.common.drp_txt_business, type: ContactType.phone },
+      { id: this.phoneTypes.work, description: this.localization.captions.common.drp_txt_work, type: ContactType.phone }
     ];
   }
 
   private getMailOptions() {
     return [
       { id: this.mailTypes.personal, description: this.localization.captions.common.drp_txt_personal, type: ContactType.email },
-      { id: this.mailTypes.office, description: this.localization.captions.common.drp_txt_office, type: ContactType.email }
+      { id: this.mailTypes.office, description: this.localization.captions.common.drp_txt_office, type: ContactType.email },
+      { id: this.mailTypes.home, description: this.localization.captions.common.drp_txt_home, type: ContactType.email },
+      { id: this.mailTypes.business, description: this.localization.captions.common.drp_txt_business, type: ContactType.email }
     ];
   }
 

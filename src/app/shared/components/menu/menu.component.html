@@ -42,7 +42,13 @@
                                 <span class="icon-Cancel" *ngIf="menusearchOpen"></span>
                             </i>
                         </button>
-
+                        <button *ngIf="showJasperSoftServerMenu" class="notifyClass buttonStyle cursor" matTooltip="{{this.openJaspersoftServer}}"
+                        (click)="openJasperSoftServerLink()">
+                            <i  aria-hidden="true" class="icon-user-class">
+                            <span class="icon-Circle"></span>
+                                <span class="icon-Jaspersoft"></span>
+                            </i>
+                        </button>
                         <!-- <app-ms-graph-auth></app-ms-graph-auth> -->
                         <!-- #46309 - Hide unused fields -->
                          <button class="notifyClass buttonStyle cursor custom-notify-relative" [popover]="notificationPopOver"  popoverPlacement="bottom" [popoverOnHover]="false" >

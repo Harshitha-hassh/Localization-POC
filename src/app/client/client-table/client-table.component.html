@@ -134,6 +134,7 @@
 
                       <div class="client-name-email lh20 d-block textellipsis"><div class="pb-1 textellipsis" [isEllipsis]="bodyCnt[hdrCnt.jsonkey].name">{{bodyCnt[hdrCnt.jsonkey].name}}</div>
                         <div class="op07 textellipsis" [isEllipsis]="bodyCnt[hdrCnt.jsonkey].email">{{bodyCnt[hdrCnt.jsonkey].email}}</div></div>
+                        <span *ngIf="bodyCnt[hdrCnt.jsonkey].vip" class="icon-vip ml-2"></span>
                     </span>
 
                   </span>

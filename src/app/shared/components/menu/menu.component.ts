@@ -26,6 +26,9 @@ import { UserdefaultsInformationService } from 'src/app/core/services/Userdefaul
 import { UserMachineConfigurationService } from 'src/app/retail/common/services/user-machine-configuration.service';
 import { AuthenticationService } from 'src/app/common/shared/services/authentication.service';
 import { DMConfigDataService } from 'src/app/common/dataservices/datamagine-config.data.service';
+import { JasperServerCommonDataService } from 'src/app/common/dataservices/jasperServerCommon.data.service';
+import { PropertySettingDataService } from 'src/app/common/dataservices/authentication/propertysetting.data.service';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -72,6 +75,8 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   notificationCount: number = 0;
   notificationInfo: {id: number , message: string }[] = [];
   isChangePropertyEnabled: boolean;
+  showJasperSoftServerMenu: boolean = false;
+  openJaspersoftServer: string = "";
   @Input('menu')
   set MenuValue(value) {
     this.menuList = value;
@@ -99,6 +104,8 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     , private userSessionConfig: UserMachineConfigurationService
     , private authentication: AuthenticationService
     , private _dmConfigDataService:DMConfigDataService
+    , private jasperServerCommon: JasperServerCommonDataService
+    , private PropertySettingService: PropertySettingDataService
     ) {
     // this.sortPipe = new SortOrderPipe();
   }
@@ -110,10 +117,27 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     this.lastName = this._localization.GetUserInfo("lastName");
     this.userRole = this._localization.GetUserInfo("roleName");
     this.moreTextName = this.captions.lbl_more;
+    this.openJaspersoftServer = this.captions.common.lbl_OpenJasperSoft;
+    this.handleShowAndHideJasperSoftStudioMenu();
 
     this.transactionCountSubscription = this._sessionService.transactionCount.subscribe(res => {
       const revenueresult = res && res.find(x => x.id === NotificationFailureType.revenuePostingFailure) ;
       const paymentresult = res && res.find(x => x.id === NotificationFailureType.paymentTransactionFailure) ;
+      const cgpsLogResult = res && res.find(x => x.id === NotificationFailureType.cgpsLog);
+      if(cgpsLogResult){
+        if(this.notificationInfo && this.notificationInfo.length && (!this.notificationInfo.some(x => x.id === NotificationFailureType.cgpsLog))){
+          this.notificationInfo.push({
+            id: NotificationFailureType.cgpsLog,
+            message: cgpsLogResult.message
+          });
+        }
+        else{
+          this.notificationInfo.push({
+            id: NotificationFailureType.cgpsLog,
+            message: cgpsLogResult.message
+          });
+        }
+      }
       const dMPostingResult = res && res.find(x => x.id == NotificationFailureType.dMPostingFailure);
       if (revenueresult && revenueresult.count > 0) {
         if (this.notificationInfo && this.notificationInfo.length > 0 &&
@@ -191,6 +215,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
         this.userDefaultsService.syncDefaultValues(Number(this._localization.GetUserInfo("userId")));
         this.userSessionConfig.getAllClientSetting().then(defaultsSetting => {
           sessionStorage.setItem('defaultSettings', JSON.stringify(defaultsSetting));
+          this.reloadSession();
         });
         if (!this._propertyInfo.UseRetailInterface) {
           this.notificationCount = 0;
@@ -206,7 +231,12 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
   }
-
+  reloadSession() {
+    setTimeout(function () {
+      let getThemeColor: any  = document.getElementsByClassName('theme-color-wrapper')[0];
+      getThemeColor.style.setProperty("background-color", JSON.parse(sessionStorage.getItem('defaultSettings'))?.find(x=>x.switch == "THEME_COLOR").value, "important")
+    }, 500);
+  }
   RefreshConfig(isFromPropertyChangeEvent : boolean = false){
     if (!sessionStorage.getItem("giftCardConfiguration") || isFromPropertyChangeEvent) {
       this._propertyFeatureService.GetGiftCardConfiguration().then((config) => {
@@ -232,6 +262,42 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
 
+  handleShowAndHideJasperSoftStudioMenu() {
+    let sessionValueofJasperStudio = sessionStorage.getItem('showJasperSoftServerMenu');
+    if (sessionValueofJasperStudio != null) {
+      this.showJasperSoftServerMenu = sessionValueofJasperStudio == 'true';
+    } else {
+      this.showJasperSoftServerMenu = true;
+    }
+  }
+
+  async openJasperSoftServerLink() {
+    const [userattributeupdate,jasperServerURL,headers] = await  Promise.all([
+      this.PropertySettingService.UpdateRoleAndAttributeToUser(),
+      this.jasperServerCommon.GetJasperServerBaseURL(), 
+      this.jasperServerCommon.GetJasperServerHeader()
+   ]);
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        var url = jasperServerURL + "/flow.html?_flowId=homeFlow";
+        let jaspersoftNavigationUri = url;
+        window.open(jaspersoftNavigationUri, "_blank");
+      }
+    });
+    let data = "";
+    xhr.open("GET", jasperServerURL + "/rest_v2/serverInfo");
+    if(headers){
+      Object.keys(headers).forEach(key => {
+        if (headers[key] !== null) {
+            xhr.setRequestHeader(key, headers[key]);
+        }
+    });
+    }
+    xhr.send(data);
+  }
+
   async setAcesToken() {
     try {
       const token = await this.authentication.getEngageToken();
@@ -240,7 +306,7 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       console.log(ex);
     }
   }
-
+ 
   compareSelect = (val1, val2) => {
     return val1 && val2 && val1.text === val2.text;
   }
@@ -449,6 +515,10 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   removePaymentFailureInfo(){
     this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.paymentTransactionFailure);
   }
+  removeCgpsFailureInfo(){
+    this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.cgpsLog);
+  }
+
 
   removeDMReceiptLogInfo(){
     this.notificationInfo = this.notificationInfo?.filter(x => x.id !== NotificationFailureType.dMPostingFailure);
@@ -465,6 +535,12 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
       this.removePaymentFailureInfo();
       this.notificationCount = this.notificationInfo?.length;
     }
+    else if (id === NotificationFailureType.cgpsLog){
+      this.router.navigate(['/settings/utilities/cgpsFailedProfile']);
+      this.removeCgpsFailureInfo();
+      this.notificationCount = this.notificationInfo?.length;
+    }
+    
     else if (id === NotificationFailureType.dMPostingFailure){
       this.router.navigate(['/shop/viewshop/retailtransactions/datamaginereceiptlog']);
       this.removeDMReceiptLogInfo();

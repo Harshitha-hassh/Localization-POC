@@ -147,6 +147,7 @@ export class UserMachineConfigurationComponent implements OnInit, OnDestroy {
         const paymentMethod = this.localization.replacePlaceholders(this.localization.captions.shop.paymentMethods[giftcardMethod.paymentTypeId], ["Third Party"], [this.featureFlagInfo.GatewayType]);
         giftcardMethod.paymentMethod = paymentMethod;
       }
+      this.paymentMethods.unshift({ id: 0, value: 0, viewValue: '' });
     }
   }
 

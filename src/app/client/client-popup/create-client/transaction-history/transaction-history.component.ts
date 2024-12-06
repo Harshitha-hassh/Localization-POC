@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
-import { GuestRetailTransactionHistory, Transaction } from '../../../../shared/shared-models';
+import { GuestRetailTransactionHistory, Transaction} from '../../../../shared/shared-models';
 import { Subscription } from 'rxjs';
 import { UntypedFormGroup } from '@angular/forms';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
@@ -9,6 +9,7 @@ import { RetailLocalization } from 'src/app/retail/common/localization/retail-lo
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { MultipackAPIModel,MultipackUIModel,MultpackHistoryRequest } from './multipack.model';
+import { TransactionWithItemNumber } from 'src/app/retail/shared/business/shared.modals'; 
 @Component({
   selector: 'app-transaction-history',
   templateUrl: './transaction-history.component.html',
@@ -160,7 +161,7 @@ export class TransactionHistoryComponent implements OnInit {
     if (callDesc == "GetSalesHistoryTransactionByGuestGuids")
     {
       let res:any = result.result;
-      let responseResult: Transaction[] = res;
+      let responseResult: TransactionWithItemNumber[] = res;
       let transactionDetail:any;
       let items :any[]=[];
       for (let index1 = 0; index1 < responseResult.length; index1++) {
@@ -183,16 +184,16 @@ export class TransactionHistoryComponent implements OnInit {
         {
          let QuantitySold = responseResult[index1].transactionDetails[index2].quantitySold;
          let unitPrice = (responseResult[index1].transactionDetails[index2].unitPrice).customToFixed();
-         let itemId = responseResult[index1].transactionDetails[index2].itemId;
+         let itemNumber = responseResult[index1].transactionDetails[index2].itemNumber;
          itemDescription = responseResult[index1].transactionDetails[index2].itemDescription;
-          var indexOfItem = this.frequentlyPurchased.findIndex(i=> i.itemNumber == itemId);
+          var indexOfItem = this.frequentlyPurchased.findIndex(i=> i.itemNumber == itemNumber);
          if(indexOfItem > -1)
          {
           this.frequentlyPurchased[indexOfItem].quantity = Number(this.frequentlyPurchased[indexOfItem].quantity) + Number(QuantitySold);
          }
          else
          {
-          this.frequentlyPurchased.push({ "description": itemDescription, "quantity": QuantitySold, "itemNumber": itemId})
+          this.frequentlyPurchased.push({ "description": itemDescription, "quantity": QuantitySold, "itemNumber": itemNumber})
          }
         
          let Discount :number= responseResult[index1].transactionDetails[index2].discount;

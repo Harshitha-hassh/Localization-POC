@@ -13,7 +13,6 @@ import { UserSetupRoutingModule } from './user-config-routing.module';
 import { UserConfigComponent } from './user-config.component';
 import { UserRoleComponent } from './user-role/user-role.component';
 import { NewUserComponent } from './new-user/new-user.component';
-import { UiSwitchModule } from 'ngx-ui-switch';
 import { NgDragDropModule } from 'ng-drag-drop';
 
 @NgModule({
@@ -34,7 +33,6 @@ import { NgDragDropModule } from 'ng-drag-drop';
         SharedModule,
         ScrollbarModule,
         UserSetupRoutingModule,
-        UiSwitchModule,
         NgDragDropModule
     ]
 })

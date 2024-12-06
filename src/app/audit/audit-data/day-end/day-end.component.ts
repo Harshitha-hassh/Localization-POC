@@ -37,6 +37,8 @@ import { RevenuePostingDataService } from 'src/app/retail/sytem-config/data-serv
 import { RoomRevenuePostingRequest } from 'src/app/retail/shop/view-categories/retail-revenue-posting-logs/revenue-posting';
 import { Localization } from 'src/app/common/localization/localization';
 import { NightAuditBusiness } from 'src/app/common/night-audit/night-audit.business';
+import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
+import { SettleRefundTransactionBusiness } from 'src/app/retail/shared/business/Settle-Refund-Transaction-business.service';
 
 @Component({
     selector: 'app-day-end',
@@ -57,7 +59,6 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   newSysDate: Date = this.propertyInfo.CurrentDate;
   canProcess = false;
   isProcessClicked = true;
-  successFlag = false;
   success: any;
   GridData: GridData[] = [];
   AppointmentStatus: any;
@@ -97,7 +98,9 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     public _shopservice: CommonVariablesService, 
     public dialog: MatDialog, 
     public revenuePostingDataService: RevenuePostingDataService,
-    private nightAuditBusiness: NightAuditBusiness) {
+    private _featureFlagService: RetailFeatureFlagInformationService,
+    private nightAuditBusiness: NightAuditBusiness,
+    private _settleRefundTransBusiness: SettleRefundTransactionBusiness,) {
       this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
   }
 
@@ -115,7 +118,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         }
       }
     });
-
+    this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
     this.captions = this.localization.captions.dayEnd;
     this.AppointmentStatus = this.localization.captions.appointmentSearch;
     this.captionsBookApp = this.localization.captions.bookAppointment;
@@ -140,8 +143,17 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.InvokeServiceCall('GetMiscConfigurationByPropertyId', Host.retailManagement, HttpMethod.Get, { PropertyId: Number(this.localization.GetPropertyInfo('PropertyId')) });
     }
     this.ResetServiceObject();
+    this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
+    this.RefreshConfig();
   }
 
+  RefreshConfig(){
+    const revenuePosting = sessionStorage.getItem("RevenuePosting_PostViaPMSCommunicationReceiver");
+    const pmsSystem = sessionStorage.getItem("pmsSystem");
+    if (!revenuePosting || !pmsSystem) {
+      this._featureFlagService.RefreshConfig();
+    }
+  } 
   async getRevenuePostings(){
     const request: RoomRevenuePostingRequest = {
       startDate: this.localization.convertDateObjToAPIdate(this.currSysDate),
@@ -256,8 +268,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         const response = result.result as any;
         if (response.isSuccess) {
           this.propertyInfo.SetPropertyDate(this.newSysDate);
-          this.UpdateInventoryAudit();
-          this.ShowSuccessMessage();
+          this.UpdateInventoryAudit();          
           if (this.propertyInfo.HasRevenuePostingEnabled) {
             this.SendNewSystemDate();
           }
@@ -359,13 +370,22 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   SendNewSystemDate() {
     const pmsSystem = sessionStorage.getItem('pmsSystem');
-    if (this.showRevenuePostings && pmsSystem != null && pmsSystem.toLowerCase() === 'visualone') {
-      let obj: NotifyDayEnd = { DateTime: this.localization.convertDateObjToAPIdate(this.newSysDate)
-        , NightAuditDateTime : this.localization.convertDateObjToAPIdate(this.currSysDate ) 
-         }
-      this.InvokeServiceCall('NotifyDayEnd', Host.retailManagement, HttpMethod.Put, {},
-        obj, null, null, false);
+    let PMSSystemValue = "";
+    const PostViaPMSCommunicationReceiver = JSON.parse(sessionStorage.getItem("RevenuePosting_PostViaPMSCommunicationReceiver"));
+    if(PostViaPMSCommunicationReceiver){
+      const jsonPropConfig = sessionStorage.getItem('propConfig');
+      PMSSystemValue = jsonPropConfig ? JSON.parse(jsonPropConfig)?.PMSSystem : null;
     }
+    if (this.showRevenuePostings && 
+      (( pmsSystem != null && pmsSystem.toLowerCase() === 'visualone') || 
+      (PostViaPMSCommunicationReceiver && PMSSystemValue != undefined && PMSSystemValue != null && 
+      ( PMSSystemValue.toLowerCase() === 'visualone' || PMSSystemValue.toLowerCase() === 'v1' || PMSSystemValue.toLowerCase()== 'versa')))) {
+        let obj: NotifyDayEnd = { DateTime: this.localization.convertDateObjToAPIdate(this.newSysDate)
+          , NightAuditDateTime : this.localization.convertDateObjToAPIdate(this.currSysDate ) 
+           }
+        this.InvokeServiceCall('NotifyDayEnd', Host.retailManagement, HttpMethod.Put, {},
+          obj, null, null, false);
+      }  
   }
 
   errorCallback<T>(error: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
@@ -488,16 +508,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.InvokeServiceCall("PerformDayEnd", Host.retailPOS, HttpMethod.Put, uriParam);
     }
   }
-
-  ShowSuccessMessage() {
-    // tslint:disable-next-line: max-line-length
-    const message = `${this.captions.systemMovedTo} ${this.localization.LocalizeDate(this.newSysDate)}`;
-    this.successFlag = true;
-    this.canProcess = false;
-    this.utils.showAlert(message, AlertType.Success, RetailButtonType.Continue, x => {
-      //this.SyncUpItemAndTaxes(this.currSysDate);
-    });
-  }
+  
   trackByFn(index, cell) {
     return index;
   }
@@ -645,7 +656,27 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.retailSharedService.selectedTransaction = data?.transactionInfo;
       this.InvokeServiceCall('GetTransactionDetails', Host.retailPOS, HttpMethod.Get, { transactionId: data.Id, productId: Product.SPA }, null, null, ['settle']);
     } else if (option.action === GridAction.CancelTransaction) {
-      if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Cancel)) { return; }
+      let isReturn = data?.transactionInfo?.transactionLinkId > 0
+      let settlementHistory;
+      let isRefundPaymentInitiated = false;
+      if (isReturn) {
+        settlementHistory = await this._settleRefundTransBusiness.getSettlementHistory(data?.transactionInfo);
+        isRefundPaymentInitiated = settlementHistory.some(x => !x.isReversed);
+      }
+      if (isRefundPaymentInitiated || !isReturn) {
+        if (this.retailValidationService.CheckIfLinkedTransactionExists(data?.transactionInfo, OpenTransactionAction.Cancel)) { return; }
+        var paymentHistoryDetails: PaymentHistoryDetails = await this.shopBusinessService.GetPaymentHistoryDetails(data.Id);
+        if ((paymentHistoryDetails && (paymentHistoryDetails?.paymentHistory?.length > 0 || paymentHistoryDetails?.isHavingPaymentHistory))) {
+          const confirmationMsgForCancel = this.localization.replacePlaceholders(
+            this.localization.captions.shop.CancelNotAllowed,
+            ['TicketNumber'],
+            [this.retailSharedService.ticketNumber]
+          );
+          this.utils.ShowError(this.localization.captions.common.Error, confirmationMsgForCancel, ButtonType.Ok);
+          this._shopservice.destroy();
+          return;
+        }
+      }
       if (await this.retailValidationService.IsTransactionLocked(data.Id)) {
         this.utils.ShowError(this.localization.captions.common.Error, this.localization.captions.shop.TransactionLock, ButtonType.Ok);
         return;
@@ -653,17 +684,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.retailSharedService.ticketNumber = data.TicketNumber;
       this.retailSharedService.transactionId = data.Id;
       // tslint:disable-next-line: max-line-length
-      var paymentHistoryDetails: PaymentHistoryDetails = await this.shopBusinessService.GetPaymentHistoryDetails(data.Id);
-      if ((paymentHistoryDetails && (paymentHistoryDetails.paymentHistory.length > 0 || paymentHistoryDetails.isHavingPaymentHistory))) {
-        const confirmationMsgForCancel = this.localization.replacePlaceholders(
-          this.localization.captions.shop.CancelNotAllowed,
-          ['TicketNumber'],
-          [this.retailSharedService.ticketNumber]
-        );
-        this.utils.ShowError(this.localization.captions.common.Error, confirmationMsgForCancel, ButtonType.Ok);
-        this._shopservice.destroy();
-        return;
-      }
+     
       const confirmationMsg = this.localization.replacePlaceholders(
         this.captions.CancelOpenTransaction,
         ['TicketNumber'],
@@ -803,9 +824,9 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     this.retailSharedService.propertyDate = this.propertyInfo.CurrentDate;
     this.retailSharedService.useRetailInterface = this.propertyInfo.UseRetailInterface;
     if (this.retailSharedService.settleOpenTransaction) {
-      this.utils.RedirectTo(RedirectToModules.order);
+     this.utils.RedirectTo(RedirectToModules.order);
     } else if (this.retailSharedService.reOpenTransaction) {
-      this.utils.RedirectTo(RedirectToModules.retail);
+     this.utils.RedirectTo(RedirectToModules.retail);
     }
   }
 

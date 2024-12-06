@@ -78,7 +78,12 @@ export interface ClientInfo {
     consentExpiryDate:Date;
     consentPolicyId:number;
     isPurged:boolean;
-    policyComments : string
+    policyComments : string;
+    vip?:string;
+    platformBussinessCardRevUuid?: string;
+    platformBussinessCardUuid?: string;
+    platformGuestUuid?: string;
+    platformRevUuid?: string;
   }
 
   export interface LoyaltyDetail{

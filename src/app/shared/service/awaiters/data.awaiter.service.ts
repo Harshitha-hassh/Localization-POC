@@ -17,6 +17,11 @@ import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/u
 import * as RetailClientInfo from 'src/app/retail/shared/shared.modal';
 import { NotificationConfigurationService } from "src/app/common/templates/notification-configuration/notification-configuration.service";
 import { EventNotificationGroup } from "src/app/common/templates/notification-configuration/notification-configuration.model";
+import { PropertySettingDataService } from "src/app/retail/sytem-config/property-setting.data.service";
+import { CommonDataAwaiters } from "src/app/common/shared/events/awaiters/common.data.awaiters";
+import { VipTypBusiness } from "src/app/retail/shared/service/vip-type.service";
+import { ClientMultipack, MultiPackReturn } from "src/app/retail/retail.modals";
+import { TransactionService } from "src/app/retail/shared/service/transaction-service/transaction.dataservice";
 
 @Injectable({
     providedIn: "root"
@@ -33,7 +38,10 @@ export class DataAwaiterService {
         private userDefaultService: UserdefaultsInformationService,
         private notificationDataService: NotificationDataService,
         private userAccessBusiness : UserAccessBusiness,
-        private notificationConfigurationService: NotificationConfigurationService
+        private notificationConfigurationService: NotificationConfigurationService,
+        private propertySettingDataService: PropertySettingDataService,
+        private vipTypeBusiness: VipTypBusiness,
+        private transactionService: TransactionService
     ) {
         this.setAwaiters();
     }
@@ -43,6 +51,7 @@ export class DataAwaiterService {
         RetailDataAwaiters.searchPayee = this.searchClient.bind(this);
         RetailDataAwaiters.searchTransactionGuest = this.searchClient.bind(this);
         RetailDataAwaiters.CreatePlayer = this.createClient.bind(this);
+        RetailDataAwaiters.GetGuestByPlatformGuestGuid = this.GetGuestByPlatformGuestGuid.bind(this);
         RetailDataAwaiters.openAddPayeePopup = this.openAddGuestPopup.bind(this);
         RetailDataAwaiters.getPayeeDetails = this.getClientDetails.bind(this);
         RetailDataAwaiters.getPayeeInfo = this.getClientInfo.bind(this);
@@ -54,6 +63,19 @@ export class DataAwaiterService {
 
         RetailDataAwaiters.GetExistingPlayer = this.getExistingPlayer.bind(this);
         RetailDataAwaiters.openGuestPatronPopup = this.openGuestPatronPopup.bind(this);
+        RetailDataAwaiters.GetExtendedProfileSearchConfig = this.GetExtendedProfileSearchConfig.bind(this);
+
+        //VipType
+        CommonDataAwaiters.GetAllVipType = this.getAllVipType.bind(this);
+        CommonDataAwaiters.CreateVipType = this.createVipType.bind(this);
+        CommonDataAwaiters.UpdateVipType = this.updateVipType.bind(this);
+        CommonDataAwaiters.DeleteVipType = this.deleteVipType.bind(this);
+        CommonDataAwaiters.GetNextListOrderofVipType = this.getNextListOrderofVipType.bind(this);
+        CommonDataAwaiters.DragDropVipType = this.dragDropVipType.bind(this);
+
+        //Client Multipack
+        RetailDataAwaiters.GetClientMultiPack = this.getClientMultiPacksBytransactionId.bind(this);
+        RetailDataAwaiters.UpdateMultiPack = this.updateMultiPack.bind(this);
     }
 
     getChildMenu(url, menutype?) {
@@ -69,8 +91,17 @@ export class DataAwaiterService {
         return client;
     }
 
-    private async searchClient(name: string, requestUid: string): Promise<[ClientSearchModel[], PayeeInfo[]]> {
-        let response: any = await this.clientDataService.searchClient(name, requestUid);
+    async getClientMultiPacksBytransactionId(transactionId: number): Promise<ClientMultipack[]> {
+        return await this.transactionService.getClientMultiPacksBytransactionId(transactionId);
+    }
+
+    async updateMultiPack(multipackreturn: MultiPackReturn) {
+        const response = await this.transactionService.updateMultiPack(multipackreturn);
+        return response;
+    }
+
+    private async searchClient(name: string, type: number, requestUid: string, isPlatformGuestSearch:any): Promise<[ClientSearchModel[], PayeeInfo[]]> {
+        let response: any = await this.clientDataService.searchClient(name, requestUid, isPlatformGuestSearch);
 
         let clientDetails: PayeeInfo[] = [];
         let responseUid = "";
@@ -117,11 +148,47 @@ export class DataAwaiterService {
             playerCategoryId: client.clientCategoryId != 0 ? client.clientCategoryId : 1,
             emailId: emailId,
             phoneNumber: phoneNo,
-            lastName: client.lastName
+            lastName: client.lastName,
+            platformGuestUuid: client.platformGuestUuid,
+            vip: client.vip
         };
         return payee;
     }
+    private BuildPayeeDataFromClientInfo(client: ClientInfo): PayeeInfo {
+        let emailId = '';
+        let phoneNo = '';
+        let emailObj = client.emails;
+        let phoneObj = client.phoneNumbers;
 
+        if (emailObj && emailObj.length) {
+            emailObj = emailObj.sort((a, b) => a.contactTypeId < b.contactTypeId ? -1 : a.contactTypeId > b.contactTypeId ? 1 : 0);
+            emailId = emailObj.find(x => !x.isPrivate && x.isPrimary) ? emailObj.find(x => !x.isPrivate && x.isPrimary).emailId : emailObj[0].emailId;
+        }
+
+        if (phoneObj && phoneObj.length) {
+            phoneObj = phoneObj.sort((a, b) => a.contactTypeId < b.contactTypeId ? -1 : a.contactTypeId > b.contactTypeId ? 1 : 0);
+            phoneNo = phoneObj.find(x => !x.isPrivate && x.isPrimary) ? phoneObj.find(x => !x.isPrivate && x.isPrimary).number : phoneObj[0].number;
+        }
+
+        let payee: PayeeInfo = {
+            id: client.id,
+            name: client.client.firstName + ' ' + client.client.lastName,
+            address: client.addresses ? (client.addresses.addressLine1 ? client.addresses.addressLine1 : '' + ' ' + client.addresses.state ? client.addresses.state : '') : '',
+            country: client.addresses ? client.addresses.country ? client.addresses.country : '' : '',
+            zip: client.addresses ? client.addresses.zipCode ? client.addresses.zipCode : '' : '',
+            city: client.addresses ? client.addresses.city ? client.addresses.city : '' : '',
+            guestProfileId: client.client.memberId ? client.client.memberId : client.client.guestId,
+            cardInfo: client.clientCreditCardInfo ? client.clientCreditCardInfo : [],
+            patronId: client.client.loyaltyDetail && client.client.loyaltyDetail[0] ? client.client.loyaltyDetail[0].patronId : '',
+            rank: client.client.loyaltyDetail && client.client.loyaltyDetail[0] ? client.client.loyaltyDetail[0].rank : '',
+            playerCategoryId: client.client.clientCategoryId != 0 ? client.client.clientCategoryId : 1,
+            emailId: emailId,
+            phoneNumber: phoneNo,
+            lastName: client.client.lastName,
+            platformGuestUuid: client.client.platformGuestUuid
+        };
+        return payee;
+    }
     private async createClient(clientobj, callback): Promise<any> {
         const response = await this.clientDataService.CreateClientDetails(this.MapToClientInfoObj(clientobj));
         callback(response.id);
@@ -153,7 +220,7 @@ export class DataAwaiterService {
         } as ClientInfo;
     }
 
-    async openAddGuestPopup(e, callback: Function, id?, guestId?,  modifyLineItemsCallback?: Function, patronId?) {
+    async openAddGuestPopup(e, callback: Function, id?, guestId?,  modifyLineItemsCallback?: Function,platformGuestUuid?: any, patronId?) {
         let dialogRef = null;
         if (e.toLowerCase() == "ordersummary" ) {
             var result = await this.userAccessBusiness.getUserAccess(BreakPoint.AddNewClientProfile);
@@ -171,6 +238,10 @@ export class DataAwaiterService {
         } else if(e.toLowerCase() == "ordersummaryedit") {
             var result = await this.userAccessBusiness.getUserAccess(BreakPoint.EditClientProfile);
             if (result.isAllow || result.isViewOnly) {
+                if ((guestId == '' || guestId == DefaultGUID) && (platformGuestUuid && platformGuestUuid != '' && platformGuestUuid != DefaultGUID)){
+                    var clientInfo = await this.clientDataService.getClientbyPlatformId(platformGuestUuid);
+                }
+                else
                 var clientInfo = await this.clientDataService.getClientbyGuestId(guestId);
                 dialogRef = this.dialog.open(ClientPopupComponent, {
                     width: '95%',
@@ -223,7 +294,10 @@ export class DataAwaiterService {
         }
         return clientDetails;
     }
-
+    public async GetGuestByPlatformGuestGuid(platformGuestGuid: string) {
+        var response = await this.clientDataService.GetGuestByPlatformGuestGuid(platformGuestGuid);
+        return this.BuildPayeeDataFromClientInfo(response);
+    }
     GetDefaultOutlet() {
         return this.userDefaultService.GetDefaultOutlet();
     }
@@ -256,5 +330,33 @@ export class DataAwaiterService {
 
     private async getMemberInfo(cardNo: string, scheduleDateTime: string){
         return await this.clientDataService.getMemberInfo(cardNo, scheduleDateTime);
+    }
+    private async GetExtendedProfileSearchConfig() : Promise<boolean>
+    {
+        let platformGuestSearch = await this.propertySettingDataService.GetEnableExtendedProfileSearchByDefaultSetting();
+        return platformGuestSearch && platformGuestSearch.value === 'true' ? true : false;
+    }
+    private async getAllVipType(includeInactive) {
+        return this.vipTypeBusiness.getAllVipType(includeInactive);
+    }
+
+    private async createVipType(vipType) {
+        return this.vipTypeBusiness.createVipType(vipType);
+    }
+
+    private async updateVipType(vipType, id) {
+        return this.vipTypeBusiness.updateVipType(vipType, id);
+    }
+
+    private async deleteVipType(id){
+        return this.vipTypeBusiness.deleteVipType(id);
+    }
+
+    private async getNextListOrderofVipType(){
+        return this.vipTypeBusiness.getNextListOrderofVipType();
+    }
+
+    private async dragDropVipType(fromOrder, toOrder, includeInactive){
+        return this.vipTypeBusiness.dragDropVipType(fromOrder, toOrder, includeInactive);
     }
 }

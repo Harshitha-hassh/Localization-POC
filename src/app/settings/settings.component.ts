@@ -17,13 +17,16 @@ export class SettingsComponent implements OnInit {
     const value = this.routeDataService.GetChildMenu('/settings');
     this.menu = value.linkedElement;
 
-    if(!this.propertyInfo.IsEatecEnabled) {
-      let configsToRemove = ['/settings/enhancedInventory'];
+    if (this.propertyInfo.IsEatecAsMaster) {
+      const configsToRemove = ['/settings/enhancedInventory' , '/settings/inventorysetup'];
       this.menu = this.menu.filter(r => !configsToRemove.includes(r.routePath));
-    } else {
-      let configsToRemove = ['/settings/inventorysetup'];
+    } else if(this.propertyInfo.IsEatecEnabled) {
+      const configsToRemove = ['/settings/inventorysetup'];
       this.menu = this.menu.filter(r => !configsToRemove.includes(r.routePath));
       this.propertyInfo.setICRoutes(this.menu);
+    } else if(!this.propertyInfo.IsEatecEnabled){
+      const configsToRemove = ['/settings/enhancedInventory'];
+      this.menu = this.menu.filter(r => !configsToRemove.includes(r.routePath));
     }
 
     this.menuList = {

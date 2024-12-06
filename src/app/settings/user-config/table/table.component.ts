@@ -18,6 +18,7 @@ import { GridType } from 'src/app/retail/shared/globalsContant';
 import { RetailTransactions, PromptType } from 'src/app/common/shared/shared/globalsContant';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { CommonAlertMessagePopupComponent } from 'src/app/common/shared/shared/alert-message-popup/alert-message-popup.component';
+import { AgToggleConfig } from 'src/app/common/Models/ag-models';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -28,6 +29,9 @@ import { CommonAlertMessagePopupComponent } from 'src/app/common/shared/shared/a
 export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges, AfterViewChecked {
   floatLabelNever: string;
   floatLabel:string;
+  customToggle: AgToggleConfig;
+  activeToggleInputs: AgToggleConfig;
+  showInactiveToggleInputs: AgToggleConfig;
 
   constructor(public dialog: MatDialog, private userAlerts: UserAlerts,
               public el: ElementRef,
@@ -43,7 +47,8 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
     }
     this.table = this.fb.group({
       IsCheckAll: false,
-      tablebody: this.fb.array([this.fb.group({ id: '', activetoggle: false, donecancel: false, category: '' })])
+      tablebody: this.fb.array([this.fb.group({ id: '', activetoggle: false, donecancel: false, category: '' })]),
+      showInactiveToggle:''
     });
     this.roleSetup = this.fb.group({
       roleName: ['', Validators.required],
@@ -51,6 +56,21 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
     });
     this.inActiveTherapist = new UntypedFormControl(false);
     this.inActiveService = new UntypedFormControl(false);
+    this.customToggle = {
+      group: this.table,
+      formControlName: 'customToggle',
+      automationId:"'Tog_table_customToggle'"
+    }
+    this.activeToggleInputs = {
+      group: this.roleSetup,
+      formControlName: 'activetoggle',
+      automationId:"'Tog_table_activetoggle'"
+    }
+    this.showInactiveToggleInputs = {
+      group: this.table,
+      formControlName: 'showInactiveToggle',
+      automationId:"'Tog_table_showInactiveToggle'"
+    }
   }
   RadiobuttonOption = false;
   sortableHeader: any;
@@ -521,7 +541,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
   }
 
   sliderChange(event: any, rowData?: any) {
-    const data = { value: event, data: rowData };
+    const data = { value: event.checked, data: rowData };
     this.toggleEvtEmitter.emit(data);
   }
 

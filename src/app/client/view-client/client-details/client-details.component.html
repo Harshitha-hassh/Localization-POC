@@ -1,12 +1,17 @@
 <div class="all-clients newVersionWrapper clients-details-wrapper h-100">
   <div class="page-header d-flex flex-wrap" id="pageHeader">
-    <div class="custom-wrap-sect  d-flex al-centre flex-wrap">
+    <div class="custom-wrap-sect  d-flex al-centre flex-wrap" [formGroup]="ClientSearchForm">
       <div class="pl23 w-100">
         <mat-radio-group [attr.automationId]="'Rdo_clientDetails_name'" class="radioGroup LW14 w-100" name="appointmentSearchByClient">
           <mat-radio-button class="ag_form--radio-button" *ngFor="let item of clientSearchTypes" [value]="item.id"
             [checked]="item.checked" [disabled]="" (change)="clientSearchTypeChange(item.id)">{{item.name}}
           </mat-radio-button>
         </mat-radio-group>
+        <div class='ag_display--inflex ml-3'  *ngIf="clientService.selectedIndex==0 && platFormExtendedSearchRequired">
+          <label class="">{{this.captions.platformGuestSearch}}</label>
+          <app-retail-toggle-switch [attr.automationId]="'Tog_clientDetails_platformGuestSearch'" class="ml-2" formControlName="platformGuestSearch"
+              (changeToggleEvent)="isPlatformGuestSearchChanged($event)"></app-retail-toggle-switch>
+        </div>
       </div>
       <div class="d-flex al-centre custom-aligns">
         <mat-form-field class="spa-searchbox searchpt " [floatLabel]="floatLabelNever" id="searchInput">

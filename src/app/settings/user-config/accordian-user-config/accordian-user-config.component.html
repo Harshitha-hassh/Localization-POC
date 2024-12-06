@@ -39,13 +39,13 @@
                   <div class="setWidth" title="{{this.localization.captions.breakpoint[userClaimsDetails.get('breakPointNumber').value]}}">{{this.localization.captions.breakpoint[userClaimsDetails.get('breakPointNumber').value]}}</div>
                 </span>
                 <div class="accordian-toogle float-right  accordian-toggle-section">
-                  <div [ngClass]="{'button_invalid': IsReadOnly}" class="appt-toggle-section pt-1 allow-toggle">
-                    <span class="LW12 mb-2  toggle-text">{{this.localization.captions.setting.Allow}}</span>
+                  <div [ngClass]="{'button_invalid': IsReadOnly}" class="appt-toggle-section allow-toggle">
+                    <span class="LW12 toggle-text">{{this.localization.captions.setting.Allow}}</span>
                     <app-toggle-switch formControlName="allow" (changeToggleEvent)="showAllAppointments(userClaimsDetails,i,k,j,'allow',$event)"></app-toggle-switch>
                   </div>
                   <div [ngClass]="{'button_invalid': !(userClaimsDetails.get('viewOnlyAllowed').value && !IsReadOnly)}"
-                    class="appt-toggle-section pt-1 view-toggle">
-                    <span class="LW12 mb-2 toggle-text">{{this.localization.captions.setting.View}}</span>
+                    class="appt-toggle-section view-toggle">
+                    <span class="LW12 toggle-text">{{this.localization.captions.setting.View}}</span>
                     <div class="accordian-toogle d-inline-block">
                       <app-toggle-switch formControlName="view" (changeToggleEvent)="showAllAppointments(userClaimsDetails,i,k, j,'view',$event)"></app-toggle-switch>
                     </div>

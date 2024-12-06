@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { UserAlerts } from 'src/app/common/shared/config/alerts-config';
-import { PromptType, ButtonOptions, DefaultGUID } from 'src/app/common/shared/shared/globalsContant';
+import { PromptType, ButtonOptions, DefaultGUID, ButtonType } from 'src/app/common/shared/shared/globalsContant';
 import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs';
 import { CreateClientBusiness } from './client-popup.business';
@@ -89,12 +89,33 @@ export class ClientPopupComponent implements OnInit {
   async save(){
     this.IsClientScreenDirty = false;
     this.clientInfo = this.clientPopupForm.value;
-    this.clientInfo.personalDetailsFormGroup.imageReferenceId = DefaultGUID ;
-    if(this.data.isCopyClient){
+    this.clientInfo.personalDetailsFormGroup.imageReferenceId = DefaultGUID;
+    if (this.data.isCopyClient) {
       this.clientInfo.personalDetailsFormGroup.id = 0;
       this.clientInfo.personalDetailsFormGroup.guestId = DefaultGUID;
     }
-    var createPromise = await this._createClientBusiness.SubmitForm(this.clientInfo);
+    try {
+      var createPromise = await this._createClientBusiness.SubmitForm(this.clientInfo,false);
+    }
+    catch (err) {
+      if (err && err.error) {
+        let errMsg = this.localization.getError(err.error.errorCode);
+        if (err.error.errorCode == 310002) {
+          await this.utils.ShowError(this.localization.captions.common.Warning, errMsg, ButtonType.Ok)
+            .afterClosed().toPromise();
+          this.dialogRef.close(["ReloadClient", this.clientInfo.personalDetailsFormGroup.guestId]);
+          return;
+        }
+        if(err.error.errorCode == 310001)
+        {
+          await this.utils.ShowError(this.localization.captions.common.Error, errMsg, ButtonType.Ok)
+          .afterClosed().toPromise();
+        }
+        this.utils.showError(this.localization.getUnexpectedErrorMessage());
+        return;
+      }
+
+    }
     if (this.clientInfo && this.clientInfo.personalDetailsFormGroup.id && this.clientInfo.personalDetailsFormGroup.imgReferenceId &&
       this.clientInfo.personalDetailsFormGroup.imgReferenceId != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID
      || this.clientInfo.personalDetailsFormGroup.isImageRemoved) {

@@ -28,17 +28,18 @@ export class QuickidConfigComponent implements OnInit {
   quickIdConfig = QuickIdConfigSetting;
   public dialog: MatDialog;
   constructor(
-      private formBuilder: UntypedFormBuilder
+    private formBuilder: UntypedFormBuilder
     , private localization: RetailStandaloneLocalization
-    , private quickidconfigBusiness:QuickIdConfigBusiness,
-      ) {
+    , private quickidconfigBusiness: QuickIdConfigBusiness,
+  ) {
     this.captions = this.localization.captions.utilities;
   }
 
   ngOnInit() {
-    this.validateUserAccess(); 
+    this.validateUserAccess();
     this.toggleGroup = this.formBuilder.group({
-      retailtransactions: false
+      retailtransactions: false,
+      discountUpdateRemove: false
     });
     this.toggleGroup.valueChanges.pipe(takeUntil(this.$destroyed)).subscribe(x => {
       if (this.toggleGroup.dirty)
@@ -50,34 +51,38 @@ export class QuickidConfigComponent implements OnInit {
     await this.quickidconfigBusiness.validateBreakPoints()
     this.disableControls();
   }
-  private disableControls()
-  {
+  private disableControls() {
     if (this.quickidconfigBusiness.isViewOnly) {
       this.viewOnly = this.quickidconfigBusiness.isViewOnly;
     }
   }
 
   async initialLoad() {
-    const quickIdConfigValues:ConfigData[] = await this.quickidconfigBusiness.GetQuickIdConfiguration();
+    const quickIdConfigValues: ConfigData[] = await this.quickidconfigBusiness.GetQuickIdConfiguration();
     this.quickIdConfigOrginialData = _.cloneDeep(quickIdConfigValues);
     this.quickIdConfigFormValue = _.cloneDeep(quickIdConfigValues);
     this.patchInitialValues(quickIdConfigValues);
-    this.enableSave  = false;
-    const QuickConfigSetting:any = await this.quickidconfigBusiness.GetSettingByModule();
-    sessionStorage.setItem('QuickIdConfig',JSON.stringify(QuickConfigSetting[0]));
+    this.enableSave = false;
+    const QuickConfigSetting: any = await this.quickidconfigBusiness.GetSettingByModule();
+    sessionStorage.setItem('QuickIdConfig', JSON.stringify(QuickConfigSetting[0]));
   }
 
-  patchInitialValues(values: ConfigData[])
-  {
+  patchInitialValues(values: ConfigData[]) {
     this.toggleGroup.patchValue(this.getPatchValue(values));
   }
 
-  toggleChange(event,action) {
-    if(action == QuickIdConfigSetting.retailtransactions) {
+  toggleChange(event, action) {
+    if (action == QuickIdConfigSetting.retailtransactions) {
       this.toggleGroup.patchValue({
-        retailtransactions:event[0]
+        retailtransactions: event[0]
       });
-      this.quickIdConfigFormValue.find(x=>x.switch === QuickIdConfigSetting.retailtransactions).value = event[0];
+      this.quickIdConfigFormValue.find(x => x.switch === QuickIdConfigSetting.retailtransactions).value = event[0];
+    }
+    if (action == QuickIdConfigSetting.discountUpdateRemove) {
+      this.toggleGroup.patchValue({
+        discountUpdateRemove: event[0]
+      });
+      this.quickIdConfigFormValue.find(x => x.switch === QuickIdConfigSetting.discountUpdateRemove).value = event[0];
     }
   }
 
@@ -89,10 +94,10 @@ export class QuickidConfigComponent implements OnInit {
         switch: x.switch,
         value: x.value
       } as ConfigData
-    })).then(res=>{
+    })).then(res => {
       this.initialLoad();
       this.enableSave = false;
-    });   
+    });
   }
 
   OnCancel() {
@@ -100,15 +105,16 @@ export class QuickidConfigComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    if(this.$destroyed) {
+    if (this.$destroyed) {
       this.$destroyed.next(true);
       this.$destroyed.complete();
     }
   }
 
-  getPatchValue(configData: ConfigData[]){    
-      return {
-        retailtransactions: configData.find(x => x.switch === QuickIdConfigSetting.retailtransactions).value
-      }
+  getPatchValue(configData: ConfigData[]) {
+    return {
+      retailtransactions: configData.find(x => x.switch === QuickIdConfigSetting.retailtransactions).value,
+      discountUpdateRemove: configData.find(x => x.switch === QuickIdConfigSetting.discountUpdateRemove).value,
+    }
   }
 }

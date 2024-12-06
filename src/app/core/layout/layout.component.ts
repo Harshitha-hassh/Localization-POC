@@ -19,10 +19,13 @@ import { MatSnackBar} from '@angular/material/snack-bar';
 import { ButtonType } from 'src/app/retail/shared/globalsContant';
 import moment, { Moment } from 'moment';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { NotificationFailureType } from 'src/app/shared/components/menu/menu.model';
 import { HttpCacheService } from 'src/app/common/services/cache/http-cache.service';
 import { Localization } from 'src/app/common/localization/localization';
 import * as FullStory from '@fullstory/browser';
 import { FULL_STORY_ORG_ID } from 'src/app/app-constants';
+import { JasperServerCommonDataService } from 'src/app/common/dataservices/jasperServerCommon.data.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-layout',
@@ -31,7 +34,7 @@ import { FULL_STORY_ORG_ID } from 'src/app/app-constants';
   encapsulation: ViewEncapsulation.None
 })
 export class LayoutComponent implements OnInit, OnDestroy {
-
+ 
   menuList: any;
   propertyName: string;
   propertyDateTime: any;
@@ -40,6 +43,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
   private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   private autoLogOff: any = false;
   private logOffAfter: number = 1;
+  getThemeColor: string = '';
+  captions: any;
   constructor(private routeDataService: RouteLoaderService,
     private sessionService: ManageSessionService,
     private localization: RetailLocalization,
@@ -53,7 +58,8 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private utils: RetailUtilities,
     private snackBar: MatSnackBar,
     private httpCacheService: HttpCacheService,
-    private commonLocalization : Localization) {
+    private commonLocalization : Localization,
+    private jasperServerCommonDataService:JasperServerCommonDataService) {
     this.routeDataService.loadSettings().then(result => {
       if (result) {
         const value = this.routeDataService.GetChildMenu('/');
@@ -63,13 +69,27 @@ export class LayoutComponent implements OnInit, OnDestroy {
         };
       }
     });
+    this.router.events.pipe(takeUntil(this.destroyed$)).subscribe(x => {
+      sessionStorage.setItem('isChangesMade', 'false');
+    });
    }
 
   ngOnInit() {
+    window.onbeforeunload = (ev) => {
+      if(sessionStorage.getItem('isChangesMade') == 'true'){
+        let dialogText = this.localization.captions.common.RefreshMessage;
+        ev.returnValue = dialogText;
+        return dialogText;
+      } else {
+        return null;
+      }
+    };
       this.applyTheme('blacktheme');
+      this.jasperServerCommonDataService.setauthTokenProvider();
+      this.addThemeColor();
+      this.captions = this.localization.captions;
       this.propertyName = this.localization.GetPropertyInfo('PropertyName');
       let propConfig = JSON.parse(sessionStorage.getItem("propConfig"));
-      let enableSignalR = propConfig?.EnableSignalR;
       let enableUICache = propConfig?.UICacheEnabled;     
       this.propertyService.changeTitle();
       this.loadGoogleMap();
@@ -79,15 +99,20 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.setAutoLogoff();
       if(!FullStory){
         this.setFullStory();
-      }
-      if(enableSignalR && enableSignalR.toLowerCase() == "true")
-    {
-      this.StartSignalrConnection();
-    }
+      }      
+      this.StartSignalrConnection();    
     if (enableUICache && enableUICache.toLowerCase() == "true") {
       this.setUICache();
     }
+    setTimeout(() => {
+      this.checkPropertyDate();
+    }, 5000);
   }
+  addThemeColor(){
+    const defaultsettings =JSON.parse(sessionStorage.getItem("defaultSettings"));
+    const themeColorSetting = defaultsettings?.find( x=>x.switch == 'THEME_COLOR');
+    this.getThemeColor = themeColorSetting ? themeColorSetting?.value: '';
+  };
 
   async setUICache() {
     await this.propertyService.readUICacheJsonData().then((result) => {
@@ -105,6 +130,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.signalR.startConnection();
     this.signalR.startedConnection.then(res => {
       this.addPropertyListener();
+      this.addTenantUserListener();
       this.addCacheListener();
     });
   }
@@ -160,22 +186,14 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
     let newSystemDate = await this.GetPropertyDate();
     let localizedDate = this.localization.localizeDisplayDate(newSystemDate);
-    let productId = Number(this.utils.GetPropertyInfo("ProductId"));
-    let previousDate = moment(newSystemDate).subtract(1,"days");
-      let localizedPreviousDate = this.localization.localizeDisplayDate(previousDate.toDate());
-    if (newSystemDate != undefined && newSystemDate != null) {
-      if(productId == Product.SPA || productId == Product.GOLF || productId == Product.RETAIL )
-      {
-        this.utils.showToastMessage(this.localization.captions.NightAuditMessage+ ' for ' + localizedPreviousDate, SnackBarType.Success, 15000);
-      }
-      else{
+    if (newSystemDate != undefined && newSystemDate != null) {    
         this.utils.showAlert(message.message + ' to ' + localizedDate, AlertType.Success, ButtonType.Ok, (res) => {
           if (res) {
             this.logoutHandler(true);
           }
         });
       }
-    }
+    
 }
 
 async GetPropertyDate() {
@@ -184,6 +202,21 @@ async GetPropertyDate() {
 }
 private getPropertyId() {
   return this.localization.GetsessionStorageValue('propertyInfo', 'PropertyId');
+}
+
+async checkPropertyDate(){
+  const propertityConfig = await this.PropertySettingService.getAllPropertySetting(Number(this.getPropertyId()));
+  const newDate=this.localization.getDate(propertityConfig.propertyDate);
+  const localizeNewDate= new Date(this.localization.getformattedDateMMDDYYYY(newDate));
+  const localizeCurrentDate = new Date(this.localization.getformattedDateMMDDYYYY(this.propertyInfo.CurrentDate));
+  if(localizeNewDate>localizeCurrentDate)
+  {
+    this.utils.showAlert(this.captions.lbl_systemDateChange+this.localization.localizeDisplayDate(localizeNewDate),AlertType.Success,ButtonType.Ok,(res) => {
+      if (res) {
+        this.logoutHandler(true);
+      }
+    });
+    }    
 }
 
 logoutHandler(arg) {
@@ -251,6 +284,24 @@ logoutHandler(arg) {
       this.localization.setFloatLabel = 'never';
     }
   }
+  private addTenantUserListener(){
+    this.signalR.addUserListener(this, this.signalRTenantUserListener)
+      .catch((err) => console.log('Failure error ' + err));
+ 
+      this.signalR.hubConnection.onreconnected((reconnect)=>{
+        const list=this.signalR.GetSignalREvents();
+        list.forEach(e=>{this.signalR.subscribeToEvent(e);});
+        });
+  }
+ 
+  async signalRTenantUserListener(message: SignalRMessage<NotificationModel>): Promise<void> {
+    if(message && message.content && message.content.notificationType==SignalRNotificationType.NotificationIcon) {
+      const content =JSON.parse(message.content.notificationObjectString);
+      if(message.name == SignalRMessages.PlatformSyncFailed){  
+        this.sessionService.transactionCount.next([{ id : NotificationFailureType.cgpsLog, count : 0, message: content.message }]);
+      }
+    }
+  }
 
   setFullStory(){
     let propertyConfig = JSON.parse(sessionStorage.getItem('propConfig'));
@@ -267,7 +318,8 @@ logoutHandler(arg) {
         "propertyName": this.propertyInfo.GetPropertyInfoByKey('PropertyName')
       });
     }
-  }
+  } 
+
 
   setAutoLogoff() {
     this.autoLogOff = this.utils.GetPropertyInfo('AutoLogOff');

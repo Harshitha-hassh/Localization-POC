@@ -52,7 +52,7 @@ export class EatecComponent implements OnInit, OnDestroy {
   positionOptions: TooltipPosition[] = ['right', 'above', 'left', 'below'];
   position = new UntypedFormControl(this.positionOptions[0]);
   EnableRetailIC: boolean;
-
+  HasAccess: boolean;
   
   constructor(private routeDataService: RouteLoaderService
     , public router: Router,public localization: RetailLocalization
@@ -218,12 +218,21 @@ export class EatecComponent implements OnInit, OnDestroy {
     ); 
   }
 
-  eventListener(){
-    window.addEventListener('message', function (e) {
-      console.log("SSOMessage", e.data);
-      sessionStorage.setItem('SSOMessage', e.data);
-    });
+  eventListener() {
+  const eatecuri = sessionStorage.getItem('EIURI');    
+  let result;
+  if (eatecuri) {
+    result = eatecuri.split('/#')[0];
+  } else {
+    result = null;
   }
+  window.addEventListener('message', function (e) {          
+    if (e.origin === result) {
+      console.log("SSOMessage", e.data);      
+    sessionStorage.setItem('SSOMessage', e.data);
+   }     
+  });
+}
   
   stopAutoEIRefresher(){
     this.utils.ToggleLoader(false);
@@ -241,9 +250,7 @@ export class EatecComponent implements OnInit, OnDestroy {
       else {
         this.eatecSignOn = true;
         sessionStorage.setItem('eatecSignOn', this.eatecSignOn.toString());
-        if(this.selectedBreakPoint != RetailBreakPoint.EatecInventory){
-          this.setRoute(this.selectedRoutePath);
-        }
+        this.setRoute(this.selectedRoutePath);
       }
     } else {
       this.setRoute(this.selectedRoutePath);
@@ -259,7 +266,7 @@ export class EatecComponent implements OnInit, OnDestroy {
         else{
           element.linkedElement.filter(x => x.visibility).forEach((item,index) => {
             if(!this.initialRoute){
-              item['IsAllow'] = item.breakPointNumber ==  RetailBreakPoint.EatecInventory ? true :this.eatecSetupBreakPoints.find(x => x.breakPointNumber == item.breakPointNumber).allow;
+              item['IsAllow'] = this.eatecSetupBreakPoints.find(x => x.breakPointNumber == item.breakPointNumber) && this.eatecSetupBreakPoints.find(x => x.breakPointNumber == item.breakPointNumber).allow;
               if(item['IsAllow']){
                 this.initialRoute=item.routePath;
                 this.initialBreakPoint=item.breakPointNumber;
@@ -408,9 +415,8 @@ export class EatecComponent implements OnInit, OnDestroy {
   
   IsAuthorizedEatecMenu(bkPoint: number){
     var isAllow = true;
-    if(bkPoint != RetailBreakPoint.EatecInventory) {
     isAllow = this.eatecSetupBreakPoints.find(x => x.breakPointNumber == bkPoint) && this.eatecSetupBreakPoints.find(x => x.breakPointNumber == bkPoint).allow;
-    }
+    this.HasAccess = isAllow;
     return isAllow;
   }
 

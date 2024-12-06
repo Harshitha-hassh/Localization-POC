@@ -7,6 +7,7 @@ import { RetailOutletsDataService } from '../../../retail/retail-code-setup/reta
 import { RetailBreakPoint, ButtonType } from 'src/app/common/shared/shared/globalsContant';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { AgToggleConfig } from 'src/app/common/Models/ag-models';
 
 @Component({
   selector: 'app-receipt-configuration',
@@ -40,11 +41,15 @@ export class ReceiptConfigurationComponent implements OnInit {
   propertyId: number;
   floatLabel: string;
   displayChangeDue: boolean;
+  printGiftToggleInputs: AgToggleConfig;
+  authCodeToggleInputs: AgToggleConfig;
+  changeDueToggleInputs: AgToggleConfig;
+  settlementReceiptToggleInputs: AgToggleConfig;
 
 
   constructor(private Form: UntypedFormBuilder,
               private breakPoint: BreakPointAccess,
-              private localization: RetailStandaloneLocalization,
+              public localization: RetailStandaloneLocalization,
               private data: ReceiptConfigurationDataService,
               private outletData: RetailOutletsDataService, private utils: RetailUtilities) {
     this.textCaptions = this.localization.captions.utilities;
@@ -60,9 +65,12 @@ export class ReceiptConfigurationComponent implements OnInit {
       printReceipt: this.Form.array([this.addPrintDetails()])
     });
     this.propertyForm = this.Form.group({
+      printGiftReceipt:[''],
       displayAuthcode: [''],
       authcodeName: [''],
-      displayChangeDue: ['']
+      displayChangeDue: [''],
+      receiptFooterNote: [''],
+      printPendingSettlementReceipt: ['']
     })
   }
 
@@ -75,6 +83,26 @@ export class ReceiptConfigurationComponent implements OnInit {
       { id: 2, value: this.textCaptions.SummarySplit },
       { id: 3, value: this.textCaptions.SummaryCombine }
     ];
+    this.printGiftToggleInputs = {
+      group: this.propertyForm,
+      formControlName: 'printGiftReceipt',
+      automationId:"'Tog_ReceiptConfiguration_printGiftReceipt'"
+    }
+    this.authCodeToggleInputs = {
+      group: this.propertyForm,
+      formControlName: 'displayAuthcode',
+      automationId:"'Tog_ReceiptConfiguration_displayAuthcode'"
+    }
+    this.changeDueToggleInputs = {
+      group: this.propertyForm,
+      formControlName: 'displayChangeDue',
+      automationId:"'Tog_ReceiptConfiguration_displayChangeDue'"
+    }
+    this.settlementReceiptToggleInputs = {
+      group: this.propertyForm,
+      formControlName: 'printPendingSettlementReceipt',
+      automationId:"'Tog_ReceiptConfiguration_printPendingSettlementReceipt'"
+    }
     this.Outlet = await this.outletData.getOutlets();
     this.Outlet = this.Outlet.filter(x => x.isActive == true);
     this.OutletInfo = await this.data.getOutletInfo();
@@ -310,9 +338,10 @@ export class ReceiptConfigurationComponent implements OnInit {
 
   resetData() {
     this.isSaveDisabled = true;
+    this.propertyForm.markAsPristine();
   }
   toggleAction(event) {
-    if (event == false) {
+    if (event.checked == false) {
       this.DisplayAuthCode=false;
       this.propertyForm.controls["authcodeName"].setValidators(Validators.required);
       this.propertyForm.controls["authcodeName"].updateValueAndValidity();
@@ -325,7 +354,7 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.isSaveDisabled=false;
   }
   toggleChangeDueAction(event) {
-    if (event == false) {
+    if (event.checked == false) {
       this.DisplayChangeDue=false;
       
     }
@@ -341,19 +370,24 @@ async getPropertyReceiptConfig()
   {
     let authCode = this.PropertyReceiptInfo.configValue.authCodeReceiptName != "" ? 
      this.PropertyReceiptInfo.configValue.authCodeReceiptName : this.PropertyReceiptInfo.defaultValue.authCodeReceiptName;
-
+     let receiptFooterNote = this.PropertyReceiptInfo.configValue.receiptFooterNote != "" ? 
+     this.PropertyReceiptInfo.configValue.receiptFooterNote : "";
      let displayAuthCode = this.PropertyReceiptInfo.configValue.displayAuthCode != false ?  
      this.PropertyReceiptInfo.configValue.displayAuthCode : this.PropertyReceiptInfo.defaultValue.displayAuthCode;
      let displayChangeDue= this.PropertyReceiptInfo.configValue.displayChangeDue != false ?  
      this.PropertyReceiptInfo.configValue.displayChangeDue : this.PropertyReceiptInfo.defaultValue.displayChangeDue;
+     let printGiftReceipt = this.PropertyReceiptInfo.configValue.printGiftReceipt != null ? this.PropertyReceiptInfo.configValue.printGiftReceipt : false;
+     let printPendingSettlementReceipt = this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt != null ? this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt : false;
      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
-   
+     this.propertyForm.controls["receiptFooterNote"].setValue(receiptFooterNote);
+     this.propertyForm.controls["printGiftReceipt"].setValue(printGiftReceipt);
+     this.propertyForm.controls["printPendingSettlementReceipt"].setValue(printPendingSettlementReceipt);
      if(displayAuthCode == true)
     {
       this.DisplayAuthCode=true;
       this.propertyForm.controls["authcodeName"].setValue(authCode);
       this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
-      this.propertyform.markAsPristine();
+      this.propertyForm.markAsPristine();
     }
     else
     {
@@ -366,6 +400,7 @@ async getPropertyReceiptConfig()
 
   async saveReceiptProperty(data: any) {
     console.log(data);
+    sessionStorage.removeItem("propertyReceiptConfiguration");
     if(this.PropertyReceiptInfo && this.PropertyReceiptInfo.id > 0)
     {
       let Propertyreceiptobj: PropertyReceiptModel = {
@@ -376,7 +411,9 @@ async getPropertyReceiptConfig()
         defaultValue: JSON.stringify(this.formDefaultValue(data))
       } 
       //Update call
-      let result = await this.data.updatePropertyConfig(Propertyreceiptobj);
+      let propertyReceiptConfig = await this.data.updatePropertyConfig(Propertyreceiptobj);
+      propertyReceiptConfig = this.utils.parsePropertyReceiptConfig(propertyReceiptConfig);
+      sessionStorage.setItem("propertyReceiptConfiguration",JSON.stringify(propertyReceiptConfig));
     }
     else{
       let Propertyreceiptobj: PropertyReceiptModel = {
@@ -387,6 +424,8 @@ async getPropertyReceiptConfig()
       defaultValue: JSON.stringify(this.formDefaultValue(data))
       }
       this.PropertyReceiptInfo = await this.data.createPropertyConfig(Propertyreceiptobj);
+      this.PropertyReceiptInfo  = this.utils.parsePropertyReceiptConfig(this.PropertyReceiptInfo );
+      sessionStorage.setItem("propertyReceiptConfiguration",JSON.stringify( this.PropertyReceiptInfo));
     } 
     this.utils.ShowError(this.textCaptions.Success, this.textCaptions.AfterSaveMessage + "the Property", ButtonType.Ok);
    
@@ -398,7 +437,10 @@ async getPropertyReceiptConfig()
     let configValue : PropertyConfigurationModel = {
       displayAuthCode: data.displayAuthcode,
       AuthCodeReceiptName: data.authcodeName,
-      displayChangeDue: data.displayChangeDue
+      displayChangeDue: data.displayChangeDue,
+      receiptFooterNote: data.receiptFooterNote,
+      printGiftReceipt: data.printGiftReceipt,
+      printPendingSettlementReceipt: data.printPendingSettlementReceipt
     }
     return configValue;
   }
@@ -407,7 +449,10 @@ async getPropertyReceiptConfig()
     let defaultValue : PropertyConfigurationModel = {
       displayAuthCode: false,
       AuthCodeReceiptName: "Auth Code",
-      displayChangeDue: false
+      displayChangeDue: false,
+      receiptFooterNote: "",
+      printGiftReceipt: false,
+      printPendingSettlementReceipt: false
     }
     return defaultValue;
   }

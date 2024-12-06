@@ -1,0 +1,30 @@
+#slider {
+    .reportWrapper{
+        height: calc(100% - 85px);   
+        .left-asidereports {
+            width: 100%;
+        } 
+        .right-contentreports {
+            display: none;
+        }
+    }
+    .reports {
+        height: calc(100% - 85px);   
+        .left-asidereports {
+            width: 100%;
+        }
+        .right-contentreports {
+            display: none;
+        }
+    }
+    .ag_retail-report--wrapper {
+        height: calc(100% - 100px) !important;
+        view-retail-reports{
+            app-retail-reportcontrols{
+                .commissiongratuityservicechargeworks .left-asidereports form{
+                    padding: 0 20px;
+                }
+            }
+        }
+    }
+}

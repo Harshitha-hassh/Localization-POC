@@ -13,7 +13,7 @@ import { BaseResponse, HttpMethod } from 'src/app/common/Models/http.model';
 import { Product } from 'src/app/common/Models/common.models';
 import { GridType, Host, SPAScheduleBreakPoint } from 'src/app/common/shared/shared/globalsContant';
 import { NewUserComponent } from '../new-user/new-user.component';
-import { AsideFilterConfig } from 'src/app/common/Models/ag-models';
+import { AsideFilterConfig,FilterGroup } from 'src/app/common/Models/ag-models';
 @Component({
   selector: 'app-user-setup',
   templateUrl: './user-setup.component.html',
@@ -27,7 +27,6 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   tableoptions: any[];
   searchText: any;
   searchFilter: any = [];
-  Categories: any[];
   tableData: any = [];
   products: any = [];
   roles: any = [];
@@ -42,7 +41,8 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   FormGrp: UntypedFormGroup;
   searchValue = true;
   isADB2CConfigEnabled:boolean=false;
-
+  filterGroups: FilterGroup[];
+  tableDataCopy: any = [];
   constructor(private Form: UntypedFormBuilder, public localization: RetailStandaloneLocalization, private dialog: MatDialog,
               private servicesetting: SettingsService,
               private http: HttpServiceCall,
@@ -73,7 +73,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
           'Q', 'R', 'S', 'T',
           'U', 'V', 'W', 'X',
           'Y', 'Z'],
-        searchByPlaceHolder: this.localization.captions['lbl_searchByOutlet']
+          searchByPlaceHolder: 'Search By'
       }
     };
 
@@ -91,39 +91,43 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     this.GetRetailServiceCall('GetOutlets', { propertyId: Number(this.utils.GetPropertyInfo('PropertyId')) });
     this.GetServiceCall('GetAllUsers', { tenantId: Number(this.utils.GetPropertyInfo('TenantId')) });
     this.GetServiceCall('GetADB2CEnableConfig',{ tenantId: Number(this.utils.GetPropertyInfo('TenantId')) })
-    this.Categories = [
+    this.filterGroups = [
       {
         id: 1,
-        name: 'outlet',
-        title: this.captions.Outlet,
-        filters: [],
-        filtered: []
+        name: 'application',
+        title: this.captions.Application,
+        filters: []
       },
       {
         id: 2,
-        name: 'application',
-        title: this.captions.Application,
-        filters: [],
-        filtered: []
+        name: 'userRole',
+        title: this.captions.UserRole,
+        filters: []
       },
       {
         id: 3,
-        name: 'blockStatus',
-        title: this.captions.BlockStatus,
-        filters: [{ id: 0, name: this.localization.captions.common.all, isAll: true },
-        { id: 2, name: this.captions.Blocked, value: true },
-        { id: 3, name: this.captions.Unblocked, value: false }],
-        filtered: []
+        name: 'outlet',
+        title: this.captions.Outlet,
+        filters: []
       },
       {
         id: 4,
+        name: 'blockStatus',
+        title: this.captions.BlockStatus,
+        filters: [
+          { id: 1, name: this.captions.Blocked },
+          { id: 2, name: this.captions.Unblocked }
+        ]
+      },
+      {
+        id: 5,
         name: 'activeStatus',
         title: this.captions.ActiveStatus,
-        filters: [{ id: 0, name: this.localization.captions.common.all, isAll: true },
-        { id: 2, name: this.captions.Active, value: true },
-        { id: 3, name: this.captions.Inactive, value: false }],
-        filtered: []
-      }
+        filters: [
+          { id: 1, name: this.captions.Active },
+          { id: 2, name: this.captions.Inactive }
+        ]
+      },
     ];
     
   }
@@ -197,40 +201,52 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   clearSearch() {
     this.FormGrp.controls.searchtext.setValue('');
     this.searchValue = true;
+    this.onChange();
+  }
+  resetFilter() {
+    this.filterChange();
   }
 
-  filterChange(arg) {
-    let tableData = _.clone(this.tableData);
-    _.forEach(arg, (filter) => {
-      const appliedFilter = filter.filters.filter(r => filter.filtered.includes(r.id));
-      if (filter.name == 'blockStatus' && appliedFilter.length > 0) {
-        tableData = tableData.filter(data => {
-          return _.some(appliedFilter, x => x.value === data.isAccountBlocked);
-        });
-      }
-      if (filter.name == 'activeStatus' && appliedFilter.length > 0) {
-        tableData = tableData.filter(data => {
-          return _.some(appliedFilter, x => x.value === data.isActive);
-        });
-      }
-      if (filter.name == 'application' && appliedFilter.length > 0) {
-        tableData = _.filter(tableData, (data) => {
-          return _.some(data.allowedAppId, item => {
-            return _.some(appliedFilter, dataFilter => dataFilter.id === item);
-          });
-        });
-      }
-      if (filter.name == 'outlet' && appliedFilter.length > 0) {
-        tableData = _.filter(tableData, (data) => {
-          return _.some(data.allowedOutId, item => {
-            return _.some(appliedFilter, dataFilter => dataFilter.id === item);
-          });
-        });
-      }
+  filterChange(filterGroup?: FilterGroup) {
+    let tableData = _.clone(this.tableDataCopy);
+
+    // application filter
+    var applicationFilter = this.filterGroups[0].filtered ? this.filterGroups[0].filtered : [];
+    let names: string[] = applicationFilter.map(x => x.name);
+    tableData = tableData.filter(x => {
+      return names.length == 0 || names.some(a => x.applicationAllowed.indexOf(a) >= 0)
     });
+
+    // userRole filter
+    var userRoleFilter = this.filterGroups[1].filtered ? this.filterGroups[1].filtered : []
+    let filteredRoles: string[] = userRoleFilter.map(x => x.name);
+    tableData = tableData.filter(x => {
+      return filteredRoles.length == 0 || filteredRoles.some(a => x.roles.indexOf(a) >= 0)
+    });
+
+    // outlet filter
+    var outletFilter = this.filterGroups[2].filtered ? this.filterGroups[2].filtered : [];
+    if (outletFilter.length > 0) {
+      tableData = tableData.filter(x => {
+        return _.some(x.allowedOutId, item => {
+          return _.some(outletFilter, dataFilter => dataFilter.id === item);
+        });
+      });
+    }
+    // blockStatus filter
+    var blockStatusFilter = this.filterGroups[3].filtered ? this.filterGroups[3].filtered : [];
+    let blockStatus: boolean[] = blockStatusFilter.map(x => x.id == 1 ? true : false);
+    tableData = tableData.filter(data => {
+      return blockStatus.length == 0 || blockStatus.includes(data.isAccountBlocked);
+    });
+
+    //activeStatus filter
+    var activeStatusFilter = this.filterGroups[4].filtered ? this.filterGroups[4].filtered : []
+    let activeStatus: boolean[] = activeStatusFilter.map(x => x.id == 1 ? true : false);
+    tableData = tableData.filter(x => activeStatus.length == 0 || activeStatus.includes(x.isActive));
+    this.tableData = tableData ;
     this.bindTable(tableData);
   }
-
   async EditRecords(event) {
     const clientObj = this.usersInfo.filter(x => x.userId == event[0].id)[0];
     const userRetailConfig: any = await this.GetUserConfigAsync('GetUserRetailConfiguration', Host.retailManagement, event[0].id);
@@ -327,19 +343,21 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     if (callDesc == 'GetProductsByPropertyId') {
       if (result.result) {
         this.products = result.result;
-        this.Categories[1].filters = this.products.map(x => ({ id: x.id, name: x.productName, value: false }));
+        this.filterGroups[0].filters = this.products.map(x => ({ id: x.id, name: x.productName, value: false }));
       }
     } else if (callDesc == 'GetOutlets') {
       if (result.result) {
         this.servicesetting.propOutlets = result.result;
-        this.Categories[0].filters = this.servicesetting.propOutlets.map(x =>
-           ({ id: x.subPropertyID, name: x.subPropertyName, value: false }));
+        this.filterGroups[2].filters = this.servicesetting.propOutlets.map(x =>
+           ({ id: x.subPropertyID, name: x.subPropertyName}));
       }
     } else if (callDesc == 'GetActiveUserRolesByPropertyId') {
       if (result.result) {
         this.roles = this.rolelst = result.result;
         this.servicesetting.userRoles = this.roles;
         this.roles = this.roles.filter(x => x.productId.includes(Number(this.utils.GetPropertyInfo('ProductId'))));
+        this.filterGroups[1].filters = this.servicesetting.userRoles.map(x =>
+          ({ id: x.id, name: x.description}));
       }
     } else if (callDesc == 'GetAllUsers') {
       if (result.result) {
@@ -398,11 +416,13 @@ export class UserSetupComponent implements OnInit, OnDestroy {
             };
 
             this.tableData.push(userInfo);
+            this.tableDataCopy = [...this.tableData];
             this.servicesetting.existingUserIds.push((data[x].userName ? data[x].userName : '').toUpperCase());
             if (data[x].quickId) {this.servicesetting.existingQuickIds.push(data[x].quickId); }
           }
         }
         this.bindTable(this.tableData);
+        this.filterChange();
       }
     } else if (callDesc == 'GetAllServiceGrp') {
       if (result.result) {

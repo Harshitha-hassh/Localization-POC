@@ -89,7 +89,9 @@ export class HttpCallService {
     protected deletePromise<T>(params: ServiceParams): Promise<T> {
         return this.delete<T>(params).toPromise();
     }
-
+    escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
     private formURL(params: ServiceParams): string {
         this.validate(params);
         let url: string = `${this.baseURL}/`;
@@ -97,7 +99,8 @@ export class HttpCallService {
             let route: string = params.route;
             let keys: string[] = Object.keys(params.uriParams);
             for (let i = 0; i < keys.length; i++) {
-                var regEx = new RegExp('{' + keys[i] + '}', 'ig');
+                const escapedKey = this.escapeRegExp(keys[i]);
+                var regEx = new RegExp('{' + escapedKey + '}', 'ig');
                 route = route.replace(regEx, params.uriParams[keys[i]]);
             }
             url += route;

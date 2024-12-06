@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?hag1m7');
-  src:  url('fonts/icomoon.eot?hag1m7#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?hag1m7') format('truetype'),
-    url('fonts/icomoon.woff?hag1m7') format('woff'),
-    url('fonts/icomoon.svg?hag1m7#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?k3vclb');
+  src:  url('fonts/icomoon.eot?k3vclb#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?k3vclb') format('truetype'),
+    url('fonts/icomoon.woff?k3vclb') format('woff'),
+    url('fonts/icomoon.svg?k3vclb#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,42 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-remove-surcharge:before {
+  content: "\ef7e";
+}
+.icon-Settings:before {
+  content: "\ef7c";
+}
+.icon-history:before {
+  content: "\ef7d";
+}
+.icon-configure:before {
+  content: "\ef7a";
+}
+.icon-reset_new:before {
+  content: "\ef7b";
+}
+.icon-Collapse-All-1:before {
+  content: "\ef78";
+}
+.icon-Expand-All-1:before {
+  content: "\ef79";
+}
+.icon-Search-Reports:before {
+  content: "\ef76";
+}
+.icon-all-menu:before {
+  content: "\ef77";
+}
+.icon-inventory_item_eatec:before {
+  content: "\ef75";
+}
+.icon-Flat-Rate:before {
+  content: "\ef74";
+}
+.icon-Combine-Records:before {
+  content: "\ef73";
+}
 .icon-Member-new:before {
   content: "\ef72";
 }
@@ -1595,7 +1631,7 @@
 .icon-everi-wallet:before {
   content: "\ecc3";
 }
-.icon-jaspersoft:before {
+.icon-Jaspersoft:before {
   content: "\edbe";
 }
 .icon-Email:before {

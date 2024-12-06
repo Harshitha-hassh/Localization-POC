@@ -35,9 +35,9 @@
                 </nav>
             </ng-container>
         </aside>
-        <div *ngIf="isShow" class="side-container">
+        <div *ngIf="isShow" class="side-container" [ngClass]="EnableRetailIC && !HasAccess ? 'ag_display--none':''">
             <ng-container *ngIf="!EnableRetailIC">
-                <embed [src]="src" width="100%" height="100%" #embed>
+                <embed [src]="src" width="100%" height="100%"  #embed>
             </ng-container>
             <router-outlet [ngClass]="{'ag_display--none': !EnableRetailIC}"></router-outlet>
         </div>

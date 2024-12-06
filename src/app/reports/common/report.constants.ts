@@ -31,3 +31,9 @@ export enum TransLogType {
 export enum CustomTemplate {
     
 }
+export enum ReportTypes {
+  Retail,
+  CommissionGratuityServiceCharge,
+  TransactionLog,
+  GiftCards
+}

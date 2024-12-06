@@ -44,6 +44,7 @@ export class PropertyInformation extends CommonPropertyInformation {
         sessionStorage.setItem('productVersion', settings['productVersion']);
         sessionStorage.setItem('userProductVersion', settings['userProductVersion']);
         localStorage.setItem('userProductVersion', settings['userProductVersion']);
+        sessionStorage.setItem('newDate',settings.propertyDate);
     }
 
     public SetDefaultDataOnLoad() {
