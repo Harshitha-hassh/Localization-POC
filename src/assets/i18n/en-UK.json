@@ -1269,6 +1269,7 @@
     "ConfirmationNo": "Confirmation #_uk",
     "Revert": "Revert_uk",
     "NotAvailable": "N/A_uk",
+    "RemoveSurcharge": "Remove Surcharge_uk",
     "FullOrMultiplePayment": "Full / Multiple Payment_uk",
     "InvalidAmount": "Invalid Amount_uk",
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount_uk",

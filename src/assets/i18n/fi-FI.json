@@ -1269,6 +1269,7 @@
     "ConfirmationNo": "Confirmation #_fi",
     "Revert": "Revert_fi",
     "NotAvailable": "N/A_fi",
+    "RemoveSurcharge": "Remove Surcharge_fi",
     "FullOrMultiplePayment": "Full / Multiple Payment_fi",
     "InvalidAmount": "Invalid Amount_fi",
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount_fi",

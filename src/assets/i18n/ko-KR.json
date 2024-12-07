@@ -1269,6 +1269,7 @@
     "ConfirmationNo": "Confirmation #_kr",
     "Revert": "Revert_kr",
     "NotAvailable": "N/A_kr",
+    "RemoveSurcharge": "Remove Surcharge_kr",
     "FullOrMultiplePayment": "Full / Multiple Payment_kr",
     "InvalidAmount": "Invalid Amount_kr",
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount_kr",
