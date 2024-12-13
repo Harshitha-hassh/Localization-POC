@@ -168,6 +168,7 @@
   "11300": "Distribution list in use, delete not allowed_in",
   "11301": "Duplicate Sub Category Name_in",
   "11303": "Sub Category in use, delete not allowed_in",
+  "11304": "The External Sub Category ID is already mapped with sub category <b>{subCategory}</b>_in",
   "11311": "Distribution List in this name already exists, Please provide different name_in",
   "11312": "Id cannot be zero for Distribution List_in",
   "12000": "Unable to get data from PMS system. Please check the configuration!_in",

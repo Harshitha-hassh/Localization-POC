@@ -1986,6 +1986,7 @@
     "RevenueCategoryIdExists": "External Category ID Already Exists_in",
     "advertisementTypes": "Advertisement Types_in",
     "subCategoryName": "Sub Category Name_in",
+    "externalSubcategoryId": "External Sub Category ID_in",
     "subCategoryLevels": "Sub Category Levels_in",
     "unitofMeasure": "Unit of Measure_in",
     "taxes": "Taxes_in",
