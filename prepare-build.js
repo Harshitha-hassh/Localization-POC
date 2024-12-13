@@ -6,14 +6,14 @@ const errorsReferenceFile = "error.en-US";
 const defaultLocalizations = [
     { code: "da-DK", suffix: "_da", name: "Danish" },
     { code: "de-DE", suffix: "_de", name: "German" },
-    { code: "en-AU", suffix: "_au", name: "Australian English" },
+    { code: "en-AU", suffix: "", name: "Australian English" },
     { code: "en-GB", suffix: "", name: "GB English" },
-    { code: "en-UK", suffix: "_uk", name: "UK English" },
+    { code: "en-UK", suffix: "", name: "UK English" },
     { code: "fi-FI", suffix: "_fi", name: "Finnish" },
     { code: "fr-FR", suffix: "_fr", name: "French" },
-    { code: "en-IN", suffix: "_in", name: "Indian English" },
+    { code: "en-IN", suffix: "", name: "Indian English" },
     { code: "ko-KR", suffix: "_kr", name: "Korean" },
-    { code: "en-NZ", suffix: "_nz", name: "New Zealand" }
+    { code: "en-NZ", suffix: "", name: "New Zealand" }
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
