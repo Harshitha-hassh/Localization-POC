@@ -88,6 +88,9 @@ function applyLocalization(data, langSuffix, langCode) {
             else
             {
                 if(langCode === 'en-AU'){
+                    data[key] = String(word).replace("VAT", "ABN");
+                }
+                else if(langCode === 'en-NZ'){
                     data[key] = String(word).replace("VAT", "GST");
                 }
                 else
@@ -102,6 +105,13 @@ function applyLocalization(data, langSuffix, langCode) {
                     data[key] = '(0) 9999999999'
                 }else if(key == 'ExtensionFormat'){
                     data[key] = '(0) 9999999999 ext: 99'
+                }
+            }
+            if(langCode == 'en-NZ') {
+                if(key == 'PhoneFormat'){
+                    data[key] = '(9) 999 99999'
+                }else if(key == 'ExtensionFormat'){
+                    data[key] = '(9) 999 99999 ext: 9999'
                 }
             }
         }
