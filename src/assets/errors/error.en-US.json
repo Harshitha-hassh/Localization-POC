@@ -260,6 +260,7 @@
     "11105": "The External Category ID is already mapped with category <b>{categoryName}</b>",
     "11303": "Sub Category in use, delete not allowed",
     "11301": "Duplicate Sub Category Name",
+    "11304": "The External Sub Category ID is already mapped with sub category <b>{subCategory}</b>",
     "10402": "Duplicate Unit of Measure",
     "10403": "Unit of Measure in use, delete not allowed",
     "10507": "Duplicate SKU",

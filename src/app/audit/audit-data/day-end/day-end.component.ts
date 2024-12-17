@@ -647,7 +647,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.retailSharedService.reOpenTransaction = false;
       this.retailSharedService.settleOpenTransaction = true;
       this.retailSharedService.transactionId = data.Id;      
-      this.retailSharedService.ticketNumber = data?.TicketNumber;      
+      this.retailSharedService.ticketNumber = data?.TicketNumber;
+      this.retailSharedService.isReturnWithoutTicket = data?.transactionInfo?.transactionDetails?.some(x => x.isReturn);      
       if (! await this.retailValidationService.ValidateSettleReopenAction(data.Id, 'settle', this.TransactionLockCallback.bind(this))) {
         return;
       }
