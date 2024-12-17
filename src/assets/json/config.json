@@ -1,7 +1,7 @@
 {
-    "TenantManagement": "https://aks-retail-dev.hospitalityrevolution.com/commongateway",
-    "RetailManagement": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
-    "Report": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
+    "TenantManagement": "/commongateway",
+    "RetailManagement": "/VisualOne/retailgateway",
+    "Report": "/VisualOne/retailgateway",
     "PayAgent": "http://localhost:8020",
     "MsDeeplink": "https://outlook.office365.com/mail/deeplink/compose/",
     "V1IGPosting": "/V1IGPostingWebService/V1IGInterface.asmx?wsdl",
@@ -24,5 +24,4 @@
     "signalrService": "/commongateway/SignalRService",
     "JasperReport":"/VisualOne/retailgateway",
     "EatecUi": "/VisualOne/retailgateway"
-
 }

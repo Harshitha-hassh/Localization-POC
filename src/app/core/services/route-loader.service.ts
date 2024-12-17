@@ -1409,7 +1409,7 @@ export class RouteLoaderService {
                 text: "Config Validation_UK",
                 routePath: "/settings/utilities/configValidation",
                 imgPath: "",
-                order: 10,
+                order: 5,
                 visibility: true,
                 disable: false,
                 parentID: 4046,

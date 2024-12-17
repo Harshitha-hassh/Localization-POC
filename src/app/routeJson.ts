@@ -1,16 +1,16 @@
 export const routeJSON = {
   "host": {
-    "image": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
-    "retailManagement": "http://localhost:44335/VisualOne/RetailManagementService",
-    "retailPOS": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
-    "authentication": "https://aks-v1-dev.hospitalityrevolution.com/commongateway",
-    "report": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
-    "commission": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
-    "payment": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway",
-    "common": "https://aks-retail-dev.hospitalityrevolution.com/VisualOne/retailgateway/Retail/Services/Notification",
+    "image": "/VisualOne/retailgateway/",
+    "retailManagement": "/VisualOne/retailgateway/",
+    "retailPOS": "/VisualOne/retailgateway/",
+    "authentication": "/commongateway/",
+    "report": "/VisualOne/retailgateway/",
+    "commission": "/VisualOne/retailgateway/",
+    "payment": "/VisualOne/retailgateway/",
+    "common": "/VisualOne/retailgateway/Retail/Services/Notification",
     "documentation": "/Help/",
-    "commonGateway": "https://aks-v1-dev.hospitalityrevolution.com/commongateway",
-    "signalrService": "https://aks-v1-dev.hospitalityrevolution.com/commongateway/SignalRService"
+    "commonGateway": "/commongateway/",
+    "signalrService": "/commongateway/SignalRService"
   },
   "Login": "Property/GetLoginDetails",
   "LogOut": "Property/LogOutByUserId/{Username}/{TenantId}/{PropertyId}",
@@ -750,5 +750,6 @@ export const routeJSON = {
 "GetDuplicateUserByName": "user/GetDuplicateUserByName/{userId}?tenantId={tenantId}&userName={userName}",
 "GetClientByPlatformGuestUuid" : "Clients/platformGuid/{platformGuid}",
     "GetMasterConfigJson":"Config/GetMasterConfigJson",
-    "GetHealthStatusFromUri": "FeaturesConfiguration/GetHealthStatusFromUri/{uri}"
+    "GetHealthStatusFromUri": "FeaturesConfiguration/GetHealthStatusFromUri/{uri}",
+    "ConfigurationToolConfigs":"Config/GetMasterConfigJson/product/{productId}"
 }
