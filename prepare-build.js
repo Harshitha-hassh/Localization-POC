@@ -87,10 +87,7 @@ function applyLocalization(data, langSuffix, langCode) {
             }
             else
             {
-                if(langCode === 'en-AU'){
-                    data[key] = String(word).replace("VAT", "ABN");
-                }
-                else if(langCode === 'en-NZ'){
+                if(langCode === 'en-AU' || langCode === 'en-NZ'){
                     data[key] = String(word).replace("VAT", "GST");
                 }
                 else
