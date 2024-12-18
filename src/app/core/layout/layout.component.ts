@@ -102,6 +102,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
       }      
       this.StartSignalrConnection();    
     if (enableUICache && enableUICache.toLowerCase() == "true") {
+      sessionStorage.setItem("setUICache", "true"); 
       this.setUICache();
     }
     setTimeout(() => {
