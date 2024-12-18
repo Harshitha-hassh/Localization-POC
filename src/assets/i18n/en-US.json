@@ -1870,7 +1870,8 @@
     "7185": "7185 - System Setup",
     "85255": "85255 - SFTP",
     "100775": "100775 - Event Scheduler",
-    "100776": "100776 - Job Scheduler Configuration"
+    "100776": "100776 - Job Scheduler Configuration",
+    "15215": "15215 - Inventory Staging"
   },
   "userId": "User ID",
   "password": "Password",
