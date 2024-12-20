@@ -1854,6 +1854,8 @@
     "100776": "100776 - Job Scheduler Configuration_fi",
     "200410": "200410 - Export_fi",
     "200415": "200415 - Import_fi",
+    "2001151": "2001151 - Sales Summary Outlet Report (X Reading)_fi",
+    "2001153": "2001153 - BIR Sales Summary Report_fi",
     "Appointment Actions": "Appointment Actions_fi",
     "Appointment Grid": "Appointment Grid_fi",
     "Client Profile": "Client Profile_fi",
@@ -3402,7 +3404,9 @@
     "InventoryValueandActivity": "Inventory Value and Activity_fi",
     "includeInhouseGratuitySC": "Include In-House Gratuity/SC_fi",
     "includeInhouseGratuity": "Include In-House Gratuity_fi",
-    "includeInhouseSC": "Include In-House SC_fi"
+    "includeInhouseSC": "Include In-House SC_fi",
+    "OutletSalesSummaryXReading": "Sales Summary Outlet Report (X Reading)_fi",
+    "BIRSalesSummary": "BIR Sales Summary Report_fi"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fi",

@@ -1871,7 +1871,9 @@
     "85255": "85255 - SFTP",
     "100775": "100775 - Event Scheduler",
     "100776": "100776 - Job Scheduler Configuration",
-    "15215": "15215 - Inventory Staging"
+    "15215": "15215 - Inventory Staging",
+    "2001151": "2001151 - Sales Summary Outlet Report (X Reading)",
+    "2001153": "2001153 - BIR Sales Summary Report"
   },
   "userId": "User ID",
   "password": "Password",
@@ -3404,7 +3406,9 @@
     "InventoryValueandActivity": "Inventory Value and Activity",
     "includeInhouseGratuitySC": "Include In-House Gratuity/SC",
     "includeInhouseGratuity": "Include In-House Gratuity",
-    "includeInhouseSC": "Include In-House SC"
+    "includeInhouseSC": "Include In-House SC",
+    "OutletSalesSummaryXReading": "Sales Summary Outlet Report (X Reading)",
+    "BIRSalesSummary": "BIR Sales Summary Report"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",

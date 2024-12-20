@@ -14,7 +14,8 @@ var routes: Routes = [{
     { path: 'transactionlog', component: TransactionLogComponent, canActivate: [RouteGuardService],
       data: { breakPointNumber: BreakPoint.TransactionLog, syncAccess: true } },
     { path: 'giftcards', loadChildren: () => import('../retail/retail-reports/reports.module').then(m => m.RetailReportModule), data: { type: 'giftcards' } },
-    { path: 'inventorycontrol', loadChildren: () => import('../retail/retail-reports/reports.module').then(m => m.RetailReportModule), data: { type: 'inventorycontrol' } }
+    { path: 'inventorycontrol', loadChildren: () => import('../retail/retail-reports/reports.module').then(m => m.RetailReportModule), data: { type: 'inventorycontrol' } },
+    { path: 'fiscalreports', loadChildren: () => import('../retail/retail-reports/reports.module').then(m => m.RetailReportModule), data: { type: 'fiscal' } }
     
   ]
 }];
