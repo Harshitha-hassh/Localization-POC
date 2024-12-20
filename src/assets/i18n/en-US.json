@@ -4163,7 +4163,9 @@
     "USERSETTINGS": "USER SETTINGS",
     "RETAILSETTINGS": "RETAIL SETTINGS",
     "SelectAtleastOneSubCat": "Select at least one subcategory to proceed",
-    "UserRole": "User Role"
+    "UserRole": "User Role",
+    "lbl_expandAll":"EXPAND ALL",
+    "lbl_collapseAll":"COLLAPSE ALL"
   },
   "vendors": {
     "lbl_vendorCode": "Vendor Code",

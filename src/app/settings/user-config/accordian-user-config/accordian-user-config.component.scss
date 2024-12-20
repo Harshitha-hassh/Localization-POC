@@ -1,148 +1,201 @@
-
 @import 'src/assets/sass/abstracts/variables';
-.accord-section{
-    padding: 0 30px;
+
+.user-role--wrapper {
     padding-bottom: 10px;
-.header-section{
-    height: 43px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0 24px;
-    background-color: $color-form-bgColor;
-    color: $color-base;
-    box-shadow: 0 3px 1px -2px $box-shadow-opacity, 0 2px 2px 0 $accordian-opacity, 0 1px 5px 0 $black-opacity;
-    font-size: 14px;
 
-    span{
-        //margin-right: 16px;
+    .header-section {
+        height: 43px;
         display: flex;
-        flex-grow: 2;
-        color: $color-input-holder;
-        width:50%;
-        &:first-child{
-            margin-right: 0;
-            width: 49.5%;
-            flex-grow: 1;
-            color: $color-base;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 24px;
+        background-color: $color-form-bgColor;
+        color: $color-base;
+        box-shadow: 0 3px 1px -2px $box-shadow-opacity, 0 2px 2px 0 $accordian-opacity, 0 1px 5px 0 $black-opacity;
+        font-size: 14px;
+
+        span {
+            //margin-right: 16px;
+            display: flex;
+            flex-grow: 2;
+            color: $color-input-holder;
+            width: 50%;
+
+            &:first-child {
+                margin-right: 0;
+                width: 49.5%;
+                flex-grow: 1;
+                color: $color-base;
+            }
         }
     }
-}
-.expansion-panel-section{
-    font-size: 14px;
-    .mat-expansion-panel{
 
-        margin: 0px;
-        .mat-expansion-panel-header{
-            border-bottom: 1px solid $color-form-bgColor;
-            font-size: 14px;
-            .allow-view-all{
-                position: absolute;
-                right: 3rem;
-                display: flex;
-                .allow-all{
-                 padding: 0px 6px;
-                }
-            }
-            .allow-view-all-display {
-                display: block;
-            }
-            .mat-content{
-                width: calc(100% - 10px);
-                .mat-expansion-panel-header-title{
-                    display: inline-block;
-                    width: 50%;
-                    flex-basis : unset;
-                    flex-grow: unset;
-                    margin-right: 0px;
-                }
-                .mat-expansion-panel-header-description{
-                    width: 50%;
-                }
-            }
-
-}
-    .mat-expansion-panel-body{
-
-        padding: 0px;
-
-    }
-}
-    .accordian-section{
-    width: 100%;
-    max-height: 240px;
-    overflow: hidden;
-    .first-column,.second-column{
-        width: 100%;
-        border-bottom: 1px solid $color-form-bgColor;
-        max-height: 220px;
-    }
-    .second-column_style{
-        border-right: 1px solid $color-form-bgColor;
-    }
-    .data-section{
-        width: 50%;
-        float: left;
+    .accord-header{
+        background: #fff;
+        border: 1px solid #e4e5e8;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 24px;
+        border-radius: inherit;
+        transition: height 225ms cubic-bezier(0.4, 0, 0.2, 1);
         height: 48px;
+        &:hover{
+          background: #ececec;
+        }
+    }
+    .space-between{
+        justify-content: space-between;
+    }
+    .accord-icon-wrap{
+        width: 10%;
+    }
 
-        padding: 0px 30px;
-        color: $color-input-holder;
-        .data-section-row{
+    .expansion-panel-section {
+        font-size: 14px;
+
+        .mat-expansion-panel {
+
+            margin: 0px;
+
+            .mat-expansion-panel-header {
+                border-bottom: 1px solid $color-form-bgColor;
+                font-size: 14px;
+
+                .allow-view-all {
+                    position: absolute;
+                    right: 3rem;
+                    display: flex;
+
+                    .allow-all {
+                        padding: 0px 6px;
+                    }
+                }
+
+                .allow-view-all-display {
+                    display: block;
+                }
+
+                .mat-content {
+                    width: calc(100% - 10px);
+
+                    .mat-expansion-panel-header-title {
+                        display: inline-block;
+                        width: 50%;
+                        flex-basis: unset;
+                        flex-grow: unset;
+                        margin-right: 0px;
+                    }
+
+                    .mat-expansion-panel-header-description {
+                        width: 50%;
+                    }
+                }
+
+            }
+
+            .mat-expansion-panel-body {
+
+                padding: 0px;
+
+            }
+        }
+
+        .accord-section {
             width: 100%;
-        }
-        &.second-column_style{
-            border-right: 1px solid $color-form-bgColor;
-        }
-        //This is not required anymore as the display properties are set individually for each class below. Fix for Bug:22148
-        // .msg-text,.allow-toggle,.view-toggle{
-        //     display: table-cell;
-        //     vertical-align: middle;
+            max-height: 240px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid #e4e5e8;
+            .first-column,
+            .second-column {
+                width: 100%;
+                border-bottom: 1px solid $color-form-bgColor;
+                max-height: 220px;
+            }
 
-        // }
-        .allow-toggle,.view-toggle{
-            text-align: center;
-            padding: 10px 9px;
-            display: inline-block;
-            vertical-align: middle;
-            .toggle-text{
+            .second-column_style {
+                border-right: 1px solid $color-form-bgColor;
+            }
+
+            .data-section {
+                width: 50%;
                 float: left;
-                padding-top: 1px;
-                padding-right: 5px;
+                height: 48px;
+
+                padding: 0px 30px;
+                color: $color-input-holder;
+
+                .data-section-row {
+                    width: 100%;
+                    justify-content: space-between;
+                    display: flex;
+                    align-items: center;
+                }
+
+                &.second-column_style {
+                    border-right: 1px solid $color-form-bgColor;
+                }
+
+                //This is not required anymore as the display properties are set individually for each class below. Fix for Bug:22148
+                // .msg-text,.allow-toggle,.view-toggle{
+                //     display: table-cell;
+                //     vertical-align: middle;
+
+                // }
+                .allow-toggle,
+                .view-toggle {
+                    text-align: center;
+                    padding: 10px 9px;
+                    display: inline-block;
+                    vertical-align: middle;
+
+                    .toggle-text {
+                        float: left;
+                        padding-top: 1px;
+                        padding-right: 5px;
+                    }
+
+                    .switch {
+                        float: right;
+                        margin-top: 6px;
+                    }
+                }
+
+                .msg-text {
+                    display: inline-block;
+                    vertical-align: middle;
+
+                    .setWidth {
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+
+                    .tooltipClass {
+                        width: 100px;
+                    }
+                }
+
             }
-            .switch{
-                float: right;
-                margin-top: 6px;
-            }
+
         }
-        .msg-text{
-            display: inline-block;
-            vertical-align: middle;
-            .setWidth{
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                margin-top: 10px;
-            }
-            .tooltipClass{
-                width: 100px;
-            }
-        }
+    }
 
 }
 
-}
-}
-
-}
 //Width needs to be calculated based on the toggle inputs(width: 235 temporary fix)
 .breakpoint-name {
     // width: calc(100% - 235px) !important;
     // display: inline-block !important;
     // margin-top: 8px;
 }
-.switch.checked .switch-pane .switch-label-unchecked{
-    display: none !important;
-    }
-    .overflow-scroll{
-        overflow: hidden;
-    }
+
+.switch.checked .switch-pane .switch-label-unchecked {
+    display: none !important;
+}
+
+.overflow-scroll {
+    overflow: hidden;
+}

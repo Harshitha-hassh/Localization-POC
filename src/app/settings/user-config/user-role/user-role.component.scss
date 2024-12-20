@@ -1,36 +1,76 @@
-.user-role{
+.user-role {
 
     height: 100%;
     width: 100%;
-    .control-section{
+
+    .control-section {
         height: 60px;
-        padding: 0 30px;
-        display: inline-block;
+        padding: 0 15px;
+        display: flex;
+        justify-content: space-between;
         width: 100%;
-    .select-container{
-        display: inline-block;
-        .select-width{
-            .mat-select-value{
-                width: auto;
-                max-width: 100%;
+        padding: 10px;
+
+        .select-container {
+            display: inline-block;
+
+            .select-width {
+                .mat-select-value {
+                    width: auto;
+                    max-width: 100%;
+                }
+
+                .mat-form-field-underline {
+                    display: none;
+                }
+
+                .mat-select-arrow {
+                    margin-left: 0.5rem;
+                }
             }
-            .mat-form-field-underline{
-                display: none;
-            }
-            .mat-select-arrow{
-                margin-left: 0.5rem;
+        }
+
+        .copy-btn {
+            border-radius: 3px;
+            height: 30px;
+            margin-left: 15px;
+        }
+
+        .expand-sollapse {
+            font-size: 18px;
+            color: #945B29;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .button-section{
+            display: flex;
+            align-items: center;
+            .icon-Expand-All-1,.icon-Collapse-All-1{
+                color: #945B29;
             }
         }
     }
-    .copy-btn{
-        float: right;
-        margin-top: 17px;
-        border-radius: 3px;
-        height: 30px;
-        margin-left: 15px;
+    .mat-form-field-appearance-legacy .mat-form-field-wrapper{
+        padding-bottom: 0px !important;
+    }
+    .data-section {
+        height: calc(100% - 80px);
+    }
+
+    .expand-sollapse {
+        font-size: 18px;
+        color: #43A047;
+        font-weight: bold;
+        cursor: pointer;
+        margin-right: 20px;
     }
 }
-.data-section{
-    height: calc(100% - 60px);
-}
+body#new-mat-view {
+    .user-role{
+        .mat-form-field.mat-form-field-can-float.mat-form-field-should-float.mat-form-field{
+            margin-top: 0;
+        }
+    }
+    
 }

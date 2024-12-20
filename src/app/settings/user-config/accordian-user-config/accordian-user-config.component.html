@@ -1,50 +1,52 @@
-<div *ngFor="let item of inputData;let i=index" class="accord-section">
+<div *ngFor="let item of inputData;let i=index" class="user-role--wrapper">
   <form [formGroup]="userRoleGroup">
     <div class="header-section">
       <span class="header-name">{{item.headerData.titleData}}</span>
       <span class="header-count">{{item.headerData.titledesc}}</span>
     </div>
-    <mat-accordion id="ExapanedPanel" class="expansion-panel-section" *ngFor="let userDetails of userRoleGroup.get('userDetails')['controls'];let m = index;"
+    <div id="ExapanedPanel" class="expansion-panel-section" *ngFor="let userDetails of userRoleGroup.get('userDetails')['controls'];let m = index;"
       formArrayName="userDetails">
-      <!--Second Loop-->
-      <!-- <mat-expansion-panel *ngFor="let itemDetails of item.headerData.details;let k=index" [formGroupName]="m" id="formGroup-{{m}}"> -->
-        <mat-expansion-panel *ngFor="let itemDetails of item.headerData.details;let k=index" [formGroupName]="m" id="formGroup-{{m}}" 
-        (opened)="onOpenClick(itemDetails, k)" (closed)="itemDetails.isOpened=false">
-        <mat-expansion-panel-header *ngIf="m == k">
-          <mat-panel-title>
-            {{this.localization.captions.breakpoint[itemDetails.description]}}
-          </mat-panel-title>
-          <mat-panel-description>
-            {{selectedCount[k]}}/{{itemDetails.userClaims.length}}
-            <div class="allow-view-all" *ngIf="itemDetails.isOpened" (click)="onToggleClick($event)" [ngClass]="{'button_invalid': IsReadOnly}">
-              <div class="allow-all">
-                <span class="LW12 mb-2 mr-1 toggle-text">{{this.localization.captions.setting.Allow_All}}</span>
-                <app-toggle-switch [value]="allowAllToggle[k]" (changeToggleEvent)="allowAll(userDetails, itemDetails, $event, k)">
-                </app-toggle-switch>
-              </div>
-              <div>
-                <span class="LW12 mb-2 mr-1 toggle-text">{{this.localization.captions.setting.View_All}}</span>
-                <app-toggle-switch [ngClass]="{'button_invalid': disableViewAllToogle[k]}" [value]="viewAllToggle[k]" (changeToggleEvent)="viewAll(userDetails, itemDetails, $event, k)">
-                </app-toggle-switch>
+        <div *ngFor="let itemDetails of item.headerData.details;let k=index" [formGroupName]="m" id="formGroup-{{m}}">
+        <div *ngIf="m == k">
+          <div class="accord-header"  (click)="toggleSection(itemDetails, k)">
+            <div class="ag_w--50">
+              {{this.localization.captions.breakpoint[itemDetails.description]}}
+            </div>
+            <div class="d-flex w-40 space-between">
+              {{selectedCount[k]}}/{{itemDetails.userClaims.length}}
+              <div class="allow-view-all ag_align-items--center ag_display--flex" *ngIf="itemDetails.isOpened" (click)="onToggleClick($event)" [ngClass]="{'button_invalid': IsReadOnly}">
+                <div class="ag_align-items--center ag_display--flex allow-all">
+                  <span class="LW12 mr-1 toggle-text">{{this.localization.captions.setting.Allow_All}}</span>
+                  <app-toggle-switch [value]="allowAllToggle[k]" (changeToggleEvent)="allowAll(userDetails, itemDetails, $event, k)">
+                  </app-toggle-switch>
+                </div>
+                <div class="ag_align-items--center ag_display--flex">
+                  <span class="LW12 mr-1 toggle-text ml-2">{{this.localization.captions.setting.View_All}}</span>
+                  <app-toggle-switch [ngClass]="{'button_invalid': disableViewAllToogle[k]}" [value]="viewAllToggle[k]" (changeToggleEvent)="viewAll(userDetails, itemDetails, $event, k)">
+                  </app-toggle-switch>
+                </div>
               </div>
             </div>
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="accordian-section" *ngIf="m == k" id="sed_{{k}}">
-          <ng-scrollbar id="scroll_{{k}}" [trackX]="false" [autoHide]="false">
+            <div class="accord-icon-wrap text-right">
+              <span class="icon-down-arrow" *ngIf="!itemDetails.isOpened"></span>
+              <span class="icon-up-arrow1" *ngIf="itemDetails.isOpened"></span>
+            </div>
+          </div>
+        </div>
+        <div class="accord-section" *ngIf="m == k && itemDetails.isOpened" id="sed_{{k}}">
             <div class="first-column data-section" id="accordian_{{k}}" *ngFor="let userClaimsDetails of userDetails.get('userClaims').controls;let j= index;"
               [ngClass]="{'second-column_style': j%2 == 0 && userClaims.length > 1}" formArrayName="userClaims">
               <div class=" LW14 data-section-row" [formGroupName]="j">
                 <span class="msg-text breakpoint-name">
                   <div class="setWidth" title="{{this.localization.captions.breakpoint[userClaimsDetails.get('breakPointNumber').value]}}">{{this.localization.captions.breakpoint[userClaimsDetails.get('breakPointNumber').value]}}</div>
                 </span>
-                <div class="accordian-toogle float-right  accordian-toggle-section">
-                  <div [ngClass]="{'button_invalid': IsReadOnly}" class="appt-toggle-section allow-toggle">
+                <div class="accordian-toogle ag_display--flex accordian-toggle-section">
+                  <div [ngClass]="{'button_invalid': IsReadOnly}" class="appt-toggle-section allow-toggle ag_align-items--center ag_display--flex">
                     <span class="LW12 toggle-text">{{this.localization.captions.setting.Allow}}</span>
                     <app-toggle-switch formControlName="allow" (changeToggleEvent)="showAllAppointments(userClaimsDetails,i,k,j,'allow',$event)"></app-toggle-switch>
                   </div>
                   <div [ngClass]="{'button_invalid': !(userClaimsDetails.get('viewOnlyAllowed').value && !IsReadOnly)}"
-                    class="appt-toggle-section view-toggle">
+                    class="appt-toggle-section view-toggle ag_display--flex ag_align-items--center">
                     <span class="LW12 toggle-text">{{this.localization.captions.setting.View}}</span>
                     <div class="accordian-toogle d-inline-block">
                       <app-toggle-switch formControlName="view" (changeToggleEvent)="showAllAppointments(userClaimsDetails,i,k, j,'view',$event)"></app-toggle-switch>
@@ -53,9 +55,8 @@
                 </div>
               </div>
             </div>
-          </ng-scrollbar>
         </div>
-      </mat-expansion-panel>
-    </mat-accordion>
+      </div>
+    </div>
   </form>
 </div>

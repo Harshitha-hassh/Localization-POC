@@ -22,6 +22,14 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   allowAllToggle: boolean[] = [];
   viewAllToggle: boolean[] = [];
   disableViewAllToogle: boolean[] = [];
+  @Input('expandCollapse')
+  set expandCollapse(isExpand){
+    if(isExpand){
+      this.expandAll();
+    } else{
+      this.collapseAll();
+    }
+  }
 
   constructor(public _settingService: SettingsService, public localization: RetailStandaloneLocalization, private fb: UntypedFormBuilder) {
 
@@ -284,6 +292,25 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
       this.setBreakPoints(selectedData);
     }
     this.findLength();
+  }
+
+  
+  expandAll(){
+    this.inputData[0].headerData.details.forEach((value, index) => {
+      this.onOpenClick(value, index);
+    });
+  }
+  collapseAll(){
+    this.inputData[0].headerData.details.forEach((value, index) => {
+      value['isOpened'] = false;
+    });
+  }
+  toggleSection(itemDetails, index){
+    if(itemDetails.isOpened){
+      itemDetails.isOpened = false;
+    } else {
+      this.onOpenClick(itemDetails, index);
+    }
   }
 }
 

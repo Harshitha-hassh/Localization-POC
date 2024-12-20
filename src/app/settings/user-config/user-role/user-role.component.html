@@ -9,8 +9,8 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="mb-3">
-
+    <div class="button-section">
+      <span class="expand-sollapse" (click)="expandCollapse($event)"><span class="mr-2" [ngClass]="triggerExpandCollapse? 'icon-Collapse-All-1':'icon-Expand-All-1'"></span>{{triggerExpandCollapse? captions.lbl_collapseAll: captions.lbl_expandAll}}</span>
       <button [ngClass]="{'button_invalid': IsReadOnly }" mat-raised-button (click)="Save()" class="copy-btn body-bgcolor whitecolor text-uppercase">{{captions.save}}</button>
       <button [ngClass]="{'button_invalid': IsReadOnly }" mat-raised-button (click)="openDialog()" class="copy-btn body-bgcolor whitecolor text-uppercase">{{captions.copy}}</button>
     </div>
@@ -19,7 +19,7 @@
   </div>
   <div class="data-section data-section-container pt-4">
     <ng-scrollbar>
-      <app-accordian-user-config [IsReadOnly]="IsReadOnly" [inputData]="arrayData"></app-accordian-user-config>
+      <app-accordian-user-config [IsReadOnly]="IsReadOnly" [expandCollapse]="triggerExpandCollapse"  [inputData]="arrayData"></app-accordian-user-config>
     </ng-scrollbar>
   </div>
 </div>

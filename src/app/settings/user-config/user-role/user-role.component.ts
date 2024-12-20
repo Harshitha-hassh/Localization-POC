@@ -30,6 +30,7 @@ export class UserRoleComponent implements OnInit, OnDestroy {
   IsReadOnly: boolean;
   dialogSubscription: ISubscription;
   floatLabel: string;
+  triggerExpandCollapse: boolean = false;
 
 
   constructor(public settingService: SettingsService, private http: HttpServiceCall, private dialog: MatDialog,
@@ -180,5 +181,8 @@ export class UserRoleComponent implements OnInit, OnDestroy {
     //         claims.breakPointNumber != RetailBreakPoint.PaymentMethods
     //     });
     // });
+  }
+  expandCollapse(e){
+    this.triggerExpandCollapse = !this.triggerExpandCollapse; 
   }
 }

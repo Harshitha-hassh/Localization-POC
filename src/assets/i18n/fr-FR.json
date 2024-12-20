@@ -4161,7 +4161,9 @@
     "USERSETTINGS": "USER SETTINGS_fr",
     "RETAILSETTINGS": "RETAIL SETTINGS_fr",
     "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_fr",
-    "UserRole": "User Role_fr"
+    "UserRole": "User Role_fr",
+    "lbl_expandAll": "EXPAND ALL_fr",
+    "lbl_collapseAll": "COLLAPSE ALL_fr"
   },
   "vendors": {
     "lbl_vendorCode": "Vendor Code_fr",
