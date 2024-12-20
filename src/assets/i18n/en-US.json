@@ -1859,6 +1859,7 @@
     "7165": "7165 - General Ledger Mapping",
     "12091": "12091 - PMS Integration Setup",
     "3130": "3130 - Settle to Hotel Comp",
+    "18015": "18015 - Config Validation",
     "3150": "3150 - Redeem Retail Multipack",
     "7170": "7170 - Item Mapping",
 		"7175": "7175 - Sale Depletion Log",
@@ -3645,7 +3646,8 @@
     "lbl_inventory": "Inventory",
     "lbl_property": "Property",
     "lbl_syncStatus": "Sync Status",
-    "sync": "SYNC"
+    "sync": "SYNC",
+    "ConfigValidation": "Config Validation"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference",

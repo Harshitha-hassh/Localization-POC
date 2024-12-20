@@ -16,6 +16,7 @@ import { ManagerUtilitiesComponent } from './manager-utilities/manager-utilities
 import { PrinterDefaultConfigurationComponent } from './manager-utilities/printer-default-configuration/printer-default-configuration.component';
 import { UserAccessBreakPoints as CommonBreakPoint } from 'src/app/common/constants/useraccess.constants';
 import { EnahancedInventoryMasterSyncComponent } from '../../retail/enahanced-inventory-master-sync/enahanced-inventory-master-sync.component';
+import { ConfigValidationComponent } from 'src/app/common/config-validation/config-validation/config-validation.component';
 import { CgpsLoggingProfileSyncWrapperComponent } from './cgps-logging-profile-sync-wrapper/cgps-logging-profile-sync-wrapper.component';
 import { DiscountMappingComponent } from 'src/app/retail/discount-mapping/discount-mapping.component';
 import { JobSchedulerComponent } from './job-scheduler/job-scheduler.component';
@@ -101,6 +102,11 @@ const routes: Routes = [{
       component: EnahancedInventoryMasterSyncComponent,
       canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
       data: { breakPointNumber: BreakPoint.InventorySync, redirectTo: 'inventorysync', syncAccess: true }
+    },
+    {
+      path: 'configValidation',
+      component: ConfigValidationComponent,
+      canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard]
     },
     {
       path: 'cgpsFailedProfile', 

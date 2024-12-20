@@ -1401,6 +1401,26 @@ export class RouteLoaderService {
                 breakPointNumber: 0
               },
               {
+                elementId: 8258,
+                tenantID: 0,
+                propertyID: 0,
+                productID: 2,
+                textId: 101685,
+                text: "Config Validation_UK",
+                routePath: "/settings/utilities/configValidation",
+                imgPath: "",
+                order: 5,
+                visibility: true,
+                disable: false,
+                parentID: 4046,
+                menuAlignment: 'Combo',
+                menuPosition: 'Secondary',
+                externalLink: false,
+                linkedElement: [
+                ],
+                breakPointNumber: 0
+              },
+              {
                 elementID: 4082,
                 tenantID: 0,
                 propertyID: 0,

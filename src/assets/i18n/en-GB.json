@@ -3740,7 +3740,8 @@
     "serviceUserWarning": "The service user session must be active for this action. Please reach out to your supervisor.",
     "lbl_ScheduleState": "Status",
     "lbl_hdr_NotifyIcon": "Email/Ftp",
-    "pg_title_scheduleEventHistory": "Schedule Event History"
+    "pg_title_scheduleEventHistory": "Schedule Event History",
+    "ConfigValidation": "Config Validation"
   },
   "settings": {
     "schedulerJobs": {

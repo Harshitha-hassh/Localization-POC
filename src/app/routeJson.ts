@@ -1,16 +1,16 @@
 export const routeJSON = {
   "host": {
     "image": "/VisualOne/retailgateway/",
-  "retailManagement": "/VisualOne/retailgateway/",
-  "retailPOS": "/VisualOne/retailgateway/",
-  "authentication": "/commongateway/",
-  "report": "/VisualOne/retailgateway/",
-  "commission": "/VisualOne/retailgateway/",
-  "payment": "/VisualOne/retailgateway/",
-  "common": "/VisualOne/retailgateway/Retail/Services/Notification",
-  "documentation": "/Help/",
-  "commonGateway": "/commongateway/",
-  "signalrService": "/commongateway/SignalRService"
+    "retailManagement": "/VisualOne/retailgateway/",
+    "retailPOS": "/VisualOne/retailgateway/",
+    "authentication": "/commongateway/",
+    "report": "/VisualOne/retailgateway/",
+    "commission": "/VisualOne/retailgateway/",
+    "payment": "/VisualOne/retailgateway/",
+    "common": "/VisualOne/retailgateway/Retail/Services/Notification",
+    "documentation": "/Help/",
+    "commonGateway": "/commongateway/",
+    "signalrService": "/commongateway/SignalRService"
   },
   "Login": "Property/GetLoginDetails",
   "LogOut": "Property/LogOutByUserId/{Username}/{TenantId}/{PropertyId}",
@@ -748,5 +748,8 @@ export const routeJSON = {
   "DeleteDiscountTypeConfigurationByIds":"DiscountTypeConfiguration/DeleteDiscountTypeConfigurationByIds",
   "GetBreakpointforRoleAsync":"user/GetUserClaimsForRoleAsync/",
 "GetDuplicateUserByName": "user/GetDuplicateUserByName/{userId}?tenantId={tenantId}&userName={userName}",
-"GetClientByPlatformGuestUuid" : "Clients/platformGuid/{platformGuid}"
+"GetClientByPlatformGuestUuid" : "Clients/platformGuid/{platformGuid}",
+    "GetMasterConfigJson":"Config/GetMasterConfigJson",
+    "GetHealthStatusFromUri": "FeaturesConfiguration/GetHealthStatusFromUri/{uri}",
+    "ConfigurationToolConfigs":"Config/GetMasterConfigJson/product/{productId}"
 }

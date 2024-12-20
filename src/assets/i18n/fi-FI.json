@@ -1844,6 +1844,7 @@
     "15215": "15215 - Inventory Staging_fi",
     "16020": "16020 - Quick ID Config_fi",
     "16025": "16025 - Auto Night Audit_fi",
+    "18015": "18015 - Config Validation_fi",
     "20040": "20040 - Email Templates_fi",
     "20045": "20045 - SMS Templates_fi",
     "20055": "20055 - Distribution List_fi",
@@ -3643,7 +3644,8 @@
     "lbl_inventory": "Inventory_fi",
     "lbl_property": "Property_fi",
     "lbl_syncStatus": "Sync Status_fi",
-    "sync": "SYNC_fi"
+    "sync": "SYNC_fi",
+    "ConfigValidation": "Config Validation_fi"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_fi",
