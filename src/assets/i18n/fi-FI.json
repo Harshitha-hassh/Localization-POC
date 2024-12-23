@@ -4754,5 +4754,12 @@
   "tbl_hdr_EmailSendAt": "Email Send At_fi",
   "tbl_hdr_SFTPFolderPath": "SFTP Folder Path_fi",
   "tbl_hdr_JobStatus": "Job Status_fi",
-  "tbl_hdr_jobErrorMessage": "Error Message_fi"
+  "tbl_hdr_jobErrorMessage": "Error Message_fi",
+  "hdr_editGuestType": "EDIT GUEST TYPE_fi",
+  "CreateGuestType": "CREATE GUEST TYPE_fi",
+  "GuestTypeCode": "Guest Type Code_fi",
+  "GuestTypeDescription": "Guest Type Description_fi",
+  "GuestTypeCodeDescription": "Search by Guest Type Code, Guest Type Description_fi",
+  "MissingGuestTypeCode": "Missing Guest Type Code_fi",
+  "MissingGuestTypeDescription": "Missing Guest Type Description_fi"
 }

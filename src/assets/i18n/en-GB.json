@@ -1844,6 +1844,7 @@
     "15215": "15215 - Inventory Staging",
     "16020": "16020 - Quick ID Config",
     "16025": "16025 - Auto Night Audit",
+    "18015": "18015 - Config Validation",
     "20040": "20040 - Email Templates",
     "20045": "20045 - SMS Templates",
     "20055": "20055 - Distribution List",
@@ -3643,7 +3644,8 @@
     "lbl_inventory": "Inventory",
     "lbl_property": "Property",
     "lbl_syncStatus": "Sync Status",
-    "sync": "SYNC"
+    "sync": "SYNC",
+    "ConfigValidation": "Config Validation"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference",
@@ -3740,8 +3742,7 @@
     "serviceUserWarning": "The service user session must be active for this action. Please reach out to your supervisor.",
     "lbl_ScheduleState": "Status",
     "lbl_hdr_NotifyIcon": "Email/Ftp",
-    "pg_title_scheduleEventHistory": "Schedule Event History",
-    "ConfigValidation": "Config Validation"
+    "pg_title_scheduleEventHistory": "Schedule Event History"
   },
   "settings": {
     "schedulerJobs": {
@@ -4753,5 +4754,12 @@
   "tbl_hdr_EmailSendAt": "Email Send At",
   "tbl_hdr_SFTPFolderPath": "SFTP Folder Path",
   "tbl_hdr_JobStatus": "Job Status",
-  "tbl_hdr_jobErrorMessage": "Error Message"
+  "tbl_hdr_jobErrorMessage": "Error Message",
+  "hdr_editGuestType": "EDIT GUEST TYPE",
+  "CreateGuestType": "CREATE GUEST TYPE",
+  "GuestTypeCode": "Guest Type Code",
+  "GuestTypeDescription": "Guest Type Description",
+  "GuestTypeCodeDescription": "Search by Guest Type Code, Guest Type Description",
+  "MissingGuestTypeCode": "Missing Guest Type Code",
+  "MissingGuestTypeDescription": "Missing Guest Type Description"
 }

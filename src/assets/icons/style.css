@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?k3vclb');
-  src:  url('fonts/icomoon.eot?k3vclb#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?k3vclb') format('truetype'),
-    url('fonts/icomoon.woff?k3vclb') format('woff'),
-    url('fonts/icomoon.svg?k3vclb#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?odc95l');
+  src:  url('fonts/icomoon.eot?odc95l#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?odc95l') format('truetype'),
+    url('fonts/icomoon.woff?odc95l') format('woff'),
+    url('fonts/icomoon.svg?odc95l#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-open-cash-drawer:before {
+  content: "\ef7f";
+}
 .icon-remove-surcharge:before {
   content: "\ef7e";
 }
