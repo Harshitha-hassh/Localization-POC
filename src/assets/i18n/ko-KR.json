@@ -3388,6 +3388,7 @@
     "IncludeInactiveCategoryGroups": "Include Inactive Category Groups_kr",
     "IncludeInactiveRetailCategories": "Include Inactive Retail Categories_kr",
     "IncludeVoidedTransaction": "Include Voided Transaction_kr",
+    "IncludeReceiptComments": "Include Receipt Comments_kr",
     "NotFullyApplied": "Not Fully Applied_kr",
     "missingCustomField": "Missing Custom Field_kr",
     "PaymentMethods": "Payment Method(s)_kr",
