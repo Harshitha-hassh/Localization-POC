@@ -346,6 +346,7 @@
     "player": "Player",
     "searchByConfNoAndGuestName": "Search By GuestName , Conf #",
     "searchByPlayerName": "Search By PlayerName",
+    "lbl_extractSearch": "Search by Name",
     "save": "SAVE",
     "update": "UPDATE",
     "areYouSureYouWantToCancel": "Are you sure you want to cancel",
