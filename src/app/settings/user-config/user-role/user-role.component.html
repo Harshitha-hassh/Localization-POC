@@ -19,7 +19,7 @@
   </div>
   <div class="data-section data-section-container pt-4">
     <ng-scrollbar>
-      <app-accordian-user-config [IsReadOnly]="IsReadOnly" [expandCollapse]="triggerExpandCollapse"  [inputData]="arrayData"></app-accordian-user-config>
+      <app-accordian-user-config [IsReadOnly]="IsReadOnly" [expandCollapse]="triggerExpandCollapse"  [inputData]="arrayData" (changedData)="changedData($event)"></app-accordian-user-config>
     </ng-scrollbar>
   </div>
 </div>

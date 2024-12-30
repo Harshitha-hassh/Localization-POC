@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation, ViewChild, AfterViewInit, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, ViewChild, AfterViewInit, OnChanges, EventEmitter, Output } from '@angular/core';
 import * as _ from 'lodash';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { SettingsService } from '../../settings.service';
@@ -22,6 +22,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   allowAllToggle: boolean[] = [];
   viewAllToggle: boolean[] = [];
   disableViewAllToogle: boolean[] = [];
+  @Output() changedData: EventEmitter<any> = new EventEmitter();
   @Input('expandCollapse')
   set expandCollapse(isExpand){
     if(isExpand){
@@ -311,6 +312,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
     } else {
       this.onOpenClick(itemDetails, index);
     }
+    this.changedData.emit(this.inputData[0].headerData.details);
   }
 }
 

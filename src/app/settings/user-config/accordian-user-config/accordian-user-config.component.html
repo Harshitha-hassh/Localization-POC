@@ -12,9 +12,9 @@
             <div class="ag_w--50">
               {{this.localization.captions.breakpoint[itemDetails.description]}}
             </div>
-            <div class="d-flex w-40 space-between">
-              {{selectedCount[k]}}/{{itemDetails.userClaims.length}}
-              <div class="allow-view-all ag_align-items--center ag_display--flex" *ngIf="itemDetails.isOpened" (click)="onToggleClick($event)" [ngClass]="{'button_invalid': IsReadOnly}">
+            <div class="d-flex ag_w--50">
+              <div>{{selectedCount[k]}}/{{itemDetails.userClaims.length}}</div>
+              <div class="allow-view-all ag_align-items--center ag_ml--auto ag_display--flex" *ngIf="itemDetails.isOpened" (click)="onToggleClick($event)" [ngClass]="{'button_invalid': IsReadOnly}">
                 <div class="ag_align-items--center ag_display--flex allow-all">
                   <span class="LW12 mr-1 toggle-text">{{this.localization.captions.setting.Allow_All}}</span>
                   <app-toggle-switch [value]="allowAllToggle[k]" (changeToggleEvent)="allowAll(userDetails, itemDetails, $event, k)">
@@ -26,10 +26,10 @@
                   </app-toggle-switch>
                 </div>
               </div>
-            </div>
-            <div class="accord-icon-wrap text-right">
-              <span class="icon-down-arrow" *ngIf="!itemDetails.isOpened"></span>
-              <span class="icon-up-arrow1" *ngIf="itemDetails.isOpened"></span>
+              <div class="accord-icon-wrap"  [ngClass]="!itemDetails.isOpened ? 'ag_ml--auto' : 'ag_pl--2' ">
+                <span class="icon-down-arrow" *ngIf="!itemDetails.isOpened"></span>
+                <span class="icon-up-arrow1" *ngIf="itemDetails.isOpened"></span>
+              </div>
             </div>
           </div>
         </div>

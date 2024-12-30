@@ -75,7 +75,9 @@ export class UserRoleComponent implements OnInit, OnDestroy {
       disableClose: true,
       hasBackdrop: true
     });
-    this.dialogSubscription = dialogRef.afterClosed().subscribe(s => { this.getuserConfig(this.selectedOption); });
+    this.dialogSubscription = dialogRef.afterClosed().subscribe(s => { this.getuserConfig(this.selectedOption); 
+      this.triggerExpandCollapse = false;
+    });
   }
 
   ngOnDestroy() {
@@ -184,5 +186,19 @@ export class UserRoleComponent implements OnInit, OnDestroy {
   }
   expandCollapse(e){
     this.triggerExpandCollapse = !this.triggerExpandCollapse; 
+  }
+
+  changedData(e) {
+    if(e) {
+      let isAllExpanded = e.every(item => item.isOpened === true);
+      let isAllCollapsed = e.every(item => item.isOpened === false || item.isOpened === undefined);
+      if(isAllExpanded) {
+        this.triggerExpandCollapse = true;
+      } else if (isAllCollapsed) {
+        this.triggerExpandCollapse = false;
+      } else {
+        return;
+      }
+    }
   }
 }
