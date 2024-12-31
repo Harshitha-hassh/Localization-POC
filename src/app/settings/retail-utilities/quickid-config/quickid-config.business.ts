@@ -9,7 +9,8 @@ import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.const
 export class QuickIdConfigBusiness {
     quickIdConfig = [
         QuickIdConfigSetting.retailtransactions,
-        QuickIdConfigSetting.discountUpdateRemove
+        QuickIdConfigSetting.discountUpdateRemove,
+        QuickIdConfigSetting.priceOverride
     ] as string[];
 
     isViewOnly: boolean = false;

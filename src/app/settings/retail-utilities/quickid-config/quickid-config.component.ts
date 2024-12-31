@@ -39,7 +39,8 @@ export class QuickidConfigComponent implements OnInit {
     this.validateUserAccess();
     this.toggleGroup = this.formBuilder.group({
       retailtransactions: false,
-      discountUpdateRemove: false
+      discountUpdateRemove: false,
+      priceOverride: false
     });
     this.toggleGroup.valueChanges.pipe(takeUntil(this.$destroyed)).subscribe(x => {
       if (this.toggleGroup.dirty)
@@ -84,6 +85,12 @@ export class QuickidConfigComponent implements OnInit {
       });
       this.quickIdConfigFormValue.find(x => x.switch === QuickIdConfigSetting.discountUpdateRemove).value = event[0];
     }
+    if (action == QuickIdConfigSetting.priceOverride) {
+      this.toggleGroup.patchValue({
+        priceOverride: event[0]
+      });
+      this.quickIdConfigFormValue.find(x => x.switch === QuickIdConfigSetting.priceOverride).value = event[0];
+    }
   }
 
   async OnSave() {
@@ -115,6 +122,7 @@ export class QuickidConfigComponent implements OnInit {
     return {
       retailtransactions: configData.find(x => x.switch === QuickIdConfigSetting.retailtransactions).value,
       discountUpdateRemove: configData.find(x => x.switch === QuickIdConfigSetting.discountUpdateRemove).value,
+      priceOverride:configData.find(x => x.switch === QuickIdConfigSetting.priceOverride).value
     }
   }
 }

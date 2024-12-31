@@ -977,6 +977,7 @@
     "platformGuestSearch": "Extended Profile Search_fi"
   },
   "shop": {
+    "lbl_priceOverrided": "Price Overrided_fi",
     "lbl_costDiscount": "Cost_fi",
     "lbl_costPlusDiscount": "Cost Plus_fi",
     "lbl_costPrice": "Cost Price_fi",
@@ -3656,7 +3657,8 @@
     "lbl_property": "Property_fi",
     "lbl_syncStatus": "Sync Status_fi",
     "sync": "SYNC_fi",
-    "ConfigValidation": "Config Validation_fi"
+    "ConfigValidation": "Config Validation_fi",
+    "priceOverride": "Price Override_fi"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_fi",
