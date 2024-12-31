@@ -1743,6 +1743,7 @@
     "3135": "3135 - Settle to Non Integrated Credit Cards",
     "3150": "3150 - Redeem Retail Multipack",
     "3155": "3155 - Apply Ticket Discount",
+    "3165": "3165 - Price Override",
     "5000": "5000 - Reopen Transaction",
     "5005": "5005 - Void Transaction",
     "5007": "5007 - Correct Transaction",
