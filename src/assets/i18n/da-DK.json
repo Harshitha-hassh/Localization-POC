@@ -2413,7 +2413,8 @@
     "InventoryItemMap": {
       "lbl_mapall": "MAP ALL_da",
       "lbl_mapInventoryToRetail": "MAP INVENTORY TO RETAIL_da",
-      "lbl_map": "Map_da"
+      "lbl_map": "Map_da",
+      "lbl_CommissionDefaultNotFound": "Commissionable Item(s) are imported and default commission is not set. Kindly set the defaults for commission to proceed._da"
     },
     "SearchCategory": "Search Category_da",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_da",
