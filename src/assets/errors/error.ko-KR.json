@@ -260,6 +260,8 @@
   "101917": "Date cannot be rolled over to the next day_kr",
   "101918": "Current system date {CurrentSystemDate} is greater than or equal to roll over date {RollOverDate}. Please Re Login_kr",
   "110060": "Credit Limit Exceeded_kr",
+  "152151": "Staging Posted Already_kr",
+  "152152": "Staging doesn't exist_kr",
   "310001": "Duplicate Guest exists on the system_kr",
   "310002": "Guest information is out of date. Please refresh and try again_kr",
   "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed._kr",

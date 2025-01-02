@@ -23,6 +23,8 @@ import { JobSchedulerComponent } from './job-scheduler/job-scheduler.component';
 import { SftpLandingComponent } from 'src/app/common/sftp/sftp-landing/sftp-landing.component';
 import { EventSchedulerConfigurationComponent } from 'src/app/common/shared/shared/event-scheduler-configuration/event-scheduler-configuration.component';
 import { ReportSchedularWrapperComponent } from './report-scheduler-wrapper/report-schedular-wrapper.component';
+import { InventoryLandingComponent } from 'src/app/retail/inventory-landing/inventory-landing.component';
+import { InventoryStagingComponent } from 'src/app/retail/inventory-staging/inventory-staging.component';
 
 
 const routes: Routes = [{
@@ -98,10 +100,27 @@ const routes: Routes = [{
       ]
     },
     {
-      path: 'inventorysync',
-      component: EnahancedInventoryMasterSyncComponent,
-      canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
-      data: { breakPointNumber: BreakPoint.InventorySync, redirectTo: 'inventorysync', syncAccess: true }
+      path: 'inventory', 
+      component: InventoryLandingComponent,
+      canActivate: [RouteGuardService],
+      data: { hasChild: true },
+      children: [
+        { path: '', redirectTo: 'inventorysync', pathMatch: 'full' },
+        {
+          path: 'inventorysync', component: EnahancedInventoryMasterSyncComponent,
+          canActivate: [RouteGuardService],
+          data: { templateID: 1, 
+          breakPointNumber: BreakPoint.InventorySync ,
+          redirectTo: 'inventorystaging'}
+        },
+        { 
+          path: 'inventorystaging', component: InventoryStagingComponent,
+          canActivate: [RouteGuardService],
+          data: { templateID: 2 ,
+          breakPointNumber: BreakPoint.INVENTORYSTAGING,
+          redirectTo: '',ShowPopup: true}
+         },
+      ]
     },
     {
       path: 'configValidation',

@@ -30,7 +30,8 @@ export enum BreakPoint {
     CombineGuestRecords = 2435,
     InventorySync = 15170,
     NightAudit = 16025,
-    ConfigValidation = 18015
+    ConfigValidation = 18015,
+    INVENTORYSTAGING = 15215
 }
 
 export const enum ReportBreakPoint {

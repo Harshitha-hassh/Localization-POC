@@ -1660,4 +1660,12 @@
 
   }
 }
+&.inventory_staging--outer-wrapper{
+  background-color: $new-version-bg;
+  padding: 0px 10px 0px 0px !important;
+  .inventory_staging--top-wrapper{
+      @extend .bodyWrap;
+      margin: 0px 0px 10px 10px !important;
+  }
+}
 }

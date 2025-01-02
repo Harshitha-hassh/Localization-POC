@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs';
 import { AgMenuTypes } from 'src/app/shared/components/menu/menu.model';
 import { menuTypes as newMenuTypes } from 'src/app/common/components/menu/menu.constant';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
+import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 
 @Injectable()
 export class RouteLoaderService {
@@ -21,7 +22,8 @@ export class RouteLoaderService {
     private injector: Injector,
     private _appservice: AppService,
     private _tenantMngmt: TenantManagementCommunication,
-    private propertyInfo : RetailPropertyInformation 
+    private propertyInfo : RetailPropertyInformation,
+    public featureFlagInfo: RetailFeatureFlagInformationService
   ) {
     this.ProductID = this._appservice.productId;
   }
@@ -38,6 +40,18 @@ export class RouteLoaderService {
             this.currentSettings = response;
             console.log('current settings', this.currentSettings);
             resolve(true);
+            this.featureFlagInfo.GetFeaturesCompleted.subscribe(x => {
+              if (!this.featureFlagInfo.IsRetailIcEnabled) {
+                  let settingsMenu = this.currentSettings.find(x => x.text.toLowerCase() == "settings");
+                  let utilsMenu = settingsMenu?.linkedElement?.find(x => x.text.toLowerCase() == "utilities");
+                  let InventoryMenu = utilsMenu?.linkedElement?.find(x => x.text.toLowerCase() == "inventory");
+                  let stagingMenu = InventoryMenu?.linkedElement?.find(x => x.text.toLowerCase() == "inventory staging")
+                  if (stagingMenu) {
+                      stagingMenu.visibility = false;
+                  }
+              }
+          }
+          );
           },
           err => {
             console.log(err + ' and so, loading default menu');
