@@ -3233,6 +3233,7 @@
     "IncludeInactiveUsers": "Include Inactive Users",
     "includeReturnWOT": "Include Returns",
     "PageBreak": "Page Break",
+    "IncludeZeroCommission": "Include Zero Commission",
     "Generate": "GENERATE",
     "appointmentNumber": "Appointment #",
     "transactionNumber": "Transaction Number",
