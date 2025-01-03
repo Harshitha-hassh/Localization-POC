@@ -2010,6 +2010,9 @@
     "paymentMethods": "Payment Methods_fr",
     "processComplete": "Process Complete_fr",
     "excessQuantityWarning": "Quantity Entered for Item {items} is Greater Than Quantity on Hand.Do you wish to continue?_fr",
+    "excessQuantityWarningInventory": "Quantity entered for Item {items} is Greater than Quantity on Hand. Please enter a lesser quantity_fr",
+    "inventoryTransferFailed": "Inventory Transfer failed_fr",
+    "inventoryTransferSucceeded": "Inventory has been successfully transferred_fr",
     "mailOrderSource": "Mail Order Source_fr",
     "quickSaleCategories": "Quick Sale Categories_fr",
     "CodeSetup": "Code Setup_fr",
@@ -4813,6 +4816,10 @@
   "lbl_userUploaded": "Uploaded By_fr",
   "addTransferInventory": "Add/Transfer Inventory_fr",
   "inventoryStaging": {
-    "completed_msg": "Inventory Staging Completed Successfully_fr"
+    "completed_msg": "Inventory Staging Completed Successfully_fr",
+    "success_InventoryStagingPosted": "Selected Inventory have been successfully posted_fr",
+    "success_InventoryStagingUpdated": "Inventory quantity has been successfully updated_fr",
+    "success_InventoryDeleted": "Inventory has been successfully deleted_fr",
+    "success_SelectedInventoryDeleted": "Selected Inventory have been successfully deleted_fr"
   }
 }
