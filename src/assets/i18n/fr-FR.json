@@ -4823,5 +4823,8 @@
     "success_InventoryStagingUpdated": "Inventory quantity has been successfully updated_fr",
     "success_InventoryDeleted": "Inventory has been successfully deleted_fr",
     "success_SelectedInventoryDeleted": "Selected Inventory have been successfully deleted_fr"
-  }
+  },
+  "lbl_addRow": "+ ADD ROW_fr",
+  "lbl_vipType": "VIP Type_fr",
+  "lbl_guestType": "Guest Type_fr"
 }
