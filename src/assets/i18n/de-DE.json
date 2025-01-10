@@ -1923,6 +1923,7 @@
   "noSpecialCharacters": "No special characters must be allowed_de",
   "confirmPasswordSame": "New password and confirm password must be same_de",
   "retailsetup": {
+    "allowPriceOverride": "Allow Price Override_de",
     "discountLevel": "Discount Level_de",
     "TicketLevel": "Ticket_de",
     "ItemLevel": "Item_de",
