@@ -42,10 +42,10 @@ export class RouteLoaderService {
             resolve(true);
             this.featureFlagInfo.GetFeaturesCompleted.subscribe(x => {
               if (!this.featureFlagInfo.IsRetailIcEnabled) {
-                  let settingsMenu = this.currentSettings.find(x => x.text.toLowerCase() == "settings");
-                  let utilsMenu = settingsMenu?.linkedElement?.find(x => x.text.toLowerCase() == "utilities");
-                  let InventoryMenu = utilsMenu?.linkedElement?.find(x => x.text.toLowerCase() == "inventory");
-                  let stagingMenu = InventoryMenu?.linkedElement?.find(x => x.text.toLowerCase() == "inventory staging")
+                  let settingsMenu = this.currentSettings.find(x => x.text.toLowerCase().includes("settings"));
+                  let utilsMenu = settingsMenu?.linkedElement?.find(x => x.text.toLowerCase().includes("utilities"));
+                  let InventoryMenu = utilsMenu?.linkedElement?.find(x => x.text.toLowerCase().includes("inventory"));
+                  let stagingMenu = InventoryMenu?.linkedElement?.find(x => x.text.toLowerCase().includes("inventory staging"));
                   if (stagingMenu) {
                       stagingMenu.visibility = false;
                   }
