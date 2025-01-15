@@ -80,6 +80,7 @@ export interface ClientInfo {
     isPurged:boolean;
     policyComments : string;
     vip?:string;
+    guestType?: number,
     platformBussinessCardRevUuid?: string;
     platformBussinessCardUuid?: string;
     platformGuestUuid?: string;

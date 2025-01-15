@@ -22,6 +22,8 @@ import { CommonDataAwaiters } from "src/app/common/shared/events/awaiters/common
 import { VipTypBusiness } from "src/app/retail/shared/service/vip-type.service";
 import { ClientMultipack, MultiPackReturn } from "src/app/retail/retail.modals";
 import { TransactionService } from "src/app/retail/shared/service/transaction-service/transaction.dataservice";
+import { RetailBreakPoint } from "src/app/retail/shared/globalsContant";
+import { GuestTypeBusiness } from "src/app/retail/common/services/guest-type.service";
 
 @Injectable({
     providedIn: "root"
@@ -41,6 +43,7 @@ export class DataAwaiterService {
         private notificationConfigurationService: NotificationConfigurationService,
         private propertySettingDataService: PropertySettingDataService,
         private vipTypeBusiness: VipTypBusiness,
+        private guestTypeBusiness: GuestTypeBusiness,
         private transactionService: TransactionService
     ) {
         this.setAwaiters();
@@ -72,6 +75,14 @@ export class DataAwaiterService {
         CommonDataAwaiters.DeleteVipType = this.deleteVipType.bind(this);
         CommonDataAwaiters.GetNextListOrderofVipType = this.getNextListOrderofVipType.bind(this);
         CommonDataAwaiters.DragDropVipType = this.dragDropVipType.bind(this);
+
+        //GuestType
+        CommonDataAwaiters.GetAllGuestTypes = this.getAllGuestTypes.bind(this);
+        CommonDataAwaiters.CreateGuestType = this.createGuestType.bind(this);
+        CommonDataAwaiters.UpdateGuestType = this.updateGuestType.bind(this);
+        CommonDataAwaiters.DeleteGuestType = this.deleteGuestType.bind(this);
+        CommonDataAwaiters.DragDropGuestType = this.dragDropGuestType.bind(this);
+        CommonDataAwaiters.GetGuestTypeBreakpoint = this.getGuestTypeBreakPoint.bind(this);
 
         //Client Multipack
         RetailDataAwaiters.GetClientMultiPack = this.getClientMultiPacksBytransactionId.bind(this);
@@ -358,5 +369,29 @@ export class DataAwaiterService {
 
     private async dragDropVipType(fromOrder, toOrder, includeInactive){
         return this.vipTypeBusiness.dragDropVipType(fromOrder, toOrder, includeInactive);
+    }
+
+    private async getAllGuestTypes(includeInactive) {
+        return await this.guestTypeBusiness.getAllGuestTypes(includeInactive);
+    }
+
+    private async createGuestType(guestType) {
+        return await this.guestTypeBusiness.createGuestType(guestType);
+    }
+
+    private async updateGuestType(guestType) {
+        return await this.guestTypeBusiness.updateGuestType(guestType);
+    }
+
+    private async deleteGuestType(id){
+        return await this.guestTypeBusiness.deleteGuestType(id);
+    }
+
+    private async dragDropGuestType(fromOrder, toOrder){
+        return await this.guestTypeBusiness.dragDropGuestType(fromOrder, toOrder);
+    }
+
+    private async getGuestTypeBreakPoint() {
+        return RetailBreakPoint.GuestType
     }
 }

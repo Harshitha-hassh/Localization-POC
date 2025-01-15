@@ -61,6 +61,7 @@ export class CreateClientBusiness {
       isPurged: false,
       policyComments: "",
       vip: this.additionalDetailsFormGroup.vip ? this.additionalDetailsFormGroup.vip : '',
+      guestType: this.additionalDetailsFormGroup.guestType ? this.additionalDetailsFormGroup.guestType : 0,
       platformBussinessCardRevUuid: isClientUpdate ? details.personalDetailsFormGroup.platformBussinessCardRevUuid : '',
       platformBussinessCardUuid: isClientUpdate ? details.personalDetailsFormGroup.platformBussinessCardUuid : '',
       platformGuestUuid: isClientUpdate ? details.personalDetailsFormGroup.platformGuestUuid : '',

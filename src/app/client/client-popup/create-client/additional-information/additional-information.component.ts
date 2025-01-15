@@ -55,6 +55,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   actionType: string;
   vipTypes: any;
+  guestTypes: any;
   isCopyClient = false;
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
@@ -90,6 +91,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       expiry_date: this.PropertyInfo.CurrentDate,
       card_cvv: '',
       vip:'',
+      guestType:'',
       // client_scheduling: false,
       customField1: '',
       customField2: '',
@@ -115,6 +117,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       this.utils.disableControls(this.FormGrp);
     }
     this.getAllVipTypes();
+    this.getAllGuestTypes();
   }  
 
   ngOnDestroy() {
@@ -143,6 +146,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     }
     this.FormGrp.controls.clientCreditCardInfo.setValue(this.cardInfo);
     this.FormGrp.controls.vip.setValue(clientInfo.client.vip);
+    this.FormGrp.controls.guestType.setValue(clientInfo.client.guestType);
   }
 
   async getAllVipTypes() {
@@ -154,6 +158,18 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       uriParams: { isIncludeInactive: false },
     }).then(x =>
       this.vipTypes = x.result
+    );
+  }
+
+  async getAllGuestTypes() {
+    await this.http.CallApiAsync<any>({
+      host: Host.retailPOS,
+      callDesc: RetailRoutes.GetAllGuestTypes,
+      method: HttpMethod.Get,
+      showError: false,
+      uriParams: { isIncludeInactive: false },
+    }).then(x =>
+      this.guestTypes = x.result
     );
   }
 

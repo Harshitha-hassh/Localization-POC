@@ -13,7 +13,19 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
-                </div> 
+                </div>
+                <div>
+                    <label class="form-label-primary">{{captions.GuestTypeInformation}}</label>
+                    <div>
+                        <mat-form-field class="mt-4" [floatLabel]="floatLabel" >
+                            <mat-select [attr.automationId]="'Dd_AdditionalInformation_guesttype'" [placeholder]="captions.guestType"
+                                formControlName="guestType">
+                                <mat-option value=""></mat-option>
+                                <mat-option [value]="type.id" *ngFor="let type of guestTypes">{{type.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>  
                 <app-retail-capture-card
                     [PaymentReferenceID]="PaymentReferenceID"
                     [isShowPMAgentValidationMessage]="false"
@@ -95,7 +107,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div> -->
-            </div>
+            </div>    
             <aside class="w-25 d-inline-block p-4">
                 <mat-form-field class="width_100 txt-area-height" [floatLabel]="floatLabel">
                     <textarea [attr.automationId]="'Ta_additionalinformation_comments'" class="textarea-style" [maxlength]="250" matInput formControlName="comments"

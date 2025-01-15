@@ -25,6 +25,7 @@ import { EventSchedulerConfigurationComponent } from 'src/app/common/shared/shar
 import { ReportSchedularWrapperComponent } from './report-scheduler-wrapper/report-schedular-wrapper.component';
 import { InventoryLandingComponent } from 'src/app/retail/inventory-landing/inventory-landing.component';
 import { InventoryStagingComponent } from 'src/app/retail/inventory-staging/inventory-staging.component';
+import { OtherComponentsDiscountMappingComponent } from 'src/app/retail/other-components-discount-mapping/other-components-discount-mapping.component';
 
 
 const routes: Routes = [{
@@ -135,7 +136,7 @@ const routes: Routes = [{
     },
     {
       path: 'discountMapping',
-      component: DiscountMappingComponent,
+      component: OtherComponentsDiscountMappingComponent,
       canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard],
       data: { breakPointNumber: CommonBreakPoint.ADDEDITDISCOUNTMAPPING, redirectTo: '', syncAccess: true }
     }, {
