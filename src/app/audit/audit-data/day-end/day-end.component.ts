@@ -81,6 +81,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   iconActions:any;
   isManualNightAuditRestricted = false;
   nightAuditRestricted: string;
+  userDetail: any;
 
   constructor(public localization: RetailLocalization, private utils: RetailUtilities, private http: HttpServiceCall,
     private auditService: AuditService, 
@@ -494,10 +495,25 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     return this.canProcess;
   }
 
-
-
-  PerformDayend() {
-    this.utils.ShowErrorMessage(this.captions.DAYEND, this.captions.DayEndProcess, RetailButtonType.YesNo, this.PopupCallback.bind(this));
+ 
+  async PerformDayend() {
+    this.userDetail = this.userDetail ? this.userDetail : (await this.InvokeServiceCallAsync('GetUserDetail', Host.retailPOS, HttpMethod.Get, {Date : this.localization.convertDateObjToAPIdate(this.localization.SubDays(this.currSysDate,1)) }, null)).result;
+    let message : string = "";
+    let propertyDate = this.localization.localizeDisplayDate(this.currSysDate);
+    let nextDate = this.localization.localizeDisplayDate(this.newSysDate);
+    if(this.userDetail){
+      if(this.userDetail?.isServiceUser){
+        message = this.localization.replacePlaceholders(this.captions.dayendAutoAuditMsg, ['propertyDate', 'propertyDate','nextDate'],[propertyDate, propertyDate, nextDate]); 
+      }
+      else{
+        let userName = this.userDetail?.userName;       
+        message = this.localization.replacePlaceholders(this.captions.dayendManualAuditMsg, ['propertyDate','propertyDate','nextDate','userName'],[propertyDate, propertyDate, nextDate, userName]); 
+      }
+    }
+    else{   
+      message = this.localization.replacePlaceholders(this.captions.dayendInfoMsg, ['propertyDate','propertyDate','nextDate'],[propertyDate, propertyDate, nextDate]); 
+    }
+    this.utils.ShowErrorMessage(this.captions.DAYEND, message, RetailButtonType.YesNo, this.PopupCallback.bind(this));
   }
 
 

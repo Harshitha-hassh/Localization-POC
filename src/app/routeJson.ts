@@ -358,6 +358,7 @@ export const routeJSON = {
   "GetAppointmentWithDeposit": "appointments/status/{status}/date/{appointmentDate}",
   "GetAppointmentWithoutTransaction": "appointments/notransaction/checkedout/date/{appointmentDate}",
   "PerformDayEnd": "dayend/process/date/{currentDate}/{isAllowFutureDate}",
+  "GetUserDetail": "PointOfSaleService/DayEnd/GetUserDetailByAuditDate/{Date}",
   "GetManagementData": "Rules/ManagementData",
   "CheckOutAppointment": "appointments/checkout",
   "GetReport": "report",

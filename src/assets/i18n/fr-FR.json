@@ -4110,6 +4110,9 @@
   "dayEnd": {
     "revenuePostings": "Revenue Posting with Room/Group Charge Failure(s)_fr",
     "DAYEND": "DAY END_fr",
+    "dayendInfoMsg": "Current property date is on <b>{propertyDate}</b>. Processing night audit will change the date from <b>{propertyDate}</b> to <b>{nextDate}</b>. Do you wish to proceed?_fr",
+    "dayendAutoAuditMsg": "Current property date is on <b>{propertyDate}</b> which was processed as auto night audit. Processing night audit will change the date from <b>{propertyDate}</b> to <b>{nextDate}</b>. Do you wish to proceed?_fr",
+    "dayendManualAuditMsg": "Current property date is on <b>{propertyDate}</b> which was processed by <b>{userName}</b> user. Processing night audit will change the date from <b>{propertyDate}</b> to <b>{nextDate}</b>. Do you wish to proceed?_fr",
     "DayEndProcess": "Do you want to process day end?_fr",
     "ScheduledWithDeposit": "Scheduled Appointments with Deposit_fr",
     "CheckInAppointments": "Checked In Appointments_fr",
