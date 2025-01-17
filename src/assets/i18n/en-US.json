@@ -71,7 +71,8 @@
     "resev": "Resev",
     "all": "All",
     "viewFailed": "View Failed",
-    "viewFailedUnprocessed": "View Failed / Unprocessed"
+    "viewFailedUnprocessed": "View Failed / Unprocessed",
+    "confirmation": "Are You Sure?"
   },
   "login": {
     "enterUserId": "Please Enter the User ID",
@@ -137,6 +138,7 @@
       "Y",
       "Z"
     ],
+    "removepopup": "Do You Want To Remove The Image ?",
     "IMPORT": "IMPORT",
     "UPLOAD": "UPLOAD",
     "LoadingPlayerInformation": "Loading Player Information",
@@ -3622,6 +3624,12 @@
     "lbl_proprtyLevel": "Property Level",
     "lbl_authCodeonReceipts": "Display Auth Code on Receipts",
     "lbl_printGiftReceipt": "Enable Gift Receipt",
+    "lbl_displayPropertyLogoInReceiptHeader": "Display Property Logo in Receipt Header",
+    "lbl_displayImageInReceiptFooter": "Display Image in Receipt Footer",
+    "UploadYourImage": "Upload your Image",
+    "lbl_imageUploadforReceiptHeader": "Image Upload for Receipt Header",
+    "lbl_imageUploadforReceiptFooter": "Image Upload for Receipt Footer",
+    "ImageSizeExceed": "Image Size Should Not Exceed 2MB after compression",
     "lbl_changeDue": "Display Change Due on Receipts",
     "lbl_authCodeonReceiptName": "Auth Code Receipt Name",
     "checked": "Yes",
@@ -4747,6 +4755,7 @@
   "btn_add": "ADD",
 	"lbl_searchReports":"Search Reports",
   "lbl_systemDateChange":"System Date has been Changed to ",
+  "lbl_Image_validation": "Please upload image in the supported format (.jpg, .jpeg, .png, .svg)",
   "err_missing_dashboardName" : "Missing Dashboard Name",
 	"err_missing_dashboardUrl" : "Missing Dashboard URL",
 	"err_Invalid_dashboardUrl" : "Invalid Dashboard URL",

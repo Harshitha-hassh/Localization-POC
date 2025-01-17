@@ -76,8 +76,6 @@
                           <textarea [attr.automationId]="'Ta_ReceiptConfiguration_receiptNote'" matInput placeholder="{{textCaptions.ReceiptNote}}" formControlName="receiptNote" [maxlength]="250"></textarea>
                       </mat-form-field>
                       </div>
-
-
                     </div>
                   </div>
                 </div>
@@ -92,26 +90,70 @@
       <mat-tab label="{{textCaptions.lbl_proprtyLevel}}">
         <form [formGroup]="propertyForm" class="tab-height property-level p-4">
           <!-- formControlName="{{value.controlName}} -->
-          <div class="pb-3">
-            <label class="golf-form--label">{{textCaptions.lbl_printGiftReceipt}}</label>
+          <div class="ag_display--flex">
+            <div class="pad-top-10 ag_w--33 ag_pr--8">
+              <label class="golf-form--label">{{textCaptions.lbl_printGiftReceipt}}</label>
             <app-ag-toggle [toggleInputs]="printGiftToggleInputs"></app-ag-toggle>
+            </div>
+            <div class="pad-top-10 ag_w--33 ag_pr--8">
+              <label class="golf-form--label">{{textCaptions.lbl_displayPropertyLogoInReceiptHeader}}</label>
+              <app-ag-toggle [toggleInputs]="displayPropertyLogoInReceiptHeaderInput" (valueChange)="displayPropertyLogoInReceiptHeaderToggleAction($event.checked)">
+              </app-ag-toggle>
+            </div>
           </div>
-           <div>
-            <label class="golf-form--label text-label-new">{{textCaptions.lbl_authCodeonReceipts}}</label>
+          <div class="ag_display--flex">
+            <div class="pad-top-10 ag_w--33 ag_pr--8">
+              <label class="golf-form--label text-label-new">{{textCaptions.lbl_authCodeonReceipts}}</label>
             <app-ag-toggle [toggleInputs]="authCodeToggleInputs" (valueChange)="toggleAction($event)"></app-ag-toggle>
+            </div>
+            <div class="pad-top-10 ag_w--33 ag_pr--8" *ngIf="this.displayImageInReceiptHeader">
+              <label class="golf-form--label">{{textCaptions.lbl_imageUploadforReceiptHeader}}</label>
+              <ag-image-uploader [requiredWarningPopup]=true [emptyImgCaption]="textCaptions.UploadYourImage"[imgData]="headerUrl"
+              (fileDeleted)="headerImageFileDeleted()" (fileUploaded)="headerImageFileUploaded($event)" (fileSizeExceeded)="fileSizeExceeded()">
+              </ag-image-uploader>
+            </div>
           </div>
-
+          <div class="ag_display--flex">
+            <div class="pad-top-10 ag_w--33 ag_pr--8">
           <mat-form-field class="ag_form-control--xs pt-3 authcodeName" [floatLabel]="floatLabel" *ngIf="this.DisplayAuthCode">
             <input matInput [placeholder]="textCaptions.lbl_authCodeonReceiptName"
             [attr.automationId]="'Txt_ReceiptConfiguration_authcodeName'"  formControlName="authcodeName" [maxlength]="25" />
-          </mat-form-field>
-            <div class="pt-3">
+          </mat-form-field> 
+            </div>
+            <div class="pad-top-10 ag_w--33 ag_pr--8">
+              <label class="golf-form--label">{{textCaptions.lbl_displayImageInReceiptFooter}}</label>
+              <app-ag-toggle [toggleInputs]="displayImageInReceiptFooterInput" (valueChange)="displayImageInReceiptFooterToggleAction($event.checked)">
+              </app-ag-toggle>
+            </div>
+          </div>
+          <div class="ag_display--flex">
+            <div class="pad-top-10 ag_w--33 ag_pr--8">
               <label class="golf-form--label text-label-new">{{textCaptions.lbl_changeDue}}</label>
               <app-ag-toggle [toggleInputs]="changeDueToggleInputs" (valueChange)="toggleChangeDueAction($event)"></app-ag-toggle>
             </div>
-            <mat-form-field (click)="viewChange($event)" class="mt-5 ag_form-control--xs receiptNote textWidth txt-area-height" [floatLabel]="floatLabel">
-                <textarea [attr.automationId]="'Ta_ReceiptConfiguration_receiptFooterNote'" matInput placeholder="{{textCaptions.ReceiptFooterNote}}" formControlName="receiptFooterNote" [maxlength]="250"></textarea>
+            <div class="pad-top-10 ag_w--33 ag_pr--8">
+              <div class="mb-2 ag_display--inblock propImagePadding" *ngIf="this.displayImageInReceiptFooter">
+                <label class="golf-form--label">{{textCaptions.lbl_imageUploadforReceiptFooter}}</label>
+                <ag-image-uploader [requiredWarningPopup]=true [emptyImgCaption]="textCaptions.UploadYourImage"[imgData]="footerUrl"
+                    (fileDeleted)="footerImageFileDeleted()" (fileUploaded)="footerImageFileUploaded($event)" (fileSizeExceeded)="fileSizeExceeded()">
+                </ag-image-uploader>
+            </div> 
+            </div>
+            </div>
+            <div class="ag_display--flex">
+              <div class="pad-top-10 ag_w--33 ag_pr--8">
+                <mat-form-field (click)="viewChange($event)" class="mt-5 ag_form-control--xs receiptNote textWidth txt-area-height" [floatLabel]="floatLabel">
+                  <textarea [attr.automationId]="'Ta_ReceiptConfiguration_receiptFooterNote'" matInput placeholder="{{textCaptions.ReceiptFooterNote}}" formControlName="receiptFooterNote" [maxlength]="250"></textarea>
+              </mat-form-field>
+              </div>
+              <div class="pad-top-10 ag_w--33 ag_pr--8">
+                <div class="mb-2 ag_display--inblock propImagePadding" *ngIf="this.displayImageInReceiptFooter">
+                  <mat-form-field [floatLabel]="floatLabel" (click)="viewChange($event)" class="txt-area-height w-18">
+                <textarea matInput [attr.automationId]="'Ta_ReceiptConfiguration_receiptImageFooterNote'" placeholder="{{textCaptions.ReceiptImageFooterNote}}" formControlName="receiptImageFooterNote" [maxlength]="250"></textarea>
             </mat-form-field>
+              </div> 
+              </div>
+              </div>
             <div class="pb-3 pt-4">
               <label class="golf-form--label text-label-new">{{localization.captions.setting.RequestPresettlementReceiptOnPendingSettlement}}</label>
               <app-ag-toggle [toggleInputs]="settlementReceiptToggleInputs"></app-ag-toggle>

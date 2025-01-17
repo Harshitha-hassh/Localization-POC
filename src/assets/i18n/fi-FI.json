@@ -71,7 +71,8 @@
     "resev": "Resev_fi",
     "all": "All_fi",
     "viewFailed": "View Failed_fi",
-    "viewFailedUnprocessed": "View Failed / Unprocessed_fi"
+    "viewFailedUnprocessed": "View Failed / Unprocessed_fi",
+    "confirmation": "Are You Sure?_fi"
   },
   "login": {
     "enterUserId": "Please Enter the User ID_fi",
@@ -137,6 +138,7 @@
       "Y",
       "Z"
     ],
+    "removepopup": "Do You Want To Remove The Image ?_fi",
     "IMPORT": "IMPORT_fi",
     "UPLOAD": "UPLOAD_fi",
     "LoadingPlayerInformation": "Loading Player Information_fi",
@@ -3620,6 +3622,12 @@
     "lbl_proprtyLevel": "Property Level_fi",
     "lbl_authCodeonReceipts": "Display Auth Code on Receipts_fi",
     "lbl_printGiftReceipt": "Enable Gift Receipt_fi",
+    "lbl_displayPropertyLogoInReceiptHeader": "Display Property Logo in Receipt Header_fi",
+    "lbl_displayImageInReceiptFooter": "Display Image in Receipt Footer_fi",
+    "UploadYourImage": "Upload your Image_fi",
+    "lbl_imageUploadforReceiptHeader": "Image Upload for Receipt Header_fi",
+    "lbl_imageUploadforReceiptFooter": "Image Upload for Receipt Footer_fi",
+    "ImageSizeExceed": "Image Size Should Not Exceed 2MB after compression_fi",
     "lbl_changeDue": "Display Change Due on Receipts_fi",
     "lbl_authCodeonReceiptName": "Auth Code Receipt Name_fi",
     "checked": "Yes_fi",
@@ -4745,6 +4753,7 @@
   "btn_add": "ADD_fi",
   "lbl_searchReports": "Search Reports_fi",
   "lbl_systemDateChange": "System Date has been Changed to _fi",
+  "lbl_Image_validation": "Please upload image in the supported format (.jpg, .jpeg, .png, .svg)_fi",
   "err_missing_dashboardName": "Missing Dashboard Name_fi",
   "err_missing_dashboardUrl": "Missing Dashboard URL_fi",
   "err_Invalid_dashboardUrl": "Invalid Dashboard URL_fi",

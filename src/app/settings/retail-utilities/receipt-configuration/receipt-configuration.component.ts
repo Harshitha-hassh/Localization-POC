@@ -1,13 +1,16 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
-import { Outlet, ReceiptModel,PropertyReceiptModel, PropertyConfigurationModel } from '../../../retail/retail.modals';
+import { Outlet, ReceiptModel,PropertyReceiptModel, PropertyConfigurationModel, ImgType, receiptImageConfiguration, RetailImgRefType } from '../../../retail/retail.modals';
 import { ReceiptConfigurationDataService } from './receipt-configuration-data';
 import { RetailOutletsDataService } from '../../../retail/retail-code-setup/retail-outlets/retail-outlets-data.service';
 import { RetailBreakPoint, ButtonType } from 'src/app/common/shared/shared/globalsContant';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
-import { AgToggleConfig } from 'src/app/common/Models/ag-models';
+import { AgToggleConfig, DropdownOptions } from 'src/app/common/Models/ag-models';
+import { AlertType, Imagedata } from 'src/app/shared/shared-models';
+import { ImageDataService } from 'src/app/shared/data-services/Image/image.data.services';
+import { DEFAULT_IMAGE_REFERENCE_ID } from 'src/app/app-constants';
 
 @Component({
   selector: 'app-receipt-configuration',
@@ -45,13 +48,27 @@ export class ReceiptConfigurationComponent implements OnInit {
   authCodeToggleInputs: AgToggleConfig;
   changeDueToggleInputs: AgToggleConfig;
   settlementReceiptToggleInputs: AgToggleConfig;
-
+  displayImageInReceiptFooterInput : AgToggleConfig;
+  displayPropertyLogoInReceiptHeaderInput : AgToggleConfig;
+  isImageRemoved: boolean;
+  ImageUploaded: boolean;
+  imagePositionOptions: DropdownOptions[];
+  displayImageInReceiptHeader:boolean;
+  displayImageInReceiptFooter:boolean;
+  base64textString: string;
+  thumbnailImg: any;
+  footerUrl: string;
+  headerImageReferenceId?: string;
+  footerImageReferenceId?: string;
+  headerImageUploaded: boolean;
+  footerImageUploaded: boolean;
+  headerUrl: string;
 
   constructor(private Form: UntypedFormBuilder,
               private breakPoint: BreakPointAccess,
               public localization: RetailStandaloneLocalization,
               private data: ReceiptConfigurationDataService,
-              private outletData: RetailOutletsDataService, private utils: RetailUtilities) {
+              private outletData: RetailOutletsDataService, private utils: RetailUtilities,private imgService: ImageDataService) {
     this.textCaptions = this.localization.captions.utilities;
     this.floatLabel = this.localization.setFloatLabel;
     this.FormGrp = this.Form.group({
@@ -70,7 +87,15 @@ export class ReceiptConfigurationComponent implements OnInit {
       authcodeName: [''],
       displayChangeDue: [''],
       receiptFooterNote: [''],
-      printPendingSettlementReceipt: ['']
+      printPendingSettlementReceipt: [''],
+      displayImageInReceiptHeader: [false],
+      displayImageInReceiptFooter: [false],
+      headerimagedata: false,
+      footerimagedata: false,
+      headerImageReferenceId: DEFAULT_IMAGE_REFERENCE_ID,
+      footerImageReferenceId:DEFAULT_IMAGE_REFERENCE_ID,
+      propertyImageAlign: '0',
+      receiptImageFooterNote: ['']
     })
   }
 
@@ -78,6 +103,8 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.textCaptions = this.localization.captions.utilities;
     this.DisplayAuthCode=false;
     this.displayChangeDue= false;
+    this.displayImageInReceiptHeader=false;
+    this.displayImageInReceiptFooter=false;
     this.ServiceCharge = [
       { id: 1, value: this.textCaptions.Details },
       { id: 2, value: this.textCaptions.SummarySplit },
@@ -102,6 +129,18 @@ export class ReceiptConfigurationComponent implements OnInit {
       group: this.propertyForm,
       formControlName: 'printPendingSettlementReceipt',
       automationId:"'Tog_ReceiptConfiguration_printPendingSettlementReceipt'"
+    }
+    this.displayImageInReceiptFooterInput = {
+      group: this.propertyForm,
+      horizontal: true,
+      formControlName: 'displayImageInReceiptFooter',
+      automationId : 'Tog_ReceiptConfiguration_displayImageInReceiptFooter' 
+    }
+    this.displayPropertyLogoInReceiptHeaderInput = {
+      group: this.propertyForm,
+      horizontal: true,
+      formControlName: 'displayImageInReceiptHeader',
+      automationId : 'Tog_ReceiptConfiguration_displayPropertyLogoInReceiptHeader' 
     }
     this.Outlet = await this.outletData.getOutlets();
     this.Outlet = this.Outlet.filter(x => x.isActive == true);
@@ -363,6 +402,22 @@ export class ReceiptConfigurationComponent implements OnInit {
       
     }
   }
+  displayImageInReceiptFooterToggleAction(event) {
+    if (event == false) {
+      this.displayImageInReceiptFooter=false;
+    }
+    else {
+      this.displayImageInReceiptFooter=true;
+    }
+  }
+  displayPropertyLogoInReceiptHeaderToggleAction(event) {
+    if (event == false) {
+      this.displayImageInReceiptHeader=false;
+    }
+    else {
+      this.displayImageInReceiptHeader=true;
+    }
+  }
 async getPropertyReceiptConfig()
 {
   this.PropertyReceiptInfo = await this.data.getPropertyReceiptConfig(); 
@@ -382,6 +437,24 @@ async getPropertyReceiptConfig()
      this.propertyForm.controls["receiptFooterNote"].setValue(receiptFooterNote);
      this.propertyForm.controls["printGiftReceipt"].setValue(printGiftReceipt);
      this.propertyForm.controls["printPendingSettlementReceipt"].setValue(printPendingSettlementReceipt);
+     let displayImageInReceiptHeader = this.PropertyReceiptInfo.configValue.displayImageInReceiptHeader != null ? this.PropertyReceiptInfo.configValue.displayImageInReceiptHeader : this.PropertyReceiptInfo.defaultValue.displayImageInReceiptHeader;
+      this.propertyForm.controls["displayImageInReceiptHeader"].setValue(displayImageInReceiptHeader);
+      let displayImageInReceiptFooter = this.PropertyReceiptInfo.configValue.displayImageInReceiptFooter != null ? this.PropertyReceiptInfo.configValue.displayImageInReceiptFooter : this.PropertyReceiptInfo.defaultValue.displayImageInReceiptFooter;
+      this.propertyForm.controls["displayImageInReceiptFooter"].setValue(displayImageInReceiptFooter);
+      let receiptImageFooterNote = this.PropertyReceiptInfo.configValue.receiptImageFooterNote != "" ? this.PropertyReceiptInfo.configValue.receiptImageFooterNote : "";
+      let receiptFooterImageReferenceId = this.PropertyReceiptInfo.configValue.footerImageReferenceId;
+      let receiptHeaderImageReferenceId = this.PropertyReceiptInfo.configValue.headerImageReferenceId;
+      if(displayImageInReceiptFooter== true){
+        this.displayImageInReceiptFooter=true;
+        this.propertyForm.controls["receiptImageFooterNote"].setValue(receiptImageFooterNote);
+        this.mapReceiptImageDataToUI(receiptFooterImageReferenceId,ImgType.receiptFooter)
+        this.propertyForm.markAsPristine();
+      }
+      if(displayImageInReceiptHeader== true){
+        this.displayImageInReceiptHeader=true;
+        this.mapReceiptImageDataToUI(receiptHeaderImageReferenceId,ImgType.receiptHeader)
+        this.propertyForm.markAsPristine();
+      }
      if(displayAuthCode == true)
     {
       this.DisplayAuthCode=true;
@@ -432,17 +505,36 @@ async getPropertyReceiptConfig()
     this.resetData();
   }
 
-  formConfigValue(data: any)
-  {
-    let configValue : PropertyConfigurationModel = {
-      displayAuthCode: data.displayAuthcode,
-      AuthCodeReceiptName: data.authcodeName,
-      displayChangeDue: data.displayChangeDue,
-      receiptFooterNote: data.receiptFooterNote,
-      printGiftReceipt: data.printGiftReceipt,
-      printPendingSettlementReceipt: data.printPendingSettlementReceipt
-    }
-    return configValue;
+  formConfigValue(data: any): PropertyConfigurationModel {
+    const {
+      displayAuthcode = false,
+      authcodeName,
+      displayChangeDue = false,
+      receiptFooterNote,
+      printGiftReceipt = false,
+      printPendingSettlementReceipt,
+      headerimagedata,
+      footerimagedata,
+      headerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID,
+      footerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID,
+      receiptImageFooterNote
+    } = data;
+  
+    return {
+      displayAuthCode: displayAuthcode,
+      AuthCodeReceiptName: authcodeName,
+      displayChangeDue,
+      receiptFooterNote,
+      printGiftReceipt,
+      printPendingSettlementReceipt,
+      displayImageInReceiptHeader: this.displayImageInReceiptHeader || false,
+      displayImageInReceiptFooter: this.displayImageInReceiptFooter || false,
+      headerimagedata,
+      footerimagedata,
+      headerImageReferenceId:this.headerImageReferenceId,
+      footerImageReferenceId:this.footerImageReferenceId,
+      receiptImageFooterNote
+    };
   }
   formDefaultValue(data: any)
   {
@@ -452,8 +544,137 @@ async getPropertyReceiptConfig()
       displayChangeDue: false,
       receiptFooterNote: "",
       printGiftReceipt: false,
-      printPendingSettlementReceipt: false
+      printPendingSettlementReceipt: false,
+      displayImageInReceiptHeader: false,
+      displayImageInReceiptFooter: false,
+      headerimagedata: false,
+      footerimagedata: false,
+      headerImageReferenceId: DEFAULT_IMAGE_REFERENCE_ID, 
+      footerImageReferenceId: DEFAULT_IMAGE_REFERENCE_ID,
+      receiptImageFooterNote:""
     }
     return defaultValue;
   }
+
+  
+  fileSizeExceeded() {
+    this._utilities.showAlert(this.textCaptions.ImageSizeExceed, AlertType.Info, ButtonType.Ok);
+  }
+
+  async headerImageFileUploaded(data) {
+    this.propertyForm.markAsDirty();
+    this.propertyForm.markAsTouched();
+    this.isImageUpload = true;
+    this.propertyForm.controls['headerimagedata'].setValue(true);
+    this.base64textString = data['orgImg'];
+    this.thumbnailImg = data['tmbImg'];
+    this.base64Image = this.base64textString;
+    this.thumbnailImg = this.thumbnailImg;
+    this.imageRemoved = false;
+    this.headerImageReferenceId = await this.savePropertyReceiptImage(data,ImgType.receiptHeader);
+  }
+  public async savePropertyReceiptImage(data: receiptImageConfiguration, imageType: string): Promise<string> {
+   if (this.isImageUpload) {
+      let imgRefType: RetailImgRefType;
+      
+      if (imageType === ImgType.receiptHeader) {
+          imgRefType = RetailImgRefType.receiptHeader;
+      } else if (imageType === ImgType.receiptFooter) {
+          imgRefType = RetailImgRefType.receiptFooter;
+      }
+      var imgReferenceId = this.imageReferenceId ? this.imageReferenceId : DEFAULT_IMAGE_REFERENCE_ID;
+      
+      if (imgReferenceId === undefined || imgReferenceId === '' || imgReferenceId === DEFAULT_IMAGE_REFERENCE_ID) {
+          const imageGuid = this.utils.generateUUIDUsingMathRandom();
+          const imageReferenceIde = await this.saveImageCommon(imgRefType, imageGuid, this.base64Image, this.thumbnailImg);
+          data.imageReferenceId = imageReferenceIde;
+      } else {
+          await this.updateItemImageCommon(imgRefType, imgReferenceId, this.imageId, data.imageReferenceId, this.imageRemoved, this.base64Image, this.thumbnailImg);
+          data.imageReferenceId = imgReferenceId;
+      }
+  } else {
+      data.imageReferenceId = this.imageReferenceId ? this.imageReferenceId : DEFAULT_IMAGE_REFERENCE_ID;
+  }
+  
+    return data.imageReferenceId;
+  }
+  async saveImageCommon(type: RetailImgRefType, referenceId: string, base64textString, thumbnailImg): Promise<string> {
+    if (base64textString) {
+      const base64result = base64textString.split(',');
+      const base64Thumbnail = thumbnailImg.split(',');
+      const imageDataObj: Imagedata = {
+        referenceId: 0,
+        referenceType: type,
+        data: base64result[1],
+        id: 0,
+        thumbnailData: base64Thumbnail[1],
+        contentType: base64result[0],
+        sequenceNo: 0,
+        imageReferenceId: referenceId
+      };
+      return await this.imgService.saveImage([imageDataObj]);
+    }
+  }
+  async updateItemImageCommon(referenceType: RetailImgRefType, referenceId: string, imageID, imgRefId: string, isImageRemoved, base64textString, thumbnailImg) {
+    if (base64textString || isImageRemoved) {
+      const base64result = isImageRemoved ? ['', ''] : base64textString.split(',');
+      const base64Thumbnail = isImageRemoved ? ['', ''] : thumbnailImg.split(',');
+      const imageDataObj: Imagedata = {
+        referenceId: 0,
+        referenceType: referenceType,
+        data: base64result[1],
+        id: imageID ? imageID : 0,
+        thumbnailData: base64Thumbnail[1],
+        contentType: base64result[0],
+        sequenceNo: this.sequenceNo,
+        imageReferenceId: referenceId
+      };
+      await this.imgService.updateImage([imageDataObj]);
+    }
+  }
+  async footerImageFileUploaded(data) {
+    this.propertyForm.markAsDirty();
+    this.propertyForm.markAsTouched();
+    this.isImageUpload = true;
+    this.propertyForm.controls['footerimagedata'].setValue(true);
+    this.base64textString = data['orgImg'];
+    this.thumbnailImg = data['tmbImg'];
+    this.base64Image = this.base64textString;
+    this.thumbnailImg = this.thumbnailImg;
+    this.imageRemoved = false;
+    this.footerImageReferenceId = await this.savePropertyReceiptImage(data,ImgType.receiptFooter);
+  }
+  async mapReceiptImageDataToUI(imageReferenceId: string, imageType?: ImgType) {
+    if (!imageReferenceId || imageReferenceId === DEFAULT_IMAGE_REFERENCE_ID) {
+        return;
+    }
+
+    const imageData = await this.getImageForHeaderFooterRefIds(imageReferenceId, true);
+    const image = imageData?.[0];
+    if (!image?.thumbnailData) {
+        return;
+    }
+    if (imageType === ImgType.receiptFooter) {
+        this.footerUrl = `${image.contentType ?? ''},${image.thumbnailData ?? ''}`;
+    } else if (imageType === ImgType.receiptHeader) {
+        this.headerUrl = `${image.contentType ?? ''},${image.thumbnailData ?? ''}`;
+    }
+}
+  
+async getImageForHeaderFooterRefIds(imgRefId: string, isthumbnailonly: boolean): Promise<Imagedata> {
+  return await this.imgService.GetImagesByReferenceId(imgRefId, isthumbnailonly);
+
+}
+headerImageFileDeleted() {
+  this.propertyForm.markAsDirty();
+  this.propertyForm.markAsTouched();
+  this.isSaveDisabled = false;
+  this.headerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID
+}
+footerImageFileDeleted() {
+  this.propertyForm.markAsDirty();
+  this.propertyForm.markAsTouched();
+  this.isSaveDisabled = false; 
+  this.footerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID
+}
 }
