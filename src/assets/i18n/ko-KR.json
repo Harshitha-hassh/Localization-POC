@@ -2427,6 +2427,19 @@
       "lbl_map": "Map_kr",
       "lbl_CommissionDefaultNotFound": "Commissionable Item(s) are imported and default commission is not set. Kindly set the defaults for commission to proceed._kr"
     },
+    "DiscountMapping": {
+      "lbl_addRow": "+ ADD ROW_kr",
+      "lbl_vipType": "VIP Type_kr",
+      "lbl_guestType": "Guest Type_kr",
+      "tierLevel": "Tier Level_kr",
+      "discountType": "Discount Type_kr",
+      "lbl_selectAll": "Select All_kr",
+      "playerType": "Player Type_kr",
+      "duplicateMapping": "Duplicate mapping in place_kr",
+      "btn_save": "SAVE_kr",
+      "btn_cancel": "CANCEL_kr",
+      "warn_datalostChanges": "Are you sure you want to cancel the changes?_kr"
+    },
     "SearchCategory": "Search Category_kr",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_kr",
     "SelectGeneralLedgerDetails": "Select General Ledger Details_kr",
