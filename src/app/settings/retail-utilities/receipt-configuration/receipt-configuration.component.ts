@@ -531,8 +531,8 @@ async getPropertyReceiptConfig()
       displayImageInReceiptFooter: this.displayImageInReceiptFooter || false,
       headerimagedata,
       footerimagedata,
-      headerImageReferenceId:this.headerImageReferenceId,
-      footerImageReferenceId:this.footerImageReferenceId,
+      headerImageReferenceId:this.headerImageReferenceId?this.headerImageReferenceId:this.PropertyReceiptInfo.configValue.headerImageReferenceId,
+      footerImageReferenceId:this.footerImageReferenceId?this.footerImageReferenceId:this.PropertyReceiptInfo.configValue.footerImageReferenceId,
       receiptImageFooterNote
     };
   }
@@ -571,6 +571,7 @@ async getPropertyReceiptConfig()
     this.base64Image = this.base64textString;
     this.thumbnailImg = this.thumbnailImg;
     this.imageRemoved = false;
+    this.footerImageReferenceId = this.footerImageReferenceId?this.footerImageReferenceId:this.PropertyReceiptInfo.configValue.footerImageReferenceId;
     this.headerImageReferenceId = await this.savePropertyReceiptImage(data,ImgType.receiptHeader);
   }
   public async savePropertyReceiptImage(data: receiptImageConfiguration, imageType: string): Promise<string> {
@@ -642,6 +643,7 @@ async getPropertyReceiptConfig()
     this.base64Image = this.base64textString;
     this.thumbnailImg = this.thumbnailImg;
     this.imageRemoved = false;
+    this.headerImageReferenceId = this.headerImageReferenceId?this.headerImageReferenceId:this.PropertyReceiptInfo.configValue.headerImageReferenceId;
     this.footerImageReferenceId = await this.savePropertyReceiptImage(data,ImgType.receiptFooter);
   }
   async mapReceiptImageDataToUI(imageReferenceId: string, imageType?: ImgType) {
@@ -669,12 +671,12 @@ headerImageFileDeleted() {
   this.propertyForm.markAsDirty();
   this.propertyForm.markAsTouched();
   this.isSaveDisabled = false;
-  this.headerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID
+  this.headerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID;
 }
 footerImageFileDeleted() {
   this.propertyForm.markAsDirty();
   this.propertyForm.markAsTouched();
   this.isSaveDisabled = false; 
-  this.footerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID
+  this.footerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID;
 }
 }
