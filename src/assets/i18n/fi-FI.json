@@ -3167,6 +3167,7 @@
     "inventoryScannerPostType_override": "Override_fi",
     "inventoryScannerPostType_cumulative": "Cumulative_fi",
     "inventoryScannerPostTypeConfig": "Inventory Quantity Adjustment_fi",
+    "DisplayItemNumberInShop": "Display Item # in Shop_fi",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_fi",
       "CMS": "CMS_fi",
