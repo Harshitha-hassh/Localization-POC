@@ -285,12 +285,12 @@
           <div class="float-left width-490px">
             <mat-form-field class="width-380px" [formGroupName]="j" [floatLabel]="floatLabel">
               <input matInput [attr.automationId]="'Txt_personalInformation_address'"
-                [required]="customRequired.address" *ngIf="j==0" ngx-google-places-autocomplete [options]='options'
-                #placesRef="ngx-places" (onAddressChange)="bindAddressFromGoogle($event,true,j)" name="TSei"
+                [required]="customRequired.address" *ngIf="j==0" matGoogleMapsAutocomplete [options]='options'
+                (onAutocompleteSelected)="bindAddressFromGoogle($event,true,j)" name="TSei"
                 [maxlength]="100" id="AddressInput{{j}}" formControlName="addressLine"
                 placeholder="{{captions.CAddress}}">
               <input matInput [required]="customRequired.address" *ngIf="j>0"
-                (onAddressChange)="bindAddressFromGoogle($event,true,j)" name="TSei" [maxlength]="100"
+                (onAutocompleteSelected)="bindAddressFromGoogle($event,true,j)" name="TSei" [maxlength]="100"
                 id="AddressInput{{j}}" formControlName="addressLine" placeholder="{{captions.CAddress}}">
             </mat-form-field>
             <span [attr.automationId]="'Lbl_personalInformation_removeAddressItem'" class="icon-Minus"
@@ -299,10 +299,10 @@
             <span [attr.automationId]="'Lbl_personalInformation_addAddressItem'" class="icon-Plus"
               [ngClass]="{'button_invalid': isClientViewOnly }" (click)="addAddressItem(j);makeFormDirty()"
               *ngIf="(last && j < 2) || IsEdit"></span>
-            <mat-error class="width-380px d-inline-block"
+            <div class="width-380px d-inline-block mat-error mt-3"
               *ngIf="!FormGrp.controls['Address'].disabled && FormGrp.controls['Address'].touched && !FormGrp.controls['Address']['controls'][j].valid">
               {{captions.MissingAddress}}
-            </mat-error>
+          </div>
           </div>
           <div class="yes-col contact-info-toggle float-left" [formGroupName]="j" *ngIf="j==0">
             <label class="LW12 d-block form-label-normal">{{captions.PrivateInformation}}</label>

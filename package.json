@@ -20,6 +20,7 @@
   "dependencies": {
     "@angular-material-components/datetime-picker": "^8.0.0",
     "@angular-material-components/moment-adapter": "^5.0.0",
+    "@angular-material-extensions/google-maps-autocomplete": "^16.4.0",
     "@angular/animations": "^14.2.12",
     "@angular/cdk": "^14.2.7",
     "@angular/common": "^14.2.12",
@@ -70,7 +71,6 @@
     "ngx-bootstrap": "^6.2.0",
     "ngx-color": "^4.1.0",
     "ngx-doc-viewer": "^15.0.1",
-    "ngx-google-places-autocomplete": "^2.0.5",
     "ngx-image-compress": "^8.0.3",
     "ngx-material-timepicker": "5.5.3",
     "ngx-scrollbar": "2.1.0",

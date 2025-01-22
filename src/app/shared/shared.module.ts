@@ -27,7 +27,6 @@ import { CreateClientComponent } from '../client/client-popup/create-client/crea
 import { TransactionHistoryComponent } from '../client/client-popup/create-client/transaction-history/transaction-history.component';
 import { PersonalInformationComponent } from '../client/client-popup/create-client/personal-information/personal-information.component';
 import { AdditionalInformationComponent } from '../client/client-popup/create-client/additional-information/additional-information.component';
-import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { CardTypeComponent } from './components/card-type/card-type.component';
 import { UserAccessBusiness } from '../common/dataservices/authentication/useraccess.business';
 import { UserAccessDataService } from '../common/dataservices/authentication/useraccess.data.service';
@@ -43,6 +42,7 @@ import { NotifyPopupComponent } from './components/notify-popup/notify-popup.com
 import { NotificationDataService } from './data-services/notification.data.service';
 import { AllowedSpecialCharacterDirective } from './directives/allowedSpecialCharacter.directive';
 import { RetailIntegrationLogService } from '../retail/shared/service/retail-integrationLog.service';
+import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
 @NgModule({
     declarations: [
         MenuComponent,
@@ -75,9 +75,9 @@ import { RetailIntegrationLogService } from '../retail/shared/service/retail-int
         TemplatesModule,
         RetailSharedModule,
         CommonSharedModule,
-        GooglePlaceModule,
         NgxMaterialTimepickerModule,
-        RetailSharedModule
+        RetailSharedModule,
+        MatGoogleMapsAutocompleteModule
     ],
     providers: [
         TenantManagementCommunication,

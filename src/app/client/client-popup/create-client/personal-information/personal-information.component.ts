@@ -2,9 +2,6 @@ import { Component, OnInit, ViewEncapsulation, ViewChild, EventEmitter, Output, 
 import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray } from '@angular/forms';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
 import { Host, Module, DefaultGUID, ButtonType } from 'src/app/common/shared/shared/globalsContant';
-import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
-import { Address } from 'ngx-google-places-autocomplete/objects/address';
-import { AddressComponent } from 'ngx-google-places-autocomplete/objects/addressComponent';
 import { BaseResponse } from 'src/app/common/shared/shared.modal';
 import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 import * as _ from 'lodash';
@@ -790,8 +787,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     e.preventDefault();
     this.addressLineArray.splice(index, 1);
   }
-  autoCompleteCallback1(e: Address) {
-    const addressArr: AddressComponent[] = [];
+  autoCompleteCallback1(e) {
+    const addressArr: [] = [];
     let _line1 = '';
     let _line2 = '';
     let _line3 = '';
@@ -821,11 +818,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   }
 
-  @ViewChild('placesRef') placesRef: GooglePlaceDirective;
 
-  public handleAddressChange(address: Address) {
-    // Do some stuff
-  }
+
 
   async SetEditValues(clientInfo) {
     let loyalty = clientInfo.client && clientInfo.client.loyaltyDetail && clientInfo.client.loyaltyDetail.length > 0 ? clientInfo.client.loyaltyDetail[0] : null;
