@@ -1050,6 +1050,7 @@
     "lbl_payment_received": "Amount Received",
     "MultiPackReturnConfirmation": "Guest has already redeemed items for the portion of multipack in the amount of {Amount}. Deduct this amount from the price of returned item?",
     "MultiPackReturnConfirmationFullRedeem": "Guest has already redeemed multipack fully amount of {Amount}, Only complete Return allowed, Do you want to Continue? ",
+    "AddMemberToPay": "ADD MEMBER TO PAY",
     "AdvancedSearch": "Advanced Search",
     "ClerkId": "Clerk ID",
     "Search": "Search",
