@@ -1050,6 +1050,7 @@
     "lbl_payment_received": "Amount Received_fr",
     "MultiPackReturnConfirmation": "Guest has already redeemed items for the portion of multipack in the amount of {Amount}. Deduct this amount from the price of returned item?_fr",
     "MultiPackReturnConfirmationFullRedeem": "Guest has already redeemed multipack fully amount of {Amount}, Only complete Return allowed, Do you want to Continue? _fr",
+    "AddMemberToPay": "ADD MEMBER TO PAY_fr",
     "AdvancedSearch": "Advanced Search_fr",
     "ClerkId": "Clerk ID_fr",
     "Search": "Search_fr",
@@ -3169,6 +3170,7 @@
     "inventoryScannerPostType_override": "Override_fr",
     "inventoryScannerPostType_cumulative": "Cumulative_fr",
     "inventoryScannerPostTypeConfig": "Inventory Quantity Adjustment_fr",
+    "DisplayItemNumberInShop": "Display Item # in Shop_fr",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_fr",
       "CMS": "CMS_fr",

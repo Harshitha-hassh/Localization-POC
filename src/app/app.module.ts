@@ -33,6 +33,8 @@ import { EnvService } from './eatecui/source/config.service';
 import { environment } from 'src/environments/environment';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from '@shared/services/reuse-strategy';
+import { SessionLoaderService } from './common/services/sessionloader.service';
+import { GoogleMapsWrapperModule } from './common/services/googlemapswrapper.module';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
@@ -45,6 +47,9 @@ export function appInitializerFactory(translate: TranslateService) {
     translate.setDefaultLang('en');
     return translate.use('en').toPromise();
   };
+}
+export function initializeApp(sessionService: SessionLoaderService) {
+  return () => sessionService.initializeSession();
 }
 
 declare module "@angular/core" {
@@ -82,7 +87,8 @@ export const OtherOptions: MatTooltipDefaultOptions = {
         deps: [HttpClient]
       }
     }),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    GoogleMapsWrapperModule
   ],
   providers: [
     {
@@ -118,6 +124,12 @@ export const OtherOptions: MatTooltipDefaultOptions = {
     {
       provide: RouteReuseStrategy,
       useClass: CustomReuseStrategy
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [SessionLoaderService],
+      multi: true,
     }
   ],
   bootstrap: [AppComponent]

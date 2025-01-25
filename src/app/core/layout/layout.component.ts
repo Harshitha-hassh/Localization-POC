@@ -239,8 +239,12 @@ logoutHandler(arg) {
     let propertyConfig = this.propertyInfo.GetPropertyConfiguration()
     if (propertyConfig?.GoogleMapApiKey) {
       const language = this.localization.GetsessionStorageValue('_userInfo', 'language') || 'en-US';
-      this.propertyService.generateGoogleMapApi(propertyConfig.GoogleMapApiKey, language);
-  }
+      // this.propertyService.generateGoogleMapApi(propertyConfig.GoogleMapApiKey, language);
+      if(!sessionStorage.getItem('googleMapsApiKey')) {
+        sessionStorage.setItem('googleMapsApiKey', propertyConfig?.GoogleMapApiKey);
+        window.location.reload();
+      }
+    }
   }
 
   applyTheme(name) {
