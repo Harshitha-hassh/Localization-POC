@@ -91,6 +91,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       expiry_date: this.PropertyInfo.CurrentDate,
       card_cvv: '',
       vip:'',
+      vipTypeId: 0,
       guestType:'',
       // client_scheduling: false,
       customField1: '',
@@ -118,7 +119,16 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     }
     this.getAllVipTypes();
     this.getAllGuestTypes();
-  }  
+    this.FormGrp.get('vip')?.valueChanges.subscribe((selectedVip: string) => {
+      const selectedVipType = this.vipTypes.find((type) => type.code === selectedVip);
+      if (selectedVipType) {
+        this.FormGrp.get('vipTypeId')?.setValue(selectedVipType.id); 
+      } else {
+        this.FormGrp.get('vipTypeId')?.setValue(0); 
+      }
+    });
+  }
+    
 
   ngOnDestroy() {
     if (this.formSubscription) {
@@ -146,6 +156,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     }
     this.FormGrp.controls.clientCreditCardInfo.setValue(this.cardInfo);
     this.FormGrp.controls.vip.setValue(clientInfo.client.vip);
+    this.FormGrp.controls.vipTpeId.setValue(clientInfo.client.vipTpeId);
     this.FormGrp.controls.guestType.setValue(clientInfo.client.guestType);
   }
 
