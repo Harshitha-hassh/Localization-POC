@@ -156,7 +156,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     }
     this.FormGrp.controls.clientCreditCardInfo.setValue(this.cardInfo);
     this.FormGrp.controls.vip.setValue(clientInfo.client.vip);
-    this.FormGrp.controls.vipTpeId.setValue(clientInfo.client.vipTpeId);
+    this.FormGrp.controls.vipTypeId.setValue(clientInfo.client.vipTypeId);
     this.FormGrp.controls.guestType.setValue(clientInfo.client.guestType);
   }
 
