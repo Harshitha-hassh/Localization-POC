@@ -3118,6 +3118,8 @@
     "DefalutThemeColor": "Property Differentiator Color_da",
     "ValueShouldBeGreaterThanZero": "Value Should Be Greater Than Zero_da",
     "AllowReturnstoOriginalSettlement": "Allow Returns to Original Payment Method Only_da",
+    "AutoDiscountApply": "Apply Discount Automatically_da",
+    "OverrideDiscount": "Override Discount Applied_da",
     "DefaultRefundToOriginalSettlement": "Default Refund To Original Settlement_da",
     "PMSProxyEndPoint": "PMS Proxy Endpoint_da",
     "ExcludeDiscountOnServiceCharge": "Exclude Discount On Service Charge_da",

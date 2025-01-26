@@ -161,7 +161,9 @@ export class DataAwaiterService {
             phoneNumber: phoneNo,
             lastName: client.lastName,
             platformGuestUuid: client.platformGuestUuid,
-            vip: client.vip
+            vip: client.vip,
+            guestTypeId: client.guestType,
+            vipTypeId: client.vipTypeId
         };
         return payee;
     }
@@ -196,7 +198,9 @@ export class DataAwaiterService {
             emailId: emailId,
             phoneNumber: phoneNo,
             lastName: client.client.lastName,
-            platformGuestUuid: client.client.platformGuestUuid
+            platformGuestUuid: client.client.platformGuestUuid,
+            guestTypeId: client.client.guestType,
+            vipTypeId: client.client.vipTypeId
         };
         return payee;
     }

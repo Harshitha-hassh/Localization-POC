@@ -85,6 +85,7 @@ export interface ClientInfo {
     platformBussinessCardUuid?: string;
     platformGuestUuid?: string;
     platformRevUuid?: string;
+    vipTypeId?:number;
   }
 
   export interface LoyaltyDetail{
