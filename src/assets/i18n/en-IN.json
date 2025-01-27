@@ -1393,7 +1393,8 @@
       "popUpSave": "SAVE",
       "popUpCancel": "CANCEL",
       "confirmationMessage": "All current data will be lost",
-      "courseUserAccess": "You don t have access for this course"
+      "courseUserAccess": "You don t have access for this course",
+      "ItemNumber": "Item #"
     },
     "nonIntegratedPaymentScreen": {
       "lbl_amount_paid": "Amount Paid",
