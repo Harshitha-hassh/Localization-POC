@@ -4865,5 +4865,6 @@
   },
   "lbl_addRow": "+ ADD ROW_da",
   "lbl_vipType": "VIP Type_da",
-  "lbl_guestType": "Guest Type_da"
+  "lbl_guestType": "Guest Type_da",
+  "lbl_refresh": "Refresh_da"
 }

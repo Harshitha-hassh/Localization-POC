@@ -4866,5 +4866,6 @@
   },
   "lbl_addRow": "+ ADD ROW",
   "lbl_vipType": "VIP Type",
-  "lbl_guestType": "Guest Type"
+  "lbl_guestType": "Guest Type",
+  "lbl_refresh": "Refresh"
 }

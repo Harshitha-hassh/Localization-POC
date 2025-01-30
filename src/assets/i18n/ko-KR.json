@@ -4865,5 +4865,6 @@
   },
   "lbl_addRow": "+ ADD ROW_kr",
   "lbl_vipType": "VIP Type_kr",
-  "lbl_guestType": "Guest Type_kr"
+  "lbl_guestType": "Guest Type_kr",
+  "lbl_refresh": "Refresh_kr"
 }
