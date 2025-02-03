@@ -1003,6 +1003,7 @@
       "lbl_searchingMultiPacks": "Retrieving multipack details..._fr"
     },
     "MultiPackRedemptionCorrectVoidReturnNotAllowed": "{transactionType} not allowed for transactions with Multipack Redemption_fr",
+    "ReturnRestrictionErrorMsgForCorrectVoid": "{transactionType} is not allowed as the transaction includes a return restricted item_fr",
     "ticketDiscount": "Ticket Discount_fr",
     "err_noCommision": "Commission for Item or Commission class for User(s) is not configured._fr",
     "err_selectTherapistUser": "Please select the required User(s) to apply commission._fr",
@@ -1281,6 +1282,7 @@
     "FullOrMultiplePayment": "Full / Multiple Payment_fr",
     "InvalidAmount": "Invalid Amount_fr",
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount_fr",
+    "ReturnRestrictedForThisItem": "Returns are restricted for this item_fr",
     "TicketDiscountAmountGreaterThanActual": "Ticket discount amount is greater than the ticket total_fr",
     "DiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for discount_fr",
     "CostDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost/Cost Plus discount_fr",
@@ -1931,6 +1933,7 @@
   "confirmPasswordSame": "New password and confirm password must be same_fr",
   "retailsetup": {
     "allowPriceOverride": "Allow Price Override_fr",
+    "restrictReturn": "Restrict Return_fr",
     "discountLevel": "Discount Level_fr",
     "TicketLevel": "Ticket_fr",
     "ItemLevel": "Item_fr",
