@@ -2447,7 +2447,10 @@
       "duplicateMapping": "Duplicate mapping in place",
       "btn_save": "SAVE",
       "btn_cancel": "CANCEL",
-      "warn_datalostChanges":"Are you sure you want to cancel the changes?"
+      "warn_datalostChanges":"Are you sure you want to cancel the changes?",
+      "tooltip_delete": "Delete",
+      "tooltip_reset": "Reset",
+      "tooltip_copy": "Copy"
     },
     "SearchCategory": "Search Category",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details",

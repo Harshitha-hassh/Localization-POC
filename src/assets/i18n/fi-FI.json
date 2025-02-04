@@ -2445,7 +2445,10 @@
       "duplicateMapping": "Duplicate mapping in place_fi",
       "btn_save": "SAVE_fi",
       "btn_cancel": "CANCEL_fi",
-      "warn_datalostChanges": "Are you sure you want to cancel the changes?_fi"
+      "warn_datalostChanges": "Are you sure you want to cancel the changes?_fi",
+      "tooltip_delete": "Delete_fi",
+      "tooltip_reset": "Reset_fi",
+      "tooltip_copy": "Copy_fi"
     },
     "SearchCategory": "Search Category_fi",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_fi",
