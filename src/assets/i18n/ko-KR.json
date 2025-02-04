@@ -1703,7 +1703,9 @@
     "OpenItemValidationforGiftCard": "Gift card item should be configured as an open item_kr",
     "HotelCompNumber": "Account Number_kr",
     "HotelCompAuthorizedAmount": "Authorized Amount_kr",
-    "lbl_HotelCompName": "Compor Name_kr"
+    "lbl_HotelCompName": "Compor Name_kr",
+    "lbl_item_on_par": "Item on Par_kr",
+    "lbl_iten_on_par_desc": "Item on Par. Do you want to add this item?_kr"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_kr",
@@ -3175,6 +3177,7 @@
     "inventoryScannerPostType_cumulative": "Cumulative_kr",
     "inventoryScannerPostTypeConfig": "Inventory Quantity Adjustment_kr",
     "DisplayItemNumberInShop": "Display Item # in Shop_kr",
+    "ValidateItemOnPar": "Validate Item On Par_kr",
     "RetailFeature": {
       "ACES Membership": "Agilysys Engage_kr",
       "CMS": "CMS_kr",
