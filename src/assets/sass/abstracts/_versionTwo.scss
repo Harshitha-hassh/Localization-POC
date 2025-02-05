@@ -805,6 +805,10 @@
   background-color: $ag-retail-background-grey;
   padding: 0 !important;
   height: calc(100% - 40px) !important;
+    .top-section{
+      @extend .bodyWrap;
+        margin: 0 10px 10px 10px !important;
+    }
     .custom-search-align{
       @extend .bodyWrap;
       margin: 10px !important;

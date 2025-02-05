@@ -125,8 +125,8 @@ const routes: Routes = [{
     },
     {
       path: 'configValidation',
-      component: ConfigValidationComponent,
-      canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard]
+      component: ConfigValidationComponent
+      //canActivate: [RouteGuardService], canDeactivate: [DeactivateGuard]
     },
     {
       path: 'cgpsFailedProfile', 

@@ -1,4 +1,4 @@
-import { OnDestroy } from '@angular/core';
+import { HostListener, OnDestroy } from '@angular/core';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PropertyService } from 'src/app/common/services/property.service';
 import { ManageSessionService } from 'src/app/login/manage-session.service';
@@ -26,6 +26,7 @@ import * as FullStory from '@fullstory/browser';
 import { FULL_STORY_ORG_ID } from 'src/app/app-constants';
 import { JasperServerCommonDataService } from 'src/app/common/dataservices/jasperServerCommon.data.service';
 import { takeUntil } from 'rxjs/operators';
+import { KeyboardMenuNavigationService } from 'src/app/common/services/keyboard-menu-navigation.service';
 
 @Component({
   selector: 'app-layout',
@@ -59,7 +60,9 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar,
     private httpCacheService: HttpCacheService,
     private commonLocalization : Localization,
-    private jasperServerCommonDataService:JasperServerCommonDataService) {
+    private jasperServerCommonDataService:JasperServerCommonDataService,
+    private keyBoardService: KeyboardMenuNavigationService
+  ) {
     this.routeDataService.loadSettings().then(result => {
       if (result) {
         const value = this.routeDataService.GetChildMenu('/');
@@ -75,6 +78,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
    }
 
   ngOnInit() {
+    
     window.onbeforeunload = (ev) => {
       if(sessionStorage.getItem('isChangesMade') == 'true'){
         let dialogText = this.localization.captions.common.RefreshMessage;
@@ -125,6 +129,13 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.destroyed$.next(true);
       this.destroyed$.complete();
     }
+  }
+
+  @HostListener("document:keydown", ["$event"]) onKeydownControlHandler(
+    event: KeyboardEvent
+  ) {
+    // Call the shortcut decider to check for the combination
+    this.keyBoardService.shortCutKeyMaker(event);
   }
 
   private StartSignalrConnection() {
