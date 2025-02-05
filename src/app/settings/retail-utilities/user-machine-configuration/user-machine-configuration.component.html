@@ -41,7 +41,7 @@
                         </mat-select>
                     </mat-form-field>
                     <mat-form-field *ngIf="showPaymentDevice" [floatLabel]="floatLabel">
-                        <mat-select [attr.automationId]="'Dd_userMachineConfiguration_deviceName'" placeholder="{{captions.deviceName}}" formControlName="defaultDeviceName" [disabled]="!enablePaymentDeviceSelect">
+                        <mat-select (click)="checkdeviceOptions()" [attr.automationId]="'Dd_userMachineConfiguration_deviceName'" placeholder="{{captions.deviceName}}" formControlName="defaultDeviceName" [disabled]="!enablePaymentDeviceSelect">
                             <mat-option *ngFor="let name of deviceNames" [value]="name.id">{{name.description}}</mat-option>
                         </mat-select>
                     </mat-form-field>

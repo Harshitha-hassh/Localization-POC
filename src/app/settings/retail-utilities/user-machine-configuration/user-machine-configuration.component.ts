@@ -305,7 +305,7 @@ export class UserMachineConfigurationComponent implements OnInit, OnDestroy {
     const body: HandleRequest = {
       tenderId: PaymentMethods.CreditCard.toString()
     };
-    const handleResponse: Promise<HandleResponse> = this.payAgentService.PaymentProcessor.GetHandles(body, 0);
+    const handleResponse: Promise<HandleResponse> = this.payAgentService.PaymentProcessor.GetHandles(body, 0,'', false);
     handleResponse.then(response => {
       if (response.status.toLocaleLowerCase() == HttpResponseStatus.Success) {
         this.deviceNames = response.paymentHandle.map(x => x.name);
@@ -315,8 +315,7 @@ export class UserMachineConfigurationComponent implements OnInit, OnDestroy {
         this.enablePaymentDeviceSelect = true;
       } else {
         this.deviceNames = [];
-        this.utils.ShowError(this.localization.captions.common.Error, this.localization.captions.shop.NoPaymentDevicesFound);
-        this.enablePaymentDeviceSelect = false;
+         this.enablePaymentDeviceSelect = false;
         if (this.testMode == true) {
           this.getDeviceNames(); // call test method
           this.enablePaymentDeviceSelect = true;
@@ -325,7 +324,6 @@ export class UserMachineConfigurationComponent implements OnInit, OnDestroy {
       this.deviceChanged({ value: this.userSessionConfiguration.defaultPaymentDevice });
     }).catch(error => {
       this.deviceNames = [];
-      this.utils.ShowError(this.localization.captions.common.Error, this.localization.captions.shop.NoPaymentDevicesFound);
       this.enablePaymentDeviceSelect = false;
       if (this.testMode == true) {
         this.getDeviceNames(); // call test method
@@ -350,7 +348,11 @@ export class UserMachineConfigurationComponent implements OnInit, OnDestroy {
       }
     });
   }
-
+  checkdeviceOptions() {
+    if (this.deviceNames && this.deviceNames.length <=0) {
+      this.utils.ShowErrorMessage(this.localization.captions.common.Error, this.localization.captions.shop.NoPaymentDevicesFound);
+    }
+  } 
   // Printer Names
   private async getPrinterNamesAsync(): Promise<void> {
     this.printers = [];
