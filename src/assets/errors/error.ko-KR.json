@@ -380,5 +380,8 @@
   "-302": "Guest information is out of date. Please refresh and try again_kr",
   "-4700": "The following items are not mapped with a category_kr",
   "-4701": "You are about to perform a transaction that is not on current property date, however, doing so will record the transaction on the current property date only. Do you wish to proceed?_kr",
-  "-7890": "Enhanced Inventory configuration is incorrect. Kindly check the configuration._kr"
+  "-7890": "Enhanced Inventory configuration is incorrect. Kindly check the configuration._kr",
+  "-325": "Duplicate Guest Type Code exists_kr",
+  "-328": "Guest Type is already mapped to a guest profile. Delete not allowed._kr",
+  "-329": "Guest Type is already mapped to a guest profile. Inactive not allowed._kr"
 }

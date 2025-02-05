@@ -380,6 +380,9 @@
     "10117": "Item Number Change Not Allowed",
     "10118": "No Retail Item Found to Export",
     "152151": "Staging Posted Already",
-    "152152": "Staging doesn't exist"
+    "152152": "Staging doesn't exist",
+    "-325": "Duplicate Guest Type Code exists",
+    "-328": "Guest Type is already mapped to a guest profile. Delete not allowed.",
+    "-329": "Guest Type is already mapped to a guest profile. Inactive not allowed."
   }
   
