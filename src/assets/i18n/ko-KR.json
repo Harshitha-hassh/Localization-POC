@@ -2448,7 +2448,12 @@
       "warn_datalostChanges": "Are you sure you want to cancel the changes?_kr",
       "tooltip_delete": "Delete_kr",
       "tooltip_reset": "Reset_kr",
-      "tooltip_copy": "Copy_kr"
+      "tooltip_copy": "Copy_kr",
+      "missing_playerType": "Missing Player Type_kr",
+      "missing_vipType": "Missing VIP Type_kr",
+      "missing_guestType": "Missing Guest Type_kr",
+      "missing_tierLevel": "Missing Tier Level_kr",
+      "missing_discountType": "Missing Discount Type_kr"
     },
     "SearchCategory": "Search Category_kr",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_kr",

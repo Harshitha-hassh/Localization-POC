@@ -2448,7 +2448,12 @@
       "warn_datalostChanges": "Are you sure you want to cancel the changes?_fi",
       "tooltip_delete": "Delete_fi",
       "tooltip_reset": "Reset_fi",
-      "tooltip_copy": "Copy_fi"
+      "tooltip_copy": "Copy_fi",
+      "missing_playerType": "Missing Player Type_fi",
+      "missing_vipType": "Missing VIP Type_fi",
+      "missing_guestType": "Missing Guest Type_fi",
+      "missing_tierLevel": "Missing Tier Level_fi",
+      "missing_discountType": "Missing Discount Type_fi"
     },
     "SearchCategory": "Search Category_fi",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_fi",
