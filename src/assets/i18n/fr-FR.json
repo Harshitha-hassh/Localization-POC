@@ -2453,7 +2453,13 @@
       "missing_vipType": "Missing VIP Type_fr",
       "missing_guestType": "Missing Guest Type_fr",
       "missing_tierLevel": "Missing Tier Level_fr",
-      "missing_discountType": "Missing Discount Type_fr"
+      "missing_discountType": "Missing Discount Type_fr",
+      "lbl_selectComponent": "Select Components_fr",
+      "lbl_searchByPlayer": "Search By Player Type_fr",
+      "lbl_searchByVip": "Search By VIP Type_fr",
+      "lbl_searchByGuest": "Search By Guest Type_fr",
+      "lbl_searchBytierLevel": "Search By Tier Level_fr",
+      "lbl_searchByDiscount": "Search By Discount Type_fr"
     },
     "SearchCategory": "Search Category_fr",
     "PostTypeMappingRevenuePostCodeDetails": "Post Type Mapping: Revenue Post Code Details_fr",
