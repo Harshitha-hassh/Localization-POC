@@ -1331,9 +1331,7 @@ async validateAdb2cCredentialsForSupportUser(){
       this.errResponse = loginDetails.errorDescription;
       this.hideLoginForm = false;
  }
-  this.utils.showAlert(loginDetails.errorDescription, AlertType.Error, ButtonType.Ok, async (res) => {
-    this.adb2cLogout();
-  });
+  this.utils.showAlert(loginDetails.errorDescription, AlertType.Error, ButtonType.Ok);
  }
  }
 
