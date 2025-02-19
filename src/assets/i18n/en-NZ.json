@@ -1839,6 +1839,7 @@
     "8195": "8195 - Surcharges Report",
     "8200": "8200 - Inventory Value and Activity Report",
     "8205": "8205 - Inventory Valuation Report",
+    "8215": "8215 - Items Under Par",
     "8700": "8700 - Update Qty on Hand",
     "8705": "8705 – Freeze Inventory",
     "8710": "8710 - Release Inventory",
@@ -3478,7 +3479,8 @@
     "includeInhouseGratuity": "Include In-House Gratuity",
     "includeInhouseSC": "Include In-House SC",
     "OutletSalesSummaryXReading": "Sales Summary Outlet Report (X Reading)",
-    "BIRSalesSummary": "BIR Sales Summary Report"
+    "BIRSalesSummary": "BIR Sales Summary Report",
+    "ItemsUnderPar": "Items Under Par"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",

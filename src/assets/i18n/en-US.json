@@ -1891,7 +1891,8 @@
     "100776": "100776 - Job Scheduler Configuration",
     "15215": "15215 - Inventory Staging",
     "2001151": "2001151 - Sales Summary Outlet Report (X Reading)",
-    "2001153": "2001153 - BIR Sales Summary Report"
+    "2001153": "2001153 - BIR Sales Summary Report",
+    "8215": "8215 - Items Under Par"
   },
   "userId": "User ID",
   "password": "Password",
@@ -3480,7 +3481,8 @@
     "includeInhouseGratuity": "Include In-House Gratuity",
     "includeInhouseSC": "Include In-House SC",
     "OutletSalesSummaryXReading": "Sales Summary Outlet Report (X Reading)",
-    "BIRSalesSummary": "BIR Sales Summary Report"
+    "BIRSalesSummary": "BIR Sales Summary Report",
+    "ItemsUnderPar": "Items Under Par"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",
