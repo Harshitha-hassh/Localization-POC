@@ -248,7 +248,7 @@
   <ng-template #DB_AverageTransaction>
     <ng-container *ngIf="DB_AverageTransaction_data;else noData">
       <div class="DB-inner-Block-wrapper">
-        <p class="DB-inner-Block-Count">{{DB_AverageTransaction_data.count}}</p>
+        <p class="DB-inner-Block-Count text-ellipsis" [matTooltip]="DB_AverageTransaction_data.count">{{DB_AverageTransaction_data.count}}</p>
         <p class="DB-inner-Block-desc" [matTooltip]="DB_AverageTransaction_data.description">
           {{DB_AverageTransaction_data.description}}</p>
       </div>
