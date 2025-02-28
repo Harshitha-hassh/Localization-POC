@@ -1189,10 +1189,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
   async UpdateCMSDetailOnExistingGuest(patronId, guestData, callBack?) {
-    this._ams.loaderEnable.next(this.localization.captions.common.LoadingPlayerInformation);
     let playerInfo = await this._playerService.GetPlayerInformation(patronId);
     let cmsHasChange: boolean = false;
-    this._ams.loaderEnable.next('');
     if (playerInfo && playerInfo.personalDetails) {
       cmsHasChange = this.isCMSDataChanged(guestData, playerInfo.personalDetails);
       if (this.featureSwitch.UpdateGuestInfoAsPerCMS) {
