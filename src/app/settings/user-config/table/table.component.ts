@@ -19,6 +19,8 @@ import { RetailTransactions, PromptType } from 'src/app/common/shared/shared/glo
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { CommonAlertMessagePopupComponent } from 'src/app/common/shared/shared/alert-message-popup/alert-message-popup.component';
 import { AgToggleConfig } from 'src/app/common/Models/ag-models';
+import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
+import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.constants';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -37,7 +39,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
               public el: ElementRef,
               public fb: UntypedFormBuilder,
               public localization: RetailStandaloneLocalization,
-              private cdRef: ChangeDetectorRef) {
+              private cdRef: ChangeDetectorRef,private UserAccess: UserAccessBusiness) {
     this.captions = this.localization.captions;
     this.customHeaderButton = this.localization.captions.setting.Add;
     this.floatLabelNever = this.localization.setFloatLabelNever;
@@ -999,10 +1001,35 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
     }
     return ReturnBool;
   }
+
+  //breakpoint access check
+  async checkBreakPointAccess(breakPointNumber:number)
+  {
+    console.log('check access for',breakPointNumber)
+    var response= await  this.UserAccess.getUserAccess(breakPointNumber)
+    console.log('user-response',response)
+    return response;
+  }
+
   
-  emitBlockrowdata(eve, data) {
+  async emitBlockrowdata(eve, data) {
     console.log("emitDeleterowdata", data);
-    this.blockUserEdit.emit([data, 'blockUseredit']);
+    if(data.blockedUser)
+    {
+      var breakPointDetails=await this.checkBreakPointAccess(UserAccessBreakPoints.UNBLOCKUSER)
+      if(breakPointDetails.isAllow)
+      {
+        
+        
+        this.blockUserEdit.emit([data, 'blockUseredit']);
+        
+          
+      }
+    }
+    else{
+      this.blockUserEdit.emit([data, 'blockUseredit']);
+    }
+    
   }
 }
 

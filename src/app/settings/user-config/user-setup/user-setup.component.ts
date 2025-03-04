@@ -298,7 +298,8 @@ export class UserSetupComponent implements OnInit, OnDestroy {
     this.servicesetting.editUserInfo = {
       clientInfo: clientObj,
       retainInfo: userRetailConfig,
-      retailOutletMap
+      retailOutletMap,
+      retailData:retailData
     };
     this.createUser('Edit');
   }
@@ -463,6 +464,7 @@ export class UserSetupComponent implements OnInit, OnDestroy {
   ResetServiceAttributes() {
     this.servicesetting.userSettingsFormGrp.reset();
     this.servicesetting.retailSettingsFormGrp.reset();
+    this.servicesetting.editUserInfo={};
     this.servicesetting.selectedAccess = [];
     this.servicesetting.selectedOutlets = [];
   }

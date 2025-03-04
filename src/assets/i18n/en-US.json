@@ -1892,7 +1892,9 @@
     "15215": "15215 - Inventory Staging",
     "2001151": "2001151 - Sales Summary Outlet Report (X Reading)",
     "2001153": "2001153 - BIR Sales Summary Report",
-    "8215": "8215 - Items Under Par"
+    "8215": "8215 - Items Under Par",
+    "2001162": "2001162 - Unblock User",
+    "2001172": "2001172 - Password Reset"
   },
   "userId": "User ID",
   "password": "Password",

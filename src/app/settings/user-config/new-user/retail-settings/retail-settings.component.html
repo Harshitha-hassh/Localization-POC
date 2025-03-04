@@ -14,7 +14,7 @@
 
           <div class="">
             <label class="d-block pt-1 mb-2 form-label-normal">{{caption.setting.AccountBlocked}}</label>
-            <app-toggle-switch [attr.automationId]="'Txt_retailSettings_accountBlocked'" class="" formControlName="accountblocked" (changeToggleEvent)="sliderChange($event)"></app-toggle-switch>
+            <app-toggle-switch [attr.automationId]="'Txt_retailSettings_accountBlocked'" class="" formControlName="accountblocked" (changeToggleEvent)="sliderChange($event,'AB')"></app-toggle-switch>
           </div>
 
           <div class="pt-3 ag_display--flex">

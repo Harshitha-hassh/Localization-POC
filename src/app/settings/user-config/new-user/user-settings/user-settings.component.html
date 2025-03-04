@@ -47,7 +47,7 @@
 
           <div class="w250 mb-4">
             <label class="d-block mt-3 form-label-normal ">{{caption.setting.NewPassword}}</label>
-            <app-toggle-switch [attr.automationId]="'Txt_userSettings_newPassword'" class="d-block  blckClr" [formControl]="userSettingsFormGrp.controls['newpassword']" (changeToggleEvent)="toggleChange($event)" [disableToggle]="isToggleDisable"></app-toggle-switch>
+            <app-toggle-switch [attr.automationId]="'Txt_userSettings_newPassword'" class="d-block  blckClr" [formControl]="userSettingsFormGrp.controls['newpassword']" (changeToggleEvent)="toggleChange($event,'PWD')" [disableToggle]="isToggleDisable"></app-toggle-switch>
           </div>
 
           <mat-form-field [floatLabel]="floatLabel" class=" w250 mb-2" *ngIf="userSettingsFormGrp.controls?.newpassword?.value">

@@ -9,6 +9,9 @@ import { Product } from 'src/app/common/Models/common.models';
 import { BaseResponse } from 'src/app/common/shared/shared.modal';
 import { HttpMethod } from 'src/app/common/Models/http.model';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
+import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
+import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.constants';
+
 // import { BaseResponse } from '../../../../shared/business/shared.modals';
 
 @Component({
@@ -29,7 +32,7 @@ export class RetailSettingsComponent implements OnInit {
   floatLabel: string;
 
   constructor(public localization: RetailStandaloneLocalization, private utils: Utilities,
-              public servicesetting: SettingsService, private http: HttpServiceCall) {
+              public servicesetting: SettingsService, private http: HttpServiceCall,private UserAccess: UserAccessBusiness) {
                 this.floatLabel = this.localization.setFloatLabel;
   }
 
@@ -65,7 +68,12 @@ export class RetailSettingsComponent implements OnInit {
       servicSettingControl.commissionclass.enable();
     }
     this.checkCommissionClassRequired();
+   
+    
   }
+
+  
+  
 
   OnRoleChange(event) {
     this.IsRoleSelected = true;
@@ -81,8 +89,35 @@ export class RetailSettingsComponent implements OnInit {
     this.servicesetting.isRadioButtonsChange = true;
   }
 
-  sliderChange(event, type?) {
-    const serviceSettingControl = this.servicesetting.retailSettingsFormGrp.controls;
+  //breakpoint access check
+  async checkBreakPointAccess(breakPointNumber:number)
+  {
+   
+    var response= await  this.UserAccess.getUserAccess(breakPointNumber)
+    return response;
+  }
+
+  async sliderChange(event, type?) {
+    var userinfo=this.servicesetting.editUserInfo
+    var serviceSettingControl = this.servicesetting.retailSettingsFormGrp.controls;
+    if(type=='AB')
+    {
+      if(userinfo.retailData.accountblocked==true && event[0]==false)
+      {
+        this.utils.ToggleLoader(true);
+        var breakPointDetails=await this.checkBreakPointAccess(UserAccessBreakPoints.UNBLOCKUSER)
+        
+        if(!breakPointDetails.isAllow)
+        {
+         
+            serviceSettingControl.accountblocked.setValue(true)
+            this.retailSettingsFormGrp.markAsPristine();
+        }
+        this.utils.ToggleLoader(false);
+      }
+
+    }
+
     if (type === 'ALO') {
       serviceSettingControl.autologoff.setValue(event[0]);
       if (event[0]) {

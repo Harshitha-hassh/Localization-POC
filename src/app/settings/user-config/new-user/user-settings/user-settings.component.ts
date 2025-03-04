@@ -12,6 +12,8 @@ import { HttpServiceCall } from 'src/app/common/shared/shared/service/http-call.
 import { HttpMethod, BaseResponse } from 'src/app/common/Models/http.model';
 import { Product } from 'src/app/common/Models/common.models';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
+import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
+import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.constants';
 // import { BaseResponse } from '../../../../shared/business/shared.modals';
 
 @Component({
@@ -39,7 +41,7 @@ export class UserSettingsComponent implements OnInit {
   isToggleDisable : boolean = true;
 
   constructor(public localization: RetailStandaloneLocalization, public servicesetting: SettingsService,
-              private http: HttpServiceCall, private utils: Utilities, private PropertyInfo: PropertyInformation) {
+              private http: HttpServiceCall, private utils: Utilities, private PropertyInfo: PropertyInformation,private UserAccess: UserAccessBusiness) {
                 this.floatLabel = this.localization.setFloatLabel;
   }
 
@@ -169,15 +171,57 @@ export class UserSettingsComponent implements OnInit {
   }
 
 
-  toggleChange(eve) {
-    if(eve[0] == true) {
-      this.userSettingsFormGrp.controls?.nPassword?.setValidators([Validators.required]);
-      this.userSettingsFormGrp.controls?.cPassword?.setValidators([Validators.required]);
+   //breakpoint access check
+   async checkBreakPointAccess(breakPointNumber:number)
+   {
+     console.log('check access for',breakPointNumber)
+     var response= await  this.UserAccess.getUserAccess(breakPointNumber)
+     return response;
+   }
+
+  async toggleChange(eve,type?) {
+
+
+    if(type=='PWD')
+    {
+      this.utils.ToggleLoader(true);
+
+      var breakPointDetails=await this.checkBreakPointAccess(UserAccessBreakPoints.RESETUSERPASSWORD)
+            if(!breakPointDetails.isAllow)
+            {
+              if(eve[0])
+              {
+                this.userSettingsFormGrp.controls?.newpassword?.setValue(false)
+              }
+              
+             
+            }
+            else{
+              if(eve[0] == true) {
+                this.userSettingsFormGrp.controls?.nPassword?.setValidators([Validators.required]);
+                this.userSettingsFormGrp.controls?.cPassword?.setValidators([Validators.required]);
+              }
+              else {
+                this.userSettingsFormGrp.controls?.nPassword?.setValidators(null);
+                this.userSettingsFormGrp.controls?.cPassword?.setValidators(null);
+              }
+            }
+
+            this.utils.ToggleLoader(false);
+
     }
-    else {
-      this.userSettingsFormGrp.controls?.nPassword?.setValidators(null);
-      this.userSettingsFormGrp.controls?.cPassword?.setValidators(null);
+    else{
+          if(eve[0] == true) {
+          this.userSettingsFormGrp.controls?.nPassword?.setValidators([Validators.required]);
+          this.userSettingsFormGrp.controls?.cPassword?.setValidators([Validators.required]);
+        }
+        else {
+          this.userSettingsFormGrp.controls?.nPassword?.setValidators(null);
+          this.userSettingsFormGrp.controls?.cPassword?.setValidators(null);
+        }
     }
+
+    
   }
 
   passwordValidation(){
