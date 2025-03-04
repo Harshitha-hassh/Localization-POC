@@ -56,7 +56,7 @@ export class ClientPopupComponent implements OnInit {
     if (this.data.isClientViewOnly && !this.data.isCopyClient) {
       this.utils.disableControls(this.clientPopupForm);
     }
-    if(this.data && this.data.data && this.data.data !='' && this.data.data.client){
+    if (this.data && this.data.data && this.data.data != '' && this.data.data.client?.consentPolicyId > 0) {
       this.getPolicyTypebyPolicyId(this.data.data.client.consentPolicyId);
     }
     this.setIsGdprConfiguredFlag();
