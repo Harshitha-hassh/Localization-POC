@@ -1395,14 +1395,17 @@
       float: initial;
       height: auto !important;
     }
+    .bottomSection{
+      border-top: 1px solid rgb(228, 229, 232);
+    }
   }
   .property-level{
     @extend .bodyWrap;
     margin: 10px !important;
-    margin-bottom: 0 !important;
+    // margin-bottom: 0 !important;
     width: auto !important;
-    height: calc(100% - 74px);
-
+    height: calc(100% - 84px);
+    overflow: auto;
   }
  }
 
