@@ -91,6 +91,7 @@
   },
   "app_title": "Agilysys Retail_fr",
   "common": {
+    "lbl_Image_validation": "Please upload image in the supported format (.jpg, .jpeg, .png)_fr",
     "country": "Country_fr",
     "missingCountryName": "Missing country name_fr",
     "invalidCountryName": "Invalid country name_fr",
@@ -4801,7 +4802,7 @@
   "btn_add": "ADD_fr",
   "lbl_searchReports": "Search Reports_fr",
   "lbl_systemDateChange": "System Date has been Changed to _fr",
-  "lbl_Image_validation": "Please upload image in the supported format (.jpg, .jpeg, .png, .svg)_fr",
+  "lbl_Image_validation": "Please upload image in the supported format (.jpg, .jpeg, .png)_fr",
   "err_missing_dashboardName": "Missing Dashboard Name_fr",
   "err_missing_dashboardUrl": "Missing Dashboard URL_fr",
   "err_Invalid_dashboardUrl": "Invalid Dashboard URL_fr",
