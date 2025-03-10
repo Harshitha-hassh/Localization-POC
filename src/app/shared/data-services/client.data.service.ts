@@ -50,7 +50,7 @@ export class ClientDataService {
             });
     }
 
-    public async searchClient(name: string, requestUid: string,isPlatformGuestSearch: any, searchType = clientSearchType.All): Promise<ClientSearchModel[]> {
+    public async searchClient(name: string, requestUid: string,isPlatformGuestSearch: any, searchType: any): Promise<ClientSearchModel[]> {
         return this._httpPos.putPromise({
             route: RetailApiRoute.SearchClientInfo,
             body: name,

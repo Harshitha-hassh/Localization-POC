@@ -22,7 +22,7 @@ import { CommonDataAwaiters } from "src/app/common/shared/events/awaiters/common
 import { VipTypBusiness } from "src/app/retail/shared/service/vip-type.service";
 import { ClientMultipack, MultiPackReturn } from "src/app/retail/retail.modals";
 import { TransactionService } from "src/app/retail/shared/service/transaction-service/transaction.dataservice";
-import { RetailBreakPoint } from "src/app/retail/shared/globalsContant";
+import { clientSearchType, RetailBreakPoint } from "src/app/retail/shared/globalsContant";
 import { GuestTypeBusiness } from "src/app/retail/common/services/guest-type.service";
 
 @Injectable({
@@ -111,12 +111,13 @@ export class DataAwaiterService {
         return response;
     }
 
-    private async searchClient(name: string, type: number, requestUid: string, isPlatformGuestSearch:any): Promise<[ClientSearchModel[], PayeeInfo[]]> {
-        let response: any = await this.clientDataService.searchClient(name, requestUid, isPlatformGuestSearch);
+    private async searchClient(name: string, type: number, requestUid: string, isPlatformGuestSearch:any, isSearchGuestByconfirmationNumber: boolean = false): Promise<[ClientSearchModel[], PayeeInfo[]]> {
+        let searchType = isSearchGuestByconfirmationNumber? clientSearchType.confirmationNumber : clientSearchType.All;
+        let response: any = await this.clientDataService.searchClient(name, requestUid, isPlatformGuestSearch, searchType);
 
         let clientDetails: PayeeInfo[] = [];
         let responseUid = "";
-        if (response) {
+        if (response && response.length > 0) {
             responseUid = response[0].requestUid;
 
             if ((requestUid != "" && responseUid != "" && requestUid == responseUid) || (requestUid == "" || responseUid == "")) {
