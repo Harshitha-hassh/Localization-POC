@@ -3230,6 +3230,13 @@
       "SelectAll": "Select All_da",
       "DeSelectAll": "DeSelect All_da"
     },
+    "TipConfig": {
+      "lbl_config": "Tip Configuration_da",
+      "AllowTipConfig": "Require Tip on Device_da",
+      "TipPresetValues": "Preset Values_da",
+      "TipIn": "Tip In_da",
+      "InvalidValue": "Invalid Value_da"
+    },
     "defaultRoomCharge": "Default Room Charge_da",
     "defaultGroupCharge": "Default Group Charge_da",
     "defaultHotelComp": "Default Hotel Comp_da",
