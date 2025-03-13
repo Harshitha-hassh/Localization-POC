@@ -3719,7 +3719,7 @@
     "Details": "Detail_da",
     "SummarySplit": "Summary Split_da",
     "SummaryCombine": "Summary Combine_da",
-    "AfterSaveMessage": "Receipt Configuration has been updated for _da",
+    "AfterSaveMessage": "Receipt Configuration has been updated for {message}_da",
     "HoverMessage": "User has to enable Display Package Item Description to select Package Item Price, Appointment ID and Staff Code_da",
     "Success": "Success_da",
     "PrinterSelection": "Printer Selection_da",
@@ -5014,5 +5014,6 @@
   "lbl_last24Hours": "Last 24 Hours_da",
   "lbl_allRequests": "All Requests_da",
   "lbl_fromAndToDate": "From Date & To Date_da",
-  "taxNumber": "Tax Number_da"
+  "taxNumber": "Tax Number_da",
+  "lbl_captureImage": "Capture Image_da"
 }

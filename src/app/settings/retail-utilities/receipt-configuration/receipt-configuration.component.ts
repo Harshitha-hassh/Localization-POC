@@ -371,7 +371,8 @@ export class ReceiptConfigurationComponent implements OnInit {
     };
     this.OutletInfo = await this.data.createReceipt(receiptobj);
     const currOutlet = this.Outlet.filter(x => x.id == this.selectedOutletId);
-    this.utils.ShowError(this.textCaptions.Success, this.textCaptions.AfterSaveMessage + currOutlet[0].outletName, ButtonType.Ok);
+    let message = this.localization.replacePlaceholders(this.textCaptions.AfterSaveMessage, ['message'], [currOutlet[0].outletName]);
+    this.utils.showAlert(message, AlertType.WellDone);
     this.resetData();
   }
 

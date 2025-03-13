@@ -3719,7 +3719,7 @@
     "Details": "Detail_fr",
     "SummarySplit": "Summary Split_fr",
     "SummaryCombine": "Summary Combine_fr",
-    "AfterSaveMessage": "Receipt Configuration has been updated for _fr",
+    "AfterSaveMessage": "Receipt Configuration has been updated for {message}_fr",
     "HoverMessage": "User has to enable Display Package Item Description to select Package Item Price, Appointment ID and Staff Code_fr",
     "Success": "Success_fr",
     "PrinterSelection": "Printer Selection_fr",
@@ -5014,5 +5014,6 @@
   "lbl_last24Hours": "Last 24 Hours_fr",
   "lbl_allRequests": "All Requests_fr",
   "lbl_fromAndToDate": "From Date & To Date_fr",
-  "taxNumber": "Tax Number_fr"
+  "taxNumber": "Tax Number_fr",
+  "lbl_captureImage": "Capture Image_fr"
 }
