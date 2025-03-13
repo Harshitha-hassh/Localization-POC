@@ -20,6 +20,7 @@ import { SignalrService } from 'src/app/common/communication/signalR/signalr.ser
 import { RetailRoutes as RetailRoute }  from 'src/app/retail/retail-route';
 import { AutologoffTimerService } from '../common/shared/shared/autologoff-timer-service';
 import { AlertPopupWithTimerComponent } from '../common/shared/shared/alert-popup-with-timer/alert-popup-with-timer.component';
+import { RetailFeatureFlagInformationService } from '../retail/shared/service/retail.feature.flag.information.service';
 
 @Injectable({
     providedIn: 'root'
@@ -78,7 +79,8 @@ export class ManageSessionService implements OnDestroy {
               , private oauthService: OAuthService
               , private adb2cAuthConfiguration: ADB2CAuthConfiguration,
                 private signalR: SignalrService
-              , private autoLogOfftimerService: AutologoffTimerService) {
+              , private autoLogOfftimerService: AutologoffTimerService
+            , private _featureFlagService: RetailFeatureFlagInformationService) {
 
         this.timeoutExpired.subscribe(n => {
         });
@@ -107,6 +109,7 @@ export class ManageSessionService implements OnDestroy {
     }
 
     async logout() {
+        this._featureFlagService.reset();
         this.closeSignalRConnection();
         clearTimeout(this.triggerTimeout);
         this.triggerTimeout = null;
