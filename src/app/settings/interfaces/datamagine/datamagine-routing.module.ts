@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DataMagineConfigComponent } from 'src/app/common/data-magine/data-magine-config/data-magine-config.component';
 import { DataMagineComponent } from 'src/app/common/data-magine/data-magine/data-magine.component';
-import { RouteGuardService } from 'src/app/core/services/route.guard.service';
+import { RouteGuardService } from 'src/app/core/services/route-gaurd.service';
 import { UserAccessBreakPoints } from 'src/app/shared/enums/useraccess.constants';
 
 const routes: Routes = [{

@@ -4,7 +4,7 @@ import { UserSetupComponent } from './user-setup/user-setup.component';
 import { RoleSetupComponent } from './role-setup/role-setup.component';
 import { UserConfigComponent } from './user-config.component';
 import { UserRoleComponent } from './user-role/user-role.component';
-import { RouteGuardService } from 'src/app/core/services/route.guard.service';
+import { RouteGuardService } from 'src/app/core/services/route-gaurd.service';
 import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
 
 

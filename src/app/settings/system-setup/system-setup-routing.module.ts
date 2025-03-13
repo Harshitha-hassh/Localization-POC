@@ -6,7 +6,7 @@ import { UserAccessBreakPoints } from 'src/app/retail/shared/constants/useracces
 import { MiscellaneousComponent } from 'src/app/retail/sytem-config/miscellaneous/miscellaneous.component';
 import { NotificationConfigurationComponent } from 'src/app/common/templates/notification-configuration/notification-configuration.component';
 import { HomeDashboardConfigurationComponent } from './home-dashboard-configuration/home-dashboard-configuration.component';
-import { RouteGuardService } from 'src/app/core/services/route.guard.service';
+import { RouteGuardService } from 'src/app/core/services/route-gaurd.service';
 
 
 const routes: Routes = [{

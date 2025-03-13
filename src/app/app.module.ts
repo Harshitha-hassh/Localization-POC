@@ -130,6 +130,10 @@ export const OtherOptions: MatTooltipDefaultOptions = {
       useFactory: initializeApp,
       deps: [SessionLoaderService],
       multi: true,
+    },
+    {
+      provide: 'EnablePagination',
+      useValue: true
     }
   ],
   bootstrap: [AppComponent]

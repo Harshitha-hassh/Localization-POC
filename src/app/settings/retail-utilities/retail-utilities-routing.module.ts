@@ -7,7 +7,7 @@ import { TemplatesComponent } from 'src/app/common/templates/templates.component
 import { RetailTemplatesComponent } from './retail-templates/retail-templates.component';
 import { ReceiptConfigurationComponent } from './receipt-configuration/receipt-configuration.component';
 import { UserMachineConfigurationComponent } from './user-machine-configuration/user-machine-configuration.component';
-import { RouteGuardService } from 'src/app/core/services/route.guard.service';
+import { RouteGuardService } from 'src/app/core/services/route-gaurd.service';
 import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
 import { QuickidConfigComponent } from './quickid-config/quickid-config.component';
 import { AgCombineGuestRecordsComponent } from 'src/app/common/components/combine-guest-records/combine-guest-records.component';

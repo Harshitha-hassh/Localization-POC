@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuditComponent } from './audit.component';
 import { DayEndComponent } from './audit-data/day-end/day-end.component';
-import { RouteGuardService } from '../core/services/route.guard.service';
+import { RouteGuardService } from '../core/services/route-gaurd.service';
 import { BreakPoint } from '../shared/models/breakpoint-models';
 import { NightAuditComponent } from 'src/app/common/night-audit/night-audit.component';
 

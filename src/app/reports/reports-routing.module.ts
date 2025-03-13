@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ReportsComponent } from './reports.component';
 import { TransactionLogComponent } from './transaction-log/transaction-log.component';
-import { RouteGuardService } from '../core/services/route.guard.service';
+import { RouteGuardService } from '../core/services/route-gaurd.service';
 import { BreakPoint } from '../shared/models/breakpoint-models';
 
 var routes: Routes = [{

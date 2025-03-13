@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SettingsComponent } from './settings.component';
-import { RouteGuardService } from '../core/services/route.guard.service';
+import { RouteGuardService } from '../core/services/route-gaurd.service';
 import { UserAccessBreakPoints } from '../retail/shared/constants/useraccess.constants';
 // import { RouteGuardService } from '../core/route-gaurd.service';
 // import { UserAccessBreakPoints } from '../shared/enums/useraccess.constants';

@@ -50,6 +50,21 @@ export class RouteLoaderService {
                       stagingMenu.visibility = false;
                   }
               }
+              if(!this.featureFlagInfo.IsDataExpressEnabled){
+                let settingsMenu = this.currentSettings.find(x => x.text.includes("SETTINGS"))
+                if (settingsMenu) {
+                    let interfacesMenu = settingsMenu.linkedElement?.find(x => x.text.includes("INTERFACES"))
+                    if(interfacesMenu){
+                        let dataExpressMenu = interfacesMenu.linkedElement?.find(x => x.text.toUpperCase().includes("DIGITAL INVOICE"))
+                        if(dataExpressMenu){
+                            dataExpressMenu.visibility = false;
+                            dataExpressMenu.linkedElement.forEach(element => {
+                                element.visibility = false;
+                            });
+                        }
+                    }
+                }   
+              }
           }
           );
           },

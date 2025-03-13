@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RouteGuardService } from 'src/app/core/services/route.guard.service';
+import { RouteGuardService } from 'src/app/core/services/route-gaurd.service';
 import { InterfacesComponent } from './interfaces.component';
 import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.constants';
 
@@ -19,6 +19,10 @@ const routes: Routes = [{
     {
         path: 'pmsIntegration', loadChildren: () => import('../../common/components/pmsintegration/pms-integration.module').then(m => m.PMSIntegrationModule),
         canActivate: [RouteGuardService]
+    },
+    {
+      path: 'digitalinvoice', loadChildren: () => import('../../common/digital-invoice/digital-invoice.module').then(m => m.DigitalInvoiceModule),
+      canActivate: [RouteGuardService]
     }
   ]
 }];
