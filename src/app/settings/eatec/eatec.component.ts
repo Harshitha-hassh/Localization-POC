@@ -133,6 +133,8 @@ export class EatecComponent implements OnInit, OnDestroy {
       else if( this.router.url.includes("purchaseorder")){
         this.navigateToMenu("/settings/enhancedInventory/procurement", "purchaseorder");
       }
+    }else {
+        this.navigateToMenu("/settings/enhancedInventory/inventory","inventory");
     }
   }
 
