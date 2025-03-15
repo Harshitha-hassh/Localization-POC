@@ -24,6 +24,7 @@ import { ClientMultipack, MultiPackReturn } from "src/app/retail/retail.modals";
 import { TransactionService } from "src/app/retail/shared/service/transaction-service/transaction.dataservice";
 import { clientSearchType, RetailBreakPoint } from "src/app/retail/shared/globalsContant";
 import { GuestTypeBusiness } from "src/app/retail/common/services/guest-type.service";
+import { UserAccessBreakPoints } from "src/app/common/constants/useraccess.constants";
 
 @Injectable({
     providedIn: "root"
@@ -75,6 +76,8 @@ export class DataAwaiterService {
         CommonDataAwaiters.DeleteVipType = this.deleteVipType.bind(this);
         CommonDataAwaiters.GetNextListOrderofVipType = this.getNextListOrderofVipType.bind(this);
         CommonDataAwaiters.DragDropVipType = this.dragDropVipType.bind(this);
+        CommonDataAwaiters.GetVipTypeBreakpoint = this.GetVipTypeBreakpoint.bind(this);  
+
 
         //GuestType
         CommonDataAwaiters.GetAllGuestTypes = this.getAllGuestTypes.bind(this);
@@ -97,6 +100,10 @@ export class DataAwaiterService {
        this.openAddGuestPopup(e, callback, undefined, guestId, undefined, id);
     }
 
+     private async GetVipTypeBreakpoint(){
+        return UserAccessBreakPoints.VipType;
+    }
+    
     private async getExistingPlayer(patronId) {
         let client = await this.clientDataService.searchClientByPatron(patronId);
         return client;
