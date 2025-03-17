@@ -359,6 +359,7 @@
     "-301" : "Duplicate guest exists on the system",
     "-302" : "Guest information is out of date. Please refresh and try again",
     "12000": "Unable to get data from PMS system. Please check the configuration!",
+    "500105": "Ticket Cannot be Voided since Multipack Item associated with the Transaction has been Redeemed Partially/Fully",
     "101911":"Duplicate Discount Reason",
     "101916":"Discount Reason in use, Delete not allowed,",
     "101915":"Discount Reason in use, Inactive not allowed",

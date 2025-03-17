@@ -264,6 +264,7 @@
   "152152": "Staging doesn't exist_de",
   "310001": "Duplicate Guest exists on the system_de",
   "310002": "Guest information is out of date. Please refresh and try again_de",
+  "500105": "Ticket Cannot be Voided since Multipack Item associated with the Transaction has been Redeemed Partially/Fully_de",
   "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed._de",
   "5001012": "Gift Receipt cannot be printed for voided transaction_de",
   "5001013": "Gift Receipt cannot be printed as no retail items are attached with the transaction_de",
