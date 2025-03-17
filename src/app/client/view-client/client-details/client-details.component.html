@@ -81,4 +81,9 @@
       </div>
     </div>
   </div>
+  <div *ngIf="isPlatformGuestSearch && isEnableCGPSIframeGuestSearch && !hideIframeGuestSearch">
+    <app-iframe-guest-search [iSearchText]="platformSearchText" [closeSearch]="hideIframeGuestSearch"
+        (iframeCgpGuestPlatformUuidEmitter)="platfromGuestResponce($event)">
+    </app-iframe-guest-search>
+  </div>
 </div>

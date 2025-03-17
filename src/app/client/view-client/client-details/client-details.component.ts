@@ -127,7 +127,7 @@ export class ClientDetailsComponent implements OnInit {
     constructor(private dialog: MatDialog, private fb: UntypedFormBuilder,
         private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
-        , private userAccessBusiness: UserAccessBusiness , private propertySettingService : PropertySettingDataService) {
+        , private userAccessBusiness: UserAccessBusiness, private propertySettingService: PropertySettingDataService) {
         this.floatLabel = this.localization.setFloatLabel;
         this.floatLabelNever = this.localization.setFloatLabelNever;
         route.params.subscribe(val => {
@@ -149,6 +149,9 @@ export class ClientDetailsComponent implements OnInit {
         ];
     }
     sampleData: any = [];
+    platformSearchText: string = '';
+    hideIframeGuestSearch: boolean = false;
+    isEnableCGPSIframeGuestSearch: boolean = false;
 
     ngOnInit() {
         this.platFormExtendedSearchRequired = this.localization.IsPlatformGuestSearchConfigured();
@@ -187,6 +190,8 @@ export class ClientDetailsComponent implements OnInit {
             this.clientService.isVip = false;
         }
         this.FilterClientInformation();
+        var enableCGPSIframeGuestSearch = this.localization.GetPropertyConfig("EnableCGPSIframeGuestSearch")
+        this.isEnableCGPSIframeGuestSearch = this.localization.validateString(enableCGPSIframeGuestSearch) ? enableCGPSIframeGuestSearch.toLowerCase() === "true" : false;
     }
 
     // Client Search Header actions
@@ -216,16 +221,15 @@ export class ClientDetailsComponent implements OnInit {
                         lastName = this.clientSearchValue;
                         break;
                     case clientSearchType.name:
-                        let name  =  this.clientSearchValue.split(" ");
-                        if(name.length > 1)
-                        {
-                            lastName = name[name.length -1];
+                        let name = this.clientSearchValue.split(" ");
+                        if (name.length > 1) {
+                            lastName = name[name.length - 1];
                             name.splice(-1, 1);
                             firstName = name.join(' ');
                         }
-                        else{
-                            firstName = name[0]; 
-                        }                                              
+                        else {
+                            firstName = name[0];
+                        }
                         break;
                     case clientSearchType.email:
                         let emailsearch: Email = {
@@ -249,7 +253,7 @@ export class ClientDetailsComponent implements OnInit {
                             id: 0,
                             isPrimary: false,
                             isPrivate: false,
-                            number:  isNaN(number) ? "" : this.clientSearchValue,
+                            number: isNaN(number) ? "" : this.clientSearchValue,
                             platformContactUuid: "00000000-0000-0000-0000-000000000000"
                         };
                         phone.push(phoneSearch);
@@ -302,6 +306,11 @@ export class ClientDetailsComponent implements OnInit {
 
 
     setSearchText(clientswitchvalue) {
+        if (this.searchText) {
+            this.hideIframeGuestSearch = false;
+        } else {
+            this.hideIframeGuestSearch = true;
+        }
         switch (clientswitchvalue) {
             case clientSearchType.firstName:
                 this.searchTextPlaceHolder = this.captions.searchByFirstName;
@@ -466,6 +475,7 @@ export class ClientDetailsComponent implements OnInit {
         this.SetclientSearchTypeValue(id);
         this.selectedClientSearchType = id;
         this.enableSearch = false;
+        this.hideIframeGuestSearch = true;
     }
 
     clearSearchTextValue() {
@@ -512,18 +522,18 @@ export class ClientDetailsComponent implements OnInit {
             extraParams: ['FromClientSearch']
         });
     }
-    getPlatformGuestData(platformGuestId : any){
+    getPlatformGuestData(platformGuestId: any) {
         this.http.CallApiWithCallback({
-          host: Host.retailPOS,
-          success: this.successCallback.bind(this),
-          error: this.errorCallback.bind(this),
+            host: Host.retailPOS,
+            success: this.successCallback.bind(this),
+            error: this.errorCallback.bind(this),
             callDesc: "GetClientByPlatformGuestUuid",
-          method: HttpMethod.Get,
-          showError: true,
-          uriParams: { platformGuid: platformGuestId },
-          extraParams: []
+            method: HttpMethod.Get,
+            showError: true,
+            uriParams: { platformGuid: platformGuestId },
+            extraParams: []
         });
-      }
+    }
 
     getClientData(clientId: number) {
         this.http.CallApiWithCallback({
@@ -572,7 +582,7 @@ export class ClientDetailsComponent implements OnInit {
             if ((this.guestId == '' || this.guestId == DefaultGUID) && platformGuestId && platformGuestId != '' && platformGuestId != DefaultGUID) {
                 this.getPlatformGuestData(platformGuestId);
             } else {
-                this.getClientDataByGuid(this.guestId); 
+                this.getClientDataByGuid(this.guestId);
             }
         }
     }
@@ -589,9 +599,11 @@ export class ClientDetailsComponent implements OnInit {
     enableSearchButton() {
         if (this.searchText.length > 2 || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId)) {
             this.enableSearch = true;
+            this.hideIframeGuestSearch = false;
         }
         else {
             this.enableSearch = false;
+            this.hideIframeGuestSearch = true;
         }
 
     }
@@ -603,7 +615,9 @@ export class ClientDetailsComponent implements OnInit {
     }
 
     searchdata(searchText) {
+        searchText = searchText.trim();
         if (this.searchText.trim() == '' && this.guestNameFromGlobalSearch.trim() != '') {
+            this.hideIframeGuestSearch = false;
             this.SearchClientInformation(this.guestNameFromGlobalSearch.trim(), false, this.guidFromGlobalSearch, this.selectedClientSearchType);
             this.singleUserView = false;
         }
@@ -613,6 +627,7 @@ export class ClientDetailsComponent implements OnInit {
                 this.singleUserView = false;
             }
             else if ((searchText.length > 2 && this.clientService.selectedIndex != 1) || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId)) {
+                this.hideIframeGuestSearch = false;
                 this.SearchClientInformation(this.searchText, this.clientService.isVip, undefined, this.selectedClientSearchType);
                 this.singleUserView = false;
             }
@@ -623,6 +638,7 @@ export class ClientDetailsComponent implements OnInit {
                 this.FilterClientInformation();
                 this.refreshData();
                 this.singleUserView = false;
+                this.hideIframeGuestSearch = true;
             }
         }
     }
@@ -630,6 +646,7 @@ export class ClientDetailsComponent implements OnInit {
     clearText() {
         this.searchText = '';
         this.enableSearch = false;
+        this.hideIframeGuestSearch = true;
     }
     BindGrid() {
         this.formattedData = this.formatTableData(this.formattedData);
@@ -811,17 +828,27 @@ export class ClientDetailsComponent implements OnInit {
     }
 
     SearchClientInformation(pattern: any, isVip: any, clientGuid: any = "0", searchType: any) {
-        this.http.CallApiWithCallback<number>({
-            host: Host.retailPOS,
-            success: this.successCallback.bind(this),
-            error: this.errorCallback.bind(this),
-            callDesc: "SearchClientInfo",
-            method: HttpMethod.Put,
-            uriParams: { searchType:searchType, requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000), isPlatformGuestSearch: this.isPlatformGuestSearch },
-            body: pattern,
-            showError: true,
-            extraParams: []
-        });
+        if (this.isPlatformGuestSearch && this.isEnableCGPSIframeGuestSearch) {
+            this.platformSearchText = pattern + '|' + new Date().toLocaleTimeString();
+            this.formattedData = [];
+            this.sampleData = [];
+            this.BindGrid();
+            this.FilterClientInformation();
+            this.refreshData();
+            this.singleUserView = false;
+        } else {
+            this.http.CallApiWithCallback<number>({
+                host: Host.retailPOS,
+                success: this.successCallback.bind(this),
+                error: this.errorCallback.bind(this),
+                callDesc: "SearchClientInfo",
+                method: HttpMethod.Put,
+                uriParams: { searchType: searchType, requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000), isPlatformGuestSearch: this.isPlatformGuestSearch },
+                body: pattern,
+                showError: true,
+                extraParams: []
+            });
+        }
     }
 
     RecentClientInformation(searchText: any, searchType: any) {
@@ -1082,15 +1109,28 @@ export class ClientDetailsComponent implements OnInit {
     errorCallback<T>(error: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
     }
 
-    isPlatformGuestSearchChanged(e){
+    isPlatformGuestSearchChanged(e) {
         this.isPlatformGuestSearch = Boolean(e[0]);
+        if (this.isPlatformGuestSearch && this.isEnableCGPSIframeGuestSearch) {
+            if (this.searchText) {
+                this.hideIframeGuestSearch = false;
+            } else {
+                this.hideIframeGuestSearch = true;
+            }
+        } else {
+            this.hideIframeGuestSearch = true;
+        }
     }
-    async setPlatformGuestSearch()
-    {
+    async setPlatformGuestSearch() {
         let platformGuestSearch = await this.propertySettingService.GetEnableExtendedProfileSearchByDefaultSetting();
         this.isPlatformGuestSearch = platformGuestSearch && platformGuestSearch.value.toString().toLowerCase() === 'true' ? true : false;
         this.ClientSearchForm.setValue({
             platformGuestSearch: this.isPlatformGuestSearch
         });
+    }
+
+    async platfromGuestResponce(platformGuestId: any) {
+        console.log(`"--- Platfrom GuestId: ${platformGuestId} Reseived ---"`);
+        this.getPlatformGuestData(platformGuestId);
     }
 }
