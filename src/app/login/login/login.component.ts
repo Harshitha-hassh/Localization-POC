@@ -96,7 +96,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   userIdDir = 'capitalise,notallowspace,nospecailchar';
   tenantId: number;
   tenantIdFromParam: string;
-  currYear = '2024';
+  currYear = new Date().getFullYear();
   prevYear = '2020'
   passwordSetting: any;
   //Machine Name
