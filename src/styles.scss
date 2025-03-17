@@ -5738,3 +5738,6 @@ color: $retail-primary-100 !important;
   justify-content: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+.pac-container:not(.pac-logo){
+  display: none;
+}
