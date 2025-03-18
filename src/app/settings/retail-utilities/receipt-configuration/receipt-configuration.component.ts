@@ -501,8 +501,8 @@ async getPropertyReceiptConfig()
       this.PropertyReceiptInfo  = this.utils.parsePropertyReceiptConfig(this.PropertyReceiptInfo );
       sessionStorage.setItem("propertyReceiptConfiguration",JSON.stringify( this.PropertyReceiptInfo));
     } 
-    this.utils.ShowError(this.textCaptions.Success, this.textCaptions.AfterSaveMessage + "the Property", ButtonType.Ok);
-   
+    let message = this.localization.replacePlaceholders(this.textCaptions.AfterSaveMessage, ['message'], [`the ${this.localization.captions["lbl_property"]}`]);
+    this.utils.showAlert(message, AlertType.WellDone);
     this.resetData();
   }
 
