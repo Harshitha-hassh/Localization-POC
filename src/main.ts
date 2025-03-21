@@ -13,7 +13,7 @@ if (environment.production) {
   let pv = localStorage.getItem('userProductVersion');
   const response = await fetch('./assets/json/config.json?v='+pv);
   const json = await response.json();
-  if(!localStorage.getItem('googleMapsApiKey') && !localStorage.getItem('resetMapApiKey')){
+  if(!localStorage.getItem('googleMapsApiKey') && !localStorage.getItem('resetMapApiKey') && !localStorage.getItem('invalidKey')){
     localStorage.setItem('googleMapsApiKey', GOOGLE_MAP_API_KEY);
   }
   Object.entries(json).forEach(([key, value]) => {

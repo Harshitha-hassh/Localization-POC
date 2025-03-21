@@ -68,6 +68,7 @@ export class ManageSessionService implements OnDestroy {
     idealTime:boolean = false;
     autoLogoffTimer:any;
     isIdealDialogOpen:boolean = false;
+    isGoogleApiReset = new Subject();
 
     constructor(private router: Router
               , public dialogRef: MatDialog
@@ -119,6 +120,8 @@ export class ManageSessionService implements OnDestroy {
         this.goToLogin();
         this.removeToken();
         this.dialogRef.closeAll();
+        localStorage.removeItem('invalidKey');
+        this.isGoogleApiReset.next(true);
         this.http.removeHelpUserSession();
         this.clearLocalStore();
         this.changeTitle();
