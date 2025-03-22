@@ -800,6 +800,32 @@ export class LoginComponent implements OnInit, OnDestroy {
     if ((propertityConfig != null) && (Object.keys(propertityConfig.configValue).length > 0)) {
       this.propertyInfo.SetPropertyConfiguration(propertityConfig);
       this.SetFullStory(propertityConfig);
+      if(propertityConfig.configValue.GoogleMapApiKey !== undefined){
+        if (propertityConfig.configValue.GoogleMapApiKey) {
+          if(!localStorage.getItem('invalidKey')){
+            let isKeyValid = await this.propertyServices.checkvalidity(propertityConfig.configValue.GoogleMapApiKey);
+            if(isKeyValid){
+              if(propertityConfig.configValue.GoogleMapApiKey !== localStorage.getItem('googleMapsApiKey')) {
+                localStorage.setItem('googleMapsApiKey', propertityConfig.configValue.GoogleMapApiKey);
+                this.propertyServices.reloadPage();
+              }
+            } else {
+                localStorage.removeItem('googleMapsApiKey');
+                localStorage.setItem('resetMapApiKey', 'true');
+                this.propertyServices.reloadPage();
+
+            }
+          } 
+        } 
+        
+        if(!propertityConfig.configValue.GoogleMapApiKey && localStorage.getItem('googleMapsApiKey')){
+          localStorage.removeItem('googleMapsApiKey');
+          localStorage.setItem('resetMapApiKey', 'true');
+          this.propertyServices.reloadPage();
+        } else {
+          localStorage.removeItem('resetMapApiKey');
+        }
+      }
     }
   }
 
