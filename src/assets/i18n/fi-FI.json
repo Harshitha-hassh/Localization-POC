@@ -5015,5 +5015,12 @@
   "lbl_allRequests": "All Requests_fi",
   "lbl_fromAndToDate": "From Date & To Date_fi",
   "taxNumber": "Tax Number_fi",
-  "lbl_captureImage": "Capture Image_fi"
+  "lbl_captureImage": "Capture Image_fi",
+  "lbl_deletewarning": "Unable to delete! Record in use by the following screens_fi",
+  "lbl_inactivewarning": "Unable to inactivate! Record in use by the following screens_fi",
+  "lbl_screen": "Screens_fi",
+  "pg_title_jobSchedulerConfiguration": "Job Scheduler Configuration_fi",
+  "pg_title_jobScheduler": "Job Scheduler_fi",
+  "pg_title_nightAuditSettings": "Night Audit Settings_fi",
+  "lbl_sftp": "SFTP_fi"
 }
