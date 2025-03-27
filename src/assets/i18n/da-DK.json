@@ -3004,7 +3004,7 @@
     "PasswordExpirationDate": "Password Expiration Date_da",
     "NewPassword": "New Password_da",
     "InMinutes": "In Minutes_da",
-    "lbl_auto_unlock_after": "Auto unlock after_da",
+    "lbl_auto_unlock_after": "Auto unlock after (in mins)_da",
     "minutes": "minutes_da",
     "name": "Name_da",
     "address": "Address_da",

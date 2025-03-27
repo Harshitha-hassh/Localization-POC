@@ -3004,7 +3004,7 @@
     "PasswordExpirationDate": "Password Expiration Date_kr",
     "NewPassword": "New Password_kr",
     "InMinutes": "In Minutes_kr",
-    "lbl_auto_unlock_after": "Auto unlock after_kr",
+    "lbl_auto_unlock_after": "Auto unlock after (in mins)_kr",
     "minutes": "minutes_kr",
     "name": "Name_kr",
     "address": "Address_kr",
