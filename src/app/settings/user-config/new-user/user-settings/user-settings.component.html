@@ -87,7 +87,7 @@
               <label class="logofflabel form-label-normal mb-2 d-block">{{caption.setting.lbl_auto_unlock_after}}</label>
               <mat-form-field [floatLabel]="floatLabel " class="mt-1">
                   <input matInput placeholder=""  inputtype="number,nonnegative,nodecimal"  numMaxlength [attr.automationId]="'Txt_spaSettings_autounlockater'"
-                  autocomplete="off"  [type]="number"  [maxLength]='3' [min]='0' max=999 formControlName="autoUnlockAfterInMinutes">
+                  autocomplete="off"  type='number'  [maxLength]='3' [min]='0' max=999 formControlName="autoUnlockAfterInMinutes">
               </mat-form-field>
             </div>
           </div>
