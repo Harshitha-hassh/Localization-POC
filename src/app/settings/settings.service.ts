@@ -47,7 +47,7 @@ export class SettingsService {
     pwdexpirationdate: this.utils.getDate(this.PropertyInfo.CurrentDate),
     nPassword: ['', Validators.required],
     cPassword: ['', Validators.required],
-    AutoUnlockAfter:0
+    autoUnlockAfterInMinutes:0
   });
 
   // spaSettingsFormGrp = this.Form.group({
