@@ -260,7 +260,8 @@ export class UserSetupComponent implements OnInit, OnDestroy {
       email: clientObj.email,
       language: clientObj.languageId,
       newpassword: clientObj.isNewUser,
-      pwdexpirationdate: clientObj.passwordExpireDate ? this.utils.getDate(clientObj.passwordExpireDate) : ''
+      pwdexpirationdate: clientObj.passwordExpireDate ? this.utils.getDate(clientObj.passwordExpireDate) : '',
+      autoUnlockAfterInMinutes:clientObj.autoUnlockAfterInMinutes?clientObj?.autoUnlockAfterInMinutes:0
     };
 
     let spaData: any;

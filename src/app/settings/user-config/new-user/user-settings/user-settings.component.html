@@ -82,6 +82,15 @@
               <i matSuffix class="icon-Calender pointercursor" (click)="picker.open()"></i>
             </mat-form-field>
           </div>
+          <div class="pt-1 ag_display--flex">
+            <div class="">
+              <label class="logofflabel form-label-normal mb-2 d-block">{{caption.setting.lbl_auto_unlock_after}}</label>
+              <mat-form-field [floatLabel]="floatLabel " class="mt-1">
+                  <input matInput placeholder=""  inputtype="number,nonnegative,nodecimal"  numMaxlength [attr.automationId]="'Txt_spaSettings_autounlockater'"
+                  autocomplete="off"  type='number'  [maxLength]='3' [min]='0' max=999 formControlName="autoUnlockAfterInMinutes">
+              </mat-form-field>
+            </div>
+          </div>
         </ng-scrollbar>
       </div>
       <div [ngClass]="{'button_invalid': IsReadOnly}" class="settings-right pl-4 pt-4 pb-4">
