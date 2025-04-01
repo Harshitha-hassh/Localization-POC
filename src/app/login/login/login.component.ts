@@ -96,7 +96,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   userIdDir = 'capitalise,notallowspace,nospecailchar';
   tenantId: number;
   tenantIdFromParam: string;
-  currYear = new Date().getFullYear();
+  currYear = '2025';// Intentionally hardcoded copyright year to prevent dynamic changes for customers not receiving the next release.
   prevYear = '2020'
   passwordSetting: any;
   //Machine Name
