@@ -18,17 +18,21 @@ export class RetailUtilitiesComponent implements OnInit {
     private propertyInfo: RetailPropertyInformation) {
     this.codeRoute = this.routeDataService.GetChildMenu('/settings/utilities', 3);
     let propConfig = sessionStorage.getItem('propConfig') ? JSON.parse(sessionStorage.getItem('propConfig')) : null;
-    this.EnableRetailIC = propConfig?.EnableRetailIC?.toLowerCase() == 'true'? true: false;
+    this.EnableRetailIC = propConfig?.EnableRetailIC?.toLowerCase() == 'true' ? true : false;
     this.codeRoute.linkedElement.map(res => {
       if (res) {
-        if(res.routePath === '/settings/utilities/inventorysync' || res.routePath === '/settings/utilities/inventory') 
-          {
-              res.visibility = false;
-              if(this.propertyInfo.IsEatecEnabled || this.EnableRetailIC)
-                {
-                  res.visibility = true;
-                }
-          }   
+        if (res.routePath === '/settings/utilities/inventorysync' || res.routePath === '/settings/utilities/inventory') {
+          res.linkedElement
+            .filter((rp) => rp.routePath === '/settings/utilities/inventory/inventorysync')
+            .map((rp) => rp.visibility = false);
+          res.visibility = false;
+          if (this.propertyInfo.IsEatecEnabled || this.EnableRetailIC) {
+            res.visibility = true;
+            res.linkedElement
+              .filter((rp) => rp.routePath === '/settings/utilities/inventory/inventorysync')
+              .map((rp) => rp.visibility = true);
+          }
+        }
       }
     });
     this.menuList = {
