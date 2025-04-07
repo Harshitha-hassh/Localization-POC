@@ -101,7 +101,7 @@ export class CreateClientBusiness {
           number: _Number,
           extension: element.Extension ? element.Extension.replace('+', '') : '',
           isPrivate: element.PhonePrivate ? element.PhonePrivate : false,
-          isPrimary: element.PhonePrimary !== undefined ? element.PhonePrimary : true
+          isPrimary: element.PhonePrimary ? element.PhonePrimary : false
         };
         clientPhoneObj.push(phoneObj);
       }
@@ -120,7 +120,7 @@ export class CreateClientBusiness {
           contactTypeId: (element.EmailLabel) ? (element.EmailLabel) : 0,
           emailId: element.EmailId,
           isPrivate: element.EmailPrivate ? element.EmailPrivate : false,
-          isPrimary: element.EmailPrimary !== undefined ? element.EmailPrimary : true
+          isPrimary: element.EmailPrimary ? element.EmailPrimary : false
         };
         emailObjArr.push(emailObj);
       }

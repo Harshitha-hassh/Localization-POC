@@ -88,7 +88,7 @@ export class ClientPopupComponent implements OnInit {
   }
   async save(){
     this.IsClientScreenDirty = false;
-    this.clientInfo = this.clientPopupForm.value;
+    this.clientInfo = this.clientPopupForm.getRawValue();
     this.clientInfo.personalDetailsFormGroup.imageReferenceId = DefaultGUID;
     if (this.data.isCopyClient) {
       this.clientInfo.personalDetailsFormGroup.id = 0;

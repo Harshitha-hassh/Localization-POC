@@ -341,6 +341,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     const selectedctrl = arr.controls.filter((x, idx) => idx == formGroupName)?.[0];
     if (selectedctrl) {
       (selectedctrl as UntypedFormGroup).controls[formControlName].disable();
+      (selectedctrl as UntypedFormGroup).controls[formControlName].setValue(true);
     }
     const ctrls = arr.controls.filter((x, idx) => idx != formGroupName);
     ctrls.forEach(x => {

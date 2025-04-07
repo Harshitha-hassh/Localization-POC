@@ -121,7 +121,6 @@ export class ManageSessionService implements OnDestroy {
         this.dialogRef.closeAll();
         localStorage.removeItem('invalidKey');
         this.isGoogleApiReset.next(true);
-        this.http.removeHelpUserSession();
         this.clearLocalStore();
         this.changeTitle();
         if(this.adb2cAuthConfiguration.ADB2CAuthFeatureEnabled)

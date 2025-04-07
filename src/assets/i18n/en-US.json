@@ -2491,6 +2491,7 @@
     "lbl_bucketcode": "Bucket Code",
     "lbl_bucketname": "Bucket Name",
     "lbl_transactioncode": "Transaction Code",
+    "lbl_paymentCode":"Payment Code",
     "lbl_applyForAllPaymentMethodsForTheSameOutlet": "Apply For All Payment Methods",
     "lbl_applyForOutletsForTheSamePaymentMethod": "Apply For All Outlets",
     "lbl_applyToAllRetailCategories": "Apply For All Retail Categories",

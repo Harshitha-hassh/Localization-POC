@@ -178,7 +178,7 @@
                 *ngIf="i != 0"></span>
               <span [attr.automationId]="'Lbl_personalInformation_addPhoneNo'" class="icon-Plus"
                 [ngClass]="{'button_invalid': isClientViewOnly }"
-                (click)="addPhoneItem(i, '0', '-1', '', '');makeFormDirty()" *ngIf="last"></span>
+                (click)="addPhoneItem(i, '0', '-1', '', false,false);makeFormDirty()" *ngIf="last"></span>
             </div>
             <div>
               <mat-form-field class="d-block width-380px" [floatLabel]="floatLabel"
@@ -245,7 +245,7 @@
               [ngClass]="{'button_invalid': isClientViewOnly }" (click)="removeEmailItem(j,'','');makeFormDirty()"
               *ngIf="j != 0"></span>
             <span [attr.automationId]="'Lbl_personalInformation_addEmailItem'" class="icon-Plus"
-              [ngClass]="{'button_invalid': isClientViewOnly }" (click)="addEmailItem(j,'0','');makeFormDirty()"
+              [ngClass]="{'button_invalid': isClientViewOnly }" (click)="addEmailItem(j,'0','',false, false);makeFormDirty()"
               *ngIf="last"></span>
           </div>
           <div class="float-left contact-info-toggle" [formGroupName]="j">
