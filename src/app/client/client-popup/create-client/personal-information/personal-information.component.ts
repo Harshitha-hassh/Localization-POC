@@ -349,6 +349,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       grp.controls[formControlName].setValue(false);
       grp.controls[formControlName].enable();
     });
+    this.FormGrp.markAsDirty();
+    this.FormGrp.updateValueAndValidity();
   }
 
 

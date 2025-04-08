@@ -115,7 +115,7 @@ export class ManageSessionService implements OnDestroy {
         clearTimeout(this.triggerTimeout);
         this.triggerTimeout = null;
         this.stopTimerForNotification();
-        await this.updateSession();
+        this.updateSession();
         this.goToLogin();
         this.removeToken();
         this.dialogRef.closeAll();
