@@ -158,6 +158,10 @@
               <label class="golf-form--label text-label-new">{{localization.captions.setting.RequestPresettlementReceiptOnPendingSettlement}}</label>
               <app-ag-toggle [toggleInputs]="settlementReceiptToggleInputs"></app-ag-toggle>
             </div>
+            <div class="pb-3 pt-4">
+              <label class="golf-form--label text-label-new">{{localization.captions.setting.GroupByTaxName}}</label>
+              <app-ag-toggle [toggleInputs]="GroupByTaxNameToggleInputs"></app-ag-toggle>
+            </div>
         <!-- <app-single-to-multiple *ngIf="selectedTabIndex === 1" [outlets]="this.outlets"></app-single-to-multiple> -->
         </form>
         <div class="bottomSection w-100">

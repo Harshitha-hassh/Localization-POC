@@ -3259,7 +3259,8 @@
     "err_confirmPassword": "Confirm Password should be same as new Password_kr",
     "MissingNewPassword": "Missing New Password_kr",
     "MissingConfirmPassword": "Missing Confirm Password_kr",
-    "RequestPresettlementReceiptOnPendingSettlement": "Request Pre-settlement Receipts for Pending Settlements_kr"
+    "RequestPresettlementReceiptOnPendingSettlement": "Request Pre-settlement Receipts for Pending Settlements_kr",
+    "GroupByTaxName": "Group by Tax Name_kr"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_kr",

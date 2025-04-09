@@ -3259,7 +3259,8 @@
     "err_confirmPassword": "Confirm Password should be same as new Password_da",
     "MissingNewPassword": "Missing New Password_da",
     "MissingConfirmPassword": "Missing Confirm Password_da",
-    "RequestPresettlementReceiptOnPendingSettlement": "Request Pre-settlement Receipts for Pending Settlements_da"
+    "RequestPresettlementReceiptOnPendingSettlement": "Request Pre-settlement Receipts for Pending Settlements_da",
+    "GroupByTaxName": "Group by Tax Name_da"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_da",

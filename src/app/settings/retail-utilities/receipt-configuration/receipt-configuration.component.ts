@@ -63,7 +63,7 @@ export class ReceiptConfigurationComponent implements OnInit {
   headerImageUploaded: boolean;
   footerImageUploaded: boolean;
   headerUrl: string;
-
+  GroupByTaxNameToggleInputs: AgToggleConfig;
   constructor(private Form: UntypedFormBuilder,
               private breakPoint: BreakPointAccess,
               public localization: RetailStandaloneLocalization,
@@ -95,7 +95,8 @@ export class ReceiptConfigurationComponent implements OnInit {
       headerImageReferenceId: DEFAULT_IMAGE_REFERENCE_ID,
       footerImageReferenceId:DEFAULT_IMAGE_REFERENCE_ID,
       propertyImageAlign: '0',
-      receiptImageFooterNote: ['']
+      receiptImageFooterNote: [''],
+      groupByTaxName:[false]
     })
   }
 
@@ -141,6 +142,11 @@ export class ReceiptConfigurationComponent implements OnInit {
       horizontal: true,
       formControlName: 'displayImageInReceiptHeader',
       automationId : 'Tog_ReceiptConfiguration_displayPropertyLogoInReceiptHeader' 
+    }
+    this.GroupByTaxNameToggleInputs = {
+      group: this.propertyForm,
+      formControlName: 'groupByTaxName',
+      automationId:'Tog_ReceiptConfiguration_groupByTaxName'
     }
     this.Outlet = await this.outletData.getOutlets();
     this.Outlet = this.Outlet.filter(x => x.isActive == true);
@@ -434,10 +440,12 @@ async getPropertyReceiptConfig()
      this.PropertyReceiptInfo.configValue.displayChangeDue : this.PropertyReceiptInfo.defaultValue.displayChangeDue;
      let printGiftReceipt = this.PropertyReceiptInfo.configValue.printGiftReceipt != null ? this.PropertyReceiptInfo.configValue.printGiftReceipt : false;
      let printPendingSettlementReceipt = this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt != null ? this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt : false;
+     let groupByTaxName = this.PropertyReceiptInfo.configValue.groupByTaxName != null ? this.PropertyReceiptInfo.configValue.groupByTaxName : false;
      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
      this.propertyForm.controls["receiptFooterNote"].setValue(receiptFooterNote);
      this.propertyForm.controls["printGiftReceipt"].setValue(printGiftReceipt);
      this.propertyForm.controls["printPendingSettlementReceipt"].setValue(printPendingSettlementReceipt);
+     this.propertyForm.controls["groupByTaxName"].setValue(groupByTaxName);
      let displayImageInReceiptHeader = this.PropertyReceiptInfo.configValue.displayImageInReceiptHeader != null ? this.PropertyReceiptInfo.configValue.displayImageInReceiptHeader : this.PropertyReceiptInfo.defaultValue.displayImageInReceiptHeader;
       this.propertyForm.controls["displayImageInReceiptHeader"].setValue(displayImageInReceiptHeader);
       let displayImageInReceiptFooter = this.PropertyReceiptInfo.configValue.displayImageInReceiptFooter != null ? this.PropertyReceiptInfo.configValue.displayImageInReceiptFooter : this.PropertyReceiptInfo.defaultValue.displayImageInReceiptFooter;
@@ -518,7 +526,8 @@ async getPropertyReceiptConfig()
       footerimagedata,
       headerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID,
       footerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID,
-      receiptImageFooterNote
+      receiptImageFooterNote,
+      groupByTaxName
     } = data;
   
     return {
@@ -534,7 +543,8 @@ async getPropertyReceiptConfig()
       footerimagedata,
       headerImageReferenceId:this.headerImageReferenceId?this.headerImageReferenceId:this.PropertyReceiptInfo.configValue.headerImageReferenceId,
       footerImageReferenceId:this.footerImageReferenceId?this.footerImageReferenceId:this.PropertyReceiptInfo.configValue.footerImageReferenceId,
-      receiptImageFooterNote
+      receiptImageFooterNote,
+      groupByTaxName
     };
   }
   formDefaultValue(data: any)
@@ -552,7 +562,8 @@ async getPropertyReceiptConfig()
       footerimagedata: false,
       headerImageReferenceId: DEFAULT_IMAGE_REFERENCE_ID, 
       footerImageReferenceId: DEFAULT_IMAGE_REFERENCE_ID,
-      receiptImageFooterNote:""
+      receiptImageFooterNote:"",
+      groupByTaxName: false
     }
     return defaultValue;
   }
