@@ -64,6 +64,7 @@ export class ReceiptConfigurationComponent implements OnInit {
   footerImageUploaded: boolean;
   headerUrl: string;
   GroupByTaxNameToggleInputs: AgToggleConfig;
+  ReplaceMemberNumberWithARToggleInputs: AgToggleConfig;
   constructor(private Form: UntypedFormBuilder,
               private breakPoint: BreakPointAccess,
               public localization: RetailStandaloneLocalization,
@@ -96,7 +97,8 @@ export class ReceiptConfigurationComponent implements OnInit {
       footerImageReferenceId:DEFAULT_IMAGE_REFERENCE_ID,
       propertyImageAlign: '0',
       receiptImageFooterNote: [''],
-      groupByTaxName:[false]
+      groupByTaxName:[false],
+      replaceMemberNumberWithAR:[false]
     })
   }
 
@@ -147,6 +149,11 @@ export class ReceiptConfigurationComponent implements OnInit {
       group: this.propertyForm,
       formControlName: 'groupByTaxName',
       automationId:'Tog_ReceiptConfiguration_groupByTaxName'
+    }
+    this.ReplaceMemberNumberWithARToggleInputs = {
+      group: this.propertyForm,
+      formControlName: 'replaceMemberNumberWithAR',
+      automationId:'Tog_ReceiptConfiguration_replaceMemberNumberWithAR'
     }
     this.Outlet = await this.outletData.getOutlets();
     this.Outlet = this.Outlet.filter(x => x.isActive == true);
@@ -441,11 +448,13 @@ async getPropertyReceiptConfig()
      let printGiftReceipt = this.PropertyReceiptInfo.configValue.printGiftReceipt != null ? this.PropertyReceiptInfo.configValue.printGiftReceipt : false;
      let printPendingSettlementReceipt = this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt != null ? this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt : false;
      let groupByTaxName = this.PropertyReceiptInfo.configValue.groupByTaxName != null ? this.PropertyReceiptInfo.configValue.groupByTaxName : false;
+     let replaceMemberNumberWithAR = this.PropertyReceiptInfo.configValue.replaceMemberNumberWithAR != null ? this.PropertyReceiptInfo.configValue.replaceMemberNumberWithAR : false;
      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
      this.propertyForm.controls["receiptFooterNote"].setValue(receiptFooterNote);
      this.propertyForm.controls["printGiftReceipt"].setValue(printGiftReceipt);
      this.propertyForm.controls["printPendingSettlementReceipt"].setValue(printPendingSettlementReceipt);
      this.propertyForm.controls["groupByTaxName"].setValue(groupByTaxName);
+     this.propertyForm.controls["replaceMemberNumberWithAR"].setValue(replaceMemberNumberWithAR);
      let displayImageInReceiptHeader = this.PropertyReceiptInfo.configValue.displayImageInReceiptHeader != null ? this.PropertyReceiptInfo.configValue.displayImageInReceiptHeader : this.PropertyReceiptInfo.defaultValue.displayImageInReceiptHeader;
       this.propertyForm.controls["displayImageInReceiptHeader"].setValue(displayImageInReceiptHeader);
       let displayImageInReceiptFooter = this.PropertyReceiptInfo.configValue.displayImageInReceiptFooter != null ? this.PropertyReceiptInfo.configValue.displayImageInReceiptFooter : this.PropertyReceiptInfo.defaultValue.displayImageInReceiptFooter;
@@ -527,7 +536,8 @@ async getPropertyReceiptConfig()
       headerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID,
       footerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID,
       receiptImageFooterNote,
-      groupByTaxName
+      groupByTaxName,
+      replaceMemberNumberWithAR
     } = data;
   
     return {
@@ -544,7 +554,8 @@ async getPropertyReceiptConfig()
       headerImageReferenceId:this.headerImageReferenceId?this.headerImageReferenceId:this.PropertyReceiptInfo.configValue.headerImageReferenceId,
       footerImageReferenceId:this.footerImageReferenceId?this.footerImageReferenceId:this.PropertyReceiptInfo.configValue.footerImageReferenceId,
       receiptImageFooterNote,
-      groupByTaxName
+      groupByTaxName,
+      replaceMemberNumberWithAR
     };
   }
   formDefaultValue(data: any)
@@ -563,7 +574,8 @@ async getPropertyReceiptConfig()
       headerImageReferenceId: DEFAULT_IMAGE_REFERENCE_ID, 
       footerImageReferenceId: DEFAULT_IMAGE_REFERENCE_ID,
       receiptImageFooterNote:"",
-      groupByTaxName: false
+      groupByTaxName: false,
+      replaceMemberNumberWithAR:false
     }
     return defaultValue;
   }

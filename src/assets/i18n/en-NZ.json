@@ -3260,7 +3260,8 @@
     "MissingNewPassword": "Missing New Password",
     "MissingConfirmPassword": "Missing Confirm Password",
     "RequestPresettlementReceiptOnPendingSettlement": "Request Pre-settlement Receipts for Pending Settlements",
-    "GroupByTaxName": "Group by Tax Name"
+    "GroupByTaxName": "Group by Tax Name",
+    "ReplaceMemberNumberWithAR": "Replace Member # with AR #"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description",
