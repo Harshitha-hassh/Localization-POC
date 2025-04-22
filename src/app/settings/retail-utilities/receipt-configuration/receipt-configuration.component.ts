@@ -11,6 +11,7 @@ import { AgToggleConfig, DropdownOptions } from 'src/app/common/Models/ag-models
 import { AlertType, Imagedata } from 'src/app/shared/shared-models';
 import { ImageDataService } from 'src/app/shared/data-services/Image/image.data.services';
 import { DEFAULT_IMAGE_REFERENCE_ID } from 'src/app/app-constants';
+import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 
 @Component({
   selector: 'app-receipt-configuration',
@@ -69,7 +70,8 @@ export class ReceiptConfigurationComponent implements OnInit {
               private breakPoint: BreakPointAccess,
               public localization: RetailStandaloneLocalization,
               private data: ReceiptConfigurationDataService,
-              private outletData: RetailOutletsDataService, private utils: RetailUtilities,private imgService: ImageDataService) {
+              private outletData: RetailOutletsDataService, private utils: RetailUtilities,private imgService: ImageDataService,
+              public PropertyInfo: RetailPropertyInformation) {
     this.textCaptions = this.localization.captions.utilities;
     this.floatLabel = this.localization.setFloatLabel;
     this.FormGrp = this.Form.group({

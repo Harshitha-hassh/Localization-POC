@@ -159,7 +159,7 @@
                   <label class="golf-form--label text-label-new">{{localization.captions.setting.RequestPresettlementReceiptOnPendingSettlement}}</label>
               <app-ag-toggle [toggleInputs]="settlementReceiptToggleInputs"></app-ag-toggle>
                 </div>
-                <div class="pad-top-10 ag_w--33 ag_pr--8">
+                <div class="pad-top-10 ag_w--33 ag_pr--8" *ngIf="!this.PropertyInfo.IsVATEnabled">
                   <label class="golf-form--label text-label-new">{{localization.captions.setting.GroupByTaxName}}</label>
                   <app-ag-toggle [toggleInputs]="GroupByTaxNameToggleInputs"></app-ag-toggle>
                 </div>
