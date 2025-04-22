@@ -1464,6 +1464,7 @@
     "GiftCard": {
       "GiftCard": "Gift Card",
       "swipe": "SWIPE",
+      "Agilysys": "Agilysys",
       "IssueGiftCard": "Issue Gift Card",
       "SearchBygiftcardnumber": "Search by Gift Card #",
       "AvailableAmount": "Available Amount",
