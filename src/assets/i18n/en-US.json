@@ -5030,5 +5030,6 @@
   "pg_title_jobScheduler": "Job Scheduler",
   "pg_title_nightAuditSettings": "Night Audit Settings",
   "lbl_sftp": "SFTP",
-  "lbl_editCatalogueSetupTitle": "Edit Catalogue Setup"
+  "lbl_editCatalogueSetupTitle": "Edit Catalogue Setup",
+  "tbl_hdr_listOrder": "List Order"
 }
