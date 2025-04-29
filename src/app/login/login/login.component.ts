@@ -36,7 +36,7 @@ import { RetailFunctionalityService } from 'src/app/retail/shared/service/retail
 import { UserMachineInfo } from 'src/app/common/shared/shared.modal';
 import { PropertySettingDataService as RetailPropertySettingDataService } from 'src/app/retail/sytem-config/property-setting.data.service';
 import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';
-import { ConfigKeys } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
+import { ConfigKeys, RetailConstants } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 import { PropertyFeaturesConfigurationService } from 'src/app/retail/sytem-config/payment-features-config/property-feature-config.service';
 import { FeatureName, RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { PropertyService } from 'src/app/common/services/property.service';
@@ -542,6 +542,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setAutoLogOff();
       await this.SetUserSessionConfiguration(this.userInfo.userId);
       this.setMachineDetails();
+      sessionStorage.setItem(RetailConstants.EnableResortFinance, this.userInfo.enableResortFinance.toString());
+      await this.propertyServices.setAuthorizeTokenBySession();
       this.router.navigate(['/home']);
       this.propertyServices.Checkfordeployment();
       await this.retailFunc.getRetailFunctionality();
