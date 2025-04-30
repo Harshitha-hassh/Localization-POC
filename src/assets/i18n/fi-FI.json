@@ -1,4 +1,5 @@
 {
+  "90070": "90070 - Folio_fi",
   "contactTypesOptions": {
     "Phone": [
       {
@@ -73,7 +74,9 @@
     "viewFailed": "View Failed_fi",
     "viewFailedUnprocessed": "View Failed / Unprocessed_fi",
     "confirmation": "Are You Sure?_fi",
-    "successfullysaved": "Successfully Saved_fi"
+    "successfullysaved": "Successfully Saved_fi",
+    "createFolio": "Create New Folio_fi",
+    "createFolioAndAssignRfid": "Create and Assign RFID_fi"
   },
   "login": {
     "enterUserId": "Please Enter the User ID_fi",
@@ -391,7 +394,10 @@
     "unBlock": "UnBlock_fi",
     "InputDateFormat": "MM/DD/YYYY_fi",
     "lbl_OpenJasperSoft": "Open JasperSoft Server_fi",
-    "popupMsg": "Retrieving Records may take more time than expected, Please wait to load all the data_fi"
+    "popupMsg": "Retrieving Records may take more time than expected, Please wait to load all the data_fi",
+    "lbl_breakpoint": "Breakpoint_fi",
+    "CopyConfirmation": "Do you want to copy the post types from post type mapping screen?_fi",
+    "CopyFromPostTypeMapping": "COPY FROM POST TYPE MAPPING_fi"
   },
   "calendar": {
     "Sunday": "Sunday_fi",
@@ -1025,6 +1031,29 @@
     "creditBookBalance": "Credit Book_fi",
     "membershipType": "Membership Type_fi",
     "discountType": "Discount Type_fi",
+    "lbl_folio_number": "Folio Number_fi",
+    "lbl_outstanding_balance": "Outstanding Balance_fi",
+    "memberName": "Member Name_fi",
+    "guestName": "Guest Name_fi",
+    "lbl_RFIDScan": "RFID Scan_fi",
+    "hdr_post_to_folio": "POST TO FOLIO_fi",
+    "btn_proceed": "PROCEED_fi",
+    "lbl_folio_name": "Folio Name_fi",
+    "lbl_overallFolio_balance": "Overall Folio Balance_fi",
+    "lbl_RFIDNumber": "RFID_fi",
+    "SwipeRFID": "Tap your RFID on the reader to proceed._fi",
+    "srch_folioname": "Search by Folio Number_fi",
+    "srch_guest": "Search by Guest_fi",
+    "srch_member": "Search by Member_fi",
+    "warn_create_new_folio": "There is no folio available. Do you want to create a new folio?_fi",
+    "warn_create_new_folio_RFID": "There is no folio available. Please Select an action to proceed_fi",
+    "MemberNoteHeader": "Note_fi",
+    "MemberDiscountNoteInfo": "Member price will be applied when ticket is settled from order summary._fi",
+    "MemberDiscountNoteConfirmation": "Select member to proceed without member price_fi",
+    "rfidScanSuccess": "Scan completed successfully_fi",
+    "postTypesUnmappedText": "Please map Post Types for the following items: _fi",
+    "unmappedSettlement": "Settlement_fi",
+    "unmapped_taxes": "Taxes_fi",
     "ItemName": "Item Name_fi",
     "ItemPrice": "Item Price_fi",
     "CostPlusDiscount": "Cost Plus Discount_fi",
@@ -1807,6 +1836,7 @@
     "7140": "7140 - Payment Manager - Outlets_fi",
     "7145": "7145 - Payment Manager - PMAgents_fi",
     "7150": "7150 - Payment Manager - PMSettlers_fi",
+    "7155": "7155 - Resort Finance Post Type Mapping_fi",
     "7160": "7160 - Custom Fee_fi",
     "7165": "7165 - General Ledger Mapping_fi",
     "7170": "7170 - Item Mapping_fi",
@@ -1876,6 +1906,7 @@
     "42709": "42709 - Add/Edit Discount Mapping_fi",
     "85160": "85160 - DataMagine Configuration_fi",
     "85255": "85255 - SFTP_fi",
+    "90115": "90115 - Link RFID_fi",
     "100775": "100775 - Event Scheduler_fi",
     "100776": "100776 - Job Scheduler Configuration_fi",
     "200410": "200410 - Export_fi",
@@ -1909,6 +1940,7 @@
     "241524202425": "Move Multiple Appointments_fi",
     "Interface": "Interfaces_fi"
   },
+  "err_breakPointAccessDeniedMsg": "The user does not have permissions to perform this action._fi",
   "userId": "User ID_fi",
   "password": "Password_fi",
   "rememberMe": "Remember Me_fi",
@@ -2551,7 +2583,8 @@
     "err_min": "Precedes Minimum Value_fi",
     "lbl_invalidStartPosition": "Invalid Start Position_fi",
     "lbl_EligibleForInhouseGratuity": "Eligible for In-House Gratuity_fi",
-    "lbl_EligibleForInhouseServiceCharge": "Eligible for In-House Service Charge_fi"
+    "lbl_EligibleForInhouseServiceCharge": "Eligible for In-House Service Charge_fi",
+    "ResortFinancePostTypeMappingRevenuePostCodeDetails": "Resort Finance Post Type Mapping: Revenue Post Code Details_fi"
   },
   "setting": {
     "lbl_inHouseGratuity": "In-House Gratuity_fi",
@@ -5032,5 +5065,9 @@
   "pg_title_nightAuditSettings": "Night Audit Settings_fi",
   "lbl_sftp": "SFTP_fi",
   "lbl_editCatalogueSetupTitle": "Edit Catalogue Setup_fi",
-  "tbl_hdr_listOrder": "List Order_fi"
+  "tbl_hdr_listOrder": "List Order_fi",
+  "lbl_default": "Default_fi",
+  "lbl_inProgress": "In Progress_fi",
+  "lbl_folio_number": "Folio Number_fi",
+  "lbl_creditCardLimit": "Credit Limit_fi"
 }

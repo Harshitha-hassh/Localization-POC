@@ -1,4 +1,5 @@
 {
+  "90070": "90070 - Folio",
   "contactTypesOptions": {
     "Phone": [
       {
@@ -73,7 +74,9 @@
     "viewFailed": "View Failed",
     "viewFailedUnprocessed": "View Failed / Unprocessed",
     "confirmation": "Are You Sure?",
-    "successfullysaved": "Successfully Saved"
+    "successfullysaved": "Successfully Saved",
+    "createFolio": "Create New Folio",
+    "createFolioAndAssignRfid": "Create and Assign RFID"
   },
   "login": {
     "enterUserId": "Please Enter the User ID",
@@ -391,7 +394,10 @@
     "unBlock": "UnBlock",
     "InputDateFormat": "MM/DD/YYYY",
     "lbl_OpenJasperSoft": "Open JasperSoft Server",
-    "popupMsg": "Retrieving Records may take more time than expected, Please wait to load all the data"
+    "popupMsg": "Retrieving Records may take more time than expected, Please wait to load all the data",
+    "lbl_breakpoint": "Breakpoint",
+    "CopyConfirmation": "Do you want to copy the post types from post type mapping screen?",
+    "CopyFromPostTypeMapping": "COPY FROM POST TYPE MAPPING"
   },
   "calendar": {
     "Sunday": "Sunday",
@@ -1025,6 +1031,29 @@
     "creditBookBalance": "Credit Book",
     "membershipType": "Membership Type",
     "discountType": "Discount Type",
+    "lbl_folio_number": "Folio Number",
+    "lbl_outstanding_balance": "Outstanding Balance",
+    "memberName": "Member Name",
+    "guestName": "Guest Name",
+    "lbl_RFIDScan": "RFID Scan",
+    "hdr_post_to_folio": "POST TO FOLIO",
+    "btn_proceed": "PROCEED",
+    "lbl_folio_name": "Folio Name",
+    "lbl_overallFolio_balance": "Overall Folio Balance",
+    "lbl_RFIDNumber": "RFID",
+    "SwipeRFID": "Tap your RFID on the reader to proceed.",
+    "srch_folioname": "Search by Folio Number",
+    "srch_guest": "Search by Guest",
+    "srch_member": "Search by Member",
+    "warn_create_new_folio": "There is no folio available. Do you want to create a new folio?",
+    "warn_create_new_folio_RFID": "There is no folio available. Please Select an action to proceed",
+    "MemberNoteHeader": "Note",
+    "MemberDiscountNoteInfo": "Member price will be applied when ticket is settled from order summary.",
+    "MemberDiscountNoteConfirmation": "Select member to proceed without member price",
+    "rfidScanSuccess": "Scan completed successfully",
+    "postTypesUnmappedText": "Please map Post Types for the following items: ",
+    "unmappedSettlement": "Settlement",
+    "unmapped_taxes": "Taxes",
     "ItemName": "Item Name",
     "ItemPrice": "Item Price",
     "CostPlusDiscount": "Cost Plus Discount",
@@ -1807,6 +1836,7 @@
     "7140": "7140 - Payment Manager - Outlets",
     "7145": "7145 - Payment Manager - PMAgents",
     "7150": "7150 - Payment Manager - PMSettlers",
+    "7155": "7155 - Resort Finance Post Type Mapping",
     "7160": "7160 - Custom Fee",
     "7165": "7165 - General Ledger Mapping",
     "7170": "7170 - Item Mapping",
@@ -1876,6 +1906,7 @@
     "42709": "42709 - Add/Edit Discount Mapping",
     "85160": "85160 - DataMagine Configuration",
     "85255": "85255 - SFTP",
+    "90115": "90115 - Link RFID",
     "100775": "100775 - Event Scheduler",
     "100776": "100776 - Job Scheduler Configuration",
     "200410": "200410 - Export",
@@ -1909,6 +1940,7 @@
     "241524202425": "Move Multiple Appointments",
     "Interface": "Interfaces"
   },
+  "err_breakPointAccessDeniedMsg": "The user does not have permissions to perform this action.",
   "userId": "User ID",
   "password": "Password",
   "rememberMe": "Remember Me",
@@ -2551,7 +2583,8 @@
     "err_min": "Precedes Minimum Value",
     "lbl_invalidStartPosition": "Invalid Start Position",
     "lbl_EligibleForInhouseGratuity": "Eligible for In-House Gratuity",
-    "lbl_EligibleForInhouseServiceCharge": "Eligible for In-House Service Charge"
+    "lbl_EligibleForInhouseServiceCharge": "Eligible for In-House Service Charge",
+    "ResortFinancePostTypeMappingRevenuePostCodeDetails": "Resort Finance Post Type Mapping: Revenue Post Code Details"
   },
   "setting": {
     "lbl_inHouseGratuity": "In-House Gratuity",
@@ -5032,5 +5065,9 @@
   "pg_title_nightAuditSettings": "Night Audit Settings",
   "lbl_sftp": "SFTP",
   "lbl_editCatalogueSetupTitle": "Edit Catalogue Setup",
-  "tbl_hdr_listOrder": "List Order"
+  "tbl_hdr_listOrder": "List Order",
+  "lbl_default": "Default",
+  "lbl_inProgress": "In Progress",
+  "lbl_folio_number": "Folio Number",
+  "lbl_creditCardLimit": "Credit Limit"
 }

@@ -1,4 +1,5 @@
 {
+  "90070": "90070 - Folio_da",
   "contactTypesOptions": {
     "Phone": [
       {
@@ -73,7 +74,9 @@
     "viewFailed": "View Failed_da",
     "viewFailedUnprocessed": "View Failed / Unprocessed_da",
     "confirmation": "Are You Sure?_da",
-    "successfullysaved": "Successfully Saved_da"
+    "successfullysaved": "Successfully Saved_da",
+    "createFolio": "Create New Folio_da",
+    "createFolioAndAssignRfid": "Create and Assign RFID_da"
   },
   "login": {
     "enterUserId": "Please Enter the User ID_da",
@@ -391,7 +394,10 @@
     "unBlock": "UnBlock_da",
     "InputDateFormat": "MM/DD/YYYY_da",
     "lbl_OpenJasperSoft": "Open JasperSoft Server_da",
-    "popupMsg": "Retrieving Records may take more time than expected, Please wait to load all the data_da"
+    "popupMsg": "Retrieving Records may take more time than expected, Please wait to load all the data_da",
+    "lbl_breakpoint": "Breakpoint_da",
+    "CopyConfirmation": "Do you want to copy the post types from post type mapping screen?_da",
+    "CopyFromPostTypeMapping": "COPY FROM POST TYPE MAPPING_da"
   },
   "calendar": {
     "Sunday": "Sunday_da",
@@ -1025,6 +1031,29 @@
     "creditBookBalance": "Credit Book_da",
     "membershipType": "Membership Type_da",
     "discountType": "Discount Type_da",
+    "lbl_folio_number": "Folio Number_da",
+    "lbl_outstanding_balance": "Outstanding Balance_da",
+    "memberName": "Member Name_da",
+    "guestName": "Guest Name_da",
+    "lbl_RFIDScan": "RFID Scan_da",
+    "hdr_post_to_folio": "POST TO FOLIO_da",
+    "btn_proceed": "PROCEED_da",
+    "lbl_folio_name": "Folio Name_da",
+    "lbl_overallFolio_balance": "Overall Folio Balance_da",
+    "lbl_RFIDNumber": "RFID_da",
+    "SwipeRFID": "Tap your RFID on the reader to proceed._da",
+    "srch_folioname": "Search by Folio Number_da",
+    "srch_guest": "Search by Guest_da",
+    "srch_member": "Search by Member_da",
+    "warn_create_new_folio": "There is no folio available. Do you want to create a new folio?_da",
+    "warn_create_new_folio_RFID": "There is no folio available. Please Select an action to proceed_da",
+    "MemberNoteHeader": "Note_da",
+    "MemberDiscountNoteInfo": "Member price will be applied when ticket is settled from order summary._da",
+    "MemberDiscountNoteConfirmation": "Select member to proceed without member price_da",
+    "rfidScanSuccess": "Scan completed successfully_da",
+    "postTypesUnmappedText": "Please map Post Types for the following items: _da",
+    "unmappedSettlement": "Settlement_da",
+    "unmapped_taxes": "Taxes_da",
     "ItemName": "Item Name_da",
     "ItemPrice": "Item Price_da",
     "CostPlusDiscount": "Cost Plus Discount_da",
@@ -1807,6 +1836,7 @@
     "7140": "7140 - Payment Manager - Outlets_da",
     "7145": "7145 - Payment Manager - PMAgents_da",
     "7150": "7150 - Payment Manager - PMSettlers_da",
+    "7155": "7155 - Resort Finance Post Type Mapping_da",
     "7160": "7160 - Custom Fee_da",
     "7165": "7165 - General Ledger Mapping_da",
     "7170": "7170 - Item Mapping_da",
@@ -1876,6 +1906,7 @@
     "42709": "42709 - Add/Edit Discount Mapping_da",
     "85160": "85160 - DataMagine Configuration_da",
     "85255": "85255 - SFTP_da",
+    "90115": "90115 - Link RFID_da",
     "100775": "100775 - Event Scheduler_da",
     "100776": "100776 - Job Scheduler Configuration_da",
     "200410": "200410 - Export_da",
@@ -1909,6 +1940,7 @@
     "241524202425": "Move Multiple Appointments_da",
     "Interface": "Interfaces_da"
   },
+  "err_breakPointAccessDeniedMsg": "The user does not have permissions to perform this action._da",
   "userId": "User ID_da",
   "password": "Password_da",
   "rememberMe": "Remember Me_da",
@@ -2551,7 +2583,8 @@
     "err_min": "Precedes Minimum Value_da",
     "lbl_invalidStartPosition": "Invalid Start Position_da",
     "lbl_EligibleForInhouseGratuity": "Eligible for In-House Gratuity_da",
-    "lbl_EligibleForInhouseServiceCharge": "Eligible for In-House Service Charge_da"
+    "lbl_EligibleForInhouseServiceCharge": "Eligible for In-House Service Charge_da",
+    "ResortFinancePostTypeMappingRevenuePostCodeDetails": "Resort Finance Post Type Mapping: Revenue Post Code Details_da"
   },
   "setting": {
     "lbl_inHouseGratuity": "In-House Gratuity_da",
@@ -5032,5 +5065,9 @@
   "pg_title_nightAuditSettings": "Night Audit Settings_da",
   "lbl_sftp": "SFTP_da",
   "lbl_editCatalogueSetupTitle": "Edit Catalogue Setup_da",
-  "tbl_hdr_listOrder": "List Order_da"
+  "tbl_hdr_listOrder": "List Order_da",
+  "lbl_default": "Default_da",
+  "lbl_inProgress": "In Progress_da",
+  "lbl_folio_number": "Folio Number_da",
+  "lbl_creditCardLimit": "Credit Limit_da"
 }
