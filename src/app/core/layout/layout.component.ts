@@ -94,7 +94,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.captions = this.localization.captions;
       this.propertyName = this.localization.GetPropertyInfo('PropertyName');
       let propConfig = JSON.parse(sessionStorage.getItem("propConfig"));
-      let enableUICache = propConfig?.UICacheEnabled;     
+      let enableUICache = propConfig?.UICacheEnabled;
       this.propertyService.changeTitle();
       this.loadGoogleMap();
       this.triggerNotification();
@@ -105,7 +105,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
         this.setFullStory();
       }      
       this.StartSignalrConnection();    
-    if (enableUICache && enableUICache.toLowerCase() == "true") {
+      if (enableUICache === undefined || enableUICache.toLowerCase() == "true") {
       sessionStorage.setItem("setUICache", "true"); 
       this.setUICache();
     }
