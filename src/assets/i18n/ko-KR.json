@@ -1031,6 +1031,8 @@
     "creditBookBalance": "Credit Book_kr",
     "membershipType": "Membership Type_kr",
     "discountType": "Discount Type_kr",
+    "corpName": "Corp Name_kr",
+    "membersearch": "Member Search_kr",
     "lbl_folio_number": "Folio Number_kr",
     "lbl_outstanding_balance": "Outstanding Balance_kr",
     "memberName": "Member Name_kr",

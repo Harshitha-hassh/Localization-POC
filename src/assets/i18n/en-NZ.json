@@ -1031,6 +1031,8 @@
     "creditBookBalance": "Credit Book",
     "membershipType": "Membership Type",
     "discountType": "Discount Type",
+    "corpName": "Corp Name",
+    "membersearch": "Member Search",
     "lbl_folio_number": "Folio Number",
     "lbl_outstanding_balance": "Outstanding Balance",
     "memberName": "Member Name",
