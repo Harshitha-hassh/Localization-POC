@@ -385,6 +385,11 @@
     "-325": "Duplicate Guest Type Code exists",
     "-328": "Guest Type is already mapped to a guest profile. Delete not allowed.",
     "-329": "Guest Type is already mapped to a guest profile. Inactive not allowed.",
-    "10911": "No data available"
+    "10911": "No data available",
+    "31701": "Cash Drawer Code is Empty",
+    "31702": "Cash Drawer Code exceeds 100 characters",
+    "31703": "Duplicate Cash Drawer Code",
+    "31704": "Machine is already linked to another Cash Drawer",
+    "317010": "Cash Drawer is not Open"
   }
   
