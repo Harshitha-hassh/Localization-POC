@@ -1206,6 +1206,7 @@
     "SplitLevelAlreadySelected": "Split level already selected. Please select different split level._fr",
     "ReturnWithExchange": "Return With Exchange_fr",
     "ReturnWithoutExchange": "Return Without Exchange_fr",
+    "PartialRefund": "Return With Price Override_fr",
     "RedeemingMultipack": "Redeeming multipack - _fr",
     "OpenPricedItem": "ENTER PRICE_fr",
     "EnterComment": "ENTER COMMENT_fr",
