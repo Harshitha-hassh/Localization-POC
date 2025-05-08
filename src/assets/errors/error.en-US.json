@@ -384,6 +384,7 @@
     "152152": "Staging doesn't exist",
     "-325": "Duplicate Guest Type Code exists",
     "-328": "Guest Type is already mapped to a guest profile. Delete not allowed.",
-    "-329": "Guest Type is already mapped to a guest profile. Inactive not allowed."
+    "-329": "Guest Type is already mapped to a guest profile. Inactive not allowed.",
+    "10911": "No data available"
   }
   
