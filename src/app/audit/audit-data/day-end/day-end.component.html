@@ -33,7 +33,7 @@
                   <!-- Will implement in future
                   <i class="icon-Settle cursor pr-2 blckClr" [matTooltip]="captions.tooltip_settle" (click)="ActionClick(iconActions[0],cell)" ></i>
                   <i class="icon-Reopen cursor blckClr" [matTooltip]="captions.tooltip_reopen" (click)="ActionClick(iconActions[1],cell)" ></i> -->
-                  <div class="rotate90 ag_display--inflex"><i class="icon-More cursor blckClr" [matMenuTriggerFor]="menuOpt"></i></div>
+                  <div class="rotate90 ag_display--inflex"><i class="icon-More cursor blckClr" [matMenuTriggerFor]="menuOpt" [ngClass]="[isDisabled ? 'ag_section--disable': '']"></i></div>
                   <mat-menu #menuOpt="matMenu">
                     <button mat-menu-item class="custmenuBtn" *ngFor="let opt of coll.options;let k=index" (click)="ActionClick(opt,cell)">
                       <span class="LW14" >{{opt.label}}</span>

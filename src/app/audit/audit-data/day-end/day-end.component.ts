@@ -15,7 +15,8 @@ import { RetailValidationService } from '../../../retail/shared/retail.validatio
 import {
   ButtonOptions, Product,
   RetailBreakPoint, SPAScheduleBreakPoint,
-  ActionType, Host, ButtonType
+  ActionType, Host, ButtonType,
+  SPAManagementBreakPoint
 } from 'src/app/common/shared/shared/globalsContant';
 import { HttpMethod, KeyValuePair, HttpServiceCall, } from 'src/app/common/shared/shared/service/http-call.service';
 import { BreakPointAccess } from 'src/app/common/shared/shared/service/breakpoint.service';
@@ -39,6 +40,7 @@ import { Localization } from 'src/app/common/localization/localization';
 import { NightAuditBusiness } from 'src/app/common/night-audit/night-audit.business';
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 import { SettleRefundTransactionBusiness } from 'src/app/retail/shared/business/Settle-Refund-Transaction-business.service';
+import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
 
 @Component({
     selector: 'app-day-end',
@@ -82,6 +84,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   isManualNightAuditRestricted = false;
   nightAuditRestricted: string;
   userDetail: any;
+  IsDisabled: boolean;
 
   constructor(public localization: RetailLocalization, private utils: RetailUtilities, private http: HttpServiceCall,
     private auditService: AuditService, 
@@ -101,7 +104,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     public revenuePostingDataService: RevenuePostingDataService,
     private _featureFlagService: RetailFeatureFlagInformationService,
     private nightAuditBusiness: NightAuditBusiness,
-    private _settleRefundTransBusiness: SettleRefundTransactionBusiness,) {
+    private _settleRefundTransBusiness: SettleRefundTransactionBusiness,private userAccessService : UserAccessBusiness) {
       this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
   }
 
@@ -143,6 +146,10 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.InvokeServiceCall('GetOutletsByProperty', Host.retailManagement, HttpMethod.Get, { PropertyId: Number(this.localization.GetPropertyInfo('PropertyId')) });
       this.InvokeServiceCall('GetMiscConfigurationByPropertyId', Host.retailManagement, HttpMethod.Get, { PropertyId: Number(this.localization.GetPropertyInfo('PropertyId')) });
     }
+    this.userAccessService.getUserAccess(SPAManagementBreakPoint.DayEnd, true)
+    .then((value) => {
+        this.IsDisabled = value.isViewOnly;
+    });
     this.ResetServiceObject();
     this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
     this.RefreshConfig();
