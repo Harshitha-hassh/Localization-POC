@@ -990,6 +990,10 @@
     "platformGuestSearch": "Extended Profile Search_de"
   },
   "shop": {
+    "lbl_inActive": "Inactive_de",
+    "lbl_active": "Active_de",
+    "lbl_invalidCoupon": "No valid coupon found_de",
+    "lbl_fetchCouponDetails": "Unable to fetch Coupon Details_de",
     "ApplyPromoCode": "APPLY PROMO CODE_de",
     "SearchByCouponNumber": "Search by Coupon #,Ticket #_de",
     "lbl_priceOverrided": "Price Overrided_de",
@@ -1799,6 +1803,7 @@
     "3170": "3170 - Cash Drawer Management_de",
     "3175": "3175 - Blind Cash Drop_de",
     "3180": "3180 - Close Register with Variance_de",
+    "3185": "3185 - Coupon Inquiry_de",
     "5000": "5000 - Reopen Transaction_de",
     "5005": "5005 - Void Transaction_de",
     "5007": "5007 - Correct Transaction_de",
@@ -1854,6 +1859,9 @@
     "7185": "7185 - System Setup_de",
     "7190": "7190 - Import Defaults_de",
     "7195": "7195 - Cash Drawer Setup_de",
+    "7300": "7300 - Promo Coupons_de",
+    "7305": "7305 - Payment Coupons_de",
+    "7310": "7310 - Incentive Coupons_de",
     "8000": "8000 - Shift Report_de",
     "8005": "8005 - Transaction Report_de",
     "8010": "8010 - Revenue Summary_de",
@@ -2741,6 +2749,7 @@
     "ResortFinancePostTypeMappingRevenuePostCodeDetails": "Resort Finance Post Type Mapping: Revenue Post Code Details_de"
   },
   "setting": {
+    "EnableCouponManagement": "Enable Coupon Management_de",
     "lbl_type": "Type_de",
     "flatAmountPercentage": "Percentage(%) / FlatAmount($)_de",
     "level": "Level_de",

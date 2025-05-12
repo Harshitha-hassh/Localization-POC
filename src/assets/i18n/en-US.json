@@ -989,6 +989,10 @@
     "platformGuestSearch": "Extended Profile Search"
   },
   "shop": {
+    "lbl_inActive": "Inactive",
+    "lbl_active": "Active",
+    "lbl_invalidCoupon": "No valid coupon found",
+    "lbl_fetchCouponDetails": "Unable to fetch Coupon Details",
     "ApplyPromoCode" : "APPLY PROMO CODE",
     "SearchByCouponNumber" : "Search by Coupon #,Ticket #",
     "lbl_priceOverrided": "Price Overrided",
@@ -1948,7 +1952,11 @@
 		"3170": "3170 - Cash Drawer Management",
 		"3175" : "3175 - Blind Cash Drop",
 		"3180": "3180 - Close Register with Variance",
-		"20095": "20095 - Date Roll when Cash Drawer is Open"
+		"20095": "20095 - Date Roll when Cash Drawer is Open",
+    "7300": "7300 - Promo Coupons",
+    "7305": "7305 - Payment Coupons",
+    "7310": "7310 - Incentive Coupons",
+    "3185": "3185 - Coupon Inquiry"
   },
   "90070": "90070 - Folio",
   "err_breakPointAccessDeniedMsg": "The user does not have permissions to perform this action.",
@@ -2742,6 +2750,7 @@
     "ResortFinancePostTypeMappingRevenuePostCodeDetails": "Resort Finance Post Type Mapping: Revenue Post Code Details"
   },
   "setting": {
+    "EnableCouponManagement" : "Enable Coupon Management",
     "lbl_type" : "Type",
 		"flatAmountPercentage" : "Percentage(%) / FlatAmount($)",
 		"level" : "Level",
