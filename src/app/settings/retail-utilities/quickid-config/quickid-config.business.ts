@@ -10,7 +10,8 @@ export class QuickIdConfigBusiness {
     quickIdConfig = [
         QuickIdConfigSetting.retailtransactions,
         QuickIdConfigSetting.discountUpdateRemove,
-        QuickIdConfigSetting.priceOverride
+        QuickIdConfigSetting.priceOverride,
+        QuickIdConfigSetting.couponRedemption
     ] as string[];
 
     isViewOnly: boolean = false;

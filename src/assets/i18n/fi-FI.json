@@ -3958,7 +3958,8 @@
     "lbl_syncStatus": "Sync Status_fi",
     "sync": "SYNC_fi",
     "ConfigValidation": "Config Validation_fi",
-    "priceOverride": "Price Override_fi"
+    "priceOverride": "Price Override_fi",
+    "couponRedemption": "Coupon Redemption_fi"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_fi",

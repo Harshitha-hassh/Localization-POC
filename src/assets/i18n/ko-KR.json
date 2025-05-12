@@ -3958,7 +3958,8 @@
     "lbl_syncStatus": "Sync Status_kr",
     "sync": "SYNC_kr",
     "ConfigValidation": "Config Validation_kr",
-    "priceOverride": "Price Override_kr"
+    "priceOverride": "Price Override_kr",
+    "couponRedemption": "Coupon Redemption_kr"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_kr",

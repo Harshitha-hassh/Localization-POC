@@ -1,7 +1,8 @@
 export enum QuickIdConfigSetting {
     retailtransactions= "QUICKID_RETAILTRANSACTIONS",
     discountUpdateRemove= "QUICKID_UPDATEREMOVEDISCOUNTS",
-    priceOverride = "QUICKID_PRICEOVERRIDE"
+    priceOverride = "QUICKID_PRICEOVERRIDE",
+    couponRedemption = "QUICKID_COUPONREDEMPTION"
 }
 
 export interface ConfigData {
