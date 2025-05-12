@@ -1945,7 +1945,10 @@
     "2000210": "2000210 - Digital Invoice Monitor",
     "90115": "90115 - Link RFID",
     "7195": "7195 - Cash Drawer Setup",
-		"3170": "3170 - Cash Drawer Management"
+		"3170": "3170 - Cash Drawer Management",
+		"3175" : "3175 - Blind Cash Drop",
+		"3180": "3180 - Close Register with Variance",
+		"20095": "20095 - Date Roll when Cash Drawer is Open"
   },
   "90070": "90070 - Folio",
   "err_breakPointAccessDeniedMsg": "The user does not have permissions to perform this action.",
@@ -2056,7 +2059,9 @@
 				"lbl_floatActivity": "Float Activity",
 				"lbl_noOfTransactions": "Number of Transactions",
 				"lbl_noOfVoids": "Number of Voids",
-				"btn_closeRegister":"CLOSE REGISTER"
+				"btn_closeRegister":"CLOSE REGISTER",
+				"warn_variance": "Your cash float is out of balance by {variance}. Are you sure you want to continue closing the register now?",
+				"warn_breakpointvariance": "User not allowed to Close Register with Variance"
 			},
       "Total": "Total",
       "SuccessSaveTenders": "Saved Tenders Count Successfully",
@@ -2088,7 +2093,7 @@
 			"btn_update":"UPDATE",
 			"btn_cancel":"CANCEL",
 			"tog_lbl_showInactive":"Include Inactive",
-			"btn_add":"ADD CASH DRAWER",
+			"btn_add":"ADD",
 			"lbl_searchcashDrawerPlaceholder":"Search by Cash Drawer Name, Code",
 			"lbl_active":"Active",
 			"lbl_listOrder":"List Order",
