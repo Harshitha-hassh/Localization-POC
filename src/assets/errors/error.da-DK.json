@@ -267,6 +267,7 @@
   "110060": "Credit Limit Exceeded_da",
   "152151": "Staging Posted Already_da",
   "152152": "Staging doesn't exist_da",
+  "191001": "This coupon is not applicable for services or does not meet spend threshold_da",
   "310001": "Duplicate Guest exists on the system_da",
   "310002": "Guest information is out of date. Please refresh and try again_da",
   "317010": "Cash Drawer is not Open_da",
