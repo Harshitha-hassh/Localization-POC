@@ -1952,6 +1952,7 @@
 		"3170": "3170 - Cash Drawer Management",
 		"3175" : "3175 - Blind Cash Drop",
 		"3180": "3180 - Close Register with Variance",
+    "3190": "3190 - Settle to Coupon",
 		"20095": "20095 - Date Roll when Cash Drawer is Open",
     "7300": "7300 - Promo Coupons",
     "7305": "7305 - Payment Coupons",
