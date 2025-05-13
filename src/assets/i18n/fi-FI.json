@@ -4448,7 +4448,17 @@
     "ErrorSyncOutlet": "The following outlet(s) are not synced properly : {OutletName}_fi",
     "OutletSyncWait": "Please wait while outlet(s) are syncing_fi",
     "TransactionType": "Transaction Type_fi",
-    "PaymentReceived": "Received Amount_fi"
+    "PaymentReceived": "Received Amount_fi",
+    "CashDrawerTitle": "Cash Drawer_fi",
+    "cashDrawerDesc": "Cash Drawer Description_fi",
+    "cashFloat": "Cash Float_fi",
+    "otherTenders": "Other Tenders_fi",
+    "actions": "Actions_fi",
+    "Close": "Close_fi",
+    "Balanced": "Balanced_fi",
+    "NotBalanced": "Not Balanced_fi",
+    "OPEN": "OPEN_fi",
+    "CLOSED": "CLOSED_fi"
   },
   "userConfig": {
     "UserSearchText": "Search by Name, Email, Role_fi",

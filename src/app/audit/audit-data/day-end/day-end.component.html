@@ -28,8 +28,14 @@
                  <span *ngIf="hdr.jsonkey == 'Status'" class="legendIcon {{getStatusColor(cell.StatusCode)}} mr-1">
                  </span>
                  <span title="{{ cell[hdr.jsonkey] }}">{{ cell[hdr.jsonkey] }}</span>
+                 <span *ngIf="hdr.jsonkey == 'actions'">
+                  <span *ngIf="coll.displayName == captions.CashDrawerTitle">
+                    <i aria-hidden="true" class="icon-Void-1 cursor blckClr fontSize15 pr-2" [ngClass]="[isDisabled ? 'ag_section--disable': '']"
+                      (click)="ActionClick(coll.options[0],cell)" [matTooltip]="captions.Close"></i>
+                    </span>
+                  </span>
                 </td>
-                <td class="fw100 LW14"  >
+                <td class="fw100 LW14" *ngIf="coll.displayName != captions.CashDrawerTitle">
                   <!-- Will implement in future
                   <i class="icon-Settle cursor pr-2 blckClr" [matTooltip]="captions.tooltip_settle" (click)="ActionClick(iconActions[0],cell)" ></i>
                   <i class="icon-Reopen cursor blckClr" [matTooltip]="captions.tooltip_reopen" (click)="ActionClick(iconActions[1],cell)" ></i> -->

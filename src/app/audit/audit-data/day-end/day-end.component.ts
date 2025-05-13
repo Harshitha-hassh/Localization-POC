@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, OnDestroy, AfterViewChecked } fro
 import * as _ from 'lodash'; // STORAGE THE BACK ARRAY
 import { BaseResponse } from '../../../common/shared/shared.modal';
 import { ManagementData } from '../../../shared/shared-models';
-import { GridData, PendingAction, AppointmentData, GridAction, NotifyDayEnd, ErrorCodes } from '../../AuditModals';
+import { GridData, PendingAction, AppointmentData, GridAction, NotifyDayEnd, ErrorCodes, CashDrawerAuditAPI, CashDrawerAudit } from '../../AuditModals';
 import { AuditService } from '../../audit.service';
 import { Router } from '@angular/router';
 import { SubscriptionLike as ISubscription, ReplaySubject } from 'rxjs';
@@ -10,7 +10,7 @@ import { SubPropertyModel } from '../../../retail/retail.modals';
 import { takeUntil } from 'rxjs/operators';
 import { CommonVariablesService, TransactionStatus } from '../../../retail/shared/service/common-variables.service';
 import { RetailSharedVariableService } from '../../../retail/shared/retail.shared.variable.service';
-import { MiscellaneousSwitch } from '../../../retail/shared/globalsContant';
+import { MiscellaneousSwitch, RetailBreakPoint as RetailSharedBreakpoint} from '../../../retail/shared/globalsContant';
 import { RetailValidationService } from '../../../retail/shared/retail.validation.service';
 import {
   ButtonOptions, Product,
@@ -41,6 +41,9 @@ import { NightAuditBusiness } from 'src/app/common/night-audit/night-audit.busin
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
 import { SettleRefundTransactionBusiness } from 'src/app/retail/shared/business/Settle-Refund-Transaction-business.service';
 import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
+import { CashDrawerRegisterStatus } from 'src/app/retail/shop/cash-drawer-management/cash-drawer-management.model';
+import { FeatureName } from 'src/app/common/shared/services/common-property-information.service';
+import { RetailRoutes } from 'src/app/retail/retail-route';
 
 @Component({
     selector: 'app-day-end',
@@ -85,6 +88,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   nightAuditRestricted: string;
   userDetail: any;
   isDisabled: boolean;
+  allowAuditOnCashDrawerOpen: boolean = false;
+  isCashDrawerEnabled: boolean = false;
 
   constructor(public localization: RetailLocalization, private utils: RetailUtilities, private http: HttpServiceCall,
     private auditService: AuditService, 
@@ -123,6 +128,12 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         }
       }
     });
+    let propertyFeatureConfigurations = JSON.parse(sessionStorage.getItem('PropertyFeatureConfigurations'));
+    this.isCashDrawerEnabled = propertyFeatureConfigurations != null && propertyFeatureConfigurations.find(x => x.featureName == FeatureName.CashDrawerManagement)?.isActive || false;
+    if(this.isCashDrawerEnabled)
+    {
+      this.allowAuditOnCashDrawerOpen = this.breakPoint.CheckForAccess([RetailSharedBreakpoint.DATEROLLWHENCASHDRAWEROPEN], false);
+    }
     this.showRevenuePostings = !this.propertyInfo.UseRetailInterface && this.propertyInfo.HasRevenuePostingEnabled ;
     this.captions = this.localization.captions.dayEnd;
     this.AppointmentStatus = this.localization.captions.appointmentSearch;
@@ -222,6 +233,13 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         linkOptions: true
       }
     ];
+    if(this.isCashDrawerEnabled) {
+      gridItems.push({
+        status: PendingAction.CashDrawer,
+        displayName: this.captions.CashDrawerTitle,
+        linkOptions: false
+      });
+    }
 
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < gridItems.length; i++) {
@@ -244,6 +262,61 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   GetGridData() {
     this.GetOpenTransactions();
+    if(this.isCashDrawerEnabled)
+    {
+      this.GetCashDrawerData();
+    }
+  }
+
+  private async GetCashDrawerData() {
+    await this.http.CallApiAsync<any>({
+      host: Host.retailPOS,
+      callDesc: RetailRoutes.GetCashDrawerAuditData,
+      method: HttpMethod.Get,
+      showError: false,
+      uriParams: { auditDate: this.currentDateForAPI },
+    }).then(x =>
+      this.BuildCashDrawerData(x.result)
+    );
+    
+  }
+
+  private async BuildCashDrawerData(response: CashDrawerAuditAPI[])
+  {
+    let gridData = this.GridData.find(r => r.status == PendingAction.CashDrawer);
+    gridData.isLoaded = true;
+    if (!response || response.length == 0)
+    {
+      this.isProcessClicked = false;
+      this.ClearGridDate(gridData)
+      return;
+    }
+    else (response && response.length > 0)
+    {
+      this.isProcessClicked = true;
+    }
+    let gridHeader = this.auditService.GetDayEndGridHeader(PendingAction.CashDrawer);
+    let gridActions = this.auditService.GetDayEndGridAction(PendingAction.CashDrawer);
+    let cashDrawerStatus: CashDrawerAudit[] = [];
+
+    for (let data of response) {
+      const cashDrawerAudit: CashDrawerAuditAPI = data;
+      let cashDrawerDetail = {
+        cashDrawerStatusId: cashDrawerAudit.cashDrawerStatusId,
+        cashDrawerDesc: cashDrawerAudit.cashDrawerDescription,
+        cashFloat: cashDrawerAudit.isCashFloatBalanced ? this.captions.Balanced : this.captions.NotBalanced,
+        otherTenders: cashDrawerAudit.isOtherTendersBalanced ? this.captions.Balanced : this.captions.NotBalanced,
+        status: cashDrawerAudit.status == CashDrawerRegisterStatus.Open ? this.captions.OPEN : this.captions.CLOSED
+      } as CashDrawerAudit;
+      cashDrawerStatus.push(cashDrawerDetail);
+    }
+
+    gridData.tableOptions = {
+      TableHdrData: gridHeader,
+      TablebodyData: cashDrawerStatus
+    };
+    gridData.options = gridActions;
+    gridData.dataCount = cashDrawerStatus.length;
     
   }
   routeTolink(){
@@ -499,7 +572,10 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       return this.canProcess;
     }
     const pendingData = this.GridData.filter(r => {
-      return r.dataCount > 0 && r.isLoaded;
+      if(!(r.status == PendingAction.CashDrawer && this.allowAuditOnCashDrawerOpen))
+      {
+        return r.dataCount > 0 && r.isLoaded;
+      }
     });
     this.canProcess = !(pendingData && pendingData.length > 0);
     return this.canProcess;
@@ -580,7 +656,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   }
 
-  private IsAuthorized(action: GridAction): boolean {
+  private IsAuthorized(action: GridAction, data: any): boolean {
     let isUserAuthorized = true;
     const breakpointNumber: number[] = [];
     switch (action) {
@@ -615,11 +691,19 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       }
     }
 
+    if(action == GridAction.CloseCashDrawer)
+    {
+      if(data.cashFloat == this.captions.NotBalanced || this.captions.NotBalanced)
+      {
+        isUserAuthorized = this.breakPoint.CheckForAccess([RetailSharedBreakpoint.CLOSEREGISTERWITHVARIANCE]);
+      }
+    }
+
     return isUserAuthorized;
   }
 
   async ActionClick(option: any, data: any) {
-    if (!this.IsAuthorized(option.action)) {
+    if (!this.IsAuthorized(option.action, data)) {
       return;
     }
     if (option.action === GridAction.CheckInCheckOut) {
@@ -724,6 +808,22 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         .then(async x => {
           await this.CommentsPopup(data.Id, data.TicketNumber)
         }).catch()
+    }
+    else if(option.action === GridAction.CloseCashDrawer)
+    {
+      await this.http.CallApiAsync<any>({
+        host: Host.payment,
+        callDesc: RetailRoutes.CloseCashDrawerStatus,
+        method: HttpMethod.Put,
+        showError: false,
+        uriParams: { cashDrawerStatusId: data.cashDrawerStatusId },
+      }).then(x =>
+      {
+        if(x.result)
+        {
+          this.GetCashDrawerData();
+        }
+      });
     }
   }
 

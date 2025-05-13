@@ -1,3 +1,4 @@
+import { CashDrawerRegisterStatus } from "../retail/shop/cash-drawer-management/cash-drawer-management.model";
 
 export interface GridData {
     status: PendingAction;
@@ -18,7 +19,8 @@ export enum GridAction {
     ReOpen,
     UndoCheckOut,
     CancelTransaction,
-    Close
+    Close,
+    CloseCashDrawer
 }
 
 export enum PendingAction {
@@ -26,7 +28,8 @@ export enum PendingAction {
     CheckedInAppointment,
     CheckOutWithoutTransaction,
     OpenTransaction,
-    RevenuePosting
+    RevenuePosting,
+    CashDrawer
   }
 
   export interface AppointmentData{
@@ -76,4 +79,20 @@ export enum PendingAction {
   export class ErrorCodes{
     static UNABLE_TO_ROLL_TO_FUTURE_DATE = '101917';
     static NEWDATE_LESS_THAN_PROPERTYDATE = '101918';
+  }
+  
+  export interface CashDrawerAudit {
+    cashDrawerStatusId: number;
+    cashDrawerDesc: string;
+    cashFloat: string;
+    otherTenders: string;
+    status: string;
+  }
+  
+  export interface CashDrawerAuditAPI {
+    cashDrawerStatusId: number;
+    cashDrawerDescription: string;
+    isCashFloatBalanced: boolean;
+    isOtherTendersBalanced: boolean;
+    status: CashDrawerRegisterStatus;
   }

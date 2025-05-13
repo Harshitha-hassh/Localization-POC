@@ -41,6 +41,15 @@ export class AuditService {
                 ];
             }
                 break;
+            case PendingAction.CashDrawer: {
+                header = [{ "title": this.captions.cashDrawerDesc, "jsonkey": "cashDrawerDesc", "alignType": "left" },
+                { "title": this.captions.cashFloat, "jsonkey": "cashFloat", "alignType": "left" },
+                { "title": this.captions.otherTenders, "jsonkey": "otherTenders", "alignType": "left" },
+                { "title": this.captions.Status, "jsonkey": "status", "alignType": "left" },
+                { "title": this.captions.actions, "jsonkey": "actions", "alignType": "left" },
+                ];
+            }
+                break;
         }
         return header;
     }
@@ -60,6 +69,9 @@ export class AuditService {
              case PendingAction.OpenTransaction:
                 actions = [{ 'label': this.captions.Settle, 'action': GridAction.Settle, 'redirectTo': '' }, { 'label': this.captions.Open, 'action': GridAction.ReOpen, 'redirectTo': '' }
                 ,{ 'label': this.captions.Cancel, 'action': GridAction.CancelTransaction, 'redirectTo': '' },{ 'label': this.localization.captions.shop.Close, 'action': GridAction.Close, 'redirectTo': '' }]
+                break;
+            case PendingAction.CashDrawer:
+                actions = [{ 'label': this.captions.Close, 'action': GridAction.CloseCashDrawer, 'redirectTo': '' }];
                 break;
         }
         return actions;
