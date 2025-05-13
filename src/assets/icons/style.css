@@ -24,7 +24,20 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.icon-Void-1:before {
+  content: "\ef87";
+}
+.icon-Transaction-1:before {
+  content: "\ef88";
+}
+.icon-stopwatch:before {
+  content: "\ef89";
+  color: #a4a4a4;
+}
+.icon-doublearrow:before {
+  content: "\ef8a";
+  color: #a7a7a7;
+}
 .icon-Coupon:before {
   content: "\ef86";
 }
