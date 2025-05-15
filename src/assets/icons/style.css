@@ -25,6 +25,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-decrement_yielding:before {
+  content: "\ef90";
+}
+.icon-increment_yielding:before {
+  content: "\ef91";
+}
 .icon-down-arrow1:before {
   content: "\ef8c";
 }
