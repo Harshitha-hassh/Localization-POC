@@ -1322,6 +1322,7 @@
     "RemoveSurcharge": "Remove Surcharge",
     "FullOrMultiplePayment": "Full / Multiple Payment",
     "InvalidAmount": "Invalid Amount",
+    "AmountOutOfRange": "The entered amount must be greater than zero and must not exceed the unit price",
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount",
     "ReturnRestrictedForThisItem": "Returns are restricted for this item",
     "TicketDiscountAmountGreaterThanActual": "Ticket discount amount is greater than the ticket total",
