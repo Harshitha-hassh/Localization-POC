@@ -2773,7 +2773,7 @@
   "setting": {
     "EnableCouponManagement": "Enable Coupon Management_fr",
     "lbl_type": "Type_fr",
-    "flatAmountPercentage": "Percentage(%) / FlatAmount($)_fr",
+    "flatAmountPercentage": "Percentage(%) / FlatAmount_fr",
     "level": "Level_fr",
     "addLevel": "+ ADD LEVEL_fr",
     "addCommission": "Add Commission_fr",
@@ -2787,6 +2787,8 @@
     "lbl_none": "None_fr",
     "btn_apply": "APPLY_fr",
     "applyAs": "Apply As_fr",
+    "retailItems": "Retail Item_fr",
+    "percentage": "Percentage(%)_fr",
     "categoryLocation": "Category & Location_fr",
     "viewType": "View Type_fr",
     "category": "Category_fr",
