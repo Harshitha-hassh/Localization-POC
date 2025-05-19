@@ -2790,6 +2790,7 @@
     "retailItems": "Retail Item",
     "percentage": "Percentage(%)",
     "categoryLocation": "Category & Location",
+    "itemLocation": "Item & Location",
     "viewType": "View Type",
     "category": "Category",
     "btn_clearAll": "CLEAR ALL",
