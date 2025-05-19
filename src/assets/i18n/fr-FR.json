@@ -4476,6 +4476,8 @@
     "PaymentReceived": "Received Amount_fr",
     "CashDrawerTitle": "Cash Drawer_fr",
     "cashDrawerDesc": "Cash Drawer Description_fr",
+    "openedDate": "Opened Date_fr",
+    "machineName": "Machine_fr",
     "cashFloat": "Cash Float_fr",
     "otherTenders": "Other Tenders_fr",
     "actions": "Actions_fr",

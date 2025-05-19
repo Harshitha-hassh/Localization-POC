@@ -84,6 +84,8 @@ export enum PendingAction {
   export interface CashDrawerAudit {
     cashDrawerStatusId: number;
     cashDrawerDesc: string;
+    machineName: string;
+    openedDate: string;
     cashFloat: string;
     otherTenders: string;
     status: string;
@@ -92,6 +94,8 @@ export enum PendingAction {
   export interface CashDrawerAuditAPI {
     cashDrawerStatusId: number;
     cashDrawerDescription: string;
+    machineName: string;
+    openedDate: Date;
     isCashFloatBalanced: boolean;
     isOtherTendersBalanced: boolean;
     status: CashDrawerRegisterStatus;

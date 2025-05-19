@@ -43,6 +43,8 @@ export class AuditService {
                 break;
             case PendingAction.CashDrawer: {
                 header = [{ "title": this.captions.cashDrawerDesc, "jsonkey": "cashDrawerDesc", "alignType": "left" },
+                { "title": this.captions.machineName, "jsonkey": "machineName", "alignType": "left" },
+                { "title": this.captions.openedDate, "jsonkey": "openedDate", "alignType": "left" },
                 { "title": this.captions.cashFloat, "jsonkey": "cashFloat", "alignType": "left" },
                 { "title": this.captions.otherTenders, "jsonkey": "otherTenders", "alignType": "left" },
                 { "title": this.captions.Status, "jsonkey": "status", "alignType": "left" },

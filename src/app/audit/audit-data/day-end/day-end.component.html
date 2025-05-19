@@ -5,8 +5,8 @@
         <!-- header Section -->
         <div *ngIf="!coll.linkOptions" class="d-table" [ngClass]="{'hdrSection':coll.dataCount!=0}">
           <span class="d-table-cell V-Mid ">
-            <i class="icon-success-icon blckClr mr-2 IC18"
-              [ngClass]="(isProcessClicked) ? 'closedTextclr' : ''"></i>
+            <i aria-hidden="true" class="icon-success-icon blckClr mr-2 IC18"
+              [ngClass]="successIconValidation(coll) ? '' : 'closedTextclr'"></i>
           </span>
           <span class=" d-table-cell hdrlblwdth V-Mid LWB16">{{coll.displayName}}</span>
 
@@ -80,7 +80,7 @@
           </div>
         </div>
         <div class="process-btn mb-3">
-          <button [attr.automationId]="'Btn_dayEnd_process'" type="button" mat-button class="body-bgcolor whitecolor text_capitalize LW14 gold-btn w165" [ngClass]="{'btn-disabled': removeBtnCheck()}" (click)="PerformDayend()">{{this.captions.PROCESS}}</button>
+          <button [attr.automationId]="'Btn_dayEnd_process'" type="button" mat-button class="body-bgcolor whitecolor text_capitalize LW14 gold-btn w165" [ngClass]="{'btn-disabled': StopProcessDayEnd()}" (click)="PerformDayend()">{{this.captions.PROCESS}}</button>
         </div>
         <div class="w-100 mt-2" *ngIf="isManualNightAuditRestricted">
           <span class="mx-1">

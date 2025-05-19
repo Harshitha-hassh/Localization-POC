@@ -63,7 +63,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   currSysDate: Date = this.propertyInfo.CurrentDate;
   newSysDate: Date = this.propertyInfo.CurrentDate;
   canProcess = false;
-  isProcessClicked = true;
+  isProcessClicked = false;
   success: any;
   GridData: GridData[] = [];
   AppointmentStatus: any;
@@ -78,7 +78,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   subscriptions: ISubscription[] = [];
   propOutlets: SubPropertyModel[] = [];
   allowFutureDate: boolean = false;
-  allowDayEndOnRevenueFailure: boolean = false;
+  restrictDayEndOnRevenueFailure: boolean = false;
   revenuePostingUrl = ['/shop/viewshop/retailtransactions/revenuepostingslog'];
   revenuepostingsFailedCount: number = 0;
   revenuepostingsFailedText: string;
@@ -183,11 +183,11 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       isFromDayEnd: false
     };
     const result = await this.revenuePostingDataService.getRoomRevenuePostingLogs(request);
+    this.GridData.find(x=> x.status == PendingAction.RevenuePosting).isLoaded = true;
     this.revenuepostingsFailedCount = result.failedCount;
     this.revenuepostingsFailedText = ' (' + this.revenuepostingsFailedCount + ')';
   }
 
-  removeBtnCheck = () => this.allowDayEndOnRevenueFailure ? ((this.revenuepostingsFailedCount > 0) || this.isProcessClicked || this.isManualNightAuditRestricted) : (this.isProcessClicked || this.isManualNightAuditRestricted) ;
 
   ngOnDestroy(): void {
     if (this.subscriptions) {
@@ -287,13 +287,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     gridData.isLoaded = true;
     if (!response || response.length == 0)
     {
-      this.isProcessClicked = false;
       this.ClearGridDate(gridData)
       return;
-    }
-    else (response && response.length > 0)
-    {
-      this.isProcessClicked = true;
     }
     let gridHeader = this.auditService.GetDayEndGridHeader(PendingAction.CashDrawer);
     let gridActions = this.auditService.GetDayEndGridAction(PendingAction.CashDrawer);
@@ -304,6 +299,8 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       let cashDrawerDetail = {
         cashDrawerStatusId: cashDrawerAudit.cashDrawerStatusId,
         cashDrawerDesc: cashDrawerAudit.cashDrawerDescription,
+        machineName: cashDrawerAudit.machineName,
+        openedDate: this.localization.LocalizeShortDateTime(cashDrawerAudit.openedDate),
         cashFloat: cashDrawerAudit.isCashFloatBalanced ? this.captions.Balanced : this.captions.NotBalanced,
         otherTenders: cashDrawerAudit.isOtherTendersBalanced ? this.captions.Balanced : this.captions.NotBalanced,
         status: cashDrawerAudit.status == CashDrawerRegisterStatus.Open ? this.captions.OPEN : this.captions.CLOSED
@@ -398,7 +395,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         const response: any = result.result as any ? result.result : [];
         if (response) {
           this.allowFutureDate = response.find(x => x.switch == "ALLOW_DATE_FOR_FUTURE").value == "true" ? true : false;
-          this.allowDayEndOnRevenueFailure = response.find(x => x.switch === 
+          this.restrictDayEndOnRevenueFailure = response.find(x => x.switch === 
             MiscellaneousSwitch.RESTRICT_DAYENDPROCESSWITHFAILEDREVENUEPOSTINGS).value === 'true' ? true : false;
 
         }
@@ -499,14 +496,13 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
   private async BuildOpenTransactions(response) {
     const gridData = this.GridData.find(r => r.status === PendingAction.OpenTransaction);
+    gridData.isLoaded = true;
     if (response && response.length > 0) {
-      this.isProcessClicked = true;
       response = response.filter(r => {
         return this.utils.GetDateWithoutTime(this.utils.getDate(r.transactionDate)).getTime() === this.propertyInfo.CurrentDate.getTime();
       });
     }
     if (!response || response.length === 0) {
-      this.isProcessClicked = false;
       this.ClearGridDate(gridData);
       return;
     }
@@ -549,7 +545,6 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     };
     gridData.options = gridActions;
     gridData.dataCount = transactions.length;
-    gridData.isLoaded = true;
   }
 
   private FormatCurrency(amount): string {
@@ -562,23 +557,37 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
     return formattedPrice;
   }
 
-  public CanProcessDayEnd() {
+  public StopProcessDayEnd() {
     this.canProcess = false;
+    if(this.isProcessClicked || this.isManualNightAuditRestricted)
+    {
+      return true;
+    }
+    if(this.restrictDayEndOnRevenueFailure && this.revenuepostingsFailedCount > 0)
+    {
+      return true;
+    }
+
+
     const notLoadedData = this.GridData.filter(r => {
       return !r.isLoaded;
     });
     if (notLoadedData && notLoadedData.length > 0) {
       this.canProcess = false;
-      return this.canProcess;
+      return !this.canProcess;
     }
     const pendingData = this.GridData.filter(r => {
-      if(!(r.status == PendingAction.CashDrawer && this.allowAuditOnCashDrawerOpen))
+      if(r.status == PendingAction.OpenTransaction)
       {
-        return r.dataCount > 0 && r.isLoaded;
+        return !r.isLoaded || r.dataCount > 0;
+      }
+      if(r.status == PendingAction.CashDrawer && !this.allowAuditOnCashDrawerOpen)
+      {
+        return !r.isLoaded || r.dataCount > 0;
       }
     });
     this.canProcess = !(pendingData && pendingData.length > 0);
-    return this.canProcess;
+    return !this.canProcess;
   }
 
  
@@ -1019,5 +1028,23 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       const scheduledTime = this.localization.getTime(configTime, 12)
       this.nightAuditRestricted = this.localization.replacePlaceholders(this.captions.NightAuditScheduled, ["time"], [scheduledTime]);
     }
+  }
+
+  successIconValidation(gridData: GridData): boolean {
+    if(gridData.status == PendingAction.RevenuePosting)
+    {
+      if(!gridData.isLoaded || (this.restrictDayEndOnRevenueFailure && this.revenuepostingsFailedCount > 0))
+      {
+        return false;
+      }
+      return true;
+    }
+    if (gridData.status == PendingAction.OpenTransaction) {
+      return gridData.dataCount == 0 && gridData.isLoaded;
+    }
+    if (gridData.status == PendingAction.CashDrawer) {
+      return this.allowAuditOnCashDrawerOpen || (gridData.dataCount == 0 && gridData.isLoaded)
+    }
+    return gridData.tableOptions.TablebodyData.length == 0 && gridData.isLoaded
   }
 }

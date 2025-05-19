@@ -4476,6 +4476,8 @@
     "PaymentReceived": "Received Amount_kr",
     "CashDrawerTitle": "Cash Drawer_kr",
     "cashDrawerDesc": "Cash Drawer Description_kr",
+    "openedDate": "Opened Date_kr",
+    "machineName": "Machine_kr",
     "cashFloat": "Cash Float_kr",
     "otherTenders": "Other Tenders_kr",
     "actions": "Actions_kr",
