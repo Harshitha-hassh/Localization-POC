@@ -2166,7 +2166,8 @@
       "tbl_hdr_price": "Price_kr",
       "success_cashFloat": "Cash Float Activity added successfully_kr",
       "success_deposit": "Deposit submitted successfully_kr",
-      "success_physicalCount": "Physical count submitted successfully_kr"
+      "success_physicalCount": "Physical count submitted successfully_kr",
+      "discount": "Discount_kr"
     },
     "allowPriceOverride": "Allow Price Override_kr",
     "restrictReturn": "Restrict Return_kr",
