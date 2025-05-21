@@ -1019,6 +1019,7 @@
     "MultiPackRedemptionCorrectVoidReturnNotAllowed": "{transactionType} not allowed for transactions with Multipack Redemption",
     "ReturnRestrictionErrorMsgForCorrectVoid": "{transactionType} is not allowed as the transaction includes a return restricted item",
     "ticketDiscount": "Ticket Discount",
+    "promoCoupon": "Promo Coupon",
     "err_noCommision": "Commission for Item or Commission class for User(s) is not configured.",
     "err_selectTherapistUser": "Please select the required User(s) to apply commission.",
     "COF_RemovalConfirmationMsg": "Removing the card will delete the card from profile. Do you wish to proceed?",
@@ -1146,6 +1147,7 @@
     "APPLYTICKETDISCOUNT": "APPLY TICKET DISCOUNT",
     "REMOVETICKETDISCOUNT": "REMOVE TICKET DISCOUNT",
     "REMOVEITEMDISCOUNT": "REMOVE DISCOUNT",
+    "REMOVEPROMOCOUPON": "REMOVE PROMO COUPON",
     "MOREACTIONS": "MORE ACTIONS",
     "pg_title_inventorySyncStatus": "INVENTORY SYNC STATUS",
     "REMOVE": "REMOVE",
@@ -1499,7 +1501,8 @@
       "24": "Wallet",
       "25": "Hotel Comp",
       "26": "Non Integrated Credit Card",
-      "44": "Other"
+      "44": "Other",
+      "27": "Coupon"
     },
     "GiftCard": {
       "GiftCard": "Gift Card",
@@ -1631,6 +1634,9 @@
       "PatronSelectionDialog": {
         "header": "Patron Selection",
         "subheaderMsg": "Please select a player to proceed refund"
+      },
+      "Coupon": {
+        "searchPlaceHolder": "Coupon Search"
       },
       "VoidMessage": "Transaction Cannot be Voided",
       "CorrectMessage": "Transaction Cannot be Corrected",
@@ -2044,6 +2050,7 @@
 		"lbl_expiry" : "Expiry",
 		"hdr_createPaymentCoupon" : "Create Payment Coupon",
 		"srch_by_couponName" : "Coupon",
+    "srch_by_couponProgram" : "Program",
 		"CreateCoupon" : "Create Coupon",
 		"couponName" : "Coupon Name",
 		"lbl_expiresOn" : "Expires On",
@@ -2327,6 +2334,7 @@
     "RequireSignatureCapture": "Require Signature Capture",
     "RequireCashDrawer": "Require Cash Drawer",
     "lbl_tenderReducesDiscount": "Tender Reduces Discount",
+    "QualifyForIncentiveCoupon": "Qualify for Incentive Coupon",
     "RequestName": "Request Name",
     "OpenItem": "Open Item",
     "PMSPackageItem": "PMS Package Item",

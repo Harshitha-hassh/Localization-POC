@@ -1020,6 +1020,7 @@
     "MultiPackRedemptionCorrectVoidReturnNotAllowed": "{transactionType} not allowed for transactions with Multipack Redemption_fr",
     "ReturnRestrictionErrorMsgForCorrectVoid": "{transactionType} is not allowed as the transaction includes a return restricted item_fr",
     "ticketDiscount": "Ticket Discount_fr",
+    "promoCoupon": "Promo Coupon_fr",
     "err_noCommision": "Commission for Item or Commission class for User(s) is not configured._fr",
     "err_selectTherapistUser": "Please select the required User(s) to apply commission._fr",
     "COF_RemovalConfirmationMsg": "Removing the card will delete the card from profile. Do you wish to proceed?_fr",
@@ -1147,6 +1148,7 @@
     "APPLYTICKETDISCOUNT": "APPLY TICKET DISCOUNT_fr",
     "REMOVETICKETDISCOUNT": "REMOVE TICKET DISCOUNT_fr",
     "REMOVEITEMDISCOUNT": "REMOVE DISCOUNT_fr",
+    "REMOVEPROMOCOUPON": "REMOVE PROMO COUPON_fr",
     "MOREACTIONS": "MORE ACTIONS_fr",
     "pg_title_inventorySyncStatus": "INVENTORY SYNC STATUS_fr",
     "REMOVE": "REMOVE_fr",
@@ -1500,6 +1502,7 @@
       "24": "Wallet_fr",
       "25": "Hotel Comp_fr",
       "26": "Non Integrated Credit Card_fr",
+      "27": "Coupon_fr",
       "44": "Other_fr"
     },
     "GiftCard": {
@@ -1632,6 +1635,9 @@
       "PatronSelectionDialog": {
         "header": "Patron Selection_fr",
         "subheaderMsg": "Please select a player to proceed refund_fr"
+      },
+      "Coupon": {
+        "searchPlaceHolder": "Coupon Search_fr"
       },
       "VoidMessage": "Transaction Cannot be Voided_fr",
       "CorrectMessage": "Transaction Cannot be Corrected_fr",
@@ -2044,6 +2050,7 @@
     "lbl_expiry": "Expiry_fr",
     "hdr_createPaymentCoupon": "Create Payment Coupon_fr",
     "srch_by_couponName": "Coupon_fr",
+    "srch_by_couponProgram": "Program_fr",
     "CreateCoupon": "Create Coupon_fr",
     "couponName": "Coupon Name_fr",
     "lbl_expiresOn": "Expires On_fr",
@@ -2327,6 +2334,7 @@
     "RequireSignatureCapture": "Require Signature Capture_fr",
     "RequireCashDrawer": "Require Cash Drawer_fr",
     "lbl_tenderReducesDiscount": "Tender Reduces Discount_fr",
+    "QualifyForIncentiveCoupon": "Qualify for Incentive Coupon_fr",
     "RequestName": "Request Name_fr",
     "OpenItem": "Open Item_fr",
     "PMSPackageItem": "PMS Package Item_fr",
