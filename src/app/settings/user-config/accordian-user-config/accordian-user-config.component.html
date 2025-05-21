@@ -1,4 +1,4 @@
-<div *ngFor="let item of inputData;let i=index" class="user-role--wrapper">
+<div *ngFor="let item of _inputData;let i=index" class="user-role--wrapper">
   <form [formGroup]="userRoleGroup">
     <div class="header-section">
       <span class="header-name">{{item.headerData.titleData}}</span>
@@ -17,13 +17,13 @@
               <div class="allow-view-all ag_align-items--center ag_ml--auto ag_display--flex" *ngIf="itemDetails.isOpened" (click)="onToggleClick($event)" [ngClass]="{'button_invalid': IsReadOnly}">
                 <div class="ag_align-items--center ag_display--flex allow-all">
                   <span class="LW12 mr-1 toggle-text">{{this.localization.captions.setting.Allow_All}}</span>
-                  <app-toggle-switch [value]="allowAllToggle[k]" (changeToggleEvent)="allowAll(userDetails, itemDetails, $event, k)">
-                  </app-toggle-switch>
+                  <mat-slide-toggle attr.automationId="Tog_AccordianUserConfig_allowAllToggle"
+                  (change)="allowAll(userDetails, itemDetails, $event.checked, k)" [checked]="allowAllToggle[k]"></mat-slide-toggle>
                 </div>
                 <div class="ag_align-items--center ag_display--flex">
                   <span class="LW12 mr-1 toggle-text ml-2">{{this.localization.captions.setting.View_All}}</span>
-                  <app-toggle-switch [ngClass]="{'button_invalid': disableViewAllToogle[k]}" [value]="viewAllToggle[k]" (changeToggleEvent)="viewAll(userDetails, itemDetails, $event, k)">
-                  </app-toggle-switch>
+                  <mat-slide-toggle [ngClass]="{'button_invalid': disableViewAllToogle[k]}" attr.automationId="Tog_AccordianUserConfig_viewAllToggle"
+                  (change)="viewAll(userDetails, itemDetails, $event.checked,k)" [checked]="viewAllToggle[k]"></mat-slide-toggle>
                 </div>
               </div>
               <div class="accord-icon-wrap"  [ngClass]="!itemDetails.isOpened ? 'ag_ml--auto' : 'ag_pl--2' ">
@@ -43,13 +43,15 @@
                 <div class="accordian-toogle ag_display--flex accordian-toggle-section">
                   <div [ngClass]="{'button_invalid': IsReadOnly}" class="appt-toggle-section allow-toggle ag_align-items--center ag_display--flex">
                     <span class="LW12 toggle-text">{{this.localization.captions.setting.Allow}}</span>
-                    <app-toggle-switch formControlName="allow" (changeToggleEvent)="showAllAppointments(userClaimsDetails,i,k,j,'allow',$event)"></app-toggle-switch>
+                    <mat-slide-toggle attr.automationId="Tog_AccordianUserConfig_categoryUserRoleToggle{{k}}" formControlName="allow"
+                    (change)="showAllAppointments(userClaimsDetails,i,k, j,'allow',$event.checked)"></mat-slide-toggle>  
                   </div>
                   <div [ngClass]="{'button_invalid': !(userClaimsDetails.get('viewOnlyAllowed').value && !IsReadOnly)}"
                     class="appt-toggle-section view-toggle ag_display--flex ag_align-items--center">
                     <span class="LW12 toggle-text">{{this.localization.captions.setting.View}}</span>
                     <div class="accordian-toogle d-inline-block">
-                      <app-toggle-switch formControlName="view" (changeToggleEvent)="showAllAppointments(userClaimsDetails,i,k, j,'view',$event)"></app-toggle-switch>
+                      <mat-slide-toggle attr.automationId="Tog_AccordianUserConfig_categoryUserRoleToggle{{k}}" formControlName="view"
+                      (change)="showAllAppointments(userClaimsDetails,i,k, j,'view',$event.checked)"></mat-slide-toggle>
                     </div>
                   </div>
                 </div>

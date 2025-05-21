@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { SettingsService } from '../../settings.service';
 import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray } from '@angular/forms';
+import { AccordianInput } from './accordian-user-config.model';
 
 @Component({
   selector: 'app-accordian-user-config',
@@ -10,8 +11,15 @@ import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray } from '@angular
   styleUrls: ['./accordian-user-config.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnChanges {
-  @Input() inputData: any;
+export class AccordianUserConfigComponent implements OnInit, AfterViewInit {
+  _inputData: AccordianInput[];
+  @Input('inputData')
+  set inputsValues(value){
+    this._inputData = value;
+    if(this._inputData){
+      this.initializeForm();
+    }
+  }
   @Input() IsReadOnly: boolean;
   @ViewChild('ExapanedPanel') ExapanedPanel;
   captions: any = this.localization.captions.userConfig;
@@ -38,15 +46,16 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
 
   ngOnInit() {
     this._settingService.changedBreakPoints = [];
+    this.initializeForm();
   }
 
-  ngOnChanges() {
+  initializeForm() {
     this.userRoleGroup = this.fb.group({
       userDetails: this.fb.array([this.createUserDetails(0)])
     });
     this.findLength();
     this.UpdateCount();
-    if (this.inputData) {
+    if (this._inputData) {
       this.addUserDetails();
       setTimeout(this.setHeightforAccordian, 500);
     }
@@ -68,12 +77,12 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
 
   createClaimDetails(i): UntypedFormGroup {
     return this.fb.group({
-      allow: '',
+      allow: false,
       breakPointNumber: '',
       description: '',
       userClaimId: '',
       userRoleId: '',
-      view: '',
+      view: false,
       viewOnlyAllowed: '',
       breakPointId: ''
     });
@@ -81,10 +90,10 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   showAllAppointments(data, i, j, k, keyWord, $event) {
     if (keyWord == 'allow') {
       data.controls.allow.value = $event[0];
-      this.inputData[i].headerData.details[j].userClaims[k].allow = data.controls.allow.value;
+      this._inputData[i].headerData.details[j].userClaims[k].allow = data.controls.allow.value;
       if (data.controls.allow.value) {
         data.controls.view.setValue(false);
-        this.inputData[i].headerData.details[j].userClaims[k].view = false;
+        this._inputData[i].headerData.details[j].userClaims[k].view = false;
       }
       let selectedData = data.controls;
       let idx = _.findIndex(this._settingService.changedBreakPoints, (x) => { return x["breakPointNumber"] == selectedData.breakPointNumber.value });
@@ -98,10 +107,10 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
     else {
       data.controls.view.value = $event[0];
       let selectedData = data.controls;
-      this.inputData[i].headerData.details[j].userClaims[k].view = data.controls.view.value;
+      this._inputData[i].headerData.details[j].userClaims[k].view = data.controls.view.value;
       if (data.controls.view.value) {
         data.controls.allow.setValue(false);
-        this.inputData[i].headerData.details[j].userClaims[k].allow = false;
+        this._inputData[i].headerData.details[j].userClaims[k].allow = false;
       }
       let idx = _.findIndex(this._settingService.changedBreakPoints, (x) => { return x["breakPointNumber"] == selectedData.breakPointNumber.value });
       if (idx == -1) {
@@ -112,7 +121,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
       }
     }
     this.findLength();
-    this.updateAllowViewAllControls(this.inputData[i].headerData.details[j], j);
+    this.updateAllowViewAllControls(this._inputData[i].headerData.details[j], j);
   }
 
   setBreakPoints(selectedData) {
@@ -129,8 +138,8 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   }
 
   findLength() {
-    _.forEach(this.inputData, function (value) {
-      _.forEach(value.details, function (dataValue) {
+    _.forEach(this._inputData, function (value) {
+      _.forEach(value['details'], function (dataValue) {
         dataValue.count = _.filter(dataValue.userClaims, ['allow', true]).length + _.filter(dataValue.userClaims, ['view', true]).length;
       });
     });
@@ -149,48 +158,48 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
     event.stopPropagation();
   }
 
-  allowAll(userDetail: UntypedFormGroup, itemDetail, event, index) {
+  allowAll(userDetail: UntypedFormGroup, itemDetail, isChecked, index) {
     const userClaims = userDetail.controls.userClaims as UntypedFormArray;
     itemDetail.userClaims.forEach(element => {
-      element.allow = event[0];
-      if(event[0] && element.viewOnlyAllowed) {
+      element.allow = isChecked;
+      if(isChecked && element.viewOnlyAllowed) {
         element.view = false;
       }
     });
     for(let index in userClaims.controls) {
       let userClaim = userClaims.controls[index] as UntypedFormGroup;
-      userClaim.controls['allow'].setValue(event[0]);
-      if(event[0] && userClaim.controls['viewOnlyAllowed'].value) {
-        userClaim.controls['view'].setValue(!event[0]);
+      userClaim.controls['allow'].setValue(isChecked);
+      if(isChecked && userClaim.controls['viewOnlyAllowed'].value) {
+        userClaim.controls['view'].setValue(!isChecked);
       }
       this.updateSelectedData(userClaim);
     }
     this.updateAllowViewAllControls(itemDetail, index);
   }
 
-  viewAll(userDetail, itemDetail, event, index) {
-    if (event[0]) {
+  viewAll(userDetail, itemDetail, isChecked, index) {
+    if (isChecked) {
       itemDetail.userClaims.forEach(element => {
-        element.allow = !event[0];
+        element.allow = !isChecked;
         if (element.viewOnlyAllowed) {
-          element.view = event[0];
+          element.view = isChecked;
         }
       });
     }else {
       itemDetail.userClaims.forEach(element => {
         if (element.viewOnlyAllowed) {
-          element.view = event[0];
+          element.view = isChecked;
         }
       });
     }
     const userClaims = userDetail.controls.userClaims as UntypedFormArray;
     for(let index in userClaims.controls) {
       let userClaim = userClaims.controls[index] as UntypedFormGroup;
-      if(event[0]) {
-        userClaim.controls['allow'].setValue(!event[0]);
+      if(isChecked) {
+        userClaim.controls['allow'].setValue(!isChecked);
       }
       if(userClaim.controls['viewOnlyAllowed'].value) {
-        userClaim.controls['view'].setValue(event[0]); 
+        userClaim.controls['view'].setValue(isChecked); 
         this.updateSelectedData(userClaim);
       }
     }
@@ -201,8 +210,8 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   addUserDetails() {
     this.userDetails = this.userRoleGroup.get('userDetails') as UntypedFormArray;
     this.userDetails.removeAt(0);
-    if (this.inputData) {
-      _.forEach(this.inputData[0].headerData.details, (user, i) => {
+    if (this._inputData) {
+      _.forEach(this._inputData[0].headerData.details, (user, i) => {
         this.userDetails.push(this.fb.group({
           count: user.count,
           description: user.description,
@@ -211,7 +220,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
           userClaims: this.fb.array([])
         }))
       });
-      _.forEach(this.inputData[0].headerData.details, (user, i) => {
+      _.forEach(this._inputData[0].headerData.details, (user, i) => {
         this.allowAllToggle[i] = false;
         this.viewAllToggle[i] = false;
         this.disableViewAllToogle[i] = false;
@@ -243,12 +252,12 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
   }
 
   UpdateCount() {
-    if (this.inputData && this.inputData[0].headerData && this.inputData[0].headerData.details.length > 0) {
-      let userClaimLength = this.inputData[0].headerData.details.length;
+    if (this._inputData && this._inputData[0].headerData && this._inputData[0].headerData.details.length > 0) {
+      let userClaimLength = this._inputData[0].headerData.details.length;
       for (let i = 0; i < userClaimLength; i++) {
         let count: number = 0;
-        for (let j = 0; j < this.inputData[0].headerData.details[i].userClaims.length; j++) {
-          if (this.inputData[0].headerData.details[i].userClaims[j].allow) {
+        for (let j = 0; j < this._inputData[0].headerData.details[i].userClaims.length; j++) {
+          if (this._inputData[0].headerData.details[i].userClaims[j].allow) {
             count = count + 1;
           }
         }
@@ -297,14 +306,18 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
 
   
   expandAll(){
-    this.inputData[0].headerData.details.forEach((value, index) => {
-      this.onOpenClick(value, index);
-    });
+    if(this._inputData && this._inputData.length > 0){
+      this._inputData[0].headerData.details.forEach((value, index) => {
+        this.onOpenClick(value, index);
+      });
+    }
   }
   collapseAll(){
-    this.inputData[0].headerData.details.forEach((value, index) => {
-      value['isOpened'] = false;
-    });
+    if(this._inputData && this._inputData.length > 0){
+      this._inputData[0].headerData.details.forEach((value, index) => {
+        value['isOpened'] = false;
+      });
+    }
   }
   toggleSection(itemDetails, index){
     if(itemDetails.isOpened){
@@ -312,7 +325,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit, OnCh
     } else {
       this.onOpenClick(itemDetails, index);
     }
-    this.changedData.emit(this.inputData[0].headerData.details);
+    this.changedData.emit(this._inputData[0].headerData.details);
   }
 }
 
