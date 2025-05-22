@@ -89,7 +89,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit {
   }
   showAllAppointments(data, i, j, k, keyWord, $event) {
     if (keyWord == 'allow') {
-      data.controls.allow.value = $event[0];
+      data.controls.allow.value = $event;
       this._inputData[i].headerData.details[j].userClaims[k].allow = data.controls.allow.value;
       if (data.controls.allow.value) {
         data.controls.view.setValue(false);
@@ -105,7 +105,7 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit {
       }
     }
     else {
-      data.controls.view.value = $event[0];
+      data.controls.view.value = $event;
       let selectedData = data.controls;
       this._inputData[i].headerData.details[j].userClaims[k].view = data.controls.view.value;
       if (data.controls.view.value) {
