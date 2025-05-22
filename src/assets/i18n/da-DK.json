@@ -2010,6 +2010,9 @@
   "noSpecialCharacters": "No special characters must be allowed_da",
   "confirmPasswordSame": "New password and confirm password must be same_da",
   "retailsetup": {
+    "lbl_AllProducts": "All Products_da",
+    "lbl_AllBookings": "All Bookings_da",
+    "lbl_AllProductsandBookings": "All Products and Bookings_da",
     "CreatePaymentCoupon": "CREATE PAYMENT COUPON_da",
     "CreatePromoCoupon": "CREATE PROMO COUPON_da",
     "CreateIncentiveCoupon": "CREATE INCENTIVE COUPON_da",
@@ -5305,5 +5308,11 @@
   "lbl_default": "Default_da",
   "lbl_inProgress": "In Progress_da",
   "lbl_folio_number": "Folio Number_da",
-  "lbl_creditCardLimit": "Credit Limit_da"
+  "lbl_creditCardLimit": "Credit Limit_da",
+  "action": "Action_da",
+  "user": "User_da",
+  "TicketNumber": "Ticket #_da",
+  "Date": "Date_da",
+  "Issued": "Issued_da",
+  "Redeemed": "Redeemed_da"
 }
