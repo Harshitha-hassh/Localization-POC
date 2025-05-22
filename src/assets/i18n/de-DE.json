@@ -2174,7 +2174,10 @@
       "success_cashFloat": "Cash Float Activity added successfully_de",
       "success_deposit": "Deposit submitted successfully_de",
       "success_physicalCount": "Physical count submitted successfully_de",
-      "discount": "Discount_de"
+      "discount": "Discount_de",
+      "CashDrawerWarning": "Cash drawer is closed. Please open it to proceed with the transaction._de",
+      "CashDrawerMiscNotConfigured": "Please enable the cash drawer functionality, to open it_de",
+      "outletConfigurationMissing": "Outlet configuration not available to open cash drawer_de"
     },
     "allowPriceOverride": "Allow Price Override_de",
     "restrictReturn": "Restrict Return_de",

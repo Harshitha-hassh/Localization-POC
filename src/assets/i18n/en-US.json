@@ -2174,8 +2174,11 @@
       "success_cashFloat": "Cash Float Activity added successfully",
       "success_deposit": "Deposit submitted successfully",
       "success_physicalCount": "Physical count submitted successfully",
-      "discount": "Discount"
-		},
+      "discount": "Discount",
+      "CashDrawerWarning": "Cash drawer is closed. Please open it to proceed with the transaction.",
+      "CashDrawerMiscNotConfigured": "Please enable the cash drawer functionality, to open it",
+      "outletConfigurationMissing" : "Outlet configuration not available to open cash drawer"
+    },
     "allowPriceOverride": "Allow Price Override",
     "restrictReturn": "Restrict Return",
     "discountTypeDeletionWarningMsg": "Discount Type is associated to discount mapping. Do you wish to proceed? ",
