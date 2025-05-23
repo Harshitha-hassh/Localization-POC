@@ -742,7 +742,8 @@ export class Utilities extends CommonUtilities implements OnDestroy {
 
         styleStr += ` }`
 
-        style.innerHTML = styleStr;
+        // style.innerHTML = styleStr;
+        this.localization.decodeHTMLEntityByTagName( styleStr , style);
         styleDivElem[0].appendChild(style);
         return className;
     }
