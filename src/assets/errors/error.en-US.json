@@ -396,6 +396,7 @@
     "31702": "Cash Drawer Code exceeds 100 characters",
     "31703": "Duplicate Cash Drawer Code",
     "31704": "Machine is already linked to another Cash Drawer",
-    "317010": "Cash Drawer is not Open"
+    "317010": "Cash Drawer is not Open",
+    "103916": "Duplicate Code Prefix"
   }
   
