@@ -1903,6 +1903,7 @@
     "8200": "8200 - Inventory Value and Activity Report_fr",
     "8205": "8205 - Inventory Valuation Report_fr",
     "8215": "8215 - Items Under Par_fr",
+    "8220": "8220 - Open Coupon_fr",
     "8700": "8700 - Update Qty on Hand_fr",
     "8705": "8705 – Freeze Inventory_fr",
     "8710": "8710 - Release Inventory_fr",
@@ -3769,7 +3770,11 @@
     "includeInhouseSC": "Include In-House SC_fr",
     "OutletSalesSummaryXReading": "Sales Summary Outlet Report (X Reading)_fr",
     "BIRSalesSummary": "BIR Sales Summary Report_fr",
-    "ItemsUnderPar": "Items Under Par_fr"
+    "ItemsUnderPar": "Items Under Par_fr",
+    "OpenCoupon": "Open Coupon_fr",
+    "CouponType": "Coupon Type(s)_fr",
+    "CouponNumber": "Coupon #_fr",
+    "ExpandCoupons": "Expand Serialized Coupon(s)_fr"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fr",

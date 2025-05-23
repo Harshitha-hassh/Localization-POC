@@ -1903,6 +1903,7 @@
     "8200": "8200 - Inventory Value and Activity Report_da",
     "8205": "8205 - Inventory Valuation Report_da",
     "8215": "8215 - Items Under Par_da",
+    "8220": "8220 - Open Coupon_da",
     "8700": "8700 - Update Qty on Hand_da",
     "8705": "8705 – Freeze Inventory_da",
     "8710": "8710 - Release Inventory_da",
@@ -3769,7 +3770,11 @@
     "includeInhouseSC": "Include In-House SC_da",
     "OutletSalesSummaryXReading": "Sales Summary Outlet Report (X Reading)_da",
     "BIRSalesSummary": "BIR Sales Summary Report_da",
-    "ItemsUnderPar": "Items Under Par_da"
+    "ItemsUnderPar": "Items Under Par_da",
+    "OpenCoupon": "Open Coupon_da",
+    "CouponType": "Coupon Type(s)_da",
+    "CouponNumber": "Coupon #_da",
+    "ExpandCoupons": "Expand Serialized Coupon(s)_da"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_da",
