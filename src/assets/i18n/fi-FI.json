@@ -2054,6 +2054,7 @@
     "hdr_createPaymentCoupon": "Create Payment Coupon_fi",
     "srch_by_couponName": "Coupon_fi",
     "srch_by_couponProgram": "Program_fi",
+    "srch_by_name": "Name_fi",
     "CreateCoupon": "Create Coupon_fi",
     "couponName": "Coupon Name_fi",
     "lbl_expiresOn": "Expires On_fi",

@@ -2054,6 +2054,7 @@
     "hdr_createPaymentCoupon": "Create Payment Coupon_da",
     "srch_by_couponName": "Coupon_da",
     "srch_by_couponProgram": "Program_da",
+    "srch_by_name": "Name_da",
     "CreateCoupon": "Create Coupon_da",
     "couponName": "Coupon Name_da",
     "lbl_expiresOn": "Expires On_da",
