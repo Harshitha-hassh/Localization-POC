@@ -2011,6 +2011,7 @@
   "noSpecialCharacters": "No special characters must be allowed_fi",
   "confirmPasswordSame": "New password and confirm password must be same_fi",
   "retailsetup": {
+    "lbl_missingQualifyingCriteria": "Missing Qualifying Criteria_fi",
     "lbl_AllProducts": "All Products_fi",
     "lbl_AllBookings": "All Bookings_fi",
     "lbl_AllProductsandBookings": "All Products and Bookings_fi",
