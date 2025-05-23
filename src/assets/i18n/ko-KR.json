@@ -5315,5 +5315,7 @@
   "TicketNumber": "Ticket #_kr",
   "Date": "Date_kr",
   "Issued": "Issued_kr",
-  "Redeemed": "Redeemed_kr"
+  "Redeemed": "Redeemed_kr",
+  "lbl_collapseAll": "Collapse All_kr",
+  "lbl_Expandall": "Expand All_kr"
 }

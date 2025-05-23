@@ -5315,5 +5315,7 @@
   "TicketNumber": "Ticket #_fi",
   "Date": "Date_fi",
   "Issued": "Issued_fi",
-  "Redeemed": "Redeemed_fi"
+  "Redeemed": "Redeemed_fi",
+  "lbl_collapseAll": "Collapse All_fi",
+  "lbl_Expandall": "Expand All_fi"
 }

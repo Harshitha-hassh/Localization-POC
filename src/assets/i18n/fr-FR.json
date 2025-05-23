@@ -5315,5 +5315,7 @@
   "TicketNumber": "Ticket #_fr",
   "Date": "Date_fr",
   "Issued": "Issued_fr",
-  "Redeemed": "Redeemed_fr"
+  "Redeemed": "Redeemed_fr",
+  "lbl_collapseAll": "Collapse All_fr",
+  "lbl_Expandall": "Expand All_fr"
 }

@@ -1675,4 +1675,11 @@
       margin: 0px 0px 10px 10px !important;
   }
 }
+&.dialog-container__header.slide-info--header {
+  background-color: $new-version-bg;
+}
+mat-radio-group mat-radio-button .mat-radio-label-content {
+  color: #000000;
+  font-size: 14px;
+}
 }
