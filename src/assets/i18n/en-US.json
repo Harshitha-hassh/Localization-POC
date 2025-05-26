@@ -4798,6 +4798,7 @@
   "lbl_SettlerName": "PMSettler Name",
   "lbl_addoutlets": "ADD OUTLET",
   "lbl_customer": "Customer",
+  "FolioStatus":"Folio Status",
   "lbl_enterprise": "Enterprise",
   "lbl_division": "Division",
   "lbl_store": "Store",
