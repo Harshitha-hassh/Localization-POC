@@ -1965,7 +1965,8 @@
     "7300": "7300 - Promo Coupons",
     "7305": "7305 - Payment Coupons",
     "7310": "7310 - Incentive Coupons",
-    "3185": "3185 - Coupon Inquiry"
+    "3185": "3185 - Coupon Inquiry",
+    "8740": "8740 - Cash Drawer Closing Summary"
   },
   "90070": "90070 - Folio",
   "err_breakPointAccessDeniedMsg": "The user does not have permissions to perform this action.",
@@ -2091,7 +2092,8 @@
 				"lbl_noOfVoids": "Number of Voids",
 				"btn_closeRegister":"CLOSE REGISTER",
 				"warn_variance": "Your cash float is out of balance by {variance}. Are you sure you want to continue closing the register now?",
-				"warn_breakpointvariance": "User not allowed to Close Register with Variance"
+				"warn_breakpointvariance": "User not allowed to Close Register with Variance",
+				"warn_closeSummary": "Failed to Save Summary Details"
 			},
       "Total": "Total",
       "SuccessSaveTenders": "Saved Tenders Count Successfully",
@@ -3567,6 +3569,8 @@
     "CopyMessage": "Copy from Frozen Inventory"
   },
   "reports": {
+    "machines": "Machine(s)",
+    "ClosingSummary":"Cash Drawer Closing Summary",
     "lbl_saveReportConfig": "SAVE",
     "includePaymentTaxExempt": "Include Tax Exempt Against Payment Method",
     "Appointment": "APPOINTMENT",

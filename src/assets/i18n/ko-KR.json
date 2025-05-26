@@ -1919,6 +1919,7 @@
     "8734": "8734 - Receiving_kr",
     "8735": "8735 - PurchaseOrder_kr",
     "8736": "8736 - Inventory on Hand_kr",
+    "8740": "8740 - Cash Drawer Closing Summary_kr",
     "11500": "11500 - Manual Audit_kr",
     "12091": "12091 - PMS Integration Setup_kr",
     "15065": "15065 - Print Default Configuration_kr",
@@ -2089,7 +2090,8 @@
         "lbl_noOfVoids": "Number of Voids_kr",
         "btn_closeRegister": "CLOSE REGISTER_kr",
         "warn_variance": "Your cash float is out of balance by {variance}. Are you sure you want to continue closing the register now?_kr",
-        "warn_breakpointvariance": "User not allowed to Close Register with Variance_kr"
+        "warn_breakpointvariance": "User not allowed to Close Register with Variance_kr",
+        "warn_closeSummary": "Failed to Save Summary Details_kr"
       },
       "Total": "Total_kr",
       "SuccessSaveTenders": "Saved Tenders Count Successfully_kr",
@@ -3564,6 +3566,8 @@
     "CopyMessage": "Copy from Frozen Inventory_kr"
   },
   "reports": {
+    "machines": "Machine(s)_kr",
+    "ClosingSummary": "Cash Drawer Closing Summary_kr",
     "lbl_saveReportConfig": "SAVE_kr",
     "includePaymentTaxExempt": "Include Tax Exempt Against Payment Method_kr",
     "Appointment": "APPOINTMENT_kr",
