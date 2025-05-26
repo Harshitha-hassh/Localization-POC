@@ -2011,6 +2011,13 @@
   "noSpecialCharacters": "No special characters must be allowed",
   "confirmPasswordSame": "New password and confirm password must be same",
   "retailsetup": {
+    "lbl_open": "Open",
+		"lbl_expired": "Expired",
+		"searchToFindResult": "Search to find the results",
+		"lbl_promo": "Promo",
+		"lbl_payment": "Payment",
+		"lbl_incentive": "Incentive",
+		"lbl_amount": "Amount",
     "lbl_missingQualifyingCriteria" : "Missing Qualifying Criteria",
     "lbl_AllProducts": "All Products",
 		"lbl_AllBookings": "All Bookings",
