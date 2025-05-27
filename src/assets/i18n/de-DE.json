@@ -993,6 +993,7 @@
     "lbl_inActive": "Inactive_de",
     "lbl_active": "Active_de",
     "lbl_invalidCoupon": "No valid coupon found_de",
+    "alreadyRedeemedmsg": "Coupon has already been redeemed_de",
     "lbl_fetchCouponDetails": "Unable to fetch Coupon Details_de",
     "ApplyPromoCode": "APPLY PROMO CODE_de",
     "SearchByCouponNumber": "Search by Coupon #,Ticket #_de",
