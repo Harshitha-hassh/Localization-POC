@@ -1871,6 +1871,7 @@
     "7300": "7300 - Promo Coupons_fi",
     "7305": "7305 - Payment Coupons_fi",
     "7310": "7310 - Incentive Coupons_fi",
+    "7315": "7315 - Cash Drawer Denomination_fi",
     "8000": "8000 - Shift Report_fi",
     "8005": "8005 - Transaction Report_fi",
     "8010": "8010 - Revenue Summary_fi",
@@ -5337,5 +5338,10 @@
   "Issued": "Issued_fi",
   "Redeemed": "Redeemed_fi",
   "lbl_collapseAll": "Collapse All_fi",
-  "lbl_Expandall": "Expand All_fi"
+  "lbl_Expandall": "Expand All_fi",
+  "lbl_denominationName": "Denomination Name_fi",
+  "lbl_denominationValue": "Denomination Value_fi",
+  "lbl_searchByDenominationName": "Search By Denomination Name_fi",
+  "Btn_add": "ADD_fi",
+  "grid_hdr_ListOrder": "List Order_fi"
 }

@@ -1682,4 +1682,14 @@ mat-radio-group mat-radio-button .mat-radio-label-content {
   color: #000000;
   font-size: 14px;
 }
+&.cash-drawer-denomination-outer--wrapper {
+  background-color: $new-version-bg;
+  padding: 10px;
+
+  .cash-drawer-denomination-top--wrapper {
+    @extend .bodyWrap;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+}
 }
