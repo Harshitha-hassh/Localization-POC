@@ -2073,6 +2073,8 @@
     "couponTypeDeletionWarningMsg": "Are you sure you want to delete this coupon?_fr",
     "validFrom": "Valid From_fr",
     "Expiry": "Expiry_fr",
+    "lbl_machineInActive": "Machine is already linked with cash Drawer. Inactive not allowed_fr",
+    "lbl_machineDelete": "Machine is already linked with cash Drawer. Delete not allowed_fr",
     "cashDrawer": {
       "cashDrawerSummary": {
         "lbl_gratuity": "Gratuity_fr",
