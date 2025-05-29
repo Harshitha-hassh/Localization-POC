@@ -5741,3 +5741,7 @@ color: $retail-primary-100 !important;
 .pac-container:not(.pac-logo){
   display: none;
 }
+.cdk-custom-wrapper .ag_table .table.lastColumnFreeze td:last-child, 
+.cdk-custom-wrapper .ag_table .table.lastColumnFreeze th:last-child{
+  box-shadow: unset !important;
+}
