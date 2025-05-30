@@ -1637,9 +1637,6 @@
         "header": "Patron Selection_fi",
         "subheaderMsg": "Please select a player to proceed refund_fi"
       },
-      "Coupon": {
-        "searchPlaceHolder": "Coupon Search_fi"
-      },
       "VoidMessage": "Transaction Cannot be Voided_fi",
       "CorrectMessage": "Transaction Cannot be Corrected_fi",
       "OfferRefundNotAllowed": "Refund cannot be done to Original Settlements as Offers cannot be Reversed_fi",
@@ -1651,6 +1648,9 @@
       "MissingCMSPinError": "should be atleast 4 characters_fi",
       "CMSPinHeader": "Patron Pin_fi",
       "PlayerWorthGetDetailsBtn": "Get Point Details_fi"
+    },
+    "Coupon": {
+      "searchPlaceHolder": "Coupon Search_fi"
     },
     "CanNotVoidTheTransaction": "Amount Mismatch - Cannot Void the transaction_fi",
     "CanNotVoidAlreadyIssuedAsGiftcard": "Cannot void transaction as the return amount was credited to a gift card._fi",
