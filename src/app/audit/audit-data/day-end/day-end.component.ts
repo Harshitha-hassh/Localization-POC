@@ -90,6 +90,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
   isDisabled: boolean;
   allowAuditOnCashDrawerOpen: boolean = false;
   isCashDrawerEnabled: boolean = false;
+  isRevenuePostingConfigured : boolean = false;
 
   constructor(public localization: RetailLocalization, private utils: RetailUtilities, private http: HttpServiceCall,
     private auditService: AuditService, 
@@ -148,6 +149,7 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
       this.InitializeGrid();
       const pmsSystem = sessionStorage.getItem('pmsSystem');
       if (this.showRevenuePostings && pmsSystem != null && pmsSystem.toLowerCase() === 'visualone'){
+        this.isRevenuePostingConfigured = true;
         this.getRevenuePostings();
       }else {
         this.showRevenuePostings = false;
@@ -570,6 +572,10 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
 
 
     const notLoadedData = this.GridData.filter(r => {
+      if(r.status == PendingAction.RevenuePosting)
+      {
+        return this.isRevenuePostingConfigured && !r.isLoaded
+      }
       return !r.isLoaded;
     });
     if (notLoadedData && notLoadedData.length > 0) {
