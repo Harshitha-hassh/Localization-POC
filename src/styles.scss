@@ -5745,3 +5745,8 @@ color: $retail-primary-100 !important;
 .cdk-custom-wrapper .ag_table .table.lastColumnFreeze th:last-child{
   box-shadow: unset !important;
 }
+.clockInInitialBg{
+    background: linear-gradient(to bottom left, rgba(255, 255, 255, 0) 70%, #467dba 100%), url("../src/assets/images/clockbg.png") !important;
+    background-position: bottom right !important;
+    border-radius: 4px !important;
+}
