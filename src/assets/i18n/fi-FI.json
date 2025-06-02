@@ -3571,6 +3571,7 @@
     "CopyMessage": "Copy from Frozen Inventory_fi"
   },
   "reports": {
+    "No": "No_fi",
     "machines": "Machine(s)_fi",
     "ClosingSummary": "Cash Drawer Closing Summary_fi",
     "lbl_saveReportConfig": "SAVE_fi",
