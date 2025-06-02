@@ -268,7 +268,7 @@
   "101917": "Date cannot be rolled over to the next day_fr",
   "101918": "Current system date {CurrentSystemDate} is greater than or equal to roll over date {RollOverDate}. Please Re Login_fr",
   "103911": "Duplicate Coupon_fr",
-  "103912": "Duplicate Number_fr",
+  "103912": "Duplicate Name_fr",
   "103913": "Empty Code or Name_fr",
   "103914": "Data Not Exists_fr",
   "103915": "Duplicate Incentive Program_fr",
