@@ -2015,6 +2015,7 @@
   "confirmPasswordSame": "New password and confirm password must be same",
   "retailsetup": {
     "errorMsg_coupon": "This coupon is associated with incentive coupon <b>{program}</b>. This action is restricted.",
+    "deleteCouponErrorMsg": "This coupon is associated with an open transaction. This action is restricted.",
     "lbl_open": "Open",
     "lbl_expired": "Expired",
     "searchToFindResult": "Search to find the results",
