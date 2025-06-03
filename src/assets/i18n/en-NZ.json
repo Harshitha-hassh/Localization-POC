@@ -2014,7 +2014,7 @@
   "noSpecialCharacters": "No special characters must be allowed",
   "confirmPasswordSame": "New password and confirm password must be same",
   "retailsetup": {
-    "errorMsg_coupon": "This coupon is associated with incentive coupon {program}. This action is restricted.",
+    "errorMsg_coupon": "This coupon is associated with incentive coupon <b>{program}</b>. This action is restricted.",
     "lbl_open": "Open",
     "lbl_expired": "Expired",
     "searchToFindResult": "Search to find the results",
