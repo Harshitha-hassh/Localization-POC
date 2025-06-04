@@ -3651,6 +3651,7 @@
     "OrderBySupplierItem": "Order By Supplier Item_fr",
     "CategoryView": "Category View_fr",
     "SummaryView": "Summary View_fr",
+    "DisplayByOutlets": "Display By Outlets_fr",
     "IncludeInactiveItems": "Include Inactive Items_fr",
     "IncludeNonInventoryItems": "Include Non-inventory Items_fr",
     "SuppressZeroQtyItems": "Suppress Zero Qty Items_fr",
