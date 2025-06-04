@@ -1334,6 +1334,7 @@
     "CostDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost/Cost Plus discount_de",
     "CostPlusDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost/Cost Plus discount as item cost value is greater than the sales price_de",
     "TicketDiscountCannotBeApplied": "Ticket discount applied will be removed on applying Cost/Cost Plus discount. Do you wish to proceed?_de",
+    "TicketPromoCouponDiscountCannotBeApplied": "Ticket/Promo Coupon discount applied will be removed on applying Cost/Cost Plus discount. Do you wish to proceed?_de",
     "CostDiscountCannotBeApplied": "Cost/Cost Plus discount applied will be removed on applying Ticket discount. Do you wish to proceed?_de",
     "PackagedItemDiscountWarning": "You are applying discount for the packaged items, this may contain items that are not eligible for discount_de",
     "PleaseSelectDefaultOutlet": "Please select a default outlet_de",
