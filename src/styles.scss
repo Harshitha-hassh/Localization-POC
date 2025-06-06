@@ -5574,8 +5574,9 @@ body .cdk-custom-wrapper .ag_table .table th {
 .icon-Minus:before, .icon-Plus:before, .icon-profile, .icon-Edit:before,
 .icon-Delete:before, .icon-active-user:before, .icon-filter_filled:before,
 .icon-DragAndDrop::before, .icon-print:before, .icon-recurring:before,
-.icon-Player-worth_disabled:before, .icon-copy:before, .icon-Success:before {
-  color: $theme-base-color;
+.icon-Player-worth_disabled:before, .icon-copy:before, .icon-Success:before,
+.icon-drag-drop:before {
+  color: $theme-base-color !important;
 }
 
 .icon-Down-Arrow:before {
