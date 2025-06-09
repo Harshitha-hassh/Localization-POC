@@ -2067,7 +2067,7 @@
 		"lbl_coupounAmount" : "Coupon Amount",
 		"lbl_expiry" : "Expiry",
 		"hdr_createPaymentCoupon" : "Create Payment Coupon",
-		"srch_by_couponName" : "Name, Coupon",
+		"srch_by_couponName" : "Name, Coupon #",
 		"srch_by_couponProgram" : "Program, Qualifying Criteria, Coupon",
 		"srch_by_name": "Name, Qualifying Criteria, Discount Type",
 		"CreateCoupon" : "Create Coupon",
