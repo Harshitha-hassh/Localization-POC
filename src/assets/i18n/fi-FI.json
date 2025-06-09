@@ -3574,6 +3574,7 @@
   },
   "reports": {
     "No": "No_fi",
+    "Yes": "Yes_fi",
     "machines": "Machine(s)_fi",
     "ClosingSummary": "Cash Drawer Closing Summary_fi",
     "lbl_saveReportConfig": "SAVE_fi",

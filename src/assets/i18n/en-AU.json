@@ -3574,6 +3574,7 @@
   },
   "reports": {
     "No": "No",
+    "Yes": "Yes",
     "machines": "Machine(s)",
     "ClosingSummary": "Cash Drawer Closing Summary",
     "lbl_saveReportConfig": "SAVE",
