@@ -3794,7 +3794,8 @@
     "OpenCoupon": "Open Coupon_fi",
     "CouponType": "Coupon Type(s)_fi",
     "CouponNumber": "Coupon #_fi",
-    "ExpandCoupons": "Expand Serialized Coupon(s)_fi"
+    "ExpandCoupons": "Expand Serialized Coupon(s)_fi",
+    "IncludeInactiveCoupons": "Include Inactive Coupons_fi"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_fi",
