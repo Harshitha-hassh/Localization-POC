@@ -2100,8 +2100,11 @@
         "btn_closeRegister": "CLOSE REGISTER_de",
         "warn_variance": "Your cash float is out of balance by {variance}. Are you sure you want to continue closing the register now?_de",
         "warn_breakpointvariance": "User not allowed to Close Register with Variance_de",
-        "warn_closeSummary": "Failed to Save Summary Details_de"
+        "warn_closeSummary": "Failed to Save Summary Details_de",
+        "warn_cashDrawerClosed": "Cash Drawer has been closed_de"
       },
+      "warn_cashDrawerClosed": "Cash Drawer has been closed_de",
+      "warn_cashDrawerOpened": "Cash Drawer has been opened already_de",
       "Total": "Total_de",
       "SuccessSaveTenders": "Saved Tenders Count Successfully_de",
       "attachedRegister": "You are not attached to a Cash Drawer_de",
