@@ -990,6 +990,8 @@
     "platformGuestSearch": "Extended Profile Search_fr"
   },
   "shop": {
+    "lbl_fetchCoupon": "Fetching coupon details..._fr",
+    "lbl_InputCoupon": "Please enter a coupon number_fr",
     "lbl_inActive": "Inactive_fr",
     "lbl_active": "Active_fr",
     "lbl_invalidCoupon": "No valid coupon found_fr",
