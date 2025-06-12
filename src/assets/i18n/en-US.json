@@ -2050,7 +2050,7 @@
 		"coupon" : "Coupon",
 		"lbl_email" :"Email",
 		"couponText" : "Coupon Text",
-		"lbl_incentiveBySpendMultiple" : "Incentive By Spend Multiple($)",
+		"lbl_incentiveBySpendMultiple" : "Incentive By Spend Multiple",
 		"lbl_spendThreshold" : "Spend Threshold",
 		"lbl_maxPerTransaction" : "Max Per Transaction",
 		"lbl_incentiveProgram" : "Incentive Program",
