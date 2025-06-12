@@ -2204,7 +2204,8 @@
       "discount": "Discount",
       "CashDrawerWarning": "Cash drawer is closed. Please open it to proceed with the transaction.",
       "CashDrawerMiscNotConfigured": "Please enable the cash drawer functionality, to open it",
-      "outletConfigurationMissing" : "Outlet configuration not available to open cash drawer"
+      "outletConfigurationMissing" : "Outlet configuration not available to open cash drawer",
+      "lbl_lastClosedDate": "Last Closed Date"
     },
     "allowPriceOverride": "Allow Price Override",
     "restrictReturn": "Restrict Return",

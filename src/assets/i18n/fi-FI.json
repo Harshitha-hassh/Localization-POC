@@ -2202,7 +2202,8 @@
       "discount": "Discount_fi",
       "CashDrawerWarning": "Cash drawer is closed. Please open it to proceed with the transaction._fi",
       "CashDrawerMiscNotConfigured": "Please enable the cash drawer functionality, to open it_fi",
-      "outletConfigurationMissing": "Outlet configuration not available to open cash drawer_fi"
+      "outletConfigurationMissing": "Outlet configuration not available to open cash drawer_fi",
+      "lbl_lastClosedDate": "Last Closed Date_fi"
     },
     "allowPriceOverride": "Allow Price Override_fi",
     "restrictReturn": "Restrict Return_fi",
