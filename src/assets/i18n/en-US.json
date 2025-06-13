@@ -1971,7 +1971,9 @@
     "7310": "7310 - Incentive Coupons",
     "7315": "7315 - Cash Drawer Denomination",
     "3185": "3185 - Coupon Inquiry",
-    "8740": "8740 - Cash Drawer Closing Summary"
+    "8740": "8740 - Cash Drawer Closing Summary",
+    "2000215": "2000215 - Partner Code",
+		"2000220":"2000220 - Partner Setup"
   },
   "90070": "90070 - Folio",
   "err_breakPointAccessDeniedMsg": "The user does not have permissions to perform this action.",
