@@ -3803,7 +3803,7 @@
     "CouponType": "Coupon Type(s)_kr",
     "CouponNumber": "Coupon #_kr",
     "ExpandCoupons": "Expand Serialized Coupon(s)_kr",
-    "IncludeInactiveCoupons": "Include Inactive Coupons_kr"
+    "IncludeInactiveCoupons": "Include Inactive Coupon(s)_kr"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_kr",
