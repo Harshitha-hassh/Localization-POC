@@ -22,7 +22,7 @@
           </mat-form-field>
 
           <mat-form-field class="w250 mb-2" [floatLabel]="floatLabel">
-            <input [attr.automationId]="'Txt_userSettings_userId'" matInput placeholder="{{caption.setting.UserId}}" autocomplete="off" inputtype="capitalise,notallowspace" [allowedSpecialCharacter]="userIdPattern" [maxlength]="10"  formControlName="userid">
+            <input [attr.automationId]="'Txt_userSettings_userId'" matInput placeholder="{{caption.setting.UserId}}" autocomplete="off" inputtype="capitalise,notallowspace,restrictatslash" [maxlength]="10"  formControlName="userid">
             <mat-error class="" *ngIf="userSettingsFormGrp.controls['userid'].hasError('required') && userSettingsFormGrp.controls['userid'].touched && !userSettingsFormGrp.controls['userid'].valid">
               {{caption.setting.MissingUserID}}
             </mat-error>
