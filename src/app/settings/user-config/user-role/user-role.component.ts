@@ -132,6 +132,7 @@ export class UserRoleComponent implements OnInit, OnDestroy {
     if (!this.hasAccess) {
       return;
     }
+    this.triggerExpandCollapse = false;
     this.getuserConfig(this.selectedOption);
   }
 
