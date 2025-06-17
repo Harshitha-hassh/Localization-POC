@@ -4020,6 +4020,7 @@
     "GratuityLine": "Gratuity Line",
     "ReceiptNote": "Receipt Note",
     "ReceiptFooterNote": "Receipt Footer Note",
+    "ReceiptImageFooterNote": "Receipt Image Footer Note",
     "SelectOutlet": "Select Outlet",
     "Details": "Detail",
     "SummarySplit": "Summary Split",
