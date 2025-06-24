@@ -149,8 +149,7 @@ export class ClientDetailsComponent implements OnInit {
         ];
     }
     sampleData: any = [];
-    platformSearchText: string = '';
-    hideIframeGuestSearch: boolean = false;
+    showIframeGuestSearch: boolean = false;
     isEnableCGPSIframeGuestSearch: boolean = false;
 
     ngOnInit() {
@@ -306,11 +305,6 @@ export class ClientDetailsComponent implements OnInit {
 
 
     setSearchText(clientswitchvalue) {
-        if (this.searchText) {
-            this.hideIframeGuestSearch = false;
-        } else {
-            this.hideIframeGuestSearch = true;
-        }
         switch (clientswitchvalue) {
             case clientSearchType.firstName:
                 this.searchTextPlaceHolder = this.captions.searchByFirstName;
@@ -475,7 +469,6 @@ export class ClientDetailsComponent implements OnInit {
         this.SetclientSearchTypeValue(id);
         this.selectedClientSearchType = id;
         this.enableSearch = false;
-        this.hideIframeGuestSearch = true;
     }
 
     clearSearchTextValue() {
@@ -599,11 +592,9 @@ export class ClientDetailsComponent implements OnInit {
     enableSearchButton() {
         if (this.searchText.length > 2 || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId)) {
             this.enableSearch = true;
-            this.hideIframeGuestSearch = false;
         }
         else {
             this.enableSearch = false;
-            this.hideIframeGuestSearch = true;
         }
 
     }
@@ -617,7 +608,6 @@ export class ClientDetailsComponent implements OnInit {
     searchdata(searchText) {
         searchText = searchText.trim();
         if (this.searchText.trim() == '' && this.guestNameFromGlobalSearch.trim() != '') {
-            this.hideIframeGuestSearch = false;
             this.SearchClientInformation(this.guestNameFromGlobalSearch.trim(), false, this.guidFromGlobalSearch, this.selectedClientSearchType);
             this.singleUserView = false;
         }
@@ -627,7 +617,6 @@ export class ClientDetailsComponent implements OnInit {
                 this.singleUserView = false;
             }
             else if ((searchText.length > 2 && this.clientService.selectedIndex != 1) || (this.searchText.length > 0 && this.selectedClientSearchType == clientSearchType.patronId)) {
-                this.hideIframeGuestSearch = false;
                 this.SearchClientInformation(this.searchText, this.clientService.isVip, undefined, this.selectedClientSearchType);
                 this.singleUserView = false;
             }
@@ -638,7 +627,6 @@ export class ClientDetailsComponent implements OnInit {
                 this.FilterClientInformation();
                 this.refreshData();
                 this.singleUserView = false;
-                this.hideIframeGuestSearch = true;
             }
         }
     }
@@ -646,7 +634,6 @@ export class ClientDetailsComponent implements OnInit {
     clearText() {
         this.searchText = '';
         this.enableSearch = false;
-        this.hideIframeGuestSearch = true;
     }
     BindGrid() {
         this.formattedData = this.formatTableData(this.formattedData);
@@ -828,27 +815,17 @@ export class ClientDetailsComponent implements OnInit {
     }
 
     SearchClientInformation(pattern: any, isVip: any, clientGuid: any = "0", searchType: any) {
-        if (this.isPlatformGuestSearch && this.isEnableCGPSIframeGuestSearch) {
-            this.platformSearchText = pattern + '|' + new Date().toLocaleTimeString();
-            this.formattedData = [];
-            this.sampleData = [];
-            this.BindGrid();
-            this.FilterClientInformation();
-            this.refreshData();
-            this.singleUserView = false;
-        } else {
-            this.http.CallApiWithCallback<number>({
-                host: Host.retailPOS,
-                success: this.successCallback.bind(this),
-                error: this.errorCallback.bind(this),
-                callDesc: "SearchClientInfo",
-                method: HttpMethod.Put,
-                uriParams: { searchType: searchType, requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000), isPlatformGuestSearch: this.isPlatformGuestSearch },
-                body: pattern,
-                showError: true,
-                extraParams: []
-            });
-        }
+        this.http.CallApiWithCallback<number>({
+            host: Host.retailPOS,
+            success: this.successCallback.bind(this),
+            error: this.errorCallback.bind(this),
+            callDesc: "SearchClientInfo",
+            method: HttpMethod.Put,
+            uriParams: { searchType: searchType, requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000), isPlatformGuestSearch: this.isPlatformGuestSearch },
+            body: pattern,
+            showError: true,
+            extraParams: []
+        });
     }
 
     RecentClientInformation(searchText: any, searchType: any) {
@@ -1111,15 +1088,6 @@ export class ClientDetailsComponent implements OnInit {
 
     isPlatformGuestSearchChanged(e) {
         this.isPlatformGuestSearch = Boolean(e[0]);
-        if (this.isPlatformGuestSearch && this.isEnableCGPSIframeGuestSearch) {
-            if (this.searchText) {
-                this.hideIframeGuestSearch = false;
-            } else {
-                this.hideIframeGuestSearch = true;
-            }
-        } else {
-            this.hideIframeGuestSearch = true;
-        }
     }
     async setPlatformGuestSearch() {
         let platformGuestSearch = await this.propertySettingService.GetEnableExtendedProfileSearchByDefaultSetting();
@@ -1129,8 +1097,24 @@ export class ClientDetailsComponent implements OnInit {
         });
     }
 
-    async platfromGuestResponce(platformGuestId: any) {
+    async platformGuestResponse(platformGuestId: any) {
         console.log(`"--- Platfrom GuestId: ${platformGuestId} Reseived ---"`);
         this.getPlatformGuestData(platformGuestId);
+    }
+
+    async setPlatformSerachClick(event: any) {
+      this.showIframeGuestSearch = event;
+    }
+    
+    platformSearchData() {
+        if (this.isPlatformGuestSearch && this.isEnableCGPSIframeGuestSearch) {
+            this.formattedData = [];
+            this.sampleData = [];
+            this.showIframeGuestSearch = true;
+            this.tableInput?.nativeElement.blur();
+            if  (this.tableInput) {
+                this.tableInput.nativeElement.value = '';
+            }
+        }
     }
 }
