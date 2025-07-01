@@ -987,7 +987,8 @@
     "searchByPatronId": "Search by Patron Id_fi",
     "Search": "SEARCH_fi",
     "cReset": "RESET_fi",
-    "platformGuestSearch": "Extended Profile Search_fi"
+    "platformGuestSearch": "Extended Profile Search_fi",
+    "lbl_platformGuestSearch": "Platform Guest Search_fi"
   },
   "shop": {
     "lbl_fetchCoupon": "Fetching coupon details..._fi",

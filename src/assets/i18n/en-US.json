@@ -407,7 +407,7 @@
     "Friday": "Friday",
     "Saturday": "Saturday"
   },
-  "bookAppointment": {
+ "bookAppointment": {
     "PropertyInformation": "Property Information",
     "Miscellaneous": "Miscellaneous",
     "NoLocationAvailable": "No Location Available",
@@ -986,7 +986,8 @@
     "searchByPatronId": "Search by Patron Id",
     "Search": "SEARCH",
     "cReset": "RESET",
-    "platformGuestSearch": "Extended Profile Search"
+    "platformGuestSearch": "Extended Profile Search",
+    "lbl_platformGuestSearch":"Platform Guest Search"
   },
   "shop": {
     "lbl_fetchCoupon": "Fetching coupon details...",

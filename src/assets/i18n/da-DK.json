@@ -987,7 +987,8 @@
     "searchByPatronId": "Search by Patron Id_da",
     "Search": "SEARCH_da",
     "cReset": "RESET_da",
-    "platformGuestSearch": "Extended Profile Search_da"
+    "platformGuestSearch": "Extended Profile Search_da",
+    "lbl_platformGuestSearch": "Platform Guest Search_da"
   },
   "shop": {
     "lbl_fetchCoupon": "Fetching coupon details..._da",

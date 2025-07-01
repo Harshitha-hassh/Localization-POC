@@ -57,9 +57,9 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   validatePhoneType: string;
   clientInfo: any;
   titledropdownInput: { form: UntypedFormGroup; formControlName: string; isdisabled: boolean; placeholderName: string; className: string; };
-  titles = [{ id: 1, value: 'Dr', viewValue: 'Dr' }, { id: 2, value: 'Fr', viewValue: 'Fr' }, { id: 3, value: 'Miss', viewValue: 'Miss' },
-  { id: 4, value: 'Mr', viewValue: 'Mr' }, { id: 5, value: 'Mrs', viewValue: 'Mrs' }, { id: 6, value: 'Ms', viewValue: 'Ms' },
-  { id: 7, value: 'Prof', viewValue: 'Prof' }, { id: 8, value: 'Rev', viewValue: 'Rev' }, { id: 9, value: 'Mx', viewValue: 'Mx' }];
+  titles = [{ id: 1, value: 'Dr.', viewValue: 'Dr.' }, { id: 2, value: 'Fr.', viewValue: 'Fr.' }, { id: 3, value: 'Miss.', viewValue: 'Miss.' },
+  { id: 4, value: 'Mr.', viewValue: 'Mr.' }, { id: 5, value: 'Mrs.', viewValue: 'Mrs.' }, { id: 6, value: 'Ms.', viewValue: 'Ms.' },
+  { id: 7, value: 'Prof.', viewValue: 'Prof.' }, { id: 8, value: 'Rev.', viewValue: 'Rev.' }, { id: 9, value: 'Mx.', viewValue: 'Mx.' }];
   placeNotfound: boolean;
   Phone: any = [];
   options = {
@@ -1174,7 +1174,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   private getPhoneOptions() {
     return [
-      { id: this.phoneTypes.mobile, description: this.localization.captions.common.drp_txt_cell, type: ContactType.phone },
+      { id: this.phoneTypes.mobile, description: this.localization.captions.common.drp_txt_mobile, type: ContactType.phone },
       { id: this.phoneTypes.home, description: this.localization.captions.common.drp_txt_home, type: ContactType.phone },
       { id: this.phoneTypes.office, description: this.localization.captions.common.drp_txt_office, type: ContactType.phone },
       { id: this.phoneTypes.business, description: this.localization.captions.common.drp_txt_business, type: ContactType.phone },
@@ -1184,8 +1184,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
   private getMailOptions() {
     return [
-      { id: this.mailTypes.personal, description: this.localization.captions.common.drp_txt_personal, type: ContactType.email },
       { id: this.mailTypes.office, description: this.localization.captions.common.drp_txt_office, type: ContactType.email },
+      { id: this.mailTypes.personal, description: this.localization.captions.common.drp_txt_personal, type: ContactType.email },
       { id: this.mailTypes.home, description: this.localization.captions.common.drp_txt_home, type: ContactType.email },
       { id: this.mailTypes.business, description: this.localization.captions.common.drp_txt_business, type: ContactType.email }
     ];
