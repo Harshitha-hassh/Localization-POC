@@ -200,8 +200,8 @@ export class AccordianUserConfigComponent implements OnInit, AfterViewInit {
       }
       if(userClaim.controls['viewOnlyAllowed'].value) {
         userClaim.controls['view'].setValue(isChecked); 
-        this.updateSelectedData(userClaim);
       }
+      this.updateSelectedData(userClaim);
     }
     this.updateAllowViewAllControls(itemDetail, index);
   }
