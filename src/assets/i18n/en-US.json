@@ -2825,6 +2825,8 @@
 		"addCommission" : "Add Commission",
 		"editCommission" : "Edit Commission",
 		"commissionLevel" : "Commission Level",
+    "ThersoldError" :"Duplicate Threshold",
+		"InvalidInput":"Invalid Input",
 		"period" : "Period",
 		"lbl_daily": "Daily",
 		"lbl_custom": "Custom",

@@ -392,6 +392,7 @@
     "-328": "Guest Type is already mapped to a guest profile. Delete not allowed.",
     "-329": "Guest Type is already mapped to a guest profile. Inactive not allowed.",
     "10911": "No data available",
+    "109200": "Entered Threshold and Percentage/Flat Amount combination already exists! Please Provide different values.",
     "31701": "Cash Drawer Code is Empty",
     "31702": "Cash Drawer Code exceeds 100 characters",
     "31703": "Duplicate Cash Drawer Code",

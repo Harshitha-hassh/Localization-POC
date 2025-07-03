@@ -273,6 +273,7 @@
   "103914": "Data Not Exists_fr",
   "103915": "Duplicate Incentive Program_fr",
   "103916": "Duplicate Code Prefix_fr",
+  "109200": "Entered Threshold and Percentage/Flat Amount combination already exists! Please Provide different values._fr",
   "110060": "Credit Limit Exceeded_fr",
   "152151": "Staging Posted Already_fr",
   "152152": "Staging doesn't exist_fr",

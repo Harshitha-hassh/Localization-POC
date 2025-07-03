@@ -2822,6 +2822,8 @@
     "addCommission": "Add Commission_kr",
     "editCommission": "Edit Commission_kr",
     "commissionLevel": "Commission Level_kr",
+    "ThersoldError": "Duplicate Threshold_kr",
+    "InvalidInput": "Invalid Input_kr",
     "period": "Period_kr",
     "lbl_daily": "Daily_kr",
     "lbl_custom": "Custom_kr",

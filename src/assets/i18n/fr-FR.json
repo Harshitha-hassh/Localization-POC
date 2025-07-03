@@ -2822,6 +2822,8 @@
     "addCommission": "Add Commission_fr",
     "editCommission": "Edit Commission_fr",
     "commissionLevel": "Commission Level_fr",
+    "ThersoldError": "Duplicate Threshold_fr",
+    "InvalidInput": "Invalid Input_fr",
     "period": "Period_fr",
     "lbl_daily": "Daily_fr",
     "lbl_custom": "Custom_fr",

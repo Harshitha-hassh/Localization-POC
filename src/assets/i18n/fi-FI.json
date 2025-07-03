@@ -2822,6 +2822,8 @@
     "addCommission": "Add Commission_fi",
     "editCommission": "Edit Commission_fi",
     "commissionLevel": "Commission Level_fi",
+    "ThersoldError": "Duplicate Threshold_fi",
+    "InvalidInput": "Invalid Input_fi",
     "period": "Period_fi",
     "lbl_daily": "Daily_fi",
     "lbl_custom": "Custom_fi",
