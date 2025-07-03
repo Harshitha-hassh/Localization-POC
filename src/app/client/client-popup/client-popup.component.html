@@ -6,7 +6,7 @@
 
     <mat-dialog-content class="p-0 pop-contents newVersionWrapper">
         <div class="clientTabLayout tab-styling-versiontwo h-100">
-            <app-create-client [parentForm]="clientPopupForm" [IsGDPREnabled] = 'IsGDPREnabled' [policyType] = 'policyType' [patronId]="patronId" [clientInfoData] = "data?.clientInfo"></app-create-client>
+            <app-create-client (showIframeGuestSearch)="showIframeGuestSearchFn()" [parentForm]="clientPopupForm" [IsGDPREnabled] = 'IsGDPREnabled' [policyType] = 'policyType' [patronId]="patronId" [clientInfoData] = "data?.clientInfo"></app-create-client>
         </div>
     </mat-dialog-content>
 

@@ -22,6 +22,23 @@
     label{
         margin-bottom:0.7rem;
     }
+
+    .iframe_reopen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 40px;
+        border: 1px solid $ag_base-color;
+        border-radius: 5px;
+
+        .icon-guest_profile_search {
+            font-size: 38px;
+            &::before{
+            color: $ag_base-color;
+            }
+        }
+    }
 }
 .display_style_toggle{
     display: inline-block;

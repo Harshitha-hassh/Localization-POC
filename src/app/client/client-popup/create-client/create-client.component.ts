@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, OnDestroy, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTab, MatTabHeader, MatTabGroup } from '@angular/material/tabs';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
@@ -20,6 +20,7 @@ export class CreateClientComponent implements OnInit, OnDestroy {
   clientSelectedTab: number;
   guestId: any;
   isCopyClient = false;
+  @Output() showIframeGuestSearch = new EventEmitter();
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: any,
     public localization: RetailStandaloneLocalization) { }
@@ -51,5 +52,9 @@ export class CreateClientComponent implements OnInit, OnDestroy {
     }
     this.clientSelectedTab = idx;
     return true && MatTabGroup.prototype._handleClick.apply(this.tabGroup, arguments);
+  }
+
+  showIframeGuestSearchFn() {
+    this.showIframeGuestSearch.emit();
   }
 }

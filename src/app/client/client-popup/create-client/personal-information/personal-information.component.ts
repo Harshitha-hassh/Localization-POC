@@ -67,10 +67,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     // componentRestrictions: { country: "US" }
   };
   @Output() personalInfoParams: EventEmitter<any> = new EventEmitter();
+  @Output() showIframeGuestSearch = new EventEmitter();
   Email: any = [];
   genderList: any[] = [];
   IsEdit: boolean;
   captions: any;
+  allCaptions: any;
   selectedFile: any;
   url: any;
   isImageRemoved: boolean = false;
@@ -113,6 +115,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   floatLabel: string;
   floatLabelNever: string;
   isCopyClient = false;
+  isPlatformGuestSearch: boolean = false;
+  isEnableCGPSIframeGuestSearch: boolean = false;
 
   @Input('inputData')
   set formData(value) {
@@ -120,6 +124,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.personalInfo = value.data;
       this.isCopyClient = value.isCopyClient;
       this.SetEditValues(value.data);
+      if(value.isPlatformGuestSearch) {
+        this.isPlatformGuestSearch = value.isPlatformGuestSearch;
+      }
+      if(value.isEnableCGPSIframeGuestSearch) {
+        this.isEnableCGPSIframeGuestSearch = value.isEnableCGPSIframeGuestSearch;
+      }
       this.isClientViewOnly = value.isClientViewOnly ? value.isClientViewOnly : false;
     }
   }
@@ -141,6 +151,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     // this.receiptDate = new FormControl("");
     this.floatLabel = this.localization.setFloatLabel;
     this.defaultSettings = JSON.parse(sessionStorage.getItem('defaultSettings'));
+    this.allCaptions = this.localization.captions;
     this.captions = this.localization.captions.bookAppointment;
     this.commonCaptions = this.localization.captions.common;
     this.genderList = [{ text: this.captions['Male'], value: 'Male' }, { text: this.captions['Female'], value: 'Female' }];
@@ -1326,6 +1337,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       PhoneGroup.controls['PhoneNumber'].updateValueAndValidity();
       PhoneGroup.markAllAsTouched();
     });
+  }
+
+  showIframeGuestSearchFn(){
+    this.showIframeGuestSearch.emit();
   }
 
 }

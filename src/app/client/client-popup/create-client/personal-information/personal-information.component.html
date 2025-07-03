@@ -5,6 +5,12 @@
       (fileUploaded)="fileUploaded($event)" (fileSizeExceeded)="fileSizeExceeded()">
     </app-image-uploader>
     <div class="float-left sidesection ml-3">
+      <div *ngIf="isPlatformGuestSearch && isEnableCGPSIframeGuestSearch">
+        <span  class="iframe_reopen ag_link">
+        <i [attr.automationId]="'Icn_PlayerInfo_OpenIframe'" aria-hidden="true" class="icon-guest_profile_search p-2 cursor" title="{{allCaptions.Reopen_Iframe}}"
+          (click)="showIframeGuestSearchFn()"></i>
+          </span>
+      </div>
       <div>
         <!-- <mat-form-field class="" [floatLabel]="floatLabel">
           <mat-select [attr.automationId]="'Dd_personalInformation_title'" [placeholder]="captions.CTitle" formControlName="title" [required]="customRequired.title">

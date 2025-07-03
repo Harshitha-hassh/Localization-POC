@@ -123,6 +123,17 @@
   .w0 {
     width: 0;
   }
+
+  .reopen-class {
+    .iframe-slider {
+      &.iframe_mr {
+        right: 10% !important;
+      }
+      top: 7.5% !important;
+      height: 85% !important;
+    }
+  }
+
   .iframe-slider{
     top: 142px;
     height: calc(100% - 146px);

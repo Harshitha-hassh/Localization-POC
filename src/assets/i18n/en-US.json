@@ -5369,5 +5369,6 @@
 	"lbl_denominationValue" : "Denomination Value",
 	"lbl_searchByDenominationName" : "Search By Denomination Name",
   "Btn_add": "ADD",
-  "grid_hdr_ListOrder": "List Order"
+  "grid_hdr_ListOrder": "List Order",
+  "Reopen_Iframe": "Re-open the Guest Profile Search"
 }

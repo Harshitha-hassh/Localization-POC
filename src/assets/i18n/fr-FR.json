@@ -5365,5 +5365,6 @@
   "lbl_denominationValue": "Denomination Value_fr",
   "lbl_searchByDenominationName": "Search By Denomination Name_fr",
   "Btn_add": "ADD_fr",
-  "grid_hdr_ListOrder": "List Order_fr"
+  "grid_hdr_ListOrder": "List Order_fr",
+  "Reopen_Iframe": "Re-open the Guest Profile Search_fr"
 }

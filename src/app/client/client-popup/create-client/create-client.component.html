@@ -1,7 +1,7 @@
 <mat-tab-group [attr.automationId]="'Mt_createClient_clientTab'" [selectedIndex]="clientSelectedTab" #clientTabGroupc class="tab-styling-versiontwo">
   <mat-tab label="{{captions.PersonalInformation}}">
     <app-personal-information [parentForm]="parentForm" [clientEditData]="this" (imageUpdateEmit)="onImageUpdates($event)"
-     [inputData]="clientInfoInput" [patronId]="patronId"  [clientInfoData] = "clientInfoData"></app-personal-information>
+     [inputData]="clientInfoInput" [patronId]="patronId"  [clientInfoData] = "clientInfoData" (showIframeGuestSearch)="showIframeGuestSearchFn()"></app-personal-information>
   </mat-tab>
   <mat-tab label="{{captions.AdditionalInformation}}">
     <app-additional-information [parentForm]="parentForm" [IsGDPREnabled] = 'IsGDPREnabled' [policyType] = 'policyType' [inputData]="clientInfoInput"></app-additional-information>

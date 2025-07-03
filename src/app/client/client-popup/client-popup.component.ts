@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Inject } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { UserAlerts } from 'src/app/common/shared/config/alerts-config';
@@ -21,7 +21,8 @@ import { PolicyType } from 'src/app/common/shared/shared.modal';
   providers: [CreateClientBusiness, ClientDataService]
 })
 export class ClientPopupComponent implements OnInit {
-
+  
+  @Output() showIframeGuestSearch = new EventEmitter();
   captions:any;
   clientPopupForm:UntypedFormGroup;
   clientInfo:any;
@@ -169,5 +170,8 @@ export class ClientPopupComponent implements OnInit {
     this.promptUserForUnsavedChanges();
   }
 
+  showIframeGuestSearchFn(){
+    this.showIframeGuestSearch.emit();
+  }
 
 }

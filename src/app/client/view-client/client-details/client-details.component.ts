@@ -1,7 +1,7 @@
-import { Component, OnInit, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ViewEncapsulation, Renderer2 } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 // import { AppointmentPopupComponent } from '../../../shared/appointment-popup/appointment-popup.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import * as _ from 'lodash';
 import { BaseResponse, KeyValuePair, clientInfoDisplay, ClientLabel, Imagedata, Email, PhoneNumber } from '../../../shared/shared-models';
@@ -124,10 +124,13 @@ export class ClientDetailsComponent implements OnInit {
     isCopyClient = false;
     clientSearchValue: string;
     clientNameInfo: any = {};
+    dialogRef: MatDialogRef<any>;
+    isReopen: boolean = false;
+
     constructor(private dialog: MatDialog, private fb: UntypedFormBuilder,
         private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
         public clientService: ClientService, public _as: AppModuleService, private PropertyInfo: PropertyInformation, public formatphno: FormatText, public route: ActivatedRoute
-        , private userAccessBusiness: UserAccessBusiness, private propertySettingService: PropertySettingDataService) {
+        , private userAccessBusiness: UserAccessBusiness, private propertySettingService: PropertySettingDataService, private renderer: Renderer2) {
         this.floatLabel = this.localization.setFloatLabel;
         this.floatLabelNever = this.localization.setFloatLabelNever;
         route.params.subscribe(val => {
@@ -445,10 +448,13 @@ export class ClientDetailsComponent implements OnInit {
                 data: clientDetail,
                 closebool: true,
                 isClientViewOnly: this.isClientViewOnly,
-                isCopyClient: this.isCopyClient
+                isCopyClient: this.isCopyClient,
+                isPlatformGuestSearch: this.isPlatformGuestSearch,
+                isEnableCGPSIframeGuestSearch : this.isEnableCGPSIframeGuestSearch
             },
             panelClass: 'small-popup'
         });
+        this.dialogRef = dialogRef;
         dialogRef.afterClosed().subscribe(result => {
             if (result && result.length && result[0] == 'ReloadClient') {
                 this.getClientDataByGuid(result[1]);
@@ -462,6 +468,9 @@ export class ClientDetailsComponent implements OnInit {
                 this.searchdata(this.searchText);
             }
         })
+        dialogRef.componentInstance.showIframeGuestSearch.subscribe((params: any) => {
+            this.platformSearchData(true);
+        });
     }
 
     clientSearchTypeChange(id) {
@@ -1099,15 +1108,31 @@ export class ClientDetailsComponent implements OnInit {
 
     async platformGuestResponse(platformGuestId: any) {
         console.log(`"--- Platfrom GuestId: ${platformGuestId} Reseived ---"`);
-        this.getPlatformGuestData(platformGuestId);
+        if (this.dialogRef) {
+            const ref = this.dialogRef;
+            this.dialogRef = null;
+            ref.close();
+            ref.afterClosed().subscribe(() => {
+                this.proceedWithPlatformGuest(platformGuestId);
+            });
+        } else {
+            this.proceedWithPlatformGuest(platformGuestId);
+        }
+    }
+
+    private async proceedWithPlatformGuest(platformGuestId: any) {
+        if(platformGuestId) {
+            this.getPlatformGuestData(platformGuestId);
+        }
     }
 
     async setPlatformSerachClick(event: any) {
       this.showIframeGuestSearch = event;
     }
     
-    platformSearchData() {
+    platformSearchData(isReopen: boolean = false) {
         if (this.isPlatformGuestSearch && this.isEnableCGPSIframeGuestSearch) {
+            this.isReopen = isReopen;
             this.formattedData = [];
             this.sampleData = [];
             this.showIframeGuestSearch = true;
