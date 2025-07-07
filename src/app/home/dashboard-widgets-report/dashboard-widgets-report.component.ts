@@ -661,8 +661,9 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
 
   async getCategorySaleDetail(mountaintype_1, outletIds: number[]) {
     console.log('mountaintype ', mountaintype_1);
+    let categoriesData = await this.dashBoardBusiness.getCategorySaleDetail(this.categoryStartDate, this.categoryEndDate, outletIds);
     this.Sales_Top5Categories_data = {
-      data: await this.dashBoardBusiness.getCategorySaleDetail(this.categoryStartDate, this.categoryEndDate, outletIds),
+      data: categoriesData.sort((a, b) => this.localization.currencyToSQLFormat(b.amount) - this.localization.currencyToSQLFormat(a.amount)).slice(0, 5),
       headerData: [
         { key: 'name', description: 'Number', alignment: 'textLeft', },
         { key: 'amount', description: 'Status', alignment: 'textRight font-bold' }
