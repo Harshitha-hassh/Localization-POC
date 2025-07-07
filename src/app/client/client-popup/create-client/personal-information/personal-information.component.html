@@ -46,7 +46,7 @@
 
         <mat-form-field class="" [floatLabel]="floatLabel">
           <input [attr.automationId]="'Txt_personalInformation_pronounced'" matInput [placeholder]="captions.Pronounced"
-            [maxlength]="20" style="text-transform:capitalize" value={{personalDetails.pronounce}}
+            [maxlength]="50" style="text-transform:capitalize" value={{personalDetails.pronounce}}
             formControlName="pronounced">
         </mat-form-field>
       </div>
@@ -293,10 +293,10 @@
               <input matInput [attr.automationId]="'Txt_personalInformation_address'"
                 [required]="customRequired.address" *ngIf="j==0" matGoogleMapsAutocomplete [options]='options'
                 (onAutocompleteSelected)="bindAddressFromGoogle($event,true,j)" name="TSei"
-                [maxlength]="100" id="AddressInput{{j}}" formControlName="addressLine"
+                [maxlength]="255" id="AddressInput{{j}}" formControlName="addressLine"
                 placeholder="{{captions.CAddress}}">
               <input matInput [required]="customRequired.address" *ngIf="j>0"
-                (onAutocompleteSelected)="bindAddressFromGoogle($event,true,j)" name="TSei" [maxlength]="100"
+                (onAutocompleteSelected)="bindAddressFromGoogle($event,true,j)" name="TSei" [maxlength]="255"
                 id="AddressInput{{j}}" formControlName="addressLine" placeholder="{{captions.CAddress}}">
             </mat-form-field>
             <span [attr.automationId]="'Lbl_personalInformation_removeAddressItem'" class="icon-Minus"
