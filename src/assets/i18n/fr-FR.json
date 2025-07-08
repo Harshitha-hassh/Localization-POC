@@ -1239,6 +1239,7 @@
     "RETURN": "RETURN_fr",
     "Collect": "Collect_fr",
     "Refund": "Refund_fr",
+    "REFUND": "REFUND_fr",
     "OpenTransactions": "Open Transactions_fr",
     "Correct_Void": "Correct/Void_fr",
     "ReturnwithTicket": "Return with Ticket_fr",

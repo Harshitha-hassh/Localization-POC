@@ -1239,6 +1239,7 @@
     "RETURN": "RETURN_fi",
     "Collect": "Collect_fi",
     "Refund": "Refund_fi",
+    "REFUND": "REFUND_fi",
     "OpenTransactions": "Open Transactions_fi",
     "Correct_Void": "Correct/Void_fi",
     "ReturnwithTicket": "Return with Ticket_fi",

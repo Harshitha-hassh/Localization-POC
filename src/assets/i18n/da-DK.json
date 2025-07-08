@@ -1239,6 +1239,7 @@
     "RETURN": "RETURN_da",
     "Collect": "Collect_da",
     "Refund": "Refund_da",
+    "REFUND": "REFUND_da",
     "OpenTransactions": "Open Transactions_da",
     "Correct_Void": "Correct/Void_da",
     "ReturnwithTicket": "Return with Ticket_da",

@@ -1239,6 +1239,7 @@
     "RETURN": "RETURN",
     "Collect": "Collect",
     "Refund": "Refund",
+    "REFUND": "REFUND",
     "OpenTransactions": "Open Transactions",
     "Correct_Void": "Correct/Void",
     "ReturnwithTicket": "Return with Ticket",

@@ -1239,6 +1239,7 @@
     "RETURN": "RETURN_kr",
     "Collect": "Collect_kr",
     "Refund": "Refund_kr",
+    "REFUND": "REFUND_kr",
     "OpenTransactions": "Open Transactions_kr",
     "Correct_Void": "Correct/Void_kr",
     "ReturnwithTicket": "Return with Ticket_kr",
