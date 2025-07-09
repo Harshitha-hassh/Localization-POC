@@ -31,6 +31,7 @@ export class UserRoleComponent implements OnInit, OnDestroy {
   dialogSubscription: ISubscription;
   floatLabel: string;
   triggerExpandCollapse: boolean = false;
+  saveInProgress: any = false;
 
 
   constructor(public settingService: SettingsService, private http: HttpServiceCall, private dialog: MatDialog,
@@ -87,16 +88,22 @@ export class UserRoleComponent implements OnInit, OnDestroy {
   }
 
   Save() {
+     if(!this.saveInProgress){
+      this.saveInProgress = true;
     this.http.CallApiWithCallback<any>({
       host: Host.authentication,
       success: this.successCallback.bind(this),
-      error: this.errorCallback.bind(this),
+           error: (err: any) => {
+          this.errorCallback.bind(this);
+          this.saveInProgress = false;
+        },
       callDesc: 'UpdateUserRoles',
       method: HttpMethod.Put,
       body: this.settingService.changedBreakPoints,
       showError: true,
       extraParams: [false]
     });
+  }
   }
 
   getUserRoles() {
@@ -168,6 +175,7 @@ export class UserRoleComponent implements OnInit, OnDestroy {
         this.getuserConfig(this.selectedOption);
     });
     }
+    this.saveInProgress = false;
   }
 
   errorCallback<T>(error: BaseResponse<T>, callDesc: string, extraParams: any[]): void {
