@@ -2816,7 +2816,8 @@
     "lbl_invalidStartPosition": "Invalid Start Position",
     "lbl_EligibleForInhouseGratuity": "Eligible for In-House Gratuity",
     "lbl_EligibleForInhouseServiceCharge": "Eligible for In-House Service Charge",
-    "ResortFinancePostTypeMappingRevenuePostCodeDetails": "Resort Finance Post Type Mapping: Revenue Post Code Details"
+    "ResortFinancePostTypeMappingRevenuePostCodeDetails": "Resort Finance Post Type Mapping: Revenue Post Code Details",
+    "lbl_ExtractCode": "Extract Code"
   },
   "setting": {
     "EnableCouponManagement" : "Enable Coupon Management",

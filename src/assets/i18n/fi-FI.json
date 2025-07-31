@@ -2813,7 +2813,8 @@
     "lbl_invalidStartPosition": "Invalid Start Position_fi",
     "lbl_EligibleForInhouseGratuity": "Eligible for In-House Gratuity_fi",
     "lbl_EligibleForInhouseServiceCharge": "Eligible for In-House Service Charge_fi",
-    "ResortFinancePostTypeMappingRevenuePostCodeDetails": "Resort Finance Post Type Mapping: Revenue Post Code Details_fi"
+    "ResortFinancePostTypeMappingRevenuePostCodeDetails": "Resort Finance Post Type Mapping: Revenue Post Code Details_fi",
+    "lbl_ExtractCode": "Extract Code_fi"
   },
   "setting": {
     "EnableCouponManagement": "Enable Coupon Management_fi",
