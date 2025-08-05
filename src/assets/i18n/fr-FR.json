@@ -3757,6 +3757,7 @@
     "CardNumber": "Card Number_fr",
     "inActiveClerk": "Include Inactive Clerks_fr",
     "SplitByUser": "Split By User_fr",
+    "GroupByMachine": "Group By Machine_fr",
     "users": "Users_fr",
     "RetailInterfacePayment": "Payment by Retail Interface_fr",
     "IncludeScheduleTimes": "Include Schedule Time(s)_fr",
