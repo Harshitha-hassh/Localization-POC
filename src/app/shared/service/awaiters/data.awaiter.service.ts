@@ -118,7 +118,7 @@ export class DataAwaiterService {
         return response;
     }
 
-    private async searchClient(name: string, type: number, requestUid: string, isPlatformGuestSearch:any, isSearchGuestByconfirmationNumber: boolean = false): Promise<[ClientSearchModel[], PayeeInfo[]]> {
+    private async searchClient(name: string, type: number, requestUid: string, isPlatformGuestSearch:any, isExternalGuestSearch: boolean = false, isSearchGuestByconfirmationNumber: boolean = false): Promise<[ClientSearchModel[], PayeeInfo[]]> {
         let searchType = isSearchGuestByconfirmationNumber? clientSearchType.confirmationNumber : clientSearchType.All;
         let response: any = await this.clientDataService.searchClient(name, requestUid, isPlatformGuestSearch, searchType);
 
