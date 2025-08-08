@@ -1305,6 +1305,7 @@
     "SuccessfullyVoided": "Successfully Voided_de",
     "PartialVoidFailure": "Please check 'Refund Failures' screen to refund the failed payment_de",
     "CorrectionTransactionMsg": "Cancelling will void transaction entirely. Do you wish to proceed?_de",
+    "CancelTransactionWarningMsg": "Payment is currently in progress. Leaving this page will cancel the transaction. Do you want to proceed?_de",
     "FlatAmount": "Flat Amount_de",
     "Apply": "APPLY_de",
     "DiscountPercentage": "Discount (%)_de",
