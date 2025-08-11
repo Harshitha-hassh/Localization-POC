@@ -6,13 +6,14 @@ import { UserConfigComponent } from './user-config.component';
 import { UserRoleComponent } from './user-role/user-role.component';
 import { RouteGuardService } from 'src/app/core/services/route-gaurd.service';
 import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
+import { UserSecurityQuestionComponent } from 'src/app/common/user-security-question/user-security-question/user-security-question.component';
 
 
 const routes: Routes = [{
     path: '',
     component: UserConfigComponent,
     canActivate: [RouteGuardService],
-    data: { checkAllSiblings: true, isModule: true, lastBreakPointNumber: BreakPoint.UserRoleConfiguration },
+    data: { checkAllSiblings: false, isModule: true, lastBreakPointNumber: BreakPoint.UserRoleConfiguration },
     children: [
         { path: '', redirectTo: 'usersetup', pathMatch: 'full' },
         {
@@ -31,7 +32,12 @@ const routes: Routes = [{
             path: 'userroleconfiguration',
             component: UserRoleComponent,
             canActivate: [RouteGuardService],
-            data: { breakPointNumber: BreakPoint.UserRoleConfiguration, redirectTo: '',ShowPopup: false, syncAccess: true,  isSubmodule: true }
+            data: { breakPointNumber: BreakPoint.UserRoleConfiguration, redirectTo: 'userSecurityQuestions',ShowPopup: false, syncAccess: true,  isSubmodule: true }
+        },
+        {
+            path: 'userSecurityQuestions',
+            component: UserSecurityQuestionComponent,
+            data: { redirectTo: '', ShowPopup: false, syncAccess: true, isSubmodule: true }
         }
     ]
 }];

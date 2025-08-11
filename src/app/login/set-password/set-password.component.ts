@@ -104,10 +104,14 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     const cfmpwd = this.setPasswordForms.controls.confirmpassword.value;
     const oldpwd: string = this.setPasswordForms.controls.oldpassword.value;
     let isValidOldPassword: boolean = oldpwd != undefined && oldpwd.length > 0 ? true : false;
-    let newPasswordDetail: NewPasswordDetail = { userName: this.data.userName, newPassword: this.setPasswordForms.controls.newpassword.value, tenantId: Number(this.tenantId), propertyId: 1, oldPassword: oldpwd, isPasswordEncrypted: false };
+    let newPasswordDetail: NewPasswordDetail = { userName: this.data.userName, newPassword: this.setPasswordForms.controls.newpassword.value,
+        tenantId: Number(this.tenantId), propertyId: 1, oldPassword: oldpwd, isPasswordEncrypted: false,
+        isForgetPassword: this.data.isForgetPassword ? this.data.isForgetPassword : false,
+        userSecurityQnAModel: this.data.userSecurityQnAModel ? this.data.userSecurityQnAModel : [] };
     let savePwdResponse;
     let serviceParams;
-    this.CheckPasswordExists(this.data.userName, newpwd, cfmpwd).then(async () => {
+    try {
+      await this.CheckPasswordExists(this.data.userName, newpwd, cfmpwd, this.data?.isForgetPassword);
       if (!this.IsLastPassword) {
         if (this.uTempDataPrimary && this.uTempDataSecondary) {
           newPasswordDetail.isPasswordEncrypted = true;
@@ -127,20 +131,23 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
 
         }
         savePwdResponse = await this.loginService.makePostCall(serviceParams);
-        if (savePwdResponse.successStatus) {
-          this.dialogRef.close();
+        if (savePwdResponse && savePwdResponse.successStatus) {
+          this.dialogRef.close({ success: true });
         } else {
           this.doneDisabled = true;
         }
       } else {
         this.doneDisabled = true;
       }
-    });
+    } catch (error) {
+      console.error('Error in DoneClick:', error);
+      this.buttonValuePrimary.disabledproperty = true;
+    }
 
   }
 
   CancelClick(event: any) {
-    this.dialogRef.close();
+    this.dialogRef.close({ success: false });
   }
   OnFormValueChanges(): any {
     this.setPasswordForms.get('newpassword').valueChanges.pipe(debounceTime(this.debounceTime)).subscribe(res => {
@@ -160,7 +167,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       this.IsSameAsUserName = res !== '' ? this.data.userName.toLowerCase() !== res.toLowerCase() : false;
       this.PasswordValidCheck();
       if (this.IsLengthValid) {
-        this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls.newpassword.value, this)
+        this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls.newpassword.value, this,this.data?.isForgetPassword)
           .then(() => {
             this.doneDisabled = true;
             if (!this.IsLastPassword) {
@@ -188,7 +195,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
         this.isDoneValid = !(this.containsSpecialCharacters(res) && !this.allowSpecialCharacters);
       }
       this.PasswordValidCheck();
-      this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls.newpassword.value, this).then(() => {
+      this.CheckPasswordExists(this.data.userName, this.setPasswordForms.controls.newpassword.value, this,this.data?.isForgetPassword).then(() => {
         if (!this.IsLastPassword) {
           this.doneDisabled = true;
           this.IsConfirmed = (this.setPasswordForms.controls.newpassword.value == res && res != '') ? true : false;
@@ -202,7 +209,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
         this.doneDisabled = true;
         this.PasswordValidCheck();
         if (this.setPasswordForms.controls.oldpassword.value && this.setPasswordForms.controls.oldpassword.value.length > 0) {
-          await this.VerifyPassword(this.data.userName, this.setPasswordForms.controls.oldpassword.value);
+          await this.VerifyPassword(this.data.userName, this.setPasswordForms.controls.oldpassword.value,this.data?.isForgetPassword);
           this.doneButtonChangeState();
         }
 
@@ -260,13 +267,13 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   PasswordValidCheck() {
     this.IsPasswordValid = (this.IsLengthValid && this.IsHavingAllTypes && this.IsSameAsUserName);
   }
-  async CheckPasswordExists(userName, password, confirmpassword: any) {
+  async CheckPasswordExists(userName, password, confirmpassword: any,isForgetPassword: boolean = false) {
     let resp: any;
     if(password.length !=0)
     {
         if(this.uTempDataPrimary && this.uTempDataSecondary)
         {
-          let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId) , oldPassword :"",isPasswordEncrypted:true  } ;
+          let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId) , oldPassword :"",isPasswordEncrypted:true, isForgetPassword: isForgetPassword }; ;
           let serviceParams = {
             route: RetailRoutes.CheckPasswordPut,
             header: '',
@@ -318,11 +325,11 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       this.oldPassword = event.oldPassword[0].oldPassword;
     }
   }
-  async VerifyPassword(userName, password) {
+  async VerifyPassword(userName, password, isForgetPassword: boolean = false) {
     let resp: any;
         if(this.uTempDataPrimary && this.uTempDataSecondary)
         {
-          let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId),oldPassword:"",isPasswordEncrypted:true  } ;
+          let newPasswordDetail : NewPasswordDetail = { userName: userName, newPassword: password, tenantId: Number(this.tenantId),oldPassword:"",isPasswordEncrypted:true, isForgetPassword: isForgetPassword  } ;
           let serviceParams = {
               route: RetailRoutes.VerifyPasswordPut,
               header: '',

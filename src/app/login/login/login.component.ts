@@ -51,7 +51,12 @@ import { cloneDeep } from 'lodash';
 import { UTempDataUtilities } from 'src/app/common/shared/shared/utilities/utempdata-utilities';
 import { DMConfigDataService } from 'src/app/common/dataservices/datamagine-config.data.service';
 import { TenantConfigurationDataService } from 'src/app/retail/shared/service/data- services/tenantConfiguration.data.service';
-
+import { UserSecurityQuestionComponent } from 'src/app/common/user-security-question/user-security-question/user-security-question.component';
+import { AlertAction } from 'src/app/common/enums/shared-enums';
+import { UserSecurityQuestionBusinessService } from 'src/app/common/user-security-question/user-security-questions.business.service';
+import { CommonApiRoutes } from 'src/app/common/common-route';
+import { ForgetPasswordComponent } from 'src/app/common/components/forget-password/forget-password.component';
+import { CommonControllersRoutes } from 'src/app/common/communication/common-route';
 
 @Component({
   selector: 'app-login',
@@ -129,6 +134,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   showLoginloader:boolean=false;
   private intervalId: any; // Type 'any' can be replaced with 'number'
   private elapsedTime: number = 0;
+  commonCaptions: any;
+  securityUserId: number;
+  isUserValid: any;
 
   constructor(
     private dialog: MatDialog,
@@ -158,10 +166,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     private dmConfigDataService: DMConfigDataService,
     private _subPropertyDataService: SubPropertyDataService,
     private utempdatautils: UTempDataUtilities ,
-    private configuration: TenantConfigurationDataService
+    private configuration: TenantConfigurationDataService,
+    private _userSecurityQuestionsService: UserSecurityQuestionBusinessService
   ) {
     // this.initializeForm();
     // this.captions = this.localize.captions;
+    this.commonCaptions = this.localize.getCaptions().common;
   }
 
   async ngOnInit() {
@@ -407,6 +417,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setUpPassword(content, false);
     } else {
       this.sessionService.UpdateUserSessionsInfo(loginDetails.result);
+      if(!this.ADB2CAuthenticationEnabled && !this.isSupportUser)
+        await this.setupUserSecurityQuestions();
       this.propertyValues = loginDetails.result.userProperties;
       this.captionGenerator();
       // this.loginSuccess = !this.loginSuccess;
@@ -1063,6 +1075,34 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.errResponse = '';
   }
 
+  private async setupUserSecurityQuestions(): Promise<void> {
+    let existingQuestionAvailableForUser = await this._userSecurityQuestionsService.isUserSecurityQuestionsAvailable(this.userInfo.userId);
+    if (existingQuestionAvailableForUser) {
+      return; // Questions already exist, continue with login
+    }
+    
+    return new Promise<void>((resolve) => {
+      this.utils.showAlert(this.commonCaptions.lbl_securityQuestionReminder, AlertType.Info, ButtonType.ContinueCancel, (res => {
+        if (res === AlertAction.CONTINUE) {
+          const dialogRef = this.dialog.open(UserSecurityQuestionComponent, {
+            width: '55%',
+            maxHeight: '90vh',
+            disableClose: true,
+            panelClass: 'custom-dialog-container'
+          });
+          
+          dialogRef.afterClosed().subscribe(dialogResult => {
+            // Dialog closed, now we can continue with login process
+            resolve();
+          });
+        } else {
+          // User clicked cancel, continue without setting up security questions
+          resolve();
+        }
+      }));
+    });
+  }
+
   private rememberUser() {
     this.rememberMe = this.loginForms.controls.rememberme.value;
     const user = this.loginForms.controls.userId.value;
@@ -1581,11 +1621,11 @@ enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
     }
   }
 
-  enableLoginloader(val:boolean)
+  enableLoginloader(val:boolean, forceEnable: boolean = false)
   {
-    if(this.loginForms?.valid && val)
+    if((this.loginForms?.valid && val) || (forceEnable && val))
     {
-      this.showLoginloader= val ? val : false;
+      this.showLoginloader=val?val:false;
       this.startInterval();
     }else{
       this.showLoginloader=false;
@@ -1613,5 +1653,135 @@ enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
     }
   }
 
+  async openForgetPasswordDialog(): Promise<void> { 
+    const userId = this.loginForms.get('userId')?.value;
+    const customerId = this.loginForms.get('customerId')?.value || this.custId;
+    const tenantId = customerId ? parseInt(customerId) : this.tenantId;
 
+    if (!userId || !tenantId) {
+      this.utils.showAlert( this.commonCaptions.invaliduserIdLogin, AlertType.Error);
+      return;
+    }
+
+    try {
+      // Show loading indicator (force enable even if form is not fully valid)
+      this.enableLoginloader(true, true);
+      
+      // Verify if user exists for the given tenant
+     this.isUserValid = await this.verifyUserExists(userId, tenantId);
+      
+      if (this.isUserValid?.result?.tenantSecurityQuestions == undefined 
+        || this.isUserValid?.result?.tenantSecurityQuestions == null) {
+        this.enableLoginloader(false);
+        this.utils.showAlert(this.commonCaptions.lbl_PasswordReset, AlertType.Error);
+        return;
+      }
+
+      this.passwordSetting = this.isUserValid?.result?.passwordSetting;
+
+      this.securityUserId = this.isUserValid?.result.userId;     
+  
+    const dialogRef = this.dialog.open(ForgetPasswordComponent, {
+      width: '500px',
+      maxWidth: '90vw',
+      disableClose: true,
+      data: {
+        userName: userId,
+        tenantId: tenantId,
+        propertyId: this.propertyInfo.PropertyId,
+        userId: this.securityUserId,
+        userinfo: this.isUserValid,
+        uTempData: { 
+          uTempPri: this.uTempDataPrimary, 
+          uTempSec: this.uTempDataSecondary 
+        },
+        tenantSecurityQuestions: this.isUserValid?.result?.tenantSecurityQuestions
+      }
+    });
+
+    // Keep loading active until dialog is fully opened and ready
+    dialogRef.afterOpened().subscribe(() => {
+      // Disable loading once dialog is fully opened and rendered
+      setTimeout(() => {
+        this.enableLoginloader(false);
+      }, 300);
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // Ensure loader is disabled when dialog closes
+      this.enableLoginloader(false);
+      
+      console.log('ForgetPasswordComponent result:', result); // Debug log
+      
+      if (result && result.success) {
+        if (result.action === 'openSetPassword') {          
+          this.openSetPasswordDialog(result);
+        }
+      } else if (result && result.action === 'returnToLogin') {
+        this.utils.showAlert(this.commonCaptions.common.lbl_invalidsecurityAnswer, AlertType.Error);         
+      } else {       
+        console.log('ForgetPasswordComponent returned unexpected result:', result);
+      }
+    });
+    } catch (error) {
+      this.enableLoginloader(false);
+      this.utils.showAlert(this.commonCaptions.lbl_noDataFound, AlertType.Error);
+    }
+  }
+
+  private async verifyUserExists(userId: string, tenantId: number): Promise<any> {
+    try {
+      const serviceParams = {
+        route: CommonControllersRoutes.FetchUserSecurityQuestionsForPasswordReset,
+        uriParams: '',
+        header: '',
+        body: {"UserName": userId, "tenantId" :tenantId , Property: this.loginForms.controls["location"].value, ProductId: Product.RETAIL, TenantCode: this.tenantCode },
+        showError: false,
+        baseResponse: true
+      };
+
+      const response: any = await this.loginService.makePostCall(serviceParams, false);
+     
+      // If we get a successful response, the user exists
+      if (response && response?.successStatus && response?.result) {
+        return response;
+      }      
+      return false; // User doesn't exist
+    } catch (error) {
+      console.error(this.commonCaptions.lbl_noDataFound, error);
+      return false;
+    }
+  }
+
+  private openSetPasswordDialog(userData: any): void {
+    const userName = this.loginForms.get('userId')?.value;
+    const customerId = this.loginForms.get('customerId')?.value || this.custId;
+    const tenantId = customerId ? parseInt(customerId) : this.tenantId;
+    const dialogRef = this.dialog.open(SetPasswordComponent, {
+      width: '50%',
+      maxWidth: 'Auto',
+      disableClose: true,
+      data: {
+        userName:  userName,
+        tenantId:  customerId,
+        setPassword: true, // This will hide the old password field
+        userInfo: this.isUserValid,
+        passwordSetting: this.passwordSetting,
+        uTempData: { 
+          uTempPri: this.uTempDataPrimary, 
+          uTempSec: this.uTempDataSecondary 
+        },
+        isForgetPassword: true,
+        userSecurityQnAModel: userData?.userSecurityQnAModel || [],
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result.success === true) {
+        this.utils.showAlert(this.commonCaptions.lbl_passwordResetSuccess, AlertType.Success);      
+      } else { 
+        this.utils.showAlert(this.commonCaptions.lbl_passwordResetCancelled, AlertType.Info);
+      }
+    });
+  }
 }

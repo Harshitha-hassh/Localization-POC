@@ -36,6 +36,6 @@ import { SetPropertyComponent } from './set-property/set-property.component';
         },
         PropertySettingDataService
     ],
-    exports: [LoginComponent]
+    exports: [LoginComponent, SetPasswordComponent]
 })
 export class LoginModule { }

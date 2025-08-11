@@ -35,6 +35,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from '@shared/services/reuse-strategy';
 import { SessionLoaderService } from './common/services/sessionloader.service';
 import { GoogleMapsWrapperModule } from './common/services/googlemapswrapper.module';
+import { CommonSharedModule } from './common/shared/shared/shared.module';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
@@ -78,6 +79,7 @@ export const OtherOptions: MatTooltipDefaultOptions = {
     MaterialModule,
     CoreModule,
     LoginModule,
+    CommonSharedModule,
     OAuthModule.forRoot(),
     StoreModule.forRoot(appReducers, { metaReducers: [clearState] }),
     TranslateModule.forRoot({

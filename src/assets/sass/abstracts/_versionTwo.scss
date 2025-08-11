@@ -1692,4 +1692,32 @@ mat-radio-group mat-radio-button .mat-radio-label-content {
     padding: 10px;
   }
 }
+&.user-security-questions-container{
+  background-color: $new-version-bg;
+  .dialog-container__header{
+    background-color: $ag-white;
+  }
+  .user-security-questions--wrapper {
+    @extend .bodyWrap;
+    padding: 10px;
+    margin: 10px;
+    }
+  .ag_footer--actions{
+    @extend .bodyWrap;
+  }
+}
+&.forget-password-dialog{
+  background-color: $new-version-bg;
+  .dialog-container__header{
+    background-color: $ag-white;
+  }
+  .security-questions-container {
+    @extend .bodyWrap;
+    padding: 10px;
+    margin: 10px;
+    }
+  .ag_footer--actions{
+    @extend .bodyWrap;
+  }
+}
 }

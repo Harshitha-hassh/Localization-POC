@@ -14,6 +14,8 @@ import { UserConfigComponent } from './user-config.component';
 import { UserRoleComponent } from './user-role/user-role.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { NgDragDropModule } from 'ng-drag-drop';
+import { CommonSharedModule } from 'src/app/common/shared/shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -33,7 +35,10 @@ import { NgDragDropModule } from 'ng-drag-drop';
         SharedModule,
         ScrollbarModule,
         UserSetupRoutingModule,
-        NgDragDropModule
+        NgDragDropModule,
+        CommonSharedModule,
+        FormsModule,
+        ReactiveFormsModule
     ]
 })
 export class UserSetupModule { }

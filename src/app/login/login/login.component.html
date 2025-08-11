@@ -54,8 +54,14 @@
                                                 </mat-error>
                                             </mat-form-field>
                                         </div>
-                                        <div>
-                                            <a class="ml-4" (click)="clearLclCookie('appRetailCustID')"> {{ captions.changeCustomerID}}</a>
+                                        <div  class="login-links-container">
+                                            <a (click)="clearLclCookie('appRetailCustID')"> {{ captions.changeCustomerID}}</a>
+                                            <a class="ml-4 forget-password-link" 
+                                                   *ngIf="loginForms.get('userId')?.value && !this.ADB2CAuthenticationEnabled && !this.isSupportUser" 
+                                                   [class.disabled]="showLoginloader"
+                                                   (click)="!showLoginloader && openForgetPasswordDialog()">
+                                                   {{ commonCaptions.ForgetPassword }}
+                                                </a>
                                         </div>
                                     </ng-container>
                                     </div>
