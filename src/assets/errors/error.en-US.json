@@ -373,6 +373,7 @@
     "500109": "You have Unsettled Transaction for ticket #{TicketNumber}! Ticket can't be Closed.",
     "-4700":"The following items are not mapped with a category",
     "-4701":"You are about to perform a transaction that is not on current property date, however, doing so will record the transaction on the current property date only. Do you wish to proceed?",
+    "-4702": "The property date is different from the current date",
     "711": "Return transaction has already been initiated for this ticket.",
     "7006": "Email ID already in use.",
     "20100":"Outlet already exists",
