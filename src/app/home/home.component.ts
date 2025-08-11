@@ -23,6 +23,13 @@ export class HomeComponent implements OnInit {
   }
 
     async checkDateAndShowInfo() {
+    let propConfig = JSON.parse(sessionStorage.getItem('propConfig'));
+    let suppressPropertyDateMismatchCheckData = propConfig?.SuppressPropertyDateMismatchCheck;
+
+    if (suppressPropertyDateMismatchCheckData != null && suppressPropertyDateMismatchCheckData.toString().toLowerCase() === 'true') {
+      return;
+    }
+
     const property = await this._CommonVariablesService.GetPropertySettings();
     const isSystemDateEqual = this._RetailUtilities.ValidateDatesAreEqual(this._RetailUtilities.getDate(property.propertyDate), this._RetailPropertyInformation.CurrentDate);
     if (!isSystemDateEqual) {
