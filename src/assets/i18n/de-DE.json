@@ -3837,7 +3837,8 @@
     "CouponType": "Coupon Type(s)_de",
     "CouponNumber": "Coupon #_de",
     "ExpandCoupons": "Expand Serialized Coupon(s)_de",
-    "IncludeInactiveCoupons": "Include Inactive Coupon(s)_de"
+    "IncludeInactiveCoupons": "Include Inactive Coupon(s)_de",
+    "Status": "Status_de"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_de",
