@@ -1291,7 +1291,7 @@
     "CorrectedOrVoidedBy": "Corrected/Voided By_da",
     "VoidTicketWarning": "Selecting this ticket will void the transaction completely. Do you wish to proceed?_da",
     "CorrectTicketWarning": "Selecting this ticket will clear the settlement and re-open the ticket for correction. Do you wish to proceed?_da",
-    "ReturnTicketReversalWarning": "Selecting this ticket will reverse the last return transaction. Do you wish to proceed?_zh_da",
+    "ReturnTicketReversalWarning": "Selecting this ticket will reverse the last return transaction. Do you wish to proceed?_da",
     "Incorrectquantity": "Incorrect quantity_da",
     "Guest": "Guest_da",
     "Member": "Member_da",
