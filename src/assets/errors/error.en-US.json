@@ -402,6 +402,8 @@
     "31709": "Cash Drawer Denomination is already in use. Inactive not allowed",
     "31710": "Cash Drawer Denomination is already in use. Delete not allowed",
     "317010": "Cash Drawer is not Open",
-    "103916": "Duplicate Code Prefix"
+    "103916": "Duplicate Code Prefix",
+    "1021": "Unable to reverse the transaction",
+    "1022": "Deposit returns cannot be voided"
   }
   

@@ -1327,6 +1327,7 @@
     "FailedRecordSearch": "Search by Ticket #, Clerk ID, Amount_da",
     "MissingReturnReason": "Missing Return Reason_da",
     "SuccessfullyVoided": "Successfully Voided_da",
+    "SuccessfullyReversed": "Return Transaction Reversed Successfully_da",
     "PartialVoidFailure": "Please check 'Refund Failures' screen to refund the failed payment_da",
     "CorrectionTransactionMsg": "Cancelling will void transaction entirely. Do you wish to proceed?_da",
     "CancelTransactionWarningMsg": "Payment is currently in progress. Leaving this page will cancel the transaction. Do you want to proceed?_da",

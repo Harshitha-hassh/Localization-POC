@@ -91,6 +91,8 @@
   "995": "Appointment-1 : Therapist Maximum service limit exceeded_fr",
   "996": "Appointment-2 : Therapist Maximum service limit exceeded_fr",
   "999": "Unknown Exception_fr",
+  "1021": "Unable to reverse the transaction_fr",
+  "1022": "Deposit returns cannot be voided_fr",
   "5001": "Invalid User ID or Password_fr",
   "5002": "User Account Locked! Please check with System Admin._fr",
   "5003": "Inactive User! please check with system Admin._fr",

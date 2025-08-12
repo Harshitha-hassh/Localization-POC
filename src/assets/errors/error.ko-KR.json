@@ -91,6 +91,8 @@
   "995": "Appointment-1 : Therapist Maximum service limit exceeded_kr",
   "996": "Appointment-2 : Therapist Maximum service limit exceeded_kr",
   "999": "Unknown Exception_kr",
+  "1021": "Unable to reverse the transaction_kr",
+  "1022": "Deposit returns cannot be voided_kr",
   "5001": "Invalid User ID or Password_kr",
   "5002": "User Account Locked! Please check with System Admin._kr",
   "5003": "Inactive User! please check with system Admin._kr",
