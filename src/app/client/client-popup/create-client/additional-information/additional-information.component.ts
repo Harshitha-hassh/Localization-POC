@@ -144,7 +144,6 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   }
   
   async SetEditValues(clientInfo) {
-    debugger;
     if(clientInfo.clientComment.length >0) {
       let clientComment = clientInfo.clientComment[0];
       this.FormGrp.controls.comments.setValue(clientComment.comments);

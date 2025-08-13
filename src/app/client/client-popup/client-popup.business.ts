@@ -47,7 +47,6 @@ export class CreateClientBusiness {
         platformGuestUuid: this.isClientUpdate ? details.personalDetailsFormGroup.platformGuestUuid : '00000000-0000-0000-0000-000000000000',
         productId: parseInt(this.Utilities.GetPropertyInfo('ProductId'))
     }
-    debugger;
     let clientCommentObj: ClientComment[] = clientComment ? [clientComment] : [];
     let clientObj: Client = {
       id: isClientUpdate ? details.personalDetailsFormGroup.id : 0,
