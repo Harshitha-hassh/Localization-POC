@@ -27,6 +27,7 @@ import { FULL_STORY_ORG_ID } from 'src/app/app-constants';
 import { JasperServerCommonDataService } from 'src/app/common/dataservices/jasperServerCommon.data.service';
 import { takeUntil } from 'rxjs/operators';
 import { KeyboardMenuNavigationService } from 'src/app/common/services/keyboard-menu-navigation.service';
+import * as GlobalConst from 'src/app/retail/shared/globalsContant';
 
 @Component({
   selector: 'app-layout',
@@ -112,6 +113,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.checkPropertyDate();
     }, 5000);
+
+        setTimeout(() => {
+      this.checkDateAndShowInfo();
+    }, 2000);
   }
   addThemeColor(){
     const defaultsettings =JSON.parse(sessionStorage.getItem("defaultSettings"));
@@ -349,4 +354,16 @@ logoutHandler(arg) {
     }
   }
 
+   async checkDateAndShowInfo() {
+    let propConfig = JSON.parse(sessionStorage.getItem('propConfig'));
+    let suppressPropertyDateMismatchCheckData = propConfig?.SuppressPropertyDateMismatchCheck;
+
+    if (suppressPropertyDateMismatchCheckData != null && suppressPropertyDateMismatchCheckData.toString().trim().toLowerCase() === 'true') {
+      return;
+    }
+    const isSystemDateEqual = this.utils.ValidateDatesAreEqual(this.utils.getDate(this.propertyInfo.CurrentDate), this.localization.getCurrentDate());
+    if (!isSystemDateEqual) {
+      this.utils.showAlert(this.localization.getError(-4702), AlertType.Warning, GlobalConst.ButtonType.Ok);
+    }
+  }
 }
