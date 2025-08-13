@@ -414,14 +414,18 @@
     "lbl_answer": "Answer_kr",
     "lbl_info": "Please note that the security question and answer can be only set newly or resetted by the user. It cannot be updated._kr",
     "lbl_selectUser": "Select User_kr",
-    "lbl_securityQuestionReminder": "The security questions has not been set for the user. Please set it now by clicking on Yes button or you can set it later by going to menu Settings --> User Setup --> Set / Reset User Security Questions._kr",
+    "lbl_securityQuestionReminder": "The security questions has not been set for the user. Please set it now by clicking on Set Up Now button or you can set it later by going to menu Settings --> User Setup --> Set / Reset User Security Questions._kr",
     "lbl_selectQuestion": "Select Question_kr",
     "lbl_required_question": "Please select a security question_kr",
     "lbl_required_answer": "Please provide an answer_kr",
     "lbl_minlength_answer": "Answer must be at least 1 character long_kr",
     "lbl_user_securityQuestion": "Set / Reset User Security Question_kr",
     "lbl_enterAnswer": "Enter Your Answer_kr",
-    "lbl_saveSecurityQuestion": "User Security Question has been saved successfully._kr"
+    "lbl_saveSecurityQuestion": "User Security Question has been saved successfully._kr",
+    "lbl_userName": "User Name_kr",
+    "lbl_setUpNow": "Set Up Now_kr",
+    "lbl_setUpLater": "Set Up Later_kr",
+    "lbl_securityQuestionsReset": "User Security Questions cannot be set, please contact administrator._kr"
   },
   "calendar": {
     "Sunday": "Sunday_kr",

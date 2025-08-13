@@ -27,9 +27,9 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   confirmPwd: string;
   oldPassword: string;
   IsConfirmed = false;
-  IsLengthValid: boolean;
-  IsHavingAllTypes: boolean;
-  IsSameAsUserName: boolean;
+  IsLengthValid = false;
+  IsHavingAllTypes = false;
+  IsSameAsUserName = false;
   IsHavingLowerCase: boolean;
   IsPasswordValid = false;
   IsLastPassword = true;
@@ -54,7 +54,7 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
   hiddenPassword1 = false;
   hiddenPassword2 = false;
   debounceTime = 1500;
-  isDoneValid:boolean = true;
+  isDoneValid:boolean = false;
   isConfirmPassword = false;
   isSpecialChar = false;
 
@@ -86,6 +86,9 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
     }
     this.validationMessage(this.data.passwordSetting);
     this.OnFormValueChanges();
+    
+    // Ensure button is disabled on initialization
+    this.doneDisabled = true;
 
   }
 
@@ -218,11 +221,20 @@ export class SetPasswordComponent implements OnInit, OnDestroy {
       this.IsOldPassword = true;
     }
 
+    // Ensure button state is properly initialized
+    this.doneButtonChangeState();
+
   }
 
   doneButtonChangeState() {
     this.doneDisabled = true;
-    if (this.IsPasswordValid && this.IsLengthValid
+    
+    // Ensure form has actual values before enabling button
+    const hasNewPassword = this.setPasswordForms.controls.newpassword.value && this.setPasswordForms.controls.newpassword.value.length > 0;
+    const hasConfirmPassword = this.setPasswordForms.controls.confirmpassword.value && this.setPasswordForms.controls.confirmpassword.value.length > 0;
+    
+    if (hasNewPassword && hasConfirmPassword && 
+        this.IsPasswordValid && this.IsLengthValid
        && this.IsHavingAllTypes && !this.IsLastPassword && this.IsSameAsUserName && this.IsOldPassword && this.isDoneValid) {
       this.doneDisabled = !this.IsConfirmed;
     }

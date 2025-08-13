@@ -57,7 +57,7 @@
                                         <div  class="login-links-container">
                                             <a (click)="clearLclCookie('appRetailCustID')"> {{ captions.changeCustomerID}}</a>
                                             <a class="ml-4 forget-password-link" 
-                                                   *ngIf="loginForms.get('userId')?.value && !this.ADB2CAuthenticationEnabled && !this.isSupportUser" 
+                                                   *ngIf="loginForms.get('userId')?.value && !this.ADB2CAuthenticationEnabled && !this.isSupportUser && !this.disableForgetPassword" 
                                                    [class.disabled]="showLoginloader"
                                                    (click)="!showLoginloader && openForgetPasswordDialog()">
                                                    {{ commonCaptions.ForgetPassword }}

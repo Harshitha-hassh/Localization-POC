@@ -65,6 +65,18 @@ export class RouteLoaderService {
                     }
                 }   
               }
+              if(this.featureFlagInfo.DisableForgetPassword){
+                let settingsMenu = this.currentSettings.find(x => x.text.includes("SETTINGS"));
+                if(settingsMenu){
+                  let userSetupMenu = settingsMenu.linkedElement?.find(x => x.text.includes("USER SETUP"));
+                  if(userSetupMenu){
+                    let userSecurityQuestionsMenu = userSetupMenu.linkedElement?.find(x => x.text.includes("Set / Reset User Security Questions"));
+                    if(userSecurityQuestionsMenu){
+                      userSecurityQuestionsMenu.visibility = false;
+                    }
+                  }
+                }
+              }
           }
           );
           },

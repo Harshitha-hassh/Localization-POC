@@ -7,6 +7,7 @@ import { UserRoleComponent } from './user-role/user-role.component';
 import { RouteGuardService } from 'src/app/core/services/route-gaurd.service';
 import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
 import { UserSecurityQuestionComponent } from 'src/app/common/user-security-question/user-security-question/user-security-question.component';
+import { UserSecurityQuestionsRouteGuard } from 'src/app/core/services/user-security-questions-route-guard.service';
 
 
 const routes: Routes = [{
@@ -37,6 +38,7 @@ const routes: Routes = [{
         {
             path: 'userSecurityQuestions',
             component: UserSecurityQuestionComponent,
+            canActivate: [UserSecurityQuestionsRouteGuard],
             data: { redirectTo: '', ShowPopup: false, syncAccess: true, isSubmodule: true }
         }
     ]

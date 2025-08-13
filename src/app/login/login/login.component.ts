@@ -33,7 +33,7 @@ import { UserMachineConfigurationService } from 'src/app/retail/common/services/
 import { RetailSharedVariableService } from 'src/app/retail/shared/retail.shared.variable.service';
 import { RetailFunctionalityBusiness } from 'src/app/retail/shared/business/retail-functionality.business';
 import { RetailFunctionalityService } from 'src/app/retail/shared/service/retail-functionality.service';
-import { UserMachineInfo } from 'src/app/common/shared/shared.modal';
+import { TenantConfigurations, UserMachineInfo } from 'src/app/common/shared/shared.modal';
 import { PropertySettingDataService as RetailPropertySettingDataService } from 'src/app/retail/sytem-config/property-setting.data.service';
 import { PayAgentService } from 'src/app/retail/shared/service/payagent.service';
 import { ConfigKeys, RetailConstants } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
@@ -44,6 +44,8 @@ import * as FullStory from '@fullstory/browser';
 import { CryptoUtility } from 'src/app/core/utilities/crypto.utility';
 import { OAuthService, NullValidationHandler, OAuthEvent } from 'angular-oauth2-oidc';
 import { AlertType, ButtonType } from 'src/app/shared/shared-models';
+import { AlertType as CommonAlertType } from 'src/app/common/Models/common.models';
+import { CommonAlertPopupComponent } from 'src/app/common/shared/shared/common-alert-popup/common-alert-popup.component';
 import { ADB2CAuthConfiguration } from 'src/app/common/shared/auth.config';
 import { LoginRoutes } from '../login.routes';
 import * as CONSTANTS from 'src/app/common/constants';
@@ -137,6 +139,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   commonCaptions: any;
   securityUserId: number;
   isUserValid: any;
+  disableForgetPassword: boolean = false;
 
   constructor(
     private dialog: MatDialog,
@@ -417,7 +420,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setUpPassword(content, false);
     } else {
       this.sessionService.UpdateUserSessionsInfo(loginDetails.result);
-      if(!this.ADB2CAuthenticationEnabled && !this.isSupportUser)
+      if(!this.ADB2CAuthenticationEnabled && !this.isSupportUser && !this.disableForgetPassword)
         await this.setupUserSecurityQuestions();
       this.propertyValues = loginDetails.result.userProperties;
       this.captionGenerator();
@@ -922,6 +925,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       await this.configureAuth(tenantId);
       localStorage.setItem('ADB2CAuthenticationEnabled', this.ADB2CAuthenticationEnabled.toString());
       this.loginForms.get('customerId').markAsTouched();
+      //Get Config for disable forget password
+      await this.GetTenantConfigurationForForgetPassword();
       this.removeVal();
       if (this.ADB2CAuthenticationEnabled) {
         this.removeGeneralLoginVal();
@@ -1082,16 +1087,36 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
     
     return new Promise<void>((resolve) => {
-      this.utils.showAlert(this.commonCaptions.lbl_securityQuestionReminder, AlertType.Info, ButtonType.ContinueCancel, (res => {
+      // Create custom button labels for this specific dialog
+      const customMessage = this.commonCaptions.lbl_securityQuestionReminder;
+      const customData = {
+        type: CommonAlertType.Confirmation,
+        message: customMessage,
+        buttontype: ButtonType.ContinueCancel,
+        customButtons: {
+          continueText: this.commonCaptions.lbl_setUpNow,
+          cancelText: this.commonCaptions.lbl_setUpLater
+        }
+      };
+      
+      const dialogRef = this.dialog.open(CommonAlertPopupComponent, {
+        height: 'auto',
+        width: '300px',
+        data: customData,
+        panelClass: 'small-popup',
+        disableClose: true,
+      });
+      
+      dialogRef.afterClosed().subscribe(res => {
         if (res === AlertAction.CONTINUE) {
-          const dialogRef = this.dialog.open(UserSecurityQuestionComponent, {
+          const securityDialogRef = this.dialog.open(UserSecurityQuestionComponent, {
             width: '55%',
             maxHeight: '90vh',
             disableClose: true,
             panelClass: 'custom-dialog-container'
           });
           
-          dialogRef.afterClosed().subscribe(dialogResult => {
+          securityDialogRef.afterClosed().subscribe(dialogResult => {
             // Dialog closed, now we can continue with login process
             resolve();
           });
@@ -1099,7 +1124,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           // User clicked cancel, continue without setting up security questions
           resolve();
         }
-      }));
+      });
     });
   }
 
@@ -1213,6 +1238,22 @@ export class LoginComponent implements OnInit, OnDestroy {
     else {
       this.hideLoginForm = false;
     }
+  }
+
+  private async GetTenantConfigurationForForgetPassword(){
+    let tenantId = this.loginForms.controls['customerId'].value;
+    const serviceParams = {
+      route: CommonControllersRoutes.GetConfigurationsByNameAndConfigValue,
+      uriParams: { "configurationName":TenantConfigurations.TenantSetupConfiguration,"configKeyName":"DisableForgetPassword","tenantId": tenantId },
+      header: '',
+      body: '',
+      showError: true,
+      baseResponse: true
+    };
+    let result: any = {};
+    result = await this.loginService.makeGetCall(serviceParams);
+    sessionStorage.setItem('DisableForgetPassword', result.result ? result.result : 'false');
+    this.disableForgetPassword = result.result ? result.result == 'true' ? true : false : false;
   }
 
   public adb2cLogin() {
