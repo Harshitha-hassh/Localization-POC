@@ -107,6 +107,9 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       consentExpiryDate: '',
       consentPolicyId : '',
       isPurged: false,
+      platformCommentUuid: '00000000-0000-0000-0000-000000000000',
+      platformRevisionUuid: '00000000-0000-0000-0000-000000000000',
+      commentId : 0
     });
   }
 
@@ -141,7 +144,16 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   }
   
   async SetEditValues(clientInfo) {
-    this.FormGrp.controls.comments.setValue(clientInfo.client.comments && clientInfo.client.comments !=null ? clientInfo.client.comments : '');
+    debugger;
+    if(clientInfo.clientComment.length >0) {
+      let clientComment = clientInfo.clientComment[0];
+      this.FormGrp.controls.comments.setValue(clientComment.comments);
+      this.FormGrp.controls.platformCommentUuid.setValue(clientComment.platformCommentUuid);
+      this.FormGrp.controls.platformRevisionUuid.setValue(clientComment.platformRevisionUuid);
+      this.FormGrp.controls.commentId.setValue(clientComment.id);
+    } else{
+      this.FormGrp.controls.comments.setValue(clientInfo.client.comments && clientInfo.client.comments !=null ? clientInfo.client.comments : '');
+    }
     this.cardInfo = this.isCopyClient ? [] : clientInfo.client.clientCreditCardInfo && clientInfo.client.clientCreditCardInfo != null ? clientInfo.client.clientCreditCardInfo : [];
     if (this.cardInfo && this.cardInfo.length > 0) {
       const activeCard = this.cardInfo.filter(x => x.isActive);

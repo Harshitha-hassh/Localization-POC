@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoyaltyDetail, Client, ClientInfo, Address, Email, PhoneNumber } from './create-client/client.modal';
+import { LoyaltyDetail, Client, ClientInfo, Address, Email, PhoneNumber, ClientComment } from './create-client/client.modal';
 import { ClientDataService } from 'src/app/shared/data-services/client.data.service';
 import { DefaultGUID } from 'src/app/retail/shared/globalsContant';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
@@ -39,6 +39,16 @@ export class CreateClientBusiness {
     } : null;
     let loyaltyObj: LoyaltyDetail[] = loyaltyDet ? [loyaltyDet] : [];
 
+    let clientComment : ClientComment = {
+        id: this.additionalDetailsFormGroup.commentId,
+        platformCommentUuid: this.additionalDetailsFormGroup.platformCommentUuid ? this.additionalDetailsFormGroup.platformCommentUuid : '00000000-0000-0000-0000-000000000000',
+        platformRevisionUuid: this.additionalDetailsFormGroup.platformRevisionUuid ? this.additionalDetailsFormGroup.platformRevisionUuid : '00000000-0000-0000-0000-000000000000',
+        comments: this.additionalDetailsFormGroup.comments ? this.additionalDetailsFormGroup.comments : '',
+        platformGuestUuid: this.isClientUpdate ? details.personalDetailsFormGroup.platformGuestUuid : '00000000-0000-0000-0000-000000000000',
+        productId: parseInt(this.Utilities.GetPropertyInfo('ProductId'))
+    }
+    debugger;
+    let clientCommentObj: ClientComment[] = clientComment ? [clientComment] : [];
     let clientObj: Client = {
       id: isClientUpdate ? details.personalDetailsFormGroup.id : 0,
       guestId: isClientUpdate ? details.personalDetailsFormGroup.guestId : DefaultGUID,
@@ -77,7 +87,8 @@ export class CreateClientBusiness {
       phoneNumbers: this.formPhoneObject(),
       clientCreditCardInfo: this.additionalDetailsFormGroup.clientCreditCardInfo
         && this.additionalDetailsFormGroup.clientCreditCardInfo.length > 0 ?
-        this.additionalDetailsFormGroup.clientCreditCardInfo : null
+        this.additionalDetailsFormGroup.clientCreditCardInfo : null,
+        clientComment: clientCommentObj
     }
     return clientInfoObj;
   }

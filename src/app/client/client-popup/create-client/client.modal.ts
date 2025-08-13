@@ -6,6 +6,7 @@ export interface ClientInfo {
   addresses: Address;
   emails: Email[];
   clientCreditCardInfo: ClientCreditCardInfo[];
+  clientComment: ClientComment[];
  }
   
  export interface ClientCreditCardInfo {
@@ -86,6 +87,15 @@ export interface ClientInfo {
     platformGuestUuid?: string;
     platformRevUuid?: string;
     vipTypeId?:number;
+  }
+
+  export interface ClientComment {
+    id: number;
+    platformCommentUuid: string;
+    platformRevisionUuid: string;
+    comments: string;
+    platformGuestUuid: string;
+    productId: number;
   }
 
   export interface LoyaltyDetail{
