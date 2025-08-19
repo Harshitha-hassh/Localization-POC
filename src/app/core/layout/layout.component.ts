@@ -18,7 +18,6 @@ import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/servi
 import { MatSnackBar} from '@angular/material/snack-bar';
 import { ButtonType } from 'src/app/retail/shared/globalsContant';
 import moment, { Moment } from 'moment';
-import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { NotificationFailureType } from 'src/app/shared/components/menu/menu.model';
 import { HttpCacheService } from 'src/app/common/services/cache/http-cache.service';
 import { Localization } from 'src/app/common/localization/localization';
@@ -28,7 +27,7 @@ import { JasperServerCommonDataService } from 'src/app/common/dataservices/jaspe
 import { takeUntil } from 'rxjs/operators';
 import { KeyboardMenuNavigationService } from 'src/app/common/services/keyboard-menu-navigation.service';
 import * as GlobalConst from 'src/app/retail/shared/globalsContant';
-
+import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -57,12 +56,13 @@ export class LayoutComponent implements OnInit, OnDestroy {
     private PropertySettingService: PropertySettingDataService,
     private retailFeatureInformationService: RetailFeatureFlagInformationService,
     public dialog: MatDialog,
-    private utils: RetailUtilities,
+    private utils: CommonUtilities,
     private snackBar: MatSnackBar,
     private httpCacheService: HttpCacheService,
     private commonLocalization : Localization,
     private jasperServerCommonDataService:JasperServerCommonDataService,
-    private keyBoardService: KeyboardMenuNavigationService
+    private keyBoardService: KeyboardMenuNavigationService,
+      private retailStandaloneLocalization: RetailStandaloneLocalization
   ) {
     this.routeDataService.loadSettings().then(result => {
       if (result) {
@@ -361,9 +361,23 @@ logoutHandler(arg) {
     if (suppressPropertyDateMismatchCheckData != null && suppressPropertyDateMismatchCheckData.toString().trim().toLowerCase() === 'true') {
       return;
     }
-    const isSystemDateEqual = this.utils.ValidateDatesAreEqual(this.utils.getDate(this.propertyInfo.CurrentDate), this.localization.getCurrentDate());
+
+    const allowedRoutes = [
+      '/home'
+    ];
+
+    const currentRoute = this.router.url;
+    const shouldShowPopup = allowedRoutes.some(route => 
+      currentRoute.includes(route) 
+    );
+    
+    if (!shouldShowPopup) {
+      return;
+    }
+
+    const isSystemDateEqual = this.utils.ValidateDatesAreEqual(this.utils.getDate(this.propertyInfo.CurrentDate), this.retailStandaloneLocalization.getCurrentDate());
     if (!isSystemDateEqual) {
-      this.utils.showAlert(this.localization.getError(-4702), AlertType.Warning, GlobalConst.ButtonType.Ok);
+      this.utils.showAlert(this.retailStandaloneLocalization.getError(-4702), AlertType.Warning, GlobalConst.ButtonType.Ok);
     }
   }
 }
