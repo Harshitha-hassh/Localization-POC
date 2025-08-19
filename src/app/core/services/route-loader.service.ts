@@ -77,6 +77,23 @@ export class RouteLoaderService {
                   }
                 }
               }
+              const jsonPropConfig = sessionStorage.getItem('propConfig');
+              const parsedConfig = jsonPropConfig ? JSON.parse(jsonPropConfig) : null;
+              if (!parsedConfig?.EnablePenetrationCommission) {
+                let settingsMenu = this.currentSettings.find(x => x.text.includes("SETTINGS"))
+                if (settingsMenu) {
+                    let retailSetupMenu = settingsMenu.linkedElement?.find(x => x.text.includes("RETAIL SETUP"))
+                    if(retailSetupMenu){
+                        let penetrationCommissionSetupMenu = retailSetupMenu.linkedElement?.find(x => x.text.toUpperCase().includes("PENETRATION COMMISSION SETUP"))
+                        if(penetrationCommissionSetupMenu){
+                            penetrationCommissionSetupMenu.visibility = false;
+                            penetrationCommissionSetupMenu.linkedElement.forEach(element => {
+                                element.visibility = false;
+                            });
+                        }
+                    }
+                }
+              }
           }
           );
           },
@@ -1046,6 +1063,27 @@ export class RouteLoaderService {
 
                 ],
                 breakPointNumber: 7041
+              },
+              {
+                elementID: 4028,
+                tenantID: 0,
+                propertyID: 0,
+                productID: 2,
+                textID: 4028,
+                text: "Penetration Commission Setup_UK",
+                routePath: "/settings/retailsetup/penetrationcommissionsetup",
+                imgPath: "",
+                order: 7,
+                visibility: true,
+                disable: false,
+                parentID: 4021,
+                menuPosition: "Ternary",
+                menuAlignment: "Vertical",
+                externalLink: false,
+                linkedElement: [
+
+                ],
+                breakPointNumber: 800
               },
               {
                 elementID: 4043,
