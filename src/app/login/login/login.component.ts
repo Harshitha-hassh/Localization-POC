@@ -420,8 +420,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setUpPassword(content, false);
     } else {
       this.sessionService.UpdateUserSessionsInfo(loginDetails.result);
-      if(!this.ADB2CAuthenticationEnabled && !this.isSupportUser && !this.disableForgetPassword)
-        await this.setupUserSecurityQuestions();
+      //Commented as Reminder Popup is not required as of now
+      // if(!this.ADB2CAuthenticationEnabled && !this.isSupportUser && !this.disableForgetPassword)
+      //   await this.setupUserSecurityQuestions();
       this.propertyValues = loginDetails.result.userProperties;
       this.captionGenerator();
       // this.loginSuccess = !this.loginSuccess;
