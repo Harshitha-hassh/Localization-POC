@@ -3,6 +3,7 @@
 @import "assets/sass/abstracts/variables";
 @import "assets/sass/base/base";
 @import "assets/icons/style.css";
+@import "~ckeditor5/dist/ckeditor5.css";
 
 // Display Properties
 body {
@@ -5750,4 +5751,12 @@ color: $retail-primary-100 !important;
     background: linear-gradient(to bottom left, rgba(255, 255, 255, 0) 70%, #467dba 100%), url("../src/assets/images/clockbg.png") !important;
     background-position: bottom right !important;
     border-radius: 4px !important;
+}
+
+.ck.ck-balloon-panel.ck-powered-by-balloon .ck.ck-powered-by{
+  display:none !important;
+}
+
+.ck.ck-editor__editable_inline{
+  border: 1px solid #c4c4c4 !important;
 }
