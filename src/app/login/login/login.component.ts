@@ -1707,7 +1707,8 @@ enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
 
     try {
       // Show loading indicator (force enable even if form is not fully valid)
-      this.enableLoginloader(true, true);
+      
+      
       
       // Verify if user exists for the given tenant
      this.isUserValid = await this.verifyUserExists(userId, tenantId);
