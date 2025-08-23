@@ -1253,8 +1253,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     };
     let result: any = {};
     result = await this.loginService.makeGetCall(serviceParams);
-    sessionStorage.setItem('DisableForgetPassword', result.result ? result.result : 'false');
-    this.disableForgetPassword = result.result ? result.result == 'true' ? true : false : false;
+    sessionStorage.setItem('DisableForgetPassword', result.result ? result.result.toLowerCase() : 'false');
+    this.disableForgetPassword = result.result ? result.result.toLowerCase() == 'true' ? true : false : false;
   }
 
   public adb2cLogin() {
