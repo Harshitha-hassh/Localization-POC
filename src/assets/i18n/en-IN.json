@@ -425,7 +425,8 @@
     "lbl_userName": "User Name",
     "lbl_setUpNow": "Set Up Now",
     "lbl_setUpLater": "Set Up Later",
-    "lbl_securityQuestionsReset": "User Security Questions cannot be set, please contact administrator."
+    "lbl_securityQuestionsReset": "User Security Questions cannot be set, please contact administrator.",
+    "lbl_submit": "SUBMIT"
   },
   "calendar": {
     "Sunday": "Sunday",

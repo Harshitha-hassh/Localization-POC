@@ -1760,9 +1760,13 @@ enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
         if (result.action === 'openSetPassword') {          
           this.openSetPasswordDialog(result);
         }
-      } else if (result && result.action === 'returnToLogin') {
+      } else if (result && result.action === 'returnToLogin' && !result.message.includes('cancel')) {
         this.utils.showAlert(this.commonCaptions.common.lbl_invalidsecurityAnswer, AlertType.Error);         
-      } else {       
+      }
+      else if(result && result.action === 'userLocked'){
+        this.utils.showAlert(result.message, AlertType.Error);
+      }
+      else {       
         console.log('ForgetPasswordComponent returned unexpected result:', result);
       }
     });
