@@ -115,9 +115,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   uTempDataPrimary: string;
   uTempDataSecondary: string;
   ADB2CAuthenticationEnabled: boolean = false;
-  errorvalue : string;
-  errordescription : string;
-  isSupportUser:boolean = false;
+  errorvalue: string;
+  errordescription: string;
+  isSupportUser: boolean = false;
   allTenantDetails: any[] = [];
   tenantIdList: any[] = [];
   propertyIdListForATenant: any[] = [];
@@ -133,7 +133,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   initialTenantIdList: any[] = [];
   @ViewChild('myInput') myInput: ElementRef;
   inputSearch;
-  showLoginloader:boolean=false;
+  showLoginloader: boolean = false;
   private intervalId: any; // Type 'any' can be replaced with 'number'
   private elapsedTime: number = 0;
   commonCaptions: any;
@@ -168,7 +168,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private adb2cAuthConfiguration: ADB2CAuthConfiguration,
     private dmConfigDataService: DMConfigDataService,
     private _subPropertyDataService: SubPropertyDataService,
-    private utempdatautils: UTempDataUtilities ,
+    private utempdatautils: UTempDataUtilities,
     private configuration: TenantConfigurationDataService,
     private _userSecurityQuestionsService: UserSecurityQuestionBusinessService
   ) {
@@ -178,7 +178,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
-    document.querySelectorAll('body')[0].setAttribute('id',"bodyId");
+    document.querySelectorAll('body')[0].setAttribute('id', "bodyId");
     this.enableLoginloader(false);
     this.enablePropertySelection = false;
     await this.initializeForm();
@@ -192,18 +192,17 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     if (this.router.url && this.router.url === '/supportlogin') {
-     this.isSupportUser = true;
-     this.loginForms.controls['customerId'].setValue(SUPPORT_TENANT);
-     this.loginForms?.controls["customerId"].disable();
-     this.getbuttonEmitvalue('');
+      this.isSupportUser = true;
+      this.loginForms.controls['customerId'].setValue(SUPPORT_TENANT);
+      this.loginForms?.controls["customerId"].disable();
+      this.getbuttonEmitvalue('');
     }
 
     this.route.queryParams.subscribe(params => {
       this.errorvalue = params.error;
       this.errordescription = params.error_description;
-      if(this.errorvalue != undefined && this.errordescription != undefined && this.errorvalue != '' && this.errordescription != '' )
-      {
-        this.utils.showAlert(this.errorvalue +"<br>"+ this.errordescription, AlertType.Info, ButtonType.Ok,(res=>{
+      if (this.errorvalue != undefined && this.errordescription != undefined && this.errorvalue != '' && this.errordescription != '') {
+        this.utils.showAlert(this.errorvalue + "<br>" + this.errordescription, AlertType.Info, ButtonType.Ok, (res => {
           window.location.href = window.location.origin + '/Retail/login';
         }));
         return false;
@@ -275,8 +274,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       rememberme: false,
       location: ['Agilysys', Validators.required],
       machineName: ['0', Validators.required],
-      tenantId:[''],
-      propertyId:['']
+      tenantId: [''],
+      propertyId: ['']
     });
   }
 
@@ -321,20 +320,16 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  async getADB2CEmailClaim(claims,tenantId)
-  {
+  async getADB2CEmailClaim(claims, tenantId) {
     let email = "";
     let user;
     let userName = claims['name'];
 
-    if(claims != null && claims != undefined)
-    {
-      if(claims['emails'] != null && claims['emails'].length > 0)
-      {
+    if (claims != null && claims != undefined) {
+      if (claims['emails'] != null && claims['emails'].length > 0) {
         email = claims['emails'][0];
       }
-      else if (claims['email'] != null)
-      {
+      else if (claims['email'] != null) {
         email = claims['email'];
       }
       else if (userName != null) {
@@ -351,7 +346,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         user = await this.loginService.makeGetCall(serviceParams);
         email = user.result.email;
       }
-      else{
+      else {
         this.utils.showAlert(this.captions.lbl_UserTokenErrorMessage, AlertType.Error, ButtonType.Ok, (res => {
           this.adb2cLogout();
         }));
@@ -366,20 +361,19 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginForms.controls.customerId.setValue(tenantId);
     let claims = this.adb2cClaims;
     const credentials = {
-      email: await this.getADB2CEmailClaim(claims,tenantId),
+      email: await this.getADB2CEmailClaim(claims, tenantId),
       tenantId: tenantId,
       ProductId: Product.RETAIL
     };
-    if(!credentials.email)
-    {
-      this.utils.showAlert(this.captions.lbl_AzureTokenErrorMessage, AlertType.Error, ButtonType.Ok,(res=>{
+    if (!credentials.email) {
+      this.utils.showAlert(this.captions.lbl_AzureTokenErrorMessage, AlertType.Error, ButtonType.Ok, (res => {
         this.adb2cLogout();
       }));
       return false;
     }
-    if(Number(tenantId) == SUPPORT_TENANT){
-    await this.ProcessSupportUserLogin(credentials.email);
-    } else{
+    if (Number(tenantId) == SUPPORT_TENANT) {
+      await this.ProcessSupportUserLogin(credentials.email);
+    } else {
       await this.validateAdb2cCredentials(credentials, claims, tenantId);
     }
   }
@@ -432,10 +426,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       }));
       this.userMachineInfo = await this.retailPropertySettingDataService.GetMachineNamesAndConfigurationSetting(this.userInfo.userId, Product.RETAIL,
         this.propertyValues.map(x => x.propertyId));
-        if (this.propertyValues.length > 1 || this.propertyValues.length == 0) {
-          this.loginSuccess = !this.loginSuccess;
-        }
-        this.enableLoginloader(false);
+      if (this.propertyValues.length > 1 || this.propertyValues.length == 0) {
+        this.loginSuccess = !this.loginSuccess;
+      }
+      this.enableLoginloader(false);
       // Selecting property by default when there is only one property configured for tenant
       if (this.multipleProperties.length == 1) {
         this.setMachineInfo(this.propertyValues[0].propertyId);
@@ -566,12 +560,12 @@ export class LoginComponent implements OnInit, OnDestroy {
       let userDetails = await this.sessionService.GetUserSessionsInfo();
       console.log(userDetails)
       const result = userDetails.userProperties.find(item => item.propertyId === selectedProperty.propertyId);
-      await this.propertyServices.setJasperAttributes(result?.roleId);     
+      await this.propertyServices.setJasperAttributes(result?.roleId);
     }
   }
 
   async setpropertyvalues(Selectedproperty: any, userProperties?) {
-    const result = userProperties ? userProperties.find(item => item.propertyCode === Selectedproperty.id): this.propertyValues.find(
+    const result = userProperties ? userProperties.find(item => item.propertyCode === Selectedproperty.id) : this.propertyValues.find(
       item => item.propertyCode === Selectedproperty.id
     );
     const userLanguageCode =
@@ -618,7 +612,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       ';LogOffAfter=' +
       result.logOffAfter +
       '; MaxDecimalPlaces=' +
-      maxDecimalPlace  +
+      maxDecimalPlace +
       '; PropTimeFormat=' +
       result.propTimeFormat +
       '; PlatFormExtendedSearchRequired=' +
@@ -646,36 +640,36 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.propertyFeatureService.getPropertyFeatures().then(async (feature) => {
       const propIds = [];
 
-    const eatecFeature = feature.find(x => x.featureName === FeatureName.EnhancedInventory);
-    const pmsRevenuePosting = feature && feature.find(x => x.featureName === FeatureName.PMS_RevenuePosting && x.isActive);
-    if (eatecFeature != null && eatecFeature.isActive) {
-      let isEatecAsMaster = false;
-      const configuration = await this.configuration.GetTenantConfiguration();
-      if(configuration?.configValue) {
-        isEatecAsMaster =  configuration.configValue?.IsEatecMaster ? configuration.configValue.IsEatecMaster.toLowerCase() == 'true' : false ;
-        sessionStorage.setItem("isEatecAsMaster" , isEatecAsMaster.toString());
-      }
-      if(!isEatecAsMaster) {
-        sessionStorage.setItem('isEatecEnabled', 'true');
-        propIds.push(eatecFeature.id);
-        const propConfig :{} = JSON.parse(sessionStorage.getItem('propConfig'));
-        const enableRetailIC = propConfig? (propConfig['EnableRetailIC'] == 'true'? true: false): false;
-        if(enableRetailIC) {
-          const siteId = await this.retailPropertySettingDataService.GetSiteIdForIC();
-          sessionStorage.setItem('LoggedInSiteId', JSON.stringify(siteId));
-          let outlets = await this._subPropertyDataService.getOutlets();
-          let OutletIdlist:any = outlets.map(x=>x.id);
-          sessionStorage.setItem('FromLocId', JSON.stringify((OutletIdlist ? OutletIdlist : '')));
-          sessionStorage.setItem('IniDateFieldFormat', this.localize.inputDateFormat);
-          sessionStorage.setItem('LocalCurrencyCode', this.localize.currencyCode);
-        } else {
-          await this.setEatecToken();
+      const eatecFeature = feature.find(x => x.featureName === FeatureName.EnhancedInventory);
+      const pmsRevenuePosting = feature && feature.find(x => x.featureName === FeatureName.PMS_RevenuePosting && x.isActive);
+      if (eatecFeature != null && eatecFeature.isActive) {
+        let isEatecAsMaster = false;
+        const configuration = await this.configuration.GetTenantConfiguration();
+        if (configuration?.configValue) {
+          isEatecAsMaster = configuration.configValue?.IsEatecMaster ? configuration.configValue.IsEatecMaster.toLowerCase() == 'true' : false;
+          sessionStorage.setItem("isEatecAsMaster", isEatecAsMaster.toString());
         }
+        if (!isEatecAsMaster) {
+          sessionStorage.setItem('isEatecEnabled', 'true');
+          propIds.push(eatecFeature.id);
+          const propConfig: {} = JSON.parse(sessionStorage.getItem('propConfig'));
+          const enableRetailIC = propConfig ? (propConfig['EnableRetailIC'] == 'true' ? true : false) : false;
+          if (enableRetailIC) {
+            const siteId = await this.retailPropertySettingDataService.GetSiteIdForIC();
+            sessionStorage.setItem('LoggedInSiteId', JSON.stringify(siteId));
+            let outlets = await this._subPropertyDataService.getOutlets();
+            let OutletIdlist: any = outlets.map(x => x.id);
+            sessionStorage.setItem('FromLocId', JSON.stringify((OutletIdlist ? OutletIdlist : '')));
+            sessionStorage.setItem('IniDateFieldFormat', this.localize.inputDateFormat);
+            sessionStorage.setItem('LocalCurrencyCode', this.localize.currencyCode);
+          } else {
+            await this.setEatecToken();
+          }
+        }
+      } else {
+        sessionStorage.setItem('isEatecEnabled', 'false');
+        this.retailpropertyInfo.SetEatecRI('');
       }
-    } else {
-      sessionStorage.setItem('isEatecEnabled', 'false');
-      this.retailpropertyInfo.SetEatecRI('');
-    }
       if (pmsRevenuePosting) {
         propIds.push(pmsRevenuePosting.id);
       }
@@ -799,7 +793,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.payAgentService.ValidatePayAgentVersion();
   }
 
-  async GetWebCommunicationProxyVersion(){
+  async GetWebCommunicationProxyVersion() {
     const WebProxyCheck = await this.retailPropertySettingDataService.GetWebCommunicationProxyVersion();
     this.retailpropertyInfo.SetWebCommunicationProxyVersionCheck(WebProxyCheck)
   }
@@ -818,25 +812,25 @@ export class LoginComponent implements OnInit, OnDestroy {
     if ((propertityConfig != null) && (Object.keys(propertityConfig.configValue).length > 0)) {
       this.propertyInfo.SetPropertyConfiguration(propertityConfig);
       this.SetFullStory(propertityConfig);
-      if(propertityConfig.configValue.GoogleMapApiKey !== undefined){
+      if (propertityConfig.configValue.GoogleMapApiKey !== undefined) {
         if (propertityConfig.configValue.GoogleMapApiKey) {
-          if(!localStorage.getItem('invalidKey')){
+          if (!localStorage.getItem('invalidKey')) {
             let isKeyValid = await this.propertyServices.checkvalidity(propertityConfig.configValue.GoogleMapApiKey);
-            if(isKeyValid){
-              if(propertityConfig.configValue.GoogleMapApiKey !== localStorage.getItem('googleMapsApiKey')) {
+            if (isKeyValid) {
+              if (propertityConfig.configValue.GoogleMapApiKey !== localStorage.getItem('googleMapsApiKey')) {
                 localStorage.setItem('googleMapsApiKey', propertityConfig.configValue.GoogleMapApiKey);
                 this.propertyServices.reloadPage();
               }
             } else {
-                localStorage.removeItem('googleMapsApiKey');
-                localStorage.setItem('resetMapApiKey', 'true');
-                this.propertyServices.reloadPage();
+              localStorage.removeItem('googleMapsApiKey');
+              localStorage.setItem('resetMapApiKey', 'true');
+              this.propertyServices.reloadPage();
 
             }
-          } 
-        } 
-        
-        if(!propertityConfig.configValue.GoogleMapApiKey && localStorage.getItem('googleMapsApiKey')){
+          }
+        }
+
+        if (!propertityConfig.configValue.GoogleMapApiKey && localStorage.getItem('googleMapsApiKey')) {
           localStorage.removeItem('googleMapsApiKey');
           localStorage.setItem('resetMapApiKey', 'true');
           this.propertyServices.reloadPage();
@@ -910,54 +904,54 @@ export class LoginComponent implements OnInit, OnDestroy {
  * @description Get the return value of button emit
  */
   async getbuttonEmitvalue(e): Promise<void> {
-    if(!this.showLoginloader){
+    if (!this.showLoginloader) {
 
-    window.onbeforeunload = null;
-    this.commonLocalize.setLocalCookie('appRetailCustID', this.loginForms.get('customerId').value);
-    if (e) {
-      this.enableLoginloader(true);
+      window.onbeforeunload = null;
+      this.commonLocalize.setLocalCookie('appRetailCustID', this.loginForms.get('customerId').value);
+      if (e) {
+        this.enableLoginloader(true);
 
-      e.preventDefault();
-      this.loginForms.markAsUntouched();
-    }
-    if (this.showCustomerID) {
-      localStorage.setItem('TenantId', this.loginForms.get('customerId').value);
-      let tenantId = localStorage.getItem('TenantId');
-      await this.configureAuth(tenantId);
-      localStorage.setItem('ADB2CAuthenticationEnabled', this.ADB2CAuthenticationEnabled.toString());
-      this.loginForms.get('customerId').markAsTouched();
-      //Get Config for disable forget password
-      await this.GetTenantConfigurationForForgetPassword();
-      this.removeVal();
-      if (this.ADB2CAuthenticationEnabled) {
+        e.preventDefault();
+        this.loginForms.markAsUntouched();
+      }
+      if (this.showCustomerID) {
+        localStorage.setItem('TenantId', this.loginForms.get('customerId').value);
+        let tenantId = localStorage.getItem('TenantId');
+        await this.configureAuth(tenantId);
+        localStorage.setItem('ADB2CAuthenticationEnabled', this.ADB2CAuthenticationEnabled.toString());
+        this.loginForms.get('customerId').markAsTouched();
+        //Get Config for disable forget password
+        await this.GetTenantConfigurationForForgetPassword();
+        this.removeVal();
+        if (this.ADB2CAuthenticationEnabled) {
+          this.removeGeneralLoginVal();
+          await this.adb2cAuthValidation();
+        }
+        else {
+          this.enableLoginloader(false);
+          this.showCustomerID = false;
+          this.loginForms?.controls["customerId"].disable();
+          setTimeout(() => {
+            this.fcs_userID.nativeElement.focus();
+          }, 0);
+        }
+      }
+      else if (this.ADB2CAuthenticationEnabled && this.isSupportUser) {
+        this.removeGeneralLoginVal();
+        this.validateAdb2cCredentialsForSupportUser();
+      }
+      else if (this.ADB2CAuthenticationEnabled) {
         this.removeGeneralLoginVal();
         await this.adb2cAuthValidation();
       }
       else {
-        this.enableLoginloader(false);
-        this.showCustomerID = false;
-        this.loginForms?.controls["customerId"].disable();
-        setTimeout(() => {
-          this.fcs_userID.nativeElement.focus();
-        }, 0);
+        this.loginForms.controls['userId'].markAsTouched();
+        this.loginForms.controls['password'].markAsTouched();
+        this.setGeneralLoginVal();
+        this.generalAuthValidation();
       }
     }
-    else if(this.ADB2CAuthenticationEnabled && this.isSupportUser)  {
-    this.removeGeneralLoginVal();
-    this.validateAdb2cCredentialsForSupportUser();
- }
-    else if (this.ADB2CAuthenticationEnabled) {
-      this.removeGeneralLoginVal();
-      await this.adb2cAuthValidation();
-    }
-    else {
-      this.loginForms.controls['userId'].markAsTouched();
-      this.loginForms.controls['password'].markAsTouched();
-      this.setGeneralLoginVal();
-      this.generalAuthValidation();
-    }
   }
-}
 
   async adb2cAuthValidation() {
     if (this.loginForms.valid) {
@@ -979,7 +973,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         await this.SetUserSessionConfiguration(this.userInfo.userId);
         this.setMachineDetails();
         this.router.navigate(['/home']);
-        await this.retailFunc.getRetailFunctionality(); 
+        await this.retailFunc.getRetailFunctionality();
       }
     }
   }
@@ -1076,7 +1070,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       }
     }).afterClosed().subscribe(res => {
       this.enableLoginloader(false);
-  });
+    });
     this.loginForms.get('password').setValue('');
     this.errResponse = '';
   }
@@ -1086,7 +1080,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (existingQuestionAvailableForUser) {
       return; // Questions already exist, continue with login
     }
-    
+
     return new Promise<void>((resolve) => {
       // Create custom button labels for this specific dialog
       const customMessage = this.commonCaptions.lbl_securityQuestionReminder;
@@ -1099,7 +1093,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           cancelText: this.commonCaptions.lbl_setUpLater
         }
       };
-      
+
       const dialogRef = this.dialog.open(CommonAlertPopupComponent, {
         height: 'auto',
         width: '300px',
@@ -1107,7 +1101,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         panelClass: 'small-popup',
         disableClose: true,
       });
-      
+
       dialogRef.afterClosed().subscribe(res => {
         if (res === AlertAction.CONTINUE) {
           const securityDialogRef = this.dialog.open(UserSecurityQuestionComponent, {
@@ -1116,7 +1110,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             disableClose: true,
             panelClass: 'custom-dialog-container'
           });
-          
+
           securityDialogRef.afterClosed().subscribe(dialogResult => {
             // Dialog closed, now we can continue with login process
             resolve();
@@ -1156,7 +1150,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     //this.enableLocation = false;
     let _token = sessionStorage.getItem(JWT_TOKEN);
     if (this.localize.validateString(_token)) {
-      this.router.navigate(['/home']);     
+      this.router.navigate(['/home']);
     }
 
     this.captionGenerator();
@@ -1241,11 +1235,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  private async GetTenantConfigurationForForgetPassword(){
+  private async GetTenantConfigurationForForgetPassword() {
     let tenantId = this.loginForms.controls['customerId'].value;
     const serviceParams = {
       route: CommonControllersRoutes.GetConfigurationsByNameAndConfigValue,
-      uriParams: { "configurationName":TenantConfigurations.TenantSetupConfiguration,"configKeyName":"DisableForgetPassword","tenantId": tenantId },
+      uriParams: { "configurationName": TenantConfigurations.TenantSetupConfiguration, "configKeyName": "DisableForgetPassword", "tenantId": tenantId },
       header: '',
       body: '',
       showError: true,
@@ -1289,7 +1283,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         const jwtToken = JSON.parse(atob(token.split('.')[1]));
         const jwtExpiryTime = new Date(jwtToken.exp * 1000);
         const timeout = jwtExpiryTime.getTime() - Date.now();
-        const loginDuration = Math.round(timeout/1000);
+        const loginDuration = Math.round(timeout / 1000);
         this.userName = credentials.UserName;
         const loginResponse: any = loginDetails;
         if (loginResponse.result.loginDuration) {
@@ -1397,31 +1391,31 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
 
-async validateAdb2cCredentialsForSupportUser(){
+  async validateAdb2cCredentialsForSupportUser() {
     var credentials = {
       productId: RETAIL_PRODUCT_ID,
       tenantId: this.loginForms.controls['tenantId'].value,
       supportTenantId: SUPPORT_TENANT
     };
 
-   const serviceParams = {
-    route: LoginRoutes.SupportUserLogin,
-    uriParams: '',
-    header: '',
-    body: credentials,
-    showError: true,
-    baseResponse: true
+    const serviceParams = {
+      route: LoginRoutes.SupportUserLogin,
+      uriParams: '',
+      header: '',
+      body: credentials,
+      showError: true,
+      baseResponse: true
 
     };
-   const loginDetails = await this.loginService.makePutCall(serviceParams, false);
-   if (loginDetails.successStatus) {
+    const loginDetails = await this.loginService.makePutCall(serviceParams, false);
+    if (loginDetails.successStatus) {
       let token = this.oauthService.getIdToken();
       loginDetails.result.token = token;
       const loginResponse: any = loginDetails;
       const jwtToken = JSON.parse(atob(token.split('.')[1]));
       const jwtExpiryTime = new Date(jwtToken.exp * 1000);
       const timeout = jwtExpiryTime.getTime() - Date.now();
-      const loginDuration = Math.round(timeout/1000);
+      const loginDuration = Math.round(timeout / 1000);
       if (loginResponse.result.loginDuration) {
         loginResponse.result.loginDuration = loginDuration;
         sessionStorage.setItem('loginDuration', loginResponse.result.loginDuration);
@@ -1432,100 +1426,100 @@ async validateAdb2cCredentialsForSupportUser(){
         localStorage.setItem('jwtExpiryTime', jwtExpiryTime.toString());
 
       }
-    await this.setPropertyForSupportUser(loginDetails);
- } else {
-   if (loginDetails.errorCode == 5001) {
-      this.loginError = true;
-      this.enableLoginloader(false);
-      this.loginButton.disabledproperty = false;
-      this.errResponse = loginDetails.errorDescription;
-      this.hideLoginForm = false;
- }
-  this.utils.showAlert(loginDetails.errorDescription, AlertType.Error, ButtonType.Ok);
- }
- }
+      await this.setPropertyForSupportUser(loginDetails);
+    } else {
+      if (loginDetails.errorCode == 5001) {
+        this.loginError = true;
+        this.enableLoginloader(false);
+        this.loginButton.disabledproperty = false;
+        this.errResponse = loginDetails.errorDescription;
+        this.hideLoginForm = false;
+      }
+      this.utils.showAlert(loginDetails.errorDescription, AlertType.Error, ButtonType.Ok);
+    }
+  }
 
 
- async setPropertyForSupportUser(loginDetails){
- // Need to remove this hardcoded value
-  loginDetails.result.userLoginInfo.isPropertyChangeAllow = true;
-  this.userName = loginDetails.result.userLoginInfo.userName;
-  this.userInfo = loginDetails.result.userLoginInfo;
-  this.setUserInfo(loginDetails);
-  // this.userDetail = loginDetails;
-  let selectedProperty = this.allPropertyDetails.filter(x => x.id == this.loginForms.controls['propertyId'].value);
-  if(!selectedProperty || !selectedProperty[0])  {
-  console.log('Error in property selected data');
+  async setPropertyForSupportUser(loginDetails) {
+    // Need to remove this hardcoded value
+    loginDetails.result.userLoginInfo.isPropertyChangeAllow = true;
+    this.userName = loginDetails.result.userLoginInfo.userName;
+    this.userInfo = loginDetails.result.userLoginInfo;
+    this.setUserInfo(loginDetails);
+    // this.userDetail = loginDetails;
+    let selectedProperty = this.allPropertyDetails.filter(x => x.id == this.loginForms.controls['propertyId'].value);
+    if (!selectedProperty || !selectedProperty[0]) {
+      console.log('Error in property selected data');
       return;
     }
-  let locationData = {
-  id: selectedProperty[0].propertyCode,
-  name: selectedProperty[0].propertyName
-  };
-  this.captionGenerator();
-  this.loginForms.controls.location.setValue(locationData);
+    let locationData = {
+      id: selectedProperty[0].propertyCode,
+      name: selectedProperty[0].propertyName
+    };
+    this.captionGenerator();
+    this.loginForms.controls.location.setValue(locationData);
     // this.enableLocation = true;
-  const credentials = {
+    const credentials = {
       Property: this.loginForms.get('location').value,
       ProductId: RETAIL_PRODUCT_ID
-  };
+    };
 
-  this.setpropertyvalues(credentials.Property, loginDetails.result.userProperties);
-  const usersessionId = await this.sessionService.createSession();
-  sessionStorage.setItem(USER_SESSION, String(usersessionId));
-  await this.setEatecConfig();
-  this.setAutoLogOff();
-  await this.SetUserSessionConfiguration(this.userInfo.userId);
-  this.setMachineDetails();
-  this.router.navigate(['/home']);
-  await this.retailFunc.getRetailFunctionality();
-  try {
-    if(this.localize.GetSupportUserMailId()){
+    this.setpropertyvalues(credentials.Property, loginDetails.result.userProperties);
+    const usersessionId = await this.sessionService.createSession();
+    sessionStorage.setItem(USER_SESSION, String(usersessionId));
+    await this.setEatecConfig();
+    this.setAutoLogOff();
+    await this.SetUserSessionConfiguration(this.userInfo.userId);
+    this.setMachineDetails();
+    this.router.navigate(['/home']);
+    await this.retailFunc.getRetailFunctionality();
+    try {
+      if (this.localize.GetSupportUserMailId()) {
         let data = {
-            userEmail : this.localize.GetSupportUserMailId(),
-            sessionId : String(usersessionId)
-          };
-          const auditParams = {
-            route: LoginRoutes.AuditSupportUser,
-            uriParams: '',
-            header: '',
-            body: data,
-            showError: true,
-            baseResponse: true
-          };
-      
-          this.loginService.makePutCall(auditParams, false);
+          userEmail: this.localize.GetSupportUserMailId(),
+          sessionId: String(usersessionId)
+        };
+        const auditParams = {
+          route: LoginRoutes.AuditSupportUser,
+          uriParams: '',
+          header: '',
+          body: data,
+          showError: true,
+          baseResponse: true
+        };
+
+        this.loginService.makePutCall(auditParams, false);
       }
     } catch (error) {
-        console.log("Error in auditing support user")
-    } 
+      console.log("Error in auditing support user")
+    }
   }
 
 
-async onTenantIdChange(eve){
-   this.propertyIdListForATenant = this.filterPropertyByTenant(this.allPropertyDetails, eve.value);
-   await this.updateSupportUserInfoOnTenantSelection(eve.value);
-   if(!this.propertyIdListForATenant || this.propertyIdListForATenant.length <= 0){
-   return;
+  async onTenantIdChange(eve) {
+    this.propertyIdListForATenant = this.filterPropertyByTenant(this.allPropertyDetails, eve.value);
+    await this.updateSupportUserInfoOnTenantSelection(eve.value);
+    if (!this.propertyIdListForATenant || this.propertyIdListForATenant.length <= 0) {
+      return;
+    }
+    this.loginForms.controls['propertyId'].setValue(this.propertyIdListForATenant[0].id);
+    this.onPropertyIdChange({ value: this.propertyIdListForATenant[0].id });
   }
-   this.loginForms.controls['propertyId'].setValue(this.propertyIdListForATenant[0].id);
-   this.onPropertyIdChange({value: this.propertyIdListForATenant[0].id});
-   }
 
- async onPropertyIdChange(eve){
-  if(!this.userInfo || !eve){
-   return;
+  async onPropertyIdChange(eve) {
+    if (!this.userInfo || !eve) {
+      return;
+    }
+    this.userMachineInfo = await this.retailPropertySettingDataService.GetMachineNamesAndConfigurationSetting(this.userInfo.userId, RETAIL_PRODUCT_ID, [eve.value]);
+    this.setMachineInfo(eve.value);
   }
-  this.userMachineInfo = await this.retailPropertySettingDataService.GetMachineNamesAndConfigurationSetting(this.userInfo.userId, RETAIL_PRODUCT_ID, [eve.value]);
-  this.setMachineInfo(eve.value);
- }
 
- filterPropertyByTenant(data: any[], tenantId: number){
-var tenantProperities =  cloneDeep(data.filter(x => x.tenantId == tenantId));
+  filterPropertyByTenant(data: any[], tenantId: number) {
+    var tenantProperities = cloneDeep(data.filter(x => x.tenantId == tenantId));
 
 
-  return tenantProperities.map(x => {
-      return{
+    return tenantProperities.map(x => {
+      return {
         id: x.id,
         value: x.id,
         viewValue: x.propertyName
@@ -1533,86 +1527,86 @@ var tenantProperities =  cloneDeep(data.filter(x => x.tenantId == tenantId));
     });
   }
 
-getTenantIdList(data: any[]){
-   return data.map(x => {
-    return{
-      id: x.tenantId,
-      value: x.tenantId,
-      viewValue: x.contextName
-     };
+  getTenantIdList(data: any[]) {
+    return data.map(x => {
+      return {
+        id: x.tenantId,
+        value: x.tenantId,
+        viewValue: x.contextName
+      };
     });
-}
-
-  async updateSupportUserInfoOnTenantSelection(tenantId: number){
-   const userParams = {
-    route: RetailRoutes.GetUserByTenantId,
-      uriParams: { UserName : SUPPORT_USERNAME, tenantId : tenantId},
-      header: '',
-      showError: true,
-      baseResponse: true
-   };
-  let userData : any = await this.loginService.makeGetCall(userParams, false);
-  this.userInfo = userData.result;
   }
 
-
-  async ProcessSupportUserLogin(email: string){
-  let token = this.oauthService.getIdToken();
-  sessionStorage.setItem(JWT_TOKEN, token);
-  localStorage.setItem(JWT_TOKEN, token);
-  this.localize.SetSupportUserMailId(email);
-  this.commonLocalize.setLocalCookie('supportUserMailId',email);
-  const mailValidationParams = {
-    route: RetailRoutes.ValidateUserByProductTenantAndEmail,
-    uriParams: { productId: Product.RETAIL,tenantId : SUPPORT_TENANT, emailId: email},
-    header: '',
-    showError: true,
-    baseResponse: true
-  };
-
-  let isUserExistsInSupportTenant : any = await this.loginService.makePutCall(mailValidationParams, false);
-
-  if(!isUserExistsInSupportTenant?.result){
-    await this.utils.showAlert(this.captions.err_userAccess_Denied_message,AlertType.Error, ButtonType.Ok).afterClosed().toPromise();
-    this.sessionService.logout();
-    return;
-  }
-  this.enableSupportUserInputElementsRequiredField(true);
-  this.captionGenerator();
- // this.loginSuccessCaption = this.captions.SelectYourLoginDetails;
-
- const tenantParams = {
-  route: RetailRoutes.GetTenantGroupDetailByProductId,
-       uriParams: { productId : RETAIL_PRODUCT_ID},
-      header: '',
-      showError: true,
-      baseResponse: true
-  };
-
- const propertyParams = {
-      route: RetailRoutes.GetPropertyDetailsByProductId,
-      uriParams: { productId :RETAIL_PRODUCT_ID},
+  async updateSupportUserInfoOnTenantSelection(tenantId: number) {
+    const userParams = {
+      route: RetailRoutes.GetUserByTenantId,
+      uriParams: { UserName: SUPPORT_USERNAME, tenantId: tenantId },
       header: '',
       showError: true,
       baseResponse: true
     };
-    let tenantData : any = this.loginService.makeGetCall(tenantParams, false);
-    let propertyData : any = this.loginService.makeGetCall(propertyParams, false);
-    let responses = await Promise.all([tenantData,propertyData]);
+    let userData: any = await this.loginService.makeGetCall(userParams, false);
+    this.userInfo = userData.result;
+  }
+
+
+  async ProcessSupportUserLogin(email: string) {
+    let token = this.oauthService.getIdToken();
+    sessionStorage.setItem(JWT_TOKEN, token);
+    localStorage.setItem(JWT_TOKEN, token);
+    this.localize.SetSupportUserMailId(email);
+    this.commonLocalize.setLocalCookie('supportUserMailId', email);
+    const mailValidationParams = {
+      route: RetailRoutes.ValidateUserByProductTenantAndEmail,
+      uriParams: { productId: Product.RETAIL, tenantId: SUPPORT_TENANT, emailId: email },
+      header: '',
+      showError: true,
+      baseResponse: true
+    };
+
+    let isUserExistsInSupportTenant: any = await this.loginService.makePutCall(mailValidationParams, false);
+
+    if (!isUserExistsInSupportTenant?.result) {
+      await this.utils.showAlert(this.captions.err_userAccess_Denied_message, AlertType.Error, ButtonType.Ok).afterClosed().toPromise();
+      this.sessionService.logout();
+      return;
+    }
+    this.enableSupportUserInputElementsRequiredField(true);
+    this.captionGenerator();
+    // this.loginSuccessCaption = this.captions.SelectYourLoginDetails;
+
+    const tenantParams = {
+      route: RetailRoutes.GetTenantGroupDetailByProductId,
+      uriParams: { productId: RETAIL_PRODUCT_ID },
+      header: '',
+      showError: true,
+      baseResponse: true
+    };
+
+    const propertyParams = {
+      route: RetailRoutes.GetPropertyDetailsByProductId,
+      uriParams: { productId: RETAIL_PRODUCT_ID },
+      header: '',
+      showError: true,
+      baseResponse: true
+    };
+    let tenantData: any = this.loginService.makeGetCall(tenantParams, false);
+    let propertyData: any = this.loginService.makeGetCall(propertyParams, false);
+    let responses = await Promise.all([tenantData, propertyData]);
     this.allTenantDetails = responses[0].result;
     this.allPropertyDetails = responses[1].result;
     this.tenantIdList = this.getTenantIdList(this.allTenantDetails);
     this.tenantIdList.sort((a, b) => a.viewValue.localeCompare(b.viewValue))
     this.initialTenantIdList = [...this.tenantIdList]
-      if(!this.tenantIdList || this.tenantIdList.length <= 0){
+    if (!this.tenantIdList || this.tenantIdList.length <= 0) {
       console.log('Empty tenant List to display');
-          return;
-        }
-     this.propertyIdListForATenant = this.filterPropertyByTenant(this.allPropertyDetails,this.tenantIdList[0].id);
-      if(!this.propertyIdListForATenant || this.propertyIdListForATenant.length <= 0){
-        console.log('Empty property List to display');
-        return;
-        }
+      return;
+    }
+    this.propertyIdListForATenant = this.filterPropertyByTenant(this.allPropertyDetails, this.tenantIdList[0].id);
+    if (!this.propertyIdListForATenant || this.propertyIdListForATenant.length <= 0) {
+      console.log('Empty property List to display');
+      return;
+    }
     this.loginForms?.controls['tenantId']?.setValue(this.tenantIdList[0].id);
     this.loginForms?.controls['propertyId']?.setValue(this.propertyIdListForATenant[0].id);
     this.enableLoginloader(false);
@@ -1626,22 +1620,22 @@ getTenantIdList(data: any[]){
 
   }
 
-enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
-   if(!this.loginForms || !this.loginForms.controls['tenantId'] || !this.loginForms.controls['propertyId'] || !this.loginForms.controls['roleId']){
-    return;
+  enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean) {
+    if (!this.loginForms || !this.loginForms.controls['tenantId'] || !this.loginForms.controls['propertyId'] || !this.loginForms.controls['roleId']) {
+      return;
     }
-    if(isEnableRequiredField){
+    if (isEnableRequiredField) {
       this.loginForms.controls['tenantId'].addValidators(Validators.required);
       this.loginForms.controls['propertyId'].addValidators(Validators.required);
-    }else{
-    this.loginForms.controls['tenantId'].removeValidators(Validators.required);
-    this.loginForms.controls['propertyId'].removeValidators(Validators.required);
-  }
+    } else {
+      this.loginForms.controls['tenantId'].removeValidators(Validators.required);
+      this.loginForms.controls['propertyId'].removeValidators(Validators.required);
+    }
 
   }
 
   private _filter(value: string) {
-    if(value){
+    if (value) {
       const filterValue = value.toLowerCase();
       return this.tenantIdList = this.initialTenantIdList.filter(x => (x.viewValue.toLowerCase().includes(filterValue)) || (x.id.toString().toLowerCase().includes(filterValue)))
     } else {
@@ -1656,36 +1650,35 @@ enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
 
   openedChange(opened: boolean) {
     this.myInput.nativeElement.focus()
-      if (!opened) {
+    if (!opened) {
       this.inputSearch = ''
       this._filter("");
 
     }
   }
 
-  enableLoginloader(val:boolean, forceEnable: boolean = false)
-  {
-    if((this.loginForms?.valid && val) || (forceEnable && val))
-    {
-      this.showLoginloader=val?val:false;
+  enableLoginloader(val: boolean, forceEnable: boolean = false) {
+    if ((this.loginForms?.valid && val) || (forceEnable && val)) {
+      this.showLoginloader = val ? val : false;
       this.startInterval();
-    }else{
-      this.showLoginloader=false;
+    } else {
+      this.showLoginloader = false;
     }
   }
   startInterval() {
-      // Set up the interval to execute a function every 1000 milliseconds (1 second)
-      this.elapsedTime=0;
-      this.intervalId = setInterval(() => {
+    // Set up the interval to execute a function every 1000 milliseconds (1 second)
+    this.elapsedTime = 0;
+    this.intervalId = setInterval(() => {
       this.elapsedTime += 1000; // Increment elapsed time by 1 second
       // Check if 30 seconds have passed
       if ((document.getElementById("bodyId")?.getElementsByClassName("Errorpop-container-Golf").length > 0) ||
-      (document.getElementById("bodyId")?.getElementsByClassName("errorpop-container").length > 0) || (document.getElementById("bodyId")?.getElementsByClassName("Errorpop-container").length > 0) ) {
-      this.stopInterval(); // Clear the interval if the condition is met
+        (document.getElementById("bodyId")?.getElementsByClassName("errorpop-container").length > 0) || (document.getElementById("bodyId")?.getElementsByClassName("Errorpop-container").length > 0)) {
+        this.stopInterval(); // Clear the interval if the condition is met
       }
-    if (this.elapsedTime >= 50000) {
-     this.stopInterval(); // Clear the interval if 50 seconds have passed
-    }}, 1000);
+      if (this.elapsedTime >= 50000) {
+        this.stopInterval(); // Clear the interval if 50 seconds have passed
+      }
+    }, 1000);
   }
   stopInterval() {
     // Clear the interval when called
@@ -1695,25 +1688,25 @@ enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
     }
   }
 
-  async openForgetPasswordDialog(): Promise<void> { 
+  async openForgetPasswordDialog(): Promise<void> {
     const userId = this.loginForms.get('userId')?.value;
     const customerId = this.loginForms.get('customerId')?.value || this.custId;
     const tenantId = customerId ? parseInt(customerId) : this.tenantId;
 
     if (!userId || !tenantId) {
-      this.utils.showAlert( this.commonCaptions.invaliduserIdLogin, AlertType.Error);
+      this.utils.showAlert(this.commonCaptions.invaliduserIdLogin, AlertType.Error);
       return;
     }
 
     try {
       // Show loading indicator (force enable even if form is not fully valid)
-      
-      
-      
+
+
+
       // Verify if user exists for the given tenant
-     this.isUserValid = await this.verifyUserExists(userId, tenantId);
-      
-      if (this.isUserValid?.result?.tenantSecurityQuestions == undefined 
+      this.isUserValid = await this.verifyUserExists(userId, tenantId);
+
+      if (this.isUserValid?.result?.tenantSecurityQuestions == undefined
         || this.isUserValid?.result?.tenantSecurityQuestions == null) {
         this.enableLoginloader(false);
         this.utils.showAlert(this.commonCaptions.lbl_PasswordReset, AlertType.Error);
@@ -1722,54 +1715,54 @@ enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
 
       this.passwordSetting = this.isUserValid?.result?.passwordSetting;
 
-      this.securityUserId = this.isUserValid?.result.userId;     
-  
-    const dialogRef = this.dialog.open(ForgetPasswordComponent, {
-      width: '500px',
-      maxWidth: '90vw',
-      disableClose: true,
-      data: {
-        userName: userId,
-        tenantId: tenantId,
-        propertyId: this.propertyInfo.PropertyId,
-        userId: this.securityUserId,
-        userinfo: this.isUserValid,
-        uTempData: { 
-          uTempPri: this.uTempDataPrimary, 
-          uTempSec: this.uTempDataSecondary 
-        },
-        tenantSecurityQuestions: this.isUserValid?.result?.tenantSecurityQuestions
-      }
-    });
+      this.securityUserId = this.isUserValid?.result.userId;
 
-    // Keep loading active until dialog is fully opened and ready
-    dialogRef.afterOpened().subscribe(() => {
-      // Disable loading once dialog is fully opened and rendered
-      setTimeout(() => {
-        this.enableLoginloader(false);
-      }, 300);
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      // Ensure loader is disabled when dialog closes
-      this.enableLoginloader(false);
-      
-      console.log('ForgetPasswordComponent result:', result); // Debug log
-      
-      if (result && result.success) {
-        if (result.action === 'openSetPassword') {          
-          this.openSetPasswordDialog(result);
+      const dialogRef = this.dialog.open(ForgetPasswordComponent, {
+        width: '500px',
+        maxWidth: '90vw',
+        disableClose: true,
+        data: {
+          userName: userId,
+          tenantId: tenantId,
+          propertyId: this.propertyInfo.PropertyId,
+          userId: this.securityUserId,
+          userinfo: this.isUserValid,
+          uTempData: {
+            uTempPri: this.uTempDataPrimary,
+            uTempSec: this.uTempDataSecondary
+          },
+          tenantSecurityQuestions: this.isUserValid?.result?.tenantSecurityQuestions
         }
-      } else if (result && result.action === 'returnToLogin' && !result.message.includes('cancel')) {
-        this.utils.showAlert(this.commonCaptions.common.lbl_invalidsecurityAnswer, AlertType.Error);         
-      }
-      else if(result && result.action === 'userLocked'){
-        this.utils.showAlert(result.message, AlertType.Error);
-      }
-      else {       
-        console.log('ForgetPasswordComponent returned unexpected result:', result);
-      }
-    });
+      });
+
+      // Keep loading active until dialog is fully opened and ready
+      dialogRef.afterOpened().subscribe(() => {
+        // Disable loading once dialog is fully opened and rendered
+        setTimeout(() => {
+          this.enableLoginloader(false);
+        }, 300);
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        // Ensure loader is disabled when dialog closes
+        this.enableLoginloader(false);
+
+        console.log('ForgetPasswordComponent result:', result); // Debug log
+
+        if (result && result.success) {
+          if (result.action === 'openSetPassword') {
+            this.openSetPasswordDialog(result);
+          }
+        } else if (result && result.action === 'returnToLogin' && !result.message.includes('cancel')) {
+          this.utils.showAlert(this.commonCaptions.common.lbl_invalidsecurityAnswer, AlertType.Error);
+        }
+        else if (result && result.action === 'userLocked') {
+          this.utils.showAlert(result.message, AlertType.Error);
+        }
+        else {
+          console.log('ForgetPasswordComponent returned unexpected result:', result);
+        }
+      });
     } catch (error) {
       this.enableLoginloader(false);
       this.utils.showAlert(this.commonCaptions.lbl_noDataFound, AlertType.Error);
@@ -1782,17 +1775,17 @@ enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
         route: CommonControllersRoutes.FetchUserSecurityQuestionsForPasswordReset,
         uriParams: '',
         header: '',
-        body: {"UserName": userId, "tenantId" :tenantId , Property: this.loginForms.controls["location"].value, ProductId: Product.RETAIL, TenantCode: this.tenantCode },
+        body: { "UserName": userId, "tenantId": tenantId, Property: this.loginForms.controls["location"].value, ProductId: Product.RETAIL, TenantCode: this.tenantCode },
         showError: false,
         baseResponse: true
       };
 
       const response: any = await this.loginService.makePostCall(serviceParams, false);
-     
+
       // If we get a successful response, the user exists
       if (response && response?.successStatus && response?.result) {
         return response;
-      }      
+      }
       return false; // User doesn't exist
     } catch (error) {
       console.error(this.commonCaptions.lbl_noDataFound, error);
@@ -1809,14 +1802,14 @@ enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
       maxWidth: 'Auto',
       disableClose: true,
       data: {
-        userName:  userName,
-        tenantId:  customerId,
+        userName: userName,
+        tenantId: customerId,
         setPassword: true, // This will hide the old password field
         userInfo: this.isUserValid,
         passwordSetting: this.passwordSetting,
-        uTempData: { 
-          uTempPri: this.uTempDataPrimary, 
-          uTempSec: this.uTempDataSecondary 
+        uTempData: {
+          uTempPri: this.uTempDataPrimary,
+          uTempSec: this.uTempDataSecondary
         },
         isForgetPassword: true,
         userSecurityQnAModel: userData?.userSecurityQnAModel || [],
@@ -1825,8 +1818,8 @@ enableSupportUserInputElementsRequiredField(isEnableRequiredField: boolean){
 
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.success === true) {
-        this.utils.showAlert(this.commonCaptions.lbl_passwordResetSuccess, AlertType.Success);      
-      } else { 
+        this.utils.showAlert(this.commonCaptions.lbl_passwordResetSuccess, AlertType.Success);
+      } else {
         this.utils.showAlert(this.commonCaptions.lbl_passwordResetCancelled, AlertType.Info);
       }
     });
