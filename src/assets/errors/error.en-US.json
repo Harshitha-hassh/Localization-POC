@@ -404,6 +404,7 @@
     "317010": "Cash Drawer is not Open",
     "103916": "Duplicate Code Prefix",
     "1021": "Unable to reverse the transaction",
-    "1022": "Deposit returns cannot be voided"
+    "1022": "Deposit returns cannot be voided",
+    "10120": "This multipack has expired, cannot be activated. Please update the expiry date to activate."
   }
   

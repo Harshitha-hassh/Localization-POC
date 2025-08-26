@@ -115,6 +115,7 @@
   "10114": "Unable to Update Retail Item, Invalid Request_fr",
   "10117": "Item Number Change Not Allowed_fr",
   "10118": "No Retail Item Found to Export_fr",
+  "10120": "This multipack has expired, cannot be activated. Please update the expiry date to activate._fr",
   "10200": "Invalid Category name_fr",
   "10201": "Category Not Found_fr",
   "10300": "Invalid Template Code_fr",
