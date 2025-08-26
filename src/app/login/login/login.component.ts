@@ -949,6 +949,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.loginForms.controls['password'].markAsTouched();
         this.setGeneralLoginVal();
         this.generalAuthValidation();
+        await this.GetTenantConfigurationForForgetPassword();
       }
     }
   }
@@ -1236,7 +1237,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private async GetTenantConfigurationForForgetPassword() {
-    let tenantId = this.loginForms.controls['customerId'].value;
+   let tenantId = this.loginForms.controls['customerId']?.value ? this.loginForms.controls['customerId']?.value : this.custId;
     const serviceParams = {
       route: CommonControllersRoutes.GetConfigurationsByNameAndConfigValue,
       uriParams: { "configurationName": TenantConfigurations.TenantSetupConfiguration, "configKeyName": "DisableForgetPassword", "tenantId": tenantId },

@@ -65,6 +65,13 @@
                                         </div>
                                     </ng-container>
                                     </div>
+                                    <div *ngIf="custId !=0">
+                                        <a class="ml-4 forget-password-link"
+                                            *ngIf="loginForms.get('userId')?.value && !this.ADB2CAuthenticationEnabled && !this.isSupportUser && !this.disableForgetPassword"
+                                            [class.disabled]="showLoginloader" (click)="!showLoginloader && openForgetPasswordDialog()">
+                                            {{ commonCaptions.ForgetPassword }}
+                                        </a>
+                                    </div>
                                     <div *ngIf="showCustomerID && custId">
                                         <div *ngIf="!showCustomerID">
                                             <i class="icon-user ag_pr--2 "></i>
