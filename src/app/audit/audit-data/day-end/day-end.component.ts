@@ -352,9 +352,10 @@ export class DayEndComponent implements OnInit, OnDestroy, AfterViewChecked {
         if (response.isSuccess) {
           this.propertyInfo.SetPropertyDate(this.newSysDate);
           this.UpdateInventoryAudit();          
-          if (this.propertyInfo.HasRevenuePostingEnabled) {
-            this.SendNewSystemDate();
-          }
+          // code moved to API
+          // if (this.propertyInfo.HasRevenuePostingEnabled) { 
+          //   this.SendNewSystemDate(); 
+          // }
         } else {
           if (result.errorCode.toString() == ErrorCodes.UNABLE_TO_ROLL_TO_FUTURE_DATE) {
             this.utils.ShowErrorPopup([result.errorCode]);
