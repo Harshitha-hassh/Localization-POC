@@ -79,12 +79,12 @@ export class RouteLoaderService {
               }
               const jsonPropConfig = sessionStorage.getItem('propConfig');
               const parsedConfig = jsonPropConfig ? JSON.parse(jsonPropConfig) : null;
-              if (!parsedConfig?.EnablePenetrationCommission) {
+              if ((parsedConfig?.EnablePenetrationCommission??"false") == "false") {
                 let settingsMenu = this.currentSettings.find(x => x.text.includes("SETTINGS"))
                 if (settingsMenu) {
                     let retailSetupMenu = settingsMenu.linkedElement?.find(x => x.text.includes("RETAIL SETUP"))
                     if(retailSetupMenu){
-                        let penetrationCommissionSetupMenu = retailSetupMenu.linkedElement?.find(x => x.text.toUpperCase().includes("PENETRATION COMMISSION SETUP"))
+                        let penetrationCommissionSetupMenu = retailSetupMenu.linkedElement?.find(x => x.routePath?.toLowerCase().includes("/settings/retailsetup/penetrationcommissionsetup"))
                         if(penetrationCommissionSetupMenu){
                             penetrationCommissionSetupMenu.visibility = false;
                             penetrationCommissionSetupMenu.linkedElement.forEach(element => {
