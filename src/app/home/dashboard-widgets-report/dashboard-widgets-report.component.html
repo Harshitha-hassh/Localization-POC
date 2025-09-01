@@ -18,6 +18,8 @@
           [floatLabel]="widgetData.widgetWrapper.dropDown.floatLabel"
           [selectedData]= "selecteddashboardOutlet"
           automationId='homeDashboard{{widgetsData_Index}}' ></app-multi-select>
+        <app-ag-date-picker *ngIf="dashboardRevenueByDate" class="dashboard-datepicker" [inputs]="dateInput" (datePickerChange)="dateChange()" [maxDate]="maxDate" automationId='dashboardDatePicker{{widgetsData_Index}}'>
+        </app-ag-date-picker>
       </div>
       <!-- looping Dashboard widgets container -->
       <div class="widget_group_wrapper">

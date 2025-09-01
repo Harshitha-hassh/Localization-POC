@@ -57,6 +57,10 @@ export class DashBoardBusiness {
         return this.dashBoardService.getTransactionCount(outletIds);
     }
 
+     public async getTransactionCountByDate(outletIds: number[], revenueByDate: boolean, date: Date): Promise<DashBoardInterface.TransactionDetails> {
+        return this.dashBoardService.getTransactionCountByDate(outletIds, revenueByDate, date);
+    }
+
     public async getTransactionSaleDetail<T>(dataFormat: number,
                                              startDate: Date, outletIds: number[]): Promise<DashBoardInterface.UITransactionSaleDetail[]> {
         var transaction = await this.dashBoardService.getTransactionSaleDetail(startDate, dataFormat, outletIds);

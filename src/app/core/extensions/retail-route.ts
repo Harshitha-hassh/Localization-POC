@@ -44,6 +44,7 @@ export enum RetailRoutes {
   GetOutletCount = 'DashBoard/getOutletCount',
   GetVendorCount = 'Vendor/GetVendorInfo',
   GetTransactionCount = 'DashBoard/GetTransactionCount',
+  GetTransactionCountByDate = 'DashBoard/GetTransactionCount?revenueByDate={revenueByDate}&date={date}',
   GetOutOfStockItems = 'retailitems/GetInventoryRetailItems',
   GetTransactionSaleDetail = 'Transaction/getTransactionSale/{startDate}/{dataFormat}',
   GetItemSaleDetail = 'Transaction/getItemSale/{startDate}/{endDate}',

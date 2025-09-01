@@ -32,6 +32,16 @@ export class DashBoardService {
             { route: RetailApiRoute.GetTransactionCount, body: outletIds });
         return result;
     }
+
+    public  getTransactionCountByDate<T>(outletIds: number[],revenueByDate: boolean, date: Date): Promise<TransactionDetails> {
+        const _date: string = this.localization.ConvertDateToISODateTime(date);
+        let result: Promise<TransactionDetails> = this._httpPos.putPromise<TransactionDetails>(
+            { route: RetailApiRoute.GetTransactionCountByDate, 
+              body: outletIds, 
+              uriParams: { revenueByDate: revenueByDate, date: _date }
+            });
+        return result;
+    }
     
     public getOutOfStockItems<T>(outletIds: number[]): Promise<OutOfStock[]> {
         let result: Promise<OutOfStock[]> = this._httpRetail.putPromise<OutOfStock[]>(

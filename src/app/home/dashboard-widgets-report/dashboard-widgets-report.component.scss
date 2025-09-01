@@ -76,6 +76,11 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
     overflow:auto;
   }
 
+  .dashboard-datepicker {
+    position: relative;
+    top: 20px;
+  }
+
 .dashBoard-widgets-report-wrapper{
     width:100%;
     box-sizing: border-box;
@@ -323,6 +328,14 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
             padding:1rem 1rem 1rem 0;
             display: flex;
             align-items: flex-end;
+            &:first-of-type {
+              padding-bottom: 25px;
+            }
+
+            app-multi-select{
+              margin-bottom: 8px;
+            }
+            
             .widget_group_title{
                 display: flex;
                 .title{

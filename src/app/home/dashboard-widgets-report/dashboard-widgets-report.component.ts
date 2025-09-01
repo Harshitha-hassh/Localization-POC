@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ChangeDetectorRef, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ChangeDetectorRef, AfterViewInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { DashboardWidgetsReportService } from './dashboard-widgets-report.service';
 import { DashBoardBusiness } from './dashboard-business';
 import {  DonutCount } from './dashboard.modal';
@@ -22,6 +22,9 @@ import { BaseResponse } from 'src/app/common/shared/shared.modal';
 import { HttpMethod, HttpServiceCall, KeyValuePair } from 'src/app/common/shared/shared/service/http-call.service';
 import { AppModuleService } from 'src/app/core/services/app.service';
 import { RedirectToModules } from 'src/app/common/shared/shared/utilities/common-utilities';
+import { AgDateConfig } from 'src/app/common/Models/ag-models';
+import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+
 @Component({
   selector: 'app-dashboard-widgets-report',
   templateUrl: './dashboard-widgets-report.component.html',
@@ -31,6 +34,7 @@ import { RedirectToModules } from 'src/app/common/shared/shared/utilities/common
 })
 export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit , OnDestroy {
   captions: any;
+  maxDate: Date;
   dashBoardform: UntypedFormGroup;
   dashBoardWidget: any;  // dynamic template data
   widgetsData: any;  // dynamic template data
@@ -65,7 +69,10 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   numericFour = 4;
   dataFormat = 1;
   rowDescription: string;
+  dateInput: AgDateConfig;
+  bannerForm: UntypedFormGroup;
 
+  
   @ViewChild('Sales_Revenue') Sales_Revenue;
   @ViewChild('Out_of_StockItems') Out_of_StockItems;
   @ViewChild('Revenue_By_Outlet') Revenue_By_Outlet;
@@ -82,6 +89,7 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   @ViewChild('DB_AverageTransaction') DB_AverageTransaction;
   @ViewChild('DB_AvgUnitPerCustomer') DB_AvgUnitPerCustomer;
   @ViewChild('DB_VendorsChart') DB_VendorsChart;
+  @Output() dateChangeEvent = new EventEmitter<Date>();
 
   DB_OultetsChart_data: any;
   DB_TotalSalesRevenue_data: any;
@@ -109,12 +117,15 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   top5ItemOutletIds: number[] = [];
   top5CategoryOutletIds: number[] = [];
   salesRevenueOutletIds: number[] = [];
+  dashboardRevenueByDate: boolean = true;
+  today: Date = new Date();
 
   constructor(private cdr: ChangeDetectorRef,
               public dashboardWidgetsReportService: DashboardWidgetsReportService,
               private dashBoardBusiness: DashBoardBusiness,
               private fb: UntypedFormBuilder,
               private utilities: Utilities,
+              private retailUtilities: RetailUtilities,
               private breakPoint: BreakPointAccess,
               private propertyInformation: PropertyInformation,
               private localization: RetailStandaloneLocalization,private _router: Router,
@@ -142,7 +153,41 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     this.rowDescription = this.captions.DAY;
 
     this.getDatasFromService(); // get all data on init
+
+     this.bannerForm = this.fb.group({
+      date: this.propertyDate
+    })
+
+     this.dateInput = {
+      form: this.bannerForm,
+      formControlName: 'date',
+      placeHolderId: 'lbl_date',
+      automationId:"'Txt_Dashboard_date'",
+      maxDate: this.propertyDate
+    };
+  
+    const propConfigJson = sessionStorage.getItem('propConfig');
+    const propConfig = propConfigJson ? JSON.parse(propConfigJson) : null;
+    
+    if(propConfig?.DashboardRevenueByDate?.trim().toLowerCase() === 'false'){
+      this.dashboardRevenueByDate = false;
+    }
     this.BindData(); // bind dashboard
+  }
+
+   async dateChange() {
+    const selectedDate = this.bannerForm.value.date;
+    this.retailUtilities.ToggleLoader(true);
+    try {
+      if (this.dashboardRevenueByDate) {
+        await this.getTransactionCountByDate(this.dashboardRevenueByDate, selectedDate);
+      }
+    } catch (error) {
+      console.error('Error in getting the transaction count by date:', error);
+    } finally {
+      this.retailUtilities.ToggleLoader(false);
+    }
+    this.dateChangeEvent.emit(selectedDate);
   }
 
   ngAfterViewInit() {
@@ -180,7 +225,11 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
       this.getOpenTicketsData(this.outletIds);
       this.getOutofStockOnData(this.outletIds);
 
-      this.getTransactionCount();
+      if(this.dashboardRevenueByDate) {
+        this.getTransactionCountByDate(this.dashboardRevenueByDate, this.propertyDateTime);
+      }else{
+        this.getTransactionCount();
+      }
 
     }
     this.dashboardData();
@@ -491,6 +540,16 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
     this.DB_AverageTransaction_data.count = `${this.localization.currencySymbol}`
                                             + this.localization.DisplayMillion(transationDetail.averageRevenue, this.numericTwo);
   }
+
+  async getTransactionCountByDate(revenueByDate: boolean, date: Date) {
+    const transactionDetail = await this.dashBoardBusiness.getTransactionCountByDate(this.dashboardOutletIds, revenueByDate, date);
+    this.DB_NumberOfTransaction_data.count = transactionDetail.transactionCount;
+    this.DB_TotalSalesRevenue_data.count = `${this.localization.currencySymbol}`
+                                            + this.localization.DisplayMillion(transactionDetail.transactionRevenue, this.numericTwo);
+    this.DB_AverageTransaction_data.count = `${this.localization.currencySymbol}`
+                                            + this.localization.DisplayMillion(transactionDetail.averageRevenue, this.numericTwo);
+  }
+
 
   getTotalSalesRevenue() {
     this.DB_TotalSalesRevenue_data = {
