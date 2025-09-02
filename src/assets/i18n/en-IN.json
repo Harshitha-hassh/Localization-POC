@@ -3868,6 +3868,7 @@
     "Receiving": "Receiving Reports",
     "InventoryVariance": "Inventory Variance",
     "displayInSingleSheetToggle": "Combine Extracts",
+    "RevenueReconciliationExport": "Revenue Reconciliation Export",
     "IncludeZeroVariance": "Include Zero Variance",
     "hideCorrectedValues": "Hide Corrected Values",
     "InventoryValuation": "Inventory Valuation",
