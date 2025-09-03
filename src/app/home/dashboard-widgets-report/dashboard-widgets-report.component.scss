@@ -78,7 +78,13 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
 
   .dashboard-datepicker {
     position: relative;
-    top: 20px;
+    top: 12px;
+
+    mat-form-field .mat-input-element{
+      font-size: 17px !important;
+      padding-left: 5px;
+      padding-top: 1px;
+    }
   }
 
 .dashBoard-widgets-report-wrapper{
@@ -359,8 +365,22 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
                        padding-bottom: 0px !important;
                    }
                 }
+                
+                // Specific border only for dashboard main outlet
+                &.dashboard_main_outlet.mat-form-field {
+                   border: 1px solid grey !important;
+                   border-radius: 4px !important;
+                   padding: 5px;
+                   margin-right: 10px;
+                   
+                   .mat-form-field-infix{
+                    border: none;
+                   }
 
-
+                   .mat-select-value{
+                    width: 100%;
+                   }
+                }
             }
             .widget_group_manage{
                 margin-left: auto;

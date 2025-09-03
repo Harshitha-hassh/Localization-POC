@@ -9,7 +9,7 @@
           <i [ngClass]="widgetData.widgetWrapper.icon.show ? widgetData.widgetWrapper.icon.path : ''"></i>
           <div class="title">{{widgetData.widgetWrapper.title}}</div>
         </div>
-        <app-multi-select *ngIf="widgetData.widgetWrapper.dropDown.show" [customClass]="'widget_group_header_dropDown'"
+        <app-multi-select *ngIf="widgetData.widgetWrapper.dropDown.show" [customClass]="widgetsData_Index === 0 ? 'widget_group_header_dropDown dashboard_main_outlet' : 'widget_group_header_dropDown'"
           [dropDownFilterData]="widgetData.widgetWrapper.dropDown.dropDownOptions"
           [dropDownControlname]="widgetData.widgetWrapper.dropDown.dropDownControlname"
           [dropDownName]="widgetData.widgetWrapper.dropDown.placeholder"
