@@ -92,4 +92,47 @@ export class RetailImageService {
     }
   }
 
+  async getImagebyPlatformGuestId(platformGuestId: string, tenantId: string, imageReferenceId: string) : Promise<Imagedata> {
+    return await this.imgService.GetImagebyPlatformGuestId(platformGuestId, tenantId, imageReferenceId);
+  }
+
+  async saveImageToPlatform(tenantId: string, platformGuestId: string, clientId: string, base64textString, thumbnailImg): Promise<string> {
+     if (base64textString) {
+      const base64result = base64textString.split(',');
+      const base64Thumbnail = thumbnailImg.split(',');
+      const imageDataObj: Imagedata = {
+        referenceId: 0,
+        referenceType: ImgRefType.client,
+        data: base64result[1],
+        id: 0,
+        thumbnailData: base64Thumbnail[1],
+        contentType: base64result[0],
+        sequenceNo: 0,
+        imageReferenceId: clientId
+      };
+      return await this.imgService.SaveImageToPlatform(tenantId, platformGuestId, [imageDataObj]);
+    }
+  }
+
+  async updateImageToPlatform(tenantId: string, platformGuestId: string, clientId: string, imageID, imgRefId: string, isImageRemoved, base64textString, thumbnailImg): Promise<number> {
+      if (base64textString || isImageRemoved) {
+        const base64result = isImageRemoved ? ['', ''] : base64textString.split(',');
+        const base64Thumbnail = isImageRemoved ? ['', ''] : thumbnailImg.split(',');
+        const imageDataObj: Imagedata = {
+          referenceId: 0,
+          referenceType: ImgRefType.client,
+          data: base64result[1],
+          id: imageID ? imageID : 0,
+          thumbnailData: base64Thumbnail[1],
+          contentType: base64result[0],
+          sequenceNo: this.sequenceNo,
+          imageReferenceId: clientId
+        };
+      return this.imgService.UpdateImageToPlatform(tenantId, platformGuestId, [imageDataObj]);
+    }
+  }
+  
+  async deleteImageFromPlatform(tenantId: string, platformGuestId: string) {
+    return this.imgService.DeleteImageFromPlatform(tenantId, platformGuestId);
+  }
 }

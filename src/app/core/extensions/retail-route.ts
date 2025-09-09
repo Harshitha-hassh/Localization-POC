@@ -103,6 +103,13 @@ export enum RetailRoutes {
    //CGPSFailedProfile
     GetAllFailedGuestProfile = 'GuestPolicy/GetAllFailedGuestProfile',
     ProfileSyncManaulTrigger = 'GuestPolicy/ProfileSyncManualTrigger',
+
+  // Platform CGPS
+  GetImagebyPlatformGuestId =  'v2/images/GetPlatformGuestImagesById/tenant/{tenantId}/platformGuestId/{platformGuestId}/imageReferenceId/{imageReferenceId}',
+  SaveImageToPlatform  = 'v2/images/UploadPlatformGuestImage/tenant/{tenantId}/platformGuestId/{platformGuestId}',
+  UpdateImageToPlatform = 'v2/images/UpdatePlatformGuestImage/tenant/{tenantId}/platformGuestId/{platformGuestId}',
+  DeleteImageFromPlatform = 'v2/images/DeleteImagesWithPlatformGuestId/tenant/{tenantId}/platformGuestId/{platformGuestId}',
+
 }
 
 export enum MsGraphRoutes {

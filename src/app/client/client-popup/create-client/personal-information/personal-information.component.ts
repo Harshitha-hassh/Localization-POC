@@ -933,7 +933,12 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     }
     var imageData: Imagedata;
     if (clientInfo.client.guestId && clientInfo.client.guestId != DefaultGUID && !this.isCopyClient) {
-      imageData = await this._imageService.getImageForClient(clientInfo.client.guestId, true);
+      if(this.localization.IsPlatformGuestSearchConfigured()) {
+        const platformTenantId = this.utils.GetPropertyInfo('PlatformTenantId');
+        imageData = await this._imageService.getImagebyPlatformGuestId(clientInfo.client.platformGuestUuid, platformTenantId, clientInfo.client.guestId);
+      } else {
+        imageData = await this._imageService.getImageForClient(clientInfo.client.guestId, true);
+      }
     }
     var url = `${imageData && imageData[0] ? imageData[0].contentType : ''},${imageData && imageData[0] ? imageData[0].thumbnailData : ''}`
     this.url = url;

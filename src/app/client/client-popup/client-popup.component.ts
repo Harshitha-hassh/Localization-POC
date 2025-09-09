@@ -39,6 +39,7 @@ export class ClientPopupComponent implements OnInit {
     public _fb: UntypedFormBuilder,
      public _imageService: RetailImageService,
     private _createClientBusiness: CreateClientBusiness,
+    private _clientDataService: ClientDataService,
     private utils: Utilities) {
 
   }
@@ -117,17 +118,39 @@ export class ClientPopupComponent implements OnInit {
       }
 
     }
+    if(this.clientInfo.personalDetailsFormGroup.platformGuestUuid == null || this.clientInfo.personalDetailsFormGroup.platformGuestUuid == ''){
+      let guestData = await this._clientDataService.getClientbyGuestId(createPromise.guestId.toString());
+      this.clientInfo.personalDetailsFormGroup.platformGuestUuid = guestData?.client?.platformGuestUuid;
+    }
+
+    const platformTenantId = this.utils.GetPropertyInfo('PlatformTenantId');
+
     if (this.clientInfo && this.clientInfo.personalDetailsFormGroup.id && this.clientInfo.personalDetailsFormGroup.imgReferenceId &&
       this.clientInfo.personalDetailsFormGroup.imgReferenceId != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID
      || this.clientInfo.personalDetailsFormGroup.isImageRemoved) {
-      var b = await this._imageService.updateItemImage(createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.imageId, 
-      this.clientInfo.personalDetailsFormGroup.imageReferenceId, this.clientInfo.personalDetailsFormGroup.isImageRemoved,
-       this.clientInfo.personalDetailsFormGroup.base64textString,
-       this.clientInfo.personalDetailsFormGroup.thumbnailImg);
+      if(this.localization.IsPlatformGuestSearchConfigured()) {
+        await this._imageService.updateImageToPlatform(platformTenantId, this.clientInfo.personalDetailsFormGroup.platformGuestUuid,
+          createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.imageId, 
+            this.clientInfo.personalDetailsFormGroup.imageReferenceId, this.clientInfo.personalDetailsFormGroup.isImageRemoved,
+            this.clientInfo.personalDetailsFormGroup.guestImg.base64textString,
+            this.clientInfo.personalDetailsFormGroup.guestImg.thumbnailImg);
+      } else {
+         var b = await this._imageService.updateItemImage(createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.imageId, 
+        this.clientInfo.personalDetailsFormGroup.imageReferenceId, this.clientInfo.personalDetailsFormGroup.isImageRemoved,
+        this.clientInfo.personalDetailsFormGroup.guestImg.base64textString,
+        this.clientInfo.personalDetailsFormGroup.guestImg.thumbnailImg);
+      }
+     
     }
-    else if (this.clientInfo.personalDetailsFormGroup.base64textString) {
-       var a = await this._imageService.saveImage(createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.base64textString,
-        this.clientInfo.personalDetailsFormGroup.thumbnailImg);
+    else if (this.clientInfo.personalDetailsFormGroup.guestImg.base64textString) {
+      if(this.localization.IsPlatformGuestSearchConfigured()) {
+        await this._imageService.saveImageToPlatform(platformTenantId, this.clientInfo.personalDetailsFormGroup.platformGuestUuid,
+          createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.guestImg.base64textString,
+          this.clientInfo.personalDetailsFormGroup.guestImg.thumbnailImg);
+      } else {
+       var a = await this._imageService.saveImage(createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.guestImg.base64textString,
+        this.clientInfo.personalDetailsFormGroup.guestImg.thumbnailImg);
+      }
     }
     if(this.IsGDPREnabled && this.clientInfo.additionalDetailsFormGroup.consentPolicyId != 0 && ( this.clientInfo.personalDetailsFormGroup.id == '' || this.clientInfo.personalDetailsFormGroup.guestId == '' || this.clientInfo.personalDetailsFormGroup.guestId == DefaultGUID))
     {

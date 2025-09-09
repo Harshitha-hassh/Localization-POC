@@ -51,4 +51,33 @@ export class ImageDataService {
         });
     }
 
+    public async GetImagebyPlatformGuestId(platformGuestId: string, tenantId: string, imageReferenceId: string): Promise<Imagedata> {
+        return await this._gatewayCommunication.getPromise({
+            route: RetailApiRoute.GetImagebyPlatformGuestId,
+            uriParams: { platformGuestId: platformGuestId, tenantId: tenantId, imageReferenceId: imageReferenceId }
+        });
+    }
+
+    public async SaveImageToPlatform(tenantId: string, platformGuestId: string, imageData: Imagedata[]): Promise<string> {
+        return this._gatewayCommunication.postPromise({
+            route: RetailApiRoute.SaveImageToPlatform,
+            body: imageData,
+            uriParams: { tenantId: tenantId, platformGuestId: platformGuestId }
+        });
+    }
+
+    public async UpdateImageToPlatform(tenantId: string, platformGuestId: string, imageData: Imagedata[]): Promise<number> {
+        return this._gatewayCommunication.putPromise({
+            route: RetailApiRoute.UpdateImageToPlatform,
+            body: imageData,
+            uriParams: { tenantId: tenantId, platformGuestId: platformGuestId }
+        });
+    }
+
+    public async DeleteImageFromPlatform(tenantId: string, platformGuestId: string): Promise<number> {
+        return this._gatewayCommunication.deletePromise({
+            route: RetailApiRoute.DeleteImageFromPlatform,
+            uriParams: { tenantId: tenantId, platformGuestId: platformGuestId }
+        });
+    }
 }
