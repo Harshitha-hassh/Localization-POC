@@ -348,7 +348,7 @@
     "10915": "Vendor Type in use, Operation not allowed",
     "10916": "Vendor Type in User, delete not allowed",
     "10917": "Vendor has active retail items, delete not allowed",
-    "10918": "Operation not Allowed; Vendor has active retail items",
+    "10918": "Vendor has active retail items, inactive not allowed",
     "100904":"Duplicate Vendor Code",
     "100905":"Duplicate Vendor Name",
     "75009":"Please enter minimum one phone number",

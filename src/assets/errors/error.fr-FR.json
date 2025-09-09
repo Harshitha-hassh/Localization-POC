@@ -161,7 +161,7 @@
   "10915": "Vendor Type in use, Operation not allowed_fr",
   "10916": "Vendor Type in User, delete not allowed_fr",
   "10917": "Vendor has active retail items, delete not allowed_fr",
-  "10918": "Operation not Allowed; Vendor has active retail items_fr",
+  "10918": "Vendor has active retail items, inactive not allowed_fr",
   "11101": "Duplicate Template Code_fr",
   "11102": "Template in use, delete not allowed_fr",
   "11103": "Duplicate Category Name_fr",
