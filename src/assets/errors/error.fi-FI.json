@@ -281,6 +281,8 @@
   "152151": "Staging Posted Already_fi",
   "152152": "Staging doesn't exist_fi",
   "191001": "This coupon is not applicable for items/services or does not meet spend threshold_fi",
+  "222111": "Cash drawer is open. Deletion is not allowed._fi",
+  "222112": "Cash drawer is open. Cannot Deactivate the cash drawer._fi",
   "310001": "Duplicate Guest exists on the system_fi",
   "310002": "Guest information is out of date. Please refresh and try again_fi",
   "317010": "Cash Drawer is not Open_fi",

@@ -405,6 +405,8 @@
     "103916": "Duplicate Code Prefix",
     "1021": "Unable to reverse the transaction",
     "1022": "Deposit returns cannot be voided",
-    "10120": "This multipack has expired, cannot be activated. Please update the expiry date to activate."
+    "10120": "This multipack has expired, cannot be activated. Please update the expiry date to activate.",
+    "222111": "Cash drawer is open. Deletion is not allowed.",
+    "222112": "Cash drawer is open. Cannot Deactivate the cash drawer."
   }
   
