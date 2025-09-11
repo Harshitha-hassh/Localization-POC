@@ -289,7 +289,12 @@ export class DashboardWidgetsReportComponent implements OnInit , AfterViewInit ,
   dashBoardIsAnySelected(e) {
     console.log('dashBoardIsAnySelected ', e);
     this.dashboardOutletIds = e.map(x => x.id);
-    this.getTransactionCount();
+    if (this.dashboardRevenueByDate) {
+      const selectedDate = this.bannerForm.value.date;
+      this.getTransactionCountByDate(this.dashboardRevenueByDate, selectedDate);
+    } else {
+      this.getTransactionCount();
+    }
   }
  
   assignOutletsToChildWidgets(){
