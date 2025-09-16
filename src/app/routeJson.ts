@@ -641,7 +641,7 @@ export const routeJSON = {
   "GetSettingByModule": "Settings/AllSetting/{module}",
   "GetAllClientSetting": "Settings/AllSetting/Client",
   "GetCEDSByOutletId": "Outlets/GetCEDSByOutletId/{outletId}",
-  "GetItemByPagination": "RetailItems/items?outletId={outletId}&includeInactive={includeInactive}&pageStart={pageStart}&pageLength={pageLength}&sortBy={sortBy}&isSortByAscending={isSortByAscending}&searchText={searchText}&category={category}&subcategory1={subcategory1}&subcategory2={subcategory2}&subcategory3={subcategory3}&subcategory4={subcategory4}&subcategory5={subcategory5}&vendorId={vendorId}",
+  "GetItemByPagination": "RetailItems/items?outletId={outletId}&includeInactive={includeInactive}&pageStart={pageStart}&pageLength={pageLength}&sortBy={sortBy}&isSortByAscending={isSortByAscending}&searchText={searchText}&category={category}&subcategory1={subcategory1}&subcategory2={subcategory2}&subcategory3={subcategory3}&subcategory4={subcategory4}&subcategory5={subcategory5}&vendorId={vendorId}&SearchBysupplieritem={SearchBysupplieritem}",
   "GetShopItemByPagination": "RetailItems/shop/items?outletId={outletId}&includeInactive={includeInactive}&pageStart={pageStart}&pageLength={pageLength}&sortBy={sortBy}&isSortByAscending={isSortByAscending}&searchText={searchText}&searchByBarcode={searchByBarcode}&quickSaleCategory={quickSaleCategory}&itemId={itemId}",
   "SearchRetailItemsByType": "retailitems/search",
   "GetInventoryOutletStatus": "Inventory/outlet/{outletId}/status",
