@@ -2009,7 +2009,8 @@
     "3185": "3185 - Coupon Inquiry",
     "8740": "8740 - Cash Drawer Closing Summary",
     "2000215": "2000215 - Partner Code",
-		"2000220":"2000220 - Partner Setup"
+		"2000220":"2000220 - Partner Setup",
+    "2500025": "2500025 - Open Cash Drawer"
   },
   "90070": "90070 - Folio",
   "err_breakPointAccessDeniedMsg": "The user does not have permissions to perform this action.",
