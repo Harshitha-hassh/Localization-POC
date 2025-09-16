@@ -132,7 +132,9 @@ export class RetailImageService {
     }
   }
   
-  async deleteImageFromPlatform(tenantId: string, platformGuestId: string) {
-    return this.imgService.DeleteImageFromPlatform(tenantId, platformGuestId);
+  async deleteImageFromPlatform(tenantId: string, platformGuestId: string, clientId: string): Promise<number> {
+    let cImages = [];
+    cImages.push({ imageReferenceId: clientId, referenceType: ImgRefType.client, referenceId: 0 });
+    return this.imgService.DeleteImageFromPlatform(tenantId, platformGuestId, cImages);
   }
 }

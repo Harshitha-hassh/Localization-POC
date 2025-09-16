@@ -74,9 +74,10 @@ export class ImageDataService {
         });
     }
 
-    public async DeleteImageFromPlatform(tenantId: string, platformGuestId: string): Promise<number> {
+    public async DeleteImageFromPlatform(tenantId: string, platformGuestId: string, imageData: Imagedata[]): Promise<number> {
         return this._gatewayCommunication.deletePromise({
             route: RetailApiRoute.DeleteImageFromPlatform,
+            body: imageData,
             uriParams: { tenantId: tenantId, platformGuestId: platformGuestId }
         });
     }

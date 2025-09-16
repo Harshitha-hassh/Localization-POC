@@ -129,11 +129,15 @@ export class ClientPopupComponent implements OnInit {
       this.clientInfo.personalDetailsFormGroup.imgReferenceId != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID
      || this.clientInfo.personalDetailsFormGroup.isImageRemoved) {
       if(this.localization.IsPlatformGuestSearchConfigured()) {
-        await this._imageService.updateImageToPlatform(platformTenantId, this.clientInfo.personalDetailsFormGroup.platformGuestUuid,
-          createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.imageId, 
-            this.clientInfo.personalDetailsFormGroup.imageReferenceId, this.clientInfo.personalDetailsFormGroup.isImageRemoved,
-            this.clientInfo.personalDetailsFormGroup.guestImg.base64textString,
-            this.clientInfo.personalDetailsFormGroup.guestImg.thumbnailImg);
+        if(this.clientInfo.personalDetailsFormGroup.isImageRemoved) {
+          await this._imageService.deleteImageFromPlatform(platformTenantId, this.clientInfo.personalDetailsFormGroup.platformGuestUuid, createPromise.guestId.toString());
+        } else {
+          await this._imageService.updateImageToPlatform(platformTenantId, this.clientInfo.personalDetailsFormGroup.platformGuestUuid,
+            createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.imageId, 
+              this.clientInfo.personalDetailsFormGroup.imageReferenceId, this.clientInfo.personalDetailsFormGroup.isImageRemoved,
+              this.clientInfo.personalDetailsFormGroup.guestImg.base64textString,
+              this.clientInfo.personalDetailsFormGroup.guestImg.thumbnailImg);
+            }
       } else {
          var b = await this._imageService.updateItemImage(createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.imageId, 
         this.clientInfo.personalDetailsFormGroup.imageReferenceId, this.clientInfo.personalDetailsFormGroup.isImageRemoved,

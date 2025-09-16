@@ -748,9 +748,13 @@ export const routeJSON = {
   "GetDiscountConfigurationsByCategoryId" : "DiscountConfigurations/{categoryId}",
   "DeleteDiscountTypeConfigurationByIds":"DiscountTypeConfiguration/DeleteDiscountTypeConfigurationByIds",
   "GetBreakpointforRoleAsync":"user/GetUserClaimsForRoleAsync/",
-"GetDuplicateUserByName": "user/GetDuplicateUserByName/{userId}?tenantId={tenantId}&userName={userName}",
-"GetClientByPlatformGuestUuid" : "Clients/platformGuid/{platformGuid}",
-    "GetMasterConfigJson":"Config/GetMasterConfigJson",
-    "GetHealthStatusFromUri": "FeaturesConfiguration/GetHealthStatusFromUri/{uri}",
-    "ConfigurationToolConfigs":"Config/GetMasterConfigJson/product/{productId}"
+  "GetDuplicateUserByName": "user/GetDuplicateUserByName/{userId}?tenantId={tenantId}&userName={userName}",
+  "GetClientByPlatformGuestUuid" : "Clients/platformGuid/{platformGuid}",
+  "GetMasterConfigJson":"Config/GetMasterConfigJson",
+  "GetHealthStatusFromUri": "FeaturesConfiguration/GetHealthStatusFromUri/{uri}",
+  "ConfigurationToolConfigs":"Config/GetMasterConfigJson/product/{productId}",
+  "GetImagebyPlatformGuestId" :  'v2/images/GetPlatformGuestImagesById/tenant/{tenantId}/platformGuestId/{platformGuestId}/imageReferenceId/{imageReferenceId}',
+  "SaveImageToPlatform"  : 'v2/images/UploadPlatformGuestImage/tenant/{tenantId}/platformGuestId/{platformGuestId}',
+  "UpdateImageToPlatform" : 'v2/images/UpdatePlatformGuestImage/tenant/{tenantId}/platformGuestId/{platformGuestId}',
+  "DeleteImageFromPlatform" : 'v2/images/DeleteImagesWithPlatformGuestId/tenant/{tenantId}/platformGuestId/{platformGuestId}',
 }

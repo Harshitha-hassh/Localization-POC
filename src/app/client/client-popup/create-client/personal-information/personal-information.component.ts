@@ -192,6 +192,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       platformBussinessCardUuid: '',
       platformGuestUuid: '',
       platformRevUuid: '',
+      isImageRemoved: false
     });
     this.isCMSConfigured = this.featureSwitch.IsCMSConfigured;
     this.titledropdownInput = {
@@ -215,7 +216,6 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       data.thumbnailImg = this.thumbnailImg;
       data['imageId'] = this.imageId;
       data.isImageRemoved = this.isImageRemoved;
-
     });
 
   }
@@ -963,6 +963,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.ImageUploaded = false;
     this.base64textString = '';
     this.thumbnailImg = '';
+    this.FormGrp.controls.isImageRemoved.setValue(this.isImageRemoved);
     this.FormGrp.controls.guestImg.patchValue({
       base64textString: '',
       thumbnailImg: ''
@@ -976,6 +977,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.thumbnailImg = data['tmbImg'];
     this.imageId = data['imageID'];
     this.isImageRemoved = false;
+    this.FormGrp.controls.isImageRemoved.setValue(this.isImageRemoved);
     this.FormGrp.controls.guestImg.patchValue({
       base64textString: data['orgImg'],
       thumbnailImg: data['tmbImg']
