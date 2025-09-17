@@ -4135,7 +4135,16 @@
     "sync": "SYNC_fr",
     "ConfigValidation": "Config Validation_fr",
     "priceOverride": "Price Override_fr",
-    "couponRedemption": "Coupon Redemption_fr"
+    "couponRedemption": "Coupon Redemption_fr",
+    "RollUpToOne": "Roll Up to One_fr",
+    "SumByTaxName": "Sum by Tax Name_fr",
+    "SumWithParent": "Sum with Parent_fr",
+    "ShowIndividually": "Show Individually_fr",
+    "TaxGroupingOptions": "Tax Grouping Options_fr",
+    "CombineAllTaxes": "Combine All Taxes_fr",
+    "CombineAllRevenueToProperty": "Combine All Revenue to Property_fr",
+    "CombineAllTaxesAndRevenueToProperty": "Combine All Taxes and Revenue to Property_fr",
+    "TaxName": "Tax Name_fr"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_fr",

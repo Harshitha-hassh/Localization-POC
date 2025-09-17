@@ -125,8 +125,8 @@
               <app-ag-toggle [toggleInputs]="displayImageInReceiptFooterInput" (valueChange)="displayImageInReceiptFooterToggleAction($event.checked)">
               </app-ag-toggle>
             </div>
-          </div>
-          <div class="ag_display--flex">
+            </div>
+            <div class="ag_display--flex">
             <div class="pad-top-10 ag_w--33 ag_pr--8">
               <label class="golf-form--label text-label-new">{{textCaptions.lbl_changeDue}}</label>
               <app-ag-toggle [toggleInputs]="changeDueToggleInputs" (valueChange)="toggleChangeDueAction($event)"></app-ag-toggle>
@@ -169,6 +169,72 @@
               <app-ag-toggle [toggleInputs]="ReplaceMemberNumberWithARToggleInputs"></app-ag-toggle>
             </div>
         <!-- <app-single-to-multiple *ngIf="selectedTabIndex === 1" [outlets]="this.outlets"></app-single-to-multiple> -->
+         <div class="pad-top-10 ag_w--66 ag_pr--8 tax-grouping-container">
+              <label class="golf-form--label">{{textCaptions.TaxGroupingOptions}}</label>
+              <mat-radio-group class="radio-class vertical-radio-group mt-2" 
+                               formControlName="taxGroupingOption"
+                               [attr.automationId]="'Rdo_ReceiptConfiguration_taxGroupingOption'"
+                               aria-label="Select tax grouping option"
+                               (change)="onTaxGroupingOptionChange($event.value)">
+                <mat-radio-button *ngFor="let option of taxGroupingOptions" 
+                                  class="tax-radio-spacing" 
+                                  [value]="option.id">
+                  {{option.value}}
+                </mat-radio-button>
+              </mat-radio-group>
+              
+              <!-- Roll Up to One Toggles -->
+              <div class="rollup-toggle-section" *ngIf="showRollUpToOneToggles">
+                <div class="pad-top-10 ag_display--flex">
+                  <div class="ag_w--33 ag_pr--8">
+                  <label class="golf-form--label">{{textCaptions.CombineAllTaxes}}</label>
+                  <app-ag-toggle [toggleInputs]="CombineAllTaxesToggleInputs" (valueChange)="onCombineAllTaxesToggle($event.checked)"></app-ag-toggle>
+                  </div>
+                  <!-- Tax Name text box for Combine All Taxes -->
+                  <div class="ag_w--33" *ngIf="showCombineAllTaxesTextBox">
+                    <mat-form-field [floatLabel]="floatLabel" class="w-100">
+                      <input matInput 
+                             [attr.automationId]="'Txt_ReceiptConfiguration_combineAllTaxesName'"
+                             [placeholder]="textCaptions.TaxName" 
+                             formControlName="combineAllTaxesName" 
+                             [maxlength]="50" />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="pad-top-10 ag_display--flex">
+                   <div class="ag_w--33 ag_pr--8">
+                  <label class="golf-form--label">{{textCaptions.CombineAllRevenueToProperty}}</label>
+                  <app-ag-toggle [toggleInputs]="CombineAllRevenueToPropertyToggleInputs" (valueChange)="onCombineAllRevenueToPropertyToggle($event.checked)"></app-ag-toggle>
+                   </div>
+                  <!-- Tax Name text box for Combine All Revenue to Property -->
+                  <div class="ag_w--33" *ngIf="showCombineAllRevenueToPropertyTextBox">
+                    <mat-form-field [floatLabel]="floatLabel" class="w-100">
+                      <input matInput 
+                             [attr.automationId]="'Txt_ReceiptConfiguration_combineAllRevenueToPropertyName'"
+                             [placeholder]="textCaptions.TaxName" 
+                             formControlName="combineAllRevenueToPropertyName" 
+                             [maxlength]="50" />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="pad-top-10 ag_display--flex">
+                  <div class="ag_w--33 ag_pr--8">
+                  <label class="golf-form--label">{{textCaptions.CombineAllTaxesAndRevenueToProperty}}</label>
+                  <app-ag-toggle [toggleInputs]="CombineAllTaxesAndRevenueToPropertyToggleInputs" (valueChange)="onCombineAllTaxesAndRevenueToPropertyToggle($event.checked)"></app-ag-toggle>
+                </div>
+                  <!-- Tax Name text box for Combine All Taxes and Revenue to Property -->
+                  <div class="ag_w--33" *ngIf="showCombineAllTaxesAndRevenueToPropertyTextBox">
+                    <mat-form-field [floatLabel]="floatLabel" class="w-100">
+                      <input matInput 
+                             [attr.automationId]="'Txt_ReceiptConfiguration_combineAllTaxesAndRevenueToPropertyName'"
+                             [placeholder]="textCaptions.TaxName" 
+                             formControlName="combineAllTaxesAndRevenueToPropertyName" 
+                             [maxlength]="50" />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
         </form>
         <div class="bottomSection w-100">
           <button class="ml-30px" [attr.automationId]="'Btn_ReceiptConfiguration_save'" [ngClass]="{'spa-primary-default-save' : propertyForm.dirty, 'spa-primary-disabled' : !propertyForm.dirty}" mat-button (click)="saveReceiptProperty(propertyForm.value)">{{textCaptions.save}}</button>

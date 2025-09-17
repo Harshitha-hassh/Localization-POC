@@ -95,6 +95,9 @@
                 padding-bottom: 0px !important;
             }
         }
+        .authcodeName.mat-form-field.mat-form-field-can-float.mat-form-field-should-float.mat-form-field{
+            margin-top: 0px !important;
+         }
         .receiptNote{
             .mat-form-field-label{
                 transform: translateY(-1.5em) perspective(100px) translateZ(0.001px);
@@ -109,5 +112,70 @@
     }
     .ml-30px{
         margin-left:30px;
+    }
+    .tax-radio-spacing {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .rollup-toggle-section {
+      margin-top: 15px;
+      padding: 15px;
+      border: 1px solid $linkWater;
+      border-radius: 4px;
+      background-color: #f9f9f9;
+      transition: all 0.3s ease-in-out;
+      
+      .pad-top-10 {
+        margin-bottom: 12px;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      
+      .golf-form--label {
+        margin-bottom: 5px;
+        display: block;
+        font-weight: 500;
+      }
+      
+      app-ag-toggle {
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 8px;
+      }
+
+      // Tax name text box styling
+      .mt-2 {
+        margin-top: 8px !important;
+        
+        mat-form-field {
+          width: 100%;
+          
+          .mat-form-field-wrapper {
+            padding-bottom: 8px;
+          }
+          
+          input {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .vertical-radio-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      
+      .tax-radio-spacing {
+        margin-bottom: 12px;
+      }
+    }
+
+    // Prevent layout jumping when toggles appear/disappear
+    .tax-grouping-container {
+      min-height: 180px;
     }
 }
