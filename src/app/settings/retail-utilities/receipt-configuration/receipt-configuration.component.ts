@@ -567,10 +567,7 @@ async getPropertyReceiptConfig()
      let printPendingSettlementReceipt = this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt != null ? this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt : false;
      let groupByTaxName = this.PropertyReceiptInfo.configValue.groupByTaxName != null ? this.PropertyReceiptInfo.configValue.groupByTaxName : false;
      let replaceMemberNumberWithAR = this.PropertyReceiptInfo.configValue.replaceMemberNumberWithAR != null ? this.PropertyReceiptInfo.configValue.replaceMemberNumberWithAR : false;
-     let taxGroupingOption = this.PropertyReceiptInfo.configValue.taxGroupingOption;
-     if (taxGroupingOption == null || taxGroupingOption === 0) {
-        taxGroupingOption = TaxGroupingOption.ShowIndividually;
-     }
+     let taxGroupingOption = (this.PropertyReceiptInfo.configValue.taxGroupingOption != null && this.PropertyReceiptInfo.configValue.taxGroupingOption != 0)? this.PropertyReceiptInfo.configValue.taxGroupingOption: TaxGroupingOption.ShowIndividually;
      let combineAllTaxes = this.PropertyReceiptInfo.configValue.combineAllTaxes != null ? this.PropertyReceiptInfo.configValue.combineAllTaxes : false;
      let combineAllRevenueToProperty = this.PropertyReceiptInfo.configValue.combineAllRevenueToProperty != null ? this.PropertyReceiptInfo.configValue.combineAllRevenueToProperty : false;
      let combineAllTaxesAndRevenueToProperty = this.PropertyReceiptInfo.configValue.combineAllTaxesAndRevenueToProperty != null ? this.PropertyReceiptInfo.configValue.combineAllTaxesAndRevenueToProperty : false;
