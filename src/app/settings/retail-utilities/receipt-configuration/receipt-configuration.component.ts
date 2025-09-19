@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
-import { Outlet, ReceiptModel,PropertyReceiptModel, PropertyConfigurationModel, ImgType, receiptImageConfiguration, RetailImgRefType } from '../../../retail/retail.modals';
+import { Outlet, ReceiptModel,PropertyReceiptModel, PropertyConfigurationModel, ImgType, receiptImageConfiguration, RetailImgRefType, TaxGroupingOption } from '../../../retail/retail.modals';
 import { ReceiptConfigurationDataService } from './receipt-configuration-data';
 import { RetailOutletsDataService } from '../../../retail/retail-code-setup/retail-outlets/retail-outlets-data.service';
 import { RetailBreakPoint, ButtonType } from 'src/app/common/shared/shared/globalsContant';
@@ -111,7 +111,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       receiptImageFooterNote: [''],
       groupByTaxName:[false],
       replaceMemberNumberWithAR:[false],
-      taxGroupingOption: ['4'], // Default to "Roll Up to One"
+      taxGroupingOption: [TaxGroupingOption.ShowIndividually], 
       combineAllTaxes: [false],
       combineAllRevenueToProperty: [false],
       combineAllTaxesAndRevenueToProperty: [false],
@@ -192,10 +192,10 @@ export class ReceiptConfigurationComponent implements OnInit {
     }
     
     this.taxGroupingOptions = [
-      { id: '1', value: this.textCaptions.RollUpToOne },
-      { id: '2', value: this.textCaptions.SumByTaxName },
-      { id: '3', value: this.textCaptions.SumWithParent },
-      { id: '4', value: this.textCaptions.ShowIndividually }
+      { id: TaxGroupingOption.RollUpToOne, value: this.textCaptions.RollUpToOne },
+      { id: TaxGroupingOption.SumByTaxName, value: this.textCaptions.SumByTaxName },
+      { id: TaxGroupingOption.SumWithParent, value: this.textCaptions.SumWithParent },
+      { id: TaxGroupingOption.ShowIndividually, value: this.textCaptions.ShowIndividually }
     ]
     this.Outlet = await this.outletData.getOutlets();
     this.Outlet = this.Outlet.filter(x => x.isActive == true);
@@ -232,7 +232,7 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.getPropertyReceiptConfig();
 
     // Initialize Roll Up to One toggles visibility
-    this.showRollUpToOneToggles = this.propertyForm.get('taxGroupingOption')?.value === '1';
+    this.showRollUpToOneToggles = this.propertyForm.get('taxGroupingOption')?.value === TaxGroupingOption.RollUpToOne;
   }
 
   changeSelection(e) {
@@ -462,8 +462,8 @@ export class ReceiptConfigurationComponent implements OnInit {
     }
   }
 
-  onTaxGroupingOptionChange(value: string) {
-    this.showRollUpToOneToggles = value === '1';
+  onTaxGroupingOptionChange(value: TaxGroupingOption) {
+    this.showRollUpToOneToggles = value === TaxGroupingOption.RollUpToOne;
     if (!this.showRollUpToOneToggles) {
       // Reset toggle values when not "Roll Up to One"
       this.propertyForm.patchValue({
@@ -567,7 +567,10 @@ async getPropertyReceiptConfig()
      let printPendingSettlementReceipt = this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt != null ? this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt : false;
      let groupByTaxName = this.PropertyReceiptInfo.configValue.groupByTaxName != null ? this.PropertyReceiptInfo.configValue.groupByTaxName : false;
      let replaceMemberNumberWithAR = this.PropertyReceiptInfo.configValue.replaceMemberNumberWithAR != null ? this.PropertyReceiptInfo.configValue.replaceMemberNumberWithAR : false;
-      let taxGroupingOption = this.PropertyReceiptInfo.configValue.taxGroupingOption != null ? this.PropertyReceiptInfo.configValue.taxGroupingOption : '4';
+     let taxGroupingOption = this.PropertyReceiptInfo.configValue.taxGroupingOption;
+     if (taxGroupingOption == null || taxGroupingOption === 0) {
+        taxGroupingOption = TaxGroupingOption.ShowIndividually;
+     }
      let combineAllTaxes = this.PropertyReceiptInfo.configValue.combineAllTaxes != null ? this.PropertyReceiptInfo.configValue.combineAllTaxes : false;
      let combineAllRevenueToProperty = this.PropertyReceiptInfo.configValue.combineAllRevenueToProperty != null ? this.PropertyReceiptInfo.configValue.combineAllRevenueToProperty : false;
      let combineAllTaxesAndRevenueToProperty = this.PropertyReceiptInfo.configValue.combineAllTaxesAndRevenueToProperty != null ? this.PropertyReceiptInfo.configValue.combineAllTaxesAndRevenueToProperty : false;
@@ -596,7 +599,7 @@ async getPropertyReceiptConfig()
      this.showCombineAllTaxesAndRevenueToPropertyTextBox = combineAllTaxesAndRevenueToProperty;
      
      // Update toggle visibility based on loaded value
-     this.showRollUpToOneToggles = taxGroupingOption === '1';
+     this.showRollUpToOneToggles = taxGroupingOption === TaxGroupingOption.RollUpToOne;
      let displayImageInReceiptHeader = this.PropertyReceiptInfo.configValue.displayImageInReceiptHeader != null ? this.PropertyReceiptInfo.configValue.displayImageInReceiptHeader : this.PropertyReceiptInfo.defaultValue.displayImageInReceiptHeader;
       this.propertyForm.controls["displayImageInReceiptHeader"].setValue(displayImageInReceiptHeader);
       let displayImageInReceiptFooter = this.PropertyReceiptInfo.configValue.displayImageInReceiptFooter != null ? this.PropertyReceiptInfo.configValue.displayImageInReceiptFooter : this.PropertyReceiptInfo.defaultValue.displayImageInReceiptFooter;
@@ -732,7 +735,7 @@ async getPropertyReceiptConfig()
       receiptImageFooterNote:"",
       groupByTaxName: false,
       replaceMemberNumberWithAR:false,
-      taxGroupingOption: '4',
+      taxGroupingOption: TaxGroupingOption.ShowIndividually,
       combineAllTaxes: false,
       combineAllRevenueToProperty: false,
       combineAllTaxesAndRevenueToProperty: false,

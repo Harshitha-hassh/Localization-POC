@@ -169,7 +169,7 @@
               <app-ag-toggle [toggleInputs]="ReplaceMemberNumberWithARToggleInputs"></app-ag-toggle>
             </div>
         <!-- <app-single-to-multiple *ngIf="selectedTabIndex === 1" [outlets]="this.outlets"></app-single-to-multiple> -->
-         <div class="pad-top-10 ag_w--66 ag_pr--8 tax-grouping-container">
+         <div class="pad-top-10 ag_w--66 ag_pr--8 tax-grouping-container" *ngIf="!this.PropertyInfo.IsVATEnabled">
               <label class="golf-form--label">{{textCaptions.TaxGroupingOptions}}</label>
               <mat-radio-group class="radio-class vertical-radio-group mt-2" 
                                formControlName="taxGroupingOption"
