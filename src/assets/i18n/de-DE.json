@@ -3630,7 +3630,11 @@
     "MissingConfirmPassword": "Missing Confirm Password_de",
     "RequestPresettlementReceiptOnPendingSettlement": "Request Pre-settlement Receipts for Pending Settlements_de",
     "GroupByTaxName": "Group by Tax Name_de",
-    "ReplaceMemberNumberWithAR": "Replace Member # with AR #_de"
+    "ReplaceMemberNumberWithAR": "Replace Member # with AR #_de",
+    "taxGroupingOptionForChargePosting": "Tax Posting Options_de",
+    "taxGroupingOptionForChargePosting_individual": "Individual_de",
+    "taxGroupingOptionForChargePosting_addbyname": "Add by Name_de",
+    "taxGroupingOptionForChargePosting_addtoparent": "Add to Parent_de"
   },
   "retailInventory": {
     "InventorySearch": "Search by Item #, Description_de",
@@ -4141,9 +4145,9 @@
     "SumWithParent": "Sum with Parent_de",
     "ShowIndividually": "Show Individually_de",
     "TaxGroupingOptions": "Tax Grouping Options_de",
-    "CombineAllTaxes": "Combine All Taxes_de",
-    "CombineAllRevenueToProperty": "Combine All Revenue to Property_de",
-    "CombineAllTaxesAndRevenueToProperty": "Combine All Taxes and Revenue to Property_de",
+    "CombineAllTaxes": "Combine Taxes Only_de",
+    "CombineAllRevenueToProperty": "Combine Revenue to Property Only_de",
+    "CombineAllTaxesAndRevenueToProperty": "Combine Both Taxes and Revenue to Property_de",
     "TaxName": "Tax Name_de"
   },
   "ReportSchedular": {
