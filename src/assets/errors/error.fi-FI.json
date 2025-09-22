@@ -157,6 +157,7 @@
   "10901": "This Outlet already has the same Tax name that overlaps with the specified Start/End Date_fi",
   "10902": "Tax in use, delete not allowed_fi",
   "10903": "Property already has the same Tax name that overlaps with the specified Start/End Date_fi",
+  "10904": "Tax is linked to another tax, delete not allowed_fi",
   "10911": "No data available_fi",
   "10915": "Vendor Type in use, Operation not allowed_fi",
   "10916": "Vendor Type in User, delete not allowed_fi",

@@ -273,6 +273,7 @@
     "10901": "This Outlet already has the same Tax name that overlaps with the specified Start/End Date",
     "10902": "Tax in use, delete not allowed",
     "10903": "Property already has the same Tax name that overlaps with the specified Start/End Date",
+    "10904": "Tax is linked to another tax, delete not allowed",
     "10800": "Duplicate Terminal Id",
     "10802": "Duplicate Machine Name",
   "10803": "Machine Name in use, delete not allowed",

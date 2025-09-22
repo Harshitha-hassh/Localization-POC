@@ -157,6 +157,7 @@
   "10901": "This Outlet already has the same Tax name that overlaps with the specified Start/End Date_kr",
   "10902": "Tax in use, delete not allowed_kr",
   "10903": "Property already has the same Tax name that overlaps with the specified Start/End Date_kr",
+  "10904": "Tax is linked to another tax, delete not allowed_kr",
   "10911": "No data available_kr",
   "10915": "Vendor Type in use, Operation not allowed_kr",
   "10916": "Vendor Type in User, delete not allowed_kr",

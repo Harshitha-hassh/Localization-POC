@@ -265,6 +265,7 @@
     "Apply": "APPLY_de",
     "ApplyToAllRetailCategories": "APPLY TO ALL RETAIL CATEGORIES_de",
     "ApplyToAllTaxes": "APPLY TO ALL TAXES_de",
+    "ApplyToAllTaxOnTaxes": "APPLY TO ALL TAX ON TAXES_de",
     "ApplyToAllPaymentMethods": "APPLY TO ALL PAYMENT METHODS_de",
     "ApplyToAllCardTypes": "APPLY TO ALL CARD TYPES_de",
     "DateFrom": "Date From_de",
@@ -2888,7 +2889,8 @@
     "lbl_September": "September_de",
     "lbl_October": "October_de",
     "lbl_November": "November_de",
-    "lbl_December": "December_de"
+    "lbl_December": "December_de",
+    "TaxOnTax": "Tax On Tax_de"
   },
   "setting": {
     "EnableCouponManagement": "Enable Coupon Management_de",
@@ -2922,6 +2924,8 @@
     "taxRevenueToProperty": "Is Revenue To Property_de",
     "linkedTaxRevenueToProperty": "Is Revenue To Property_de",
     "taxOnTax": "Charge Tax On Tax_de",
+    "useExisting": "Use Existing Tax_de",
+    "DuplicateTaxOnTaxError": "{selectedTaxConfigName} is already added as a Tax on Tax._de",
     "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled_de",
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled_de",
     "SC_GT_TaxRevenueToProperty_ValidationMsg": "Cannot enable ‘{toggleLabel}’ when ‘Is Revenue To Property’ is enabled_de",
