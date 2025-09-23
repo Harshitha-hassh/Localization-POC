@@ -4098,6 +4098,7 @@
     "PackItemOnReceipt": "Display Only Package Item Details on Receipt_fi",
     "SurplusClerkID": "Suppress Clerk ID on Sales Receipt_fi",
     "SurplusPrintedBy": "Suppress Printed By on Sales Receipt_fi",
+    "GroupedItem": "Display Grouping of Item on the Receipt_fi",
     "userId": "User ID_fi",
     "fullName": "Full Name_fi",
     "firstName": "First Name_fi",
