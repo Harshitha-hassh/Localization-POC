@@ -159,10 +159,10 @@
                   <label class="golf-form--label text-label-new">{{localization.captions.setting.RequestPresettlementReceiptOnPendingSettlement}}</label>
               <app-ag-toggle [toggleInputs]="settlementReceiptToggleInputs"></app-ag-toggle>
                 </div>
-                <div class="pad-top-10 ag_w--33 ag_pr--8" *ngIf="!this.PropertyInfo.IsVATEnabled">
+                <!-- <div class="pad-top-10 ag_w--33 ag_pr--8" *ngIf="!this.PropertyInfo.IsVATEnabled">
                   <label class="golf-form--label text-label-new">{{localization.captions.setting.GroupByTaxName}}</label>
                   <app-ag-toggle [toggleInputs]="GroupByTaxNameToggleInputs"></app-ag-toggle>
-                </div>
+                </div> -->
                 </div>
             <div class="pb-3 pt-4">
               <label class="golf-form--label text-label-new">{{localization.captions.setting.ReplaceMemberNumberWithAR}}</label>
@@ -237,7 +237,7 @@
             </div>
         </form>
         <div class="bottomSection w-100">
-          <button class="ml-30px" [attr.automationId]="'Btn_ReceiptConfiguration_save'" [ngClass]="{'spa-primary-default-save' : propertyForm.dirty, 'spa-primary-disabled' : !propertyForm.dirty}" mat-button (click)="saveReceiptProperty(propertyForm.value)">{{textCaptions.save}}</button>
+          <button class="ml-30px" [attr.automationId]="'Btn_ReceiptConfiguration_save'" [disabled]="isSaveDisabled" [ngClass]="{'spa-primary-default-save' : !isSaveDisabled, 'spa-primary-disabled' : isSaveDisabled}" mat-button (click)="saveReceiptProperty(propertyForm.value)">{{textCaptions.save}}</button>
           <button class="spa-button-cancel" [attr.automationId]="'Btn_ReceiptConfiguration_cancel'" mat-button (click)="cancelClick()">{{textCaptions.cancel}}</button>
         </div>
       </mat-tab>
