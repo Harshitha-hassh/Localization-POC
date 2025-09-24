@@ -427,7 +427,11 @@
     "lbl_setUpNow": "Set Up Now_fi",
     "lbl_setUpLater": "Set Up Later_fi",
     "lbl_securityQuestionsReset": "User Security Questions cannot be set, please contact administrator._fi",
-    "lbl_submit": "SUBMIT_fi"
+    "lbl_submit": "SUBMIT_fi",
+    "EnableSecondaryInterface": "Enable Secondary Interface_fi",
+    "AddEditSecondaryInterface": "Add/Edit Secondary Interface_fi",
+    "SecondaryInterfaceConfigurations": "Secondary Interface Configurations_fi",
+    "MissingSecondaryInterface": "Missing Secondary Interface configurations_fi"
   },
   "calendar": {
     "Sunday": "Sunday_fi",
@@ -1701,6 +1705,7 @@
     "ARAcctNumber": "Account Number_fi",
     "SearchByGuestName": "Search by Guest Last Name_fi",
     "SearchByRoomNumber": "Search by Room Number_fi",
+    "SearchByConfirmationNumber": "Search by Confirmation Number_fi",
     "SearchByRoomKey": "Search by  Room Key_fi",
     "SearchByGroupName": "Search by Group Name_fi",
     "SearchByGroupCode": "Search by Group Code_fi",
