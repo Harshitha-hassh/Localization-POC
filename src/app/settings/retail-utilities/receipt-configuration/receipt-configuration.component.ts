@@ -468,47 +468,43 @@ export class ReceiptConfigurationComponent implements OnInit {
   }
 
 validateRollUpToOneToggles() {
-  let disableSave = false;
+  const form = this.propertyForm;
+  const dirty = form.dirty;
 
-  if (this.showRollUpToOneToggles) {
-    // Save enabled only if at least one toggle is true
-    disableSave = !(
-      this.showCombineAllTaxesTextBox ||
-      this.showCombineAllRevenueToPropertyTextBox ||
-      this.showCombineAllTaxesAndRevenueToPropertyTextBox
-    );
-  } else {
-    // Save enabled if form is dirty
-    disableSave = !this.propertyForm.dirty;
-  }
+  const combineTaxes    = form.get('combineAllTaxes')?.value;
+  const combineRevenue  = form.get('combineAllRevenueToProperty')?.value;
+  const combineBoth     = form.get('combineAllTaxesAndRevenueToProperty')?.value;
 
-  // Additionally, disable if any tax name field is empty
-  const taxFields = [
-    'combineAllTaxesName',
-    'combineAllRevenueToPropertyName',
-    'combineAllTaxesAndRevenueToPropertyName'
-  ];
+  const atLeastOne = combineTaxes || combineRevenue || combineBoth;
 
-  const hasEmptyTaxField = taxFields.some(f => {
-    const value = this.propertyForm.get(f)?.value;
-    return !value || value.trim().length === 0;
-  });
+  let disableSave = this.showRollUpToOneToggles
+    ? (!dirty || !atLeastOne)
+    : (!dirty);
 
-  // Final save button state
-  this.isSaveDisabled = disableSave || hasEmptyTaxField;
+  const taxFields =
+    (combineTaxes   && !form.get('combineAllTaxesName')?.value?.trim())   ||
+    (combineRevenue && !form.get('combineAllRevenueToPropertyName')?.value?.trim()) ||
+    (combineBoth    && !form.get('combineAllTaxesAndRevenueToPropertyName')?.value?.trim());
+
+  this.isSaveDisabled = disableSave || !!taxFields;
 }
 
-
-  onTaxGroupingOptionChange(value: TaxGroupingOption) {
+onTaxGroupingOptionChange(value: TaxGroupingOption) {
     this.showRollUpToOneToggles = value === TaxGroupingOption.RollUpToOne;
     if (this.showRollUpToOneToggles) {
       this.propertyForm.patchValue({
         combineAllTaxes: false,
         combineAllRevenueToProperty: false,
         combineAllTaxesAndRevenueToProperty: true,
-        combineAllTaxesName: '',
-        combineAllRevenueToPropertyName: '',
-      });
+        combineAllTaxesName: 'Tax',
+        combineAllRevenueToPropertyName: 'Tax',
+      }, { emitEvent: false });
+      this.propertyForm.get('combineAllTaxes')!
+        .disable({ emitEvent: false });
+    this.propertyForm.get('combineAllRevenueToProperty')!
+        .disable({ emitEvent: false });
+    this.propertyForm.get('combineAllTaxesAndRevenueToProperty')!
+        .enable({ emitEvent: false });
       this.showCombineAllTaxesTextBox = false;
       this.showCombineAllRevenueToPropertyTextBox = false;
       this.showCombineAllTaxesAndRevenueToPropertyTextBox = true;
@@ -519,20 +515,36 @@ validateRollUpToOneToggles() {
       combineAllTaxes: false,
       combineAllRevenueToProperty: false,
       combineAllTaxesAndRevenueToProperty: false,
-      combineAllTaxesName: '',
-      combineAllRevenueToPropertyName: '',
-      combineAllTaxesAndRevenueToPropertyName: ''
-    });
+      combineAllTaxesName: 'Tax',
+      combineAllRevenueToPropertyName: 'Tax',
+      combineAllTaxesAndRevenueToPropertyName: 'Tax'
+    }, { emitEvent: false });
+     this.propertyForm.get('combineAllTaxes')!
+        .enable({ emitEvent: false });
+    this.propertyForm.get('combineAllRevenueToProperty')!
+        .enable({ emitEvent: false });
+    this.propertyForm.get('combineAllTaxesAndRevenueToProperty')!
+        .enable({ emitEvent: false });
     // Reset text box visibility
     this.showCombineAllTaxesTextBox = false;
     this.showCombineAllRevenueToPropertyTextBox = false;
     this.showCombineAllTaxesAndRevenueToPropertyTextBox = false;
   }
+ 
+  this.CombineAllTaxesToggleInputs                   = { ...this.CombineAllTaxesToggleInputs };
+  this.CombineAllRevenueToPropertyToggleInputs       = { ...this.CombineAllRevenueToPropertyToggleInputs };
+  this.CombineAllTaxesAndRevenueToPropertyToggleInputs = { ...this.CombineAllTaxesAndRevenueToPropertyToggleInputs };
+
+  this.showCombineAllTaxesTextBox                  = false;
+  this.showCombineAllRevenueToPropertyTextBox      = false;
+  this.showCombineAllTaxesAndRevenueToPropertyTextBox = this.showRollUpToOneToggles ;
+   this.propertyForm.markAsDirty();
   this.validateRollUpToOneToggles();
   }
 
   // Toggle change handlers for showing/hiding text boxes
   onCombineAllTaxesToggle(checked: boolean) {
+    this.propertyForm.markAsDirty();
     this.showCombineAllTaxesTextBox = checked;
     const control = this.propertyForm.get('combineAllTaxesName');
     if (checked) {
@@ -545,13 +557,13 @@ validateRollUpToOneToggles() {
       this.showCombineAllTaxesAndRevenueToPropertyTextBox = false;
       this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.disable({ emitEvent: false });
       }else {
-    // Toggle is OFF → hide textbox but keep value
     control?.disable({ emitEvent: false });
   }
     this.validateRollUpToOneToggles();
   }
 
   onCombineAllRevenueToPropertyToggle(checked: boolean) {
+    this.propertyForm.markAsDirty();
     this.showCombineAllRevenueToPropertyTextBox = checked;
     const control = this.propertyForm.get('combineAllRevenueToPropertyName');
     if (checked) {
@@ -564,13 +576,13 @@ validateRollUpToOneToggles() {
       this.showCombineAllTaxesAndRevenueToPropertyTextBox = false;
       this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.disable({ emitEvent: false });
     }else {
-    // Toggle is OFF → hide textbox but keep its value
-    control?.disable({ emitEvent: false });
+   control?.disable({ emitEvent: false });
   }
     this.validateRollUpToOneToggles();
   }
 
   onCombineAllTaxesAndRevenueToPropertyToggle(checked: boolean) {
+    this.propertyForm.markAsDirty();
     this.showCombineAllTaxesAndRevenueToPropertyTextBox = checked;
     const control = this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName');
     if (checked) {
@@ -690,6 +702,8 @@ async getPropertyReceiptConfig()
       this.propertyForm.controls["authcodeName"].setValue(authCode);
       this.propertyForm.markAsPristine();
     }
+    this.propertyForm.markAsPristine();
+    this.propertyForm.updateValueAndValidity({ emitEvent: false });
    this.validateRollUpToOneToggles();
   }
 }
