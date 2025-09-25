@@ -2895,7 +2895,8 @@
     "lbl_October": "October_fi",
     "lbl_November": "November_fi",
     "lbl_December": "December_fi",
-    "TaxOnTax": "Tax On Tax_fi"
+    "TaxOnTax": "Tax On Tax_fi",
+    "MissingUnitCost": "Missing Unit Cost_fi"
   },
   "setting": {
     "EnableCouponManagement": "Enable Coupon Management_fi",

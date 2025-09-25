@@ -2895,7 +2895,8 @@
     "lbl_October": "October_kr",
     "lbl_November": "November_kr",
     "lbl_December": "December_kr",
-    "TaxOnTax": "Tax On Tax_kr"
+    "TaxOnTax": "Tax On Tax_kr",
+    "MissingUnitCost": "Missing Unit Cost_kr"
   },
   "setting": {
     "EnableCouponManagement": "Enable Coupon Management_kr",
