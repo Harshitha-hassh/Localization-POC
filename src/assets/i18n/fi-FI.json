@@ -4159,7 +4159,8 @@
     "CombineAllTaxes": "Combine Taxes Only_fi",
     "CombineAllRevenueToProperty": "Combine Revenue to Property Only_fi",
     "CombineAllTaxesAndRevenueToProperty": "Combine Both Taxes and Revenue to Property_fi",
-    "TaxName": "Tax Name_fi"
+    "TaxName": "Tax Name_fi",
+    "MissingTaxName": "Missing Tax Name_fi"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_fi",

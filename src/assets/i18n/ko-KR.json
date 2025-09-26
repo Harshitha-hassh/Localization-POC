@@ -4159,7 +4159,8 @@
     "CombineAllTaxes": "Combine Taxes Only_kr",
     "CombineAllRevenueToProperty": "Combine Revenue to Property Only_kr",
     "CombineAllTaxesAndRevenueToProperty": "Combine Both Taxes and Revenue to Property_kr",
-    "TaxName": "Tax Name_kr"
+    "TaxName": "Tax Name_kr",
+    "MissingTaxName": "Missing Tax Name_kr"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_kr",

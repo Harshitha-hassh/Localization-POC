@@ -197,7 +197,10 @@
                              [attr.automationId]="'Txt_ReceiptConfiguration_combineAllTaxesName'"
                              [placeholder]="textCaptions.TaxName" 
                              formControlName="combineAllTaxesName" 
-                             [maxlength]="50" />
+                             [maxlength]="50" required />
+                             <mat-error *ngIf="propertyForm.controls['combineAllTaxesName'].hasError('required') && propertyForm.controls['combineAllTaxesName'].touched && !propertyForm.controls['combineAllTaxesName'].valid">
+                        {{textCaptions.MissingTaxName}}
+                      </mat-error>
                       </mat-form-field>
                   </div>
                 </div>
@@ -207,15 +210,19 @@
                   <app-ag-toggle [toggleInputs]="CombineAllRevenueToPropertyToggleInputs" (valueChange)="onCombineAllRevenueToPropertyToggle($event.checked)"></app-ag-toggle>
                    </div>
                   <!-- Tax Name text box for Combine All Revenue to Property -->
-                  <div class="ag_w--33" *ngIf="showCombineAllRevenueToPropertyTextBox">
-                    <mat-form-field [floatLabel]="floatLabel" class="w-100">
-                      <input matInput 
-                             [attr.automationId]="'Txt_ReceiptConfiguration_combineAllRevenueToPropertyName'"
-                             [placeholder]="textCaptions.TaxName" 
-                             formControlName="combineAllRevenueToPropertyName" 
-                             [maxlength]="50" />
-                    </mat-form-field>
-                  </div>
+<div class="ag_w--33" *ngIf="showCombineAllRevenueToPropertyTextBox">
+  <mat-form-field [floatLabel]="floatLabel" class="w-100">
+    <input matInput 
+           [attr.automationId]="'Txt_ReceiptConfiguration_combineAllRevenueToPropertyName'"
+           [placeholder]="textCaptions.TaxName"
+           formControlName="combineAllRevenueToPropertyName" 
+           [maxlength]="50"
+           required />
+    <mat-error *ngIf="propertyForm.controls['combineAllRevenueToPropertyName'].hasError('required') && propertyForm.controls['combineAllRevenueToPropertyName'].touched && !propertyForm.controls['combineAllRevenueToPropertyName'].valid">
+                        {{textCaptions.MissingTaxName}}
+                      </mat-error>
+  </mat-form-field>
+</div>
                 </div>
                 <div class="pad-top-10 ag_display--flex">
                   <div class="ag_w--33 ag_pr--8">
@@ -229,7 +236,10 @@
                              [attr.automationId]="'Txt_ReceiptConfiguration_combineAllTaxesAndRevenueToPropertyName'"
                              [placeholder]="textCaptions.TaxName" 
                              formControlName="combineAllTaxesAndRevenueToPropertyName" 
-                             [maxlength]="50" />
+                             [maxlength]="50" required />
+                             <mat-error *ngIf="propertyForm.controls['combineAllTaxesAndRevenueToPropertyName'].hasError('required') && propertyForm.controls['combineAllTaxesAndRevenueToPropertyName'].touched && !propertyForm.controls['combineAllTaxesAndRevenueToPropertyName'].valid">
+                        {{textCaptions.MissingTaxName}}
+                      </mat-error>
                     </mat-form-field>
                   </div>
                 </div>
