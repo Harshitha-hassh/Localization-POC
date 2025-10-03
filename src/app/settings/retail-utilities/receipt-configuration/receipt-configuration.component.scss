@@ -98,6 +98,9 @@
         .authcodeName.mat-form-field.mat-form-field-can-float.mat-form-field-should-float.mat-form-field{
             margin-top: 0px !important;
          }
+         .h-80{
+            height: 80px;
+         }
         .receiptNote{
             .mat-form-field-label{
                 transform: translateY(-1.5em) perspective(100px) translateZ(0.001px);
@@ -168,14 +171,14 @@
       display: flex;
       flex-direction: column;
       margin-bottom: 10px;
-      
-      .tax-radio-spacing {
-        margin-bottom: 12px;
-      }
     }
 
     // Prevent layout jumping when toggles appear/disappear
     .tax-grouping-container {
       min-height: 180px;
+    }
+    .ag_form--control-fixed-350px {
+      width: 350px;
+      padding-right: 20px;
     }
 }
