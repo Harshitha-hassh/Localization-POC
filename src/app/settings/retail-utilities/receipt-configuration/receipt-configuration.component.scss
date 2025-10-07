@@ -1,184 +1,187 @@
 @import '../../../../assets/sass/abstracts/variables';
 .receiptConfig
 {
-    overflow: hidden;
-    .mainData{
-        height:100%;
-        border-bottom: 1px solid $linkWater;
-        overflow: auto;
+  overflow: hidden;
+  .mainData{
+    height:100%;
+    border-bottom: 1px solid $linkWater;
+    overflow: auto;
 
-        .leftSection{
-            width:calc(100% - 300px);
-            padding-left:30px;
-            height:auto;
-            min-height: 100%;
-            border-right:1px solid $linkWater;
+    .leftSection{
+      width:calc(100% - 300px);
+      padding-left:30px;
+      height:auto;
+      min-height: 100%;
+      border-right:1px solid $linkWater;
 
-            .clear-both{
-                clear: both;
-            }
+      .clear-both{
+        clear: both;
+      }
 
-            label{
-                font-size:13px;
-                margin-bottom: 0.7rem;
-            }
+      label{
+        font-size:13px;
+        margin-bottom: 0.7rem;
+      }
 
-            .mat-radio-label{
-                margin-bottom: 0.7rem;
-            }
+      .mat-radio-label{
+        margin-bottom: 0.7rem;
+      }
 
-            .printData{
-                width: 650px;
-                min-width:500px;
-                min-height: 235px;
-                height: 300px;
-                border: 1px solid $linkWater;
-                margin-top: 22px;
+      .printData{
+        width: 650px;
+        min-width:500px;
+        min-height: 235px;
+        height: 300px;
+        border: 1px solid $linkWater;
+        margin-top: 22px;
 
-                .header{
-                    height:50px;
-                   // padding: 10px 0px 0px 20px;
-                    box-sizing: border-box;
-                    background-color: $grayLight;
-                }
-
-                .toggleSection{
-                    height: calc(100% - 55px);
-                    overflow: auto;
-                    .rightToggle,.leftToggle{
-                        width:50%;
-                        min-height:82px;
-                        padding: 10px 0px !important;
-                        box-sizing: border-box;
-                        .icon-info-icon{
-                            color: $color-blac-opac8;
-                        }
-                    }
-
-                    span{
-                        font-size:13px;
-                    }
-
-                    // .leftToggle:nth-child(odd){
-                    //     border-right: 1px solid $linkWater;
-                    // }
-                    .borderClass{
-                        border-right: 1px solid $linkWater;
-                    }
-                    .radiovalue{
-                        width:50%;
-                        .mat-radio-label-content{
-                                overflow: hidden;
-                                padding-right: 5px;
-                                text-overflow: ellipsis;
-                        }
-                    }
-
-
-                }
-            }
+        .header{
+          height:50px;
+          // padding: 10px 0px 0px 20px;
+          box-sizing: border-box;
+          background-color: $grayLight;
         }
 
-        .rightSection{
-            width:300px;
+        .toggleSection{
+          height: calc(100% - 55px);
+          overflow: auto;
+          .rightToggle,.leftToggle{
+            width:50%;
+            min-height:82px;
+            padding: 10px 0px !important;
+            box-sizing: border-box;
+            .icon-info-icon{
+              color: $color-blac-opac8;
+            }
+          }
 
-            // .textWidth
-            // {
-            //     width:80%;
-            // }
-        }
-    }
-    .tab-height{
-        height: calc(100% - 64px);
-        .authcodeName{
-            .mat-form-field-wrapper{
-                padding-bottom: 0px !important;
+          span{
+            font-size:13px;
+          }
+
+          // .leftToggle:nth-child(odd){
+          //     border-right: 1px solid $linkWater;
+          // }
+          .borderClass{
+            border-right: 1px solid $linkWater;
+          }
+          .radiovalue{
+            width:50%;
+            .mat-radio-label-content{
+              overflow: hidden;
+              padding-right: 5px;
+              text-overflow: ellipsis;
             }
+          }
+
+
         }
-        .authcodeName.mat-form-field.mat-form-field-can-float.mat-form-field-should-float.mat-form-field{
-            margin-top: 0px !important;
-         }
-         .h-80{
-            height: 80px;
-         }
-        .receiptNote{
-            .mat-form-field-label{
-                transform: translateY(-1.5em) perspective(100px) translateZ(0.001px);
-                font-size: 14px !important;
-                color: rgba(0, 0, 0, 0.8705882353)
-            }
-        }
+      }
     }
-    .bottomSection{
-        height:64px;
-        padding: 12px 0px;
+
+    .rightSection{
+      width:300px;
+
+      // .textWidth
+      // {
+      //     width:80%;
+      // }
     }
-    .ml-30px{
-        margin-left:30px;
+  }
+  .tab-height{
+    height: calc(100% - 64px);
+    .authcodeName{
+      .mat-form-field-wrapper{
+        padding-bottom: 0px !important;
+      }
     }
-    .tax-radio-spacing {
+    .authcodeName.mat-form-field.mat-form-field-can-float.mat-form-field-should-float.mat-form-field{
+      margin-top: 0px !important;
+    }
+    .h-80{
+      height: 80px;
+    }
+    .receiptNote{
+      .mat-form-field-label{
+        transform: translateY(-1.5em) perspective(100px) translateZ(0.001px);
+        font-size: 14px !important;
+        color: rgba(0, 0, 0, 0.8705882353)
+      }
+    }
+  }
+  .bottomSection{
+    height:64px;
+    padding: 12px 0px;
+  }
+  .ml-30px{
+    margin-left:30px;
+  }
+  .tax-radio-spacing {
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .rollup-toggle-section {
+    padding: 15px;
+    border: 1px solid $linkWater;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+    display: block;
+    min-width: 41rem;
+
+    .pad-top-10 {
+      margin-bottom: 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .golf-form--label {
+      margin-bottom: 5px;
       display: block;
+      font-weight: 500;
+    }
+
+    app-ag-toggle {
+      display: block;
+      margin-top: 5px;
+      margin-bottom: 8px;
+    }
+
+    // Tax name text box styling
+    .mt-2 {
+      margin-top: 8px !important;
+
+      mat-form-field {
+        width: 100%;
+
+        .mat-form-field-wrapper {
+          padding-bottom: 8px;
+        }
+
+        input {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .vertical-radio-group {
+    display: flex;
+    gap: 24px;
+    .tax-radio-spacing{
       margin-bottom: 12px;
     }
+  }
 
-    .rollup-toggle-section {
-      margin-top: 15px;
-      padding: 15px;
-      border: 1px solid $linkWater;
-      border-radius: 4px;
-      background-color: #f9f9f9;
-      transition: all 0.3s ease-in-out;
-      
-      .pad-top-10 {
-        margin-bottom: 12px;
-        
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-      
-      .golf-form--label {
-        margin-bottom: 5px;
-        display: block;
-        font-weight: 500;
-      }
-      
-      app-ag-toggle {
-        display: block;
-        margin-top: 5px;
-        margin-bottom: 8px;
-      }
-
-      // Tax name text box styling
-      .mt-2 {
-        margin-top: 8px !important;
-        
-        mat-form-field {
-          width: 100%;
-          
-          .mat-form-field-wrapper {
-            padding-bottom: 8px;
-          }
-          
-          input {
-            font-size: 14px;
-          }
-        }
-      }
-    }
-
-    .vertical-radio-group {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 10px;
-    }
-
-    // Prevent layout jumping when toggles appear/disappear
-    .tax-grouping-container {
-      min-height: 180px;
-    }
-    .ag_form--control-fixed-350px {
-      width: 350px;
-      padding-right: 20px;
-    }
+  // Prevent layout jumping when toggles appear/disappear
+  // .tax-grouping-container {
+  //   min-height: 180px;
+  // }
+  .ag_form--control-fixed-350px {
+    width: 350px;
+    padding-right: 20px;
+  }
 }
