@@ -2544,6 +2544,7 @@
     "InvalidStartDate": "Start Date cannot be greater than End Date_de",
     "InvalidTaxName": "Tax name exceed the character limit_de",
     "InvalidTaxOnTaxName": "Tax On Tax Name exceeds the character limit_de",
+    "DuplicateTaxOnTaxName": "Invalid Tax On Tax Name_de",
     "MissingCategoryGroup": "Missing Category Group_de",
     "MissingTaxName": "Missing Tax Name_de",
     "MissingTaxOnTaxName": "Missing Tax On Tax Name_de",
@@ -2899,6 +2900,7 @@
     "MissingUnitCost": "Missing Unit Cost_de"
   },
   "setting": {
+    "existing_tax": "Existing Tax_de",
     "EnableCouponManagement": "Enable Coupon Management_de",
     "lbl_type": "Type_de",
     "flatAmountPercentage": "Percentage(%) / FlatAmount_de",
@@ -2930,7 +2932,7 @@
     "taxRevenueToProperty": "Is Revenue To Property_de",
     "linkedTaxRevenueToProperty": "Is Revenue To Property_de",
     "taxOnTax": "Charge Tax On Tax_de",
-    "useExisting": "Use Existing Tax_de",
+    "useExisting": "Copy Existing Tax_de",
     "DuplicateTaxOnTaxError": "{selectedTaxConfigName} is already added as a Tax on Tax._de",
     "SC_GT_ValidationMsg": "Cannot enable {toggleLabel} when  ‘Charge Tax On Tax’ is enabled_de",
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled_de",
@@ -5473,5 +5475,6 @@
   "lbl_searchByDenominationName": "Search By Denomination Name_de",
   "Btn_add": "ADD_de",
   "grid_hdr_ListOrder": "List Order_de",
-  "Reopen_Iframe": "Re-open the Guest Profile Search_de"
+  "Reopen_Iframe": "Re-open the Guest Profile Search_de",
+  "lbl_searchBy": "Search By_de"
 }
