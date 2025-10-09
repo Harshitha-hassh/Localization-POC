@@ -192,10 +192,11 @@ export class ReceiptConfigurationComponent implements OnInit {
     }
     
     this.taxGroupingOptions = [
-      { id: TaxGroupingOption.RollUpToOne, value: this.textCaptions.RollUpToOne },
+      { id: TaxGroupingOption.ShowIndividually, value: this.textCaptions.ShowIndividually },
       { id: TaxGroupingOption.SumByTaxName, value: this.textCaptions.SumByTaxName },
       { id: TaxGroupingOption.SumWithParent, value: this.textCaptions.SumWithParent },
-      { id: TaxGroupingOption.ShowIndividually, value: this.textCaptions.ShowIndividually }
+      { id: TaxGroupingOption.RollUpToOne, value: this.textCaptions.RollUpToOne }
+      
     ]
     this.Outlet = await this.outletData.getOutlets();
     this.Outlet = this.Outlet.filter(x => x.isActive == true);

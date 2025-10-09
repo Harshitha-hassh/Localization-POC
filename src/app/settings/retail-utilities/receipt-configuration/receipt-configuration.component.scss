@@ -128,7 +128,8 @@
     background-color: #f9f9f9;
     transition: all 0.3s ease-in-out;
     display: block;
-    min-width: 41rem;
+    max-width: 100%;
+    min-width: 75%;
 
     .pad-top-10 {
       margin-bottom: 12px;
@@ -137,6 +138,9 @@
         margin-bottom: 0;
       }
     }
+     .ag_form-control{
+            padding-left: 12px !important;
+      }
 
     .golf-form--label {
       margin-bottom: 5px;
