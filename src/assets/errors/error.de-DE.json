@@ -284,6 +284,7 @@
   "191001": "This coupon is not applicable for items/services or does not meet spend threshold_de",
   "222111": "Cash drawer is open. Deletion is not allowed._de",
   "222112": "Cash drawer is open. Cannot Deactivate the cash drawer._de",
+  "222113": "Physical Inventory - <b><i>Enter Counts</i></b> has already been updated for the following item(s), Transfer is not allowed._de",
   "310001": "Duplicate Guest exists on the system_de",
   "310002": "Guest information is out of date. Please refresh and try again_de",
   "317010": "Cash Drawer is not Open_de",

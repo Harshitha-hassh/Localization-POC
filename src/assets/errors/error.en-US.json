@@ -408,6 +408,7 @@
     "1022": "Deposit returns cannot be voided",
     "10120": "This multipack has expired, cannot be activated. Please update the expiry date to activate.",
     "222111": "Cash drawer is open. Deletion is not allowed.",
-    "222112": "Cash drawer is open. Cannot Deactivate the cash drawer."
+    "222112": "Cash drawer is open. Cannot Deactivate the cash drawer.",
+    "222113": "Physical Inventory - <b><i>Enter Counts</i></b> has already been updated for the following item(s), Transfer is not allowed."
   }
   
