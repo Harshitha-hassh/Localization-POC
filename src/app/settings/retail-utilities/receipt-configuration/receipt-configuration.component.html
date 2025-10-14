@@ -224,6 +224,21 @@
               </div>
           </div>
           <div class="ag_display--flex">
+            <div class="pad-top-10 ag_pr--6 mb-1">
+              <label class="golf-form--label">{{textCaptions.lbl_displayPropertyLogoInReceiptHeader}}</label>
+              <app-ag-toggle [toggleInputs]="displayPropertyLogoInReceiptHeaderInput"
+                (valueChange)="displayPropertyLogoInReceiptHeaderToggleAction($event.checked)">
+              </app-ag-toggle>
+            </div>
+            <div class="pad-top-10 ag_pr--6 mb-2 pt-1" *ngIf="this.displayImageInReceiptHeader">
+              <label class="golf-form--label">{{textCaptions.lbl_imageUploadforReceiptHeader}}</label>
+              <ag-image-uploader [requiredWarningPopup]=true [emptyImgCaption]="textCaptions.UploadYourImage"
+                [imgData]="headerUrl" (fileDeleted)="headerImageFileDeleted()"
+                (fileUploaded)="headerImageFileUploaded($event)" (fileSizeExceeded)="fileSizeExceeded()">
+              </ag-image-uploader>
+            </div>
+          </div>
+          <div class="ag_display--flex">
             <div class="pad-top-10 pt-4 mr-4 mb-1">
               <label class=" golf-form--label">{{textCaptions.lbl_displayImageInReceiptFooter}}</label>
               <app-ag-toggle [toggleInputs]="displayImageInReceiptFooterInput"
@@ -238,21 +253,6 @@
                   (fileUploaded)="footerImageFileUploaded($event)" (fileSizeExceeded)="fileSizeExceeded()">
                 </ag-image-uploader>
               </div>
-            </div>
-          </div>
-          <div class="ag_display--flex">
-            <div class="pad-top-10 ag_pr--6 mb-1">
-              <label class="golf-form--label">{{textCaptions.lbl_displayPropertyLogoInReceiptHeader}}</label>
-              <app-ag-toggle [toggleInputs]="displayPropertyLogoInReceiptHeaderInput"
-                (valueChange)="displayPropertyLogoInReceiptHeaderToggleAction($event.checked)">
-              </app-ag-toggle>
-            </div>
-            <div class="pad-top-10 ag_pr--6 mb-2 pt-1" *ngIf="this.displayImageInReceiptHeader">
-              <label class="golf-form--label">{{textCaptions.lbl_imageUploadforReceiptHeader}}</label>
-              <ag-image-uploader [requiredWarningPopup]=true [emptyImgCaption]="textCaptions.UploadYourImage"
-                [imgData]="headerUrl" (fileDeleted)="headerImageFileDeleted()"
-                (fileUploaded)="headerImageFileUploaded($event)" (fileSizeExceeded)="fileSizeExceeded()">
-              </ag-image-uploader>
             </div>
           </div>
           <div class="pad-top-10 propImagePadding" *ngIf="this.displayImageInReceiptFooter">
