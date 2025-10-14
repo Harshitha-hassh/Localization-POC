@@ -224,13 +224,13 @@
               </div>
           </div>
           <div class="ag_display--flex">
-            <div class="pad-top-10 ag_pr--6 mb-1">
+            <div class="pad-top-10 pt-4 ag_pr--6 mb-1">
               <label class="golf-form--label">{{textCaptions.lbl_displayPropertyLogoInReceiptHeader}}</label>
               <app-ag-toggle [toggleInputs]="displayPropertyLogoInReceiptHeaderInput"
                 (valueChange)="displayPropertyLogoInReceiptHeaderToggleAction($event.checked)">
               </app-ag-toggle>
             </div>
-            <div class="pad-top-10 ag_pr--6 mb-2 pt-1" *ngIf="this.displayImageInReceiptHeader">
+            <div class="pad-top-10 pt-4 ag_pr--6 mb-2 pt-1" *ngIf="this.displayImageInReceiptHeader">
               <label class="golf-form--label">{{textCaptions.lbl_imageUploadforReceiptHeader}}</label>
               <ag-image-uploader [requiredWarningPopup]=true [emptyImgCaption]="textCaptions.UploadYourImage"
                 [imgData]="headerUrl" (fileDeleted)="headerImageFileDeleted()"
@@ -239,14 +239,14 @@
             </div>
           </div>
           <div class="ag_display--flex">
-            <div class="pad-top-10 pt-4 mr-4 mb-1">
+            <div class="pad-top-10 mr-4 mb-1">
               <label class=" golf-form--label">{{textCaptions.lbl_displayImageInReceiptFooter}}</label>
               <app-ag-toggle [toggleInputs]="displayImageInReceiptFooterInput"
                 (valueChange)="displayImageInReceiptFooterToggleAction($event.checked)">
               </app-ag-toggle>
             </div>
             <div class="pad-top-10 ag_w--33 ml-5 pt-1" *ngIf="this.displayImageInReceiptFooter">
-              <div class="mb-2 ag_display--inblock propImagePadding pt-4">
+              <div class="mb-2 ag_display--inblock propImagePadding">
                 <label class="golf-form--label">{{textCaptions.lbl_imageUploadforReceiptFooter}}</label>
                 <ag-image-uploader [requiredWarningPopup]=true [emptyImgCaption]="textCaptions.UploadYourImage"
                   [imgData]="footerUrl" (fileDeleted)="footerImageFileDeleted()"
