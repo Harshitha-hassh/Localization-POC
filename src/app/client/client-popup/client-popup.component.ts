@@ -23,6 +23,7 @@ import { PolicyType } from 'src/app/common/shared/shared.modal';
 export class ClientPopupComponent implements OnInit {
   
   @Output() showIframeGuestSearch = new EventEmitter();
+  @Output() popupClosed = new EventEmitter();
   captions:any;
   clientPopupForm:UntypedFormGroup;
   clientInfo:any;
@@ -195,6 +196,7 @@ export class ClientPopupComponent implements OnInit {
 
   onNoClick(){
     this.promptUserForUnsavedChanges();
+    this.popupClosed.emit();
   }
 
   showIframeGuestSearchFn(){

@@ -176,6 +176,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       state: '',
       city: '',
       country: '',
+      platformAddressUuid: '',
       postal_code: '',
       patronid: '',
       rank: '',
@@ -243,7 +244,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
 
-  createEmailItem(arr: number, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): UntypedFormGroup {
+  createEmailItem(arr: number, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any, platformContactUuid?: any): UntypedFormGroup {
 
     const emailLabel = this.defaultSettings.find(x => x.switch == 'DEFAULT_EMAIL_TYPE');
     if (emailLabel && emailLabel.value != "0" && (EmailLabel == 0 || EmailLabel == "")) {
@@ -257,15 +258,16 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       EmailLabel: [EmailLabel, this.emailRequired || EmailId ? [Validators.required, EmptyValueValidator] : ''],
       EmailId: [{ value: EmailId, disabled: !EmailLabel }, this.emailRequired ? [Validators.required, Validators.email, EmptyValueValidator] : ''],
       EmailPrimary: EmailIsPrimary,
-      EmailPrivate: EmailIsPrivate
+      EmailPrivate: EmailIsPrivate,
+      PlatformContactUuid: platformContactUuid ? platformContactUuid : ''
     });
   }
 
 
-  addEmailItem(i, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any): void {
+  addEmailItem(i, EmailLabel?: any, EmailId?: any, EmailIsPrivate?: any, EmailIsPrimary?: any, platformContactUuid?: any): void {
     this.currentIndexemail = i + 1;
     this.Email = this.FormGrp.get('Email') as UntypedFormArray;
-    this.Email.push(this.createEmailItem(i, EmailLabel, EmailId, EmailIsPrivate, EmailIsPrimary));
+    this.Email.push(this.createEmailItem(i, EmailLabel, EmailId, EmailIsPrivate, EmailIsPrimary, platformContactUuid));
     this.ChangePrimaryToggle('Email', 'EmailPrimary');
   }
 
@@ -282,7 +284,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
   createPhoneItem(arr: number, phoneNoLabel: any, countryCode: any, phoneNoDetails: any,
-    phoneIsPrivate: any, phoneIsPrimary: any, extension?: any): UntypedFormGroup {
+    phoneIsPrivate: any, phoneIsPrimary: any, extension?: any, platformContactUuid?: any): UntypedFormGroup {
 
     if (countryCode == '') {
       let _countryCode = this.defaultSettings.find(x => x.switch == 'DEFAULT_COUNTRY_CODE');
@@ -304,7 +306,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       PhoneNumber: [{ value: phoneNoDetails, disabled: !phoneNoLabel }, this.phoneRequired ? [Validators.required, EmptyValueValidator] : ''],
       PhonePrivate: phoneIsPrivate,
       PhonePrimary: phoneIsPrimary,
-      Extension: extension
+      Extension: extension,
+      PlatformContactUuid: platformContactUuid ? platformContactUuid : ''
     });
   }
 
@@ -321,9 +324,9 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
   addPhoneItem(i, phoneNoLabel: any, countryCode: any, phoneNoDetails: any,
-    phoneIsPrivate: any, phoneIsPrimary: any, extension: any = ''): void {
+    phoneIsPrivate: any, phoneIsPrimary: any, extension: any = '', platformContactUuid?: any): void {
     this.Phone = this.FormGrp.get('Phone') as UntypedFormArray;
-    this.Phone.push(this.createPhoneItem(i, phoneNoLabel, countryCode, phoneNoDetails, phoneIsPrivate, phoneIsPrimary, extension));
+    this.Phone.push(this.createPhoneItem(i, phoneNoLabel, countryCode, phoneNoDetails, phoneIsPrivate, phoneIsPrimary, extension, platformContactUuid));
     this.currentIndexPhone = i + 1;
     this.ChangePrimaryToggle('Phone', 'PhonePrimary');
   }
@@ -465,13 +468,13 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
               _countryCode = phonenum[0] && phonenum[0] !== "undefined" ? phonenum[0] : '';
             }
           }
-          this.addPhoneItem(i, element.contactTypeId, _countryCode, this.utils.appendFormat(element.number, this.localization.captions.common.PhoneFormat), element.isPrivate, element.isPrimary, _extension);
+          this.addPhoneItem(i, element.contactTypeId, _countryCode, this.utils.appendFormat(element.number, this.localization.captions.common.PhoneFormat), element.isPrivate, element.isPrimary, _extension, element.platformContactUuid);
         });
         this.Phone.removeAt(0);
       }
       if (this.clientInfoData.email && this.clientInfoData.email.length > 0) {
         this.clientInfoData.email.forEach((element, i) => {
-          this.addEmailItem(i, element.contactTypeId, element.emailId, element.isPrivate, element.isPrimary);
+          this.addEmailItem(i, element.contactTypeId, element.emailId, element.isPrivate, element.isPrimary, element.platformContactUuid);
         });
         this.Email.removeAt(0);
       }
@@ -881,6 +884,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.FormGrp.controls.state.setValue(clientInfo.addresses.state);
       this.FormGrp.controls.city.setValue(clientInfo.addresses.city);
       this.FormGrp.controls.country.setValue(clientInfo.addresses.country);
+      this.FormGrp.controls.platformAddressUuid.setValue(clientInfo.addresses.platformAddressUuid);
     }
 
     if (clientInfo.phoneNumbers && clientInfo.phoneNumbers.length > 0) {
@@ -904,14 +908,14 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
             _countryCode = phonenum[0];
           }
         }
-        this.addPhoneItem(i, element.contactTypeId, _countryCode, this.utils.appendFormat(element.number, this.localization.captions.common.PhoneFormat), element.isPrivate, element.isPrimary, _extension);
+        this.addPhoneItem(i, element.contactTypeId, _countryCode, this.utils.appendFormat(element.number, this.localization.captions.common.PhoneFormat), element.isPrivate, element.isPrimary, _extension, element.platformContactUuid);
       });
       this.Phone.removeAt(0);
     }
 
     if (clientInfo.emails && clientInfo.emails.length > 0) {
       clientInfo.emails.forEach((element, i) => {
-        this.addEmailItem(i, element.contactTypeId, element.emailId, element.isPrivate, element.isPrimary);
+        this.addEmailItem(i, element.contactTypeId, element.emailId, element.isPrivate, element.isPrimary, element.platformContactUuid);
       });
       this.Email.removeAt(0);
     }
@@ -1151,19 +1155,20 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         this.FormGrp.controls.state.setValue(extraParams[0].address.state);
         this.FormGrp.controls.city.setValue(extraParams[0].address.city);
         this.FormGrp.controls.country.setValue(extraParams[0].address.country);
+        this.FormGrp.controls.platformAddressUuid.setValue(extraParams[0].address.platformAddressUuid);
         this.Address.removeAt(0);
       }
       if (extraParams[0].phone && extraParams[0].phone.length > 0) {
         extraParams[0].phone.forEach((element, i) => {
           this.addPhoneItem(i, element.phoneTypeId, element.countryCode,
             this.utils.appendFormat(element.phoneNumber, this.localization.captions.common.PhoneFormat),
-            false, element.isPrimary, element.extension);
+            false, element.isPrimary, element.extension, element.platformContactUuid);
         });
         this.Phone.removeAt(0);
       }
       if (extraParams[0].email && extraParams[0].email.length > 0) {
         extraParams[0].email.forEach((element, i) => {
-          this.addEmailItem(i, element.emailTypeId, element.emailAddress, false, false);
+          this.addEmailItem(i, element.emailTypeId, element.emailAddress, false, false, element.platformContactUuid);
         });
         this.Email.removeAt(0);
       }

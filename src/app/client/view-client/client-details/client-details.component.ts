@@ -21,7 +21,7 @@ import { UserAccessDataService } from 'src/app/common/dataservices/authenticatio
 import { BreakPoint } from 'src/app/shared/models/breakpoint-models';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { PropertySettingDataService } from 'src/app/retail/sytem-config/property-setting.data.service';
-
+import { IFrameInputs } from 'src/app/common/iframe-guest-search/iframe-guest-search.model';
 
 @Component({
     selector: 'app-client-details',
@@ -126,6 +126,8 @@ export class ClientDetailsComponent implements OnInit {
     clientNameInfo: any = {};
     dialogRef: MatDialogRef<any>;
     isReopen: boolean = false;
+    iframeInputs: IFrameInputs = new IFrameInputs();
+    platformGuestId: string = '';
 
     constructor(private dialog: MatDialog, private fb: UntypedFormBuilder,
         private localization: RetailStandaloneLocalization, public http: HttpServiceCall, private utils: RetailUtilities, public _imageService: RetailImageService,
@@ -413,6 +415,8 @@ export class ClientDetailsComponent implements OnInit {
             panelClass: 'small-popup'
         });
         dialogRef.afterClosed().subscribe(result => {
+            this.platformGuestId = '';
+            this.dialogRef = null;
             if (this.clientService.selectedIndex == 1) {
                 this.RecentClientInformation(this.searchText, this.selectedClientSearchType);
             } else {
@@ -462,6 +466,8 @@ export class ClientDetailsComponent implements OnInit {
             }
             this.isAddAppointment = false;
             this.singleUserView = false;
+            this.platformGuestId = '';
+            this.dialogRef = null;
             if (this.clientService.selectedIndex == 1) {
                 this.RecentClientInformation(this.searchText, this.selectedClientSearchType);
             } else {
@@ -470,6 +476,10 @@ export class ClientDetailsComponent implements OnInit {
         })
         dialogRef.componentInstance.showIframeGuestSearch.subscribe((params: any) => {
             this.platformSearchData(true);
+        });
+        dialogRef.componentInstance.popupClosed.subscribe((params: any) => {
+            this.platformGuestId = '';
+            this.dialogRef = null;
         });
     }
 
@@ -1120,19 +1130,31 @@ export class ClientDetailsComponent implements OnInit {
         }
     }
 
-    private async proceedWithPlatformGuest(platformGuestId: any) {
+    private async proceedWithPlatformGuest(platformGuestId: any) {        
         if(platformGuestId) {
+            this.platformGuestId = platformGuestId;
             this.getPlatformGuestData(platformGuestId);
         }
     }
 
-    async setPlatformSerachClick(event: any) {
+    async setPlatformSearchClick(event: any) {
       this.showIframeGuestSearch = event;
     }
     
     platformSearchData(isReopen: boolean = false) {
         if (this.isPlatformGuestSearch && this.isEnableCGPSIframeGuestSearch) {
             this.isReopen = isReopen;
+            if(this.platformGuestId) {
+                this.iframeInputs = {
+                    profileUuid: this.platformGuestId,
+                    disableSearch: true
+                }
+            } else {
+                this.iframeInputs = {
+                    profileUuid: '',
+                    disableSearch: false
+                }
+            }
             this.formattedData = [];
             this.sampleData = [];
             this.showIframeGuestSearch = true;

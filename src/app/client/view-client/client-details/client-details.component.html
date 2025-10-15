@@ -83,7 +83,7 @@
   </div>
   <div *ngIf="isPlatformGuestSearch && isEnableCGPSIframeGuestSearch && showIframeGuestSearch">
     <app-iframe-guest-search [ngClass]="{ 'reopen-class': isReopen }" [showIframeGuestSearch]="showIframeGuestSearch"
-        (iframeCgpGuestPlatformUuidEmitter)="platformGuestResponse($event)" (iframeCgpCloseEmitter)="setPlatformSerachClick($event)">
+        (iframeCgpGuestPlatformUuidEmitter)="platformGuestResponse($event)" [inputs]="iframeInputs" (iframeCgpCloseEmitter)="setPlatformSearchClick($event)">
     </app-iframe-guest-search>
   </div>
 </div>

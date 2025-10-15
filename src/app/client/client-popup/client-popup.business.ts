@@ -111,7 +111,8 @@ export class CreateClientBusiness {
           number: _Number,
           extension: element.Extension ? element.Extension.replace('+', '') : '',
           isPrivate: element.PhonePrivate ? element.PhonePrivate : false,
-          isPrimary: element.PhonePrimary ? element.PhonePrimary : false
+          isPrimary: element.PhonePrimary ? element.PhonePrimary : false,
+          platformContactUuid: element.PlatformContactUuid ? element.PlatformContactUuid : ''
         };
         clientPhoneObj.push(phoneObj);
       }
@@ -130,7 +131,8 @@ export class CreateClientBusiness {
           contactTypeId: (element.EmailLabel) ? (element.EmailLabel) : 0,
           emailId: element.EmailId,
           isPrivate: element.EmailPrivate ? element.EmailPrivate : false,
-          isPrimary: element.EmailPrimary ? element.EmailPrimary : false
+          isPrimary: element.EmailPrimary ? element.EmailPrimary : false,
+          platformContactUuid: element.PlatformContactUuid ? element.PlatformContactUuid : ''
         };
         emailObjArr.push(emailObj);
       }
@@ -172,7 +174,8 @@ export class CreateClientBusiness {
       country: this.personalDetailsControls.country ? this.personalDetailsControls.country : '',
       zip: this.personalDetailsControls.postal_code ? this.personalDetailsControls.postal_code : '',
       zipCode: this.personalDetailsControls.postal_code ? this.personalDetailsControls.postal_code : '',
-      isPrivate: isPrivate
+      isPrivate: isPrivate,
+      platformAddressUuid: this.personalDetailsControls.platformAddressUuid ? this.personalDetailsControls.platformAddressUuid : '',
     }
     return addrObj;
   }

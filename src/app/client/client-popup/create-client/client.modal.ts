@@ -31,6 +31,7 @@ export interface ClientInfo {
     extension ?: string;
     isPrivate: boolean;
     isPrimary: boolean;
+    platformContactUuid: string;
   }
 
   export interface Email {
@@ -40,6 +41,7 @@ export interface ClientInfo {
     emailId: string;
     isPrivate: boolean;
     isPrimary: boolean;
+    platformContactUuid: string;
   }
 
   export interface Address {
@@ -57,6 +59,7 @@ export interface ClientInfo {
     zipCode: string;
     isPrivate: boolean;
     county?: string;
+    platformAddressUuid: string;
   }
 
   
