@@ -2897,7 +2897,8 @@
     "lbl_November": "November_kr",
     "lbl_December": "December_kr",
     "TaxOnTax": "Tax On Tax_kr",
-    "MissingUnitCost": "Missing Unit Cost_kr"
+    "MissingUnitCost": "Missing Unit Cost_kr",
+    "InvalidBarcode": "Missing Barcode_kr"
   },
   "setting": {
     "existing_tax": "Existing Tax_kr",

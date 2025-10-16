@@ -2897,7 +2897,8 @@
     "lbl_November": "November_fr",
     "lbl_December": "December_fr",
     "TaxOnTax": "Tax On Tax_fr",
-    "MissingUnitCost": "Missing Unit Cost_fr"
+    "MissingUnitCost": "Missing Unit Cost_fr",
+    "InvalidBarcode": "Missing Barcode_fr"
   },
   "setting": {
     "existing_tax": "Existing Tax_fr",

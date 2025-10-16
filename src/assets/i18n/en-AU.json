@@ -2897,7 +2897,8 @@
     "lbl_November": "November",
     "lbl_December": "December",
     "TaxOnTax": "Tax On Tax",
-    "MissingUnitCost": "Missing Unit Cost"
+    "MissingUnitCost": "Missing Unit Cost",
+    "InvalidBarcode": "Missing Barcode"
   },
   "setting": {
     "existing_tax": "Existing Tax",
