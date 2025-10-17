@@ -81,6 +81,7 @@
     "ngx-webcam": "^0.4.1",
     "popper.js": "^1.14.7",
     "pubsub-ts": "^0.2.0",
+    "recheck": "^4.5.0",
     "rxjs": "^6.6.3",
     "save": "^2.5.0",
     "timers": "^0.1.1",
