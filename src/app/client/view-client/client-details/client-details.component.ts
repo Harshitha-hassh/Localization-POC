@@ -1144,17 +1144,7 @@ export class ClientDetailsComponent implements OnInit {
     platformSearchData(isReopen: boolean = false) {
         if (this.isPlatformGuestSearch && this.isEnableCGPSIframeGuestSearch) {
             this.isReopen = isReopen;
-            if(this.platformGuestId) {
-                this.iframeInputs = {
-                    profileUuid: this.platformGuestId,
-                    disableSearch: true
-                }
-            } else {
-                this.iframeInputs = {
-                    profileUuid: '',
-                    disableSearch: false
-                }
-            }
+            this.iframeInputs.profileUuid = this.platformGuestId || '';
             this.formattedData = [];
             this.sampleData = [];
             this.showIframeGuestSearch = true;

@@ -113,6 +113,32 @@
                     <textarea [attr.automationId]="'Ta_additionalinformation_comments'" class="textarea-style" [maxlength]="250" matInput formControlName="comments"
                         [placeholder]="captions.GeneralComments"></textarea>
                 </mat-form-field>
+                <div class="pt-3">
+                    <mat-form-field [floatLabel]="floatLabel" class="width_180px dobHeight date-picker-width" appearance="legacy">
+                        <mat-label>{{captions.AnniversaryDate}}</mat-label>
+                        <input [attr.automationId]="'Txt_AdditionalInformation_anniversaryDate'" [max]="maxDate" matInput dateRestricter [matDatepicker]="picker" [placeholder]="placeHolderFormat" class=""
+                        formControlName="anniversaryDate" name="date">
+                        <mat-datepicker #picker></mat-datepicker>
+                        <i  aria-hidden="true" [attr.automationId]="'Icn_AdditionalInformation_anniversaryDatePicker'" matSuffix class="icon-calendar cursor fs-xlarge position-relative d-inline-block customCalendar"
+                        (click)="picker.open()"></i>
+                        <mat-error *ngIf="FormGrp.controls['anniversaryDate'].hasError('matDatepickerParse')">{{captions.dateFormat}}
+                        </mat-error>
+                        <mat-error
+                        *ngIf="FormGrp.controls['anniversaryDate'].hasError('required') && !FormGrp.controls['anniversaryDate'].hasError('matDatepickerParse')">
+                        {{captionsCommon.Missing}} {{captions.AnniversaryDate}}</mat-error>
+                        <mat-error *ngIf="FormGrp.controls['anniversaryDate'].hasError('matDatepickerMin')">
+                        {{captions.err_minimumAnniversaryDate}}</mat-error>
+                        <mat-error *ngIf="FormGrp.controls['anniversaryDate'].hasError('matDatepickerMax')">
+                        {{captions.err_maximumAnniversaryDate}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="pt-3">
+                    <mat-form-field [floatLabel]="floatLabel" class=" mt-2 w250 pb0">
+                        <mat-select formControlName="preferredLanguage" placeholder="{{captions.PreferredLanguage}}" [attr.automationId]="'Dd_AdditionalInfo_language'">
+                        <mat-option *ngFor="let language of languages" [value]="language.id">{{language.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
                 <div class="gdpr-wrapper pt-3"   *ngIf="IsGDPREnabled">
                     <div class="ag_display--flex wrapper">
                         <div [attr.automationId]="'Lbl_additionalinformation_guestPolicyDialog1'" (click)="openGuestPolicyDialog(1);" class="divider" >

@@ -16,6 +16,7 @@ import { GuestPolicyWrapperComponent } from './guest-policy-wrapper/guest-policy
 import { GuestPolicyDetail, PolicyCategoryType, PolicyType } from 'src/app/common/shared/shared.modal';
 import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
 import { RetailRoutes } from 'src/app/retail/retail-route';
+import * as GlobalConst from 'src/app/common/shared/shared/globalsContant';
 
 @Component({
   selector: 'app-additional-information',
@@ -57,6 +58,9 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   vipTypes: any;
   guestTypes: any;
   isCopyClient = false;
+  languages: any[] = [];
+  maxDate: any;
+  placeHolderFormat: any;
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
   @Input('inputData')
@@ -82,6 +86,8 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     ) {
     this.captions = this.localization.captions.bookAppointment;
     this.floatLabel = this.localization.setFloatLabel;
+    this.maxDate = this.PropertyInfo.CurrentDate;
+    this.placeHolderFormat = this.localization.inputDateFormat;
 
     this.FormGrp = this.Form.group({
       // pricetype: 0,
@@ -109,7 +115,9 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       isPurged: false,
       platformCommentUuid: '00000000-0000-0000-0000-000000000000',
       platformRevisionUuid: '00000000-0000-0000-0000-000000000000',
-      commentId : 0
+      commentId : 0,
+      anniversaryDate : '',
+      preferredLanguage: 0
     });
   }
 
@@ -122,6 +130,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     }
     this.getAllVipTypes();
     this.getAllGuestTypes();
+    this.GetServiceCall('GetAllLanguages');
     this.FormGrp.get('vip')?.valueChanges.subscribe((selectedVip: string) => {
       const selectedVipType = this.vipTypes.find((type) => type.code === selectedVip);
       if (selectedVipType) {
@@ -153,6 +162,10 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     } else{
       this.FormGrp.controls.comments.setValue(clientInfo.client.comments && clientInfo.client.comments !=null ? clientInfo.client.comments : '');
     }
+    this.FormGrp.controls.anniversaryDate.setValue(clientInfo.client.anniversaryDate 
+        ? this.utils.getDate(clientInfo.client.anniversaryDate) : ''
+    );
+    this.FormGrp.controls.preferredLanguage.setValue(Number(clientInfo.client.preferredLanguage));
     this.cardInfo = this.isCopyClient ? [] : clientInfo.client.clientCreditCardInfo && clientInfo.client.clientCreditCardInfo != null ? clientInfo.client.clientCreditCardInfo : [];
     if (this.cardInfo && this.cardInfo.length > 0) {
       const activeCard = this.cardInfo.filter(x => x.isActive);
@@ -290,6 +303,12 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       //this.clientConfiguration = <any>result.result;
       //this.fetchCustomFieldInfo();
     }
+    if (callDesc == 'GetAllLanguages') {
+      if (result.result) {
+        let data = <any>result.result;
+        this.languages = data.map(x => { return { id: x.id, name: x.languageName, code: x.languageCode } });
+      }
+    }
   }
 
   errorCallback<T>(): void {
@@ -370,4 +389,17 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  GetServiceCall(Route, Uri?) {
+      this.http.CallApiWithCallback<any>({
+        host: GlobalConst.Host.authentication,
+        success: this.successCallback.bind(this),
+        error: this.errorCallback.bind(this),
+        callDesc: Route,
+        uriParams: Uri,
+        method: HttpMethod.Get,
+        showError: true,
+        extraParams: []
+      });
+    }
 }

@@ -1022,7 +1022,11 @@
     "Search": "SEARCH_da",
     "cReset": "RESET_da",
     "platformGuestSearch": "Extended Profile Search_da",
-    "lbl_platformGuestSearch": "Platform Guest Search_da"
+    "lbl_platformGuestSearch": "Platform Guest Search_da",
+    "AnniversaryDate": "Wedding Anniversary Date_da",
+    "err_minimumAnniversaryDate": "Invalid Minimum Anniversary Date_da",
+    "err_maximumAnniversaryDate": "Invalid Maximum Anniversary Date_da",
+    "PreferredLanguage": "Preferred Language_da"
   },
   "shop": {
     "lbl_fetchCoupon": "Fetching coupon details..._da",

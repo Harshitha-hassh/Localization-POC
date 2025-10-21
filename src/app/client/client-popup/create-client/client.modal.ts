@@ -90,6 +90,8 @@ export interface ClientInfo {
     platformGuestUuid?: string;
     platformRevUuid?: string;
     vipTypeId?:number;
+    anniversaryDate?: string;
+    preferredLanguage?: number;
   }
 
   export interface ClientComment {

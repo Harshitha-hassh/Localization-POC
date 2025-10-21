@@ -76,6 +76,8 @@ export class CreateClientBusiness {
       platformBussinessCardUuid: isClientUpdate ? details.personalDetailsFormGroup.platformBussinessCardUuid : '',
       platformGuestUuid: isClientUpdate ? details.personalDetailsFormGroup.platformGuestUuid : '',
       platformRevUuid: isClientUpdate ? details.personalDetailsFormGroup.platformRevUuid : '',
+      anniversaryDate: this.additionalDetailsFormGroup.anniversaryDate ? this.Utilities.GetFormattedDate(this.additionalDetailsFormGroup.anniversaryDate) : '',
+      preferredLanguage: this.additionalDetailsFormGroup.preferredLanguage ? this.additionalDetailsFormGroup.preferredLanguage : 0
     };
 
     let clientInfoObj: ClientInfo = {
