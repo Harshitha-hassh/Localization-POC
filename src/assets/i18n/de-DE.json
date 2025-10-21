@@ -5448,6 +5448,8 @@
   "tbl_hdr_correlationId": "Correlation ID_de",
   "tbl_hdr_errorCode": "Error Code_de",
   "tbl_hdr_paymentReference": "Payment Reference_de",
+  "tbl_hdr_status": "Status_de",
+  "tbl_hdr_errorMessage": "Error Message_de",
   "tbl_hdr_messageType": "Message Type_de",
   "lbl_last24Hours": "Last 24 Hours_de",
   "lbl_allRequests": "All Requests_de",
