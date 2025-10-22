@@ -75,6 +75,7 @@ export class ReceiptConfigurationComponent implements OnInit {
   showCombineAllTaxesTextBox: boolean = false;
   showCombineAllRevenueToPropertyTextBox: boolean = false;
   showCombineAllTaxesAndRevenueToPropertyTextBox: boolean = false; 
+  defaultTax: string = 'Tax';
 
   constructor(private Form: UntypedFormBuilder,
               private breakPoint: BreakPointAccess,
@@ -116,9 +117,9 @@ export class ReceiptConfigurationComponent implements OnInit {
       combineAllRevenueToProperty: [false],
       combineAllTaxesAndRevenueToProperty: [false],
       // Tax name text boxes
-      combineAllTaxesName: ['Tax', Validators.required],
-  combineAllRevenueToPropertyName: ['Tax', Validators.required],
-  combineAllTaxesAndRevenueToPropertyName: ['Tax', Validators.required],
+      combineAllTaxesName: [this.defaultTax, Validators.required],
+      combineAllRevenueToPropertyName: [this.defaultTax, Validators.required],
+      combineAllTaxesAndRevenueToPropertyName: [this.defaultTax, Validators.required],
     })
   }
 
@@ -490,7 +491,7 @@ validateRollUpToOneToggles() {
   this.isSaveDisabled = disableSave || !!taxFields;
 }
 
-onTaxGroupingOptionChange(value: TaxGroupingOption) {
+  onTaxGroupingOptionChange(value: TaxGroupingOption) {
     this.showRollUpToOneToggles = value === TaxGroupingOption.RollUpToOne;
     if (this.showRollUpToOneToggles) {
       this.propertyForm.patchValue({
@@ -498,43 +499,42 @@ onTaxGroupingOptionChange(value: TaxGroupingOption) {
         combineAllRevenueToProperty: this.showCombineAllRevenueToPropertyTextBox,
         combineAllTaxesAndRevenueToProperty: this.showCombineAllTaxesAndRevenueToPropertyTextBox
       });
-      if(this.showCombineAllTaxesTextBox){
-        if(this.showCombineAllRevenueToPropertyTextBox){
+      if (this.showCombineAllTaxesTextBox) {
+        if (this.showCombineAllRevenueToPropertyTextBox) {
           this.propertyForm.get('combineAllRevenueToPropertyName')?.enable({ emitEvent: false });
           this.propertyForm.get('combineAllRevenueToPropertyName')?.setValidators([Validators.required]);
           this.propertyForm.get('combineAllRevenueToPropertyName')?.updateValueAndValidity();
         }
         this.onCombineAllTaxesToggle(this.showCombineAllTaxesTextBox);
-      }else if(this.showCombineAllRevenueToPropertyTextBox){
+      } else if (this.showCombineAllRevenueToPropertyTextBox) {
         this.onCombineAllRevenueToPropertyToggle(this.showCombineAllRevenueToPropertyTextBox);
-      }else{
+      } else {
         this.CombineAllTaxesAndRevenueToPropertyToggleInputs.disabled = false;
         this.onCombineAllTaxesAndRevenueToPropertyToggle(true);
       }
+    } else {
+      // Reset toggle values when not "Roll Up to One"
+      this.propertyForm.patchValue({
+        combineAllTaxes: false,
+        combineAllRevenueToProperty: false,
+        combineAllTaxesAndRevenueToProperty: false,
+        combineAllTaxesName: this.propertyForm.get('combineAllTaxesName')?.value ? this.propertyForm.get('combineAllTaxesName')?.value : this.defaultTax,
+        combineAllRevenueToPropertyName: this.propertyForm.get('combineAllRevenueToPropertyName')?.value ? this.propertyForm.get('combineAllRevenueToPropertyName')?.value : this.defaultTax,
+        combineAllTaxesAndRevenueToPropertyName: this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.value ? this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.value : this.defaultTax
+      }, { emitEvent: false });
+      this.propertyForm.get('combineAllTaxes')!
+        .enable({ emitEvent: false });
+      this.propertyForm.get('combineAllRevenueToProperty')!
+        .enable({ emitEvent: false });
+      this.propertyForm.get('combineAllTaxesAndRevenueToProperty')!
+        .enable({ emitEvent: false });
     }
-    else {
-    // Reset toggle values when not "Roll Up to One"
-    this.propertyForm.patchValue({
-      combineAllTaxes: false,
-      combineAllRevenueToProperty: false,
-      combineAllTaxesAndRevenueToProperty: false,
-      combineAllTaxesName: this.propertyForm.get('combineAllTaxesName')?.value ? this.propertyForm.get('combineAllTaxesName')?.value:'Tax',
-      combineAllRevenueToPropertyName: this.propertyForm.get('combineAllRevenueToPropertyName')?.value ? this.propertyForm.get('combineAllRevenueToPropertyName')?.value:'Tax',
-      combineAllTaxesAndRevenueToPropertyName: this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.value ? this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.value:'Tax'
-    }, { emitEvent: false });
-     this.propertyForm.get('combineAllTaxes')!
-        .enable({ emitEvent: false });
-    this.propertyForm.get('combineAllRevenueToProperty')!
-        .enable({ emitEvent: false });
-    this.propertyForm.get('combineAllTaxesAndRevenueToProperty')!
-        .enable({ emitEvent: false });
-    }
-  this.CombineAllTaxesToggleInputs                   = { ...this.CombineAllTaxesToggleInputs };
-  this.CombineAllRevenueToPropertyToggleInputs       = { ...this.CombineAllRevenueToPropertyToggleInputs };
-  this.CombineAllTaxesAndRevenueToPropertyToggleInputs = { ...this.CombineAllTaxesAndRevenueToPropertyToggleInputs };
-
-  this.propertyForm.markAsDirty();
-  this.validateRollUpToOneToggles();
+    this.CombineAllTaxesToggleInputs = { ...this.CombineAllTaxesToggleInputs };
+    this.CombineAllRevenueToPropertyToggleInputs = { ...this.CombineAllRevenueToPropertyToggleInputs };
+    this.CombineAllTaxesAndRevenueToPropertyToggleInputs = { ...this.CombineAllTaxesAndRevenueToPropertyToggleInputs };
+    this.propertyForm.updateValueAndValidity();
+    this.propertyForm.markAsDirty();
+    this.validateRollUpToOneToggles();
   }
 
   // Toggle change handlers for showing/hiding text boxes
@@ -543,23 +543,26 @@ onTaxGroupingOptionChange(value: TaxGroupingOption) {
     this.showCombineAllTaxesTextBox = checked;
     const control = this.propertyForm.get('combineAllTaxesName');
     if (checked) {
-       control?.enable({ emitEvent: false });
-       control?.setValidators([Validators.required]);
+      control?.enable({ emitEvent: false });
+      control?.setValidators([Validators.required]);
       control?.updateValueAndValidity();
       // If Combine All Taxes is turned ON, turn OFF Combine All Taxes and Revenue to Property
       this.propertyForm.patchValue({
         combineAllTaxesAndRevenueToProperty: false,
-        });
+      });
+      this.propertyForm.updateValueAndValidity();
       // Update visibility state
       this.showCombineAllTaxesAndRevenueToPropertyTextBox = false;
       this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.clearValidators();
       this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.disable({ emitEvent: false });
       this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.updateValueAndValidity();
-      }else {
-        control?.clearValidators();
-    control?.disable({ emitEvent: false });
-     control?.updateValueAndValidity();
-  }
+      this.propertyForm.get('combineAllTaxes')?.enable();
+      this.propertyForm.get('combineAllTaxes')?.updateValueAndValidity({ emitEvent: false });
+    } else {
+      control?.clearValidators();
+      control?.disable({ emitEvent: false });
+      control?.updateValueAndValidity();
+    }
     this.validateRollUpToOneToggles();
   }
 
@@ -574,17 +577,20 @@ onTaxGroupingOptionChange(value: TaxGroupingOption) {
       // If Combine All Revenue to Property is turned ON, turn OFF Combine All Taxes and Revenue to Property
       this.propertyForm.patchValue({
         combineAllTaxesAndRevenueToProperty: false,
-        });
+      });
+      this.propertyForm?.updateValueAndValidity();
       // Update visibility state
       this.showCombineAllTaxesAndRevenueToPropertyTextBox = false;
       this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.clearValidators();
       this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.disable({ emitEvent: false });
       this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.updateValueAndValidity();
-    }else {
-   control?.disable({ emitEvent: false });
-   control?.clearValidators();
-   control?.updateValueAndValidity();
-  }
+      this.propertyForm.get('combineAllRevenueToProperty')?.enable();
+      this.propertyForm.get('combineAllRevenueToProperty')?.updateValueAndValidity({ emitEvent: false });
+    } else {
+      control?.disable({ emitEvent: false });
+      control?.clearValidators();
+      control?.updateValueAndValidity();
+    }
     this.validateRollUpToOneToggles();
   }
 
@@ -602,27 +608,34 @@ onTaxGroupingOptionChange(value: TaxGroupingOption) {
         combineAllRevenueToProperty: false,
         combineAllTaxesAndRevenueToProperty: true
       });
+      this.propertyForm.updateValueAndValidity({ emitEvent: false });
       // Update visibility states
       this.showCombineAllTaxesTextBox = false;
       this.showCombineAllRevenueToPropertyTextBox = false;
-       this.propertyForm.get('combineAllTaxesName')?.clearValidators();
+      this.propertyForm.get('combineAllTaxesName')?.clearValidators();
       this.propertyForm.get('combineAllTaxesName')?.disable({ emitEvent: false });
-       this.propertyForm.get('combineAllTaxesName')?.updateValueAndValidity();
-       this.propertyForm.get('combineAllRevenueToPropertyName')?.clearValidators();
-    this.propertyForm.get('combineAllRevenueToPropertyName')?.disable({ emitEvent: false });
-    this.propertyForm.get('combineAllRevenueToPropertyName')?.updateValueAndValidity();
-    }else{
-       control?.clearValidators();
+      this.propertyForm.get('combineAllTaxesName')?.updateValueAndValidity();
+      this.propertyForm.get('combineAllRevenueToPropertyName')?.clearValidators();
+      this.propertyForm.get('combineAllRevenueToPropertyName')?.disable({ emitEvent: false });
+      this.propertyForm.get('combineAllRevenueToPropertyName')?.updateValueAndValidity();
+      this.propertyForm.get('combineAllTaxes')?.disable();
+      this.propertyForm.get('combineAllTaxes')?.updateValueAndValidity({ emitEvent: false });
+      this.propertyForm.get('combineAllRevenueToProperty')?.disable();
+      this.propertyForm.get('combineAllRevenueToProperty')?.updateValueAndValidity({ emitEvent: false });
+      this.propertyForm.get('combineAllTaxesAndRevenueToProperty')?.enable({ emitEvent: false });
+      this.propertyForm.get('combineAllTaxesAndRevenueToProperty')?.updateValueAndValidity();
+    } else {
+      control?.clearValidators();
       control?.disable({ emitEvent: false });
       control?.updateValueAndValidity();
     }
-      this.CombineAllTaxesToggleInputs.disabled = this.propertyForm.get('combineAllTaxesAndRevenueToProperty').value;
-      this.CombineAllRevenueToPropertyToggleInputs.disabled = this.propertyForm.get('combineAllTaxesAndRevenueToProperty').value;
-      this.CombineAllTaxesToggleInputs = { ...this.CombineAllTaxesToggleInputs };
-      this.CombineAllRevenueToPropertyToggleInputs = { ...this.CombineAllRevenueToPropertyToggleInputs };
-      this.CombineAllTaxesAndRevenueToPropertyToggleInputs = { ...this.CombineAllTaxesAndRevenueToPropertyToggleInputs }
-      this.validateRollUpToOneToggles();
-    }
+    this.CombineAllTaxesToggleInputs.disabled = this.propertyForm.get('combineAllTaxesAndRevenueToProperty').value;
+    this.CombineAllRevenueToPropertyToggleInputs.disabled = this.propertyForm.get('combineAllTaxesAndRevenueToProperty').value;
+    this.CombineAllTaxesToggleInputs = { ...this.CombineAllTaxesToggleInputs };
+    this.CombineAllRevenueToPropertyToggleInputs = { ...this.CombineAllRevenueToPropertyToggleInputs };
+    this.CombineAllTaxesAndRevenueToPropertyToggleInputs = { ...this.CombineAllTaxesAndRevenueToPropertyToggleInputs }
+    this.validateRollUpToOneToggles();
+  }
 
   displayImageInReceiptFooterToggleAction(event) {
     if (event == false) {
@@ -640,122 +653,106 @@ onTaxGroupingOptionChange(value: TaxGroupingOption) {
       this.displayImageInReceiptHeader=true;
     }
   }
-async getPropertyReceiptConfig()
-{
-  this.PropertyReceiptInfo = await this.data.getPropertyReceiptConfig(); 
-  if(this.PropertyReceiptInfo && this.PropertyReceiptInfo.id)
-  {
-    let authCode = this.PropertyReceiptInfo.configValue.authCodeReceiptName != "" ? 
-     this.PropertyReceiptInfo.configValue.authCodeReceiptName : this.PropertyReceiptInfo.defaultValue.authCodeReceiptName;
-     let receiptFooterNote = this.PropertyReceiptInfo.configValue.receiptFooterNote != "" ? 
-     this.PropertyReceiptInfo.configValue.receiptFooterNote : "";
-     let displayAuthCode = this.PropertyReceiptInfo.configValue.displayAuthCode != false ?  
-     this.PropertyReceiptInfo.configValue.displayAuthCode : this.PropertyReceiptInfo.defaultValue.displayAuthCode;
-     let displayChangeDue= this.PropertyReceiptInfo.configValue.displayChangeDue != false ?  
-     this.PropertyReceiptInfo.configValue.displayChangeDue : this.PropertyReceiptInfo.defaultValue.displayChangeDue;
-     let printGiftReceipt = this.PropertyReceiptInfo.configValue.printGiftReceipt != null ? this.PropertyReceiptInfo.configValue.printGiftReceipt : false;
-     let printPendingSettlementReceipt = this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt != null ? this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt : false;
-     let groupByTaxName = this.PropertyReceiptInfo.configValue.groupByTaxName != null ? this.PropertyReceiptInfo.configValue.groupByTaxName : false;
-     let replaceMemberNumberWithAR = this.PropertyReceiptInfo.configValue.replaceMemberNumberWithAR != null ? this.PropertyReceiptInfo.configValue.replaceMemberNumberWithAR : false;
-     let taxGroupingOption = (this.PropertyReceiptInfo.configValue.taxGroupingOption != null && this.PropertyReceiptInfo.configValue.taxGroupingOption != 0)? this.PropertyReceiptInfo.configValue.taxGroupingOption: TaxGroupingOption.ShowIndividually;
-     let combineAllTaxes = this.PropertyReceiptInfo.configValue.combineAllTaxes != null ? this.PropertyReceiptInfo.configValue.combineAllTaxes : false;
-     let combineAllRevenueToProperty = this.PropertyReceiptInfo.configValue.combineAllRevenueToProperty != null ? this.PropertyReceiptInfo.configValue.combineAllRevenueToProperty : false;
-     let combineAllTaxesAndRevenueToProperty = this.PropertyReceiptInfo.configValue.combineAllTaxesAndRevenueToProperty != null ? this.PropertyReceiptInfo.configValue.combineAllTaxesAndRevenueToProperty : false;
-     this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
-     this.propertyForm.controls["receiptFooterNote"].setValue(receiptFooterNote);
-     this.propertyForm.controls["printGiftReceipt"].setValue(printGiftReceipt);
-     this.propertyForm.controls["printPendingSettlementReceipt"].setValue(printPendingSettlementReceipt);
-     this.propertyForm.controls["groupByTaxName"].setValue(groupByTaxName);
-     this.propertyForm.controls["replaceMemberNumberWithAR"].setValue(replaceMemberNumberWithAR);
-     this.propertyForm.controls["taxGroupingOption"].setValue(taxGroupingOption);
-     this.propertyForm.controls["combineAllTaxes"].setValue(combineAllTaxes);
-     this.propertyForm.controls["combineAllRevenueToProperty"].setValue(combineAllRevenueToProperty);
-     this.propertyForm.controls["combineAllTaxesAndRevenueToProperty"].setValue(combineAllTaxesAndRevenueToProperty);
-     
-     // Load tax name text boxes
-     let combineAllTaxesName = 'Tax';
-     let combineAllRevenueToPropertyName =  'Tax';
-     let combineAllTaxesAndRevenueToPropertyName = 'Tax';
-     if(combineAllTaxes){        
-      combineAllTaxesName = this.PropertyReceiptInfo.configValue.combineAllTaxesName || 'Tax';        
-     }
-     if(combineAllRevenueToProperty){
-      combineAllRevenueToPropertyName = this.PropertyReceiptInfo.configValue.combineAllRevenueToPropertyName || 'Tax';
-     }
-     if(combineAllTaxesAndRevenueToProperty){
-      combineAllTaxesAndRevenueToPropertyName = this.PropertyReceiptInfo.configValue.combineAllTaxesAndRevenueToPropertyName || 'Tax';
-     }
-     this.propertyForm.controls["combineAllTaxesName"].setValue(combineAllTaxesName);
-     this.propertyForm.controls["combineAllRevenueToPropertyName"].setValue(combineAllRevenueToPropertyName);
-     this.propertyForm.controls["combineAllTaxesAndRevenueToPropertyName"].setValue(combineAllTaxesAndRevenueToPropertyName);
-     
-     // Update text box visibility based on loaded toggle values
-     this.showCombineAllTaxesTextBox = combineAllTaxes;
-     this.showCombineAllRevenueToPropertyTextBox = combineAllRevenueToProperty;
-     this.showCombineAllTaxesAndRevenueToPropertyTextBox = combineAllTaxesAndRevenueToProperty;
-     
-     // Update toggle visibility based on loaded value
-     this.showRollUpToOneToggles = taxGroupingOption === TaxGroupingOption.RollUpToOne;
-     let displayImageInReceiptHeader = this.PropertyReceiptInfo.configValue.displayImageInReceiptHeader != null ? this.PropertyReceiptInfo.configValue.displayImageInReceiptHeader : this.PropertyReceiptInfo.defaultValue.displayImageInReceiptHeader;
+  async getPropertyReceiptConfig() {
+    this.PropertyReceiptInfo = await this.data.getPropertyReceiptConfig();
+    if (this.PropertyReceiptInfo && this.PropertyReceiptInfo.id) {
+      let authCode = this.PropertyReceiptInfo.configValue.authCodeReceiptName != "" ?
+        this.PropertyReceiptInfo.configValue.authCodeReceiptName : this.PropertyReceiptInfo.defaultValue.authCodeReceiptName;
+      let receiptFooterNote = this.PropertyReceiptInfo.configValue.receiptFooterNote != "" ?
+        this.PropertyReceiptInfo.configValue.receiptFooterNote : "";
+      let displayAuthCode = this.PropertyReceiptInfo.configValue.displayAuthCode != false ?
+        this.PropertyReceiptInfo.configValue.displayAuthCode : this.PropertyReceiptInfo.defaultValue.displayAuthCode;
+      let displayChangeDue = this.PropertyReceiptInfo.configValue.displayChangeDue != false ?
+        this.PropertyReceiptInfo.configValue.displayChangeDue : this.PropertyReceiptInfo.defaultValue.displayChangeDue;
+      let printGiftReceipt = this.PropertyReceiptInfo.configValue.printGiftReceipt != null ? this.PropertyReceiptInfo.configValue.printGiftReceipt : false;
+      let printPendingSettlementReceipt = this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt != null ? this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt : false;
+      let groupByTaxName = this.PropertyReceiptInfo.configValue.groupByTaxName != null ? this.PropertyReceiptInfo.configValue.groupByTaxName : false;
+      let replaceMemberNumberWithAR = this.PropertyReceiptInfo.configValue.replaceMemberNumberWithAR != null ? this.PropertyReceiptInfo.configValue.replaceMemberNumberWithAR : false;
+      let taxGroupingOption = (this.PropertyReceiptInfo.configValue.taxGroupingOption != null && this.PropertyReceiptInfo.configValue.taxGroupingOption != 0) ? this.PropertyReceiptInfo.configValue.taxGroupingOption : TaxGroupingOption.ShowIndividually;
+      let combineAllTaxes = this.PropertyReceiptInfo.configValue.combineAllTaxes != null ? this.PropertyReceiptInfo.configValue.combineAllTaxes : false;
+      let combineAllRevenueToProperty = this.PropertyReceiptInfo.configValue.combineAllRevenueToProperty != null ? this.PropertyReceiptInfo.configValue.combineAllRevenueToProperty : false;
+      let combineAllTaxesAndRevenueToProperty = this.PropertyReceiptInfo.configValue.combineAllTaxesAndRevenueToProperty != null ? this.PropertyReceiptInfo.configValue.combineAllTaxesAndRevenueToProperty : false;
+      this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
+      this.propertyForm.controls["receiptFooterNote"].setValue(receiptFooterNote);
+      this.propertyForm.controls["printGiftReceipt"].setValue(printGiftReceipt);
+      this.propertyForm.controls["printPendingSettlementReceipt"].setValue(printPendingSettlementReceipt);
+      this.propertyForm.controls["groupByTaxName"].setValue(groupByTaxName);
+      this.propertyForm.controls["replaceMemberNumberWithAR"].setValue(replaceMemberNumberWithAR);
+      this.propertyForm.controls["taxGroupingOption"].setValue(taxGroupingOption);
+      this.propertyForm.controls["combineAllTaxes"].setValue(combineAllTaxes);
+      this.propertyForm.controls["combineAllRevenueToProperty"].setValue(combineAllRevenueToProperty);
+      this.propertyForm.controls["combineAllTaxesAndRevenueToProperty"].setValue(combineAllTaxesAndRevenueToProperty);
+
+      // Load tax name text boxes
+      let combineAllTaxesName = this.defaultTax;
+      let combineAllRevenueToPropertyName = this.defaultTax;
+      let combineAllTaxesAndRevenueToPropertyName = this.defaultTax;
+      if (combineAllTaxes) {
+        combineAllTaxesName = this.PropertyReceiptInfo.configValue.combineAllTaxesName || this.defaultTax;
+        this.onCombineAllTaxesToggle(true);
+        this.propertyForm.get('combineAllRevenueToProperty')!.enable({ emitEvent: false });
+      }else{
+        this.propertyForm.get('combineAllTaxesName')?.disable({ emitEvent: false });
+      }
+      if (combineAllRevenueToProperty) {
+        combineAllRevenueToPropertyName = this.PropertyReceiptInfo.configValue.combineAllRevenueToPropertyName || this.defaultTax;
+        this.onCombineAllRevenueToPropertyToggle(true);
+        this.propertyForm.get('combineAllTaxes')!.enable({ emitEvent: false });
+      }else{
+        this.propertyForm.get('combineAllRevenueToPropertyName')?.disable({ emitEvent: false });
+      }
+      if (combineAllTaxesAndRevenueToProperty) {
+        combineAllTaxesAndRevenueToPropertyName = this.PropertyReceiptInfo.configValue.combineAllTaxesAndRevenueToPropertyName || this.defaultTax;
+        this.onCombineAllTaxesAndRevenueToPropertyToggle(true);
+      }else{
+        this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.disable({ emitEvent: false });
+      }
+      this.propertyForm.controls["combineAllTaxesName"].setValue(combineAllTaxesName);
+      this.propertyForm.controls["combineAllRevenueToPropertyName"].setValue(combineAllRevenueToPropertyName);
+      this.propertyForm.controls["combineAllTaxesAndRevenueToPropertyName"].setValue(combineAllTaxesAndRevenueToPropertyName);
+
+      // Update text box visibility based on loaded toggle values
+      this.showCombineAllTaxesTextBox = combineAllTaxes;
+      this.showCombineAllRevenueToPropertyTextBox = combineAllRevenueToProperty;
+      this.showCombineAllTaxesAndRevenueToPropertyTextBox = combineAllTaxesAndRevenueToProperty;
+
+      // Update toggle visibility based on loaded value
+      this.showRollUpToOneToggles = taxGroupingOption === TaxGroupingOption.RollUpToOne;
+      let displayImageInReceiptHeader = this.PropertyReceiptInfo.configValue.displayImageInReceiptHeader != null ? this.PropertyReceiptInfo.configValue.displayImageInReceiptHeader : this.PropertyReceiptInfo.defaultValue.displayImageInReceiptHeader;
       this.propertyForm.controls["displayImageInReceiptHeader"].setValue(displayImageInReceiptHeader);
       let displayImageInReceiptFooter = this.PropertyReceiptInfo.configValue.displayImageInReceiptFooter != null ? this.PropertyReceiptInfo.configValue.displayImageInReceiptFooter : this.PropertyReceiptInfo.defaultValue.displayImageInReceiptFooter;
       this.propertyForm.controls["displayImageInReceiptFooter"].setValue(displayImageInReceiptFooter);
       let receiptImageFooterNote = this.PropertyReceiptInfo.configValue.receiptImageFooterNote != "" ? this.PropertyReceiptInfo.configValue.receiptImageFooterNote : "";
       let receiptFooterImageReferenceId = this.PropertyReceiptInfo.configValue.footerImageReferenceId;
       let receiptHeaderImageReferenceId = this.PropertyReceiptInfo.configValue.headerImageReferenceId;
-      if(displayImageInReceiptFooter== true){
-        this.displayImageInReceiptFooter=true;
+      if (displayImageInReceiptFooter == true) {
+        this.displayImageInReceiptFooter = true;
         this.propertyForm.controls["receiptImageFooterNote"].setValue(receiptImageFooterNote);
-        this.mapReceiptImageDataToUI(receiptFooterImageReferenceId,ImgType.receiptFooter)
+        this.mapReceiptImageDataToUI(receiptFooterImageReferenceId, ImgType.receiptFooter)
         this.propertyForm.markAsPristine();
       }
-      if(displayImageInReceiptHeader== true){
-        this.displayImageInReceiptHeader=true;
-        this.mapReceiptImageDataToUI(receiptHeaderImageReferenceId,ImgType.receiptHeader)
+      if (displayImageInReceiptHeader == true) {
+        this.displayImageInReceiptHeader = true;
+        this.mapReceiptImageDataToUI(receiptHeaderImageReferenceId, ImgType.receiptHeader)
         this.propertyForm.markAsPristine();
       }
-     if(displayAuthCode == true)
-    {
-      this.DisplayAuthCode=true;
-      this.propertyForm.controls["authcodeName"].setValue(authCode);
-      this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
+      if (displayAuthCode == true) {
+        this.DisplayAuthCode = true;
+        this.propertyForm.controls["authcodeName"].setValue(authCode);
+        this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
+        this.propertyForm.markAsPristine();
+      } else {
+        this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
+        this.propertyForm.controls["authcodeName"].setValue(authCode);
+        this.propertyForm.markAsPristine();
+      }
       this.propertyForm.markAsPristine();
+      this.propertyForm.updateValueAndValidity({ emitEvent: false });
+      this.validateRollUpToOneToggles();
     }
-    else
-    {
-      this.propertyForm.controls["displayAuthcode"].setValue(displayAuthCode);
-      this.propertyForm.controls["authcodeName"].setValue(authCode);
-      this.propertyForm.markAsPristine();
-    }
-    this.propertyForm.markAsPristine();
-    this.propertyForm.updateValueAndValidity({ emitEvent: false });
-    // Enable or disable tax name fields based on toggle values
-if (combineAllTaxes) {
-  this.propertyForm.get('combineAllTaxesName')?.enable({ emitEvent: false });
-} else {
-  this.propertyForm.get('combineAllTaxesName')?.disable({ emitEvent: false });
-}
-
-if (combineAllRevenueToProperty) {
-  this.propertyForm.get('combineAllRevenueToPropertyName')?.enable({ emitEvent: false });
-} else {
-  this.propertyForm.get('combineAllRevenueToPropertyName')?.disable({ emitEvent: false });
-}
-
-if (combineAllTaxesAndRevenueToProperty) {
-  this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.enable({ emitEvent: false });
-} else {
-  this.propertyForm.get('combineAllTaxesAndRevenueToPropertyName')?.disable({ emitEvent: false });
-}
-    this.propertyForm.markAsPristine();
-    this.propertyForm.updateValueAndValidity({ emitEvent: false });
-   this.validateRollUpToOneToggles();
   }
-}
 
   async saveReceiptProperty(data: any) {
-  
-
   if (this.propertyForm.invalid) {
     this.propertyForm.markAllAsTouched(); 
     return;
@@ -864,9 +861,9 @@ if (combineAllTaxesAndRevenueToProperty) {
       combineAllTaxes: false,
       combineAllRevenueToProperty: false,
       combineAllTaxesAndRevenueToProperty: false,
-      combineAllTaxesName: 'Tax',
-      combineAllRevenueToPropertyName: 'Tax',
-      combineAllTaxesAndRevenueToPropertyName: 'Tax'
+      combineAllTaxesName: this.defaultTax,
+      combineAllRevenueToPropertyName: this.defaultTax,
+      combineAllTaxesAndRevenueToPropertyName: this.defaultTax
     }
     return defaultValue;
   }
