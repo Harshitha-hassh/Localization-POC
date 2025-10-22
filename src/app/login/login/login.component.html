@@ -22,7 +22,7 @@
                                                 <input matInput type="text" #fcs_userID
                                                     [placeholder]="captions.lbl_userId" class="ag_text--uppercase"
                                                     formControlName="userId"
-                                                    (keydown.enter)="getbuttonEmitvalue($event)">
+                                                    (keydown.enter)="getbuttonEmitvalue($event)" autocomplete="username">
                                                 <mat-error *ngIf="loginForms.get('userId').hasError('required')">
                                                     {{errorMessage.userId}}
                                                 </mat-error>
@@ -35,7 +35,7 @@
                                                 <input matInput #fcs_pwd [type]="hidePassword ? 'text' : 'password'"
                                                     [placeholder]="captions.password" formControlName="password"
                                                     (keydown.enter)="getbuttonEmitvalue($event)"
-                                                    autocomplete="new-password">
+                                                    autocomplete="current-password">
                                                 <i matSuffix class="IC18"
                                                     [ngClass]="hidePassword ? 'icon-password-show' : 'icon-password-hide '"
                                                      (click)="hidePassword=!hidePassword"  ></i>
