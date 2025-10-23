@@ -5452,6 +5452,7 @@
   "tbl_hdr_errorMessage": "Error Message",
   "tbl_hdr_messageType": "Message Type",
   "lbl_last24Hours": "Last 24 Hours",
+  "lbl_Last": "Last",
   "lbl_allRequests": "All Requests",
   "lbl_fromAndToDate": "From Date & To Date",
   "taxNumber": "Tax Number",
