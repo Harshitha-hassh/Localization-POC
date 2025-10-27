@@ -31,6 +31,8 @@
         width: 40px;
         border: 1px solid $ag_base-color;
         border-radius: 5px;
+        position: relative;
+        top: 2px;
 
         .icon-guest_profile_search {
             font-size: 38px;
@@ -115,6 +117,10 @@
         font-size: 36px;
       }
 
+    }
+
+    .align{
+        align-items: center;
     }
 
 }

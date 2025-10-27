@@ -5,6 +5,7 @@
       (fileUploaded)="fileUploaded($event)" (fileSizeExceeded)="fileSizeExceeded()">
     </app-image-uploader>
     <div class="float-left sidesection ml-3">
+      <div class="ag_display--flex align">
       <div *ngIf="isPlatformGuestSearch && isEnableCGPSIframeGuestSearch">
         <span  class="iframe_reopen ag_link">
         <i [attr.automationId]="'Icn_PlayerInfo_OpenIframe'" aria-hidden="true" class="icon-guest_profile_search p-2 cursor" title="{{allCaptions.Reopen_Iframe}}"
@@ -22,6 +23,7 @@
           </mat-error>
         </mat-form-field> -->
         <app-dropdown-search [inputs]="titledropdownInput" [filteredOptions]="titles"></app-dropdown-search>
+      </div>
       </div>
       <div class="">
         <mat-form-field class="" [floatLabel]="floatLabel">
