@@ -4,7 +4,7 @@
       <mat-tab label="{{textCaptions.lbl_outletLevel}}">
         <form [formGroup]="FormGrp" class="tab-height">
           <ng-scrollbar [autoHide]="true">
-            <div class="d-flex">
+            <div class="d-flex contentSection">
               <div class="leftSection float-left">
                 <div class="pt-4">
                   <!-- Outlet Box -->
@@ -32,14 +32,14 @@
                 </div>
                 <!-- Print Info -->
                 <div class="printData">
-                  <div class="header w-100 text-capital d-table">
+                  <div class="tbheader w-100 text-capital d-table">
                     <h5 class="d-table-cell align-middle pl-4 LWB14">{{textCaptions.PrintData}}</h5>
                   </div>
                   <div class="toggleSection w-100 pt-2 pb-2">
                     <div class="h-100" *ngFor="let data of FormGrp.get('printReceipt')['controls']; let i =index;"
                       formArrayName="printReceipt">
                       <div *ngFor="let value of printInfo;let j=index;" [formGroupName]="i">
-                        <div class="rightToggle float-left" [ngClass]="j%2 == 0 ? 'borderClass' : '' ">
+                        <div class="rightToggle float-left ">
                           <label class="pt-2 pl-4 LW12">{{value.Name}}</label>
                           <i *ngIf="value.id==2" class="pl-2 icon-information cursor" [popover]="infoPopOver"
                             [popoverOnHover]="true" popoverPlacement="bottom"></i>
