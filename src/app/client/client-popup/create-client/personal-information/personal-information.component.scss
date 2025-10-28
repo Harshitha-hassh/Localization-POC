@@ -6,10 +6,11 @@
     width: 100%;
 }
 .dob-left{
-    float: left;width: 60%;
+    float: left;
 }
 .dob-right{
     color: red;float: left;width: 1%;
+    margin-left: 2px;
 }
 .gender-left{
     float: left;width: 40%;
@@ -305,4 +306,10 @@
 
 .patron-bg{
   background: #d4bda9 !important;
+}
+
+body#new-mat-view .client-date-picker{
+    .mat-form-field.mat-form-field-can-float.mat-form-field-should-float.mat-form-field{
+        margin-top: 5px !important;
+    }
 }

@@ -76,15 +76,15 @@
         <div class="display_style_toggle width_180px">
           <div class="float-left pr-4">
             <label for="" *ngIf="!customRequired.dob" [attr.automationId]="'Lbl_personalInformation_dob'"
-              class="form-label-normal d-block mb-0 dob-label">{{captions.CDateOfBirth}}</label>
+              class="form-label-normal d-block mb-0 dob-label">{{captions.CDateOfBirth}} ({{placeHolderFormat}})</label>
             <div *ngIf="customRequired.dob" class="wdt-100">
-              <div class="dob-left">{{captions.CDateOfBirth}}</div>
+              <div class="dob-left">{{captions.CDateOfBirth}} ({{placeHolderFormat}})</div>
               <div class="dob-right">*</div>
             </div>
-            <div class="d-inline-block">
+            <div class="d-inline-block client-date-picker">
               <mat-form-field class="width_180px date-picker-width" appearance="legacy" [floatLabel]="floatLabelNever">
                 <input [attr.automationId]="'Txt_personalInformation_dob'" [required]="customRequired.dob"
-                  dateRestricter [max]="maxDate" matInput [matDatepicker]="picker" [placeholder]="placeHolderFormat"
+                  dateRestricter [max]="maxDate" matInput [matDatepicker]="picker"
                   class="" formControlName="dob">
                 <mat-datepicker #picker></mat-datepicker>
                 <i [attr.automationId]="'Icn_personalInformation_calender'" matSuffix
