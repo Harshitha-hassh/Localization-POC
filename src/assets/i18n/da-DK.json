@@ -1953,6 +1953,7 @@
     "8205": "8205 - Inventory Valuation Report_da",
     "8215": "8215 - Items Under Par_da",
     "8220": "8220 - Open Coupon_da",
+    "8225": "8225 - Variance Log_da",
     "8700": "8700 - Update Qty on Hand_da",
     "8705": "8705 – Freeze Inventory_da",
     "8710": "8710 - Release Inventory_da",
@@ -3913,7 +3914,8 @@
     "CouponNumber": "Coupon #_da",
     "ExpandCoupons": "Expand Serialized Coupon(s)_da",
     "IncludeInactiveCoupons": "Include Inactive Coupon(s)_da",
-    "Status": "Status_da"
+    "Status": "Status_da",
+    "VarianceLog": "Variance Log_da"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket_da",

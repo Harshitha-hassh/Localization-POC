@@ -2020,7 +2020,8 @@
     "8740": "8740 - Cash Drawer Closing Summary",
     "2000215": "2000215 - Partner Code",
 		"2000220":"2000220 - Partner Setup",
-    "2500025": "2500025 - Open Cash Drawer"
+    "2500025": "2500025 - Open Cash Drawer",
+    "8225": "8225 - Variance Log"
   },
   "90070": "90070 - Folio",
   "err_breakPointAccessDeniedMsg": "The user does not have permissions to perform this action.",
@@ -3916,7 +3917,8 @@
 		"CouponNumber": "Coupon #",
 		"ExpandCoupons": "Expand Serialized Coupon(s)",
     "IncludeInactiveCoupons": "Include Inactive Coupon(s)",
-		"Status": "Status"
+		"Status": "Status",
+    "VarianceLog": "Variance Log"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",

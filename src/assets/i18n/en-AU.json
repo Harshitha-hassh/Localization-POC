@@ -1953,6 +1953,7 @@
     "8205": "8205 - Inventory Valuation Report",
     "8215": "8215 - Items Under Par",
     "8220": "8220 - Open Coupon",
+    "8225": "8225 - Variance Log",
     "8700": "8700 - Update Qty on Hand",
     "8705": "8705 – Freeze Inventory",
     "8710": "8710 - Release Inventory",
@@ -3913,7 +3914,8 @@
     "CouponNumber": "Coupon #",
     "ExpandCoupons": "Expand Serialized Coupon(s)",
     "IncludeInactiveCoupons": "Include Inactive Coupon(s)",
-    "Status": "Status"
+    "Status": "Status",
+    "VarianceLog": "Variance Log"
   },
   "receipt": {
     "SalesTicket": "Sales Ticket",
