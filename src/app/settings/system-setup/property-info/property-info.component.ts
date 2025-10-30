@@ -14,6 +14,8 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import { debounceTime, distinctUntilChanged, map, startWith, takeUntil } from 'rxjs/operators';
 import { defaultThemeColorSwitch } from 'src/app/shared/enums/constants';
 import { colorPickerModifier } from 'src/app/common/pipes/colorPickerModifier.pipe';
+import { PhoneTypes } from 'src/app/common/enums/shared-enums';
+import { GuestProfileMailTypes } from 'src/app/common/shared/shared/enums/enums';
 
 @Component({
   selector: 'app-property-info',
@@ -56,6 +58,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
   filteredCountries: Observable<any>;
   destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
   floatLabel: string;
+  phoneTypes = PhoneTypes;
+  mailTypes = GuestProfileMailTypes;
   constructor(private BP: BreakPointAccess,
     private systemConfig: SystemSetupBusinessService,
     private fb: UntypedFormBuilder,
@@ -121,43 +125,43 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
 
     this.contactPhoneLabelType = [
       {
-        "id": 1,
-        "description": "Cell"
+        "id": this.phoneTypes.mobile,
+        "description": this.localization.captions.common.drp_txt_mobile
       },
       {
-        "id": 2,
-        "description": "Home"
+        "id": this.phoneTypes.home,
+        "description": this.localization.captions.common.drp_txt_home
       },
       {
-        "id": 3,
-        "description": "Office"
+        "id": this.phoneTypes.office,
+        "description": this.localization.captions.common.drp_txt_office
       },
       {
-        "id": 12,
-        "description": "Business"
+        "id": this.phoneTypes.business,
+        "description": this.localization.captions.common.drp_txt_business
       },
       {
-        "id": 13,
-        "description": "Work"
+        "id": this.phoneTypes.work,
+        "description": this.localization.captions.common.drp_txt_work
       }
     ];
 
     this.contactEmailType = [
       {
-        "id": 9,
-        "description": "Personal"
+        "id": this.mailTypes.personal,
+        "description": this.localization.captions.common.drp_txt_personal
       },
       {
-        "id": 10,
-        "description": "Office"
+        "id": this.mailTypes.office,
+        "description": this.localization.captions.common.drp_txt_office
       },
       {
-        "id": 14,
-        "description": "Home"
+        "id": this.mailTypes.home,
+        "description": this.localization.captions.common.drp_txt_home
       },
       {
-        "id": 15,
-        "description": "Business"
+        "id": this.mailTypes.business,
+        "description": this.localization.captions.common.drp_txt_business
       }
     ];
 
