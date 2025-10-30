@@ -5490,5 +5490,6 @@
   "Btn_add": "ADD_de",
   "grid_hdr_ListOrder": "List Order_de",
   "Reopen_Iframe": "Re-open the Guest Profile Search_de",
-  "lbl_searchBy": "Search By_de"
+  "lbl_searchBy": "Search By_de",
+  "lbl_deleteMsg": "Are you sure you want to delete the [Description]?_de"
 }

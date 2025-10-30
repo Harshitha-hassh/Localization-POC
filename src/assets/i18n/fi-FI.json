@@ -5490,5 +5490,6 @@
   "Btn_add": "ADD_fi",
   "grid_hdr_ListOrder": "List Order_fi",
   "Reopen_Iframe": "Re-open the Guest Profile Search_fi",
-  "lbl_searchBy": "Search By_fi"
+  "lbl_searchBy": "Search By_fi",
+  "lbl_deleteMsg": "Are you sure you want to delete the [Description]?_fi"
 }
