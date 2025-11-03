@@ -1375,6 +1375,7 @@
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount_de",
     "ReturnRestrictedForThisItem": "Returns are restricted for this item_de",
     "TicketDiscountAmountGreaterThanActual": "Ticket discount amount is greater than the ticket total_de",
+    "GroupItemWithExpiredChildrenCannotAdd": "Selected Grouped item contains expired item(s) and cannot be added to the cart_de",
     "DiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for discount_de",
     "CostDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost/Cost Plus discount_de",
     "CostPlusDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost/Cost Plus discount as item cost value is greater than the sales price_de",
