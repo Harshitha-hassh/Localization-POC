@@ -1,5 +1,8 @@
 @import "src/assets/sass/abstracts/variables";
 .newVersionWrapper{
+  &.dialog-container__header{
+    background-color: $theme-table-bg-color ;
+  }
  .bodyWrap{
     background-color: $ag_white !important;
     border-radius: 6px;
@@ -1694,7 +1697,7 @@ mat-radio-group mat-radio-button .mat-radio-label-content {
 }
 &.user-security-questions-container{
   background-color: $new-version-bg;
-  .dialog-container__header{
+  .dialog-container__header{ 
     background-color: $ag-white;
   }
   .user-security-questions--wrapper {

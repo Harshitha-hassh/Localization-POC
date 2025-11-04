@@ -5495,5 +5495,6 @@
   "grid_hdr_ListOrder": "List Order_kr",
   "Reopen_Iframe": "Re-open the Guest Profile Search_kr",
   "lbl_searchBy": "Search By_kr",
-  "lbl_deleteMsg": "Are you sure you want to delete the [Description]?_kr"
+  "lbl_deleteMsg": "Are you sure you want to delete the [Description]?_kr",
+  "lbl_dragDropFile": "Drag & Drop Or Click here to upload your File_kr"
 }
