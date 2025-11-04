@@ -4828,7 +4828,10 @@
     "Booked": "Booked_fr",
     "Paid": "Paid_fr",
     "FromDate": "From Date_fr",
-    "ToDate": "To Date_fr"
+    "ToDate": "To Date_fr",
+    "lbl_arrivaltime": "Arrival Time_fr",
+    "lbl_departuretime": "Departure Time_fr",
+    "ViewCancelledBookings": "View Cancelled Bookings_fr"
   },
   "PreSettlementConfirmation": "Do you want to generate a pre-settlement receipt for this transaction?_fr",
   "lbl_Guest": "Guest_fr",
