@@ -13,7 +13,8 @@ const defaultLocalizations = [
     { code: "fr-FR", suffix: "_fr", name: "French" },
     { code: "en-IN", suffix: "", name: "Indian English" },
     { code: "ko-KR", suffix: "_kr", name: "Korean" },
-    { code: "en-NZ", suffix: "", name: "New Zealand" }
+    { code: "en-NZ", suffix: "", name: "New Zealand" },
+    { code: "en-PH", suffix: "", name: "Philippines" }
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
