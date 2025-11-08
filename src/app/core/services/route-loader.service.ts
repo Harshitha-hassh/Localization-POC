@@ -94,6 +94,20 @@ export class RouteLoaderService {
                     }
                 }
               }
+
+                // Hide Fiscal Reports if EnablePhilippinesFiscalReport is not enabled
+                        if (!this.propertyInfo.EnablePhilippinesFiscalReport) {
+                            let reportsMenu = this.currentSettings.find(x => x.text.includes("REPORTS"))
+                            if (reportsMenu) {
+                                let fiscalReportsMenu = reportsMenu.linkedElement?.find(x => x.routePath?.toLowerCase().includes("/reports/fiscalreports"))
+                                if(fiscalReportsMenu){
+                                    fiscalReportsMenu.visibility = false;
+                                    fiscalReportsMenu.linkedElement?.forEach(element => {
+                                        element.visibility = false;
+                                    });
+                                }
+                            }
+                        }
           }
           );
           },
