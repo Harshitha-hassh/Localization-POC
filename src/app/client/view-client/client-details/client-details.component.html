@@ -7,8 +7,8 @@
             [checked]="item.checked" [disabled]="" (change)="clientSearchTypeChange(item.id)">{{item.name}}
           </mat-radio-button>
         </mat-radio-group>
-        <div class='ag_display--inflex ml-3'  *ngIf="clientService.selectedIndex==0 && platFormExtendedSearchRequired">
-          <label class="">{{this.captions.lbl_platformGuestSearch}}</label>
+        <div class='ag_display--inflex align-items-center'  *ngIf="clientService.selectedIndex==0 && platFormExtendedSearchRequired">
+          <label class="">{{this.captions.platformGuestSearch}}</label>
           <app-retail-toggle-switch [attr.automationId]="'Tog_clientDetails_platformGuestSearch'" class="ml-2" formControlName="platformGuestSearch"
               (changeToggleEvent)="isPlatformGuestSearchChanged($event)"></app-retail-toggle-switch>
         </div>
