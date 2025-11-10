@@ -2068,6 +2068,9 @@
   "noSpecialCharacters": "No special characters must be allowed_fr",
   "confirmPasswordSame": "New password and confirm password must be same_fr",
   "retailsetup": {
+    "lbl_DayOfWeek_commission": "Day of Week:_fr",
+    "lbl_Month": "Month:_fr",
+    "lbl_tierGroup": "Tier Group_fr",
     "TierLevelCategoryGroup": "Tier Level Category Group_fr",
     "errorMsg_coupon": "This coupon is associated with incentive coupon <b>{program}</b>. This action is restricted._fr",
     "deleteCouponErrorMsg": "This coupon is associated with an open transaction. This action is restricted._fr",
@@ -5505,6 +5508,6 @@
   "grid_hdr_ListOrder": "List Order_fr",
   "Reopen_Iframe": "Re-open the Guest Profile Search_fr",
   "lbl_searchBy": "Search By_fr",
-  "lbl_deleteMsg": "Are you sure you want to delete the [Description]?_fr",
+  "lbl_deleteMsg": "Are you sure you want to delete [Description]?_fr",
   "lbl_dragDropFile": "Drag & Drop Or Click here to upload your File_fr"
 }
