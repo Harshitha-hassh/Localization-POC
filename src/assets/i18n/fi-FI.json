@@ -2068,6 +2068,7 @@
   "noSpecialCharacters": "No special characters must be allowed_fi",
   "confirmPasswordSame": "New password and confirm password must be same_fi",
   "retailsetup": {
+    "TierLevelCategoryGroup": "Tier Level Category Group_fi",
     "errorMsg_coupon": "This coupon is associated with incentive coupon <b>{program}</b>. This action is restricted._fi",
     "deleteCouponErrorMsg": "This coupon is associated with an open transaction. This action is restricted._fi",
     "lbl_open": "Open_fi",

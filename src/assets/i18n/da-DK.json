@@ -2068,6 +2068,7 @@
   "noSpecialCharacters": "No special characters must be allowed_da",
   "confirmPasswordSame": "New password and confirm password must be same_da",
   "retailsetup": {
+    "TierLevelCategoryGroup": "Tier Level Category Group_da",
     "errorMsg_coupon": "This coupon is associated with incentive coupon <b>{program}</b>. This action is restricted._da",
     "deleteCouponErrorMsg": "This coupon is associated with an open transaction. This action is restricted._da",
     "lbl_open": "Open_da",
