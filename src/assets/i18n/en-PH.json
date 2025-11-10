@@ -1375,6 +1375,7 @@
     "DiscountAmountGreaterThanActual": "Discount amount is greater than item actual amount",
     "ReturnRestrictedForThisItem": "Returns are restricted for this item",
     "TicketDiscountAmountGreaterThanActual": "Ticket discount amount is greater than the ticket total",
+    "GroupItemWithExpiredChildrenCannotAdd": "Selected Grouped item contains expired item(s) and cannot be added to the cart",
     "DiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for discount",
     "CostDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost/Cost Plus discount",
     "CostPlusDiscountNotEligibleForSomeItem": "{ItemCount} Item(s) are not eligible for Cost/Cost Plus discount as item cost value is greater than the sales price",
@@ -2329,6 +2330,7 @@
     "SpecialCharacterInCategoryName": "Special characters are not allowed",
     "MissingCategoryName": "Missing Category Name",
     "RevenueCategoryIdExists": "External Category ID Already Exists",
+    "lbl_CommissionTierGroup": "Commission Tier Group",
     "advertisementTypes": "Advertisement Types",
     "subCategoryName": "Sub Category Name",
     "externalSubcategoryId": "External Sub Category ID",
@@ -2873,7 +2875,11 @@
     "lbl_DayOfWeek": "Day of Week",
     "lbl_DayOfMonth": "Day of Month",
     "lbl_Outlet": "Outlets",
-    "lbl_AddLevel": "+ ADD LEVEL",
+    "lbl_TierGroupName": "Tier Group Name",
+    "lbl_add_tier_group": "ADD TIER GROUP",
+    "lbl_Period": "Commission Schedule Period",
+    "lbl_AddLevel": "ADD LEVEL",
+    "err_duplicate_CommissionTierGroup": "Tier group name must be unique",
     "lbl_StartPercentage": "Retail by Service Revenue (%) Start",
     "lbl_EndPercentage": "Retail by Service Revenue (%) End",
     "lbl_Type": "Type",
@@ -4831,7 +4837,10 @@
     "Booked": "Booked",
     "Paid": "Paid",
     "FromDate": "From Date",
-    "ToDate": "To Date"
+    "ToDate": "To Date",
+    "lbl_arrivaltime": "Arrival Time",
+    "lbl_departuretime": "Departure Time",
+    "ViewCancelledBookings": "View Cancelled Bookings"
   },
   "PreSettlementConfirmation": "Do you want to generate a pre-settlement receipt for this transaction?",
   "lbl_Guest": "Guest",
@@ -5494,5 +5503,7 @@
   "Btn_add": "ADD",
   "grid_hdr_ListOrder": "List Order",
   "Reopen_Iframe": "Re-open the Guest Profile Search",
-  "lbl_searchBy": "Search By"
+  "lbl_searchBy": "Search By",
+  "lbl_deleteMsg": "Are you sure you want to delete the [Description]?",
+  "lbl_dragDropFile": "Drag & Drop Or Click here to upload your File"
 }
