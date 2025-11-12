@@ -1806,7 +1806,8 @@
     "HotelCompAuthorizedAmount": "Authorized Amount",
     "lbl_HotelCompName": "Compor Name",
     "lbl_item_on_par": "Item on Par",
-    "lbl_iten_on_par_desc": "Item on Par. Do you want to add this item?"
+    "lbl_iten_on_par_desc": "Item on Par. Do you want to add this item?",
+    "warn_Multipack_Commission_Cancel": "Commission assignment is required for this item. The multipack redemption will be cancelled."
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile",
