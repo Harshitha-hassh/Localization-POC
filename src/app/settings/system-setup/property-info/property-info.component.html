@@ -150,15 +150,14 @@
                       <label class="color-name form-label-primary mb-2">{{captions.DefalutThemeColor}}</label>
                       <div class="position--relative">
                         <input type="button" class=" color-display"
-                          [ngStyle]="{'background-color':propertyInfo.controls['THEME_COLOR'].value}" [popover]="colorPickerPopOver"
-                          [popoverOnHover]="false" />
-                        <popover-content #colorPickerPopOver class="user-popover" [animation]="true" [closeOnClickOutside]="true"
-                          placement="auto right">
-                          <div class="ag-color-sketch">
-                            <color-sketch [color]="propertyInfo.controls['THEME_COLOR'].value"
-                              (onChangeComplete)="changeColor($event)"></color-sketch>
-                          </div>
-                        </popover-content>
+                          [ngStyle]="{'background-color':propertyInfo.controls['THEME_COLOR'].value}" [matMenuTriggerFor]="colorPicker"
+                          />
+                          <mat-menu #colorPicker="matMenu" class="user-popover" yPosition="above">
+                            <div class="ag-color-sketch" (click)="$event.stopPropagation()">
+                              <color-sketch [color]="propertyInfo.controls['THEME_COLOR'].value"
+                                (onChangeComplete)="changeColor($event)"></color-sketch>
+                            </div>
+                          </mat-menu>
                       </div>
                     </div>
                   </div>

@@ -112,15 +112,6 @@
         }
         .position--relative {
           position: relative;
-
-          .ag-color-sketch {
-            width: 220px;
-            top: 40px;
-            left: 0;
-            border: 1px solid $color-text-color;
-            background-color: $color-base;
-            z-index: 9;
-          }
         }
       }
     }
@@ -136,5 +127,19 @@
   }
   .cancel-btn-color{
     color: $ag_black;
+  }
+}
+.ag-color-sketch {
+  width: 220px;
+  top: 40px;
+  left: 0;
+  border: 1px solid $color-text-color;
+  background-color: $color-base;
+  z-index: 9;
+  margin: 15px;
+}
+.user-popover {
+  &.mat-menu-panel{
+  max-height: unset !important;
   }
 }

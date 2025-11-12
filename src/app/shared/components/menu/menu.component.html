@@ -51,19 +51,19 @@
                         </button>
                         <!-- <app-ms-graph-auth></app-ms-graph-auth> -->
                         <!-- #46309 - Hide unused fields -->
-                         <button class="notifyClass buttonStyle cursor custom-notify-relative" [popover]="notificationPopOver"  popoverPlacement="bottom" [popoverOnHover]="false" >
+                         <button class="notifyClass buttonStyle cursor custom-notify-relative" [matMenuTriggerFor]="notificationPopOver">
                             <i [matTooltip]="captions.Notification" class="icon-notify icon-notification"></i>
                             <span *ngIf = "notificationCount > 0" class="count">{{notificationCount}}</span>
                         </button>
                          <!-- --help--- -->
-                        <button class="notifyClass buttonStyle cursor" [popover]="helpQuestionPopOver"
-                            popoverPlacement="bottom" [popoverOnHover]="false" [matTooltip]="captions.helpQuestion">
+                        <button class="notifyClass buttonStyle cursor" [matMenuTriggerFor]="helpQuestionPopOver"
+                            [matTooltip]="captions.helpQuestion">
                             <i class="icon-notify icon-help_question"></i>
                         </button>
                         <!-- --help--- -->
                         <div class="user-details">
-                            <div class="d-flex cursor" [popover]="logOutPopOver" [popoverOnHover]="false" popoverPlacement="bottom"
-                                (click)="userPop(logOutPopOver)">
+                            <div class="d-flex cursor" [matMenuTriggerFor]="logOutPopOver"
+                            >
                                 <div class="ag_text--uppercase initial-box ">{{userText}}</div>
                                 <div class="detail-section">
                                     <label class="d-block user-name ag_text--uppercase text-ellipsis cursor"
@@ -74,15 +74,15 @@
                                 </div>
                                 <div class="arrow-icon cursor">
                                     <i class="material-icons">expand_more</i>
-                                    <popover-content #logOutPopOver placement="bottom" class="user-popover"
-                                        [animation]="true" [closeOnClickOutside]="true" id="logOutPopOverID">
+                                    <mat-menu #logOutPopOver="matMenu" class="logout-popover"
+                                        id="logOutPopOverID">
                                         <div class="custom-popover-profile" *ngIf="isChangePropertyEnabled" (click)="changeProperty($event)">
                                             <a class="logout-style">{{captions.common.lbl_changeProperty}}</a>
                                         </div>
-                                        <div class="custom-popover-profile" (click)="logOutPopOver.hide();logout();">
+                                        <div class="custom-popover-profile" (click)="logout();">
                                             <a class="logout-style">{{captions.lbl_logout}}</a>
                                         </div>
-                                    </popover-content>
+                                    </mat-menu>
                                 </div>
                             </div>
                         </div>
@@ -145,19 +145,19 @@
                     </ng-container>
 
                     <li *ngIf="more && more.length>0">
-                        <a class="cursor" [popover]="headerPopover" [popoverOnHover]="false" popoverPlacement="bottom">
+                        <a class="cursor" [matMenuTriggerFor]="headerPopover">
                             <i class="icon-filled-more"></i>
                             {{moreTextName}}
                         </a>
-                        <popover-content #headerPopover placement="bottom" class="header-popover" [animation]="true"
-                            [closeOnClickOutside]="true" id="HeaderPopover">
+                        <mat-menu #headerPopover="matMenu" class="header-popover"
+                            id="HeaderPopover">
                             <div class="custom-popover" id="popover-class">
                                 <ul>
                                     <ng-container *ngFor="let menu of more">
                                     <li class="ag_text--uppercase" *ngIf="menu.visibility">
                                         <a routerLinkActive="active-link"
                                             routerLink="{{menu.routePath}}" [matTooltip]="menu.text" [matTooltipPosition]="position.value"
-                                            href="javascript:void(0)" (click)="headerPopover.hide()">
+                                            href="javascript:void(0)">
                                             <span class="icon-wrapper w25px"> <i class="{{menu.imgPath}}"> </i> </span>
                                             {{menu.text}}
                                         </a>
@@ -165,7 +165,7 @@
                                 </ng-container>
                                 </ul>
                             </div>
-                        </popover-content>
+                        </mat-menu>
                     </li>
                 </ul>
             </nav>
@@ -240,26 +240,26 @@
 
 
 <!-- ---popover--- -->
-<popover-content #helpQuestionPopOver placement="bottom" class="user-popover" [animation]="true"
-    [closeOnClickOutside]="true" id="logOutPopOverID">
+<mat-menu #helpQuestionPopOver="matMenu" class="help-popover"
+    id="logOutPopOverID">
 
     <div class="custom-popover textCenter">
-        <a class="logout-style" (click)="helpQuestionPopOver.hide();openIcon();">{{captions.helpQuestion}}</a>
+        <a class="logout-style" (click)="openIcon();">{{captions.helpQuestion}}</a>
     </div>
     <hr />
     <div class="custom-popover textCenter">
-        <a class="logout-style" (click)="helpQuestionPopOver.hide();openAboutDialog();">{{captions.about}}</a>
+        <a class="logout-style" (click)="openAboutDialog();">{{captions.about}}</a>
     </div>
-</popover-content>
+</mat-menu>
 
 <!-- ---notification-popover--- -->
-<popover-content *ngIf = "notificationCount > 0" #notificationPopOver placement="bottom" class="user-popover" [animation]="true"
-    [closeOnClickOutside]="true" id="logOutPopOverID">
+<mat-menu *ngIf = "notificationCount > 0" #notificationPopOver="matMenu" class="notification-popover"
+    id="logOutPopOverID">
 
     <div class="custom-popover">
         <div class="pb-2 ct-color-transc-notification" *ngFor="let n of notificationInfo">
-            <a class="logout-style" (click)="notificationPopOver.hide();routeTransc(n.id)">{{n.message}}</a>
+            <a class="logout-style" (click)="routeTransc(n.id)">{{n.message}}</a>
         </div>
 
     </div>
-</popover-content>
+</mat-menu>

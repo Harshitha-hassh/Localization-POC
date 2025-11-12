@@ -29,38 +29,35 @@
 
     <div class=" d-flex al-centre ml-auto clientappointmentactions">
       <button [attr.automationId]="'btn_clientDetails_filter'" mat-button class="filterbutton cursor mr5">
-        <i [attr.automationId]="'Icn_clientDetails_filter'" class="icon-filter_filled IC20 text-color mr5" [popover]="filterpopover" [popoverOnHover]="false"
-          [popoverCloseOnClickOutside]="true" [popoverCloseOnMouseOutside]="false"
-          (click)="showFilterPopOver=true;setFilterPopover($event)"></i>
+        <i [attr.automationId]="'Icn_clientDetails_filter'" class="icon-filter_filled IC20 text-color mr5" [matMenuTriggerFor]="filterMenu"></i>
       </button>
-      <popover-content #filterpopover placement="bottom" class="filter-popover position-absolute"
-        [closeOnClickOutside]="true" [closeOnMouseOutside]="false" [style.top]="top + 'px'" [style.left]="left + 'px'">
-        <div>
-          <div class="filter-popover-header  LW16 text-color">
-            <span class="table-class">{{this.captions.ResetAll}}</span>
-            <i [attr.automationId]="'Icn_clientDetails_refresh'"  class="icon-recurring table-class pl-4" (click)="refreshData()"></i>
-          </div>
-          <div class="filter-popover-body">
-            <div class='popover-content-body'>
-              <mat-accordion [attr.automationId]="'Accrd_clientDetails_filter'" *ngFor="let FilterInner of innerfilterArray">
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title class="LW16 text-capitalize">
-                      <span>{{FilterInner.name}}</span>
-                      <span class="count-view">{{FilterInner.selected}}</span>
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <div class="pop-body pb-1 LW14" *ngFor="let data of FilterInner.values; let i=index">
-                    <mat-checkbox attr.automationId='Chk_clientDetails_selectFilter{{i}}' class="base-check-box pr-1 mt-1" labelPosition="before" [(ngModel)]="data.checked"
-                      (change)="selectFilter(FilterInner,data,'checkBox')"></mat-checkbox>
-                    <span (click)="selectFilter(FilterInner,data,'name')">{{data.value}}</span>
-                  </div>
-                </mat-expansion-panel>
-              </mat-accordion>
-            </div>
+      <mat-menu #filterMenu="matMenu" class="filter-popover position-absolute" xPosition="after" yPosition="below">
+      <div (click)="$event.stopPropagation()" class="p-3">
+        <div class="filter-popover-header  LW16 text-color">
+          <span class="table-class">{{this.captions.ResetAll}}</span>
+          <i [attr.automationId]="'Icn_clientDetails_refresh'"  class="icon-recurring table-class pl-4" (click)="refreshData()"></i>
+        </div>
+        <div class="filter-popover-body">
+          <div class='popover-content-body'>
+            <mat-accordion [attr.automationId]="'Accrd_clientDetails_filter'" *ngFor="let FilterInner of innerfilterArray">
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="LW16 text-capitalize">
+                    <span>{{FilterInner.name}}</span>
+                    <span class="count-view">{{FilterInner.selected}}</span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="pop-body pb-1 LW14" *ngFor="let data of FilterInner.values; let i=index">
+                  <mat-checkbox attr.automationId='Chk_clientDetails_selectFilter{{i}}' class="base-check-box pr-1 mt-1" labelPosition="before" [(ngModel)]="data.checked"
+                    (change)="selectFilter(FilterInner,data,'checkBox')"></mat-checkbox>
+                  <span (click)="selectFilter(FilterInner,data,'name')">{{data.value}}</span>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
           </div>
         </div>
-      </popover-content>
+      </div>
+      </mat-menu>
       <!-- <button mat-button class="btn-lnht" [ngClass]="isAddAppointment ? 'secondary-default-btn' : 'secondary-disabled'" [disabled]="!isAddAppointment" (click)="openActionDialog()">{{captions.ADDAPPOINTMENT}}</button> -->
       <button [attr.automationId]="'Btn_clientDetails_addClient'" mat-button class="body-bgcolor body-bordercolor whitecolor btn-lnht ml-2"
         [ngClass]="!isAddAppointment ? 'button_valid' : 'button_invalid'" [disabled]="isAddAppointment"

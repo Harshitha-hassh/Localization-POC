@@ -204,3 +204,17 @@
     padding-right: 20px;
   }
 }
+
+  .custom-popover-tooltip {
+  background-color: $white !important;
+  color: $black !important;
+  font-size: 14px;
+  line-height: 1.5;
+  border: 1px solid $linkWater;
+  border-radius: 6px;
+  box-shadow: $popover-box-shadow;
+  padding: 10px 12px;
+  min-width: 500px;
+  white-space: normal; /* allows text wrapping */
+  text-align: left;
+}

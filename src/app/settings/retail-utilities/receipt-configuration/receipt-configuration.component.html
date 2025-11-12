@@ -41,8 +41,10 @@
                       <div *ngFor="let value of printInfo;let j=index;" [formGroupName]="i">
                         <div class="rightToggle float-left ">
                           <label class="pt-2 pl-4 LW12">{{value.Name}}</label>
-                          <i *ngIf="value.id==2" class="pl-2 icon-information cursor" [popover]="infoPopOver"
-                            [popoverOnHover]="true" popoverPlacement="bottom"></i>
+                          <i *ngIf="value.id==2" class="pl-2 icon-information cursor" 
+                            [matTooltip]="textCaptions.HoverMessage" 
+                            matTooltipPosition="below"
+                            matTooltipClass="custom-popover-tooltip"></i>
                           <app-toggle-switch [automationId]="'receiptConfig'" class="d-table-cell pl-4"
                             (changeToggleEvent)="toggleChange($event,value.controlName)"
                             formControlName="{{value.controlName}}"
@@ -61,10 +63,10 @@
                         </div>
 
                       </div>
-                      <popover-content popoverPlacement="bottom" #infoPopOver placement="auto bottom" [animation]="true"
+                       <!-- <popover-content popoverPlacement="bottom" #infoPopOver placement="auto bottom" [animation]="true"
                         [closeOnClickOutside]="true" id="infoPopOverID">
                         {{textCaptions.HoverMessage}}
-                      </popover-content>
+                      </popover-content> -->
                     </div>
                   </div>
                 </div>
