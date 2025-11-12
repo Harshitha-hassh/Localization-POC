@@ -5515,5 +5515,10 @@
   "Reopen_Iframe": "Re-open the Guest Profile Search",
   "lbl_searchBy": "Search By",
   "lbl_deleteMsg": "Are you sure you want to delete [Description]?",
-  "lbl_dragDropFile": "Drag & Drop Or Click here to upload your File"
+  "lbl_dragDropFile": "Drag & Drop Or Click here to upload your File",
+  "email": "Email",
+  "phone": "Phone",
+  "arNumber": "AR Account #",
+  "corpId": "Corp ID",
+  "memberNumber": "Member #"
 }
