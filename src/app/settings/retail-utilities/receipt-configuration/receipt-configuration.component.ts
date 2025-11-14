@@ -49,6 +49,7 @@ export class ReceiptConfigurationComponent implements OnInit {
   authCodeToggleInputs: AgToggleConfig;
   changeDueToggleInputs: AgToggleConfig;
   settlementReceiptToggleInputs: AgToggleConfig;
+  allowReceiptCopiesInputs : AgToggleConfig;
   displayImageInReceiptFooterInput : AgToggleConfig;
   displayPropertyLogoInReceiptHeaderInput : AgToggleConfig;
   isImageRemoved: boolean;
@@ -102,6 +103,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       displayChangeDue: [''],
       receiptFooterNote: [''],
       printPendingSettlementReceipt: [''],
+      allowReceiptCopies:[''],
       displayImageInReceiptHeader: [false],
       displayImageInReceiptFooter: [false],
       headerimagedata: false,
@@ -153,6 +155,11 @@ export class ReceiptConfigurationComponent implements OnInit {
       group: this.propertyForm,
       formControlName: 'printPendingSettlementReceipt',
       automationId:"'Tog_ReceiptConfiguration_printPendingSettlementReceipt'"
+    }
+    this.allowReceiptCopiesInputs = {
+      group: this.propertyForm,
+      formControlName: 'allowReceiptCopies',
+      automationId:"'Tog_ReceiptConfiguration_allowReceiptCopies'"
     }
     this.displayImageInReceiptFooterInput = {
       group: this.propertyForm,
@@ -666,6 +673,7 @@ validateRollUpToOneToggles() {
         this.PropertyReceiptInfo.configValue.displayChangeDue : this.PropertyReceiptInfo.defaultValue.displayChangeDue;
       let printGiftReceipt = this.PropertyReceiptInfo.configValue.printGiftReceipt != null ? this.PropertyReceiptInfo.configValue.printGiftReceipt : false;
       let printPendingSettlementReceipt = this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt != null ? this.PropertyReceiptInfo.configValue.printPendingSettlementReceipt : false;
+      let allowReceiptCopies = this.PropertyReceiptInfo.configValue.allowReceiptCopies != null ? this.PropertyReceiptInfo.configValue.allowReceiptCopies : false;
       let groupByTaxName = this.PropertyReceiptInfo.configValue.groupByTaxName != null ? this.PropertyReceiptInfo.configValue.groupByTaxName : false;
       let replaceMemberNumberWithAR = this.PropertyReceiptInfo.configValue.replaceMemberNumberWithAR != null ? this.PropertyReceiptInfo.configValue.replaceMemberNumberWithAR : false;
       let taxGroupingOption = (this.PropertyReceiptInfo.configValue.taxGroupingOption != null && this.PropertyReceiptInfo.configValue.taxGroupingOption != 0) ? this.PropertyReceiptInfo.configValue.taxGroupingOption : TaxGroupingOption.ShowIndividually;
@@ -676,6 +684,7 @@ validateRollUpToOneToggles() {
       this.propertyForm.controls["receiptFooterNote"].setValue(receiptFooterNote);
       this.propertyForm.controls["printGiftReceipt"].setValue(printGiftReceipt);
       this.propertyForm.controls["printPendingSettlementReceipt"].setValue(printPendingSettlementReceipt);
+      this.propertyForm.controls["allowReceiptCopies"].setValue(allowReceiptCopies);
       this.propertyForm.controls["groupByTaxName"].setValue(groupByTaxName);
       this.propertyForm.controls["replaceMemberNumberWithAR"].setValue(replaceMemberNumberWithAR);
       this.propertyForm.controls["taxGroupingOption"].setValue(taxGroupingOption);
@@ -798,6 +807,7 @@ validateRollUpToOneToggles() {
       receiptFooterNote,
       printGiftReceipt = false,
       printPendingSettlementReceipt,
+      allowReceiptCopies,
       headerimagedata,
       footerimagedata,
       headerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID,
@@ -821,6 +831,7 @@ validateRollUpToOneToggles() {
       receiptFooterNote,
       printGiftReceipt,
       printPendingSettlementReceipt,
+      allowReceiptCopies,
       displayImageInReceiptHeader: this.displayImageInReceiptHeader || false,
       displayImageInReceiptFooter: this.displayImageInReceiptFooter || false,
       headerimagedata,
@@ -848,6 +859,7 @@ validateRollUpToOneToggles() {
       receiptFooterNote: "",
       printGiftReceipt: false,
       printPendingSettlementReceipt: false,
+      allowReceiptCopies : false,
       displayImageInReceiptHeader: false,
       displayImageInReceiptFooter: false,
       headerimagedata: false,

@@ -3662,6 +3662,7 @@
     "MissingNewPassword": "Missing New Password_kr",
     "MissingConfirmPassword": "Missing Confirm Password_kr",
     "RequestPresettlementReceiptOnPendingSettlement": "Request Pre-settlement Receipts for Pending Settlements_kr",
+    "AllowReceiptCopies": "Allow Receipt Copies_kr",
     "GroupByTaxName": "Group by Tax Name_kr",
     "ReplaceMemberNumberWithAR": "Replace Member # with AR #_kr",
     "taxGroupingOptionForChargePosting": "Tax Posting Options_kr",
