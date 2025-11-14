@@ -90,7 +90,7 @@
       <!--- end -->
     </div>
 
-    <div class="text-align-right status-btn" *ngIf="GridType.therapist == SelectedSettingId">
+    <div class="text-align-right status-btn" cdkScrollable *ngIf="GridType.therapist == SelectedSettingId">
       <span class="dot active"></span>
       <span class="status LW14 pr-4 cursordefault">{{localization.captions.setting.Active}}</span>
       <span class="dot inactive"></span>
@@ -150,11 +150,9 @@
                 </th>
               </tr>
             </thead>
-            <tbody class=" h-100" flex formArrayName="tablebody">
+            <tbody class=" h-100" flex formArrayName="tablebody" cdkDropList (cdkDropListDropped)="onItemDrop($event)">
 
-              <tr draggable [dragEnabled]="blnDraggable" [dragData]="bodyCnt" [dragHandle]="'.draggable'"
-                [dropEnabled]="blnDraggable" droppable (OnDragOver)="onDragOver($event,bodyCnt,bodyArray)"
-                (onDrop)="onItemDrop($event,bodyCnt,bodyArray)"
+              <tr cdkDrag [cdkDragDisabled]="!blnDraggable"
                 [ngClass]="{'highlight' :((NewerData[0] === bodyCnt) || (SelectedData === bodyCnt)), 'onEdit':isEdit, 'editRow':editableRow == bodyCnt.id, 'rowDisabled': (enableRowCheck | enablerow : bi : options : editEvent)}"
                 id="{{bodyCnt.id}}"
                 *ngFor="let bodyCnt of (bodyArray | filterPipe: searchText : hdrkeyArray | sortPipe : orderType : selectedDefaultHeader : overriddenSortColumn : sortColumnDataType);let bi=index;trackBy:trackByFn"
@@ -299,7 +297,7 @@
                   <i *ngIf="!disableDelete && !table.value.tablebody[bi].donecancel" class="icon-Delete cursor"
                     [ngClass]="IsViewOnly ? 'button_invalid' : ''" title="{{captions.common.Delete}}"
                     (click)="DeleteRecords(bodyCnt)"></i>
-                  <i class="icon-DragAndDrop movecursor draggable" [ngClass]="IsViewOnly ? 'button_invalid' : ''"
+                  <i class="icon-DragAndDrop movecursor" cdkDragHandle [ngClass]="IsViewOnly ? 'button_invalid' : ''"
                     *ngIf="blnDraggable && !table.value.tablebody[bi].donecancel"
                     title="{{captions.common.Drag}}"></i>
 

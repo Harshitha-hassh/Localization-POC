@@ -8,6 +8,7 @@ import {
   ViewChild, AfterViewInit, ChangeDetectorRef, OnDestroy, HostListener, OnChanges, AfterViewChecked
 } from '@angular/core';
 import { Validators, UntypedFormBuilder, UntypedFormGroup, UntypedFormArray, UntypedFormControl } from '@angular/forms';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { ReplaySubject } from 'rxjs';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -243,16 +244,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
     return bodyArr;
   }
 
-  onDragOver(event, ele, newarr) {
-    event.preventDefault();
-    const newdata = [];
-    const overdata = ele;
-    const newdatindex = newarr.indexOf(newdata);
-    const overindex = newarr.indexOf(overdata);
-
-  }
-
-  onItemDrop(event, ele, newarr) {
+  onItemDrop(event: CdkDragDrop<any[]>) {
     const timer = setTimeout(() => {
       const dragElements = document.getElementsByClassName('drag-border');
       Array.from(dragElements).forEach((el) => {
@@ -260,15 +252,20 @@ export class TableComponent implements OnInit, AfterViewInit, OnDestroy, OnChang
       });
       clearTimeout(timer);
     }, 100);
-    const draggeddata = event.dragData;
-    const droppeddata = ele;
-    const dragindex = newarr.indexOf(draggeddata);
-    const dropindex = newarr.indexOf(droppeddata);
-    const dragLstOrder: listOrder = draggeddata;
-    const dropLstOrder: listOrder = droppeddata;
-    this.dragDropEvt.emit([dragLstOrder.listOrder, dropLstOrder.listOrder, this.SelectedSettingId, this.InActiveTherapistChkBoxEvt]);
-    newarr.splice(dragindex, 1);
-    newarr.splice(dropindex, 0, draggeddata);
+    
+    const previousIndex = event.previousIndex;
+    const currentIndex = event.currentIndex;
+    
+    if (previousIndex !== currentIndex) {
+      const draggeddata = this.bodyArray[previousIndex];
+      const droppeddata = this.bodyArray[currentIndex];
+      
+      moveItemInArray(this.bodyArray, previousIndex, currentIndex);
+      
+      const dragLstOrder: listOrder = draggeddata;
+      const dropLstOrder: listOrder = droppeddata;
+      this.dragDropEvt.emit([dragLstOrder.listOrder, dropLstOrder.listOrder, this.SelectedSettingId, this.InActiveTherapistChkBoxEvt]);
+    }
   }
 
   ngOnInit() {

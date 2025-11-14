@@ -15,7 +15,7 @@ import { ClientfilterpipePipe } from './client-table/clientfilterpipe.pipe';
 import { ClientDetailsComponent } from './view-client/client-details/client-details.component';
 import { ClientsortpipePipe } from './client-table/clientsortpipe.pipe';
 import { ScrollbarModule } from 'ngx-scrollbar';
-import { NgDragDropModule } from 'ng-drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ClientService } from '../shared/service/client-service.service';
 import { GuestPolicyWrapperComponent } from './client-popup/create-client/additional-information/guest-policy-wrapper/guest-policy-wrapper.component';
 import { RetailToggleSwitchModule } from '../retail/retail-toggle-switch/retail-toggle-switch.module';
@@ -30,7 +30,7 @@ import { RetailToggleSwitchModule } from '../retail/retail-toggle-switch/retail-
         MatTableModule,
         ScrollbarModule,
         RetailToggleSwitchModule,
-        NgDragDropModule.forRoot()
+        DragDropModule
     ],
     declarations: [
         ClientComponent,

@@ -65,7 +65,7 @@
     </div>
   </div>
   <div class="d-flex clientactions">
-    <div class="w-100">
+    <div class="w-100 h-100">
       <app-client-table [attr.automationId]="'Tbl_clientDetails_client'" [options]="tableoptions" (editEvt)="EditRecords($event)"
         (clientSelected)="clientSelected($event)" (RowSelectEmitter)="RowSelected($event)"
         [enableStickyColumn]="enableStickyColumn"></app-client-table>

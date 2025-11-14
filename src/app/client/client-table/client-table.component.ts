@@ -10,6 +10,7 @@ import { ClientService } from '../../shared/service/client-service.service';
 import { ClientCommonService } from '../client.service';
 import { SPAConfig } from 'src/app/common/shared/config/SPA-config';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-client-table',
@@ -118,27 +119,38 @@ export class ClientTableComponent implements OnInit {
     return StrVal;
   }
 
-
-
-  onDragOver(event, ele, newarr) {
-    event.preventDefault();
-    let newdata = [];
-    let overdata = ele;
-    let newdatindex = newarr.indexOf(newdata);
-    let overindex = newarr.indexOf(overdata);
-
+  onItemDrop(event: CdkDragDrop<any[]>) {
+    const previousIndex = event.previousIndex;
+    const currentIndex = event.currentIndex;
+    
+    if (previousIndex !== currentIndex) {
+      // Get the sorted array that matches what's displayed
+      const sortedArray = this.bodyArray.slice().sort((a, b) => {
+        // Apply the same sorting logic as the pipe
+        return this.compareSortValues(a, b);
+      });
+      
+      const draggedItem = sortedArray[previousIndex];
+      const droppedItem = sortedArray[currentIndex];
+      
+      // Reorder in the original array
+      moveItemInArray(this.bodyArray, 
+        this.bodyArray.indexOf(draggedItem), 
+        this.bodyArray.indexOf(droppedItem));
+      
+      let dragLstOrder: listOrder = draggedItem;
+      let dropLstOrder: listOrder = droppedItem;
+      this.dragDropEvt.emit([dragLstOrder.listOrder, dropLstOrder.listOrder, this.SelectedSettingId, this.InActiveTherapistChkBoxEvt]);
+    }
   }
-  onItemDrop(event, ele, newarr) {
-    let reorderedarr;
-    let draggeddata = event.dragData;
-    let droppeddata = ele;
-    let dragindex = newarr.indexOf(draggeddata);
-    let dropindex = newarr.indexOf(droppeddata);
-    let dragLstOrder: listOrder = draggeddata;
-    let dropLstOrder: listOrder = droppeddata;
-    this.dragDropEvt.emit([dragLstOrder.listOrder, dropLstOrder.listOrder, this.SelectedSettingId, this.InActiveTherapistChkBoxEvt]);
-    newarr.splice(dragindex, 1);
-    newarr.splice(dropindex, 0, draggeddata);
+
+  private compareSortValues(a: any, b: any): number {
+    const key = this.selectedDefaultHeader;
+    const order = this.orderType === 'asc' ? 1 : -1;
+    
+    if (a[key] < b[key]) return -1 * order;
+    if (a[key] > b[key]) return 1 * order;
+    return 0;
   }
 
 

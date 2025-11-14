@@ -6,14 +6,10 @@
       <i [attr.automationId]="'Icn_clientTable_searchBox'" [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" (click)="searchText='';"></i>
     </div>
   </div>
-  <div class="fixed-table-container" id="fixed-table-container" [ngClass]="{'noSort': bodyArray.length < 1}">
+  <div class="fixed-table-container" id="fixed-table-container" cdkScrollable [ngClass]="{'noSort': bodyArray.length < 1}">
     <!--  hidden-head <div class="header-background"> </div> -->
     <!-- <div class="fixed-table-container-inner"> -->
-    <div class="w-100 position-absolute grid-table" id="SPACustomTable">
-      <ng-scrollbar [trackX]="true" [autoHide]="true">
-
-
-        <!-- <ng-scrollbar> -->
+    <div class="w-100 h-100 grid-table" id="SPACustomTable">
         <table cellspacing="0" class="retailtable">
           <thead>
             <tr id="SPAHeaderRow">
@@ -50,9 +46,9 @@
                 </th> -->
             </tr>
           </thead>
-          <tbody class=" h-100" flex>
-            <tr draggable attr.automationId='Tr_clientTable_clientRow{{bi}}' [dragEnabled]="blnDraggable" [dropEnabled]="blnDraggable" [dragData]="bodyCnt" [dragHandle]="'.draggable'" droppable (OnDragOver)="onDragOver($event,bodyCnt,bodyArray)"
-              (click)="highlightrow($event, bodyCnt)" (onDrop)="onItemDrop($event,bodyCnt,bodyArray)" [ngClass]="((NewerData[0] === bodyCnt) || (SelectedData === bodyCnt)) ? 'highlight' : ''"
+          <tbody class="TBodydataList h-100" flex cdkDropList (cdkDropListDropped)="onItemDrop($event)">
+            <tr cdkDrag [cdkDragDisabled]="!blnDraggable" attr.automationId='Tr_clientTable_clientRow{{bi}}'
+              (click)="highlightrow($event, bodyCnt)" [ngClass]="((NewerData[0] === bodyCnt) || (SelectedData === bodyCnt)) ? 'highlight' : ''"
               id="{{bodyCnt.id}}" class="cursor" *ngFor="let bodyCnt of (bodyArray | clientsortpipe : orderType : selectedDefaultHeader : overriddenSortColumn : sortColumnDataType);let bi=index">
 
 
@@ -155,7 +151,7 @@
                 </button>
                 <i attr.automationId='Icn_clientTable_editRow{{bi}}' class="icon-Edit cursor" *ngIf="editable" title={{this.captions.shop.Edit}} (click)="editRow($event,bodyCnt,'edit',options[0].ServiceId)"></i>
                 <i attr.automationId='Icn_clientTable_deleteRow{{bi}}' *ngIf="!disableDelete" class="icon-Delete cursor" title="Delete" (click)="DeleteRecords(bodyCnt)"></i>
-                <i class="icon-DragAndDrop movecursor draggable" *ngIf="blnDraggable" title="Drag"></i>
+                <i class="icon-DragAndDrop movecursor" *ngIf="blnDraggable" title="Drag" cdkDragHandle></i>
                 <i attr.automationId='Icn_clientTable_copyRow{{bi}}' class="icon-copy cursor pl-3" title={{this.captions.bookAppointment.Copy}} (click)="editRow($event,bodyCnt,'copy',options[0].ServiceId)"></i>
               </td>
 
@@ -166,8 +162,6 @@
             </tr>
           </tbody>
         </table>
-        <!-- </ng-scrollbar> -->
-      </ng-scrollbar>
     </div>
     <!-- </div> -->
   </div>
