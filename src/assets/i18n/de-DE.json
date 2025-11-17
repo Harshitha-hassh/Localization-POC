@@ -1808,7 +1808,8 @@
     "lbl_HotelCompName": "Compor Name_de",
     "lbl_item_on_par": "Item on Par_de",
     "lbl_iten_on_par_desc": "Item on Par. Do you want to add this item?_de",
-    "warn_Multipack_Commission_Cancel": "Commission assignment is required for this item. The multipack redemption will be cancelled._de"
+    "warn_Multipack_Commission_Cancel": "Commission assignment is required for this item. The multipack redemption will be cancelled._de",
+    "PayeeDiscountNotEligibleForSomeItem": "Client is not eligible for below discount(s): {discountList}_de"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_de",
