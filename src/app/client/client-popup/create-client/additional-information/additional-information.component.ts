@@ -17,6 +17,7 @@ import { GuestPolicyDetail, PolicyCategoryType, PolicyType } from 'src/app/commo
 import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
 import { RetailRoutes } from 'src/app/retail/retail-route';
 import * as GlobalConst from 'src/app/common/shared/shared/globalsContant';
+import { PhilippinesMiscellaneousData, PhilippinesMiscellaneousConfig } from 'src/app/common/components/ag-philippines-miscellaneous/ag-philippines-miscellaneous.component';
 
 @Component({
   selector: 'app-additional-information',
@@ -63,6 +64,22 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   placeHolderFormat: any;
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
+  
+  // Philippines Miscellaneous Configuration
+  showPhilippinesInfo: boolean = true; // This should be controlled by country/property settings
+  philippinesMiscConfig: PhilippinesMiscellaneousConfig = {
+    showTinField: true,
+    showGuestTypeSelection: true,
+    enableSoloParentFields: true,
+    required: {
+      tin: false,
+      guestType: false,
+      guestTypeIdNo: false,
+      soloParentChildName: false,
+      soloParentChildDob: false
+    }
+  };
+  captionsCommon: any;
   @Input('inputData')
   set formData(value) {
     if(value && value.data!='')
@@ -85,6 +102,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     private userMachineConfigurationService: UserMachineConfigurationService
     ) {
     this.captions = this.localization.captions.bookAppointment;
+    this.captionsCommon = this.localization.captions;
     this.floatLabel = this.localization.setFloatLabel;
     this.maxDate = this.PropertyInfo.CurrentDate;
     this.placeHolderFormat = this.localization.inputDateFormat;
@@ -402,4 +420,17 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
         extraParams: []
       });
     }
+
+  // Philippines Miscellaneous event handlers
+  onPhilippinesMiscDataChange(data: PhilippinesMiscellaneousData) {
+    // Handle Philippines miscellaneous data changes
+    console.log('Philippines Data Changed:', data);
+    // You can save this data to your form or handle it as needed
+  }
+
+  onPhilippinesMiscValidityChange(isValid: boolean) {
+    // Handle form validity changes
+    console.log('Philippines Form Validity:', isValid);
+    // You can use this to control overall form submission
+  }
 }
