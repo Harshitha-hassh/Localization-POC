@@ -110,7 +110,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     state: false,
     country: false,
     postalCode: false,
-    dob: false
+    dob: false,
+    county: false
   };
   floatLabel: string;
   floatLabelNever: string;
@@ -174,6 +175,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       emailPrimary: false,
       phonePrimary: false,
       state: '',
+      county: '',
       city: '',
       country: '',
       platformAddressUuid: '',
@@ -503,7 +505,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       state: clientConfiguration[0]['CLIENT_STATE'],
       title: clientConfiguration[0]['CLIENT_TITLE'],
       postalCode: clientConfiguration[0]['CLIENT_POSTAL_CODE'],
-      dob: clientConfiguration[0]['CLIENT_BIRTHDAY']
+      dob: clientConfiguration[0]['CLIENT_BIRTHDAY'],
+      county: clientConfiguration[0]['CLIENT_COUNTY']
     }
 
     // this.FormGrp.controls['firstName'].clearValidators();
@@ -533,6 +536,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['state'].updateValueAndValidity();
     // if(clientConfiguration[0]['CLIENT_STATE'])
     // this.FormGrp.controls.state.markAsTouched();
+
+    this.FormGrp.controls['county'].clearValidators();
+    this.FormGrp.controls['county'].setValidators(clientConfiguration[0]['CLIENT_COUNTY'] ? [Validators.required, EmptyValueValidator] : []);
+    this.FormGrp.controls['county'].updateValueAndValidity();
 
     this.FormGrp.controls['city'].clearValidators();
     this.FormGrp.controls['city'].setValidators(clientConfiguration[0]['CLIENT_CITY'] ? [Validators.required, EmptyValueValidator] : []);
@@ -715,6 +722,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['city'].setValue('');
     this.FormGrp.controls['country'].setValue('');
     this.FormGrp.controls['state'].setValue('');
+    this.FormGrp.controls['county'].setValue('');
   }
 
   makeGetCall(routeURL: string) {
@@ -882,6 +890,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     if (clientInfo.addresses && clientInfo.addresses != null) {
       this.FormGrp.controls.postal_code.setValue(clientInfo.addresses.zipCode);
       this.FormGrp.controls.state.setValue(clientInfo.addresses.state);
+      this.FormGrp.controls.county.setValue(clientInfo.addresses.county);
       this.FormGrp.controls.city.setValue(clientInfo.addresses.city);
       this.FormGrp.controls.country.setValue(clientInfo.addresses.country);
       this.FormGrp.controls.platformAddressUuid.setValue(clientInfo.addresses.platformAddressUuid);
@@ -1153,6 +1162,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         this.addAddressItem(0, extraParams[0].address.addressLine1, false);
         this.FormGrp.controls.postal_code.setValue(extraParams[0].address.postalCode);
         this.FormGrp.controls.state.setValue(extraParams[0].address.state);
+        this.FormGrp.controls.county.setValue(extraParams[0].address.county);
         this.FormGrp.controls.city.setValue(extraParams[0].address.city);
         this.FormGrp.controls.country.setValue(extraParams[0].address.country);
         this.FormGrp.controls.platformAddressUuid.setValue(extraParams[0].address.platformAddressUuid);
@@ -1233,6 +1243,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
           guestData.addresses.addressLine1 = playerDetail.address.addressLine1;
           guestData.addresses.city = playerDetail.address.city;
           guestData.addresses.state = playerDetail.address.state;
+          guestData.addresses.county = playerDetail.address.county;
           guestData.addresses.zipCode = playerDetail.address.postalCode;
           guestData.addresses.country = playerDetail.address.countryName;
         }
@@ -1287,6 +1298,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         cmsData.address.city != existingData.addresses.city ||
         cmsData.address.state != existingData.addresses.state ||
         cmsData.address.postalCode != existingData.addresses.zipCode ||
+        cmsData.address.county != existingData.addresses.county ||
         cmsData.address.country != existingData.addresses.country)) {
         return true;
       }

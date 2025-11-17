@@ -1026,7 +1026,8 @@
     "AnniversaryDate": "Wedding Anniversary Date_de",
     "err_minimumAnniversaryDate": "Invalid Minimum Anniversary Date_de",
     "err_maximumAnniversaryDate": "Invalid Maximum Anniversary Date_de",
-    "PreferredLanguage": "Preferred Language_de"
+    "PreferredLanguage": "Preferred Language_de",
+    "County": "County_de"
   },
   "shop": {
     "lbl_fetchCoupon": "Fetching coupon details..._de",
