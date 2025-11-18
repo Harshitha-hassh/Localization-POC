@@ -17,7 +17,7 @@ import { GuestPolicyDetail, PolicyCategoryType, PolicyType } from 'src/app/commo
 import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
 import { RetailRoutes } from 'src/app/retail/retail-route';
 import * as GlobalConst from 'src/app/common/shared/shared/globalsContant';
-import { PhilippinesMiscellaneousData, PhilippinesMiscellaneousConfig } from 'src/app/common/components/ag-philippines-miscellaneous/ag-philippines-miscellaneous.component';
+import { PhilippinesMiscellaneousData, GuestTypeCategory } from 'src/app/common/shared/shared/business/shared.modals';
 
 @Component({
   selector: 'app-additional-information',
@@ -65,20 +65,12 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
   
-  // Philippines Miscellaneous Configuration
-  showPhilippinesInfo: boolean = true; // This should be controlled by country/property settings
-  philippinesMiscConfig: PhilippinesMiscellaneousConfig = {
-    showTinField: true,
-    showGuestTypeSelection: true,
-    enableSoloParentFields: true,
-    required: {
-      tin: false,
-      guestType: false,
-      guestTypeIdNo: false,
-      soloParentChildName: false,
-      soloParentChildDob: false
-    }
-  };
+  get showPhilippinesInfo(): boolean {
+    return this.localization.localeCode === 'en-PH';
+  }
+  
+  philippinesData: PhilippinesMiscellaneousData | null = null;
+  philippinesGuestTypeCategories: GuestTypeCategory[] = [];
   captionsCommon: any;
   @Input('inputData')
   set formData(value) {
@@ -423,9 +415,15 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
 
   // Philippines Miscellaneous event handlers
   onPhilippinesMiscDataChange(data: PhilippinesMiscellaneousData) {
-    // Handle Philippines miscellaneous data changes
-    console.log('Philippines Data Changed:', data);
-    // You can save this data to your form or handle it as needed
+    this.philippinesData = data;
+    this.philippinesGuestTypeCategories = data.guestTypeCategories || [];
+    
+    if (!this.FormGrp.get('philippinesGuestTypeCategories')) {
+      this.FormGrp.addControl('philippinesGuestTypeCategories', this.Form.control([]));
+    }
+    this.FormGrp.get('philippinesGuestTypeCategories')?.setValue(this.philippinesGuestTypeCategories);
+    this.FormGrp.markAsDirty();
+    this.FormGrp.markAsTouched();
   }
 
   onPhilippinesMiscValidityChange(isValid: boolean) {

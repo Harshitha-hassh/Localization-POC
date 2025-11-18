@@ -1,4 +1,6 @@
 
+import { GuestTypeCategory } from '../../../common/shared/shared/business/shared.modals';
+
 export interface ClientInfo {
   id: number;
   client: Client;
@@ -7,6 +9,7 @@ export interface ClientInfo {
   emails: Email[];
   clientCreditCardInfo: ClientCreditCardInfo[];
   clientComment: ClientComment[];
+  GuestTypeCategories?: GuestTypeCategory[];
  }
   
  export interface ClientCreditCardInfo {
