@@ -329,12 +329,20 @@
           {{captions.MissingPostalCode}}
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="" [floatLabel]="floatLabel">
+      <mat-form-field class="mr-3" [floatLabel]="floatLabel">
         <input [attr.automationId]="'Txt_personalInformation_city'" matInput [placeholder]="captions.City"
           formControlName="city" [required]="customRequired.city" [maxlength]="50">
         <mat-error class=""
           *ngIf="FormGrp.controls['city'].hasError('required') && FormGrp.controls['city'].touched && !FormGrp.controls['city'].valid">
           {{captions.MissingCityInformation}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="" [floatLabel]="floatLabel">
+        <input [attr.automationId]="'Txt_personalInformation_county'" matInput [placeholder]="captions.County"
+          formControlName="county" [required]="customRequired.county" [maxlength]="50">
+        <mat-error class=""
+          *ngIf="FormGrp.controls['county'].hasError('required') && FormGrp.controls['county'].touched && !FormGrp.controls['county'].valid">
+          {{captions.MissingCountyInformation}}
         </mat-error>
       </mat-form-field>
       <div>

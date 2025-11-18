@@ -1039,7 +1039,8 @@
     "AnniversaryDate": "Wedding Anniversary Date_kr",
     "err_minimumAnniversaryDate": "Invalid Minimum Anniversary Date_kr",
     "err_maximumAnniversaryDate": "Invalid Maximum Anniversary Date_kr",
-    "PreferredLanguage": "Preferred Language_kr"
+    "PreferredLanguage": "Preferred Language_kr",
+    "County": "County_kr"
   },
   "shop": {
     "lbl_fetchCoupon": "Fetching coupon details..._kr",
@@ -1820,7 +1821,8 @@
     "lbl_HotelCompName": "Compor Name_kr",
     "lbl_item_on_par": "Item on Par_kr",
     "lbl_iten_on_par_desc": "Item on Par. Do you want to add this item?_kr",
-    "warn_Multipack_Commission_Cancel": "Commission assignment is required for this item. The multipack redemption will be cancelled._kr"
+    "warn_Multipack_Commission_Cancel": "Commission assignment is required for this item. The multipack redemption will be cancelled._kr",
+    "PayeeDiscountNotEligibleForSomeItem": "Client is not eligible for below discount(s): {discountList}_kr"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_kr",
@@ -2931,7 +2933,8 @@
     "lbl_December": "December_kr",
     "TaxOnTax": "Tax On Tax_kr",
     "MissingUnitCost": "Missing Unit Cost_kr",
-    "InvalidBarcode": "Missing Barcode_kr"
+    "InvalidBarcode": "Missing Barcode_kr",
+    "GenerateSalesInvoice": "Generate Sales Invoice #_kr"
   },
   "setting": {
     "existing_tax": "Existing Tax_kr",
@@ -4202,7 +4205,12 @@
     "CombineAllRevenueToProperty": "Combine Revenue to Property Only_kr",
     "CombineAllTaxesAndRevenueToProperty": "Combine Both Taxes and Revenue to Property_kr",
     "TaxName": "Tax Name_kr",
-    "MissingTaxName": "Missing Tax Name_kr"
+    "MissingTaxName": "Missing Tax Name_kr",
+    "ReceiptNumber": "Sales Invoice # Range_kr",
+    "InvalidInput": "Invalid Input_kr",
+    "errMinDigitsNeeded": "Minimum {minDigits} digits needed_kr",
+    "errFromNumber": "Missing From Receipt Number_kr",
+    "errToNumber": "Missing To Receipt Number_kr"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_kr",

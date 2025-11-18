@@ -1039,7 +1039,8 @@
     "AnniversaryDate": "Wedding Anniversary Date_fr",
     "err_minimumAnniversaryDate": "Invalid Minimum Anniversary Date_fr",
     "err_maximumAnniversaryDate": "Invalid Maximum Anniversary Date_fr",
-    "PreferredLanguage": "Preferred Language_fr"
+    "PreferredLanguage": "Preferred Language_fr",
+    "County": "County_fr"
   },
   "shop": {
     "lbl_fetchCoupon": "Fetching coupon details..._fr",
@@ -1820,7 +1821,8 @@
     "lbl_HotelCompName": "Compor Name_fr",
     "lbl_item_on_par": "Item on Par_fr",
     "lbl_iten_on_par_desc": "Item on Par. Do you want to add this item?_fr",
-    "warn_Multipack_Commission_Cancel": "Commission assignment is required for this item. The multipack redemption will be cancelled._fr"
+    "warn_Multipack_Commission_Cancel": "Commission assignment is required for this item. The multipack redemption will be cancelled._fr",
+    "PayeeDiscountNotEligibleForSomeItem": "Client is not eligible for below discount(s): {discountList}_fr"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fr",
@@ -2931,7 +2933,8 @@
     "lbl_December": "December_fr",
     "TaxOnTax": "Tax On Tax_fr",
     "MissingUnitCost": "Missing Unit Cost_fr",
-    "InvalidBarcode": "Missing Barcode_fr"
+    "InvalidBarcode": "Missing Barcode_fr",
+    "GenerateSalesInvoice": "Generate Sales Invoice #_fr"
   },
   "setting": {
     "existing_tax": "Existing Tax_fr",
@@ -4202,7 +4205,12 @@
     "CombineAllRevenueToProperty": "Combine Revenue to Property Only_fr",
     "CombineAllTaxesAndRevenueToProperty": "Combine Both Taxes and Revenue to Property_fr",
     "TaxName": "Tax Name_fr",
-    "MissingTaxName": "Missing Tax Name_fr"
+    "MissingTaxName": "Missing Tax Name_fr",
+    "ReceiptNumber": "Sales Invoice # Range_fr",
+    "InvalidInput": "Invalid Input_fr",
+    "errMinDigitsNeeded": "Minimum {minDigits} digits needed_fr",
+    "errFromNumber": "Missing From Receipt Number_fr",
+    "errToNumber": "Missing To Receipt Number_fr"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_fr",

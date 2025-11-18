@@ -1039,7 +1039,8 @@
     "AnniversaryDate": "Wedding Anniversary Date",
     "err_minimumAnniversaryDate": "Invalid Minimum Anniversary Date",
     "err_maximumAnniversaryDate": "Invalid Maximum Anniversary Date",
-    "PreferredLanguage": "Preferred Language"
+    "PreferredLanguage": "Preferred Language",
+    "County": "County"
   },
   "shop": {
     "lbl_fetchCoupon": "Fetching coupon details...",
@@ -1820,7 +1821,8 @@
     "lbl_HotelCompName": "Compor Name",
     "lbl_item_on_par": "Item on Par",
     "lbl_iten_on_par_desc": "Item on Par. Do you want to add this item?",
-    "warn_Multipack_Commission_Cancel": "Commission assignment is required for this item. The multipack redemption will be cancelled."
+    "warn_Multipack_Commission_Cancel": "Commission assignment is required for this item. The multipack redemption will be cancelled.",
+    "PayeeDiscountNotEligibleForSomeItem": "Client is not eligible for below discount(s): {discountList}"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile",
@@ -2931,7 +2933,8 @@
     "lbl_December": "December",
     "TaxOnTax": "Tax On Tax",
     "MissingUnitCost": "Missing Unit Cost",
-    "InvalidBarcode": "Missing Barcode"
+    "InvalidBarcode": "Missing Barcode",
+    "GenerateSalesInvoice": "Generate Sales Invoice #"
   },
   "setting": {
     "existing_tax": "Existing Tax",
@@ -4202,7 +4205,12 @@
     "CombineAllRevenueToProperty": "Combine Revenue to Property Only",
     "CombineAllTaxesAndRevenueToProperty": "Combine Both Taxes and Revenue to Property",
     "TaxName": "Tax Name",
-    "MissingTaxName": "Missing Tax Name"
+    "MissingTaxName": "Missing Tax Name",
+    "ReceiptNumber": "Sales Invoice # Range",
+    "InvalidInput": "Invalid Input",
+    "errMinDigitsNeeded": "Minimum {minDigits} digits needed",
+    "errFromNumber": "Missing From Receipt Number",
+    "errToNumber": "Missing To Receipt Number"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference",

@@ -175,6 +175,7 @@ export class CreateClientBusiness {
       state: this.personalDetailsControls.state ? this.personalDetailsControls.state : '',
       city: this.personalDetailsControls.city ? this.personalDetailsControls.city : '',
       country: this.personalDetailsControls.country ? this.personalDetailsControls.country : '',
+      county: this.personalDetailsControls.county ? this.personalDetailsControls.county : '',
       zip: this.personalDetailsControls.postal_code ? this.personalDetailsControls.postal_code : '',
       zipCode: this.personalDetailsControls.postal_code ? this.personalDetailsControls.postal_code : '',
       isPrivate: isPrivate,
