@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, UntypedFormArray, AbstractControl, ValidationErrors } from '@angular/forms';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
-import { Outlet, ReceiptModel,PropertyReceiptModel, PropertyConfigurationModel, ImgType, receiptImageConfiguration, RetailImgRefType, TaxGroupingOption } from '../../../retail/retail.modals';
+import { Outlet, ReceiptModel, PropertyReceiptModel, ImgType, receiptImageConfiguration, RetailImgRefType, TaxGroupingOption } from '../../../retail/retail.modals';
 import { ReceiptConfigurationDataService } from './receipt-configuration-data';
 import { RetailOutletsDataService } from '../../../retail/retail-code-setup/retail-outlets/retail-outlets-data.service';
 import { RetailBreakPoint, ButtonType } from 'src/app/common/shared/shared/globalsContant';
@@ -12,6 +12,7 @@ import { AlertType, Imagedata } from 'src/app/shared/shared-models';
 import { ImageDataService } from 'src/app/shared/data-services/Image/image.data.services';
 import { DEFAULT_IMAGE_REFERENCE_ID } from 'src/app/app-constants';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 
 @Component({
   selector: 'app-receipt-configuration',
@@ -75,15 +76,19 @@ export class ReceiptConfigurationComponent implements OnInit {
   // Track toggle states for conditional text boxes
   showCombineAllTaxesTextBox: boolean = false;
   showCombineAllRevenueToPropertyTextBox: boolean = false;
-  showCombineAllTaxesAndRevenueToPropertyTextBox: boolean = false; 
+  showCombineAllTaxesAndRevenueToPropertyTextBox: boolean = false;
   defaultTax: string = 'Tax';
+  enableSerialInvoiceRange: boolean = true;
+  defaultMinNoOfDigits: number = 1;
+  defaultReceiptNumber: number = 0;
+  minDigitsErrMsg: string;
 
   constructor(private Form: UntypedFormBuilder,
-              private breakPoint: BreakPointAccess,
-              public localization: RetailStandaloneLocalization,
-              private data: ReceiptConfigurationDataService,
-              private outletData: RetailOutletsDataService, private utils: RetailUtilities,private imgService: ImageDataService,
-              public PropertyInfo: RetailPropertyInformation) {
+    private breakPoint: BreakPointAccess,
+    public localization: RetailStandaloneLocalization,
+    private data: ReceiptConfigurationDataService,
+    private outletData: RetailOutletsDataService, private utils: RetailUtilities, private imgService: ImageDataService,
+    public PropertyInfo: RetailPropertyInformation, public retailLocalization: RetailLocalization) {
     this.textCaptions = this.localization.captions.utilities;
     this.floatLabel = this.localization.setFloatLabel;
     this.FormGrp = this.Form.group({
@@ -114,7 +119,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       receiptImageFooterNote: [''],
       groupByTaxName:[false],
       replaceMemberNumberWithAR:[false],
-      taxGroupingOption: [TaxGroupingOption.ShowIndividually], 
+      taxGroupingOption: [TaxGroupingOption.ShowIndividually],
       combineAllTaxes: [false],
       combineAllRevenueToProperty: [false],
       combineAllTaxesAndRevenueToProperty: [false],
@@ -122,11 +127,14 @@ export class ReceiptConfigurationComponent implements OnInit {
       combineAllTaxesName: [this.defaultTax, Validators.required],
       combineAllRevenueToPropertyName: [this.defaultTax, Validators.required],
       combineAllTaxesAndRevenueToPropertyName: [this.defaultTax, Validators.required],
+      fromReceiptNumber: [this.defaultReceiptNumber, this.enableSerialInvoiceRange ? [Validators.required, this.numberMinLengthValidator(this.defaultMinNoOfDigits)] : []],
+      toReceiptNumber: [this.defaultReceiptNumber, this.enableSerialInvoiceRange ? [Validators.required, this.numberMinLengthValidator(this.defaultMinNoOfDigits)] : []]
     })
   }
 
   async ngOnInit() {
     this.textCaptions = this.localization.captions.utilities;
+    this.enableSerialInvoiceRange = this.retailLocalization.IsLocationInPhilippines();
     this.DisplayAuthCode=false;
     this.displayChangeDue= false;
     this.displayImageInReceiptHeader=false;
@@ -198,13 +206,13 @@ export class ReceiptConfigurationComponent implements OnInit {
       formControlName: 'combineAllTaxesAndRevenueToProperty',
       automationId:'Tog_ReceiptConfiguration_combineAllTaxesAndRevenueToProperty'
     }
-    
+
     this.taxGroupingOptions = [
       { id: TaxGroupingOption.ShowIndividually, value: this.textCaptions.ShowIndividually },
       { id: TaxGroupingOption.SumByTaxName, value: this.textCaptions.SumByTaxName },
       { id: TaxGroupingOption.SumWithParent, value: this.textCaptions.SumWithParent },
       { id: TaxGroupingOption.RollUpToOne, value: this.textCaptions.RollUpToOne }
-      
+
     ]
     this.Outlet = await this.outletData.getOutlets();
     this.Outlet = this.Outlet.filter(x => x.isActive == true);
@@ -228,7 +236,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       {id:3, Name:this.textCaptions.firstName, controlName: 'firstName', value: 2},
       {id:4, Name:this.textCaptions.lastName, controlName: 'lastName', value: 3}
     ]
-      this.isSuppressClerk = true;
+    this.isSuppressClerk = true;
     this.isSuppressPrint =true;
     this.breakPoint.CheckForAccess([RetailBreakPoint.ReceiptConfiguration], false);
     if (this.breakPoint.IsViewOnly(RetailBreakPoint.ReceiptConfiguration)) {
@@ -244,6 +252,8 @@ export class ReceiptConfigurationComponent implements OnInit {
     // Initialize Roll Up to One toggles visibility
     this.showRollUpToOneToggles = this.propertyForm.get('taxGroupingOption')?.value === TaxGroupingOption.RollUpToOne;
     this.propertyForm.valueChanges.subscribe(() => this.validateRollUpToOneToggles());
+
+    this.minDigitsErrMsg = this.textCaptions.errMinDigitsNeeded.replace('{minDigits}', '6');
   }
 
   changeSelection(e) {
@@ -314,7 +324,7 @@ export class ReceiptConfigurationComponent implements OnInit {
     if ( selectedValues[0].suppressPrintedBy == true) {
       this.isSuppressPrint = false;
     }
-    
+
   }
 
   addPrintDetails(): UntypedFormGroup {
@@ -330,7 +340,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       groupedItem: '',
       surplusPrintedByOnReceipt:'',
       surplusClientIdOnReceiptbyName: '',
-      surplusPrintedByOnReceiptbyName: ''     
+      surplusPrintedByOnReceiptbyName: ''
     });
   }
   savePrintDetails(data): UntypedFormGroup {
@@ -346,7 +356,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       groupedItem: data.groupedItem,
       surplusPrintedByOnReceipt: data.surplusPrintedByOnReceipt,
       surplusClientIdOnReceiptbyName: data.clerkIdPrintValue,
-      surplusPrintedByOnReceiptbyName: data.printedByPrintValue      
+      surplusPrintedByOnReceiptbyName: data.printedByPrintValue
     });
   }
 
@@ -376,7 +386,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       this.printInfo[3].enableToggle = false;
       this.printInfo[5].enableToggle = false;
       this.printInfo[7].enableToggle = false;
-    } 
+    }
     else if ((controlName == 'surplusClientIdOnReceipt') && event[0] == false) {
       this.isSuppressClerk = true;
     }
@@ -431,7 +441,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       suppressClerkId: data.printReceipt[0].surplusClientIdOnReceipt ? true : false,
       displayPackageDescription: data.printReceipt[0].packItemDesc ? true : false,
       displayPackagePrice: data.printReceipt[0].packItemPrice ? true : false,
-      displayPackageAppointmentID: data.printReceipt[0].packAppId ? true : false,      
+      displayPackageAppointmentID: data.printReceipt[0].packAppId ? true : false,
       displayGroupedItem: data.printReceipt[0].groupedItem ? true : false,
       displayPackageStaffCode: data.printReceipt[0].packStaffCode ? true : false,
       serviceChargeGratuityDisplay: data.displayServiceCharge,
@@ -468,35 +478,35 @@ export class ReceiptConfigurationComponent implements OnInit {
   toggleChangeDueAction(event) {
     if (event.checked == false) {
       this.DisplayChangeDue=false;
-      
+
     }
     else {
       this.DisplayChangeDue=true;
-      
+
     }
   }
 
-validateRollUpToOneToggles() {
-  const form = this.propertyForm;
-  const dirty = form.dirty;
+  validateRollUpToOneToggles() {
+    const form = this.propertyForm;
+    const dirty = form.dirty;
 
   const combineTaxes    = form.get('combineAllTaxes')?.value;
   const combineRevenue  = form.get('combineAllRevenueToProperty')?.value;
   const combineBoth     = form.get('combineAllTaxesAndRevenueToProperty')?.value;
 
-  const atLeastOne = combineTaxes || combineRevenue || combineBoth;
+    const atLeastOne = combineTaxes || combineRevenue || combineBoth;
 
-  let disableSave = this.showRollUpToOneToggles
-    ? (!dirty || !atLeastOne)
-    : (!dirty);
+    let disableSave = this.showRollUpToOneToggles
+      ? (!dirty || !atLeastOne)
+      : (!dirty);
 
-  const taxFields =
+    const taxFields =
     (combineTaxes   && !form.get('combineAllTaxesName')?.value?.trim())   ||
-    (combineRevenue && !form.get('combineAllRevenueToPropertyName')?.value?.trim()) ||
+      (combineRevenue && !form.get('combineAllRevenueToPropertyName')?.value?.trim()) ||
     (combineBoth    && !form.get('combineAllTaxesAndRevenueToPropertyName')?.value?.trim());
 
-  this.isSaveDisabled = disableSave || !!taxFields;
-}
+    this.isSaveDisabled = disableSave || !!taxFields || !form.valid;
+  }
 
   onTaxGroupingOptionChange(value: TaxGroupingOption) {
     this.showRollUpToOneToggles = value === TaxGroupingOption.RollUpToOne;
@@ -680,6 +690,8 @@ validateRollUpToOneToggles() {
       let combineAllTaxes = this.PropertyReceiptInfo.configValue.combineAllTaxes != null ? this.PropertyReceiptInfo.configValue.combineAllTaxes : false;
       let combineAllRevenueToProperty = this.PropertyReceiptInfo.configValue.combineAllRevenueToProperty != null ? this.PropertyReceiptInfo.configValue.combineAllRevenueToProperty : false;
       let combineAllTaxesAndRevenueToProperty = this.PropertyReceiptInfo.configValue.combineAllTaxesAndRevenueToProperty != null ? this.PropertyReceiptInfo.configValue.combineAllTaxesAndRevenueToProperty : false;
+      let fromReceiptNumber = this.PropertyReceiptInfo.configValue.fromReceiptNumber ? this.PropertyReceiptInfo.configValue.fromReceiptNumber : this.defaultReceiptNumber;
+      let toReceiptNumber = this.PropertyReceiptInfo.configValue.toReceiptNumber ? this.PropertyReceiptInfo.configValue.toReceiptNumber : this.defaultReceiptNumber;
       this.propertyForm.controls["displayChangeDue"].setValue(displayChangeDue);
       this.propertyForm.controls["receiptFooterNote"].setValue(receiptFooterNote);
       this.propertyForm.controls["printGiftReceipt"].setValue(printGiftReceipt);
@@ -691,7 +703,8 @@ validateRollUpToOneToggles() {
       this.propertyForm.controls["combineAllTaxes"].setValue(combineAllTaxes);
       this.propertyForm.controls["combineAllRevenueToProperty"].setValue(combineAllRevenueToProperty);
       this.propertyForm.controls["combineAllTaxesAndRevenueToProperty"].setValue(combineAllTaxesAndRevenueToProperty);
-
+      this.propertyForm.controls["fromReceiptNumber"].setValue(fromReceiptNumber);
+      this.propertyForm.controls["toReceiptNumber"].setValue(toReceiptNumber);
       // Load tax name text boxes
       let combineAllTaxesName = this.defaultTax;
       let combineAllRevenueToPropertyName = this.defaultTax;
@@ -762,10 +775,17 @@ validateRollUpToOneToggles() {
   }
 
   async saveReceiptProperty(data: any) {
-  if (this.propertyForm.invalid) {
-    this.propertyForm.markAllAsTouched(); 
-    return;
-  }
+    if (this.propertyForm.invalid) {
+      this.propertyForm.markAllAsTouched();
+      return;
+    }
+    if (data?.fromReceiptNumber) {
+      data.fromReceiptNumber = Number(data.fromReceiptNumber)
+      data.toReceiptNumber = Number(data.toReceiptNumber)
+      this.propertyForm.controls["fromReceiptNumber"].setValue(data.fromReceiptNumber);
+      this.propertyForm.controls["toReceiptNumber"].setValue(data.toReceiptNumber);
+      this.propertyForm.updateValueAndValidity({ emitEvent: false });
+    }
     console.log(data);
     sessionStorage.removeItem("propertyReceiptConfiguration");
     if(this.PropertyReceiptInfo && this.PropertyReceiptInfo.id > 0)
@@ -776,7 +796,7 @@ validateRollUpToOneToggles() {
         moduleName : "Utilities",//ModuleName.Utilities,
         configValue: JSON.stringify(this.formConfigValue(data)),
         defaultValue: JSON.stringify(this.formDefaultValue(data))
-      } 
+      }
       //Update call
       let propertyReceiptConfig = await this.data.updatePropertyConfig(Propertyreceiptobj);
       propertyReceiptConfig = this.utils.parsePropertyReceiptConfig(propertyReceiptConfig);
@@ -788,12 +808,12 @@ validateRollUpToOneToggles() {
         screenName: "ReceiptConfiguration",//ScreenName.ReceiptConfiguration,
         moduleName : "Utilities",//ModuleName.Utilities,
         configValue: JSON.stringify(this.formConfigValue(data)),
-      defaultValue: JSON.stringify(this.formDefaultValue(data))
+        defaultValue: JSON.stringify(this.formDefaultValue(data))
       }
       this.PropertyReceiptInfo = await this.data.createPropertyConfig(Propertyreceiptobj);
       this.PropertyReceiptInfo  = this.utils.parsePropertyReceiptConfig(this.PropertyReceiptInfo );
       sessionStorage.setItem("propertyReceiptConfiguration",JSON.stringify( this.PropertyReceiptInfo));
-    } 
+    }
     let message = this.localization.replacePlaceholders(this.textCaptions.AfterSaveMessage, ['message'], [`the ${this.localization.captions["lbl_property"]}`]);
     this.utils.showAlert(message, AlertType.WellDone);
     this.resetData();
@@ -821,9 +841,11 @@ validateRollUpToOneToggles() {
       combineAllTaxesAndRevenueToProperty,
       combineAllTaxesName,
       combineAllRevenueToPropertyName,
-      combineAllTaxesAndRevenueToPropertyName
+      combineAllTaxesAndRevenueToPropertyName,
+      fromReceiptNumber,
+      toReceiptNumber
     } = data;
-  
+
     return {
       displayAuthCode: displayAuthcode,
       AuthCodeReceiptName: authcodeName,
@@ -847,7 +869,9 @@ validateRollUpToOneToggles() {
       combineAllTaxesAndRevenueToProperty,
       combineAllTaxesName,
       combineAllRevenueToPropertyName,
-      combineAllTaxesAndRevenueToPropertyName
+      combineAllTaxesAndRevenueToPropertyName,
+      fromReceiptNumber,
+      toReceiptNumber
     };
   }
   formDefaultValue(data: any):any
@@ -864,7 +888,7 @@ validateRollUpToOneToggles() {
       displayImageInReceiptFooter: false,
       headerimagedata: false,
       footerimagedata: false,
-      headerImageReferenceId: DEFAULT_IMAGE_REFERENCE_ID, 
+      headerImageReferenceId: DEFAULT_IMAGE_REFERENCE_ID,
       footerImageReferenceId: DEFAULT_IMAGE_REFERENCE_ID,
       receiptImageFooterNote:"",
       groupByTaxName: false,
@@ -875,12 +899,14 @@ validateRollUpToOneToggles() {
       combineAllTaxesAndRevenueToProperty: false,
       combineAllTaxesName: this.defaultTax,
       combineAllRevenueToPropertyName: this.defaultTax,
-      combineAllTaxesAndRevenueToPropertyName: this.defaultTax
+      combineAllTaxesAndRevenueToPropertyName: this.defaultTax,
+      fromReceiptNumber: this.defaultReceiptNumber,
+      toReceiptNumber: this.defaultReceiptNumber
     }
     return defaultValue;
   }
 
-  
+
   fileSizeExceeded() {
     this._utilities.showAlert(this.textCaptions.ImageSizeExceed, AlertType.Info, ButtonType.Ok);
   }
@@ -899,28 +925,28 @@ validateRollUpToOneToggles() {
     this.headerImageReferenceId = await this.savePropertyReceiptImage(data,ImgType.receiptHeader);
   }
   public async savePropertyReceiptImage(data: receiptImageConfiguration, imageType: string): Promise<string> {
-   if (this.isImageUpload) {
+    if (this.isImageUpload) {
       let imgRefType: RetailImgRefType;
-      
+
       if (imageType === ImgType.receiptHeader) {
-          imgRefType = RetailImgRefType.receiptHeader;
+        imgRefType = RetailImgRefType.receiptHeader;
       } else if (imageType === ImgType.receiptFooter) {
-          imgRefType = RetailImgRefType.receiptFooter;
+        imgRefType = RetailImgRefType.receiptFooter;
       }
       var imgReferenceId = this.imageReferenceId ? this.imageReferenceId : DEFAULT_IMAGE_REFERENCE_ID;
-      
+
       if (imgReferenceId === undefined || imgReferenceId === '' || imgReferenceId === DEFAULT_IMAGE_REFERENCE_ID) {
-          const imageGuid = this.utils.generateUUIDUsingMathRandom();
-          const imageReferenceIde = await this.saveImageCommon(imgRefType, imageGuid, this.base64Image, this.thumbnailImg);
-          data.imageReferenceId = imageReferenceIde;
+        const imageGuid = this.utils.generateUUIDUsingMathRandom();
+        const imageReferenceIde = await this.saveImageCommon(imgRefType, imageGuid, this.base64Image, this.thumbnailImg);
+        data.imageReferenceId = imageReferenceIde;
       } else {
-          await this.updateItemImageCommon(imgRefType, imgReferenceId, this.imageId, data.imageReferenceId, this.imageRemoved, this.base64Image, this.thumbnailImg);
-          data.imageReferenceId = imgReferenceId;
+        await this.updateItemImageCommon(imgRefType, imgReferenceId, this.imageId, data.imageReferenceId, this.imageRemoved, this.base64Image, this.thumbnailImg);
+        data.imageReferenceId = imgReferenceId;
       }
-  } else {
+    } else {
       data.imageReferenceId = this.imageReferenceId ? this.imageReferenceId : DEFAULT_IMAGE_REFERENCE_ID;
-  }
-  
+    }
+
     return data.imageReferenceId;
   }
   async saveImageCommon(type: RetailImgRefType, referenceId: string, base64textString, thumbnailImg): Promise<string> {
@@ -972,35 +998,61 @@ validateRollUpToOneToggles() {
   }
   async mapReceiptImageDataToUI(imageReferenceId: string, imageType?: ImgType) {
     if (!imageReferenceId || imageReferenceId === DEFAULT_IMAGE_REFERENCE_ID) {
-        return;
+      return;
     }
 
     const imageData = await this.getImageForHeaderFooterRefIds(imageReferenceId, true);
     const image = imageData?.[0];
     if (!image?.thumbnailData) {
-        return;
+      return;
     }
     if (imageType === ImgType.receiptFooter) {
-        this.footerUrl = `${image.contentType ?? ''},${image.thumbnailData ?? ''}`;
+      this.footerUrl = `${image.contentType ?? ''},${image.thumbnailData ?? ''}`;
     } else if (imageType === ImgType.receiptHeader) {
-        this.headerUrl = `${image.contentType ?? ''},${image.thumbnailData ?? ''}`;
+      this.headerUrl = `${image.contentType ?? ''},${image.thumbnailData ?? ''}`;
     }
-}
-  
-async getImageForHeaderFooterRefIds(imgRefId: string, isthumbnailonly: boolean): Promise<Imagedata> {
-  return await this.imgService.GetImagesByReferenceId(imgRefId, isthumbnailonly);
+  }
 
-}
-headerImageFileDeleted() {
-  this.propertyForm.markAsDirty();
-  this.propertyForm.markAsTouched();
-  this.isSaveDisabled = false;
-  this.headerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID;
-}
-footerImageFileDeleted() {
-  this.propertyForm.markAsDirty();
-  this.propertyForm.markAsTouched();
-  this.isSaveDisabled = false; 
-  this.footerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID;
-}
+  async getImageForHeaderFooterRefIds(imgRefId: string, isthumbnailonly: boolean): Promise<Imagedata> {
+    return await this.imgService.GetImagesByReferenceId(imgRefId, isthumbnailonly);
+
+  }
+  headerImageFileDeleted() {
+    this.propertyForm.markAsDirty();
+    this.propertyForm.markAsTouched();
+    this.isSaveDisabled = false;
+    this.headerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID;
+  }
+  footerImageFileDeleted() {
+    this.propertyForm.markAsDirty();
+    this.propertyForm.markAsTouched();
+    this.isSaveDisabled = false;
+    this.footerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID;
+  }
+
+  /**
+   * Custom validator to check minimum length for number inputs
+   * @param minLength Minimum length required
+   * @return Validator function
+   */
+  private numberMinLengthValidator(minLength: number) {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (!control.value && control.value !== 0) {
+        return null; // Don't validate empty values, let required validator handle it
+      }
+      const valueStr = control.value.toString();
+      if (valueStr.length < minLength) {
+        return {
+          'minlength': {
+            requiredLength: minLength,
+            actualLength: valueStr.length,
+            value: control.value
+          }
+        };
+      } else if (Number(control.value) == 0) {
+        return { 'allZeros': true };
+      }
+      return null;
+    };
+  }
 }

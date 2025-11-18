@@ -1917,7 +1917,8 @@
       "SearchByCategories": "Search By Category_zh",
       "PleaseWaitWhileGettingPosttypesFromPMS": "Please wait while getting posttypes from PMS_zh",
       "NoPosting": "No Posting_zh",
-      "AllowEarn": "Allow Earn_zh"
+      "AllowEarn": "Allow Earn_zh",
+      "GenerateSalesInvoice": "Generate Sales Invoice #_zh"
     },
     "setting": {
       "Title": "Title_zh",
@@ -2906,7 +2907,12 @@
       "DistributionName": "Distribution Name_zh",
       "NewDistributionList": "New Distribution List_zh",
       "AllowQuickID": "Allow Quick ID_zh",
-      "ForRetailTransactions": "For Retail Transactions_zh"
+      "ForRetailTransactions": "For Retail Transactions_zh",
+      "ReceiptNumber": "Sales Invoice # Range_zh",
+      "InvalidInput": "Invalid Input_zh",
+      "errMinDigitsNeeded": "Minimum {minDigits} digits needed_zh",
+      "errFromNumber": "Missing From Receipt Number_zh",
+      "errToNumber": "Missing To Receipt Number_zh"
     },
     "settings": {
       "prices": "Price ({option})_zh",

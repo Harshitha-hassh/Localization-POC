@@ -2920,7 +2920,8 @@
     "lbl_December": "December_kr",
     "TaxOnTax": "Tax On Tax_kr",
     "MissingUnitCost": "Missing Unit Cost_kr",
-    "InvalidBarcode": "Missing Barcode_kr"
+    "InvalidBarcode": "Missing Barcode_kr",
+    "GenerateSalesInvoice": "Generate Sales Invoice #_kr"
   },
   "setting": {
     "existing_tax": "Existing Tax_kr",
@@ -4191,7 +4192,12 @@
     "CombineAllRevenueToProperty": "Combine Revenue to Property Only_kr",
     "CombineAllTaxesAndRevenueToProperty": "Combine Both Taxes and Revenue to Property_kr",
     "TaxName": "Tax Name_kr",
-    "MissingTaxName": "Missing Tax Name_kr"
+    "MissingTaxName": "Missing Tax Name_kr",
+    "ReceiptNumber": "Sales Invoice # Range_kr",
+    "InvalidInput": "Invalid Input_kr",
+    "errMinDigitsNeeded": "Minimum {minDigits} digits needed_kr",
+    "errFromNumber": "Missing From Receipt Number_kr",
+    "errToNumber": "Missing To Receipt Number_kr"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_kr",

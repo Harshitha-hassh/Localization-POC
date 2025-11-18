@@ -274,7 +274,41 @@
                   <app-ag-toggle [toggleInputs]="GroupByTaxNameToggleInputs"></app-ag-toggle>
                 </div> -->
           </div>
-          <!-- <app-single-to-multiple *ngIf="selectedTabIndex === 1" [outlets]="this.outlets"></app-single-to-multiple> -->
+          <app-single-to-multiple *ngIf="selectedTabIndex === 1" [outlets]="this.outlets"></app-single-to-multiple>
+          <div *ngIf="enableSerialInvoiceRange">
+            <div>{{textCaptions.ReceiptNumber}}</div>
+            <div class="ag_display--flex-wrap ag_pt--2">
+              <mat-form-field class="ag_form-control--1 pr-2" [floatLabel]="floatLabel">
+                <input type="text" [placeholder]="this.localization.captions.common.From" matInput
+                  [attr.automationId]="'Txt_ReceiptConfiguration_startingReceiptNumber'" formControlName="fromReceiptNumber"
+                  numMaxlength maxlength="12" />
+                  <mat-error class="" *ngIf="propertyForm.controls['fromReceiptNumber'].hasError('minlength') && propertyForm.controls['fromReceiptNumber'].touched && !propertyForm.controls['fromReceiptNumber'].valid">
+                    {{minDigitsErrMsg}}
+                  </mat-error>
+                  <mat-error
+                    *ngIf="propertyForm.controls['fromReceiptNumber'].hasError('required') && propertyForm.controls['fromReceiptNumber'].touched && !propertyForm.controls['fromReceiptNumber'].valid">
+                    {{textCaptions.errFromNumber}}
+                  </mat-error>
+                  <mat-error *ngIf="propertyForm.controls['fromReceiptNumber'].hasError('allZeros') && propertyForm.controls['fromReceiptNumber'].touched && !propertyForm.controls['fromReceiptNumber'].valid">
+                    {{textCaptions.InvalidInput}}
+                  </mat-error>
+              </mat-form-field>
+              <mat-form-field class="ag_form-control--1" [floatLabel]="floatLabel">
+                <input type="text" [placeholder]="this.localization.captions.common.To" matInput
+                  [attr.automationId]="'Txt_ReceiptConfiguration_toReceiptNumber'" formControlName="toReceiptNumber"
+                  numMaxlength maxlength="12" />
+                  <mat-error class="" *ngIf="propertyForm.controls['toReceiptNumber'].hasError('minlength') && propertyForm.controls['toReceiptNumber'].touched && !propertyForm.controls['toReceiptNumber'].valid">
+                    {{minDigitsErrMsg}}
+                  </mat-error>
+                  <mat-error *ngIf="propertyForm.controls['toReceiptNumber'].hasError('required') && propertyForm.controls['toReceiptNumber'].touched && !propertyForm.controls['toReceiptNumber'].valid">
+                    {{textCaptions.errToNumber}}
+                  </mat-error>
+                  <mat-error *ngIf="propertyForm.controls['toReceiptNumber'].hasError('allZeros') && propertyForm.controls['toReceiptNumber'].touched && !propertyForm.controls['toReceiptNumber'].valid">
+                    {{textCaptions.InvalidInput}}
+                  </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
         </form>
         <div class="ag_footer--actions bottomSection w-100">
           <button class="ml-30px" [attr.automationId]="'Btn_ReceiptConfiguration_save'" [disabled]="isSaveDisabled"
