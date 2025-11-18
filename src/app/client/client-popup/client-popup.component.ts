@@ -97,6 +97,11 @@ export class ClientPopupComponent implements OnInit {
       this.clientInfo.personalDetailsFormGroup.id = 0;
       this.clientInfo.personalDetailsFormGroup.guestId = DefaultGUID;
     }
+    // Get Philippines Guest Type Categories from the processed list instead of flat form data
+    if (this.localization.localeCode === 'en-PH' && this.clientInfo.additionalDetailsFormGroup?.philippinesGuestTypeCategories) {
+      this.clientInfo.philippinesGuestTypeCategories = this.clientInfo.additionalDetailsFormGroup.philippinesGuestTypeCategories;
+    } 
+        
     try {
       var createPromise = await this._createClientBusiness.SubmitForm(this.clientInfo,false);
     }

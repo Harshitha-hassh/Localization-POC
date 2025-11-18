@@ -46,7 +46,16 @@
 
                     </div>
                 </div>
-
+                <!-- Philippines Miscellaneous Information -->
+                <div class="mt-4" *ngIf="showPhilippinesInfo">
+                    <ag-philippines-miscellaneous
+                        [parentFormGroup]="FormGrp"
+                        [existingGuestTypeCategories]="philippinesGuestTypeCategories"
+                        [isViewMode]="isClientViewOnly"
+                        [floatLabel]="floatLabel"
+                        (dataChange)="onPhilippinesMiscDataChange($event)">
+                    </ag-philippines-miscellaneous>
+                </div>  
                 <div class="">
                     <label class="form-label-primary" [hidden]="isTitleHidden">{{captions.OTHERINFORMATION}}</label>
                 </div>

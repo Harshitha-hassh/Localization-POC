@@ -17,6 +17,7 @@ import { GuestPolicyDetail, PolicyCategoryType, PolicyType } from 'src/app/commo
 import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
 import { RetailRoutes } from 'src/app/retail/retail-route';
 import * as GlobalConst from 'src/app/common/shared/shared/globalsContant';
+import { PhilippinesMiscellaneousData, GuestTypeCategory } from 'src/app/common/shared/shared/business/shared.modals';
 
 @Component({
   selector: 'app-additional-information',
@@ -63,6 +64,13 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   placeHolderFormat: any;
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
+  
+  get showPhilippinesInfo(): boolean {
+    return this.localization.localeCode === 'en-PH';
+  }
+  
+  philippinesGuestTypeCategories: GuestTypeCategory[] = [];
+  captionsCommon: any;
   @Input('inputData')
   set formData(value) {
     if(value && value.data!='')
@@ -85,6 +93,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     private userMachineConfigurationService: UserMachineConfigurationService
     ) {
     this.captions = this.localization.captions.bookAppointment;
+    this.captionsCommon = this.localization.captions;
     this.floatLabel = this.localization.setFloatLabel;
     this.maxDate = this.PropertyInfo.CurrentDate;
     this.placeHolderFormat = this.localization.inputDateFormat;
@@ -117,7 +126,8 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       platformRevisionUuid: '00000000-0000-0000-0000-000000000000',
       commentId : 0,
       anniversaryDate : '',
-      preferredLanguage: 0
+      preferredLanguage: 0,
+      philippinesGuestTypeCategories: []
     });
   }
 
@@ -182,6 +192,14 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     this.FormGrp.controls.vip.setValue(clientInfo.client.vip);
     this.FormGrp.controls.vipTypeId.setValue(clientInfo.client.vipTypeId);
     this.FormGrp.controls.guestType.setValue(clientInfo.client.guestType);
+    
+    if (clientInfo.guestTypeCategories && clientInfo.guestTypeCategories.length > 0) {
+      this.philippinesGuestTypeCategories = clientInfo.guestTypeCategories;
+      this.FormGrp.get('philippinesGuestTypeCategories')?.setValue(clientInfo.guestTypeCategories);
+    } else {
+      this.philippinesGuestTypeCategories = [];
+      this.FormGrp.get('philippinesGuestTypeCategories')?.setValue([]);
+    }
   }
 
   async getAllVipTypes() {
@@ -402,4 +420,13 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
         extraParams: []
       });
     }
+
+    onPhilippinesMiscDataChange(data: PhilippinesMiscellaneousData) {
+    this.philippinesGuestTypeCategories = data.guestTypeCategories || [];
+    this.FormGrp.get('philippinesGuestTypeCategories')?.setValue(this.philippinesGuestTypeCategories);
+    this.FormGrp.markAsDirty();
+    this.FormGrp.markAsTouched();
+  }
+
+
 }

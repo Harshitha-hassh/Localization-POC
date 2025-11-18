@@ -89,7 +89,8 @@ export class CreateClientBusiness {
       clientCreditCardInfo: this.additionalDetailsFormGroup.clientCreditCardInfo
         && this.additionalDetailsFormGroup.clientCreditCardInfo.length > 0 ?
         this.additionalDetailsFormGroup.clientCreditCardInfo : null,
-        clientComment: clientCommentObj
+        clientComment: clientCommentObj,
+        guestTypeCategories: details.philippinesGuestTypeCategories || []
     }
     return clientInfoObj;
   }
