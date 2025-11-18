@@ -69,7 +69,6 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     return this.localization.localeCode === 'en-PH';
   }
   
-  philippinesData: PhilippinesMiscellaneousData | null = null;
   philippinesGuestTypeCategories: GuestTypeCategory[] = [];
   captionsCommon: any;
   @Input('inputData')
@@ -127,7 +126,8 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       platformRevisionUuid: '00000000-0000-0000-0000-000000000000',
       commentId : 0,
       anniversaryDate : '',
-      preferredLanguage: 0
+      preferredLanguage: 0,
+      philippinesGuestTypeCategories: []
     });
   }
 
@@ -192,6 +192,14 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     this.FormGrp.controls.vip.setValue(clientInfo.client.vip);
     this.FormGrp.controls.vipTypeId.setValue(clientInfo.client.vipTypeId);
     this.FormGrp.controls.guestType.setValue(clientInfo.client.guestType);
+    
+    if (clientInfo.guestTypeCategories && clientInfo.guestTypeCategories.length > 0) {
+      this.philippinesGuestTypeCategories = clientInfo.guestTypeCategories;
+      this.FormGrp.get('philippinesGuestTypeCategories')?.setValue(clientInfo.guestTypeCategories);
+    } else {
+      this.philippinesGuestTypeCategories = [];
+      this.FormGrp.get('philippinesGuestTypeCategories')?.setValue([]);
+    }
   }
 
   async getAllVipTypes() {
@@ -413,22 +421,12 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       });
     }
 
-  // Philippines Miscellaneous event handlers
-  onPhilippinesMiscDataChange(data: PhilippinesMiscellaneousData) {
-    this.philippinesData = data;
+    onPhilippinesMiscDataChange(data: PhilippinesMiscellaneousData) {
     this.philippinesGuestTypeCategories = data.guestTypeCategories || [];
-    
-    if (!this.FormGrp.get('philippinesGuestTypeCategories')) {
-      this.FormGrp.addControl('philippinesGuestTypeCategories', this.Form.control([]));
-    }
     this.FormGrp.get('philippinesGuestTypeCategories')?.setValue(this.philippinesGuestTypeCategories);
     this.FormGrp.markAsDirty();
     this.FormGrp.markAsTouched();
   }
 
-  onPhilippinesMiscValidityChange(isValid: boolean) {
-    // Handle form validity changes
-    console.log('Philippines Form Validity:', isValid);
-    // You can use this to control overall form submission
-  }
+
 }

@@ -9,7 +9,7 @@ export interface ClientInfo {
   emails: Email[];
   clientCreditCardInfo: ClientCreditCardInfo[];
   clientComment: ClientComment[];
-  GuestTypeCategories?: GuestTypeCategory[];
+  guestTypeCategories?: GuestTypeCategory[];
  }
   
  export interface ClientCreditCardInfo {
