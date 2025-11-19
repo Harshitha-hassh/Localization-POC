@@ -1329,7 +1329,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.machineNames = userMachinePropertyInfo.machineNames.map(x => {
         return {
           id: x.id,
-          name: x.name
+          name: x.name,
+          min:x.min,
+          serial:x.serial
         }
       });
       if (this.isPromptOnLoginEnabled && this.machineNames.length > 0) {
@@ -1361,6 +1363,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.localize.SetMachineId(userMachine.id);
       this.localize.SetMachineName(userMachine.name);
       this.propertyServices.SetMachinePrinterConfigForMachine(userMachine.id);
+      this.localize.SetMachineMin(userMachine?.min);
+      this.localize.SetMachineSerial(userMachine?.serial);
     } else {
       this.localize.SetMachineId(0);
       this.localize.SetMachineName('');
