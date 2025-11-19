@@ -35,5 +35,6 @@ export enum ReportTypes {
   Retail,
   CommissionGratuityServiceCharge,
   TransactionLog,
-  GiftCards
+  GiftCards,
+  Fiscal
 }

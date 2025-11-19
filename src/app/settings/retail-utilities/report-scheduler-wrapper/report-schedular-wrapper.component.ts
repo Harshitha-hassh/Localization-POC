@@ -323,7 +323,8 @@ export class ReportSchedularWrapperComponent implements OnInit {
     let reportSelector : any;
     if(reportConfig.reportGroup == report.Retail ||
         reportConfig.reportGroup == report.GiftCards ||
-        reportConfig.reportGroup == report.Commissiongratuity)
+        reportConfig.reportGroup == report.Commissiongratuity ||
+        reportConfig.reportGroup == report.Fiscal)
     {
         const retailSelector = new ReportControlBuilder(this.localization, this.retailUtils, this.retailFeature, this.propertyInfo);
         reportSelector = retailSelector.reportSelector;
