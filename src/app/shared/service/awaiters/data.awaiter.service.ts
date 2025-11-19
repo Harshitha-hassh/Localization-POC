@@ -171,7 +171,8 @@ export class DataAwaiterService {
             platformGuestUuid: client.platformGuestUuid,
             vip: client.vip,
             guestTypeId: client.guestType,
-            vipTypeId: client.vipTypeId
+            vipTypeId: client.vipTypeId,
+            guestTypeCategories: client.guestTypeCategories ? client.guestTypeCategories : []
         };
         return payee;
     }
@@ -208,7 +209,8 @@ export class DataAwaiterService {
             lastName: client.client.lastName,
             platformGuestUuid: client.client.platformGuestUuid,
             guestTypeId: client.client.guestType,
-            vipTypeId: client.client.vipTypeId
+            vipTypeId: client.client.vipTypeId,
+            guestTypeCategories: client.guestTypeCategories ? client.guestTypeCategories : []
         };
         return payee;
     }

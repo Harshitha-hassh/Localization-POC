@@ -95,6 +95,7 @@ export interface ClientInfo {
     vipTypeId?:number;
     anniversaryDate?: string;
     preferredLanguage?: number;
+    guestTypeCategories?: GuestTypeCategory[];
   }
 
   export interface ClientComment {
