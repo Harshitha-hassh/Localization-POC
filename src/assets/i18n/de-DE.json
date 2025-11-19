@@ -2047,6 +2047,7 @@
     "Retail Setup": "Retail Setup_de",
     "Retail Reports": "Retail Reports_de",
     "Export/Import": "Export/Import_de",
+    "Fiscal Reports": "Fiscal Reports_de",
     "241524202425": "Move Multiple Appointments_de",
     "Interface": "Interfaces_de"
   },
@@ -5557,5 +5558,10 @@
   "phone": "Phone_de",
   "arNumber": "AR Account #_de",
   "corpId": "Corp ID_de",
-  "memberNumber": "Member #_de"
+  "memberNumber": "Member #_de",
+  "lbl_Others": "Others_de",
+  "lbl_SeniorCitizens": "Applicable for Senior Citizens_de",
+  "lbl_PWD": "Applicable for Persons with Disability_de",
+  "lbl_SoloParent": "Applicable for Solo Parent_de",
+  "lbl_NATCO": "Applicable for National Athletes and Coaches_de"
 }
