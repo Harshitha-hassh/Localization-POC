@@ -321,17 +321,22 @@ export class ReportSchedularWrapperComponent implements OnInit {
   reportNameMapper(reportConfiguration: string,report): string{
     const reportConfig = reportConfiguration ? JSON.parse(reportConfiguration) : '';
     let reportSelector : any;
-    if(reportConfig.reportGroup == report.Retail ||
-        reportConfig.reportGroup == report.GiftCards ||
-        reportConfig.reportGroup == report.Commissiongratuity ||
-        reportConfig.reportGroup == report.Fiscal)
+
+    var repGrp = (reportConfig && typeof reportConfig.reportGroup === 'number') 
+        ? reportConfig.reportGroup - 1 
+        : undefined;
+
+    if(repGrp == report.Retail ||
+        repGrp == report.GiftCards ||
+        repGrp== report.Commissiongratuity ||
+        repGrp== report.Fiscal)
     {
         const retailSelector = new ReportControlBuilder(this.localization, this.retailUtils, this.retailFeature, this.propertyInfo);
         reportSelector = retailSelector.reportSelector;
     }
     else{
     const selector = new ReportSelectorBuilder(this.localization);
-    reportSelector = selector.getReportSelections;
+    reportSelector = selector.getReportSelections(reportConfig.reportGroup);
     }
     if (!reportConfig){
         return '';
