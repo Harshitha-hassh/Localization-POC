@@ -100,6 +100,16 @@ export class ClientPopupComponent implements OnInit {
     // Get Philippines Guest Type Categories from the processed list instead of flat form data
     if (this.localization.localeCode === 'en-PH' && this.clientInfo.additionalDetailsFormGroup?.philippinesGuestTypeCategories) {
       this.clientInfo.philippinesGuestTypeCategories = this.clientInfo.additionalDetailsFormGroup.philippinesGuestTypeCategories;
+      
+      // Trim all infoValue fields before saving
+      if (this.clientInfo.philippinesGuestTypeCategories && this.clientInfo.philippinesGuestTypeCategories.length > 0) {
+        this.clientInfo.philippinesGuestTypeCategories = this.clientInfo.philippinesGuestTypeCategories.map(category => ({
+          ...category,
+          infoValue: category.infoValue ? category.infoValue.trim() : category.infoValue,
+          tin: category.tin ? category.tin.trim() : category.tin,
+          guestTypeIdNo: category.guestTypeIdNo ? category.guestTypeIdNo.trim() : category.guestTypeIdNo,
+        }));
+      }
     } 
         
     try {
