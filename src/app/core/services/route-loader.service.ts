@@ -39,6 +39,9 @@ export class RouteLoaderService {
             console.log('is Dynamic Menu available?:' + (!Array.isArray(response) || 0 == response.length) ? 'DM-No!' : 'DM-Yes!');
             this.currentSettings = response;
             console.log('current settings', this.currentSettings);
+            
+          
+            
             resolve(true);
             this.featureFlagInfo.GetFeaturesCompleted.subscribe(x => {
               if (!this.featureFlagInfo.IsRetailIcEnabled) {
@@ -94,12 +97,14 @@ export class RouteLoaderService {
                     }
                 }
               }
-
-                // Hide Fiscal Reports if EnablePhilippinesFiscalReport is not enabled
-                        if (!this.propertyInfo.EnablePhilippinesFiscalReport) {
+              var result = sessionStorage.getItem('EnablePhilippinesFiscalReport')?.toLowerCase() === 'true' ? true : false;
+               
+                        if (!result) {
                             let reportsMenu = this.currentSettings.find(x => x.text.includes("REPORTS"))
                             if (reportsMenu) {
+                              console.log('reportsMenu', reportsMenu);
                                 let fiscalReportsMenu = reportsMenu.linkedElement?.find(x => x.routePath?.toLowerCase().includes("/reports/fiscalreports"))
+                                console.log('fiscalReportsMenu', fiscalReportsMenu);
                                 if(fiscalReportsMenu){
                                     fiscalReportsMenu.visibility = false;
                                     fiscalReportsMenu.linkedElement?.forEach(element => {
