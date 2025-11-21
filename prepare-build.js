@@ -14,7 +14,11 @@ const defaultLocalizations = [
     { code: "en-IN", suffix: "", name: "Indian English" },
     { code: "ko-KR", suffix: "_kr", name: "Korean" },
     { code: "en-NZ", suffix: "", name: "New Zealand" },
-    { code: "en-PH", suffix: "", name: "Philippines" }
+    { code: "en-PH", suffix: "", name: "Philippines" },
+    { code: "pt-PT", suffix: "", name: "Portugal" },
+    { code: "de-IT", suffix: "_de-it", name: "Italian" },
+    { code: "hu-HU", suffix: "_hu", name: "Hungarian" },
+    { code: "cs-CZ", suffix: "_cs", name: "Czech" }
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
@@ -128,9 +132,3 @@ function logError(params) {
 function logSuccess(params) {
     console.log(`\x1b[32m${params}\x1b[0m`);
 }
-
-
-
-
-
-
