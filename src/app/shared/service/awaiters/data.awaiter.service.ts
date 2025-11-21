@@ -220,30 +220,53 @@ export class DataAwaiterService {
     }
 
     private MapToClientInfoObj(clientobj) {
+        let phones: any[] = [];
+        let emails: any[] = [];
+
+        if (clientobj?.contactInformation?.length) {
+            phones = clientobj.contactInformation.filter(x => x.name === "Phone");
+            emails = clientobj.contactInformation.filter(x => x.name === "Email");
+        }
+
         return {
             id: clientobj.id,
             client: {
                 id: clientobj.id,
                 guestId: clientobj.playerCategoryId == 1 && clientobj.guestId ? clientobj.guestId : DefaultGUID,
-                title: clientobj.title ? clientobj.title : "",
-                firstName: clientobj.firstName ? clientobj.firstName : "",
-                lastName: clientobj.lastName ? clientobj.lastName : "",
-                pronounce: clientobj.pronounce ? clientobj.pronounce : "",
-                gender: clientobj.gender ? clientobj.gender : "",
-                dateOfBirth: clientobj.dateOfBirth ? clientobj.dateOfBirth : "",
-                comments: clientobj.comments ? clientobj.comments : "",
+                title: clientobj.title || "",
+                firstName: clientobj.firstName || "",
+                lastName: clientobj.lastName || "",
+                pronounce: clientobj.pronounce || "",
+                gender: clientobj.gender || "",
+                dateOfBirth: clientobj.dateOfBirth || "",
+                comments: clientobj.comments || "",
                 lastChangeId: clientobj.lastChangeId ? clientobj.guestId : DefaultGUID,
-                interfaceGuestId: clientobj.interfaceGuestId ? clientobj.interfaceGuestId : "",
-                loyaltyDetail: clientobj.loyaltyDetail ? clientobj.loyaltyDetail : [],
-                memberId: clientobj.playerCategoryId == 3 && clientobj.playerLinkId ? clientobj.playerLinkId : null,
+                interfaceGuestId: clientobj.interfaceGuestId || "",
+                loyaltyDetail: clientobj.loyaltyDetail || [],
+                memberId: clientobj.playerCategoryId == 3 ? clientobj.playerLinkId : null,
                 clientCategoryId: clientobj.playerCategoryId
             } as Client,
-            emails: clientobj.emails,
+            emails: emails.map(e => ({
+                id: 0,
+                emailId: e.value,
+                isPrimary: e.isPrimary,
+                contactTypeId: e.type,
+                isPrivate: e.isPrivateInfo
+            })),
             addresses: clientobj.addresses,
-            phoneNumbers: clientobj.phoneNumbers,
-            clientCreditCardInfo: clientobj.clientCreditCardInfo ? clientobj.clientCreditCardInfo : null
+            // PHONE ARRAY MAPPING
+            phoneNumbers: phones.map(p => ({
+                id: 0,
+                number: p.value,
+                isPrimary: p.isPrimary,
+                contactTypeId: p.type,
+                isPrivate: p.isPrivateInfo
+            })),
+
+            clientCreditCardInfo: clientobj.clientCreditCardInfo || null
         } as ClientInfo;
     }
+
 
     async openAddGuestPopup(e, callback: Function, id?, guestId?,  modifyLineItemsCallback?: Function,platformGuestUuid?: any, patronId?) {
         let dialogRef = null;
