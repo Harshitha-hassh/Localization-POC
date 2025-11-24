@@ -183,10 +183,10 @@
                   textmask="{{textmaskFormat}}" id="PhoneNumber" formControlName="PhoneNumber">
               </mat-form-field>
               <span [attr.automationId]="'Lbl_personalInformation_removePhoneNo'" class="icon-Minus"
-                [ngClass]="{'button_invalid': isClientViewOnly }" (click)="removePhoneItem(i,'','');makeFormDirty()"
+                [ngClass]="{'button_invalid': isClientViewOnly || disableContactsSection }" (click)="removePhoneItem(i,'','');makeFormDirty()"
                 *ngIf="i != 0"></span>
               <span [attr.automationId]="'Lbl_personalInformation_addPhoneNo'" class="icon-Plus"
-                [ngClass]="{'button_invalid': isClientViewOnly }"
+                [ngClass]="{'button_invalid': isClientViewOnly || disableContactsSection}"
                 (click)="addPhoneItem(i, '0', '-1', '', false,false);makeFormDirty()" *ngIf="last"></span>
             </div>
             <div>
@@ -251,10 +251,10 @@
 
             </mat-form-field>
             <span [attr.automationId]="'Lbl_personalInformation_removeEmailItem'" class="icon-Minus"
-              [ngClass]="{'button_invalid': isClientViewOnly }" (click)="removeEmailItem(j,'','');makeFormDirty()"
+              [ngClass]="{'button_invalid': isClientViewOnly || disableContactsSection }" (click)="removeEmailItem(j,'','');makeFormDirty()"
               *ngIf="j != 0"></span>
             <span [attr.automationId]="'Lbl_personalInformation_addEmailItem'" class="icon-Plus"
-              [ngClass]="{'button_invalid': isClientViewOnly }" (click)="addEmailItem(j,'0','',false, false);makeFormDirty()"
+              [ngClass]="{'button_invalid': isClientViewOnly  || disableContactsSection}" (click)="addEmailItem(j,'0','',false, false);makeFormDirty()"
               *ngIf="last"></span>
           </div>
           <div class="float-left contact-info-toggle" [formGroupName]="j">
@@ -303,10 +303,10 @@
                 id="AddressInput{{j}}" formControlName="addressLine" placeholder="{{captions.CAddress}}">
             </mat-form-field>
             <span [attr.automationId]="'Lbl_personalInformation_removeAddressItem'" class="icon-Minus"
-              [ngClass]="{'button_invalid': isClientViewOnly }" (click)="removeAddressItem(j);makeFormDirty()"
+              [ngClass]="{'button_invalid': isClientViewOnly || disableContactsSection }" (click)="removeAddressItem(j);makeFormDirty()"
               *ngIf="(j != 0 && j<3)"></span>
             <span [attr.automationId]="'Lbl_personalInformation_addAddressItem'" class="icon-Plus"
-              [ngClass]="{'button_invalid': isClientViewOnly }" (click)="addAddressItem(j);makeFormDirty()"
+              [ngClass]="{'button_invalid': isClientViewOnly || disableContactsSection}" (click)="addAddressItem(j);makeFormDirty()"
               *ngIf="(last && j < 2) || IsEdit"></span>
             <div class="width-380px d-inline-block mat-error mt-3"
               *ngIf="!FormGrp.controls['Address'].disabled && FormGrp.controls['Address'].touched && !FormGrp.controls['Address']['controls'][j].valid">

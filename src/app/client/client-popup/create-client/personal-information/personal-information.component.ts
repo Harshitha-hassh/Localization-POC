@@ -118,6 +118,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   isCopyClient = false;
   isPlatformGuestSearch: boolean = false;
   isEnableCGPSIframeGuestSearch: boolean = false;
+  disableContactsSection: boolean = false;
 
   @Input('inputData')
   set formData(value) {
@@ -959,6 +960,18 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls.imgReferenceId.setValue(this.imageId);
     this.url = imageData && imageData[0] && imageData[0].thumbnailData ? url : '';
     this.initializeFormData();
+
+    if(clientInfo?.isMember){
+        let allControls = ['firstName', 'lastName', 'pronounced', 'dob', 'city', 'state', 'county', 'country', 'postal_code', 'Address', 'title', 'gender']
+        this.utils.disableFormControls(this.FormGrp, allControls);
+        let addresArray = this.FormGrp.get('Address') as UntypedFormArray;
+        addresArray.controls.forEach(ctrl => ctrl.disable());
+        let phoneArray = this.FormGrp.get('Phone') as UntypedFormArray;
+        phoneArray.controls.forEach(ctrl => ctrl.disable());
+        let emailArray = this.FormGrp.get('Email') as UntypedFormArray;
+        emailArray.controls.forEach(ctrl => ctrl.disable());
+        this.disableContactsSection = true;
+    }
   }
 
   onFileDelete(event) {
@@ -1020,48 +1033,50 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
 
 
   setmandatory(eve, phoneNumber, altfield, phoneType, index, item) {
-    this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
-    this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].clearValidators();
-    if (eve && eve.target && eve.target.value) {
-      this.FormGrp.controls['Phone']['controls'][index].controls[altfield].setValidators([Validators.required]);
-    }
-    if (phoneNumber == 'PhoneNumber') {
-      if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value &&
-        this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value === 1) {
-        this.phoneErrorRequired = true;
-        this.FormGrp.controls['Phone']['controls'][index].controls[altfield].setValidators(Validators.required);
-        this.FormGrp.controls['Phone']['controls'][index].controls[altfield].markAsTouched();
-        this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].markAsTouched();
-      } else {
-        this.phoneErrorRequired = false;
-        this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
-        this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].clearValidators();
+    if(!this.disableContactsSection) {
+      this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
+      this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].clearValidators();
+      if (eve && eve.target && eve.target.value) {
+        this.FormGrp.controls['Phone']['controls'][index].controls[altfield].setValidators([Validators.required]);
       }
-    }
-    if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value) {
-      this.FormGrp.controls['Phone']['controls'][index].controls[altfield].enable();
-      this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumber].enable();
-    }
-    this.FormGrp.controls['Phone']['controls'][index].controls[altfield].updateValueAndValidity();
-    this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].updateValueAndValidity();
+      if (phoneNumber == 'PhoneNumber') {
+        if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value &&
+          this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value === 1) {
+          this.phoneErrorRequired = true;
+          this.FormGrp.controls['Phone']['controls'][index].controls[altfield].setValidators(Validators.required);
+          this.FormGrp.controls['Phone']['controls'][index].controls[altfield].markAsTouched();
+          this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].markAsTouched();
+        } else {
+          this.phoneErrorRequired = false;
+          this.FormGrp.controls['Phone']['controls'][index].controls[altfield].clearValidators();
+          this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].clearValidators();
+        }
+      }
+      if (this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].value) {
+        this.FormGrp.controls['Phone']['controls'][index].controls[altfield].enable();
+        this.FormGrp.controls['Phone']['controls'][index].controls[phoneNumber].enable();
+      }
+      this.FormGrp.controls['Phone']['controls'][index].controls[altfield].updateValueAndValidity();
+      this.FormGrp.controls['Phone']['controls'][index].controls[phoneType].updateValueAndValidity();
 
-    //fordeselecting
-    if (!eve.value && item) {
-      item['controls']['PhoneNumber'].setValue('');
-      item['controls']['countryCode'].setValue('');
-      item['controls']['PhoneNumber'].disable();
-      item['controls']['countryCode'].disable();
-      item['controls']['Extension'].setValue('');
-      item['controls']['PhonePrimary'].setValue('');
-      item['controls']['PhonePrivate'].setValue('');
-      item['controls']['PhoneNumber'].clearValidators();
-      item['controls']['countryCode'].clearValidators();
-      item['controls']['Extension'].clearValidators();
-      item['controls']['PhoneNumberLabel'].clearValidators();
-      item.markAsDirty();
-    }
+      //fordeselecting
+      if (!eve.value && item) {
+        item['controls']['PhoneNumber'].setValue('');
+        item['controls']['countryCode'].setValue('');
+        item['controls']['PhoneNumber'].disable();
+        item['controls']['countryCode'].disable();
+        item['controls']['Extension'].setValue('');
+        item['controls']['PhonePrimary'].setValue('');
+        item['controls']['PhonePrivate'].setValue('');
+        item['controls']['PhoneNumber'].clearValidators();
+        item['controls']['countryCode'].clearValidators();
+        item['controls']['Extension'].clearValidators();
+        item['controls']['PhoneNumberLabel'].clearValidators();
+        item.markAsDirty();
+      }
 
-    this.ChangePrimaryToggle('Phone', 'PhonePrimary');
+      this.ChangePrimaryToggle('Phone', 'PhonePrimary');
+    }
   }
 
   onEmailChange($event, i, item) {
