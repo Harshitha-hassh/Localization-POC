@@ -13,9 +13,7 @@ export class ReportsComponent implements OnInit {
   menu :any;
   menuList: any;
   menuType = menuTypes;
-  isDataExpressEnabled:boolean = false;
-  constructor(private routeDataService: RouteLoaderService, private propertyInfo : RetailPropertyInformation,private featureSwitch: RetailFeatureFlagInformationService) {
-    this.isDataExpressEnabled = this.featureSwitch.IsDataExpressEnabled;
+  constructor(private routeDataService: RouteLoaderService, private propertyInfo : RetailPropertyInformation,private featureSwitch: RetailFeatureFlagInformationService) {   
   }
 
   async ngOnInit() {
@@ -25,7 +23,8 @@ export class ReportsComponent implements OnInit {
       let configsToRemove = ['/reports/inventorycontrol'];
       this.menu = this.menu.filter(r => !configsToRemove.includes(r.routePath));
     }
-    if(!this.isDataExpressEnabled) {
+   var result = sessionStorage.getItem('EnablePhilippinesFiscalReport')?.toLowerCase() === 'true' ? true : false;
+    if(!result) {
       let configsToRemove = ['/reports/fiscalreports'];
       this.menu = this.menu.filter(r => !configsToRemove.includes(r.routePath));
     } 
