@@ -64,9 +64,8 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   placeHolderFormat: any;
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
-  
   get showPhilippinesInfo(): boolean {
-    return this.localization.localeCode === 'en-PH';
+    return sessionStorage.getItem('EnablePhilippinesFiscalReport')?.toLowerCase() === 'true' ? true : false;
   }
   
   philippinesGuestTypeCategories: GuestTypeCategory[] = [];
