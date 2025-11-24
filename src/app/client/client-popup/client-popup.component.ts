@@ -193,7 +193,7 @@ export class ClientPopupComponent implements OnInit {
 
   showAlertForClient(){
     if (this.IsClientScreenDirty) {
-      this.userAlert.showPrompt(PromptType.UnsavedChanges, this.closeDialog.bind(this))
+      this.userAlert.showPrompt(PromptType.UnsavedChanges, this.close.bind(this))
     } else {
       this.closeDialog();
     }
