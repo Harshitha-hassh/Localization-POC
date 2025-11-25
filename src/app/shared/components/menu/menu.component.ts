@@ -495,14 +495,21 @@ export class MenuComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   openAboutDialog() {
+    
     const message = this._localization.replacePlaceholders(this.captions.versionInfo, ['productVersion'], [sessionStorage.getItem('userProductVersion')]);
-    const dialogRef = this.dialog.open(AboutComponent, {
+    const isPhilippines = sessionStorage.getItem('EnablePhilippinesFiscalReport')?.toLowerCase() === 'true' ? true : false;
+    const subtitle = isPhilippines ? this.captions.retailAbout : null;
+    
+    var popupConfig = {
       height: 'auto',
       width: '300px',
-      data: { title: this.captions.about, message, buttonText: this.captions.okay, },
+      data: { title: this.captions.about, subtitle: subtitle, message, buttonText: this.captions.okay, },
       panelClass: 'small-popup',
       disableClose: true,
-    });
+    };
+
+    const dialogRef = this.dialog.open(AboutComponent,popupConfig);
+
     dialogRef.afterClosed().subscribe(res => {
     });
   }

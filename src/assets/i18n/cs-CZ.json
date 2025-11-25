@@ -4858,6 +4858,7 @@
   "Notification": "Notification_cs",
   "helpQuestion": "Help_cs",
   "about": "About_cs",
+  "retailAbout": "AGILYSYS RETAIL POS_cs",
   "versionInfo": "The Product is running in the {productVersion} Version_cs",
   "okay": "OKAY_cs",
   "customerId": "Customer ID_cs",

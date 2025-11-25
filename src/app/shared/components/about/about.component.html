@@ -1,9 +1,12 @@
 <section class="about-wrapper">
 <div class="pop-contents">
-    <div class="pop-message customHeaderTxt pb-4">
+    <div class="pop-message customHeaderTxt pb-2">
         {{data?.title}}
     </div>
-    <div class="pop-message">
+    <div class="pop-message customHeaderTxt pb-2" *ngIf="data?.subtitle">
+        {{data?.subtitle}}
+    </div>
+    <div class="pop-message" [class.mt-3]="data?.subtitle">
         {{data?.message}}
     </div>
 </div>
