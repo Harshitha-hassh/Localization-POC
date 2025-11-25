@@ -69,6 +69,10 @@ export class ManageSessionService implements OnDestroy {
     autoLogoffTimer:any;
     isIdealDialogOpen:boolean = false;
     isGoogleApiReset = new Subject();
+    
+    // Client-side stopwatch properties
+    private clientStopwatchInterval: any;
+    private clientStopwatchStartTime: Date;
 
     constructor(private router: Router
               , public dialogRef: MatDialog
@@ -91,6 +95,9 @@ export class ManageSessionService implements OnDestroy {
         if (this.timerSubscriptionForNotification) {
             this.timerSubscriptionForNotification.unsubscribe();
         }
+        
+        // Check if stopwatch should be running and resume if needed
+        this.resumeStopwatchIfNeeded();
     }
 
     goToLogin() {
@@ -123,6 +130,8 @@ export class ManageSessionService implements OnDestroy {
         this.isGoogleApiReset.next(true);
         this.clearLocalStore();
         this.changeTitle();
+        // Stop client stopwatch on logout
+        this.stopClientStopwatch();
         if(this.adb2cAuthConfiguration.ADB2CAuthFeatureEnabled)
         {
             console.log('adb2c logout');
@@ -566,6 +575,168 @@ export class ManageSessionService implements OnDestroy {
     public stopTimerForNotification() {
         if (this.timerSubscriptionForNotification) {
             this.timerSubscriptionForNotification.unsubscribe();
+        }
+    }
+
+    /**
+     * Start the client-side stopwatch
+     * @param tokenUtcTime - UTC time from the server token
+     */
+    public startClientStopwatch(tokenUtcTime: string): void {
+        console.log('=== Starting Client Stopwatch ===');
+        console.log('Token UTC Time received:', tokenUtcTime);
+        
+        // Stop any existing stopwatch
+        this.stopClientStopwatch();
+        
+        // Get current client UTC time
+        const clientUtcTime = new Date();
+        const tokenDate = new Date(tokenUtcTime);
+        
+        // Calculate the difference in milliseconds
+        const timeDifference = Math.abs(tokenDate.getTime() - clientUtcTime.getTime());
+        
+        // Convert milliseconds to minutes
+        const differenceInMinutes = timeDifference / (1000 * 60);
+        
+        console.log('Time difference in minutes:', differenceInMinutes);
+        
+        // Determine start time: if difference > 1 minute, use client UTC, otherwise use token UTC
+        if (differenceInMinutes > 1) {
+            this.clientStopwatchStartTime = clientUtcTime;
+            console.log('Stopwatch started with Client UTC time:', clientUtcTime.toISOString());
+        } else {
+            this.clientStopwatchStartTime = tokenDate;
+            console.log('Stopwatch started with Token UTC time:', tokenUtcTime);
+        }
+        
+        // Store the start time in localStorage
+        localStorage.setItem('clientStopwatchStartTime', this.clientStopwatchStartTime.toISOString());
+        
+        // Update the elapsed time immediately
+        this.updateClientStopwatch();
+        
+        // Use window.setInterval to ensure it runs in global scope (not affected by Angular zone)
+        // Store reference in a const first to avoid 'this' binding issues
+        const updateFn = () => {
+            console.log('Stopwatch interval tick...');
+            this.updateClientStopwatch();
+        };
+        
+        this.clientStopwatchInterval = window.setInterval(updateFn, 1000);
+        
+        console.log('Client stopwatch interval started. Interval ID:', this.clientStopwatchInterval);
+        console.log('=== Stopwatch Started Successfully ===');
+    }
+
+    /**
+     * Update the stopwatch elapsed time in localStorage
+     */
+    private updateClientStopwatch(): void {
+        // Read start time from localStorage to ensure persistence across navigation
+        const storedStartTime = localStorage.getItem('clientStopwatchStartTime');
+        
+        if (!storedStartTime) {
+            console.warn('Cannot update stopwatch: startTime not found in localStorage');
+            return;
+        }
+        
+        // Parse the start time from localStorage
+        const startTime = new Date(storedStartTime);
+        const currentTime = new Date();
+        const elapsedMilliseconds = currentTime.getTime() - startTime.getTime();
+        
+        // Calculate elapsed time components
+        const elapsedSeconds = Math.floor(elapsedMilliseconds / 1000);
+        const hours = Math.floor(elapsedSeconds / 3600);
+        const minutes = Math.floor((elapsedSeconds % 3600) / 60);
+        const seconds = elapsedSeconds % 60;
+        
+        // Format elapsed time
+        const elapsedTimeFormatted = `${this.padZero(hours)}:${this.padZero(minutes)}:${this.padZero(seconds)}`;
+        
+        // Store in localStorage
+        const stopwatchData = {
+            startTime: storedStartTime,
+            currentTime: currentTime.toISOString(),
+            elapsedMilliseconds: elapsedMilliseconds,
+            elapsedSeconds: elapsedSeconds,
+            elapsedTimeFormatted: elapsedTimeFormatted
+        };
+        
+        localStorage.setItem('clientStopwatch', JSON.stringify(stopwatchData));
+        console.log('Stopwatch updated:', elapsedTimeFormatted, '- Current time:', currentTime.toISOString());
+    }
+
+    /**
+     * Helper function to pad numbers with leading zero
+     */
+    private padZero(num: number): string {
+        return num < 10 ? `0${num}` : `${num}`;
+    }
+
+    /**
+     * Stop the client-side stopwatch and clear from localStorage
+     */
+    public stopClientStopwatch(): void {
+        console.log('Stopping client stopwatch...');
+        if (this.clientStopwatchInterval) {
+            window.clearInterval(this.clientStopwatchInterval);
+            this.clientStopwatchInterval = null;
+            console.log('Stopwatch interval cleared');
+        }
+        
+        // Clear localStorage
+        localStorage.removeItem('clientStopwatch');
+        localStorage.removeItem('clientStopwatchStartTime');
+        
+        console.log('Client stopwatch stopped and cleared from localStorage');
+    }
+
+    /**
+     * Check if stopwatch is currently running
+     */
+    public isStopwatchRunning(): boolean {
+        const isRunning = this.clientStopwatchInterval != null;
+        console.log('Stopwatch running status:', isRunning, 'Interval ID:', this.clientStopwatchInterval);
+        return isRunning;
+    }
+
+    /**
+     * Get current stopwatch data from localStorage
+     */
+    public getStopwatchData(): any {
+        const data = localStorage.getItem('clientStopwatch');
+        return data ? JSON.parse(data) : null;
+    }
+
+    /**
+     * Resume stopwatch if it was running (called on service initialization)
+     */
+    private resumeStopwatchIfNeeded(): void {
+        const startTime = localStorage.getItem('clientStopwatchStartTime');
+        
+        if (startTime && !this.clientStopwatchInterval) {
+            console.log('=== Resuming Client Stopwatch ===');
+            console.log('Found existing start time in localStorage:', startTime);
+            
+            // Update immediately
+            this.updateClientStopwatch();
+            
+            // Start the interval
+            const updateFn = () => {
+                console.log('Stopwatch interval tick (resumed)...');
+                this.updateClientStopwatch();
+            };
+            
+            this.clientStopwatchInterval = window.setInterval(updateFn, 1000);
+            
+            console.log('Client stopwatch resumed. Interval ID:', this.clientStopwatchInterval);
+            console.log('=== Stopwatch Resumed Successfully ===');
+        } else if (!startTime) {
+            console.log('No stopwatch to resume - no start time in localStorage');
+        } else {
+            console.log('Stopwatch already running with interval ID:', this.clientStopwatchInterval);
         }
     }
 }

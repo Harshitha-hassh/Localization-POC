@@ -9,7 +9,7 @@ import { CanDeactivateGuardService } from './services/can-component-deactivate.s
 import { HttpCacheService } from '../common/services/cache/http-cache.service';
 import { CacheInterceptor } from '../common/services/cache/cache-interceptor';
 import { ErrorInterceptor } from '@coreModels/interceptors/error.interceptor';
-
+import { HmacAuthInterceptor } from '../common/interceptors/hmac-auth.interceptor';
 
 
 @NgModule({
@@ -24,6 +24,11 @@ import { ErrorInterceptor } from '@coreModels/interceptors/error.interceptor';
         RouteLoaderService,
         CanDeactivateGuardService,
         HttpCacheService,    
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HmacAuthInterceptor,
+            multi: true,
+        },
         {
             provide: HTTP_INTERCEPTORS,
             useClass: CacheInterceptor,

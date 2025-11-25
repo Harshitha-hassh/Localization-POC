@@ -59,6 +59,7 @@ import { UserSecurityQuestionBusinessService } from 'src/app/common/user-securit
 import { CommonApiRoutes } from 'src/app/common/common-route';
 import { ForgetPasswordComponent } from 'src/app/common/components/forget-password/forget-password.component';
 import { CommonControllersRoutes } from 'src/app/common/communication/common-route';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -293,6 +294,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.stopInterval();
+    // Stopwatch is now managed by ManageSessionService and persists after login component is destroyed
     if (this.$destroyed) {
       this.$destroyed.next(true);
       this.$destroyed.complete();
@@ -516,6 +518,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       const loginDetails = await this.loginService.makePostCall(serviceParams);
       if (loginDetails.successStatus) {
         this.userName = credentials.UserName;
+        //implement one methd for storing time in localstorage from api
+        await this.HMACAuthSetup(loginDetails);
         await this.successCallBack(loginDetails);
         this.rememberUser();
       } else {
@@ -562,6 +566,56 @@ export class LoginComponent implements OnInit, OnDestroy {
       const result = userDetails.userProperties.find(item => item.propertyId === selectedProperty.propertyId);
       await this.propertyServices.setJasperAttributes(result?.roleId);
     }
+  }
+
+  async HMACAuthSetup(loginDetails: any)
+  {
+    const decodeToken = jwt_decode(loginDetails.result.token);
+    if(decodeToken && decodeToken['hauth'])
+    {
+
+    
+    console.log('Decoded JWT Token', decodeToken,decodeToken['utc_time']);
+    
+    // Get UTC time from token
+    const tokenUtcTime = decodeToken['utc_time'];
+    
+    if (tokenUtcTime) {
+      // Get current client UTC time
+      const clientUtcTime = new Date().toISOString();
+      
+      // Convert both times to Date objects for comparison
+      const tokenDate = new Date(tokenUtcTime);
+      const clientDate = new Date(clientUtcTime);
+      
+      // Calculate the difference in milliseconds
+      const timeDifference = Math.abs(tokenDate.getTime() - clientDate.getTime());
+      
+      // Convert milliseconds to minutes
+      const differenceInMinutes = timeDifference / (1000 * 60);
+      
+      console.log('Token UTC Time:', tokenUtcTime);
+      console.log('Client UTC Time:', clientUtcTime);
+      console.log('Time Difference (minutes):', differenceInMinutes);
+      
+      //need to implement for now i comment this part
+      // Check if difference is greater than 1 minute )
+      // if (differenceInMinutes > 1) {
+      //   const warningMessage = this.captions.timeDifferenceWarning 
+      //   //|| 'Please change your local time setup to ensure proper synchronization.';
+        
+      //   this.utils.showAlert(
+      //     warningMessage,
+      //     AlertType.Warning,
+      //     ButtonType.Ok
+      //   );
+      // }
+      
+      // Start the client-side stopwatch using the service (runs throughout the app lifecycle)
+      this.sessionService.startClientStopwatch(tokenUtcTime);
+    }
+  }
+
   }
 
   async setpropertyvalues(Selectedproperty: any, userProperties?) {
@@ -1257,6 +1311,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   public adb2cLogout() {
+    this.sessionService.stopClientStopwatch(); // Stop the stopwatch on logout
     this.oauthService.logOut();
   }
 

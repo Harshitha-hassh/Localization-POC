@@ -86,7 +86,9 @@ export enum RetailRoutes {
    CombineGuestInformation= "GuestCombine/{primaryGuestId}",
    GetGuestInfoByGuid="GuestCombine/{id}",
    UpdateGuestInformation= "GuestCombine/updateguest" ,
-   LoginEncrypted = 'Property/GetEncLoginDetails',
+   //LoginEncrypted = 'Property/GetEncLoginDetails',
+      LoginEncrypted = 'Property/GetHVEncLoginDetails',
+
    GetEncryptKey = 'Login/encValue',
    CheckPasswordPut = 'User/CheckPasswordExists',
    VerifyPasswordPut = 'User/VerifyPassword',
