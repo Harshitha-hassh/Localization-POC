@@ -51,7 +51,7 @@
           },
           "configurations": {
             "development":{
-              "sourceMap": false,
+              "sourceMap": true,
               "aot": false,
               "buildOptimizer": false
             },
