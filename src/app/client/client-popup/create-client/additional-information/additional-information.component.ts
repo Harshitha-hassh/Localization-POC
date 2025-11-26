@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ViewEncapsulation, Optional } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { PropertyInformation } from '../../../../core/services/property-information.service';
+import { ClientPopupComponent } from '../../client-popup.component';
 import { SubscriptionLike as ISubscription, Subscription, ReplaySubject } from 'rxjs';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { HttpServiceCall, HttpMethod } from 'src/app/common/shared/shared/service/http-call.service';
@@ -18,6 +19,7 @@ import { ApplyPolicy } from 'src/app/common/consent-management/consent-managemen
 import { RetailRoutes } from 'src/app/retail/retail-route';
 import * as GlobalConst from 'src/app/common/shared/shared/globalsContant';
 import { PhilippinesMiscellaneousData, GuestTypeCategory } from 'src/app/common/shared/shared/business/shared.modals';
+import { TokenSharingCallbackRequestInfo } from 'src/app/retail/shared/business/shared.modals';
 
 @Component({
   selector: 'app-additional-information',
@@ -62,6 +64,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   languages: any[] = [];
   maxDate: any;
   placeHolderFormat: any;
+  guestId: string; // For edit flow - pass existing guest ID to capture-card component
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
   get showPhilippinesInfo(): boolean {
@@ -89,7 +92,8 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     private utils: RetailUtilities, 
     private PropertyInfo: PropertyInformation,
     private payAgentService: PayAgentService, 
-    private userMachineConfigurationService: UserMachineConfigurationService
+    private userMachineConfigurationService: UserMachineConfigurationService,
+    @Optional() private clientPopupComponent: ClientPopupComponent
     ) {
     this.captions = this.localization.captions.bookAppointment;
     this.captionsCommon = this.localization.captions;
@@ -162,6 +166,9 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   }
   
   async SetEditValues(clientInfo) {
+    // Set guestId for edit flow - to be passed to capture-card component
+    this.guestId = clientInfo.guestId;
+    
     if(clientInfo.clientComment.length >0) {
       let clientComment = clientInfo.clientComment[0];
       this.FormGrp.controls.comments.setValue(clientComment.comments);
@@ -243,6 +250,13 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     
     this.cardInfo.push(swipedcardInfo);
     this.FormGrp.controls.clientCreditCardInfo.setValue(this.cardInfo);
+  }
+
+  OnTokenStored(event: TokenSharingCallbackRequestInfo) {
+    // Handle token stored event from capture-card component
+    if (event && this.clientPopupComponent) {
+      this.clientPopupComponent.setTokenStoredInfo(event);
+    }
   }
 
   removeCardReference() {

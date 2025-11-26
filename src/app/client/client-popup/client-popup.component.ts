@@ -12,6 +12,7 @@ import { RetailImageService } from 'src/app/shared/data-services/retail.image.se
 import { Utilities } from 'src/app/core/utilities';
 import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
 import { PolicyType } from 'src/app/common/shared/shared.modal';
+import { TokenSharingCallbackRequestInfo } from 'src/app/retail/shared/business/shared.modals';
 
 @Component({
   selector: 'app-client-popup',
@@ -43,6 +44,10 @@ export class ClientPopupComponent implements OnInit {
     private _clientDataService: ClientDataService,
     private utils: Utilities) {
 
+  }
+  private tokenSharingCallbackInfo: TokenSharingCallbackRequestInfo;
+  public setTokenStoredInfo(event): void {
+    this.tokenSharingCallbackInfo = event;
   }
 
   ngOnInit(): void {
@@ -114,6 +119,13 @@ export class ClientPopupComponent implements OnInit {
         
     try {
       var createPromise = await this._createClientBusiness.SubmitForm(this.clientInfo,false);
+       
+          if(createPromise && createPromise.guestId && this.tokenSharingCallbackInfo && 
+             (this.clientInfo.personalDetailsFormGroup.guestId === DefaultGUID || !this.clientInfo.personalDetailsFormGroup.guestId)){
+             this.tokenSharingCallbackInfo.callbackPayload.guestGuid = createPromise.guestId;
+            this.tokenSharingCallbackInfo.callbackFn(this.tokenSharingCallbackInfo.callbackPayload);
+          }
+
     }
     catch (err) {
       if (err && err.error) {

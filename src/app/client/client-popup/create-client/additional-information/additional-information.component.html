@@ -28,7 +28,9 @@
                 </div>  
                 <app-retail-capture-card
                     [PaymentReferenceID]="PaymentReferenceID"
+                    [guestId]="guestId"
                     [isShowPMAgentValidationMessage]="false"
+                    (TokenSharingCallbackInfo)="OnTokenStored($event)"
                     (NewPaymentReferenceID)="SaveReferenceId($event)"
                     (removeDetails)="removeCardReference()">
                 </app-retail-capture-card>
