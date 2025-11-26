@@ -1211,7 +1211,7 @@
     "SNo": "S.No",
     "UnitPrice": "Unit Price",
     "Quantity": "Quantity",
-    "Subtotal": "Sub Total",
+    "Subtotal": "Sub Total + SC",
     "SubtotalToBePaid": "Subtotal To Be Paid",
     "SubtotalToBeRefunded": "Subtotal To Be Refunded",
     "AssignCommissionGratuity": "ASSIGN COMMISSION/GRATUITY",
