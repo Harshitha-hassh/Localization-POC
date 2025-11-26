@@ -5567,5 +5567,7 @@
   "lbl_SeniorCitizens": "Applicable for Senior Citizens_da",
   "lbl_PWD": "Applicable for Persons with Disability_da",
   "lbl_SoloParent": "Applicable for Solo Parent_da",
-  "lbl_NATCO": "Applicable for National Athletes and Coaches_da"
+  "lbl_NATCO": "Applicable for National Athletes and Coaches_da",
+  "lbl_digitalInvoicerequest": "Digital Invoice Request_da",
+  "lbl_digitalInvoiceBulkupload": "Digital Invoice Bulk Upload_da"
 }
