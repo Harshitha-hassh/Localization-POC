@@ -5570,6 +5570,7 @@
   "lbl_PWD": "Applicable for Persons with Disability_cs",
   "lbl_SoloParent": "Applicable for Solo Parent_cs",
   "lbl_NATCO": "Applicable for National Athletes and Coaches_cs",
+  "tooltip_drag": "Drag_cs",
   "lbl_digitalInvoicerequest": "Digital Invoice Request_cs",
   "lbl_digitalInvoiceBulkupload": "Digital Invoice Bulk Upload_cs"
 }
