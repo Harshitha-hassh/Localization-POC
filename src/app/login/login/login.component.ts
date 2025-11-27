@@ -519,7 +519,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       if (loginDetails.successStatus) {
         this.userName = credentials.UserName;
         //implement one methd for storing time in localstorage from api
-        await this.HMACAuthSetup(loginDetails);
+        if(loginDetails.errorCode==0)
+        {
+            await this.HMACAuthSetup(loginDetails);
+        }
+        
         await this.successCallBack(loginDetails);
         this.rememberUser();
       } else {
@@ -570,7 +574,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   async HMACAuthSetup(loginDetails: any)
   {
-    const decodeToken = jwt_decode(loginDetails.result.token);
+    const decodeToken = jwt_decode(loginDetails.result?.token);
     if(decodeToken && decodeToken['hauth'])
     {
 
