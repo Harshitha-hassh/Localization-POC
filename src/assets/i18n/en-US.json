@@ -1641,7 +1641,7 @@
       "CardAlreadyIssued": "Gift Card is already issued",
       "CardStatusChangeConfirmationMsg": "Card status will be changed to {cardStatus}. Do you want to Proceed?",
       "PinValidation": " PIN Validation",
-      "PinFieldPlaceholder": "Please enter 4 digit PIN",
+      "PinFieldPlaceholder": "Please enter the PIN",
       "Submit": "Submit",
       "V1GCErrorMessages": {
         "couponnumberisinvalid": "Gift Card Invalid",

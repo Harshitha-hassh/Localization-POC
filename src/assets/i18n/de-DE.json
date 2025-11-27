@@ -1642,7 +1642,7 @@
       "CardAlreadyIssued": "Gift Card is already issued_de",
       "CardStatusChangeConfirmationMsg": "Card status will be changed to {cardStatus}. Do you want to Proceed?_de",
       "PinValidation": " PIN Validation_de",
-      "PinFieldPlaceholder": "Please enter 4 digit PIN_de",
+      "PinFieldPlaceholder": "Please enter the PIN_de",
       "Submit": "Submit_de",
       "V1GCErrorMessages": {
         "couponnumberisinvalid": "Gift Card Invalid_de",

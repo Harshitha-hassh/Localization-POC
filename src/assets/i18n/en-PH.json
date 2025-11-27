@@ -1212,7 +1212,7 @@
     "SNo": "S.No",
     "UnitPrice": "Unit Price",
     "Quantity": "Quantity",
-    "Subtotal": "Sub Total + SC",
+    "Subtotal": "Sub Total",
     "SubtotalToBePaid": "Subtotal To Be Paid",
     "SubtotalToBeRefunded": "Subtotal To Be Refunded",
     "AssignCommissionGratuity": "ASSIGN COMMISSION/GRATUITY",
@@ -1642,7 +1642,7 @@
       "CardAlreadyIssued": "Gift Card is already issued",
       "CardStatusChangeConfirmationMsg": "Card status will be changed to {cardStatus}. Do you want to Proceed?",
       "PinValidation": " PIN Validation",
-      "PinFieldPlaceholder": "Please enter 4 digit PIN",
+      "PinFieldPlaceholder": "Please enter the PIN",
       "Submit": "Submit",
       "V1GCErrorMessages": {
         "couponnumberisinvalid": "Gift Card Invalid",
