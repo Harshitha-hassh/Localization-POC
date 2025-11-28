@@ -6,6 +6,7 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import { PropertyInformation } from 'src/app/core/services/property-information.service';
 import { takeUntil } from 'rxjs/operators';
 import { Utilities } from 'src/app/core/utilities';
+import { HmacHelperUtility } from 'src/app/common/utilities/hmac-helper.utility';
 
 
 export class HttpCallService {
@@ -59,8 +60,14 @@ export class HttpCallService {
         return this.http.patch<T>(url, params.body, { headers: this.setHeaders() });
     }
 
-    protected getPromise<T>(params: ServiceParams): Promise<T> {
-        return this.get<T>(params).toPromise();
+    protected async getPromise<T>(params: ServiceParams): Promise<T> {
+        let url: string = this.formURL(params);
+        let headers = this.setHeaders();
+        
+        // Add HMAC headers for promise calls
+        headers = await this.addHmacHeaders(headers, 'GET', url, null);
+        
+        return this.http.get<T>(url, { headers: headers }).toPromise();
     }
 
     public getCancellablePromise<T>(params: ServiceParams, notifier: Subject<void>): Promise<T> {
@@ -74,12 +81,25 @@ export class HttpCallService {
             .pipe(takeUntil(notifier))
     }
 
-    protected putPromise<T>(params: ServiceParams): Promise<T> {
-        return this.put<T>(params).toPromise();
+    protected async putPromise<T>(params: ServiceParams): Promise<T> {
+        let url: string = this.formURL(params);
+        params.body = this.requestBodyStringify(params.body);
+        let headers = this.setHeaders();
+        
+        // Add HMAC headers for promise calls
+        headers = await this.addHmacHeaders(headers, 'PUT', url, params.body);
+        
+        return this.http.put<T>(url, params.body, { headers: headers }).toPromise();
     }
 
-    protected postPromise<T>(params: ServiceParams): Promise<T> {
-        return this.post<T>(params).toPromise();
+    protected async postPromise<T>(params: ServiceParams): Promise<T> {
+        let url: string = this.formURL(params);
+        let headers = this.setHeaders();
+        
+        // Add HMAC headers for promise calls
+        headers = await this.addHmacHeaders(headers, 'POST', url, params.body);
+        
+        return this.http.post<T>(url, params.body, { headers: headers }).toPromise();
     }
 
     protected patchPromise<T>(params: ServiceParams): Promise<T> {
@@ -247,6 +267,32 @@ export class HttpCallService {
             body = JSON.stringify(body);
         }
         return body;
+    }
+
+    private async addHmacHeaders(headers: HttpHeaders, method: string, url: string, body: any): Promise<HttpHeaders> {
+        try {
+            const token = sessionStorage.getItem("_jwt");
+            if (token && HmacHelperUtility.isHmacEnabled(token)) {
+                const path = new URL(url).pathname;
+                const { signature, timestamp } = await HmacHelperUtility.getSignatureAndTimestamp(
+                    token,
+                    method,
+                    path,
+                    body
+                );
+                
+                if (signature) {
+                    headers = headers
+                        .set('X-API-Key', 'v1ekS')
+                        .set('X-Timestamp', timestamp)
+                        .set('X-Signature', signature);
+                    console.log(`✅ HMAC headers added to ${method} promise call`, { timestamp, signature: signature.substring(0, 20) + '...' });
+                }
+            }
+        } catch (error) {
+            console.warn('Failed to add HMAC headers in promise call:', error);
+        }
+        return headers;
     }
 
 }
