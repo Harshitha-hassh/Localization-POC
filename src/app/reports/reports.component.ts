@@ -27,7 +27,12 @@ export class ReportsComponent implements OnInit {
     if(!result) {
       let configsToRemove = ['/reports/fiscalreports'];
       this.menu = this.menu.filter(r => !configsToRemove.includes(r.routePath));
-    } 
+    } else {
+      const fiscalReportMenu = this.menu.find(r => r.routePath === '/reports/fiscalreports');
+      if(fiscalReportMenu) {
+        fiscalReportMenu.visibility = true;
+      }
+    }
     this.menuList = {
       menu: this.menu,
       menuType :  value.linkedElement[0].menuAlignment
