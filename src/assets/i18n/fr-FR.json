@@ -1823,7 +1823,8 @@
     "lbl_item_on_par": "Item on Par_fr",
     "lbl_iten_on_par_desc": "Item on Par. Do you want to add this item?_fr",
     "warn_Multipack_Commission_Cancel": "Commission assignment is required for this item. The multipack redemption will be cancelled._fr",
-    "PayeeDiscountNotEligibleForSomeItem": "Client is not eligible for below discount(s): {discountList}_fr"
+    "PayeeDiscountNotEligibleForSomeItem": "Client is not eligible for below discount(s): {discountList}_fr",
+    "SpecialDiscountNotAvailableForSomeItem": "Attached Guest requires a {guestTypeName} discount to be applied<br><br>Items without discount:_fr"
   },
   "breakpoint": {
     "600": "600 - Add New Client Profile_fr",
