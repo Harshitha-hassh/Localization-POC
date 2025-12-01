@@ -18,7 +18,8 @@ const defaultLocalizations = [
     { code: "pt-PT", suffix: "", name: "Portugal" },
     { code: "de-IT", suffix: "_de-it", name: "Italian" },
     { code: "hu-HU", suffix: "_hu", name: "Hungarian" },
-    { code: "cs-CZ", suffix: "_cs", name: "Czech" }
+    { code: "cs-CZ", suffix: "_cs", name: "Czech" },
+    { code: "ar-OM", suffix: "_ar", name: "Oman"}
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
