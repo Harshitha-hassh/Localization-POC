@@ -129,6 +129,8 @@ export class HttpCallService {
         }
 
         url = this.formatQueryString(url, params);
+        if (!(url.indexOf("http://") > -1 || url.indexOf("https://") > -1))
+            url = window.location.origin + url;
         return url;
     }
 
