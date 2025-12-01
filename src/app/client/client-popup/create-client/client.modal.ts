@@ -96,6 +96,7 @@ export interface ClientInfo {
     anniversaryDate?: string;
     preferredLanguage?: number;
     guestTypeCategories?: GuestTypeCategory[];
+    clientCreditCardInfo?: ClientCreditCardInfo[];
   }
 
   export interface ClientComment {
