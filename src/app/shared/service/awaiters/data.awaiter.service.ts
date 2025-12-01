@@ -215,8 +215,18 @@ export class DataAwaiterService {
         return payee;
     }
     private async createClient(clientobj, callback): Promise<any> {
+        if(clientobj.platformGuestUuid && clientobj.platformGuestUuid != DefaultGUID){
+            var platformGuest = await this.clientDataService.GetGuestByPlatformGuestGuid(clientobj.platformGuestUuid);
+            if(platformGuest && platformGuest.client?.id == 0) { 
+                const response = await this.clientDataService.CreateClientDetails(platformGuest);
+                return callback(response.id);
+            } else{
+                return callback(platformGuest.client.id);
+            }
+        }
+
         const response = await this.clientDataService.CreateClientDetails(this.MapToClientInfoObj(clientobj));
-        callback(response.id);
+        return callback(response.id);
     }
 
     private MapToClientInfoObj(clientobj) {
