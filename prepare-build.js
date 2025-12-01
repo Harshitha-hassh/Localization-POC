@@ -14,7 +14,7 @@ const defaultLocalizations = [
     { code: "en-IN", suffix: "", name: "Indian English" },
     { code: "ko-KR", suffix: "_kr", name: "Korean" },
     { code: "en-NZ", suffix: "", name: "New Zealand" },
-    { code: "en-PH", suffix: "", name: "Philippines" },
+   // { code: "en-PH", suffix: "", name: "Philippines" }, //To Be uncommented after Philiipines Fisacl accredation
     { code: "pt-PT", suffix: "", name: "Portugal" },
     { code: "de-IT", suffix: "_de-it", name: "Italian" },
     { code: "hu-HU", suffix: "_hu", name: "Hungarian" },
