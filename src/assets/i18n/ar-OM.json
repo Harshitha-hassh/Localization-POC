@@ -1622,6 +1622,7 @@
       "Shift4": "Shift4_ar",
       "Inactive": "Inactive_ar",
       "NA": "NA_ar",
+      "CashbackFailureMsg": "Cashback failed_ar",
       "VendorName": {
         "0": "None_ar",
         "1": "V1_ar",

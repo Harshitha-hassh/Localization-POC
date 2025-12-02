@@ -1622,6 +1622,7 @@
       "Shift4": "Shift4_it-ch",
       "Inactive": "Inactive_it-ch",
       "NA": "NA_it-ch",
+      "CashbackFailureMsg": "Cashback failed_it-ch",
       "VendorName": {
         "0": "None_it-ch",
         "1": "V1_it-ch",
