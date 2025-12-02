@@ -1,7 +1,7 @@
 <section class="pop-container">
-  <div class="pop-head border-top">
-    <label class="inner-header pl-4 LW20">{{data.headername | uppercase}}</label>
-    <i *ngIf="data.closebool" class="material-icons inner-close IC30 float-md-right cursPointer"
+  <div class="pop-head">
+    <label class="inner-header pl-4 mb-0 LW20">{{data.headername | uppercase}}</label>
+    <i *ngIf="data.closebool" class="material-icons inner-close IC30 cursor pr-4"
       (click)="cancel()">close</i>
   </div>
   <div class="pop-contents">

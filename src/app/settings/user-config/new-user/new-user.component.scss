@@ -23,25 +23,17 @@
   height: 100%;
   .pop-head{
       height:64px;
-      position: relative;
-      &.border-top{
-      border-bottom: 1px solid $color-shop-border;
-      }
+      display: flex;
+      align-items: center;
+      background-color: $common-header-bg;
       .inner-header{
-          position: absolute;
-          top: 24px;
           font-size: 20px;
           text-transform: uppercase;
           color:$color-text-color;
       }
       .inner-close{
-          position: relative;
-          top:19px;
-          right:1rem;
+          margin-left: auto;
           color:$color-base;
-      }
-      .cursPointer{
-          cursor: pointer;
       }
   }
   .pop-contents{

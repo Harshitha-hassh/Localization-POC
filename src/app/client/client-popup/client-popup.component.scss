@@ -72,14 +72,7 @@ button.hover_css.mat-button:hover {
         //   border-bottom: 1px solid #dee2e6;
         height: 64px;
         position: relative;
-        // .title{
-        // position: absolute;
-        // top: 2rem;
-        // left: 25px;
-        // // font-weight: bold;
-        // font-size: 20px;
-        // //
-        // }
+        background-color: $common-header-bg;
         .inner-header {
             padding-right: 5px;
             font-weight: 500;
