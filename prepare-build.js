@@ -20,7 +20,11 @@ const defaultLocalizations = [
     { code: "hu-HU", suffix: "_hu", name: "Hungarian" },
     { code: "cs-CZ", suffix: "_cs", name: "Czech" },
     { code: "ar-OM", suffix: "_ar", name: "Oman"},
-    { code: "ar-MA", suffix: "_ar", name: "Morocco"}
+    { code: "ar-MA", suffix: "_ar", name: "Morocco"},
+    { code: "en-CH", suffix: "", name: "Swiss English" },
+    { code: "de-CH", suffix: "_de-ch", name: "Swiss German" },
+    { code: "fr-CH", suffix: "_fr-ch", name: "Swiss French" },
+    { code: "it-CH", suffix: "_it-ch", name: "Swiss Italian" }
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
