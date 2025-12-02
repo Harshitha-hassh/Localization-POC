@@ -78,7 +78,7 @@ export class ReceiptConfigurationComponent implements OnInit {
   showCombineAllRevenueToPropertyTextBox: boolean = false;
   showCombineAllTaxesAndRevenueToPropertyTextBox: boolean = false;
   defaultTax: string = 'Tax';
-  enableSerialInvoiceRange: boolean = true;
+  enableSerialInvoiceRange: boolean = false;
   defaultMinNoOfDigits: number = 1;
   defaultReceiptNumber: number = 0;
   minDigitsErrMsg: string;
@@ -505,7 +505,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       (combineRevenue && !form.get('combineAllRevenueToPropertyName')?.value?.trim()) ||
     (combineBoth    && !form.get('combineAllTaxesAndRevenueToPropertyName')?.value?.trim());
 
-    this.isSaveDisabled = disableSave || !!taxFields || !form.valid;
+    this.isSaveDisabled = disableSave || !!taxFields;
   }
 
   onTaxGroupingOptionChange(value: TaxGroupingOption) {
