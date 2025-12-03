@@ -579,7 +579,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     {
 
     
-    console.log('Decoded JWT Token', decodeToken,decodeToken['utc_time']);
     
     // Get UTC time from token
     const tokenUtcTime = decodeToken['utc_time'];
@@ -598,9 +597,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       // Convert milliseconds to minutes
       const differenceInMinutes = timeDifference / (1000 * 60);
       
-      console.log('Token UTC Time:', tokenUtcTime);
-      console.log('Client UTC Time:', clientUtcTime);
-      console.log('Time Difference (minutes):', differenceInMinutes);
       
       //need to implement for now i comment this part
       // Check if difference is greater than 1 minute )

@@ -51,7 +51,7 @@
           },
           "configurations": {
             "development":{
-              "sourceMap": true,
+              "sourceMap": false,
               "aot": false,
               "buildOptimizer": false
             },
@@ -64,7 +64,7 @@
               ],
               "optimization": false,
               "outputHashing": "all",
-              "sourceMap": true,
+              "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": true,

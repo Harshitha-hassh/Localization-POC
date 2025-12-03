@@ -288,7 +288,6 @@ export class HttpCallService {
                         .set('X-API-Key', 'v1ekS')
                         .set('X-Timestamp', timestamp)
                         .set('X-Signature', signature);
-                    console.log(`✅ HMAC headers added to ${method} promise call`, { timestamp, signature: signature.substring(0, 20) + '...' });
                 }
             }
         } catch (error) {

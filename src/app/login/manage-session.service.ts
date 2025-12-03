@@ -583,8 +583,6 @@ export class ManageSessionService implements OnDestroy {
      * @param tokenUtcTime - UTC time from the server token
      */
     public startClientStopwatch(tokenUtcTime: string): void {
-        console.log('=== Starting Client Stopwatch ===');
-        console.log('Token UTC Time received:', tokenUtcTime);
         
         // Stop any existing stopwatch
         this.stopClientStopwatch();
@@ -599,15 +597,12 @@ export class ManageSessionService implements OnDestroy {
         // Convert milliseconds to minutes
         const differenceInMinutes = timeDifference / (1000 * 60);
         
-        console.log('Time difference in minutes:', differenceInMinutes);
         
         // Determine start time: if difference > 1 minute, use client UTC, otherwise use token UTC
         if (differenceInMinutes > 1) {
             this.clientStopwatchStartTime = clientUtcTime;
-            console.log('Stopwatch started with Client UTC time:', clientUtcTime.toISOString());
         } else {
             this.clientStopwatchStartTime = tokenDate;
-            console.log('Stopwatch started with Token UTC time:', tokenUtcTime);
         }
         
         // Store the start time in localStorage
@@ -619,14 +614,11 @@ export class ManageSessionService implements OnDestroy {
         // Use window.setInterval to ensure it runs in global scope (not affected by Angular zone)
         // Store reference in a const first to avoid 'this' binding issues
         const updateFn = () => {
-            console.log('Stopwatch interval tick...');
             this.updateClientStopwatch();
         };
         
         this.clientStopwatchInterval = window.setInterval(updateFn, 1000);
         
-        console.log('Client stopwatch interval started. Interval ID:', this.clientStopwatchInterval);
-        console.log('=== Stopwatch Started Successfully ===');
     }
 
     /**
@@ -665,7 +657,6 @@ export class ManageSessionService implements OnDestroy {
         };
         
         localStorage.setItem('clientStopwatch', JSON.stringify(stopwatchData));
-        console.log('Stopwatch updated:', elapsedTimeFormatted, '- Current time:', currentTime.toISOString());
     }
 
     /**
@@ -679,18 +670,15 @@ export class ManageSessionService implements OnDestroy {
      * Stop the client-side stopwatch and clear from localStorage
      */
     public stopClientStopwatch(): void {
-        console.log('Stopping client stopwatch...');
         if (this.clientStopwatchInterval) {
             window.clearInterval(this.clientStopwatchInterval);
             this.clientStopwatchInterval = null;
-            console.log('Stopwatch interval cleared');
         }
         
         // Clear localStorage
         localStorage.removeItem('clientStopwatch');
         localStorage.removeItem('clientStopwatchStartTime');
         
-        console.log('Client stopwatch stopped and cleared from localStorage');
     }
 
     /**
@@ -698,7 +686,6 @@ export class ManageSessionService implements OnDestroy {
      */
     public isStopwatchRunning(): boolean {
         const isRunning = this.clientStopwatchInterval != null;
-        console.log('Stopwatch running status:', isRunning, 'Interval ID:', this.clientStopwatchInterval);
         return isRunning;
     }
 
@@ -717,22 +704,18 @@ export class ManageSessionService implements OnDestroy {
         const startTime = localStorage.getItem('clientStopwatchStartTime');
         
         if (startTime && !this.clientStopwatchInterval) {
-            console.log('=== Resuming Client Stopwatch ===');
-            console.log('Found existing start time in localStorage:', startTime);
             
             // Update immediately
             this.updateClientStopwatch();
             
             // Start the interval
             const updateFn = () => {
-                console.log('Stopwatch interval tick (resumed)...');
                 this.updateClientStopwatch();
             };
             
             this.clientStopwatchInterval = window.setInterval(updateFn, 1000);
             
-            console.log('Client stopwatch resumed. Interval ID:', this.clientStopwatchInterval);
-            console.log('=== Stopwatch Resumed Successfully ===');
+           
         } else if (!startTime) {
             console.log('No stopwatch to resume - no start time in localStorage');
         } else {
