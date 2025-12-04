@@ -600,9 +600,9 @@ export class ManageSessionService implements OnDestroy {
         
         // Determine start time: if difference > 1 minute, use client UTC, otherwise use token UTC
         if (differenceInMinutes > 1) {
-            this.clientStopwatchStartTime = clientUtcTime;
-        } else {
             this.clientStopwatchStartTime = tokenDate;
+        } else {
+            this.clientStopwatchStartTime = clientUtcTime;
         }
         
         // Store the start time in localStorage
