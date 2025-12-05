@@ -2583,6 +2583,8 @@
     "SeniorCitizen": "Senior Citizen (%)",
     "PersonsWithDisability": "Person With Disability (%)",
     "ZeroRated": "Zero Rated (%)",
+    "NationalAthletesAndCoaches" : "National Athletes and Coaches(%)",
+    "SoloParent": "Solo Parent(%)",
     "TaxAmount": "Tax Amount",
     "Outlet": "Outlet",
     "NewTax": "Tax",
