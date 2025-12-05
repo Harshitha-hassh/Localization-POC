@@ -4191,6 +4191,7 @@
     "Display": "Display Service Charge/Gratuity on Receipt_fr",
     "GratuityLine": "Gratuity Line_fr",
     "ReceiptNote": "Receipt Note_fr",
+    "ItemDescriptionHeader": "Item Description Header_fr",
     "ReceiptFooterNote": "Receipt Footer Note_fr",
     "ReceiptImageFooterNote": "Receipt Image Footer Note_fr",
     "SelectOutlet": "Select Outlet_fr",

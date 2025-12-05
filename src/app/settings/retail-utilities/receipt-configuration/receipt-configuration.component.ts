@@ -99,6 +99,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       displayServiceCharge: ['1', Validators.required],
       gratuityLine: [''],
       receiptNote: [''],
+      itemDescriptionHeader: [''],
       printReceipt: this.Form.array([this.addPrintDetails()])
     });
     this.propertyForm = this.Form.group({
@@ -244,6 +245,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       this.FormGrp.controls['noOfReceipts'].disable();
       this.FormGrp.controls['gratuityLine'].disable();
       this.FormGrp.controls['receiptNote'].disable();
+      this.FormGrp.controls['itemDescriptionHeader'].disable();
       this.printInfo.map(x => x.enableToggle = false);
     }
     this.isSaveDisabled = true;
@@ -291,6 +293,7 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.FormGrp.get('displayServiceCharge').setValue(selectedValues[0].serviceChargeGratuityDisplay);
     this.FormGrp.get('gratuityLine').setValue(selectedValues[0].gratuityLine);
     this.FormGrp.get('receiptNote').setValue(selectedValues[0].receiptNote);
+    this.FormGrp.get('itemDescriptionHeader').setValue(selectedValues[0].itemDescriptionHeader);
     this.printReceiptArray = this.FormGrp.get('printReceipt') as UntypedFormArray;
     this.printReceiptArray.removeAt(0);
     const x = this.savePrintDetails(printReceiptCustom);
@@ -447,6 +450,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       serviceChargeGratuityDisplay: data.displayServiceCharge,
       gratuityLine: data.gratuityLine,
       receiptNote: data.receiptNote,
+      itemDescriptionHeader: data.itemDescriptionHeader,
       suppressPrintedBy: data.printReceipt[0]. surplusPrintedByOnReceipt ? true : false,
       clerkIdPrintValue: data.printReceipt[0].surplusClientIdOnReceiptbyName ? data.printReceipt[0].surplusClientIdOnReceiptbyName : 0,
       printedByPrintValue: data.printReceipt[0].surplusPrintedByOnReceiptbyName ? data.printReceipt[0].surplusPrintedByOnReceiptbyName :0,

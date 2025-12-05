@@ -4191,6 +4191,7 @@
     "Display": "Display Service Charge/Gratuity on Receipt_hu",
     "GratuityLine": "Gratuity Line_hu",
     "ReceiptNote": "Receipt Note_hu",
+    "ItemDescriptionHeader": "Item Description Header_hu",
     "ReceiptFooterNote": "Receipt Footer Note_hu",
     "ReceiptImageFooterNote": "Receipt Image Footer Note_hu",
     "SelectOutlet": "Select Outlet_hu",
