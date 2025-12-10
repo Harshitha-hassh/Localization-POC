@@ -154,7 +154,6 @@ export class ClientDetailsComponent implements OnInit {
         ];
     }
     sampleData: any = [];
-    showIframeGuestSearch: boolean = false;
     isEnableCGPSIframeGuestSearch: boolean = false;
 
     ngOnInit() {
@@ -1138,16 +1137,21 @@ export class ClientDetailsComponent implements OnInit {
     }
 
     async setPlatformSearchClick(event: any) {
-      this.showIframeGuestSearch = event;
+      this.iframeInputs = null;
     }
     
     platformSearchData(isReopen: boolean = false) {
         if (this.isPlatformGuestSearch && this.isEnableCGPSIframeGuestSearch) {
+            if(!this.iframeInputs){
+            this.iframeInputs = {} as IFrameInputs;
+            }
+            this.iframeInputs.isPlatformGuestSearch = this.isPlatformGuestSearch;
+            this.iframeInputs.showIframeGuestSearch = true;
+            this.iframeInputs = { ...this.iframeInputs };
             this.isReopen = isReopen;
             this.iframeInputs.profileUuid = this.platformGuestId || '';
             this.formattedData = [];
             this.sampleData = [];
-            this.showIframeGuestSearch = true;
             this.tableInput?.nativeElement.blur();
             if  (this.tableInput) {
                 this.tableInput.nativeElement.value = '';
