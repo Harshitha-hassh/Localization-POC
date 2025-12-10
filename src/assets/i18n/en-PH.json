@@ -2034,6 +2034,9 @@
     "2500035": "2500035 - Persons With Disability Sales Book/Report",
     "2500040": "2500040 - Senior Citizen Sales Book/Report",
     "2500045": "2500045 - Solo Parent Sales Book/Report",
+    "2500055": "2500055 - Fiscal E-Journal Report",
+    "2500060": "2500060 - Consolidated Audit Trail",
+
     "Appointment Actions": "Appointment Actions",
     "Appointment Grid": "Appointment Grid",
     "Client Profile": "Client Profile",
@@ -3968,6 +3971,8 @@
     "PersonsWithDisabilitySalesBook": "Persons With Disability Sales Book/Report",
     "NationalAthletesAndCoachesSalesBook": "National Athletes And Coaches Sales Book/Report",
     "SoloParentSalesBook": "Solo Parent Sales Book/Report",
+    "EJournal": "E-Journal Report",
+    "AuditTrailReport": "Audit Trail Report",
     "TerminalSalesSummaryXReadingBackOffice": "X Reading Back Office Report",
     "ItemsUnderPar": "Items Under Par",
     "OpenCoupon": "Open Coupon",

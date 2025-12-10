@@ -1,5 +1,5 @@
 export const routeJSON = {
-  "host": {
+"host": {
     "image": "/VisualOne/retailgateway/",
     "retailManagement": "/VisualOne/retailgateway/",
     "retailPOS": "/VisualOne/retailgateway/",
@@ -362,6 +362,7 @@ export const routeJSON = {
   "GetManagementData": "Rules/ManagementData",
   "CheckOutAppointment": "appointments/checkout",
   "GetReport": "report",
+  "GeteJournalReport": "report/GeteJournalReport",
   "GetOutletsByProperty": "Outlets",
   "TransferInventoryItem": "Inventory/transfer",
   "AddOutletsToProperty": "Outlets",
