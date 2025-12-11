@@ -1522,6 +1522,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       console.log('Error in property selected data');
       return;
     }
+    this.sessionService.UpdateUserSessionsInfo(loginDetails.result);
     let locationData = {
       id: selectedProperty[0].propertyCode,
       name: selectedProperty[0].propertyName
