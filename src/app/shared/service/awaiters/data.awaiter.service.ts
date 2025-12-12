@@ -6,7 +6,7 @@ import { RouteLoaderService } from 'src/app/core/services/route-loader.service';
 import { PayeeInfo } from 'src/app/retail/shared/business/shared.modals';
 import { ClientDataService } from '../../data-services/client.data.service';
 import { ClientSearchModel, Client, ClientInfo } from 'src/app/client/client-popup/create-client/client.modal';
-import { DefaultGUID } from 'src/app/common/shared/shared/globalsContant';
+import { DefaultGUID,ENGAGE_INTERFACE } from 'src/app/common/shared/shared/globalsContant';
 import { ClientPopupComponent } from 'src/app/client/client-popup/client-popup.component';
 import { UserdefaultsInformationService } from 'src/app/core/services/UserdefaultsInformationService';
 import { first } from 'rxjs/operators';
@@ -210,8 +210,19 @@ export class DataAwaiterService {
             platformGuestUuid: client.client.platformGuestUuid,
             guestTypeId: client.client.guestType,
             vipTypeId: client.client.vipTypeId,
-            guestTypeCategories: client.guestTypeCategories ? client.guestTypeCategories : []
+            guestTypeCategories: client.guestTypeCategories ? client.guestTypeCategories : []          
         };
+
+        if(client.isMember ){
+            const engageMember = client?.interfaces?.find(
+                (y: any) => y.Name.toLowerCase() == ENGAGE_INTERFACE.toLowerCase()
+            );
+
+            if (engageMember) {
+                payee.isMember = true;
+                payee.playerLinkId = engageMember.interfaceGuestId;
+            }
+        }
         return payee;
     }
     private async createClient(clientobj, callback): Promise<any> {

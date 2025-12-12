@@ -10,6 +10,8 @@ export interface ClientInfo {
   clientCreditCardInfo: ClientCreditCardInfo[];
   clientComment: ClientComment[];
   guestTypeCategories?: GuestTypeCategory[];
+  isMember?: boolean;
+  interfaces?: Interfaces[];
  }
   
  export interface ClientCreditCardInfo {
