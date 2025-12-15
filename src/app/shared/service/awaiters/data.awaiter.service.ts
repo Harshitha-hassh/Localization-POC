@@ -215,7 +215,7 @@ export class DataAwaiterService {
 
         if(client.isMember ){
             const engageMember = client?.interfaces?.find(
-                (y: any) => y.Name.toLowerCase() == ENGAGE_INTERFACE.toLowerCase()
+                (y: any) => y.name.toLowerCase() == ENGAGE_INTERFACE.toLowerCase()
             );
 
             if (engageMember) {
