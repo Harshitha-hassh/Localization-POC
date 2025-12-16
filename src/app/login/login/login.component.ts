@@ -12,6 +12,7 @@ import { PropertySettingDataService } from 'src/app/shared/data-services/authent
 import { ManageSessionService } from '../manage-session.service';
 import { SetPasswordComponent } from '../set-password/set-password.component';
 import { SubPropertyDataService } from 'src/app/retail/retail-code-setup/retail-outlets/subproperty-data.service';
+import { UserLoginType } from 'src/app/common/enums/shared-enums';
 
 import {
   JWT_TOKEN, USER_INFO,
@@ -124,6 +125,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   propertyIdListForATenant: any[] = [];
   allPropertyDetails: any[] = [];
   userDetail: any;
+  ssoNotConfigured: boolean = false;
 
   @ViewChild('fcs_userID') fcs_userID: ElementRef;
   @ViewChild('fcs_pwd') fcs_pwd: ElementRef;
@@ -135,12 +137,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('myInput') myInput: ElementRef;
   inputSearch;
   showLoginloader: boolean = false;
+  showSSOLoginloader: boolean = false;
   private intervalId: any; // Type 'any' can be replaced with 'number'
   private elapsedTime: number = 0;
   commonCaptions: any;
   securityUserId: number;
   isUserValid: any;
   disableForgetPassword: boolean = false;
+  showSignInOptions: boolean = false;
 
   constructor(
     private dialog: MatDialog,
@@ -182,6 +186,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     document.querySelectorAll('body')[0].setAttribute('id', "bodyId");
     this.enableLoginloader(false);
     this.enablePropertySelection = false;
+
+    if(!sessionStorage.getItem('showSignInOptions')){
+      sessionStorage.setItem('showSignInOptions', true.toString());
+    }
     await this.initializeForm();
     let custId = this.commonLocalize.getLocalCookie('appRetailCustID');
     if (custId != '') {
@@ -410,7 +418,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.tenantId = Number(id);
       const content = { title: 'SETUP PASSWORD', userName: this.userName, tenantId: this.tenantId };
       this.setUpPassword(content, true);
-    } else if (!this.ADB2CAuthenticationEnabled && loginDetails.result.userLoginInfo.isPasswordExpired === true) {
+    } else if ((!this.ADB2CAuthenticationEnabled || this.showSignInOptions) && loginDetails.result.userLoginInfo.isPasswordExpired === true) {
       this.passwordSetting = loginDetails.result.passwordSetting;
       const content = { title: 'CHANGE PASSWORD', userName: this.userName, tenantId: this.tenantId, passwordSetting: this.passwordSetting };
       this.setUpPassword(content, false);
@@ -482,6 +490,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     adb2cConfig = await this.loginService.makeGetCall(serviceParams);
     this.adb2cAuthConfiguration.ADB2CAuthFeatureEnabled = adb2cConfig.result.adB2CAuthenticationEnabled;
     this.adb2cAuthConfiguration.DiscoveryDocumentConfigUrl = adb2cConfig.result.discoveryDocumentUrl;
+    this.adb2cAuthConfiguration.enableFormsAuthentication = adb2cConfig.result.enableFormsAuthentication;
+
     let adb2cUrl = this.commonLocalize.getLocalCookie('supportUserMailId') || sessionStorage.getItem('supportUserMailId') || this.isSupportUser ? '/Retail/supportlogin' : '/Retail/login';
     this.adb2cAuthConfiguration.authConfig = {
       redirectUri: window.location.origin + adb2cUrl,
@@ -508,7 +518,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       showError: true,
       baseResponse: true
     };
-
     if (!this.loginSuccess && !this.enablePropertySelection) {
       // Validate credentials
       if (this.uTempDataPrimary && this.uTempDataSecondary) {
@@ -516,17 +525,27 @@ export class LoginComponent implements OnInit, OnDestroy {
         serviceParams.route = RetailRoutes.LoginEncrypted;
       }
       const loginDetails = await this.loginService.makePostCall(serviceParams);
+      
       if (loginDetails.successStatus) {
-        this.userName = credentials.UserName;
-        //implement one methd for storing time in localstorage from api
-        if(loginDetails.errorCode==0)
-        {
-            await this.HMACAuthSetup(loginDetails);
+        if(this.ADB2CAuthenticationEnabled && loginDetails.result?.userLoginInfo?.loginType !== UserLoginType.Forms){
+          this.loginError = true;
+          this.enableLoginloader(false);
+          this.loginButton.disabledproperty = false;
+          this.errResponse = this.captions.formAuthenticationDenied;
         }
-        
-        await this.successCallBack(loginDetails);
-        this.rememberUser();
-      } else {
+        else{
+          this.userName = credentials.UserName;
+          //implement one methd for storing time in localstorage from api
+          if(loginDetails.errorCode==0)
+          {
+              await this.HMACAuthSetup(loginDetails);
+          }
+          
+          await this.successCallBack(loginDetails);
+          this.rememberUser();
+        }
+      } 
+      else {
         if (loginDetails.errorCode == 5001) {
           this.loginError = true;
           this.enableLoginloader(false);
@@ -968,6 +987,8 @@ export class LoginComponent implements OnInit, OnDestroy {
  * @description Get the return value of button emit
  */
   async getbuttonEmitvalue(e): Promise<void> {
+    this.ssoNotConfigured = false;
+    let eventKey: string = '';
     if (!this.showLoginloader) {
 
       window.onbeforeunload = null;
@@ -975,6 +996,69 @@ export class LoginComponent implements OnInit, OnDestroy {
       if (e) {
         this.enableLoginloader(true);
 
+        e.preventDefault();
+        this.loginForms.markAsUntouched();
+        sessionStorage.setItem('showSignInOptions', true.toString());
+        this.showSignInOptions = true;
+      }
+      else{
+        sessionStorage.setItem('showSignInOptions', false.toString());
+        this.showSignInOptions = false;
+      }
+      sessionStorage.setItem('logineventKey', '');
+      if (this.showCustomerID) {
+        if (e instanceof KeyboardEvent) {
+          if (e.key === 'Enter') {
+            eventKey = e.key;
+            sessionStorage.setItem('logineventKey', 'Enter');
+          }
+        }
+
+        localStorage.setItem('TenantId', this.loginForms.get('customerId').value);
+        let tenantId = localStorage.getItem('TenantId');
+        await this.configureAuth(tenantId, eventKey);
+        localStorage.setItem('ADB2CAuthenticationEnabled', this.ADB2CAuthenticationEnabled.toString());
+        this.loginForms.get('customerId').markAsTouched();
+        //Get Config for disable forget password
+        await this.GetTenantConfigurationForForgetPassword();
+        if (this.ADB2CAuthenticationEnabled && eventKey === 'Enter') {
+          this.removeGeneralLoginVal();
+          await this.adb2cAuthValidation();
+        }
+        else {
+          this.enableLoginloader(false);
+          this.showCustomerID = false;
+          this.loginForms?.controls["customerId"].disable();
+          setTimeout(() => {
+            this.fcs_userID.nativeElement.focus();
+          }, 0);
+        }
+      }
+      else if (this.ADB2CAuthenticationEnabled && this.isSupportUser) {
+        this.removeGeneralLoginVal();
+        this.validateAdb2cCredentialsForSupportUser();
+      }
+      else if (this.ADB2CAuthenticationEnabled && !this.showSignInOptions) {
+        this.removeGeneralLoginVal();
+        await this.adb2cAuthValidation();
+      }
+      else {
+        this.loginForms.controls['userId'].markAsTouched();
+        this.loginForms.controls['password'].markAsTouched();
+        this.setGeneralLoginVal();
+        this.generalAuthValidation();
+        await this.GetTenantConfigurationForForgetPassword();
+      }
+    }
+  }
+
+  async loginwithSSO(e): Promise<void> {
+    sessionStorage.setItem('showSignInOptions', false.toString());
+    if (!this.showLoginloader) {
+      window.onbeforeunload = null;
+      this.commonLocalize.setLocalCookie('appRetailCustID', this.loginForms.get('customerId').value);
+      if (e) {
+        this.enableLoginloader(true, false, true);
         e.preventDefault();
         this.loginForms.markAsUntouched();
       }
@@ -992,28 +1076,11 @@ export class LoginComponent implements OnInit, OnDestroy {
           await this.adb2cAuthValidation();
         }
         else {
-          this.enableLoginloader(false);
+          this.enableLoginloader(false, false, true);
           this.showCustomerID = false;
-          this.loginForms?.controls["customerId"].disable();
-          setTimeout(() => {
-            this.fcs_userID.nativeElement.focus();
-          }, 0);
+          this.ssoNotConfigured = true;
+          //this.utils.showAlert(this.captions.lbl_ssoAlert, AlertType.Info);
         }
-      }
-      else if (this.ADB2CAuthenticationEnabled && this.isSupportUser) {
-        this.removeGeneralLoginVal();
-        this.validateAdb2cCredentialsForSupportUser();
-      }
-      else if (this.ADB2CAuthenticationEnabled) {
-        this.removeGeneralLoginVal();
-        await this.adb2cAuthValidation();
-      }
-      else {
-        this.loginForms.controls['userId'].markAsTouched();
-        this.loginForms.controls['password'].markAsTouched();
-        this.setGeneralLoginVal();
-        this.generalAuthValidation();
-        await this.GetTenantConfigurationForForgetPassword();
       }
     }
   }
@@ -1253,10 +1320,21 @@ export class LoginComponent implements OnInit, OnDestroy {
   //   return isEnabled;
   // }
 
-  private async configureAuth(tenantId: string) {
+  private async configureAuth(tenantId: string, eventKey?: string) {
     await this.GetADB2CAuthConfig(tenantId);
     this.ADB2CAuthenticationEnabled = this.adb2cAuthConfiguration.ADB2CAuthFeatureEnabled;
-    if (this.ADB2CAuthenticationEnabled) {
+    if(sessionStorage.getItem('showSignInOptions').toLowerCase() == 'true'){
+      this.showSignInOptions = true;
+    }
+    else{
+      this.showSignInOptions = false;
+    }
+
+    if(sessionStorage.getItem('logineventKey') == 'Enter'){
+      eventKey = 'Enter';
+    }
+
+    if (this.ADB2CAuthenticationEnabled && ((!this.showSignInOptions || eventKey === 'Enter') || !this.adb2cAuthConfiguration.enableFormsAuthentication)) {
       this.hideLoginForm = true;
       this.oauthService.configure(this.adb2cAuthConfiguration.authConfig);
       this.oauthService.customQueryParams = {
@@ -1301,7 +1379,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private async GetTenantConfigurationForForgetPassword() {
-   let tenantId = this.loginForms.controls['customerId']?.value ? this.loginForms.controls['customerId']?.value : this.custId;
+    let tenantId = this.loginForms.controls['customerId']?.value ? this.loginForms.controls['customerId']?.value : this.custId;
     const serviceParams = {
       route: CommonControllersRoutes.GetConfigurationsByNameAndConfigValue,
       uriParams: { "configurationName": TenantConfigurations.TenantSetupConfiguration, "configKeyName": "DisableForgetPassword", "tenantId": tenantId },
@@ -1446,6 +1524,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loginForms?.controls["customerId"].enable();
     this.loginForms.markAsUntouched();
     this.showCustomerID = true;
+    this.ssoNotConfigured = false;
+    this.loginError = false;
     setTimeout(() => {
       this.fcs_custID.nativeElement.focus();
     }, 0);
@@ -1728,15 +1808,24 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  enableLoginloader(val: boolean, forceEnable: boolean = false) {
+  enableLoginloader(val: boolean, forceEnable: boolean = false, ssoLogin:boolean=false) {
     if ((this.loginForms?.valid && val) || (forceEnable && val)) {
-      this.showLoginloader = val ? val : false;
-      this.startInterval();
-    } else {
+      if(ssoLogin){
+        this.showSSOLoginloader = val ? val : false;
+      }
+      else{
+        this.showLoginloader = val ? val : false;
+      }
+      
+      this.startInterval(ssoLogin);
+    } else if(ssoLogin){
+      this.showSSOLoginloader = false;
+    }
+    else{
       this.showLoginloader = false;
     }
   }
-  startInterval() {
+  startInterval(ssoLogin:boolean=false) {
     // Set up the interval to execute a function every 1000 milliseconds (1 second)
     this.elapsedTime = 0;
     this.intervalId = setInterval(() => {
@@ -1744,16 +1833,16 @@ export class LoginComponent implements OnInit, OnDestroy {
       // Check if 30 seconds have passed
       if ((document.getElementById("bodyId")?.getElementsByClassName("Errorpop-container-Golf").length > 0) ||
         (document.getElementById("bodyId")?.getElementsByClassName("errorpop-container").length > 0) || (document.getElementById("bodyId")?.getElementsByClassName("Errorpop-container").length > 0)) {
-        this.stopInterval(); // Clear the interval if the condition is met
+        this.stopInterval(ssoLogin); // Clear the interval if the condition is met
       }
       if (this.elapsedTime >= 50000) {
-        this.stopInterval(); // Clear the interval if 50 seconds have passed
+        this.stopInterval(ssoLogin); // Clear the interval if 50 seconds have passed
       }
     }, 1000);
   }
-  stopInterval() {
+  stopInterval(ssoLogin:boolean=false) {
     // Clear the interval when called
-    this.enableLoginloader(false);
+    this.enableLoginloader(false,false,ssoLogin);
     if (this.intervalId) {
       clearInterval(this.intervalId);
     }

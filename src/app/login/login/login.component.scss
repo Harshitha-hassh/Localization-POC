@@ -29,7 +29,7 @@
 
         #{ $self }__page {
             width: 850px;
-            height: 500px;
+            height: 535px;
             margin: auto;
             position: relative;
             top: 50%;
@@ -92,7 +92,7 @@
                         color: #818892;
                     }
                     #{ $self }__form-details {
-                        padding: 1.25em 0px 0px 0px;
+                        padding: 1em 0px 0px 0px;
                     }
                 }
             }
@@ -106,6 +106,10 @@
     .hide-view i.icon-password-hide {
         position: relative;
         right: 0;
+    }
+
+    .errorTextDiv{
+        padding-top: 6px;
     }
 
     .errorText {
@@ -132,6 +136,15 @@
 
     .machine-name {
         margin-left: 20px;
+    }
+    .icon-px_info-eatec:before {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .info-section{    
+        color: hsl(221.08deg 67.71% 37.65%);
+        font-weight: bold;
+        font-size: 16px;
     }
 }
 
@@ -188,6 +201,32 @@ button .loginloadingSpinner {
   to   { transform: rotate(360deg) }
 }
 @-webkit-keyframes loginloadingSpinner {
+  from { -webkit-transform: rotate(0deg)   }
+  to   { -webkit-transform: rotate(360deg) }
+}
+
+.ssoloadingSpinner {
+  border: 4px solid #FFF;
+  border-top-color: rgba(0, 0, 0, 0);
+  border-left-color: rgba(0, 0, 0, 0);
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+  border-radius: 50%;
+  animation: ssoloadingSpinner 0.7s infinite linear;
+  -webkit-animation: ssoloadingSpinner 0.7s infinite linear;
+}
+button .ssoloadingSpinner {
+  position: absolute;
+  top: 7px;
+  left: unset;
+  right: 15px;
+}
+@keyframes ssoloadingSpinner {
+  from { transform: rotate(0deg)   }
+  to   { transform: rotate(360deg) }
+}
+@-webkit-keyframes ssoloadingSpinner {
   from { -webkit-transform: rotate(0deg)   }
   to   { -webkit-transform: rotate(360deg) }
 }

@@ -10,6 +10,10 @@
                     <label class="login__label-style">{{captions.Login}}</label>
                     <div class="login__message">{{loginSuccess? this.captions.SelectYourLocation :
                         captions.welcomeToRetail}}</div>
+                    <div *ngIf="ssoNotConfigured" class="info-section ag_display--flex ag_align-items--left ag_mt--2 ag_w--60">
+                        <span class="icon-px_info-eatec ag_mr--1"></span>
+                        <span class="info-text">{{captions.ssoNotConfigured}}</span>
+                    </div>
                     <div class="login__form-details">
                         <div class="login_form">
                             <form [formGroup]="loginForms" autocomplete="off">
@@ -124,10 +128,10 @@
                                         </div>
                                     </div>
 
-                                    <div>
+                                    <div class="errorTextDiv">
                                         <!-- <mat-checkbox formControlName="rememberme">{{captions.rememberMe}}
                                         </mat-checkbox> -->
-                                        <span *ngIf="loginError" class="errorText">&nbsp;&nbsp;{{errResponse}}</span>
+                                        <span *ngIf="loginError" class="errorText">{{errResponse}}</span>
                                     </div>
                                 </div>
                                 <div *ngIf="loginSuccess" class="overall_login_wrapper">
@@ -216,10 +220,18 @@
                         </div>
                     </div>
 
-                    <div class="margintop--10" *ngIf="custId"><button mat-flat-button class="login__btn"
+                    <div class="margintop--10" *ngIf="custId">
+                        <button mat-flat-button class="login__btn"
                             [ngClass]="{'ag_section--disable': !this.loginForms.controls.customerId.value && showCustomerID || showLoginloader || (!isSupportUser && !showCustomerID && (!loginForms.controls.userId.value || !loginForms.controls.password.value)) || (!isSupportUser && loginSuccess && !loginForms.controls.location.value?.id) || (!isSupportUser && loginSuccess && !loginForms.controls.machineName.value)}"
                             (click)="!loginForms.controls.customerId.value  && showCustomerID ? '' : getbuttonEmitvalue($event)">{{loginSuccess?captions.enter:captions.Login}}
                             <div *ngIf="showLoginloader" class="loginloadingSpinner"></div>
+                        </button>
+                        <button color="primary" mat-flat-button
+                            class="login__btn ag_mt--2"
+                            *ngIf="showCustomerID"
+                            [ngClass]="{'ag_section--disable': !this.loginForms.controls.customerId.value && showCustomerID || showSSOLoginloader}"
+                            (click)="loginwithSSO($event)">{{this.captions.btn_loginwithsso}}
+                            <div *ngIf="showSSOLoginloader" class="ssoloadingSpinner"></div>
                         </button>
                     </div>
                 </div>
