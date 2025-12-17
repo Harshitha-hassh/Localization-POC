@@ -2964,7 +2964,15 @@
     "TaxOnTax": "Tax On Tax_fi",
     "MissingUnitCost": "Missing Unit Cost_fi",
     "InvalidBarcode": "Missing Barcode_fi",
-    "GenerateSalesInvoice": "Generate Sales Invoice #_fi"
+    "GenerateSalesInvoice": "Generate Sales Invoice #_fi",
+    "RoundingTypeDown": "Down_fi",
+    "RoundingTypeUp": "Up_fi",
+    "RoundingTypeNearest": "Nearest_fi",
+    "lbl_roundingBasis": "Rounding Basis_fi",
+    "lbl_enableRoundingOff": "Enable Rounding Off_fi",
+    "lbl_roundingType": "Rounding Type_fi",
+    "MissingroundingBasis": "Missing Rounding Basis_fi",
+    "MissingroundingType": "Missing Rounding Type_fi"
   },
   "setting": {
     "existing_tax": "Existing Tax_fi",
