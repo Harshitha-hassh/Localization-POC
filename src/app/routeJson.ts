@@ -758,4 +758,8 @@ export const routeJSON = {
   "SaveImageToPlatform"  : 'v2/images/UploadPlatformGuestImage/tenant/{tenantId}/platformGuestId/{platformGuestId}',
   "UpdateImageToPlatform" : 'v2/images/UpdatePlatformGuestImage/tenant/{tenantId}/platformGuestId/{platformGuestId}',
   "DeleteImageFromPlatform" : 'v2/images/DeleteImagesWithPlatformGuestId/tenant/{tenantId}/platformGuestId/{platformGuestId}',
+  "GetVoidReturnReason": "RetailManagementService/VoidOrReturnReason",
+  "CreateVoidReturnReason": "RetailManagementService/VoidOrReturnReason",
+  "UpdateVoidReturnReason": "RetailManagementService/VoidOrReturnReason",
+  "DeleteVoidReturnReason": "RetailManagementService/VoidOrReturnReason/{id}",
 }

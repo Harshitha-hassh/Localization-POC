@@ -2036,7 +2036,6 @@
     "2500045": "2500045 - Solo Parent Sales Book/Report",
     "2500055": "2500055 - Fiscal E-Journal Report",
     "2500060": "2500060 - Consolidated Audit Trail",
-
     "Appointment Actions": "Appointment Actions",
     "Appointment Grid": "Appointment Grid",
     "Client Profile": "Client Profile",
@@ -2572,7 +2571,7 @@
     "DuplicateSecondaryBarcode": "Duplicate Secondary Barcode #",
     "ViewListItems": "View List Items",
     "MissingDiscountType": "Missing Discount Type",
-    "CreateItem": "Create Item",     
+    "CreateItem": "Create Item",
     "addTransferInventory": "Add/Transfer Inventory",
     "discountConfiguration": "Discount Configuration",
     "Cancel": "CANCEL",
@@ -2961,7 +2960,14 @@
     "TaxOnTax": "Tax On Tax",
     "MissingUnitCost": "Missing Unit Cost",
     "InvalidBarcode": "Missing Barcode",
-    "GenerateSalesInvoice": "Generate Sales Invoice #"
+    "GenerateSalesInvoice": "Generate Sales Invoice #",
+    "Reason": "Reason",
+    "IsVoid": "Use Void",
+    "IsReturn": "Use Return",
+    "CanOverride": "Can Override",
+    "CreateVoidOrReturn": "Create Void / Return",
+    "MissingReason": "Missing Reason",
+    "InvalidReason": "Invalid Reason"
   },
   "setting": {
     "existing_tax": "Existing Tax",

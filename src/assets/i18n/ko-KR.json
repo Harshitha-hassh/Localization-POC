@@ -2972,7 +2972,14 @@
     "lbl_enableRoundingOff": "Enable Rounding Off_kr",
     "lbl_roundingType": "Rounding Type_kr",
     "MissingroundingBasis": "Missing Rounding Basis_kr",
-    "MissingroundingType": "Missing Rounding Type_kr"
+    "MissingroundingType": "Missing Rounding Type_kr",
+    "Reason": "Reason_kr",
+    "IsVoid": "Use Void_kr",
+    "IsReturn": "Use Return_kr",
+    "CanOverride": "Can Override_kr",
+    "CreateVoidOrReturn": "Create Void / Return_kr",
+    "MissingReason": "Missing Reason_kr",
+    "InvalidReason": "Invalid Reason_kr"
   },
   "setting": {
     "existing_tax": "Existing Tax_kr",
