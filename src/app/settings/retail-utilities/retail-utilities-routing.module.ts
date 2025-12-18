@@ -64,6 +64,12 @@ const routes: Routes = [{
           component: TemplatesComponent,
           canActivate: [RouteGuardService],
           data: { templateID: 2, breakPointNumber:CommonBreakPoint.SMSTemplate , redirectTo: '' ,syncAccess: true,ShowPopup: true}
+        },
+        {
+          path: 'Receipt',
+          component: TemplatesComponent,
+          canActivate: [RouteGuardService],
+          data: { templateID: 6, breakPointNumber:CommonBreakPoint.RECEIPTREPORTTEMPLATES , redirectTo: '' ,syncAccess: true,ShowPopup: true}
         }
       ]
     },

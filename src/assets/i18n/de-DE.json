@@ -2002,6 +2002,7 @@
     "20045": "20045 - SMS Templates_de",
     "20055": "20055 - Distribution List_de",
     "20095": "20095 - Date Roll when Cash Drawer is Open_de",
+    "20115": "20115 - Receipt/Report Templates_de",
     "42709": "42709 - Add/Edit Discount Mapping_de",
     "85160": "85160 - DataMagine Configuration_de",
     "85255": "85255 - SFTP_de",
@@ -4621,7 +4622,15 @@
         "RetailNightAuditCompletion": "Night Audit Success_de",
         "RetailNightAuditFailure": "Night Audit Failure_de",
         "AuthorizePaymentRetail": "Authorize Payment_de"
-      }
+      },
+      "receiptTempCode": "Receipt Template Code_de",
+      "receiptTempName": "Receipt Template Name_de",
+      "receiptMsg": "Receipt Message_de",
+      "receiptSrchTxt": "Search Receipt Templates_de",
+      "lbl_ReceiptTemplateError": "Cannot delete this receipt template_de",
+      "editReceiptTemplate": "Edit Receipt Template_de",
+      "newReceiptTemplate": "New Receipt Template_de",
+      "outlet": "Outlet_de"
     },
     "notificationsConfiguration": {
       "NOTIFICATIONCONFIGURATION": "NOTIFICATION CONFIGURATION_de",

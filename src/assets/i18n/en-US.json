@@ -1991,6 +1991,7 @@
     "20040": "20040 - Email Templates",
     "20045": "20045 - SMS Templates",
     "20055": "20055 - Distribution List",
+    "20115": "20115 - Receipt/Report Templates",
     "42709": "42709 - Add/Edit Discount Mapping",
     "8200": "8200 - Inventory Value and Activity Report",
     "8205": "8205 - Inventory Valuation Report",
@@ -4624,7 +4625,17 @@
         "RetailNightAuditCompletion": "Night Audit Success",
         "RetailNightAuditFailure": "Night Audit Failure",
         "AuthorizePaymentRetail": "Authorize Payment"
-      }
+      },
+      "receiptTempCode": "Receipt Template Code",
+      "receiptTempName": "Receipt Template Name",
+      "receiptMsg": "Receipt Message",
+      "receiptSrchTxt":"Search Receipt Templates",
+      "lbl_ReceiptTemplateError": "Cannot delete this receipt template",
+      "editReceiptTemplate":"Edit Receipt Template",
+      "newReceiptTemplate":"New Receipt Template",
+      "outlet":"Outlet"
+      
+
     },
     "notificationsConfiguration": {
       "NOTIFICATIONCONFIGURATION": "NOTIFICATION CONFIGURATION",
