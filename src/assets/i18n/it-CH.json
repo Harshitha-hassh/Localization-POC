@@ -5417,6 +5417,7 @@
   "lbl_item_number": "Item #_it-ch",
   "lbl_notPosted": "Not Posted_it-ch",
   "lbl_duplicates": "Duplicates_it-ch",
+  "lbl_unscanned": "Unscanned_it-ch",
   "warn_deleteSingleStaging": "Are you sure you want to delete this record?_it-ch",
   "warn_deleteMultipleStagings": "Are you sure you want to delete these records?_it-ch",
   "err_Stagingnotdeleted": "Delete Stagings has failed_it-ch",
