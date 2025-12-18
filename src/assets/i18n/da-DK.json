@@ -2002,6 +2002,7 @@
     "20045": "20045 - SMS Templates_da",
     "20055": "20055 - Distribution List_da",
     "20095": "20095 - Date Roll when Cash Drawer is Open_da",
+    "20115": "20115 - Receipt/Report Templates_da",
     "42709": "42709 - Add/Edit Discount Mapping_da",
     "85160": "85160 - DataMagine Configuration_da",
     "85255": "85255 - SFTP_da",
@@ -4628,7 +4629,15 @@
         "RetailNightAuditCompletion": "Night Audit Success_da",
         "RetailNightAuditFailure": "Night Audit Failure_da",
         "AuthorizePaymentRetail": "Authorize Payment_da"
-      }
+      },
+      "receiptTempCode": "Receipt Template Code_da",
+      "receiptTempName": "Receipt Template Name_da",
+      "receiptMsg": "Receipt Message_da",
+      "receiptSrchTxt": "Search Receipt Templates_da",
+      "lbl_ReceiptTemplateError": "Cannot delete this receipt template_da",
+      "editReceiptTemplate": "Edit Receipt Template_da",
+      "newReceiptTemplate": "New Receipt Template_da",
+      "outlet": "Outlet_da"
     },
     "notificationsConfiguration": {
       "NOTIFICATIONCONFIGURATION": "NOTIFICATION CONFIGURATION_da",
@@ -5424,6 +5433,7 @@
   "lbl_item_number": "Item #_da",
   "lbl_notPosted": "Not Posted_da",
   "lbl_duplicates": "Duplicates_da",
+  "lbl_unscanned": "Unscanned_da",
   "warn_deleteSingleStaging": "Are you sure you want to delete this record?_da",
   "warn_deleteMultipleStagings": "Are you sure you want to delete these records?_da",
   "err_Stagingnotdeleted": "Delete Stagings has failed_da",

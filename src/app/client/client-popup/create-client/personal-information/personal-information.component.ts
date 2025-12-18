@@ -947,7 +947,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     }
     var imageData: Imagedata;
     if (clientInfo.client.guestId && clientInfo.client.guestId != DefaultGUID && !this.isCopyClient) {
-      if(this.localization.IsPlatformGuestSearchConfigured()) {
+      if(this.localization.IsPlatformGuestSearchConfigured() && clientInfo.client.platformGuestUuid && clientInfo.client.platformGuestUuid != '' && clientInfo.client.platformGuestUuid != DefaultGUID) {
         const platformTenantId = this.utils.GetPropertyInfo('PlatformTenantId');
         imageData = await this._imageService.getImagebyPlatformGuestId(clientInfo.client.platformGuestUuid, platformTenantId, clientInfo.client.guestId);
       } else {

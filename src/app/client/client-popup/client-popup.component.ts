@@ -146,7 +146,8 @@ export class ClientPopupComponent implements OnInit {
       }
 
     }
-    if(this.clientInfo.personalDetailsFormGroup.platformGuestUuid == null || this.clientInfo.personalDetailsFormGroup.platformGuestUuid == ''){
+    if(this.clientInfo.personalDetailsFormGroup.platformGuestUuid == null || this.clientInfo.personalDetailsFormGroup.platformGuestUuid == '' 
+    || this.clientInfo.personalDetailsFormGroup.guestId == DefaultGUID ){
       let guestData = await this._clientDataService.getClientbyGuestId(createPromise.guestId.toString());
       this.clientInfo.personalDetailsFormGroup.platformGuestUuid = guestData?.client?.platformGuestUuid;
     }
@@ -156,7 +157,7 @@ export class ClientPopupComponent implements OnInit {
     if (this.clientInfo && this.clientInfo.personalDetailsFormGroup.id && this.clientInfo.personalDetailsFormGroup.imgReferenceId &&
       this.clientInfo.personalDetailsFormGroup.imgReferenceId != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID
      || this.clientInfo.personalDetailsFormGroup.isImageRemoved) {
-      if(this.localization.IsPlatformGuestSearchConfigured()) {
+      if(this.localization.IsPlatformGuestSearchConfigured() && this.clientInfo.personalDetailsFormGroup.platformGuestUuid && this.clientInfo.personalDetailsFormGroup.platformGuestUuid != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID) {
         if(this.clientInfo.personalDetailsFormGroup.isImageRemoved) {
           await this._imageService.deleteImageFromPlatform(platformTenantId, this.clientInfo.personalDetailsFormGroup.platformGuestUuid, createPromise.guestId.toString());
         } else {
@@ -175,7 +176,7 @@ export class ClientPopupComponent implements OnInit {
      
     }
     else if (this.clientInfo.personalDetailsFormGroup.guestImg.base64textString) {
-      if(this.localization.IsPlatformGuestSearchConfigured()) {
+      if(this.localization.IsPlatformGuestSearchConfigured() && this.clientInfo.personalDetailsFormGroup.platformGuestUuid && this.clientInfo.personalDetailsFormGroup.platformGuestUuid != '' && this.clientInfo.personalDetailsFormGroup.guestId != DefaultGUID) {
         await this._imageService.saveImageToPlatform(platformTenantId, this.clientInfo.personalDetailsFormGroup.platformGuestUuid,
           createPromise.guestId.toString(), this.clientInfo.personalDetailsFormGroup.guestImg.base64textString,
           this.clientInfo.personalDetailsFormGroup.guestImg.thumbnailImg);
