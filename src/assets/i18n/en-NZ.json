@@ -2114,8 +2114,8 @@
     "lbl_expired": "Expired",
     "searchToFindResult": "Search to find the results",
     "lbl_promo": "Promo",
-    "lbl_payment": "PAYMENT",
-    "lbl_incentive": "INCENTIVE",
+    "lbl_payment": "Payment",
+    "lbl_incentive": "Incentive",
     "lbl_amount": "Amount",
     "lbl_missingQualifyingCriteria": "Missing Qualifying Criteria",
     "lbl_AllProducts": "All Products",
@@ -2982,7 +2982,7 @@
     "CreateVoidOrReturn": "Create Void / Return Reason",
     "MissingReason": "Missing Reason",
     "InvalidReason": "Invalid Reason",
-    "EditVoidOrReturn":"Edit Void / Return Reason"
+    "EditVoidOrReturn": "Edit Void / Return Reason"
   },
   "setting": {
     "existing_tax": "Existing Tax",

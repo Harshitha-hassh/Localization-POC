@@ -2003,6 +2003,7 @@
     "20045": "20045 - SMS Templates_id-id",
     "20055": "20055 - Distribution List_id-id",
     "20095": "20095 - Date Roll when Cash Drawer is Open_id-id",
+    "20115": "20115 - Receipt/Report Templates_id-id",
     "42709": "42709 - Add/Edit Discount Mapping_id-id",
     "85160": "85160 - DataMagine Configuration_id-id",
     "85255": "85255 - SFTP_id-id",
@@ -2113,8 +2114,8 @@
     "lbl_expired": "Expired_id-id",
     "searchToFindResult": "Search to find the results_id-id",
     "lbl_promo": "Promo_id-id",
-    "lbl_payment": "PAYMENT_id-id",
-    "lbl_incentive": "INCENTIVE_id-id",
+    "lbl_payment": "Payment_id-id",
+    "lbl_incentive": "Incentive_id-id",
     "lbl_amount": "Amount_id-id",
     "lbl_missingQualifyingCriteria": "Missing Qualifying Criteria_id-id",
     "lbl_AllProducts": "All Products_id-id",
@@ -2981,7 +2982,7 @@
     "CreateVoidOrReturn": "Create Void / Return Reason_id-id",
     "MissingReason": "Missing Reason_id-id",
     "InvalidReason": "Invalid Reason_id-id",
-    "EditVoidOrReturn":"Edit Void / Return Reason_id-id"
+    "EditVoidOrReturn": "Edit Void / Return Reason_id-id"
   },
   "setting": {
     "existing_tax": "Existing Tax_id-id",
@@ -4630,7 +4631,15 @@
         "RetailNightAuditCompletion": "Night Audit Success_id-id",
         "RetailNightAuditFailure": "Night Audit Failure_id-id",
         "AuthorizePaymentRetail": "Authorize Payment_id-id"
-      }
+      },
+      "receiptTempCode": "Receipt Template Code_id-id",
+      "receiptTempName": "Receipt Template Name_id-id",
+      "receiptMsg": "Receipt Message_id-id",
+      "receiptSrchTxt": "Search Receipt Templates_id-id",
+      "lbl_ReceiptTemplateError": "Cannot delete this receipt template_id-id",
+      "editReceiptTemplate": "Edit Receipt Template_id-id",
+      "newReceiptTemplate": "New Receipt Template_id-id",
+      "outlet": "Outlet_id-id"
     },
     "notificationsConfiguration": {
       "NOTIFICATIONCONFIGURATION": "NOTIFICATION CONFIGURATION_id-id",
@@ -5426,6 +5435,7 @@
   "lbl_item_number": "Item #_id-id",
   "lbl_notPosted": "Not Posted_id-id",
   "lbl_duplicates": "Duplicates_id-id",
+  "lbl_unscanned": "Unscanned_id-id",
   "warn_deleteSingleStaging": "Are you sure you want to delete this record?_id-id",
   "warn_deleteMultipleStagings": "Are you sure you want to delete these records?_id-id",
   "err_Stagingnotdeleted": "Delete Stagings has failed_id-id",

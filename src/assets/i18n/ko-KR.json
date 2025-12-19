@@ -2114,8 +2114,8 @@
     "lbl_expired": "Expired_kr",
     "searchToFindResult": "Search to find the results_kr",
     "lbl_promo": "Promo_kr",
-    "lbl_payment": "PAYMENT_kr",
-    "lbl_incentive": "INCENTIVE_kr",
+    "lbl_payment": "Payment_kr",
+    "lbl_incentive": "Incentive_kr",
     "lbl_amount": "Amount_kr",
     "lbl_missingQualifyingCriteria": "Missing Qualifying Criteria_kr",
     "lbl_AllProducts": "All Products_kr",
@@ -2982,7 +2982,7 @@
     "CreateVoidOrReturn": "Create Void / Return Reason_kr",
     "MissingReason": "Missing Reason_kr",
     "InvalidReason": "Invalid Reason_kr",
-    "EditVoidOrReturn":"Edit Void / Return Reason_kr"
+    "EditVoidOrReturn": "Edit Void / Return Reason_kr"
   },
   "setting": {
     "existing_tax": "Existing Tax_kr",

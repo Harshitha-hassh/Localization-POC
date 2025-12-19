@@ -2114,8 +2114,8 @@
     "lbl_expired": "Expired_fr",
     "searchToFindResult": "Search to find the results_fr",
     "lbl_promo": "Promo_fr",
-    "lbl_payment": "PAYMENT_fr",
-    "lbl_incentive": "INCENTIVE_fr",
+    "lbl_payment": "Payment_fr",
+    "lbl_incentive": "Incentive_fr",
     "lbl_amount": "Amount_fr",
     "lbl_missingQualifyingCriteria": "Missing Qualifying Criteria_fr",
     "lbl_AllProducts": "All Products_fr",
@@ -2982,7 +2982,7 @@
     "CreateVoidOrReturn": "Create Void / Return Reason_fr",
     "MissingReason": "Missing Reason_fr",
     "InvalidReason": "Invalid Reason_fr",
-    "EditVoidOrReturn":"Edit Void / Return Reason_fr"
+    "EditVoidOrReturn": "Edit Void / Return Reason_fr"
   },
   "setting": {
     "existing_tax": "Existing Tax_fr",

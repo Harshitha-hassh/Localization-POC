@@ -1839,7 +1839,7 @@
     "1255": "1255 - Service Charge Report_ar",
     "1260": "1260 - Appointment Listing by Color Linking Code_ar",
     "2110": "2110 - Vip Type_ar",
-    "2121": "2121 - Void/Return Reason_ar",
+    "2121": "2121 - Void / Return Reason_ar",
     "2300": "2300 - User Setup_ar",
     "2305": "2305 - User Role Setup_ar",
     "2310": "2310 - User Role Configuration_ar",
@@ -2114,8 +2114,8 @@
     "lbl_expired": "Expired_ar",
     "searchToFindResult": "Search to find the results_ar",
     "lbl_promo": "Promo_ar",
-    "lbl_payment": "PAYMENT_ar",
-    "lbl_incentive": "INCENTIVE_ar",
+    "lbl_payment": "Payment_ar",
+    "lbl_incentive": "Incentive_ar",
     "lbl_amount": "Amount_ar",
     "lbl_missingQualifyingCriteria": "Missing Qualifying Criteria_ar",
     "lbl_AllProducts": "All Products_ar",
@@ -2982,7 +2982,7 @@
     "CreateVoidOrReturn": "Create Void / Return Reason_ar",
     "MissingReason": "Missing Reason_ar",
     "InvalidReason": "Invalid Reason_ar",
-    "EditVoidOrReturn":"Edit Void / Return Reason_fr"
+    "EditVoidOrReturn": "Edit Void / Return Reason_ar"
   },
   "setting": {
     "existing_tax": "Existing Tax_ar",
