@@ -2978,9 +2978,10 @@
     "IsVoid": "Use Void_cs",
     "IsReturn": "Use Return_cs",
     "CanOverride": "Can Override_cs",
-    "CreateVoidOrReturn": "Create Void / Return_cs",
+    "CreateVoidOrReturn": "Create Void / Return Reason_cs",
     "MissingReason": "Missing Reason_cs",
-    "InvalidReason": "Invalid Reason_cs"
+    "InvalidReason": "Invalid Reason_cs",
+    "EditVoidOrReturn":"Edit Void / Return Reason_cs"
   },
   "setting": {
     "existing_tax": "Existing Tax_cs",

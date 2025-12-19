@@ -2965,9 +2965,10 @@
     "IsVoid": "Use Void",
     "IsReturn": "Use Return",
     "CanOverride": "Can Override",
-    "CreateVoidOrReturn": "Create Void / Return",
+    "CreateVoidOrReturn": "Create Void / Return Reason",
     "MissingReason": "Missing Reason",
-    "InvalidReason": "Invalid Reason"
+    "InvalidReason": "Invalid Reason",
+    "EditVoidOrReturn":"Edit Void / Return Reason"
   },
   "setting": {
     "existing_tax": "Existing Tax",

@@ -2978,9 +2978,10 @@
     "IsVoid": "Use Void_fi",
     "IsReturn": "Use Return_fi",
     "CanOverride": "Can Override_fi",
-    "CreateVoidOrReturn": "Create Void / Return_fi",
+    "CreateVoidOrReturn": "Create Void / Return Reason_fi",
     "MissingReason": "Missing Reason_fi",
-    "InvalidReason": "Invalid Reason_fi"
+    "InvalidReason": "Invalid Reason_fi",
+    "EditVoidOrReturn":"Edit Void / Return Reason_fi"
   },
   "setting": {
     "existing_tax": "Existing Tax_fi",

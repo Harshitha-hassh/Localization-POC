@@ -1923,9 +1923,10 @@
     "IsVoid": "Use Void_zh",
     "IsReturn": "Use Return_zh",
     "CanOverride": "Can Override_zh",
-    "CreateVoidOrReturn": "Create Void / Return_zh",
+    "CreateVoidOrReturn": "Create Void / Return Reason_zh",
     "MissingReason": "Missing Reason_zh",
-    "InvalidReason": "Invalid Reason_zh"
+    "InvalidReason": "Invalid Reason_zh",
+    "EditVoidOrReturn":"Edit Void / Return Reason_zh"
   },
   "setting": {
     "Title": "Title_zh",

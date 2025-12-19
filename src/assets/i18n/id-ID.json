@@ -2977,9 +2977,10 @@
     "IsVoid": "Use Void_id-id",
     "IsReturn": "Use Return_id-id",
     "CanOverride": "Can Override_id-id",
-    "CreateVoidOrReturn": "Create Void / Return_id-id",
+    "CreateVoidOrReturn": "Create Void / Return Reason_id-id",
     "MissingReason": "Missing Reason_id-id",
-    "InvalidReason": "Invalid Reason_id-id"
+    "InvalidReason": "Invalid Reason_id-id",
+    "EditVoidOrReturn":"Edit Void / Return Reason_id-id"
   },
   "setting": {
     "existing_tax": "Existing Tax_id-id",

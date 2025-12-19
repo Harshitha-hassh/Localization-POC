@@ -2978,9 +2978,10 @@
     "IsVoid": "Use Void_it-ch",
     "IsReturn": "Use Return_it-ch",
     "CanOverride": "Can Override_it-ch",
-    "CreateVoidOrReturn": "Create Void / Return_it-ch",
+    "CreateVoidOrReturn": "Create Void / Return Reason_it-ch",
     "MissingReason": "Missing Reason_it-ch",
-    "InvalidReason": "Invalid Reason_it-ch"
+    "InvalidReason": "Invalid Reason_it-ch",
+    "EditVoidOrReturn":"Edit Void / Return Reason_it-ch"
   },
   "setting": {
     "existing_tax": "Existing Tax_it-ch",

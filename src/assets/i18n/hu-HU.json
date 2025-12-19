@@ -2978,9 +2978,10 @@
     "IsVoid": "Use Void_hu",
     "IsReturn": "Use Return_hu",
     "CanOverride": "Can Override_hu",
-    "CreateVoidOrReturn": "Create Void / Return_hu",
+    "CreateVoidOrReturn": "Create Void / Return Reason_hu",
     "MissingReason": "Missing Reason_hu",
-    "InvalidReason": "Invalid Reason_hu"
+    "InvalidReason": "Invalid Reason_hu",
+    "EditVoidOrReturn":"Edit Void / Return Reason_hu"
   },
   "setting": {
     "existing_tax": "Existing Tax_hu",

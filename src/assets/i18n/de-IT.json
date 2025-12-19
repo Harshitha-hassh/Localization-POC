@@ -2978,9 +2978,10 @@
     "IsVoid": "Use Void_de-it",
     "IsReturn": "Use Return_de-it",
     "CanOverride": "Can Override_de-it",
-    "CreateVoidOrReturn": "Create Void / Return_de-it",
+    "CreateVoidOrReturn": "Create Void / Return Reason_de-it",
     "MissingReason": "Missing Reason_de-it",
-    "InvalidReason": "Invalid Reason_de-it"
+    "InvalidReason": "Invalid Reason_de-it",
+    "EditVoidOrReturn":"Edit Void / Return Reason_de-it"
   },
   "setting": {
     "existing_tax": "Existing Tax_de-it",
