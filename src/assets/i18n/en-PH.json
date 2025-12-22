@@ -1838,6 +1838,7 @@
     "1255": "1255 - Service Charge Report",
     "1260": "1260 - Appointment Listing by Color Linking Code",
     "2110": "2110 - Vip Type",
+    "2121": "2121 - Void / Return Reason",
     "2300": "2300 - User Setup",
     "2305": "2305 - User Role Setup",
     "2310": "2310 - User Role Configuration",
@@ -2036,7 +2037,6 @@
     "2500045": "2500045 - Solo Parent Sales Book/Report",
     "2500055": "2500055 - Fiscal E-Journal Report",
     "2500060": "2500060 - Consolidated Audit Trail",
-
     "Appointment Actions": "Appointment Actions",
     "Appointment Grid": "Appointment Grid",
     "Client Profile": "Client Profile",
@@ -2572,7 +2572,7 @@
     "DuplicateSecondaryBarcode": "Duplicate Secondary Barcode #",
     "ViewListItems": "View List Items",
     "MissingDiscountType": "Missing Discount Type",
-    "CreateItem": "Create Item",     
+    "CreateItem": "Create Item",
     "addTransferInventory": "Add/Transfer Inventory",
     "discountConfiguration": "Discount Configuration",
     "Cancel": "CANCEL",
@@ -2961,7 +2961,15 @@
     "TaxOnTax": "Tax On Tax",
     "MissingUnitCost": "Missing Unit Cost",
     "InvalidBarcode": "Missing Barcode",
-    "GenerateSalesInvoice": "Generate Sales Invoice #"
+    "GenerateSalesInvoice": "Generate Sales Invoice #",
+    "Reason": "Reason",
+    "IsVoid": "Use Void",
+    "IsReturn": "Use Return",
+    "CanOverride": "Can Override",
+    "CreateVoidOrReturn": "Create Void / Return Reason",
+    "MissingReason": "Missing Reason",
+    "InvalidReason": "Invalid Reason",
+    "EditVoidOrReturn":"Edit Void / Return Reason"
   },
   "setting": {
     "existing_tax": "Existing Tax",

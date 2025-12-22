@@ -24,7 +24,8 @@ const defaultLocalizations = [
     { code: "en-CH", suffix: "", name: "Swiss English" },
     { code: "de-CH", suffix: "_de-ch", name: "Swiss German" },
     { code: "fr-CH", suffix: "_fr-ch", name: "Swiss French" },
-    { code: "it-CH", suffix: "_it-ch", name: "Swiss Italian" }
+    { code: "it-CH", suffix: "_it-ch", name: "Swiss Italian" },
+    { code: "id-ID", suffix: "_id-id", name: "Indonesian" }
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
