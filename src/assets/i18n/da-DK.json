@@ -1048,6 +1048,7 @@
     "lbl_InputCoupon": "Please enter a coupon number_da",
     "lbl_inActive": "Inactive_da",
     "lbl_active": "Active_da",
+    "lbl_SelectReturnReason": "Please select a return reason_da",
     "lbl_SelectReason": "Select Void Reason_da",
     "lbl_VoidReasonRequired": "Void reason is required_da",
     "lbl_invalidCoupon": "No valid coupon found_da",

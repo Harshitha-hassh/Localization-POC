@@ -1048,6 +1048,7 @@
     "lbl_InputCoupon": "Please enter a coupon number_de-ch",
     "lbl_inActive": "Inactive_de-ch",
     "lbl_active": "Active_de-ch",
+    "lbl_SelectReturnReason": "Please select a return reason_de-ch",
     "lbl_SelectReason": "Select Void Reason_de-ch",
     "lbl_VoidReasonRequired": "Void reason is required_de-ch",
     "lbl_invalidCoupon": "No valid coupon found_de-ch",
