@@ -426,5 +426,13 @@
   "730107": "INVALID_LIST_ORDER",
   "730108": "DELETE_NOT_ALLOWED",
   "730109": "CODE_CANNOT_BE_EMPTY",
-  "730110": "NAME_CANNOT_BE_EMPTY"
+  "730110": "NAME_CANNOT_BE_EMPTY",
+  "240003": "Invalid operation. Only PostAll or QuantityChange are supported.",
+  "240004": "UnscannedItems list cannot be null.",
+  "240005": "UnscannedItems list cannot be empty.",
+  "240006": "ItemId must be greater than 0.",
+  "240007": "ItemNumber is required.",
+  "240008": "ItemName is required.",
+  "240009": "OutletId must be greater than 0.",
+  "240012": "UnscannedItems list cannot contain null items."
 }
