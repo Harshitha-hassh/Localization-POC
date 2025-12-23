@@ -1795,6 +1795,8 @@
     "CreateNewSupplier": "Create New Supplier_zh",
     "Code": "Code_zh",
     "MissingCode": "Missing Code_zh",
+    "InvalidCode": "Code must contain only capital letters and underscores_zh",
+    "InvalidListOrder": "List Order must be greater than 0",
     "Name": "Name_zh",
     "MissingName": "Missing Name_zh",
     "AccountRep": "Account Representative_zh",

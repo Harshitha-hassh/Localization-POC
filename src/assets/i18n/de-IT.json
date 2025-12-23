@@ -2687,6 +2687,8 @@
     "CreateNewSupplier": "Create New Supplier_de-it",
     "Code": "Code_de-it",
     "MissingCode": "Missing Code_de-it",
+    "InvalidCode": "Code must contain only capital letters and underscores_de-it",
+    "InvalidListOrder": "List Order must be greater than 0",
     "Name": "Name_de-it",
     "MissingName": "Missing Name_de-it",
     "AccountRep": "Account Representative_de-it",
