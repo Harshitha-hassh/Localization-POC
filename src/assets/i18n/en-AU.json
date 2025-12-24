@@ -2536,6 +2536,7 @@
     "Actions": "Actions",
     "ADD": "ADD",
     "Search": "Search",
+    "lbl_Search_byCodeReason": "by Code, Reason",
     "QuickSaleCategory": "Quick Sale Category",
     "ListOrder": "List Order",
     "NumberOfReceipts": "Number of receipts",
@@ -2773,6 +2774,7 @@
     "AddRetailVendor": "ADD VENDORS TO RETAIL ITEMS",
     "commission": "COMMISSION",
     "CreateDiscount": "Create Discount Type",
+    "RoundOff": "Round Off",
     "importFail": {
       "ITEM NUMBER": "Item Number",
       "ITEM DESCRIPTION": "Item Description",
