@@ -373,6 +373,7 @@
   "101924": "At least one type (Void or Return) must be selected",
   "101925": "This record cannot be deleted",
   "101926": "The requested record was not found",
+  "101927": "Duplicate Code",
   "103911": "Duplicate Coupon",
   "103912": "Duplicate Name",
   "103913": "Empty Code or Name",

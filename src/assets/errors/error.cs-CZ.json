@@ -278,6 +278,7 @@
   "101924": "At least one type (Void or Return) must be selected_cs",
   "101925": "This record cannot be deleted_cs",
   "101926": "The requested record was not found_cs",
+  "101927": "Duplicate Code_cs",
   "103911": "Duplicate Coupon_cs",
   "103912": "Duplicate Name_cs",
   "103913": "Empty Code or Name_cs",

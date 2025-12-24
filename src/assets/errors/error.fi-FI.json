@@ -278,6 +278,7 @@
   "101924": "At least one type (Void or Return) must be selected_fi",
   "101925": "This record cannot be deleted_fi",
   "101926": "The requested record was not found_fi",
+  "101927": "Duplicate Code_fi",
   "103911": "Duplicate Coupon_fi",
   "103912": "Duplicate Name_fi",
   "103913": "Empty Code or Name_fi",
