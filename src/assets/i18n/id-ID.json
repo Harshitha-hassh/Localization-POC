@@ -2536,7 +2536,7 @@
     "Actions": "Actions_id-id",
     "ADD": "ADD_id-id",
     "Search": "Search_id-id",
-    "lbl_Search_byCodeReason": "by Code, Reason_id-id",
+    "lbl_Search_byCodeReason": "Search by Code, Reason_id-id",
     "QuickSaleCategory": "Quick Sale Category_id-id",
     "ListOrder": "List Order_id-id",
     "NumberOfReceipts": "Number of receipts_id-id",
