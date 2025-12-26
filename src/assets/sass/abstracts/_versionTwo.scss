@@ -1380,7 +1380,41 @@
     width: auto !important;
   }
 }
+&.retail-void-return-reason-wrapper {
+    background-color: $ag-retail-background-grey;
+    padding-top: 10px;
 
+    .header-wrapper {
+      @extend .bodyWrap;
+      margin: 10px !important;
+      margin-top: 0 !important;
+      width: auto !important;
+    }
+
+    &#voidReturnReason {
+      .retailGrid {
+        @extend .bodyWrap;
+        margin: 10px !important;
+        width: auto !important;
+        height: calc(100% - 100px) !important;
+
+        .retail-CustomDataTable {
+
+          .fixed-table-container {
+            @extend .bodyWrap;
+            margin: 0px !important;
+            width: auto !important;
+            height: calc(100% - 0px) !important;
+            background-color: $theme-table-bg-color !important;
+
+            table.quicksale-setup-table {
+              background-color: $ag_white !important;
+            }
+          }
+        }
+      }
+    }
+  }
 &.receiptConfig{
   .mainData {
     .leftSection{
