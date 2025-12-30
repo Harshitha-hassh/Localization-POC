@@ -27,6 +27,7 @@ import { CreateClientComponent } from '../client/client-popup/create-client/crea
 import { TransactionHistoryComponent } from '../client/client-popup/create-client/transaction-history/transaction-history.component';
 import { PersonalInformationComponent } from '../client/client-popup/create-client/personal-information/personal-information.component';
 import { AdditionalInformationComponent } from '../client/client-popup/create-client/additional-information/additional-information.component';
+import { IdentificationDetailsComponent } from '../client/client-popup/create-client/identification-details/identification-details.component';
 import { CardTypeComponent } from './components/card-type/card-type.component';
 import { UserAccessBusiness } from '../common/dataservices/authentication/useraccess.business';
 import { UserAccessDataService } from '../common/dataservices/authentication/useraccess.data.service';
@@ -56,6 +57,7 @@ import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/goog
         TransactionHistoryComponent,
         PersonalInformationComponent,
         AdditionalInformationComponent,
+        IdentificationDetailsComponent,
         CardTypeComponent,
         LocalizeDatePipe,
         RedenderingOptionComponent,

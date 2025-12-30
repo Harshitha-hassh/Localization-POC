@@ -1,0 +1,373 @@
+import { Component, OnInit, Input, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray, Validators } from '@angular/forms';
+import { GuestIdentityTypes } from 'src/app/common/shared/shared/enums/enums';
+import { CreateClientBusiness } from '../../client-popup.business';
+import { PropertyInformation } from 'src/app/core/services/property-information.service';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
+import { HttpClient } from '@angular/common/http';
+import { Observable, ReplaySubject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, startWith, takeUntil } from 'rxjs/operators';
+import { GuestIdentityDetail } from '../client.modal';
+import { AgDateConfig, DropdownOptions } from 'src/app/common/Models/ag-models';
+
+@Component({
+    selector: 'app-identification-details',
+    templateUrl: './identification-details.component.html',
+    styleUrls: ['./identification-details.component.scss'],
+    encapsulation: ViewEncapsulation.None
+})
+export class IdentificationDetailsComponent implements OnInit, OnDestroy {
+    @Input() parentForm: UntypedFormGroup;
+    @Input() isViewOnly: boolean = false;
+    @Input() existingDetails: any[] = [];
+
+    identificationForm: UntypedFormGroup;
+    identityTypeOptions: any[] = [];
+    passportTypeOptions: any[] = [];
+    captions: any;
+    floatLabel: string;
+    maxDate: Date;
+    
+    // Country autocomplete
+    countryDetails: any[] = [];
+    filteredCountriesMap: Map<number, Observable<any[]>> = new Map();
+    destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
+    
+    // Date picker configs map for each row
+    issuedDateConfigMap: Map<number, AgDateConfig> = new Map();
+    
+    // Dropdown options map for each row (with disabled state)
+    typeDropdownOptionsMap: Map<number, DropdownOptions[]> = new Map();
+
+    constructor(
+        private fb: UntypedFormBuilder,
+        private business: CreateClientBusiness,
+        private propertyInfo: PropertyInformation,
+        private localization: RetailLocalization,
+        private http: HttpClient
+    ) {
+        this.captions = this.localization.captions.identificationDetails;
+        this.floatLabel = this.localization.setFloatLabel;
+        this.maxDate = this.propertyInfo.CurrentDate;
+    }
+
+    ngOnInit(): void {
+        this.identityTypeOptions = this.business.getGuestIdentityTypes();
+        this.passportTypeOptions = this.business.getPassportTypes();
+
+        this.identificationForm = this.fb.group({
+            identificationDetails: this.fb.array([this.createItem()])
+        });
+
+        if (this.parentForm) {
+            this.parentForm.addControl('identificationDetailsFormGroup', this.identificationForm);
+        }
+
+        // Initialize dropdown options for first row
+        this.createTypeDropdownOptions(0);
+
+        // Load countries for autocomplete
+        this.loadCountries().then(() => {
+            // Setup filtered countries for initial row
+            this.setupFilteredCountries(0);
+            
+            if (this.existingDetails?.length) {
+                this.setExistingDetails(this.existingDetails);
+            }
+        });
+
+        if (this.isViewOnly) {
+            this.identificationForm.disable();
+        }
+    }
+
+    ngOnDestroy(): void {
+        this.destroyed$.next(true);
+        this.destroyed$.complete();
+    }
+
+    get identificationDetails(): UntypedFormArray {
+        return this.identificationForm.get('identificationDetails') as UntypedFormArray;
+    }
+
+    createItem(): UntypedFormGroup {
+        return this.fb.group({
+            id: 0,
+            identificationTypeId: '',
+            value: ['', Validators.required],
+            issuingCountry: ''
+        });
+    }
+
+    addItem(): void {
+        const newIndex = this.identificationDetails.length;
+        this.identificationDetails.push(this.createItem());
+        this.setupFilteredCountries(newIndex);
+        this.createTypeDropdownOptions(newIndex);
+        // Update all dropdown options to reflect disabled states
+        this.updateAllTypeDropdownOptions();
+    }
+
+    removeItem(index: number): void {
+        if (this.identificationDetails.length > 1) {
+            this.identificationDetails.removeAt(index);
+            this.filteredCountriesMap.delete(index);
+            this.issuedDateConfigMap.delete(index);
+            this.typeDropdownOptionsMap.delete(index);
+            // Rebuild maps for remaining rows
+            this.rebuildFilteredCountriesMap();
+            this.rebuildIssuedDateConfigMap();
+            this.rebuildTypeDropdownOptionsMap();
+        }
+    }
+
+    /**
+     * Load countries from JSON file
+     */
+    async loadCountries(): Promise<void> {
+        try {
+            const data: any = await this.http.get('assets/i18n/Countries/en-US.Countries.json').toPromise();
+            this.countryDetails = data?.Countries || [];
+        } catch (error) {
+            console.error('Failed to load countries:', error);
+            this.countryDetails = [];
+        }
+    }
+
+    /**
+     * Setup filtered countries observable for a specific row index
+     */
+    setupFilteredCountries(index: number): void {
+        const group = this.identificationDetails.at(index) as UntypedFormGroup;
+        if (group) {
+            const filtered$ = group.get('issuingCountry').valueChanges.pipe(
+                startWith(''),
+                debounceTime(100),
+                distinctUntilChanged(),
+                map((value: string) => value ? this.filterCountries(value) : []),
+                takeUntil(this.destroyed$)
+            );
+            this.filteredCountriesMap.set(index, filtered$);
+        }
+    }
+
+    /**
+     * Rebuild filtered countries map after row removal
+     */
+    private rebuildFilteredCountriesMap(): void {
+        this.filteredCountriesMap.clear();
+        for (let i = 0; i < this.identificationDetails.length; i++) {
+            this.setupFilteredCountries(i);
+        }
+    }
+
+    /**
+     * Rebuild issued date config map after row removal
+     */
+    private rebuildIssuedDateConfigMap(): void {
+        const existingConfigs = new Map(this.issuedDateConfigMap);
+        this.issuedDateConfigMap.clear();
+        
+        for (let i = 0; i < this.identificationDetails.length; i++) {
+            const group = this.identificationDetails.at(i) as UntypedFormGroup;
+            if (group.contains('issuedDate')) {
+                this.createIssuedDateConfig(i, group);
+            }
+        }
+    }
+
+    /**
+     * Filter countries based on input value
+     */
+    filterCountries(value: string): any[] {
+        const filterValue = value.toLowerCase();
+        return this.countryDetails.filter(country => 
+            country.CountryName.toLowerCase().includes(filterValue)
+        );
+    }
+
+    /**
+     * Validate country on blur - clear if invalid
+     */
+    clearInvalidCountry(event: any, index: number): void {
+        const value = event.target.value?.trim();
+        if (value) {
+            const isValid = this.countryDetails.some(
+                country => country.CountryName.toLowerCase() === value.toLowerCase()
+            );
+            if (!isValid) {
+                const group = this.identificationDetails.at(index) as UntypedFormGroup;
+                group.get('issuingCountry').setValue('');
+            }
+        }
+    }
+
+    /**
+     * Get filtered countries observable for a row
+     */
+    getFilteredCountries(index: number): Observable<any[]> {
+        return this.filteredCountriesMap.get(index);
+    }
+
+    /**
+     * Check if an identification type should be disabled
+     * A type is disabled if it's already selected in another row (except "Others" which can be selected multiple times)
+     */
+    isTypeDisabled(typeValue: any, currentIndex: number): boolean {
+        // "Others" type can be selected multiple times
+        if (typeValue == GuestIdentityTypes.Others) {
+            return false;
+        }
+
+        // Check if this type is already selected in any other row
+        for (let i = 0; i < this.identificationDetails.length; i++) {
+            if (i !== currentIndex) {
+                const selectedType = this.identificationDetails.at(i).get('identificationTypeId')?.value;
+                if (selectedType == typeValue) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Get dropdown options for a specific row with disabled state applied
+     */
+    getTypeDropdownOptions(index: number): DropdownOptions[] {
+        return this.typeDropdownOptionsMap.get(index) || [];
+    }
+
+    /**
+     * Create dropdown options for a row with disabled state based on other selections
+     */
+    createTypeDropdownOptions(index: number): void {
+        const options: DropdownOptions[] = this.identityTypeOptions.map(type => ({
+            id: type.value,
+            viewValue: type.viewValue,
+            disabled: this.isTypeDisabled(type.value, index)
+        }));
+        this.typeDropdownOptionsMap.set(index, options);
+    }
+
+    /**
+     * Update all dropdown options when a selection changes
+     */
+    updateAllTypeDropdownOptions(): void {
+        for (let i = 0; i < this.identificationDetails.length; i++) {
+            this.createTypeDropdownOptions(i);
+        }
+    }
+
+    /**
+     * Rebuild dropdown options map after row removal
+     */
+    private rebuildTypeDropdownOptionsMap(): void {
+        this.typeDropdownOptionsMap.clear();
+        this.updateAllTypeDropdownOptions();
+    }
+
+    onTypeChange(event: any, group: UntypedFormGroup, index: number): void {
+        const selectedValue = event?.value ?? event;
+
+        // Remove conditional controls first
+        this.removeConditionalControls(group);
+        
+        // Remove date config for this row
+        this.issuedDateConfigMap.delete(index);
+
+        // Clear common field values when type changes
+        group.patchValue({
+            value: '',
+            issuingCountry: ''
+        });
+
+        // Add based on type
+        if (selectedValue == GuestIdentityTypes.PassportNumber) {
+            group.addControl('passportType', this.fb.control(1, Validators.required));
+            group.addControl('issuedDate', this.fb.control(null, Validators.required));
+            // Create date picker config for this row
+            this.createIssuedDateConfig(index, group);
+        } else if (selectedValue == GuestIdentityTypes.Others) {
+            group.addControl('identificationTypeOtherName', this.fb.control('', Validators.required));
+        }
+        
+        // Update all dropdown options to reflect new disabled states
+        this.updateAllTypeDropdownOptions();
+    }
+
+    /**
+     * Create date picker config for issued date
+     */
+    createIssuedDateConfig(index: number, group: UntypedFormGroup): void {
+        const config: AgDateConfig = {
+            form: group,
+            formControlName: 'issuedDate',
+            placeHolder: this.captions.IssuedDate,
+            automationId: `Txt_IdentificationDetails_issuedDate_${index}`,
+            maxDate: this.maxDate,
+            isDateRequired: true,
+            errorMessage: this.captions.MissingIssuedDate,
+            className: 'width-150px'
+        };
+        this.issuedDateConfigMap.set(index, config);
+    }
+
+    /**
+     * Get date picker config for a row
+     */
+    getIssuedDateConfig(index: number): AgDateConfig {
+        return this.issuedDateConfigMap.get(index);
+    }
+
+    private removeConditionalControls(group: UntypedFormGroup): void {
+        ['passportType', 'issuedDate', 'identificationTypeOtherName'].forEach(ctrl => {
+            if (group.contains(ctrl)) {
+                group.removeControl(ctrl);
+            }
+        });
+    }
+
+    private setExistingDetails(details: GuestIdentityDetail[]): void {
+        // Clear existing
+        while (this.identificationDetails.length) {
+            this.identificationDetails.removeAt(0);
+        }
+        this.filteredCountriesMap.clear();
+        this.issuedDateConfigMap.clear();
+        this.typeDropdownOptionsMap.clear();
+
+        details.forEach((detail, index) => {
+            const group = this.createItem();
+            // Handle both API field names (type) and legacy names (identificationTypeId)
+            const typeId = detail.type ?? detail.type;
+            const isPassport = typeId === GuestIdentityTypes.PassportNumber;
+            const isOthers = typeId === GuestIdentityTypes.Others;
+
+            if (isPassport) {
+                group.addControl('passportType', this.fb.control(detail.passportType || 1));
+                group.addControl('issuedDate', this.fb.control(detail.issuedDate ? new Date(detail.issuedDate) : null));
+                // Create date picker config for this row
+                this.createIssuedDateConfig(index, group);
+            }
+            if (isOthers) {
+                // Handle both API field name (identityTypeOtherName) and UI field name (identificationTypeOtherName)
+                const otherName = detail.identificationTypeOtherName || detail.type || '';
+                group.addControl('identificationTypeOtherName', this.fb.control(otherName));
+            }
+
+            group.patchValue({
+                id: detail.id || 0,
+                identificationTypeId: typeId,
+                value: detail.value || '',
+                issuingCountry: detail.issuingCountry || ''
+            });
+
+            this.identificationDetails.push(group);
+            this.setupFilteredCountries(index);
+        });
+        
+        // Initialize dropdown options for all rows after loading existing details
+        this.updateAllTypeDropdownOptions();
+    }
+}

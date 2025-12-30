@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { LoyaltyDetail, Client, ClientInfo, Address, Email, PhoneNumber, ClientComment } from './create-client/client.modal';
+import { LoyaltyDetail, Client, ClientInfo, Address, Email, PhoneNumber, ClientComment, GuestIdentityDetail } from './create-client/client.modal';
 import { ClientDataService } from 'src/app/shared/data-services/client.data.service';
 import { DefaultGUID } from 'src/app/retail/shared/globalsContant';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { GuestDataPolicyDataService } from 'src/app/common/dataservices/guest-datapolicy.data.service';
 import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
+import { GuestIdentityTypes, PassportType } from 'src/app/common/shared/shared/enums/enums';
+import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 
 @Injectable()
 export class CreateClientBusiness {
@@ -18,6 +20,7 @@ export class CreateClientBusiness {
     private Utilities: RetailUtilities, public localization: RetailStandaloneLocalization,
     private _clientDataService: ClientDataService,
     private _guestPolicyService: GuestDataPolicyDataService,
+    private retailLocalization: RetailLocalization
   ) { }
 
   async SubmitForm(details, handlerError: boolean) {
@@ -77,7 +80,9 @@ export class CreateClientBusiness {
       platformGuestUuid: isClientUpdate ? details.personalDetailsFormGroup.platformGuestUuid : '',
       platformRevUuid: isClientUpdate ? details.personalDetailsFormGroup.platformRevUuid : '',
       anniversaryDate: this.additionalDetailsFormGroup.anniversaryDate ? this.Utilities.GetFormattedDate(this.additionalDetailsFormGroup.anniversaryDate) : '',
-      preferredLanguage: this.additionalDetailsFormGroup.preferredLanguage ? this.additionalDetailsFormGroup.preferredLanguage : 0
+      preferredLanguage: this.additionalDetailsFormGroup.preferredLanguage ? this.additionalDetailsFormGroup.preferredLanguage : 0,
+      placeOfBirth: this.additionalDetailsFormGroup.placeOfBirth || '',
+      guestIdentityDetails: this.mapIdentificationDetails(details.identificationDetailsFormGroup)
     };
 
     let clientInfoObj: ClientInfo = {
@@ -200,5 +205,55 @@ export class CreateClientBusiness {
   async updatePolicyDetailsForGuestId(applyPolicy: ApplyPolicy): Promise<boolean> {
     const result = await this._clientDataService.updatePolicyDetailsForGuestId(applyPolicy);
     return result;
+  }
+
+  getGuestIdentityTypes(): any[] {
+    const captions = this.retailLocalization.captions.identificationDetails;
+    return [
+      { id: GuestIdentityTypes.SocialSecurityNumber, value: GuestIdentityTypes.SocialSecurityNumber, viewValue: captions.SocialSecurityNumber },
+      { id: GuestIdentityTypes.PassportNumber, value: GuestIdentityTypes.PassportNumber, viewValue: captions.Passport },
+      { id: GuestIdentityTypes.DriversLicense, value: GuestIdentityTypes.DriversLicense, viewValue: captions.DriversLicense },
+      { id: GuestIdentityTypes.NationalID, value: GuestIdentityTypes.NationalID, viewValue: captions.NationalID },
+      { id: GuestIdentityTypes.Others, value: GuestIdentityTypes.Others, viewValue: captions.Others }
+    ];
+  }
+
+  getPassportTypes(): any[] {
+    const captions = this.retailLocalization.captions.identificationDetails;
+    return [
+      { id: PassportType.Ordinary, value: PassportType.Ordinary, viewValue: captions.Ordinary },
+      { id: PassportType.Diplomatic, value: PassportType.Diplomatic, viewValue: captions.Diplomatic }
+    ];
+  }
+
+  mapIdentificationDetails(formValues: any): GuestIdentityDetail[] {
+    const identificationDetails: GuestIdentityDetail[] = [];
+
+    if (!formValues?.identificationDetails?.length) {
+      return identificationDetails;
+    }
+
+    formValues.identificationDetails.forEach(element => {
+      const typeControl = element.identificationTypeId;
+      const typeId = typeof typeControl === 'object'
+        ? (typeControl?.id ?? typeControl?.value ?? 0)
+        : Number(typeControl ?? 0);
+
+      if (typeId > 0 || element.value?.trim()) {
+        identificationDetails.push({
+          id: element.id || 0,
+          type: typeId,
+          value: element.value?.trim() || '',
+          issuingCountry: element.issuingCountry?.trim() || '',
+          identificationTypeOtherName: element.identificationTypeOtherName?.trim() || '',
+          passportType: element.passportType || 0,
+          issuedDate: element.issuedDate
+            ? this.Utilities.GetFormattedDate(element.issuedDate)
+            : null
+        });
+      }
+    });
+
+    return identificationDetails;
   }
 }

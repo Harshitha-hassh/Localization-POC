@@ -130,7 +130,8 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       commentId : 0,
       anniversaryDate : '',
       preferredLanguage: 0,
-      philippinesGuestTypeCategories: []
+      philippinesGuestTypeCategories: [],
+      placeOfBirth: ''
     });
   }
 
@@ -206,6 +207,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       this.philippinesGuestTypeCategories = [];
       this.FormGrp.get('philippinesGuestTypeCategories')?.setValue([]);
     }
+    this.FormGrp.controls.placeOfBirth.setValue(clientInfo.client.placeOfBirth || '');
   }
 
   async getAllVipTypes() {

@@ -1,0 +1,77 @@
+.identification-details-wrapper {
+    padding: 10px 0;
+    border-top: 1px dashed #cfcfcf;
+    margin-top: 10px;
+
+    .form-label-primary {
+        font-weight: 600;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .width-150px {
+        width: 150px;
+        display: inline-block;
+    }
+
+    // Style for ag-input to match width - need to target inner mat-form-field
+    ag-input.width-150px {
+        width: 150px;
+        display: inline-block;
+        margin-right: 1rem;
+        
+        .mat-form-field {
+            width: 100%;
+        }
+    }
+
+    // Style for ag-dropdown to match width
+    ag-dropdown.width-150px {
+        width: 150px;
+        display: inline-block;
+        margin-right: 1rem;
+    }
+
+    // Style for identification number field with extra left margin
+    ag-input.identification-number-field {
+        width: 160px;
+        display: inline-block;
+        margin-right: 1rem;
+        margin-left: 2.5rem;
+        
+        .mat-form-field {
+            width: 100%;
+        }
+    }
+
+    // Style for app-ag-date-picker
+    app-ag-date-picker {
+        display: inline-block;
+        margin-right: 1rem;
+        
+        .mat-form-field {
+            width: 150px;
+        }
+    }
+
+    // Style for mat-form-field (country autocomplete)
+    mat-form-field.width-150px {
+        margin-right: 1rem;
+    }
+
+    .icon-Plus,
+    .icon-Minus {
+        font-size: 18px;
+        margin-left: 5px;
+        
+        &.ag_section--disable {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    }
+
+    .action-buttons-wrapper {
+        min-width: 50px;
+        margin-left: 5px;
+    }
+}

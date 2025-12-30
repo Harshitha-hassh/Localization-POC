@@ -34,6 +34,13 @@
                     (NewPaymentReferenceID)="SaveReferenceId($event)"
                     (removeDetails)="removeCardReference()">
                 </app-retail-capture-card>
+                <div class="mt-4">
+                    <app-identification-details 
+                        [parentForm]="parentForm" 
+                        [isViewOnly]="isClientViewOnly"
+                        [existingDetails]="additionalInfo?.client?.guestIdentityDetails">
+                    </app-identification-details>
+                </div>
                 <div class="" *ngIf="false">
                     <div class=" width_220"
                         [ngClass]="this.isClientViewOnly ? 'button_invalid' : ''">
@@ -148,6 +155,15 @@
                         <mat-select formControlName="preferredLanguage" placeholder="{{captions.PreferredLanguage}}" [attr.automationId]="'Dd_AdditionalInfo_language'">
                         <mat-option *ngFor="let language of languages" [value]="language.id">{{language.name}}</mat-option>
                         </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="pt-3">
+                    <mat-form-field [floatLabel]="floatLabel" class="width_100">
+                        <input [attr.automationId]="'Txt_AdditionalInformation_placeOfBirth'" 
+                               matInput 
+                               formControlName="placeOfBirth"
+                               [placeholder]="captions.PlaceOfBirth"
+                               [maxlength]="500">
                     </mat-form-field>
                 </div>
                 <div class="gdpr-wrapper pt-3"   *ngIf="IsGDPREnabled">

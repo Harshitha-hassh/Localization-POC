@@ -1,0 +1,97 @@
+<section class="identification-details-wrapper">
+    <form [formGroup]="identificationForm" autocomplete="off">
+        <label class="form-label-primary">{{captions.IdentificationDetails}}</label>
+        
+        <div formArrayName="identificationDetails">
+            <div *ngFor="let detail of identificationDetails.controls; let i = index; let first = first; let last = last"
+                 [formGroupName]="i" 
+                 class="d-flex align-items-center flex-wrap mb-2">
+                
+                <!-- Identification Type - using ag-dropdown -->
+                <ag-dropdown class="mr-3 width-150px"
+                             [automationId]="'Dd_IdentificationDetails_type_' + i"
+                             formControlName="identificationTypeId"
+                             [placeholder]="captions.IdentificationType"
+                             [source]="getTypeDropdownOptions(i)"
+                             [showEmptyOption]="true"
+                             (selectionChange)="onTypeChange($event, detail, i)">
+                </ag-dropdown>
+
+                <!-- Other Type Name (conditional) - using ag-input -->
+                <ag-input *ngIf="detail.get('identificationTypeOtherName')"
+                          class="mr-3 width-150px"
+                          [automationId]="'Txt_IdentificationDetails_otherName_' + i"
+                          formControlName="identificationTypeOtherName"
+                          [placeholder]="captions.OtherTypeName"
+                          [maxlength]="200"
+                          [required]="true">
+                </ag-input>
+
+                <!-- Identification Number - using ag-input -->
+                <ag-input class="mr-3 identification-number-field"
+                          [automationId]="'Txt_IdentificationDetails_number_' + i"
+                          formControlName="value"
+                          [placeholder]="captions.IdentificationNumber"
+                          [maxlength]="50"
+                          [required]="true">
+                </ag-input>
+
+                <!-- Issuing Country - must use mat-form-field for autocomplete -->
+                <mat-form-field [floatLabel]="floatLabel" class="mr-3 width-150px">
+                    <input [attr.automationId]="'Txt_IdentificationDetails_country_' + i"
+                           matInput
+                           formControlName="issuingCountry"
+                           [placeholder]="captions.IssuingCountry"
+                           [matAutocomplete]="countryAuto"
+                           (blur)="clearInvalidCountry($event, i)"
+                           autocomplete="off"
+                           maxlength="200">
+                    <mat-autocomplete #countryAuto="matAutocomplete">
+                        <mat-option *ngFor="let country of getFilteredCountries(i) | async" 
+                                    [value]="country.CountryName"
+                                    [matTooltip]="country.CountryName">
+                            {{country.CountryName}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+                <!-- Issued Date (conditional - Passport only) - using app-ag-date-picker -->
+                <app-ag-date-picker *ngIf="detail.get('issuedDate') && getIssuedDateConfig(i)"
+                                    class="mr-3"
+                                    [inputs]="getIssuedDateConfig(i)">
+                </app-ag-date-picker>
+
+                <!-- Passport Type (conditional - Passport only) -->
+                <div *ngIf="detail.get('passportType')" class="mr-3">
+                    <mat-radio-group [attr.automationId]="'Rdo_IdentificationDetails_passportType_' + i"
+                                     formControlName="passportType">
+                        <mat-radio-button *ngFor="let pt of passportTypeOptions" 
+                                          [value]="pt.value" 
+                                          class="mr-2">
+                            {{pt.viewValue}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <!-- Action Buttons (Plus/Minus) - Fixed position after passport type area -->
+                <div class="action-buttons-wrapper d-flex align-items-center">
+                    <!-- Remove Button -->
+                    <span [attr.automationId]="'Icn_IdentificationDetails_remove_' + i"
+                          class="icon-Minus cursor"
+                          [ngClass]="{'ag_section--disable': isViewOnly}"
+                          (click)="removeItem(i)"
+                          *ngIf="!first || (first && !last)">
+                    </span>
+
+                    <!-- Add Button -->
+                    <span [attr.automationId]="'Icn_IdentificationDetails_add_' + i"
+                          class="icon-Plus cursor"
+                          [ngClass]="{'ag_section--disable': isViewOnly}"
+                          (click)="addItem()"
+                          *ngIf="last">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

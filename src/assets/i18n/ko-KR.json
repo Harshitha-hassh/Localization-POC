@@ -1041,7 +1041,27 @@
     "err_minimumAnniversaryDate": "Invalid Minimum Anniversary Date_kr",
     "err_maximumAnniversaryDate": "Invalid Maximum Anniversary Date_kr",
     "PreferredLanguage": "Preferred Language_kr",
+    "PlaceOfBirth": "Place of Birth_kr",
     "County": "County_kr"
+  },
+  "identificationDetails": {
+    "IdentificationDetails": "Identification Details_kr",
+    "IdentificationType": "Identification Type_kr",
+    "IdentificationNumber": "Identification Number_kr",
+    "OtherTypeName": "Other Type Name_kr",
+    "IssuingCountry": "Issuing Country_kr",
+    "IssuedDate": "Issued Date_kr",
+    "MissingIdentificationNumber": "Missing Identification Number_kr",
+    "MissingIssuedDate": "Missing Issued Date_kr",
+    "MissingOtherTypeName": "Missing Other Type Name_kr",
+    "MaximumIssuedDate": "Maximum Issued Date_kr",
+    "SocialSecurityNumber": "Social Security Number_kr",
+    "Passport": "Passport_kr",
+    "DriversLicense": "Driver's License_kr",
+    "NationalID": "National ID_kr",
+    "Others": "Others_kr",
+    "Ordinary": "Ordinary_kr",
+    "Diplomatic": "Diplomatic_kr"
   },
   "shop": {
     "lbl_fetchCoupon": "Fetching coupon details..._kr",

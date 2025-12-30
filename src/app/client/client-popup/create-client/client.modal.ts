@@ -1,6 +1,16 @@
 
 import { GuestTypeCategory } from '../../../common/shared/shared/business/shared.modals';
 
+export interface GuestIdentityDetail {
+  id: number;
+  type: number;
+  value: string;
+  issuingCountry: string;
+  identificationTypeOtherName?: string;
+  passportType?: number;
+  issuedDate?: string;
+}
+
 export interface ClientInfo {
   id: number;
   client: Client;
@@ -99,6 +109,8 @@ export interface ClientInfo {
     preferredLanguage?: number;
     guestTypeCategories?: GuestTypeCategory[];
     clientCreditCardInfo?: ClientCreditCardInfo[];
+    placeOfBirth?: string;
+    guestIdentityDetails?: GuestIdentityDetail[];
   }
 
   export interface ClientComment {
