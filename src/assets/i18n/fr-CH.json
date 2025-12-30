@@ -445,7 +445,24 @@
     "EnableSecondaryInterface": "Enable Secondary Interface_fr-ch",
     "AddEditSecondaryInterface": "Add/Edit Secondary Interface_fr-ch",
     "SecondaryInterfaceConfigurations": "Secondary Interface Configurations_fr-ch",
-    "MissingSecondaryInterface": "Missing Secondary Interface configurations_fr-ch"
+    "MissingSecondaryInterface": "Missing Secondary Interface configurations_fr-ch",
+    "receiptTemplates": {
+      "receiptTempCode": "Receipt Template Code_fr-ch",
+      "receiptTempName": "Receipt Template Name_fr-ch",
+      "receiptMsg": "Receipt Message_fr-ch",
+      "receiptSrchTxt": "Search Receipt Templates_fr-ch",
+      "lbl_ReceiptTemplateError": "Cannot delete this receipt template_fr-ch",
+      "editReceiptTemplate": "Edit Receipt Template_fr-ch",
+      "newReceiptTemplate": "New Receipt Template_fr-ch",
+      "outlet": "Outlet_fr-ch",
+      "listOrder": "List Order_fr-ch",
+      "active": "Active_fr-ch",
+      "update": "UPDATE_fr-ch",
+      "save": "SAVE_fr-ch",
+      "cancel": "CANCEL_fr-ch",
+      "warn_datalost": "Are you sure you want to cancel the changes?_fr-ch",
+      "lbl_delete": "Delete_fr-ch"
+    }
   },
   "calendar": {
     "Sunday": "Sunday_fr-ch",

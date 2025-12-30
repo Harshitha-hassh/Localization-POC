@@ -713,7 +713,7 @@ export class LoginComponent implements OnInit, OnDestroy {
  async SetAllowTokenSharing() {
     let allowTokenSharing = false;
     const configuration = await this.configuration.GetTenantConfiguration();
-    sessionStorage.setItem('tenantConfiguration', configuration?.configValue? JSON.stringify(configuration?.configValue):'');
+    
     if (configuration?.configValue) {
       allowTokenSharing = configuration.configValue?.AllowTokenSharing ? configuration.configValue.AllowTokenSharing.toLowerCase() == 'true' : false;
     }
