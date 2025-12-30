@@ -23,6 +23,11 @@ const routes: Routes = [{
     {
       path: 'digitalinvoice', loadChildren: () => import('../../common/digital-invoice/digital-invoice.module').then(m => m.DigitalInvoiceModule),
       canActivate: [RouteGuardService]
+    },
+    {
+      path: 'agilysysFiscal',
+      loadChildren: () => import('../../common/agilysys-fiscal/agilysys-fiscal.module').then(m => m.AgilysysFiscalModule),
+      canActivate: [RouteGuardService]
     }
   ]
 }];

@@ -51,7 +51,12 @@ const routes: Routes = [{
     {
       path: 'enhancedInventory',
       loadChildren: () => import('./eatec/eatec.module').then(m => m.EatecModule),
-      data: { redirectTo: '', hasChild: false }
+      data: { redirectTo: 'agilysysFiscal', hasChild: false }
+    },
+    {
+      path: 'agilysysFiscal',
+      loadChildren: () => import('src/app/common/agilysys-fiscal/agilysys-fiscal.module').then(m => m.AgilysysFiscalModule),
+      data: { redirectTo: '', hasChild: true }
     }
   ]
 }];
