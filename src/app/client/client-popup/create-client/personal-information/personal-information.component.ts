@@ -56,7 +56,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   validateEmailType: string;
   validatePhoneType: string;
   clientInfo: any;
-  titledropdownInput: { form: UntypedFormGroup; formControlName: string; isdisabled: boolean; placeholderName: string; className: string; };
+  titledropdownInput: { form: UntypedFormGroup; formControlName: string; isdisabled: boolean; placeholderName: string; className: string; showRequired: boolean; errorMessage:string};
   titles = [{ id: 1, value: 'Dr.', viewValue: 'Dr.' }, { id: 2, value: 'Fr.', viewValue: 'Fr.' }, { id: 3, value: 'Miss.', viewValue: 'Miss.' },
   { id: 4, value: 'Mr.', viewValue: 'Mr.' }, { id: 5, value: 'Mrs.', viewValue: 'Mrs.' }, { id: 6, value: 'Ms.', viewValue: 'Ms.' },
   { id: 7, value: 'Prof.', viewValue: 'Prof.' }, { id: 8, value: 'Rev.', viewValue: 'Rev.' }, { id: 9, value: 'Mx.', viewValue: 'Mx.' }];
@@ -199,13 +199,6 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       isImageRemoved: false
     });
     this.isCMSConfigured = this.featureSwitch.IsCMSConfigured;
-    this.titledropdownInput = {
-      form: this.FormGrp,
-      formControlName: 'title',
-      isdisabled: false,
-      placeholderName: this.captions.CTitle,
-      className: 'ag_w--15 ag_ml--1'
-    }
     this.ChangePrimaryToggle('Phone', 'PhonePrimary');
     this.ChangePrimaryToggle('Email', 'EmailPrimary');
   }
@@ -620,6 +613,15 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       // if(clientConfiguration[0]['CLIENT_ADDRESS_LINE_1'])
       // AddressGroup.markAllAsTouched();
     });
+    this.titledropdownInput = {
+      form: this.FormGrp,
+      formControlName: 'title',
+      isdisabled: false,
+      placeholderName: this.captions.CTitle,
+      className: 'ag_w--15 ag_ml--1',
+      showRequired: this.customRequired.title,
+      errorMessage: this.captions.MissingTitle
+    }
 
     this.FormGrp.updateValueAndValidity();
   }
