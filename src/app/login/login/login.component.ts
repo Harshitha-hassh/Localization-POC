@@ -1022,7 +1022,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.loginForms.get('customerId').markAsTouched();
         //Get Config for disable forget password
         await this.GetTenantConfigurationForForgetPassword();
-        if (this.ADB2CAuthenticationEnabled && eventKey === 'Enter') {
+        if (this.ADB2CAuthenticationEnabled && (eventKey === 'Enter' || this.loginSuccess)) {
           this.removeGeneralLoginVal();
           await this.adb2cAuthValidation();
         }

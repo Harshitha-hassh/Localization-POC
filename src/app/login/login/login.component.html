@@ -226,9 +226,8 @@
                             (click)="!loginForms.controls.customerId.value  && showCustomerID ? '' : getbuttonEmitvalue($event)">{{loginSuccess?captions.enter:captions.Login}}
                             <div *ngIf="showLoginloader" class="loginloadingSpinner"></div>
                         </button>
-                        <button color="primary" mat-flat-button
-                            class="login__btn ag_mt--2"
-                            *ngIf="showCustomerID"
+                        <button mat-flat-button class="login__btn ag_mt--2"
+                            *ngIf="showCustomerID && !loginSuccess"
                             [ngClass]="{'ag_section--disable': !this.loginForms.controls.customerId.value && showCustomerID || showSSOLoginloader}"
                             (click)="loginwithSSO($event)">{{this.captions.btn_loginwithsso}}
                             <div *ngIf="showSSOLoginloader" class="ssoloadingSpinner"></div>
