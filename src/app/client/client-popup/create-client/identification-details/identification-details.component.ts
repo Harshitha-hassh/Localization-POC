@@ -35,6 +35,7 @@ export class IdentificationDetailsComponent implements OnInit, OnDestroy {
     
     // Date picker configs map for each row
     issuedDateConfigMap: Map<number, AgDateConfig> = new Map();
+    expiryDateConfigMap: Map<number, AgDateConfig> = new Map();
     
     // Dropdown options map for each row (with disabled state)
     typeDropdownOptionsMap: Map<number, DropdownOptions[]> = new Map();
@@ -113,10 +114,12 @@ export class IdentificationDetailsComponent implements OnInit, OnDestroy {
             this.identificationDetails.removeAt(index);
             this.filteredCountriesMap.delete(index);
             this.issuedDateConfigMap.delete(index);
+            this.expiryDateConfigMap.delete(index);
             this.typeDropdownOptionsMap.delete(index);
             // Rebuild maps for remaining rows
             this.rebuildFilteredCountriesMap();
             this.rebuildIssuedDateConfigMap();
+            this.rebuildExpiryDateConfigMap();
             this.rebuildTypeDropdownOptionsMap();
         }
     }
@@ -172,6 +175,20 @@ export class IdentificationDetailsComponent implements OnInit, OnDestroy {
             const group = this.identificationDetails.at(i) as UntypedFormGroup;
             if (group.contains('issuedDate')) {
                 this.createIssuedDateConfig(i, group);
+            }
+        }
+    }
+
+    /**
+     * Rebuild expiry date config map after row removal
+     */
+    private rebuildExpiryDateConfigMap(): void {
+        this.expiryDateConfigMap.clear();
+        
+        for (let i = 0; i < this.identificationDetails.length; i++) {
+            const group = this.identificationDetails.at(i) as UntypedFormGroup;
+            if (group.contains('expiryDate')) {
+                this.createExpiryDateConfig(i, group);
             }
         }
     }
@@ -273,23 +290,45 @@ export class IdentificationDetailsComponent implements OnInit, OnDestroy {
         // Remove conditional controls first
         this.removeConditionalControls(group);
         
-        // Remove date config for this row
+        // Remove date configs for this row
         this.issuedDateConfigMap.delete(index);
+        this.expiryDateConfigMap.delete(index);
 
         // Clear common field values when type changes
-        group.patchValue({
-            value: '',
-            issuingCountry: ''
-        });
+        group.patchValue({ value: '', issuingCountry: '' });
 
-        // Add based on type
-        if (selectedValue == GuestIdentityTypes.PassportNumber) {
+        const currentDate = this.propertyInfo.CurrentDate;
+
+        // Social Security Number (1) & Driver's License (3) - No conditional fields needed
+        if (selectedValue == GuestIdentityTypes.SocialSecurityNumber || 
+            selectedValue == GuestIdentityTypes.DriversLicense) {
+            // No additional controls needed - only value and issuingCountry fields are shown
+        }
+        // Passport Number (2) - issuingLocation, issuedDate (req), expiryDate (req), passportType
+        else if (selectedValue == GuestIdentityTypes.PassportNumber) {
+            group.addControl('issuingLocation', this.fb.control(''));
+            group.addControl('issuedDate', this.fb.control(currentDate, Validators.required));
+            group.addControl('expiryDate', this.fb.control(currentDate, Validators.required));
             group.addControl('passportType', this.fb.control(1, Validators.required));
-            group.addControl('issuedDate', this.fb.control(null, Validators.required));
-            // Create date picker config for this row
             this.createIssuedDateConfig(index, group);
-        } else if (selectedValue == GuestIdentityTypes.Others) {
+            this.createExpiryDateConfig(index, group);
+        }
+        // National ID (4) - issuingLocation, issuedDate (req), expiryDate (req)
+        else if (selectedValue == GuestIdentityTypes.NationalID) {
+            group.addControl('issuingLocation', this.fb.control(''));
+            group.addControl('issuedDate', this.fb.control(currentDate, Validators.required));
+            group.addControl('expiryDate', this.fb.control(currentDate, Validators.required));
+            this.createIssuedDateConfig(index, group);
+            this.createExpiryDateConfig(index, group);
+        }
+        // Others (5) - identificationTypeOtherName (req), issuingLocation, issuedDate (req), expiryDate (req)
+        else if (selectedValue == GuestIdentityTypes.Others) {
             group.addControl('identificationTypeOtherName', this.fb.control('', Validators.required));
+            group.addControl('issuingLocation', this.fb.control(''));
+            group.addControl('issuedDate', this.fb.control(currentDate, Validators.required));
+            group.addControl('expiryDate', this.fb.control(currentDate, Validators.required));
+            this.createIssuedDateConfig(index, group);
+            this.createExpiryDateConfig(index, group);
         }
         
         // Update all dropdown options to reflect new disabled states
@@ -320,8 +359,32 @@ export class IdentificationDetailsComponent implements OnInit, OnDestroy {
         return this.issuedDateConfigMap.get(index);
     }
 
+    /**
+     * Create date picker config for expiry date
+     */
+    createExpiryDateConfig(index: number, group: UntypedFormGroup): void {
+        const config: AgDateConfig = {
+            form: group,
+            formControlName: 'expiryDate',
+            placeHolder: this.captions.ExpiryDate,
+            automationId: `Txt_IdentificationDetails_expiryDate_${index}`,
+            minDate: this.propertyInfo.CurrentDate,
+            isDateRequired: true,
+            errorMessage: this.captions.MissingExpiryDate,
+            className: 'width-150px'
+        };
+        this.expiryDateConfigMap.set(index, config);
+    }
+
+    /**
+     * Get expiry date picker config for a row
+     */
+    getExpiryDateConfig(index: number): AgDateConfig {
+        return this.expiryDateConfigMap.get(index);
+    }
+
     private removeConditionalControls(group: UntypedFormGroup): void {
-        ['passportType', 'issuedDate', 'identificationTypeOtherName'].forEach(ctrl => {
+        ['passportType', 'issuedDate', 'expiryDate', 'identificationTypeOtherName', 'issuingLocation'].forEach(ctrl => {
             if (group.contains(ctrl)) {
                 group.removeControl(ctrl);
             }
@@ -335,27 +398,47 @@ export class IdentificationDetailsComponent implements OnInit, OnDestroy {
         }
         this.filteredCountriesMap.clear();
         this.issuedDateConfigMap.clear();
+        this.expiryDateConfigMap.clear();
         this.typeDropdownOptionsMap.clear();
+
+        const currentDate = this.propertyInfo.CurrentDate;
 
         details.forEach((detail, index) => {
             const group = this.createItem();
             // Handle both API field names (type) and legacy names (identificationTypeId)
             const typeId = detail.type ?? detail.type;
             const isPassport = typeId === GuestIdentityTypes.PassportNumber;
+            const isNationalID = typeId === GuestIdentityTypes.NationalID;
             const isOthers = typeId === GuestIdentityTypes.Others;
+
+            // Types that require issuingLocation, issuedDate, and expiryDate
+            const requiresDatesAndLocation = isPassport || isNationalID || isOthers;
+
+            if (requiresDatesAndLocation) {
+                group.addControl('issuingLocation', this.fb.control(''));
+                group.addControl('issuedDate', this.fb.control(
+                    detail.issuedDate ? new Date(detail.issuedDate) : currentDate,
+                    Validators.required
+                ));
+                group.addControl('expiryDate', this.fb.control(
+                    detail.expiryDate ? new Date(detail.expiryDate) : currentDate,
+                    Validators.required
+                ));
+                this.createIssuedDateConfig(index, group);
+                this.createExpiryDateConfig(index, group);
+            }
 
             if (isPassport) {
                 group.addControl('passportType', this.fb.control(detail.passportType || 1));
-                group.addControl('issuedDate', this.fb.control(detail.issuedDate ? new Date(detail.issuedDate) : null));
-                // Create date picker config for this row
-                this.createIssuedDateConfig(index, group);
-            }
-            if (isOthers) {
-                // Handle both API field name (identityTypeOtherName) and UI field name (identificationTypeOtherName)
-                const otherName = detail.identificationTypeOtherName || detail.type || '';
-                group.addControl('identificationTypeOtherName', this.fb.control(otherName));
             }
 
+            if (isOthers) {
+                // Handle both API field name (identityTypeOtherName) and UI field name (identificationTypeOtherName)
+                const otherName = detail.identificationTypeOtherName || '';
+                group.addControl('identificationTypeOtherName', this.fb.control(otherName, Validators.required));
+            }
+
+            // Patch base form values
             group.patchValue({
                 id: detail.id || 0,
                 identificationTypeId: typeId,
@@ -363,8 +446,14 @@ export class IdentificationDetailsComponent implements OnInit, OnDestroy {
                 issuingCountry: detail.issuingCountry || ''
             });
 
+            // Patch conditional control values if they exist
+            if (requiresDatesAndLocation && detail.issuingLocation) {
+                group.get('issuingLocation')?.setValue(detail.issuingLocation);
+            }
+
             this.identificationDetails.push(group);
             this.setupFilteredCountries(index);
+            this.createTypeDropdownOptions(index);
         });
         
         // Initialize dropdown options for all rows after loading existing details

@@ -36,7 +36,7 @@
                           [required]="true">
                 </ag-input>
 
-                <!-- Issuing Country - must use mat-form-field for autocomplete -->
+                <!-- Issuing Country - shown for ALL identity types -->
                 <mat-form-field [floatLabel]="floatLabel" class="mr-3 width-150px">
                     <input [attr.automationId]="'Txt_IdentificationDetails_country_' + i"
                            matInput
@@ -55,10 +55,25 @@
                     </mat-autocomplete>
                 </mat-form-field>
 
-                <!-- Issued Date (conditional - Passport only) - using app-ag-date-picker -->
+                <!-- Issuing Location - only for Passport, National ID, Others -->
+                <ag-input *ngIf="detail.get('issuingLocation')"
+                          class="mr-3 width-150px"
+                          [automationId]="'Txt_IdentificationDetails_location_' + i"
+                          formControlName="issuingLocation"
+                          [placeholder]="captions.IssuingLocation"
+                          [maxlength]="200">
+                </ag-input>
+
+                <!-- Issued Date (conditional - Passport, National ID, Others) - using app-ag-date-picker -->
                 <app-ag-date-picker *ngIf="detail.get('issuedDate') && getIssuedDateConfig(i)"
                                     class="mr-3"
                                     [inputs]="getIssuedDateConfig(i)">
+                </app-ag-date-picker>
+
+                <!-- Expiry Date (conditional - Passport, National ID, Others) - using app-ag-date-picker -->
+                <app-ag-date-picker *ngIf="detail.get('expiryDate') && getExpiryDateConfig(i)"
+                                    class="mr-3"
+                                    [inputs]="getExpiryDateConfig(i)">
                 </app-ag-date-picker>
 
                 <!-- Passport Type (conditional - Passport only) -->

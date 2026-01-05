@@ -245,10 +245,14 @@ export class CreateClientBusiness {
           type: typeId,
           value: element.value?.trim() || '',
           issuingCountry: element.issuingCountry?.trim() || '',
+          issuingLocation: element.issuingLocation?.trim() || '',
           identificationTypeOtherName: element.identificationTypeOtherName?.trim() || '',
           passportType: element.passportType || 0,
           issuedDate: element.issuedDate
             ? this.Utilities.GetFormattedDate(element.issuedDate)
+            : null,
+          expiryDate: element.expiryDate
+            ? this.Utilities.GetFormattedDate(element.expiryDate)
             : null
         });
       }
