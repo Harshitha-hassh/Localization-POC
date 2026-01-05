@@ -5,10 +5,12 @@ export interface GuestIdentityDetail {
   id: number;
   type: number;
   value: string;
-  issuingCountry: string;
+  issuingCountry?: string;
+  issuingLocation?: string;
   identificationTypeOtherName?: string;
   passportType?: number;
   issuedDate?: string;
+  expiryDate?: string;
 }
 
 export interface ClientInfo {
