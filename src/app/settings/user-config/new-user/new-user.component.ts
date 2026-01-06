@@ -244,7 +244,8 @@ export class NewUserComponent implements OnInit {
       email: serviceUserControls.email.value ? serviceUserControls.email.value : '',
       userPropertyAccesses: proAccess,
       loggedUser: this.utils.GetPropertyInfo('userName'),
-      autoUnlockAfterInMinutes:Number(this._servicesetting.userSettingsFormGrp.controls.autoUnlockAfterInMinutes.value)
+      autoUnlockAfterInMinutes:Number(this._servicesetting.userSettingsFormGrp.controls.autoUnlockAfterInMinutes.value),
+      loginType:Number(this._servicesetting.userSettingsFormGrp.controls.loginType.value)
     };
 
     const retailData = {
@@ -282,6 +283,7 @@ export class NewUserComponent implements OnInit {
     editedInfo.loggedUser = this.utils.GetPropertyInfo('userName');
     editedInfo.password = userPassword.length > 0 ? userPassword : null
     editedInfo.autoUnlockAfterInMinutes=Number(this._servicesetting.userSettingsFormGrp.controls.autoUnlockAfterInMinutes.value)
+    editedInfo.loginType=Number(this._servicesetting.userSettingsFormGrp.controls.loginType.value)
     // editedInfo.roleId = this._servicesetting.spaSettingsFormGrp.controls.rolename.value ? Number(this._servicesetting.spaSettingsFormGrp.controls.rolename.value) : Number(0);
     
     const retailProdId = this._servicesetting.products.filter(x => x.productName.replace(/ /g, '').toUpperCase() == 'RETAIL')[0].id;

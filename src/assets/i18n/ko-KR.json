@@ -3535,6 +3535,7 @@
     "AutoLogoff": "Auto Logoff_kr",
     "LogoffAfter": "Logoff After_kr",
     "Language": "Language_kr",
+    "lbl_userLoginType": "Login Type_kr",
     "RoleName": "Role Name_kr",
     "AllowGratuity": "Allow Gratuity_kr",
     "AllowServiceCharge": "Allow Service Charge_kr",

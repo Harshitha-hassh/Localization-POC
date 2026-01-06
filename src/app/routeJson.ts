@@ -337,6 +337,7 @@ export const routeJSON = {
   "GetAllUsersbyUserIds": "User/GetAllUserbyUserIds/{tenantId}",
   "GetPropLanguages": "Language/GetAllLanguageByPropertyId/{PropertyId}",
   "GetAllLanguages": "Language/GetAllLanguages",
+  "GetUserLoginTypes":"User/GetUserLoginTypes",
   "GetUserRetailConfiguration": "UserRetailConfiguration/{id}",
   "GetAllUserRetailConfiguration": "UserRetailConfiguration/all",
   "GetUserSpaConfiguration": "spausers/{id}/servicegroup",

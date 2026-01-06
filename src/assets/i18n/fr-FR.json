@@ -3535,6 +3535,7 @@
     "AutoLogoff": "Auto Logoff_fr",
     "LogoffAfter": "Logoff After_fr",
     "Language": "Language_fr",
+    "lbl_userLoginType": "Login Type_fr",
     "RoleName": "Role Name_fr",
     "AllowGratuity": "Allow Gratuity_fr",
     "AllowServiceCharge": "Allow Service Charge_fr",

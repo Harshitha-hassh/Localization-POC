@@ -14,6 +14,7 @@ import { Product } from 'src/app/common/Models/common.models';
 import { Host } from 'src/app/common/shared/shared/globalsContant';
 import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
 import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.constants';
+import { APIUserLoginType } from 'src/app/shared/shared-models';
 // import { BaseResponse } from '../../../../shared/business/shared.modals';
 
 @Component({
@@ -25,6 +26,7 @@ export class UserSettingsComponent implements OnInit {
 
   caption: any;
   languages: any[] = [];
+  userLoginTypes: APIUserLoginType[];
   accesses: any[] = [];
   selectedAccess: any[] = [];
   minDateValue: any;
@@ -69,6 +71,7 @@ export class UserSettingsComponent implements OnInit {
     const tenantConfig = await this.GetTenantConfigurationCall('GetTenantConfiguration',{configurationName: 'TENANTCONFIGURATION'});
     this.setUserIdPattern(tenantConfig);
     this.GetServiceCall('GetAllLanguages');
+    this.GetServiceCall('GetUserLoginTypes');
     this.GetServiceCall('GetPropLanguages', { propertyId: this.utils.GetPropertyInfo('PropertyId') });
     this.GetServiceCall('GetStandAloneProducts');
     this.GetRetailServiceCall('GetSubPropertyAccessByUser', { userId: this.utils.GetPropertyInfo('UserId') });
@@ -153,6 +156,11 @@ export class UserSettingsComponent implements OnInit {
         const products: number[] = [Product.RETAIL];
         this.accesses = this.servicesetting.products.filter(r => products.includes(r.id)).map(x => ({ id: x.id, name: x.productName }));
         this.utils.setUserAccessSettings(this.accesses, this.servicesetting.selectedAccess);
+      }
+    }else if (callDesc == 'GetUserLoginTypes') {
+      if (result.result) {
+        let data = <any>result.result;
+        this.userLoginTypes=data;
       }
     }
   }

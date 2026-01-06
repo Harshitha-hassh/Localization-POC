@@ -45,6 +45,12 @@
             </mat-select>
           </mat-form-field>
 
+          <mat-form-field class="w250" [floatLabel]="floatLabel">
+            <mat-select [attr.automationId]="'Dd_userSettings_loginTpe'" formControlName="loginType" placeholder="{{caption.setting.lbl_userLoginType}}">
+              <mat-option *ngFor="let loginType of userLoginTypes" [value]="loginType.id">{{loginType.type}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
           <div class="w250 mb-4">
             <label class="d-block mt-3 form-label-normal ">{{caption.setting.NewPassword}}</label>
             <app-toggle-switch [attr.automationId]="'Txt_userSettings_newPassword'" class="d-block  blckClr" [formControl]="userSettingsFormGrp.controls['newpassword']" (changeToggleEvent)="toggleChange($event,'PWD')" [disableToggle]="isToggleDisable"></app-toggle-switch>

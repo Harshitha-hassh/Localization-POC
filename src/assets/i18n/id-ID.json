@@ -3535,6 +3535,7 @@
     "AutoLogoff": "Auto Logoff_id-id",
     "LogoffAfter": "Logoff After_id-id",
     "Language": "Language_id-id",
+    "lbl_userLoginType": "Login Type_id-id",
     "RoleName": "Role Name_id-id",
     "AllowGratuity": "Allow Gratuity_id-id",
     "AllowServiceCharge": "Allow Service Charge_id-id",

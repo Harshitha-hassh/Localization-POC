@@ -27,7 +27,11 @@ export interface localizationJSON {
     retailsetup: any;
     setting: any;
 }
-
+export interface APIUserLoginType {
+    id: number;
+    type: string;
+    description: string;
+}
 export interface Calendar {
     Sun: string;
     Mon: string;
