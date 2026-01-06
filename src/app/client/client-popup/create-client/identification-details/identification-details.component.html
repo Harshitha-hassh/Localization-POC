@@ -1,4 +1,4 @@
-<section class="identification-details-wrapper">
+<section class="identification-details-wrapper" *ngIf="captions && identificationForm">
     <form [formGroup]="identificationForm" autocomplete="off">
         <label class="form-label-primary">{{captions.IdentificationDetails}}</label>
         

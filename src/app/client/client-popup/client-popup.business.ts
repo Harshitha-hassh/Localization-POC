@@ -208,7 +208,10 @@ export class CreateClientBusiness {
   }
 
   getGuestIdentityTypes(): any[] {
-    const captions = this.retailLocalization.captions.identificationDetails;
+    const captions = this.retailLocalization?.captions?.identificationDetails;
+    if (!captions) {
+      return [];
+    }
     return [
       { id: GuestIdentityTypes.SocialSecurityNumber, value: GuestIdentityTypes.SocialSecurityNumber, viewValue: captions.SocialSecurityNumber },
       { id: GuestIdentityTypes.PassportNumber, value: GuestIdentityTypes.PassportNumber, viewValue: captions.Passport },
@@ -219,7 +222,10 @@ export class CreateClientBusiness {
   }
 
   getPassportTypes(): any[] {
-    const captions = this.retailLocalization.captions.identificationDetails;
+    const captions = this.retailLocalization?.captions?.identificationDetails;
+    if (!captions) {
+      return [];
+    }
     return [
       { id: PassportType.Ordinary, value: PassportType.Ordinary, viewValue: captions.Ordinary },
       { id: PassportType.Diplomatic, value: PassportType.Diplomatic, viewValue: captions.Diplomatic }
