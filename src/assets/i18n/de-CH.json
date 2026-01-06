@@ -1833,6 +1833,8 @@
     },
     "lbl_SurchargeApplied": "Surcharge Applied_de-ch",
     "lbl_Surcharge": "Surcharge_de-ch",
+    "RoundOff": "Round Off_de-ch",
+    "InvalidRoundingAmount": "Invalid amount for rounding. Expected amount:_de-ch",
     "lbl_TaxExemptByPaymentMethod": "Tax Removed_de-ch",
     "lbl_DiscountExemptByPaymentMethod": "Discount Removed_de-ch",
     "lbl_ApplyingSurchargeLoaderMsg": "Applying Surcharge_de-ch",

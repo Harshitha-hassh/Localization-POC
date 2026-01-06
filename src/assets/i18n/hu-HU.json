@@ -1833,6 +1833,8 @@
     },
     "lbl_SurchargeApplied": "Surcharge Applied_hu",
     "lbl_Surcharge": "Surcharge_hu",
+    "RoundOff": "Round Off_hu",
+    "InvalidRoundingAmount": "Invalid amount for rounding. Expected amount:_hu",
     "lbl_TaxExemptByPaymentMethod": "Tax Removed_hu",
     "lbl_DiscountExemptByPaymentMethod": "Discount Removed_hu",
     "lbl_ApplyingSurchargeLoaderMsg": "Applying Surcharge_hu",
