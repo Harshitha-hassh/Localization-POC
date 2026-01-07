@@ -245,7 +245,8 @@ export class CreateClientBusiness {
         ? (typeControl?.id ?? typeControl?.value ?? 0)
         : Number(typeControl ?? 0);
 
-      if (typeId > 0 || element.value?.trim()) {
+      // Only include entries with a valid identification type selected
+      if (typeId > 0) {
         identificationDetails.push({
           id: element.id || 0,
           type: typeId,

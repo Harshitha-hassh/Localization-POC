@@ -95,8 +95,8 @@ export class IdentificationDetailsComponent implements OnInit, OnDestroy {
         return this.fb.group({
             id: 0,
             identificationTypeId: '',
-            value: ['', Validators.required],
-            issuingCountry: ''
+            value: [{ value: '', disabled: true }],  // Disabled until type is selected
+            issuingCountry: [{ value: '', disabled: true }]  // Disabled until type is selected
         });
     }
 
@@ -285,7 +285,11 @@ export class IdentificationDetailsComponent implements OnInit, OnDestroy {
     }
 
     onTypeChange(event: any, group: UntypedFormGroup, index: number): void {
-        const selectedValue = event?.value ?? event;
+        // Extract value properly from MatSelectChange event
+        const selectedValue = (event && typeof event === 'object' && 'value' in event) ? event.value : event;
+        
+        // Check if a valid type is selected
+        const isValidType = selectedValue !== null && selectedValue !== undefined && selectedValue !== '' && selectedValue !== 0;
 
         // Remove conditional controls first
         this.removeConditionalControls(group);
@@ -294,8 +298,23 @@ export class IdentificationDetailsComponent implements OnInit, OnDestroy {
         this.issuedDateConfigMap.delete(index);
         this.expiryDateConfigMap.delete(index);
 
-        // Clear common field values when type changes
-        group.patchValue({ value: '', issuingCountry: '' });
+        // Handle enable/disable of common fields based on type selection
+        const valueControl = group.get('value');
+        const issuingCountryControl = group.get('issuingCountry');
+        
+        if (isValidType) {
+            // Enable fields and add required validator for value
+            valueControl?.enable();
+            valueControl?.setValidators(Validators.required);
+            issuingCountryControl?.enable();
+        } else {
+            // Disable fields, remove validators, and clear values
+            valueControl?.disable();
+            valueControl?.clearValidators();
+            issuingCountryControl?.disable();
+            group.patchValue({ value: '', issuingCountry: '' });
+        }
+        valueControl?.updateValueAndValidity();
 
         const currentDate = this.propertyInfo.CurrentDate;
 
@@ -445,6 +464,16 @@ export class IdentificationDetailsComponent implements OnInit, OnDestroy {
                 value: detail.value || '',
                 issuingCountry: detail.issuingCountry || ''
             });
+
+            // Enable fields if valid type is selected (for existing data)
+            if (typeId > 0) {
+                const valueControl = group.get('value');
+                const issuingCountryControl = group.get('issuingCountry');
+                valueControl?.enable();
+                valueControl?.setValidators(Validators.required);
+                valueControl?.updateValueAndValidity();
+                issuingCountryControl?.enable();
+            }
 
             // Patch conditional control values if they exist
             if (requiresDatesAndLocation && detail.issuingLocation) {
