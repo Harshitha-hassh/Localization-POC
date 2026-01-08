@@ -21,7 +21,7 @@ COPY . /ui/
 RUN npm run appliance-build 
 ## RUN ls
 
-FROM docker-registry.bellevue.agilysys.com:5000/official/almalinux-nginxbase:latest
+FROM docker-registry.bellevue.agilysys.com:5000/official/almalinux-nginxbase:1.28.0-20251104-0925
 
 ## Remove default Nginx website
 RUN rm -rf /usr/share/nginx/html/*
