@@ -3102,6 +3102,8 @@
     "TaxOnTaxValidationMsg": "Cannot enable ‘Charge Tax On Tax’ when {toggleLabel}  is enabled_id-id",
     "SC_GT_TaxRevenueToProperty_ValidationMsg": "Cannot enable ‘{toggleLabel}’ when ‘Is Revenue To Property’ is enabled_id-id",
     "TaxRevenueToPropertyValidationMsg": "Cannot enable ‘Is Revenue To Property’ when ‘{toggleLabel}’ is enabled_id-id",
+    "SC_GT_ExcludeForTaxExemption_ValidationMsg": "Cannot enable '{toggleLabel}' when 'Exclude For Tax Exemption' is enabled_id-id",
+    "ExcludeForTaxExemptionValidationMsg": "Cannot enable 'Exclude For Tax Exemption' when '{toggleLabel}' is enabled_id-id",
     "allowRemovalForPaymentMethodTaxOnTax": "Allow Removal For Payment Method_id-id",
     "ExcludeForTaxExemption": "Exclude For Tax Exemption_id-id",
     "ExcludeForTaxExemptionLinkedTax": "Exclude For Tax Exemption_id-id",
