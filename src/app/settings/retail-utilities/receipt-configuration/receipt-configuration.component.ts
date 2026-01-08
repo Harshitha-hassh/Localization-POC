@@ -82,6 +82,7 @@ export class ReceiptConfigurationComponent implements OnInit {
   defaultMinNoOfDigits: number = 1;
   defaultReceiptNumber: number = 0;
   minDigitsErrMsg: string;
+  fromToRangeErrMsg: string;
 
   constructor(private Form: UntypedFormBuilder,
     private breakPoint: BreakPointAccess,
@@ -89,6 +90,8 @@ export class ReceiptConfigurationComponent implements OnInit {
     private data: ReceiptConfigurationDataService,
     private outletData: RetailOutletsDataService, private utils: RetailUtilities, private imgService: ImageDataService,
     public PropertyInfo: RetailPropertyInformation, public retailLocalization: RetailLocalization) {
+      
+    this.enableSerialInvoiceRange = this.retailLocalization.IsLocationInPhilippines();
     this.textCaptions = this.localization.captions.utilities;
     this.floatLabel = this.localization.setFloatLabel;
     this.FormGrp = this.Form.group({
@@ -130,12 +133,11 @@ export class ReceiptConfigurationComponent implements OnInit {
       combineAllTaxesAndRevenueToPropertyName: [this.defaultTax, Validators.required],
       fromReceiptNumber: [this.defaultReceiptNumber, this.enableSerialInvoiceRange ? [Validators.required, this.numberMinLengthValidator(this.defaultMinNoOfDigits)] : []],
       toReceiptNumber: [this.defaultReceiptNumber, this.enableSerialInvoiceRange ? [Validators.required, this.numberMinLengthValidator(this.defaultMinNoOfDigits)] : []]
-    })
+    }, { validators: this.enableSerialInvoiceRange ? this.fromToRangeValidator() : null })
   }
 
   async ngOnInit() {
     this.textCaptions = this.localization.captions.utilities;
-    this.enableSerialInvoiceRange = this.retailLocalization.IsLocationInPhilippines();
     this.DisplayAuthCode=false;
     this.displayChangeDue= false;
     this.displayImageInReceiptHeader=false;
@@ -256,6 +258,7 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.propertyForm.valueChanges.subscribe(() => this.validateRollUpToOneToggles());
 
     this.minDigitsErrMsg = this.textCaptions.errMinDigitsNeeded.replace('{minDigits}', '6');
+    this.fromToRangeErrMsg = this.textCaptions.errFromGreaterThanTo;
   }
 
   changeSelection(e) {
@@ -1032,6 +1035,37 @@ export class ReceiptConfigurationComponent implements OnInit {
     this.propertyForm.markAsTouched();
     this.isSaveDisabled = false;
     this.footerImageReferenceId = DEFAULT_IMAGE_REFERENCE_ID;
+  }
+
+  /**
+   * Cross-field validator to check fromReceiptNumber <= toReceiptNumber
+   * @return Validator function for FormGroup
+   */
+  private fromToRangeValidator() {
+    return (formGroup: UntypedFormGroup): ValidationErrors | null => {
+      const fromControl = formGroup.get('fromReceiptNumber');
+      const toControl = formGroup.get('toReceiptNumber');
+      
+      if (!fromControl || !toControl) {
+        return null;
+      }
+      
+      const fromValue = Number(fromControl.value);
+      const toValue = Number(toControl.value);
+      
+      // Only validate if both values are valid numbers and greater than 0
+      if (fromValue > 0 && toValue > 0 && fromValue > toValue) {
+        return { 'fromGreaterThanTo': true };
+      } else {
+        // Clear fromGreaterThanTo error if it exists
+        if (fromControl.errors?.['fromGreaterThanTo']) {
+          const { fromGreaterThanTo, ...otherErrors } = fromControl.errors;
+          fromControl.setErrors(Object.keys(otherErrors).length ? otherErrors : null);
+        }
+      }
+      
+      return null;
+    };
   }
 
   /**

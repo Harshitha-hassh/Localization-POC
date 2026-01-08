@@ -4350,7 +4350,8 @@
     "InvalidInput": "Invalid Input_id-id",
     "errMinDigitsNeeded": "Minimum {minDigits} digits needed_id-id",
     "errFromNumber": "Missing From Receipt Number_id-id",
-    "errToNumber": "Missing To Receipt Number_id-id"
+    "errToNumber": "Missing To Receipt Number_id-id",
+    "errFromGreaterThanTo": "From Receipt Number must be less than or equal to To Receipt Number_id-id"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_id-id",

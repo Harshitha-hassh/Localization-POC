@@ -316,6 +316,11 @@
                   </mat-error>
               </mat-form-field>
             </div>
+            <!-- Cross-field validation error shown below both fields -->
+            <div class="mat-error" style="font-size: 12px; color: #f44336;" 
+              *ngIf="propertyForm.controls['fromReceiptNumber'].hasError('fromGreaterThanTo')">
+              {{fromToRangeErrMsg}}
+            </div>
           </div>
         </form>
         <div class="ag_footer--actions bottomSection w-100">

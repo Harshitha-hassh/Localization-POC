@@ -4350,7 +4350,8 @@
     "InvalidInput": "Invalid Input_it-ch",
     "errMinDigitsNeeded": "Minimum {minDigits} digits needed_it-ch",
     "errFromNumber": "Missing From Receipt Number_it-ch",
-    "errToNumber": "Missing To Receipt Number_it-ch"
+    "errToNumber": "Missing To Receipt Number_it-ch",
+    "errFromGreaterThanTo": "From Receipt Number must be less than or equal to To Receipt Number_it-ch"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_it-ch",
