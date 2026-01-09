@@ -26,7 +26,10 @@ const defaultLocalizations = [
     { code: "fr-CH", suffix: "_fr-ch", name: "Swiss French" },
     { code: "it-CH", suffix: "_it-ch", name: "Swiss Italian" },
     { code: "id-ID", suffix: "_id-id", name: "Indonesian" },
-    { code: "es-ES", suffix: "_es", name: "Spanish"}
+    { code: "es-ES", suffix: "_es", name: "Spanish"},
+    { code: "ar-QA", suffix: "_ar", name: "Qatar" },
+    { code: "en-SC", suffix: "", name: "Seychelles" },
+    { code: "fr-SC", suffix: "_fr-sc", name: "Seychelles" }
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
