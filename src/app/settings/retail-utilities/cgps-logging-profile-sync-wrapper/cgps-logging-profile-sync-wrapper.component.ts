@@ -12,6 +12,7 @@ import { ClientPopupComponent } from 'src/app/client/client-popup/client-popup.c
 import { TableGridOptions } from './cgps-logging-profile-sync-wrapper.model';
 
 @Component({
+  standalone: false,
   selector: 'app-cgps-logging-profile-sync-wrapper',
   templateUrl: './cgps-logging-profile-sync-wrapper.component.html',
   styleUrls: ['./cgps-logging-profile-sync-wrapper.component.scss'],

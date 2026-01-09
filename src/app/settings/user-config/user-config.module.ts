@@ -7,13 +7,12 @@ import { RetailSettingsComponent } from './new-user/retail-settings/retail-setti
 import { RoleSetupComponent } from './role-setup/role-setup.component';
 import { UserSetupComponent } from './user-setup/user-setup.component';
 import { UserSettingsComponent } from './new-user/user-settings/user-settings.component';
-import { ScrollbarModule } from 'ngx-scrollbar';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 import { TableComponent } from './table/table.component';
 import { UserSetupRoutingModule } from './user-config-routing.module';
 import { UserConfigComponent } from './user-config.component';
 import { UserRoleComponent } from './user-role/user-role.component';
 import { NewUserComponent } from './new-user/new-user.component';
-import { NgDragDropModule } from 'ng-drag-drop';
 import { CommonSharedModule } from 'src/app/common/shared/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -33,9 +32,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     imports: [
         CommonModule,
         SharedModule,
-        ScrollbarModule,
+        NgScrollbarModule,
         UserSetupRoutingModule,
-        NgDragDropModule,
         CommonSharedModule,
         FormsModule,
         ReactiveFormsModule

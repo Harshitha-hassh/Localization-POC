@@ -1,0 +1,284 @@
+// =============================================================================
+// Tab Token-Based Overrides (Angular Material v20)
+// =============================================================================
+// Migrated from legacy .mat-tab selectors to MDC token-based styling.
+// =============================================================================
+
+@import '../../assets/sass/abstracts/variables';
+
+// =============================================================================
+// BASE TAB STYLING (applies to both mat-tab-group and mat-tab-nav-bar)
+// Global tokens are defined in _tokens.scss and applied via :root.
+// =============================================================================
+
+// =============================================================================
+// TAB INDICATOR COLOR OVERRIDE
+// Angular Material theme applies color at component level, so we must match that
+// =============================================================================
+
+.mat-mdc-tab-group,
+.mat-mdc-tab-nav-bar {
+  --mat-tab-active-indicator-color: #{$theme-base-color};
+  --mat-tab-active-focus-indicator-color: #{$theme-base-color};
+  --mat-tab-active-hover-indicator-color: #{$theme-base-color};
+}
+
+// Also apply to the actual ink bar element for extra specificity
+.mdc-tab-indicator--active .mdc-tab-indicator__content--underline {
+  border-color: $theme-base-color !important;
+}
+
+// Active tab link text color override
+.mat-mdc-tab-link.mdc-tab--active .mdc-tab__text-label,
+.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
+  color: $theme-base-color !important;
+}
+
+// =============================================================================
+// TAB INDICATOR (INK BAR) - Height override
+// Color is set via tokens in _tokens.scss
+// =============================================================================
+
+.mdc-tab-indicator__content--underline {
+  height: 4px !important;
+}
+
+// =============================================================================
+// TAB HEIGHT
+// =============================================================================
+
+mat-tab-group .mdc-tab {
+  height: 40px;
+}
+
+.mat-mdc-tab-group .mat-mdc-tab-labels .mdc-tab {
+  height: 48px;
+  max-width: unset;
+}
+
+// =============================================================================
+// TAB BODY WRAPPER
+// =============================================================================
+
+.mat-mdc-tab-body-wrapper {
+  flex-grow: 1;
+}
+
+// =============================================================================
+// TAB STRETCH FIX
+// =============================================================================
+
+.mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs > .mat-mdc-tab-header .mat-mdc-tab {
+  flex-grow: 0;
+}
+
+// =============================================================================
+// TAB LABELS CONTAINER (for drag-and-drop)
+// =============================================================================
+
+.cdk-drop-list .mat-mdc-tab-labels,
+.mat-mdc-tab-labels.cdk-drop-list {
+  min-height: unset;
+}
+
+// =============================================================================
+// TAB HEADER PAGINATION
+// =============================================================================
+
+.mat-mdc-tab-header-pagination {
+  z-index: 1;
+}
+
+// =============================================================================
+// WRAPPER CLASS: app-tab-group
+// Use this class on parent containers for tab customizations
+// =============================================================================
+
+.app-tab-group {
+  // Uses global tokens - only layout overrides here
+  .mat-mdc-tab-header {
+    background: $ag_secondary-header-bc;
+  }
+}
+
+// =============================================================================
+// TAB GROUP WITH THEME BACKGROUND
+// =============================================================================
+
+.app-tab-theme-bg {
+  .mat-mdc-tab-labels {
+    background-color: $ag_navy-blue-lighter;
+  }
+}
+
+// =============================================================================
+// TAB GROUP IN DIALOGS
+// =============================================================================
+
+.dialog-container .mat-mdc-tab-header {
+  background: $dialog-tab-header-color;
+}
+
+// =============================================================================
+// VERSION TWO TAB STYLING
+// =============================================================================
+
+.tab-styling-versiontwo {
+  background-color: $ag_retail_light_blue_bg;
+  height: 100%;
+  
+  .mat-mdc-tab-header,
+  .mat-mdc-tab-labels {
+    background-color: $retail-primary-40;
+    border: 1px solid $ag_box_border;
+    box-shadow: 0px 1px 5px $ag_box_border;
+    border-radius: 6px;
+  }
+  
+  .mat-mdc-tab-header {
+    margin: 10px;
+    margin-bottom: 0;
+  }
+  
+  .mat-mdc-tab-body-wrapper {
+    margin-top: 0;
+    border-radius: 6px;
+  }
+}
+
+// =============================================================================
+// MAT-TAB-NAV-BAR (Tab Links Navigation)
+// =============================================================================
+
+.mat-mdc-tab-nav-bar {
+  // Nav bar container
+  .mat-mdc-tab-link-container {
+    flex-grow: 0;
+  }
+  
+  // Individual tab links
+  .mat-mdc-tab-link {
+    height: 48px;
+    min-width: 90px;
+    padding: 0 24px;
+    opacity: 1;
+    
+    // Link text
+    .mdc-tab__text-label {
+      color: $ag_grey-darkest;
+      font-size: 14px;
+      font-family: $ag_lato-bold;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    // Active state
+    &.mdc-tab--active {
+      .mdc-tab__text-label {
+        color: $theme-base-color;
+      }
+    }
+    
+    // Hover state
+    &:hover:not(.mdc-tab--active) {
+      .mdc-tab__text-label {
+        color: $ag_grey-darkest;
+      }
+    }
+    
+    // Hide ripple
+    .mat-ripple {
+      display: none;
+    }
+  }
+  
+}
+
+// =============================================================================
+// TAB HEADER BACKGROUND (for sub-navigation tabs)
+// =============================================================================
+
+.mat-mdc-tab-nav-bar .mat-mdc-tab-header,
+.mat-mdc-tab-header {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+// =============================================================================
+// NEW STYLE VIEW TAB HEADER BACKGROUND
+// Migrated from: #new-mat-view .wrapper-container .mat-tab-header
+// =============================================================================
+
+#new-mat-view .wrapper-container .mat-mdc-tab-header,
+#new-mat-view .wrapper-container .mat-mdc-tab-nav-bar .mat-mdc-tab-header {
+  background: #D4BDA9 !important;
+}
+
+// =============================================================================
+// MAT-TAB-GROUP (for modal/dialog tabs with background)
+// =============================================================================
+
+.mat-mdc-tab-group {
+  // Tab labels
+  .mat-mdc-tab {
+    height: 48px;
+    min-width: 90px;
+    opacity: 1 !important;
+    background: transparent !important;
+    
+    // Remove active background color
+    &.mdc-tab--active {
+      background: transparent !important;
+    }
+    
+    // Text label
+    .mdc-tab__text-label {
+      color: $ag_grey-darkest !important;
+      font-size: 14px;
+      font-family: $ag_lato-bold;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    // Active state text color
+    &.mdc-tab--active .mdc-tab__text-label {
+      color: $theme-base-color !important;
+    }
+    
+    // Remove state layer background on active
+    .mdc-tab__ripple::before,
+    .mat-mdc-tab-ripple {
+      display: none !important;
+    }
+  }
+  
+  // Remove focus indicator background
+  .mat-mdc-focus-indicator {
+    display: none !important;
+  }
+  
+}
+
+// =============================================================================
+// REMOVE ACTIVE TAB BACKGROUND (global override)
+// =============================================================================
+
+.mdc-tab--active {
+  background-color: transparent !important;
+  
+  &::before {
+    background-color: transparent !important;
+  }
+}
+
+// Hide the state layer that creates background color
+.mdc-tab__ripple::before,
+.mdc-tab .mdc-tab__ripple::before {
+  opacity: 0 !important;
+}
+
+.mat-mdc-tab:not(.mdc-tab--active):hover .mdc-tab__ripple::before {
+  opacity: 0.04 !important;
+}
+

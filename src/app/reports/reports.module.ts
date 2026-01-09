@@ -8,7 +8,7 @@ import { ReportsRoutingModule } from './reports-routing.module';
 import { ReportRetailComponent } from './report-retail/report-retail.component';
 import { RetailLocalization } from '../retail/common/localization/retail-localization';
 import { TransactionLogComponent } from './transaction-log/transaction-log.component';
-import { ScrollbarModule } from 'ngx-scrollbar';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 @NgModule({
   imports: [
@@ -16,7 +16,7 @@ import { ScrollbarModule } from 'ngx-scrollbar';
     SharedModule,
     ReportsRoutingModule,
     RetailReportModule,
-    ScrollbarModule
+    NgScrollbarModule
   ],
   declarations: [ReportsComponent, ReportRetailComponent, TransactionLogComponent],
   providers:[]

@@ -24,6 +24,7 @@ import { DEFAULTCONFIGURATION } from 'src/app/common/constants';
 import { PMAgentServiceProvider } from 'src/app/retail/payment/PMAgentServiceProvider';
 
 @Component({
+  standalone: false,
   selector: 'app-user-machine-configuration',
   templateUrl: './user-machine-configuration.component.html',
   styleUrls: ['./user-machine-configuration.component.scss'],

@@ -5,7 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatMenuTrigger } from '@angular/material/menu';
 import * as _ from 'lodash';
 import { RetailStandaloneLocalization } from '../../core/localization/retailStandalone-localization';
-import { ScrollbarComponent } from 'ngx-scrollbar';
+import { NgScrollbar } from 'ngx-scrollbar';
 import { ClientService } from '../../shared/service/client-service.service';
 import { ClientCommonService } from '../client.service';
 import { SPAConfig } from 'src/app/common/shared/config/SPA-config';
@@ -13,6 +13,7 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
+  standalone: false,
   selector: 'app-client-table',
   templateUrl: './client-table.component.html',
   styleUrls: ['./client-table.component.scss'],
@@ -43,7 +44,7 @@ export class ClientTableComponent implements OnInit {
   // @Output() printEvt: EventEmitter<any> = new EventEmitter();
   // @Output() LBLClickEvtEmitter: EventEmitter<any> = new EventEmitter();
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
-  @ViewChild(ScrollbarComponent) scrollRef: ScrollbarComponent;
+  @ViewChild(NgScrollbar) scrollRef: NgScrollbar;
   IsCheckAll: Boolean = false;
   InActiveTherapistChkBoxEvt: any;
   orderTypearr: any = [];

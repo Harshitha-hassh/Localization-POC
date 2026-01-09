@@ -4,6 +4,7 @@ import { RetailLocalization } from 'src/app/retail/common/localization/retail-lo
 
 
 @Component({
+  standalone: false,
   selector: 'app-audit-data',
   templateUrl: './audit-data.component.html',
   styleUrls: ['./audit-data.component.scss']

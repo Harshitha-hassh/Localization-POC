@@ -3,6 +3,7 @@ import ApexCharts from 'apexcharts';
 
 
 @Component({
+  standalone: false,
   selector: 'app-chart-bar',
   templateUrl: './chart-bar.component.html',
   styleUrls: ['./chart-bar.component.scss'],

@@ -10,39 +10,39 @@
     box-shadow: 0px 1px 5px $ag_box_border;
 }
  .matTabWrap {
-    .mat-tab-header {
+    .mat-mdc-tab-header {
         margin: 10px !important;
     }
 
-    .mat-tab-body-content {
+    .mat-mdc-tab-body-content {
         border: unset !important;
     }
 
-    .mat-tab-header,
-    .mat-tab-labels {
+    .mat-mdc-tab-header,
+    .mat-mdc-tab-labels {
         background-color: $ag_white !important;
         border: 1px solid #DDDDDD;
         border-radius: 6px;
 
-        .mat-tab-label {
+        .mat-mdc-tab {
             color: #000000 !important;
         }
 
-        .mat-tab-label.mat-tab-disabled {
+        .mat-mdc-tab.mat-mdc-tab-disabled {
             cursor: default;
             opacity: 0.5 !important;
         }
 
-        .mat-tab-label.mat-tab-label-active {
+        .mat-mdc-tab.mdc-tab--active {
             background-color: #cfdaff !important;
             color: #000000 !important;
         }
 
-        .mat-tab-header-pagination-chevron {
+        .mat-mdc-tab-header-pagination-chevron {
             border-color: #000000 !important;
         }
 
-        .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+        .mat-mdc-tab-header-pagination-disabled .mat-mdc-tab-header-pagination-chevron {
             border-color: grey !important;
         }
     }
@@ -55,67 +55,69 @@
         .mat-button-toggle-checked {
             background-color: #e6ebff;
         }
+        // Note: mat-button-toggle classes remain unchanged as they don't have MDC prefix
     }
 }
 
 .tab-styling-versiontwo {
   background-color: $ag_retail_light_blue_bg;
-    .mat-tab-header,
-    .mat-tab-labels {
+  height: 100%;
+    .mat-mdc-tab-header,
+    .mat-mdc-tab-labels {
         background-color: $retail-primary-40;
         border: 1px solid $ag_box_border;
         box-shadow: 0px 1px 5px $ag_box_border;
         border-radius: 6px;
 
 
-        .mat-tab-label {
+        .mat-mdc-tab {
             color: #000000 !important;
         }
 
-        .mat-tab-label.mat-tab-disabled {
+        .mat-mdc-tab.mat-mdc-tab-disabled {
             cursor: default;
             opacity: 0.5 !important;
         }
 
-        .mat-tab-label.mat-tab-label-active {
+        .mat-mdc-tab.mdc-tab--active {
             background-color: $retail-primary-60 !important;
         }
 
-        .mat-tab-header-pagination-chevron {
+        .mat-mdc-tab-header-pagination-chevron {
             border-color: #000000 !important;
         }
 
-        .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
+        .mat-mdc-tab-header-pagination-disabled .mat-mdc-tab-header-pagination-chevron {
             border-color: grey !important;
         }
     }
 
-    .mat-tab-header{
+    .mat-mdc-tab-header{
       margin: 10px !important;
       margin-bottom: 0 !important;
       }
 
-    .mat-tab-body-wrapper {
-      margin: 10x !important;
+    .mat-mdc-tab-body-wrapper {
+      margin: 10px !important;
       margin-top: 0 !important;
       border-radius: 6px;
-        .mat-tab-body {
+        .mat-mdc-tab-body {
             background-color: $ag_white;
             margin: 10px;
             border: 1px solid $ag_box_border ;
             border-radius: 6px;
             width: 100px !important;
 
-            .mat-tab-body-content {
+            .mat-mdc-tab-body-content {
                 border: none !important;
             }
         }
 
-        .mat-tab-body:nth-child(3),
-        .mat-tab-body:nth-child(4),
-        .mat-tab-body:nth-child(5),
-        .mat-tab-body:nth-child(6),
-        .mat-tab-body:nth-child(7) {
+        .mat-mdc-tab-body:nth-child(3),
+        .mat-mdc-tab-body:nth-child(4),
+        .mat-mdc-tab-body:nth-child(5),
+        .mat-mdc-tab-body:nth-child(6),
+        .mat-mdc-tab-body:nth-child(7) {
             border-radius: 0px;
             border: none;
         }
@@ -292,10 +294,10 @@
     }
   .item-search{
       app-search-linked-retail-items{
-        .mat-form-field-infix{
+        .mat-mdc-form-field-infix {
           border: 1px solid #ececec;
         }
-        .mat-input-element::placeholder{
+        .mat-mdc-input-element::placeholder {
           user-select: none;
           transition: color 400ms 133.3333333333ms cubic-bezier(0.25, 0.8, 0.25, 1);
           color: #0000006b !important;
@@ -1598,10 +1600,10 @@
     }
   .item-search{
       app-search-linked-retail-items{
-        .mat-form-field-infix{
+        .mat-mdc-form-field-infix {
           border: 1px solid #ececec;
         }
-        .mat-input-element::placeholder{
+        .mat-mdc-input-element::placeholder {
           user-select: none;
           transition: color 400ms 133.3333333333ms cubic-bezier(0.25, 0.8, 0.25, 1);
           color: #0000006b !important;
@@ -1715,7 +1717,7 @@
 &.dialog-container__header.slide-info--header {
   background-color: $new-version-bg;
 }
-mat-radio-group mat-radio-button .mat-radio-label-content {
+mat-radio-group mat-radio-button .mdc-label {
   color: #000000;
   font-size: 14px;
 }

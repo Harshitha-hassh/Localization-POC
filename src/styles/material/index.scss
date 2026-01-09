@@ -1,0 +1,73 @@
+// =============================================================================
+// Angular Material v20 Token-Based Theme - Main Index
+// =============================================================================
+// Import this file in your styles.scss to apply all token-based Material styles.
+// 
+// Usage in styles.scss:
+//   @import 'styles/material/index';
+// =============================================================================
+
+// Core tokens configuration
+@import 'tokens';
+
+// Component-specific token overrides
+@import 'form-field';
+@import 'select';
+@import 'datepicker';
+@import 'buttons';
+@import 'checkbox';
+@import 'radio';
+@import 'slide-toggle';
+@import 'tabs';
+@import 'stepper';
+@import 'menu';
+@import 'dialog';
+@import 'paginator';
+
+// Legacy unsafe overrides (temporary - to be migrated)
+@import 'legacy-unsafe';
+
+// =============================================================================
+// APPLY GLOBAL TOKENS
+// =============================================================================
+// Apply tokens at the :root level for global effect
+
+:root {
+  @include apply-material-tokens();
+}
+
+// =============================================================================
+// MIGRATION NOTES
+// =============================================================================
+// 
+// To migrate existing components:
+// 
+// 1. FORM FIELDS:
+//    - Replace .mat-form-field classes with .app-form-field wrapper
+//    - Replace .mat-form-field-can-float with .app-form-field-float-label
+// 
+// 2. CHECKBOXES:
+//    - Replace .mat-checkbox classes with .app-checkbox wrapper
+//    - Replace .mat-checkbox-frame styling with token overrides
+// 
+// 3. RADIO BUTTONS:
+//    - Replace .mat-radio-button classes with .app-radio-button wrapper
+//    - Use .app-radio-horizontal for horizontal layouts
+// 
+// 4. TABS:
+//    - Replace .mat-tab-group classes with .app-tab-group wrapper
+//    - Use .app-tab-theme-bg for themed backgrounds
+// 
+// 5. SLIDE TOGGLES:
+//    - Replace .mat-slide-toggle classes with .app-slide-toggle wrapper
+// 
+// 6. STEPPERS:
+//    - Replace .mat-stepper classes with .app-stepper wrapper
+// 
+// 7. DIALOGS:
+//    - Replace .mat-dialog classes with .app-dialog wrapper
+//    - Use .app-dialog-xs/sm/md/lg for sizing
+// 
+// =============================================================================
+
+

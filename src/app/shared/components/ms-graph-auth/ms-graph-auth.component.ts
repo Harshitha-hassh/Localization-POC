@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MsGraphApiCommunication } from '../../communication/services/ms-graph.service';
 
 @Component({
+  standalone: false,
   selector: 'app-ms-graph-auth',
   templateUrl: './ms-graph-auth.component.html',
   styleUrls: ['./ms-graph-auth.component.scss'],

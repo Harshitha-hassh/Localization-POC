@@ -4,6 +4,7 @@ import { RouteLoaderService } from 'src/app/core/services/route-loader.service';
 import { menuTypes } from 'src/app/shared/enums/menu.constant';
 
 @Component({
+  standalone: false,
   selector: 'app-retail-templates',
   templateUrl: './retail-templates.component.html',
   styleUrls: ['./retail-templates.component.scss']

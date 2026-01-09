@@ -2,6 +2,7 @@ import { PipeTransform, Pipe } from "@angular/core";
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 
 @Pipe({
+  standalone: false,
     name: 'formatText',
     pure: true
 })

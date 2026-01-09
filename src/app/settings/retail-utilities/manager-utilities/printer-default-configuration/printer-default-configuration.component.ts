@@ -6,6 +6,7 @@ import { PrinterDefaultConfigurationBusiness } from './printer-default-configura
 import { API, Options, UI } from "src/app/common/Models/printer-default-configuration.model";
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 @Component({
+  standalone: false,
   selector: 'app-printer-default-configuration',
   templateUrl: './printer-default-configuration.component.html',
   styleUrls: ['./printer-default-configuration.component.scss'],

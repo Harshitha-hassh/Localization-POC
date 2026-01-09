@@ -18,6 +18,7 @@ import { PhoneTypes } from 'src/app/common/enums/shared-enums';
 import { GuestProfileMailTypes } from 'src/app/common/shared/shared/enums/enums';
 
 @Component({
+  standalone: false,
   selector: 'app-property-info',
   templateUrl: './property-info.component.html',
   styleUrls: ['./property-info.component.scss'],

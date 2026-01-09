@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Pipe({
+  standalone: false,
   name: 'clientsortpipe'
 })
 export class ClientsortpipePipe implements PipeTransform {

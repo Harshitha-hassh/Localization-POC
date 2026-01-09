@@ -7,8 +7,7 @@
       <section class="result-grid">
         <div class="user-search custSearchbox">
           <mat-form-field class="pr-3 d-inline-block spa-searchbox" floatLabel="never">
-            <input [attr.automationId]="'Txt_userSetup_serach'" type="text" class="LW14" [placeholder]="captions.UserSearchText" matInput formControlName="searchtext"
-              (input)="onChange()" autocomplete="off">
+            <input [attr.automationId]="'Txt_userSetup_serach'" type="text" class="LW14" matInput formControlName="searchtext" (input)="onChange()" autocomplete="off" [placeholder]="captions.UserSearchText">
               <i [ngClass]="searchValue ? 'icon-Search' : 'icon-Cancel'" class="cursor" (click)="clearSearch()"></i>
           </mat-form-field>
 

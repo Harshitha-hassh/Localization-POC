@@ -12,6 +12,7 @@ import { debounceTime } from 'rxjs/operators';
 
 
 @Component({
+  standalone: false,
   selector: 'app-set-password',
   templateUrl: './set-password.component.html',
   styleUrls: ['./set-password.component.scss'],

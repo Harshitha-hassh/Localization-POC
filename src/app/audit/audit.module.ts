@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AuditRoutingModule } from './audit-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { AuditService } from './audit.service';
-import { ScrollbarModule } from 'ngx-scrollbar';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 import { RetailTaxesDataService } from '../retail/retail-code-setup/retail-taxes/retail-taxes-data.service';
 import { ShopModule } from '../retail/shop/shop.module';
 import { NightAuditComponent } from 'src/app/common/night-audit/night-audit.component';
@@ -22,7 +22,7 @@ import { ScheduleEmailComponent } from 'src/app/common/night-audit/schedule-emai
     CommonModule,
     RouterModule,
     AuditRoutingModule,
-    ScrollbarModule,
+    NgScrollbarModule,
     ShopModule,
   // AppointmentActionModule,
   SharedModule,

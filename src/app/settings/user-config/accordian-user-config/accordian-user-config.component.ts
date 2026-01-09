@@ -6,6 +6,7 @@ import { UntypedFormGroup, UntypedFormBuilder, UntypedFormArray } from '@angular
 import { AccordianInput } from './accordian-user-config.model';
 
 @Component({
+  standalone: false,
   selector: 'app-accordian-user-config',
   templateUrl: './accordian-user-config.component.html',
   styleUrls: ['./accordian-user-config.component.scss'],

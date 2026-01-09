@@ -9,9 +9,9 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "module": "es2020",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
-    "target": "es2020",
+    "target": "ES2022",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -27,12 +27,24 @@
       "ES2019"
     ],
     "paths": {
-      "@shared/*": [ "src/app/eatecui/source/shared/*" ],
-      "@transaction/*": [ "src/app/eatecui/source/transaction/*" ],
-      "@coreModels/*": ["src/app/eatecui/source/core/*"],
-      "@ngrxStore/*": ["src/app/eatecui/source/store/*"],
-      "@scss/*": [ "src/app/eatecui/src/assets/sass/*" ],
-      "@assets/*": [ "src/app/eatecui/src/assets/*" ],
+      "@shared/*": [
+        "src/app/eatecui/source/shared/*"
+      ],
+      "@transaction/*": [
+        "src/app/eatecui/source/transaction/*"
+      ],
+      "@coreModels/*": [
+        "src/app/eatecui/source/core/*"
+      ],
+      "@ngrxStore/*": [
+        "src/app/eatecui/source/store/*"
+      ],
+      "@scss/*": [
+        "src/app/eatecui/src/assets/sass/*"
+      ],
+      "@assets/*": [
+        "src/app/eatecui/src/assets/*"
+      ],
       "grid": [
         "src/app/eatecui/dist/grid"
       ],
@@ -56,10 +68,13 @@
       ],
       "agilysys-dynamicform/*": [
         "src/app/eatecui/dist/agilysys-dynamicform/*"
-      ],
-    }
+      ]
+    },
+    "useDefineForClassFields": false,
+    "skipLibCheck": true
   },
   "angularCompilerOptions": {
-    "enableIvy": false
+    "strictInjectionParameters": false,
+    "strictTemplates": false
   }
 }

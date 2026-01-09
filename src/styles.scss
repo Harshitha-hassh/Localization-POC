@@ -3,7 +3,7 @@
 @import "assets/sass/abstracts/variables";
 @import "assets/sass/base/base";
 @import "assets/icons/style.css";
-@import "~ckeditor5/dist/ckeditor5.css";
+@import "styles/material/index";
 
 // Display Properties
 body {
@@ -343,7 +343,7 @@ h4 {
   form {
     height: 100%;
   }
-  .mat-tab-group {
+  .mat-mdc-tab-group {
     overflow: auto;
     height: 100%;
   }
@@ -848,7 +848,7 @@ label.ag_form--label {
 }
 
 .ag-tab--theme-bg {
-  .mat-tab-labels {
+  .mat-mdc-tab-labels {
     background-color: $ag_navy-blue-lighter;
   }
 }
@@ -1993,7 +1993,7 @@ ui-switch {
     height: calc(100% - (#{$dialog-header-height} + #{$dialog-footer-height}));
     margin: 0;
     overflow: auto;
-    .mat-tab-header {
+    .mat-mdc-tab-header {
       background: $dialog-tab-header-color;
     }
   }
@@ -2208,7 +2208,6 @@ ui-switch {
 @import "./assets/sass/abstracts/_mixins";
 @import "./assets/sass/components/_buttons";
 @import "@angular/material/prebuilt-themes/deeppurple-amber.css";
-@import "@angular/material/theming";
 @import "./assets/sass/abstracts/_variables.scss";
 
 // $custom-typography: mat-typography-config($font-family: 'LatoWeb');
@@ -2450,7 +2449,7 @@ a {
   // background: rgba(0, 0, 0, 0.50);
 }
 
-.mat-slide-toggle-content {
+.mdc-switch__label {
   // font-family: "LatoWeb";
   font-size: 14px;
 }
@@ -2501,11 +2500,33 @@ a {
   }
 }
 
-.mat-tab-label-content {
+.mdc-tab__text-label {
   text-transform: uppercase;
+  font-size: 14px;
+  font-family: "SourceSansProBold";
 }
 
-.mat-menu-item {
+.mat-mdc-tab {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.mat-mdc-tab-label-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100%;
+}
+
+.mdc-tab__content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100%;
+}
+
+.mat-mdc-menu-item {
   height: 45px !important;
   line-height: 30px !important;
 }
@@ -2526,7 +2547,7 @@ label.mat-button-toggle-label {
   margin: 0px;
 }
 
-.mat-tab-labels {
+.mat-mdc-tab-labels {
   background: #f2f2f2;
 }
 
@@ -2596,7 +2617,7 @@ textarea {
   border-radius: 3px !important;
 }
 
-.mat-tab-body-wrapper {
+.mat-mdc-tab-body-wrapper {
   height: 100%;
 }
 
@@ -3593,7 +3614,7 @@ mat-color-picker-selector {
 //   }
 
 //   .mat-tab-group {
-//     .mat-tab-body-wrapper {
+//     .mat-mdc-tab-body-wrapper {
 //       .mat-tab-body-active {
 //         overflow-x: hidden;
 //         overflow-y: hidden;
@@ -3782,7 +3803,7 @@ mat-color-picker-selector {
   }
 }
 
-.mat-tab-body-wrapper
+.mat-mdc-tab-body-wrapper
 //If hide the material third party timepicker icon background
 .ngx-material-timepicker-toggle {
   background: none !important;
@@ -4464,9 +4485,9 @@ a:hover {
 //safari only css
 @media not all and (min-resolution: 0.001dpcm) {
   @supports (-webkit-appearance: none) {
-    .mat-tab-body-wrapper,
-    .mat-tab-body-active,
-    .mat-tab-body-content {
+    .mat-mdc-tab-body-wrapper,
+    .mat-mdc-tab-body-active,
+    .mat-mdc-tab-body-content {
       overflow: visible !important;
     }
   }
@@ -5454,27 +5475,32 @@ body .cdk-custom-wrapper .ag_table .table th {
       background-color: $menu-secondary-gold !important;
       background-color: $ag_white !important;
     nav{
-        .mat-tab-label, .mat-tab-link {
+      .mdc-tab__text-label,
+      .mat-mdc-tab-link{
           // font-family: $ag_poppins-medium;
           font-family: $ag_poppins-medium !important;
          }
       }
 
     }
-    .mat-tab-header{
+    .mat-mdc-tab-header {
       background: $menu-secondary-gold !important;
     }
-    .mat-ink-bar{
+    .mdc-tab-indicator__content--underline {
       height: 4px !important;
       background: $menu-lighter-link-gold !important;
+    }
+    .mat-mdc-tab-link.mdc-tab--active .mdc-tab-indicator__content--underline{
+      height: 4px !important;
+      background: $theme-mat-ink-bar !important;
     }
     .border-left-color{
       color: $menu-primary-light-yellow !important
     }
-    .mat-tab-link{
+    .mat-mdc-tab-link {
       color: $menu-black;
       opacity: 1;
-      &.mat-tab-link.mat-tab-label-active{
+      &.mat-mdc-tab-link.mdc-tab--active{
         color: $menu-black !important;
         opacity: 1;
         background-color: $menu-primary-light-yellow !important;
@@ -5483,10 +5509,34 @@ body .cdk-custom-wrapper .ag_table .table th {
     }
     .subnav-wrapper{
       background: $menu-light-blue;
-      mat-form-field{
-        .mat-select {
+      mat-form-field {
+        .mat-mdc-select {
           font-size: 18px !important;
           font-family: $ag_sourcesans-semibold !important;
+        }
+      }
+      // Remove MDC form field borders
+      .mat-mdc-form-field {
+        .mat-mdc-text-field-wrapper {
+          border: none !important;
+          background-color: transparent !important;
+        }
+        .mdc-text-field {
+          padding: unset;
+        }
+        // Remove underline/ripple
+        .mat-mdc-form-field-focus-overlay,
+        .mdc-line-ripple {
+          display: none !important;
+        }
+        // Remove MDC notched outline border
+        .mdc-notched-outline {
+          border: none !important;
+          .mdc-notched-outline__leading,
+          .mdc-notched-outline__notch,
+          .mdc-notched-outline__trailing {
+            border: none !important;
+          }
         }
       }
     }
@@ -5505,29 +5555,29 @@ body .cdk-custom-wrapper .ag_table .table th {
       }
 
     }
-    .master-setup .master-grid .inventory-details .inventory-sub-form-groups .mat-tab-group{
-      .mat-tab-header{
+    .master-setup .master-grid .inventory-details .inventory-sub-form-groups .mat-mdc-tab-group {
+      .mat-mdc-tab-header {
           background: unset !important;
-          .mat-tab-label.mat-tab-label-active{
+          .mat-mdc-tab.mdc-tab--active {
             color: unset !important;
           }
-          .mat-tab-labels{
+          .mat-mdc-tab-labels {
             background: unset !important;
           }
-          .mat-ink-bar{
+          .mdc-tab-indicator__content--underline {
             background: #2e67b7 !important;
           }
       }
     }
-    .create-transaction .create-transaction-tab .mat-tab-header{
+    .create-transaction .create-transaction-tab .mat-mdc-tab-header {
       background-color: unset !important;
-      .mat-tab-label.mat-tab-label-active{
+      .mat-mdc-tab.mdc-tab--active {
         color: unset !important;
       }
-      .mat-tab-labels{
+      .mat-mdc-tab-labels {
         background: unset !important;
       }
-      .mat-ink-bar{
+      .mdc-tab-indicator__content--underline {
         background: #2e67b7 !important;
       }
     }
@@ -5659,23 +5709,23 @@ app-transaction{
     .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple){
       background-color: unset !important;
     }
-    .mat-primary .mat-option.mat-selected:not(.mat-option-disabled){
+    .mat-primary .mat-mdc-option.mat-mdc-option-selected:not(.mat-mdc-option-disabled) {
       color: #2e67b7 !important;
     }
   }
 }
-.mat-tab-group .mat-tab-label{
+.mat-mdc-tab-group .mat-mdc-tab {
   height: 48px !important;
   max-width: unset !important;
 }
 .agilysys-post-po-popup .post-po-popup .table {
-.mat-checkbox{
-  top: 0px !important;
-  .mat-checkbox-frame{
-      border-color: #000000 !important;
+  .mat-mdc-checkbox {
+    top: 0px !important;
+    .mdc-checkbox__background {
+        border-color: #000000 !important;
+    }
   }
-}
-  .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background{
+  .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox .mdc-checkbox__background {
       background-color: #2e67b7 !important;
   }
 }
@@ -5768,4 +5818,550 @@ color: $retail-primary-100 !important;
 .pop-contents
 {
 line-height: 18px !important;
+}
+
+.login {
+  margin-top: 8px !important;
+  
+  .mat-mdc-text-field-wrapper {
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    
+    &.mdc-text-field--filled,
+    &.mdc-text-field--outlined {
+      background-color: transparent !important;
+    }
+  }
+  
+  // Hide outline borders
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__trailing {
+    border: none !important;
+    width: 0 !important;
+  }
+  
+  .mdc-notched-outline__notch {
+    border: none !important;
+  }
+  
+  // Add bottom border only
+  .mat-mdc-form-field-flex {
+    border-bottom: 1px solid #b5b5b5 !important;
+  }
+  
+  // Focused state
+  &.mat-focused .mat-mdc-form-field-flex {
+    border-bottom: 2px solid $theme-base-color !important;
+  }
+  
+  // Error state - red border
+  &.mat-form-field-invalid .mat-mdc-form-field-flex {
+    border-bottom: 2px solid $ag_error-color !important;
+  }
+  
+  // Infix padding - spacing between label and input
+  .mat-mdc-form-field-infix {
+    padding-top: 16px !important;
+    padding-bottom: 6px !important;
+    border-top: none !important;
+  }
+  
+  // Label positioning (inside as placeholder)
+  .mat-mdc-floating-label {
+    top: 22px !important;
+    left: 0 !important;
+    color: #818892 !important;
+  }
+  
+  // Label floated above with proper spacing
+  .mat-mdc-floating-label.mdc-floating-label--float-above {
+    transform: translateY(-130%) scale(0.75) !important;
+    color: $theme-base-color !important;
+  }
+  
+  // Error state - red label
+  &.mat-form-field-invalid .mat-mdc-floating-label,
+  &.mat-form-field-invalid .mat-mdc-floating-label.mdc-floating-label--float-above {
+    color: $ag_error-color !important;
+  }
+  
+  // Required marker red
+  .mat-mdc-form-field-required-marker {
+    color: $ag_error-color !important;
+  }
+  
+  // Error wrapper - remove padding
+  .mat-mdc-form-field-error-wrapper {
+    padding-left: 0 !important;
+  }
+  
+  // Mat-select specific styling
+  .mat-mdc-select {
+    .mat-mdc-select-trigger {
+      padding-top: 0 !important;
+    }
+    
+    .mat-mdc-select-arrow-wrapper {
+      padding-top: 0 !important;
+    }
+  }
+  
+  // Mat-select arrow color
+  .mat-mdc-select-arrow {
+    color: $theme-base-color !important;
+  }
+}
+
+
+/*
+*
+*  New css for mdc 
+*
+*/
+
+// .mdc-checkbox {
+//   padding: 0px !important;
+//   width: 16px !important;
+//   height: 16px !important;
+//   border-radius: 2px !important;
+//   margin-right: 16px !important;
+//   border: unset !important;
+// }
+
+// mat-checkbox {
+//   .mat-internal-form-field>label
+//  {
+//     padding-left: 0px !important;
+// }
+
+//  .mat-mdc-checkbox{
+//     .mat-internal-form-field{
+//     color: $theme-mat-ink-bar !important;
+//  }
+//  }
+//  .mdc-checkbox__checkmark{
+//     color: $ag_white !important;
+//  }
+//  .mdc-checkbox__ripple{
+//   opacity: 0 !important;
+//  }
+// }
+
+// .mat-option{
+//   padding: 0px 16px !important;
+// }
+// .mat-mdc-option,.mat-option{
+//   font-size: inherit;
+//   line-height: 3em;
+//   height: 3em;
+// }
+
+// .mdc-checkbox__background {
+//   left: 0px !important;
+//   right: 0px !important;
+//   bottom: 0px !important;
+//   top: 0px !important;
+//   border: 1px solid $theme-mat-ink-bar !important;
+// }
+
+// .mat-pseudo-checkbox-full{
+//   border: 1px solid $theme-mat-ink-bar !important;
+// }
+
+// .mdc-checkbox__native-control:focus:checked ~ .mdc-checkbox__background,
+// .mdc-checkbox__native-control:focus:indeterminate ~ .mdc-checkbox__background {
+//   border-color: $theme-mat-ink-bar !important;
+//   background: $theme-mat-ink-bar !important;
+// }
+
+// .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
+// .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background {
+//   border-color: $theme-mat-ink-bar !important;
+//   background-color: $theme-mat-ink-bar !important;
+// }
+
+// .mdc-checkbox__native-control:focus:not(:checked) ~ .mdc-checkbox__background,
+// .mdc-checkbox__native-control:focus:not(:indeterminate) ~ .mdc-checkbox__background {
+//   border-color: $theme-mat-ink-bar !important;
+// }
+
+// .mdc-tab-indicator--active .mdc-tab-indicator__content{
+//   height: 4px;
+//   background: $theme-mat-ink-bar !important;
+// }
+
+
+
+// .mat-mdc-text-field-wrapper {
+//   flex: unset !important;
+//   min-height: 42px !important;
+//   height: 42px !important;
+//   padding: 6px 4px 12px 8px !important;
+// }
+
+// .mat-mdc-form-field-infix {
+//     padding: 3px 12px 3px 0px !important;
+
+// }
+
+// .mat-mdc-form-field-error-wrapper {
+//   padding: 0px !important;
+// }
+
+// .mat-mdc-form-field-icon-suffix {
+//   padding: 0px 6px 0px 0px !important;
+//   top: -12px !important;
+//   right: 0px !important;
+// }
+
+// .mat-mdc-text-field-wrapper {
+//   padding-right: 0px !important;
+// }
+
+// .mat-mdc-option-active{
+//   background: rgba(0, 0, 0, 0.04) !important;
+// }
+
+// .mat-mdc-button:not(:disabled) {
+//   color: $ag_white;
+// }
+
+// .mdc-text-field--invalid{
+//   color: $new_mat-error !important;
+// }
+
+//  .mat-badge-content {
+//     right: 5px !important;
+//     top: 5px !important;
+//     width: 10px !important;
+//     height: 10px !important;
+//     line-height: 10px;
+//     color: transparent;
+//     background: $new_mat-error;
+//     min-height: unset !important;
+//     max-height: unset !important;
+//     min-width: unset !important;
+//   }
+
+//   .mat-badge-after .mat-badge-content
+//  {
+//     left: unset !important;
+// }
+
+
+// .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mdc-text-field__input {
+//     display: inline-block;
+//     padding-top: 4px !important;
+// }
+// mat-tab-group{
+// .mdc-tab{
+//  height: 40px !important;
+// }
+// }
+
+// tr.mat-mdc-header-row {
+//     height: 56px;
+//     line-height: unset !important;
+// }
+
+.mat-mdc-tab-group .mat-mdc-tab-header .mat-mdc-tab {
+  flex-grow: 0 !important;
+}
+
+// .mat-mdc-text-field-wrapper {
+//   flex: unset !important;
+//   min-height: 42px !important;
+//   height: 42px !important;
+//   padding: 6px 4px 12px 8px !important;
+// }
+ 
+// .mat-mdc-form-field-infix {
+//     padding: 3px 12px 3px 0px !important;
+ 
+// }
+ 
+// .mat-mdc-form-field-error-wrapper {
+//   padding: 0px !important;
+// }
+ 
+// .mat-mdc-form-field-icon-suffix {
+//   padding: 0px 6px 0px 0px !important;
+//   top: -12px !important;
+//   right: 0px !important;
+// }
+ 
+// .mat-mdc-text-field-wrapper {
+//   padding-right: 0px !important;
+// }
+ 
+// .mat-mdc-option-active{
+//   background: rgba(0, 0, 0, 0.04) !important;
+// }
+ 
+// .mat-mdc-button:not(:disabled) {
+//   color: $ag_white;
+// }
+
+// /*
+// *  
+// *    Retail scroll
+// *
+// */
+ 
+// .ng-scrollbar-wrapper > scrollbar-y.scrollbar-control > .ng-scrollbar-track {
+//   width: 8px !important;
+// }
+ 
+// .ng-scrollbar-wrapper > scrollbar-x.scrollbar-control > .ng-scrollbar-track {
+//     height: 8px !important;
+// }
+ 
+ 
+// .mat-step-header.cdk-keyboard-focused,
+// .mat-step-header.cdk-program-focused {
+//   background: unset !important;
+// }
+ 
+// .mat-horizontal-stepper-content-current{
+//   height: 100% !important;
+// }
+ 
+// .createTaxPopUp{
+//   height: calc(100% - 5px) !important;
+// }
+
+// :root {
+//   // Form field container
+//   --mat-form-field-container-height: 60px;
+
+//   // Outlined form field outline colors
+//   --mat-form-field-outlined-outline-color: grey;
+//   --mat-form-field-outlined-hover-outline-color: grey;
+//   --mat-form-field-outlined-focus-outline-color: grey;
+
+//   // Outline styling
+//   --mat-form-field-outlined-outline-width: 1px;
+//   --mat-form-field-outlined-container-shape: 4px;
+// }
+
+// Commission Setup Component Overrides (for retail submodule)
+app-retail-commission-setup {
+  .mat-mdc-raised-button {
+    box-shadow: none !important;
+  }
+  
+  .location-btn {
+    margin-top: 0 !important;
+  }
+}
+
+// Inventory Component Overrides (for retail submodule)
+app-menu {
+  .secondary-router-container {
+    app-retail-inventory-setting {
+      .inventory-status {
+        height: 60px !important;
+        
+        .outlet-list {
+          display: flex;
+          align-items: center;
+          
+          .mat-form-field {
+            margin-top: 0 !important;
+          }
+        }
+        
+        .inventory-status-dropdown {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          
+          .status-code {
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+      
+      .adv-wrapper {
+        height: calc(100% - 126px) !important;
+      }
+      
+      .search-bar {
+        height: 66px !important;
+        align-items: center;
+        
+        .search-input {
+          display: flex;
+          align-items: center;
+          padding-top: 0 !important;
+          
+          .spa-searchbox {
+            margin-top: 0 !important;
+            
+            .mat-mdc-text-field-wrapper {
+              height: 30px !important;
+            }
+            
+            .mat-mdc-form-field-infix {
+              padding-top: 0 !important;
+              padding-bottom: 0 !important;
+              min-height: 30px !important;
+            }
+            
+            .mat-mdc-form-field-subscript-wrapper {
+              display: none;
+            }
+            
+            input {
+              height: 30px !important;
+            }
+            
+            i {
+              position: absolute;
+              right: 10px;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+          }
+          
+          .sec-btn {
+            height: 30px !important;
+            line-height: 30px !important;
+            border-radius: 4px !important;
+          }
+        }
+        
+        .btn-height {
+          height: 30px !important;
+          line-height: 30px !important;
+          border-radius: 4px !important;
+          margin-top: 0 !important;
+        }
+        
+        .inventory-buttons {
+          padding-top: 0 !important;
+          
+          .boxed-icon {
+            margin-top: 0 !important;
+          }
+          
+          .btn-group {
+            margin-top: 0 !important;
+            
+            .manual-inventory {
+              height: 30px !important;
+              line-height: 30px !important;
+              border-radius: 4px !important;
+            }
+            
+            .update-inventory {
+              height: 30px !important;
+              line-height: 30px !important;
+              padding: 0 12px !important;
+              
+              .mdc-button__label {
+                font-size: 14px !important;
+                font-weight: 400 !important;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                line-height: 14px;
+                letter-spacing: normal;
+              }
+            }
+            
+            .btn-split {
+              height: 30px !important;
+              border-top-right-radius: 4px !important;
+              border-bottom-right-radius: 4px !important;
+            }
+            
+            > .btn:not(:last-child):not(.dropdown-toggle) {
+              border-top-right-radius: 4px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+body#new-mat-view {
+  app-menu {
+    .secondary-router-container {
+      app-retail-inventory-setting {
+        .adv-wrapper {
+          height: calc(100% - 126px) !important;
+        }
+      }
+    }
+  }
+}
+
+// Retail Child Setup Component Overrides (for retail submodule)
+app-menu {
+  .secondary-router-container {
+    app-retail-child-setup {
+      .searchField {
+        margin-top: 0 !important;
+      }
+      
+      .spa-searchbox {
+        .mat-mdc-text-field-wrapper {
+          height: 30px !important;
+        }
+        
+        .mat-mdc-form-field-infix {
+          padding-top: 0 !important;
+          padding-bottom: 0 !important;
+          min-height: 30px !important;
+        }
+        
+        .mat-mdc-form-field-subscript-wrapper {
+          display: none;
+        }
+        
+        input {
+          height: 30px !important;
+        }
+        
+        i {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+      
+      .sec-btn {
+        height: 30px !important;
+        line-height: 30px !important;
+        border-radius: 4px !important;
+      }
+      
+      button[mat-raised-button],
+      .btn {
+        border-radius: 4px !important;
+      }
+    }
+  }
+}
+
+// View Reports Component Overrides (for retail submodule)
+app-menu {
+  .secondary-router-container {
+    view-retail-reports {
+      .report-section {
+        background-color: transparent !important;
+      }
+      
+      label:not(.LW14) {
+        margin-bottom: 0 !important;
+      }
+    }
+  }
 }

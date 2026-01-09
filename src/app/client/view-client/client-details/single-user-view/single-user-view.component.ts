@@ -7,6 +7,7 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
 
 
 @Component({
+  standalone: false,
   selector: 'app-single-user-view',
   templateUrl: './single-user-view.component.html',
   styleUrls: ['./single-user-view.component.scss'],

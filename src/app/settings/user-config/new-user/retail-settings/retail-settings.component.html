@@ -3,8 +3,8 @@
     <div class="settings-div h-100 d-flex">
       <div class="retail-settings-left pl-4">
         <ng-scrollbar [autoHide]="true">
-          <mat-form-field class=" pt-3 w250" [floatLabel]="floatLabel">
-            <mat-select [attr.automationId]="'Dd_retailSettings_roleName'" formControlName="rolename" (selectionChange)="OnRoleChange($event)" placeholder="{{caption.setting.RoleName}}">
+          <mat-form-field class=" pt-3 w250" [floatLabel]="floatLabel">  <mat-label>{{caption.setting.RoleName}}</mat-label>
+            <mat-select [attr.automationId]="'Dd_retailSettings_roleName'" formControlName="rolename" (selectionChange)="OnRoleChange($event)">
               <mat-option *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -51,9 +51,8 @@
             </div>
 
             <div class="commission float-left pl-3">
-              <mat-form-field class="" [floatLabel]="floatLabel">
-                <input [attr.automationId]="'Txt_retailSettings_commissionClass'" matInput autocomplete="off" [required]="this.isCommissionClassRequired" placeholder="{{caption.setting.CommissionClass}}" [maxlength]="9"
-                  inputtype="nonnegative,nodecimal" formControlName="commissionclass">
+              <mat-form-field class="" [floatLabel]="floatLabel">  <mat-label>{{caption.setting.CommissionClass}}</mat-label>
+                <input [attr.automationId]="'Txt_retailSettings_commissionClass'" matInput autocomplete="off" [required]="this.isCommissionClassRequired" [maxlength]="9" inputtype="nonnegative,nodecimal" formControlName="commissionclass">
                 <mat-error class="" *ngIf="retailSettingsFormGrp.controls['commissionclass'].hasError('required') && !retailSettingsFormGrp.controls['commissionclass'].valid">
                   {{caption.setting.MissingCommissionClass}}
                 </mat-error>

@@ -4,6 +4,7 @@ import { ImageData} from '../../shared-models';
 import * as _ from 'lodash';
 
 @Component({
+  standalone: false,
   selector: 'app-img-thumbnail',
   templateUrl: './img-thumbnail.component.html',
   styleUrls: ['./img-thumbnail.component.scss'],

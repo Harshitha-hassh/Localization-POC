@@ -10,6 +10,7 @@ import * as _ from 'lodash'
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 
 @Component({
+  standalone: false,
   selector: 'app-quickid-config',
   templateUrl: './quickid-config.component.html',
   styleUrls: ['./quickid-config.component.scss'],

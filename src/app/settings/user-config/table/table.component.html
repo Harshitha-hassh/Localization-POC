@@ -2,10 +2,8 @@
   <form class="w-100 h-100" [formGroup]="table">
     <div class="page-header" id="pageHeader" (window:resize)="calculateWidth()">
       <mat-form-field *ngIf="options ? options[0].Searchable : false" class="spa-searchbox searchpt custSearchbox"
-        [floatLabel]="floatLabelNever" id="searchInput">
-        <input #tableInput matInput autocomplete="off" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
-          type="text" placeholder="{{captions.common.SearchBy}} {{PlaceHoldertext}}" value="" (keypress)="currentPage=1"
-          (ngModelChange)="viewCheckedFlag=false">
+        [floatLabel]="floatLabelNever" id="searchInput">  
+        <input #tableInput matInput autocomplete="off" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" placeholder="{{captions.common.SearchBy}} {{PlaceHoldertext}}" type="text" value="" (keypress)="currentPage=1" (ngModelChange)="viewCheckedFlag=false">
         <i [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor"
           (click)="searchText='';viewCheckedFlag = false"></i>
       </mat-form-field>
@@ -40,10 +38,8 @@
           <ng-template [ngSwitchCase]="'roleSetup'">
             <div class='outletsHeader d-flex flex-wrap'>
               <form [formGroup]="roleSetup">
-                <mat-form-field [floatLabel]="floatLabel" class="role-name">
-                  <input matInput placeholder="{{captions.retailsetup.RoleName}}" (input)="UpdateValidation()"
-                    formControlName="roleName" autofocus="false" autocomplete="off" [readonly]="isRoleSetUpReadOnly"
-                    [maxlength]="250">
+                <mat-form-field [floatLabel]="floatLabel" class="role-name">  <mat-label>{{captions.retailsetup.RoleName}}</mat-label>
+                  <input matInput (input)="UpdateValidation()" formControlName="roleName" autofocus="false" autocomplete="off" [readonly]="isRoleSetUpReadOnly" [maxlength]="250">
                   <mat-error class=""
                     *ngIf="!isRoleSetUpReadOnly && (roleSetup.controls['roleName'].hasError('required') && !roleSetup.controls['roleName'].valid)">
                     {{this.captions.retailsetup.MissingRoleName}}
@@ -75,10 +71,8 @@
                   <app-ag-toggle [toggleInputs]="showInactiveToggleInputs" (valueChange)="sliderChange($event)"></app-ag-toggle>
                 </div>
                 <mat-form-field class="searchArea spa-searchbox custSearchbox" floatLabel="never"
-                  [ngClass]="enableToggleButton ? 'searchWidth': ''">
-                  <input #tableInput matInput autocomplete="off" style="width:90%;" [(ngModel)]="searchText"
-                    [ngModelOptions]="{standalone: true}" type="text" placeholder="{{PlaceHoldertext}}"
-                    [maxlength]="250" value="" (keypress)="currentPage=1" (ngModelChange)="viewCheckedFlag=false">
+                  [ngClass]="enableToggleButton ? 'searchWidth': ''">  <mat-label>{{PlaceHoldertext}}</mat-label>
+                  <input #tableInput matInput autocomplete="off" style="width:90%;" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" type="text" [maxlength]="250" value="" (keypress)="currentPage=1" (ngModelChange)="viewCheckedFlag=false">
                   <i [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor"
                     (click)="searchText='';viewCheckedFlag = false"></i>
                 </mat-form-field>

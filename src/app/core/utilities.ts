@@ -1105,7 +1105,7 @@ export class Utilities extends CommonUtilities implements OnDestroy {
 //     return dialogRef;
 // }
 
-    getMsalAuthParams(): AuthenticationParameters {
+    getMsalAuthParams(): { scopes: string[] } {
         return {
             scopes : Window.prototype.MsalConfig.Scopes
         };

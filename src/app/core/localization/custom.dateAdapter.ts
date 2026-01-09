@@ -26,7 +26,7 @@ export class CustomDateAdapter extends NativeDateAdapter {
     private PropertyInfo: PropertyInformation,
     @Inject(PLATFORM_ID) platformId: Object
   ) {
-    super(localization.localeCode, new Platform(platformId));
+    super(localization.localeCode);
   }
   format(date: Date, displayFormat: any): string {
     let data = moment;

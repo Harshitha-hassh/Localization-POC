@@ -1,0 +1,41 @@
+// =============================================================================
+// Paginator Token-Based Overrides (Angular Material v20)
+// =============================================================================
+// Migrated from legacy .mat-paginator selectors to MDC token-based styling.
+// =============================================================================
+
+@import '../../assets/sass/abstracts/variables';
+
+// =============================================================================
+// PAGINATOR BACKGROUND RESET
+// =============================================================================
+
+.mat-mdc-paginator {
+  background: unset;
+}
+
+// =============================================================================
+// PAGINATOR CONTAINER CENTERING
+// =============================================================================
+
+.mat-mdc-paginator-container {
+  justify-content: center;
+}
+
+// =============================================================================
+// WRAPPER CLASS: app-paginator
+// Use this class on parent containers for paginator customizations
+// =============================================================================
+
+.app-paginator {
+  // Uses global tokens - centering is already applied globally above
+}
+
+// =============================================================================
+// PAGINATOR WITH BACKGROUND
+// =============================================================================
+
+.app-paginator-with-bg {
+  --mat-paginator-container-background-color: #{$ag_grey-lightest};
+}
+

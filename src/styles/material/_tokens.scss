@@ -1,0 +1,391 @@
+// =============================================================================
+// Angular Material v20 Token-Based Theme Configuration
+// =============================================================================
+// This file contains all design tokens for Angular Material components.
+// Tokens use the official MDC token naming convention.
+// Reference: https://material.angular.io/guide/theming
+// =============================================================================
+
+@use '@angular/material' as mat;
+
+// =============================================================================
+// COLOR TOKENS
+// =============================================================================
+
+// Import your app's color variables
+@import '../../assets/sass/abstracts/variables';
+
+// Primary color tokens
+$app-primary-color: $theme-base-color;
+$app-primary-color-light: $ag_base-color;
+$app-error-color: $new_mat-error;
+$app-text-color: #525252;
+$app-border-color: #b5b5b5;
+$app-disabled-opacity: 0.5;
+
+// =============================================================================
+// FORM FIELD TOKENS
+// =============================================================================
+
+// Form Field Tokens (Angular Material v20)
+$form-field-tokens: (
+  // Container
+  --mat-form-field-container-height: 40px,
+  --mat-form-field-container-text-size: 14px,
+  --mat-form-field-container-text-font: $ag_sourcesans-semibold,
+  
+  // Label Colors (Outlined)
+  --mat-form-field-outlined-label-text-color: $app-text-color,
+  --mat-form-field-outlined-focus-label-text-color: $app-primary-color,
+  --mat-form-field-outlined-hover-label-text-color: $app-text-color,
+  --mat-form-field-outlined-disabled-label-text-color: rgba(0, 0, 0, 0.38),
+  --mat-form-field-outlined-error-label-text-color: $app-error-color,
+  --mat-form-field-outlined-error-hover-label-text-color: $app-error-color,
+  --mat-form-field-outlined-error-focus-label-text-color: $app-error-color,
+  
+  // Outline Colors
+  --mat-form-field-outlined-outline-color: $app-border-color,
+  --mat-form-field-outlined-focus-outline-color: $app-primary-color,
+  --mat-form-field-outlined-hover-outline-color: $app-border-color,
+  --mat-form-field-outlined-disabled-outline-color: rgba(0, 0, 0, 0.1),
+  --mat-form-field-outlined-error-outline-color: $app-error-color,
+  --mat-form-field-outlined-error-hover-outline-color: $app-error-color,
+  --mat-form-field-outlined-error-focus-outline-color: $app-error-color,
+  
+  // Outline Width
+  --mat-form-field-outlined-outline-width: 1px,
+  --mat-form-field-outlined-focus-outline-width: 2px,
+);
+
+// =============================================================================
+// SELECT TOKENS
+// =============================================================================
+
+$select-tokens: (
+  // Trigger text styling
+  --mat-select-trigger-text-size: 14px,
+  --mat-select-trigger-text-font: $ag_sourcesans-semibold,
+  --mat-select-placeholder-text-color: rgba(0, 0, 0, 0.6),
+  --mat-select-enabled-trigger-text-color: #525252,
+  --mat-select-disabled-trigger-text-color: rgba(0, 0, 0, 0.38),
+  // Arrow styling
+  --mat-select-arrow-transform: none,
+  --mat-select-enabled-arrow-color: $app-primary-color,
+  --mat-select-focused-arrow-color: $app-primary-color,
+  --mat-select-disabled-arrow-color: rgba(0, 0, 0, 0.38),
+  // Panel styling
+  --mat-select-panel-background-color: #ffffff,
+  // Option styling
+  --mat-option-selected-state-layer-color: rgba(0, 0, 0, 0.04),
+  --mat-option-hover-state-layer-color: rgba(0, 0, 0, 0.04),
+  --mat-option-focus-state-layer-color: rgba(0, 0, 0, 0.04),
+  --mat-option-label-text-size: 14px,
+  --mat-option-label-text-line-height: 3em,
+  --mat-option-label-text-color: #525252,
+  --mat-option-selected-state-label-text-color: #525252,
+  // Pseudo checkbox (multi-select)
+  --mat-pseudo-checkbox-full-selected-icon-color: $theme-mat-ink-bar,
+  --mat-pseudo-checkbox-full-selected-checkmark-color: #ffffff,
+  --mat-pseudo-checkbox-full-unselected-icon-color: $app-primary-color,
+);
+
+// =============================================================================
+// CHECKBOX TOKENS
+// =============================================================================
+
+$checkbox-tokens: (
+  --mat-checkbox-selected-checkmark-color: #ffffff,
+  --mat-checkbox-selected-focus-icon-color: $theme-mat-ink-bar,
+  --mat-checkbox-selected-hover-icon-color: $theme-mat-ink-bar,
+  --mat-checkbox-selected-icon-color: $theme-mat-ink-bar,
+  --mat-checkbox-selected-pressed-icon-color: $theme-mat-ink-bar,
+  --mat-checkbox-unselected-focus-icon-color: $theme-mat-ink-bar,
+  --mat-checkbox-unselected-hover-icon-color: $theme-mat-ink-bar,
+  --mat-checkbox-unselected-icon-color: $theme-mat-ink-bar,
+  --mat-checkbox-selected-focus-state-layer-color: $theme-mat-ink-bar,
+  --mat-checkbox-selected-hover-state-layer-color: $theme-mat-ink-bar,
+  --mat-checkbox-unselected-focus-state-layer-color: $theme-mat-ink-bar,
+  --mat-checkbox-unselected-hover-state-layer-color: $theme-mat-ink-bar,
+  --mat-checkbox-state-layer-size: 16px,
+);
+
+// =============================================================================
+// RADIO BUTTON TOKENS
+// =============================================================================
+
+$radio-tokens: (
+  // Ripple colors
+  --mat-radio-checked-ripple-color: $theme-base-color,
+  --mat-radio-ripple-color: $theme-base-color,
+  --mat-radio-state-layer-size: 24px,
+  // Selected state
+  --mat-radio-selected-icon-color: $theme-base-color,
+  --mat-radio-selected-hover-icon-color: $theme-base-color,
+  --mat-radio-selected-focus-icon-color: $theme-base-color,
+  --mat-radio-selected-pressed-icon-color: $theme-base-color,
+  // Unselected state
+  --mat-radio-unselected-icon-color: #757575,
+  --mat-radio-unselected-hover-icon-color: #757575,
+  --mat-radio-unselected-focus-icon-color: #757575,
+  --mat-radio-unselected-pressed-icon-color: #757575,
+  // Disabled state
+  --mat-radio-disabled-selected-icon-color: rgba(0, 0, 0, 0.38),
+  --mat-radio-disabled-unselected-icon-color: rgba(0, 0, 0, 0.38),
+);
+
+// =============================================================================
+// SLIDE TOGGLE TOKENS (Angular Material v20)
+// =============================================================================
+
+$slide-toggle-tokens: (
+  // Track dimensions
+  --mat-slide-toggle-track-height: 20px,
+  --mat-slide-toggle-track-width: 40px,
+  --mat-slide-toggle-track-shape: 10px,
+  // Handle dimensions
+  --mat-slide-toggle-handle-height: 16px,
+  --mat-slide-toggle-handle-width: 16px,
+  --mat-slide-toggle-handle-shape: 8px,
+  // State layer size
+  --mat-slide-toggle-state-layer-size: 32px,
+  // Selected (ON) state colors
+  --mat-slide-toggle-selected-track-color: $theme-mat-ink-bar,
+  --mat-slide-toggle-selected-hover-track-color: $theme-mat-ink-bar,
+  --mat-slide-toggle-selected-focus-track-color: $theme-mat-ink-bar,
+  --mat-slide-toggle-selected-pressed-track-color: $theme-mat-ink-bar,
+  --mat-slide-toggle-selected-handle-color: #ffffff,
+  --mat-slide-toggle-selected-hover-handle-color: #ffffff,
+  --mat-slide-toggle-selected-focus-handle-color: #ffffff,
+  --mat-slide-toggle-selected-pressed-handle-color: #ffffff,
+  // Unselected (OFF) state colors
+  --mat-slide-toggle-unselected-track-color: #c4c4c4,
+  --mat-slide-toggle-unselected-hover-track-color: #c4c4c4,
+  --mat-slide-toggle-unselected-focus-track-color: #c4c4c4,
+  --mat-slide-toggle-unselected-pressed-track-color: #c4c4c4,
+  --mat-slide-toggle-unselected-handle-color: #ffffff,
+  --mat-slide-toggle-unselected-hover-handle-color: #ffffff,
+  --mat-slide-toggle-unselected-focus-handle-color: #ffffff,
+  --mat-slide-toggle-unselected-pressed-handle-color: #ffffff,
+  // Disabled state
+  --mat-slide-toggle-disabled-selected-track-color: $theme-mat-ink-bar,
+  --mat-slide-toggle-disabled-unselected-track-color: #c4c4c4,
+  --mat-slide-toggle-disabled-selected-handle-color: #ffffff,
+  --mat-slide-toggle-disabled-unselected-handle-color: #ffffff,
+);
+
+// =============================================================================
+// TAB TOKENS
+// =============================================================================
+
+$tab-tokens: (
+  // Active indicator (ink bar)
+  --mat-tab-active-indicator-color: $theme-base-color,
+  --mat-tab-active-indicator-height: 4px,
+  --mat-tab-active-indicator-shape: 0,
+  // Label text styling
+  --mat-tab-label-text-size: 14px,
+  --mat-tab-label-text-weight: 600,
+  --mat-tab-label-text-font: $ag_lato-bold,
+  --mat-tab-label-text-tracking: normal,
+  // Label colors
+  --mat-tab-active-label-text-color: $app-primary-color,
+  --mat-tab-inactive-label-text-color: $ag_grey-darkest,
+  --mat-tab-active-hover-label-text-color: $app-primary-color,
+  --mat-tab-inactive-hover-label-text-color: $ag_grey-darkest,
+  --mat-tab-active-focus-label-text-color: $app-primary-color,
+  --mat-tab-inactive-focus-label-text-color: $ag_grey-darkest,
+  // Container
+  --mat-tab-container-height: 48px,
+);
+
+// =============================================================================
+// BUTTON TOGGLE TOKENS
+// =============================================================================
+
+$button-tokens: (
+  // Filled (Primary) button
+  --mat-button-filled-container-color: $app-primary-color,
+  --mat-button-filled-label-text-color: #ffffff,
+  --mat-button-filled-container-shape: 4px,
+  --mat-button-filled-disabled-container-color: rgba(0, 0, 0, 0.12),
+  --mat-button-filled-disabled-label-text-color: rgba(0, 0, 0, 0.38),
+  
+  // Outlined button
+  --mat-button-outlined-outline-color: $app-primary-color,
+  --mat-button-outlined-label-text-color: $app-primary-color,
+  --mat-button-outlined-container-shape: 4px,
+  
+  // Text button
+  --mat-button-text-label-text-color: $app-primary-color,
+);
+
+// =============================================================================
+// BUTTON TOGGLE TOKENS
+// =============================================================================
+
+$button-toggle-tokens: (
+  --mat-button-toggle-legacy-height: 43px,
+  --mat-button-toggle-legacy-text-color: inherit,
+  --mat-button-toggle-divider-color: $ag_expansion-hdr_border,
+  --mat-button-toggle-legacy-selected-state-background-color: $ag_expansion-hdr_bc,
+  --mat-button-toggle-legacy-selected-state-text-color: $ag_black,
+);
+
+// =============================================================================
+// DATEPICKER TOKENS
+// =============================================================================
+
+$datepicker-tokens: (
+  // Calendar container
+  --mat-datepicker-calendar-container-background-color: #ffffff,
+  // Calendar header
+  --mat-datepicker-calendar-header-text-color: #ffffff,
+  --mat-datepicker-calendar-period-button-text-color: #ffffff,
+  --mat-datepicker-calendar-period-button-icon-color: #ffffff,
+  --mat-datepicker-calendar-navigation-button-icon-color: #ffffff,
+  // Calendar dates
+  --mat-datepicker-calendar-date-selected-state-background-color: $app-primary-color,
+  --mat-datepicker-calendar-date-selected-state-text-color: #ffffff,
+  --mat-datepicker-calendar-date-today-outline-color: $app-primary-color,
+  --mat-datepicker-calendar-date-focus-state-background-color: $app-primary-color,
+  --mat-datepicker-calendar-date-hover-state-background-color: rgba(0, 0, 0, 0.04),
+  // Toggle icon
+  --mat-datepicker-toggle-icon-color: $app-primary-color,
+  --mat-datepicker-toggle-active-state-icon-color: $app-primary-color,
+);
+
+// =============================================================================
+// STEPPER TOKENS
+// =============================================================================
+
+$stepper-tokens: (
+  --mat-stepper-header-height: 50px,
+  --mat-stepper-container-color: transparent,
+  // Icon colors
+  --mat-stepper-header-icon-background-color: $app-primary-color,
+  --mat-stepper-header-icon-foreground-color: #ffffff,
+  --mat-stepper-header-selected-state-icon-background-color: $app-primary-color,
+  --mat-stepper-header-selected-state-icon-foreground-color: #ffffff,
+  --mat-stepper-header-done-state-icon-background-color: $app-primary-color,
+  --mat-stepper-header-done-state-icon-foreground-color: #ffffff,
+  --mat-stepper-header-edit-state-icon-background-color: rgba(0, 0, 0, 0.5),
+  --mat-stepper-header-edit-state-icon-foreground-color: #ffffff,
+  // Label colors
+  --mat-stepper-header-selected-state-label-text-color: $app-primary-color,
+  --mat-stepper-header-label-text-color: rgba(0, 0, 0, 0.54),
+  // Line
+  --mat-stepper-line-color: rgba(0, 0, 0, 0.5),
+);
+
+// =============================================================================
+// MENU TOKENS
+// =============================================================================
+
+$menu-tokens: (
+  --mat-menu-container-color: #ffffff,
+  --mat-menu-container-shape: 4px,
+  --mat-menu-item-label-text-size: 14px,
+  --mat-menu-item-label-text-line-height: 40px,
+  --mat-menu-item-hover-state-layer-color: rgba(0, 0, 0, 0.04),
+  --mat-menu-item-focus-state-layer-color: rgba(0, 0, 0, 0.04),
+);
+
+// =============================================================================
+// DIALOG TOKENS
+// =============================================================================
+
+$dialog-tokens: (
+  --mat-dialog-container-color: #ffffff,
+  --mat-dialog-container-shape: 4px,
+  --mat-dialog-container-max-width: 100vw,
+  --mat-dialog-container-small-max-width: 100vw,
+  --mat-dialog-supporting-text-color: inherit,
+  --mat-dialog-supporting-text-font: inherit,
+  --mat-dialog-supporting-text-size: 14px,
+  --mat-dialog-supporting-text-line-height: 1.5,
+  --mat-dialog-supporting-text-tracking: normal,
+  --mat-dialog-supporting-text-weight: 400,
+);
+
+// =============================================================================
+// PAGINATOR TOKENS
+// =============================================================================
+
+$paginator-tokens: (
+  --mat-paginator-container-background-color: transparent,
+  --mat-paginator-container-text-size: 14px,
+  --mat-paginator-enabled-icon-color: $app-primary-color,
+  --mat-paginator-disabled-icon-color: rgba(0, 0, 0, 0.38),
+);
+
+// =============================================================================
+// MIXIN: Apply all tokens
+// =============================================================================
+
+@mixin apply-material-tokens() {
+  // Form field tokens
+  @each $token, $value in $form-field-tokens {
+    #{$token}: #{$value};
+  }
+  
+  // Select tokens
+  @each $token, $value in $select-tokens {
+    #{$token}: #{$value};
+  }
+  
+  // Checkbox tokens
+  @each $token, $value in $checkbox-tokens {
+    #{$token}: #{$value};
+  }
+  
+  // Radio tokens
+  @each $token, $value in $radio-tokens {
+    #{$token}: #{$value};
+  }
+  
+  // Slide toggle tokens
+  @each $token, $value in $slide-toggle-tokens {
+    #{$token}: #{$value};
+  }
+  
+  // Tab tokens
+  @each $token, $value in $tab-tokens {
+    #{$token}: #{$value};
+  }
+  
+  // Button tokens
+  @each $token, $value in $button-tokens {
+    #{$token}: #{$value};
+  }
+  
+  // Button toggle tokens
+  @each $token, $value in $button-toggle-tokens {
+    #{$token}: #{$value};
+  }
+  
+  // Datepicker tokens
+  @each $token, $value in $datepicker-tokens {
+    #{$token}: #{$value};
+  }
+  
+  // Stepper tokens
+  @each $token, $value in $stepper-tokens {
+    #{$token}: #{$value};
+  }
+  
+  // Menu tokens
+  @each $token, $value in $menu-tokens {
+    #{$token}: #{$value};
+  }
+  
+  // Dialog tokens
+  @each $token, $value in $dialog-tokens {
+    #{$token}: #{$value};
+  }
+  
+  // Paginator tokens
+  @each $token, $value in $paginator-tokens {
+    #{$token}: #{$value};
+  }
+}
+

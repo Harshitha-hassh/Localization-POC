@@ -29,6 +29,7 @@ import { KeyboardMenuNavigationService } from 'src/app/common/services/keyboard-
 import * as GlobalConst from 'src/app/retail/shared/globalsContant';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 @Component({
+  standalone: false,
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],

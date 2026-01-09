@@ -8,6 +8,10 @@
     align-items: center;
   }
 
+  .custom-wrap-sect {
+    align-items: center;
+  }
+
   .spa-primary-disabled
   {
     background-color: #e1e1e1!important;
@@ -23,12 +27,55 @@
 
 
   .custom-aligns{
-    .mat-form-field
+    .mat-mdc-form-field
     {
       width: 350px!important;
+      height: 30px !important;
     }
-    .mat-form-field-wrapper {
-      padding-bottom: 0;
+    .mat-mdc-form-field-wrapper {
+      padding-bottom: 0 !important;
+   }
+   .mdc-text-field {
+      height: 30px !important;
+      padding: 0 !important;
+   }
+   .mdc-text-field--filled {
+      background-color: #ffffff !important;
+      border: 1px solid #d6d9d6 !important;
+      border-radius: 3px !important;
+   }
+   .mat-mdc-form-field-subscript-wrapper {
+      display: none;
+   }
+   .mat-mdc-text-field-wrapper {
+      height: 30px !important;
+      padding: 0 !important;
+   }
+   .mat-mdc-form-field-infix {
+      min-height: 30px !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      height: 30px !important;
+   }
+   .mat-mdc-form-field-input-control {
+      height: 30px !important;
+      padding-left: 10px !important;
+   }
+   .spa-searchbox {
+      height: 30px !important;
+      
+      input {
+        height: 30px !important;
+        line-height: 30px !important;
+      }
+      
+      .icon-Search,
+      .icon-Cancel {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        right: 10px !important;
+      }
    }
   }
 
@@ -41,6 +88,7 @@
     height: 74px;
     background: #F4F5F6;
     padding: 0px 30px 0px 33px; // padding right has been changed from 30px to 12px to make search box parellel to the table
+    align-items: center;
 
     .pt23 {
       padding-top: 23px;
@@ -49,6 +97,7 @@
     .btn-lnht {
       line-height: 30px !important;
       height: 30px !important;
+      padding: 0 16px !important;
     }
 
     .addappt{
@@ -78,6 +127,9 @@
     .clientappointmentactions {
       .mr5 {
         margin-right: 5px;
+      }
+      .mdc-button__label {
+        display: flex !important;
       }
     }
   }

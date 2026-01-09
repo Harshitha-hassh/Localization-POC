@@ -18,6 +18,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 @Component({
+  standalone: false,
   selector: 'app-report-schedular-wrapper',
   templateUrl: './report-schedular-wrapper.component.html',
   styleUrls: ['./report-schedular-wrapper.component.scss'],

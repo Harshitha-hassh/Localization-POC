@@ -12,6 +12,7 @@ import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/u
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Component({
+  standalone: false,
   selector: 'app-retail-global-search',
   templateUrl: './global-search.component.html',
   styleUrls: ['./global-search.component.scss'],

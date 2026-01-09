@@ -3,6 +3,7 @@ import { RouteLoaderService } from '../core/services/route-loader.service';
 import { menuTypes } from '../shared/enums/menu.constant';
 
 @Component({
+  standalone: false,
   selector: 'app-form',
   templateUrl: './client.component.html',
   styleUrls: ['./client.component.scss']

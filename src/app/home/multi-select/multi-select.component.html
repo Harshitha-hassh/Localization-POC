@@ -1,6 +1,6 @@
 <section [formGroup]="dropDownFrmGrp" class="multiple-select-dropdown">
-  <mat-form-field [ngClass]="customClass" *ngIf=" dropDownFilterData != null " [floatLabel]="floatLabel">
-    <mat-select attr.automationId='Dd_{{automationId}}_dropdownName' [placeholder]="dropDownName" name="dropDownName" [formControlName]="dropDownControlname" multiple>
+  <mat-form-field [ngClass]="customClass" *ngIf=" dropDownFilterData != null " [floatLabel]="floatLabel">  
+    <mat-select attr.automationId='Dd_{{automationId}}_dropdownName' name="dropDownName" [formControlName]="dropDownControlname" multiple>
       <mat-select-trigger>
         <span *ngIf="dropDownFrmGrp.controls[dropDownControlname].value.length !== dropDownFilterData.length">
           {{this.dropDownFrmGrp.controls[this.dropDownControlname].value ? this.dropDownFrmGrp.controls[this.dropDownControlname].value[0]?.description : ''}}

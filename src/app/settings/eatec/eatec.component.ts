@@ -16,6 +16,7 @@ import { UntypedFormControl } from '@angular/forms';
 
 
 @Component({
+  standalone: false,
   selector: 'app-eatec',
   templateUrl: './eatec.component.html',
   styleUrls: ['./eatec.component.scss'],
@@ -89,7 +90,7 @@ export class EatecComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.stopAutoEIRefresher();
-    this.destroyed$.next();
+    this.destroyed$.next(true);
     this.destroyed$.complete();
   }
 

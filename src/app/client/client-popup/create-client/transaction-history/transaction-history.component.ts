@@ -11,6 +11,7 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
 import { MultipackAPIModel,MultipackUIModel,MultpackHistoryRequest } from './multipack.model';
 import { TransactionWithItemNumber } from 'src/app/retail/shared/business/shared.modals'; 
 @Component({
+  standalone: false,
   selector: 'app-transaction-history',
   templateUrl: './transaction-history.component.html',
   styleUrls: ['./transaction-history.component.scss'],

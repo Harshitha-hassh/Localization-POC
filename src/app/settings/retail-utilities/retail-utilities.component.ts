@@ -3,6 +3,7 @@ import { menuTypes } from 'src/app/shared/enums/menu.constant';
 import { RouteLoaderService } from 'src/app/core/services/route-loader.service';
 import { RetailPropertyInformation } from 'src/app/core/services/retail-property-information.service';
 @Component({
+  standalone: false,
   selector: 'app-retail-utilities',
   templateUrl: './retail-utilities.component.html',
   styleUrls: ['./retail-utilities.component.scss']

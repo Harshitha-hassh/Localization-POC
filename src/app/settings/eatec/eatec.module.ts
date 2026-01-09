@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../retail/material-module';
-import { ScrollbarModule } from 'ngx-scrollbar';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 import { RetailSharedModule } from '../../retail/shared/retail-shared.module';
 import { EatecRoutingModule } from './eatec-routing.module';
 import { EatecSharedModule } from 'src/app/eatecui/source/shared/shared.module';
@@ -15,7 +15,7 @@ import { AgilysysPopupModule } from 'src/app/eatecui/source/agilysys-popup/agily
         FormsModule,
         ReactiveFormsModule,
         MaterialModule,
-        ScrollbarModule,
+        NgScrollbarModule,
         EatecRoutingModule,
         RetailSharedModule,
         EatecSharedModule,

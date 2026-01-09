@@ -13,8 +13,8 @@
           </span>
       </div>
       <div>
-        <!-- <mat-form-field class="" [floatLabel]="floatLabel">
-          <mat-select [attr.automationId]="'Dd_personalInformation_title'" [placeholder]="captions.CTitle" formControlName="title" [required]="customRequired.title">
+        <!-- <mat-form-field class="" [floatLabel]="floatLabel">  <mat-label>{{captions.CTitle}}</mat-label>
+          <mat-select [attr.automationId]="'Dd_personalInformation_title'" formControlName="title" [required]="customRequired.title">
             <mat-option *ngFor="let title of titles" [value]="title.id">{{title.value}}</mat-option>
           </mat-select>
           <mat-error class=""
@@ -26,30 +26,24 @@
       </div>
       </div>
       <div class="">
-        <mat-form-field class="" [floatLabel]="floatLabel">
-          <input [attr.automationId]="'Txt_personalInformation_firstName'" matInput [placeholder]="captions.CFirstName"
-            [maxlength]="1000" style="text-transform:capitalize" value={{personalDetails.firstName}} autocomplete="off"
-            formControlName="firstName" required>
+        <mat-form-field class="" [floatLabel]="floatLabel">  <mat-label>{{captions.CFirstName}}</mat-label>
+          <input [attr.automationId]="'Txt_personalInformation_firstName'" matInput [maxlength]="1000" style="text-transform:capitalize" value={{personalDetails.firstName}} autocomplete="off" formControlName="firstName" required>
           <mat-error class=""
             *ngIf="FormGrp.controls['firstName'].hasError('required') && FormGrp.controls['firstName'].touched && !FormGrp.controls['firstName'].valid">
             {{captions.MissingFirstName}}
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field class=" ml-3 mr-3" [floatLabel]="floatLabel">
-          <input [attr.automationId]="'Txt_personalInformation_lastName'" matInput [placeholder]="captions.CLastName"
-            [maxlength]="1000" style="text-transform:capitalize" value={{personalDetails.lastName}}
-            formControlName="lastName" required>
+        <mat-form-field class=" ml-3 mr-3" [floatLabel]="floatLabel">  <mat-label>{{captions.CLastName}}</mat-label>
+          <input [attr.automationId]="'Txt_personalInformation_lastName'" matInput [maxlength]="1000" style="text-transform:capitalize" value={{personalDetails.lastName}} formControlName="lastName" required>
           <mat-error class=""
             *ngIf="FormGrp.controls['lastName'].hasError('required') && FormGrp.controls['lastName'].touched && !FormGrp.controls['lastName'].valid">
             {{captions.MissingLastName}}
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="" [floatLabel]="floatLabel">
-          <input [attr.automationId]="'Txt_personalInformation_pronounced'" matInput [placeholder]="captions.Pronounced"
-            [maxlength]="50" style="text-transform:capitalize" value={{personalDetails.pronounce}}
-            formControlName="pronounced">
+        <mat-form-field class="" [floatLabel]="floatLabel">  <mat-label>{{captions.Pronounced}}</mat-label>
+          <input [attr.automationId]="'Txt_personalInformation_pronounced'" matInput [maxlength]="50" style="text-transform:capitalize" value={{personalDetails.pronounce}} formControlName="pronounced">
         </mat-form-field>
       </div>
       <div class="">
@@ -82,7 +76,7 @@
               <div class="dob-right">*</div>
             </div> -->
             <div class="d-inline-block client-date-picker">
-              <mat-form-field class="width_180px date-picker-width" appearance="legacy" [floatLabel]="floatLabelNever">
+              <mat-form-field class="width_180px date-picker-width" appearance="outline" [floatLabel]="floatLabelNever">
                 <mat-label>{{captions.CDateOfBirth}}</mat-label>
                 <input [attr.automationId]="'Txt_personalInformation_dob'" [required]="customRequired.dob"
                   dateRestricter [max]="maxDate" matInput [matDatepicker]="picker" [placeholder]="placeHolderFormat"
@@ -111,10 +105,8 @@
 
       <div class="patron-section">
         <mat-form-field [floatLabel]="floatLabel" class="mr-3"
-          [ngClass]="!isCMSConfigured || isPatronIdAvailable ? 'button_invalid' : ''">
-          <input [attr.automationId]="'Txt_personalInformation_patronId'" matInput [placeholder]="captions.PatronID"
-            formControlName="patronid" [readonly]="!isCMSConfigured || isPatronIdAvailable"
-            (focusout)="checkPatronValidation()">
+          [ngClass]="!isCMSConfigured || isPatronIdAvailable ? 'button_invalid' : ''">  <mat-label>{{captions.PatronID}}</mat-label>
+          <input [attr.automationId]="'Txt_personalInformation_patronId'" matInput formControlName="patronid" [readonly]="!isCMSConfigured || isPatronIdAvailable" (focusout)="checkPatronValidation()">
           <mat-error class="" *ngIf="isCMSConfigured && !isPatronIdAvailable">
             {{captions.PlayerLookupNotHappened}}
           </mat-error>
@@ -140,9 +132,8 @@
         </button>
       </div>
       <div>
-        <mat-form-field class="button_invalid" [floatLabel]="floatLabel">
-          <input [attr.automationId]="'Txt_personalInformation_rank'" matInput [placeholder]="captions.Rank" readonly
-            formControlName="rank">
+        <mat-form-field class="button_invalid" [floatLabel]="floatLabel">  <mat-label>{{captions.Rank}}</mat-label>
+          <input [attr.automationId]="'Txt_personalInformation_rank'" matInput readonly formControlName="rank">
         </mat-form-field>
       </div>
 
@@ -154,25 +145,17 @@
           class="clearfix ">
           <div class="phone-controls-wrapper float-left width-490px">
             <div>
-              <mat-form-field class="inputwidth20 width-100px mr-3" [floatLabel]="floatLabel" [formGroupName]="i">
-                <mat-select [attr.automationId]="'Dd_personalInformation_phoneNo'" [required]="customRequired.phone"
-                  [placeholder]="captions.CPhone" ref-phonedropDown id="PhoneNumberLabel" name="TSpdd" class="LW14"
-                  formControlName="PhoneNumberLabel"
-                  (selectionChange)="setmandatory($event, 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', i ,item)">
+              <mat-form-field class="inputwidth20 width-100px mr-3" [floatLabel]="floatLabel" [formGroupName]="i">  <mat-label>{{captions.CPhone}}</mat-label>
+                <mat-select [attr.automationId]="'Dd_personalInformation_phoneNo'" [required]="customRequired.phone" ref-phonedropDown id="PhoneNumberLabel" name="TSpdd" class="LW14" formControlName="PhoneNumberLabel" (selectionChange)="setmandatory($event, 'PhoneNumber', 'countryCode', 'PhoneNumberLabel', i ,item)">
                   <mat-option></mat-option>
                   <mat-option *ngFor="let ct of contactTypePhone" [value]="ct.id">{{ct.description}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field class="width-20 mr-2 LW14 " [floatLabel]="floatLabel" [formGroupName]="i">
+              <mat-form-field class="width-20 mr-2 LW14 " [floatLabel]="floatLabel" [formGroupName]="i">  <mat-label>{{commonCaptions.CountryCode}}</mat-label>
                 <span *ngIf="CountryCodeRef.value" class="position-absolute">+</span>
-                <input [attr.automationId]="'Txt_personalInformation_countryCode'" matInput name="TSpi"
-                  [ngClass]="{'countryCodeInput': CountryCodeRef.value}" #CountryCodeRef
-                  [required]="customRequired.phone"
-                  (input)=" setmandatory($event,'countryCode','PhoneNumber', 'PhoneNumberLabel', i)"
-                  (blur)="phoneChange($event,'countryCode','PhoneNumber','PhoneNumberLabel',i)" [maxlength]="6"
-                  formControlName="countryCode" [placeholder]="commonCaptions.CountryCode">
+                <input [attr.automationId]="'Txt_personalInformation_countryCode'" matInput name="TSpi" [ngClass]="{'countryCodeInput': CountryCodeRef.value}" #CountryCodeRef [required]="customRequired.phone" (input)=" setmandatory($event,'countryCode','PhoneNumber', 'PhoneNumberLabel', i)" (blur)="phoneChange($event,'countryCode','PhoneNumber','PhoneNumberLabel',i)" [maxlength]="6" formControlName="countryCode">
               </mat-form-field>
 
               <mat-form-field class=" LW14 " [floatLabel]="floatLabel" [formGroupName]="i">
@@ -191,10 +174,8 @@
             </div>
             <div>
               <mat-form-field class="d-block width-380px" [floatLabel]="floatLabel"
-                *ngIf="item.get('PhoneNumberLabel').value === phoneTypes.office" [formGroupName]="i">
-                <input [attr.automationId]="'Txt_personalInformation_extension'" matInput
-                  [placeholder]="commonCaptions.lbl_extension" formControlName='Extension' inputtype="onlynumber"
-                  maxlength="5">
+                *ngIf="item.get('PhoneNumberLabel').value === phoneTypes.office" [formGroupName]="i">  <mat-label>{{commonCaptions.lbl_extension}}</mat-label>
+                <input [attr.automationId]="'Txt_personalInformation_extension'" matInput formControlName='Extension' inputtype="onlynumber" maxlength="5">
               </mat-form-field>
             </div>
           </div>
@@ -233,18 +214,15 @@
         <div *ngFor="let item of FormGrp.get('Email')['controls']; let j = index;let last = last" formArrayName="Email"
           class="w-100 emailDiv">
           <div class="float-left width-490px" [formGroupName]="j">
-            <mat-form-field class="inputwidth20 width-100px mr-3" [floatLabel]="floatLabel">
-              <mat-select [attr.automationId]="'Dd_personalInformation_email'"
-                (selectionChange)="onEmailChange($event, i ,item)" [required]="customRequired.email"
-                [placeholder]="captions.Email" (value)="selectedEmail" id="EmailSelect" name="TSedd" ref-emailDropdown
-                formControlName="EmailLabel" class="">
+            <mat-form-field class="inputwidth20 width-100px mr-3" [floatLabel]="floatLabel">  <mat-label>{{captions.Email}}</mat-label>
+              <mat-select [attr.automationId]="'Dd_personalInformation_email'" (selectionChange)="onEmailChange($event, i ,item)" [required]="customRequired.email" (value)="selectedEmail" id="EmailSelect" name="TSedd" ref-emailDropdown formControlName="EmailLabel" class="">
                 <mat-option></mat-option>
                 <mat-option *ngFor="let ct of contactTypeEmail" [value]="ct.id">{{ct.description}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="inputwidth70 width-287px" [floatLabel]="floatLabel">
+            <mat-form-field class="inputwidth70 width-319px" [floatLabel]="floatLabel">
               <input [attr.automationId]="'Txt_personalInformation_emailId'" matInput name="TSei"
                 (blur)="emailChange('EmailId','EmailLabel',j);" [maxlength]="75" inputtype="email" id="EmailInput"
                 formControlName="EmailId">
@@ -292,12 +270,8 @@
         <div *ngFor="let item of FormGrp.get('Address')['controls']; let j = index;let last=last"
           formArrayName="Address" class="clearfix">
           <div class="float-left width-490px">
-            <mat-form-field class="width-380px" [formGroupName]="j" [floatLabel]="floatLabel">
-              <input matInput [attr.automationId]="'Txt_personalInformation_address'"
-                [required]="customRequired.address" *ngIf="j==0" matGoogleMapsAutocomplete [options]='options'
-                (onAutocompleteSelected)="bindAddressFromGoogle($event,true,j)" name="TSei"
-                [maxlength]="255" id="AddressInput{{j}}" formControlName="addressLine"
-                placeholder="{{captions.CAddress}}">
+            <mat-form-field class="width-380px" [formGroupName]="j" [floatLabel]="floatLabel">  <mat-label>{{captions.CAddress}}</mat-label>
+              <input matInput [attr.automationId]="'Txt_personalInformation_address'" [required]="customRequired.address" *ngIf="j==0" matGoogleMapsAutocomplete [options]='options' (onAutocompleteSelected)="bindAddressFromGoogle($event,true,j)" name="TSei" [maxlength]="255" id="AddressInput{{j}}" formControlName="addressLine">
               <input matInput [required]="customRequired.address" *ngIf="j>0"
                 (onAutocompleteSelected)="bindAddressFromGoogle($event,true,j)" name="TSei" [maxlength]="255"
                 id="AddressInput{{j}}" formControlName="addressLine" placeholder="{{captions.CAddress}}">
@@ -320,44 +294,37 @@
           </div>
         </div>
       </div>
-      <mat-form-field class="mr-3" [floatLabel]="floatLabel">
-        <input [attr.automationId]="'Txt_personalInformation_postalCode'" matInput
-          [required]="customRequired.postalCode" [placeholder]="captions.PostalCode"
-          (blur)="PostalCodeChanged($event,false)" formControlName="postal_code" [maxlength]="10">
+      <mat-form-field class="mr-3" [floatLabel]="floatLabel">  <mat-label>{{captions.PostalCode}}</mat-label>
+        <input [attr.automationId]="'Txt_personalInformation_postalCode'" matInput [required]="customRequired.postalCode" (blur)="PostalCodeChanged($event,false)" formControlName="postal_code" [maxlength]="10">
         <mat-error class=""
           *ngIf="FormGrp.controls['postal_code'].hasError('required') && FormGrp.controls['postal_code'].touched && !FormGrp.controls['postal_code'].valid">
           {{captions.MissingPostalCode}}
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="mr-3" [floatLabel]="floatLabel">
-        <input [attr.automationId]="'Txt_personalInformation_city'" matInput [placeholder]="captions.City"
-          formControlName="city" [required]="customRequired.city" [maxlength]="50">
+      <mat-form-field class="mr-3" [floatLabel]="floatLabel">  <mat-label>{{captions.City}}</mat-label>
+        <input [attr.automationId]="'Txt_personalInformation_city'" matInput formControlName="city" [required]="customRequired.city" [maxlength]="50">
         <mat-error class=""
           *ngIf="FormGrp.controls['city'].hasError('required') && FormGrp.controls['city'].touched && !FormGrp.controls['city'].valid">
           {{captions.MissingCityInformation}}
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="" [floatLabel]="floatLabel">
-        <input [attr.automationId]="'Txt_personalInformation_county'" matInput [placeholder]="captions.County"
-          formControlName="county" [required]="customRequired.county" [maxlength]="50">
+      <mat-form-field class="" [floatLabel]="floatLabel">  <mat-label>{{captions.County}}</mat-label>
+        <input [attr.automationId]="'Txt_personalInformation_county'" matInput formControlName="county" [required]="customRequired.county" [maxlength]="50">
         <mat-error class=""
           *ngIf="FormGrp.controls['county'].hasError('required') && FormGrp.controls['county'].touched && !FormGrp.controls['county'].valid">
           {{captions.MissingCountyInformation}}
         </mat-error>
       </mat-form-field>
       <div>
-        <mat-form-field class="mr-3" [floatLabel]="floatLabel">
-          <input [attr.automationId]="'Txt_personalInformation_state'" matInput [placeholder]="captions.State"
-            [required]="customRequired.state" formControlName="state">
+        <mat-form-field class="mr-3" [floatLabel]="floatLabel">  <mat-label>{{captions.State}}</mat-label>
+          <input [attr.automationId]="'Txt_personalInformation_state'" matInput [required]="customRequired.state" formControlName="state">
           <mat-error class=""
             *ngIf="FormGrp.controls['state'].hasError('required') && FormGrp.controls['state'].touched && !FormGrp.controls['state'].valid">
             {{captions.MissingStateInformation}}
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="" [floatLabel]="floatLabel">
-          <input [attr.automationId]="'Txt_personalInformation_country'" matInput formControlName="country"
-            [matAutocomplete]="auto" [required]="customRequired.country" [placeholder]="captions.Country"
-            autocomplete="off" name="Country">
+        <mat-form-field class="" [floatLabel]="floatLabel">  <mat-label>{{captions.Country}}</mat-label>
+          <input [attr.automationId]="'Txt_personalInformation_country'" matInput formControlName="country" [matAutocomplete]="auto" [required]="customRequired.country" autocomplete="off" name="Country">
           <mat-error class=""
             *ngIf="FormGrp.controls['country'].hasError('required') && FormGrp.controls['country'].touched && !FormGrp.controls['country'].valid">
             {{captions.MissingCountryInformation}}

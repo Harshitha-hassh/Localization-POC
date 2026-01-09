@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector, ErrorHandler, APP_INITIALIZER } from '@angular/core';
+import { NgModule, Injector, ErrorHandler, APP_INITIALIZER, EnvironmentProviders, Type, Provider } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -36,6 +36,7 @@ import { CustomReuseStrategy } from '@shared/services/reuse-strategy';
 import { SessionLoaderService } from './common/services/sessionloader.service';
 import { GoogleMapsWrapperModule } from './common/services/googlemapswrapper.module';
 import { CommonSharedModule } from './common/shared/shared/shared.module';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
@@ -56,7 +57,7 @@ export function initializeApp(sessionService: SessionLoaderService) {
 declare module "@angular/core" {
   interface ModuleWithProviders<T = any> {
     ngModule: Type<T>;
-    providers?: Provider[];
+    providers?: (Provider | EnvironmentProviders)[];
   }
 }
 export const OtherOptions: MatTooltipDefaultOptions = {
@@ -136,7 +137,11 @@ export const OtherOptions: MatTooltipDefaultOptions = {
     {
       provide: 'EnablePagination',
       useValue: true
-    }
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' }
+    },
   ],
   bootstrap: [AppComponent]
 })

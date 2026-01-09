@@ -63,6 +63,7 @@ import { CommonControllersRoutes } from 'src/app/common/communication/common-rou
 import jwt_decode from 'jwt-decode';
 
 @Component({
+  standalone: false,
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],

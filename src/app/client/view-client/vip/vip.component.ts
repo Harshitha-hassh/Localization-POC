@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-vip',
   templateUrl: './vip.component.html',
   styleUrls: ['./vip.component.scss']

@@ -1,0 +1,157 @@
+// =============================================================================
+// Stepper Token-Based Overrides (Angular Material v20)
+// =============================================================================
+// Migrated from legacy .mat-stepper selectors to MDC token-based styling.
+// =============================================================================
+
+@import '../../assets/sass/abstracts/variables';
+
+// =============================================================================
+// STEPPER LAYOUT (full height)
+// =============================================================================
+
+.mat-stepper-horizontal,
+mat-horizontal-stepper,
+mat-stepper {
+  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.mat-horizontal-stepper-wrapper {
+  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+}
+
+.mat-horizontal-content-container {
+  padding: 0;
+  flex: 1 !important;
+  overflow: hidden;
+  min-height: 0;
+}
+
+// =============================================================================
+// STEPPER CONTENT VISIBILITY (Angular Material v20 class-based)
+// =============================================================================
+
+// Base stepper content - let Angular Material handle default state
+.mat-horizontal-stepper-content {
+  overflow: auto;
+}
+
+// Current/active step - must be visible with full height
+.mat-horizontal-stepper-content-current {
+  height: 100% !important;
+  display: block !important;
+  visibility: visible !important;
+  overflow: auto !important;
+}
+
+// Previous steps - hidden and collapsed
+.mat-horizontal-stepper-content-previous {
+  height: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  display: none !important;
+}
+
+// Inactive/future steps - hidden and collapsed
+.mat-horizontal-stepper-content-inactive {
+  height: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  display: none !important;
+}
+
+// =============================================================================
+// STEPPER HEADER
+// =============================================================================
+
+.mat-horizontal-stepper-header-container {
+  background-color: $ag_primary-header-bc;
+  flex-shrink: 0;
+}
+
+.mat-step-header {
+  height: 50px;
+  
+  &.cdk-keyboard-focused,
+  &.cdk-program-focused {
+    background: unset;
+  }
+}
+
+// =============================================================================
+// STEP ICON
+// =============================================================================
+
+.mat-step-icon {
+  width: 28px;
+  height: 28px;
+  
+  --mat-stepper-header-icon-background-color: #{$theme-base-color};
+  --mat-stepper-header-done-state-icon-background-color: #{$theme-base-color};
+  --mat-stepper-header-edit-state-icon-background-color: #{$theme-base-color};
+}
+
+.mat-step-icon-selected {
+  background-color: $theme-base-color;
+}
+
+// =============================================================================
+// STEP LABEL
+// =============================================================================
+
+.mat-step-label {
+  &.mat-step-label-active.mat-step-label-selected {
+    color: $theme-base-color;
+  }
+}
+
+// =============================================================================
+// STEPPER LINE
+// =============================================================================
+
+.mat-stepper-horizontal-line {
+  border-top-width: 3px;
+  border-top-color: rgba(0, 0, 0, 0.5);
+}
+
+.mat-step-header::before,
+.mat-step-header::after {
+  border-top-color: rgba(0, 0, 0, 0.5);
+}
+
+// =============================================================================
+// STEP EDIT STATE ICON
+// =============================================================================
+
+.mat-step-icon-state-edit {
+  background-color: rgba(0, 0, 0, 0.5);
+  
+  i {
+    font-size: 14px;
+  }
+}
+
+// =============================================================================
+// WRAPPER CLASS: app-stepper
+// Use this class on parent containers for stepper customizations
+// =============================================================================
+
+.app-stepper {
+  --mat-stepper-header-icon-background-color: #{$theme-base-color};
+  --mat-stepper-header-selected-state-label-text-color: #{$theme-base-color};
+  --mat-stepper-header-done-state-icon-background-color: #{$theme-base-color};
+  --mat-stepper-header-edit-state-icon-background-color: #{$theme-base-color};
+}
+
+// =============================================================================
+// HORIZONTAL STEPPER CLASS (custom app class)
+// =============================================================================
+
+.horizontal-stepper-class {
+  height: 100%;
+}

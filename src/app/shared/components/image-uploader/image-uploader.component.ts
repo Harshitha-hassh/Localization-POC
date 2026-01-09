@@ -7,6 +7,7 @@ import { AlertType } from 'src/app/common/Models/common.models';
 import { ButtonType } from 'src/app/common/enums/shared-enums';
 
 @Component({
+  standalone: false,
   selector: 'app-image-uploader',
   templateUrl: './image-uploader.component.html',
   styleUrls: ['./image-uploader.component.scss']

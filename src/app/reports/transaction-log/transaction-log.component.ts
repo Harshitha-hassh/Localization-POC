@@ -11,6 +11,7 @@ import { Host } from 'src/app/retail/shared/globalsContant';
 import { HttpMethod, HttpServiceCall } from 'src/app/retail/shared/service/http-call.service';
 import { routingMenuService } from 'src/app/common/components/menu/menu.service';
 @Component({
+  standalone: false,
   selector: 'app-transaction-log',
   templateUrl: './transaction-log.component.html',
   styleUrls: ['./transaction-log.component.scss'],

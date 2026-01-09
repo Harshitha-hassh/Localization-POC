@@ -15,6 +15,7 @@ import { GridType, Host, SPAScheduleBreakPoint } from 'src/app/common/shared/sha
 import { NewUserComponent } from '../new-user/new-user.component';
 import { AsideFilterConfig,FilterGroup } from 'src/app/common/Models/ag-models';
 @Component({
+  standalone: false,
   selector: 'app-user-setup',
   templateUrl: './user-setup.component.html',
   styleUrls: ['./user-setup.component.scss'],

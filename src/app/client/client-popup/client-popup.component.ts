@@ -15,6 +15,7 @@ import { PolicyType } from 'src/app/common/shared/shared.modal';
 import { TokenSharingCallbackRequestInfo } from 'src/app/retail/shared/business/shared.modals';
 
 @Component({
+  standalone: false,
   selector: 'app-client-popup',
   templateUrl: './client-popup.component.html',
   styleUrls: ['./client-popup.component.scss'],

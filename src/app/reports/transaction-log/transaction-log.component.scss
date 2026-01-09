@@ -28,7 +28,9 @@
     .customCalendar{
       position: absolute;
       right: 10px;
-      bottom: 0px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
     }
   }
   .right-contentreports{
@@ -67,7 +69,7 @@
     }
   }
 
-  .mat-tab-labels {
+  .mat-mdc-tab-labels {
     background: $mat-tab-labels;
   }
   .left-asidereports {

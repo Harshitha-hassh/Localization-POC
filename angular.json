@@ -41,6 +41,7 @@
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/ngx-toastr/toastr.css",
+              "./node_modules/ckeditor5/dist/ckeditor5.css",
               "src/app/eatecui/source/styles.scss",
               "src/styles.scss"
             ],
@@ -51,9 +52,11 @@
           },
           "configurations": {
             "development":{
-              "sourceMap": false,
+              "sourceMap": true,
               "aot": false,
-              "buildOptimizer": false
+              "buildOptimizer": false,
+              "optimization": false,
+              "outputHashing": "all"
             },
             "production": {
               "fileReplacements": [
@@ -86,21 +89,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Retail-UI:build"
+            "buildTarget": "Retail-UI:build"
           },
           "configurations": {
             "development": {
-              "browserTarget": "Retail-UI:build:development"
+              "buildTarget": "Retail-UI:build:development"
             },
             "production": {
-              "browserTarget": "Retail-UI:build:production"
+              "buildTarget": "Retail-UI:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Retail-UI:build"
+            "buildTarget": "Retail-UI:build"
           }
         },
         "test": {
@@ -136,6 +139,32 @@
           }
         }
       }
+    }
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "type": "component"
+    },
+    "@schematics/angular:directive": {
+      "type": "directive"
+    },
+    "@schematics/angular:service": {
+      "type": "service"
+    },
+    "@schematics/angular:guard": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:interceptor": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:module": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:pipe": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:resolver": {
+      "typeSeparator": "."
     }
   }
 }

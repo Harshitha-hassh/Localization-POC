@@ -97,40 +97,40 @@ button.hover_css.mat-button:hover {
         height: calc(100% - 128px);
 
         .clientTabLayout {
-            .mat-tab-group.mat-primary .mat-ink-bar {
+            .mat-mdc-tab-group.mat-primary .mdc-tab-indicator__content--underline {
                 // background:#c2a653;
                 height: 3px;
             }
-            .mat-tab-label {
+            .mat-mdc-tab {
                 // background: $color-container-bg;
 
                 align-items: unset;
                 padding: 8px 16px 0 16px !important;
             }
-            .mat-tab-label-content {
+            .mdc-tab__text-label {
                 font-family: $ag_lato-bold;
                 font-size: 14px;
                 color: $header-bg;
             }
-            .mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus,
-            .mat-tab-group.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus,
-            .mat-tab-nav-bar.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus,
-            .mat-tab-nav-bar.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus {
+            .mat-mdc-tab-group.mat-primary .mat-mdc-tab:not(.mat-mdc-tab-disabled):focus,
+            .mat-mdc-tab-group.mat-primary .mat-mdc-tab-link:not(.mat-mdc-tab-disabled):focus,
+            .mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab:not(.mat-mdc-tab-disabled):focus,
+            .mat-mdc-tab-nav-bar.mat-primary .mat-mdc-tab-link:not(.mat-mdc-tab-disabled):focus {
                 background: #f2f2f2;
             }
             .display_style {
                 display: none !important;
             }
-            //   .mat-tab-body{
+            //   .mat-mdc-tab-body{
             //       padding: 0 25px;
             //       margin-left: 8px;
             //       height:100%;
 
             //   }
-            .mat-tab-labels {
+            .mat-mdc-tab-labels {
                 padding-left: 10px;
             }
-            .mat-tab-body-wrapper {
+            .mat-mdc-tab-body-wrapper {
                 height: calc(100% - 48px);
             }
             .mat-dialog-title {
@@ -188,11 +188,11 @@ button.hover_css.mat-button:hover {
     // .example-form mat-form-field{
     //     height: 71px;
     // }
-    .mat-tab-body-wrapper {
+    .mat-mdc-tab-body-wrapper {
         height: 100%;
     }
 
-    .mat-tab-group {
+    .mat-mdc-tab-group {
         height: 100%;
     }
 

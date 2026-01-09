@@ -24,6 +24,7 @@ import { PropertySettingDataService } from 'src/app/retail/sytem-config/property
 import { IFrameInputs } from 'src/app/common/iframe-guest-search/iframe-guest-search.model';
 
 @Component({
+  standalone: false,
     selector: 'app-client-details',
     templateUrl: './client-details.component.html',
     styleUrls: ['./client-details.component.scss'],

@@ -12,6 +12,7 @@ import { DefaultGUID } from 'src/app/common/shared/shared/globalsContant';
 import { Localization } from 'src/app/common/localization/localization';
 
 @Component({
+  standalone: false,
   selector: 'app-notify-popup',
   templateUrl: './notify-popup.component.html',
   styleUrls: ['./notify-popup.component.scss'],

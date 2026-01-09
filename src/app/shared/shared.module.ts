@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 import { RetailStandaloneLocalization } from '../core/localization/retailStandalone-localization';
 import { MenuComponent } from './components/menu/menu.component';
 import { RetailGlobalSearchComponent } from './components/global-search/global-search.component';
-import { PopoverModule } from "ngx-smart-popover";
+import { PopoverModule } from "ngx-bootstrap/popover";
 import { TenantManagementCommunication } from './communication/services/tenantmanagement.service';
 import { AuthenticationCommunication } from './communication/services/authentication.service';
 import { RetailManagementCommunication } from './communication/services/retailmanagement.service';
@@ -44,6 +44,7 @@ import { NotificationDataService } from './data-services/notification.data.servi
 import { AllowedSpecialCharacterDirective } from './directives/allowedSpecialCharacter.directive';
 import { RetailIntegrationLogService } from '../retail/shared/service/retail-integrationLog.service';
 import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
+import { GOOGLE_MAP_API_KEY } from '../common/shared/shared/setupConstants';
 @NgModule({
     declarations: [
         MenuComponent,
@@ -79,7 +80,7 @@ import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/goog
         CommonSharedModule,
         NgxMaterialTimepickerModule,
         RetailSharedModule,
-        MatGoogleMapsAutocompleteModule
+        MatGoogleMapsAutocompleteModule.forRoot(GOOGLE_MAP_API_KEY)
     ],
     providers: [
         TenantManagementCommunication,

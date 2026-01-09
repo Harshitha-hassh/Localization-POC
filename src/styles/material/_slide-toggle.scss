@@ -1,0 +1,135 @@
+// =============================================================================
+// Slide Toggle Token-Based Overrides (Angular Material v20)
+// =============================================================================
+// Migrated from legacy .mat-slide-toggle selectors to MDC token-based styling.
+// Global tokens are defined in _tokens.scss and applied via :root.
+// This file contains only CSS overrides that can't be achieved with tokens.
+// =============================================================================
+
+@import '../../assets/sass/abstracts/variables';
+
+// =============================================================================
+// HIDE SWITCH ICONS (for clean appearance)
+// =============================================================================
+
+.mdc-switch__icons {
+  display: none !important;
+}
+
+// =============================================================================
+// HIDE RIPPLE EFFECT
+// =============================================================================
+
+.mat-mdc-slide-toggle .mat-mdc-slide-toggle-ripple,
+.mdc-switch__ripple {
+  display: none !important;
+}
+
+// =============================================================================
+// TRACK STYLING
+// =============================================================================
+
+.mdc-switch .mdc-switch__track {
+  height: 20px !important;
+  width: 40px !important;
+  min-width: 40px !important;
+  border-radius: 10px !important;
+  
+  // Hide the ::before and ::after pseudo-elements that can interfere
+  &::before,
+  &::after {
+    display: none !important;
+  }
+}
+
+// Selected track color
+.mdc-switch--selected .mdc-switch__track {
+  background: $theme-mat-ink-bar !important;
+}
+
+// Unselected track color
+.mdc-switch--unselected .mdc-switch__track {
+  background: #c4c4c4 !important;
+}
+
+// =============================================================================
+// HANDLE TRACK (the container that moves the handle)
+// =============================================================================
+
+.mdc-switch .mdc-switch__handle-track {
+  width: 16px !important;
+  height: 100% !important;
+  position: absolute !important;
+  left: 2px !important;
+  top: 0 !important;
+  transition: transform 75ms ease-in-out !important;
+}
+
+// Selected: move handle to the right (40px track - 16px handle - 4px margins = 20px travel)
+.mdc-switch--selected .mdc-switch__handle-track {
+  transform: translateX(20px) !important;
+}
+
+// Unselected: handle stays at left
+.mdc-switch--unselected .mdc-switch__handle-track {
+  transform: translateX(0) !important;
+}
+
+// =============================================================================
+// HANDLE STYLING
+// =============================================================================
+
+.mdc-switch .mdc-switch__handle {
+  width: 16px !important;
+  height: 16px !important;
+  left: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+// Handle visual appearance
+.mdc-switch__handle::before,
+.mdc-switch__handle::after {
+  content: "" !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 0 !important;
+  transform: translateY(-50%) !important;
+  background: #ffffff !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+// =============================================================================
+// HIDE FOCUS RING / STATE LAYER
+// =============================================================================
+
+.mdc-switch__shadow,
+.mdc-switch__ripple,
+.mdc-switch:enabled:focus:not(:active) .mdc-switch__track::after {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+// =============================================================================
+// DISABLED STATE
+// =============================================================================
+
+.mdc-switch--disabled .mdc-switch__track {
+  opacity: 0.4 !important;
+}
+
+.mdc-switch--disabled .mdc-switch__handle::before,
+.mdc-switch--disabled .mdc-switch__handle::after {
+  opacity: 0.6 !important;
+}
+
+// =============================================================================
+// WRAPPER CLASS: app-slide-toggle
+// =============================================================================
+
+.app-slide-toggle {
+  // Uses global tokens - add overrides here only if needed
+}

@@ -1,0 +1,62 @@
+// =============================================================================
+// Button Token-Based Overrides (Angular Material v20)
+// =============================================================================
+// Migrated from legacy .mat-button and .mat-button-toggle selectors.
+// =============================================================================
+
+@import '../../assets/sass/abstracts/variables';
+
+// =============================================================================
+// WRAPPER CLASS: app-button-toggle-group
+// Use this class on button toggle groups
+// =============================================================================
+
+.app-button-toggle-group {
+  --mat-legacy-button-toggle-height: 43px;
+  --mat-legacy-button-toggle-selected-state-background-color: #{$app-primary-color};
+  --mat-legacy-button-toggle-selected-state-text-color: #ffffff;
+  
+  border-radius: 6px;
+  border: 1px solid $ag_expansion-hdr_border;
+  margin-bottom: 20px;
+}
+
+// =============================================================================
+// PRIMARY BUTTON TOGGLE (theme color)
+// =============================================================================
+
+.app-button-toggle-primary {
+  --mat-legacy-button-toggle-selected-state-background-color: #{$theme-base-color};
+  --mat-legacy-button-toggle-selected-state-text-color: #ffffff;
+}
+
+// =============================================================================
+// TOGGLE CLASS OVERRIDE
+// =============================================================================
+
+.toggle-class {
+  .mat-button-toggle {
+    width: 120px;
+    text-align: center;
+    
+    --mat-legacy-button-toggle-selected-state-text-color: #ffffff;
+  }
+}
+
+// =============================================================================
+// BUTTON DISABLED STATE
+// =============================================================================
+
+.app-button-disabled {
+  --mat-button-filled-disabled-container-color: rgba(0, 0, 0, 0.12);
+  --mat-button-filled-disabled-label-text-color: rgba(0, 0, 0, 0.38);
+}
+
+// =============================================================================
+// MAT-MDC-BUTTON TEXT COLOR FIX
+// =============================================================================
+
+.mat-mdc-button:not(:disabled) {
+  color: #ffffff;
+}
+

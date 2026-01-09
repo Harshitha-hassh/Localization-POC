@@ -15,6 +15,7 @@ import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.const
 // import { BaseResponse } from '../../../../shared/business/shared.modals';
 
 @Component({
+  standalone: false,
   selector: 'app-retail-settings',
   templateUrl: './retail-settings.component.html',
   styleUrls: ['./retail-settings.component.scss'],

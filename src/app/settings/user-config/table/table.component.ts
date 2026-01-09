@@ -23,6 +23,7 @@ import { AgToggleConfig } from 'src/app/common/Models/ag-models';
 import { UserAccessBusiness } from 'src/app/common/dataservices/authentication/useraccess.business';
 import { UserAccessBreakPoints } from 'src/app/common/constants/useraccess.constants';
 @Component({
+  standalone: false,
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],

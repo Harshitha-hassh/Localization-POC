@@ -14,9 +14,8 @@
         </div>
       </div>
       <div class="d-flex al-centre custom-aligns">
-        <mat-form-field class="spa-searchbox searchpt " [floatLabel]="floatLabelNever" id="searchInput">
-          <input [attr.automationId]="'Txt_clientDetails_search'" #tableInput matInput autocomplete="off" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}"
-            type="text" [placeholder]="searchTextPlaceHolder" value="" (ngModelChange)="enableSearchButton()" (keyup.enter)= "onEnter()" (focus)="platformSearchData()">
+        <mat-form-field class="spa-searchbox searchpt " [floatLabel]="floatLabelNever" id="searchInput">  
+          <input [attr.automationId]="'Txt_clientDetails_search'" #tableInput matInput autocomplete="off" [(ngModel)]="searchText" placeholder="{{searchTextPlaceHolder}}" [ngModelOptions]="{standalone: true}" type="text" value="" (ngModelChange)="enableSearchButton()" (keyup.enter)= "onEnter()" (focus)="platformSearchData()">
           <i [attr.automationId]="'Icn_clientDetails_cancel'" [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor" (click)="clearText()"></i>
         </mat-form-field>
         <button [attr.automationId]="'Btn_clientDetails_search'" class="LW14 save" mat-button  class="body-bgcolor body-bordercolor whitecolor btn-lnht ml-2" [ngClass] = "enableSearch ? 'spa-primary-default-save' : 'spa-primary-disabled'"

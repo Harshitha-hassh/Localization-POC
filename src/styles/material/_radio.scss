@@ -1,0 +1,169 @@
+// =============================================================================
+// Radio Button Token-Based Overrides (Angular Material v20)
+// =============================================================================
+// Migrated from legacy .mat-radio-button selectors to MDC token-based styling.
+// Global tokens are defined in _tokens.scss and applied via :root.
+// This file contains only CSS overrides that can't be achieved with tokens.
+// =============================================================================
+
+@import '../../assets/sass/abstracts/variables';
+
+// =============================================================================
+// MDC RADIO LAYOUT - REDUCED SIZE
+// =============================================================================
+
+.mat-mdc-radio-button {
+  // Ensure consistent alignment
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  
+  .mdc-form-field {
+    align-items: center;
+  }
+  
+  .mdc-radio {
+    padding: 0 !important;
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0;
+    margin: 0;
+    
+    // Outer circle
+    .mdc-radio__outer-circle {
+      width: 18px !important;
+      height: 18px !important;
+      border-width: 2px !important;
+      border-color: #757575 !important;
+    }
+    
+    // Inner circle (filled dot when selected)
+    .mdc-radio__inner-circle {
+      width: 18px !important;
+      height: 18px !important;
+      border-width: 9px !important;
+      border-color: $theme-base-color !important;
+    }
+    
+    // Background container
+    .mdc-radio__background {
+      width: 18px !important;
+      height: 18px !important;
+      
+      &::before {
+        display: none !important;
+      }
+    }
+  }
+}
+
+// Selected state - outer circle color
+.mat-mdc-radio-button.mat-mdc-radio-checked .mdc-radio .mdc-radio__outer-circle {
+  border-color: $theme-base-color !important;
+}
+
+// Selected state - inner circle background color
+.mat-mdc-radio-button .mdc-radio__native-control:enabled:checked + .mdc-radio__background > .mdc-radio__inner-circle {
+  background-color: $theme-base-color !important;
+  border-color: $theme-base-color !important;
+}
+
+// =============================================================================
+// HIDE RIPPLE EFFECT
+// =============================================================================
+
+.mat-mdc-radio-button .mdc-radio__ripple,
+.mat-mdc-radio-button .mat-mdc-radio-ripple,
+.mat-mdc-radio-button .mat-ripple,
+.mat-mdc-radio-button .mat-ripple-element,
+.mat-mdc-radio-button.mat-mdc-radio-checked .mdc-radio__background::before {
+  display: none !important;
+  background-color: transparent !important;
+}
+
+// Override ripple color when visible
+.mat-mdc-radio-button.mat-mdc-radio-checked .mat-ripple-element,
+.mat-mdc-radio-button.mat-mdc-radio-checked .mdc-radio__background::before {
+  background-color: #{$theme-base-color} !important;
+}
+
+// Touch target - reduced
+.mat-mdc-radio-button .mdc-radio .mat-mdc-radio-touch-target {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+// =============================================================================
+// RADIO BUTTON LABEL
+// =============================================================================
+
+.mat-mdc-radio-button .mdc-label,
+.mat-mdc-radio-button label {
+  padding-left: 8px !important;
+  font-size: 14px;
+  color: #000000;
+  cursor: pointer;
+}
+
+// =============================================================================
+// WRAPPER CLASS: app-radio-button
+// =============================================================================
+
+.app-radio-button {
+  // Uses global tokens - only layout overrides here
+  clear: both;
+  padding-right: 0.625rem;
+  
+  .mat-mdc-radio-label-content {
+    color: #000000;
+    font-size: 14px;
+  }
+}
+
+// =============================================================================
+// HORIZONTAL RADIO BUTTON LAYOUT
+// =============================================================================
+
+.app-radio-horizontal {
+  display: inline;
+  flex-direction: row;
+  gap: 0;
+  margin-bottom: 0;
+}
+
+// =============================================================================
+// RADIO GROUP IN FORMS - INLINE LAYOUT (no wrapping)
+// =============================================================================
+
+mat-radio-group {
+  display: inline;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0;
+  
+  mat-radio-button {
+    .mdc-label {
+      color: #000000;
+      font-size: 14px;
+    }
+  }
+}
+
+// =============================================================================
+// RADIO BUTTON SPACING
+// =============================================================================
+
+.mat-mdc-radio-group {
+  display: inline;
+  flex-wrap: nowrap;
+  align-items: center;
+  
+  .mat-mdc-radio-button {
+    margin-right: 8px;
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

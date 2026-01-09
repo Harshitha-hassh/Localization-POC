@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { HeaderOptionInteface } from '../home.modal';
 
 @Component({
+  standalone: false,
   selector: 'app-dashboard-table',
   templateUrl: './dashboard-table.component.html',
   styleUrls: ['./dashboard-table.component.scss']

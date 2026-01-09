@@ -3,6 +3,7 @@ import { RetailStandaloneLocalization } from 'src/app/core/localization/retailSt
 import { FormatTextPipe } from 'src/app/shared/pipes/formatText-pipe.pipe';
 
 @Component({
+  standalone: false,
   selector: 'app-rendering-options',
   templateUrl: './rendering-options.component.html',
   styleUrls: ['./rendering.options.component.scss'],

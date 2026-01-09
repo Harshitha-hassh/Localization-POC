@@ -22,6 +22,7 @@ import { PhilippinesMiscellaneousData, GuestTypeCategory } from 'src/app/common/
 import { TokenSharingCallbackRequestInfo } from 'src/app/retail/shared/business/shared.modals';
 
 @Component({
+  standalone: false,
   selector: 'app-additional-information',
   templateUrl: './additional-information.component.html',
   styleUrls: ['./additional-information.component.scss'],

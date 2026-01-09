@@ -4,6 +4,7 @@ import { RouteLoaderService } from '../core/services/route-loader.service';
 import { RetailPropertyInformation } from '../retail/common/services/retail-property-information.service';
 import { RetailFeatureFlagInformationService } from '../retail/shared/service/retail.feature.flag.information.service';
 @Component({
+  standalone: false,
   selector: 'app-reports',
   templateUrl: './reports.component.html',
   styleUrls: ['./reports.component.scss'],

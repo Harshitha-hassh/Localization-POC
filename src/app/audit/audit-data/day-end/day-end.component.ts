@@ -46,6 +46,7 @@ import { FeatureName } from 'src/app/common/shared/services/common-property-info
 import { RetailRoutes } from 'src/app/retail/retail-route';
 
 @Component({
+  standalone: false,
     selector: 'app-day-end',
     templateUrl: './day-end.component.html',
     styleUrls: ['./day-end.component.scss'],

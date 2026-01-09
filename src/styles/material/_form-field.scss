@@ -1,0 +1,190 @@
+// =============================================================================
+// Form Field Token-Based Overrides (Angular Material v20)
+// =============================================================================
+// Migrated from legacy .mat-form-field selectors to MDC token-based styling.
+// =============================================================================
+
+@import '../../assets/sass/abstracts/variables';
+
+// =============================================================================
+// GLOBAL FORM FIELD HEIGHT FIX
+// Angular Material v20 uses density-based heights (56px default).
+// This CSS override ensures the desired height is applied.
+// =============================================================================
+
+.mat-mdc-form-field {
+  .mat-mdc-text-field-wrapper {
+    // Use CSS variable with fallback to 40px
+    height: var(--mat-form-field-container-height, 40px);
+  }
+  
+  .mat-mdc-form-field-infix {
+    min-height: var(--mat-form-field-container-height, 40px);
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  
+  // Adjust flex container to respect height
+  .mat-mdc-form-field-flex {
+    height: 100%;
+    align-items: center;
+  }
+}
+
+// =============================================================================
+// WRAPPER CLASS: app-form-field
+// Use this class on parent containers for taller form fields
+// =============================================================================
+
+.app-form-field {
+  // Override: taller container height than global default (40px)
+  --mat-form-field-container-height: 62px;
+  
+  .mat-mdc-form-field-infix {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
+
+// =============================================================================
+// STACKED LABEL MIXIN (shared styling for floating labels above field)
+// =============================================================================
+
+@mixin stacked-label-style {
+  .mat-mdc-form-field {
+    margin-top: 24px;
+  }
+  
+  .mat-mdc-floating-label {
+    transform: translateY(-42px) translateX(0) !important;
+    left: -10px !important;
+    font-size: 14px;
+    font-family: $ag_sourcesans-semibold;
+    font-weight: 500;
+    color: #525252;
+  }
+  
+  .mat-mdc-floating-label.mdc-floating-label--float-above {
+    transform: translateY(-42px) translateX(0) scale(1) !important;
+    left: -10px !important;
+  }
+  
+  .mdc-notched-outline__notch {
+    border-top-width: 1px !important;
+  }
+}
+
+// =============================================================================
+// NEW STYLE MODE (body#new-mat-view)
+// Applied globally when body has id="new-mat-view"
+// =============================================================================
+
+#new-mat-view {
+  // Exclude search inputs from stacked label style
+  .menu-search .menuSearchWrapper .menuSearch-input .mat-mdc-form-field,
+  .global-search .globalSearchWrapper .globalSearch-input .global-searchField,
+  #searchInput.mat-mdc-form-field {
+    margin-top: 0 !important;
+  }
+  
+  .dashBoard-wrapper .mat-mdc-form-field {
+    margin-top: 0 !important;
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none !important;
+    }
+  }
+
+  .widget_group_header .dashboard-datepicker {
+    position: initial !important;
+  }
+
+  .dashBoard-wrapper app-multi-select {
+    margin: 0 !important;
+    margin-right: 1rem !important;
+  }
+  
+  // Apply stacked label style to all form fields in new-mat-view
+  @include stacked-label-style;
+}
+
+// =============================================================================
+// WRAPPER CLASS: app-form-field-float-label
+// Use this class on a parent wrapper for stacked label style
+// =============================================================================
+
+.app-form-field-float-label {
+  @include stacked-label-style;
+}
+
+// =============================================================================
+// DATE PICKER FIELD
+// Use this class for date picker form fields
+// =============================================================================
+
+.app-date-picker-field {
+  // Uses global default height (40px) - no token override needed
+  .mat-mdc-form-field-icon-suffix {
+    padding: 0 6px 0 0;
+    position: relative;
+    top: 0;
+  }
+}
+
+// =============================================================================
+// TEXTAREA FIELD
+// Use this class for textarea form fields
+// =============================================================================
+
+.app-textarea-field {
+  --mat-form-field-container-height: auto;
+  
+  textarea {
+    min-height: 60px;
+    resize: vertical;
+  }
+}
+
+// =============================================================================
+// COMPACT FORM FIELD
+// Use this class for smaller form fields (menus, filters, etc.)
+// =============================================================================
+
+.app-form-field-compact {
+  --mat-form-field-container-height: 36px;
+  --mat-form-field-container-text-size: 13px;
+  
+  margin-top: 10px;
+  
+  .mat-mdc-form-field-infix {
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+}
+
+// =============================================================================
+// DISABLED STATE CUSTOMIZATION
+// =============================================================================
+
+.app-form-field-disabled {
+  // Uses global disabled tokens - only adds opacity here
+  opacity: 0.6;
+}
+
+// =============================================================================
+// HIDE UNDERLINE (for legacy appearance migration)
+// =============================================================================
+
+.app-form-field-no-underline {
+  .mdc-line-ripple {
+    display: none;
+  }
+}
+
+// =============================================================================
+// REQUIRED MARKER COLOR
+// =============================================================================
+
+.mat-mdc-form-field-required-marker {
+  color: $ag_error-color;
+}
+

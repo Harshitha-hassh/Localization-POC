@@ -3,6 +3,7 @@ import moment from 'moment';
 import { Localization } from 'src/app/common/localization/localization';
 
 @Pipe({
+  standalone: false,
   name: 'localizeDate'
 })
 export class LocalizeDatePipe implements PipeTransform {

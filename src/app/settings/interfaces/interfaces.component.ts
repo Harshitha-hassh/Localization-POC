@@ -3,6 +3,7 @@ import { RouteLoaderService } from 'src/app/core/services/route-loader.service';
 import { menuTypes } from 'src/app/shared/enums/menu.constant';
 
 @Component({
+  standalone: false,
   selector: 'app-interfaces',
   templateUrl: './interfaces.component.html',
   styleUrls: ['./interfaces.component.scss']

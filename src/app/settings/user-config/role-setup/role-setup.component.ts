@@ -19,6 +19,7 @@ import { HttpMethod } from 'src/app/common/Models/http.model';
 import { Host, GridType } from 'src/app/common/shared/shared/globalsContant';
 
 @Component({
+  standalone: false,
   selector: 'app-role-setup',
   templateUrl: './role-setup.component.html',
   styleUrls: ['./role-setup.component.scss'],

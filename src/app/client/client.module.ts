@@ -14,7 +14,7 @@ import { SingleUserViewComponent } from './view-client/client-details/single-use
 import { ClientfilterpipePipe } from './client-table/clientfilterpipe.pipe';
 import { ClientDetailsComponent } from './view-client/client-details/client-details.component';
 import { ClientsortpipePipe } from './client-table/clientsortpipe.pipe';
-import { ScrollbarModule } from 'ngx-scrollbar';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ClientService } from '../shared/service/client-service.service';
 import { GuestPolicyWrapperComponent } from './client-popup/create-client/additional-information/guest-policy-wrapper/guest-policy-wrapper.component';
@@ -28,7 +28,7 @@ import { RetailToggleSwitchModule } from '../retail/retail-toggle-switch/retail-
         FormsModule,
         ReactiveFormsModule,
         MatTableModule,
-        ScrollbarModule,
+        NgScrollbarModule,
         RetailToggleSwitchModule,
         DragDropModule
     ],

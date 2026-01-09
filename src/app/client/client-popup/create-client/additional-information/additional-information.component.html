@@ -5,9 +5,8 @@
                 <div>
                     <label class="form-label-primary">{{captions.VipTypeInformation}}</label>
                     <div>
-                        <mat-form-field class="mt-4" [floatLabel]="floatLabel" >
-                            <mat-select [attr.automationId]="'Dd_AdditionalInformation_viptype'" [placeholder]="captions.VipType"
-                                formControlName="vip">
+                        <mat-form-field class="mt-4" [floatLabel]="floatLabel" >  <mat-label>{{captions.VipType}}</mat-label>
+                            <mat-select [attr.automationId]="'Dd_AdditionalInformation_viptype'" formControlName="vip">
                                 <mat-option value=""></mat-option>
                                 <mat-option [value]="type.code" *ngFor="let type of vipTypes">{{type.name}}</mat-option>
                             </mat-select>
@@ -17,9 +16,8 @@
                 <div>
                     <label class="form-label-primary">{{captions.GuestTypeInformation}}</label>
                     <div>
-                        <mat-form-field class="mt-4" [floatLabel]="floatLabel" >
-                            <mat-select [attr.automationId]="'Dd_AdditionalInformation_guesttype'" [placeholder]="captions.guestType"
-                                formControlName="guestType">
+                        <mat-form-field class="mt-4" [floatLabel]="floatLabel" >  <mat-label>{{captions.guestType}}</mat-label>
+                            <mat-select [attr.automationId]="'Dd_AdditionalInformation_guesttype'" formControlName="guestType">
                                 <mat-option value=""></mat-option>
                                 <mat-option [value]="type.id" *ngFor="let type of guestTypes">{{type.name}}</mat-option>
                             </mat-select>
@@ -44,9 +42,8 @@
                 <div class="" *ngIf="false">
                     <div class=" width_220"
                         [ngClass]="this.isClientViewOnly ? 'button_invalid' : ''">
-                        <mat-form-field class="width_180px" [floatLabel]="floatLabel">
-                            <input [attr.automationId]="'Txt_additionalinformation_expiryDate'" matInput dateRestricter class="" [min]="minFromDate" [matDatepicker]="picker"
-                                [placeholder]="captions.ExpiryDate" [readonly]="true">
+                        <mat-form-field class="width_180px" [floatLabel]="floatLabel">  <mat-label>{{captions.ExpiryDate}}</mat-label>
+                            <input [attr.automationId]="'Txt_additionalinformation_expiryDate'" matInput dateRestricter class="" [min]="minFromDate" [matDatepicker]="picker" [readonly]="true">
                             <mat-datepicker #picker></mat-datepicker>
                             <i [attr.automationId]="'Icn_additionalinformation_pickerOpen'" matSuffix
                                 class="icon-Calender cursor fs-xlarge position-relative d-inline-block customCalendar"
@@ -70,8 +67,8 @@
                 </div>
                 <!-- <div class="">
                     <div class="d-inline-block mr-2" [class.customFieldDisplay]="customFieldHidden[0]">
-                        <mat-form-field class="">
-                            <mat-select [placeholder]="customFieldDesc[0]" formControlName="customField1">
+                        <mat-form-field class="">  <mat-label>{{customFieldDesc[0]}}</mat-label>
+                            <mat-select formControlName="customField1">
                                 <mat-option value=""></mat-option>
                                 <mat-option [value]="name.id" *ngFor="let name of customFieldValues[0]">
                                     {{name.description}}</mat-option>
@@ -83,8 +80,8 @@
                         </mat-form-field>
                     </div>
                     <div class="d-inline-block " [class.customFieldDisplay]="customFieldHidden[1]">
-                        <mat-form-field class=" w-100">
-                            <mat-select [placeholder]="customFieldDesc[1]" formControlName="customField2">
+                        <mat-form-field class=" w-100">  <mat-label>{{customFieldDesc[1]}}</mat-label>
+                            <mat-select formControlName="customField2">
                                 <mat-option value=""></mat-option>
                                 <mat-option [value]="name.id" *ngFor="let name of customFieldValues[1]">
                                     {{name.description}}</mat-option>
@@ -97,8 +94,8 @@
                     </div>
                 </div>
                 <div class="" [class.customFieldDisplay]="customFieldHidden[2]">
-                    <mat-form-field class="width_371">
-                        <mat-select [placeholder]="customFieldDesc[2]" formControlName="customField3">
+                    <mat-form-field class="width_371">  <mat-label>{{customFieldDesc[2]}}</mat-label>
+                        <mat-select formControlName="customField3">
                             <mat-option value=""></mat-option>
                             <mat-option [value]="name.id" *ngFor="let name of customFieldValues[2]">{{name.description}}
                             </mat-option>
@@ -110,15 +107,15 @@
                     </mat-form-field>
                 </div>
                 <div>
-                    <mat-form-field class="d-block width_371" [class.customFieldDisplay]="customFieldHidden[3]">
-                        <input matInput class="LW14" formControlName="customField4" [placeholder]="customFieldDesc[3]">
+                    <mat-form-field class="d-block width_371" [class.customFieldDisplay]="customFieldHidden[3]">  <mat-label>{{customFieldDesc[3]}}</mat-label>
+                        <input matInput class="LW14" formControlName="customField4">
                         <mat-error class=""
                             *ngIf="FormGrp.controls['customField4'].hasError('required') && FormGrp.controls['customField4'].touched && !FormGrp.controls['customField4'].valid">
                             Missing {{customFieldDesc[3]}}
                         </mat-error>
                     </mat-form-field>
-                    <mat-form-field class="d-block width_371" [class.customFieldDisplay]="customFieldHidden[4]">
-                        <input matInput class="LW14" formControlName="customField5" [placeholder]="customFieldDesc[4]">
+                    <mat-form-field class="d-block width_371" [class.customFieldDisplay]="customFieldHidden[4]">  <mat-label>{{customFieldDesc[4]}}</mat-label>
+                        <input matInput class="LW14" formControlName="customField5">
                         <mat-error class=""
                             *ngIf="FormGrp.controls['customField5'].hasError('required') && FormGrp.controls['customField5'].touched && !FormGrp.controls['customField5'].valid">
                             Missing {{customFieldDesc[4]}}
@@ -127,12 +124,11 @@
                 </div> -->
             </div>    
             <aside class="w-25 d-inline-block p-4">
-                <mat-form-field class="width_100 txt-area-height" [floatLabel]="floatLabel">
-                    <textarea [attr.automationId]="'Ta_additionalinformation_comments'" class="textarea-style" [maxlength]="250" matInput formControlName="comments"
-                        [placeholder]="captions.GeneralComments"></textarea>
+                <mat-form-field class="width_100 txt-area-height" [floatLabel]="floatLabel">  <mat-label>{{captions.GeneralComments}}</mat-label>
+                    <textarea [attr.automationId]="'Ta_additionalinformation_comments'" class="textarea-style" [maxlength]="250" matInput formControlName="comments"></textarea>
                 </mat-form-field>
                 <div class="pt-3">
-                    <mat-form-field [floatLabel]="floatLabel" class="width_180px dobHeight date-picker-width" appearance="legacy">
+                    <mat-form-field [floatLabel]="floatLabel" class="width_180px dobHeight date-picker-width" appearance="outline">
                         <mat-label>{{captions.AnniversaryDate}}</mat-label>
                         <input [attr.automationId]="'Txt_AdditionalInformation_anniversaryDate'" [max]="maxDate" matInput dateRestricter [matDatepicker]="picker" [placeholder]="placeHolderFormat" class=""
                         formControlName="anniversaryDate" name="date">
@@ -151,18 +147,18 @@
                     </mat-form-field>
                 </div>
                 <div class="pt-3">
-                    <mat-form-field [floatLabel]="floatLabel" class=" mt-2 w250 pb0">
-                        <mat-select formControlName="preferredLanguage" placeholder="{{captions.PreferredLanguage}}" [attr.automationId]="'Dd_AdditionalInfo_language'">
+                    <mat-form-field [floatLabel]="floatLabel" class=" mt-2 w250 pb0">  <mat-label>{{captions.PreferredLanguage}}</mat-label>
+                        <mat-select formControlName="preferredLanguage" [attr.automationId]="'Dd_AdditionalInfo_language'">
                         <mat-option *ngFor="let language of languages" [value]="language.id">{{language.name}}</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
                 <div class="pt-3">
                     <mat-form-field [floatLabel]="floatLabel" class="width_100">
+                        <mat-label>{{captions.PlaceOfBirth}}</mat-label>
                         <input [attr.automationId]="'Txt_AdditionalInformation_placeOfBirth'" 
                                matInput 
                                formControlName="placeOfBirth"
-                               [placeholder]="captions.PlaceOfBirth"
                                [maxlength]="500">
                     </mat-form-field>
                 </div>

@@ -12,6 +12,7 @@ import { AgDateConfig, DropdownOptions } from 'src/app/common/Models/ag-models';
 
 @Component({
     selector: 'app-identification-details',
+    standalone: false,
     templateUrl: './identification-details.component.html',
     styleUrls: ['./identification-details.component.scss'],
     encapsulation: ViewEncapsulation.None

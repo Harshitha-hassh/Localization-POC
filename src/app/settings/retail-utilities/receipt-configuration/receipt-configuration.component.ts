@@ -15,6 +15,7 @@ import { RetailPropertyInformation } from 'src/app/retail/common/services/retail
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 
 @Component({
+  standalone: false,
   selector: 'app-receipt-configuration',
   templateUrl: './receipt-configuration.component.html',
   providers: [ReceiptConfigurationDataService, RetailOutletsDataService],

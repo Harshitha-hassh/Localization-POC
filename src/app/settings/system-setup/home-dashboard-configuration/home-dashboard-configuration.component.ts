@@ -7,6 +7,7 @@ import { HomeDashboardConfigurationBusiness } from './home-dashboard-configurati
 import { Localization } from 'src/app/common/localization/localization';
 
 @Component({
+  standalone: false,
   selector: 'app-home-dashboard-configuration',
   templateUrl: './home-dashboard-configuration.component.html',
   // styleUrls: ['./home-dashboard-configuration.component.scss'],

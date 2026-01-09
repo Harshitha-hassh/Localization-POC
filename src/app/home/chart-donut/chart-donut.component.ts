@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation, Input, ViewChild, ElementRef, Ren
 import ApexCharts from 'apexcharts';
 
 @Component({
+  standalone: false,
   selector: 'app-chart-donut',
   templateUrl: './chart-donut.component.html',
   styleUrls: ['./chart-donut.component.scss'],

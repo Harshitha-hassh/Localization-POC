@@ -2,6 +2,7 @@ import { Directive, ElementRef, Input, HostListener } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 @Directive({
+  standalone: false,
   selector: '[allowedSpecialCharacter]'
 })
 export class AllowedSpecialCharacterDirective {

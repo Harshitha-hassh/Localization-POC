@@ -1,0 +1,359 @@
+// =============================================================================
+// Select Token-Based Overrides (Angular Material v20)
+// =============================================================================
+// Migrated from legacy .mat-select selectors to MDC token-based styling.
+// Global tokens are defined in _tokens.scss and applied via :root.
+// This file contains only CSS overrides that can't be achieved with tokens.
+// =============================================================================
+
+@import '../../assets/sass/abstracts/variables';
+
+// =============================================================================
+// SELECT ARROW STYLING
+// =============================================================================
+
+.mat-mdc-select-arrow-wrapper {
+  transform: none !important;
+}
+
+.mat-mdc-select-arrow {
+  color: $theme-base-color;
+  
+  svg {
+    fill: currentColor;
+  }
+}
+
+// =============================================================================
+// SELECT PANEL (DROPDOWN) STYLING
+// =============================================================================
+
+.mat-mdc-select-panel {
+  // Note: --mat-select-panel-background-color is set in _tokens.scss
+  border-radius: 4px;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2),
+              0 4px 5px 0 rgba(0, 0, 0, 0.14),
+              0 1px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 8px 0;
+  max-height: 256px;
+  min-width: 100% !important;
+  
+  // Scrollbar styling
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+}
+
+// Ensure panel wrapper allows wider content
+.cdk-overlay-pane:has(.mat-mdc-select-panel) {
+  min-width: fit-content !important;
+}
+
+// Panel should expand to fit content
+.mat-mdc-select-panel-wrap {
+  min-width: fit-content !important;
+}
+
+// =============================================================================
+// OPTION STYLING
+// =============================================================================
+
+.mat-mdc-option {
+  // Note: Token values are set in _tokens.scss via :root
+  padding: 0 16px !important;
+  font-size: 14px;
+  line-height: 3em;
+  height: 3em;
+  min-height: 3em;
+  
+  // Option text
+  .mdc-list-item__primary-text {
+    font-size: 14px;
+    font-family: $ag_sourcesans-semibold;
+    color: #525252;
+  }
+  
+  // Selected option highlight
+  &.mdc-list-item--selected {
+    background-color: $retail-primary-10;
+    
+    .mdc-list-item__primary-text {
+      color: #525252;
+    }
+  }
+  
+  // Hover state
+  &:hover:not(.mdc-list-item--disabled) {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+  
+  // Focus state
+  &:focus:not(.mdc-list-item--disabled) {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+// =============================================================================
+// PSEUDO CHECKBOX (for multi-select options)
+// =============================================================================
+
+.mat-pseudo-checkbox {
+  // Note: Token values are set in _tokens.scss via :root
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 2px;
+  border: 1px solid $theme-base-color !important;
+  background: transparent;
+  
+  // Checked state
+  &.mat-pseudo-checkbox-checked {
+    background: $theme-mat-ink-bar !important;
+    border-color: $theme-mat-ink-bar !important;
+  }
+  
+  // Checkmark
+  &::after {
+    top: 2px !important;
+    left: 1px !important;
+    width: 10px !important;
+    height: 4px !important;
+    border-left-width: 2px !important;
+    border-bottom-width: 2px !important;
+    color: #ffffff;
+  }
+}
+
+// Full pseudo checkbox (used in dropdown panels)
+.mat-pseudo-checkbox-full {
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 2px;
+  
+  &.mat-pseudo-checkbox-checked {
+    background: $theme-mat-ink-bar !important;
+    border-color: $theme-mat-ink-bar !important;
+    
+    &::after {
+      color: #ffffff;
+    }
+  }
+}
+
+// =============================================================================
+// SELECT TRIGGER VALUE
+// =============================================================================
+
+.mat-mdc-select-value {
+  font-size: 14px;
+  font-family: $ag_sourcesans-semibold;
+  color: #525252;
+}
+
+.mat-mdc-select-placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+// =============================================================================
+// WRAPPER CLASS: app-select
+// Use this class on parent containers for select customizations
+// Only override tokens if different from global defaults
+// =============================================================================
+
+.app-select {
+  // Uses global tokens - add overrides here only if needed
+}
+
+// =============================================================================
+// SELECT IN TABLE CELLS
+// =============================================================================
+
+.app-select-table-cell {
+  .mat-mdc-text-field-wrapper {
+    padding-bottom: 2px;
+  }
+  
+  .mat-mdc-select-arrow-wrapper {
+    transform: none;
+  }
+}
+
+// =============================================================================
+// SELECT WITHOUT UNDERLINE
+// =============================================================================
+
+.app-select-no-underline {
+  .mdc-line-ripple {
+    display: none;
+  }
+}
+
+// =============================================================================
+// COMPACT SELECT
+// =============================================================================
+
+.app-select-compact {
+  --mat-select-trigger-text-size: 13px;
+  
+  .mat-mdc-form-field-infix {
+    border-top-width: 5px;
+    padding: 0.4785rem 0;
+  }
+}
+
+// =============================================================================
+// DATE RANGE INPUT WIDTH FIX
+// =============================================================================
+
+.mat-mdc-form-field-type-mat-date-range-input {
+  .mat-mdc-form-field-infix {
+    width: 225px;
+  }
+}
+
+// =============================================================================
+// MULTI-SELECT OPTIONS
+// =============================================================================
+
+// Multi-select option with checkbox - including first option (select all)
+.mat-mdc-option.mat-mdc-option-multiple,
+.mat-mdc-select-panel .mat-mdc-option:first-child {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 16px !important;
+  padding-left: 16px !important;
+  min-height: 42px !important;
+  height: auto !important;
+  
+  // Checkbox container
+  .mat-pseudo-checkbox {
+    flex-shrink: 0 !important;
+    margin-right: 12px !important;
+    margin-left: 0 !important;
+    width: 16px !important;
+    height: 16px !important;
+  }
+  
+  // Option text wrapper - allow text to show fully
+  .mdc-list-item__primary-text {
+    display: flex !important;
+    align-items: center !important;
+    flex: 1 !important;
+    white-space: nowrap !important;
+  }
+  
+  // State layer
+  &::before {
+    opacity: 0 !important;
+  }
+  
+  &:hover::before {
+    opacity: 0.04 !important;
+  }
+}
+
+// Ensure all options in select panel have consistent padding and full text
+.mat-mdc-select-panel .mat-mdc-option {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  white-space: nowrap !important;
+  
+  .mdc-list-item__content {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  
+  // Ensure checkbox alignment is consistent
+  .mat-pseudo-checkbox {
+    position: relative !important;
+    margin-left: 0 !important;
+  }
+  
+  // Text should not wrap or truncate
+  .mdc-list-item__primary-text {
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+}
+
+// =============================================================================
+// HIDE STANDALONE PSEUDO CHECKBOX IN SELECT PANEL
+// (Appears when using single-select but checkbox is rendered)
+// =============================================================================
+
+.mat-mdc-select-panel > .mat-pseudo-checkbox,
+.mat-mdc-select-panel > .mat-pseudo-checkbox-full {
+  display: none !important;
+}
+
+// Hide checkbox for single select options (only show for multi-select)
+.mat-mdc-option:not(.mat-mdc-option-multiple) {
+  .mat-pseudo-checkbox {
+    display: none !important;
+  }
+}
+
+// =============================================================================
+// MAT-CHECKBOX STYLED AS OPTION (for "Select All" in multi-select)
+// Used when mat-checkbox is inside mat-select panel with class .mat-option
+// =============================================================================
+
+mat-checkbox.mat-option,
+.mat-mdc-checkbox.mat-option,
+.reports-multiselect.mat-option {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 16px !important;
+  min-height: 42px !important;
+  height: 42px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  font-family: $ag_sourcesans-semibold !important;
+  color: #525252 !important;
+  
+  // The checkbox container
+  .mdc-checkbox {
+    margin-right: 12px !important;
+    margin-left: 0 !important;
+    padding: 0 !important;
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0 !important;
+  }
+  
+  // Checkbox background
+  .mdc-checkbox__background {
+    width: 16px !important;
+    height: 16px !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+  
+  // Label styling
+  .mdc-label,
+  label {
+    padding-left: 0 !important;
+    font-size: 14px !important;
+    font-family: $ag_sourcesans-semibold !important;
+    color: #525252 !important;
+    cursor: pointer !important;
+  }
+  
+  // Form field wrapper
+  .mat-internal-form-field {
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  // Hover state
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+  }
+}

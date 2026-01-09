@@ -15,6 +15,7 @@ import { Product } from 'src/app/common/Models/common.models';
 import { CopyRolesComponent } from '../copy-roles/copy-roles.component';
 
 @Component({
+  standalone: false,
   selector: 'app-user-role',
   templateUrl: './user-role.component.html',
   styleUrls: ['./user-role.component.scss'],

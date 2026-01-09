@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation, Input, OnDestroy, OnChanges } fro
 import ApexCharts from 'apexcharts';
 
 @Component({
+  standalone: false,
   selector: 'app-chart-line',
   templateUrl: './chart-line.component.html',
   styleUrls: ['./chart-line.component.scss'],

@@ -4,6 +4,7 @@ import { RouteLoaderService } from 'src/app/core/services/route-loader.service';
 import { menuTypes } from 'src/app/retail/retail.modals';
 
 @Component({
+  standalone: false,
   selector: 'app-manager-utilities',
   templateUrl: './manager-utilities.component.html',  
   providers: [ManagerUtilitiesService]

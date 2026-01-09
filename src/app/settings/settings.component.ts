@@ -4,6 +4,7 @@ import { RouteLoaderService } from '../core/services/route-loader.service';
 import { RetailPropertyInformation } from '../retail/common/services/retail-property-information.service';
 
 @Component({
+  standalone: false,
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss']

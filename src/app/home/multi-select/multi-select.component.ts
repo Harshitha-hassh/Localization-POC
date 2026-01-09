@@ -3,6 +3,7 @@ import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { RetailStandaloneLocalization } from 'src/app/core/localization/retailStandalone-localization';
 
 @Component({
+  standalone: false,
   selector: 'app-multi-select',
   templateUrl: './multi-select.component.html',
   styleUrls: ['./multi-select.component.scss'],

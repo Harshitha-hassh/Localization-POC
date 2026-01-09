@@ -7,40 +7,39 @@
             <label class="d-block form-label-normal LW12">{{caption.setting.ActiveUser}}</label>
             <app-toggle-switch [attr.automationId]="'Txt_userSettings_activeUser'" class="d-block mb-2" [formControl]="userSettingsFormGrp.controls['activeuser']"></app-toggle-switch>
           </div>
-          <mat-form-field class=" w250 mb-2" [floatLabel]="floatLabel">
-            <input [attr.automationId]="'Txt_userSettings_firstName'" matInput placeholder="{{caption.setting.FirstName}}" class="user-name" autocomplete="off" [maxlength]="20" formControlName="fname">
+          <mat-form-field class=" w250 mb-2" [floatLabel]="floatLabel">  <mat-label>{{caption.setting.FirstName}}</mat-label>
+            <input [attr.automationId]="'Txt_userSettings_firstName'" matInput class="user-name" autocomplete="off" [maxlength]="20" formControlName="fname">
             <mat-error class="" *ngIf="userSettingsFormGrp.controls['fname'].hasError('required') && userSettingsFormGrp.controls['fname'].touched && !userSettingsFormGrp.controls['fname'].valid">
               {{caption.setting.MissingFirstName}}
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field class="w250 mb-2" [floatLabel]="floatLabel">
-            <input [attr.automationId]="'Txt_userSettings_lastName'" matInput placeholder="{{caption.setting.LastName}}" class="user-name" autocomplete="off" [maxlength]="20" formControlName="lname">
+          <mat-form-field class="w250 mb-2" [floatLabel]="floatLabel">  <mat-label>{{caption.setting.LastName}}</mat-label>
+            <input [attr.automationId]="'Txt_userSettings_lastName'" matInput class="user-name" autocomplete="off" [maxlength]="20" formControlName="lname">
             <mat-error class="" *ngIf="userSettingsFormGrp.controls['lname'].hasError('required') && userSettingsFormGrp.controls['lname'].touched && !userSettingsFormGrp.controls['lname'].valid">
               {{caption.setting.MissingLastName}}
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field class="w250 mb-2" [floatLabel]="floatLabel">
-            <input [attr.automationId]="'Txt_userSettings_userId'" matInput placeholder="{{caption.setting.UserId}}" autocomplete="off" inputtype="capitalise,notallowspace,restrictatslash" [maxlength]="10"  formControlName="userid">
+          <mat-form-field class="w250 mb-2" [floatLabel]="floatLabel">  <mat-label>{{caption.setting.UserId}}</mat-label>
+            <input [attr.automationId]="'Txt_userSettings_userId'" matInput autocomplete="off" inputtype="capitalise,notallowspace,restrictatslash" [maxlength]="10" formControlName="userid">
             <mat-error class="" *ngIf="userSettingsFormGrp.controls['userid'].hasError('required') && userSettingsFormGrp.controls['userid'].touched && !userSettingsFormGrp.controls['userid'].valid">
               {{caption.setting.MissingUserID}}
             </mat-error>
           </mat-form-field>
-          <mat-form-field class="w250 mb-2" [floatLabel]="floatLabel">
-            <input [attr.automationId]="'Txt_userSettings_quickId'" matInput placeholder="{{caption.setting.QuickId}}" maxlength="6" inputtype="nonnegative,nodecimal"
-              autocomplete="off" formControlName="quickid">
+          <mat-form-field class="w250 mb-2" [floatLabel]="floatLabel">  <mat-label>{{caption.setting.QuickId}}</mat-label>
+            <input [attr.automationId]="'Txt_userSettings_quickId'" matInput maxlength="6" inputtype="nonnegative,nodecimal" autocomplete="off" formControlName="quickid">
           </mat-form-field>
 
-          <mat-form-field class="w250 mb-2" [floatLabel]="floatLabel">
-            <input [attr.automationId]="'Txt_userSettings_emailAddress'" matInput placeholder="{{caption.setting.EmailAddress}}" autocomplete="off" [maxlength]="75" formControlName="email" inputtype="email" [readonly]="isEmailEditUser">
+          <mat-form-field class="w250 mb-2" [floatLabel]="floatLabel">  <mat-label>{{caption.setting.EmailAddress}}</mat-label>
+            <input [attr.automationId]="'Txt_userSettings_emailAddress'" matInput autocomplete="off" [maxlength]="75" formControlName="email" inputtype="email" [readonly]="isEmailEditUser">
             <mat-error class="" *ngIf="userSettingsFormGrp.controls['email'].touched && !userSettingsFormGrp.controls['email'].valid">
               {{caption.common.InvalidEmailFormat}}
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field class="w250" [floatLabel]="floatLabel">
-            <mat-select [attr.automationId]="'Dd_userSettings_languageName'" formControlName="language" placeholder="{{caption.setting.Language}}">
+          <mat-form-field class="w250" [floatLabel]="floatLabel">  <mat-label>{{caption.setting.Language}}</mat-label>
+            <mat-select [attr.automationId]="'Dd_userSettings_languageName'" formControlName="language">
               <mat-option *ngFor="let language of languages" [value]="language.id">{{language.name}}</mat-option>
             </mat-select>
           </mat-form-field>
@@ -56,15 +55,15 @@
             <app-toggle-switch [attr.automationId]="'Txt_userSettings_newPassword'" class="d-block  blckClr" [formControl]="userSettingsFormGrp.controls['newpassword']" (changeToggleEvent)="toggleChange($event,'PWD')" [disableToggle]="isToggleDisable"></app-toggle-switch>
           </div>
 
-          <mat-form-field [floatLabel]="floatLabel" class=" w250 mb-2" *ngIf="userSettingsFormGrp.controls?.newpassword?.value">
-            <input required matInput placeholder="{{caption.setting.newPassword}}" class="user-name" autocomplete="off" [minLength]="1" [maxlength]="16" formControlName="nPassword" inputtype="notallowspace" type="password" (blur)="passwordValidation()">
+          <mat-form-field [floatLabel]="floatLabel" class=" w250 mb-2" *ngIf="userSettingsFormGrp.controls?.newpassword?.value">  <mat-label>{{caption.setting.newPassword}}</mat-label>
+            <input required matInput class="user-name" autocomplete="off" [minLength]="1" [maxlength]="16" formControlName="nPassword" inputtype="notallowspace" type="password" (blur)="passwordValidation()">
             <mat-error class="" *ngIf="userSettingsFormGrp.controls['nPassword'].hasError('required') && userSettingsFormGrp.controls['nPassword'].touched && !userSettingsFormGrp.controls['nPassword'].valid">
               {{caption.setting.MissingNewPassword}}
             </mat-error>
           </mat-form-field>
 
-          <mat-form-field [floatLabel]="floatLabel" class="w250 mb-2" *ngIf="userSettingsFormGrp.controls?.newpassword?.value">
-            <input required matInput placeholder="{{caption.setting.confirmPassword}}" class="user-name" autocomplete="off" [minLength]="1" [maxlength]="16" formControlName="cPassword" inputtype="notallowspace" type="password" (blur)="passwordValidation()">
+          <mat-form-field [floatLabel]="floatLabel" class="w250 mb-2" *ngIf="userSettingsFormGrp.controls?.newpassword?.value">  <mat-label>{{caption.setting.confirmPassword}}</mat-label>
+            <input required matInput class="user-name" autocomplete="off" [minLength]="1" [maxlength]="16" formControlName="cPassword" inputtype="notallowspace" type="password" (blur)="passwordValidation()">
             <mat-error *ngIf="userSettingsFormGrp.controls['cPassword'].hasError('invalid')"
               [attr.LiteralID]="'err_confirmPassword'">
               {{caption.setting.err_confirmPassword}}
@@ -76,7 +75,7 @@
 
           <div class="d-inline-block w250 mb-2">
             <div><label class="date-label   form-label-normal">{{caption.setting.PasswordExpirationDate}}</label></div>
-            <mat-form-field class="date-picker-width mt-2 w250" appearance="legacy" [floatLabel]="floatLabel">
+            <mat-form-field class="date-picker-width mt-2 w250" appearance="outline" [floatLabel]="floatLabel">
               <mat-label></mat-label>
               <input [attr.automationId]="'Txt_userSettings_pwdexpirationdate'" matInput dateRestricter [matDatepicker]="picker" autocomplete="off"  [min]="minDateValue" [placeholder]="placeHolderFormat"
                 formControlName="pwdexpirationdate" >

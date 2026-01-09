@@ -3,6 +3,7 @@ import { RouteLoaderService } from '../core/services/route-loader.service';
 import { menuTypes } from '../shared/enums/menu.constant';
 
 @Component({
+  standalone: false,
   selector: 'app-audit',
   templateUrl: './audit.component.html',
   styleUrls: ['./audit.component.scss']

@@ -6,7 +6,7 @@ describe('DashboardWidgetsReportService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DashboardWidgetsReportService = TestBed.get(DashboardWidgetsReportService);
+    const service: DashboardWidgetsReportService = TestBed.inject(DashboardWidgetsReportService);
     expect(service).toBeTruthy();
   });
 });

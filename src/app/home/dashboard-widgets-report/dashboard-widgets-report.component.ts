@@ -26,6 +26,7 @@ import { AgDateConfig } from 'src/app/common/Models/ag-models';
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 
 @Component({
+  standalone: false,
   selector: 'app-dashboard-widgets-report',
   templateUrl: './dashboard-widgets-report.component.html',
   styleUrls: ['./dashboard-widgets-report.component.scss'],

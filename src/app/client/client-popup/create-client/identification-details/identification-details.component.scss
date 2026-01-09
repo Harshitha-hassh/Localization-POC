@@ -10,49 +10,73 @@
     }
 
     .width-150px {
-        width: 150px;
+        width: 180px;
         display: inline-block;
     }
-
+    .width-212px {
+        width: 212px;
+        display: inline-block;
+    }
     // Style for ag-input to match width - need to target inner mat-form-field
     ag-input.width-150px {
-        width: 150px;
+        width: 180px;
         display: inline-block;
         margin-right: 1rem;
         
-        .mat-form-field {
+        .mat-form-field,
+        .mat-mdc-form-field {
             width: 100%;
         }
     }
 
     // Style for ag-dropdown to match width
     ag-dropdown.width-150px {
-        width: 150px;
+        width: 180px;
         display: inline-block;
         margin-right: 1rem;
+        
+        .mat-form-field,
+        .mat-mdc-form-field {
+            width: 100%;
+        }
     }
 
     // Style for other type name field with extra left margin
     ag-input.other-type-name-field {
-        width: 150px;
+        width: 180px;
         display: inline-block;
         margin-right: 1rem;
-        margin-left: 1.5rem;
+        margin-left: 0;
         
-        .mat-form-field {
+        .mat-form-field,
+        .mat-mdc-form-field {
             width: 100%;
         }
     }
     
     // Style for identification number field with extra left margin
     ag-input.identification-number-field {
-        width: 160px;
+        width: 180px;
         display: inline-block;
         margin-right: 1rem;
-        margin-left: 1.5rem;
+        margin-left: 0;
         
-        .mat-form-field {
+        .mat-form-field,
+        .mat-mdc-form-field {
             width: 100%;
+        }
+    }
+
+    // MDC form field adjustments
+    .mat-mdc-form-field {
+        .mat-mdc-text-field-wrapper {
+            padding: 0 !important;
+        }
+        
+        .mat-mdc-form-field-infix {
+            min-height: 42px;
+            padding-top: 8px !important;
+            padding-bottom: 8px !important;
         }
     }
 
@@ -61,14 +85,16 @@
         display: inline-block;
         margin-right: 1rem;
         
-        .mat-form-field {
-            width: 150px;
+        .mat-form-field,
+        .mat-mdc-form-field {
+            width: 180px;
         }
     }
 
     // Style for mat-form-field (country autocomplete)
     mat-form-field.width-150px {
         margin-right: 1rem;
+        width: 180px;
     }
 
     .icon-Plus,
@@ -85,5 +111,16 @@
     .action-buttons-wrapper {
         min-width: 50px;
         margin-left: 5px;
+    }
+    .identify-type-field {
+       .mat-mdc-select-placeholder {
+            display: none !important;
+       }
+       .mat-mdc-form-field {
+            width: 100% !important;
+       }
+       .mat-mdc-select-empty {
+            padding-right: 16px !important;
+       }
     }
 }

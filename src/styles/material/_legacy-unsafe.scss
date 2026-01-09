@@ -1,0 +1,186 @@
+// =============================================================================
+// LEGACY UNSAFE OVERRIDES (TEMPORARY)
+// =============================================================================
+// This file contains legacy overrides that could not be migrated to tokens.
+// These should be reviewed and migrated manually when possible.
+// 
+// ⚠️ WARNING: These selectors target internal MDC structure and may break
+// with future Angular Material updates.
+// =============================================================================
+
+@import '../../assets/sass/abstracts/variables';
+
+// =============================================================================
+// NOTCHED OUTLINE OVERRIDES (TEMPORARY)
+// =============================================================================
+// These overrides fix the notched outline behavior for outlined form fields.
+// Monitor for official token support in future Angular Material versions.
+
+body#new-mat-view {
+  // Notch positioning fix
+  .mat-mdc-form-field .mdc-notched-outline__notch {
+    margin-left: unset;
+    clip-path: unset;
+    -webkit-clip-path: unset;
+  }
+  
+  // Notch border when notched
+  .mdc-notched-outline--notched .mdc-notched-outline__notch {
+    border-top: 1px solid #b5b5b5;
+    border-left: unset;
+    width: 100%;
+  }
+  
+  // Focus state border width
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused {
+    .mdc-notched-outline .mat-mdc-notch-piece {
+      border-width: 1px;
+    }
+    
+    .mat-mdc-notch-piece {
+      border-color: $theme-base-color;
+      border-top: 1px solid $theme-base-color;
+    }
+    
+    .mdc-floating-label {
+      color: $theme-base-color;
+    }
+  }
+  
+  // Hover state
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused):hover {
+    .mdc-floating-label {
+      color: #525252;
+    }
+    
+    .mat-mdc-notch-piece {
+      border-color: #b5b5b5;
+    }
+  }
+  
+  // Invalid state
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--invalid {
+    .mat-mdc-notch-piece {
+      border-color: $new_mat-error;
+    }
+    
+    .mdc-floating-label {
+      color: $new_mat-error;
+    }
+    
+    &:not(.mdc-text-field--focused):hover {
+      .mdc-notched-outline .mat-mdc-notch-piece {
+        border-color: $new_mat-error;
+      }
+      
+      .mdc-floating-label {
+        color: $new_mat-error;
+      }
+    }
+  }
+  
+  // Disabled state notch
+  .mat-form-field-disabled {
+    .mat-mdc-floating-label {
+      opacity: 0.5;
+    }
+    
+    .mdc-notched-outline--notched .mdc-notched-outline__notch {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  // Invalid form field label
+  .mat-form-field-invalid {
+    .mat-mdc-floating-label {
+      color: $new_mat-error;
+    }
+  }
+}
+
+// =============================================================================
+// CHIP INPUT FIX
+// =============================================================================
+
+input.mat-mdc-chip-input {
+  width: 0;
+  flex: 1 0 0;
+}
+
+// =============================================================================
+// TEXTAREA MINIMUM HEIGHT
+// =============================================================================
+
+textarea {
+  min-height: 20px;
+}
+
+// =============================================================================
+// SELECT ARROW COLOR
+// =============================================================================
+
+.mat-select-arrow {
+  color: $theme-base-color;
+}
+
+// =============================================================================
+// MAT ERROR COLOR
+// =============================================================================
+
+.mat-mdc-form-field-error {
+  color: $new_mat-error;
+}
+
+// =============================================================================
+// MAT INPUT ELEMENT
+// =============================================================================
+
+.mat-mdc-input-element {
+  height: auto;
+}
+
+// =============================================================================
+// TABLE HEADER ROW
+// =============================================================================
+
+tr.mat-mdc-header-row {
+  height: 56px;
+  line-height: unset;
+}
+
+// =============================================================================
+// MAT BADGE
+// =============================================================================
+
+.mat-badge-content {
+  right: 5px;
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  line-height: 10px;
+  color: transparent;
+  background: $new_mat-error;
+  min-height: unset;
+  max-height: unset;
+  min-width: unset;
+}
+
+.mat-badge-after .mat-badge-content {
+  left: unset;
+}
+
+// =============================================================================
+// NOTE: The following overrides should be monitored for token alternatives
+// =============================================================================
+// 
+// 1. mdc-notched-outline selectors - No direct tokens available
+// 2. mdc-floating-label positioning - Partially tokenizable
+// 3. mdc-text-field states - Some tokens available in v20+
+//
+// Action items:
+// - Check Angular Material changelog for new tokens
+// - Test each override after Angular Material updates
+// - Gradually migrate to tokens as they become available
+// =============================================================================
+
+

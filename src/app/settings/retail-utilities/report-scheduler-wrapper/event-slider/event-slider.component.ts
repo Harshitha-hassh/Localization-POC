@@ -6,6 +6,7 @@ import { ReportSelector_ } from 'src/app/reports/report.model';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 
 @Component({
+  standalone: false,
   selector: 'app-event-slider',
   templateUrl: './event-slider.component.html',
   styleUrls: ['./event-slider.component.scss'],

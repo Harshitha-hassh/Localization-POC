@@ -4,6 +4,7 @@ import { MatTab, MatTabHeader, MatTabGroup } from '@angular/material/tabs';
 import { RetailStandaloneLocalization } from '../../../core/localization/retailStandalone-localization';
 import { UntypedFormGroup } from '@angular/forms';
 @Component({
+  standalone: false,
   selector: 'app-create-client',
   templateUrl: './create-client.component.html',
   styleUrls: ['./create-client.component.scss']

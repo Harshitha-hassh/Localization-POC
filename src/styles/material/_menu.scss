@@ -1,0 +1,48 @@
+// =============================================================================
+// Menu Token-Based Overrides (Angular Material v20)
+// =============================================================================
+// Migrated from legacy .mat-menu selectors to MDC token-based styling.
+// =============================================================================
+
+@import '../../assets/sass/abstracts/variables';
+
+// =============================================================================
+// MENU PANEL MIN HEIGHT FIX
+// =============================================================================
+
+.mat-mdc-menu-panel {
+  min-height: unset;
+}
+
+// =============================================================================
+// MENU CONTENT PADDING
+// =============================================================================
+
+.mat-mdc-menu-content {
+  padding: 0;
+}
+
+// =============================================================================
+// MENU ITEM STYLING
+// =============================================================================
+
+.mat-mdc-menu-item {
+  line-height: 40px;
+  height: 40px;
+  border-bottom: 1px solid $ag_grey-lighter;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+// =============================================================================
+// WRAPPER CLASS: app-menu
+// Use this class on parent containers for menu customizations
+// =============================================================================
+
+.app-menu {
+  --mat-menu-container-color: #ffffff;
+  --mat-menu-item-label-text-size: 14px;
+}
+

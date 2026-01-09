@@ -10,6 +10,13 @@
             margin-top: 20px;
             min-width: 480px;
             width: 25%;
+            
+            i {
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
         }
         button {
             margin-left: auto;

@@ -4,6 +4,7 @@ import { ClientService } from '../../shared/service/client-service.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
 
 @Component({
+  standalone: false,
   selector: 'view-client',
   templateUrl: './view-client.component.html',
   styleUrls: ['./view-client.component.scss']

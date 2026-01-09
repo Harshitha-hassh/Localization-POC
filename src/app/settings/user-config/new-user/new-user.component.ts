@@ -16,6 +16,7 @@ import { CryptoUtility } from 'src/app/core/utilities/crypto.utility';
 import { UTempDataUtilities } from 'src/app/common/shared/shared/utilities/utempdata-utilities';
 
 @Component({
+  standalone: false,
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
   styleUrls: ['./new-user.component.scss'],

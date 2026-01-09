@@ -35,9 +35,8 @@
                                   {{clientInfo.firstName}} {{clientInfo.lastName}}
                               </div>
                               <div class="d-inline-block w-60">
-                                  <mat-form-field class="Nw-30 mr-3"  [floatLabel]="floatLabel">
-                                      <input matInput inputtype="email" [placeholder]="captions.Email"
-                                          formControlName="emailId" maxlength="100">
+                                  <mat-form-field class="Nw-30 mr-3"  [floatLabel]="floatLabel">  <mat-label>{{captions.Email}}</mat-label>
+                                      <input matInput inputtype="email" formControlName="emailId" maxlength="100">
                                       <mat-error class=""
                                           *ngIf="notifydetails.controls['detailList'].controls[0].controls['emailId'].touched  && (notifydetails.controls['detailList'].controls[0].controls['emailId'].value!='') && !notifydetails.controls['detailList'].controls[0].controls['emailId'].valid">
                                           {{captions.InvalidEmailFormat}}
@@ -48,17 +47,15 @@
                                       </mat-error>
                                   </mat-form-field>
       
-                                  <mat-form-field class="Nw-20 mr-2"  [floatLabel]="floatLabel">
-                                      <input matInput name="countryCode" formControlName="countryCode" [placeholder]="captions.countryCode"
-                                          [maxlength]="countryCodeLength" inputtype='nonnegative' >
+                                  <mat-form-field class="Nw-20 mr-2"  [floatLabel]="floatLabel">  <mat-label>{{captions.countryCode}}</mat-label>
+                                      <input matInput name="countryCode" formControlName="countryCode" [maxlength]="countryCodeLength" inputtype='nonnegative'>
                                           <mat-error class=""
                                           *ngIf="notifydetails.controls['detailList'].controls[0].controls['countryCode'].touched && !notifydetails.controls['detailList'].controls[0].controls['countryCode'].valid">
                                           {{captions.Missing}} {{captions.countryCode}}
                                       </mat-error>
                                   </mat-form-field>
-                                  <mat-form-field class="Nw-40" [floatLabel]="floatLabel">
-                                      <input matInput [placeholder]="captions.phoneNo" formControlName="phoneNo"
-                                          [textmask]="textMaskPhone" maxlength="10">
+                                  <mat-form-field class="Nw-40" [floatLabel]="floatLabel">  <mat-label>{{captions.phoneNo}}</mat-label>
+                                      <input matInput formControlName="phoneNo" [textmask]="textMaskPhone" maxlength="10">
                                           <mat-error class=""
                                           *ngIf="notifydetails.controls['detailList'].controls[0].controls['phoneNo'].touched && !notifydetails.controls['detailList'].controls[0].controls['phoneNo'].valid">
                                           {{captions.Missing}} {{captions.phoneNo}}

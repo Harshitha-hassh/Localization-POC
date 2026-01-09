@@ -14,6 +14,7 @@ import { SetupMenu } from 'src/app/common/shared/shared/business/view-settings.m
 // import { menuTypes } from 'src/app/shared/shared.modal';
 
 @Component({
+  standalone: false,
   selector: 'app-user-config',
   templateUrl: './user-config.component.html',
   styleUrls: ['./user-config.component.scss'],

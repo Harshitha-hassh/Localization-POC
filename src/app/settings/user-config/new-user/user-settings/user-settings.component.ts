@@ -18,6 +18,7 @@ import { APIUserLoginType } from 'src/app/shared/shared-models';
 // import { BaseResponse } from '../../../../shared/business/shared.modals';
 
 @Component({
+  standalone: false,
   selector: 'app-user-settings',
   templateUrl: './user-settings.component.html',
   styleUrls: ['./user-settings.component.scss']

@@ -11,6 +11,7 @@ import { DataPurge } from 'src/app/common/data-retention/data-retention.model';
 import { ApplyPolicy } from 'src/app/common/consent-management/consent-management.model';
 
 @Component({
+  standalone: false,
   selector: 'app-guest-policy-wrapper',
   templateUrl: './guest-policy-wrapper.component.html',
   styleUrls: ['./guest-policy-wrapper.component.scss'],

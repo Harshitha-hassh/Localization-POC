@@ -8,10 +8,8 @@
               <div class="leftSection float-left">
                 <div class="pt-4">
                   <!-- Outlet Box -->
-                  <mat-form-field class="" [floatLabel]="floatLabel">
-                    <mat-select placeholder="{{textCaptions.Outlet}}"
-                      [attr.automationId]="'Icn_ReceiptConfiguration_Outlets'"
-                      (selectionChange)="changeSelection($event)" formControlName="outlet" class="LW14">
+                  <mat-form-field class="" [floatLabel]="floatLabel">  <mat-label>{{textCaptions.Outlet}}</mat-label>
+                    <mat-select [attr.automationId]="'Icn_ReceiptConfiguration_Outlets'" (selectionChange)="changeSelection($event)" formControlName="outlet" class="LW14">
                       <mat-option *ngFor="let data of Outlet" [value]="data.id">
                         {{data.outletName}}
                       </mat-option>
@@ -23,8 +21,8 @@
                   </mat-form-field>
                   <!-- Number of Reciepts -->
                   <!-- #46309 - Hide unused fields -->
-                  <!-- <mat-form-field class=" ml-4 receipts">
-                          <input matInput placeholder="{{textCaptions.NoOfReceipts}}"  maxLength = "2" (click)="viewChange($event)" inputtype="nodecimal,nonnegative" class="text-capitalize" formControlName="noOfReceipts" />
+                  <!-- <mat-form-field class=" ml-4 receipts">  <mat-label>{{textCaptions.NoOfReceipts}}</mat-label>
+                          <input matInput maxLength = "2" (click)="viewChange($event)" inputtype="nodecimal,nonnegative" class="text-capitalize" formControlName="noOfReceipts" />
                           <mat-error *ngIf="FormGrp.controls['noOfReceipts'].hasError('required') && FormGrp.controls['noOfReceipts'].touched && !FormGrp.controls['noOfReceipts'].valid">
                             {{textCaptions.MissingNumber}}
                           </mat-error>
@@ -86,28 +84,22 @@
                 <div class="pt-3 pl-3">
                   <div class="mt-2">
                     <mat-form-field (click)="viewChange($event)" class="textWidth  txt-area-height"
-                      [floatLabel]="floatLabel">
-                      <textarea [attr.automationId]="'Ta_ReceiptConfiguration_gratuityLine'" matInput
-                        placeholder="{{textCaptions.GratuityLine}}" formControlName="gratuityLine"
-                        [maxlength]="250"></textarea>
+                      [floatLabel]="floatLabel">  <mat-label>{{textCaptions.GratuityLine}}</mat-label>
+                      <textarea [attr.automationId]="'Ta_ReceiptConfiguration_gratuityLine'" matInput formControlName="gratuityLine" [maxlength]="250"></textarea>
                     </mat-form-field>
                   </div>
 
                   <div class="mt-2">
 
                     <mat-form-field (click)="viewChange($event)" class="textWidth txt-area-height"
-                      [floatLabel]="floatLabel">
-                      <textarea [attr.automationId]="'Ta_ReceiptConfiguration_receiptNote'" matInput
-                        placeholder="{{textCaptions.ReceiptNote}}" formControlName="receiptNote"
-                        [maxlength]="250"></textarea>
+                      [floatLabel]="floatLabel">  <mat-label>{{textCaptions.ReceiptNote}}</mat-label>
+                      <textarea [attr.automationId]="'Ta_ReceiptConfiguration_receiptNote'" matInput formControlName="receiptNote" [maxlength]="250"></textarea>
                     </mat-form-field>
                   </div>
                   <div class="mt-2" *ngIf="enableSerialInvoiceRange">
                     <mat-form-field (click)="viewChange($event)" class="textWidth txt-area-height"
-                      [floatLabel]="floatLabel">
-                      <textarea [attr.automationId]="'Ta_ReceiptConfiguration_itemDescriptionHeader'" matInput
-                        placeholder="{{textCaptions.ItemDescriptionHeader}}" formControlName="itemDescriptionHeader"
-                        [maxlength]="250"></textarea>
+                      [floatLabel]="floatLabel">  <mat-label>{{textCaptions.ItemDescriptionHeader}}</mat-label>
+                      <textarea [attr.automationId]="'Ta_ReceiptConfiguration_itemDescriptionHeader'" matInput formControlName="itemDescriptionHeader" [maxlength]="250"></textarea>
                     </mat-form-field>
                   </div>
                 </div>
@@ -152,10 +144,8 @@
               <app-ag-toggle [toggleInputs]="authCodeToggleInputs" (valueChange)="toggleAction($event)"></app-ag-toggle>
             </div>
             <div [ngClass]="this.DisplayAuthCode ? 'pad-top-10 ag_form--control-fixed-350px':''">
-              <mat-form-field class="pt-4 authcodeName w-100" [floatLabel]="floatLabel" *ngIf="this.DisplayAuthCode">
-                <input matInput [placeholder]="textCaptions.lbl_authCodeonReceiptName"
-                  [attr.automationId]="'Txt_ReceiptConfiguration_authcodeName'" formControlName="authcodeName"
-                  [maxlength]="25" />
+              <mat-form-field class="pt-4 authcodeName w-100" [floatLabel]="floatLabel" *ngIf="this.DisplayAuthCode">  <mat-label>{{textCaptions.lbl_authCodeonReceiptName}}</mat-label>
+                <input matInput [attr.automationId]="'Txt_ReceiptConfiguration_authcodeName'" formControlName="authcodeName" [maxlength]="25" />
               </mat-form-field>
             </div>
             <div class="ag_form--control-fixed-350px pad-top-10 ag_pr--8">
@@ -165,10 +155,8 @@
             </div>
           </div>
           <div class="pad-top-10 ag_w--100">
-            <mat-form-field (click)="viewChange($event)" class="ag_form_wrapper--lg w-100 txt-area-height" [floatLabel]="floatLabel">
-              <textarea [attr.automationId]="'Ta_ReceiptConfiguration_receiptFooterNote'" matInput
-                placeholder="{{textCaptions.ReceiptFooterNote}}" formControlName="receiptFooterNote" [maxlength]="250"
-                class="h-80"></textarea>
+            <mat-form-field (click)="viewChange($event)" class="ag_form_wrapper--lg w-100 txt-area-height" [floatLabel]="floatLabel">  <mat-label>{{textCaptions.ReceiptFooterNote}}</mat-label>
+              <textarea [attr.automationId]="'Ta_ReceiptConfiguration_receiptFooterNote'" matInput formControlName="receiptFooterNote" [maxlength]="250" class="h-80"></textarea>
             </mat-form-field>
           </div>
           <div class="pt-3 mt-4 w-100 ag_pr--8 rollup-toggle-section " *ngIf="!PropertyInfo?.IsVATEnabled">
@@ -191,10 +179,8 @@
                   <!-- Tax Name text box for Combine All Taxes and Revenue to Property -->
                 </div>
                 <div class="ag_form-control ag_pr--8" *ngIf="showCombineAllTaxesAndRevenueToPropertyTextBox">
-                  <mat-form-field [floatLabel]="floatLabel" class="w-100">
-                    <input matInput [attr.automationId]="'Txt_ReceiptConfiguration_combineAllTaxesAndRevenueToPropertyName'"
-                      [placeholder]="textCaptions.TaxName" formControlName="combineAllTaxesAndRevenueToPropertyName"
-                      [maxlength]="50" />
+                  <mat-form-field [floatLabel]="floatLabel" class="w-100">  <mat-label>{{textCaptions.TaxName}}</mat-label>
+                    <input matInput [attr.automationId]="'Txt_ReceiptConfiguration_combineAllTaxesAndRevenueToPropertyName'" formControlName="combineAllTaxesAndRevenueToPropertyName" [maxlength]="50" />
                     <mat-error
                       *ngIf="propertyForm.controls['combineAllTaxesAndRevenueToPropertyName'].hasError('required') && propertyForm.controls['combineAllTaxesAndRevenueToPropertyName'].touched && !propertyForm.controls['combineAllTaxesAndRevenueToPropertyName'].valid">
                       {{textCaptions.MissingTaxName}}
@@ -209,9 +195,8 @@
                   </div>
                 </div>
                 <div class="ag_form-control ag_pr--8" *ngIf="showCombineAllTaxesTextBox">
-                  <mat-form-field [floatLabel]="floatLabel" class="w-100">
-                    <input matInput [attr.automationId]="'Txt_ReceiptConfiguration_combineAllTaxesName'"
-                      [placeholder]="textCaptions.TaxName" formControlName="combineAllTaxesName" [maxlength]="50" />
+                  <mat-form-field [floatLabel]="floatLabel" class="w-100">  <mat-label>{{textCaptions.TaxName}}</mat-label>
+                    <input matInput [attr.automationId]="'Txt_ReceiptConfiguration_combineAllTaxesName'" formControlName="combineAllTaxesName" [maxlength]="50" />
                     <mat-error
                       *ngIf="propertyForm.controls['combineAllTaxesName'].hasError('required') && propertyForm.controls['combineAllTaxesName'].touched && !propertyForm.controls['combineAllTaxesName'].valid">
                       {{textCaptions.MissingTaxName}}
@@ -226,9 +211,8 @@
                   </div>
                 </div>
                 <div class="ag_form-control ag_pr--8" *ngIf="showCombineAllRevenueToPropertyTextBox">
-                  <mat-form-field [floatLabel]="floatLabel" class="w-100">
-                    <input matInput [attr.automationId]="'Txt_ReceiptConfiguration_combineAllRevenueToPropertyName'"
-                      [placeholder]="textCaptions.TaxName" formControlName="combineAllRevenueToPropertyName" [maxlength]="50" />
+                  <mat-form-field [floatLabel]="floatLabel" class="w-100">  <mat-label>{{textCaptions.TaxName}}</mat-label>
+                    <input matInput [attr.automationId]="'Txt_ReceiptConfiguration_combineAllRevenueToPropertyName'" formControlName="combineAllRevenueToPropertyName" [maxlength]="50" />
                     <mat-error
                       *ngIf="propertyForm.controls['combineAllRevenueToPropertyName'].hasError('required') && propertyForm.controls['combineAllRevenueToPropertyName'].touched && !propertyForm.controls['combineAllRevenueToPropertyName'].valid">
                       {{textCaptions.MissingTaxName}}
@@ -270,10 +254,8 @@
             </div>
           </div>
           <div class="pad-top-10 propImagePadding" *ngIf="this.displayImageInReceiptFooter">
-            <mat-form-field [floatLabel]="floatLabel" (click)="viewChange($event)" class="txt-area-height w-100 ag_form_wrapper--lg mb-3">
-              <textarea matInput [attr.automationId]="'Ta_ReceiptConfiguration_receiptImageFooterNote'"
-                placeholder="{{textCaptions.ReceiptImageFooterNote}}" formControlName="receiptImageFooterNote"
-                [maxlength]="250" class="h-80"></textarea>
+            <mat-form-field [floatLabel]="floatLabel" (click)="viewChange($event)" class="txt-area-height w-100 ag_form_wrapper--lg mb-3">  <mat-label>{{textCaptions.ReceiptImageFooterNote}}</mat-label>
+              <textarea matInput [attr.automationId]="'Ta_ReceiptConfiguration_receiptImageFooterNote'" formControlName="receiptImageFooterNote" [maxlength]="250" class="h-80"></textarea>
             </mat-form-field>
           </div>
           <div class="ag_display--flex">
@@ -286,10 +268,8 @@
           <div *ngIf="enableSerialInvoiceRange">
             <div>{{textCaptions.ReceiptNumber}}</div>
             <div class="ag_display--flex-wrap ag_pt--2">
-              <mat-form-field class="ag_form-control--1 pr-2" [floatLabel]="floatLabel">
-                <input type="text" [placeholder]="this.localization.captions.common.From" matInput
-                  [attr.automationId]="'Txt_ReceiptConfiguration_startingReceiptNumber'" formControlName="fromReceiptNumber"
-                  numMaxlength maxlength="12" />
+              <mat-form-field class="ag_form-control--1 pr-2" [floatLabel]="floatLabel">  <mat-label>{{this.localization.captions.common.From}}</mat-label>
+                <input type="text" matInput [attr.automationId]="'Txt_ReceiptConfiguration_startingReceiptNumber'" formControlName="fromReceiptNumber" numMaxlength maxlength="12" />
                   <mat-error class="" *ngIf="propertyForm.controls['fromReceiptNumber'].hasError('minlength') && propertyForm.controls['fromReceiptNumber'].touched && !propertyForm.controls['fromReceiptNumber'].valid">
                     {{minDigitsErrMsg}}
                   </mat-error>
@@ -301,10 +281,8 @@
                     {{textCaptions.InvalidInput}}
                   </mat-error>
               </mat-form-field>
-              <mat-form-field class="ag_form-control--1" [floatLabel]="floatLabel">
-                <input type="text" [placeholder]="this.localization.captions.common.To" matInput
-                  [attr.automationId]="'Txt_ReceiptConfiguration_toReceiptNumber'" formControlName="toReceiptNumber"
-                  numMaxlength maxlength="12" />
+              <mat-form-field class="ag_form-control--1" [floatLabel]="floatLabel">  <mat-label>{{this.localization.captions.common.To}}</mat-label>
+                <input type="text" matInput [attr.automationId]="'Txt_ReceiptConfiguration_toReceiptNumber'" formControlName="toReceiptNumber" numMaxlength maxlength="12" />
                   <mat-error class="" *ngIf="propertyForm.controls['toReceiptNumber'].hasError('minlength') && propertyForm.controls['toReceiptNumber'].touched && !propertyForm.controls['toReceiptNumber'].valid">
                     {{minDigitsErrMsg}}
                   </mat-error>

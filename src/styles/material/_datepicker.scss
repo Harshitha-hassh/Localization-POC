@@ -1,0 +1,179 @@
+// =============================================================================
+// Datepicker Token-Based Overrides (Angular Material v20)
+// =============================================================================
+// Migrated from legacy .mat-datepicker and .mat-calendar selectors.
+// =============================================================================
+
+@import '../../assets/sass/abstracts/variables';
+
+// =============================================================================
+// WRAPPER CLASS: app-datepicker
+// Use this class on parent containers for datepicker customizations
+// =============================================================================
+
+.app-datepicker {
+  --mat-datepicker-calendar-header-background-color: #{$theme-base-color};
+  --mat-datepicker-calendar-header-text-color: #ffffff;
+  --mat-datepicker-calendar-date-selected-state-background-color: #{$theme-base-color};
+  --mat-datepicker-calendar-date-selected-state-text-color: #ffffff;
+}
+
+// =============================================================================
+// CALENDAR HEADER BUTTON STYLING
+// =============================================================================
+
+.mat-calendar-header {
+  .mdc-button__label {
+    color: #ffffff;
+  }
+}
+
+// =============================================================================
+// CALENDAR NAVIGATION BUTTONS
+// =============================================================================
+
+.mat-calendar-controls {
+  // Period button arrow
+  --mat-datepicker-calendar-period-button-icon-color: #ffffff;
+  
+  // Navigation buttons
+  --mat-datepicker-calendar-navigation-button-icon-color: #ffffff;
+  
+  .mat-calendar-next-button,
+  .mat-calendar-previous-button {
+    color: #ffffff;
+    
+    &[disabled] {
+      color: rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+// =============================================================================
+// CALENDAR BODY ACTIVE DATE
+// =============================================================================
+
+.mat-calendar-body-active {
+  --mat-datepicker-calendar-date-focus-state-background-color: #{$theme-base-color};
+}
+
+// =============================================================================
+// ICON-ONLY DATE PICKER
+// Use this class to hide the input and show only the icon
+// =============================================================================
+
+.app-datepicker-icon-only {
+  .mat-mdc-form-field-infix {
+    display: none;
+  }
+  
+  .mdc-line-ripple,
+  .mdc-notched-outline {
+    display: none;
+  }
+}
+
+// =============================================================================
+// DATE PICKER WITH BOTTOM BORDER ONLY
+// =============================================================================
+
+.app-datepicker-underlined {
+  border-bottom: 1px solid $ag_grey-lighter;
+  margin-bottom: 1.25em;
+  
+  .mat-mdc-form-field-subscript-wrapper {
+    min-height: 0;
+    margin-top: 0;
+  }
+  
+  .mat-mdc-form-field-error {
+    position: absolute;
+    margin-top: 5px;
+  }
+}
+
+// =============================================================================
+// DATEPICKER TOGGLE POSITIONING
+// =============================================================================
+
+.app-datepicker-field {
+  .mat-mdc-form-field-icon-suffix {
+    padding: 0 6px 0 0;
+  }
+}
+
+// =============================================================================
+// DATEPICKER TOGGLE ICON STYLING
+// =============================================================================
+
+// Base toggle button styling
+.mat-datepicker-toggle,
+mat-datepicker-toggle,
+.mat-mdc-form-field .mat-datepicker-toggle {
+  // Icon button container
+  .mat-mdc-icon-button,
+  .mdc-icon-button,
+  button {
+    --mdc-icon-button-state-layer-size: 28px !important;
+    --mdc-icon-button-icon-size: 20px !important;
+    width: 28px !important;
+    height: 28px !important;
+    padding: 4px !important;
+    
+    // Hide the ripple/state layer background
+    .mat-mdc-button-persistent-ripple,
+    .mat-mdc-button-ripple,
+    .mdc-icon-button__ripple,
+    .mat-ripple {
+      display: none !important;
+    }
+    
+    &::before {
+      display: none !important;
+    }
+    
+    .mat-mdc-button-touch-target {
+      width: 28px !important;
+      height: 28px !important;
+    }
+  }
+  
+  // SVG Icon sizing
+  .mat-datepicker-toggle-default-icon,
+  svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  // Mat-icon sizing if used
+  .mat-icon,
+  mat-icon {
+    width: 20px !important;
+    height: 20px !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+  }
+}
+
+// Custom calendar icon class (used in some templates)
+.customCalendar,
+.icon-Calender {
+  font-size: 14px !important;
+  width: 14px !important;
+  height: 14px !important;
+}
+
+// Form field suffix icon adjustment
+.mat-mdc-form-field-icon-suffix {
+  right: 8px;
+  .mat-datepicker-toggle,
+  mat-datepicker-toggle {
+    margin-right: 4px;
+  }
+  // Note: Icon button sizing is handled in the main toggle block above
+}
+
+.mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper{
+  padding-left: 4px;
+}
+

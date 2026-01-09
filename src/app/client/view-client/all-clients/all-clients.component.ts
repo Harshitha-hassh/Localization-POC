@@ -2,6 +2,7 @@
 
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 @Component({
+  standalone: false,
   selector: 'app-all-clients',
   templateUrl: './all-clients.component.html',
   styleUrls: ['./all-clients.component.scss'],

@@ -13,6 +13,7 @@ import { CommonAlertMessagePopupComponent } from 'src/app/common/shared/shared/a
 import { BaseResponse } from 'src/app/common/shared/shared.modal';
 
 @Component({
+  standalone: false,
   selector: 'app-copy-roles',
   templateUrl: './copy-roles.component.html',
   styleUrls: ['./copy-roles.component.scss']

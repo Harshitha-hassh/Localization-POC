@@ -232,30 +232,30 @@ $themes: (
       }
     }
 
-    .mat-tab-link,
-    .mat-tab-label {
-      &.mat-tab-label-active {
+    .mat-mdc-tab-link,
+    .mat-mdc-tab {
+      &.mdc-tab--active {
         color: $header-background !important;
       }
     }
-    .mat-step-header .mat-step-icon-selected,.mat-flat-button.mat-primary {
+    .mat-step-header .mat-step-icon-selected, .mat-mdc-unelevated-button.mat-primary {
       background: $header-background !important;
       border: 2px solid $header-background !important;
       color: $golf-base-white-bg !important;
     }
-    .mat-flat-button.mat-primary[disabled] {
+    .mat-mdc-unelevated-button.mat-primary[disabled] {
       background-color: rgba(0, 0, 0, 0.12) !important;
       background-color: $theme-base-color !important;
       color: $golf-base-white-bg !important;
       border: 1px solid $theme-base-color !important;
     }
-    .mat-flat-button.mat-primary.btnDisabled{
+    .mat-mdc-unelevated-button.mat-primary.btnDisabled {
       opacity: 0.5;
     }
 
-    .mat-tab-link.mat-tab-label-active,
-    .mat-tab-label.mat-tab-label-active,
-    .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+    .mat-mdc-tab-link.mdc-tab--active,
+    .mat-mdc-tab.mdc-tab--active,
+    .mat-mdc-form-field.mat-focused.mat-primary .mat-mdc-select-arrow {
       color: $header-background !important;
     }
     //Spinner
@@ -264,7 +264,7 @@ $themes: (
       stroke: $header-background !important;;
     }
 
-    .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+    .mat-mdc-select-panel .mat-mdc-option.mat-mdc-option-selected:not(.mat-mdc-option-multiple) {
       background-color: $menu-ligter-gold !important;
     }
     .retailCustomDataTable .highlight{
@@ -277,17 +277,16 @@ $themes: (
       // color: $color-text !important;
     }
 
-    .mat-tab-group.mat-primary .mat-ink-bar,
-    .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    .mat-mdc-tab-group.mat-primary .mdc-tab-indicator__content,
+    .mat-mdc-tab-nav-bar.mat-primary .mdc-tab-indicator__content {
       background-color: $header-background !important;
       background-color: $retail-primary-100 !important;
-
     }
-    .mat-option:hover,
-    .mat-option:focus {
+    .mat-mdc-option:hover,
+    .mat-mdc-option:focus {
     }
 
-    .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) span {
+    .mat-mdc-select-panel .mat-mdc-option.mat-mdc-option-selected:not(.mat-mdc-option-multiple) span {
       color: $ag_black !important;
     }
 
@@ -299,14 +298,14 @@ $themes: (
       color: $color-text !important;
     }
 
-    .mat-radio-button.mat-accent .mat-radio-inner-circle,
-    .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
-    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
-    .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    .mat-mdc-radio-button.mat-accent .mdc-radio__inner-circle,
+    .mat-mdc-radio-button.mat-accent .mat-mdc-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+    .mat-mdc-radio-button.mat-accent.mat-mdc-radio-checked .mat-radio-persistent-ripple,
+    .mat-mdc-radio-button.mat-accent:active .mat-radio-persistent-ripple {
       background-color: $header-background !important;
     }
 
-    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    .mat-mdc-radio-button.mat-accent.mat-mdc-radio-checked .mdc-radio__outer-circle {
       border-color: $header-background !important;
     }
 
@@ -323,7 +322,7 @@ $themes: (
     .spa-primary-default-save:hover {
       background-color: $header-background !important;
     }
-    .mat-button-wrapper {
+    .mat-mdc-button-wrapper {
       // color: $color-text !important;
     }
     .dashBoard-widgets-report-wrapper .widget_group_wrapper .widget_group_header .widget_group_manage .title {
@@ -348,7 +347,7 @@ $themes: (
     .secondary-default-btn:hover {
       // background: $header-background !important;
       border-color: 1px solid $header-background !important;
-      .mat-button-wrapper {
+      .mat-mdc-button-wrapper {
         color: $header1_icon !important;
       }
     }
@@ -507,11 +506,11 @@ $themes: (
       }
     }
     // input fields
-    .mat-form-field.mat-focused .mat-form-field-label {
+    .mat-mdc-form-field.mat-focused .mat-mdc-form-field-label {
       color: $header-background !important;
     }
     // focus on underline input fields
-    .mat-form-field.mat-focused .mat-form-field-ripple {
+    .mat-mdc-form-field.mat-focused .mdc-line-ripple {
       background-color: $header-background !important;
     }
     // uncheck
@@ -544,15 +543,15 @@ $themes: (
     }
     .mat-primary .mat-pseudo-checkbox-checked,
     .mat-primary .mat-pseudo-checkbox-indeterminate,
-    .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
+    .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox .mdc-checkbox__background {
       background: $header-background !important;
     }
 
-    .mat-checkbox-frame {
+    .mat-mdc-checkbox .mdc-checkbox__background {
       border-color: $header-background !important;
     }
 
-    .mat-primary .mat-option.mat-selected:not(.mat-option-disabled),
+    .mat-primary .mat-mdc-option.mat-mdc-option-selected:not(.mat-mdc-option-disabled),
     .common-CustomDataTable table .done,
     .common-CustomDataTable table .done .icon-done,
     .golf__link,
@@ -571,7 +570,7 @@ $themes: (
     .icon-emptyshop:before {
       color: $header-background !important;
     }
-    // .mat-option.mat-active {
+    // .mat-mdc-option.mat-active {
     //   background: $header-background !important;
     //   color: $header1_icon !important;
     // }
@@ -584,38 +583,38 @@ $themes: (
         background-color: $colorbackground !important;
       }
     }
-    lib-reorder-panel{
-      .reorder-box .mat-checkbox{
+    lib-reorder-panel {
+      .reorder-box .mat-mdc-checkbox {
         top: 0 !important;
       }
-      .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background{
+      .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox .mdc-checkbox__background {
         background-color: #2e67b7 !important;
       }
-      .mat-checkbox-frame{
+      .mat-mdc-checkbox .mdc-checkbox__background {
         border-color: #2e67b7 !important;
         border-radius: 0px !important;
       }
     }
-    lib-agilysys-dynamicform{
-      .mat-checkbox.mat-checkbox-checked .mat-checkbox-layout .mat-checkbox-inner-container .mat-checkbox-background {
+    lib-agilysys-dynamicform {
+      .mat-mdc-checkbox.mat-mdc-checkbox-checked .mdc-checkbox .mdc-checkbox__background {
         background-color: #2e67b7 !important;
       }
-      .mat-checkbox-frame{
+      .mat-mdc-checkbox .mdc-checkbox__background {
         border-color: #21242c !important;
       }
-      .mat-form-field.mat-focused .mat-form-field-label {
+      .mat-mdc-form-field.mat-focused .mat-mdc-floating-label {
         color: #747885 !important;
       }
-      .mat-form-field.mat-focused.mat-primary .mat-select-arrow{
+      .mat-mdc-form-field.mat-focused.mat-primary .mat-mdc-select-arrow {
         color: #2e67b7 !important;
       }
-      .mat-select-arrow {
+      .mat-mdc-select-arrow {
         color: #0000008a;
       }
-      .mat-radio-button.mat-accent .mat-radio-inner-circle{
+      .mat-mdc-radio-button.mat-accent .mdc-radio__inner-circle {
         background-color: #2e67b7 !important;
       }
-      .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+      .mat-mdc-radio-button.mat-accent.mat-mdc-radio-checked .mdc-radio__outer-circle {
         border-color: unset !important;
       }
     }

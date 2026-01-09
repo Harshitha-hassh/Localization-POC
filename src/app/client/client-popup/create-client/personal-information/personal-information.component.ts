@@ -23,6 +23,7 @@ import { RetailImageService } from 'src/app/shared/data-services/retail.image.se
 import { DefaultSettings } from 'src/app/retail/shared/globalsContant';
 
 @Component({
+  standalone: false,
   selector: 'app-personal-information',
   templateUrl: './personal-information.component.html',
   styleUrls: ['./personal-information.component.scss'],

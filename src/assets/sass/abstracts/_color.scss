@@ -19,7 +19,7 @@ $grey-medium2: rgb(171, 173, 174);
 $grey-light: rgb(195, 195, 195);
 $grey-lighter: rgb(228, 229, 232);
 $grey-lightest: rgb(244, 244, 245);
-$darkGrey: unquote("#818792");
+$darkGrey: #818792;
 
 //brown
 $brown-dark: #96744D;
@@ -35,20 +35,20 @@ $orange-lighter: rgb(221, 136, 0);
 $orange-lightest: rgb(255, 240, 220);
 
 //Red
-$red-dark: unquote("#992315");
+$red-dark: #992315;
 $red: rgb(224, 4, 4);
 $red-lightest: rgb(255, 225, 219);
-$lightest-red: unquote("#fc6c79");
-$light-red: unquote('#ff5b5b');
+$lightest-red: #fc6c79;
+$light-red: #ff5b5b;
 //Blue
 $blue: rgb(83, 147, 225);
 $blue-lightest: rgb(220, 233, 249);
 
 //Yellow
-$yellow: unquote("#FFFF8D");
+$yellow: #FFFF8D;
 
 //Violet
-$violet: unquote('#9999FF');
+$violet: #9999FF;
 
 //From Golf
 $nobel: #999999;
@@ -58,54 +58,54 @@ $black-opacity-level2: rgba(0, 0, 0, 0.2);
 $black-opacity-level25: rgba(0, 0, 0, 0.25);
 $black-opacity-level1: rgba(0, 0, 0, 0.12);
 $black-opacity-level3: rgba(0, 0, 0, 0.14);
-$formBackGroundGray: unquote("#E4E5E8");
-$lightGrey: unquote("#e3e4e8");
-$darkGrey: unquote("#818792");
-$lightGrey2: unquote("#efefef");
-$placeholderGrey: unquote("#cccccc");
+$formBackGroundGray: #E4E5E8;
+$lightGrey: #e3e4e8;
+$darkGrey: #818792;
+$lightGrey2: #efefef;
+$placeholderGrey: #cccccc;
 $ag_grey: #c6c6c6;
 $suvaGrey: #8f8f8f;
 $snow: #fbfbfb;
-$orange: unquote("#FF6600");
+$orange: #FF6600;
 
 // Colors used in Golf
-$ag_golf_green : unquote("#43a047");
+$ag_golf_green : #43a047;
 
 
 // Default colors
-$black: unquote("#000000");
-$white: unquote("#ffffff");
-$red: unquote("#ff0000");
-$green: unquote("#43A047");
+$black: #000000;
+$white: #ffffff;
+$red: #ff0000;
+$green: #43A047;
 // Theme green color
-$theme-green: unquote("#43A047");
-$theme-green-light: unquote("#77BB77");
-$theme-green-lighter: unquote("#c1ebc1");
-$theme-green-lightest: unquote("#DDEEDD");
-$theme-green-dark: unquote("#238823");
+$theme-green: #43A047;
+$theme-green-light: #77BB77;
+$theme-green-lighter: #c1ebc1;
+$theme-green-lightest: #DDEEDD;
+$theme-green-dark: #238823;
 
-$theme-blue-lighttest:unquote("#d4e0f2");
-$theme-blue-light:unquote("#9fc2f5");
-$theme-blue-selection:unquote("#d4e0f2");
+$theme-blue-lighttest:#d4e0f2;
+$theme-blue-light:#9fc2f5;
+$theme-blue-selection:#d4e0f2;
 
 
 // Secondary color
-$gray: unquote("#AAAAAA");
-$gray-darker: unquote("#444444");
-$gray-dark: unquote("#888888");
-$gray-light: unquote("#DDDDDD");
-$gray-lighter: unquote("#EFEFEF");
-$gray-lightest: unquote("#f9f9f9");
-$gray-dim: unquote("#E4E5E8");
+$gray: #AAAAAA;
+$gray-darker: #444444;
+$gray-dark: #888888;
+$gray-light: #DDDDDD;
+$gray-lighter: #EFEFEF;
+$gray-lightest: #f9f9f9;
+$gray-dim: #E4E5E8;
 
 // Tee time color
-$orange-grayish: unquote("#F7E5CC");
-$red-grayish: unquote("#E1C6C6");
-$red-soft: unquote("#E39595");
-$cyan: unquote("#ff0000");
-$cyan-light: unquote("#CCEFF7");
+$orange-grayish: #F7E5CC;
+$red-grayish: #E1C6C6;
+$red-soft: #E39595;
+$cyan: #ff0000;
+$cyan-light: #CCEFF7;
 
-$yellow: unquote("#FFFF8D"); // special notes
+$yellow: #FFFF8D; // special notes
 
 $black-light: rgba(0, 0, 0, 0.5);
 // $black-lighter: rgba(0, 0, 0, 0.3);
@@ -113,295 +113,295 @@ $black-lightest: rgba(0, 0, 0, 0.15);
 $black-very-lightest: rgba(0, 0, 0, 0.06);
 $black-dark: rgba(0, 0, 0, 0.75);
 
-$blue-bayoux: unquote("#60777D");
+$blue-bayoux: #60777D;
 
 //spa colors
 // Define the All colours in this File
 
-$IndigoColour: unquote("#264348"); //  INDIGO COLOR
-$PureWhite: unquote("#ffff"); //PureWhite
-$DarkOrange: unquote("#d35400"); //Dark Orange
-$black: unquote("#000000");
-$accent: unquote("#2ecc71");
-$silver: unquote("#ecf0f1");
-$trueblack: unquote("#000000");
-$gold: unquote("#C58D0B");
-$blue: unquote("#42DDF5");
-$wetapsat: unquote("#34495e");
-$lightgrey: unquote("#6f7c8a");
-$grey: unquote("grey");
-$lightwhite: unquote("#ecf0f1");
-$darkgrey: unquote("#34495e");
-$lightraygrey: unquote("#f9f7f7");
-$lightsemigrey: unquote("#f6f8f9");
-$lightsemiBlack: unquote("#566071");
-$pureblack: unquote("#000");
-$textblack: unquote("#1D1D1D");
-$semigrey: unquote("#faf5f5"); //Using Setting Page
-$semilightgreyWhite: unquote("#cecece"); //Using Setting page Border
-$HexaGrey: unquote("#b6b6b6"); //Using Setting button
-$HexaWhite: unquote("#dddddd"); //Using Button-wite
-$HexaLightWhite: unquote("#ececec"); //Using Header Light Grey
-$StrongGreen: unquote("#008000");
-$StrongRed: unquote("#FF0000");
-$Green: unquote("#7ACC33");
-$Red: unquote("#CC4B33");
-$TableBlack: unquote("#3a3a3a");
-$Darkgold: unquote("#484848");
-$goldMenuColor: unquote("#FAF5F5");
-$blueMenuColor: unquote("#FAF5F5");
-$secondaryButtonGrey: unquote("#9E9E9E");
-$lightyellow: unquote("#D0A33B");
-$lightgoldcircle: unquote("#f8f3e5");
-$secondaryButtonPressed: unquote("#e7dabc");
-$darkyellowonpress: unquote("#AA7A0B");
-$toggleBG: unquote("#C6C6C6");
-$dullgrey: unquote("#e0e0e0");
-$tertiarygold: unquote("#f8f3e4");
-$tertiarygolddark: unquote("#e8dabb");
+$IndigoColour: #264348; //  INDIGO COLOR
+$PureWhite: #ffff; //PureWhite
+$DarkOrange: #d35400; //Dark Orange
+$black: #000000;
+$accent: #2ecc71;
+$silver: #ecf0f1;
+$trueblack: #000000;
+$gold: #C58D0B;
+$blue: #42DDF5;
+$wetapsat: #34495e;
+$lightgrey: #6f7c8a;
+$grey: grey;
+$lightwhite: #ecf0f1;
+$darkgrey: #34495e;
+$lightraygrey: #f9f7f7;
+$lightsemigrey: #f6f8f9;
+$lightsemiBlack: #566071;
+$pureblack: #000;
+$textblack: #1D1D1D;
+$semigrey: #faf5f5; //Using Setting Page
+$semilightgreyWhite: #cecece; //Using Setting page Border
+$HexaGrey: #b6b6b6; //Using Setting button
+$HexaWhite: #dddddd; //Using Button-wite
+$HexaLightWhite: #ececec; //Using Header Light Grey
+$StrongGreen: #008000;
+$StrongRed: #FF0000;
+$Green: #7ACC33;
+$Red: #CC4B33;
+$TableBlack: #3a3a3a;
+$Darkgold: #484848;
+$goldMenuColor: #FAF5F5;
+$blueMenuColor: #FAF5F5;
+$secondaryButtonGrey: #9E9E9E;
+$lightyellow: #D0A33B;
+$lightgoldcircle: #f8f3e5;
+$secondaryButtonPressed: #e7dabc;
+$darkyellowonpress: #AA7A0B;
+$toggleBG: #C6C6C6;
+$dullgrey: #e0e0e0;
+$tertiarygold: #f8f3e4;
+$tertiarygolddark: #e8dabb;
 $lightblack: rgba(0, 0, 0, 0.54);
 
-$lightGray: unquote("#D1D2D3");
-$lightSilverGrey: unquote("#8E8E8E");
-$darkSilver: unquote("#B7B7B7");
-$brightGrey: unquote("#EFEFEF");
-$lightSeaBlue: unquote("#D5ECFF");
-$darkGreen: unquote("#16BA62");
-$darkRed: unquote("#E30404");
-$mintCream: unquote("#F7FEFF");
-$paleYellow: unquote("#FFFABF");
-$seaBlue: unquote("#36C9DD");
-$lightOrange: unquote("#DDA336");
-$lightGreen: unquote("#36DD50");
-$whiteSmoke: unquote("#F6F6F6");
-$formFieldGray: unquote("#434A54");
-$formBackGroundGray: unquote("#E4E5E8");
-$tabTextGray: unquote("#818892");
-$color-theme: unquote("#fff");
-$whiteOpacity: unquote("#ffffff99");
+$lightGray: #D1D2D3;
+$lightSilverGrey: #8E8E8E;
+$darkSilver: #B7B7B7;
+$brightGrey: #EFEFEF;
+$lightSeaBlue: #D5ECFF;
+$darkGreen: #16BA62;
+$darkRed: #E30404;
+$mintCream: #F7FEFF;
+$paleYellow: #FFFABF;
+$seaBlue: #36C9DD;
+$lightOrange: #DDA336;
+$lightGreen: #36DD50;
+$whiteSmoke: #F6F6F6;
+$formFieldGray: #434A54;
+$formBackGroundGray: #E4E5E8;
+$tabTextGray: #818892;
+$color-theme: #fff;
+$whiteOpacity: #ffffff99;
 $grayLight: rgba(204, 204, 204, 0.35);
-$appointmentColor: unquote("#545454");
-$scheduled: unquote("#4ECDC4");
-$checkedout: unquote("#F27935");
-$checkedOut-bg: unquote("#f2793533");
+$appointmentColor: #545454;
+$scheduled: #4ECDC4;
+$checkedout: #F27935;
+$checkedOut-bg: #f2793533;
 $upcoming-bg: rgba(190, 155, 91, 0.2);
-$clients: unquote("#19B5FE");
-$therapist: unquote("#674172");
-$tabBackGroundGray: unquote("#F5F5F5");
-$noShow: unquote("#CF000F");
-$darkGray: unquote("#4C4C4C");
+$clients: #19B5FE;
+$therapist: #674172;
+$tabBackGroundGray: #F5F5F5;
+$noShow: #CF000F;
+$darkGray: #4C4C4C;
 $border-grey-fullopacity: rgba(112, 112, 112, 1);
 $borderGray: rgba(112, 112, 112, 0.2);
 $borderlightGray: rgba(112, 112, 112, 0.1);
 $border-grey-opacity5: rgba(112, 112, 112, 0.5);
-$searchbox-bg: unquote("#5a5a5a");
-$grayRadio: unquote("#C9C9C9");
-$inputPlaceholderGray: unquote("#DCDCDC");
-$recentRowGray: unquote("#DBDBDB");
-$nearlyCheckOut: unquote("#EF4917");
-$appoinment-actions-gray: unquote("#8188924d");
-$appointment-actions-menu: unquote("#e4e5e84d");
-$shop-border-bottom: unquote("#81889280");
-$white-transparent: unquote("#ffffff73");
-$border-shop: unquote("#AAA8A8");
-$left-arrow-gray: unquote("#9A9292");
-$stepper-color: unquote("#e4e5e880");
-$button-split-color: unquote("#e1cea2");
-$more-legend: unquote("#6C7A89");
-$success-green: unquote("#15a552");
-$screen-grey: unquote("#e8e9e9");
-$warning-blue: unquote("#a9f3f0");
-$Beige: unquote("#F7EFDD ");
+$searchbox-bg: #5a5a5a;
+$grayRadio: #C9C9C9;
+$inputPlaceholderGray: #DCDCDC;
+$recentRowGray: #DBDBDB;
+$nearlyCheckOut: #EF4917;
+$appoinment-actions-gray: #8188924d;
+$appointment-actions-menu: #e4e5e84d;
+$shop-border-bottom: #81889280;
+$white-transparent: #ffffff73;
+$border-shop: #AAA8A8;
+$left-arrow-gray: #9A9292;
+$stepper-color: #e4e5e880;
+$button-split-color: #e1cea2;
+$more-legend: #6C7A89;
+$success-green: #15a552;
+$screen-grey: #e8e9e9;
+$warning-blue: #a9f3f0;
+$Beige: #F7EFDD ;
 /*new style end*/
 
-$linkWater: unquote("#CCD3D7");
-/*$gainsboro: unquote('#DCDCDC');*/
-$lightSeaGreen: unquote("#adad09");
-$neonPink: unquote("#F46BCA");
-$ceruleanBlue: unquote("#274BE3");
-$floralWhite: unquote("#FFF9EB");
-$aliceBlue: unquote("#F4F5F6");
-$lavender: unquote("#e7e7ea");
-$suvaGrey: unquote("#898989");
-$tuna: unquote("#434953");
-$color-light-grey: unquote("#e2e2e2");
-$logo-gold: unquote("#FFB600");
+$linkWater: #CCD3D7;
+/*$gainsboro: #DCDCDC;*/
+$lightSeaGreen: #adad09;
+$neonPink: #F46BCA;
+$ceruleanBlue: #274BE3;
+$floralWhite: #FFF9EB;
+$aliceBlue: #F4F5F6;
+$lavender: #e7e7ea;
+$suvaGrey: #898989;
+$tuna: #434953;
+$color-light-grey: #e2e2e2;
+$logo-gold: #FFB600;
 $box-shadow-opacity: rgba(0, 0, 0, 0.2);
 $black-opacity: rgba(0, 0, 0, 0.12);
 $black-opacity8: rgba(0, 0, 0, 0.8);
 $accordian-opacity: rgba(0, 0, 0, 0.14);
 $thbg: rgba(221, 221, 221, 0.87);
 $black-opacity42: rgba(0, 0, 0, 0.42);
-$reports-bgColor: unquote("#fbfbfc");
-$snow: unquote("#fcf9f9");
-$shop-background: unquote("#f0f0f2");
-$resolution-grey: unquote("#808080");
-$resolution-black: unquote("#3D3D3D");
+$reports-bgColor: #fbfbfc;
+$snow: #fcf9f9;
+$shop-background: #f0f0f2;
+$resolution-grey: #808080;
+$resolution-black: #3D3D3D;
 
-$grey-global: unquote("#E5E5E5");
-$white-global: unquote("#f0f0f0");
-$light-yellow: unquote("#F9F3E6");
-$light-grey-global: unquote("#82808061");
+$grey-global: #E5E5E5;
+$white-global: #f0f0f0;
+$light-yellow: #F9F3E6;
+$light-grey-global: #82808061;
 
-$azure: unquote("#F6F7F7");
-$very-light-grey: unquote("#c8c8c8");
-$shady-grey: unquote("#9e9698");
-$light-white: unquote("#fefefe");
-$papayawhip: unquote("#fff7ea");
-$tick-color: unquote("#aec81f");
-$cross-color: unquote("#a73535");
-$grey: unquote("#7E7E7E");
+$azure: #F6F7F7;
+$very-light-grey: #c8c8c8;
+$shady-grey: #9e9698;
+$light-white: #fefefe;
+$papayawhip: #fff7ea;
+$tick-color: #aec81f;
+$cross-color: #a73535;
+$grey: #7E7E7E;
 
-$custom-label-color: unquote("#0000008a");
-$custom-value-color: unquote("#000000de");
+$custom-label-color: #0000008a;
+$custom-value-color: #000000de;
 
 // Text Color
-$text-color-dark: unquote("#2D3236");
+$text-color-dark: #2D3236;
 
 // Report
-$reports-bgColor: unquote("#fbfbfc");
-$button-split-color: unquote("#e1cea2");
-$PureWhite: unquote("#ffff"); //PureWhite
+$reports-bgColor: #fbfbfc;
+$button-split-color: #e1cea2;
+$PureWhite: #ffff; //PureWhite
 
 //spa colors
 // Define the All colours in this File
 
-$IndigoColour: unquote("#264348"); //  INDIGO COLOR
-$PureWhite: unquote("#ffff"); //PureWhite
-$DarkOrange: unquote("#d35400"); //Dark Orange
-$black: unquote("#000000");
-$accent: unquote("#2ecc71");
-$silver: unquote("#ecf0f1");
-$trueblack: unquote("#000000");
-$gold: unquote("#C58D0B");
-$blue: unquote("#42DDF5");
-$wetapsat: unquote("#34495e");
-$lightgrey: unquote("#6f7c8a");
-$grey: unquote("grey");
-$lightwhite: unquote("#ecf0f1");
-$darkgrey: unquote("#34495e");
-$lightraygrey: unquote("#f9f7f7");
-$lightsemigrey: unquote("#f6f8f9");
-$lightsemiBlack: unquote("#566071");
-$pureblack: unquote("#000");
-$textblack: unquote("#1D1D1D");
-$semigrey: unquote("#faf5f5"); //Using Setting Page
-$semilightgreyWhite: unquote("#cecece"); //Using Setting page Border
-$HexaGrey: unquote("#b6b6b6"); //Using Setting button
-$HexaWhite: unquote("#dddddd"); //Using Button-wite
-$HexaLightWhite: unquote("#ececec"); //Using Header Light Grey
-$StrongGreen: unquote("#008000");
-$StrongRed: unquote("#FF0000");
-$Green: unquote("#7ACC33");
-$Red: unquote("#CC4B33");
-$TableBlack: unquote("#3a3a3a");
-$Darkgold: unquote("#484848");
-$goldMenuColor: unquote("#FAF5F5");
-$blueMenuColor: unquote("#FAF5F5");
-$secondaryButtonGrey: unquote("#9E9E9E");
-$lightyellow: unquote("#D0A33B");
-$lightgoldcircle: unquote("#f8f3e5");
-$secondaryButtonPressed: unquote("#e7dabc");
-$darkyellowonpress: unquote("#AA7A0B");
-$toggleBG: unquote("#C6C6C6");
-$dullgrey: unquote("#e0e0e0");
-$tertiarygold: unquote("#f8f3e4");
-$tertiarygolddark: unquote("#e8dabb");
+$IndigoColour: #264348; //  INDIGO COLOR
+$PureWhite: #ffff; //PureWhite
+$DarkOrange: #d35400; //Dark Orange
+$black: #000000;
+$accent: #2ecc71;
+$silver: #ecf0f1;
+$trueblack: #000000;
+$gold: #C58D0B;
+$blue: #42DDF5;
+$wetapsat: #34495e;
+$lightgrey: #6f7c8a;
+$grey: grey;
+$lightwhite: #ecf0f1;
+$darkgrey: #34495e;
+$lightraygrey: #f9f7f7;
+$lightsemigrey: #f6f8f9;
+$lightsemiBlack: #566071;
+$pureblack: #000;
+$textblack: #1D1D1D;
+$semigrey: #faf5f5; //Using Setting Page
+$semilightgreyWhite: #cecece; //Using Setting page Border
+$HexaGrey: #b6b6b6; //Using Setting button
+$HexaWhite: #dddddd; //Using Button-wite
+$HexaLightWhite: #ececec; //Using Header Light Grey
+$StrongGreen: #008000;
+$StrongRed: #FF0000;
+$Green: #7ACC33;
+$Red: #CC4B33;
+$TableBlack: #3a3a3a;
+$Darkgold: #484848;
+$goldMenuColor: #FAF5F5;
+$blueMenuColor: #FAF5F5;
+$secondaryButtonGrey: #9E9E9E;
+$lightyellow: #D0A33B;
+$lightgoldcircle: #f8f3e5;
+$secondaryButtonPressed: #e7dabc;
+$darkyellowonpress: #AA7A0B;
+$toggleBG: #C6C6C6;
+$dullgrey: #e0e0e0;
+$tertiarygold: #f8f3e4;
+$tertiarygolddark: #e8dabb;
 $lightblack: rgba(0, 0, 0, 0.54);
 
-$lightGray: unquote("#D1D2D3");
-$lightSilverGrey: unquote("#8E8E8E");
-$darkSilver: unquote("#B7B7B7");
-$brightGrey: unquote("#EFEFEF");
-$lightSeaBlue: unquote("#D5ECFF");
-$darkGreen: unquote("#16BA62");
-$darkRed: unquote("#E30404");
-$mintCream: unquote("#F7FEFF");
-$paleYellow: unquote("#FFFABF");
-$seaBlue: unquote("#36C9DD");
-$lightOrange: unquote("#DDA336");
-$lightGreen: unquote("#36DD50");
-$whiteSmoke: unquote("#F6F6F6");
-$formFieldGray: unquote("#434A54");
-$formBackGroundGray: unquote("#E4E5E8");
-$tabTextGray: unquote("#818892");
-$color-theme: unquote("#fff");
-$whiteOpacity: unquote("#ffffff99");
+$lightGray: #D1D2D3;
+$lightSilverGrey: #8E8E8E;
+$darkSilver: #B7B7B7;
+$brightGrey: #EFEFEF;
+$lightSeaBlue: #D5ECFF;
+$darkGreen: #16BA62;
+$darkRed: #E30404;
+$mintCream: #F7FEFF;
+$paleYellow: #FFFABF;
+$seaBlue: #36C9DD;
+$lightOrange: #DDA336;
+$lightGreen: #36DD50;
+$whiteSmoke: #F6F6F6;
+$formFieldGray: #434A54;
+$formBackGroundGray: #E4E5E8;
+$tabTextGray: #818892;
+$color-theme: #fff;
+$whiteOpacity: #ffffff99;
 $grayLight: rgba(204, 204, 204, 0.35);
-$appointmentColor: unquote("#545454");
-$scheduled: unquote("#4ECDC4");
-$checkedout: unquote("#F27935");
-$checkedOut-bg: unquote("#f2793533");
+$appointmentColor: #545454;
+$scheduled: #4ECDC4;
+$checkedout: #F27935;
+$checkedOut-bg: #f2793533;
 $upcoming-bg: rgba(190, 155, 91, 0.2);
-$clients: unquote("#19B5FE");
-$therapist: unquote("#674172");
-$tabBackGroundGray: unquote("#F5F5F5");
-$noShow: unquote("#CF000F");
-$darkGray: unquote("#4C4C4C");
+$clients: #19B5FE;
+$therapist: #674172;
+$tabBackGroundGray: #F5F5F5;
+$noShow: #CF000F;
+$darkGray: #4C4C4C;
 $border-grey-fullopacity: rgba(112, 112, 112, 1);
 $borderGray: rgba(112, 112, 112, 0.2);
 $borderlightGray: rgba(112, 112, 112, 0.1);
 $border-grey-opacity5: rgba(112, 112, 112, 0.5);
-$searchbox-bg: unquote("#5a5a5a");
-$grayRadio: unquote("#C9C9C9");
-$inputPlaceholderGray: unquote("#DCDCDC");
-$recentRowGray: unquote("#DBDBDB");
-$nearlyCheckOut: unquote("#EF4917");
-$appoinment-actions-gray: unquote("#8188924d");
-$appointment-actions-menu: unquote("#e4e5e84d");
-$shop-border-bottom: unquote("#81889280");
-$white-transparent: unquote("#ffffff73");
-$border-shop: unquote("#AAA8A8");
-$left-arrow-gray: unquote("#9A9292");
-$stepper-color: unquote("#e4e5e880");
-$button-split-color: unquote("#e1cea2");
-$more-legend: unquote("#6C7A89");
-$success-green: unquote("#15a552");
-$screen-grey: unquote("#e8e9e9");
-$warning-blue: unquote("#a9f3f0");
-$Beige: unquote("#F7EFDD ");
+$searchbox-bg: #5a5a5a;
+$grayRadio: #C9C9C9;
+$inputPlaceholderGray: #DCDCDC;
+$recentRowGray: #DBDBDB;
+$nearlyCheckOut: #EF4917;
+$appoinment-actions-gray: #8188924d;
+$appointment-actions-menu: #e4e5e84d;
+$shop-border-bottom: #81889280;
+$white-transparent: #ffffff73;
+$border-shop: #AAA8A8;
+$left-arrow-gray: #9A9292;
+$stepper-color: #e4e5e880;
+$button-split-color: #e1cea2;
+$more-legend: #6C7A89;
+$success-green: #15a552;
+$screen-grey: #e8e9e9;
+$warning-blue: #a9f3f0;
+$Beige: #F7EFDD ;
 /*new style end*/
 
-$linkWater: unquote("#CCD3D7");
-/*$gainsboro: unquote('#DCDCDC');*/
-$lightSeaGreen: unquote("#adad09");
-$neonPink: unquote("#F46BCA");
-$ceruleanBlue: unquote("#274BE3");
-$floralWhite: unquote("#FFF9EB");
-$aliceBlue: unquote("#F4F5F6");
-$lavender: unquote("#e7e7ea");
-$suvaGrey: unquote("#898989");
-$tuna: unquote("#434953");
-$color-light-grey: unquote("#e2e2e2");
-$logo-gold: unquote("#FFB600");
+$linkWater: #CCD3D7;
+/*$gainsboro: #DCDCDC;*/
+$lightSeaGreen: #adad09;
+$neonPink: #F46BCA;
+$ceruleanBlue: #274BE3;
+$floralWhite: #FFF9EB;
+$aliceBlue: #F4F5F6;
+$lavender: #e7e7ea;
+$suvaGrey: #898989;
+$tuna: #434953;
+$color-light-grey: #e2e2e2;
+$logo-gold: #FFB600;
 $box-shadow-opacity: rgba(0, 0, 0, 0.2);
 $black-opacity: rgba(0, 0, 0, 0.12);
 $black-opacity8: rgba(0, 0, 0, 0.8);
 $accordian-opacity: rgba(0, 0, 0, 0.14);
 $thbg: rgba(221, 221, 221, 0.87);
 $black-opacity42: rgba(0, 0, 0, 0.42);
-$reports-bgColor: unquote("#fbfbfc");
-$snow: unquote("#fcf9f9");
-$shop-background: unquote("#f0f0f2");
-$resolution-grey: unquote("#808080");
-$resolution-black: unquote("#3D3D3D");
+$reports-bgColor: #fbfbfc;
+$snow: #fcf9f9;
+$shop-background: #f0f0f2;
+$resolution-grey: #808080;
+$resolution-black: #3D3D3D;
 
-$grey-global: unquote("#E5E5E5");
-$white-global: unquote("#f0f0f0");
-$light-yellow: unquote("#F9F3E6");
-$light-grey-global: unquote("#82808061");
+$grey-global: #E5E5E5;
+$white-global: #f0f0f0;
+$light-yellow: #F9F3E6;
+$light-grey-global: #82808061;
 
-$azure: unquote("#F6F7F7");
-$very-light-grey: unquote("#c8c8c8");
-$shady-grey: unquote("#9e9698");
-$light-white: unquote("#fefefe");
-$papayawhip: unquote("#fff7ea");
-$tick-color: unquote("#aec81f");
-$cross-color: unquote("#a73535");
-$grey: unquote("#7E7E7E");
+$azure: #F6F7F7;
+$very-light-grey: #c8c8c8;
+$shady-grey: #9e9698;
+$light-white: #fefefe;
+$papayawhip: #fff7ea;
+$tick-color: #aec81f;
+$cross-color: #a73535;
+$grey: #7E7E7E;
 
-$custom-label-color: unquote("#0000008a");
-$custom-value-color: unquote("#000000de");
+$custom-label-color: #0000008a;
+$custom-value-color: #000000de;
 
 /** Dashboard */
 
@@ -412,29 +412,29 @@ $Zorba: #9f9b97;
 $Heather: #b4bdc3;
 
 /* Graphical */
-$mildGreenDarkRow: unquote("#F1F6F1");
-$mildGreenLightRow: unquote("#F5FAF5");
+$mildGreenDarkRow: #F1F6F1;
+$mildGreenLightRow: #F5FAF5;
 
-$theme-light-bg: unquote("#E9DED4");
-$theme-dark-bg: unquote("#a4fab9");
+$theme-light-bg: #E9DED4;
+$theme-dark-bg: #a4fab9;
 $black-opacity38: rgba(0, 0, 0, 0.38);
-$header-bg: unquote("#2d3236");
-$theme-color: unquote("#1d3faa");
+$header-bg: #2d3236;
+$theme-color: #1d3faa;
 
 
 // default theme - grey
-$mildGrey : unquote("#aeb4b8");
-$plum : unquote("#835c84");
-$black-theme: unquote("#2322223b");
-$dark-plum: unquote("#5e3f5e");
-$grey-plum : unquote("#ffffffa6");
+$mildGrey : #aeb4b8;
+$plum : #835c84;
+$black-theme: #2322223b;
+$dark-plum: #5e3f5e;
+$grey-plum : #ffffffa6;
 
 // default theme - black
 $mildBlack : rgb(74, 72, 72);
-$black : unquote("#000000");
-// $black-theme: unquote("#2322223b");
-$light-black: unquote("#5e3f5e");
-// $grey-plum : unquote("#ffffffa6");
+$black : #000000;
+// $black-theme: #2322223b;
+$light-black: #5e3f5e;
+// $grey-plum : #ffffffa6;
 // $theme_white: #fff;
 
 // orange theme
@@ -447,14 +447,14 @@ $theme_navyBlue: rgb(0,68,106);
 
 // green theme
 $theme_green: rgb(72,169,76);
-$theme_grey: unquote("#3a754c");
+$theme_grey: #3a754c;
 
 
 $blue-shade12: rgb(215,228,250);
 $blue-shade13: rgb(241,243,249);
 $menu-hover-color: rgba(255, 255, 255, 0.12);
-$blue-shade4: unquote("#F0F4FA");
-$blue-shade3: unquote("#E4E9F5");
+$blue-shade4: #F0F4FA;
+$blue-shade3: #E4E9F5;
 $header-font-color: rgba(255, 255, 255, 0.6);
 
 //menu new style color variables
@@ -505,6 +505,6 @@ $theme-background-color: $new-background-color;
 $theme-modal-header-color: $retail-primary-20;
 
 //Data Express
-$violet-light: unquote($string: "#d5dbed");
+$violet-light: #d5dbed;
 
 

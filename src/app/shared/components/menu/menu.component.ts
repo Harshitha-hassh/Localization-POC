@@ -30,6 +30,7 @@ import { JasperServerCommonDataService } from 'src/app/common/dataservices/jaspe
 import { PropertySettingDataService } from 'src/app/common/dataservices/authentication/propertysetting.data.service';
 
 @Component({
+  standalone: false,
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],

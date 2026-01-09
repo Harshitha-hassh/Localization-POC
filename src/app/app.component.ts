@@ -3,6 +3,7 @@ import { AppBusiness } from './app.business';
 import { ManageSessionService } from './login/manage-session.service';
 
 @Component({
+  standalone: false,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

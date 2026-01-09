@@ -1,0 +1,112 @@
+// =============================================================================
+// Checkbox Token-Based Overrides (Angular Material v20)
+// =============================================================================
+// Migrated from legacy .mat-checkbox selectors to MDC token-based styling.
+// =============================================================================
+
+@import '../../assets/sass/abstracts/variables';
+
+// =============================================================================
+// MDC CHECKBOX LAYOUT FIX
+// =============================================================================
+
+.mdc-checkbox {
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  margin-right: 16px;
+  flex-shrink: 0;
+  box-shadow: none !important;
+}
+
+.mdc-checkbox__background {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  border-width: 1px;
+  border-color: $theme-mat-ink-bar;
+  box-shadow: none !important;
+}
+
+.mdc-checkbox__checkmark {
+  color: #ffffff;
+}
+
+.mdc-checkbox__ripple {
+  opacity: 0;
+}
+
+// =============================================================================
+// CHECKBOX LABEL STYLING
+// =============================================================================
+
+mat-checkbox {
+  .mat-internal-form-field > label {
+    padding-left: 8px;
+  }
+  
+  .mat-mdc-checkbox .mat-internal-form-field {
+    color: $theme-mat-ink-bar;
+  }
+}
+
+// =============================================================================
+// WRAPPER CLASS: app-checkbox
+// Use this class on parent containers for checkbox customizations
+// =============================================================================
+
+.app-checkbox {
+  // Uses global tokens (theme-mat-ink-bar) - add overrides only if needed
+  .mdc-checkbox {
+    margin-bottom: 16px;
+  }
+}
+
+// =============================================================================
+// CHECKBOX WITH ROUNDED CORNERS
+// =============================================================================
+
+.app-checkbox-rounded {
+  // Uses global token for state-layer-size (16px)
+  .mdc-checkbox__background {
+    border-radius: 4px;
+  }
+}
+
+// =============================================================================
+// GROUP CHECKBOX STYLING
+// =============================================================================
+
+.app-checkbox-group {
+  margin-top: 1.25rem;
+  background-color: $ag_grey-lightest;
+  border: 1px solid $ag_grey-dark;
+  padding: 10px;
+  border-radius: 5px;
+  
+  mat-checkbox {
+    padding-bottom: 0.75rem;
+    display: block;
+    
+    .mat-mdc-checkbox-label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+      width: 100%;
+      vertical-align: middle;
+    }
+  }
+}
+
+// =============================================================================
+// MULTICOLUMN CHECKBOX ALIGNMENT
+// =============================================================================
+
+.app-multicolumn-checkbox {
+  align-self: center;
+  margin-top: 25px;
+}
+

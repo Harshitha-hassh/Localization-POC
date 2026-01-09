@@ -17,6 +17,7 @@ import { DialogCloseOption } from "src/app/shared/enums/constants";
 import { SetPropertyBusiness } from "./set-property.business";
 
 @Component({
+  standalone: false,
   selector: "app-progress-bar",
   templateUrl: "./progress-bar.html",
   styleUrls: ["./set-property.component.scss"],
@@ -39,6 +40,7 @@ export class ProgressBarComponent {
 }
 
 @Component({
+  standalone: false,
   selector: "app-set-property",
   templateUrl: "./set-property.component.html",
   styleUrls: ["./set-property.component.scss"],

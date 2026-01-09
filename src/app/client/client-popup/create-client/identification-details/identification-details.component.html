@@ -8,7 +8,7 @@
                  class="d-flex align-items-center flex-wrap mb-2">
                 
                 <!-- Identification Type - using ag-dropdown -->
-                <ag-dropdown class="mr-3 width-150px"
+                <ag-dropdown class="mr-3 width-212px identify-type-field"
                              [automationId]="'Dd_IdentificationDetails_type_' + i"
                              formControlName="identificationTypeId"
                              [placeholder]="captions.IdentificationType"
@@ -22,7 +22,6 @@
                           class="mr-3 other-type-name-field"
                           [automationId]="'Txt_IdentificationDetails_otherName_' + i"
                           formControlName="identificationTypeOtherName"
-                          [placeholder]="captions.OtherTypeName"
                           [maxlength]="200"
                           [required]="true">
                 </ag-input>
@@ -38,10 +37,10 @@
 
                 <!-- Issuing Country - shown for ALL identity types -->
                 <mat-form-field [floatLabel]="floatLabel" class="mr-3 width-150px">
+                    <mat-label>{{captions.IssuingCountry}}</mat-label>
                     <input [attr.automationId]="'Txt_IdentificationDetails_country_' + i"
                            matInput
                            formControlName="issuingCountry"
-                           [placeholder]="captions.IssuingCountry"
                            [matAutocomplete]="countryAuto"
                            (blur)="clearInvalidCountry($event, i)"
                            autocomplete="off"
