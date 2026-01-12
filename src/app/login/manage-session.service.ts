@@ -245,7 +245,7 @@ export class ManageSessionService implements OnDestroy {
         title.innerText = this.getPropertyName() ? this.getPropertyName() + ' - ' + this.localize.captions.app_title :
             this.localize.captions.app_title;
     }
-
+     
     createSession(): Promise<number> {
 
         const userId: number = Number(this.utils.GetUserInfo('userId'));
@@ -253,10 +253,10 @@ export class ManageSessionService implements OnDestroy {
         const productId: number = Number(this.utils.GetPropertyInfo('ProductId'));
         const timeZone = this.utils.GetPropertyInfo('TimeZone');
         const userToken = sessionStorage.getItem(JWT_TOKEN);
-
+        const utcDate: Date = this.localize.getUTCDateTimeNow();
         const sessionData = {
             userId,
-            startTime: moment().format('YYYY-MM-DDTHH:mm:ss'),
+            startTime: this.localize.ConvertDateToISODateTime(utcDate),
             propertyId,
             productId,
             timeZone,
