@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node prepare-build.js",
-    "build": "node --max-old-space-size=20480 node_modules/@angular/cli/bin/ng build --configuration=development --source-map --base-href /",
+    "build": "node --max-old-space-size=20480 node_modules/@angular/cli/bin/ng build --configuration=development --source-map --base-href /Retail/",
     "serve": "node --max-old-space-size=20480 node_modules/@angular/cli/bin/ng serve --port 3000 --configuration=development",
     "appliance-build": "node --max-old-space-size=8192 node_modules/@angular/cli/bin/ng build --base-href /Retail/",
     "dev-build": "ng build --configuration=development",
