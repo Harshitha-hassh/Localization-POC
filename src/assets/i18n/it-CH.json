@@ -1,5 +1,6 @@
 {
   "90070": "90070 - Folio_it-ch",
+  "2001189": "2001189 - Allow A/R Account Deletion_it-ch",
   "contactTypesOptions": {
     "Phone": [
       {
@@ -2081,6 +2082,7 @@
     "2001153": "2001153 - BIR Sales Summary Report_it-ch",
     "2001162": "2001162 - Unblock User_it-ch",
     "2001172": "2001172 - Password Reset_it-ch",
+    "2001189": "2001189 - Allow A/R Account Deletion_it-ch",
     "2500000": "2500000 - VAT Closed Checks Report_it-ch",
     "2500005": "2500005 - X Reading Back Office Report_it-ch",
     "2500010": "2500010 - Z Reading Report_it-ch",
@@ -5696,5 +5698,6 @@
   "lbl_NATCO": "Applicable for National Athletes and Coaches_it-ch",
   "tooltip_drag": "Drag_it-ch",
   "lbl_digitalInvoicerequest": "Digital Invoice Request_it-ch",
-  "lbl_digitalInvoiceBulkupload": "Digital Invoice Bulk Upload_it-ch"
+  "lbl_digitalInvoiceBulkupload": "Digital Invoice Bulk Upload_it-ch",
+  "wrn_BatchPosted": "This account has unposted batches. Do you want to proceed with deleting the account?_it-ch"
 }

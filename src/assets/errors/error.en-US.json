@@ -435,5 +435,9 @@
   "240007": "ItemNumber is required.",
   "240008": "ItemName is required.",
   "240009": "OutletId must be greater than 0.",
-  "240012": "UnscannedItems list cannot contain null items."
+  "240012": "UnscannedItems list cannot contain null items.",
+  "5524715":"This A/R account cannot be deleted because it has financial activity or upcoming invoices.",
+  "5524716":"Permission denied. You do not have permission to delete A/R accounts.",
+  "5524717":"Selected AR-Account is deleted",
+  "5524718":"Amount exceeds credit limit"
 }
