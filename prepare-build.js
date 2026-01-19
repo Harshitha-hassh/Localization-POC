@@ -29,7 +29,15 @@ const defaultLocalizations = [
     { code: "es-ES", suffix: "_es", name: "Spanish"},
     { code: "ar-QA", suffix: "_ar", name: "Qatar" },
     { code: "en-SC", suffix: "", name: "Seychelles" },
-    { code: "fr-SC", suffix: "_fr-sc", name: "Seychelles" }
+    { code: "fr-SC", suffix: "_fr-sc", name: "Seychelles" },
+    { code: "fr-PF", suffix: "_fr-pf", name: "French Polynesia" },
+    { code: "en-BS", suffix: "", name: "Bahamas" },
+    { code: "en-KN", suffix: "", name: "Saint Kitts and Nevis" },
+    { code: "ja-JA", suffix: "_ja", name: "Japanese" },
+    { code: "ar-BH", suffix: "_ar-bh", name: "Bahrain" },
+    { code: "en-BZ", suffix: "", name: "Belize" },
+    { code: "en-ZA", suffix: "", name: "South African" },
+    { code: "ar-KW", suffix: "_ar", name: "Kuwait" }
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
