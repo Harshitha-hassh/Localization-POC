@@ -70,6 +70,7 @@
           }
           .radiovalue{
             width:50%;
+            margin-right: 0px !important;
             .mat-radio-label-content{
               overflow: hidden;
               padding-right: 5px;
@@ -217,4 +218,9 @@
   min-width: 500px;
   white-space: normal; /* allows text wrapping */
   text-align: left;
+}
+
+
+.newVersionWrapper mat-radio-group mat-radio-button .mdc-label {
+  margin-bottom: 0px !important;
 }
