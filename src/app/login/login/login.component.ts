@@ -1103,6 +1103,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         const usersessionId = await this.sessionService.createSession();
         sessionStorage.setItem(USER_SESSION, String(usersessionId));
         await this.setEatecConfig();
+
+        const selectedProperty = this.propertyValues.find(
+        item => item.propertyCode === credentials.Property.id
+        );
+        this.SetPropertyInfo(selectedProperty);
+
         this.setAutoLogOff();
         await this.SetUserSessionConfiguration(this.userInfo.userId);
         this.setMachineDetails();
@@ -1621,6 +1627,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     const usersessionId = await this.sessionService.createSession();
     sessionStorage.setItem(USER_SESSION, String(usersessionId));
     await this.setEatecConfig();
+    this.SetPropertyInfo(selectedProperty);
+
     this.setAutoLogOff();
     await this.SetUserSessionConfiguration(this.userInfo.userId);
     this.setMachineDetails();
