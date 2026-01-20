@@ -1,5 +1,6 @@
 {
   "90070": "90070 - Folio_ja",
+  "2001189": "2001189 - Allow A/R Account Deletion_ja",
   "contactTypesOptions": {
     "Phone": [
       {
@@ -1833,6 +1834,8 @@
     },
     "lbl_SurchargeApplied": "Surcharge Applied_ja",
     "lbl_Surcharge": "Surcharge_ja",
+    "RoundOff": "Round Off_ja",
+    "InvalidRoundingAmount": "Invalid amount for rounding. Expected amount:_ja",
     "lbl_TaxExemptByPaymentMethod": "Tax Removed_ja",
     "lbl_DiscountExemptByPaymentMethod": "Discount Removed_ja",
     "lbl_ApplyingSurchargeLoaderMsg": "Applying Surcharge_ja",
@@ -2079,6 +2082,7 @@
     "2001153": "2001153 - BIR Sales Summary Report_ja",
     "2001162": "2001162 - Unblock User_ja",
     "2001172": "2001172 - Password Reset_ja",
+    "2001189": "2001189 - Allow A/R Account Deletion_ja",
     "2500000": "2500000 - VAT Closed Checks Report_ja",
     "2500005": "2500005 - X Reading Back Office Report_ja",
     "2500010": "2500010 - Z Reading Report_ja",
@@ -3535,6 +3539,7 @@
     "AutoLogoff": "Auto Logoff_ja",
     "LogoffAfter": "Logoff After_ja",
     "Language": "Language_ja",
+    "lbl_userLoginType": "Login Type_ja",
     "RoleName": "Role Name_ja",
     "AllowGratuity": "Allow Gratuity_ja",
     "AllowServiceCharge": "Allow Service Charge_ja",
@@ -5693,5 +5698,6 @@
   "lbl_NATCO": "Applicable for National Athletes and Coaches_ja",
   "tooltip_drag": "Drag_ja",
   "lbl_digitalInvoicerequest": "Digital Invoice Request_ja",
-  "lbl_digitalInvoiceBulkupload": "Digital Invoice Bulk Upload_ja"
+  "lbl_digitalInvoiceBulkupload": "Digital Invoice Bulk Upload_ja",
+  "wrn_BatchPosted": "This account has unposted batches. Do you want to proceed with deleting the account?_ja"
 }
