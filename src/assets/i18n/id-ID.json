@@ -462,7 +462,12 @@
       "save": "SAVE_id-id",
       "cancel": "CANCEL_id-id",
       "warn_datalost": "Are you sure you want to cancel the changes?_id-id",
-      "lbl_delete": "Delete_id-id"
+      "lbl_delete": "Delete_id-id",
+      "tempDet": "TEMPLATE DETAILS_id-id",
+      "missingtempCode": "Missing Template Code_id-id",
+      "missingtempName": "Missing Template Name_id-id",
+      "missinglistOrder": "Missing List Order_id-id",
+      "missingOutlet": "Missing Outlet Selection_id-id"
     }
   },
   "calendar": {

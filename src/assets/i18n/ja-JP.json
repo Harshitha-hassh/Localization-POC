@@ -462,7 +462,12 @@
       "save": "SAVE_jp",
       "cancel": "CANCEL_jp",
       "warn_datalost": "Are you sure you want to cancel the changes?_jp",
-      "lbl_delete": "Delete_jp"
+      "lbl_delete": "Delete_jp",
+      "tempDet": "TEMPLATE DETAILS_jp",
+      "missingtempCode": "Missing Template Code_jp",
+      "missingtempName": "Missing Template Name_jp",
+      "missinglistOrder": "Missing List Order_jp",
+      "missingOutlet": "Missing Outlet Selection_jp"
     }
   },
   "calendar": {

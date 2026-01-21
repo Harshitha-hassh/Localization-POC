@@ -462,7 +462,12 @@
       "save": "SAVE_fi",
       "cancel": "CANCEL_fi",
       "warn_datalost": "Are you sure you want to cancel the changes?_fi",
-      "lbl_delete": "Delete_fi"
+      "lbl_delete": "Delete_fi",
+      "tempDet": "TEMPLATE DETAILS_fi",
+      "missingtempCode": "Missing Template Code_fi",
+      "missingtempName": "Missing Template Name_fi",
+      "missinglistOrder": "Missing List Order_fi",
+      "missingOutlet": "Missing Outlet Selection_fi"
     }
   },
   "calendar": {

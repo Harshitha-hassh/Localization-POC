@@ -462,7 +462,12 @@
       "save": "SAVE_cs",
       "cancel": "CANCEL_cs",
       "warn_datalost": "Are you sure you want to cancel the changes?_cs",
-      "lbl_delete": "Delete_cs"
+      "lbl_delete": "Delete_cs",
+      "tempDet": "TEMPLATE DETAILS_cs",
+      "missingtempCode": "Missing Template Code_cs",
+      "missingtempName": "Missing Template Name_cs",
+      "missinglistOrder": "Missing List Order_cs",
+      "missingOutlet": "Missing Outlet Selection_cs"
     }
   },
   "calendar": {
