@@ -8,6 +8,8 @@
 // Display Properties
 body {
   min-width: 1024px;
+  margin: 0;
+  font-family: $ag_sourcesans-regular !important;
 }
 .ag_display--none {
   display: none !important;
@@ -83,6 +85,15 @@ body {
 .ag_text--uppercase {
   text-transform: uppercase;
 }
+
+// Specific override for Angular Material form fields
+.mat-mdc-form-field .ag_text--uppercase,
+.mat-form-field .ag_text--uppercase,
+input.ag_text--uppercase,
+mat-form-field input.ag_text--uppercase {
+  text-transform: uppercase !important;
+}
+
 .ag_text--capitalize {
   text-transform: capitalize;
 }
@@ -5609,11 +5620,13 @@ body .cdk-custom-wrapper .ag_table .table th {
   font-family: $ag_poppins-semibold !important;
   font-size: 18px !important;
 }
-.cdk-overlay-container .cdk-overlay-pane .fontChange.mat-option.mat-selected{
+.cdk-overlay-container .cdk-overlay-pane .fontChange.mat-mdc-option.mdc-list-item--selected,
+.cdk-overlay-container .cdk-overlay-pane .fontChange.mat-mdc-option.mat-mdc-option-selected {
     background-color: $menu-secondary-gold !important;
-    .mat-option-text{
-      span{
-      color: $menu-lighter-link-gold !important;
+    .mdc-list-item__primary-text,
+    .mat-mdc-option-text {
+      span {
+        color: $menu-lighter-link-gold !important;
       }
     }
 }
@@ -5646,7 +5659,21 @@ body .cdk-custom-wrapper .ag_table .table th {
   color: $new_mat-error !important;
 }
 
-.mat-form-field.mat-form-field-invalid .mat-form-field-label{
+.mat-form-field.mat-form-field-invalid .mat-form-field-label,
+.mat-form-field.mat-form-field-invalid .mat-mdc-floating-label,
+.mat-form-field.mat-form-field-invalid .mat-mdc-floating-label.mdc-floating-label--float-above {
+  color: $new_mat-error !important;
+}
+
+/* Angular 20 MDC-based form field error states */
+.mat-mdc-form-field.mat-form-field-invalid .mat-mdc-floating-label,
+.mat-mdc-form-field.mat-form-field-invalid .mdc-floating-label {
+  color: $new_mat-error !important;
+}
+
+/* Ensure error state applies to all label states */
+.mat-form-field-invalid .mat-form-field-label-wrapper .mat-form-field-label,
+.mat-mdc-form-field.mat-form-field-invalid .mdc-floating-label--float-above {
   color: $new_mat-error !important;
 }
 

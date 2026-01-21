@@ -144,7 +144,7 @@
               <app-ag-toggle [toggleInputs]="authCodeToggleInputs" (valueChange)="toggleAction($event)"></app-ag-toggle>
             </div>
             <div [ngClass]="this.DisplayAuthCode ? 'pad-top-10 ag_form--control-fixed-350px':''">
-              <mat-form-field class="pt-4 authcodeName w-100" [floatLabel]="floatLabel" *ngIf="this.DisplayAuthCode">  <mat-label>{{textCaptions.lbl_authCodeonReceiptName}}</mat-label>
+              <mat-form-field class="authcodeName w-100" [floatLabel]="floatLabel" *ngIf="this.DisplayAuthCode">  <mat-label>{{textCaptions.lbl_authCodeonReceiptName}}</mat-label>
                 <input matInput [attr.automationId]="'Txt_ReceiptConfiguration_authcodeName'" formControlName="authcodeName" [maxlength]="25" />
               </mat-form-field>
             </div>

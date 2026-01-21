@@ -206,7 +206,17 @@
   }
 }
 
-  .custom-popover-tooltip {
+/* // Override global style - must be outside the .receiptConfig block since ViewEncapsulation.None is used
+#new-mat-view app-receipt-configuration .mat-mdc-form-field {
+  margin-top: 0px !important;
+}
+
+// Alternative with even higher specificity
+body#new-mat-view app-receipt-configuration .receiptConfig .mat-mdc-form-field {
+  margin-top: 0px !important;
+} */
+
+.custom-popover-tooltip {
   background-color: $white !important;
   color: $black !important;
   font-size: 14px;

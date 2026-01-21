@@ -188,3 +188,11 @@
   color: $ag_error-color;
 }
 
+// Hide subscript wrapper for textarea form fields and increase container height
+/* .mat-mdc-form-field:has(textarea) {
+  --mat-form-field-container-height: 62px;
+ 
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none !important;
+  }
+} */

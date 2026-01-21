@@ -78,10 +78,11 @@ $select-tokens: (
   // Option styling
   --mat-option-selected-state-layer-color: rgba(0, 0, 0, 0.04),
   --mat-option-hover-state-layer-color: rgba(0, 0, 0, 0.04),
-  --mat-option-focus-state-layer-color: rgba(0, 0, 0, 0.04),
+ // --mat-option-focus-state-layer-color: rgba(0, 0, 0, 0.04),
   --mat-option-label-text-size: 14px,
   --mat-option-label-text-line-height: 3em,
   --mat-option-label-text-color: #525252,
+  --mat-option-label-text-font: $ag_sourcesans-regular,
   --mat-option-selected-state-label-text-color: #525252,
   // Pseudo checkbox (multi-select)
   --mat-pseudo-checkbox-full-selected-icon-color: $theme-mat-ink-bar,
@@ -209,7 +210,7 @@ $button-tokens: (
   --mat-button-filled-container-shape: 4px,
   --mat-button-filled-disabled-container-color: rgba(0, 0, 0, 0.12),
   --mat-button-filled-disabled-label-text-color: rgba(0, 0, 0, 0.38),
-  
+  --mat-button-protected-label-text-font: $ag_sourcesans-regular,
   // Outlined button
   --mat-button-outlined-outline-color: $app-primary-color,
   --mat-button-outlined-label-text-color: $app-primary-color,

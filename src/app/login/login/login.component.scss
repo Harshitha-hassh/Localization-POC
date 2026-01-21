@@ -12,10 +12,27 @@
     $self: &;
     height: 100%;
     width: 100%;
+
+    /* Fix for Angular 20 Material form field error state */
+    .mat-form-field.mat-form-field-invalid .mat-form-field-label,
+    .mat-form-field.mat-form-field-invalid .mat-mdc-floating-label,
+    .mat-mdc-form-field.mat-form-field-invalid .mat-mdc-floating-label {
+        color: $new_mat-error !important;
+    }
+
+    /* Ensure customer ID field shows red label on error */
+    mat-form-field.mat-form-field-invalid {
+        .mat-form-field-label,
+        .mat-mdc-floating-label,
+        .mdc-floating-label {
+            color: $new_mat-error !important;
+        }
+    }
+
     #{ $self }__btn {
         width: 303px;
         text-transform: uppercase;
-        background-color: $ag_base-color;
+        background-color: $ag_base-color !important;
         color: white;
     }
 
@@ -194,7 +211,7 @@ button .loginloadingSpinner {
   position: absolute;
   top: 7px;
   left: unset;
-  right: 15px;
+  right: 0px;
 }
 @keyframes loginloadingSpinner {
   from { transform: rotate(0deg)   }

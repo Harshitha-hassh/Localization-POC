@@ -74,13 +74,14 @@
   // Option text
   .mdc-list-item__primary-text {
     font-size: 14px;
-    font-family: $ag_sourcesans-semibold;
-    color: #525252;
+    font-family: $ag_sourcesans-regular;
+    color: #000000;
   }
   
   // Selected option highlight
   &.mdc-list-item--selected {
-    background-color: $retail-primary-10;
+    background-color: $retail-primary-40 !important;
+    color: $retail-primary-100 !important;
     
     .mdc-list-item__primary-text {
       color: #525252;
@@ -150,7 +151,7 @@
 
 .mat-mdc-select-value {
   font-size: 14px;
-  font-family: $ag_sourcesans-semibold;
+  font-family: $ag_sourcesans-regular;
   color: #525252;
 }
 
@@ -315,7 +316,7 @@ mat-checkbox.mat-option,
   box-sizing: border-box !important;
   cursor: pointer !important;
   font-size: 14px !important;
-  font-family: $ag_sourcesans-semibold !important;
+  font-family: $ag_sourcesans-regular !important;
   color: #525252 !important;
   
   // The checkbox container
@@ -341,7 +342,7 @@ mat-checkbox.mat-option,
   label {
     padding-left: 0 !important;
     font-size: 14px !important;
-    font-family: $ag_sourcesans-semibold !important;
+    font-family: $ag_sourcesans-regular !important;
     color: #525252 !important;
     cursor: pointer !important;
   }
