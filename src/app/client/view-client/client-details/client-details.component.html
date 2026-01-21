@@ -7,17 +7,17 @@
             [checked]="item.checked" [disabled]="" (change)="clientSearchTypeChange(item.id)">{{item.name}}
           </mat-radio-button>
         </mat-radio-group>
-        <div class='ag_display--inflex align-items-center'  *ngIf="clientService.selectedIndex==0 && platFormExtendedSearchRequired">
-          <label class="">{{this.captions.platformGuestSearch}}</label>
-          <app-retail-toggle-switch [attr.automationId]="'Tog_clientDetails_platformGuestSearch'" class="ml-2" formControlName="platformGuestSearch"
-              (changeToggleEvent)="isPlatformGuestSearchChanged($event)"></app-retail-toggle-switch>
-        </div>
       </div>
       <div class="d-flex al-centre custom-aligns">
         <mat-form-field class="spa-searchbox searchpt " [floatLabel]="floatLabelNever" id="searchInput">  
           <input [attr.automationId]="'Txt_clientDetails_search'" #tableInput matInput autocomplete="off" [(ngModel)]="searchText" placeholder="{{searchTextPlaceHolder}}" [ngModelOptions]="{standalone: true}" type="text" value="" (ngModelChange)="enableSearchButton()" (keyup.enter)= "onEnter()" (focus)="platformSearchData()">
           <i [attr.automationId]="'Icn_clientDetails_cancel'" [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor" (click)="clearText()"></i>
         </mat-form-field>
+        <div class='ag_display--inflex align-items-center ml-2 mr-2'  *ngIf="clientService.selectedIndex==0 && platFormExtendedSearchRequired">
+          <label class="">{{this.captions.platformGuestSearch}}</label>
+          <app-retail-toggle-switch [attr.automationId]="'Tog_clientDetails_platformGuestSearch'" class="ml-2" formControlName="platformGuestSearch"
+              (changeToggleEvent)="isPlatformGuestSearchChanged($event)"></app-retail-toggle-switch>
+        </div>
         <button [attr.automationId]="'Btn_clientDetails_search'" class="LW14 save" mat-button  class="body-bgcolor body-bordercolor whitecolor btn-lnht ml-2" [ngClass] = "enableSearch ? 'spa-primary-default-save' : 'spa-primary-disabled'"
           (click)="clientSearch(searchText)">{{this.captions.Search}}</button>
         <button [attr.automationId]="'Rdo_clientDetails_reset'" mat-button class="body-bgcolor body-bordercolor ct-reset whitecolor btn-lnht ml-2" [disabled]="!enableSearch"

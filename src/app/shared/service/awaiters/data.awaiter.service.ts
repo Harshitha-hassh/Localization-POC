@@ -402,9 +402,19 @@ export class DataAwaiterService {
     }
     private async GetExtendedProfileSearchConfig() : Promise<boolean>
     {
-        let platformGuestSearch = await this.propertySettingDataService.GetEnableExtendedProfileSearchByDefaultSetting();
-        return platformGuestSearch && platformGuestSearch.value === 'true' ? true : false;
+        const enableCGPS = this.localization.GetPropertyConfig('EnableCGPSIframeGuestSearch');
+        const isPropertyEnabled =
+                this.localization.validateString(enableCGPS) &&
+                enableCGPS.toLowerCase() === 'true';
+        const platformGuestSearch =
+            await this.propertySettingDataService.GetEnableExtendedProfileSearchByDefaultSetting();
+
+        const isPlatformEnabled =
+        platformGuestSearch?.value === 'true';
+
+        return isPropertyEnabled || isPlatformEnabled;
     }
+    
     private async getAllVipType(includeInactive) {
         return this.vipTypeBusiness.getAllVipType(includeInactive);
     }

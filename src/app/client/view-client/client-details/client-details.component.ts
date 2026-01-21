@@ -146,13 +146,7 @@ export class ClientDetailsComponent implements OnInit {
                 this.SearchClientInformation(this._as.selectedClient.name, false, this._as.selectedClient.guestProfileId, this.selectedClientSearchType);
             }
         });
-        this.clientSearchTypes = [{ id: 0, name: this.captions.firstName, checked: true },
-        { id: 1, name: this.captions.lastName, checked: false },
-        { id: 2, name: this.captions.name, checked: false },
-        { id: 3, name: this.captions.phone, checked: false },
-        { id: 4, name: this.captions.email, checked: false },
-        { id: 5, name: this.captions.patronId, checked: false }
-        ];
+        this.clientSearchTypes = this.getDefaultClientSearchTypes();
     }
     sampleData: any = [];
     isEnableCGPSIframeGuestSearch: boolean = false;
@@ -162,6 +156,8 @@ export class ClientDetailsComponent implements OnInit {
         this.ClientSearchForm = this.fb.group({
             platformGuestSearch: this.isPlatformGuestSearch,
         })
+        var enableCGPSIframeGuestSearch = this.localization.GetPropertyConfig("EnableCGPSIframeGuestSearch")
+        this.isEnableCGPSIframeGuestSearch = this.localization.validateString(enableCGPSIframeGuestSearch) ? enableCGPSIframeGuestSearch.toLowerCase() === "true" : false;
         this.setPlatformGuestSearch();
         let clientswitchvalue = this.clientSearchTypes.find(t => t.checked == true);
         this.setSearchText(clientswitchvalue?.id);
@@ -194,8 +190,6 @@ export class ClientDetailsComponent implements OnInit {
             this.clientService.isVip = false;
         }
         this.FilterClientInformation();
-        var enableCGPSIframeGuestSearch = this.localization.GetPropertyConfig("EnableCGPSIframeGuestSearch")
-        this.isEnableCGPSIframeGuestSearch = this.localization.validateString(enableCGPSIframeGuestSearch) ? enableCGPSIframeGuestSearch.toLowerCase() === "true" : false;
     }
 
     // Client Search Header actions
@@ -1107,13 +1101,16 @@ export class ClientDetailsComponent implements OnInit {
 
     isPlatformGuestSearchChanged(e) {
         this.isPlatformGuestSearch = Boolean(e[0]);
+        this.clientSearchTypes = this.getDefaultClientSearchTypes();
     }
     async setPlatformGuestSearch() {
         let platformGuestSearch = await this.propertySettingService.GetEnableExtendedProfileSearchByDefaultSetting();
-        this.isPlatformGuestSearch = platformGuestSearch && platformGuestSearch.value.toString().toLowerCase() === 'true' ? true : false;
+        this.isPlatformGuestSearch = this.isEnableCGPSIframeGuestSearch || (platformGuestSearch && platformGuestSearch.value.toString().toLowerCase() === 'true' ? true : false);
         this.ClientSearchForm.setValue({
             platformGuestSearch: this.isPlatformGuestSearch
         });
+        // Update clientSearchTypes after isPlatformGuestSearch is set
+        this.clientSearchTypes = this.getDefaultClientSearchTypes();
     }
 
     async platformGuestResponse(platformGuestId: any) {
@@ -1158,5 +1155,19 @@ export class ClientDetailsComponent implements OnInit {
                 this.tableInput.nativeElement.value = '';
             }
         }
+    }
+
+    getDefaultClientSearchTypes() {
+        const fields = [{ id: 0, name: this.captions.firstName, checked: true },
+        { id: 1, name: this.captions.lastName, checked: false },
+        { id: 2, name: this.captions.name, checked: false },
+        { id: 3, name: this.captions.phone, checked: false },
+        { id: 4, name: this.captions.email, checked: false },
+        { id: 5, name: this.captions.patronId, checked: false }
+        ];
+
+        return this.isPlatformGuestSearch
+      ? fields.filter(x => x.id !== clientSearchType.patronId)
+      : fields;
     }
 }
