@@ -61,6 +61,7 @@ import { CommonApiRoutes } from 'src/app/common/common-route';
 import { ForgetPasswordComponent } from 'src/app/common/components/forget-password/forget-password.component';
 import { CommonControllersRoutes } from 'src/app/common/communication/common-route';
 import jwt_decode from 'jwt-decode';
+import { FiscalProcessingService } from 'src/app/common/services/fiscal-processing.service';
 
 @Component({
   standalone: false,
@@ -176,7 +177,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private _subPropertyDataService: SubPropertyDataService,
     private utempdatautils: UTempDataUtilities,
     private configuration: TenantConfigurationDataService,
-    private _userSecurityQuestionsService: UserSecurityQuestionBusinessService
+    private _userSecurityQuestionsService: UserSecurityQuestionBusinessService,
+    private _fiscalProcessingService: FiscalProcessingService
   ) {
     // this.initializeForm();
     // this.captions = this.localize.captions;
@@ -582,6 +584,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setMachineDetails();
       sessionStorage.setItem(RetailConstants.EnableResortFinance, this.userInfo.enableResortFinance.toString());
       await this.propertyServices.setAuthorizeTokenBySession();
+      // Set ProcessInvoice type based on fiscal legal entity sync type
+      await this._fiscalProcessingService.setProcessInvoiceType();
       this.router.navigate(['/home']);
       this.propertyServices.Checkfordeployment();
       await this.retailFunc.getRetailFunctionality();
@@ -1112,6 +1116,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.setAutoLogOff();
         await this.SetUserSessionConfiguration(this.userInfo.userId);
         this.setMachineDetails();
+        // Set ProcessInvoice type based on fiscal legal entity sync type
+        await this._fiscalProcessingService.setProcessInvoiceType();
         this.router.navigate(['/home']);
         await this.retailFunc.getRetailFunctionality();
       }
@@ -1632,6 +1638,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.setAutoLogOff();
     await this.SetUserSessionConfiguration(this.userInfo.userId);
     this.setMachineDetails();
+    // Set ProcessInvoice type based on fiscal legal entity sync type
+    await this._fiscalProcessingService.setProcessInvoiceType();
     this.router.navigate(['/home']);
     await this.retailFunc.getRetailFunctionality();
     try {
