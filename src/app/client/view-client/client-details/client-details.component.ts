@@ -834,7 +834,7 @@ export class ClientDetailsComponent implements OnInit {
             error: this.errorCallback.bind(this),
             callDesc: "SearchClientInfo",
             method: HttpMethod.Put,
-            uriParams: { searchType: searchType, requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000), isPlatformGuestSearch: this.isPlatformGuestSearch },
+            uriParams: { searchType: searchType, requestUid: (this.requestUid || Date.now() + "" + this.utils.getRandomDecimal() * 10000), isPlatformGuestSearch: (this.isPlatformGuestSearch && this.platFormExtendedSearchRequired) },
             body: pattern,
             showError: true,
             extraParams: []
