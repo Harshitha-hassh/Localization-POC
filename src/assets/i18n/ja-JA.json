@@ -5704,5 +5704,6 @@
   "tooltip_drag": "Drag_ja",
   "lbl_digitalInvoicerequest": "Digital Invoice Request_ja",
   "lbl_digitalInvoiceBulkupload": "Digital Invoice Bulk Upload_ja",
-  "wrn_BatchPosted": "This account has unposted batches. Do you want to proceed with deleting the account?_ja"
+  "wrn_BatchPosted": "This account has unposted batches. Do you want to proceed with deleting the account?_ja",
+  "lbl_quantity": "Quantity_ja"
 }

@@ -5704,5 +5704,6 @@
   "tooltip_drag": "Drag_jp",
   "lbl_digitalInvoicerequest": "Digital Invoice Request_jp",
   "lbl_digitalInvoiceBulkupload": "Digital Invoice Bulk Upload_jp",
-  "wrn_BatchPosted": "This account has unposted batches. Do you want to proceed with deleting the account?_jp"
+  "wrn_BatchPosted": "This account has unposted batches. Do you want to proceed with deleting the account?_jp",
+  "lbl_quantity": "Quantity_jp"
 }
