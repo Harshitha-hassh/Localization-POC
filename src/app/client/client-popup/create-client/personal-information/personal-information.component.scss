@@ -2,6 +2,8 @@
 //     background:#c2a653 !important;
 // }
 @import '../../../../../assets/sass/abstracts/_variables';
+@import 'src/app/common/styles/abstracts/ag-telflag';
+
 .wdt-100{
     width: 100%;
 }
@@ -17,6 +19,38 @@
 }
 .gender-right{
     color: red;float: left;width: 20%;
+}
+.nationality-section {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+}
+.nationality-field {
+    max-width: 180px;
+
+ 
+
+    .nationality-flag-container {
+        display: flex;
+        align-items: center;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        z-index: 1;
+        margin-right: 8px;
+    }
+    
+    .nationality-input-with-flag {
+        padding-left: 29px !important;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    input[matInput] {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
 }
 .personal_container{
     position: relative;
@@ -314,3 +348,26 @@
   background: #d4bda9 !important;
 }
 
+.dropdown-search {
+  position: sticky;
+  top: 0px;
+  background: $ag_white !important;
+  z-index: 1;
+  display: flex;
+  input {
+    width: 100% !important;
+    height: 40px;
+    border: 0px;
+    padding: 0px 15px;
+    outline: none;
+  }
+  .icon-close {
+    font-size: 12px;
+  }
+  i {
+    position: absolute;
+    right: 6px;
+    margin-top: 14px;
+    width: 10%;
+  }
+}

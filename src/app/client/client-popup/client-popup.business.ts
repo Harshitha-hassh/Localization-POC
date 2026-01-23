@@ -81,6 +81,7 @@ export class CreateClientBusiness {
       platformRevUuid: isClientUpdate ? details.personalDetailsFormGroup.platformRevUuid : '',
       anniversaryDate: this.additionalDetailsFormGroup.anniversaryDate ? this.Utilities.GetFormattedDate(this.additionalDetailsFormGroup.anniversaryDate) : '',
       preferredLanguage: this.additionalDetailsFormGroup.preferredLanguage ? this.additionalDetailsFormGroup.preferredLanguage : 0,
+      nationality: this.personalDetailsControls.nationality?.name ? this.personalDetailsControls.nationality.name : '',
       placeOfBirth: this.additionalDetailsFormGroup.placeOfBirth || '',
       guestIdentityDetails: this.mapIdentificationDetails(details.identificationDetailsFormGroup)
     };

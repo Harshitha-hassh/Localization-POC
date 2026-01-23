@@ -6,7 +6,7 @@ import { BaseResponse } from 'src/app/common/shared/shared.modal';
 import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 import * as _ from 'lodash';
 import { PropertyInformation } from '../../../../core/services/property-information.service';
-import { Observable, ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject, forkJoin } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, startWith, takeUntil } from 'rxjs/operators';
 import { ClientCommonService } from 'src/app/client/client.service';
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
@@ -21,6 +21,8 @@ import { PlayerInformationService } from 'src/app/common/shared/shared/service/p
 import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilities';
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
 import { DefaultSettings } from 'src/app/retail/shared/globalsContant';
+import { CommonDataService } from 'src/app/common/dataservices/common.data.service';
+import countryCodeData from 'src/app/common/components/ag-phone-number/country-code.json';
 
 @Component({
   standalone: false,
@@ -101,6 +103,9 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   maxReceiptDate: any;
   isDobRequired: boolean = false;
   filteredCountries: Observable<any>;
+  nationalityList: { name: string; flagClass: string }[] = [];
+  filteredNationalities: { name: string; flagClass: string }[] = [];
+  pendingNationality: string = '';
   customRequired = {
     title: false,
     gender: false,
@@ -112,7 +117,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     country: false,
     postalCode: false,
     dob: false,
-    county: false
+    county: false,
+    nationality: false
   };
   floatLabel: string;
   floatLabelNever: string;
@@ -120,6 +126,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   isPlatformGuestSearch: boolean = false;
   isEnableCGPSIframeGuestSearch: boolean = false;
   disableContactsSection: boolean = false;
+  nationalitySearchInput: string = '';
 
   @Input('inputData')
   set formData(value) {
@@ -148,7 +155,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     private _createClientBusiness: CreateClientBusiness,
     private featureSwitch: RetailFeatureFlagInformationService,
     private _playerService: PlayerInformationService,
-    private _ams: AppModuleService
+    private _ams: AppModuleService,
+    private commonDataService: CommonDataService
   ) {
     this.maxReceiptDate = new Date();
     // this.receiptDate = new FormControl("");
@@ -171,6 +179,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       pincode: '',
       title: '',
       gender: '',
+      nationality: '',
       Email: this.Form.array([this.createEmailItem(0, '', '', false, false)]),
       Phone: this.Form.array([this.createPhoneItem(0, '', '', '', false, false, '')]),
       Address: this.Form.array([this.createAddressItem('', false)]),
@@ -214,6 +223,9 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       data.thumbnailImg = this.thumbnailImg;
       data['imageId'] = this.imageId;
       data.isImageRemoved = this.isImageRemoved;
+      if(data.nationality && typeof data.nationality === 'object') {
+        data.nationality = data.nationality.name || '';
+      }
     });
 
   }
@@ -430,6 +442,7 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         this.FormGrp.controls['country'].markAsTouched();
       });
     });
+    this.loadNationalities();
   }
 
   initializeFormData() {
@@ -486,6 +499,83 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.destroyed$.complete();
   }
 
+  loadNationalities(): void {
+    const tenantId = Number(this.PropertyInfo.GetPropertyInfoByKey('TenantId'));
+
+    forkJoin([
+      this.commonDataService.GetAllNationality(tenantId),
+      this.commonDataService.GetAllCountry()
+    ]).pipe(takeUntil(this.destroyed$)).subscribe({
+      next: ([nationalities, countries]) => {
+        const countryMap = new Map<number, string>();
+        countries.forEach((country: any) => {
+          countryMap.set(country.id, country.countryCode);
+        });
+
+        this.nationalityList = nationalities.map((nationality: any) => {
+          const countryCode = countryMap.get(nationality.countryId) || '';
+          const countryData = (countryCodeData as any[]).find(
+            (c: any) => c.iso2?.toLowerCase() === countryCode.toLowerCase() ||
+                        c.iso3?.toLowerCase() === countryCode.toLowerCase()
+          );
+          return {
+            name: nationality.nationalityName,
+            flagClass: countryData?.flagClass || ''
+          };
+        });
+
+        this.setupNationalityAutocomplete();
+
+        // Set pending nationality if it was set before the list was loaded
+        if (this.pendingNationality) {
+          const nationalityObj = this.nationalityList.find(n => n.name === this.pendingNationality);
+          this.FormGrp.controls.nationality.setValue(nationalityObj || null);
+          this.pendingNationality = '';
+        }
+      },
+      error: (error) => {
+        console.error('Error loading nationalities:', error);
+      }
+    });
+  }
+
+  setupNationalityAutocomplete(): void {
+    this.filteredNationalities = this.nationalityList;
+  }
+
+  onNationalityDropdownOpen(isOpen: boolean): void {
+    if (!isOpen) {
+      this.nationalitySearchInput = '';
+      this.filteredNationalities = this.nationalityList;
+    }
+  }
+
+  filterNationalityOptions(event: any): void {
+    const searchValue = event.target.value || '';
+    this.filteredNationalities = this.filterNationalities(searchValue);
+  }
+
+  filterNationalities(value: string): { name: string; flagClass: string }[] {
+    const filterValue = value.toLowerCase();
+    return this.nationalityList.filter(nationality =>
+      nationality.name.toLowerCase().includes(filterValue)
+    );
+  }
+
+  clearNationalitySearch(): void {
+    this.nationalitySearchInput = '';
+    this.filteredNationalities = this.nationalityList;
+  }
+
+  compareNationality(n1: any, n2: any): boolean {
+    return n1 && n2 ? n1.name === n2.name : n1 === n2;
+  }
+
+  getNationalityFlagClass(nationalityName: string): string {
+    const nationality = this.nationalityList.find(n => n.name === nationalityName);
+    return nationality?.flagClass || '';
+  }
+
   Validation(clientConfiguration: any) {
     clientConfiguration = clientConfiguration ? clientConfiguration : [];
     if (clientConfiguration && clientConfiguration.length == 0) { return; }
@@ -501,7 +591,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       title: clientConfiguration[0]['CLIENT_TITLE'],
       postalCode: clientConfiguration[0]['CLIENT_POSTAL_CODE'],
       dob: clientConfiguration[0]['CLIENT_BIRTHDAY'],
-      county: clientConfiguration[0]['CLIENT_COUNTY']
+      county: clientConfiguration[0]['CLIENT_COUNTY'],
+      nationality: clientConfiguration[0]['CLIENT_NATIONALITY']
     }
 
     // this.FormGrp.controls['firstName'].clearValidators();
@@ -525,6 +616,10 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     this.FormGrp.controls['gender'].updateValueAndValidity();
     // if(clientConfiguration[0]['CLIENT_GENDER'])
     // this.FormGrp.controls.gender.markAsTouched();
+
+    this.FormGrp.controls['nationality'].clearValidators();
+    this.FormGrp.controls['nationality'].setValidators(clientConfiguration[0]['CLIENT_NATIONALITY'] ? [Validators.required] : []);
+    this.FormGrp.controls['nationality'].updateValueAndValidity();
 
     this.FormGrp.controls['state'].clearValidators();
     this.FormGrp.controls['state'].setValidators(clientConfiguration[0]['CLIENT_STATE'] ? [Validators.required, EmptyValueValidator] : []);
@@ -890,6 +985,13 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.FormGrp.controls.platformBussinessCardUuid.setValue(clientInfo.client.platformBussinessCardUuid);
       this.FormGrp.controls.platformGuestUuid.setValue(clientInfo.client.platformGuestUuid);
       this.FormGrp.controls.platformRevUuid.setValue(clientInfo.client.platformRevUuid);
+      if (this.nationalityList.length > 0) {
+        const nationalityObj = this.nationalityList.find(n => n.name === clientInfo.client.nationality);
+        this.FormGrp.controls.nationality.setValue(nationalityObj || null);
+      } else {
+        // Store the nationality to be set once the list is loaded
+        this.pendingNationality = clientInfo.client.nationality || '';
+      }
     }
     if (clientInfo.addresses && clientInfo.addresses != null) {
       this.FormGrp.controls.postal_code.setValue(clientInfo.addresses.zipCode);

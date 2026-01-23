@@ -109,6 +109,7 @@ export interface ClientInfo {
     vipTypeId?:number;
     anniversaryDate?: string;
     preferredLanguage?: number;
+    nationality?: string;
     guestTypeCategories?: GuestTypeCategory[];
     clientCreditCardInfo?: ClientCreditCardInfo[];
     placeOfBirth?: string;
