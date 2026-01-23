@@ -2374,7 +2374,7 @@ a {
 }
 
 .mat-horizontal-stepper-content,
-.mat-dialog-content {
+.mat-mdc-dialog-content {
   height: 100%;
 }
 
@@ -2738,9 +2738,6 @@ mat-calendar {
     // font-size: 14px;
     @extend .IC12;
     // color: #000;
-    right: 6px;
-    position: absolute;
-    top:9px;
   }
   .icon-Cancel {
     font-size: 10px;
@@ -5524,6 +5521,7 @@ body .cdk-custom-wrapper .ag_table .table th {
         .mat-mdc-select {
           font-size: 18px !important;
           font-family: $ag_sourcesans-semibold !important;
+          color: #000000 !important;
         }
       }
       // Remove MDC form field borders

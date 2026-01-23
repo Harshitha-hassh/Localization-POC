@@ -11,6 +11,19 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script>window.global = window;</script>
+    <!-- Google Maps API - Load dynamically based on stored key -->
+  <script>
+    (function() {
+      var apiKey = localStorage.getItem('googleMapsApiKey');
+      if (apiKey && !localStorage.getItem('resetMapApiKey') && !localStorage.getItem('invalidKey')) {
+        var script = document.createElement('script');
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=' + apiKey + '&libraries=places';
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+      }
+    })();
+  </script>
 </head>
 
 <body>

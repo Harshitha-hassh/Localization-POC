@@ -67,7 +67,7 @@
             {{captions.MissingGender}}
           </mat-error>
         </div>
-        <div class="display_style_toggle width_180px">
+        <div class="display_style_toggle width_180px mr-0">
           <div class="float-left pr-4">
             <!-- <label for="" *ngIf="!customRequired.dob" [attr.automationId]="'Lbl_personalInformation_dob'"
               class="form-label-normal d-block mb-0 dob-label">{{captions.CDateOfBirth}} ({{placeHolderFormat}})</label>
@@ -100,6 +100,47 @@
 
           </div>
 
+        </div>
+        <div class="display_style_toggle nationality-section">
+          <mat-form-field [floatLabel]="floatLabel" class="nationality-field">
+            <mat-label>{{captions.Nationality}}</mat-label>
+            <mat-select [attr.automationId]="'Dd_PersonalInformation_nationality'"
+              formControlName="nationality"
+              [placeholder]="captions.Nationality"
+              [required]="customRequired.nationality"
+              [compareWith]="compareNationality"
+              (openedChange)="onNationalityDropdownOpen($event)">
+              <mat-select-trigger>
+                <span class="ag_display--flex align-items-center" *ngIf="FormGrp.get('nationality').value">
+                  <div class="iti__flag-box">
+                    <div class="iti__flag" [ngClass]="FormGrp.get('nationality').value?.flagClass"></div>
+                  </div>
+                  <span class="ag_ml--2">{{FormGrp.get('nationality').value?.name}}</span>
+                </span>
+              </mat-select-trigger>
+              <div class="dropdown-search">
+                <input [placeholder]="captions.Nationality"
+                  [(ngModel)]="nationalitySearchInput" 
+                  [ngModelOptions]="{standalone: true}"
+                  (input)="filterNationalityOptions($event)"
+                  (keydown)="$event.stopPropagation()">
+                <i [ngClass]="nationalitySearchInput ? 'icon-close ag_cursor--pointer' : 'icon-search'"
+                  (click)="clearNationalitySearch()"></i>
+              </div>
+              <mat-option *ngFor="let nationality of filteredNationalities" [value]="nationality"
+                [matTooltip]="nationality.name">
+                <div class="ag_display--flex align-items-center">
+                  <div class="iti__flag-box">
+                    <div class="iti__flag" [ngClass]="nationality.flagClass"></div>
+                  </div>
+                  <span class="ag_ml--2">{{nationality.name}}</span>
+                </div>
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="FormGrp.controls['nationality'].hasError('required') && FormGrp.controls['nationality'].touched && !FormGrp.controls['nationality'].valid">
+              {{captions.MissingNationality}}
+            </mat-error>
+          </mat-form-field>
         </div>
       </div>
 

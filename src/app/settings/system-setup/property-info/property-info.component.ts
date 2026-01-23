@@ -248,6 +248,7 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       // { id: 3, name: this.captions.Last_Name, controlName: "CLIENT_LAST_NAME" },
       { id: 4, name: this.captions.Birthday, controlName: "CLIENT_BIRTHDAY" },
       { id: 5, name: this.captions.Gender, controlName: "CLIENT_GENDER" },
+      { id: 90, name: this.captions.Nationality, controlName: "CLIENT_NATIONALITY" },
     ];
     const contactInfo = [
       { id: 1, name: this.captions.Address, controlName: "CLIENT_ADDRESS_LINE_1" },
@@ -391,7 +392,8 @@ export class PropertyInfoComponent extends SpaFormAgent implements OnInit, OnDes
       //  CLIENT_FIRST_NAME: '',
       //  CLIENT_LAST_NAME: '',
       CLIENT_BIRTHDAY: '',
-      CLIENT_GENDER: ''
+      CLIENT_GENDER: '',
+      CLIENT_NATIONALITY: ''
     });
   }
 

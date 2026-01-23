@@ -28,6 +28,11 @@ const routes: Routes = [{
       path: 'agilysysFiscal',
       loadChildren: () => import('../../common/agilysys-fiscal/agilysys-fiscal.module').then(m => m.AgilysysFiscalModule),
       canActivate: [RouteGuardService]
+    },
+    {
+      path: 'poledisplay',
+      loadChildren: () => import('../../retail/fiscal/pole-display/pole-display.module').then(m => m.PoleDisplayModule),
+      canActivate: [RouteGuardService]
     }
   ]
 }];

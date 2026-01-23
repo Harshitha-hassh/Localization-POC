@@ -660,6 +660,8 @@
     "MissingFirstName": "Missing First Name_de-ch",
     "MissingLastName": "Missing Last Name_de-ch",
     "MissingGender": "Missing Gender_de-ch",
+    "Nationality": "Nationality_de-ch",
+    "MissingNationality": "Missing Nationality_de-ch",
     "InvalidPhoneNumber": "Missing Phone Number_de-ch",
     "MissingEmail": "Missing Email Address_de-ch",
     "InvalidEmailFormat": "Invalid Email Format_de-ch",
@@ -2083,6 +2085,7 @@
     "2000525": "2000525 - Catalogue Setup_de-ch",
     "2000530": "2000530 - Template Setup_de-ch",
     "2000535": "2000535 - Fiscal Monitor_de-ch",
+    "2000540": "2000540 - Pole Display Configuration_de-ch",
     "2001151": "2001151 - Sales Summary Outlet Report (X Reading)_de-ch",
     "2001153": "2001153 - BIR Sales Summary Report_de-ch",
     "2001162": "2001162 - Unblock User_de-ch",
@@ -2253,6 +2256,35 @@
     "Expiry": "Expiry_de-ch",
     "lbl_machineInActive": "Machine is already linked with cash Drawer. Inactive not allowed_de-ch",
     "lbl_machineDelete": "Machine is already linked with cash Drawer. Delete not allowed_de-ch",
+    "poleDisplayConfig": {
+      "lbl_EnablePoleDisplay": "Enable Pole Display Integration_de-ch",
+      "lbl_IntegrationType": "Integration Type_de-ch",
+      "lbl_FiscalIntegration": "Fiscal Integration_de-ch",
+      "lbl_DirectIntegration": "Direct Integration_de-ch",
+      "lbl_EventSelection": "Event Selection_de-ch",
+      "CONFIG_DELETED_SUCCESS": "Configuration deleted successfully_de-ch",
+      "CONFIG_DELETE_FAILED": "Failed to delete configuration_de-ch",
+      "CONFIG_SAVED_SUCCESS": "Configuration saved successfully_de-ch",
+      "CONFIG_SAVE_ERROR": "Error saving configuration_de-ch",
+      "CONFIG_LOAD_ERROR": "Error loading pole display configuration_de-ch",
+      "POLE_DISPLAY_URI_PLACEHOLDER": "Pole Display URI_de-ch",
+      "POLE_DISPLAY_URI_ERROR": "Pole Display URI is required_de-ch",
+      "POLE_DISPLAY_URI_INVALID": "Pole Display URI is invalid._de-ch",
+      "CONFIRM_DELETE_MESSAGE": "Are you sure you want to disable and delete this configuration?_de-ch",
+      "EVENT_SELECTION_REQUIRED": "At least one event must be selected_de-ch",
+      "Events": {
+        "ITEM_ADDED": "Item Added_de-ch",
+        "ITEM_REMOVED": "Item Removed_de-ch",
+        "QUANTITY_CHANGED": "Quantity Changed_de-ch",
+        "CART_TOTAL_UPDATED": "Cart Total Updated_de-ch",
+        "PAYMENT_STARTED": "Payment Started_de-ch",
+        "PAYMENT_COMPLETED": "Payment Completed_de-ch",
+        "TRANSACTION_VOIDED": "Transaction Voided_de-ch",
+        "DISCOUNT_APPLIED": "Discount Applied_de-ch",
+        "TAX_CALCULATED": "Tax Calculated_de-ch",
+        "WELCOME_MESSAGE": "Welcome Message_de-ch"
+      }
+    },
     "cashDrawer": {
       "cashDrawerSummary": {
         "lbl_gratuity": "Gratuity_de-ch",
@@ -3120,6 +3152,7 @@
     "Last_Name": "Last Name_de-ch",
     "Birthday": "Birthday_de-ch",
     "Gender": "Gender_de-ch",
+    "Nationality": "Nationality_de-ch",
     "Address": "Address_de-ch",
     "City": "City_de-ch",
     "State": "State_de-ch",
@@ -5704,5 +5737,7 @@
   "tooltip_drag": "Drag_de-ch",
   "lbl_digitalInvoicerequest": "Digital Invoice Request_de-ch",
   "lbl_digitalInvoiceBulkupload": "Digital Invoice Bulk Upload_de-ch",
-  "wrn_BatchPosted": "This account has unposted batches. Do you want to proceed with deleting the account?_de-ch"
+  "wrn_BatchPosted": "This account has unposted batches. Do you want to proceed with deleting the account?_de-ch",
+  "lbl_quantity": "Quantity_de-ch",
+  "fiscal_eInvoicing": "Enable e-Invoicing_de-ch"
 }

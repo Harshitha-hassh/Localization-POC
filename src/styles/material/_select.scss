@@ -149,11 +149,11 @@
 // SELECT TRIGGER VALUE
 // =============================================================================
 
-.mat-mdc-select-value {
+/* .mat-mdc-select-value {
   font-size: 14px;
   font-family: $ag_sourcesans-regular;
   color: #525252;
-}
+} */
 
 .mat-mdc-select-placeholder {
   color: rgba(0, 0, 0, 0.6);
@@ -356,5 +356,18 @@ mat-checkbox.mat-option,
   // Hover state
   &:hover {
     background-color: rgba(0, 0, 0, 0.04) !important;
+  }
+}
+#new-mat-view{
+  .wrapper-container {
+      .subnav-wrapper{
+      background: $menu-light-blue;
+      mat-form-field {
+        .mat-mdc-select {
+          font-size: 18px !important;
+          font-family: $ag_sourcesans-semibold !important;
+        }
+      }
+    }
   }
 }

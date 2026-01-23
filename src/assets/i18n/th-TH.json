@@ -2083,6 +2083,7 @@
     "2000525": "2000525 - Catalogue Setup_th",
     "2000530": "2000530 - Template Setup_th",
     "2000535": "2000535 - Fiscal Monitor_th",
+    "2000540": "2000540 - Pole Display Configuration_th",
     "2001151": "2001151 - Sales Summary Outlet Report (X Reading)_th",
     "2001153": "2001153 - BIR Sales Summary Report_th",
     "2001162": "2001162 - Unblock User_th",
@@ -2253,6 +2254,35 @@
     "Expiry": "Expiry_th",
     "lbl_machineInActive": "Machine is already linked with cash Drawer. Inactive not allowed_th",
     "lbl_machineDelete": "Machine is already linked with cash Drawer. Delete not allowed_th",
+    "poleDisplayConfig": {
+      "lbl_EnablePoleDisplay": "Enable Pole Display Integration_th",
+      "lbl_IntegrationType": "Integration Type_th",
+      "lbl_FiscalIntegration": "Fiscal Integration_th",
+      "lbl_DirectIntegration": "Direct Integration_th",
+      "lbl_EventSelection": "Event Selection_th",
+      "CONFIG_DELETED_SUCCESS": "Configuration deleted successfully_th",
+      "CONFIG_DELETE_FAILED": "Failed to delete configuration_th",
+      "CONFIG_SAVED_SUCCESS": "Configuration saved successfully_th",
+      "CONFIG_SAVE_ERROR": "Error saving configuration_th",
+      "CONFIG_LOAD_ERROR": "Error loading pole display configuration_th",
+      "POLE_DISPLAY_URI_PLACEHOLDER": "Pole Display URI_th",
+      "POLE_DISPLAY_URI_ERROR": "Pole Display URI is required_th",
+      "POLE_DISPLAY_URI_INVALID": "Pole Display URI is invalid._th",
+      "CONFIRM_DELETE_MESSAGE": "Are you sure you want to disable and delete this configuration?_th",
+      "EVENT_SELECTION_REQUIRED": "At least one event must be selected_th",
+      "Events": {
+        "ITEM_ADDED": "Item Added_th",
+        "ITEM_REMOVED": "Item Removed_th",
+        "QUANTITY_CHANGED": "Quantity Changed_th",
+        "CART_TOTAL_UPDATED": "Cart Total Updated_th",
+        "PAYMENT_STARTED": "Payment Started_th",
+        "PAYMENT_COMPLETED": "Payment Completed_th",
+        "TRANSACTION_VOIDED": "Transaction Voided_th",
+        "DISCOUNT_APPLIED": "Discount Applied_th",
+        "TAX_CALCULATED": "Tax Calculated_th",
+        "WELCOME_MESSAGE": "Welcome Message_th"
+      }
+    },
     "cashDrawer": {
       "cashDrawerSummary": {
         "lbl_gratuity": "Gratuity_th",
@@ -5704,5 +5734,7 @@
   "tooltip_drag": "Drag_th",
   "lbl_digitalInvoicerequest": "Digital Invoice Request_th",
   "lbl_digitalInvoiceBulkupload": "Digital Invoice Bulk Upload_th",
-  "wrn_BatchPosted": "This account has unposted batches. Do you want to proceed with deleting the account?_th"
+  "wrn_BatchPosted": "This account has unposted batches. Do you want to proceed with deleting the account?_th",
+  "lbl_quantity": "Quantity_th",
+  "fiscal_eInvoicing": "Enable e-Invoicing_th"
 }
