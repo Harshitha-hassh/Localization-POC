@@ -1347,7 +1347,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if(sessionStorage.getItem('logineventKey') == 'Enter'){
       eventKey = 'Enter';
     }
-    debugger;
+
     if (this.ADB2CAuthenticationEnabled && ((!this.showSignInOptions || eventKey === 'Enter') || !this.adb2cAuthConfiguration.enableFormsAuthentication)) {
       this.hideLoginForm = true;
       this.oauthService.configure(this.adb2cAuthConfiguration.authConfig);
