@@ -2083,6 +2083,7 @@
     "2000525": "2000525 - Catalogue Setup_fr-sc",
     "2000530": "2000530 - Template Setup_fr-sc",
     "2000535": "2000535 - Fiscal Monitor_fr-sc",
+    "2000540": "2000540 - Pole Display Configuration_fr-sc",
     "2001151": "2001151 - Sales Summary Outlet Report (X Reading)_fr-sc",
     "2001153": "2001153 - BIR Sales Summary Report_fr-sc",
     "2001162": "2001162 - Unblock User_fr-sc",
@@ -2253,6 +2254,35 @@
     "Expiry": "Expiry_fr-sc",
     "lbl_machineInActive": "Machine is already linked with cash Drawer. Inactive not allowed_fr-sc",
     "lbl_machineDelete": "Machine is already linked with cash Drawer. Delete not allowed_fr-sc",
+    "poleDisplayConfig": {
+      "lbl_EnablePoleDisplay": "Enable Pole Display Integration_fr-sc",
+      "lbl_IntegrationType": "Integration Type_fr-sc",
+      "lbl_FiscalIntegration": "Fiscal Integration_fr-sc",
+      "lbl_DirectIntegration": "Direct Integration_fr-sc",
+      "lbl_EventSelection": "Event Selection_fr-sc",
+      "CONFIG_DELETED_SUCCESS": "Configuration deleted successfully_fr-sc",
+      "CONFIG_DELETE_FAILED": "Failed to delete configuration_fr-sc",
+      "CONFIG_SAVED_SUCCESS": "Configuration saved successfully_fr-sc",
+      "CONFIG_SAVE_ERROR": "Error saving configuration_fr-sc",
+      "CONFIG_LOAD_ERROR": "Error loading pole display configuration_fr-sc",
+      "POLE_DISPLAY_URI_PLACEHOLDER": "Pole Display URI_fr-sc",
+      "POLE_DISPLAY_URI_ERROR": "Pole Display URI is required_fr-sc",
+      "POLE_DISPLAY_URI_INVALID": "Pole Display URI is invalid._fr-sc",
+      "CONFIRM_DELETE_MESSAGE": "Are you sure you want to disable and delete this configuration?_fr-sc",
+      "EVENT_SELECTION_REQUIRED": "At least one event must be selected_fr-sc",
+      "Events": {
+        "ITEM_ADDED": "Item Added_fr-sc",
+        "ITEM_REMOVED": "Item Removed_fr-sc",
+        "QUANTITY_CHANGED": "Quantity Changed_fr-sc",
+        "CART_TOTAL_UPDATED": "Cart Total Updated_fr-sc",
+        "PAYMENT_STARTED": "Payment Started_fr-sc",
+        "PAYMENT_COMPLETED": "Payment Completed_fr-sc",
+        "TRANSACTION_VOIDED": "Transaction Voided_fr-sc",
+        "DISCOUNT_APPLIED": "Discount Applied_fr-sc",
+        "TAX_CALCULATED": "Tax Calculated_fr-sc",
+        "WELCOME_MESSAGE": "Welcome Message_fr-sc"
+      }
+    },
     "cashDrawer": {
       "cashDrawerSummary": {
         "lbl_gratuity": "Gratuity_fr-sc",

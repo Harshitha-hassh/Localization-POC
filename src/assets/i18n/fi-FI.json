@@ -2083,6 +2083,7 @@
     "2000525": "2000525 - Catalogue Setup_fi",
     "2000530": "2000530 - Template Setup_fi",
     "2000535": "2000535 - Fiscal Monitor_fi",
+    "2000540": "2000540 - Pole Display Configuration_fi",
     "2001151": "2001151 - Sales Summary Outlet Report (X Reading)_fi",
     "2001153": "2001153 - BIR Sales Summary Report_fi",
     "2001162": "2001162 - Unblock User_fi",
@@ -2253,6 +2254,35 @@
     "Expiry": "Expiry_fi",
     "lbl_machineInActive": "Machine is already linked with cash Drawer. Inactive not allowed_fi",
     "lbl_machineDelete": "Machine is already linked with cash Drawer. Delete not allowed_fi",
+    "poleDisplayConfig": {
+      "lbl_EnablePoleDisplay": "Enable Pole Display Integration_fi",
+      "lbl_IntegrationType": "Integration Type_fi",
+      "lbl_FiscalIntegration": "Fiscal Integration_fi",
+      "lbl_DirectIntegration": "Direct Integration_fi",
+      "lbl_EventSelection": "Event Selection_fi",
+      "CONFIG_DELETED_SUCCESS": "Configuration deleted successfully_fi",
+      "CONFIG_DELETE_FAILED": "Failed to delete configuration_fi",
+      "CONFIG_SAVED_SUCCESS": "Configuration saved successfully_fi",
+      "CONFIG_SAVE_ERROR": "Error saving configuration_fi",
+      "CONFIG_LOAD_ERROR": "Error loading pole display configuration_fi",
+      "POLE_DISPLAY_URI_PLACEHOLDER": "Pole Display URI_fi",
+      "POLE_DISPLAY_URI_ERROR": "Pole Display URI is required_fi",
+      "POLE_DISPLAY_URI_INVALID": "Pole Display URI is invalid._fi",
+      "CONFIRM_DELETE_MESSAGE": "Are you sure you want to disable and delete this configuration?_fi",
+      "EVENT_SELECTION_REQUIRED": "At least one event must be selected_fi",
+      "Events": {
+        "ITEM_ADDED": "Item Added_fi",
+        "ITEM_REMOVED": "Item Removed_fi",
+        "QUANTITY_CHANGED": "Quantity Changed_fi",
+        "CART_TOTAL_UPDATED": "Cart Total Updated_fi",
+        "PAYMENT_STARTED": "Payment Started_fi",
+        "PAYMENT_COMPLETED": "Payment Completed_fi",
+        "TRANSACTION_VOIDED": "Transaction Voided_fi",
+        "DISCOUNT_APPLIED": "Discount Applied_fi",
+        "TAX_CALCULATED": "Tax Calculated_fi",
+        "WELCOME_MESSAGE": "Welcome Message_fi"
+      }
+    },
     "cashDrawer": {
       "cashDrawerSummary": {
         "lbl_gratuity": "Gratuity_fi",

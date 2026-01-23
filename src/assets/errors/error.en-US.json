@@ -439,5 +439,12 @@
   "5524715":"This A/R account cannot be deleted because it has financial activity or upcoming invoices.",
   "5524716":"Permission denied. You do not have permission to delete A/R accounts.",
   "5524717":"Selected AR-Account is deleted",
-  "5524718":"Amount exceeds credit limit"
+  "5524718":"Amount exceeds credit limit",
+  "104001": "Pole Display Configuration already exists for this property. Please use update instead.",
+  "104002": "Pole Display Configuration not found for the property.",
+  "104003": "The request cannot be null or empty",
+  "104004": "Invalid integration type specified",
+  "104005": "Invalid pole display event ID specified",
+  "104006": "Pole Display URI is required.",
+  "104007": "Invalid Pole Display URI format. Must be a valid HTTP or HTTPS URL"
 }

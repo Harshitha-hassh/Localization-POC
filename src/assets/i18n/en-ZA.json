@@ -2083,6 +2083,7 @@
     "2000525": "2000525 - Catalogue Setup",
     "2000530": "2000530 - Template Setup",
     "2000535": "2000535 - Fiscal Monitor",
+    "2000540": "2000540 - Pole Display Configuration",
     "2001151": "2001151 - Sales Summary Outlet Report (X Reading)",
     "2001153": "2001153 - BIR Sales Summary Report",
     "2001162": "2001162 - Unblock User",
@@ -2253,6 +2254,35 @@
     "Expiry": "Expiry",
     "lbl_machineInActive": "Machine is already linked with cash Drawer. Inactive not allowed",
     "lbl_machineDelete": "Machine is already linked with cash Drawer. Delete not allowed",
+    "poleDisplayConfig": {
+      "lbl_EnablePoleDisplay": "Enable Pole Display Integration",
+      "lbl_IntegrationType": "Integration Type",
+      "lbl_FiscalIntegration": "Fiscal Integration",
+      "lbl_DirectIntegration": "Direct Integration",
+      "lbl_EventSelection": "Event Selection",
+      "CONFIG_DELETED_SUCCESS": "Configuration deleted successfully",
+      "CONFIG_DELETE_FAILED": "Failed to delete configuration",
+      "CONFIG_SAVED_SUCCESS": "Configuration saved successfully",
+      "CONFIG_SAVE_ERROR": "Error saving configuration",
+      "CONFIG_LOAD_ERROR": "Error loading pole display configuration",
+      "POLE_DISPLAY_URI_PLACEHOLDER": "Pole Display URI",
+      "POLE_DISPLAY_URI_ERROR": "Pole Display URI is required",
+      "POLE_DISPLAY_URI_INVALID": "Pole Display URI is invalid.",
+      "CONFIRM_DELETE_MESSAGE": "Are you sure you want to disable and delete this configuration?",
+      "EVENT_SELECTION_REQUIRED": "At least one event must be selected",
+      "Events": {
+        "ITEM_ADDED": "Item Added",
+        "ITEM_REMOVED": "Item Removed",
+        "QUANTITY_CHANGED": "Quantity Changed",
+        "CART_TOTAL_UPDATED": "Cart Total Updated",
+        "PAYMENT_STARTED": "Payment Started",
+        "PAYMENT_COMPLETED": "Payment Completed",
+        "TRANSACTION_VOIDED": "Transaction Voided",
+        "DISCOUNT_APPLIED": "Discount Applied",
+        "TAX_CALCULATED": "Tax Calculated",
+        "WELCOME_MESSAGE": "Welcome Message"
+      }
+    },
     "cashDrawer": {
       "cashDrawerSummary": {
         "lbl_gratuity": "Gratuity",
