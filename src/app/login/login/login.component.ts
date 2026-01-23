@@ -1023,7 +1023,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.loginForms.get('customerId').markAsTouched();
         //Get Config for disable forget password
         await this.GetTenantConfigurationForForgetPassword();
-        if (this.ADB2CAuthenticationEnabled && (eventKey === 'Enter' || this.loginSuccess  || this.isSupportUser)) {
+        if (this.ADB2CAuthenticationEnabled && (eventKey === 'Enter' || this.loginSuccess  || this.isSupportUser || !this.adb2cAuthConfiguration.enableFormsAuthentication)) {
           this.removeGeneralLoginVal();
           await this.adb2cAuthValidation();
         }
@@ -1341,7 +1341,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if(sessionStorage.getItem('logineventKey') == 'Enter'){
       eventKey = 'Enter';
     }
-
+    debugger;
     if (this.ADB2CAuthenticationEnabled && ((!this.showSignInOptions || eventKey === 'Enter') || !this.adb2cAuthConfiguration.enableFormsAuthentication)) {
       this.hideLoginForm = true;
       this.oauthService.configure(this.adb2cAuthConfiguration.authConfig);
