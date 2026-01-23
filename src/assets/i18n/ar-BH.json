@@ -5705,5 +5705,6 @@
   "lbl_digitalInvoicerequest": "Digital Invoice Request_ar-bh",
   "lbl_digitalInvoiceBulkupload": "Digital Invoice Bulk Upload_ar-bh",
   "wrn_BatchPosted": "This account has unposted batches. Do you want to proceed with deleting the account?_ar-bh",
-  "lbl_quantity": "Quantity_ar-bh"
+  "lbl_quantity": "Quantity_ar-bh",
+  "fiscal_eInvoicing": "Enable e-Invoicing_ar-bh"
 }
