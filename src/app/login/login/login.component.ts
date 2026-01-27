@@ -903,19 +903,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.SetFullStory(propertityConfig);
       if (propertityConfig.configValue.GoogleMapApiKey !== undefined) {
         if (propertityConfig.configValue.GoogleMapApiKey) {
-          if (!localStorage.getItem('invalidKey')) {
-            let isKeyValid = await this.propertyServices.checkvalidity(propertityConfig.configValue.GoogleMapApiKey);
-            if (isKeyValid) {
-              if (propertityConfig.configValue.GoogleMapApiKey !== localStorage.getItem('googleMapsApiKey')) {
-                localStorage.setItem('googleMapsApiKey', propertityConfig.configValue.GoogleMapApiKey);
-                this.propertyServices.reloadPage();
-              }
-            } else {
-              localStorage.removeItem('googleMapsApiKey');
-              localStorage.setItem('resetMapApiKey', 'true');
-              this.propertyServices.reloadPage();
-
-            }
+          if (propertityConfig.configValue.GoogleMapApiKey !== localStorage.getItem('googleMapsApiKey')) {
+            localStorage.setItem('googleMapsApiKey', propertityConfig.configValue.GoogleMapApiKey);
+            localStorage.removeItem('invalidKey');
+            localStorage.removeItem('resetMapApiKey');
+            this.propertyServices.reloadPage();
           }
         }
 
