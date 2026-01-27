@@ -1863,6 +1863,8 @@
       "noRoundsMsg": "No Rounds Avaialble!_fr-ch",
       "RetriveMemberInfo": "Retrieving Member Account Details..._fr-ch",
       "memberAlreadySelected": "Member already available_fr-ch",
+      "progressMsg": "Processing {currentIndex} of {overAllCount}_fr-ch",
+      "processingPaymentsMsg": "Processing member payments..._fr-ch",
       "Pin": "Pin_fr-ch",
       "Amount": "Amount_fr-ch",
       "MembersAlreadyPaidConfirmationMsg": "You have already paid for the following member(s): </br>{{paidMembers}} Do you wish to proceed?_fr-ch",
