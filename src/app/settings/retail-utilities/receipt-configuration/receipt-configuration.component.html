@@ -9,7 +9,7 @@
                 <div class="pt-4">
                   <!-- Outlet Box -->
                   <mat-form-field class="" [floatLabel]="floatLabel">  <mat-label>{{textCaptions.Outlet}}</mat-label>
-                    <mat-select [attr.automationId]="'Icn_ReceiptConfiguration_Outlets'" (selectionChange)="changeSelection($event)" formControlName="outlet" class="LW14">
+                    <mat-select [attr.automationId]="'Icn_ReceiptConfiguration_Outlets'" (selectionChange)="changeSelection($event)" formControlName="outlet" [(ngModel)]="outletId" class="LW14">
                       <mat-option *ngFor="let data of Outlet" [value]="data.id">
                         {{data.outletName}}
                       </mat-option>
