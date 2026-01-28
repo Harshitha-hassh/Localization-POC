@@ -96,6 +96,8 @@
   },
   "app_title": "Agilysys Retail_hu",
   "common": {
+    "Enabled": "enabled_hu",
+    "Disabled": "disabled_hu",
     "lbl_Image_validation": "Please upload image in the supported format (.jpg, .jpeg, .png)_hu",
     "country": "Country_hu",
     "missingCountryName": "Missing country name_hu",
@@ -3146,6 +3148,8 @@
     "TaxRevenueToPropertyValidationMsg": "Cannot enable ‘Is Revenue To Property’ when ‘{toggleLabel}’ is enabled_hu",
     "SC_GT_ExcludeForTaxExemption_ValidationMsg": "Cannot enable '{toggleLabel}' when 'Exclude For Tax Exemption' is enabled_hu",
     "ExcludeForTaxExemptionValidationMsg": "Cannot enable 'Exclude For Tax Exemption' when '{toggleLabel}' is enabled_hu",
+    "AllowRemovalParentToggleMsg": "When the '{toggleLabel}' toggle is {action1} at the Tax level, it will also be automatically {action2} under the Tax on Tax configuration_hu",
+    "AllowRemovalChildCannotDisableMsg": "You cannot disable '{childToggleLabel}' for this child tax while it remains enabled for the parent tax_hu",
     "allowRemovalForPaymentMethodTaxOnTax": "Allow Removal For Payment Method_hu",
     "ExcludeForTaxExemption": "Exclude For Tax Exemption_hu",
     "ExcludeForTaxExemptionLinkedTax": "Exclude For Tax Exemption_hu",
