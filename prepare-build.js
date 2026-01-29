@@ -46,7 +46,8 @@ const defaultLocalizations = [
     { code: "ar-BH", suffix: "_ar-bh", name: "Bahrain" },
     { code: "en-BZ", suffix: "", name: "Belize" },
     { code: "en-ZA", suffix: "", name: "South African" },
-    { code: "ar-KW", suffix: "_ar", name: "Kuwait" }
+    { code: "ar-KW", suffix: "_ar", name: "Kuwait" },
+    { code: "ar-AE", suffix: "_ar", name: "United Arab Emirates" }
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
