@@ -62,7 +62,6 @@ import { ForgetPasswordComponent } from 'src/app/common/components/forget-passwo
 import { CommonControllersRoutes } from 'src/app/common/communication/common-route';
 import jwt_decode from 'jwt-decode';
 import { FiscalProcessingService } from 'src/app/common/services/fiscal-processing.service';
-import { AllowTokenSharing } from 'src/app/retail/shared/globalsContant';
 
 @Component({
   standalone: false,
