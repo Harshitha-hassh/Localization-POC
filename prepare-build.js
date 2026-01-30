@@ -47,7 +47,11 @@ const defaultLocalizations = [
     { code: "en-BZ", suffix: "", name: "Belize" },
     { code: "en-ZA", suffix: "", name: "South African" },
     { code: "ar-KW", suffix: "_ar", name: "Kuwait" },
-    { code: "ar-AE", suffix: "_ar", name: "United Arab Emirates" }
+    { code: "ar-AE", suffix: "_ar", name: "United Arab Emirates" },
+    { code: "ar-SA", suffix: "_ar", name: "Saudi Arabia"},
+    { code: "en-MU", suffix: "_mu", name: "Mauritius"},
+    { code: "en-SG", suffix: "_sg", name: "Singapore"},
+    { code: "ms-MY", suffix: "_my", name: "Malaysia"}
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
