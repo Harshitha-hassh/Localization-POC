@@ -713,21 +713,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.localize.SetLocaleBasedProperties();
     this.commonLocalize.SetLocaleBasedProperties();
     this.UpdateUserRole(Selectedproperty.id);
-    await this.SetAllowTokenSharing();
-  }
-
- async SetAllowTokenSharing() {
-    let allowTokenSharing = false;
-   const configuration = await this.configuration.GetTenantConfiguration();
-   
-   if (configuration?.configValue) {
-     const key = Object.keys(configuration.configValue).find(k => k.toLowerCase() === AllowTokenSharing);
-     const value = key ? configuration.configValue[key] : null;
-
-     allowTokenSharing = value?.toLowerCase() == 'true';
-     
-   }
-    sessionStorage.setItem('AllowTokenSharing', allowTokenSharing.toString());
+    await this.configuration.SetAllowTokenSharing();
   }
 
   async setEatecConfig() {
