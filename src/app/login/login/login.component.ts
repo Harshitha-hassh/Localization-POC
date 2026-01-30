@@ -62,6 +62,7 @@ import { ForgetPasswordComponent } from 'src/app/common/components/forget-passwo
 import { CommonControllersRoutes } from 'src/app/common/communication/common-route';
 import jwt_decode from 'jwt-decode';
 import { FiscalProcessingService } from 'src/app/common/services/fiscal-processing.service';
+import { AllowTokenSharing } from 'src/app/retail/shared/globalsContant';
 
 @Component({
   standalone: false,
@@ -717,11 +718,15 @@ export class LoginComponent implements OnInit, OnDestroy {
 
  async SetAllowTokenSharing() {
     let allowTokenSharing = false;
-    const configuration = await this.configuration.GetTenantConfiguration();
-    
-    if (configuration?.configValue) {
-      allowTokenSharing = configuration.configValue?.AllowTokenSharing ? configuration.configValue.AllowTokenSharing.toLowerCase() == 'true' : false;
-    }
+   const configuration = await this.configuration.GetTenantConfiguration();
+   
+   if (configuration?.configValue) {
+     const key = Object.keys(configuration.configValue).find(k => k.toLowerCase() === AllowTokenSharing);
+     const value = key ? configuration.configValue[key] : null;
+
+     allowTokenSharing = value?.toLowerCase() == 'true';
+     
+   }
     sessionStorage.setItem('AllowTokenSharing', allowTokenSharing.toString());
   }
 
