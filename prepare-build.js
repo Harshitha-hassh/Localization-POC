@@ -17,7 +17,9 @@ const defaultLocalizations = [
    // { code: "en-PH", suffix: "", name: "Philippines" }, //To Be uncommented after Philiipines Fisacl accredation
     { code: "pt-PT", suffix: "", name: "Portugal" },
     { code: "de-IT", suffix: "_de-it", name: "Italian" },
-    { code: "hu-HU", suffix: "_hu", name: "Hungarian" },
+    /* For pole display hungarian labels has been updated in hu-HU.json so do not uncomment and run the pre-build script. 
+       Add the labels manually in the json file. */
+    // { code: "hu-HU", suffix: "_hu", name: "Hungarian" },
     { code: "cs-CZ", suffix: "_cs", name: "Czech" },
     { code: "ar-OM", suffix: "_ar", name: "Oman"},
     { code: "ar-MA", suffix: "_ar", name: "Morocco"},
@@ -44,7 +46,8 @@ const defaultLocalizations = [
     { code: "ar-BH", suffix: "_ar-bh", name: "Bahrain" },
     { code: "en-BZ", suffix: "", name: "Belize" },
     { code: "en-ZA", suffix: "", name: "South African" },
-    { code: "ar-KW", suffix: "_ar", name: "Kuwait" }
+    { code: "ar-KW", suffix: "_ar", name: "Kuwait" },
+    { code: "ar-AE", suffix: "_ar", name: "United Arab Emirates" }
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";

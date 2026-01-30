@@ -13,6 +13,7 @@ import { ImageDataService } from 'src/app/shared/data-services/Image/image.data.
 import { DEFAULT_IMAGE_REFERENCE_ID } from 'src/app/app-constants';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { RetailLocalization } from 'src/app/retail/common/localization/retail-localization';
+import { RetailDataAwaiters } from 'src/app/retail/shared/events/awaiters/retail.data.awaiters';
 
 @Component({
   standalone: false,
@@ -84,6 +85,7 @@ export class ReceiptConfigurationComponent implements OnInit {
   defaultReceiptNumber: number = 0;
   minDigitsErrMsg: string;
   fromToRangeErrMsg: string;
+  outletId:number;
 
   constructor(private Form: UntypedFormBuilder,
     private breakPoint: BreakPointAccess,
@@ -260,6 +262,11 @@ export class ReceiptConfigurationComponent implements OnInit {
 
     this.minDigitsErrMsg = this.textCaptions.errMinDigitsNeeded.replace('{minDigits}', '6');
     this.fromToRangeErrMsg = this.textCaptions.errFromGreaterThanTo;
+    const DefaultOutletId = RetailDataAwaiters.GetDefaultOutlet()?.id;
+    if(DefaultOutletId) { 
+      this.outletId = DefaultOutletId;
+      this.changeSelection({value: this.outletId});
+    }
   }
 
   changeSelection(e) {

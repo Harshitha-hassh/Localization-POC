@@ -584,6 +584,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setMachineDetails();
       sessionStorage.setItem(RetailConstants.EnableResortFinance, this.userInfo.enableResortFinance.toString());
       await this.propertyServices.setAuthorizeTokenBySession();
+      await this.propertyServices.setIGPAuthTokenFromSession();
       // Set ProcessInvoice type based on fiscal legal entity sync type
       await this._fiscalProcessingService.setProcessInvoiceType();
       this.router.navigate(['/home']);
