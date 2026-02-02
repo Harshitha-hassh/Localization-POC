@@ -16,7 +16,7 @@ const defaultLocalizations = [
     { code: "en-NZ", suffix: "", name: "New Zealand" },
    // { code: "en-PH", suffix: "", name: "Philippines" }, //To Be uncommented after Philiipines Fisacl accredation
     { code: "pt-PT", suffix: "", name: "Portugal" },
-    { code: "de-IT", suffix: "_de-it", name: "Italian" },
+    { code: "it-IT", suffix: "_it", name: "Italian" },
     /* For pole display hungarian labels has been updated in hu-HU.json so do not uncomment and run the pre-build script. 
        Add the labels manually in the json file. */
     // { code: "hu-HU", suffix: "_hu", name: "Hungarian" },
@@ -51,7 +51,18 @@ const defaultLocalizations = [
     { code: "ar-SA", suffix: "_ar", name: "Saudi Arabia"},
     { code: "en-MU", suffix: "_mu", name: "Mauritius"},
     { code: "en-SG", suffix: "_sg", name: "Singapore"},
-    { code: "ms-MY", suffix: "_my", name: "Malaysia"}
+    { code: "ms-MY", suffix: "_my", name: "Malaysia"},
+    { code: "es-AR", suffix: "_ar", name: "Argentina"},
+    { code: "es-CO", suffix: "_co", name: "Colombia"},
+    { code: "es-CR", suffix: "_cr", name: "Costa Rica"},
+    { code: "es-DO", suffix: "_do", name: "Dominican Republic"},
+    { code: "ar-EG", suffix: "_eg", name: "Egypt"},
+    { code: "es-PR", suffix: "_pr", name: "Puerto Rico"},
+    { code: "zh-TW", suffix: "_tw", name: "Taiwan"},
+    { code: "ar-JO", suffix: "_jo", name: "Amman (Jordan)"},
+    { code: "az-AZ", suffix: "_az", name: "Azerbaijan"},
+    { code: "ar-TN", suffix: "_tn", name: "Tunisia"},
+    { code: "zh-CN", suffix: "_zh-cn", name: "Chinese" },
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
