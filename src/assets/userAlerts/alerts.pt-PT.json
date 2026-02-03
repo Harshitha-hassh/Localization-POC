@@ -1,17 +1,17 @@
 [
   {
     "id": 1001,
-    "message": "Are you sure to delete this record?",
+    "message": "Are you sure to delete this record?_pt",
     "priority": 1
   },
   {
     "id": 1002,
-    "message": "You have unsaved changes, Do you want to stay?",
+    "message": "You have unsaved changes, Do you want to stay?_pt",
     "priority": 2
   },
   {
     "id": 1003,
-    "message": "Sample User alert message",
+    "message": "Sample User alert message_pt",
     "priority": 3
   },
   {
