@@ -279,6 +279,7 @@
   "101925": "This record cannot be deleted_az",
   "101926": "The requested record was not found_az",
   "101927": "Duplicate Code_az",
+  "101935": "PayIn/PayOut is in use, delete not allowed_az",
   "103911": "Duplicate Coupon_az",
   "103912": "Duplicate Name_az",
   "103913": "Empty Code or Name_az",

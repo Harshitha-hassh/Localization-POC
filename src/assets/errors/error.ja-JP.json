@@ -279,6 +279,7 @@
   "101925": "This record cannot be deleted_jp",
   "101926": "The requested record was not found_jp",
   "101927": "Duplicate Code_jp",
+  "101935": "PayIn/PayOut is in use, delete not allowed_jp",
   "103911": "Duplicate Coupon_jp",
   "103912": "Duplicate Name_jp",
   "103913": "Empty Code or Name_jp",

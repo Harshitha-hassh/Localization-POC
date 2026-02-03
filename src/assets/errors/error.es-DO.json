@@ -279,6 +279,7 @@
   "101925": "This record cannot be deleted_do",
   "101926": "The requested record was not found_do",
   "101927": "Duplicate Code_do",
+  "101935": "PayIn/PayOut is in use, delete not allowed_do",
   "103911": "Duplicate Coupon_do",
   "103912": "Duplicate Name_do",
   "103913": "Empty Code or Name_do",

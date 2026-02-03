@@ -279,6 +279,7 @@
   "101925": "This record cannot be deleted_mu",
   "101926": "The requested record was not found_mu",
   "101927": "Duplicate Code_mu",
+  "101935": "PayIn/PayOut is in use, delete not allowed_mu",
   "103911": "Duplicate Coupon_mu",
   "103912": "Duplicate Name_mu",
   "103913": "Empty Code or Name_mu",

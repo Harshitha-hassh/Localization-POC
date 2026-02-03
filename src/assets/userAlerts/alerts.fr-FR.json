@@ -1,22 +1,22 @@
 [
-    {
-        "id":1001,
-        "message":"Are you sure to delete this record_FR?",
-        "priority":1
-    },
-    {
-        "id":1002,
-        "message":"You have unsaved changes, Do you want to stay_FR?",
-        "priority":2
-    },
-    {
-        "id":1003,
-        "message":"Sample User alert message_FR",
-        "priority":3
-    },
-    {
-        "id":1004,
-        "message":"",
-        "priority":1
-    }
+  {
+    "id": 1001,
+    "message": "Are you sure to delete this record?_fr",
+    "priority": 1
+  },
+  {
+    "id": 1002,
+    "message": "You have unsaved changes, Do you want to stay?_fr",
+    "priority": 2
+  },
+  {
+    "id": 1003,
+    "message": "Sample User alert message_fr",
+    "priority": 3
+  },
+  {
+    "id": 1004,
+    "message": "",
+    "priority": 1
+  }
 ]

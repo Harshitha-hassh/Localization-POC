@@ -1999,6 +1999,7 @@
     "7305": "7305 - Payment Coupons_vi",
     "7310": "7310 - Incentive Coupons_vi",
     "7315": "7315 - Cash Drawer Denomination_vi",
+    "7330": "7330 - PayIn/PayOut Configuration_vi",
     "8000": "8000 - Shift Report_vi",
     "8005": "8005 - Transaction Report_vi",
     "8010": "8010 - Revenue Summary_vi",
@@ -2447,6 +2448,20 @@
       "CashDrawerMiscNotConfigured": "Please enable the cash drawer functionality, to open it_vi",
       "outletConfigurationMissing": "Outlet configuration not available to open cash drawer_vi",
       "lbl_lastClosedDate": "Last Closed Date_vi"
+    },
+    "payInPayOut": {
+      "Reason": "Reason_vi",
+      "Code": "Code_vi",
+      "ListOrder": "List Order_vi",
+      "IsPayIn": "Is Pay In_vi",
+      "IsPayOut": "Is Pay Out_vi",
+      "CanOverride": "Can Override_vi",
+      "Active": "Active_vi",
+      "MissingReason": "Missing Reason_vi",
+      "InvalidReason": "Reason must be at least 3 characters_vi",
+      "MissingCode": "Missing Code_vi",
+      "InvalidCode": "Code must contain only uppercase letters and underscores_vi",
+      "InvalidListOrder": "List Order must be greater than 0_vi"
     },
     "allowPriceOverride": "Allow Price Override_vi",
     "restrictReturn": "Restrict Return_vi",

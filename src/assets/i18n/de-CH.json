@@ -1999,6 +1999,7 @@
     "7305": "7305 - Payment Coupons_de-ch",
     "7310": "7310 - Incentive Coupons_de-ch",
     "7315": "7315 - Cash Drawer Denomination_de-ch",
+    "7330": "7330 - PayIn/PayOut Configuration_de-ch",
     "8000": "8000 - Shift Report_de-ch",
     "8005": "8005 - Transaction Report_de-ch",
     "8010": "8010 - Revenue Summary_de-ch",
@@ -2447,6 +2448,20 @@
       "CashDrawerMiscNotConfigured": "Please enable the cash drawer functionality, to open it_de-ch",
       "outletConfigurationMissing": "Outlet configuration not available to open cash drawer_de-ch",
       "lbl_lastClosedDate": "Last Closed Date_de-ch"
+    },
+    "payInPayOut": {
+      "Reason": "Reason_de-ch",
+      "Code": "Code_de-ch",
+      "ListOrder": "List Order_de-ch",
+      "IsPayIn": "Is Pay In_de-ch",
+      "IsPayOut": "Is Pay Out_de-ch",
+      "CanOverride": "Can Override_de-ch",
+      "Active": "Active_de-ch",
+      "MissingReason": "Missing Reason_de-ch",
+      "InvalidReason": "Reason must be at least 3 characters_de-ch",
+      "MissingCode": "Missing Code_de-ch",
+      "InvalidCode": "Code must contain only uppercase letters and underscores_de-ch",
+      "InvalidListOrder": "List Order must be greater than 0_de-ch"
     },
     "allowPriceOverride": "Allow Price Override_de-ch",
     "restrictReturn": "Restrict Return_de-ch",

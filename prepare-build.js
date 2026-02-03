@@ -3,6 +3,7 @@ var fs = require("fs");
 
 const captionsReferenceFile = "en-US";
 const errorsReferenceFile = "error.en-US";
+const alertsReferenceFile = "alerts.en-US";
 const defaultLocalizations = [
     { code: "da-DK", suffix: "_da", name: "Danish" },
     { code: "de-DE", suffix: "_de", name: "German" },
@@ -66,6 +67,7 @@ const defaultLocalizations = [
 ];
 const captionsPath = "src/assets/i18n/";
 const errorsPath = "src/assets/errors/";
+const alertsPath = "src/assets/userAlerts/";
 const fileFormat = "json";
 const keysToBeExcluded = ["PhoneFormat", "ExtensionFormat", "alphabets"];
 const phoneFormate = ["PhoneFormat", "ExtensionFormat"];
@@ -88,8 +90,10 @@ function getDefaultData(path, callBack) {
 function generateLocalizationFiles() {
     let enUScaptionsPath = captionsPath + captionsReferenceFile + '.' + fileFormat;
     let enUSErrorsPath = errorsPath + errorsReferenceFile + '.' + fileFormat;
+    let enUSAlertsPath = alertsPath + alertsReferenceFile + '.' + fileFormat;
     getDefaultData(enUScaptionsPath, createCaptions);
     getDefaultData(enUSErrorsPath, createErrorFiles);
+    getDefaultData(enUSAlertsPath, createAlertFiles);
 }
 
 function createCaptions(defaultEnUsData) {
@@ -106,6 +110,15 @@ function createErrorFiles(defaultEnUsData) {
         let path = errorsPath + 'error.' + lang.code + '.' + fileFormat;
         const enUS = { ...defaultEnUsData };
         let data = applyLocalization(enUS, lang.suffix, lang.code);
+        createFile(data, path, lang);
+    }
+}
+
+function createAlertFiles(defaultEnUsData) {
+    for (const lang of defaultLocalizations) {
+        let path = alertsPath + 'alerts.' + lang.code + '.' + fileFormat;
+        const enUS = cloneJSON(defaultEnUsData);
+        let data = applyAlertLocalization(enUS, lang.suffix, lang.code);
         createFile(data, path, lang);
     }
 }
@@ -167,6 +180,29 @@ function applyLocalization(data, langSuffix, langCode) {
 
 function cloneJSON(data) {
     return JSON.parse(JSON.stringify(data));
+}
+
+function applyAlertLocalization(alerts, langSuffix, langCode) {
+    if (Array.isArray(alerts)) {
+        return alerts.map(alert => {
+            if (alert.message && typeof alert.message === 'string') {
+                let localizedMessage = alert.message;
+                
+                if (langCode === 'en-AU' || langCode === 'en-NZ') {
+                    localizedMessage = localizedMessage.replace(/VAT/g, "GST");
+                } else if (langSuffix) {
+                    localizedMessage = localizedMessage + langSuffix;
+                }
+                
+                return {
+                    ...alert,
+                    message: localizedMessage
+                };
+            }
+            return alert;
+        });
+    }
+    return alerts;
 }
 
 function logError(params) {
