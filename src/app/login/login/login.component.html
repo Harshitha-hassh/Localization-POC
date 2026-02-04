@@ -59,7 +59,7 @@
                                                 <a (click)="clearLclCookie('appRetailCustID')"> {{
                                                     captions.changeCustomerID}}</a>
                                                 <a class="ml-4 forget-password-link"
-                                                    *ngIf="loginForms.get('userId')?.value && !this.ADB2CAuthenticationEnabled && !this.isSupportUser && !this.disableForgetPassword"
+                                                    *ngIf="loginForms.get('userId')?.value && !this.disableForgetPassword"
                                                     [class.disabled]="showLoginloader"
                                                     (click)="!showLoginloader && openForgetPasswordDialog()">
                                                     {{ commonCaptions.ForgetPassword }}
@@ -69,7 +69,7 @@
                                     </div>
                                     <div *ngIf="custId !=0">
                                         <a class="ml-4 forget-password-link"
-                                            *ngIf="loginForms.get('userId')?.value && !this.ADB2CAuthenticationEnabled && !this.isSupportUser && !this.disableForgetPassword"
+                                            *ngIf="loginForms.get('userId')?.value && !this.disableForgetPassword"
                                             [class.disabled]="showLoginloader"
                                             (click)="!showLoginloader && openForgetPasswordDialog()">
                                             {{ commonCaptions.ForgetPassword }}
