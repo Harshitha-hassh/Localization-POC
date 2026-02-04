@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1001,
+    "message": "Are you sure to delete this record?_qa",
+    "priority": 1
+  },
+  {
+    "id": 1002,
+    "message": "You have unsaved changes, Do you want to stay?_qa",
+    "priority": 2
+  },
+  {
+    "id": 1003,
+    "message": "Sample User alert message_qa",
+    "priority": 3
+  },
+  {
+    "id": 1004,
+    "message": "",
+    "priority": 1
+  }
+]

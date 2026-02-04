@@ -119,7 +119,7 @@
                 </span>
               </mat-select-trigger>
               <div class="dropdown-search">
-                <input [placeholder]="captions.Nationality"
+                <input [placeholder]="allCaptions.lbl_searchBy + ' ' + captions.Nationality"
                   [(ngModel)]="nationalitySearchInput" 
                   [ngModelOptions]="{standalone: true}"
                   (input)="filterNationalityOptions($event)"
@@ -127,6 +127,9 @@
                 <i [ngClass]="nationalitySearchInput ? 'icon-close ag_cursor--pointer' : 'icon-search'"
                   (click)="clearNationalitySearch()"></i>
               </div>
+              <mat-option [value]="''">
+                <span>&nbsp;</span>
+              </mat-option>
               <mat-option *ngFor="let nationality of filteredNationalities" [value]="nationality"
                 [matTooltip]="nationality.name">
                 <div class="ag_display--flex align-items-center">

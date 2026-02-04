@@ -279,6 +279,7 @@
   "101925": "This record cannot be deleted_fr-pf",
   "101926": "The requested record was not found_fr-pf",
   "101927": "Duplicate Code_fr-pf",
+  "101935": "PayIn/PayOut is in use, delete not allowed_fr-pf",
   "103911": "Duplicate Coupon_fr-pf",
   "103912": "Duplicate Name_fr-pf",
   "103913": "Empty Code or Name_fr-pf",

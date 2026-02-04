@@ -584,6 +584,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.setMachineDetails();
       sessionStorage.setItem(RetailConstants.EnableResortFinance, this.userInfo.enableResortFinance.toString());
       await this.propertyServices.setAuthorizeTokenBySession();
+      await this.propertyServices.setIGPAuthTokenFromSession();
       // Set ProcessInvoice type based on fiscal legal entity sync type
       await this._fiscalProcessingService.setProcessInvoiceType();
       this.router.navigate(['/home']);
@@ -712,17 +713,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.localize.SetLocaleBasedProperties();
     this.commonLocalize.SetLocaleBasedProperties();
     this.UpdateUserRole(Selectedproperty.id);
-    await this.SetAllowTokenSharing();
-  }
-
- async SetAllowTokenSharing() {
-    let allowTokenSharing = false;
-    const configuration = await this.configuration.GetTenantConfiguration();
-    
-    if (configuration?.configValue) {
-      allowTokenSharing = configuration.configValue?.AllowTokenSharing ? configuration.configValue.AllowTokenSharing.toLowerCase() == 'true' : false;
-    }
-    sessionStorage.setItem('AllowTokenSharing', allowTokenSharing.toString());
+    await this.configuration.SetAllowTokenSharing();
   }
 
   async setEatecConfig() {
