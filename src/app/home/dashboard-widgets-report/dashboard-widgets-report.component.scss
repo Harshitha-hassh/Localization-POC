@@ -80,10 +80,22 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
     position: relative;
     top: 12px;
 
-    mat-form-field .mat-input-element{
-      font-size: 17px !important;
-      padding-left: 5px;
-      padding-top: 1px;
+    mat-form-field {
+      height: $dropDown-height;
+      
+      .mat-input-element{
+        font-size: $dropDown-size !important;
+        padding-left: 5px;
+        padding-top: 1px;
+      }
+      
+      .mat-form-field-infix {
+        padding: 0.5em 0;
+      }
+      
+      .mat-form-field-wrapper {
+        padding-bottom: 0px !important;
+      }
     }
   }
 
@@ -92,8 +104,38 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
     box-sizing: border-box;
     padding:2rem 0 0 1.25rem;
     user-select:none;
-    .mat-form-field-underline{
+
+    // Hide borders only for non-date picker elements
+    .mat-form-field-underline:not(.dashboard-datepicker *),
+    .mdc-line-ripple:not(.dashboard-datepicker *){
         display: none;
+    }
+    
+    // For Angular Material v15+ MDC components - exclude date picker
+    .mat-mdc-form-field:not(.dashboard-datepicker .mat-mdc-form-field) {
+        .mdc-line-ripple {
+            display: none;
+        }
+        .mdc-notched-outline {
+            display: none;
+        }
+    }
+    
+    // Global overrides for hiding borders in MDC select components only
+    .mat-mdc-select:not(.dashboard-datepicker .mat-mdc-select) {
+        .mdc-line-ripple {
+            display: none !important;
+        }
+    }
+    
+    // Hide floating label outline - exclude date picker
+    .widget_group_header_dropDown .mdc-notched-outline__leading,
+    .widget_group_header_dropDown .mdc-notched-outline__trailing,
+    .widget_group_header_dropDown .mdc-notched-outline__notch,
+    .widget_dropDown .mdc-notched-outline__leading,
+    .widget_dropDown .mdc-notched-outline__trailing,
+    .widget_dropDown .mdc-notched-outline__notch {
+        border: none !important;
     }
     .right{
         float:right;
@@ -134,8 +176,6 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
             line-height: 30px !important;
             height: 30px !important;
         }
-
-        
 
     }
 
@@ -354,6 +394,8 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
             .widget_group_header_dropDown{
                 display: flex;
                 font-size: $dropDown-size;
+                
+                // Legacy mat-form-field support
                 &.mat-form-field{
                    width:auto !important;
                    .mat-select-value{
@@ -366,7 +408,23 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
                    }
                 }
                 
-                // Specific border only for dashboard main outlet
+                // MDC mat-form-field support
+                &.mat-mdc-form-field {
+                   width:auto !important;
+                   .mat-mdc-select-value{
+                    min-width:50px;
+                    width:auto;
+                    max-width: 300px;
+                   }
+                   .mdc-line-ripple {
+                       display: none;
+                   }
+                   .mdc-notched-outline {
+                       display: none;
+                   }
+                }
+                
+                // Specific border only for dashboard main outlet - Legacy
                 &.dashboard_main_outlet.mat-form-field {
                    border: 1px solid grey !important;
                    border-radius: 4px !important;
@@ -378,6 +436,28 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
                    }
 
                    .mat-select-value{
+                    width: 100%;
+                   }
+                }
+                
+                // Specific border only for dashboard main outlet - MDC
+                &.dashboard_main_outlet.mat-mdc-form-field {
+                   border: 1px solid grey !important;
+                   border-radius: 4px !important;
+                   padding: 5px;
+                   margin-right: 10px;
+                   
+                   .mdc-line-ripple {
+                       display: none;
+                   }
+                   .mdc-notched-outline {
+                       display: none;
+                   }
+                   .mdc-text-field--outlined .mdc-notched-outline {
+                       display: none;
+                   }
+
+                   .mat-mdc-select-value{
                     width: 100%;
                    }
                 }
@@ -494,6 +574,8 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
                                 .widget_dropDown{
                                     display: flex;
                                     font-size: $dropDown-size;
+                                    
+                                    // Legacy support
                                     &.mat-form-field{
                                        width:auto !important;
                                        .mat-form-field-infix{
@@ -510,6 +592,23 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
                                        }
                                        .mat-form-field-wrapper{
                                            padding-bottom: 0px !important;
+                                       }
+                                    }
+                                    
+                                    // MDC support
+                                    &.mat-mdc-form-field{
+                                       width:auto !important;
+                                       .mdc-line-ripple {
+                                           display: none;
+                                       }
+                                       .mdc-notched-outline {
+                                           display: none;
+                                       }
+                                       
+                                       .mat-mdc-select-value{
+                                        min-width:50px;
+                                        width:auto;
+                                        max-width: 300px;
                                        }
                                     }
                                 }
@@ -653,9 +752,9 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
               }
 
           }
-      }      
       }
     }
+}
 .DB-inner-Block-wrapper{
     text-align: center;
     height: 100%;
@@ -752,8 +851,19 @@ $dashboard-checkbox-disabled-color: $disabledCheckboxBorder;
         width:20%;
     
       }
-      .mat-form-field-underline{
+      .mat-form-field-underline,
+      .mdc-line-ripple{
         display: block !important;
+      }
+      
+      // For MDC form fields
+      .mat-mdc-form-field {
+        .mdc-line-ripple {
+            display: block !important;
+        }
+        .mdc-notched-outline {
+            display: block !important;
+        }
       }
     }
    }

@@ -71,8 +71,8 @@
                   <app-ag-toggle [toggleInputs]="showInactiveToggleInputs" (valueChange)="sliderChange($event)"></app-ag-toggle>
                 </div>
                 <mat-form-field class="searchArea spa-searchbox custSearchbox" floatLabel="never"
-                  [ngClass]="enableToggleButton ? 'searchWidth': ''">  <mat-label>{{PlaceHoldertext}}</mat-label>
-                  <input #tableInput matInput autocomplete="off" style="width:90%;" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" type="text" [maxlength]="250" value="" (keypress)="currentPage=1" (ngModelChange)="viewCheckedFlag=false">
+                  [ngClass]="enableToggleButton ? 'searchWidth': ''">
+                  <input #tableInput matInput autocomplete="off" style="width:90%;" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" type="text" [maxlength]="250" value="" (keypress)="currentPage=1" (ngModelChange)="viewCheckedFlag=false" [placeholder]="PlaceHoldertext">
                   <i [ngClass]="!searchText ? 'icon-Search' : 'icon-Cancel'" class="cursor"
                     (click)="searchText='';viewCheckedFlag = false"></i>
                 </mat-form-field>
@@ -144,7 +144,7 @@
                 </th>
               </tr>
             </thead>
-            <tbody class=" h-100" flex formArrayName="tablebody" cdkDropList (cdkDropListDropped)="onItemDrop($event)">
+            <tbody class="h-100" flex formArrayName="tablebody" cdkDropList (cdkDropListDropped)="onItemDrop($event)">
 
               <tr cdkDrag [cdkDragDisabled]="!blnDraggable"
                 [ngClass]="{'highlight' :((NewerData[0] === bodyCnt) || (SelectedData === bodyCnt)), 'onEdit':isEdit, 'editRow':editableRow == bodyCnt.id, 'rowDisabled': (enableRowCheck | enablerow : bi : options : editEvent)}"

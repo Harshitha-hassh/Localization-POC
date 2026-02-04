@@ -80,11 +80,11 @@
   
   // Selected option highlight
   &.mdc-list-item--selected {
-    background-color: $retail-primary-40 !important;
+   // background-color: $retail-primary-40 !important;
     color: $retail-primary-100 !important;
     
     .mdc-list-item__primary-text {
-      color: #525252;
+      color: $retail-primary-100;
     }
   }
   

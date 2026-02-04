@@ -112,6 +112,7 @@
                         padding: 1em 0px 0px 0px;
                     }
                 }
+
             }
         }
     }
@@ -207,9 +208,14 @@
   animation: loginloadingSpinner 0.7s infinite linear;
   -webkit-animation: loginloadingSpinner 0.7s infinite linear;
 }
+.login__btn {
+  .mdc-button__label {
+        width: 100% !important;
+    }
+}
 button .loginloadingSpinner {
   position: absolute;
-  top: 7px;
+  top: -2px;
   left: unset;
   right: 0px;
 }
