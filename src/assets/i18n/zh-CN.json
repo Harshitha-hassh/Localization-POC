@@ -1489,6 +1489,7 @@
     "RefundSuccessMsg": "Refund Successful_zh-cn",
     "PaymentComplete": "Transaction Completed_zh-cn",
     "CloseTransaction": "Close Transaction_zh-cn",
+    "FullAmountAlreadyReceivedMessage": "Full amount {amount} has already been received. Please use the \"Close\" option to close the transaction._zh-cn",
     "ContinuePayment": "CONTINUE PAYMENT_zh-cn",
     "ContinueRefund": "CONTINUE REFUND_zh-cn",
     "Pay": "PAY_zh-cn",

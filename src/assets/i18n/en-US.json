@@ -1487,6 +1487,7 @@
     "RefundSuccessMsg": "Refund Successful",
     "PaymentComplete": "Transaction Completed",
     "CloseTransaction": "Close Transaction",
+    "FullAmountAlreadyReceivedMessage": "Full amount {amount} has already been received. Please use the \"Close\" option to close the transaction.",
     "ContinuePayment": "CONTINUE PAYMENT",
     "ContinueRefund": "CONTINUE REFUND",
     "Pay": "PAY",

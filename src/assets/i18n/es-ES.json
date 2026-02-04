@@ -1489,6 +1489,7 @@
     "RefundSuccessMsg": "Refund Successful_es",
     "PaymentComplete": "Transaction Completed_es",
     "CloseTransaction": "Close Transaction_es",
+    "FullAmountAlreadyReceivedMessage": "Full amount {amount} has already been received. Please use the \"Close\" option to close the transaction._es",
     "ContinuePayment": "CONTINUE PAYMENT_es",
     "ContinueRefund": "CONTINUE REFUND_es",
     "Pay": "PAY_es",

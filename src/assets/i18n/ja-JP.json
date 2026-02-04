@@ -1489,6 +1489,7 @@
     "RefundSuccessMsg": "Refund Successful_jp",
     "PaymentComplete": "Transaction Completed_jp",
     "CloseTransaction": "Close Transaction_jp",
+    "FullAmountAlreadyReceivedMessage": "Full amount {amount} has already been received. Please use the \"Close\" option to close the transaction._jp",
     "ContinuePayment": "CONTINUE PAYMENT_jp",
     "ContinueRefund": "CONTINUE REFUND_jp",
     "Pay": "PAY_jp",

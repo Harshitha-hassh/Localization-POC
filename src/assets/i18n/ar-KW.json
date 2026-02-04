@@ -1489,6 +1489,7 @@
     "RefundSuccessMsg": "Refund Successful_kw",
     "PaymentComplete": "Transaction Completed_kw",
     "CloseTransaction": "Close Transaction_kw",
+    "FullAmountAlreadyReceivedMessage": "Full amount {amount} has already been received. Please use the \"Close\" option to close the transaction._kw",
     "ContinuePayment": "CONTINUE PAYMENT_kw",
     "ContinueRefund": "CONTINUE REFUND_kw",
     "Pay": "PAY_kw",

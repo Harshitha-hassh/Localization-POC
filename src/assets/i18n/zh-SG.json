@@ -1489,6 +1489,7 @@
     "RefundSuccessMsg": "Refund Successful_zh-sg",
     "PaymentComplete": "Transaction Completed_zh-sg",
     "CloseTransaction": "Close Transaction_zh-sg",
+    "FullAmountAlreadyReceivedMessage": "Full amount {amount} has already been received. Please use the \"Close\" option to close the transaction._zh-sg",
     "ContinuePayment": "CONTINUE PAYMENT_zh-sg",
     "ContinueRefund": "CONTINUE REFUND_zh-sg",
     "Pay": "PAY_zh-sg",
