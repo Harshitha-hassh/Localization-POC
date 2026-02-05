@@ -53,12 +53,13 @@
                     </div>
                 </div>
                 <!-- Philippines Miscellaneous Information -->
-                <div class="mt-4" *ngIf="showPhilippinesInfo">
+                <div class="mt-4">
                     <ag-philippines-miscellaneous
                         [parentFormGroup]="FormGrp"
                         [existingGuestTypeCategories]="philippinesGuestTypeCategories"
                         [isViewMode]="isClientViewOnly"
                         [floatLabel]="floatLabel"
+                        [showPhilippinesInfo]="showPhilippinesInfo"
                         (dataChange)="onPhilippinesMiscDataChange($event)">
                     </ag-philippines-miscellaneous>
                 </div>  
