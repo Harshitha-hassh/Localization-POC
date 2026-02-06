@@ -3891,6 +3891,7 @@
     "MissingNewPassword": "Missing New Password_hu",
     "MissingConfirmPassword": "Missing Confirm Password_hu",
     "RequestPresettlementReceiptOnPendingSettlement": "Request Pre-settlement Receipts for Pending Settlements_hu",
+    "EnablePrintPresettlementButton": "Enable Print Pre-settlement Button in Order Summary_hu",
     "AllowReceiptCopies": "Allow Receipt Copies_hu",
     "GroupByTaxName": "Group by Tax Name_hu",
     "ReplaceMemberNumberWithAR": "Replace Member # with AR #_hu",
