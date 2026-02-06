@@ -11,6 +11,12 @@ body {
   margin: 0;
   font-family: $ag_sourcesans-regular !important;
 }
+
+// Material Form Field Global Styles
+.mat-mdc-form-field-error-wrapper {
+  padding: 0 !important;
+}
+
 .ag_display--none {
   display: none !important;
 }
