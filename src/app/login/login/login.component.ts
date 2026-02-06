@@ -854,6 +854,17 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   }
 
+  async SetSupportLoginPropertyInfo(result: any) {
+    const propertyId: number = Number(result.id);
+    this.propertyInfo.SetPropertyId(propertyId);
+    this.SetPropertyConfiguration();
+    this.SetPropertyApiConfiguration();
+    if (!this.propertyInfo.UseRetailInterface) {
+      this.SetPaymentConfiguration(propertyId);
+    }
+
+  }
+
   async SetPropertyConfiguration() {
     const propertityConfig = await this.PropertySettingService.getAllPropertySetting(this.propertyInfo.PropertyId);
     this.propertyInfo.SetPropertySetting(propertityConfig);
@@ -1616,7 +1627,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     const usersessionId = await this.sessionService.createSession();
     sessionStorage.setItem(USER_SESSION, String(usersessionId));
     await this.setEatecConfig();
-    this.SetPropertyInfo(selectedProperty);
+    this.SetSupportLoginPropertyInfo(selectedProperty[0]);
 
     this.setAutoLogOff();
     await this.SetUserSessionConfiguration(this.userInfo.userId);
