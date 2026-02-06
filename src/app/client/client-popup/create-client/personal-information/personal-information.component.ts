@@ -6,7 +6,7 @@ import { BaseResponse } from 'src/app/common/shared/shared.modal';
 import { RetailStandaloneLocalization } from '../../../../core/localization/retailStandalone-localization';
 import * as _ from 'lodash';
 import { PropertyInformation } from '../../../../core/services/property-information.service';
-import { Observable, ReplaySubject, forkJoin } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, startWith, takeUntil } from 'rxjs/operators';
 import { ClientCommonService } from 'src/app/client/client.service';
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
@@ -22,7 +22,7 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
 import { DefaultSettings } from 'src/app/retail/shared/globalsContant';
 import { CommonDataService } from 'src/app/common/dataservices/common.data.service';
-import countryCodeData from 'src/app/common/components/ag-phone-number/country-code.json';
+import { NationalityService } from 'src/app/shared/service/nationality.service';
 
 @Component({
   standalone: false,
@@ -156,7 +156,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
     private featureSwitch: RetailFeatureFlagInformationService,
     private _playerService: PlayerInformationService,
     private _ams: AppModuleService,
-    private commonDataService: CommonDataService
+    private commonDataService: CommonDataService,
+    private nationalityService: NationalityService
   ) {
     this.maxReceiptDate = new Date();
     // this.receiptDate = new FormControl("");
@@ -500,47 +501,46 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   }
 
   loadNationalities(): void {
-    const tenantId = Number(this.PropertyInfo.GetPropertyInfoByKey('TenantId'));
+    // Load nationalities from service when client form opens (fire and forget)
+    this.nationalityService.loadNationalities().then(() => {
+      // Map to component's format
+      this.nationalityList = this.nationalityService.getNationalities().map(n => ({
+        name: n.name,
+        flagClass: n.flagClass
+      }));
 
-    forkJoin([
-      this.commonDataService.GetAllNationality(tenantId),
-      this.commonDataService.GetAllCountry()
-    ]).pipe(takeUntil(this.destroyed$)).subscribe({
-      next: ([nationalities, countries]) => {
-        const countryMap = new Map<number, string>();
-        countries.forEach((country: any) => {
-          countryMap.set(country.id, country.countryCode);
-        });
-
-        this.nationalityList = nationalities.map((nationality: any) => {
-          const countryCode = countryMap.get(nationality.countryId) || '';
-          const countryData = (countryCodeData as any[]).find(
-            (c: any) => c.iso2?.toLowerCase() === countryCode.toLowerCase() ||
-                        c.iso3?.toLowerCase() === countryCode.toLowerCase()
-          );
-          return {
-            name: nationality.nationalityName,
-            flagClass: countryData?.flagClass || ''
-          };
-        });
-
-        this.setupNationalityAutocomplete();
-
-        // Set pending nationality if it was set before the list was loaded
-        if (this.pendingNationality) {
-          const nationalityObj = this.nationalityList.find(n => n.name === this.pendingNationality);
-          this.FormGrp.controls.nationality.setValue(nationalityObj || null);
-          this.pendingNationality = '';
-        }
-      },
-      error: (error) => {
-        console.error('Error loading nationalities:', error);
+      this.setupNationalityAutocomplete();
+      
+      // Set pending nationality if it was set before the list was loaded
+      if (this.pendingNationality) {
+        const nationalityObj = this.nationalityList.find(n => n.name === this.pendingNationality);
+        this.FormGrp.controls.nationality.setValue(nationalityObj || null);
+        this.pendingNationality = '';
       }
+    }).catch(error => {
+      console.error('Error loading nationalities in client form:', error);
+      // Form can still work without nationalities
+      this.nationalityList = [];
+      this.filteredNationalities = [];
     });
   }
 
   setupNationalityAutocomplete(): void {
     this.filteredNationalities = this.nationalityList;
+  }
+
+  setNationalityValue(nationalityName: string): void {
+    if (!nationalityName) return;
+    
+    if (this.nationalityList.length > 0) {
+      const nationalityObj = this.nationalityList.find(n => n.name === nationalityName);
+      if (nationalityObj) {
+        this.FormGrp.controls.nationality.setValue(nationalityObj);
+      }
+    } else {
+      // Store the nationality to be set once the list is loaded
+      this.pendingNationality = nationalityName;
+    }
   }
 
   onNationalityDropdownOpen(isOpen: boolean): void {
@@ -985,13 +985,9 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
       this.FormGrp.controls.platformBussinessCardUuid.setValue(clientInfo.client.platformBussinessCardUuid);
       this.FormGrp.controls.platformGuestUuid.setValue(clientInfo.client.platformGuestUuid);
       this.FormGrp.controls.platformRevUuid.setValue(clientInfo.client.platformRevUuid);
-      if (this.nationalityList.length > 0) {
-        const nationalityObj = this.nationalityList.find(n => n.name === clientInfo.client.nationality);
-        this.FormGrp.controls.nationality.setValue(nationalityObj || null);
-      } else {
-        // Store the nationality to be set once the list is loaded
-        this.pendingNationality = clientInfo.client.nationality || '';
-      }
+      
+      // Set nationality using helper method (automatically handles pending pattern)
+      this.setNationalityValue(clientInfo.client.nationality);
     }
     if (clientInfo.addresses && clientInfo.addresses != null) {
       this.FormGrp.controls.postal_code.setValue(clientInfo.addresses.zipCode);
@@ -1302,6 +1298,8 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         });
         this.Email.removeAt(0);
       }
+      // Set nationality from CMS data (helper handles pending pattern automatically)
+      this.setNationalityValue(extraParams[0]?.nationality);
       this.isPatronIdAvailable = true;
     }
     this.clearPatronValidationError();
