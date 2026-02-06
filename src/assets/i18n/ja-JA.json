@@ -2288,12 +2288,12 @@
         "SALE_LINE_DISCOUNT_MANUAL": "Sale - Line Discount (Manual)_ja",
         "SALE_LINE_DISCOUNT_AUTO": "Sale - Line Discount (Auto)_ja",
         "SALE_PAYMENT_CLICKED": "Sale - Payment Clicked_ja",
-        "SALE_TENDER_ADDED": "Sale - Tender Added_ja",
-        "SALE_TENDER_REMOVED": "Sale - Tender Removed_ja",
+        "SALE_TENDER_ADDED": "Sale - Payment Added_ja",
+        "SALE_TENDER_REMOVED": "Sale - Payment Removed_ja",
         "RETURN_ITEM_ADDED": "Return - Item Added_ja",
         "RETURN_SUMMARY": "Return Summary_ja",
-        "RETURN_TENDER_ADDED": "Return - Tender Added_ja",
-        "RETURN_TENDER_REMOVED": "Return - Tender Removed_ja"
+        "RETURN_TENDER_ADDED": "Return - Payment Added_ja",
+        "RETURN_TENDER_REMOVED": "Return - Payment Removed_ja"
       }
     },
     "poleDisplayMessages": {
