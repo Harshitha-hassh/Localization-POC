@@ -449,6 +449,7 @@
     "AddEditSecondaryInterface": "Add/Edit Secondary Interface_zh-sg",
     "SecondaryInterfaceConfigurations": "Secondary Interface Configurations_zh-sg",
     "MissingSecondaryInterface": "Missing Secondary Interface configurations_zh-sg",
+    "success": "Success_zh-sg",
     "receiptTemplates": {
       "receiptTempCode": "Receipt Template Code_zh-sg",
       "receiptTempName": "Receipt Template Name_zh-sg",

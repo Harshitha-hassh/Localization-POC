@@ -449,6 +449,7 @@
     "AddEditSecondaryInterface": "Add/Edit Secondary Interface_da",
     "SecondaryInterfaceConfigurations": "Secondary Interface Configurations_da",
     "MissingSecondaryInterface": "Missing Secondary Interface configurations_da",
+    "success": "Success_da",
     "receiptTemplates": {
       "receiptTempCode": "Receipt Template Code_da",
       "receiptTempName": "Receipt Template Name_da",
