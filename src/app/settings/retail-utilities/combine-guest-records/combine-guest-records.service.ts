@@ -88,7 +88,8 @@ public uiGridMapper(GuestAPIModel: API.Guest): CGtablecontent {
     country: GuestAPIModel.guestProfileAddress[0]?.country,
     clubnumber: GuestAPIModel.clubCardNumber,
     membernumber: GuestAPIModel.memberNumber,
-    patronid: GuestAPIModel.patronId
+    patronid: GuestAPIModel.patronId,
+     nationality: GuestAPIModel.nationality,
 
   } as CGtablecontent;
 }
