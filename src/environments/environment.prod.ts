@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  ckeditorLicenseKey: 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3OTc2MzgzOTksImp0aSI6IjI2YTNmMzVlLWViMDQtNGFiZC05ZTk5LTU5NjI4NTFmYTRiNSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsic2giLCJkcnVwYWwiXSwid2hpdGVMYWJlbCI6dHJ1ZSwiZmVhdHVyZXMiOlsiRFJVUCIsIkRPIiwiRlAiLCJTQyIsIlRPQyIsIlRQTCIsIlBPRSIsIkNDIiwiTUYiLCJTRUUiLCJFQ0giLCJFSVMiLCJMSCIsIkZPTyJdLCJ2YyI6IjIxZTJlMzc4In0.Ngc-Sj9NM-qAeGDw5SRpMBG65Tarfg7I2ihQHe1wPaYvWPD9T1NLV_LUZV23f7JGWl395_eRLkTgXFwjX0dmhQ' // Replace with production license key
 };
