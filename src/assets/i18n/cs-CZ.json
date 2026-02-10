@@ -5165,6 +5165,7 @@
   "lbl_address": "Address_cs",
   "lbl_postcode": "Postal Code_cs",
   "lbl_phoneno": "Phone Number_cs",
+  "lbl_nationality": "Nationality_cs",
   "lbl_vip_clients": "VIP Clients_cs",
   "VIPType_grid_hdr_Code": "VIP  Code_cs",
   "lbl_showActive": "Show InActive_cs",
