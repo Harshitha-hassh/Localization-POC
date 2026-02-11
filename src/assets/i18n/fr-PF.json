@@ -3919,7 +3919,7 @@
     "err_confirmPassword": "Confirm Password should be same as new Password_fr-pf",
     "MissingNewPassword": "Missing New Password_fr-pf",
     "MissingConfirmPassword": "Missing Confirm Password_fr-pf",
-    "RequestPresettlementReceiptOnPendingSettlement": "Request Pre-settlement Receipts for Pending Settlements_fr-pf",
+    "RequestPresettlementReceiptOnPendingSettlement": "Request/Print Pre-Settlement Receipts for Pending Settlements_fr-pf",
     "ShowPrintPresettlementReceipt": "Show Print Pre Settlement Receipt_fr-pf",
     "AllowReceiptCopies": "Allow Receipt Copies_fr-pf",
     "GroupByTaxName": "Group by Tax Name_fr-pf",
