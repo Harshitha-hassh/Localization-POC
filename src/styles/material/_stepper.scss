@@ -91,13 +91,15 @@ mat-stepper {
   width: 28px;
   height: 28px;
   
-  --mat-stepper-header-icon-background-color: #{$theme-base-color};
-  --mat-stepper-header-done-state-icon-background-color: #{$theme-base-color};
-  --mat-stepper-header-edit-state-icon-background-color: #{$theme-base-color};
+  // Use tokens from _tokens.scss - don't override here
+  // Default: rgba(0, 0, 0, 0.38) for inactive steps
+  // Selected: $app-primary-color for active steps
+  // Done: $app-primary-color for completed steps
 }
 
 .mat-step-icon-selected {
-  background-color: $theme-base-color;
+  // Let the token handle this - no need to override
+  // background-color: $theme-base-color;
 }
 
 // =============================================================================

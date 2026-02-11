@@ -204,6 +204,9 @@
     width: 350px;
     padding-right: 20px;
   }
+  .mat-mdc-form-field .mat-mdc-text-field-wrapper{
+    height: unset;
+  }
 }
 
 /* // Override global style - must be outside the .receiptConfig block since ViewEncapsulation.None is used

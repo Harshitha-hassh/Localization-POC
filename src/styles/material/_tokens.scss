@@ -213,6 +213,7 @@ $button-tokens: (
   --mat-button-filled-disabled-container-color: rgba(0, 0, 0, 0.12),
   --mat-button-filled-disabled-label-text-color: rgba(0, 0, 0, 0.38),
   --mat-button-protected-label-text-font: $ag_sourcesans-regular,
+  --mat-button-text-label-text-font: $ag_sourcesans-regular,
   // Outlined button
   --mat-button-outlined-outline-color: $app-primary-color,
   --mat-button-outlined-label-text-color: $app-primary-color,
@@ -266,7 +267,7 @@ $stepper-tokens: (
   --mat-stepper-header-height: 50px,
   --mat-stepper-container-color: transparent,
   // Icon colors
-  --mat-stepper-header-icon-background-color: $app-primary-color,
+  --mat-stepper-header-icon-background-color: rgba(0, 0, 0, 0.38),
   --mat-stepper-header-icon-foreground-color: #ffffff,
   --mat-stepper-header-selected-state-icon-background-color: $app-primary-color,
   --mat-stepper-header-selected-state-icon-foreground-color: #ffffff,
