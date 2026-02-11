@@ -1095,6 +1095,8 @@
     "Diplomatic": "Diplomatic_it"
   },
   "shop": {
+    "NetworkConnectionLost": "Network Connection Lost!_it",
+    "NetworkOfflineErrorMessage": "Transaction may not be completed successfully. Please check your internet connection._it",
     "lbl_fetchCoupon": "Fetching coupon details..._it",
     "lbl_InputCoupon": "Please enter a coupon number_it",
     "lbl_inActive": "Inactive_it",
