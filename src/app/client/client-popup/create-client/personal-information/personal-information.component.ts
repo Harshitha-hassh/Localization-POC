@@ -22,7 +22,7 @@ import { RetailUtilities } from 'src/app/retail/shared/utilities/retail-utilitie
 import { RetailImageService } from 'src/app/shared/data-services/retail.image.service';
 import { DefaultSettings } from 'src/app/retail/shared/globalsContant';
 import { CommonDataService } from 'src/app/common/dataservices/common.data.service';
-import { NationalityService } from 'src/app/shared/service/nationality.service';
+import { NationalityService } from 'src/app/common/services/nationality.service';
 
 @Component({
   standalone: false,
@@ -443,7 +443,28 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
         this.FormGrp.controls['country'].markAsTouched();
       });
     });
-    this.loadNationalities();
+    
+    // Load nationalities on demand
+    this.nationalityService.refresh().then(() => {
+      this.nationalityList = this.nationalityService.getNationalities().map(n => ({
+        name: n.name,
+        flagClass: n.flagClass
+      }));
+      this.filteredNationalities = this.nationalityList;
+      
+      // Set pending nationality if it was set before the list was loaded
+      if (this.pendingNationality) {
+        const nationalityObj = this.nationalityList.find(n => n.name === this.pendingNationality);
+        if (nationalityObj) {
+          this.FormGrp.controls.nationality.setValue(nationalityObj);
+        }
+        this.pendingNationality = '';
+      }
+    }).catch(error => {
+      console.error('Error loading nationalities:', error);
+      this.nationalityList = [];
+      this.filteredNationalities = [];
+    });
   }
 
   initializeFormData() {
@@ -498,35 +519,6 @@ export class PersonalInformationComponent implements OnInit, OnDestroy, AfterVie
   ngOnDestroy(): void {
     this.destroyed$.next(true);
     this.destroyed$.complete();
-  }
-
-  loadNationalities(): void {
-    // Load nationalities from service when client form opens (fire and forget)
-    this.nationalityService.loadNationalities().then(() => {
-      // Map to component's format
-      this.nationalityList = this.nationalityService.getNationalities().map(n => ({
-        name: n.name,
-        flagClass: n.flagClass
-      }));
-
-      this.setupNationalityAutocomplete();
-      
-      // Set pending nationality if it was set before the list was loaded
-      if (this.pendingNationality) {
-        const nationalityObj = this.nationalityList.find(n => n.name === this.pendingNationality);
-        this.FormGrp.controls.nationality.setValue(nationalityObj || null);
-        this.pendingNationality = '';
-      }
-    }).catch(error => {
-      console.error('Error loading nationalities in client form:', error);
-      // Form can still work without nationalities
-      this.nationalityList = [];
-      this.filteredNationalities = [];
-    });
-  }
-
-  setupNationalityAutocomplete(): void {
-    this.filteredNationalities = this.nationalityList;
   }
 
   setNationalityValue(nationalityName: string): void {

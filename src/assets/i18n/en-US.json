@@ -663,6 +663,8 @@
     "MissingGender": "Missing Gender",
     "Nationality": "Nationality",
     "MissingNationality": "Missing Nationality",
+    "SelectNationality": "Select Nationality",
+    "SearchNationality": "Search Nationality",
     "InvalidPhoneNumber": "Missing Phone Number",
     "MissingEmail": "Missing Email Address",
     "InvalidEmailFormat": "Invalid Email Format",

@@ -79,7 +79,6 @@ import { GOOGLE_MAP_API_KEY } from '../common/shared/shared/setupConstants';
         RetailSharedModule,
         CommonSharedModule,
         NgxMaterialTimepickerModule,
-        RetailSharedModule,
         MatGoogleMapsAutocompleteModule.forRoot(GOOGLE_MAP_API_KEY)
     ],
     providers: [
