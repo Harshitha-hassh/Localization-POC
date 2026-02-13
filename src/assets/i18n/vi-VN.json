@@ -2591,6 +2591,7 @@
     "CreateRetailSetup": "Create Retail Setup_vi",
     "SyncItem": "Sync Item_vi",
     "SearchByItemDescriptionCategory": "Search By Item #, Description, Category_vi",
+    "SearchByBarcode": "Search By Barcode_vi",
     "searchByVendorIdName": "Search By Vendor ID, Vendor Name_vi",
     "VendorHeader": "Vendor Name_vi",
     "SupplierItemNumber": "Supplier Item #_vi",

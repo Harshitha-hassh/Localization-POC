@@ -2593,6 +2593,7 @@
     "CreateRetailSetup": "Create Retail Setup_ch",
     "SyncItem": "Sync Item_ch",
     "SearchByItemDescriptionCategory": "Search By Item #, Description, Category_ch",
+    "SearchByBarcode": "Search By Barcode_ch",
     "searchByVendorIdName": "Search By Vendor ID, Vendor Name_ch",
     "VendorHeader": "Vendor Name_ch",
     "SupplierItemNumber": "Supplier Item #_ch",

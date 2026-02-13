@@ -2593,6 +2593,7 @@
     "CreateRetailSetup": "Create Retail Setup_de-ch",
     "SyncItem": "Sync Item_de-ch",
     "SearchByItemDescriptionCategory": "Search By Item #, Description, Category_de-ch",
+    "SearchByBarcode": "Search By Barcode_de-ch",
     "searchByVendorIdName": "Search By Vendor ID, Vendor Name_de-ch",
     "VendorHeader": "Vendor Name_de-ch",
     "SupplierItemNumber": "Supplier Item #_de-ch",

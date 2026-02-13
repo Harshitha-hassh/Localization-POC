@@ -2591,6 +2591,7 @@
     "CreateRetailSetup": "Create Retail Setup_kw",
     "SyncItem": "Sync Item_kw",
     "SearchByItemDescriptionCategory": "Search By Item #, Description, Category_kw",
+    "SearchByBarcode": "Search By Barcode_kw",
     "searchByVendorIdName": "Search By Vendor ID, Vendor Name_kw",
     "VendorHeader": "Vendor Name_kw",
     "SupplierItemNumber": "Supplier Item #_kw",

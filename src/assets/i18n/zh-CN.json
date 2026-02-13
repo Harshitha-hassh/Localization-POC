@@ -2591,6 +2591,7 @@
     "CreateRetailSetup": "Create Retail Setup_zh-cn",
     "SyncItem": "Sync Item_zh-cn",
     "SearchByItemDescriptionCategory": "Search By Item #, Description, Category_zh-cn",
+    "SearchByBarcode": "Search By Barcode_zh-cn",
     "searchByVendorIdName": "Search By Vendor ID, Vendor Name_zh-cn",
     "VendorHeader": "Vendor Name_zh-cn",
     "SupplierItemNumber": "Supplier Item #_zh-cn",

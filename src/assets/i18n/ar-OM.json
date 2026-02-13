@@ -2593,6 +2593,7 @@
     "CreateRetailSetup": "Create Retail Setup_om",
     "SyncItem": "Sync Item_om",
     "SearchByItemDescriptionCategory": "Search By Item #, Description, Category_om",
+    "SearchByBarcode": "Search By Barcode_om",
     "searchByVendorIdName": "Search By Vendor ID, Vendor Name_om",
     "VendorHeader": "Vendor Name_om",
     "SupplierItemNumber": "Supplier Item #_om",
