@@ -269,6 +269,17 @@ export class ReceiptConfigurationComponent implements OnInit {
     }
   }
 
+  private getPrintInfoById(id: number) {
+    return this.printInfo.find(item => item.id === id);
+  }
+
+  private setPrintInfoEnabledById(id: number, enabled: boolean) {
+    const item = this.getPrintInfoById(id);
+    if (item) {
+      item.enableToggle = enabled;
+    }
+  }
+
   changeSelection(e) {
     this.isSaveDisabled = true;
     this.selectedOutletId = e.value;
@@ -310,15 +321,15 @@ export class ReceiptConfigurationComponent implements OnInit {
     const x = this.savePrintDetails(printReceiptCustom);
     this.printReceiptArray.push(x);
     if (selectedValues[0].displayPackageDescription && !this.IsViewOnly) {
-      this.printInfo[3].enableToggle = true;
-      this.printInfo[5].enableToggle = true;
-      this.printInfo[7].enableToggle = true;
+      this.setPrintInfoEnabledById(4, true);  // PackItemPrice
+      this.setPrintInfoEnabledById(5, true);  // PackItemOnReceipt  
+      this.setPrintInfoEnabledById(8, true);  // PackItemStaffCode
     }
     if (selectedValues[0].displayOnlyPackageItem) {
-      this.printInfo[1].enableToggle = false;
-      this.printInfo[3].enableToggle = false;
-      this.printInfo[5].enableToggle = false;
-      this.printInfo[7].enableToggle = false;
+      this.setPrintInfoEnabledById(2, false); // DisplayPackageItemDesc
+      this.setPrintInfoEnabledById(4, false); // PackItemPrice
+      this.setPrintInfoEnabledById(5, false); // PackItemOnReceipt
+      this.setPrintInfoEnabledById(8, false); // PackItemStaffCode
     }
     if (selectedValues[0].suppressClerkId == false || selectedValues[0].suppressPrintedBy == false) {
       this.isSuppressClerk = true;
@@ -326,9 +337,9 @@ export class ReceiptConfigurationComponent implements OnInit {
     }
     if (selectedValues[0].displayOnlyPackageItem == false) {
       if (selectedValues[0].displayPackageDescription) {
-        this.printInfo[3].enableToggle = true;
-        this.printInfo[5].enableToggle = true;
-        this.printInfo[7].enableToggle = true;
+        this.setPrintInfoEnabledById(4, true);  // PackItemPrice
+        this.setPrintInfoEnabledById(5, true);  // PackItemOnReceipt
+        this.setPrintInfoEnabledById(8, true);  // PackItemStaffCode
       }
       // this.printInfo[1].enableToggle = true;      
     }
@@ -393,13 +404,13 @@ export class ReceiptConfigurationComponent implements OnInit {
   toggleChange(event, controlName) {
     this.isSaveDisabled = false;
     if (controlName == 'packItemDesc' && event[0] && !this.IsViewOnly) {
-      this.printInfo[3].enableToggle = true;
-      this.printInfo[5].enableToggle = true;
-      this.printInfo[7].enableToggle = true;
+      this.setPrintInfoEnabledById(4, true);  // PackItemPrice
+      this.setPrintInfoEnabledById(5, true);  // PackItemOnReceipt
+      this.setPrintInfoEnabledById(8, true);  // PackItemStaffCode
     } else if (controlName == 'packItemDesc' && !event[0]) {
-      this.printInfo[3].enableToggle = false;
-      this.printInfo[5].enableToggle = false;
-      this.printInfo[7].enableToggle = false;
+      this.setPrintInfoEnabledById(4, false); // PackItemPrice
+      this.setPrintInfoEnabledById(5, false); // PackItemOnReceipt
+      this.setPrintInfoEnabledById(8, false); // PackItemStaffCode
     }
     else if ((controlName == 'surplusClientIdOnReceipt') && event[0] == false) {
       this.isSuppressClerk = true;
@@ -414,19 +425,19 @@ export class ReceiptConfigurationComponent implements OnInit {
       this.isSuppressPrint = false;
     }
     else if (controlName == 'packageItemOnReceipt' && event[0]) {
-      this.printInfo[1].enableToggle = false;
+      this.setPrintInfoEnabledById(2, false); // DisplayPackageItemDesc
       // this.FormGrp.controls[0].value.packItemDesc = false;
       // this.FormGrp.controls.printReceipt.value[0].packItemDesc = false;
-      this.printInfo[3].enableToggle = false;
-      this.printInfo[5].enableToggle = false;
-      this.printInfo[7].enableToggle = false;
+      this.setPrintInfoEnabledById(4, false); // PackItemPrice
+      this.setPrintInfoEnabledById(5, false); // PackItemOnReceipt
+      this.setPrintInfoEnabledById(8, false); // PackItemStaffCode
     } else if (controlName == 'packageItemOnReceipt' && !event[0] && !this.IsViewOnly) {
       if (this.FormGrp.controls.printReceipt.value[0].packItemDesc) {
-        this.printInfo[3].enableToggle = true;
-        this.printInfo[5].enableToggle = true;
-        this.printInfo[7].enableToggle = true;
+        this.setPrintInfoEnabledById(4, true);  // PackItemPrice
+        this.setPrintInfoEnabledById(5, true);  // PackItemOnReceipt
+        this.setPrintInfoEnabledById(8, true);  // PackItemStaffCode
       }
-      this.printInfo[1].enableToggle = true;
+      this.setPrintInfoEnabledById(2, true);  // DisplayPackageItemDesc
     }
     this.FormGrp.get('printReceipt')['controls'][0].get(controlName).setValue(event[0]);
 

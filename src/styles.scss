@@ -5554,6 +5554,14 @@ body .cdk-custom-wrapper .ag_table .table th {
           }
         }
       }
+      
+      .mat-mdc-select-value {
+        width: unset !important;
+        overflow: visible !important;
+      }
+       .mat-mdc-select-arrow{
+        width: 24px !important;
+      }
     }
     .vertical-header{
       .nav-section {
