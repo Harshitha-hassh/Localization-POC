@@ -4463,6 +4463,8 @@
     "errMinDigitsNeeded": "Minimum {minDigits} digits needed",
     "errFromNumber": "Missing From Receipt Number",
     "errToNumber": "Missing To Receipt Number",
+    "errFromGreaterThanTo": "From Receipt Number must be less than or equal to To Receipt Number",
+    "errToNumber": "Missing To Receipt Number",
     "errFromGreaterThanTo": "From Receipt Number must be less than or equal to To Receipt Number"
   },
   "ReportSchedular": {

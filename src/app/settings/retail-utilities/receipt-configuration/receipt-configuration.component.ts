@@ -136,7 +136,7 @@ export class ReceiptConfigurationComponent implements OnInit {
       combineAllTaxesAndRevenueToPropertyName: [this.defaultTax, Validators.required],
       fromReceiptNumber: [this.defaultReceiptNumber, this.enableSerialInvoiceRange ? [Validators.required, this.numberMinLengthValidator(this.defaultMinNoOfDigits)] : []],
       toReceiptNumber: [this.defaultReceiptNumber, this.enableSerialInvoiceRange ? [Validators.required, this.numberMinLengthValidator(this.defaultMinNoOfDigits)] : []]
-    }, { validators: this.enableSerialInvoiceRange ? this.fromToRangeValidator() : null })
+    }, { validators: this.enableSerialInvoiceRange ? this.fromToRangeValidator() : null });
   }
 
   async ngOnInit() {
@@ -1112,4 +1112,5 @@ export class ReceiptConfigurationComponent implements OnInit {
       return null;
     };
   }
+
 }
