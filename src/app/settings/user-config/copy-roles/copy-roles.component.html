@@ -9,18 +9,18 @@
       <form [formGroup]="roleGrp" class="form-section">
         <div class="content-section pl-4 pr-4 ag_display--flex pb-1">
           <mat-form-field class="d-block mr-4 text-capitalize copy-from" [floatLabel]="floatLabel">  <mat-label>{{captions.copyFrom}}</mat-label>
-            <mat-select formControlName="copyFrom" (selectionChange)="configChanged($event)">
+            <mat-select formControlName="copyFrom" (selectionChange)="configChanged($event)" required>
               <mat-option [(value)]="item.description" *ngFor="let item of sampleOptions">{{item.description}}
               </mat-option>
             </mat-select>
-            <mat-error>{{captions.missingCopyFrom}}</mat-error>
+            <mat-error *ngIf="roleGrp.get('copyFrom')?.touched && roleGrp.get('copyFrom')?.hasError('required')">{{captions.missingCopyFrom}}</mat-error>
           </mat-form-field>
-          <mat-form-field class="d-block text-capitalize copy-to" [floatLabel]="floatLabel">  <mat-label>{{captions.copyTo}}</mat-label>
-            <mat-select formControlName="copyTo">
+          <mat-form-field class="d-block text-capitalize copy-to" [floatLabel]="floatLabel" [hideRequiredMarker]="!roleGrp.get('copyTo')?.enabled">  <mat-label>{{captions.copyTo}}</mat-label>
+            <mat-select formControlName="copyTo" [required]="roleGrp.get('copyTo')?.enabled">
               <mat-option [(value)]="item.description" *ngFor="let item of secondOptionsSet">{{item.description}}
               </mat-option>
             </mat-select>
-            <mat-error>{{captions.missingCopyTo}}</mat-error>
+            <mat-error *ngIf="roleGrp.get('copyTo')?.enabled && roleGrp.get('copyTo')?.touched && roleGrp.get('copyTo')?.hasError('required')">{{captions.missingCopyTo}}</mat-error>
           </mat-form-field>
         </div>
         <div mat-dialog-actions class=" dialog-section pl-4 pr-4">

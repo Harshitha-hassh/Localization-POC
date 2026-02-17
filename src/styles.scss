@@ -6403,4 +6403,11 @@ app-menu {
       }
     }
   }
+  .subnav-wrapper .mat-mdc-select-value{
+    width: unset !important;
+    overflow: visible !important;
+  }
+  .subnav-wrapper .mat-mdc-form-field {
+    margin-top: 10px !important;
+  }
 }

@@ -14,8 +14,8 @@
 
         <!-- Table Section -->
         <div class="w-100 tableSec" *ngIf="coll.tableOptions.TablebodyData.length > 0 || (coll.dataCount==0 && (!canProcess || !successFlag))">
-          <ng-scrollbar [trackX]="true" [trackY]="true" [autoHide]="true">
-          <table [attr.automationId]="'Tbl_dayEnd_dayEnd'"  class="w-100 DE_Table">
+          <ng-scrollbar [trackX]="true" [trackY]="true" [autoHide]="true" appearance="compact">
+            <table [attr.automationId]="'Tbl_dayEnd_dayEnd'"  class="w-100 DE_Table">
             <thead *ngIf="coll.tableOptions.TablebodyData.length > 0">
               <tr>
                 <th *ngFor="let hdr of coll.tableOptions.TableHdrData;let i=index" class="LW14"  [ngClass]="[hdr.alignType=='right' ? 'text-right' : hdr.alignType=='center' ? 'text-center':'']">{{ hdr.title }}</th>

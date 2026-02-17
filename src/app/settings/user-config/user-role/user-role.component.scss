@@ -4,12 +4,15 @@
     width: 100%;
 
     .control-section {
-        height: 60px;
+        height: 60px !important;
         padding: 0 15px;
         display: flex;
         justify-content: space-between;
         width: 100%;
         padding: 10px;
+        .mat-mdc-form-field {
+            margin-top: 24px;
+        }
 
         .select-container {
             display: inline-block;

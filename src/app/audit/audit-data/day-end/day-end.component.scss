@@ -51,7 +51,12 @@
     }
     /*Table Style*/
     .DE_Table{
+        min-width: 800px;
+        table-layout: fixed;
         thead{
+            position: sticky;
+            top: 0;
+            z-index: 10;
             tr{
                 th{
                     background: $color-form-bgColor;

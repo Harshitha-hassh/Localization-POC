@@ -27,3 +27,7 @@
 .userRolesetupdiv{
   height: 100px;
 }
+app-menu .subnav-wrapper .mat-mdc-select-value{
+  width: unset;
+  overflow: visible;
+}

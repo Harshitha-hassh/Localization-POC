@@ -26,6 +26,10 @@
         .user-name {
           text-transform:capitalize
         }
+        
+        ::ng-deep .mat-mdc-floating-label {
+          font-family: $ag_sourcesans-regular !important;
+        }
       }
 
       .settings-right {

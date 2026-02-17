@@ -7,6 +7,10 @@
 .actions {
     height: 64px;
 
+    .mdc-button{
+        box-shadow: none;
+    }
+
     .actionButton {
     //  padding: 0 50px;
     }
