@@ -5643,8 +5643,11 @@ body .cdk-custom-wrapper .ag_table .table th {
     }
 }
 
-.tertiary-container{
+#new-mat-view .tertiary-container{
   background-color: $ag_retail_light_blue_bg;
+  #searchInput.mat-mdc-form-field {
+    margin-top: 24px !important;
+   }
 }
 .router-container{
   background-color: $ag_retail_light_blue_bg;
