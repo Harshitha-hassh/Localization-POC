@@ -93,8 +93,8 @@ export class ReceiptConfigurationComponent implements OnInit {
     private data: ReceiptConfigurationDataService,
     private outletData: RetailOutletsDataService, private utils: RetailUtilities, private imgService: ImageDataService,
     public PropertyInfo: RetailPropertyInformation, public retailLocalization: RetailLocalization) {
-      
-    this.enableSerialInvoiceRange = this.retailLocalization.IsLocationInPhilippines();
+    // Hidden from Receipt Configuration UI; functionality remains accessible via Misc Screen To be removed once MISC functionality is implemented
+    this.enableSerialInvoiceRange = false;
     this.textCaptions = this.localization.captions.utilities;
     this.floatLabel = this.localization.setFloatLabel;
     this.FormGrp = this.Form.group({
