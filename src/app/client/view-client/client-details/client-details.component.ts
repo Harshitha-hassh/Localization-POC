@@ -1143,6 +1143,7 @@ export class ClientDetailsComponent implements OnInit {
             if(!this.iframeInputs){
             this.iframeInputs = {} as IFrameInputs;
             }
+            this.searchText = '';
             this.iframeInputs.isPlatformGuestSearch = this.isPlatformGuestSearch;
             this.iframeInputs.showIframeGuestSearch = true;
             this.iframeInputs = { ...this.iframeInputs };
