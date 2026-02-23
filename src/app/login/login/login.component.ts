@@ -62,6 +62,7 @@ import { ForgetPasswordComponent } from 'src/app/common/components/forget-passwo
 import { CommonControllersRoutes } from 'src/app/common/communication/common-route';
 import jwt_decode from 'jwt-decode';
 import { FiscalProcessingService } from 'src/app/common/services/fiscal-processing.service';
+import { FiscalFunctionalitiesDataService } from 'src/app/common/dataservices/fiscal-functionalities.data.service';
 
 @Component({
   standalone: false,
@@ -178,7 +179,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private utempdatautils: UTempDataUtilities,
     private configuration: TenantConfigurationDataService,
     private _userSecurityQuestionsService: UserSecurityQuestionBusinessService,
-    private _fiscalProcessingService: FiscalProcessingService
+    private _fiscalProcessingService: FiscalProcessingService,
+    private _fiscalFunctionalitiesDataService: FiscalFunctionalitiesDataService
   ) {
     // this.initializeForm();
     // this.captions = this.localize.captions;
@@ -922,6 +924,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
       }
     }
+    // Load and store fiscal functionalities
+    await this.SetFiscalFunctionalities();
   }
 
   SetFullStory(propertyConfig: any) {
@@ -936,6 +940,54 @@ export class LoginComponent implements OnInit, OnDestroy {
         "propertyId": propertyConfig.propertyId?.toString() ?? "",
         "propertyName": this.propertyInfo.GetPropertyInfoByKey('PropertyName')
       });
+    }
+  }
+
+  async SetFiscalFunctionalities() {
+    try {
+      const currentPropertyId = this.propertyInfo.PropertyId;      
+      // Fetch both master functionalities and property-specific configurations in parallel
+      const [masterFunctionalities, propertyFunctionalities] = await Promise.all([
+        this._fiscalFunctionalitiesDataService.getFiscalFunctionalities(),
+        this._fiscalFunctionalitiesDataService.getPropertyFiscalFunctionalities()
+      ]);
+      // Check if we have data
+      if (!masterFunctionalities || masterFunctionalities.length === 0) {
+        sessionStorage.setItem('fiscalFunctionalities', JSON.stringify({}));
+        return;
+      }
+      if (!propertyFunctionalities || propertyFunctionalities.length === 0) {
+        sessionStorage.setItem('fiscalFunctionalities', JSON.stringify({}));
+        return;
+      }
+
+      // Create a map of fiscalFunctionalityId to functionality name
+      const functionalityMap = new Map();
+      masterFunctionalities.forEach(func => {
+        functionalityMap.set(func.id, func.functionality);
+      });
+
+      // Filter active functionalities and create object with functionality names as keys
+      const activeFunctionalities: any = {};
+      propertyFunctionalities
+        .filter(pf => pf.isActive === true)
+        .forEach(pf => {
+          const functionalityName = functionalityMap.get(pf.fiscalFunctionalityId);
+          console.log(`SetFiscalFunctionalities: Mapping fiscalFunctionalityId ${pf.fiscalFunctionalityId} to ${functionalityName}, isActive: ${pf.isActive}`);
+          if (functionalityName) {
+            activeFunctionalities[functionalityName] = true;
+          }
+        });
+      // Store in session storage
+      sessionStorage.setItem('fiscalFunctionalities', JSON.stringify(activeFunctionalities));
+      
+      // Verify it was stored
+      const storedValue = sessionStorage.getItem('fiscalFunctionalities');
+      console.log('SetFiscalFunctionalities: Stored value in session storage:', storedValue);
+      
+    } catch (error) {
+      // Store empty object if there's an error
+      sessionStorage.setItem('fiscalFunctionalities', JSON.stringify({}));
     }
   }
 
