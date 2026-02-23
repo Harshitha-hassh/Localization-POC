@@ -3,7 +3,7 @@
         <div class="ag_w--50">
             <mat-form-field class="float-label-box">
                 <mat-select (selectionChange)="change($event)" [(value)]="selectedItem" [compareWith]="compareSelect"
-                    [disableOptionCentering]="true">
+                    [disableOptionCentering]="true" panelClass="eatec-subnav-select-panel">
                     <ng-container *ngFor="let item of menuList.menu">
                         <mat-option *ngIf="item.visibility" [value]="item">
                             <span>{{ item.text }}</span>

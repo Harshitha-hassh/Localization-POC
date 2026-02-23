@@ -11,7 +11,7 @@ $header-bg: #2d3236;
         padding-left: 1.5rem;
         background: #f4f4f6;
       
-        .mat-form-field-underline {
+        .mdc-line-ripple {
           display: none;
         }
       }
@@ -83,10 +83,20 @@ $header-bg: #2d3236;
       }
 }
 
+// ViewEncapsulation.None - styles are global, no ::ng-deep needed
+.eatec-subnav-select-panel {
+  .mat-mdc-option {
+    font-size: 18px !important;
+    .mdc-list-item__primary-text {
+      font-size: 18px !important;
+    }
+  }
+}
+
 body#new-mat-view{
   #eatec-wrapper{
-    .mat-form-field-appearance-legacy {
-      .mat-form-field-infix {
+    .mat-mdc-form-field {
+      .mat-mdc-form-field-infix {
         border: unset;
         border-radius: unset;
         padding: 0.4375em 0;
@@ -100,8 +110,8 @@ body#new-mat-view{
   }
   body.new-mat-view{
     #eatec-wrapper{
-      .mat-form-field-appearance-legacy {
-        .mat-form-field-infix {
+      .mat-mdc-form-field {
+        .mat-mdc-form-field-infix {
           border: unset;
           border-radius: unset;
           padding: 0.4375em 0;
