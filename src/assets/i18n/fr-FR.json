@@ -185,6 +185,7 @@
     "SaveChangesFirst": "Please save the changes_fr",
     "MemberExceededAllowedRounds": "Member has exceeded rounds allowed for this course_fr",
     "InActiveMember": "Not an Active Member_fr",
+    "MemberCharge": "Member does not have charge privileges_fr",
     "CourseNotAvailableForMember": "No rounds is available for this course._fr",
     "AvailableCoursesForMember": " <br/> Available courses and eligilble rounds are, _fr",
     "searchByMemberNoAndMemberName": "Search By PhoneNo,Email, MemberName,Member#_fr",
@@ -4463,8 +4464,6 @@
     "InvalidInput": "Invalid Input_fr",
     "errMinDigitsNeeded": "Minimum {minDigits} digits needed_fr",
     "errFromNumber": "Missing From Receipt Number_fr",
-    "errToNumber": "Missing To Receipt Number_fr",
-    "errFromGreaterThanTo": "From Receipt Number must be less than or equal to To Receipt Number_fr"
     "errToNumber": "Missing To Receipt Number_fr",
     "errFromGreaterThanTo": "From Receipt Number must be less than or equal to To Receipt Number_fr"
   },

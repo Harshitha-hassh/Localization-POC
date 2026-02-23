@@ -183,6 +183,7 @@
     "SaveChangesFirst": "Please save the changes",
     "MemberExceededAllowedRounds": "Member has exceeded rounds allowed for this course",
     "InActiveMember": "Not an Active Member",
+    "MemberCharge":"Member does not have charge privileges",
     "CourseNotAvailableForMember": "No rounds is available for this course.",
     "AvailableCoursesForMember": " <br/> Available courses and eligilble rounds are, ",
     "searchByMemberNoAndMemberName": "Search By PhoneNo,Email, MemberName,Member#",
