@@ -4465,8 +4465,6 @@
     "errFromNumber": "Missing From Receipt Number_cs",
     "errToNumber": "Missing To Receipt Number_cs",
     "errFromGreaterThanTo": "From Receipt Number must be less than or equal to To Receipt Number_cs"
-    "errToNumber": "Missing To Receipt Number_cs",
-    "errFromGreaterThanTo": "From Receipt Number must be less than or equal to To Receipt Number_cs"
   },
   "ReportSchedular": {
     "tbl_hdr_RetryReference": "Retry Reference_cs",

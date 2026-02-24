@@ -665,6 +665,8 @@
     "MissingGender": "Missing Gender_jp",
     "Nationality": "Nationality_jp",
     "MissingNationality": "Missing Nationality_jp",
+    "SelectNationality": "Select Nationality_jp",
+    "SearchNationality": "Search Nationality_jp",
     "InvalidPhoneNumber": "Missing Phone Number_jp",
     "MissingEmail": "Missing Email Address_jp",
     "InvalidEmailFormat": "Invalid Email Format_jp",

@@ -665,6 +665,8 @@
     "MissingGender": "Missing Gender_tw",
     "Nationality": "Nationality_tw",
     "MissingNationality": "Missing Nationality_tw",
+    "SelectNationality": "Select Nationality_tw",
+    "SearchNationality": "Search Nationality_tw",
     "InvalidPhoneNumber": "Missing Phone Number_tw",
     "MissingEmail": "Missing Email Address_tw",
     "InvalidEmailFormat": "Invalid Email Format_tw",
