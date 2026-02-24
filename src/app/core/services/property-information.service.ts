@@ -103,4 +103,9 @@ export class PropertyInformation extends CommonPropertyInformation {
         const config = sessionStorage.getItem('propConfig');
         return config && JSON.parse(config);
     }
+
+    public GetFiscalFunctionalities() {
+        const functionalities = sessionStorage.getItem('fiscalFunctionalities');
+        return functionalities ? JSON.parse(functionalities) : {};
+    }
 }
