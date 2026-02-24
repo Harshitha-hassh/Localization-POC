@@ -79,7 +79,7 @@ $select-tokens: (
   // Option styling
   --mat-option-selected-state-layer-color: $menu-ligter-gold,
   --mat-option-hover-state-layer-color: rgba(0, 0, 0, 0.04),
- // --mat-option-focus-state-layer-color: rgba(0, 0, 0, 0.04),
+  --mat-option-focus-state-layer-color: transparent,
   --mat-option-label-text-size: 14px,
   --mat-option-label-text-line-height: 3em,
   --mat-option-label-text-color: #525252,
