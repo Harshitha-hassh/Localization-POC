@@ -2593,6 +2593,7 @@
     "CreateRetailSetup": "Create Retail Setup_hu",
     "SyncItem": "Sync Item_hu",
     "SearchByItemDescriptionCategory": "Search By Item #, Description, Category_hu",
+    "SearchByBarcode": "Search By Barcode_hu",
     "searchByVendorIdName": "Search By Vendor ID, Vendor Name_hu",
     "VendorHeader": "Vendor Name_hu",
     "SupplierItemNumber": "Supplier Item #_hu",
@@ -4462,8 +4463,6 @@
     "InvalidInput": "Invalid Input_hu",
     "errMinDigitsNeeded": "Minimum {minDigits} digits needed_hu",
     "errFromNumber": "Missing From Receipt Number_hu",
-    "errToNumber": "Missing To Receipt Number_hu",
-    "errFromGreaterThanTo": "From Receipt Number must be less than or equal to To Receipt Number_hu"
     "errToNumber": "Missing To Receipt Number_hu",
     "errFromGreaterThanTo": "From Receipt Number must be less than or equal to To Receipt Number_hu"
   },
