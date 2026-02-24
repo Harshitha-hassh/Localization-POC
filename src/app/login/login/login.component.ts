@@ -62,13 +62,15 @@ import { ForgetPasswordComponent } from 'src/app/common/components/forget-passwo
 import { CommonControllersRoutes } from 'src/app/common/communication/common-route';
 import jwt_decode from 'jwt-decode';
 import { FiscalProcessingService } from 'src/app/common/services/fiscal-processing.service';
+import { FiscalFunctionalitiesDataService } from 'src/app/common/dataservices/fiscal-functionalities.data.service';
+import { FiscalFeatureMasterConfigBusiness } from 'src/app/common/agilysys-fiscal/fiscal-feature-master-config/fiscal-feature-master-config.business';
 
 @Component({
   standalone: false,
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [UserMachineConfigurationService, RetailFunctionalityBusiness, RetailFunctionalityService, CryptoUtility],
+  providers: [UserMachineConfigurationService, RetailFunctionalityBusiness, RetailFunctionalityService, CryptoUtility, FiscalFeatureMasterConfigBusiness],
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit, OnDestroy {
@@ -178,7 +180,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     private utempdatautils: UTempDataUtilities,
     private configuration: TenantConfigurationDataService,
     private _userSecurityQuestionsService: UserSecurityQuestionBusinessService,
-    private _fiscalProcessingService: FiscalProcessingService
+    private _fiscalProcessingService: FiscalProcessingService,
+    private _fiscalFunctionalitiesDataService: FiscalFunctionalitiesDataService,
+    private _fiscalFeatureMasterConfigBusiness: FiscalFeatureMasterConfigBusiness
   ) {
     // this.initializeForm();
     // this.captions = this.localize.captions;
@@ -922,6 +926,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
       }
     }
+    // Load and store fiscal functionalities
+    await this.SetFiscalFunctionalities();
   }
 
   SetFullStory(propertyConfig: any) {
@@ -937,6 +943,10 @@ export class LoginComponent implements OnInit, OnDestroy {
         "propertyName": this.propertyInfo.GetPropertyInfoByKey('PropertyName')
       });
     }
+  }
+
+  async SetFiscalFunctionalities() {
+    await this._fiscalFeatureMasterConfigBusiness.SetFiscalFunctionalities();
   }
 
 

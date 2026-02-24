@@ -37,6 +37,7 @@ import { SessionLoaderService } from './common/services/sessionloader.service';
 import { GoogleMapsWrapperModule } from './common/services/googlemapswrapper.module';
 import { CommonSharedModule } from './common/shared/shared/shared.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { FiscalFunctionalitiesDataService } from './common/dataservices/fiscal-functionalities.data.service';
 let AppServiceFactory = (utilities: Utilities, localization: RetailStandAloneLocalization) => {
   return new RetailAppService(utilities, localization);
 };
@@ -105,6 +106,7 @@ export const OtherOptions: MatTooltipDefaultOptions = {
     { provide: Localization, useExisting: RetailStandAloneLocalization },
     { provide: CommonPropertyInformation, useExisting: RetailPropertyInformation },
     AppModuleService,
+    FiscalFunctionalitiesDataService,
     {
       provide: OAuthService,
       useClass: OAuthService
