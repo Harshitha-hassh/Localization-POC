@@ -1151,6 +1151,8 @@ export class ClientDetailsComponent implements OnInit {
             this.iframeInputs.profileUuid = this.platformGuestId || '';
             this.formattedData = [];
             this.sampleData = [];
+            this.clientData = [];
+            this.BindGrid();
             this.tableInput?.nativeElement.blur();
             if  (this.tableInput) {
                 this.tableInput.nativeElement.value = '';
