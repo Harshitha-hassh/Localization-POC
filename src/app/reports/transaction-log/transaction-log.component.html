@@ -1,7 +1,7 @@
 <div class="transactionlog" #commissionGratutityServiceCharge [ngClass]="{'full-view': navbarStatus}">
   <div class="h-100">
     <div class="left-asidereports">
-      <ng-scrollbar [autoHide]="true">
+      <ng-scrollbar visibility="hover">
         <form [formGroup]="transactionForm" autocomplete="off">
           <div>
             <mat-form-field class="w-100" [floatLabel]="floatLabel">  <mat-label>{{captions.logType}}</mat-label>
@@ -71,7 +71,7 @@
       <button class="aside-arrow body-bgcolor whitecolor" (click)="asideArrow($event)"><i class="pointercursor icon-left-arrow"></i></button>
     </div>
     <div class="right-contentreports">
-      <ng-scrollbar [autoHide]="true">
+      <ng-scrollbar visibility="hover">
       <div class="report-section" *ngIf="reportOption; else emptyReport">
         <!-- <app-table-report [options]="tableoptions"></app-table-report> -->
         <app-retail-report (disableGenerateEvtEmitter)="disableGenerateButtonEvent($event)" [options]="reportOption"></app-retail-report>

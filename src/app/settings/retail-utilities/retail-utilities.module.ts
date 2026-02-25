@@ -18,6 +18,7 @@ import { EventSchedulerConfigurationComponent } from 'src/app/common/shared/shar
 import { ReportSchedularWrapperComponent } from './report-scheduler-wrapper/report-schedular-wrapper.component';
 import { EventSliderComponent } from './report-scheduler-wrapper/event-slider/event-slider.component';
 import { RetailReportModule } from 'src/app/retail/retail-reports/reports.module';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 @NgModule({
     declarations: [RetailUtilitiesComponent, ReceiptConfigurationComponent, RetailTemplatesComponent, UserMachineConfigurationComponent, QuickidConfigComponent, ManagerUtilitiesComponent
         , PrinterDefaultConfigurationComponent, CgpsLoggingProfileSyncWrapperComponent, 
@@ -29,7 +30,8 @@ import { RetailReportModule } from 'src/app/retail/retail-reports/reports.module
         SystemConfigModule,
         RetailModule,
         // ConfigValidationComponent,
-        RetailReportModule
+        RetailReportModule,
+        NgScrollbarModule
     ]
 })
 export class UtilitiesModule { }

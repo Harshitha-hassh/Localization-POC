@@ -11,6 +11,7 @@ import { ConfigValidationComponent } from 'src/app/common/config-validation/conf
 import { ColorSketchModule } from 'ngx-color/sketch';
 import { CommonSharedModule } from 'src/app/common/shared/shared/shared.module';
 import { HomeDashboardConfigurationComponent } from './home-dashboard-configuration/home-dashboard-configuration.component';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 @NgModule({
     declarations: [SystemSetupComponent, PropertyInfoComponent, HomeDashboardConfigurationComponent],
@@ -22,7 +23,8 @@ import { HomeDashboardConfigurationComponent } from './home-dashboard-configurat
         SystemConfigModule,
         RetailModule,
         // ConfigValidationComponent,
-        ColorSketchModule
+        ColorSketchModule,
+        NgScrollbarModule
     ]
 })
 export class SystemSetupModule { }

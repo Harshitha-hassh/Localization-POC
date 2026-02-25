@@ -2,7 +2,7 @@
   <form [formGroup]="retailSettingsFormGrp" class="retail-setting-form h-100">
     <div class="settings-div h-100 d-flex">
       <div class="retail-settings-left pl-4">
-        <ng-scrollbar [autoHide]="true">
+        <ng-scrollbar visibility="hover">
           <mat-form-field class=" pt-3 w250" [floatLabel]="floatLabel">  <mat-label>{{caption.setting.RoleName}}</mat-label>
             <mat-select [attr.automationId]="'Dd_retailSettings_roleName'" formControlName="rolename" (selectionChange)="OnRoleChange($event)">
               <mat-option *ngFor="let role of roles" [value]="role.id">{{role.name}}</mat-option>

@@ -17,7 +17,7 @@
         <label for="transaction" class="LW14 float-left label-table mt-2" *ngIf = "historyType == 2">{{captions.Transactions}}</label>
         <label for="transaction-details" class="LW14 float-left transaction-details-label mt-2" *ngIf = "historyType == 2">{{captions.TransactionDetails}}</label>
         <div class="transaction-div h-100 grid-table" [ngClass]="{'w-100' : historyType == 3}">
-          <ng-scrollbar [trackX]="true" [autoHide]="true">
+          <ng-scrollbar track="all" visibility="hover">
             <table id="table-{{historyType}}" class="">
               <thead>
                 <th *ngFor = "let header of tableHeaderArray" class="" [ngStyle]="{'text-align':header.alignType}"><span>{{header.tableHeader}}</span></th>
@@ -41,7 +41,7 @@
         </div>
 
         <section *ngIf = "historyType == 2" class="ml-2 mr-2 h-100 transaction-details">
-          <ng-scrollbar [trackX]="true" [autoHide]="true">
+          <ng-scrollbar track="all" visibility="hover">
             <table class="">
               <thead class="LW12">
                 <th>{{captions.Quantity}}</th>

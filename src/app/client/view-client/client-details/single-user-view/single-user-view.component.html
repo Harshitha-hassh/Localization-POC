@@ -51,7 +51,7 @@
   <div class="recent-appointments" *ngIf = "Appointments.length > 0">
     <div class="LW16 recent-name">{{captions.bookAppointment.RecentAppointments}}</div>
     <div class="client-recent">
-    <ng-scrollbar [autoHide]="true">
+    <ng-scrollbar visibility="hover">
       <div *ngFor="let item of Appointments;trackBy: trackByFn" class="client-appointment-details">
         <span class="appointment-name LW14" title="{{item.appointmentDetails}}" matTooltip="{{item.appointment}}"
           [matTooltipDisabled]="(item.serviceName.length + item.therapistNames.length) < 62">{{item.serviceName}} by

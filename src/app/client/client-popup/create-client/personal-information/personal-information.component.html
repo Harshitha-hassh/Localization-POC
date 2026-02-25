@@ -1,5 +1,5 @@
 <form class="personal_container  p-4 h-100" [formGroup]="FormGrp" autocomplete="off">
-  <ng-scrollbar [autoHide]="true">
+  <ng-scrollbar visibility="hover">
     <app-image-uploader [automationId]="'personalInformation'" [readOnly]="isClientViewOnly"
       [emptyImgCaption]="captions.UploadyourPhoto" [imgData]="url" (fileDeleted)="fileDeleted()"
       (fileUploaded)="fileUploaded($event)" (fileSizeExceeded)="fileSizeExceeded()">

@@ -1,5 +1,5 @@
 <section id="day-end" class="day-end h-100 newVersionWrapper" *ngIf = "hasAccess">
-  <ng-scrollbar [trackX]="true" [autoHide]="true">
+  <ng-scrollbar track="all" visibility="hover">
     <div class="horizontal-stepper-class p-3 h-100">
       <div *ngFor="let coll of GridData; let i = index" class="pb-2 Dayend-Sectable dayEnd-{{i}}" >
         <!-- header Section -->
@@ -14,7 +14,7 @@
 
         <!-- Table Section -->
         <div class="w-100 tableSec" *ngIf="coll.tableOptions.TablebodyData.length > 0 || (coll.dataCount==0 && (!canProcess || !successFlag))">
-          <ng-scrollbar [trackX]="true" [trackY]="true" [autoHide]="true" appearance="compact">
+          <ng-scrollbar track="all" visibility="hover" appearance="compact">
             <table [attr.automationId]="'Tbl_dayEnd_dayEnd'"  class="w-100 DE_Table">
             <thead *ngIf="coll.tableOptions.TablebodyData.length > 0">
               <tr>

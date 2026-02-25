@@ -2,7 +2,7 @@
   <form [formGroup]="userSettingsFormGrp" class="user-setting-form h-100">
     <div class="settings h-100 d-flex">
       <div class="settings-left pt-4 pl-4 pb-4">
-        <ng-scrollbar [autoHide]="true">
+        <ng-scrollbar visibility="hover">
           <div class="w250 mb-3">
             <label class="d-block form-label-normal LW12">{{caption.setting.ActiveUser}}</label>
             <app-toggle-switch [attr.automationId]="'Txt_userSettings_activeUser'" class="d-block mb-2" [formControl]="userSettingsFormGrp.controls['activeuser']"></app-toggle-switch>

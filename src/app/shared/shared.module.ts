@@ -45,6 +45,7 @@ import { AllowedSpecialCharacterDirective } from './directives/allowedSpecialCha
 import { RetailIntegrationLogService } from '../retail/shared/service/retail-integrationLog.service';
 import {MatGoogleMapsAutocompleteModule} from '@angular-material-extensions/google-maps-autocomplete';
 import { GOOGLE_MAP_API_KEY } from '../common/shared/shared/setupConstants';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 @NgModule({
     declarations: [
         MenuComponent,
@@ -79,6 +80,7 @@ import { GOOGLE_MAP_API_KEY } from '../common/shared/shared/setupConstants';
         RetailSharedModule,
         CommonSharedModule,
         NgxMaterialTimepickerModule,
+        NgScrollbarModule,
         MatGoogleMapsAutocompleteModule.forRoot(GOOGLE_MAP_API_KEY)
     ],
     providers: [
