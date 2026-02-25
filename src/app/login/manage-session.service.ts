@@ -501,7 +501,9 @@ export class ManageSessionService implements OnDestroy {
                     tenantId: userProperty.tenantId,
                     timeZone: userProperty.timeZone,
                     userId: userProperty.userId,
-                    sessionId: null
+                    sessionId: null,
+                    maximumDecimalPlaces: userProperty.maximumDecimalPlaces
+                    
                 };
             })
         };
