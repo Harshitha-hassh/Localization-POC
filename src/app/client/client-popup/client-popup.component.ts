@@ -103,14 +103,13 @@ export class ClientPopupComponent implements OnInit {
       this.clientInfo.personalDetailsFormGroup.id = 0;
       this.clientInfo.personalDetailsFormGroup.guestId = DefaultGUID;
     }
-    // Get Philippines Guest Type Categories from the processed list instead of flat form data
-    // Now saving TIN data for all countries, not just Philippines
-    if (this.clientInfo.additionalDetailsFormGroup?.philippinesGuestTypeCategories) {
-      this.clientInfo.philippinesGuestTypeCategories = this.clientInfo.additionalDetailsFormGroup.philippinesGuestTypeCategories;
+    // Get Guest Type Categories from the processed list instead of flat form data
+    if (this.clientInfo.additionalDetailsFormGroup?.guestTypeCategories) {
+      this.clientInfo.guestTypeCategories = this.clientInfo.additionalDetailsFormGroup.guestTypeCategories;
       
       // Trim all infoValue fields before saving
-      if (this.clientInfo.philippinesGuestTypeCategories && this.clientInfo.philippinesGuestTypeCategories.length > 0) {
-        this.clientInfo.philippinesGuestTypeCategories = this.clientInfo.philippinesGuestTypeCategories.map(category => ({
+      if (this.clientInfo.guestTypeCategories && this.clientInfo.guestTypeCategories.length > 0) {
+        this.clientInfo.guestTypeCategories = this.clientInfo.guestTypeCategories.map(category => ({
           ...category,
           infoValue: category.infoValue ? category.infoValue.trim() : category.infoValue,
           tin: category.tin ? category.tin.trim() : category.tin,

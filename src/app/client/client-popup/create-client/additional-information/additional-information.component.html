@@ -52,15 +52,15 @@
 
                     </div>
                 </div>
-                <!-- Philippines Miscellaneous Information -->
+                <!-- Guest Type Miscellaneous Information -->
                 <div class="mt-4">
                     <ag-philippines-miscellaneous
                         [parentFormGroup]="FormGrp"
-                        [existingGuestTypeCategories]="philippinesGuestTypeCategories"
+                        [existingGuestTypeCategories]="guestTypeCategories"
                         [isViewMode]="isClientViewOnly"
                         [floatLabel]="floatLabel"
-                        [showPhilippinesInfo]="showPhilippinesInfo"
-                        (dataChange)="onPhilippinesMiscDataChange($event)">
+                        [showGuestTypeInfo]="showGuestTypeInfo"
+                        (dataChange)="onGuestTypeMiscDataChange($event)">
                     </ag-philippines-miscellaneous>
                 </div>  
                 <div class="">

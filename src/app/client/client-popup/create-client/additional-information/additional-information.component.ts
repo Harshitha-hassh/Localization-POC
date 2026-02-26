@@ -20,6 +20,7 @@ import { RetailRoutes } from 'src/app/retail/retail-route';
 import * as GlobalConst from 'src/app/common/shared/shared/globalsContant';
 import { PhilippinesMiscellaneousData, GuestTypeCategory } from 'src/app/common/shared/shared/business/shared.modals';
 import { TokenSharingCallbackRequestInfo } from 'src/app/retail/shared/business/shared.modals';
+import { FiscalFeatureConfigToggles } from 'src/app/common/constants/fiscal.constants';
 
 @Component({
   standalone: false,
@@ -68,11 +69,12 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
   guestId: string; // For edit flow - pass existing guest ID to capture-card component
   @Input() IsGDPREnabled : boolean = false;
   @Input() policyType : number = 0;
-  get showPhilippinesInfo(): boolean {
-    return sessionStorage.getItem('EnablePhilippinesFiscalReport')?.toLowerCase() === 'true' ? true : false;
+  get showGuestTypeInfo(): boolean {
+    const fiscalFeatures = this.PropertyInfo.GetFiscalFunctionalities();
+    return fiscalFeatures && fiscalFeatures[FiscalFeatureConfigToggles.GUEST_TYPE] === true;
   }
   
-  philippinesGuestTypeCategories: GuestTypeCategory[] = [];
+  guestTypeCategories: GuestTypeCategory[] = [];
   captionsCommon: any;
   @Input('inputData')
   set formData(value) {
@@ -131,7 +133,7 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       commentId : 0,
       anniversaryDate : '',
       preferredLanguage: 0,
-      philippinesGuestTypeCategories: [],
+      guestTypeCategories: [],
       placeOfBirth: ''
     });
   }
@@ -202,11 +204,11 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
     this.FormGrp.controls.guestType.setValue(clientInfo.client.guestType);
     
     if (clientInfo.guestTypeCategories && clientInfo.guestTypeCategories.length > 0) {
-      this.philippinesGuestTypeCategories = clientInfo.guestTypeCategories;
-      this.FormGrp.get('philippinesGuestTypeCategories')?.setValue(clientInfo.guestTypeCategories);
+      this.guestTypeCategories = clientInfo.guestTypeCategories;
+      this.FormGrp.get('guestTypeCategories')?.setValue(clientInfo.guestTypeCategories);
     } else {
-      this.philippinesGuestTypeCategories = [];
-      this.FormGrp.get('philippinesGuestTypeCategories')?.setValue([]);
+      this.guestTypeCategories = [];
+      this.FormGrp.get('guestTypeCategories')?.setValue([]);
     }
     this.FormGrp.controls.placeOfBirth.setValue(clientInfo.client.placeOfBirth || '');
   }
@@ -437,9 +439,9 @@ export class AdditionalInformationComponent implements OnInit, OnDestroy {
       });
     }
 
-    onPhilippinesMiscDataChange(data: PhilippinesMiscellaneousData) {
-    this.philippinesGuestTypeCategories = data.guestTypeCategories || [];
-    this.FormGrp.get('philippinesGuestTypeCategories')?.setValue(this.philippinesGuestTypeCategories);
+    onGuestTypeMiscDataChange(data: PhilippinesMiscellaneousData) {
+    this.guestTypeCategories = data.guestTypeCategories || [];
+    this.FormGrp.get('guestTypeCategories')?.setValue(this.guestTypeCategories);
     this.FormGrp.markAsDirty();
     this.FormGrp.markAsTouched();
   }
