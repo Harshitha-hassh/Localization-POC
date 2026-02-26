@@ -3,6 +3,7 @@ import { menuTypes } from '../shared/enums/menu.constant';
 import { RouteLoaderService } from '../core/services/route-loader.service';
 import { RetailPropertyInformation } from '../retail/common/services/retail-property-information.service';
 import { RetailFeatureFlagInformationService } from '../retail/shared/service/retail.feature.flag.information.service';
+import { hasFiscalFunctionalitiesEnabled } from '../common/shared/shared/utilities/common-utilities';
 @Component({
   standalone: false,
   selector: 'app-reports',
@@ -24,8 +25,9 @@ export class ReportsComponent implements OnInit {
       let configsToRemove = ['/reports/inventorycontrol'];
       this.menu = this.menu.filter(r => !configsToRemove.includes(r.routePath));
     }
-   var result = sessionStorage.getItem('EnablePhilippinesFiscalReport')?.toLowerCase() === 'true' ? true : false;
-    if(!result) {
+    const hasFiscalReports = hasFiscalFunctionalitiesEnabled();
+    
+    if(!hasFiscalReports) {
       let configsToRemove = ['/reports/fiscalreports'];
       this.menu = this.menu.filter(r => !configsToRemove.includes(r.routePath));
     } else {

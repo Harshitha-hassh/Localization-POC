@@ -10,6 +10,7 @@ import { AgMenuTypes } from 'src/app/shared/components/menu/menu.model';
 import { menuTypes as newMenuTypes } from 'src/app/common/components/menu/menu.constant';
 import { RetailPropertyInformation } from 'src/app/retail/common/services/retail-property-information.service';
 import { RetailFeatureFlagInformationService } from 'src/app/retail/shared/service/retail.feature.flag.information.service';
+import { hasFiscalFunctionalitiesEnabled } from 'src/app/common/shared/shared/utilities/common-utilities';
 
 @Injectable()
 export class RouteLoaderService {
@@ -97,9 +98,9 @@ export class RouteLoaderService {
                     }
                 }
               }
-              var result = sessionStorage.getItem('EnablePhilippinesFiscalReport')?.toLowerCase() === 'true' ? true : false;
-               
-                        if (!result) {
+              const hasFiscalReports = hasFiscalFunctionalitiesEnabled();
+                        
+                        if (!hasFiscalReports) {
                             let reportsMenu = this.currentSettings.find(x => x.text.includes("REPORTS"))
                             if (reportsMenu) {
                               console.log('reportsMenu', reportsMenu);
