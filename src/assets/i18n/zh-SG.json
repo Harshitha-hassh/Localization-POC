@@ -665,8 +665,6 @@
     "MissingLastName": "Missing Last Name_zh-sg",
     "MissingGender": "Missing Gender_zh-sg",
     "Nationality": "Nationality_zh-sg",
-    "MissingNationality": "Missing Nationality_zh-sg",
-    "SelectNationality": "Select Nationality_zh-sg",
     "SearchNationality": "Search Nationality_zh-sg",
     "InvalidPhoneNumber": "Missing Phone Number_zh-sg",
     "MissingEmail": "Missing Email Address_zh-sg",
@@ -5008,7 +5006,41 @@
     "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_zh-sg",
     "UserRole": "User Role_zh-sg",
     "lbl_expandAll": "EXPAND ALL_zh-sg",
-    "lbl_collapseAll": "COLLAPSE ALL_zh-sg"
+    "lbl_collapseAll": "COLLAPSE ALL_zh-sg",
+    "fiscalFunctionalities": {
+      "groups": {
+        "Report": "Report_zh-sg",
+        "Client": "Client_zh-sg",
+        "Transaction": "Transaction_zh-sg",
+        "Retail Setup": "Retail Setup_zh-sg",
+        "Others": "Others_zh-sg"
+      },
+      "functionalities": {
+        "xReadingReport": "X Reading Report_zh-sg",
+        "birSalesSummaryReport": "BIR Sales Summary Report_zh-sg",
+        "zReadingReport": "Z Reading Report_zh-sg",
+        "vatClosedChecksReport": "VAT Closed Checks Report_zh-sg",
+        "seniorCitizenSalesBookReport": "Senior Citizen Sales Book/Report_zh-sg",
+        "personsWithDisabilitySalesBookReport": "Persons with Disability Sales Book/Report_zh-sg",
+        "nationalAthletesAndCoachesSalesBookReport": "National Athletes And Coaches Sales Book/Report_zh-sg",
+        "soloParentSalesBookReport": "Solo Parent Sales Book/Report_zh-sg",
+        "eJournalReport": "E-Journal Report_zh-sg",
+        "auditTrailReport": "Audit Trail Report_zh-sg",
+        "B2B": "B 2 B User_zh-sg",
+        "B2C": "B 2 C User_zh-sg",
+        "B2G": "B 2 G User_zh-sg",
+        "GuestType": "Guest Type Categories (SC/PWD/NAAC/SP/ZeroRated)_zh-sg",
+        "statisticalReport": "Statistical Report_zh-sg",
+        "vatReport": "VAT Report_zh-sg",
+        "taxInvoice": "Tax Invoice_zh-sg",
+        "policeReport": "Police Report_zh-sg",
+        "guestDataExport": "Guest Data Export_zh-sg",
+        "sales_Void_ReturnInvoice#": "Sales/ Void/ Return Invoice #_zh-sg",
+        "synchronousReceiptprinting": "Synchronous Receipt printing_zh-sg",
+        "machineInfo(Min/Serial)": "Additional Machine Info (MIN and Serial #)_zh-sg",
+        "helpAboutProductName": "Help - About - Product Name_zh-sg"
+      }
+    }
   },
   "vendors": {
     "lbl_vendorCode": "Vendor Code_zh-sg",

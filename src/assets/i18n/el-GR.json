@@ -665,8 +665,6 @@
     "MissingLastName": "Missing Last Name_gr",
     "MissingGender": "Missing Gender_gr",
     "Nationality": "Nationality_gr",
-    "MissingNationality": "Missing Nationality_gr",
-    "SelectNationality": "Select Nationality_gr",
     "SearchNationality": "Search Nationality_gr",
     "InvalidPhoneNumber": "Missing Phone Number_gr",
     "MissingEmail": "Missing Email Address_gr",
@@ -5008,7 +5006,41 @@
     "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_gr",
     "UserRole": "User Role_gr",
     "lbl_expandAll": "EXPAND ALL_gr",
-    "lbl_collapseAll": "COLLAPSE ALL_gr"
+    "lbl_collapseAll": "COLLAPSE ALL_gr",
+    "fiscalFunctionalities": {
+      "groups": {
+        "Report": "Report_gr",
+        "Client": "Client_gr",
+        "Transaction": "Transaction_gr",
+        "Retail Setup": "Retail Setup_gr",
+        "Others": "Others_gr"
+      },
+      "functionalities": {
+        "xReadingReport": "X Reading Report_gr",
+        "birSalesSummaryReport": "BIR Sales Summary Report_gr",
+        "zReadingReport": "Z Reading Report_gr",
+        "vatClosedChecksReport": "VAT Closed Checks Report_gr",
+        "seniorCitizenSalesBookReport": "Senior Citizen Sales Book/Report_gr",
+        "personsWithDisabilitySalesBookReport": "Persons with Disability Sales Book/Report_gr",
+        "nationalAthletesAndCoachesSalesBookReport": "National Athletes And Coaches Sales Book/Report_gr",
+        "soloParentSalesBookReport": "Solo Parent Sales Book/Report_gr",
+        "eJournalReport": "E-Journal Report_gr",
+        "auditTrailReport": "Audit Trail Report_gr",
+        "B2B": "B 2 B User_gr",
+        "B2C": "B 2 C User_gr",
+        "B2G": "B 2 G User_gr",
+        "GuestType": "Guest Type Categories (SC/PWD/NAAC/SP/ZeroRated)_gr",
+        "statisticalReport": "Statistical Report_gr",
+        "vatReport": "VAT Report_gr",
+        "taxInvoice": "Tax Invoice_gr",
+        "policeReport": "Police Report_gr",
+        "guestDataExport": "Guest Data Export_gr",
+        "sales_Void_ReturnInvoice#": "Sales/ Void/ Return Invoice #_gr",
+        "synchronousReceiptprinting": "Synchronous Receipt printing_gr",
+        "machineInfo(Min/Serial)": "Additional Machine Info (MIN and Serial #)_gr",
+        "helpAboutProductName": "Help - About - Product Name_gr"
+      }
+    }
   },
   "vendors": {
     "lbl_vendorCode": "Vendor Code_gr",

@@ -5006,7 +5006,41 @@
     "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_ch",
     "UserRole": "User Role_ch",
     "lbl_expandAll": "EXPAND ALL_ch",
-    "lbl_collapseAll": "COLLAPSE ALL_ch"
+    "lbl_collapseAll": "COLLAPSE ALL_ch",
+    "fiscalFunctionalities": {
+      "groups": {
+        "Report": "Report_ch",
+        "Client": "Client_ch",
+        "Transaction": "Transaction_ch",
+        "Retail Setup": "Retail Setup_ch",
+        "Others": "Others_ch"
+      },
+      "functionalities": {
+        "xReadingReport": "X Reading Report_ch",
+        "birSalesSummaryReport": "BIR Sales Summary Report_ch",
+        "zReadingReport": "Z Reading Report_ch",
+        "vatClosedChecksReport": "VAT Closed Checks Report_ch",
+        "seniorCitizenSalesBookReport": "Senior Citizen Sales Book/Report_ch",
+        "personsWithDisabilitySalesBookReport": "Persons with Disability Sales Book/Report_ch",
+        "nationalAthletesAndCoachesSalesBookReport": "National Athletes And Coaches Sales Book/Report_ch",
+        "soloParentSalesBookReport": "Solo Parent Sales Book/Report_ch",
+        "eJournalReport": "E-Journal Report_ch",
+        "auditTrailReport": "Audit Trail Report_ch",
+        "B2B": "B 2 B User_ch",
+        "B2C": "B 2 C User_ch",
+        "B2G": "B 2 G User_ch",
+        "GuestType": "Guest Type Categories (SC/PWD/NAAC/SP/ZeroRated)_ch",
+        "statisticalReport": "Statistical Report_ch",
+        "vatReport": "VAT Report_ch",
+        "taxInvoice": "Tax Invoice_ch",
+        "policeReport": "Police Report_ch",
+        "guestDataExport": "Guest Data Export_ch",
+        "sales_Void_ReturnInvoice#": "Sales/ Void/ Return Invoice #_ch",
+        "synchronousReceiptprinting": "Synchronous Receipt printing_ch",
+        "machineInfo(Min/Serial)": "Additional Machine Info (MIN and Serial #)_ch",
+        "helpAboutProductName": "Help - About - Product Name_ch"
+      }
+    }
   },
   "vendors": {
     "lbl_vendorCode": "Vendor Code_ch",

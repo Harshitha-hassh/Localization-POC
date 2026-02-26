@@ -5006,7 +5006,41 @@
     "SelectAtleastOneSubCat": "Select at least one subcategory to proceed_fr-ch",
     "UserRole": "User Role_fr-ch",
     "lbl_expandAll": "EXPAND ALL_fr-ch",
-    "lbl_collapseAll": "COLLAPSE ALL_fr-ch"
+    "lbl_collapseAll": "COLLAPSE ALL_fr-ch",
+    "fiscalFunctionalities": {
+      "groups": {
+        "Report": "Report_fr-ch",
+        "Client": "Client_fr-ch",
+        "Transaction": "Transaction_fr-ch",
+        "Retail Setup": "Retail Setup_fr-ch",
+        "Others": "Others_fr-ch"
+      },
+      "functionalities": {
+        "xReadingReport": "X Reading Report_fr-ch",
+        "birSalesSummaryReport": "BIR Sales Summary Report_fr-ch",
+        "zReadingReport": "Z Reading Report_fr-ch",
+        "vatClosedChecksReport": "VAT Closed Checks Report_fr-ch",
+        "seniorCitizenSalesBookReport": "Senior Citizen Sales Book/Report_fr-ch",
+        "personsWithDisabilitySalesBookReport": "Persons with Disability Sales Book/Report_fr-ch",
+        "nationalAthletesAndCoachesSalesBookReport": "National Athletes And Coaches Sales Book/Report_fr-ch",
+        "soloParentSalesBookReport": "Solo Parent Sales Book/Report_fr-ch",
+        "eJournalReport": "E-Journal Report_fr-ch",
+        "auditTrailReport": "Audit Trail Report_fr-ch",
+        "B2B": "B 2 B User_fr-ch",
+        "B2C": "B 2 C User_fr-ch",
+        "B2G": "B 2 G User_fr-ch",
+        "GuestType": "Guest Type Categories (SC/PWD/NAAC/SP/ZeroRated)_fr-ch",
+        "statisticalReport": "Statistical Report_fr-ch",
+        "vatReport": "VAT Report_fr-ch",
+        "taxInvoice": "Tax Invoice_fr-ch",
+        "policeReport": "Police Report_fr-ch",
+        "guestDataExport": "Guest Data Export_fr-ch",
+        "sales_Void_ReturnInvoice#": "Sales/ Void/ Return Invoice #_fr-ch",
+        "synchronousReceiptprinting": "Synchronous Receipt printing_fr-ch",
+        "machineInfo(Min/Serial)": "Additional Machine Info (MIN and Serial #)_fr-ch",
+        "helpAboutProductName": "Help - About - Product Name_fr-ch"
+      }
+    }
   },
   "vendors": {
     "lbl_vendorCode": "Vendor Code_fr-ch",
