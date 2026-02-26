@@ -130,7 +130,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   allPropertyDetails: any[] = [];
   userDetail: any;
   ssoNotConfigured: boolean = false;
-
+  ssoLogin=false;
   @ViewChild('fcs_userID') fcs_userID: ElementRef;
   @ViewChild('fcs_pwd') fcs_pwd: ElementRef;
   @ViewChild('fcs_custID') fcs_custID: ElementRef;
@@ -425,7 +425,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.tenantId = Number(id);
       const content = { title: 'SETUP PASSWORD', userName: this.userName, tenantId: this.tenantId };
       this.setUpPassword(content, true);
-    } else if ((!this.ADB2CAuthenticationEnabled || this.showSignInOptions) && loginDetails.result.userLoginInfo.isPasswordExpired === true) {
+    } else if ((!this.ADB2CAuthenticationEnabled || !this.ssoLogin) && loginDetails.result.userLoginInfo.isPasswordExpired === true) {
       this.passwordSetting = loginDetails.result.passwordSetting;
       const content = { title: 'CHANGE PASSWORD', userName: this.userName, tenantId: this.tenantId, passwordSetting: this.passwordSetting };
       this.setUpPassword(content, false);
@@ -1457,6 +1457,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           sessionStorage.setItem('jwtExpiryTime', jwtExpiryTime.toString());
           localStorage.setItem('jwtExpiryTime', jwtExpiryTime.toString());
         }
+        this.ssoLogin=true;
         await this.successCallBack(loginDetails);
 
       } else {
