@@ -1,0 +1,121 @@
+name: Localization – Layer 1 Deterministic Checks
+
+on:
+  push:
+    branches: [develop]
+  pull_request:
+
+jobs:
+  layer1:
+    name: Layer 1 – Deterministic Checks
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write   # needed to post PR comment
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # ─── Individual checks (continue-on-error so all run even if one fails) ───
+
+      - name: "Check 1 – JSON key coverage"
+        id: keys
+        run: node scripts/localization/check-keys.js
+        continue-on-error: true
+
+      - name: "Check 2 – Number format round-trips"
+        id: numbers
+        run: node scripts/localization/check-numbers.js
+        continue-on-error: true
+
+      - name: "Check 3 – Asset file coverage"
+        id: files
+        run: node scripts/localization/check-files.js
+        continue-on-error: true
+
+      - name: "Check 4 – Code anti-pattern scan"
+        id: code
+        run: node scripts/localization/check-code.js
+        continue-on-error: true
+
+      # ─── Combine reports, write Step Summary, produce markdown ───────────────
+
+      - name: Combine & summarise reports
+        id: report
+        run: node scripts/localization/run-all.js
+
+      # ─── Post comment on PRs ──────────────────────────────────────────────────
+
+      - name: Post PR comment
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs   = require('fs');
+            const data = JSON.parse(fs.readFileSync('localization-report.json', 'utf8'));
+            if (!data.hasIssues) {
+              console.log('No issues – skipping PR comment.');
+              return;
+            }
+            const body = fs.readFileSync('localization-report.md', 'utf8');
+
+            // Delete previous bot comment for this PR (keep thread clean)
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo:  context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            for (const c of comments) {
+              if (c.user.type === 'Bot' && c.body.startsWith('## 🌐 Localization')) {
+                await github.rest.issues.deleteComment({
+                  owner:      context.repo.owner,
+                  repo:       context.repo.repo,
+                  comment_id: c.id,
+                });
+              }
+            }
+
+            await github.rest.issues.createComment({
+              owner:        context.repo.owner,
+              repo:         context.repo.repo,
+              issue_number: context.issue.number,
+              body,
+            });
+
+      # ─── Upload full JSON + markdown as artifact (useful for Layer 2 later) ──
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: localization-layer1-report
+          path: |
+            localization-report.json
+            localization-report.md
+            l10n-keys-report.json
+            l10n-numbers-report.json
+            l10n-files-report.json
+            l10n-code-report.json
+
+      # ─── Hard-fail only on Pull Requests ─────────────────────────────────────
+      #     On plain push: annotate but don't break CI.
+
+      - name: Fail on PR if errors found
+        if: github.event_name == 'pull_request'
+        run: |
+          ISSUES=$(node -e "
+            const r = require('./localization-report.json');
+            process.stdout.write(String(r.totalIssues));
+          ")
+          echo "Total localization issues: $ISSUES"
+          if [ "$ISSUES" -gt "0" ]; then
+            echo "::error::$ISSUES localization issue(s) detected. Review the PR comment for details."
+            exit 1
+          fi
