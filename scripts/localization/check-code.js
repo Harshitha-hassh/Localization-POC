@@ -50,6 +50,14 @@ const HTML_RULES = [
     description: "$ hardcoded before {{ interpolation }} – symbol should come from localizeCurrency()",
     pattern:     /\$\s*\{\{/,
   },
+  {
+    id:          "HARDCODED_TEXT",
+    severity:    "error",
+    description: "Hardcoded English text in element – use localization.captions.* or | translate instead",
+    // Matches: >Some Text< where text is 2+ words starting with uppercase
+    // Excludes: {{ interpolation }}, icon names, single-char, mat- prefixed, CSS classes
+    pattern:     />\s*([A-Z][a-z]{2,}(?:\s+[A-Za-z][a-z]*)+)\s*</,
+  },
 ];
 
 const TS_RULES = [
@@ -106,6 +114,9 @@ function scanFile(filePath, rules) {
   const lines    = content.split("\n");
   const findings = [];
 
+  // Words/phrases that are NOT translatable text (framework, CSS, icons, etc.)
+  const HARDCODED_TEXT_IGNORE = /mat-|icon|btn-|col-|row-|flex-|ng-|aria-|data-|class=|style=|http|www\.|\.com|\.js|\.ts|\.css|\.svg|\.png|\/\//i;
+
   for (const rule of rules) {
     lines.forEach((line, idx) => {
       const trimmed = line.trim();
@@ -117,6 +128,13 @@ function scanFile(filePath, rules) {
         trimmed.startsWith("<!--")
       ) return;
 
+      // For HARDCODED_TEXT rule, skip lines with interpolation {{ }}, pipes, or framework tokens
+      if (rule.id === "HARDCODED_TEXT") {
+        if (/\{\{.*\}\}/.test(line)) return;              // has Angular interpolation
+        if (/\|\s*(translate|Currency|localizeDate)/.test(line)) return; // uses a pipe
+        if (HARDCODED_TEXT_IGNORE.test(line)) return;      // framework/CSS noise
+      }
+
       if (rule.pattern.test(line)) {
         const match = line.match(rule.pattern);
         findings.push({
@@ -124,7 +142,7 @@ function scanFile(filePath, rules) {
           severity:    rule.severity,
           description: rule.description,
           lineNumber:  idx + 1,
-          matchedText: match ? match[0].trim() : "",
+          matchedText: match ? match[1] || match[0].trim() : "",
           snippet:     trimmed.slice(0, 120),
         });
       }

@@ -103,11 +103,9 @@ jobs:
             l10n-files-report.json
             l10n-code-report.json
 
-      # ─── Hard-fail only on Pull Requests ─────────────────────────────────────
-      #     On plain push: annotate but don't break CI.
+      # ─── Hard-fail if any errors found ───────────────────────────────────────
 
-      - name: Fail on PR if errors found
-        if: github.event_name == 'pull_request'
+      - name: Fail if errors found
         run: |
           ISSUES=$(node -e "
             const r = require('./localization-report.json');
@@ -115,6 +113,6 @@ jobs:
           ")
           echo "Total localization issues: $ISSUES"
           if [ "$ISSUES" -gt "0" ]; then
-            echo "::error::$ISSUES localization issue(s) detected. Review the PR comment for details."
+            echo "::error::$ISSUES localization issue(s) detected. Review the report for details."
             exit 1
           fi
